@@ -5,7 +5,7 @@ Gyro positive;
 
 void setup() {
 	Serial.begin(115200);
-	Gyro::init();
+	Gyro::begin();
 }
 
 void loop() {
