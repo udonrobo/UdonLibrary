@@ -9,6 +9,12 @@
 #include "Gyro.h"
 
 class Measure : private Gyro {
+	public:
+		template<class T>
+		struct Vec2 {
+			T x, y;
+		};
+	private:
 		EncoderBoardTeensy& enc;
 
 		static constexpr double ppr = 8192;       /// 分解能
@@ -19,9 +25,8 @@ class Measure : private Gyro {
 			int32_t count;
 		} wheelx, wheely;
 
-		struct Vec2 {  /// 軸情報
-			double x, y;
-		} pos;
+		Vec2<double> pos;
+		Vec2<bool>   dir;
 
 		double initYaw = 0;
 
@@ -33,20 +38,20 @@ class Measure : private Gyro {
 			: enc(enc)
 			, wheelx{portX}
 			, wheely{portY}
+			, pos{}
+			, dir{ true, true }
 		{}
 
 		/// @brief 各物理情報を計算する
 		/// @note  必須
 		void update() {
-			enc.update();
-
 			const auto prevX = wheelx.count;
 			const auto prevY = wheely.count;
 			wheelx.count = enc.getCount(wheelx.port);
 			wheely.count = enc.getCount(wheely.port);
 
 			/// 相対座標の変化量算出
-			const Vec2 delta {
+			const Vec2<double> delta {
 				(wheelx.count - prevX) * diameter / ppr,
 				(wheely.count - prevY) * diameter / ppr
 			};
@@ -64,13 +69,16 @@ class Measure : private Gyro {
 			pos = {};
 			Gyro::clear();
 		}
+		void setDir(const Vec2<bool>& direction) {
+			dir = direction;
+		}
 
 		/// @brief 絶対座標を取得
 		double x() const {
-			return pos.x;
+			return pos.x * (dir.x ? 1 : -1);
 		}
 		double y() const {
-			return pos.y;
+			return pos.y * (dir.y ? 1 : -1);
 		}
 
 		/// @brief 表示

@@ -22,18 +22,27 @@ class _Gyro {
 		/// @note  必須
 		static void begin() {
 			serial.begin(115200);
+			delay(100);
 			update();
 			initOffset = rawYaw;
 		}
 
 		/// @brief 旋回角を更新する
 		/// @note  必須
-		static void update() {
-			while (serial.available())
-			{
-				if (serial.read() == 'H')
-					rawYaw = ((serial.read() << 8) | (serial.read() << 0)) / 100.0 - initOffset;
+		static double update() {
+			if (Serial1.available() >= 3) {
+				if (Serial1.read() == 'H') {
+					rawYaw = (Serial1.read() << 8) | Serial1.read();
+					rawYaw = (double)rawYaw / 100;
+					Serial.println(rawYaw);
+					if (rawYaw > 180)
+						rawYaw -= 360;
+					else if (rawYaw < -180)
+						rawYaw += 360;
+					return rawYaw;
+				}
 			}
+			return rawYaw;
 		}
 
 		/// @brief 旋回角を0にする
@@ -44,8 +53,12 @@ class _Gyro {
 		/// 旋回角取得
 		/// @return 旋回角 [-180~180deg]
 		double yaw() const {
-			const double yaw = rawYaw - offset;
-			return fmod(fmod(yaw + 180, 360) - 360, 360) + 180;
+			double yaw = rawYaw - offset;
+			if (yaw > 179.99)
+				yaw -= 359;
+			else if (yaw < -179.99)
+				yaw += 359;
+			return yaw;
 		}
 };
 
