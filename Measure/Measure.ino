@@ -7,6 +7,7 @@ void setup() {
 	Wire.begin();
 	Wire.setClock(400000UL);
 	Serial.begin(115200);
+	delay(5000);
 	Gyro::begin();
 	enc.init();
 	measure.setDir({ false, true });
@@ -17,10 +18,8 @@ void loop() {
 	enc.update();
 	measure.update();
 
-	//	Serial.print(Gyro{} .yaw()); Serial.print('\t');
-	//
 	//	Serial.print(measure.x()); Serial.print('\t');
 	//	Serial.print(measure.y()); Serial.print('\n');
-
+	measure.show('\n');
 	delay(10);
 }

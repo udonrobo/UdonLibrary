@@ -28,8 +28,6 @@ class Measure : private Gyro {
 		Vec2<double> pos;
 		Vec2<bool>   dir;
 
-		double initYaw = 0;
-
 	public:
 		/// @param address EncoderBoardTeensyクラスのインスタンス参照
 		/// @param portX   X軸のエンコーダーの入力ポート
@@ -51,13 +49,14 @@ class Measure : private Gyro {
 			wheely.count = enc.getCount(wheely.port);
 
 			/// 相対座標の変化量算出
+			constexpr double rawToMillimeter = diameter * PI / ppr;
 			const Vec2<double> delta {
-				(wheelx.count - prevX) * diameter / ppr,
-				(wheely.count - prevY) * diameter / ppr
+				(wheelx.count - prevX) * rawToMillimeter,
+				(wheely.count - prevY) * rawToMillimeter
 			};
 
 			/// 回転行列を用いて絶対座標に変換
-			const double yaw = radians(Gyro::yaw() + initYaw);
+			const double yaw = radians(Gyro::yaw());
 			pos.x += delta.x * cos(yaw) - delta.y * sin(yaw);
 			pos.y += delta.x * sin(yaw) + delta.y * cos(yaw);
 		}
@@ -65,9 +64,8 @@ class Measure : private Gyro {
 		/// @brief 消去
 		/// @param yaw 初期の旋回角
 		void clear(const double yaw = 0) {
-			initYaw = yaw;
 			pos = {};
-			Gyro::clear();
+			Gyro::clear(yaw);
 		}
 		void setDir(const Vec2<bool>& direction) {
 			dir = direction;
@@ -84,6 +82,7 @@ class Measure : private Gyro {
 		/// @brief 表示
 		void show(const char end = {}) const {
 			Serial.print(x()), Serial.print('\t');
-			Serial.print(y()), Serial.print(end);
+			Serial.print(y()), Serial.print('\t');
+			Serial.print(Gyro::yaw()), Serial.print(end);
 		}
 };

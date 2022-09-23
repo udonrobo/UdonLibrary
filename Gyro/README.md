@@ -46,17 +46,36 @@
 ```cpp
 #include "Gyro.h"
 
-Gyro gyro;
+Gyro positive;
 
 void setup() {
 	Serial.begin(115200);
-	Gyro::init();
+	Gyro::begin();
 }
 
 void loop() {
 	Gyro::update();
 
-	Serial.println(gyro.yaw());
+	Serial.print(positive.yaw()); Serial.print('\n');
+
+	delay(10);
+}
+```
+
+また旋回角は static メンバによって管理されているので以下のようにもできます
+
+```cpp
+#include "Gyro.h"
+
+void setup() {
+	Serial.begin(115200);
+	Gyro::begin();
+}
+
+void loop() {
+	Gyro::update();
+
+	Serial.print(Gyro{}.yaw()); Serial.print('\n');
 
 	delay(10);
 }

@@ -32,7 +32,10 @@ class _Gyro {
 			while (serial.available())
 			{
 				if (serial.read() == 'H')
-					rawYaw = ((serial.read() << 8) | (serial.read() << 0)) / 100.0 - initOffset;
+				{
+					const auto receiveValue = (serial.read() << 8) | (serial.read() << 0);
+					rawYaw = static_cast<int16_t>(receiveValue) / 100.0 - initOffset;  /// 復号化
+				}
 			}
 		}
 
@@ -44,13 +47,8 @@ class _Gyro {
 		/// 旋回角取得
 		/// @return 旋回角 [-180~180deg]
 		double yaw() const {
-			double yaw = rawYaw - offset;
-			yaw += 180;
-			yaw = fmod(yaw, 360);  /// 正の方向
-			yaw -= 360;
-			yaw = fmod(yaw, 360);  /// 負の方向
-			yaw += 180;
-			return yaw;
+			const double yaw = rawYaw - offset;
+			return fmod(fmod(yaw + 180, 360) - 360, 360) + 180;
 		}
 };
 
