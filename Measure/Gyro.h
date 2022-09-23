@@ -5,7 +5,7 @@
 
 #pragma once
 
-#define SERIAL_INSTANCE Serial1
+#define GYRO_SERIAL Serial1
 
 template<class HardwareSerial>
 class _Gyro {
@@ -20,8 +20,9 @@ class _Gyro {
 
 		/// @brief 初期化
 		/// @note  必須
-		static void begin() {
-			serial.begin(115200);
+		static void begin(const uint32_t baudlate = 115200) {
+			serial.begin(baudlate);
+			delay(100);
 			update();
 			initOffset = rawYaw;
 		}
@@ -52,10 +53,8 @@ class _Gyro {
 		}
 };
 
-template<class HardwareSerial> HardwareSerial& _Gyro<HardwareSerial>::serial     = SERIAL_INSTANCE;
+template<class HardwareSerial> HardwareSerial& _Gyro<HardwareSerial>::serial     = GYRO_SERIAL;
 template<class HardwareSerial> double          _Gyro<HardwareSerial>::rawYaw     = 0;
 template<class HardwareSerial> double          _Gyro<HardwareSerial>::initOffset = 0;
 
-using Gyro = _Gyro<decltype(SERIAL_INSTANCE)>;
-
-#undef SERIAL_INSTANCE
+using Gyro = _Gyro<decltype(GYRO_SERIAL)>;

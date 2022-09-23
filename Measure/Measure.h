@@ -22,22 +22,22 @@ class Measure : private Gyro {
 
 		struct Wheel {  /// 計測輪情報
 			const uint8_t port;
+			const bool    dir;
 			int32_t count;
 		} wheelx, wheely;
 
 		Vec2<double> pos;
-		Vec2<bool>   dir;
 
 	public:
 		/// @param address EncoderBoardTeensyクラスのインスタンス参照
 		/// @param portX   X軸のエンコーダーの入力ポート
 		/// @param portY   Y軸のエンコーダーの入力ポート
-		Measure(EncoderBoardTeensy& enc, const uint8_t portX, const uint8_t portY)
+		/// @param dir     計測輪の回転方向
+		Measure(EncoderBoardTeensy& enc, const uint8_t portX, const uint8_t portY, const Vec2<bool> dir = { true, true })
 			: enc(enc)
-			, wheelx{portX}
-			, wheely{portY}
+			, wheelx{portX, dir.x}
+			, wheely{portY, dir.y}
 			, pos{}
-			, dir{ true, true }
 		{}
 
 		/// @brief 各物理情報を計算する
@@ -67,16 +67,13 @@ class Measure : private Gyro {
 			pos = {};
 			Gyro::clear(yaw);
 		}
-		void setDir(const Vec2<bool>& direction) {
-			dir = direction;
-		}
 
 		/// @brief 絶対座標を取得
 		double x() const {
-			return pos.x * (dir.x ? 1 : -1);
+			return pos.x * (wheelx.dir ? 1 : -1);
 		}
 		double y() const {
-			return pos.y * (dir.y ? 1 : -1);
+			return pos.y * (wheely.dir ? 1 : -1);
 		}
 
 		/// @brief 表示

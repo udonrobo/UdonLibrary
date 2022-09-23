@@ -1,16 +1,14 @@
 #include "Measure.h"
 
 EncoderBoardTeensy enc(2);
-Measure measure(enc, 1, 2);
+Measure measure(enc, 1, 2, { false, true });
 
 void setup() {
 	Wire.begin();
 	Wire.setClock(400000UL);
 	Serial.begin(115200);
-	delay(5000);
-	Gyro::begin();
+	Gyro::begin(115200);
 	enc.init();
-	measure.setDir({ false, true });
 }
 
 void loop() {
