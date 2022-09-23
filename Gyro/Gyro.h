@@ -20,7 +20,7 @@ class _Gyro {
 
 		/// @brief 初期化
 		/// @note  必須
-		static void begin(const uint32_t baudlate = 115200) {
+		static void begin(const uint32_t baudrate = 115200) {
 			serial.begin(baudlate);
 			delay(100);
 			update();
@@ -32,10 +32,10 @@ class _Gyro {
 		static void update() {
 			while (serial.available())
 			{
-				if (serial.read() == 'H')
+				if (serial.read() == 'H')  /// 復号化
 				{
 					const auto receiveValue = (serial.read() << 8) | (serial.read() << 0);
-					rawYaw = static_cast<int16_t>(receiveValue) / 100.0 - initOffset;  /// 復号化
+					rawYaw = static_cast<int16_t>(receiveValue) / 100.0 - initOffset;
 				}
 			}
 		}

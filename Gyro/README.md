@@ -10,7 +10,7 @@
 
 ## API
 
--   `static Gyro::init()`
+-   `static Gyro::begin(uint32_t baudrate = 115200)`
 
     通信を開始する
 
@@ -30,15 +30,15 @@
 
     旋回角を取得する
 
-## シリアルインスタンスの切り替え
+## シリアル切り替え
 
-マスターによってシリアルインスタンスを切り替える必要があります
+マスターによってシリアルインスタンスを切り替える場合、
 
-`SERIAL_INSTANCE` の定義を変更することで切り替えられます
+`GYRO_SERIAL` の定義を変更することで切り替えられます
 
 ```cpp
-//#define SERIAL_INSTANCE Serial  // Arduino
-#define SERIAL_INSTANCE Serial1  // teensy
+//#define GYRO_SERIAL Serial  // arduino
+#define GYRO_SERIAL Serial1  // teensy
 ```
 
 ## Example
@@ -50,13 +50,44 @@ Gyro positive;
 
 void setup() {
 	Serial.begin(115200);
-	Gyro::begin();
+	Gyro::begin(115200);
 }
 
 void loop() {
 	Gyro::update();
 
 	Serial.print(positive.yaw()); Serial.print('\n');
+
+	delay(10);
+}
+```
+
+複数インスタンス
+
+```cpp
+#include "Gyro.h"
+
+Gyro positive;
+Gyro turn;
+Gyro hoge;
+
+void setup() {
+	Serial.begin(115200);
+	Gyro::begin(115200);
+}
+
+void loop() {
+	Gyro::update();
+
+	if (millis() > 1000)  /// 1 秒後に positive.yaw() が 0 に
+		positive.clear();
+
+	if (millis() > 2000)  /// 2 秒後に turn.yaw() が 0 に
+		turn.clear();
+
+	Serial.print(positive.yaw()); Serial.print('\t');
+	Serial.print(turn.yaw()); Serial.print('\t');
+	Serial.print(hoge.yaw()); Serial.print('\n');
 
 	delay(10);
 }
@@ -69,7 +100,7 @@ void loop() {
 
 void setup() {
 	Serial.begin(115200);
-	Gyro::begin();
+	Gyro::begin(115200);
 }
 
 void loop() {

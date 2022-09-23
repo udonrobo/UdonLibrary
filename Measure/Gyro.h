@@ -20,7 +20,7 @@ class _Gyro {
 
 		/// @brief 初期化
 		/// @note  必須
-		static void begin(const uint32_t baudlate = 115200) {
+		static void begin(const uint32_t baudrate = 115200) {
 			serial.begin(baudlate);
 			delay(100);
 			update();
