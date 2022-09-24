@@ -10,7 +10,7 @@
 
 ## API
 
--   `static Gyro::begin(uint32_t baudrate = 115200)`
+-   `static Gyro::begin(baudrate = 115200)`
 
     通信を開始する
 
