@@ -21,7 +21,7 @@ class _Gyro {
 		/// @brief 初期化
 		/// @note  必須
 		static void begin(const uint32_t baudrate = 115200) {
-			serial.begin(baudlate);
+			serial.begin(baudrate);
 			delay(100);
 			update();
 			initOffset = rawYaw;
@@ -41,8 +41,8 @@ class _Gyro {
 		}
 
 		/// @brief 旋回角を0にする
-		void clear(const double offset = 0) {
-			offset = rawYaw - offset;
+		void clear(const double offsetDeg = 0) {
+			offset = rawYaw - offsetDeg;
 		}
 
 		/// 旋回角取得

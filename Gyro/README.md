@@ -23,7 +23,7 @@
 
 -   値更新
 
-    -   `static void update(offset = 0)`
+    -   `static void update(offsetDeg = 0)`
 
         `@param offset` 旋回した状態でスタートする時などに使います
 
