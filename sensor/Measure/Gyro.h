@@ -1,6 +1,6 @@
 /// @file   Gyro.h
 /// @date   2022/09/22
-/// @brief  ジャイロセンサから旋回角を取得するクラス
+/// @brief  旋回角取得クラス
 /// @author 大河 祐介
 
 #pragma once
@@ -32,17 +32,17 @@ class _Gyro {
 		static void update() {
 			while (serial.available())
 			{
-				if (serial.read() == 'H')
+				if (serial.read() == 'H')  /// 復号化
 				{
 					const auto receiveValue = (serial.read() << 8) | (serial.read() << 0);
-					rawYaw = static_cast<int16_t>(receiveValue) / 100.0 - initOffset;  /// 復号化
+					rawYaw = static_cast<int16_t>(receiveValue) / 100.0 - initOffset;
 				}
 			}
 		}
 
 		/// @brief 旋回角を0にする
-		void clear(const double offsetDeg = 0) {
-			offset = rawYaw - offsetDeg;
+		void clear(const double offset = 0) {
+			offset = rawYaw - offset;
 		}
 
 		/// 旋回角取得
@@ -50,6 +50,12 @@ class _Gyro {
 		double yaw() const {
 			const double yaw = rawYaw - offset;
 			return fmod(fmod(yaw + 180, 360) - 360, 360) + 180;
+		}
+
+		/// @brief 表示
+		void show(const char end = {}) const {
+			Serial.print(yaw()), Serial.print('\t');
+			Serial.print(end);
 		}
 };
 

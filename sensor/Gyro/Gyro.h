@@ -1,6 +1,6 @@
 /// @file   Gyro.h
 /// @date   2022/09/22
-/// @brief  ジャイロセンサから旋回角を取得するクラス
+/// @brief  旋回角取得クラス
 /// @author 大河 祐介
 
 #pragma once
