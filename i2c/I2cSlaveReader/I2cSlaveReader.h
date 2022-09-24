@@ -27,7 +27,6 @@ class I2cSlaveReader {
 				}
 			});
 		}
-		I2cSlaveReader() = default;
 		~I2cSlaveReader() noexcept {
 			Wire.end();
 		}
@@ -94,7 +93,7 @@ class I2cSlaveReader {
 	private:
 		const  uint8_t  address;
 		const  uint32_t clock;
-		static uint8_t  buffer[N]    ;  /// 受信バッファ
+		static uint8_t  buffer[N];      /// 受信バッファ
 		static uint32_t prevReceiveMs;  /// 前回受信時刻
 };
 
