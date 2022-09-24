@@ -1,46 +1,49 @@
 # Measure
 
-## 計測輪の情報をもとに絶対座標に変換するクラス
+## Description
+
+計測輪の情報をもとに絶対座標に変換するクラスです
+
+## Data
+
+-   `@date` 2022/09/22
+-   `@author` 大河 祐介
 
 # Usage
 
 ## API
 
--   `Measure::Measure(EncoderBoardTeensy& enc, uint8_t portX, uint8_t portY)`
+-   コンストラクタ
 
-    EncoderBoardTeensy クラスから情報を読み取るための設定をする
+    -   `Measure(EncoderBoardTeensy& enc, portX, portY)`
 
-    `enc` EncoderBoardTeensy クラスのインスタンス参照
+        EncoderBoardTeensy クラスから情報を読み取るための設定をする
 
-    `portX` X 軸のエンコーダーの入力ポート
+        `@param enc` EncoderBoardTeensy クラスのインスタンス参照
 
-    `portY` Y 軸のエンコーダーの入力ポート
+        `@param portX` X 軸のエンコーダーの入力ポート番号
 
--   `Measure::update()`
+        `@param portY` Y 軸のエンコーダーの入力ポート番号
 
-    値更新
+-   値更新
 
-    `loop` 関数で呼ぶ
+    -   `void update()`
 
--   `Measure::clear(int16_t yaw = 0)`
+-   値取得、消去
 
-    値を消去する
+    -   `double x()`
 
-    `yaw` 角度のオフセット
+    -   `double y()`
 
--   `Measure::x()`
+    -   `void clear(offset = 0)`
 
-    X 座標を取得
+        `@param offset` スタート時のオフセット
 
--   `Measure::y()`
+-   デバッグ出力
 
-    Y 座標を取得
+    -   `show(end = {})`
 
--   `Measure::show(char end = {})`
-
-    シリアル出力
-
-    `end` 出力の最後に挿入される(改行などを入れる)
+        `@param end` 最後に出力される文字
 
 ## Example
 
@@ -52,7 +55,7 @@ Measure measure(enc, 1, 2);
 
 void setup() {
 	Serial.begin(115200);
-	Gyro::begin();
+	Gyro::begin(115200);
 	enc.init();
 }
 

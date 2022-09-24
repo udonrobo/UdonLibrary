@@ -1,44 +1,53 @@
 # Gyro
 
-## ジャイロセンサスレーブと通信し、旋回角を取得するクラス
+## Description
 
-このクラスでは、ジャイロセンサ 1 つに対して `Gyro` クラスのインスタンスを複数作成することができます。
+ジャイロセンサスレーブと通信し、旋回角を取得するクラス
 
-よって、あるインスタンスの `clear` 関数を呼んだ場合でも、他のインスタンスの旋回角がクリアされる心配がありません。
+ジャイロセンサ 1 つに対して `Gyro` クラスのインスタンスを複数作成することができます
+
+そのため、角度の使用用途に応じてインスタンスを作ることができます(旋回補正用、ポジティブ制御用等)
+
+## Data
+
+-   `@date` 2022/09/22
+-   `@author` 大河 祐介
 
 # Usage
 
 ## API
 
--   `static Gyro::begin(baudrate = 115200)`
+-   通信開始
 
-    通信を開始する
+    -   `static void begin(baudrate = 115200)`
 
-    `setup` 関数で呼ぶ
+-   値更新
 
--   `static Gyro::update()`
+    -   `static void update(offset = 0)`
 
-    値更新
+        `@param offset` 旋回した状態でスタートする時などに使います
 
-    `loop` 関数で呼ぶ
+-   値取得、消去
 
--   `Gyro::clear()`
+    -   `void clear()`
 
-    旋回角を 0 にする
+    -   `double yaw()`
 
--   `Gyro::yaw()`
+-   デバッグ出力
 
-    旋回角を取得する
+    -   `show(end = {})`
 
-## シリアル切り替え
+        `@param end` 最後に出力される文字
 
-マスターによってシリアルインスタンスを切り替える場合、
+## Communication
 
+シリアルインスタンスを切り替える場合、
 `GYRO_SERIAL` の定義を変更することで切り替えられます
 
 ```cpp
-//#define GYRO_SERIAL Serial  // arduino
-#define GYRO_SERIAL Serial1  // teensy
+// #define GYRO_SERIAL Serial
+#define GYRO_SERIAL Serial1
+// #define GYRO_SERIAL Serial2
 ```
 
 ## Example
@@ -93,7 +102,7 @@ void loop() {
 }
 ```
 
-また旋回角は static メンバによって管理されているので以下のようにもできます
+また旋回角は static メンバによって管理されているので、クリアする必要がない場合以下のようにもできます
 
 ```cpp
 #include "Gyro.h"

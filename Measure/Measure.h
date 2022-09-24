@@ -62,10 +62,10 @@ class Measure : private Gyro {
 		}
 
 		/// @brief 消去
-		/// @param yaw 初期の旋回角
-		void clear(const double yaw = 0) {
+		/// @param offset スタート時の旋回角
+		void clear(const double offset = 0) {
 			pos = {};
-			Gyro::clear(yaw);
+			Gyro::clear(offset);
 		}
 
 		/// @brief 絶対座標を取得
@@ -80,6 +80,7 @@ class Measure : private Gyro {
 		void show(const char end = {}) const {
 			Serial.print(x()), Serial.print('\t');
 			Serial.print(y()), Serial.print('\t');
-			Serial.print(Gyro::yaw()), Serial.print(end);
+			Serial.print(Gyro::yaw()), Serial.print('\t');
+			Serial.print(end);
 		}
 };

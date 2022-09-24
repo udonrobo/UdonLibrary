@@ -1,10 +1,13 @@
 # I2cSlaveReader
 
-## I2c スレーブ受信用クラス
+## Description
 
-マスターからの送信を受信するクラスです
+I2c 通信を用いて、マスターから受信するクラス
 
-受信割り込みはクラス内部で行われ、受信データは静的メンバによって管理されています
+## Data
+
+-   `@date` 2022/09/22
+-   `@author` 大河 祐介
 
 # Usage
 
@@ -16,11 +19,11 @@
 
         通信を開始する
 
-        `@param` N 受信サイズ
+        `@param N` 受信サイズ
 
-        `@param` address アドレス
+        `@param address` アドレス
 
-        `@param` clock 通信クロック
+        `@param clock` 通信クロック
 
 -   通信監視(WDT)
 
@@ -28,13 +31,13 @@
 
         通信遮断時に復帰させる
 
-        `@param` timeOutMs タイムアウト限界
+        `@param timeOutMs` タイムアウト限界
 
         `@return` 通信しているか
 
     -   `bool isConnected(timeOutMs = 50)`
 
-        `@param` timeOutMs タイムアウト限界
+        `@param timeOutMs` タイムアウト限界
 
         `@return` 通信しているか
 
@@ -66,13 +69,13 @@
 
     -   `show(end = {}, radix = DEC)`
 
-        `@param` end 最後に出力される文字
+        `@param end` 最後に出力される文字
 
-        `@param` radix 基数
+        `@param radix` 基数
 
     -   `showMotor(end = {})`
 
-        `@param` end 最後に出力される文字
+        `@param end` 最後に出力される文字
 
 -   その他
 
