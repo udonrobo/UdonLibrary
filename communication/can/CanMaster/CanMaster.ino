@@ -1,5 +1,5 @@
 /**
-   CAN通信マスター(teensy用)
+    CAN通信マスター(teensy用)
 */
 
 #include "LoopCycleController.h"
@@ -14,22 +14,21 @@ CanMasterReader canr(slaveID, dataSize);
 CanMasterWriter canw(slaveID, dataSize);
 
 void setup() {
-  Serial.begin(115200);
-  delay(1000);
+	Serial.begin(115200);
+	delay(1000);
 }
 
 void loop() {
 
-  { // 送信部
-    for (uint8_t i = 0; i < canw.size(); i++)
-      canw[i] = millis();  // 添え字演算子をオーバーロードするとこのように使えて便利です
-    canw.update();
-  }
+	{	// 送信部
+		for (uint8_t i = 0; i < canw.size(); i++)
+			canw[i] = millis();  // 添え字演算子をオーバーロードするとこのように使えて便利です
+		canw.update();
+	}
 
-  { // 受信部
-    canr.show('\n');
-  }
+	{	// 受信部
+		canr.show('\n');
+	}
 
-
-  loopCtrl.Update();
+	loopCtrl.Update();
 }
