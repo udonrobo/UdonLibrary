@@ -13,13 +13,6 @@ const uint8_t dataSize = 30;
 CanSlaveReader canr(myID, dataSize);
 CanSlaveWriter canw(myID, dataSize);
 
-inline void f(){
-	
-}
-inline void f(){
-	
-}
-
 void setup() {
 	Serial.begin(115200);
 	delay(1000);

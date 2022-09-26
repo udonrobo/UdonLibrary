@@ -1,19 +1,22 @@
 #pragma once
 
-#include "CanBase_t4.h"
+#include "CanBase.h"
 
 template<size_t N>
-class CanMasterReader : private CanBase {
+class CanMasterReader : private CanBase, private Callbacker {
 
-		const uint8_t observID;  // 観察する送信元ID
-		uint8_t buffer[N];       // 読み取りバッファ
+		const uint8_t id;   // 観察する送信元ID
+		uint8_t buffer[N];  // 読み取りバッファ
+		Can& can = CanBase::canReference();
 
 	public:
-		CanMasterReader(uint8_t observID)
-			: observID(observID)
+	
+		/// @brief
+		/// @param id 監視するID
+		CanMasterReader(const uint8_t id)
+			: id(id)
 		{
 			CanBase::begin();
-			//			CanBase::append(observID, onReceive);
 		}
 
 		constexpr const uint8_t& operator[](uint8_t index) const {
