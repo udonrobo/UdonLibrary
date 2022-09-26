@@ -10,8 +10,8 @@ LoopCycleController loopCtrl(10000);
 
 const uint8_t slaveID = 0;
 const uint8_t dataSize = 30;
-CanMasterReader canr(slaveID, dataSize);
-CanMasterWriter canw(slaveID, dataSize);
+CanMasterReader<dataSize> canr(slaveID);
+CanMasterWriter<dataSize> canw(slaveID);
 
 void setup() {
 	Serial.begin(115200);
