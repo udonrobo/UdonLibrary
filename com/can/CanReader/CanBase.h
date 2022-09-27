@@ -1,6 +1,6 @@
 /// @file   CanBase.h
 /// @date   2022/09/27
-/// @brief  CAN通信ライブラリ差異吸収クラス
+/// @brief  CAN通信基底クラス
 /// @author 大河 祐介
 
 #pragma once
@@ -10,7 +10,7 @@
 	defined(ARDUINO_TEENSY36) || defined(ARDUINO_TEENSY35) || \
 	defined(ARDUINO_TEENSY32) || defined(ARDUINO_TEENSY30)
 
-#define WITH_READER      __has_include("CanReader_t4x.h")
+#define WITH_READER __has_include("CanReader.h")
 
 #if SUPPORTED_TEENSY
 #	include <FlexCAN_T4.h>  /// https://github.com/tonton81/FlexCAN_T4
@@ -52,8 +52,7 @@ class _CanBase {
 			can.enableFIFOInterrupt();
 #	if WITH_READER
 			can.onReceive([](const CAN_message_t& input) {  /// 受信割り込み
-				static Message_t msg;
-				msg.id = input.id;
+				Message_t msg = { input.id };
 				memcpy(msg.buf, input.buf, 8);
 				FunctionBinder<const Message_t&>::bind(msg);
 			});
@@ -67,10 +66,9 @@ class _CanBase {
 #	if WITH_READER
 			pinMode(interruptPin, INPUT_PULLUP);
 			attachInterrupt(digitalPinToInterrupt(interruptPin), [] {
-				static can_frame input;
+				can_frame input;
 				if (can.readMessage(&input) == MCP2515::ERROR_OK) {
-					static Message_t msg;
-					msg.id = input.id;
+					Message_t msg = { input.can_id };
 					memcpy(msg.buf, input.data, 8);
 					FunctionBinder<const Message_t&>::bind(msg);
 				}
@@ -84,13 +82,12 @@ class _CanBase {
 		/// @param msg 送信内容
 		static void write(const Message_t& msg) {
 #if SUPPORTED_TEENSY
-			CAN_message_t output = {msg.id};
+			CAN_message_t output = { msg.id };
 			memcpy(output.buf, msg.buf, 8);
 			while (!can.write(output));
 #else
-			static can_frame output;
-			output.can_id = msg.id;
-			memcpy(output.buf, msg.buf, 8);
+			can_frame output = { msg.id };
+			memcpy(output.data, msg.buf, 8);
 			can.sendMessage(&output);
 #endif
 		}

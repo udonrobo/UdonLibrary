@@ -1,38 +1,38 @@
 /// @file   FunctionBinder.h
 /// @date   2022/09/26
-/// @brief  クラスのメンバ関数を静的関数にバインドするクラス
+/// @brief  メンバ関数を静的関数にバインドするクラス
 /// @author 大河 祐介
 
 #pragma once
 
-template <class Ty>
-struct remove_reference {
-	using type = Ty;
-};
-template <class Ty>
-struct remove_reference<Ty&> {
-	using type = Ty;
-};
-template <class Ty>
-struct remove_reference < Ty&& > {
-	using type = Ty;
-};
-
-template< class Ty >
-using remove_reference_t = typename remove_reference<Ty>::type;
-
-template<class Ty>
-inline decltype(auto) move(Ty&& value) {
-	return static_cast < remove_reference_t<Ty> && > (value);
-}
-template<typename T>
-inline decltype(auto) forward(remove_reference_t<T>& param)
-{
-	return static_cast < T && > (param);
-}
-
 template<class... PTy>
 class FunctionBinder {
+
+		template <class Ty>
+		struct remove_reference {
+			using type = Ty;
+		};
+		template <class Ty>
+		struct remove_reference<Ty&> {
+			using type = Ty;
+		};
+		template <class Ty>
+		struct remove_reference < Ty&& > {
+			using type = Ty;
+		};
+
+		template< class Ty >
+		using remove_reference_t = typename remove_reference<Ty>::type;
+
+		template<class Ty>
+		static constexpr inline remove_reference_t<Ty> && move(Ty&& value) {
+			return static_cast < remove_reference_t<Ty> && > (value);
+		}
+		template<typename T>
+		static constexpr inline T&& forward(remove_reference_t<T>& param)
+		{
+			return static_cast < T && > (param);
+		}
 
 	public:
 

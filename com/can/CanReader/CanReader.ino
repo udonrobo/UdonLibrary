@@ -1,4 +1,4 @@
-#include "CanReader_t4x.h"
+#include "CanReader.h"
 
 CanReader<6> reader1(1);
 CanReader<6> reader2(2);
@@ -12,7 +12,7 @@ void loop() {
 	const auto n = micros();
 	reader1.show();
 	reader2.show();
-	reader3.show('\n');
+	reader3.show();
 	Serial.println(micros() - n);
 	delay(10);
 }

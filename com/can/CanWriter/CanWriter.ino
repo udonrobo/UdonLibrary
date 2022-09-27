@@ -1,4 +1,4 @@
-#include "CanWriter_t4x.h"
+#include "CanWriter.h"
 
 CanWriter<10> writer1(1);  /// 送信先のIDを登録
 CanWriter<10> writer2(2);  /// 送信先のIDを登録

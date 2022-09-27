@@ -10,7 +10,7 @@
 	defined(ARDUINO_TEENSY36) || defined(ARDUINO_TEENSY35) || \
 	defined(ARDUINO_TEENSY32) || defined(ARDUINO_TEENSY30)
 
-#define WITH_READER      __has_include("CanReader_t4x.h")
+#define WITH_READER __has_include("CanReader.h")
 
 #if SUPPORTED_TEENSY
 #	include <FlexCAN_T4.h>  /// https://github.com/tonton81/FlexCAN_T4
@@ -68,7 +68,7 @@ class _CanBase {
 			attachInterrupt(digitalPinToInterrupt(interruptPin), [] {
 				can_frame input;
 				if (can.readMessage(&input) == MCP2515::ERROR_OK) {
-					Message_t msg = { input.id };
+					Message_t msg = { input.can_id };
 					memcpy(msg.buf, input.data, 8);
 					FunctionBinder<const Message_t&>::bind(msg);
 				}
@@ -87,7 +87,7 @@ class _CanBase {
 			while (!can.write(output));
 #else
 			can_frame output = { msg.id };
-			memcpy(output.buf, msg.buf, 8);
+			memcpy(output.data, msg.buf, 8);
 			can.sendMessage(&output);
 #endif
 		}
