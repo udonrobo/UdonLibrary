@@ -1,19 +1,18 @@
 #pragma once
 
 #include "CanBase.h"
+#include "FunctionBinder.h"
 
 template<size_t N>
-class CanMasterReader : private CanBase, private Callbacker {
-
-		const uint8_t id;   // 観察する送信元ID
-		uint8_t buffer[N];  // 読み取りバッファ
-		Can& can = CanBase::canReference();
+class CanReader : private CanBase, private FunctionBinder<const Message_t&>
+{
+		const uint8_t id;
+		uint8_t buffer[N];
 
 	public:
-	
-		/// @brief
-		/// @param id 監視するID
-		CanMasterReader(const uint8_t id)
+
+		/// @param id 信号識別ID
+		CanReader(const uint8_t id)
 			: id(id)
 		{
 			CanBase::begin();
@@ -33,25 +32,24 @@ class CanMasterReader : private CanBase, private Callbacker {
 		}
 
 	private:
-		/**
-		    @brief 受信割り込み
-		    @param msg CAN_message_t構造体
-		*/
-		void onReceive(const CAN_message_t& msg) {
+		/// @brief 受信割り込み
+		/// @param msg CAN_message_t構造体
+		void callback(const Message_t& msg) override {
+			
+			/// format[8byte]
+			/// [packetIndex][data][data][data][data][data][data][data]
 
-			// communication format [8byte]
-			// [targetID][packetIndex][data][data][data][data][data][data]
+			if (msg.id == id) {
+				const uint8_t packetIndex = msg.buf[0];  // 分割したデータの要素番号
 
-			const uint8_t packetIndex = msg.buf[1];  // 分割したデータの要素番号
-
-			for (uint8_t i = 0; i < 6; i++) {
-				const uint8_t bufIndex = i + packetIndex * 6;
-				if (bufIndex < N)  // 配列範囲
-					buffer[bufIndex] = msg.buf[i + 2];  /*先頭2byteを飛ばす*/
-				else
-					break;
+				for (uint8_t i = 0; i < 7; i++) {
+					const uint8_t bufIndex = i + packetIndex * 7;
+					if (bufIndex < N)  // 配列範囲
+						buffer[bufIndex] = msg.buf[i + 1];  /*先頭1byteを飛ばす*/
+					else
+						break;
+				}
 			}
 		}
-
 
 };

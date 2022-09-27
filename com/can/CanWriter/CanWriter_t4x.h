@@ -4,29 +4,29 @@
 
 template<size_t N>
 class CanWriter : private CanBase {
-	
-		const uint8_t id;    // 送信先
-		uint8_t buffer[N];         // 送信バッファ
-		Can& can = CanBase::canReference();
+
+		const uint8_t id;
+		uint8_t buffer[N];
 
 	public:
 
-		/// @brief
-		/// @param id 自身のID
+		/// @param id 信号識別ID
 		CanWriter(const uint8_t id)
-			: id(id) {
-			CanBase::begin();
-		}
+			: id(id)
+		{}
 
 		void update() {
+			/// format[8byte]
+			/// [packetIndex][data][data][data][data][data][data][data]
+
+			constexpr uint8_t packetNum = ceil(N / 7);
+
 			// パケットに分けて送信
-			constexpr uint8_t packetNum = ceil(N / 7.0);
 			for (uint8_t packetIndex = 0; packetIndex < packetNum; packetIndex++) {
-				CAN_message_t msg;
+				Message_t msg;
 				msg.id     = id;
 				msg.buf[0] = packetIndex;
-				
-				for (uint8_t i = 0; i < 7; i++) {
+				for (uint8_t i = 0; i < (8 - hearderLength); i++) {
 					const uint8_t bufferIndex = i + packetIndex * 7;
 					if (bufferIndex < N)
 						msg.buf[i + 1] = buffer[bufferIndex];
