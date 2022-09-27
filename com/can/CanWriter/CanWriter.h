@@ -11,13 +11,13 @@
 template<size_t N>
 class CanWriter : private CanBase {
 
-		const uint16_t id;
+		const uint8_t id;
 		uint8_t buffer[N];
 
 	public:
 
-		/// @param id 信号識別ID
-		CanWriter(const uint16_t id)
+		/// @param id 信号識別ID ~127
+		CanWriter(const uint8_t id)
 			: id(id)
 		{
 			CanBase::begin();

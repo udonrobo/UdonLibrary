@@ -12,16 +12,23 @@
 template<size_t N>
 class CanReader : private CanBase, private FunctionBinder<const CanBase::Message_t&>
 {
-		const uint16_t id;
+		const uint8_t id;
 		uint8_t buffer[N];
+		uint32_t lastReceiveMs;
 
 	public:
 
-		/// @param id 信号識別ID
-		CanReader(const uint16_t id)
+		/// @param id 信号識別ID ~127
+		CanReader(const uint8_t id)
 			: id(id)
+			, buffer{}
+			, lastReceiveMs()
 		{
 			CanBase::begin();
+		}
+
+		explicit operator bool() const {
+			return millis() - lastReceiveMs < 30;
 		}
 
 		constexpr const uint8_t& operator[](uint8_t index) const {
@@ -39,7 +46,6 @@ class CanReader : private CanBase, private FunctionBinder<const CanBase::Message
 
 	private:
 		/// @brief 受信割り込み
-		/// @param msg CAN_message_t構造体
 		void callback(const Message_t& msg) override {
 			const uint8_t packetId = msg.id >> 7 & 0b1111111;
 			const uint8_t signalId = msg.id & 0b111;
@@ -51,6 +57,7 @@ class CanReader : private CanBase, private FunctionBinder<const CanBase::Message
 					else
 						break;
 				}
+				lastReceiveMs = millis();
 			}
 		}
 

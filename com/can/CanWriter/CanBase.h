@@ -14,7 +14,7 @@
 
 #if SUPPORTED_TEENSY
 #	include <FlexCAN_T4.h>  /// https://github.com/tonton81/FlexCAN_T4
-#	include <intervalTimer.h>
+#	include <IntervalTimer.h>
 #else
 #	include <mcp2515.h>     /// https://github.com/autowp/arduino-mcp2515
 #endif
@@ -25,8 +25,8 @@
 
 template <class Dum>  /// リンクエラー対策
 class _CanBase {
-
 	protected:
+	
 		struct Message_t {
 			uint32_t id;
 			uint8_t buf[8];
@@ -39,10 +39,10 @@ class _CanBase {
 		static constexpr uint8_t csPin = 10;
 		using Can = MCP2515;
 #endif
+
 		static Can can;
 		static uint8_t id;
 
-	public:
 		static void begin() {
 #if SUPPORTED_TEENSY
 			can.begin();
@@ -51,7 +51,7 @@ class _CanBase {
 			can.enableFIFO();
 			can.enableFIFOInterrupt();
 #	if WITH_READER
-			can.onReceive([](const CAN_message_t& input) {  /// 受信割り込み
+			can.onReceive([](const CAN_message_t& input) {
 				Message_t msg = { input.id };
 				memcpy(msg.buf, input.buf, 8);
 				FunctionBinder<const Message_t&>::bind(msg);
@@ -101,4 +101,4 @@ template <class Dum>CanBase::Can _CanBase<Dum>::can;
 template <class Dum>CanBase::Can _CanBase<Dum>::can(CanBase::csPin);
 #endif
 
-template <class Dum>uint8_t _CanBase<Dum>::id;
+template <class Dum>uint8_t  _CanBase<Dum>::id;
