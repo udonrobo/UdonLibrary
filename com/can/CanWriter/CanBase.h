@@ -1,99 +1,104 @@
+/// @file   CanBase.h
+/// @date   2022/09/27
+/// @brief  CAN通信基底クラス
+/// @author 大河 祐介
+
 #pragma once
 
-#define BOARD_TEENSY_4X
+#define SUPPORTED_TEENSY                                      \
+	defined(ARDUINO_TEENSY41) || defined(ARDUINO_TEENSY40) || \
+	defined(ARDUINO_TEENSY36) || defined(ARDUINO_TEENSY35) || \
+	defined(ARDUINO_TEENSY32) || defined(ARDUINO_TEENSY30)
 
-#if defined(BOARD_TEENSY_4X)
-#	include <FlexCAN_T4.h>
+#define WITH_READER      __has_include("CanReader_t4x.h")
+
+#if SUPPORTED_TEENSY
+#	include <FlexCAN_T4.h>  /// https://github.com/tonton81/FlexCAN_T4
 #	include <intervalTimer.h>
-#elif defined(HOGEHOGEHOGE)
-
 #else
-#	error "Not supported except teensy4.x"
+#	include <mcp2515.h>     /// https://github.com/autowp/arduino-mcp2515
 #endif
 
-#include "FunctionBinder.h"
+#if WITH_READER
+#	include "FunctionBinder.h"
+#endif
 
-struct Message_t {
-	uint8_t id;
-	uint8_t buf[8];
-};
-
-template<class T>  /// リンクエラー対策
+template <class Dum>  /// リンクエラー対策
 class _CanBase {
 
 	protected:
+		struct Message_t {
+			uint32_t id;
+			uint8_t buf[8];
+		};
 
+#if SUPPORTED_TEENSY
 		using Can = FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_256>;
-		static Can     can;
+#else
+		static constexpr uint8_t interruptPin = 2;
+		static constexpr uint8_t csPin = 10;
+		using Can = MCP2515;
+#endif
+		static Can can;
 		static uint8_t id;
 
 	public:
-
 		static void begin() {
-#if defined(BOARD_TEENSY_4X)
+#if SUPPORTED_TEENSY
 			can.begin();
 			can.setClock(CLK_60MHz);
 			can.setBaudRate(1000000);
 			can.enableFIFO();
 			can.enableFIFOInterrupt();
-			can.onReceive(isr);
-
+#	if WITH_READER
+			can.onReceive([](const CAN_message_t& input) {  /// 受信割り込み
+				Message_t msg = { input.id };
+				memcpy(msg.buf, input.buf, 8);
+				FunctionBinder<const Message_t&>::bind(msg);
+			});
 			static IntervalTimer timer;
-			timer.begin([] {can.events();}, 200);
+			timer.begin([] { can.events(); }, 200);
+#	endif
 #else
-			mcp2515.reset();
-			mcp2515.setBitrate(CAN_125KBPS);
-			mcp2515.setNormalMode();
-			constexpr uint8_t interruptPin = 2;
+			can.reset();
+			can.setBitrate(CAN_1000KBPS);
+			can.setNormalMode();
+#	if WITH_READER
 			pinMode(interruptPin, INPUT_PULLUP);
-			attachInterrupt(digitalPinToInterrupt(interruptPin), isr, CHANGE);
-#endif
-		}
+			attachInterrupt(digitalPinToInterrupt(interruptPin), [] {
+				can_frame input;
+				if (can.readMessage(&input) == MCP2515::ERROR_OK) {
+					Message_t msg = { input.id };
+					memcpy(msg.buf, input.data, 8);
+					FunctionBinder<const Message_t&>::bind(msg);
+				}
+			}, CHANGE);
+#	endif
 
-	protected:
-	
-		/// @brief 受信処理
-#if defined(BOARD_TEENSY_4X)
-		static void isr(const CAN_message_t& input) {
-			Message_t msg = {};
-			for (uint8_t i = 0; i < 8; i++)
-				msg.buf[i] = input.buf[i];
-			FunctionBinder<const Message_t&>::bind(msg);
-		}
-#else
-		static void isr() {
-			Message_t msg = {};
-			static can_frame input;
-			if (mcp2515.readMessage(&input) == MCP2515::ERROR_OK) {
-				msg.id = input.can_id;
-				for (uint8_t i = 0; i < 8; i++)
-					msg.buf[i] = input.data[i];
-			}
-			FunctionBinder<const Message_t&>::bind(msg);
-		}
 #endif
+		}  /// begin()
 
 		/// @brief 送信処理
 		/// @param msg 送信内容
 		static void write(const Message_t& msg) {
-#if defined(BOARD_TEENSY_4X)
-			CAN_message_t output = {};
-			output.id = msg.id;
-			for (uint8_t i = 0; i < 8; i++)
-				output.buf[i] = msg.buf[i];
-			while (!can.write(output));  // 送信
+#if SUPPORTED_TEENSY
+			CAN_message_t output = { msg.id };
+			memcpy(output.buf, msg.buf, 8);
+			while (!can.write(output));
 #else
-			static can_frame output;
-			output.id = msg.id;
-			for (uint8_t i = 0; i < 8; i++)
-				output.data[i] = msg.buf[i];
-			mcp2515.sendMessage(&output);
+			can_frame output = { msg.id };
+			memcpy(output.buf, msg.buf, 8);
+			can.sendMessage(&output);
 #endif
 		}
-
 };
 
 using CanBase = _CanBase<void>;
 
-template<class T> CanBase::Can _CanBase<T>::can;
-template<class T> uint8_t      _CanBase<T>::id;
+#if SUPPORTED_TEENSY
+template <class Dum>CanBase::Can _CanBase<Dum>::can;
+#else
+template <class Dum>CanBase::Can _CanBase<Dum>::can(CanBase::csPin);
+#endif
+
+template <class Dum>uint8_t _CanBase<Dum>::id;

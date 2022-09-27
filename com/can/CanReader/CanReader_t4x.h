@@ -4,7 +4,7 @@
 #include "FunctionBinder.h"
 
 template<size_t N>
-class CanReader : private CanBase, private FunctionBinder<const Message_t&>
+class CanReader : private CanBase, private FunctionBinder<const CanBase::Message_t&>
 {
 		const uint8_t id;
 		uint8_t buffer[N];

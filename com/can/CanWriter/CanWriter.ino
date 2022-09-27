@@ -1,17 +1,21 @@
 #include "CanWriter_t4x.h"
 
-CanWriter<4> writer(1);  /// 送信先のIDを登録
+CanWriter<10> writer1(1);  /// 送信先のIDを登録
+CanWriter<10> writer2(2);  /// 送信先のIDを登録
+CanWriter<10> writer3(3);  /// 送信先のIDを登録
 
 void setup() {
 	Serial.begin(115200);
-	CanBase::begin(0);   /// 自分のIDを登録
 }
 
 void loop() {
-	writer.update();
-	writer[0] = millis() / 1;
-	writer[1] = millis() / 10;
-	writer[2] = millis() / 100;
-	writer[3] = millis() / 1000;
+	const auto n = micros();
+	writer1[0] = millis() / 10;
+	writer1.update();
+	writer2[0] = millis() / 100;
+	writer2.update();
+	writer3[0] = millis() / 1000;
+	writer3.update();
+	Serial.println(micros() - n);
 	delay(10);
 }
