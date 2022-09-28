@@ -26,7 +26,7 @@
 template <class Dum>  /// リンクエラー対策
 class _CanBase {
 	protected:
-	
+
 		struct Message_t {
 			uint32_t id;
 			uint8_t buf[8];
@@ -84,6 +84,9 @@ class _CanBase {
 #if SUPPORTED_TEENSY
 			CAN_message_t output = { msg.id };
 			memcpy(output.buf, msg.buf, 8);
+			//			for (uint8_t i = 0; i < 100; i++)
+			//				if (can.write(output))
+			//					break;
 			while (!can.write(output));
 #else
 			can_frame output = { msg.id };

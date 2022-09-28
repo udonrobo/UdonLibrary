@@ -42,6 +42,10 @@ class CanWriter : private CanBase {
 		uint8_t& operator[](uint8_t index) {
 			return buffer[index];
 		}
+		CanWriter& operator=(const uint8_t& r) {
+			memset(buffer, r, N);
+			return *this;
+		}
 		constexpr uint8_t size() const {
 			return N;
 		}
