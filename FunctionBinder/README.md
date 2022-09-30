@@ -1,10 +1,12 @@
 # FUnctionBinder
 
-メンバ関数をスタックし、静的関数として呼べるようにする
+メンバ関数をスタックし、静的関数として呼べるようにする。
+
+メンバ関数をコールバック関数として登録する場合などに便利です。
 
 # Usage
 
-メンバ関数 `R callback(Args...)` をオーバーロードすることで、メンバ静的関数 `static R bind(Args...)` にまとめることができます。
+メンバ関数 `R callback(Args...)` をオーバーライドすることで、メンバ静的関数 `static R bind(Args...)` にまとめることができます。
 
 ```mermaid
 flowchart LR
@@ -27,9 +29,7 @@ flowchart LR
 
 ## API
 
--   template parameter
-
-    `FunctionBinder<R(Args...)>`
+-   `FunctionBinder<R(Args...)>`
 
     `@param R` 仮想関数、バインド関数の戻り値を設定します。どの仮想関数の戻り値を返却するか判別できないため、空要素を返します。
 
@@ -43,7 +43,7 @@ flowchart LR
 
     オーバーライドされたすべての `R callback(Args...)` を呼ぶ
 
-## Basic
+## Example
 
 -   basic
 
@@ -71,22 +71,24 @@ flowchart LR
     }
     ```
 
--   Arduino
+-   arduino
 
     C++標準ライブラリを使用していないので Arudino 系でも使用できます
 
     ```cpp
+    #include <Wire.h>
+    #include "FunctionBinder.h"
+
     class Reader : FunctionBinder<void(int)>
     {
-    	Reader() {
-    		Wire.onReceive(FunctionBinder<void(int)>::bind);
-    	}
-    	void callback(int) override {
-    		Serial.println("received");
-    	}
-    }
-
-    Reader reader;
+    	public:
+    		Reader() {
+    			Wire.onReceive(FunctionBinder<void(int)>::bind);
+    		}
+    		void callback(int) override {
+    			Serial.println("received");
+    		}
+    };
 
     void setup() {
     	Serial.begin(115200);
@@ -99,30 +101,6 @@ flowchart LR
     		received
     		received
     		received
-    	*/
-    }
-    ```
-
-    ```cpp
-    #include <iostream>
-    #include "FunctionBinder.h"
-
-    class Sample : public FunctionBinder<void(int)>
-    {
-    	void callback(int arg) override {
-    		std::cout << arg << std::endl;
-    	}
-    };
-
-    int main() {
-    	Sample samp0;
-    	Sample samp1;
-    	Sample samp2;
-    	FunctionBinder<void(int)>::bind(100);
-    	/*
-    		100
-    		100
-    		100
     	*/
     }
     ```
