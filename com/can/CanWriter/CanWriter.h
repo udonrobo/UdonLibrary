@@ -24,10 +24,9 @@ class CanWriter : private CanBase {
 		}
 
 		void update() {
-			constexpr uint8_t packetNum = ceil(N / 7.0);
 			// パケットに分けて送信
-			for (uint8_t packetId = 0; packetId < packetNum; packetId++) {
-				Message_t msg = { static_cast<uint32_t>(packetId) << 7 | id };
+			for (uint8_t packetId = 0, end = ceil(N / 7.0); packetId < end; packetId++) {
+				Message_t msg = { id, packetId };
 				for (uint8_t i = 0; i < 8; i++) {
 					const uint8_t bufferIndex = i + packetId * 8;
 					if (bufferIndex < N)

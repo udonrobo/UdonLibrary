@@ -34,12 +34,11 @@
 template <class Dum>  /// リンクエラー対策
 class _CanBase {
 	protected:
-
 		struct Message_t {
-			uint32_t id;
+			uint8_t signalId;
+			uint8_t packetId;
 			uint8_t buf[8];
 		};
-
 #if USE_TEENSY
 		using Can = FlexCAN_T4<CAN_BAS, RX_SIZE_256, TX_SIZE_256>;
 #else
@@ -49,7 +48,7 @@ class _CanBase {
 #endif
 
 #if WITH_READER
-		using FunctionBinder_t = FunctionBinder<const Message_t&>;
+		using FunctionBinder_t = FunctionBinder<void(const Message_t&)>;
 #endif
 
 		static Can can;
@@ -63,7 +62,10 @@ class _CanBase {
 			can.enableFIFOInterrupt();
 #	if WITH_READER
 			can.onReceive([](const CAN_message_t& input) {
-				Message_t msg = { input.id };
+				Message_t msg = {
+					static_cast<uint8_t>(input.id & 0b111),          /* uint8_t signalId; */
+					static_cast<uint8_t>(input.id >> 7 & 0b1111111), /* uint8_t packetId; */
+				};
 				memcpy(msg.buf, input.buf, 8);
 				FunctionBinder_t::bind(msg);
 			});
@@ -79,7 +81,10 @@ class _CanBase {
 			attachInterrupt(digitalPinToInterrupt(interruptPin), [] {
 				can_frame input;
 				if (can.readMessage(&input) == MCP2515::ERROR_OK) {
-					Message_t msg = { input.can_id };
+					Message_t msg = {
+						static_cast<uint8_t>(input.can_id & 0b111),          /* uint8_t signalId; */
+						static_cast<uint8_t>(input.can_id >> 7 & 0b1111111), /* uint8_t packetId; */
+					};
 					memcpy(msg.buf, input.data, 8);
 					FunctionBinder_t::bind(msg);
 				}
@@ -93,14 +98,14 @@ class _CanBase {
 		/// @param msg 送信内容
 		static void write(const Message_t& msg) {
 #if USE_TEENSY
-			CAN_message_t output = { msg.id };
+			CAN_message_t output = { static_cast<uint32_t>(msg.packetId) << 7 | static_cast<uint8_t>(msg.signalId) };
 			memcpy(output.buf, msg.buf, 8);
 			//			for (uint8_t i = 0; i < 100; i++)
 			//				if (can.write(output))
 			//					break;
 			while (!can.write(output));
 #else
-			can_frame output = { msg.id };
+			can_frame output = { static_cast<uint32_t>(static_cast<uint32_t>(msg.packetId) << 7 | msg.signalId) };
 			memcpy(output.data, msg.buf, 8);
 			can.sendMessage(&output);
 #endif
