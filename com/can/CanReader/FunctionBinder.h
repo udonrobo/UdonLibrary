@@ -59,6 +59,7 @@ class FunctionBinder<void(Args...)> {
 		static void bind(Args... args) {
 			for (const auto& p : pList)
 				p->callback(args...);
+			return {};
 		}
 		virtual void callback(Args...) = 0;
 };
