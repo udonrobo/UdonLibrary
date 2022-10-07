@@ -47,11 +47,9 @@ class CanReader : private CanBase, private CanBase::FunctionBinder_t
 	private:
 		/// @brief 受信割り込み
 		void callback(const Message_t& msg) override {
-			const uint8_t packetId = msg.id >> 7 & 0b1111111;
-			const uint8_t signalId = msg.id & 0b111;
-			if (signalId == id) {
+			if (msg.signalId == id) {
 				for (uint8_t i = 0; i < 8; i++) {
-					const uint8_t bufIndex = i + packetId * 8;
+					const uint8_t bufIndex = i + msg.packetId * 8;
 					if (bufIndex < N)  // 配列範囲
 						buffer[bufIndex] = msg.buf[i];
 					else
