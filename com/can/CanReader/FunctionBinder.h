@@ -4,62 +4,85 @@
 /// @author 大河 祐介
 
 #pragma once
-
-/// @brief 動的配列
 template<class T>
 class Vector {
 		T* buf;
 		size_t length;
 	public:
 		Vector() noexcept : buf(), length() {}
-		~Vector() noexcept { delete[] buf; }
-		Vector& operator<<(const T& value) {
+		~Vector() noexcept {
+			delete[] buf;
+		}
+		void append(const T& value) {
 			++length;
 			T* newBuf = new T[length];
 			memcpy(newBuf, buf, (length - 1) * sizeof(T));
 			delete[] buf;
 			buf = newBuf;
 			buf[length - 1] = value;
-			return *this;
+		}
+		void update() {
+
+			Serial.println(length);
 		}
 		struct Iterator {
 			T* p;
-			T& operator*() { return *p; }
-			Iterator& operator++() { p++; return *this; }
-			bool operator!=(const Iterator& r) { return p != r.p; }
+			T& operator*() {
+				return *p;
+			}
+			Iterator& operator++() {
+				p++;
+				return *this;
+			}
+			bool operator!=(const Iterator& r) {
+				return p != r.p;
+			}
 		};
-		Iterator begin() { return { buf }; }
-		Iterator end() { return { buf + length }; }
+		Iterator begin() {
+			return { buf };
+		}
+		Iterator end() {
+			return { buf + length };
+		}
 };
 
 
 template<class> class FunctionBinder;
+//
+//template<class R, class... Args>
+//class FunctionBinder<R(Args...)> {
+//	static Vector<FunctionBinder*> pList;
+//public:
+//	FunctionBinder() { pList.append(this); }
+//	static R bind(Args... args) {
+//		for (const auto& p : pList)
+//			p->callback(args...);
+//		return {};
+//	}
+//	virtual R callback(Args...) = 0;
+//};
+//template<class R, class... Args>
+//Vector<FunctionBinder<R(Args...)>*> FunctionBinder<R(Args...)>::pList;
 
-template<class R, class... Args>
-class FunctionBinder<R(Args...)> {
-		static Vector<FunctionBinder*> pList;
-	public:
-		FunctionBinder() { pList << this; }
-		static R bind(Args... args) {
-			for (const auto& p : pList)
-				p->callback(args...);
-		}
-		virtual R callback(Args...) = 0;
-};
-template<class R, class... Args>
-Vector<FunctionBinder<R(Args...)>*> FunctionBinder<R(Args...)>::pList;
 
-
-/// @brief 特殊化 : 戻り値void
+/// @brief 特殊化:戻り値void
 template<class... Args>
 class FunctionBinder<void(Args...)> {
 		static Vector<FunctionBinder*> pList;
 	public:
-		FunctionBinder() { pList << this; }
+		FunctionBinder() {
+			pList.append(this);
+			Serial.println("call");
+			pList.update();
+			pList.update();
+			pList.update();
+			pList.update();
+		}
 		static void bind(Args... args) {
-			for (const auto& p : pList)
-				p->callback(args...);
-			return {};
+			pList.update();
+			//		for (const auto& p : pList){
+			//			p->callback(args...);
+			//		}
 		}
 		virtual void callback(Args...) = 0;
 };
