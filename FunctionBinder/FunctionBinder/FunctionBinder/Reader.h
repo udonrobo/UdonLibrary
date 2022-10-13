@@ -8,7 +8,7 @@ struct Massege_t {
 };
 
 struct Base {
-	using FunctionBinder_t = FunctionBinder<void(Massege_t)>;
+	using FunctionBinder_t = FunctionBinder<Massege_t>;
 };
 
 struct Reader : private Base, private FunctionBinder<void(Massege_t)> {
