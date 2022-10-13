@@ -18,7 +18,7 @@ class Measure : private Gyro {
 		EncoderBoardTeensy& enc;
 
 		static constexpr double ppr = 8192;       /// 分解能
-		static constexpr double diameter = 50.3;  /// 計測輪直径
+		static constexpr double diameter = 50.8;  /// 計測輪直径
 
 		struct Wheel {  /// 計測輪情報
 			const uint8_t port;
