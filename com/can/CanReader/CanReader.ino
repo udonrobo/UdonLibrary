@@ -1,12 +1,21 @@
-#include "CanReader.h"
+#include "FunctionBinder.h"
 
-CanReader<10> reader1(1);
+struct sample : private FunctionBinder<void()> {
+	void callback() override {
+		Serial.print("call");
+	}
+};
 
 void setup() {
 	Serial.begin(115200);
 }
 
+sample s[9] = {};
+
 void loop() {
-	reader1.show('\n');
+	//	reader1.show('\n');
+
+	FunctionBinder<void()>::bind();
+	//	Serial.println();
 	delay(10);
 }

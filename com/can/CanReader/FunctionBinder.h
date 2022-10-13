@@ -8,9 +8,9 @@
 /// @brief 動的配列
 template<class T>
 class Vector {
+	public:
 		T* buf;
 		size_t length;
-	public:
 		Vector() noexcept : buf(), length() {}
 		~Vector() noexcept { delete[] buf; }
 		Vector& operator<<(const T& value) {
@@ -39,12 +39,16 @@ template<class R, class... Args>
 class FunctionBinder<R(Args...)> {
 		static Vector<FunctionBinder*> pList;
 	public:
-		FunctionBinder() { pList << this; }
 		static R bind(Args... args) {
 			for (const auto& p : pList)
 				p->callback(args...);
+			return {};
 		}
-		virtual R callback(Args...) = 0;
+	protected:
+		FunctionBinder() { pList << this; }
+		virtual R callback(Args...){
+			Serial.println("no");
+		}
 };
 template<class R, class... Args>
 Vector<FunctionBinder<R(Args...)>*> FunctionBinder<R(Args...)>::pList;
@@ -55,13 +59,15 @@ template<class... Args>
 class FunctionBinder<void(Args...)> {
 		static Vector<FunctionBinder*> pList;
 	public:
-		FunctionBinder() { pList << this; }
 		static void bind(Args... args) {
 			for (const auto& p : pList)
 				p->callback(args...);
-			return {};
 		}
-		virtual void callback(Args...) = 0;
+	protected:
+		FunctionBinder() { pList << this; }
+		virtual void callback(Args...){
+			Serial.println("no");
+		}
 };
 template<class... Args>
 Vector<FunctionBinder<void(Args...)>*> FunctionBinder<void(Args...)>::pList;
