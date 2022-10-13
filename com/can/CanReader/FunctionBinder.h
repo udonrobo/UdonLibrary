@@ -4,32 +4,46 @@
 /// @author 大河 祐介
 
 #pragma once
-
-/// @brief 動的配列
 template<class T>
 class Vector {
 	public:
 		T* buf;
 		size_t length;
 		Vector() noexcept : buf(), length() {}
-		~Vector() noexcept { delete[] buf; }
-		Vector& operator<<(const T& value) {
+		~Vector() noexcept {
+			delete[] buf;
+		}
+		void append(const T& value) {
 			++length;
 			T* newBuf = new T[length];
 			memcpy(newBuf, buf, (length - 1) * sizeof(T));
 			delete[] buf;
 			buf = newBuf;
 			buf[length - 1] = value;
-			return *this;
+		}
+		void update() {
+
+			Serial.println(length);
 		}
 		struct Iterator {
 			T* p;
-			T& operator*() { return *p; }
-			Iterator& operator++() { p++; return *this; }
-			bool operator!=(const Iterator& r) { return p != r.p; }
+			T& operator*() {
+				return *p;
+			}
+			Iterator& operator++() {
+				p++;
+				return *this;
+			}
+			bool operator!=(const Iterator& r) {
+				return p != r.p;
+			}
 		};
-		Iterator begin() { return { buf }; }
-		Iterator end() { return { buf + length }; }
+		Iterator begin() {
+			return { buf };
+		}
+		Iterator end() {
+			return { buf + length };
+		}
 };
 
 
@@ -54,7 +68,7 @@ template<class R, class... Args>
 Vector<FunctionBinder<R(Args...)>*> FunctionBinder<R(Args...)>::pList;
 
 
-/// @brief 特殊化 : 戻り値void
+/// @brief 特殊化:戻り値void
 template<class... Args>
 class FunctionBinder<void(Args...)> {
 		static Vector<FunctionBinder*> pList;

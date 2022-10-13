@@ -5,14 +5,13 @@
 
 #pragma once
 
-#define TEENSY_4X defined(ARDUINO_TEENSY41) || defined(ARDUINO_TEENSY40)
-#define TEENSY_3X defined(ARDUINO_TEENSY36) || defined(ARDUINO_TEENSY35)
-#define USE_TEENSY TEENSY_3X || TEENSY_4X
+#define USE_TEENSY_4X defined(ARDUINO_TEENSY41) || defined(ARDUINO_TEENSY40)
+#define USE_TEENSY_3X defined(ARDUINO_TEENSY36) || defined(ARDUINO_TEENSY35)
+#define USE_TEENSY    USE_TEENSY_3X || USE_TEENSY_4X
 
-/// サポートされているCANバスに切り替え
-#ifdef TEENSY_4X
+#ifdef USE_TEENSY_4X
 #	define CAN_BAS CAN1
-#elif TEENSY_3X
+#elif USE_TEENSY_3X
 #	define CAN_BAS CAN0
 #endif
 
@@ -24,9 +23,9 @@
 #endif
 
 /// 受信割り込みを行うか判別する
-#define WITH_READER __has_include("CanReader.h")
+#define USE_READER __has_include("CanReader.h")
 
-#if WITH_READER
+#if USE_READER
 #	include "FunctionBinder.h"
 #endif
 
@@ -34,11 +33,20 @@
 template <class Dum>  /// リンクエラー対策
 class _CanBase {
 	protected:
+		template<class T, size_t N>
+		class Array {
+				T value[N];
+			public:
+				/// @brief 変換コンストラクタ
+				Array(const T* r) noexcept { memcpy(value, r, N); }
+				const T& operator[](size_t index) const { return value[index]; }
+		};
 		struct Message_t {
 			uint8_t signalId;
 			uint8_t packetId;
-			uint8_t buf[8];
+			Array<uint8_t, 8> data;
 		};
+
 #if USE_TEENSY
 		using Can = FlexCAN_T4<CAN_BAS, RX_SIZE_256, TX_SIZE_256>;
 #else
@@ -47,8 +55,8 @@ class _CanBase {
 		static constexpr uint8_t csPin = 10;
 #endif
 
-#if WITH_READER
-		using FunctionBinder_t = FunctionBinder<void(const Message_t&)>;
+#if USE_READER
+//		using FunctionBinder_t = FunctionBinder<void(const Message_t&)>;
 #endif
 
 		static Can can;
@@ -60,14 +68,13 @@ class _CanBase {
 			can.setBaudRate(1000000);
 			can.enableFIFO();
 			can.enableFIFOInterrupt();
-#	if WITH_READER
+#	if USE_READER
 			can.onReceive([](const CAN_message_t& input) {
-				Message_t msg = {
-					static_cast<uint8_t>(input.id & 0b111),          /* uint8_t signalId; */
-					static_cast<uint8_t>(input.id >> 7 & 0b1111111), /* uint8_t packetId; */
-				};
-				memcpy(msg.buf, input.buf, 8);
-				FunctionBinder_t::bind(msg);
+				FunctionBinder<void(const Message_t&)>::bind({                             /// ---- const Message_t& ----
+					static_cast<uint8_t>(input.id      &     0b111), /// uint8_t           signalId
+					static_cast<uint8_t>(input.id >> 7 & 0b1111111), /// uint8_t           packetId
+					input.buf,                                       /// Array<uint8_t, 8> data    
+				});
 			});
 			static IntervalTimer timer;
 			timer.begin([] { can.events(); }, 200);
@@ -76,7 +83,7 @@ class _CanBase {
 			can.reset();
 			can.setBitrate(CAN_1000KBPS);
 			can.setNormalMode();
-#	if WITH_READER
+#	if USE_READER
 			pinMode(interruptPin, INPUT_PULLUP);
 			attachInterrupt(digitalPinToInterrupt(interruptPin), [] {
 				can_frame input;
