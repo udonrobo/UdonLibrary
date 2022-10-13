@@ -130,7 +130,9 @@
     <ClCompile Include="FunctionBinder.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Base.h" />
     <ClInclude Include="FunctionBinder.h" />
+    <ClInclude Include="Reader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

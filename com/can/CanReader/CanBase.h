@@ -5,6 +5,7 @@
 
 #pragma once
 
+<<<<<<< .merge_file_a36232
 #define USE_TEENSY_4X defined(ARDUINO_TEENSY41) || defined(ARDUINO_TEENSY40)
 #define USE_TEENSY_3X defined(ARDUINO_TEENSY36) || defined(ARDUINO_TEENSY35)
 #define USE_TEENSY    USE_TEENSY_3X || USE_TEENSY_4X
@@ -28,7 +29,12 @@
 #if USE_READER
 #	include "FunctionBinder.h"
 #endif
+=======
+#	include <FlexCAN_T4.h>  /// https://github.com/tonton81/FlexCAN_T4
+#	include <IntervalTimer.h>
+>>>>>>> .merge_file_a12340
 
+#include "FunctionBinder.h"
 
 template <class Dum>  /// リンクエラー対策
 class _CanBase {
@@ -38,14 +44,24 @@ class _CanBase {
 				T value[N];
 			public:
 				/// @brief 変換コンストラクタ
+<<<<<<< .merge_file_a36232
 				Array(const T* r) noexcept { memcpy(value, r, N); }
 				const T& operator[](size_t index) const { return value[index]; }
+=======
+				Array(const T* r) noexcept {
+					memcpy(value, r, N);
+				}
+				const T& operator[](size_t index) const {
+					return value[index];
+				}
+>>>>>>> .merge_file_a12340
 		};
 		struct Message_t {
 			uint8_t signalId;
 			uint8_t packetId;
 			Array<uint8_t, 8> data;
 		};
+<<<<<<< .merge_file_a36232
 
 #if USE_TEENSY
 		using Can = FlexCAN_T4<CAN_BAS, RX_SIZE_256, TX_SIZE_256>;
@@ -58,26 +74,40 @@ class _CanBase {
 #if USE_READER
 //		using FunctionBinder_t = FunctionBinder<void(const Message_t&)>;
 #endif
+=======
 
+		using Can = FlexCAN_T4<CAN1, RX_SIZE_256, TX_SIZE_256>;
 		static Can can;
 
+		using FunctionBinder_t = FunctionBinder<void(const Message_t&)>;
+>>>>>>> .merge_file_a12340
+
+
 		static void begin() {
-#if USE_TEENSY
 			can.begin();
 			//			can.setClock(CLK_60MHz);
 			can.setBaudRate(1000000);
 			can.enableFIFO();
 			can.enableFIFOInterrupt();
+<<<<<<< .merge_file_a36232
 #	if USE_READER
 			can.onReceive([](const CAN_message_t& input) {
 				FunctionBinder<void(const Message_t&)>::bind({                             /// ---- const Message_t& ----
 					static_cast<uint8_t>(input.id      &     0b111), /// uint8_t           signalId
 					static_cast<uint8_t>(input.id >> 7 & 0b1111111), /// uint8_t           packetId
 					input.buf,                                       /// Array<uint8_t, 8> data    
+=======
+			can.onReceive([](const CAN_message_t& msg) {
+				FunctionBinder_t::bind({                           /// ---- const Message_t& ----
+					static_cast<uint8_t>(msg.id      &     0b111), /// uint8_t           signalId
+					static_cast<uint8_t>(msg.id >> 7 & 0b1111111), /// uint8_t           packetId
+					msg.buf,                                       /// Array<uint8_t, 8> data
+>>>>>>> .merge_file_a12340
 				});
 			});
 			static IntervalTimer timer;
 			timer.begin([] { can.events(); }, 200);
+<<<<<<< .merge_file_a36232
 #	endif
 #else
 			can.reset();
@@ -100,29 +130,18 @@ class _CanBase {
 
 #endif
 		}  /// begin()
+=======
+		}
+>>>>>>> .merge_file_a12340
 
 		/// @brief 送信処理
 		/// @param msg 送信内容
 		static void write(const Message_t& msg) {
-#if USE_TEENSY
 			CAN_message_t output = { static_cast<uint32_t>(msg.packetId) << 7 | static_cast<uint8_t>(msg.signalId) };
 			memcpy(output.buf, msg.buf, 8);
-			//			for (uint8_t i = 0; i < 100; i++)
-			//				if (can.write(output))
-			//					break;
 			while (!can.write(output));
-#else
-			can_frame output = { static_cast<uint32_t>(static_cast<uint32_t>(msg.packetId) << 7 | msg.signalId) };
-			memcpy(output.data, msg.buf, 8);
-			can.sendMessage(&output);
-#endif
 		}
 };
 
 using CanBase = _CanBase<void>;
-
-#if USE_TEENSY
 template <class Dum>CanBase::Can _CanBase<Dum>::can;
-#else
-template <class Dum>CanBase::Can _CanBase<Dum>::can(CanBase::csPin);
-#endif

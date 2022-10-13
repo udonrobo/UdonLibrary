@@ -48,6 +48,7 @@ class Vector {
 
 
 template<class> class FunctionBinder;
+<<<<<<< .merge_file_a39292
 //
 //template<class R, class... Args>
 //class FunctionBinder<R(Args...)> {
@@ -66,6 +67,10 @@ template<class> class FunctionBinder;
 
 
 /// @brief 特殊化:戻り値void
+=======
+
+/// @brief 特殊化 : 戻り値void
+>>>>>>> .merge_file_a36720
 template<class... Args>
 class FunctionBinder<void(Args...)> {
 		static Vector<FunctionBinder*> pList;
@@ -79,10 +84,15 @@ class FunctionBinder<void(Args...)> {
 			pList.update();
 		}
 		static void bind(Args... args) {
+<<<<<<< .merge_file_a39292
 			pList.update();
 			//		for (const auto& p : pList){
 			//			p->callback(args...);
 			//		}
+=======
+			for (const auto& p : pList)
+				p->callback(args...);
+>>>>>>> .merge_file_a36720
 		}
 		virtual void callback(Args...) = 0;
 };
