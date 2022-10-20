@@ -6,7 +6,6 @@ Motor motor[] = {
 };
 
 void setup() {
-	setPwmTimer();
 }
 
 void loop() {

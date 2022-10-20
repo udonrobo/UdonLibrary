@@ -19,17 +19,16 @@ class Motor : private MovingAverage {
 		{}
 
 		void move(const int16_t power) {
-			Update(constrain(power, -250, 250));
-			const int16_t movePower = GetValue();
+			MovingAverage::Update(constrain(power, -250, 250));
+			const int16_t movePower = MovingAverage::GetValue();
 			digitalWrite(pinA, movePower >= 0);
 			digitalWrite(pinB, movePower <= 0);
 			analogWrite (pinP, abs(movePower));
 		}
 };
 
-inline void setPwmTimer() {
-	TCCR1B &= B11111000;
-	TCCR1B |= B00000001;
-	TCCR2B &= B11111000;
-	TCCR2B |= B00000001;
-}
+// arduino nanoの場合以下をsetup内に記述(pwm周期変更)
+// TCCR1B &= B11111000;
+// TCCR1B |= B00000001;
+// TCCR2B &= B11111000;
+// TCCR2B |= B00000001;
