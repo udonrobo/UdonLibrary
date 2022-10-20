@@ -1,44 +1,45 @@
-/// @file   CanBase.h
-/// @date   2022/09/27
-/// @brief  CAN通信基底クラス
+/// @file   FunctionBinder.h
+/// @date   2022/10/21
 /// @author 大河 祐介
 
 #pragma once
+
+/// @brief 簡易線形リスト
 template<class T>
-class Vector {
-public:
-	T* buf;
-	size_t length;
-	Vector() noexcept : buf(), length() {}
-	~Vector() noexcept {
-		delete[] buf;
-	}
-	void append(const T& value) {
-		++length;
-		T* newBuf = new T[length];
-		memcpy(newBuf, buf, (length - 1) * sizeof(T));
-		delete[] buf;
-		buf = newBuf;
-		buf[length - 1] = value;
-	}
-	struct Iterator {
-		T* p;
-		T& operator*() {
-			return *p;
-		}
-		Iterator& operator++() {
-			p++;
-			return *this;
-		}
-		bool operator!=(const Iterator& r) {
-			return p != r.p;
-		}
+struct LinearList {
+	struct Node {
+		T     value;
+		Node* next;
 	};
-	Iterator begin() {
-		return { buf };
+	Node* head = nullptr;
+	Node* tail = nullptr;
+
+	~LinearList() {
+		for (Node* it = head; it;) {
+			auto temp = it->next;
+			delete it;
+			it = temp;
+		}
 	}
+	void push_back(const T& r) {
+		if (tail)  /// 要素有り
+			tail = tail->next = new Node{ r };
+		else
+			head = tail       = new Node{ r };
+	}
+
+	struct Iterator {
+		Node* p;
+		T& operator*() { return p->value; }
+		Iterator& operator++() { p = p->next; return *this; }
+		bool operator!=(const Iterator& r) { return p != r.p; }
+	};
+	Iterator begin() { return { head }; }
 	Iterator end() {
-		return { buf + length };
+		if (tail)
+			return { tail->next };
+		else
+			return { head };
 	}
 };
 
@@ -47,32 +48,37 @@ template<class> class FunctionBinder;
 
 template<class R, class... Args>
 class FunctionBinder<R(Args...)> {
-	static Vector<FunctionBinder*> pList;
+	static LinearList<FunctionBinder*> pList;
 public:
 	static R bind(Args... args) {
-		for (const auto& p : pList)
+		for (const auto& p : pList)  /// 全てのthisポインタ取得
 			p->callback(args...);
 		return {};
 	}
 protected:
-	FunctionBinder() { pList << this; }
+	FunctionBinder() {
+		pList.push_back(this);
+	}
 	virtual R callback(Args...) = 0;
 };
 template<class R, class... Args>
-Vector<FunctionBinder<R(Args...)>*> FunctionBinder<R(Args...)>::pList;
+LinearList<FunctionBinder<R(Args...)>*> FunctionBinder<R(Args...)>::pList;
 
-/// @brief 特殊化 : 戻り値void
+
+/// @brief 部分特殊化 戻り値 : void
 template<class... Args>
 class FunctionBinder<void(Args...)> {
-	static Vector<FunctionBinder*> pList;
+	static LinearList<FunctionBinder*> pList;
 public:
 	static void bind(Args... args) {
 		for (const auto& p : pList)
 			p->callback(args...);
 	}
 protected:
-	FunctionBinder() { pList.append(this); }
+	FunctionBinder() {
+		pList.push_back(this);
+	}
 	virtual void callback(Args...) = 0;
 };
 template<class... Args>
-Vector<FunctionBinder<void(Args...)>*> FunctionBinder<void(Args...)>::pList;
+LinearList<FunctionBinder<void(Args...)>*> FunctionBinder<void(Args...)>::pList;
