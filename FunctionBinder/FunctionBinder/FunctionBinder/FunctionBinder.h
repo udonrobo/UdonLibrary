@@ -61,7 +61,8 @@ protected:
 template<class R, class... Args>
 Vector<FunctionBinder<R(Args...)>*> FunctionBinder<R(Args...)>::pList;
 
-/// @brief “ÁŽê‰» : –ß‚è’lvoid
+
+/// @brief •”•ª“ÁŽê‰» : –ß‚è’lvoid
 template<class... Args>
 class FunctionBinder<void(Args...)> {
 	static Vector<FunctionBinder*> pList;
