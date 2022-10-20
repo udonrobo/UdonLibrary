@@ -1,0 +1,3 @@
+[submodule "FunctionBinder"]
+	path = FunctionBinder
+	url = https://github.com/CaseyNelson314/FunctionBinder.git
