@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include "FunctionBinder.h"
-
+ 
 
 struct Massege_t {
 	int data;
