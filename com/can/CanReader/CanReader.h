@@ -1,7 +1,7 @@
 /// @file   CanReader.h
 /// @date   2022/09/27
 /// @brief  CAN通信受信クラス
-/// @format head:[id+packetId] data:[8bytes]
+/// @format head:[id+index] data:[8bytes]
 /// @author 大河 祐介
 
 #pragma once
@@ -48,9 +48,9 @@ class CanReader : private CanBase, private FunctionBinder<void(const CanBase::Me
 		/// @brief 受信割り込み
 		void callback(const Message_t& msg) override {
 			Serial.println("call");
-			if (msg.signalId == id) {
+			if (msg.id == id) {
 				for (uint8_t i = 0; i < 8; i++) {
-					const uint8_t bufIndex = i + msg.packetId * 8;
+					const uint8_t bufIndex = i + msg.index * 8;
 					if (bufIndex < N)  // 配列範囲
 						buffer[bufIndex] = msg.data[i];
 					else

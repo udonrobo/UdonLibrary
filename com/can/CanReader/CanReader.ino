@@ -1,10 +1,4 @@
-#include "FunctionBinder.h"
-
-struct sample : private FunctionBinder<void()> {
-	void callback() override {
-		Serial.print("call");
-	}
-};
+#include "CanReader.h"
 
 void setup() {
 	Serial.begin(115200);
