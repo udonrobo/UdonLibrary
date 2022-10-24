@@ -1,7 +1,7 @@
 /// @file   CanWriter.h
 /// @date   2022/09/27
 /// @brief  CAN通信送信クラス
-/// @format head:[id+packetId] data:[8bytes]
+/// @format head:[id+index] data:[8bytes]
 /// @author 大河 祐介
 
 #include "CanBase.h"
@@ -25,12 +25,13 @@ class CanWriter : private CanBase {
 
 		void update() {
 			// パケットに分けて送信
-			for (uint8_t packetId = 0, end = ceil(N / 7.0); packetId < end; packetId++) {
-				Message_t msg = { id, packetId };
+			
+			for (uint8_t index = 0, end = ceil(N / 7.0); index < end; index++) {
+				Message_t msg = { id, index };
 				for (uint8_t i = 0; i < 8; i++) {
-					const uint8_t bufferIndex = i + packetId * 8;
+					const uint8_t bufferIndex = i + index * 8;
 					if (bufferIndex < N)
-						msg.buf[i] = buffer[bufferIndex];
+						msg.data[i] = buffer[bufferIndex];
 					else
 						break;
 				}

@@ -41,6 +41,7 @@ class _CanBase {
 				/// @brief 変換コンストラクタ
 				Array(const T* r) noexcept { memcpy(value, r, N); }
 				const T& operator[](size_t index) const { return value[index]; }
+				T& operator[](size_t index) { return value[index]; }
 		};
 		struct Message_t {
 			uint8_t id;
@@ -120,4 +121,9 @@ class _CanBase {
 };
 
 using CanBase = _CanBase<void>;
+
+#if USE_TEENSY
 template <class Dum>CanBase::Can _CanBase<Dum>::can;
+#else
+template <class Dum>CanBase::Can _CanBase<Dum>::can(CanBase::csPin);
+#endif

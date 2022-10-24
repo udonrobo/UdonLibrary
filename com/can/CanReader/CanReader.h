@@ -10,7 +10,7 @@
 #include "FunctionBinder.h"
 
 template<size_t N>
-class CanReader : private CanBase, private FunctionBinder<void(const CanBase::Message_t&)>
+class CanReader : private CanBase, private CanBase::FunctionBinder_t
 {
 		const uint8_t id;
 		uint8_t buffer[N];
@@ -47,7 +47,6 @@ class CanReader : private CanBase, private FunctionBinder<void(const CanBase::Me
 	private:
 		/// @brief 受信割り込み
 		void callback(const Message_t& msg) override {
-			Serial.println("call");
 			if (msg.id == id) {
 				for (uint8_t i = 0; i < 8; i++) {
 					const uint8_t bufIndex = i + msg.index * 8;

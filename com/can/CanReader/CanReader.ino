@@ -1,13 +1,12 @@
 #include "CanReader.h"
 
+CanReader<5> reader1(1);
+
 void setup() {
 	Serial.begin(115200);
 }
 
 void loop() {
-	//	reader1.show('\n');
-
-	FunctionBinder<void()>::bind();
-	//	Serial.println();
+	reader1.show('\n');
 	delay(10);
 }
