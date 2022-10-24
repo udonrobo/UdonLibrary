@@ -34,20 +34,10 @@
 template <class Dum>  /// リンクエラー対策
 class _CanBase {
 	protected:
-		template<class T, size_t N>
-		class Array {
-				T value[N];
-			public:
-				Array() = default;
-				/// @brief 変換コンストラクタ
-				Array(const T* r) noexcept { memcpy(value, r, N); }
-				const T& operator[](size_t index) const { return value[index]; }
-				T& operator[](size_t index) { return value[index]; }
-		};
 		struct Message_t {
 			uint8_t id;
 			uint8_t index;
-			Array<uint8_t, 8> data;
+			uint8_t* data;
 		};
 
 #if USE_TEENSY
@@ -108,14 +98,11 @@ class _CanBase {
 		static void write(const Message_t& msg) {
 #if USE_TEENSY
 			CAN_message_t output = { static_cast<uint32_t>(msg.index) << 7 | static_cast<uint8_t>(msg.id) };
-			memcpy(output.buf, msg.buf, 8);
-			//			for (uint8_t i = 0; i < 100; i++)
-			//				if (can.write(output))
-			//					break;
+			memcpy(output.buf, msg.data, 8);
 			while (!can.write(output));
 #else
 			can_frame output = { static_cast<uint32_t>(static_cast<uint32_t>(msg.index) << 7 | msg.id) };
-			memcpy(output.data, msg.buf, 8);
+			memcpy(output.data, msg.data, 8);
 			can.sendMessage(&output);
 #endif
 		}
