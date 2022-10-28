@@ -112,7 +112,7 @@ classDiagram
   class CanBase {
     static [FlexCAN or MCP2515] can
     static begin()
-    static ISR(Message_t&)
+    lamda(Message_t&)
   }
 
   class mcp2515 {

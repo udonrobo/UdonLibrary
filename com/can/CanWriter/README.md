@@ -104,15 +104,14 @@ classDiagram
 
 	class CanBase {
 		static [FlexCAN or MCP2515] can
+		static void write(...)
 	}
 
 	class mcp2515 {
-		can_frame
-		sendMessage()
+		sendMessage(can_frame*)
 	}
 	class FlexCAN_T4 {
-		CAN_Message_t
-		write()
+		write(CAN_Message_t&)
 	}
 
 	FlexCAN_T4 <-- CanBase : データ
