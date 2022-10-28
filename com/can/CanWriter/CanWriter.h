@@ -1,7 +1,6 @@
 /// @file   CanWriter.h
 /// @date   2022/09/27
-/// @brief  CASize通信送信クラス
-/// @format head:[id+index] data:[8bytes]
+/// @brief  CAN通信送信クラス
 /// @author 大河 祐介
 
 #include "CanBase.h"
@@ -26,11 +25,10 @@ class CanWriter : private CanBase {
 
 		void update() {
 			constexpr uint8_t packetSize = ceil(Size / 7.0);
-			
+
 			/// パケットに分けて送信
-			/// index : コールバック関数がthisポインタ経由で変数にアクセスするためメンバ変数化
 			for (index = 0; index < packetSize; index++) {
-				
+
 				CanBase::write([](Message_t& msg, void* p) {
 					CanWriter* _this = static_cast<CanWriter*>(p);
 					msg.id    = _this->id;
@@ -43,7 +41,7 @@ class CanWriter : private CanBase {
 							break;
 					}
 				}, this);
-				
+
 			}
 		}
 

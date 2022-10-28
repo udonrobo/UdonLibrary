@@ -25,8 +25,6 @@ CAN 通信受信クラス
 
 `CanBase.h` `FunctionBinder.h` を `CanReader.h` と同ディレクトリ上に配置する必要があります
 
-I2c のアドレスと違い、`CanReader` インスタンスごとに ID を設定します
-
 外部ライブラリを使用しています
 
 > teensy : [FlexCAN_T4](https://github.com/tonton81/FlexCAN_T4) [IntervalTimer](https://github.com/loglow/IntervalTimer)
@@ -49,7 +47,7 @@ I2c のアドレスと違い、`CanReader` インスタンスごとに ID を設
 
         `@param Size` 受信サイズ
 
-        `@param id` 監視するインスタンスの ID (0 ~ 127)
+        `@param id` 監視するデータ ID
 
 -   通信監視(WDT)
 
@@ -107,53 +105,50 @@ classDiagram
   direction RL
 
   class CanReader {
-	id
-	buffer[]
+    id
+    buffer[]
   }
 
-  class CanBase_teensy {
-	static FlexCAN can
-	static begin()
-	static ISR(Message_t&)
-  }
-
-  class CanBase_arduino {
-	static MCP2515 can
-	static begin()
-	static ISR(Message_t&)
+  class CanBase {
+    static [FlexCAN or MCP2515] can
+    static begin()
+    static ISR(Message_t&)
   }
 
   class mcp2515 {
-	can_frame
-	reset()
+    can_frame
+    can.reset();
+    can.setBitrate();
+    can.setNormalMode();
   }
   class FlexCAN_T4 {
-	begin()
-	onReceive(CAN_message_t&)
+    can.begin();
+    can.setBaudRate();
+    can.enableFIFO();
+    can.enableFIFOInterrupt();
+    onReceive(CAN_message_t&)
   }
 
   class FunctionBinder {
-	List class
-	static bind(T...)
-	virtual callback(T...)
+    List class
+    static bind(T...)
+    virtual callback(T...)
   }
 
-	FlexCAN_T4 --> CanBase_teensy : 通信データ
-	CanBase_teensy --> FlexCAN_T4 : 関数ポインタ
+	FlexCAN_T4 --> CanBase : データ
+	CanBase --> FlexCAN_T4 : 関数ポインタ
 
-	mcp2515 --> CanBase_arduino : 通信データ
+	mcp2515 --> CanBase : データ
 
-	CanBase_arduino --> FunctionBinder : 通信データ
-	FunctionBinder --> CanBase_arduino : 関数ポインタ
+	CanBase --> FunctionBinder : データ
+	FunctionBinder --> CanBase : 関数ポインタ
 
-	CanBase_teensy --> FunctionBinder : 通信データ
-	FunctionBinder --> CanBase_teensy : 関数ポインタ
-
-	FunctionBinder --> "0..n" CanReader : 通信データ
+	FunctionBinder --> "0..n" CanReader : データ
 	CanReader --> "0..n" FunctionBinder : オーバーライド
 ```
 
 -   `CanBase`
+
     > `static void begin()`
     >
     > 通信開始(既に開始されている場合は開始しない)
@@ -163,6 +158,8 @@ classDiagram
     > データセット
 
     teensy, arduino で使用するライブラリが違うので、差異を吸収する
+
+    ライブラリの切り替えはプリプロセッサによって行う
 
     CAN 通信に使用するクラスのインスタンスは 1 つでなくてはならいので、インスタンスを 静的メンバで管理し、Reader, Writer に派生させる構造になっている
 

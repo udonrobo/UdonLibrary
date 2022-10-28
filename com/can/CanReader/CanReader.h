@@ -1,7 +1,6 @@
 /// @file   CanReader.h
 /// @date   2022/09/27
-/// @brief  CASize通信受信クラス
-/// @format head:[id+index] data:[8bytes]
+/// @brief  CAN通信受信クラス
 /// @author 大河 祐介
 
 #pragma once
