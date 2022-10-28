@@ -1,6 +1,6 @@
 /// @file   CanReader.h
 /// @date   2022/09/27
-/// @brief  CAN通信受信クラス
+/// @brief  CASize通信受信クラス
 /// @format head:[id+index] data:[8bytes]
 /// @author 大河 祐介
 
@@ -9,17 +9,17 @@
 #include "CanBase.h"
 #include "FunctionBinder.h"
 
-template<size_t N>
+template<uint8_t Size>
 class CanReader : private CanBase, private CanBase::FunctionBinder_t
 {
-		const uint8_t id;
-		uint8_t buffer[N];
+		const uint16_t id;
+		uint8_t buffer[Size];
 		uint32_t lastReceiveMs;
 
 	public:
 
 		/// @param id 信号識別ID ~127
-		CanReader(const uint8_t id)
+		CanReader(const uint16_t id)
 			: id(id)
 			, buffer{}
 			, lastReceiveMs()
@@ -35,7 +35,7 @@ class CanReader : private CanBase, private CanBase::FunctionBinder_t
 			return buffer[index];
 		}
 		constexpr uint8_t size() const {
-			return N;
+			return Size;
 		}
 
 		void show(const char end = {}) const {
@@ -48,9 +48,9 @@ class CanReader : private CanBase, private CanBase::FunctionBinder_t
 		/// @brief 受信割り込み
 		void callback(const Message_t& msg) override {
 			if (msg.id == id) {
-				for (uint8_t i = 0; i < 8; i++) {
-					const uint8_t bufIndex = i + msg.index * 8;
-					if (bufIndex < N)  // 配列範囲
+				for (uint8_t i = 0; i < Message_t::dataLength; i++) {
+					const uint8_t bufIndex = i + msg.index * Message_t::dataLength;
+					if (bufIndex < Size)  // 配列範囲
 						buffer[bufIndex] = msg.data[i];
 					else
 						break;

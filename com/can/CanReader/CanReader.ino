@@ -1,12 +1,12 @@
 #include "CanReader.h"
 
-CanReader<5> reader1(1);
+CanReader<10> reader1(1);
 
 void setup() {
 	Serial.begin(115200);
 }
 
 void loop() {
-	reader1.show('\n');
+	reader1.show('\n');  /// 受信
 	delay(10);
 }
