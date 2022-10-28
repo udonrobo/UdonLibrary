@@ -35,9 +35,10 @@ template <class Dum>  /// リンクエラー対策
 class _CanBase {
 	protected:
 		struct Message_t {
-			uint8_t id;
-			uint8_t index;
-			uint8_t* data;
+			uint32_t& id;     /// data id
+			uint8_t&  index;  /// packet index
+			uint8_t*  data;   /// point library message array[7]
+			constexpr static uint8_t dataLength = 7;
 		};
 
 #if USE_TEENSY
@@ -62,10 +63,10 @@ class _CanBase {
 			can.enableFIFOInterrupt();
 #	if USE_READER
 			can.onReceive([](const CAN_message_t& msg) {
-				FunctionBinder_t::bind({                /// - const Message_t& -
-					static_cast<uint8_t>(msg.id),       /// _Out_ uint8_t id
-					msg.buf[0],                         /// _Out_ uint8_t index
-					const_cast<uint8_t*>(msg.buf + 1),  /// _Out_ uint8_t data[7]
+				FunctionBinder_t::bind({
+					const_cast<uint32_t&>(msg.id),     /// _Out_ uint8_t id
+					const_cast<uint8_t& >(msg.buf[0]), /// _Out_ uint8_t index
+					const_cast<uint8_t* >(msg.buf + 1) /// _Out_ uint8_t data[7]
 				});
 			});
 			static IntervalTimer timer;
@@ -81,31 +82,30 @@ class _CanBase {
 			attachInterrupt(digitalPinToInterrupt(interruptPin), [] {
 				can_frame msg;
 				if (can.readMessage(&msg) == MCP2515::ERROR_OK) {
-					FunctionBinder_t::bind({                /// - const Message_t& -
-						static_cast<uint8_t>(msg.id),       /// _Out_ uint8_t id
-						msg.buf[0],                         /// _Out_ uint8_t index
-						const_cast<uint8_t*>(msg.buf + 1),  /// _Out_ uint8_t data[7]
+					FunctionBinder_t::bind({
+						const_cast<uint32_t&>(msg.can_id),     /// _Out_ uint8_t id
+						const_cast<uint8_t& >(msg.data[0]), /// _Out_ uint8_t index
+						const_cast<uint8_t* >(msg.data + 1) /// _Out_ uint8_t data[7]
 					});
 				}
 			}, CHANGE);
 #	endif
 
 #endif
-		}  /// begin()
+		}
 
 		/// @brief 送信処理
-		/// @param msg 送信内容
-		static void write(const Message_t& msg) {
+		static void write(void (*callback)(Message_t&, void*), void* _this) {
 #if USE_TEENSY
-			CAN_message_t output = { static_cast<uint32_t>(msg.id) };
-			//msg.index
-			memcpy(output.buf, msg.data, 8);
-			while (!can.write(output));
+			CAN_message_t libmsg;
+			Message_t msg{ libmsg.id, libmsg.buf[0], libmsg.buf + 1 };
+			callback(msg, _this);
+			while (!can.write(libmsg));
 #else
-			can_frame output = { static_cast<uint32_t>(msg.id) };
-			//msg.index
-			memcpy(output.data, msg.data, 8);
-			can.sendMessage(&output);
+			can_frame libmsg;
+			Message_t msg{ libmsg.can_id, libmsg.data[0], libmsg.data + 1 };
+			callback(msg, _this);
+			can.sendMessage(&libmsg);
 #endif
 		}
 };
