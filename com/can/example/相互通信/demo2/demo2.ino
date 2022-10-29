@@ -1,7 +1,7 @@
 #include "CanWriter.h"
 #include "CanReader.h"
 
-CanWriter<5>  writer(2);
+CanWriter< 5> writer(2);
 CanReader<10> reader(1);
 
 void setup() {
