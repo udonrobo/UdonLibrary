@@ -2,7 +2,7 @@
 
 ## Description
 
-CAN 通信送信クラス publisher
+CAN 通信送信クラス Publisher
 
 -   対応マイコン
 
@@ -25,27 +25,21 @@ CAN 通信送信クラス publisher
 
 # Usage
 
-`CanBase.h` を `CanWriter.h` と同ディレクトリ上に配置する必要があります
+-   `CanBase.h` を `CanWriter.h` と同ディレクトリ上に配置する必要があります
 
-外部ライブラリを使用しています (Github)
+-   外部ライブラリを使用しています (Github)
 
-> teensy : [FlexCAN_T4](https://github.com/tonton81/FlexCAN_T4) [IntervalTimer](https://github.com/loglow/IntervalTimer)
->
-> arduino : [mcp2515](https://github.com/autowp/arduino-mcp2515)
-
-受信は割り込みによって行われます
-
-> teensy : タイマー割り込み
->
-> arduino : 外部割り込み
+    > teensy : [FlexCAN_T4](https://github.com/tonton81/FlexCAN_T4) [IntervalTimer](https://github.com/loglow/IntervalTimer)
+    >
+    > arduino : [mcp2515](https://github.com/autowp/arduino-mcp2515)
 
 ## API
 
 -   コンストラクタ
 
-    -   `template<uint8_t Size> CanReader(id)`
+    -   `template<uint8_t Size> CanWriter(id)`
 
-        通信開始
+        データ配信開始
 
         `@param Size` 送信サイズ
 

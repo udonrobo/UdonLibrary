@@ -2,7 +2,7 @@
 
 ## Description
 
-CAN 通信受信クラス
+CAN 通信受信クラス Subscriber
 
 -   対応マイコン
 
@@ -25,19 +25,19 @@ CAN 通信受信クラス
 
 # Usage
 
-`CanBase.h` `FunctionBinder.h` を `CanReader.h` と同ディレクトリ上に配置する必要があります
+-   `CanBase.h` `FunctionBinder.h` を `CanReader.h` と同ディレクトリ上に配置する必要があります
 
-外部ライブラリを使用しています (Github)
+-   外部ライブラリを使用しています (Github)
 
-> teensy : [FlexCAN_T4](https://github.com/tonton81/FlexCAN_T4) [IntervalTimer](https://github.com/loglow/IntervalTimer)
->
-> arduino : [mcp2515](https://github.com/autowp/arduino-mcp2515)
+    > teensy : [FlexCAN_T4](https://github.com/tonton81/FlexCAN_T4) [IntervalTimer](https://github.com/loglow/IntervalTimer)
+    >
+    > arduino : [mcp2515](https://github.com/autowp/arduino-mcp2515)
 
-受信は割り込みによって行われます
+-   受信は割り込みによって行われます
 
-> teensy : タイマー割り込み
->
-> arduino : 外部割り込み
+    > teensy : タイマー割り込み
+    >
+    > arduino : 外部割り込み
 
 ## API
 
@@ -45,7 +45,7 @@ CAN 通信受信クラス
 
     -   `template<uint8_t Size>CanReader(id)`
 
-        通信開始
+        サブスクライブ開始
 
         `@param Size` 受信サイズ
 
@@ -102,19 +102,19 @@ void loop() {
 
 ## data flow
 
-送信データは `CanBase` クラスの `Message_t` 構造体によって各ライブラリへ転送されます
-
-またデータはポインタ、参照で転送するので処理が軽量です (CanReaderバッファへのデータ転送はコピーです)
-
-ポインタ、参照は各ライブラリの各構造体インスタンスメンバを指しています
-
-```cpp
-struct Message_t {
-  uint32_t& id   ;  /// data id
-  uint8_t&  index;  /// packet index
-  uint8_t*  data ;  /// message array[7]
-};
-```
+> 送信データは `CanBase` クラスの `Message_t` 構造体によって各ライブラリへ転送されます
+>
+> ```cpp
+> struct Message_t {
+>   uint32_t& id   ;  /// data id
+>   uint8_t&  index;  /// packet index
+>   uint8_t*  data ;  /// message array[7]
+> };
+> ```
+>
+> またデータはポインタ、参照で転送するので処理が軽量です (CanReader バッファへのデータ転送はコピーです)
+>
+> ポインタ、参照は各ライブラリの各構造体インスタンスメンバを指しています
 
 ```mermaid
 classDiagram
