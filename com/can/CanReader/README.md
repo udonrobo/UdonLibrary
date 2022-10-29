@@ -6,26 +6,28 @@ CAN 通信受信クラス
 
 -   対応マイコン
 
-    teensy.3X, teensy4X, arduino
+    > teensy3x
+    >
+    > teensy4x
+    >
+    > arduino(予定)
 
 -   制限
 
-> インスタンス(ID) : 11bit 分まで
->
-> 各インスタンス : 255byte まで
->
-> バス : 約 500byte まで
+    > インスタンス(ID) : ~2048 (11bit 分)
+    >
+    > 各インスタンス : ~255byte (8bit 分)
 
 ## Data
 
--   `@date` 2022/09/27
+-   `@date` 2022/10/29
 -   `@author` 大河 祐介
 
 # Usage
 
 `CanBase.h` `FunctionBinder.h` を `CanReader.h` と同ディレクトリ上に配置する必要があります
 
-外部ライブラリを使用しています
+外部ライブラリを使用しています (Github)
 
 > teensy : [FlexCAN_T4](https://github.com/tonton81/FlexCAN_T4) [IntervalTimer](https://github.com/loglow/IntervalTimer)
 >
@@ -55,7 +57,7 @@ CAN 通信受信クラス
 
         `@return` 通信しているか(最後の受信から 30ms 未満)
 
--   受信データ取得
+-   データ取得
 
     -   `const uint8_t& operator[]`
 
@@ -90,19 +92,33 @@ void loop() {
 }
 ```
 
-# 内部構造
+# Structure
 
-## 通信フォーマット
+## format
 
-> [ id ] + [ index + data×7byte ]
+> [ id (11bit) ] + [ index (1byte) + data (7byte) ]
 >
-> 送信量が 7byte を超える場合はパケットに分けて送信する
+> 送信量が 7byte を超える場合はパケットに分けて送信
 
-## クラス
+## data flow
+
+送信データは `CanBase` クラスの `Message_t` 構造体によって各ライブラリへ転送されます
+
+またデータはポインタ、参照で転送するので処理が軽量です (CanReaderバッファへのデータ転送はコピーです)
+
+ポインタ、参照は各ライブラリの各構造体インスタンスメンバを指しています
+
+```cpp
+struct Message_t {
+  uint32_t& id   ;  /// data id
+  uint8_t&  index;  /// packet index
+  uint8_t*  data ;  /// message array[7]
+};
+```
 
 ```mermaid
 classDiagram
-  direction RL
+  direction LR
 
   class CanReader {
     id
@@ -135,16 +151,19 @@ classDiagram
     virtual callback(T...)
   }
 
-	FlexCAN_T4 --> CanBase : データ
-	CanBase --> FlexCAN_T4 : 関数ポインタ
+	FlexCAN_T4 --> CanBase : data
+	CanBase --> FlexCAN_T4 : function ptr
 
-	mcp2515 --> CanBase : データ
+	mcp2515 --> CanBase : data
 
-	CanBase --> FunctionBinder : データ
-	FunctionBinder --> CanBase : 関数ポインタ
+	CanBase --> FunctionBinder : data
+	FunctionBinder --> CanBase : function ptr
 
-	FunctionBinder --> "0..n" CanReader : データ
-	CanReader --> "0..n" FunctionBinder : オーバーライド
+	FunctionBinder --> "0..n" CanReader : data(copy)
+	CanReader --> "0..n" FunctionBinder : override
+
+  CAN_BAS --> FlexCAN_T4 : data
+  CAN_BAS --> mcp2515    : data
 ```
 
 -   `CanBase`
@@ -157,11 +176,11 @@ classDiagram
     >
     > データセット
 
-    teensy, arduino で使用するライブラリが違うので、差異を吸収する
-
-    ライブラリの切り替えはプリプロセッサによって行う
-
-    CAN 通信に使用するクラスのインスタンスは 1 つでなくてはならいので、インスタンスを 静的メンバで管理し、Reader, Writer に派生させる構造になっている
+    > teensy, arduino で使用するライブラリが違うので、差異を吸収する
+    >
+    > ライブラリの切り替えはプリプロセッサによって行う
+    >
+    > CAN 通信に使用するインスタンスは 1 つでなくてはならいので、インスタンスを 静的メンバで管理し、Reader, Writer に派生させる
 
 -   `FunctionBinder`
 
@@ -177,8 +196,8 @@ classDiagram
     >
     > `static void bind(PTy... param)`
 
-    自身の this ポインタをリストに保存し、 `bind` が呼ばれたときに、全ての仮想関数をコールするクラス
-
-    高階関数の引数は関数ポインタ(静的関数用)なのでメンバ関数は登録できない。そのためこのクラスでは仮想関数をオーバーライドし静的関数にまとめる構造になっている
-
-    また引数は可変長引数テンプレートクラスであるため引数がある関数もコールバックできる
+    > 自身の this ポインタをリストに保存し、 `bind` が呼ばれたときに、全ての仮想関数をコールするクラス
+    >
+    > ライブラリの高階関数の引数は関数ポインタ(静的関数用)なのでメンバ関数は登録できない。そのためこのクラスでは仮想関数をオーバーライドし静的関数にまとめ登録する
+    >
+    > また引数は可変長引数テンプレートクラスであるため引数がある関数もコールバックできる

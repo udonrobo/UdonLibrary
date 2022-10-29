@@ -2,28 +2,32 @@
 
 ## Description
 
-CAN 通信送信クラス
+CAN 通信送信クラス publisher
 
 -   対応マイコン
 
-    teensy.3X, teensy4X, arduino
+    > teensy3x
+    >
+    > teensy4x
+    >
+    > arduino(予定)
 
 -   制限
 
-> インスタンス(ID) : 11bit 分まで
->
-> 各インスタンス : 255byte まで
->
-> バス : 約 500byte まで
+    > インスタンス(ID) : ~2048 (11bit 分)
+    >
+    > 各インスタンス : ~255byte (8bit 分)
 
 ## Data
 
--   `@date` 2022/09/27
+-   `@date` 2022/10/29
 -   `@author` 大河 祐介
 
 # Usage
 
-外部ライブラリを使用しています
+`CanBase.h` を `CanWriter.h` と同ディレクトリ上に配置する必要があります
+
+外部ライブラリを使用しています (Github)
 
 > teensy : [FlexCAN_T4](https://github.com/tonton81/FlexCAN_T4) [IntervalTimer](https://github.com/loglow/IntervalTimer)
 >
@@ -39,7 +43,7 @@ CAN 通信送信クラス
 
 -   コンストラクタ
 
-    -   `template<uint8_t Size>CanReader(id)`
+    -   `template<uint8_t Size> CanReader(id)`
 
         通信開始
 
@@ -47,9 +51,13 @@ CAN 通信送信クラス
 
         `@param id` データ ID
 
--   送信データセット
+-   データセット
 
     -   `uint8_t& operator[]`
+
+-   送信
+
+    -   `update()`
 
 -   デバッグ出力
 
@@ -59,7 +67,7 @@ CAN 通信送信クラス
 
 -   その他
 
-    -   `uint8_t size`
+    -   `uint8_t size()`
 
         `@return` 設定送信サイズ
 
@@ -83,19 +91,35 @@ void loop() {
 }
 ```
 
-# 内部構造
+# Structure
 
-## 通信フォーマット
+## format
 
-> [ id ] + [ index + data×7byte ]
+> 7byte を超えるデータはパケット分割し通信されます
 >
-> 送信量が 7byte を超える場合はパケットに分けて送信する
+> [ id (11bit) ] + [ index (1byte) + data (7byte) ]
+>
+> index : パケットの識別子
 
-## クラス
+## data flow
+
+> 送信データは `CanBase` クラスの `Message_t` 構造体によって各ライブラリへ転送されます
+>
+> ```cpp
+> struct Message_t {
+>   uint32_t& id   ;  /// data id
+>   uint8_t&  index;  /// packet index
+>   uint8_t*  data ;  /// message array[7]
+> };
+> ```
+>
+> またデータはポインタ、参照で転送するので処理が軽量です (CanReader バッファへのデータ転送はコピーです)
+>
+> ポインタ、参照は各ライブラリの各構造体インスタンスメンバを指しています
 
 ```mermaid
 classDiagram
-  direction RL
+  direction LR
 
 	class CanWriter {
 		id
@@ -114,11 +138,15 @@ classDiagram
 		write(CAN_Message_t&)
 	}
 
-	FlexCAN_T4 <-- CanBase : データ
+	CanWriter --> "0..n" CanBase : data(copy)
 
-	mcp2515 <-- CanBase : データ
+	CanBase --> FlexCAN_T4 : data
 
-	CanBase <-- "0..n" CanWriter : データ
+	CanBase --> mcp2515 : data
+
+	FlexCAN_T4 --> CAN_BAS : data
+
+	mcp2515 --> CAN_BAS : data
 
 ```
 
@@ -132,8 +160,16 @@ classDiagram
     >
     > データセット
 
-    teensy, arduino で使用するライブラリが違うので、差異を吸収する
+    > teensy, arduino で使用するライブラリが違うので、差異を吸収する
+    >
+    > ライブラリの切り替えはプリプロセッサによって行う
+    >
+    > CAN 通信に使用するインスタンスは 1 つでなくてはならいので、インスタンスを 静的メンバで管理し、Reader, Writer に派生させる
 
-    ライブラリの切り替えはプリプロセッサによって行う
+# Benchmark
 
-    CAN 通信に使用するクラスのインスタンスは 1 つでなくてはならいので、インスタンスを 静的メンバで管理し、Reader, Writer に派生させる構造になっている
+## 処理速度
+
+-   255byte 送信時 (teensy4.0)
+
+    約 44μs
