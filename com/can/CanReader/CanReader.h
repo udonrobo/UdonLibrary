@@ -27,7 +27,7 @@ class CanReader : private CanBase, private CanBase::FunctionBinder_t
 		}
 
 		explicit operator bool() const {
-			return millis() - lastReceiveMs < 30;
+			return millis() - lastReceiveMs > 30;
 		}
 
 		constexpr const uint8_t& operator[](uint8_t index) const {

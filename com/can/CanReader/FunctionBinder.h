@@ -48,18 +48,18 @@ template<class> class FunctionBinder;
 
 template<class R, class... Args>
 class FunctionBinder<R(Args...)> {
-	static LinearList<FunctionBinder*> pList;
-public:
-	static R bind(Args... args) {
-		for (const auto& p : pList)  /// 全てのthisポインタ取得
-			p->callback(args...);
-		return {};
-	}
-protected:
-	FunctionBinder() {
-		pList.push_back(this);
-	}
-	virtual R callback(Args...) = 0;
+		static LinearList<FunctionBinder*> pList;
+	public:
+		static R bind(Args... args) {
+			for (const auto& p : pList)  /// 全てのthisポインタ取得
+				p->callback(args...);
+			return {};
+		}
+	protected:
+		FunctionBinder() {
+			pList.push_back(this);
+		}
+		virtual R callback(Args...) = 0;
 };
 template<class R, class... Args>
 LinearList<FunctionBinder<R(Args...)>*> FunctionBinder<R(Args...)>::pList;
@@ -68,17 +68,17 @@ LinearList<FunctionBinder<R(Args...)>*> FunctionBinder<R(Args...)>::pList;
 /// @brief 部分特殊化 : void
 template<class... Args>
 class FunctionBinder<void(Args...)> {
-	static LinearList<FunctionBinder*> pList;
-public:
-	static void bind(Args... args) {
-		for (const auto& p : pList)
-			p->callback(args...);
-	}
-protected:
-	FunctionBinder() {
-		pList.push_back(this);
-	}
-	virtual void callback(Args...) = 0;
+		static LinearList<FunctionBinder*> pList;
+	public:
+		static void bind(Args... args) {
+			for (const auto& p : pList)
+				p->callback(args...);
+		}
+	protected:
+		FunctionBinder() {
+			pList.push_back(this);
+		}
+		virtual void callback(Args...) = 0;
 };
 template<class... Args>
 LinearList<FunctionBinder<void(Args...)>*> FunctionBinder<void(Args...)>::pList;

@@ -29,7 +29,7 @@ class CanWriter : private CanBase {
 			/// パケットに分けて送信
 			for (index = 0; index < packetSize; index++) {
 
-				CanBase::write([](Message_t& msg, void* p) {
+				CanBase::write([](Message_t&& msg, void* p) {
 					CanWriter* _this = static_cast<CanWriter*>(p);
 					msg.id    = _this->id;
 					msg.index = _this->index;

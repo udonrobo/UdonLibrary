@@ -35,9 +35,9 @@ template <class Dum>  /// リンクエラー対策
 class _CanBase {
 	protected:
 		struct Message_t {
-			uint32_t& id;     /// data id
+			uint32_t& id   ;  /// data id
 			uint8_t&  index;  /// packet index
-			uint8_t*  data;   /// point library message array[7]
+			uint8_t*  data ;  /// message array[7]
 			constexpr static uint8_t dataLength = 7;
 		};
 
@@ -46,7 +46,7 @@ class _CanBase {
 #else
 		using Can = MCP2515;
 		static constexpr uint8_t interruptPin = 2;
-		static constexpr uint8_t csPin = 10;
+		static constexpr uint8_t csPin        = 10;
 #endif
 
 #if USE_READER
@@ -64,16 +64,16 @@ class _CanBase {
 #	if USE_READER
 			can.onReceive([](const CAN_message_t& msg) {
 				FunctionBinder_t::bind({
-					const_cast<uint32_t&>(msg.id),     /// _Out_ uint8_t id
-					const_cast<uint8_t& >(msg.buf[0]), /// _Out_ uint8_t index
-					const_cast<uint8_t* >(msg.buf + 1) /// _Out_ uint8_t data[7]
+					const_cast<uint32_t&>(msg.id     ),  /// _In_ uint8_t id
+					const_cast<uint8_t& >(msg.buf[0] ),  /// _In_ uint8_t index
+					const_cast<uint8_t* >(msg.buf + 1)   /// _In_ uint8_t data[7]
 				});
 			});
 			static IntervalTimer timer;
-			timer.begin([] { can.events(); }, 200);
+			timer.begin([] { can.events(); }, 100);
 #	endif
 
-#else  /// not teensy
+#else
 			can.reset();
 			can.setBitrate(CAN_1000KBPS);
 			can.setNormalMode();
@@ -83,9 +83,9 @@ class _CanBase {
 				can_frame msg;
 				if (can.readMessage(&msg) == MCP2515::ERROR_OK) {
 					FunctionBinder_t::bind({
-						const_cast<uint32_t&>(msg.can_id),     /// _Out_ uint8_t id
-						const_cast<uint8_t& >(msg.data[0]), /// _Out_ uint8_t index
-						const_cast<uint8_t* >(msg.data + 1) /// _Out_ uint8_t data[7]
+						const_cast<uint32_t&>(msg.can_id  ),  /// _In_ uint8_t id
+						const_cast<uint8_t& >(msg.data[0] ),  /// _In_ uint8_t index
+						const_cast<uint8_t* >(msg.data + 1)   /// _In_ uint8_t data[7]
 					});
 				}
 			}, CHANGE);
@@ -95,16 +95,22 @@ class _CanBase {
 		}
 
 		/// @brief 送信処理
-		static void write(void (*callback)(Message_t&, void*), void* _this) {
+		static void write(void (*callback)(Message_t&&, void*), void* _this) {
 #if USE_TEENSY
 			CAN_message_t libmsg;
-			Message_t msg{ libmsg.id, libmsg.buf[0], libmsg.buf + 1 };
-			callback(msg, _this);
+			callback({
+				libmsg.id     ,  /// _Out_ uint8_t id
+				libmsg.buf[0] ,  /// _Out_ uint8_t index
+				libmsg.buf + 1,  /// _Out_ uint8_t data[7]
+			}, _this);
 			while (!can.write(libmsg));
 #else
 			can_frame libmsg;
-			Message_t msg{ libmsg.can_id, libmsg.data[0], libmsg.data + 1 };
-			callback(msg, _this);
+			callback({
+				libmsg.id     ,  /// _Out_ uint8_t id
+				libmsg.buf[0] ,  /// _Out_ uint8_t index
+				libmsg.buf + 1,  /// _Out_ uint8_t data[7]
+			}, _this);
 			can.sendMessage(&libmsg);
 #endif
 		}
