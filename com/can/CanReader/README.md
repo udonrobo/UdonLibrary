@@ -184,17 +184,17 @@ classDiagram
 
 -   `FunctionBinder`
 
-    > コンストラクタ(this ポインタを単方向リストに追加)
-    >
     > `FunctionBinder()`
     >
-    > コールされる純粋仮想関数
+    > コンストラクタ(this ポインタを単方向リストに追加)
     >
     > `virtual void callback(PTy...) = 0`
     >
-    > 全てのインスタンスの仮想関数を呼ぶ静的関数
+    > コールされる純粋仮想関数
     >
     > `static void bind(PTy... param)`
+    >
+    > 全てのインスタンスの仮想関数を呼ぶ静的関数
 
     > 自身の this ポインタをリストに保存し、 `bind` が呼ばれたときに、全ての仮想関数をコールするクラス
     >
