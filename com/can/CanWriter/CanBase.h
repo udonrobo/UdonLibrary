@@ -70,7 +70,7 @@ class _CanBase {
 				});
 			});
 			static IntervalTimer timer;
-			timer.begin([] { can.events(); }, 200);
+			timer.begin([] { can.events(); }, 100);
 #	endif
 
 #else
@@ -123,3 +123,9 @@ template <class Dum>CanBase::Can _CanBase<Dum>::can;
 #else
 template <class Dum>CanBase::Can _CanBase<Dum>::can(CanBase::csPin);
 #endif
+
+#undef USE_TEENSY_4X
+#undef USE_TEENSY_3X
+#undef USE_TEENSY
+#undef CAN_BAS
+#undef USE_READER

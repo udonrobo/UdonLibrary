@@ -21,13 +21,16 @@ struct LinearList {
 			it = temp;
 		}
 	}
+
+	/// @brief 要素を追加する
 	void push_back(const T& r) {
-		if (tail)  /// �v�f�L��
+		if (tail)
 			tail = tail->next = new Node{ r };
 		else
 			head = tail       = new Node{ r };
 	}
 
+	/// @brief 要素走査用
 	struct Iterator {
 		Node* p;
 		T& operator*() { return p->value; }
@@ -35,12 +38,7 @@ struct LinearList {
 		bool operator!=(const Iterator& r) { return p != r.p; }
 	};
 	Iterator begin() { return { head }; }
-	Iterator end() {
-		if (tail)
-			return { tail->next };
-		else
-			return { head };
-	}
+	Iterator end  () { return tail ? Iterator{ tail->next } : Iterator{ head }; }
 };
 
 

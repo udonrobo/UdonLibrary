@@ -123,3 +123,9 @@ template <class Dum>CanBase::Can _CanBase<Dum>::can;
 #else
 template <class Dum>CanBase::Can _CanBase<Dum>::can(CanBase::csPin);
 #endif
+
+#undef USE_TEENSY_4X
+#undef USE_TEENSY_3X
+#undef USE_TEENSY
+#undef CAN_BAS
+#undef USE_READER
