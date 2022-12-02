@@ -107,9 +107,9 @@ class _CanBase {
 #else
 			can_frame libmsg;
 			callback({
-				libmsg.id     ,  /// _Out_ uint8_t id
-				libmsg.buf[0] ,  /// _Out_ uint8_t index
-				libmsg.buf + 1,  /// _Out_ uint8_t data[7]
+				libmsg.can_id     ,  /// _Out_ uint8_t id
+				libmsg.data[0] ,  /// _Out_ uint8_t index
+				libmsg.data + 1,  /// _Out_ uint8_t data[7]
 			}, _this);
 			can.sendMessage(&libmsg);
 #endif
