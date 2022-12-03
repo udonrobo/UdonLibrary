@@ -1,24 +1,35 @@
 ## ファイルの中身を同期
-## @param $filename  同期元ファイル()
-## @param $directory 監視するディレクトリ(全ての子ディレクトリも対象)
 
-$filename  = "id.h"
-$sourceDir = "."
-$subscDir  = ".\node"
+## 同期するファイル名
+$filename = "id.h"
 
-echo "`n--------------------- Monitoring Start ----------------------`n"
+## 基になるファイルパス
+$sources = "."
 
-echo (Get-ChildItem -Path $subscDir -Recurse).DirectoryName
+## 書き換えるファイルがあるパス(全子ディレクトリも対象)
+$target  = ".\node"
+
 
 echo "`n-------------------------- Source ---------------------------`n"
 
-"{0}{1}{2}" -f $pwd.Path, "\", $filename
+$path = ((Convert-Path $sources) +"\" + $filename)
 
-echo "`n-------------------------------------------------------------`n"
-
-for ( ; ; ) {
-	foreach ($it in (Get-ChildItem -Path $sourceDir -Recurse).DirectoryName) {
-		robocopy $sourceDir $it $filename | Out-Null
-	}
-	Start-Sleep -Seconds 1
+if (Test-Path $path) {
+	Write-Host $path
 }
+else {
+	Write-Host $path -ForegroundColor Red
+}
+
+echo "`n-------------------------- Output ---------------------------`n"
+
+foreach ($it in (Get-ChildItem -Path $target -Recurse).DirectoryName) {
+	echo ($it +"\" + $filename)
+}
+
+## ファイル同期
+foreach ($it in (Get-ChildItem -Path $target -Recurse).DirectoryName) {
+	robocopy $sources $it $filename | Out-Null
+}
+
+echo "`n-------------------------- Finish ---------------------------`n"
