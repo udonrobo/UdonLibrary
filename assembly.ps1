@@ -2,13 +2,14 @@
 
 ## 収集ファイルのターゲットパス配列
 $sources =
+	".\actuator\motor\Motor\Motor.h",
+	".\algorithm\utility.h",
 	".\com\can\CanReader\CanBase.h",
 	".\com\can\CanReader\CanReader.h",
 	".\com\can\CanWriter\CanWriter.h",
 	".\com\can\CanReader\FunctionBinder.h",
 	".\sensor\Gyro\Gyro.h",
-	".\sensor\Measure\Measure.h",
-	".\algorithm\utility.h"
+	".\sensor\Measure\Measure.h"
 
 ## 収集フォルダ
 $target = ".\src"
