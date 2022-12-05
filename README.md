@@ -2,7 +2,7 @@
 
 香川高専高松ライブラリ
 
-## Adruino Library に追加
+## Adruino ライブラリに追加
 
 1. ライブラリパスを調べる
 
@@ -10,28 +10,39 @@
 
     スケッチブックの保存場所欄にあるパスの階層に librarys ディレクトリがあります
 
+2. 1 で調べたディレクトリに移りクローンする
+
+    ```sh
+    cd ~~~\arduino\programs\libraries  ## 1で調べたディレクトリ
+    git clone https://github.com/udonrobo/Library.git
+    ```
+
 ## ディレクトリ構造
 
--   actuator
+-   スケッチ例、開発用ディレクトリ
 
-    アクチュエータ関連
+    -   actuator
 
--   algorithm
+        アクチュエータ関連
 
-    アルゴリズム関連
+    -   algorithm
 
--   com
+        アルゴリズム関連
 
-    通信関連
+    -   com
 
--   sensor
+        通信関連
 
-    センサー関連
+    -   sensor
 
--   src
+        センサー関連
 
-    ArduinoIDE からインクルードされるヘッダー群
+    -   assembly.ps1
 
--   assembly.ps1
+        Arduino のライブラリとして使用できるよう、src ディレクトリにヘッダーを集めてくるスクリプト
 
-    Arduino のライブラリとして使用できるよう、src ディレクトリにヘッダーを集めてくるスクリプト
+-   ライブラリディレクトリ
+
+    -   src
+
+        ArduinoIDE からインクルードされるヘッダー群
