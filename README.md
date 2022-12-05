@@ -8,12 +8,12 @@
 
     ArduinoIDE を起動 > ファイル > 環境設定 > スケッチブックの保存場所
 
-    スケッチブックの保存場所欄にあるパスの階層に librarys ディレクトリがあります
+    スケッチブックの保存場所欄にあるパスの階層に libraries ディレクトリがあります
 
 2. 1 で調べたディレクトリに移りクローンする
 
     ```sh
-    cd ~~~\arduino\programs\libraries  ## 1で調べたディレクトリ
+    cd ---\arduino\programs\libraries  ## 1で調べたディレクトリ
     git clone https://github.com/udonrobo/Library.git
     ```
 
