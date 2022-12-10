@@ -1,4 +1,4 @@
-#include "CanReader.h"
+#include "CanReader.hpp"
 
 CanReader<10> reader1(1);
 CanReader<10> reader2(1);

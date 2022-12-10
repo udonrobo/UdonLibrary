@@ -1,4 +1,4 @@
-#include "CanWriter.h"
+#include "CanWriter.hpp"
 
 CanWriter<10> writer1(1);
 

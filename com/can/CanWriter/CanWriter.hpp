@@ -1,11 +1,11 @@
-/// @file   CanWriter.h
+/// @file   CanWriter.hpp
 /// @date   2022/09/27
 /// @brief  CAN通信送信クラス
 /// @author 大河 祐介
 
 #pragma once
 
-#include "CanBase.h"
+#include "CanBase.hpp"
 
 /// @brief モーターを使用する場合のバイト数を求める
 /// @param count モーター数[~226]

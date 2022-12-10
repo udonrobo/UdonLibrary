@@ -1,23 +1,16 @@
-/// @file   Motor.h
-/// @date   2022/12/05
+/// @file   Motor.hpp
+/// @date   2022/12/11
 /// @brief  モタド制御クラス
 /// @author 大河 祐介
 
 #pragma once
 #include "MovingAverage.h"
 
-struct DriverType_Black_Tag;
-struct DriverType_Tanikawa_Tag;
-
-template<class> class Motor;
-
-/// @brief 黒モタド (2ピン)
-template<>
-class Motor<DriverType_Black_Tag> : private MovingAverage {
+class Motor2 : private MovingAverage {
 		const uint8_t pinA;
 		const uint8_t pinP;
 	public:
-		Motor(const uint8_t pinA, const uint8_t pinP)
+		Motor2(const uint8_t pinA, const uint8_t pinP)
 			: MovingAverage(20)
 			, pinA(pinA)
 			, pinP(pinP)
@@ -33,15 +26,12 @@ class Motor<DriverType_Black_Tag> : private MovingAverage {
 		}
 };
 
-
-/// @brief 谷川さんモタド (3ピン)
-template<>
-class Motor<DriverType_Tanikawa_Tag> : private MovingAverage {
+class Motor3 : private MovingAverage {
 		const uint8_t pinA;
 		const uint8_t pinB;
 		const uint8_t pinP;
 	public:
-		Motor(const uint8_t pinA, const uint8_t pinB, const uint8_t pinP)
+		Motor3(const uint8_t pinA, const uint8_t pinB, const uint8_t pinP)
 			: MovingAverage(20)
 			, pinA(pinA)
 			, pinB(pinB)
@@ -60,10 +50,7 @@ class Motor<DriverType_Tanikawa_Tag> : private MovingAverage {
 		}
 };
 
-using Motor2 = Motor<DriverType_Black_Tag   >;
-using Motor3 = Motor<DriverType_Tanikawa_Tag>;
-
-// pwm周期変更 (arduino nano)
+// pwm周期変更 (arduino nano用)
 // TCCR1B &= B11111000;
 // TCCR1B |= B00000001;
 // TCCR2B &= B11111000;

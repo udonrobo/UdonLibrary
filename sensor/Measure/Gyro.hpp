@@ -42,7 +42,7 @@ class _Gyro {
 
 		/// @brief 旋回角を0にする
 		void clear(const double offset = 0) {
-			offset = rawYaw - offset;
+			this->offset = rawYaw - offset;
 		}
 
 		/// 旋回角取得

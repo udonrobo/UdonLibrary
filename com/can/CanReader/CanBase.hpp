@@ -1,4 +1,4 @@
-/// @file   CanBase.h
+/// @file   CanBase.hpp
 /// @date   2022/09/27
 /// @brief  CAN通信基底クラス
 /// @author 大河 祐介
@@ -24,10 +24,10 @@
 #endif
 
 /// 受信割り込みを行うか判別する
-#define USE_READER __has_include("CanReader.h")
+#define USE_READER __has_include("CanReader.hpp")
 
 #if USE_READER
-#	include "FunctionBinder.h"
+#	include "FunctionBinder.hpp"
 #endif
 
 

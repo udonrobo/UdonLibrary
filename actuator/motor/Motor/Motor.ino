@@ -1,4 +1,4 @@
-#include "Motor.h"
+#include "Motor.hpp"
 
 // 制御線2ピンタイプのモータードライバを3個使用する場合
 Motor2 motor[] {

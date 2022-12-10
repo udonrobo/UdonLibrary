@@ -6,7 +6,7 @@
 #pragma once
 
 #include "EncoderBoardTeensy.h"
-#include "Gyro.h"
+#include "Gyro.hpp"
 
 class Measure : private Gyro {
 	public:

@@ -1,4 +1,4 @@
-#include "Measure.h"
+#include "Measure.hpp"
 
 EncoderBoardTeensy enc(2);
 Measure measure(enc, 1, 2, { false, true });

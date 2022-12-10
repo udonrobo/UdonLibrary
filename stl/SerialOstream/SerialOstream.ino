@@ -1,4 +1,4 @@
-#include "SerialStream.h"
+#include "SerialStream.hpp"
 
 #include <ostream>
 #include <sstream>
