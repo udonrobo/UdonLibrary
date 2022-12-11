@@ -1,4 +1,4 @@
-/// @file   Motor.h
+/// @file   Motor.hpp
 /// @date   2022/12/11
 /// @brief  モタド制御クラス
 /// @author 大河 祐介
