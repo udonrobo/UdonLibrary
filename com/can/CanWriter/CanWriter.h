@@ -78,10 +78,18 @@ class CanWriter : private CanBase {
 		constexpr uint8_t size() const {
 			return Size;
 		}
+		constexpr uint8_t motorSize() const {
+			return Size + 1 - Size / 8;
+		}
 
 		void show(const char end = {}) const {
 			for (const auto& buf : buffer)
 				Serial.print(buf), Serial.print('\t');
+			Serial.print(end);
+		}
+		void showMotor(const char end = {}) const {
+			for (uint8_t i = 0; i < Size - 1 - Size / 8; i++)
+				Serial.print(getMotorData(i)), Serial.print('\t');
 			Serial.print(end);
 		}
 };

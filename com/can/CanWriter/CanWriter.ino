@@ -1,12 +1,18 @@
 #include "CanWriter.h"
 
-CanWriter<10> writer1(1);
+CanWriter<USE_MOTOR(226)> writer1(1);
 
 void setup() {
 }
 
 void loop() {
-	writer1 = millis() / 10; /// データセット
+	auto t = micros();
+
+	for (int i = 0; i < 226; i++)
+		writer1.setMotorData(i, -100); /// データセット
 	writer1.update();        /// 配信
+
+	Serial.println(writer1.motorSize());
+
 	delay(10);
 }
