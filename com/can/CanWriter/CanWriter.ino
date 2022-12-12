@@ -1,4 +1,4 @@
-#include "CanWriter.h"
+#include "CanWriter.hpp"
 
 CanWriter<USE_MOTOR(226)> writer1(1);
 

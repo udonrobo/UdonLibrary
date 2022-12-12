@@ -1,5 +1,5 @@
-#include "CanWriter.h"
-#include "CanReader.h"
+#include <CanWriter.hpp>
+#include <CanReader.hpp>
 
 CanWriter< 5> writer(2);
 CanReader<10> reader(1);

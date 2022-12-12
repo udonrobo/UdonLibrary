@@ -1,4 +1,4 @@
-#include "CanReader.h"
+#include "CanReader.hpp"
 
 CanReader<USE_MOTOR(200)> reader1(1);
 

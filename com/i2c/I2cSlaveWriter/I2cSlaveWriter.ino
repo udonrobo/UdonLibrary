@@ -1,4 +1,4 @@
-#include "I2cSlaveWriter.h"
+#include "I2cSlaveWriter.hpp"
 
 I2cSlaveWriter<4> sender(5);
 

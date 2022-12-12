@@ -1,4 +1,4 @@
-#include "I2cSlaveReader.h"
+#include "I2cSlaveReader.hpp"
 
 I2cSlaveReader<4> receive(5);
 
