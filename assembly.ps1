@@ -4,6 +4,7 @@
 $sources =
 	".\actuator\motor\Motor\Motor.hpp",
 	".\algorithm\Utility.hpp",
+	".\com\common\Message.hpp",
 	".\com\can\CanReader\CanBase.hpp",
 	".\com\can\CanReader\CanReader.hpp",
 	".\com\can\CanWriter\CanWriter.hpp",
