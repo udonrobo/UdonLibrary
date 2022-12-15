@@ -181,7 +181,7 @@ namespace Message
 		uint8_t value;
 	});
 
-	/// @brief HSV
+	/// @brief HSL
 	PACK(struct HSL {
 		uint8_t hue;
 		uint8_t saturation;
