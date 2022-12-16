@@ -6,14 +6,14 @@
 #pragma once
 
 #include "CanBase.hpp"
+#include "BasicWriter.hpp"
 
-/// @brief モーターを使用する場合のバイト数を求める
-/// @param count モーター数[~226]
-/// @return バイト数
-#define USE_MOTOR(count) (count + 1 + count / 8)
 
 template<uint8_t Size>
-class CanWriter : private CanBase {
+class CanWriter
+	: private CanBase
+	, public BasicWriter<Size>
+{
 		const uint16_t id;
 		uint8_t index;
 		uint8_t buffer[Size];
@@ -21,7 +21,8 @@ class CanWriter : private CanBase {
 
 		/// @param id 信号識別ID ~127
 		CanWriter(const uint16_t id) noexcept
-			: id(id)
+			: BasicWriter<Size>(buffer)
+			, id(id)
 			, index()
 			, buffer{}
 		{
@@ -51,37 +52,4 @@ class CanWriter : private CanBase {
 			}
 		}
 
-		/// @brief data setter
-		void setByteData(const uint8_t index, const uint8_t value) {
-			buffer[index] = value;
-		}
-		void setSingleData(const uint8_t index, const uint8_t value) {
-			buffer[index] = value;
-		}
-		void setBitData(const uint8_t byteIndex, const uint8_t bitIndex, const bool value) {
-			bitWrite(buffer[byteIndex], bitIndex, value);
-		}
-		void setMotorData(const uint8_t index, const int16_t power) {
-			buffer[index] = abs(power);
-			const uint8_t dirByteIndex = Size - 1 - index / 8;  /// 配列末端バイトから
-			const uint8_t dirBitIndex  = index % 8;             /// 先頭ビットから
-			bitWrite(buffer[dirByteIndex], dirBitIndex, power > 0);
-		}
-
-		uint8_t& operator[](const uint8_t index) {
-			return buffer[index];
-		}
-		CanWriter& operator=(const uint8_t& value) {
-			memset(buffer, value, Size);
-			return *this;
-		}
-		constexpr uint8_t size() const {
-			return Size;
-		}
-
-		void show(const char end = {}) const {
-			for (const auto& buf : buffer)
-				Serial.print(buf), Serial.print('\t');
-			Serial.print(end);
-		}
 };
