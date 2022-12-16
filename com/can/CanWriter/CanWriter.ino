@@ -1,18 +1,28 @@
-#include "CanWriter.hpp"
+#define ENABLE_STL
 
-CanWriter<USE_MOTOR(226)> writer1(1);
+#include "CanWriter.hpp"
+#include <Message.hpp>
+
+#include <sstream>
+
+CanWriter<sizeof(Message::Motor)> writer(1);
 
 void setup() {
 }
 
 void loop() {
-	auto t = micros();
+	Message::Motor motor;
+	motor.power = 100;
 
-	for (int i = 0; i < 226; i++)
-		writer1.setMotorData(i, -100); /// データセット
-	writer1.update();        /// 配信
+	writer.setMessage(motor); /// データセット
 
-	Serial.println(writer1.motorSize());
+	writer.update();        /// 配信
 
 	delay(10);
+}
+
+void show() {
+	std::stringstream ss;
+	ss << writer;
+	Serial.println(ss.str().c_str());
 }

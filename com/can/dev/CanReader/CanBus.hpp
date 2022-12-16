@@ -1,6 +1,5 @@
 #pragma once
 
-
 #define USE_TEENSY_4X defined(ARDUINO_TEENSY41) || defined(ARDUINO_TEENSY40)
 #define USE_TEENSY_3X defined(ARDUINO_TEENSY36) || defined(ARDUINO_TEENSY35)
 #define USE_TEENSY    USE_TEENSY_3X || USE_TEENSY_4X
@@ -12,51 +11,89 @@
 #	include <mcp2515.h>     /// https://github.com/autowp/arduino-mcp2515
 #endif
 
-template<int Bus>
-class CanBus {
+#include "ForwardLinearList.hpp"
 
 #if USE_TEENSY
-		FlexCAN_T4<Bus, RX_SIZE_256, TX_SIZE_256> can;
-#else
-		MCP2515 can;
-#endif
 
-		bool isBegined;
+/// Chip --> CAN Transceiver --> CAN BUS
+
+template<CAN_DEV_TABLE BusTy>
+class CanBus {
+
+		FlexCAN_T4<BusTy, RX_SIZE_256, TX_SIZE_256> bus;
 		IntervalTimer timer;
+
+		struct Mail {
+			uint16_t id;
+			uint8_t* buffer;
+			size_t   bufferLength;
+		};
+
+		ForwardLinearList<Mail> mailBox;
+		bool isBegined;
 
 	public:
 		enum class BeginSatus : uint8_t {
 			EnableReadIntrrupt
 		};
 
-#if USE_TEENSY
-		CanBus(const uint8_t cs) {
-
-		}
-#else
 		CanBus() {
-
 		}
-#endif
+
+		template<size_t Size>
+		void appendMailBox(uint16_t id, uint8_t (&buffer)[Size]) {
+			mailBox.push_back({ id, buffer, Size });
+		}
 
 		/// @brief 通信を開始していない場合開始する
 		/// @param status 開始
-		void begin(BeginSatus status = {}) {
+		void begin() {
 
 			if (isBegined) return;
-#ifdef USE_TEENSY
-			can.begin();
-			can.setClock(CLK_60MHz);
-			can.setBaudRate(1000000);
-			can.enableFIFO();
-			can.enableFIFOInterrupt();
-			if (status == BeginSatus::EnableReadIntrrupt) {
-				timer.begin([&] { can.events(); }, 200);
-			}
+			bus.begin();
+			bus.setClock(CLK_60MHz);
+			bus.setBaudRate(1000000);
+			bus.enableFIFO();
+			bus.enableFIFOInterrupt();
+			//			timer.begin(can.events, 200);
+			isBegined = true;
+		}
+};
+
 #elif
-			can.reset();
-			can.setBitrate(CAN_1000KBPS);
-			can.setNormalMode();
+
+/// Chip --> CAN Controller --> CAN Transceiver --> CAN BUS
+
+class CanBus {
+		MCP2515 bus;
+		struct Mail {
+			uint16_t id;
+			uint8_t* buffer;
+			size_t   bufferLength;
+		};
+		ForwardLinearList<Mail> mailBox;
+		bool isBegined;
+	public:
+		enum class BeginSatus : uint8_t {
+			EnableReadIntrrupt
+		};
+
+		CanBus(const uint8_t cspin) {
+		}
+
+		template<size_t Size>
+		void appendMailBox(uint16_t id, uint8_t (&buffer)[Size]) {
+			mailBox.push_back({ id, buffer, Size });
+		}
+
+		/// @brief 通信を開始していない場合開始する
+		/// @param status 開始
+		void begin() {
+
+			if (isBegined) return;
+			bus.reset();
+			bus.setBitrate(CAN_1000KBPS);
+			bus.setNormalMode();
 			if (status == BeginSatus::EnableReadIntrrupt) {
 				pinMode(interruptPin, INPUT_PULLUP);
 				attachInterrupt(digitalPinToInterrupt(interruptPin), [] {
@@ -70,9 +107,8 @@ class CanBus {
 					}
 				}, CHANGE);
 			}
-#endif
-
 			isBegined = true;
 		}
-
 };
+
+#endif

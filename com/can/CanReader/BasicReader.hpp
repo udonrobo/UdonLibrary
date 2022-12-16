@@ -5,22 +5,16 @@
 
 #pragma once
 
-#if __has_include(<iostream>)
+#ifdef ENABLE_STL
 #	include <iostream>
 #endif
 
 
-#ifndef USE_MOTOR_H
-#define USE_MOTOR_H
-
-template<size_t Size>
-struct UseMotor {
-	static constexpr size_t value = Size + Size / 8;
-	static_assert(value < 256, "size overflow");
-};
-//template<class Ty>
-//struct UseMotor : UseMotor<sizeof(Ty)>{
-//};
+#ifndef USE_MOTOR
+#define USE_MOTOR
+constexpr uint8_t useMotor(const uint8_t value) {
+	return {};
+}
 #endif
 
 template<size_t Size>
@@ -65,11 +59,16 @@ class BasicReader {
 		/// @brief 構造体として取得
 		/// @details 構造体のバイト数と設定バイト数を合わせる(コンパイル時エラーが投げられます)
 		template<class Ty>
-		inline Ty getDataFrame() const {
+		inline Ty getMessage() const {
 			static_assert(sizeof(Ty) == Size, "Different from the number of bytes set.");
 			Ty retval;
 			memcpy(&retval, buffer, Size);
 			return retval;
+		}
+
+		/// @brief 内部バッファにアクセス
+		constexpr const uint8_t& operator[](uint8_t index) const {
+			return buffer[index];
 		}
 
 		/// @brief  バッファのconst参照を取得
@@ -86,10 +85,10 @@ class BasicReader {
 			Serial.print(end);
 		}
 
-#if __has_include(<iostream>)
+#ifdef ENABLE_STL
 		friend std::ostream& operator<<(std::ostream& ostm, const BasicReader& r) {
 			for (const auto& buf : r.buffer) {
-				ostm << buf;
+				ostm << buf << '\t';
 			}
 			return ostm;
 		}

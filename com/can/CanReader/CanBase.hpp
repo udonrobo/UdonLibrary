@@ -5,7 +5,6 @@
 
 #pragma once
 
-
 #define USE_TEENSY_4X defined(ARDUINO_TEENSY41) || defined(ARDUINO_TEENSY40)
 #define USE_TEENSY_3X defined(ARDUINO_TEENSY36) || defined(ARDUINO_TEENSY35)
 #define USE_TEENSY    USE_TEENSY_3X || USE_TEENSY_4X
