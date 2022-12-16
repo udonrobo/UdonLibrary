@@ -2,6 +2,8 @@
 ///   @brief 通信用構造体群
 ///   @date  2022/12/14
 
+#pragma once
+
 /// @brief 構造体メモリアライン除去マクロ
 #ifdef __GNUC__ /// gcc
 #define PACK(Ty) Ty __attribute__((__packed__))
