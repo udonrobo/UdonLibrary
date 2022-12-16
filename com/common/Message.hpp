@@ -196,35 +196,59 @@ namespace Message
 namespace Message
 {
 	PACK(struct ControllerPS4 {
-		bool share : 1;
-		bool l3 : 1;
-		bool r3 : 1;
-		bool start : 1;
-		bool up : 1;
-		bool right : 1;
-		bool down : 1;
-		bool left : 1;
+		uint8_t triangle : 1;
+		uint8_t circle : 1;
+		uint8_t cross : 1;
+		uint8_t square : 1;
 
-		bool l2 : 1;
-		bool r2 : 1;
-		bool l1 : 1;
-		bool r1 : 1;
-		bool triangle : 1;
-		bool circle : 1;
-		bool cross : 1;
-		bool square : 1;
+		uint8_t l1 : 1;
+		uint8_t r1 : 1;
+		uint8_t l2 : 1;
+		uint8_t r2 : 1;
+		uint8_t l3 : 1;
+		uint8_t r3 : 1;
 
-		uint8_t rightHatX;
-		uint8_t rightHatY;
-		uint8_t leftHatX;
-		uint8_t leftHatY;
-		uint8_t l2Analog;
-		uint8_t r2Analog;
+		uint8_t up : 1;
+		uint8_t right : 1;
+		uint8_t down : 1;
+		uint8_t left : 1;
 
-		bool isConnected : 1;
-		bool touch : 1;
+		uint8_t analogRightX;
+		uint8_t analogRightY;
+		uint8_t analogLeftX;
+		uint8_t analogLeftY;
+		uint8_t analogL2;
+		uint8_t analogR2;
+
+		uint8_t share : 1;
+		uint8_t start : 1;
+		uint8_t touch : 1;
+
+		uint8_t isConnected : 1;
 	});
 
-	PACK(struct ControllerPS5{});
+	/// todo
+	PACK(struct ControllerPS5 {
+		uint8_t square : 1;
+		uint8_t cross : 1;
+		uint8_t circle : 1;
+		uint8_t triangle : 1;
+
+		uint8_t l1 : 1;
+		uint8_t r1 : 1;
+		uint8_t l2 : 1;
+		uint8_t r2 : 1;
+		uint8_t l3 : 1;
+		uint8_t r3 : 1;
+
+		uint8_t create : 1;
+		uint8_t menu : 1;
+
+		uint8_t ps : 1;
+		uint8_t mic : 1;
+		uint8_t touch : 1;
+
+		uint8_t isConnected : 1;
+	});
 
 }
