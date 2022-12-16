@@ -1,4 +1,4 @@
-#define ENABLE_STL
+//#define ENABLE_STL
 
 #include "CanWriter.hpp"
 #include <Message.hpp>
@@ -6,6 +6,7 @@
 CanWriter<sizeof(Message::Motor)> writer(1);
 
 void setup() {
+	writer.setBitData(0, 0, true);
 }
 
 void loop() {

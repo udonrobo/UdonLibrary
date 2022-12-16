@@ -22,20 +22,22 @@ class BasicWriter {
 			: buffer(buffer)
 		{}
 
-		/// @brief バッファのサイズ
+		/// @brief バッファサイズ
 		static constexpr size_t size = Size;
 
 		/// @brief 配列をセット
 		/// @details 配列のバイト数と設定バイト数を合わせる
 		/// @param value 配列
-		inline void setArrayData(uint8_t (&value)[Size]) {
+		inline constexpr void
+		setArrayData(uint8_t (&value)[Size]) {
 			memcpy(buffer, &value, Size);
 		}
 
 		/// @brief 所定の番地に1byteセット
 		/// @param index バイト番地
 		/// @param value 値 (0 ~ 255)
-		inline void setByteData(const size_t index, const uint8_t value) {
+		inline constexpr void
+		setByteData(const size_t index, const uint8_t value) {
 			buffer[index] = value;
 		}
 
@@ -43,14 +45,16 @@ class BasicWriter {
 		/// @param byteIndex バイト番地
 		/// @param bitIndex  ビット番地
 		/// @param value     値 (true, false)
-		inline void setBitData(const size_t byteIndex, const size_t bitIndex, const bool value) {
+		inline constexpr void
+		setBitData(const size_t byteIndex, const size_t bitIndex, const bool value) {
 			bitWrite(buffer[byteIndex], bitIndex, value);
 		}
 
 		/// @brief 所定の番地にモーターのデータをセット
 		/// @param index モーター番地
 		/// @param value 値 (-255 ~ 255)
-		inline void setMotorData(const size_t index, const int16_t value) {
+		inline constexpr void
+		setMotorData(const size_t index, const int16_t value) {
 			setByteData(index, abs(value));
 			const uint8_t dirByteIndex = Size - 1 - index / 8;  /// 配列末端バイトから
 			const uint8_t dirBitIndex  = index % 8;             /// 先頭ビットから
@@ -62,35 +66,46 @@ class BasicWriter {
 		/// @tparam Ty    構造体の型
 		/// @param  value 送信する構造体インスタンス
 		template<class Ty>
-		inline void setMessage(const Ty& value) {
+		inline constexpr void
+		setMessage(const Ty& value) {
 			static_assert(sizeof(Ty) == Size, "Different from the number of bytes set.");
 			memcpy(buffer, &value, Size);
 		}
 
+		/// @brief 内部バッファにアクセス
+		inline constexpr uint8_t&
+		operator[](uint8_t index) {
+			return buffer[index];
+		}
+
 		/// @brief バッファの参照を取得
 		/// @return バッファの参照
-		inline uint8_t (&data())[Size] {
+		inline constexpr uint8_t
+		(&data())[Size] {
 			return buffer;
 		}
 
 		/// @brief セット値出力
 		/// @param end 最後に出力される文字
-		void show(const char end = {}) const {
+		void
+		show(const char end = {}) const {
 			for (const auto& buf : buffer)
 				Serial.print(buf), Serial.print('\t');
 			Serial.print(end);
 		}
 
 #ifdef ENABLE_STL
-		friend std::istream& operator>>(std::istream& istm, BasicWriter& r){
+		friend std::istream&
+		operator>>(std::istream& istm, BasicWriter& r) {
 			for (auto& buf : r.buffer) {
 				istm >> buf;
 			}
 			return istm;
 		}
-		friend std::ostream& operator<<(std::ostream& ostm, const BasicWriter& r){
+		friend std::ostream&
+		operator<<(std::ostream& ostm, const BasicWriter& r) {
 			for (const auto& buf : r.buffer) {
-				ostm << buf;
+				ostm << buf << '\t';
 			}
 			return ostm;
 		}
