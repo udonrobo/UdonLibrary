@@ -40,21 +40,10 @@ class BasicReader {
 			return bitRead(getByteData(byteIndex), bitIndex);
 		}
 
-		/// @brief 所定の番地にモーターのデータを取得
-		/// @param index モーター番地
-		/// @param value 値 (-255 ~ 255)
-		inline constexpr int16_t
-		getMotorData(const uint8_t index) const {
-			const uint8_t dirByteIndex = Size - 1 - index / 8;  /// 配列末端バイトから
-			const uint8_t dirBitIndex  = index % 8;             /// 先頭ビットから
-			const bool dir = bitRead(getByteData(dirByteIndex), dirBitIndex);
-			return getByteData(index) * (dir ? 1 : -1);
-		}
-
 		/// @brief 構造体として取得
 		/// @details 構造体のバイト数と設定バイト数を合わせる(コンパイル時エラーが投げられます)
 		template<class Ty>
-		inline constexpr Ty
+		inline Ty
 		getMessage() const {
 			static_assert(sizeof(Ty) == Size, "Different from the number of bytes set.");
 			Ty retval;

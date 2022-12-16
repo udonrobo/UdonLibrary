@@ -50,17 +50,6 @@ class BasicWriter {
 			bitWrite(buffer[byteIndex], bitIndex, value);
 		}
 
-		/// @brief 所定の番地にモーターのデータをセット
-		/// @param index モーター番地
-		/// @param value 値 (-255 ~ 255)
-		inline constexpr void
-		setMotorData(const size_t index, const int16_t value) {
-			setByteData(index, abs(value));
-			const uint8_t dirByteIndex = Size - 1 - index / 8;  /// 配列末端バイトから
-			const uint8_t dirBitIndex  = index % 8;             /// 先頭ビットから
-			setBitData(dirByteIndex, dirBitIndex, value > 0);
-		}
-
 		/// @brief 送信する構造体をセット
 		/// @details インスタンスのバイト数と設定バイト数を合わせる(コンパイル時エラーが投げられます)
 		/// @tparam Ty    構造体の型

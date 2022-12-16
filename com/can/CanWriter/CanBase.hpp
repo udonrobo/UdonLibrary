@@ -10,9 +10,9 @@
 #define USE_TEENSY    USE_TEENSY_3X || USE_TEENSY_4X
 
 #ifdef USE_TEENSY_4X
-#	define CAN_BAS CAN1
+#	define CAN_BUS CAN1
 #elif USE_TEENSY_3X
-#	define CAN_BAS CAN0
+#	define CAN_BUS CAN0
 #endif
 
 #if USE_TEENSY
@@ -41,7 +41,7 @@ class _CanBase {
 		};
 
 #if USE_TEENSY
-		using Can = FlexCAN_T4<CAN_BAS, RX_SIZE_256, TX_SIZE_256>;
+		using Can = FlexCAN_T4<CAN_BUS, RX_SIZE_256, TX_SIZE_256>;
 #else
 		using Can = MCP2515;
 		static constexpr uint8_t interruptPin = 2;
@@ -126,5 +126,5 @@ template <class Dum>CanBase::Can _CanBase<Dum>::can(CanBase::csPin);
 #undef USE_TEENSY_4X
 #undef USE_TEENSY_3X
 #undef USE_TEENSY
-#undef CAN_BAS
+#undef CAN_BUS
 #undef USE_READER
