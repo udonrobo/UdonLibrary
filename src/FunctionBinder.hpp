@@ -24,21 +24,36 @@ struct LinearList {
 
 	/// @brief 要素を追加する
 	void push_back(const T& r) {
-		if (tail)
-			tail = tail->next = new Node{ r };
-		else
-			head = tail       = new Node{ r };
+		if (tail) {
+			tail = tail->next = new Node;
+			tail->value = r;
+		}
+		else {
+			head = tail = new Node;
+			head->value = r;
+		}
 	}
 
 	/// @brief 要素走査用
 	struct Iterator {
 		Node* p;
-		T& operator*() { return p->value; }
-		Iterator& operator++() { p = p->next; return *this; }
-		bool operator!=(const Iterator& r) { return p != r.p; }
+		T& operator*() {
+			return p->value;
+		}
+		Iterator& operator++() {
+			p = p->next;
+			return *this;
+		}
+		bool operator!=(const Iterator& r) {
+			return p != r.p;
+		}
 	};
-	Iterator begin() { return { head }; }
-	Iterator end  () { return tail ? Iterator{ tail->next } : Iterator{ head }; }
+	Iterator begin() {
+		return { head };
+	}
+	Iterator end  () {
+		return tail ? Iterator{ tail->next } : Iterator{ head };
+	}
 };
 
 
