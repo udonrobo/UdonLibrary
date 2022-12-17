@@ -5,9 +5,15 @@
 
 #pragma once
 
-#define USE_TEENSY_4X defined(ARDUINO_TEENSY41) || defined(ARDUINO_TEENSY40)
-#define USE_TEENSY_3X defined(ARDUINO_TEENSY36) || defined(ARDUINO_TEENSY35)
-#define USE_TEENSY    USE_TEENSY_3X || USE_TEENSY_4X
+#if defined(ARDUINO_TEENSY41) || defined(ARDUINO_TEENSY40)
+#	define USE_TEENSY_4X
+#endif
+#if defined(ARDUINO_TEENSY36) || defined(ARDUINO_TEENSY35)
+#	define USE_TEENSY_3X
+#endif
+#if defined(USE_TEENSY_3X) || defined(USE_TEENSY_4X)
+#	define USE_TEENSY
+#endif
 
 #ifdef USE_TEENSY_4X
 #	define CAN_BUS CAN1
@@ -15,7 +21,7 @@
 #	define CAN_BUS CAN0
 #endif
 
-#if USE_TEENSY
+#ifdef USE_TEENSY
 #	include <FlexCAN_T4.h>  /// https://github.com/tonton81/FlexCAN_T4
 #	include <IntervalTimer.h>
 #else
@@ -25,7 +31,7 @@
 /// 受信割り込みを行うか判別する
 #define USE_READER __has_include("CanReader.hpp")
 
-#if USE_READER
+#ifdef USE_READER
 #	include "FunctionBinder.hpp"
 #endif
 
@@ -40,7 +46,7 @@ class _CanBase {
 			constexpr static uint8_t dataLength = 7;
 		};
 
-#if USE_TEENSY
+#ifdef USE_TEENSY
 		using Can = FlexCAN_T4<CAN_BUS, RX_SIZE_256, TX_SIZE_256>;
 #else
 		using Can = MCP2515;
@@ -48,19 +54,19 @@ class _CanBase {
 		static constexpr uint8_t csPin        = 10;
 #endif
 
-#if USE_READER
+#ifdef USE_READER
 		using FunctionBinder_t = FunctionBinder<void(const Message_t&)>;
 #endif
 		static Can can;
 
 		static void begin() {
-#if USE_TEENSY
+#ifdef USE_TEENSY
 			can.begin();
 			//			can.setClock(CLK_60MHz);
 			can.setBaudRate(1000000);
 			can.enableFIFO();
 			can.enableFIFOInterrupt();
-#	if USE_READER
+#	ifdef USE_READER
 			can.onReceive([](const CAN_message_t& msg) {
 				FunctionBinder_t::bind({
 					const_cast<uint32_t&>(msg.id     ),  /// _In_ uint8_t id
@@ -76,7 +82,7 @@ class _CanBase {
 			can.reset();
 			can.setBitrate(CAN_1000KBPS);
 			can.setNormalMode();
-#	if USE_READER
+#	ifdef USE_READER
 			pinMode(interruptPin, INPUT_PULLUP);
 			attachInterrupt(digitalPinToInterrupt(interruptPin), [] {
 				can_frame msg;
@@ -95,7 +101,7 @@ class _CanBase {
 
 		/// @brief 送信処理
 		static void write(void (*callback)(Message_t&&, void*), void* _this) {
-#if USE_TEENSY
+#ifdef USE_TEENSY
 			CAN_message_t libmsg;
 			callback({
 				libmsg.id     ,  /// _Out_ uint8_t id
@@ -117,7 +123,7 @@ class _CanBase {
 
 using CanBase = _CanBase<void>;
 
-#if USE_TEENSY
+#ifdef USE_TEENSY
 template <class Dum>CanBase::Can _CanBase<Dum>::can;
 #else
 template <class Dum>CanBase::Can _CanBase<Dum>::can(CanBase::csPin);
