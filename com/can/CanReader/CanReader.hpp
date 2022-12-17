@@ -29,9 +29,9 @@ class CanReader
 		{
 			CanBase::begin();
 		}
-
-		explicit operator bool() const {
-			return millis() - lastReceiveMs > 30;
+		
+		bool isOpen() const {
+			return millis() - lastReceiveMs < 30;
 		}
 
 		void show(const char end = {}) const {

@@ -15,6 +15,10 @@ void setup() {
 }
 
 void loop() {
+	if(reader.isOpen()) {
+		
+	}
+	
 	const auto data = reader.getMessage<Message::Motor>();  /// 受信データ表示
 	Serial.println(data.power);
 	delay(10);
