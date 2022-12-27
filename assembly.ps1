@@ -11,6 +11,8 @@ $sources =
 	".\com\can\CanWriter\BasicWriter.hpp",
 	".\com\can\CanWriter\CanWriter.hpp",
 	".\com\can\CanReader\FunctionBinder.hpp",
+	".\com\i2c\I2cSlaveReader\I2cSlaveReader.hpp",
+	".\com\i2c\I2cSlaveWriter\I2cSlaveWriter.hpp",
 	".\sensor\Gyro\Gyro.hpp",
 	".\sensor\Measure\Measure.hpp"
 
