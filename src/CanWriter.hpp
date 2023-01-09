@@ -6,14 +6,13 @@
 #pragma once
 
 #include "CanBase.hpp"
-#include "BasicWriter.hpp"
 
-
-template<uint8_t Size>
+template<class MessageTy>
 class CanWriter
 	: private CanBase
-	, public BasicWriter<Size>
 {
+
+		static constexpr size_t Size = sizeof(MessageTy);
 		const uint16_t id;
 		uint8_t index;
 		uint8_t buffer[Size];
@@ -21,12 +20,15 @@ class CanWriter
 
 		/// @param id 信号識別ID ~127
 		CanWriter(const uint16_t id) noexcept
-			: BasicWriter<Size>(buffer)
-			, id(id)
+			: id(id)
 			, index()
 			, buffer{}
 		{
 			CanBase::begin();
+		}
+
+		void setMessage(const MessageTy& message) {
+			memcpy(buffer, &message, sizeof message);
 		}
 
 		/// @brief 送信

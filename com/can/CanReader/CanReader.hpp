@@ -6,44 +6,38 @@
 #pragma once
 
 #include "CanBase.hpp"
-#include "BasicReader.hpp"
 #include "FunctionBinder.hpp"
 
-template<uint8_t Size>
+template<class MessageTy>
 class CanReader
 	: private CanBase
 	, private CanBase::FunctionBinder_t
-	, public BasicReader<Size>
 {
+		static constexpr size_t Size = sizeof(MessageTy);
 		const uint16_t id;
 		uint8_t buffer[Size];
 		uint32_t lastReceiveMs;
 	public:
 
 		/// @param id 信号識別ID ~127
-		CanReader(const uint16_t id) noexcept
-			: BasicReader<Size>(buffer)
-			, id(id)
+		CanReader(const uint16_t id)
+			: id(id)
 			, buffer{}
 			, lastReceiveMs()
 		{
 			CanBase::begin();
 		}
-		
+
 		bool isOpen() const {
 			return millis() - lastReceiveMs < 30;
 		}
 
-		void show(const char end = {}) const {
-			for (const auto& buf : buffer)
-				Serial.print(buf), Serial.print('\t');
-			Serial.print(end);
+		MessageTy getMessage() const {
+			MessageTy retval;
+			memcpy(&retval, buffer, Size);
+			return retval;
 		}
-		void showMotor(const char end = {}) const {
-			for (uint8_t i = 0; i < Size - 1 - Size / 8; i++)
-				Serial.print(BasicReader<Size>::getMotorData(i)), Serial.print('\t');
-			Serial.print(end);
-		}
+
 	private:
 		/// @brief 受信割り込み
 		void callback(const Message_t& msg) override {
