@@ -6,37 +6,34 @@
 #pragma once
 
 #include "CanBase.hpp"
+#include "CanBus.hpp"
 
-template<class MessageTy>
-class CanWriter
-	: private CanBase
-{
+template<class MsgTy>
+class CanWriter {
 
-		static constexpr size_t Size = sizeof(MessageTy);
 		const uint16_t id;
-		uint8_t index;
-		uint8_t buffer[Size];
+		uint8_t buffer[sizeof(MsgTy)];
+
 	public:
 
-		/// @param id 信号識別ID ~127
-		CanWriter(const uint16_t id) noexcept
+		/// @param id 信号識別ID
+		CanWriter(BusInterface& bus, const uint16_t id)
 			: id(id)
-			, index()
-			, buffer{}
+			, buffer()
 		{
-			CanBase::begin();
+			bus.joinWriter(id, buffer);
 		}
 
-		void setMessage(const MessageTy& message) {
-			memcpy(buffer, &message, sizeof message);
+		void setMessage(const MsgTy& message) {
+			memcpy(buffer, &message, sizeof buffer);
 		}
 
 		/// @brief 送信
 		void update() {
-			constexpr uint8_t packetSize = ceil(Size / 7.0);  /// 1パケットにデータ7byte
+			constexpr uint8_t packetSize = ceil(sizeof buffer / 7.0);  /// 1パケットにデータ7byte
 
 			/// パケットに分けて送信
-			for (index = 0; index < packetSize; index++) {
+			for (size_t index = 0; index < packetSize; index++) {
 
 				CanBase::write([](Message_t&& msg, void* p) {
 					CanWriter* _this = static_cast<CanWriter*>(p);
