@@ -1,7 +1,9 @@
+#include "CanBus.hpp"
 #include "CanWriter.hpp"
 #include <Message.hpp>
 
-CanBus<CAN1>
+
+CanBus<CAN1> bus;
 
 CanWriter<Message::Motor> writer(bus, 0);
 
