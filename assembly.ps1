@@ -4,17 +4,25 @@
 $sources =
 	".\actuator\motor\Motor\Motor.hpp",
 	".\algorithm\Utility.hpp",
+
 	".\com\common\Message.hpp",
 	".\com\Common\BasicReader.hpp",
 	".\com\Common\BasicWriter.hpp",
-	".\com\can\CanReader\CanBase.hpp",
+
 	".\com\can\CanReader\CanReader.hpp",
 	".\com\can\CanWriter\CanWriter.hpp",
-	".\com\can\CanReader\FunctionBinder.hpp",
+	".\com\can\common\CanBus.hpp",
+	".\com\can\common\CanBusSpi.hpp",
+	".\com\can\common\CanBusTeensy.hpp",
+	".\com\can\common\CanCommon.hpp",
+
 	".\com\i2c\I2cSlaveReader\I2cSlaveReader.hpp",
 	".\com\i2c\I2cSlaveWriter\I2cSlaveWriter.hpp",
+
 	".\sensor\Gyro\Gyro.hpp",
-	".\sensor\Measure\Measure.hpp"
+	".\sensor\Measure\Measure.hpp",
+
+	".\stl\list.hpp"
 
 ## 収集フォルダ
 $target = ".\src"
