@@ -95,7 +95,7 @@ class CanBusTeensy {
 				};
 				for (auto && it = self->writers.begin(); it != self->writers.end(); )
 				{
-					if (it->instanceAlived)
+					if (*it->instanceAlived)
 					{
 						event(*it);
 						++it;
@@ -162,7 +162,7 @@ class CanBusTeensy {
 				{
 					if (msg.id == it->id)
 					{
-						if (it->instanceAlived)
+						if (*it->instanceAlived)
 						{
 							event(*it);
 							++it;
