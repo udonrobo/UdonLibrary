@@ -5,53 +5,37 @@
 
 #pragma once
 
-#include "CanBase.hpp"
-
 template<class MessageTy>
-class CanWriter
-	: private CanBase
-{
+class CanWriter {
 
-		static constexpr size_t Size = sizeof(MessageTy);
 		const uint16_t id;
-		uint8_t index;
-		uint8_t buffer[Size];
+		uint8_t buffer[sizeof(MessageTy)];
+		uint32_t lastSendMs;
+		bool* instanceAlived;
+
 	public:
 
-		/// @param id 信号識別ID ~127
-		CanWriter(const uint16_t id) noexcept
+		/// @param id 信号識別ID
+		template<class BusTy>
+		CanWriter(BusTy& bus, const uint16_t id)
 			: id(id)
-			, index()
-			, buffer{}
+			, buffer()
+			, lastSendMs()
+			, instanceAlived(bus.joinWriter(id, buffer, lastSendMs))
+		{}
+
+		~CanWriter() noexcept
 		{
-			CanBase::begin();
+			*instanceAlived = false;
 		}
 
-		void setMessage(const MessageTy& message) {
-			memcpy(buffer, &message, sizeof message);
+		operator bool() const noexcept {
+			return millis() - lastSendMs < 50;
 		}
 
-		/// @brief 送信
-		void update() {
-			constexpr uint8_t packetSize = ceil(Size / 7.0);  /// 1パケットにデータ7byte
-
-			/// パケットに分けて送信
-			for (index = 0; index < packetSize; index++) {
-
-				CanBase::write([](Message_t&& msg, void* p) {
-					CanWriter* _this = static_cast<CanWriter*>(p);
-					msg.id    = _this->id;
-					msg.index = _this->index;
-					for (uint8_t i = 0; i < Message_t::dataLength; i++) {
-						const uint8_t bufferIndex = i + _this->index * Message_t::dataLength;
-						if (bufferIndex < Size)
-							msg.data[i] = _this->buffer[bufferIndex];
-						else
-							break;
-					}
-				}, this);
-
-			}
+		void setMessage(const MessageTy& message) noexcept
+		{
+			memcpy(buffer, &message, sizeof buffer);
 		}
 
 };

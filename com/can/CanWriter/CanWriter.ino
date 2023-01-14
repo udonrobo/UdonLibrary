@@ -1,13 +1,16 @@
-#include "CanWriter.hpp"
-#include <Message.hpp>
+#include "CanCommon.hpp"
 
-CanWriter<Message::Motor> writer(0);
+CanBusTeensy<CAN1> bus;
+CanWriter<Message::Motor> writer(bus, 0);
 
 void setup() {
+	bus.begin();
 }
 
 void loop() {
-	writer.setMessage({ -124 }); /// データセット
-	writer.update();        /// 配信
+	
+	writer.setMessage({ -100 });
+
+	bus.update();
 	delay(10);
 }

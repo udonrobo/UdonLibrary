@@ -5,51 +5,36 @@
 
 #pragma once
 
-#include "CanBase.hpp"
-#include "FunctionBinder.hpp"
-
 template<class MessageTy>
-class CanReader
-	: private CanBase
-	, private CanBase::FunctionBinder_t
-{
-		static constexpr size_t Size = sizeof(MessageTy);
+class CanReader {
+	
 		const uint16_t id;
-		uint8_t buffer[Size];
+		uint8_t buffer[sizeof(MessageTy)];
 		uint32_t lastReceiveMs;
+		bool* instanceAlived;
+		
 	public:
 
 		/// @param id 信号識別ID ~127
-		CanReader(const uint16_t id)
+		template<class BusTy>
+		CanReader(BusTy& bus, const uint16_t id)
 			: id(id)
-			, buffer{}
+			, buffer()
 			, lastReceiveMs()
-		{
-			CanBase::begin();
+			, instanceAlived(bus.joinReader(id, buffer, lastReceiveMs))
+		{}
+
+		~CanReader() noexcept {
+			*instanceAlived = false;
 		}
 
-		bool isOpen() const {
-			return millis() - lastReceiveMs < 30;
+		operator bool() const noexcept {
+			return millis() - lastReceiveMs < 50;
 		}
 
-		MessageTy getMessage() const {
+		MessageTy getMessage() const noexcept {
 			MessageTy retval;
-			memcpy(&retval, buffer, Size);
+			memcpy(&retval, buffer, sizeof retval);
 			return retval;
-		}
-
-	private:
-		/// @brief 受信割り込み
-		void callback(const Message_t& msg) override {
-			if (msg.id == id) {
-				for (uint8_t i = 0; i < Message_t::dataLength; i++) {
-					const uint8_t bufIndex = i + msg.index * Message_t::dataLength;
-					if (bufIndex < Size)  // 配列範囲
-						buffer[bufIndex] = msg.data[i];
-					else
-						break;
-				}
-				lastReceiveMs = millis();
-			}
 		}
 };

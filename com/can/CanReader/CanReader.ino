@@ -1,19 +1,21 @@
-#include "CanReader.hpp"
-#include <Message.hpp>
+#include "CanCommon.hpp"
 
-CanReader<Message::Motor> reader(0);
+CanBusTeensy<CAN1> bus;
+CanReader<Message::Motor> reader0(bus, 0);
 
 void setup() {
-	Serial.begin(115200);
+	bus.begin();
 }
 
 void loop() {
-	if (reader.isOpen()) {
-
-		const auto data = reader.getMessage();  /// 受信データ表示
-
-		Serial.println(data.power);
-
+	if (reader0)
+	{
+		Serial.println(reader0.getMessage().power);
 	}
+	else
+	{
+		Serial.println("error");
+	}
+	bus.update();
 	delay(10);
 }
