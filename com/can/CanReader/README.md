@@ -16,7 +16,7 @@ CAN 通信受信クラス Subscriber
 
     > インスタンス(ID) : ~2048 (11bit 分)
     >
-    > 各インスタンス : ~255byte (8bit 分)
+    > 通信容量 : ~255byte (8bit 分)
 
 ## Data
 
@@ -92,7 +92,7 @@ void loop() {
 }
 ```
 
-# Structure
+# Summary
 
 ## format
 
