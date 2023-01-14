@@ -2,16 +2,24 @@
 #include "CanWriter.hpp"
 #include <Message.hpp>
 
+struct Hoge {
+	uint8_t data[20];
+};
 
 CanBus<CAN1> bus;
-
-CanWriter<Message::Motor> writer(bus, 0);
+CanWriter<Hoge> writer(bus, 0);
 
 void setup() {
+	bus.begin();
 }
 
 void loop() {
-	writer.setMessage({ -124 }); /// データセット
-	writer.update();        /// 配信
+	Hoge hoge;
+	for (auto && it : hoge.data) {
+		it = millis();
+	}
+	writer.setMessage(hoge);
+
+	bus.update();
 	delay(10);
 }

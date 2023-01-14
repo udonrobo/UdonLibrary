@@ -1,19 +1,24 @@
 #include "CanReader.hpp"
+#include "CanBus.hpp"
 #include <Message.hpp>
 
-CanReader<Message::Motor> reader(0);
+struct Hoge {
+	uint8_t data[20];
+};
+
+CanBus<CAN1> bus;
+CanReader<Hoge> reader0(bus, 0);
+
 
 void setup() {
-	Serial.begin(115200);
+	bus.begin();
 }
 
 void loop() {
-	if (reader.isOpen()) {
-
-		const auto data = reader.getMessage();  /// 受信データ表示
-
-		Serial.println(data.power);
-
+	for (auto && it : reader0.getMessage().data) {
+		Serial.print(it);  /// 受信データ表示
+		Serial.print('\t');
 	}
+	Serial.println();
 	delay(10);
 }

@@ -23,9 +23,9 @@ class CanBus {
 		/// @brief ノード(Reader,Writer)を管理
 		struct Node {
 			uint16_t id;           // ノードID
-			uint8_t* buffer;       // Reader,Writerクラスのバッファに対するポインタ
-			size_t length;         // バッファの長さ
-			bool* instanceAlived;  // ノードが生存しているか(ノードがデストラクトされるタイミングでfalseになります)
+			uint8_t* buffer;       // Reader,Writerのバッファを指すポインタ
+			size_t length;         // バッファ長
+			bool* instanceAlived;  // ノードが生存しているか(ノードがデストラクトされるとfalse)
 		};
 
 		FlexCAN_T4<Bus, RX_SIZE_256, TX_SIZE_256> bus;
@@ -95,6 +95,10 @@ class CanBus {
 			{
 				enableReaderIntterrupt();
 			}
+			if (writers.size())
+			{
+				enableWriterIntterrupt();
+			}
 		}
 
 		void enableReaderIntterrupt() {
@@ -114,6 +118,7 @@ class CanBus {
 							reader.buffer[bufIndex] = msg.buf[i + 1];
 						else
 							break;
+							Serial.print(msg.buf[i + 1]);
 					}
 				};
 				for (auto && it = self->readers.begin(); it != self->readers.end(); )
@@ -138,15 +143,15 @@ class CanBus {
 			// 受信スレッド立ち上げ
 			readerThread.begin(
 			    [] { self->bus.events(); },
-			    100
+			    1000
 			);
 		}
 
-		void update() {
+		void enableWriterIntterrupt() {
 
-			if (writers.size())
-			{
-				Serial.println("send");
+			// 送信スレッド立ち上げ
+			writerThread.begin(
+			[] {
 				const auto event = [](auto & reader) {
 					// 一度に8バイトしか送れないため、パケットに分割し送信
 					CAN_message_t msg;
@@ -181,7 +186,10 @@ class CanBus {
 						it = self->writers.erase(it);
 					}
 				}
-			}
+			},
+			10000
+			);
+
 		}
 
 };

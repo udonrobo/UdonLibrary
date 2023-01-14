@@ -5,16 +5,11 @@
 
 #pragma once
 
-#include "CanBase.hpp"
-#include "CanBus.hpp"
-
-#include <memory>
-
-template<class MsgTy>
+template<class MessageTy>
 class CanWriter {
 
 		const uint16_t id;
-		uint8_t buffer[sizeof(MsgTy)];
+		uint8_t buffer[sizeof(MessageTy)];
 		bool* instanceAlived;
 
 	public:
@@ -24,21 +19,16 @@ class CanWriter {
 		CanWriter(BusTy& bus, const uint16_t id)
 			: id(id)
 			, buffer()
-			, instanceAlived(new bool(true))
 		{
-			bus.joinWriter(id, buffer, instanceAlived);
+			instanceAlived = bus.joinWriter(id, buffer);
 		}
 
 		~CanWriter() {
 			*instanceAlived = false;
 		}
 
-		void setMessage(const MsgTy& message) {
+		void setMessage(const MessageTy& message) {
 			memcpy(buffer, &message, sizeof buffer);
-		}
-
-		/// @brief 送信
-		void update() {
 		}
 
 };
