@@ -10,6 +10,7 @@ class CanReader {
 	
 		const uint16_t id;
 		uint8_t buffer[sizeof(MessageTy)];
+		uint32_t lastReceiveMs;
 		bool* instanceAlived;
 		
 	public:
@@ -18,16 +19,20 @@ class CanReader {
 		template<class BusTy>
 		CanReader(BusTy& bus, const uint16_t id)
 			: id(id)
-			, buffer{}
-		{
-			instanceAlived = bus.joinReader(id, buffer);
-		}
+			, buffer()
+			, lastReceiveMs()
+			, instanceAlived(bus.joinReader(id, buffer, lastReceiveMs))
+		{}
 
-		~CanReader() {
+		~CanReader() noexcept {
 			*instanceAlived = false;
 		}
 
-		MessageTy getMessage() const {
+		operator bool() const noexcept {
+			return millis() - lastReceiveMs < 50;
+		}
+
+		MessageTy getMessage() const noexcept {
 			MessageTy retval;
 			memcpy(&retval, buffer, sizeof retval);
 			return retval;

@@ -10,6 +10,7 @@ class CanWriter {
 
 		const uint16_t id;
 		uint8_t buffer[sizeof(MessageTy)];
+		uint32_t lastSendMs;
 		bool* instanceAlived;
 
 	public:
@@ -19,15 +20,21 @@ class CanWriter {
 		CanWriter(BusTy& bus, const uint16_t id)
 			: id(id)
 			, buffer()
-		{
-			instanceAlived = bus.joinWriter(id, buffer);
-		}
+			, lastSendMs()
+			, instanceAlived(bus.joinWriter(id, buffer, lastSendMs))
+		{}
 
-		~CanWriter() {
+		~CanWriter() noexcept
+		{
 			*instanceAlived = false;
 		}
 
-		void setMessage(const MessageTy& message) {
+		operator bool() const noexcept {
+			return millis() - lastSendMs < 50;
+		}
+
+		void setMessage(const MessageTy& message) noexcept
+		{
 			memcpy(buffer, &message, sizeof buffer);
 		}
 
