@@ -15,6 +15,8 @@ class CanBusSpi {
 
 		MCP2515 bus;
 		static CanBusSpi* self;
+		
+		uint32_t lastWriteUs;     // 最終送信時刻
 
 		/// @brief ノード(Reader,Writer)を管理
 		struct Node {
@@ -35,6 +37,9 @@ class CanBusSpi {
 		/// @remark 動作クロックは CPUクロック/2 が最大値
 		CanBusSpi(SPIClass& spi, uint32_t spiClock = 10000000)
 			: bus(Cs, spiClock, &spi)
+			, lastWriteUs()
+			, readers()
+			, writers()
 		{
 			self = this;
 		}
@@ -67,9 +72,11 @@ class CanBusSpi {
 		}
 
 		/// @brief バスを更新
-		void update()
+		/// @param {writeIntervalUs} 送信間隔
+		void update(uint32_t writeIntervalUs = 5000)
 		{
-			if (writers.size())
+			const auto now = micros();
+			if (writers.size() && now - lastWriteUs >= writeIntervalUs)
 			{
 				const auto event = [](Node& writer) {
 					// 一度に8バイトしか送れないため、パケットに分割し送信
@@ -107,6 +114,7 @@ class CanBusSpi {
 						it = self->writers.erase(it);
 					}
 				}
+				lastWriteUs = now;
 			}
 		}
 
