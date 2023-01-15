@@ -33,9 +33,9 @@
 
         通信関連
 
-        [CAN通信](./com/can/README.md)
+        [CAN](./com/can/README.md)
 
-        [I2C](./com/i2c/README.md)
+        <!-- [I2C](./com/i2c/README.md) -->
 
     -   sensor
 
