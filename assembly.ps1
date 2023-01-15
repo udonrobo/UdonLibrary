@@ -11,10 +11,10 @@ $sources =
 
 	".\com\can\CanReader\CanReader.hpp",
 	".\com\can\CanWriter\CanWriter.hpp",
-	".\com\can\common\CanBus.hpp",
-	".\com\can\common\CanBusSpi.hpp",
-	".\com\can\common\CanBusTeensy.hpp",
-	".\com\can\common\CanCommon.hpp",
+	".\com\can\CanBus\CanBus.hpp",
+	".\com\can\CanBus\CanBusSpi.hpp",
+	".\com\can\CanBus\CanBusTeensy.hpp",
+	".\com\can\CanBus\CanCommon.hpp",
 
 	".\com\i2c\I2cSlaveReader\I2cSlaveReader.hpp",
 	".\com\i2c\I2cSlaveWriter\I2cSlaveWriter.hpp",
