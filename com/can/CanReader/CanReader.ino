@@ -1,16 +1,16 @@
 #include "CanCommon.hpp"
 
 CanBusTeensy<CAN1> bus;
-CanReader<Message::Motor> reader0(bus, 0);
+CanReader<Message::Motor> reader(bus, 0);
 
 void setup() {
 	bus.begin();
 }
 
 void loop() {
-	if (reader0)
+	if (reader)
 	{
-		Serial.println(reader0.getMessage().power);
+		Serial.println(reader.getMessage().power);
 	}
 	else
 	{
