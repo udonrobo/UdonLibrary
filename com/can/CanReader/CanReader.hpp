@@ -7,12 +7,12 @@
 
 template<class MessageTy>
 class CanReader {
-	
+
 		const uint32_t id;
 		uint8_t buffer[sizeof(MessageTy)];
 		uint32_t lastReceiveMs;
 		bool* instanceAlived;
-		
+
 	public:
 
 		/// @param id 信号識別番号
@@ -40,6 +40,6 @@ class CanReader {
 
 		void show(char end = {}) const noexcept {
 			getMessage().show();
-			Serial.println(end);
+			Serial.print(end);
 		}
 };

@@ -42,7 +42,7 @@ class CanWriter {
 			MessageTy msg;
 			memcpy(&msg, buffer, sizeof msg);
 			msg.show();
-			Serial.println(end);
+			Serial.print(end);
 		}
 
 };
