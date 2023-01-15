@@ -35,8 +35,8 @@ void setup() {
 
 void loop() {
 
-    Message::Motor msg;
-    msg.power = -123;
+	Message::Motor msg;
+	msg.power = -123;
 	writer.setMessage(msg);
 
 	bus.update();

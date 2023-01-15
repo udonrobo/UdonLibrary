@@ -16,6 +16,5 @@ void loop() {
 	{
 		Serial.println("error");
 	}
-	bus.update();
 	delay(10);
 }
