@@ -1,5 +1,5 @@
 /// @file   CanWriter.hpp
-/// @date   2022/09/27
+/// @date   2023/01/15
 /// @brief  CAN通信送信クラス
 /// @author 大河 祐介
 
@@ -8,7 +8,7 @@
 template<class MessageTy>
 class CanWriter {
 
-		const uint16_t id;
+		const uint32_t id;
 		uint8_t buffer[sizeof(MessageTy)];
 		uint32_t lastSendMs;
 		bool* instanceAlived;
@@ -17,7 +17,7 @@ class CanWriter {
 
 		/// @param id 信号識別ID
 		template<class BusTy>
-		CanWriter(BusTy& bus, const uint16_t id)
+		CanWriter(BusTy& bus, const uint32_t id)
 			: id(id)
 			, buffer()
 			, lastSendMs()

@@ -1,5 +1,5 @@
 /// @file   CanReader.hpp
-/// @date   2022/09/27
+/// @date   2023/01/15
 /// @brief  CAN通信受信クラス
 /// @author 大河 祐介
 
@@ -8,16 +8,16 @@
 template<class MessageTy>
 class CanReader {
 	
-		const uint16_t id;
+		const uint32_t id;
 		uint8_t buffer[sizeof(MessageTy)];
 		uint32_t lastReceiveMs;
 		bool* instanceAlived;
 		
 	public:
 
-		/// @param id 信号識別ID ~127
+		/// @param id 信号識別番号
 		template<class BusTy>
-		CanReader(BusTy& bus, const uint16_t id)
+		CanReader(BusTy& bus, const uint32_t id)
 			: id(id)
 			, buffer()
 			, lastReceiveMs()
