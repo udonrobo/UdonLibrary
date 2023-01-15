@@ -17,7 +17,9 @@ class CanBusTeensy {
 
 		FlexCAN_T4<Bus, RX_SIZE_256, TX_SIZE_256> bus;
 		static CanBusTeensy* self;
-		IntervalTimer readerIsr;
+
+		IntervalTimer readerIsr;  // 送信割り込み用タイマー
+		uint32_t lastWriteUs;     // 最終送信時刻
 
 		/// @brief ノード(Reader,Writer)を管理
 		struct Node {
@@ -33,7 +35,12 @@ class CanBusTeensy {
 
 	public:
 
-		CanBusTeensy() {
+		CanBusTeensy()
+			: bus()
+			, lastWriteUs()
+			, readers()
+			, writers()
+		{
 			self = this;
 		}
 
@@ -67,11 +74,13 @@ class CanBusTeensy {
 		}
 
 		/// @brief バスを更新
-		void update()
+		/// @param {writeIntervalUs} 送信間隔
+		void update(uint32_t writeIntervalUs = 5000)
 		{
-			if (writers.size())
+			const auto now = micros();
+			if (writers.size() && now - lastWriteUs >= writeIntervalUs)
 			{
-				const auto event = [](Node& writer) {
+				const auto event = [&now](Node & writer) {
 					// 一度に8バイトしか送れないため、パケットに分割し送信
 					for (size_t index = 0; index < ceil(writer.size / 7.0); index++)
 					{
@@ -91,7 +100,7 @@ class CanBusTeensy {
 						// バスに送信
 						while (!self->bus.write(msg));
 					}
-					*writer.timestamp = millis();
+					*writer.timestamp = now;
 				};
 				for (auto && it = self->writers.begin(); it != self->writers.end(); )
 				{
@@ -107,6 +116,7 @@ class CanBusTeensy {
 						it = self->writers.erase(it);
 					}
 				}
+				lastWriteUs = now;
 			}
 		}
 
@@ -142,7 +152,7 @@ class CanBusTeensy {
 		void enableReaderIntterrupt()
 		{
 			bus.onReceive([](const CAN_message_t& msg) {
-				const auto event = [&msg](Node& reader)
+				const auto event = [&msg](Node & reader)
 				{
 					// 先頭1バイト : パケット番号
 					const uint8_t index = msg.buf[0];

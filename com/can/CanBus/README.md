@@ -31,7 +31,11 @@ flowchart LR
 
     -   通信更新
 
-        `void CanBusTeensy::update()`
+        -   `void CanBusTeensy::update(uint32_t writeIntervalUs = 5000)`
+
+            `@param {writeIntervalUs}` 送信間隔
+
+            バスに大量のデータが流れないよう、ループ周期に関係なく設定間隔以下で送信されないようになっています。
 
 -   Sample
 
@@ -80,7 +84,11 @@ flowchart LR
 
     -   通信更新
 
-        `void CanBusSpi::update()`
+        -   `void CanBusTeensy::update(uint32_t writeIntervalUs = 5000)`
+
+            `@param {writeIntervalUs}` 送信間隔
+
+            バスに大量のデータが流れないよう、ループ周期に関係なく設定間隔以下で送信されないようになっています。
 
 -   Sample
 
