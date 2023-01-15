@@ -1,4 +1,4 @@
-/// @file   CanBusTeensy.hpp
+/// @file   CanBusSpi.hpp
 /// @date   2023/01/13
 /// @brief  FlexCAN_T4ライブラリを用いたCANバス管理クラス
 /// @flow   [CPU] <--SPI--> [CANコントローラ] <--CAN[TX/RX]--> [CANトランシーバ] <--CAN[H/L]--> [BUS]
