@@ -2,168 +2,85 @@
 
 ## Description
 
-CAN 通信送信クラス Publisher
+CAN 通信構造体送信クラス
 
 -   対応マイコン
 
-    > teensy3x
-    >
-    > teensy4x
-    >
-    > arduino(予定)
+    バスクラスに依存します。
 
 -   制限
 
-    > インスタンス(ID) : ~2048 (11bit 分)
-    >
-    > 各インスタンス : ~255byte (8bit 分)
+    ID 数 : 0~2048 (2^11)
+
+    通信容量 : 0~1785byte (255\*7)
 
 ## Data
 
--   `@date` 2022/10/29
+-   `@date` 2023/01/15
 -   `@author` 大河 祐介
 
 # Usage
 
--   `CanBase.h` を `CanWriter.h` と同ディレクトリ上に配置する必要があります
+`CanBusTeensy` バスを使用し、 `Message::Motor` 構造体を使用してモーターの情報を送信する例
 
--   外部ライブラリを使用しています (Github)
+```cpp
+#include "CanCommon.hpp"
 
-    > teensy : [FlexCAN_T4](https://github.com/tonton81/FlexCAN_T4) [IntervalTimer](https://github.com/loglow/IntervalTimer)
-    >
-    > arduino : [mcp2515](https://github.com/autowp/arduino-mcp2515)
+CanBusTeensy<CAN1> bus;
+CanWriter<Message::Motor> writer(bus, 0);
+
+void setup() {
+	bus.begin();
+}
+
+void loop() {
+
+    Message::Motor msg;
+    msg.power = -123;
+	writer.setMessage(msg);
+
+	bus.update();
+	delay(10);
+
+}
+```
 
 ## API
 
 -   コンストラクタ
 
-    -   `template<uint8_t Size> CanWriter(id)`
+    -   `template<class MessageTy> CanWriter::CanWriter(BusTy& bus, uint32_t id)`
 
-        データ配信開始
+        `@tparam {MessageTy}` 送信する構造体
 
-        `@param Size` 送信サイズ
+        `@param {id}` 自身のノード ID
 
-        `@param id` データ ID
+-   通信監視(WDT)
+
+    -   `CanWriter::operator bool()`
+
+        `@return` 通信しているか
+
+        戻り値が `false` である場合バスクラスの送信処理が行われていない可能性が考えられます。
 
 -   データセット
 
-    -   `uint8_t& operator[]`
+    -   `void CanWriter::setMessage(MessageTy message)`
 
--   送信
-
-    -   `update()`
+        `@param {message}` 送信するデータ
 
 -   デバッグ出力
 
-    -   `show(end = {})`
+    -   `void CanWriter::show(char end = {})`
 
         `@param end` 最後に出力される文字
 
--   その他
+        セットされた構造体に `show()` メンバが実装されている必要があります。
 
-    -   `uint8_t size()`
+# Summary
 
-        `@return` 設定送信サイズ
+-   data format
 
-# Example
+    [ id (11bit) ] + [ index (1byte) + data (7byte) ]
 
-```cpp
-#include "CanWriter.h"
-
-CanWriter<6> writer1(1);
-CanWriter<6> writer2(2);
-
-void setup() {
-}
-
-void loop() {
-	writer1[0] = millis();
-	writer2[0] = millis() / 10;
-	writer1.update();
-	writer2.update();
-	delay(10);
-}
-```
-
-# Structure
-
-## format
-
-> 7byte を超えるデータはパケット分割し通信されます
->
-> [ id (11bit) ] + [ index (1byte) + data (7byte) ]
->
-> index : パケットの識別子
-
-## data flow
-
-> 送信データは `CanBase` クラスの `Message_t` 構造体によって各ライブラリへ転送されます
->
-> ```cpp
-> struct Message_t {
->   uint32_t& id   ;  /// data id
->   uint8_t&  index;  /// packet index
->   uint8_t*  data ;  /// message array[7]
-> };
-> ```
->
-> またデータはポインタ、参照で転送するので処理が軽量です (CanWriter バッファからのデータ転送はコピーです)
->
-> ポインタ、参照は各ライブラリの各構造体インスタンスメンバを指しています
-
-```mermaid
-classDiagram
-  direction LR
-
-	class CanWriter {
-		id
-		buffer[]
-	}
-
-	class CanBase {
-		static [FlexCAN or MCP2515] can
-		static void write(...)
-	}
-
-	class mcp2515 {
-		sendMessage(can_frame*)
-	}
-	class FlexCAN_T4 {
-		write(CAN_Message_t&)
-	}
-
-	CanWriter --> "0..n" CanBase : data(copy)
-
-	CanBase --> FlexCAN_T4 : data
-
-	CanBase --> mcp2515 : data
-
-	FlexCAN_T4 --> CAN_BAS : data
-
-	mcp2515 --> CAN_BAS : data
-
-```
-
--   `CanBase`
-
-    > `static void begin()`
-    >
-    > 通信開始(既に開始されている場合は開始しない)
-    >
-    > `static void write(void (*callback)(Message_t&, void*), void* _this)`
-    >
-    > データセット
-
-    > teensy, arduino で使用するライブラリが違うので、差異を吸収する
-    >
-    > ライブラリの切り替えはプリプロセッサによって行う
-    >
-    > CAN 通信に使用するインスタンスは 1 つでなくてはならいので、インスタンスを 静的メンバで管理し、Reader, Writer に派生させる
-
-# Benchmark
-
-## 処理速度
-
--   255byte 送信時 (teensy4.0)
-
-    約 44μs
+    送信量が 7byte を超える場合はパケットに分けて送信
