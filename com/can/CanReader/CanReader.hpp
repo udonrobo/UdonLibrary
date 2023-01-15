@@ -33,8 +33,13 @@ class CanReader {
 		}
 
 		MessageTy getMessage() const noexcept {
-			MessageTy retval;
-			memcpy(&retval, buffer, sizeof retval);
-			return retval;
+			MessageTy msg;
+			memcpy(&msg, buffer, sizeof msg);
+			return msg;
+		}
+
+		void show(char end = {}) const noexcept {
+			getMessage().show();
+			Serial.println(end);
 		}
 };

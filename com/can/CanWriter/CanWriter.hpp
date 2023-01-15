@@ -38,4 +38,11 @@ class CanWriter {
 			memcpy(buffer, &message, sizeof buffer);
 		}
 
+		void show(char end = {}) const noexcept {
+			MessageTy msg;
+			memcpy(&msg, buffer, sizeof msg);
+			msg.show();
+			Serial.println(end);
+		}
+
 };
