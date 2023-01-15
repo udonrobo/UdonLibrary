@@ -336,16 +336,18 @@ namespace Message {
         uint8_t h;
         uint8_t s;
         uint8_t l;
-        Serial.print("HSL: ");
+        void show() {
+            Serial.print("HSL: ");
 
-        Serial.print(h);
-        Serial.print('\t');
+            Serial.print(h);
+            Serial.print('\t');
 
-        Serial.print(s);
-        Serial.print('\t');
+            Serial.print(s);
+            Serial.print('\t');
 
-        Serial.print(l);
-        Serial.print('\t');
+            Serial.print(l);
+            Serial.print('\t');
+        }
     });
 
 } // namespace Message
