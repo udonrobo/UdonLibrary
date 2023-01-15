@@ -8,9 +8,7 @@ void setup() {
 }
 
 void loop() {
-	
-	writer.setMessage({ -100 });
-
+	writer.setMessage({ -123 });
 	bus.update();
 	delay(10);
 }
