@@ -69,7 +69,7 @@ class CanBusTeensy {
 			}
 			if (readers.size())
 			{
-				enableReaderIntterrupt();
+				enableReaderInterrupt();
 			}
 		}
 
@@ -149,7 +149,7 @@ class CanBusTeensy {
 	private:
 
 		// @brief 受信割り込み開始
-		void enableReaderIntterrupt()
+		void enableReaderInterrupt()
 		{
 			bus.onReceive([](const CAN_message_t& msg) {
 				const auto event = [&msg](Node & reader)

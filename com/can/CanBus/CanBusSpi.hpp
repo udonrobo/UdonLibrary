@@ -15,7 +15,7 @@ class CanBusSpi {
 
 		MCP2515 bus;
 		static CanBusSpi* self;
-		
+
 		uint32_t lastWriteUs;     // 最終送信時刻
 
 		/// @brief ノード(Reader,Writer)を管理
@@ -28,7 +28,7 @@ class CanBusSpi {
 		};
 		container::list<Node> readers;
 		container::list<Node> writers;
-		
+
 	public:
 
 		/// @brief constructor
@@ -67,7 +67,7 @@ class CanBusSpi {
 			}
 			if (readers.size())
 			{
-				enableReaderIntterrupt();
+				enableReaderInterrupt();
 			}
 		}
 
@@ -147,7 +147,7 @@ class CanBusSpi {
 	private:
 
 		// @brief 受信割り込み開始
-		void enableReaderIntterrupt()
+		void enableReaderInterrupt()
 		{
 			pinMode(Interrupt, INPUT_PULLUP);
 			attachInterrupt(digitalPinToInterrupt(Interrupt), [] {
