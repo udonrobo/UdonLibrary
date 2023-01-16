@@ -1,8 +1,8 @@
 #include "CanCommon.hpp"
 
-CanBusTeensy<CAN1> bus;
+CanBusSpi<1, 2> bus(SPI);
 
-CanWriter<int> writer(bus, 0);
+CanWriter<Message::Motor> writer(bus, 0);
 
 void setup() {
 	bus.begin();

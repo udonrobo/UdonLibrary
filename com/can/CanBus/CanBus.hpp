@@ -10,4 +10,8 @@
 #	include "CanBusTeensy.hpp"
 #endif
 
+#if 0 //defined(ARDUINO_RASPBERRY_PI_PICO)
+#	include "CanBusPico.hpp"
+#endif
+
 #include "CanBusSpi.hpp"
