@@ -9,6 +9,7 @@
 #include <mcp2515.h>   // https://github.com/autowp/arduino-mcp2515
 
 #include "list.hpp"
+#include "memory.hpp"
 
 template<uint8_t Cs, uint8_t Interrupt>
 class CanBusSpi {
@@ -24,10 +25,10 @@ class CanBusSpi {
 			uint8_t*  buffer;          // Reader,Writerクラスのバッファに対するポインタ
 			size_t    size;            // バッファサイズ
 			uint32_t* timestamp;       // 最後にバッファにアクセスした時刻[ms]
-			bool*     instanceAlived;  // ノードが生存しているか(ノードがデストラクトされるタイミングでfalseになります)
+			udon::std::shared_ptr<bool> instanceAlived;  // ノードが生存しているか(ノードがデストラクトされるタイミングでfalse)
 		};
-		container::list<Node> readers;
-		container::list<Node> writers;
+		udon::std::list<Node> readers;
+		udon::std::list<Node> writers;
 
 	public:
 
@@ -43,16 +44,8 @@ class CanBusSpi {
 		{
 			self = this;
 		}
-
+		
 		~CanBusSpi() {
-			for (auto && it : readers)
-			{
-				delete it.instanceAlived;
-			}
-			for (auto && it : writers)
-			{
-				delete it.instanceAlived;
-			}
 		}
 
 		/// @brief 通信を開始
@@ -113,7 +106,6 @@ class CanBusSpi {
 					}
 					else
 					{
-						delete it->instanceAlived;
 						it = self->writers.erase(it);
 					}
 				}
@@ -127,9 +119,9 @@ class CanBusSpi {
 		/// @return Readerのインスタンスが存在しているかを取得するためのフラグ(メモリ所有権はこのクラスにあります)
 		/// @remark Readerのデストラクタでポインタ先にfalseを代入してください
 		template<size_t N>
-		bool* joinReader(uint16_t id, uint8_t (&buffer)[N], uint32_t& timestamp)
+		auto joinReader(uint16_t id, uint8_t (&buffer)[N], uint32_t& timestamp)
 		{
-			auto p = new bool(true);
+			udon::std::shared_ptr<bool> p(new bool(true));
 			readers.push_back({ id, buffer, sizeof buffer, &timestamp, p });
 			return p;
 		}
@@ -140,9 +132,9 @@ class CanBusSpi {
 		/// @return Writerのインスタンスが存在しているかを取得するためのフラグ(メモリ所有権はこのクラスにあります)
 		/// @remark Writerのデストラクタでポインタ先にfalseを代入してください
 		template<size_t N>
-		bool* joinWriter(uint16_t id, uint8_t (&buffer)[N], uint32_t& timestamp)
+		auto joinWriter(uint16_t id, uint8_t (&buffer)[N], uint32_t& timestamp)
 		{
-			auto p = new bool(true);
+			udon::std::shared_ptr<bool> p(new bool(true));
 			writers.push_back({ id, buffer, sizeof buffer, &timestamp, p });
 			return p;
 		}
@@ -185,7 +177,6 @@ class CanBusSpi {
 						}
 						else
 						{
-							delete it->instanceAlived;
 							it = self->readers.erase(it);
 						}
 					}

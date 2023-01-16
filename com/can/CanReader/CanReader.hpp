@@ -5,13 +5,15 @@
 
 #pragma once
 
+#include "memory.hpp"
+
 template<class MessageTy>
 class CanReader {
 
 		const uint32_t id;
 		uint8_t buffer[sizeof(MessageTy)];
 		uint32_t lastReceiveMs;
-		bool* instanceAlived;
+		udon::std::shared_ptr<bool> instanceAlived;
 
 	public:
 

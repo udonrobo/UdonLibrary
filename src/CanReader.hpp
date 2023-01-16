@@ -5,13 +5,15 @@
 
 #pragma once
 
+#include "memory.hpp"
+
 template<class MessageTy>
 class CanReader {
 
 		const uint32_t id;
 		uint8_t buffer[sizeof(MessageTy)];
 		uint32_t lastReceiveMs;
-		bool* instanceAlived;
+		udon::std::shared_ptr<bool> instanceAlived;
 
 	public:
 
@@ -23,6 +25,14 @@ class CanReader {
 			, lastReceiveMs()
 			, instanceAlived(bus.joinReader(id, buffer, lastReceiveMs))
 		{}
+
+		CanReader(const CanReader& rhs) noexcept
+			: id(rhs.id)
+			, lastReceiveMs(rhs.lastReceiveMs)
+			, instanceAlived(rhs.instanceAlived)
+		{
+			memcpy(buffer, rhs.buffer, sizeof buffer);
+		}
 
 		~CanReader() noexcept {
 			*instanceAlived = false;

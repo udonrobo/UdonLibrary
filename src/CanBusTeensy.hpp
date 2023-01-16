@@ -10,6 +10,7 @@
 #include <IntervalTimer.h>   // https://github.com/loglow/IntervalTimer.git
 
 #include "list.hpp"
+#include "memory.hpp"
 
 /// @tparam {Bus} バス種類 (CAN0,CAN1,CAN2,CAN3)
 template<CAN_DEV_TABLE Bus>
@@ -27,11 +28,11 @@ class CanBusTeensy {
 			uint8_t*  buffer;          // Reader,Writerクラスのバッファに対するポインタ
 			size_t    size;            // バッファサイズ
 			uint32_t* timestamp;       // 最後にバッファにアクセスした時刻[ms]
-			bool*     instanceAlived;  // ノードが生存しているか(ノードがデストラクトされるタイミングでfalseになります)
+			udon::std::shared_ptr<bool> instanceAlived;  // ノードが生存しているか(ノードがデストラクトされるタイミングでfalse)
 		};
 
-		container::list<Node> readers;
-		container::list<Node> writers;
+		udon::std::list<Node> readers;
+		udon::std::list<Node> writers;
 
 	public:
 
@@ -45,14 +46,6 @@ class CanBusTeensy {
 		}
 
 		~CanBusTeensy() {
-			for (auto && it : readers)
-			{
-				delete it.instanceAlived;
-			}
-			for (auto && it : writers)
-			{
-				delete it.instanceAlived;
-			}
 			readerIsr.end();
 		}
 
@@ -115,7 +108,6 @@ class CanBusTeensy {
 					}
 					else
 					{
-						delete it->instanceAlived;
 						it = self->writers.erase(it);
 					}
 				}
@@ -129,9 +121,9 @@ class CanBusTeensy {
 		/// @return Readerのインスタンスが存在しているかを取得するためのフラグ(メモリ所有権はこのクラスにあります)
 		/// @remark Readerのデストラクタでポインタ先にfalseを代入してください
 		template<size_t N>
-		bool* joinReader(uint16_t id, uint8_t (&buffer)[N], uint32_t& timestamp)
+		auto joinReader(uint16_t id, uint8_t (&buffer)[N], uint32_t& timestamp)
 		{
-			auto p = new bool(true);
+			udon::std::shared_ptr<bool> p(new bool(true));
 			readers.push_back({ id, buffer, sizeof buffer, &timestamp, p });
 			return p;
 		}
@@ -142,9 +134,9 @@ class CanBusTeensy {
 		/// @return Writerのインスタンスが存在しているかを取得するためのフラグ(メモリ所有権はこのクラスにあります)
 		/// @remark Writerのデストラクタでポインタ先にfalseを代入してください
 		template<size_t N>
-		bool* joinWriter(uint16_t id, uint8_t (&buffer)[N], uint32_t& timestamp)
+		auto joinWriter(uint16_t id, uint8_t (&buffer)[N], uint32_t& timestamp)
 		{
-			auto p = new bool(true);
+			udon::std::shared_ptr<bool> p(new bool(true));
 			writers.push_back({ id, buffer, sizeof buffer, &timestamp, p });
 			return p;
 		}
@@ -184,7 +176,6 @@ class CanBusTeensy {
 					}
 					else
 					{
-						delete it->instanceAlived;
 						it = self->readers.erase(it);
 					}
 				}
