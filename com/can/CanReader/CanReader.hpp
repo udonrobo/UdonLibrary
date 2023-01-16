@@ -24,6 +24,14 @@ class CanReader {
 			, instanceAlived(bus.joinReader(id, buffer, lastReceiveMs))
 		{}
 
+		CanReader(const CanReader& rhs) noexcept
+			: id(rhs.id)
+			, lastReceiveMs(rhs.lastReceiveMs)
+			, instanceAlived(rhs.instanceAlived)
+		{
+			memcpy(buffer, rhs.buffer, sizeof buffer);
+		}
+
 		~CanReader() noexcept {
 			*instanceAlived = false;
 		}

@@ -1,7 +1,7 @@
 
 namespace udon {
 
-	namespace stl {
+	namespace std {
 
 		template<class Ty>
 		class shared_ptr
