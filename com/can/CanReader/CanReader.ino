@@ -2,16 +2,17 @@
 #include "CanBus.hpp"
 #include "Message.hpp"
 
-#include <vector>
+#include <array>
 
 CanBusTeensy<CAN1> bus;
-CanReader<Message::Motor> reader[]  {
-	{ bus, 0 },
-	{ bus, 1 },
-	{ bus, 2 },
-	{ bus, 3 },
-	{ bus, 4 },
-	{ bus, 5 }
+
+std::array<CanReader<Message::Motor>, 6> reader {
+	CanReader<Message::Motor>{ bus, 0 },
+	CanReader<Message::Motor>{ bus, 1 },
+	CanReader<Message::Motor>{ bus, 2 },
+	CanReader<Message::Motor>{ bus, 3 },
+	CanReader<Message::Motor>{ bus, 4 },
+	CanReader<Message::Motor>{ bus, 5 }
 };
 
 void setup() {
