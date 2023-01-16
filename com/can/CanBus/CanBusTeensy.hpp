@@ -85,8 +85,11 @@ class CanBusTeensy {
 					for (size_t index = 0; index < ceil(writer.size / 7.0); index++)
 					{
 						CAN_message_t msg;
+						
 						// 先頭1バイト : パケット番号
+						msg.id = writer.id;
 						msg.buf[0] = index;
+						
 						// バイト列を8バイト受信データにエンコード
 						for (uint8_t i = 0; i < 7; i++)
 						{
@@ -104,6 +107,7 @@ class CanBusTeensy {
 				};
 				for (auto && it = self->writers.begin(); it != self->writers.end(); )
 				{
+					// インスタンスが存在しない場合インスタンスの管理から解放
 					if (*it->instanceAlived)
 					{
 						event(*it);
@@ -111,7 +115,6 @@ class CanBusTeensy {
 					}
 					else
 					{
-						// インスタンスが存在しない場合破棄
 						delete it->instanceAlived;
 						it = self->writers.erase(it);
 					}
@@ -170,19 +173,19 @@ class CanBusTeensy {
 				};
 				for (auto && it = self->readers.begin(); it != self->readers.end(); )
 				{
-					if (msg.id == it->id)
+					// インスタンスが存在しない場合インスタンスの管理を解放
+					if (*it->instanceAlived)
 					{
-						if (*it->instanceAlived)
+						if (msg.id == it->id)
 						{
 							event(*it);
-							++it;
 						}
-						else
-						{
-							// インスタンスが存在しない場合破棄
-							delete it->instanceAlived;
-							it = self->readers.erase(it);
-						}
+						++it;
+					}
+					else
+					{
+						delete it->instanceAlived;
+						it = self->readers.erase(it);
 					}
 				}
 			});
@@ -196,4 +199,5 @@ class CanBusTeensy {
 
 };
 
-template<CAN_DEV_TABLE Bus> CanBusTeensy<Bus>* CanBusTeensy<Bus>::self;
+template<CAN_DEV_TABLE Bus>
+CanBusTeensy<Bus>* CanBusTeensy<Bus>::self;

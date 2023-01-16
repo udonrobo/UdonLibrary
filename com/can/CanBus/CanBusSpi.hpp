@@ -78,13 +78,16 @@ class CanBusSpi {
 			const auto now = micros();
 			if (writers.size() && now - lastWriteUs >= writeIntervalUs)
 			{
-				const auto event = [](Node& writer) {
+				const auto event = [](Node & writer) {
 					// 一度に8バイトしか送れないため、パケットに分割し送信
 					for (size_t index = 0; index < ceil(writer.size / 7.0); index++)
 					{
 						can_frame msg;
+						
 						// 先頭1バイト : パケット番号
+						msg.can_id = writer.id;
 						msg.data[0] = index;
+						
 						// バイト列を8バイト受信データにエンコード
 						for (uint8_t i = 0; i < 7; i++)
 						{
@@ -102,14 +105,14 @@ class CanBusSpi {
 				};
 				for (auto && it = self->writers.begin(); it != self->writers.end(); )
 				{
-					if (it->instanceAlived)
+					// インスタンスが存在しない場合インスタンスの管理から解放
+					if (*it->instanceAlived)
 					{
 						event(*it);
 						++it;
 					}
 					else
 					{
-						// インスタンスが存在しない場合破棄
 						delete it->instanceAlived;
 						it = self->writers.erase(it);
 					}
@@ -153,7 +156,7 @@ class CanBusSpi {
 			attachInterrupt(digitalPinToInterrupt(Interrupt), [] {
 				can_frame msg;
 				if (self->bus.readMessage(&msg) == MCP2515::ERROR_OK) {
-					const auto event = [&msg](Node& reader)
+					const auto event = [&msg](Node & reader)
 					{
 						// 先頭1バイト : パケット番号
 						const uint8_t index = msg.data[0];
@@ -171,19 +174,19 @@ class CanBusSpi {
 					};
 					for (auto && it = self->readers.begin(); it != self->readers.end(); )
 					{
-						if (msg.can_id == it->id)
+						// インスタンスが存在しない場合インスタンスの管理を解放
+						if (*it->instanceAlived)
 						{
-							if (it->instanceAlived)
+							if (msg.can_id == it->id)
 							{
 								event(*it);
-								++it;
 							}
-							else
-							{
-								// インスタンスが存在しない場合破棄
-								delete it->instanceAlived;
-								it = self->readers.erase(it);
-							}
+							++it;
+						}
+						else
+						{
+							delete it->instanceAlived;
+							it = self->readers.erase(it);
 						}
 					}
 				}
