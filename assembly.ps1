@@ -22,7 +22,8 @@ $sources =
 	".\sensor\Gyro\Gyro.hpp",
 	".\sensor\Measure\Measure.hpp",
 
-	".\stl\list.hpp"
+	".\stl\list.hpp",
+	".\stl\memory.hpp"
 
 ## 収集フォルダ
 $target = ".\src"
