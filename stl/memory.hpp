@@ -23,7 +23,7 @@ namespace udon {
 				, counter(new long(1))
 			{}
 
-			constexpr shared_ptr(const shared_ptr& rhs) noexcept
+			shared_ptr(const shared_ptr& rhs) noexcept
 				: p(rhs.p)
 				, counter(rhs.counter)
 			{
