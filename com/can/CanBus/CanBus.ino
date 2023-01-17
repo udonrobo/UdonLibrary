@@ -1,27 +1,23 @@
 #include "CanCommon.hpp"
 
-CanBusTeensy<CAN1> bus;
-CanReader<Message::Motor> reader[] {
-	{ bus, 0 },
-	{ bus, 1 },
-	{ bus, 2 },
-	{ bus, 3 },
-	{ bus, 4 },
-	{ bus, 5 }
-};
+CanBusSpi<10, 2> bus(SPI, 8000000);
+CanReader<Message::Motor> reader{ bus, 0 };
 
 void setup() {
+	delay(100);
+	Serial.begin(115200);
 	bus.begin();
-	pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void loop() {
-	for (auto && it : reader) {
-		it.show();
+	if (reader)
+	{
+		reader.show('\n');
 	}
-	Serial.println();
+	else
+	{
+		Serial.println("error");
+	}
 	bus.update();
 	delay(10);
-
-	digitalWrite(LED_BUILTIN, millis() % 500 < 100);
-}		
+}
