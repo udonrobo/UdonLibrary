@@ -1,15 +1,17 @@
 #include "CanCommon.hpp"
 
-CanBusSpi<10, 2> bus(SPI, 8000000);
-CanReader<Message::Motor> reader{ bus, 0 };
+#include <vector>
+CanBusTeensy<CAN1> bus;
+
+CanWriter<Message::Motor> reader{ 0 };
 
 void setup() {
-	delay(100);
-	Serial.begin(115200);
+	bus.join(reader);
 	bus.begin();
 }
 
 void loop() {
+	reader.setMessage( { millis() } );
 	if (reader)
 	{
 		reader.show('\n');
