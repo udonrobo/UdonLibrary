@@ -4,6 +4,8 @@
 
 teensy 内臓 CAN コントローラーを使用して CAN 通信を行うバスクラス
 
+CanReader CanWriter クラスと組み合わせてデータのやり取りを行います。
+
 ```mermaid
 flowchart LR
 	CanBusTeensy <--CAN TX/RX--> CANトランシーバー <--CAN H/L--> BUS
@@ -28,6 +30,25 @@ flowchart LR
         -   `void CanBusTeensy::begin(uint32_t baudrate = 1000000)`
 
             `@param {baudrate}` CAN 通信レート
+
+    - Reader, Writer
+
+        `CanReader`, `CanWriter` インスタンスをバスに参加させるには `join` メンバ関数を使用します。開放するには `detach` メンバ関数を使用します。
+
+        - `void join(CanReader& r)`
+        - `void join(CanWriter& r)`
+
+        - `void detach(CanReader& r)`
+        - `void detach(CanWriter& r)`
+
+        ```cpp
+        CanBusTeensy<CAN1> bus;
+        CanWriter<Message::Motor> reader{ 0 };
+
+        void setup() {
+            bus.join(reader);
+        }
+        ```
 
     -   通信更新
 
@@ -78,9 +99,30 @@ flowchart LR
 
     -   通信開始
 
-        -   `void CanBusSpi::begin(CAN_SPEED baudrate = CAN_1000KBPS)`
+        -   `void CanBusSpi::begin(CAN_SPEED baudrate = CAN_1000KBPS, CAN_CLOCK canClock = MCP_20MHZ)`
 
             `@param {baudrate}` CAN 通信レート [ドキュメント](https://github.com/autowp/arduino-mcp2515) 参照
+
+            `@param {canClock}` CAN 通信クロック周波数 [ドキュメント](https://github.com/autowp/arduino-mcp2515) 参照
+
+    - Reader, Writer
+
+        `CanReader`, `CanWriter` インスタンスをバスに参加させるには `join` メンバ関数を使用します。開放するには `detach` メンバ関数を使用します。
+
+        - `void join(CanReader& r)`
+        - `void join(CanWriter& r)`
+
+        - `void detach(CanReader& r)`
+        - `void detach(CanWriter& r)`
+
+        ```cpp
+        CanBusTeensy<CAN1> bus;
+        CanWriter<Message::Motor> reader{ 0 };
+
+        void setup() {
+            bus.join(reader);
+        }
+        ```
 
     -   通信更新
 

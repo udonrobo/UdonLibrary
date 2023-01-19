@@ -1,5 +1,7 @@
 # CanReader
 
+バスクラスを経由し、データを構造体の形で取得するクラス
+
 ## Description
 
 CAN 通信構造体受信クラス
@@ -23,13 +25,18 @@ CAN 通信構造体受信クラス
 
 `CanBusTeensy` バスを使用し、`Message::Motor` 構造体を使用してモーターの情報を受信する例
 
+バスクラスの `join` メンバ関数によってバスに参加した後、デストラクトすることは禁止です。(CanReader内のバッファーのポインタを持つため)
+
+`detach` メンバ関数によってバスから切り離す必要があります。
+
 ```cpp
 #include "CanCommon.hpp"
 
 CanBusTeensy<CAN1> bus;
-CanReader<Message::Motor> reader(bus, 0);
+CanReader<Message::Motor> reader(0);
 
 void setup() {
+    bus.join(reader);
 	bus.begin();
 }
 
@@ -50,7 +57,7 @@ void loop() {
 
 -   コンストラクタ
 
-    -   `template<class MessageTy> CanReader::CanReader(BusTy& bus, uint32_t id)`
+    -   `template<class MessageTy> CanReader::CanReader(uint32_t id)`
 
         `@tparam {MessageTy}` 受信する構造体
 
