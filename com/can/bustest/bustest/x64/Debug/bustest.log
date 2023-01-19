@@ -1,15 +1,2 @@
 ﻿  bustest.cpp
-C:\Users\Casey\Desktop\dev\bustest\bustest\bustest.cpp(46,7): error C2039: 'f': 'CanReader<int>' のメンバーではありません
-C:\Users\Casey\Desktop\dev\bustest\bustest\bustest.cpp(64): message : 'CanReader<int>' の宣言を確認してください
-C:\Users\Casey\Desktop\dev\bustest\bustest\bustest.cpp(16): message : コンパイル対象の関数 テンプレート インスタンス化 'void CanBusTeensy<0>::joinReader<int>(void (__cdecl CanReader<int>::* )(void),CanReader<int> *)' のリファレンスを確認してください
-C:\Users\Casey\Desktop\dev\bustest\bustest\bustest.cpp(16): message : コンパイル対象の関数 テンプレート インスタンス化 'void CanBusTeensy<0>::joinReader<int>(void (__cdecl CanReader<int>::* )(void),CanReader<int> *)' のリファレンスを確認してください
-C:\Users\Casey\Desktop\dev\bustest\bustest\bustest.cpp(64): message : コンパイル対象の関数 テンプレート インスタンス化 'CanReader<int>::CanReader<CanBusTeensy<0>>(Bus &)' のリファレンスを確認してください
-          with
-          [
-              Bus=CanBusTeensy<0>
-          ]
-C:\Users\Casey\Desktop\dev\bustest\bustest\bustest.cpp(64): message : コンパイル対象の関数 テンプレート インスタンス化 'CanReader<int>::CanReader<CanBusTeensy<0>>(Bus &)' のリファレンスを確認してください
-          with
-          [
-              Bus=CanBusTeensy<0>
-          ]
+  bustest.vcxproj -> C:\Users\Casey\Desktop\dev\Library\com\can\bustest\x64\Debug\bustest.exe
