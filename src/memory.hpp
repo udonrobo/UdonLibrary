@@ -62,20 +62,20 @@ namespace udon {
 				return *counter;
 			}
 
-			constexpr Ty& operator*() noexcept
+			Ty& operator*() noexcept
 			{
 				return *p;
 			}
-			constexpr const Ty& operator*() const noexcept
+			const Ty& operator*() const noexcept
 			{
 				return *p;
 			}
 
-			constexpr Ty* operator->() noexcept
+			Ty* operator->() noexcept
 			{
 				return p;
 			}
-			constexpr const Ty* operator->() const noexcept
+			const Ty* operator->() const noexcept
 			{
 				return p;
 			}

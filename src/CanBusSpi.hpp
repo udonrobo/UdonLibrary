@@ -49,13 +49,14 @@ class CanBusSpi {
 		}
 
 		/// @brief 通信を開始
-		/// @param {baudrate} 通信レート
-		void begin(CAN_SPEED baudrate = CAN_1000KBPS)
+		/// @param {baudrate} CAN通信レート
+		/// @param {canClock} CAN通信クロック
+		void begin(CAN_SPEED baudrate = CAN_1000KBPS, CAN_CLOCK canClock = MCP_20MHZ)
 		{
 			if (readers.size() || writers.size())
 			{
 				bus.reset();
-				bus.setBitrate(baudrate);
+				bus.setBitrate(baudrate, canClock);
 				bus.setNormalMode();
 			}
 			if (readers.size())
@@ -119,7 +120,7 @@ class CanBusSpi {
 		/// @return Readerのインスタンスが存在しているかを取得するためのフラグ(メモリ所有権はこのクラスにあります)
 		/// @remark Readerのデストラクタでポインタ先にfalseを代入してください
 		template<size_t N>
-		auto joinReader(uint16_t id, uint8_t (&buffer)[N], uint32_t& timestamp)
+		udon::std::shared_ptr<bool> joinReader(uint16_t id, uint8_t (&buffer)[N], uint32_t& timestamp)
 		{
 			udon::std::shared_ptr<bool> p(new bool(true));
 			readers.push_back({ id, buffer, sizeof buffer, &timestamp, p });
@@ -132,7 +133,7 @@ class CanBusSpi {
 		/// @return Writerのインスタンスが存在しているかを取得するためのフラグ(メモリ所有権はこのクラスにあります)
 		/// @remark Writerのデストラクタでポインタ先にfalseを代入してください
 		template<size_t N>
-		auto joinWriter(uint16_t id, uint8_t (&buffer)[N], uint32_t& timestamp)
+		udon::std::shared_ptr<bool> joinWriter(uint16_t id, uint8_t (&buffer)[N], uint32_t& timestamp)
 		{
 			udon::std::shared_ptr<bool> p(new bool(true));
 			writers.push_back({ id, buffer, sizeof buffer, &timestamp, p });
@@ -146,6 +147,7 @@ class CanBusSpi {
 		{
 			pinMode(Interrupt, INPUT_PULLUP);
 			attachInterrupt(digitalPinToInterrupt(Interrupt), [] {
+				Serial.println("call");
 				can_frame msg;
 				if (self->bus.readMessage(&msg) == MCP2515::ERROR_OK) {
 					const auto event = [&msg](Node & reader)
