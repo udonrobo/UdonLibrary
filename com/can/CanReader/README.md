@@ -36,7 +36,7 @@ CanBusTeensy<CAN1> bus;
 CanReader<Message::Motor> reader(0);
 
 void setup() {
-    bus.join(reader);
+	bus.join(reader);
 	bus.begin();
 }
 
