@@ -12,36 +12,52 @@ class CanReader {
 
 		const uint32_t id;
 		uint8_t buffer[sizeof(MessageTy)];
-		uint32_t lastReceiveMs;
-		udon::std::shared_ptr<bool> instanceAlived;
+		uint32_t timestamp;
 
+		struct Handler {
+			uint32_t id;
+			uint8_t* buffer;
+			size_t size;
+			uint32_t* timestamp;
+			void* _this;
+		};
+		
 	public:
 
 		/// @param id 信号識別番号
-		template<class BusTy>
-		CanReader(BusTy& bus, const uint32_t id)
+		CanReader(const uint32_t id)
 			: id(id)
 			, buffer()
-			, lastReceiveMs()
-			, instanceAlived(bus.joinReader(id, buffer, lastReceiveMs))
+			, timestamp()
 		{}
 
-		~CanReader() noexcept {
-			*instanceAlived = false;
-		}
-
+		/// @brief 通信できているか
 		operator bool() const noexcept {
-			return millis() - lastReceiveMs < 50;
+			return millis() - timestamp < 50;
 		}
 
+		/// @brief メッセージ構造体を取得
 		MessageTy getMessage() const noexcept {
 			MessageTy msg;
 			memcpy(&msg, buffer, sizeof msg);
 			return msg;
 		}
 
+		/// @brief 受信内容を表示
 		void show(char end = {}) const noexcept {
 			getMessage().show();
 			Serial.print(end);
 		}
+
+		/// @brief Readerインスタンスのハンドラ取得(Bus用)
+		Handler getHandler() {
+			return {
+				id,
+				buffer,
+				sizeof buffer,
+				&timestamp,
+				this
+			};
+		}
+		
 };
