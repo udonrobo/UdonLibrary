@@ -23,7 +23,7 @@ namespace udon {
 				, counter(new long(1))
 			{}
 
-			constexpr shared_ptr(const shared_ptr& rhs) noexcept
+			shared_ptr(const shared_ptr& rhs) noexcept
 				: p(rhs.p)
 				, counter(rhs.counter)
 			{
@@ -62,20 +62,20 @@ namespace udon {
 				return *counter;
 			}
 
-			constexpr Ty& operator*() noexcept
+			Ty& operator*() noexcept
 			{
 				return *p;
 			}
-			constexpr const Ty& operator*() const noexcept
+			const Ty& operator*() const noexcept
 			{
 				return *p;
 			}
 
-			constexpr Ty* operator->() noexcept
+			Ty* operator->() noexcept
 			{
 				return p;
 			}
-			constexpr const Ty* operator->() const noexcept
+			const Ty* operator->() const noexcept
 			{
 				return p;
 			}
