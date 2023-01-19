@@ -1,32 +1,28 @@
-#include "CanReader.hpp"
-#include "CanBus.hpp"
-#include "Message.hpp"
+#include <CanCommon.hpp>
 
-#include <array>
+#include <vector>
 
 CanBusTeensy<CAN1> bus;
-
-std::array<CanReader<Message::Motor>, 6> reader {
-	CanReader<Message::Motor>{ bus, 0 },
-	CanReader<Message::Motor>{ bus, 1 },
-	CanReader<Message::Motor>{ bus, 2 },
-	CanReader<Message::Motor>{ bus, 3 },
-	CanReader<Message::Motor>{ bus, 4 },
-	CanReader<Message::Motor>{ bus, 5 }
+std::vector<CanReader<Message::Motor>> readers {
+	{ 0 },
+	{ 1 },
+	{ 2 },
+	{ 3 },
+	{ 4 },
 };
 
 void setup() {
+	for(auto&& it : readers) {
+		bus.join(it);
+	}
 	bus.begin();
-	pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void loop() {
-	for (auto && it : reader) {
+	for(auto&& it : readers) {
 		it.show();
 	}
 	Serial.println();
 	bus.update();
 	delay(10);
-
-	digitalWrite(LED_BUILTIN, millis() % 500 < 100);
 }

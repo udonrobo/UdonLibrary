@@ -1,14 +1,27 @@
-#include "CanCommon.hpp"
+#include <CanCommon.hpp>
+
+#include <vector>
 
 CanBusTeensy<CAN1> bus;
-CanWriter<Message::Motor> writer(bus, 0);
+std::vector<CanWriter<Message::Motor>> writers {
+	{ 0 },
+	{ 1 },
+	{ 2 },
+	{ 3 },
+	{ 4 },
+};
 
 void setup() {
+	for(auto&& it : writers) {
+		bus.join(it);
+	}
 	bus.begin();
 }
 
 void loop() {
-	writer.setMessage({ -123 });
+	for(auto&& it : writers) {
+		it.setMessage({ millis() });
+	}
 	bus.update();
 	delay(10);
 }
