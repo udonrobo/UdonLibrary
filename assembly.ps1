@@ -23,7 +23,7 @@ $sources =
 	".\sensor\Measure\Measure.hpp",
 
 	".\stl\list.hpp",
-	".\stl\memory.hpp"
+	".\stl\memory.hpp",
 	".\stl\functional.hpp"
 
 ## 収集フォルダ

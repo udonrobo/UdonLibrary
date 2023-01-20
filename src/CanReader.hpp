@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "memory.hpp"
+#include "functional.hpp"
 
 template<class MessageTy>
 class CanReader {
@@ -13,6 +13,8 @@ class CanReader {
 		const uint32_t id;
 		uint8_t buffer[sizeof(MessageTy)];
 		uint32_t timestamp;
+
+		udon::std::function<void()> detach;
 
 		struct Handler {
 			uint32_t id;
@@ -25,11 +27,19 @@ class CanReader {
 	public:
 
 		/// @param id 信号識別番号
-		CanReader(const uint32_t id)
+		template<class Bus>
+		CanReader(Bus& bus, const uint32_t id)
 			: id(id)
 			, buffer()
 			, timestamp()
-		{}
+			, detach([&] { bus.detach(*this); })
+		{
+			bus.join(*this);
+		}
+
+		~CanReader() {
+			detach();
+		}
 
 		/// @brief 通信できているか
 		operator bool() const noexcept {

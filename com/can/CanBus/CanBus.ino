@@ -1,6 +1,7 @@
 #include "CanCommon.hpp"
 
 #include <vector>
+
 CanBusTeensy<CAN1> bus;
 
 CanWriter<Message::Motor> reader{ 0 };
