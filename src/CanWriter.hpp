@@ -43,7 +43,7 @@ class CanWriter {
 
 		/// @brief 通信できているか
 		operator bool() const noexcept {
-			return millis() - timestamp < 50;
+			return micros() - timestamp < 50000;
 		}
 
 		/// @brief メッセージ構造体をセット

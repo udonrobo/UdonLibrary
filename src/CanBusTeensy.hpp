@@ -70,7 +70,8 @@ class CanBusTeensy {
 			if (readers.size())
 			{
 				bus.onReceive([](const CAN_message_t& msg) {
-					const auto event = [&msg](Node & reader)
+					const auto now = micros();
+					const auto event = [&msg, &now](Node & reader)
 					{
 						// 先頭1バイト : パケット番号
 						const uint8_t index = msg.buf[0];
@@ -84,7 +85,7 @@ class CanBusTeensy {
 							else
 								break;
 						}
-						*reader.timestamp = millis();
+						*reader.timestamp = now;
 					};
 					for (auto && it : self->readers) {
 						if (msg.id == it.id)
@@ -92,7 +93,7 @@ class CanBusTeensy {
 							event(it);
 						}
 					}
-					self->readTimestamp = micros();
+					self->readTimestamp = now;
 				});
 
 				// 受信割り込み開始
@@ -109,11 +110,11 @@ class CanBusTeensy {
 			bus.disableFIFOInterrupt();
 		}
 
-		bool isEnableReader() const {
-			return micros() - readTimestamp < 50;
+		bool isEnableReader(uint32_t intervalLimitUs = 50000) const {
+			return micros() - readTimestamp < intervalLimitUs;
 		}
-		bool isEnableWriter() const {
-			return micros() - writeTimestamp < 50;
+		bool isEnableWriter(uint32_t intervalLimitUs = 50000) const {
+			return micros() - writeTimestamp < intervalLimitUs;
 		}
 
 		/// @brief バスを更新

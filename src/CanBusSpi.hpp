@@ -96,11 +96,11 @@ class CanBusSpi {
 			}
 		}
 
-		bool isEnableReader() const {
-			return micros() - readTimestamp < 50;
+		bool isEnableReader(uint32_t intervalLimitUs = 10000) const {
+			return micros() - readTimestamp < intervalLimitUs;
 		}
-		bool isEnableWriter() const {
-			return micros() - writeTimestamp < 50;
+		bool isEnableWriter(uint32_t intervalLimitUs = 10000) const {
+			return micros() - writeTimestamp < intervalLimitUs;
 		}
 
 		/// @brief バスを更新
