@@ -183,9 +183,9 @@ class CanBusTeensy {
 		template<class MessageTy>
 		void detach(const CanReader<MessageTy>& r)
 		{
-			for (auto && it : readers)
+			for (auto && it = readers.begin(); it != readers.end(); ++it)
 			{
-				if (it._this == &r)
+				if (it->_this == &r)
 				{
 					readers.erase(it);
 					break;

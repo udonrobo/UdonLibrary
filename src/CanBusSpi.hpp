@@ -166,10 +166,11 @@ class CanBusSpi {
 		/// @brief Readerインスタンスをバスから開放
 		/// @param r Readerインスタンス
 		template<class MessageTy>
-		void detach(const CanReader<MessageTy>& r) {
-			for (auto && it : readers)
+		void detach(const CanReader<MessageTy>& r)
+		{
+			for (auto && it = readers.begin(); it != readers.end(); ++it)
 			{
-				if (it._this == &r)
+				if (it->_this == &r)
 				{
 					readers.erase(it);
 					break;
@@ -180,7 +181,8 @@ class CanBusSpi {
 		/// @brief Writerインスタンスをバスに追加
 		/// @param r Writerインスタンス
 		template<class MessageTy>
-		void join(CanWriter<MessageTy>& r) {
+		void join(CanWriter<MessageTy>& r)
+		{
 			for (auto && it : writers)
 			{
 				if (&r == it._this)
@@ -201,10 +203,11 @@ class CanBusSpi {
 		/// @brief Writerインスタンスをバスから開放
 		/// @param r Writerインスタンス
 		template<class MessageTy>
-		void detach(const CanWriter<MessageTy>& r) {
-			for (auto && it : writers)
+		void detach(const CanWriter<MessageTy>& r)
+		{
+			for (auto && it = writers.begin(); it != writers.end(); ++it)
 			{
-				if (it._this == &r)
+				if (it->_this == &r)
 				{
 					writers.erase(it);
 					break;
