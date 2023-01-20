@@ -1,7 +1,5 @@
 # CanWriter
 
-バスクラスを経由し、データを構造体の形で送信するクラス
-
 ## Description
 
 CAN 通信構造体送信クラス
@@ -25,18 +23,13 @@ CAN 通信構造体送信クラス
 
 `CanBusTeensy` バスを使用し、 `Message::Motor` 構造体を使用してモーターの情報を送信する例
 
-バスクラスの `join` メンバ関数によってバスに参加した後、デストラクトすることは禁止です。(CanWriter内のバッファーのポインタを持つため)
-
-`detach` メンバ関数によってバスから切り離す必要があります。
-
 ```cpp
 #include "CanCommon.hpp"
 
 CanBusTeensy<CAN1> bus;
-CanWriter<Message::Motor> writer(0);
+CanWriter<Message::Motor> writer(bus, 0);
 
 void setup() {
-    bus.join(writer);
 	bus.begin();
 }
 
@@ -45,8 +38,6 @@ void loop() {
 	Message::Motor msg;
 	msg.power = -123;
 	writer.setMessage(msg);
-
-    // writer.setMessage({ -123 });
 
 	bus.update();
 	delay(10);
@@ -58,7 +49,7 @@ void loop() {
 
 -   コンストラクタ
 
-    -   `template<class MessageTy> CanWriter::CanWriter(uint32_t id)`
+    -   `template<class MessageTy> CanWriter::CanWriter(BusTy& bus, uint32_t id)`
 
         `@tparam {MessageTy}` 送信する構造体
 
