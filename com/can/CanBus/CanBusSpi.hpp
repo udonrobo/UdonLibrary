@@ -55,7 +55,8 @@ class CanBusSpi {
 		/// @brief 通信を開始
 		/// @param {baudrate} CAN通信レート
 		/// @param {canClock} CAN通信クロック
-		void begin(CAN_SPEED baudrate = CAN_1000KBPS, CAN_CLOCK canClock = MCP_20MHZ) {
+		void begin(CAN_CLOCK canClock = MCP_20MHZ, CAN_SPEED baudrate = CAN_1000KBPS)
+		{
 			if (readers.size() || writers.size())
 			{
 				bus.reset();
@@ -96,16 +97,19 @@ class CanBusSpi {
 			}
 		}
 
-		bool isEnableReader(uint32_t intervalLimitUs = 10000) const {
+		bool isEnableReader(uint32_t intervalLimitUs = 10000) const
+		{
 			return micros() - readTimestamp < intervalLimitUs;
 		}
-		bool isEnableWriter(uint32_t intervalLimitUs = 10000) const {
+		bool isEnableWriter(uint32_t intervalLimitUs = 10000) const
+		{
 			return micros() - writeTimestamp < intervalLimitUs;
 		}
 
 		/// @brief バスを更新
 		/// @param {writeIntervalUs} 送信間隔
-		void update(uint32_t writeIntervalUs = 5000) {
+		void update(uint32_t writeIntervalUs = 5000)
+		{
 			const auto now = micros();
 			if (writers.size() && now - writeTimestamp >= writeIntervalUs)
 			{
@@ -145,7 +149,8 @@ class CanBusSpi {
 		/// @brief Readerインスタンスをバスに追加
 		/// @param r Readerインスタンス
 		template<class MessageTy>
-		void join(CanReader<MessageTy>& r) {
+		void join(CanReader<MessageTy>& r)
+		{
 			for (auto && it : readers)
 			{
 				if (&r == it._this)
