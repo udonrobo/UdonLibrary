@@ -24,6 +24,7 @@ $sources =
 
 	".\stl\list.hpp",
 	".\stl\memory.hpp"
+	".\stl\functional.hpp"
 
 ## 収集フォルダ
 $target = ".\src"
