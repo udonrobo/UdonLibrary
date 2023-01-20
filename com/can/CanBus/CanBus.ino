@@ -4,17 +4,17 @@
 
 CanBusTeensy<CAN1> bus;
 
-CanWriter<Message::Motor> reader{ bus, 0 };
+CanWriter<Message::Motor> writer{ bus, 0 };
 
 void setup() {
 	bus.begin();
 }
 
 void loop() {
-	reader.setMessage( { millis() } );
-	if (reader)
+	writer.setMessage( { millis() } );
+	if (writer)
 	{
-		reader.show('\n');
+		writer.show('\n');
 	}
 	else
 	{

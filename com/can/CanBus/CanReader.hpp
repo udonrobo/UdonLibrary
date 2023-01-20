@@ -26,7 +26,7 @@ class CanReader {
 		
 	public:
 
-		/// @param id 信号識別番号
+		/// @param id 信号識別ID
 		template<class Bus>
 		CanReader(Bus& bus, const uint32_t id)
 			: id(id)
