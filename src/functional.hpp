@@ -137,7 +137,6 @@ namespace udon {
                     return vTable->call(functor, args...);
                 } else {
                     // throw bad_function_call{};
-                    return {};
                 }
             }
         };

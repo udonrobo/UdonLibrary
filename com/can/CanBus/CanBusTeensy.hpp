@@ -220,9 +220,9 @@ class CanBusTeensy {
 		template<class MessageTy>
 		void detach(const CanWriter<MessageTy>& r)
 		{
-			for (auto && it : writers)
+			for (auto && it = writers.begin(); it != writers.end(); ++it)
 			{
-				if (it._this == &r)
+				if (it->_this == &r)
 				{
 					writers.erase(it);
 					break;

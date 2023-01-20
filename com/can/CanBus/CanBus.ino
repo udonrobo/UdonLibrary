@@ -4,10 +4,9 @@
 
 CanBusTeensy<CAN1> bus;
 
-CanWriter<Message::Motor> reader{ 0 };
+CanWriter<Message::Motor> reader{ bus, 0 };
 
 void setup() {
-	bus.join(reader);
 	bus.begin();
 }
 
