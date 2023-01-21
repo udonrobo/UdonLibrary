@@ -78,9 +78,11 @@ flowchart LR
 
     -   通信開始
 
-        -   `void CanBusSpi::begin(CAN_SPEED baudrate = CAN_1000KBPS)`
+        -   `void CanBusSpi::begin(CAN_CLOCK canClock = MCP_20MHZ, CAN_SPEED baudrate = CAN_1000KBPS)`
 
             `@param {baudrate}` CAN 通信レート [ドキュメント](https://github.com/autowp/arduino-mcp2515) 参照
+
+            `@param {canClock}` CANコントローラー動作周波数 [ドキュメント](https://github.com/autowp/arduino-mcp2515) 参照
 
     -   通信更新
 

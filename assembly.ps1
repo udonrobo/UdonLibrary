@@ -9,8 +9,8 @@ $sources =
 	".\com\Common\BasicReader.hpp",
 	".\com\Common\BasicWriter.hpp",
 
-	".\com\can\CanReader\CanReader.hpp",
-	".\com\can\CanWriter\CanWriter.hpp",
+	".\com\can\CanBus\CanReader.hpp",
+	".\com\can\CanBus\CanWriter.hpp",
 	".\com\can\CanBus\CanBus.hpp",
 	".\com\can\CanBus\CanBusSpi.hpp",
 	".\com\can\CanBus\CanBusTeensy.hpp",
@@ -23,7 +23,8 @@ $sources =
 	".\sensor\Measure\Measure.hpp",
 
 	".\stl\list.hpp",
-	".\stl\memory.hpp"
+	".\stl\memory.hpp",
+	".\stl\functional.hpp"
 
 ## 収集フォルダ
 $target = ".\src"

@@ -1,6 +1,6 @@
-/// @file   CanWriter.hpp
+/// @file   CanReader.hpp
 /// @date   2023/01/15
-/// @brief  CAN通信送信クラス
+/// @brief  CAN通信受信クラス
 /// @author 大河 祐介
 
 #pragma once
@@ -8,7 +8,7 @@
 #include "functional.hpp"
 
 template<class MessageTy>
-class CanWriter {
+class CanReader {
 
 		const uint32_t id;
 		uint8_t buffer[sizeof(MessageTy)];
@@ -23,12 +23,12 @@ class CanWriter {
 			uint32_t* timestamp;
 			void* _this;
 		};
-
+		
 	public:
 
 		/// @param id 信号識別ID
 		template<class Bus>
-		CanWriter(Bus& bus, const uint32_t id)
+		CanReader(Bus& bus, const uint32_t id)
 			: id(id)
 			, buffer()
 			, timestamp()
@@ -37,31 +37,35 @@ class CanWriter {
 			bus.join(*this);
 		}
 
-		~CanWriter() {
+		~CanReader()
+		{
 			detach();
 		}
 
 		/// @brief 通信できているか
-		operator bool() const noexcept {
+		operator bool() const noexcept
+		{
 			return micros() - timestamp < 50000;
 		}
 
-		/// @brief メッセージ構造体をセット
-		void setMessage(const MessageTy& message) noexcept
+		/// @brief メッセージ構造体を取得
+		MessageTy getMessage() const noexcept
 		{
-			memcpy(buffer, &message, sizeof buffer);
+			MessageTy msg;
+			memcpy(&msg, buffer, sizeof msg);
+			return msg;
 		}
 
 		/// @brief 受信内容を表示
-		void show(char end = {}) const noexcept {
-			MessageTy msg;
-			memcpy(&msg, buffer, sizeof msg);
-			msg.show();
+		void show(char end = {}) const noexcept
+		{
+			getMessage().show();
 			Serial.print(end);
 		}
 
-		/// @brief Writerインスタンスのハンドラ取得(Bus用)
-		Handler getHandler() {
+		/// @brief Readerインスタンスのハンドラ取得(Bus用)
+		Handler getHandler()
+		{
 			return {
 				id,
 				buffer,
@@ -70,5 +74,5 @@ class CanWriter {
 				this
 			};
 		}
-
+		
 };

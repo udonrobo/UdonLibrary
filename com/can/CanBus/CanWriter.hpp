@@ -37,12 +37,14 @@ class CanWriter {
 			bus.join(*this);
 		}
 
-		~CanWriter() {
+		~CanWriter()
+		{
 			detach();
 		}
 
 		/// @brief 通信できているか
-		operator bool() const noexcept {
+		operator bool() const noexcept
+		{
 			return micros() - timestamp < 50000;
 		}
 
@@ -53,7 +55,8 @@ class CanWriter {
 		}
 
 		/// @brief 受信内容を表示
-		void show(char end = {}) const noexcept {
+		void show(char end = {}) const noexcept
+		{
 			MessageTy msg;
 			memcpy(&msg, buffer, sizeof msg);
 			msg.show();
@@ -61,7 +64,8 @@ class CanWriter {
 		}
 
 		/// @brief Writerインスタンスのハンドラ取得(Bus用)
-		Handler getHandler() {
+		Handler getHandler()
+		{
 			return {
 				id,
 				buffer,
