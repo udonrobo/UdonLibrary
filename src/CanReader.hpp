@@ -14,7 +14,8 @@ class CanReader {
 		uint8_t buffer[sizeof(MessageTy)];
 		uint32_t timestamp;
 
-		udon::std::function<void()> detach;
+		udon::std::function<void(CanReader&)> join;
+		udon::std::function<void(CanReader&)> detach;
 
 		struct Handler {
 			uint32_t id;
@@ -32,35 +33,41 @@ class CanReader {
 			: id(id)
 			, buffer()
 			, timestamp()
-			, detach([&] { bus.detach(*this); })
+			, join  ([&](CanReader& self) { bus.join  (self); })
+			, detach([&](CanReader& self) { bus.detach(self); })
 		{
-			bus.join(*this);
+			join(*this);
 		}
 
-		~CanReader() {
-			detach();
+		~CanReader()
+		{
+			detach(*this);
 		}
 
 		/// @brief 通信できているか
-		operator bool() const noexcept {
+		operator bool() const noexcept
+		{
 			return micros() - timestamp < 50000;
 		}
 
 		/// @brief メッセージ構造体を取得
-		MessageTy getMessage() const noexcept {
+		MessageTy getMessage() const noexcept
+		{
 			MessageTy msg;
 			memcpy(&msg, buffer, sizeof msg);
 			return msg;
 		}
 
 		/// @brief 受信内容を表示
-		void show(char end = {}) const noexcept {
+		void show(char end = {}) const noexcept
+		{
 			getMessage().show();
 			Serial.print(end);
 		}
 
 		/// @brief Readerインスタンスのハンドラ取得(Bus用)
-		Handler getHandler() {
+		Handler getHandler()
+		{
 			return {
 				id,
 				buffer,

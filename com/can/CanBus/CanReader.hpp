@@ -14,7 +14,8 @@ class CanReader {
 		uint8_t buffer[sizeof(MessageTy)];
 		uint32_t timestamp;
 
-		udon::std::function<void()> detach;
+		udon::std::function<void(CanReader&)> join;
+		udon::std::function<void(CanReader&)> detach;
 
 		struct Handler {
 			uint32_t id;
@@ -32,14 +33,15 @@ class CanReader {
 			: id(id)
 			, buffer()
 			, timestamp()
-			, detach([&] { bus.detach(*this); })
+			, join  ([&](CanReader& self) { bus.join  (self); })
+			, detach([&](CanReader& self) { bus.detach(self); })
 		{
-			bus.join(*this);
+			join(*this);
 		}
 
 		~CanReader()
 		{
-			detach();
+			detach(*this);
 		}
 
 		/// @brief 通信できているか
