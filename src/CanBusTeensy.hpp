@@ -52,7 +52,8 @@ class CanBusTeensy {
 			self = this;
 		}
 
-		~CanBusTeensy() {
+		~CanBusTeensy()
+		{
 			end();
 		}
 
@@ -104,16 +105,19 @@ class CanBusTeensy {
 			}
 		}
 
-		void end() {
+		void end()
+		{
 			readerIsr.end();
 			bus.disableFIFO();
 			bus.disableFIFOInterrupt();
 		}
 
-		bool isEnableReader(uint32_t intervalLimitUs = 50000) const {
+		bool isEnableReader(uint32_t intervalLimitUs = 50000) const
+		{
 			return micros() - readTimestamp < intervalLimitUs;
 		}
-		bool isEnableWriter(uint32_t intervalLimitUs = 50000) const {
+		bool isEnableWriter(uint32_t intervalLimitUs = 50000) const
+		{
 			return micros() - writeTimestamp < intervalLimitUs;
 		}
 
