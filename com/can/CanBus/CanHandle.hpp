@@ -14,6 +14,6 @@ struct CanBusErrorHandle {
 	operator bool() const {
 		return TXErrorCount < 100 &&
 		       RXErrorCount < 100 &&
-		       micros() - timestampUs < 5000;
+		       micros() - timestampUs < 50000;
 	}
 };

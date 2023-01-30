@@ -14,11 +14,14 @@ CanWriter<Message::Motor> writers[] {
 	{ bus, 6 }
 };
 
+CanReader<Message::RGB> rgb(bus, 0);
+
 void setup() {
 	bus.begin();
 }
 
 void loop() {
+	rgb.getMessage().show();
 	for (auto && writer : writers) {
 		writer.setMessage( { millis() } );
 		if (writer)
@@ -30,7 +33,8 @@ void loop() {
 			Serial.println("error");
 		}
 	}
-	Serial.println();
+	Serial.println(bus.getErrorHandle());
+
 	bus.update();
 	delay(1);
 }

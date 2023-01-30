@@ -4,14 +4,15 @@
 
 #pragma once
 
-class CanBusInterface {
-	
-	public:
-	
-		virtual void joinWriter() = 0;
-		virtual void detachWriter() = 0;
+#include "CanHandle.hpp"
 
-		virtual void joinReader() = 0;
-		virtual void detachReader() = 0;
+class CanBusInterface {
+
+	public:
+
+		virtual void joinTX(CanNodeHandle&) = 0;
+		virtual void joinRX(CanNodeHandle&) = 0;
+		virtual void detachTX(CanNodeHandle&) = 0;
+		virtual void detachRX(CanNodeHandle&) = 0;
 
 };

@@ -6,28 +6,34 @@
 #pragma once
 
 #include "CanHandle.hpp"
+#include "CanBusInterface.hpp"
 
 template<class MessageTy>
 class CanReader {
 
-		CanBusInterface& bus;
-		CanNodeHandle hNode;
-		uint8_t buffer[sizeof(MessageTy)];
+		CanBusInterface& hBus                     ;
+		CanNodeHandle    hNode                    ;
+		uint8_t          buffer[sizeof(MessageTy)];
 
 	public:
 
 		/// @param id 信号識別ID
-		CanReader(CanBusInterface& bus, const uint32_t id)
-			: bus(bus)
-			, hNode { id, buffer, sizeof buffer }
-			, buffer()
+		CanReader(CanBusInterface& hBus, const uint32_t id)
+			: hBus  { hBus                          }
+			, hNode { id, buffer, sizeof(MessageTy) }
+			, buffer{                               }
 		{
-			bus.join(hNode);
+			hBus.joinRX(hNode);
 		}
 
 		~CanReader()
 		{
-			bus.detach(hNode);
+			hBus.detachRX(hNode);
+		}
+
+		constexpr size_t length() const noexcept
+		{
+			return sizeof(MessageTy);
 		}
 
 		/// @brief 通信できているか

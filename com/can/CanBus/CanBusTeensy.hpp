@@ -9,45 +9,38 @@
 //     vvv teensy3.2 vvv        vvv teensy3.5 vvv         vvv teensy3.6 vvv       vvv teensy4.0/4.1 vvv
 #if defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__)
 
+
 #	include <FlexCAN_T4.h>      // https://github.com/tonton81/FlexCAN_T4.git
 #	include <IntervalTimer.h>   // https://github.com/loglow/IntervalTimer.git
 
-#	include "list.hpp"
-#	include "CanReader.hpp"
-#	include "CanWriter.hpp"
+#	include "list.hpp"  // udon::std::list
+
+#	include "CanHandle.hpp"
+#	include "CanBusInterface.hpp"
+
 
 /// @tparam {Bus} バス種類 (CAN0,CAN1,CAN2,CAN3)
 template<CAN_DEV_TABLE Bus>
-class CanBusTeensy {
+class CanBusTeensy : public CanBusInterface
+{
 
 		static CanBusTeensy* self;
 
 		FlexCAN_T4<Bus, RX_SIZE_256, TX_SIZE_256> bus;
+		IntervalTimer                             isr;
 
-		IntervalTimer readerIsr;  // 送信割り込み用タイマー
-
-		/// @brief ノード(Reader,Writer)を管理
-		struct Node {
-			uint32_t id;          // ノードID
-			uint8_t* buffer;      // Reader,Writerクラスのバッファに対するポインタ
-			size_t size;          // バッファサイズ
-			uint32_t* timestamp;  // 最後にバッファにアクセスした時刻[ms]
-			void* _this;          // ノードのthisポインタ
-		};
-
-		udon::std::list<Node> readers;
-		udon::std::list<Node> writers;
-		uint32_t readTimestamp;
-		uint32_t writeTimestamp;
+		using DataLine = udon::std::list<CanNodeHandle*>;
+		DataLine          tx    ;
+		DataLine          rx    ;
+		CanBusErrorHandle hError;
 
 	public:
 
 		CanBusTeensy()
 			: bus()
-			, readers()
-			, writers()
-			, readTimestamp()
-			, writeTimestamp()
+			, tx()
+			, rx()
+			, hError()
 		{
 			self = this;
 		}
@@ -61,18 +54,18 @@ class CanBusTeensy {
 		/// @param {baudrate} 通信レート
 		void begin(const uint32_t baudrate = 1000000)
 		{
-			if (readers.size() || writers.size())
+			if (rx.size() || tx.size())
 			{
 				bus.begin();
 				bus.setBaudRate(baudrate);
 				bus.enableFIFO();
 				bus.enableFIFOInterrupt();
 			}
-			if (readers.size())
+			if (rx.size())
 			{
 				bus.onReceive([](const CAN_message_t& msg) {
 					const auto now = micros();
-					const auto event = [&msg, &now](Node & reader)
+					const auto event = [&msg, &now](CanNodeHandle * hNode)
 					{
 						// 先頭1バイト : パケット番号
 						const uint8_t index = msg.buf[0];
@@ -81,24 +74,32 @@ class CanBusTeensy {
 						for (uint8_t i = 0; i < 7; i++)
 						{
 							const uint8_t bufIndex = i + index * 7;
-							if (bufIndex < reader.size)
-								reader.buffer[bufIndex] = msg.buf[i + 1];
+							if (bufIndex < hNode->length)
+								hNode->buffer[bufIndex] = msg.buf[i + 1];
 							else
 								break;
 						}
-						*reader.timestamp = now;
+						hNode->timestampUs = now;
 					};
-					for (auto && it : self->readers) {
-						if (msg.id == it.id)
+					for (auto && it : self->rx) {
+						if (msg.id == it->id)
 						{
 							event(it);
 						}
 					}
-					self->readTimestamp = now;
+
+					CAN_error_t error;
+					self->bus.error(error, false);
+					self->hError = {
+						error.TX_ERR_COUNTER,
+						error.RX_ERR_COUNTER,
+						now
+					};
+					
 				});
 
 				// 受信割り込み開始
-				readerIsr.begin(
+				isr.begin(
 				    [] { self->bus.events(); },
 				    100
 				);
@@ -107,18 +108,9 @@ class CanBusTeensy {
 
 		void end()
 		{
-			readerIsr.end();
+			isr.end();
 			bus.disableFIFO();
 			bus.disableFIFOInterrupt();
-		}
-
-		bool isEnableReader(uint32_t intervalLimitUs = 50000) const
-		{
-			return micros() - readTimestamp < intervalLimitUs;
-		}
-		bool isEnableWriter(uint32_t intervalLimitUs = 50000) const
-		{
-			return micros() - writeTimestamp < intervalLimitUs;
 		}
 
 		/// @brief バスを更新
@@ -126,16 +118,16 @@ class CanBusTeensy {
 		void update(uint32_t writeIntervalUs = 5000)
 		{
 			const auto now = micros();
-			if (writers.size() && now - writeTimestamp >= writeIntervalUs)
+			if (tx.size() && now - hError.timestampUs >= writeIntervalUs)
 			{
-				const auto event = [&now](Node & writer) {
+				const auto event = [&now](CanNodeHandle * hNode) {
 					// 一度に8バイトしか送れないため、パケットに分割し送信
-					for (size_t index = 0; index < ceil(writer.size / 7.0); index++)
+					for (size_t index = 0; index < ceil(hNode->length / 7.0); index++)
 					{
 						CAN_message_t msg;
 
 						// 先頭1バイト : パケット番号
-						msg.id = writer.id;
+						msg.id = hNode->id;
 						msg.buf[0] = index;
 
 						// バイト列を8バイト受信データにエンコード
@@ -143,93 +135,75 @@ class CanBusTeensy {
 						{
 							const uint8_t bufIndex = i + index * 7;
 
-							if (bufIndex < writer.size)
-								msg.buf[i + 1] = writer.buffer[bufIndex];
+							if (bufIndex < hNode->length)
+								msg.buf[i + 1] = hNode->buffer[bufIndex];
 							else
 								break;
 						}
 						// バスに送信
-						while (!self->bus.write(msg));
+						while (not self->bus.write(msg));
 					}
-					*writer.timestamp = now;
+					hNode->timestampUs = now;
 				};
 
-				for (auto && it : self->writers) {
+				for (auto && it : self->tx) {
 					event(it);
 				}
-				writeTimestamp = now;
+
+				CAN_error_t error;
+				bus.error(error, false);
+				hError = {
+					error.TX_ERR_COUNTER,
+					error.RX_ERR_COUNTER,
+					now
+				};
+
 			}
 		}
 
-		/// @brief Readerインスタンスをバスに追加
-		/// @param r Readerインスタンス
-		template<class MessageTy>
-		void join(CanReader<MessageTy>& r)
+		CanBusErrorHandle getErrorHandle() const {
+			return hError;
+		}
+
+		void joinTX(CanNodeHandle& hNode) override
 		{
-			for (auto && it : readers)
+			join(tx, hNode);
+		}
+		void joinRX(CanNodeHandle& hNode) override
+		{
+			join(rx, hNode);
+		}
+
+		void detachRX(CanNodeHandle& hNode) override
+		{
+			detach(rx, hNode);
+		}
+		void detachTX(CanNodeHandle& hNode) override
+		{
+			detach(tx, hNode);
+		}
+
+	private:
+
+		void join(DataLine& line, CanNodeHandle& hNode)
+		{
+			for (auto && it : line)
 			{
-				if (&r == it._this)
+				if (it == &hNode)  // インスタンスの重複を除外する
 				{
 					return;
 				}
 			}
-			auto&& hReader = r.getHandler();
-			readers.push_back({
-				static_cast<uint16_t>(hReader.id),
-				hReader.buffer,
-				hReader.size,
-				hReader.timestamp,
-				hReader._this
-			});
+			line.push_back(&hNode);
 		}
 
-		/// @brief Readerインスタンスをバスから開放
-		/// @param r Readerインスタンス
-		template<class MessageTy>
-		void detach(const CanReader<MessageTy>& r)
+		void detach(DataLine& line, CanNodeHandle& hNode)
 		{
-			for (auto && it = readers.begin(); it != readers.end(); ++it)
+			for (auto && it = line.begin(); it != line.end(); ++it)
 			{
-				if (it->_this == &r)
+				if (*it == &hNode)
 				{
-					readers.erase(it);
-					break;
-				}
-			}
-		}
-
-		/// @brief Writerインスタンスをバスに追加
-		/// @param r Writerインスタンス
-		template<class MessageTy>
-		void join(CanWriter<MessageTy>& r)
-		{
-			for (auto && it : writers)
-			{
-				if (&r == it._this)
-				{
-					return;
-				}
-			}
-			auto&& hWriter = r.getHandler();
-			writers.push_back({
-				static_cast<uint16_t>(hWriter.id),
-				hWriter.buffer,
-				hWriter.size,
-				hWriter.timestamp,
-				hWriter._this
-			});
-		}
-
-		/// @brief Writerインスタンスをバスから開放
-		/// @param r Writerインスタンス
-		template<class MessageTy>
-		void detach(const CanWriter<MessageTy>& r)
-		{
-			for (auto && it = writers.begin(); it != writers.end(); ++it)
-			{
-				if (it->_this == &r)
-				{
-					writers.erase(it);
+					line.erase(it);
 					break;
 				}
 			}
