@@ -7,10 +7,10 @@ struct CanNodeHandle {
 	uint32_t timestampUs;   // last buffer interrupt access time [μs]
 };
 
-struct CanErrorHandle {
-	uint8_t TXErrorCount;
-	uint8_t RXErrorCount;
-	uint32_t timestampUs;
+struct CanBusErrorHandle {
+	uint8_t  TXErrorCount;
+	uint8_t  RXErrorCount;
+	uint32_t timestampUs ;
 	operator bool() const {
 		return TXErrorCount < 100 &&
 		       RXErrorCount < 100 &&
