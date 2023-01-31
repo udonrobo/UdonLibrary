@@ -1,36 +1,41 @@
-## ファイル群を特定のフォルダに集める
+# @brief ファイル群を特定のフォルダに集める
 
-## 収集ファイルのターゲットパス配列
+$ErrorActionPreference = "Stop"
+
+# 収集ファイルのターゲットパス配列
 $sources =
-	".\actuator\motor\Motor\Motor.hpp",
-	".\algorithm\Utility.hpp",
+".\actuator\motor\Motor\Motor.hpp",
+".\algorithm\Utility.hpp",
 
-	".\com\common\Message.hpp",
-	".\com\Common\BasicReader.hpp",
-	".\com\Common\BasicWriter.hpp",
+".\com\common\Message.hpp",
+".\com\Common\BasicReader.hpp",
+".\com\Common\BasicWriter.hpp",
 
-	".\com\can\CanBus\CanReader.hpp",
-	".\com\can\CanBus\CanWriter.hpp",
-	".\com\can\CanBus\CanBus.hpp",
-	".\com\can\CanBus\CanBusSpi.hpp",
-	".\com\can\CanBus\CanBusTeensy.hpp",
-	".\com\can\CanBus\CanCommon.hpp",
+".\com\can\CanBus\CanBus.hpp",
+".\com\can\CanBus\CanBusInterface.hpp",
+".\com\can\CanBus\CanBusSpi.hpp",
+".\com\can\CanBus\CanBusPico.hpp",
+".\com\can\CanBus\CanBusTeensy.hpp",
+".\com\can\CanBus\CanCommon.hpp",
+".\com\can\CanBus\CanInfo.hpp",
+".\com\can\CanBus\CanReader.hpp",
+".\com\can\CanBus\CanWriter.hpp",
 
-	".\com\i2c\I2cSlaveReader\I2cSlaveReader.hpp",
-	".\com\i2c\I2cSlaveWriter\I2cSlaveWriter.hpp",
+".\com\i2c\I2cSlaveReader\I2cSlaveReader.hpp",
+".\com\i2c\I2cSlaveWriter\I2cSlaveWriter.hpp",
 
-	".\sensor\Gyro\Gyro.hpp",
-	".\sensor\Measure\Measure.hpp",
+".\sensor\Gyro\Gyro.hpp",
+".\sensor\Measure\Measure.hpp",
 
-	".\stl\list.hpp",
-	".\stl\memory.hpp",
-	".\stl\functional.hpp"
+".\stl\list.hpp",
+".\stl\memory.hpp",
+".\stl\functional.hpp"
 
-## 収集フォルダ
+# 収集フォルダ
 $target = ".\src"
 
 
-echo "`n-------------------------- Source ---------------------------`n"
+Write-Host "`n-------------------------- Source ---------------------------`n"
 
 foreach ($source in $sources) {
 	if (Test-Path $source) {
@@ -41,15 +46,25 @@ foreach ($source in $sources) {
 	}
 }
 
-echo "`n-------------------------- Output ---------------------------`n"
+Write-Host "`n-------------------------- Output ---------------------------`n"
 
-echo $target
+Write-Host $target
 
 ## ファイル収集
+
 foreach ($source in $sources) {
-	$filedir  = Split-Path $source -Parent
+	$filedir = Split-Path $source -Parent
 	$filename = Split-Path $source -Leaf
-	robocopy $filedir $target $filename | Out-Null
+
+	try
+	{
+		robocopy $filedir $target $filename | Out-Null
+	}
+	catch
+	{
+		# ぐしゃり✊
+	}
+
 }
 
-echo "`n-------------------------- Finish ---------------------------`n"
+Write-Host "`n-------------------------- Finish ---------------------------`n"
