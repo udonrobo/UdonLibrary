@@ -4,11 +4,11 @@
 
 CanBusTeensy<CAN1> bus;
 std::vector<CanWriter<Message::Motor>> writers {
-	{ 0 },
-	{ 1 },
-	{ 2 },
-	{ 3 },
-	{ 4 },
+	{ bus, 0 },
+	{ bus, 1 },
+	{ bus, 2 },
+	{ bus, 3 },
+	{ bus, 4 },
 };
 
 void setup() {
