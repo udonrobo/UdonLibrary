@@ -4,15 +4,15 @@
 
 #pragma once
 
-#include "CanHandle.hpp"
+#include "CanInfo.hpp"
 
 class CanBusInterface {
 
 	public:
 
-		virtual void joinTX(CanNodeHandle&) = 0;
-		virtual void joinRX(CanNodeHandle&) = 0;
-		virtual void detachTX(CanNodeHandle&) = 0;
-		virtual void detachRX(CanNodeHandle&) = 0;
+		virtual void joinTX(CanNodeInfo&) = 0;
+		virtual void joinRX(CanNodeInfo&) = 0;
+		virtual void detachTX(CanNodeInfo&) = 0;
+		virtual void detachRX(CanNodeInfo&) = 0;
 
 };

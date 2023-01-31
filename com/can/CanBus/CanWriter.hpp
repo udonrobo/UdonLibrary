@@ -5,30 +5,30 @@
 
 #pragma once
 
-#include "CanHandle.hpp"
+#include "CanInfo.hpp"
 #include "CanBusInterface.hpp"
 
 template<class MessageTy>
 class CanWriter {
 
-		CanBusInterface& hBus                     ;
-		CanNodeHandle    hNode                    ;
+		CanBusInterface& bus                      ;
+		CanNodeInfo      node                     ;
 		uint8_t          buffer[sizeof(MessageTy)];
 
 	public:
 
 		/// @param id 信号識別ID
-		CanWriter(CanBusInterface& hBus, const uint32_t id)
-			: hBus  { hBus                          }
-			, hNode { id, buffer, sizeof(MessageTy) }
+		CanWriter(CanBusInterface& bus, const uint32_t id)
+			: bus   { bus                           }
+			, node  { id, buffer, sizeof(MessageTy) }
 			, buffer{                               }
 		{
-			hBus.joinTX(hNode);
+			bus.joinTX(node);
 		}
 
 		~CanWriter()
 		{
-			hBus.detachTX(hNode);
+			bus.detachTX(node);
 		}
 
 		constexpr size_t length() const noexcept
@@ -39,7 +39,7 @@ class CanWriter {
 		/// @brief 通信できているか
 		operator bool() const noexcept
 		{
-			return micros() - hNode.timestampUs < 50000;
+			return micros() - node.timestampUs < 50000;
 		}
 
 		/// @brief メッセージ構造体をセット
