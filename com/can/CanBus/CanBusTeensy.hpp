@@ -37,10 +37,10 @@ class CanBusTeensy : public CanBusInterface
 	public:
 
 		CanBusTeensy()
-			: bus()
-			, tx()
-			, rx()
-			, error()
+			: bus   {}
+			, tx    {}
+			, rx    {}
+			, error {}
 		{
 			self = this;
 		}
@@ -126,18 +126,19 @@ class CanBusTeensy : public CanBusInterface
 
 	private:
 
-		void updateErrorInfo()
+		/// @brief ライブラリクラスからバスのエラー情報を取得
+		static CanBusErrorInfo getError()
 		{
 			CAN_error_t e;
 			self->bus.error(e, false);
-			self->error = {
+			return {
 				e.TX_ERR_COUNTER,
 				e.RX_ERR_COUNTER,
 				micros()
 			};
 		}
 
-		void eventRX(const CAN_message_t& msg)
+		static void eventRX(const CAN_message_t& msg)
 		{
 			const auto event = [&msg](CanNodeInfo * node)
 			{
@@ -159,12 +160,13 @@ class CanBusTeensy : public CanBusInterface
 					event(it);
 				}
 			}
-			updateErrorInfo();
+			self->error = getError();
 		}
 
-		void eventTX()
+		static void eventTX()
 		{
-			const auto event = [](CanNodeInfo * node) {
+			const auto event = [](CanNodeInfo * node)
+			{
 				// 一度に8バイトしか送れないため、パケットに分割し送信
 				for (size_t index = 0; index < ceil(node->length / 7.0); index++)
 				{
@@ -186,7 +188,7 @@ class CanBusTeensy : public CanBusInterface
 			for (auto && it : self->tx) {
 				event(it);
 			}
-			updateErrorInfo();
+			self->error = getError();
 		}
 
 		void join(DataLine& line, CanNodeInfo& node)

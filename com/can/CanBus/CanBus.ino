@@ -5,6 +5,8 @@
 
 CanBusSpi<0, 0> bus(SPI);
 
+CanBusTeensy <CAN1> bubu;
+
 CanWriter<Message::Motor> writers[] {
 	{ bus, 0 },
 	{ bus, 1 },
