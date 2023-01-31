@@ -5,56 +5,48 @@
 
 #pragma once
 
-#include "functional.hpp"
+#include "CanInfo.hpp"
+#include "CanBusInterface.hpp"
 
 template<class MessageTy>
 class CanReader {
 
-		const uint32_t id;
-		uint8_t buffer[sizeof(MessageTy)];
-		uint32_t timestamp;
+		CanBusInterface& bus                      ;
+		CanNodeInfo      node                     ;
+		uint8_t          buffer[sizeof(MessageTy)];
 
-		udon::std::function<void(CanReader&)> join;
-		udon::std::function<void(CanReader&)> detach;
-
-		struct Handler {
-			uint32_t id;
-			uint8_t* buffer;
-			size_t size;
-			uint32_t* timestamp;
-			void* _this;
-		};
-		
 	public:
 
 		/// @param id 信号識別ID
-		template<class Bus>
-		CanReader(Bus& bus, const uint32_t id)
-			: id(id)
-			, buffer()
-			, timestamp()
-			, join  ([&](CanReader& self) { bus.join  (self); })
-			, detach([&](CanReader& self) { bus.detach(self); })
+		CanReader(CanBusInterface& bus, const uint32_t id)
+			: bus   { bus                           }
+			, node  { id, buffer, sizeof(MessageTy) }
+			, buffer{                               }
 		{
-			join(*this);
+			bus.joinRX(node);
 		}
 
 		~CanReader()
 		{
-			detach(*this);
+			bus.detachRX(node);
+		}
+
+		constexpr size_t length() const noexcept
+		{
+			return sizeof(MessageTy);
 		}
 
 		/// @brief 通信できているか
 		operator bool() const noexcept
 		{
-			return micros() - timestamp < 50000;
+			return micros() - node.timestampUs < 50000;
 		}
 
 		/// @brief メッセージ構造体を取得
 		MessageTy getMessage() const noexcept
 		{
 			MessageTy msg;
-			memcpy(&msg, buffer, sizeof msg);
+			memcpy(&msg, node.buffer, sizeof msg);
 			return msg;
 		}
 
@@ -65,16 +57,4 @@ class CanReader {
 			Serial.print(end);
 		}
 
-		/// @brief Readerインスタンスのハンドラ取得(Bus用)
-		Handler getHandler()
-		{
-			return {
-				id,
-				buffer,
-				sizeof buffer,
-				&timestamp,
-				this
-			};
-		}
-		
 };

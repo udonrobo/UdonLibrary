@@ -2,7 +2,10 @@
 
 #include <vector>
 
-CanBusTeensy<CAN1> bus;
+
+CanBusSpi<0, 0> bus(SPI);
+
+CanBusTeensy <CAN1> bubu;
 
 CanWriter<Message::Motor> writers[] {
 	{ bus, 0 },
@@ -14,13 +17,16 @@ CanWriter<Message::Motor> writers[] {
 	{ bus, 6 }
 };
 
+CanReader<Message::RGB> rgb(bus, 0);
+
 void setup() {
 	bus.begin();
 }
 
 void loop() {
+	rgb.getMessage().show();
 	for (auto && writer : writers) {
-		writer.setMessage( { millis() } );
+		writer.setMessage( { (int16_t)millis() } );
 		if (writer)
 		{
 			writer.show();
@@ -30,7 +36,8 @@ void loop() {
 			Serial.println("error");
 		}
 	}
-	Serial.println();
+	Serial.println(bus.getErrorInfo());
+
 	bus.update();
 	delay(1);
 }
