@@ -4,9 +4,11 @@
 
 CAN 通信構造体受信クラス
 
+メッセージ構造体オブジェクトを受信できるように `CanNodeInfo` 構造体をラップしたクラスです。
+
 -   対応マイコン
 
-    バスクラスに依存します。
+    バス管理クラスに依存します。
 
 -   制限
 
@@ -52,7 +54,7 @@ void loop() {
 
     -   `template<class MessageTy> CanReader::CanReader(BusTy& bus, uint32_t id)`
 
-        `@tparam {MessageTy}` 受信する構造体
+        `@tparam {MessageTy}` 受信する構造体の型
 
         `@param {id}` 監視するノード ID
 
@@ -75,11 +77,3 @@ void loop() {
         `@param end` 最後に出力される文字
 
         セットされた構造体に `show()` メンバが実装されている必要があります。
-
-# Summary
-
--   data format
-
-	[ id (11bit) ] + [ index (1byte) + data (7byte) ]
-
-	送信量が 7byte を超える場合はパケットに分けて送信

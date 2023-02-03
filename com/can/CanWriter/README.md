@@ -76,11 +76,3 @@ void loop() {
         `@param end` 最後に出力される文字
 
         セットされた構造体に `show()` メンバが実装されている必要があります。
-
-# Summary
-
--   data format
-
-    [ id (11bit) ] + [ index (1byte) + data (7byte) ]
-
-    送信量が 7byte を超える場合はパケットに分けて送信
