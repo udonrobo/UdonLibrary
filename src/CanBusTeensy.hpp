@@ -1,4 +1,4 @@
-/// @file   CanBusTeensy.hpp
+/// @file   CANBusTeensy.hpp
 /// @date   2023/01/13
 /// @brief  FlexCAN_T4ライブラリを用いたCANバス管理クラス
 /// @remark [CPU] <--CAN[TX/RX]--> [CANトランシーバ] <--CAN[H/L]--> [BUS]
@@ -15,28 +15,28 @@
 
 #	include "list.hpp"  // udon::std::list
 
-#	include "CanInfo.hpp"
-#	include "CanBusInterface.hpp"
+#	include "CANInfo.hpp"
+#	include "CANBusInterface.hpp"
 
 
 /// @tparam {Bus} バス種類 (CAN0,CAN1,CAN2,CAN3)
 template<CAN_DEV_TABLE Bus>
-class CanBusTeensy : public CanBusInterface
+class CANBusTeensy : public CANBusInterface
 {
 
 		FlexCAN_T4<Bus, RX_SIZE_256, TX_SIZE_256> bus;
 		IntervalTimer                             isr;
 
-		using DataLine = udon::std::list<CanNodeInfo*>;
+		using DataLine = udon::std::list<CANNodeInfo*>;
 		DataLine        tx   ;
 		DataLine        rx   ;
-		CanBusErrorInfo error;
+		CANBusErrorInfo error;
 
-		static CanBusTeensy* self;
+		static CANBusTeensy* self;
 
 	public:
 
-		CanBusTeensy()
+		CANBusTeensy()
 			: bus   {}
 			, tx    {}
 			, rx    {}
@@ -45,7 +45,7 @@ class CanBusTeensy : public CanBusInterface
 			self = this;
 		}
 
-		~CanBusTeensy()
+		~CANBusTeensy()
 		{
 			end();
 		}
@@ -90,36 +90,36 @@ class CanBusTeensy : public CanBusInterface
 		}
 
 		/// @brief エラー情報取得
-		/// @return CanBusErrorInfo構造体インスタンス
-		CanBusErrorInfo getErrorInfo() const
+		/// @return CANBusErrorInfo構造体インスタンス
+		CANBusErrorInfo getErrorInfo() const
 		{
 			return error;
 		}
 
 		/// @brief TXノードをバスに参加
 		/// @param node
-		void joinTX(CanNodeInfo& node) override
+		void joinTX(CANNodeInfo& node) override
 		{
 			join(tx, node);
 		}
 
 		/// @brief RXノードをバスに参加
 		/// @param node
-		void joinRX(CanNodeInfo& node) override
+		void joinRX(CANNodeInfo& node) override
 		{
 			join(rx, node);
 		}
 
 		/// @brief RXノードをバスから解放
 		/// @param node
-		void detachRX(CanNodeInfo& node) override
+		void detachRX(CANNodeInfo& node) override
 		{
 			detach(rx, node);
 		}
 
 		/// @brief TXノードをバスから解放
 		/// @param node
-		void detachTX(CanNodeInfo& node) override
+		void detachTX(CANNodeInfo& node) override
 		{
 			detach(tx, node);
 		}
@@ -127,7 +127,7 @@ class CanBusTeensy : public CanBusInterface
 	private:
 
 		/// @brief ライブラリクラスからバスのエラー情報を取得
-		static CanBusErrorInfo getError()
+		static CANBusErrorInfo getError()
 		{
 			CAN_error_t e;
 			self->bus.error(e, false);
@@ -140,7 +140,7 @@ class CanBusTeensy : public CanBusInterface
 
 		static void eventRX(const CAN_message_t& msg)
 		{
-			const auto event = [&msg](CanNodeInfo * node)
+			const auto event = [&msg](CANNodeInfo * node)
 			{
 				const uint8_t index = msg.buf[0];   // 先頭1バイト : パケット番号
 				for (uint8_t i = 0; i < 7; i++)     // 8バイト受信データをバイト列にデコード
@@ -165,7 +165,7 @@ class CanBusTeensy : public CanBusInterface
 
 		static void eventTX()
 		{
-			const auto event = [](CanNodeInfo * node)
+			const auto event = [](CANNodeInfo * node)
 			{
 				// 一度に8バイトしか送れないため、パケットに分割し送信
 				for (size_t index = 0; index < ceil(node->length / 7.0); index++)
@@ -191,7 +191,7 @@ class CanBusTeensy : public CanBusInterface
 			self->error = getError();
 		}
 
-		void join(DataLine& line, CanNodeInfo& node)
+		void join(DataLine& line, CANNodeInfo& node)
 		{
 			for (auto && it : line)
 			{
@@ -203,7 +203,7 @@ class CanBusTeensy : public CanBusInterface
 			line.push_back(&node);
 		}
 
-		void detach(DataLine& line, CanNodeInfo& node)
+		void detach(DataLine& line, CANNodeInfo& node)
 		{
 			for (auto && it = line.begin(); it != line.end(); ++it)
 			{
@@ -218,6 +218,6 @@ class CanBusTeensy : public CanBusInterface
 };
 
 template<CAN_DEV_TABLE Bus>
-CanBusTeensy<Bus>* CanBusTeensy<Bus>::self;
+CANBusTeensy<Bus>* CANBusTeensy<Bus>::self;
 
 #endif

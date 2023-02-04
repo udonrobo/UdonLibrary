@@ -1,24 +1,24 @@
-/// @file   CanReader.hpp
+/// @file   CANReader.hpp
 /// @date   2023/01/15
 /// @brief  CAN通信受信クラス
 /// @author 大河 祐介
 
 #pragma once
 
-#include "CanInfo.hpp"
-#include "CanBusInterface.hpp"
+#include "CANInfo.hpp"
+#include "CANBusInterface.hpp"
 
 template<class MessageTy>
-class CanReader {
+class CANReader {
 
-		CanBusInterface& bus                      ;
-		CanNodeInfo      node                     ;
+		CANBusInterface& bus                      ;
+		CANNodeInfo      node                     ;
 		uint8_t          buffer[sizeof(MessageTy)];
 
 	public:
 
 		/// @param id 信号識別ID
-		CanReader(CanBusInterface& bus, const uint32_t id)
+		CANReader(CANBusInterface& bus, const uint32_t id)
 			: bus   { bus                           }
 			, node  { id, buffer, sizeof(MessageTy) }
 			, buffer{                               }
@@ -26,7 +26,7 @@ class CanReader {
 			bus.joinRX(node);
 		}
 
-		~CanReader()
+		~CANReader()
 		{
 			bus.detachRX(node);
 		}

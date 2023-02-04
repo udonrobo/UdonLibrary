@@ -1,4 +1,4 @@
-# CanWriter
+# CANWriter
 
 ## Description
 
@@ -21,13 +21,13 @@ CAN 通信構造体送信クラス
 
 # Usage
 
-`CanBusTeensy` バスを使用し、 `Message::Motor` 構造体を使用してモーターの情報を送信する例
+`CANBusTeensy` バスを使用し、 `Message::Motor` 構造体を使用してモーターの情報を送信する例
 
 ```cpp
-#include "CanCommon.hpp"
+#include "CANCommon.hpp"
 
-CanBusTeensy<CAN1> bus;
-CanWriter<Message::Motor> writer(bus, 0);
+CANBusTeensy<CAN1> bus;
+CANWriter<Message::Motor> writer(bus, 0);
 
 void setup() {
 	bus.begin();
@@ -49,7 +49,7 @@ void loop() {
 
 -   コンストラクタ
 
-    -   `template<class MessageTy> CanWriter::CanWriter(BusTy& bus, uint32_t id)`
+    -   `template<class MessageTy> CANWriter::CANWriter(BusTy& bus, uint32_t id)`
 
         `@tparam {MessageTy}` 送信する構造体
 
@@ -57,7 +57,7 @@ void loop() {
 
 -   通信監視(WDT)
 
-    -   `CanWriter::operator bool()`
+    -   `CANWriter::operator bool()`
 
         `@return` 通信しているか
 
@@ -65,13 +65,13 @@ void loop() {
 
 -   データセット
 
-    -   `void CanWriter::setMessage(MessageTy message)`
+    -   `void CANWriter::setMessage(MessageTy message)`
 
         `@param {message}` 送信するデータ
 
 -   デバッグ出力
 
-    -   `void CanWriter::show(char end = {})`
+    -   `void CANWriter::show(char end = {})`
 
         `@param end` 最後に出力される文字
 

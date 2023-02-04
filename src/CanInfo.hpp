@@ -1,6 +1,6 @@
 #pragma once
 
-struct CanNodeInfo
+struct CANNodeInfo
 {
 	uint32_t id         ;   // node id
 	uint8_t* buffer     ;   // point buffer array
@@ -8,7 +8,7 @@ struct CanNodeInfo
 	uint32_t timestampUs;   // last buffer interrupt access time [μs]
 };
 
-struct CanBusErrorInfo
+struct CANBusErrorInfo
 {
 	uint8_t  TXErrorCount;
 	uint8_t  RXErrorCount;

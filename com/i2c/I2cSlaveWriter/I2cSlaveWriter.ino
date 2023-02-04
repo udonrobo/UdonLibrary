@@ -1,6 +1,6 @@
-#include "I2cSlaveWriter.hpp"
+#include "I2CSlaveWriter.hpp"
 
-I2cSlaveWriter<4> sender(5);
+I2CSlaveWriter<4> sender(5);
 
 void setup() {
 }

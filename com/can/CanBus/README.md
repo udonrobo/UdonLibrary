@@ -1,14 +1,14 @@
-# Can Bus
+# CAN Bus
 
 バス管理クラス
 
 バス管理クラスのみではデータの読み取り、書き込みはできません。
 
-`CanNodeInfo` 構造体と組み合わせて、通信データの読み取り書き込みを行います。
+`CANNodeInfo` 構造体と組み合わせて、通信データの読み取り書き込みを行います。
 
 ---
 
-## CanNodeInfo
+## CANNodeInfo
 
 各ノードを管理する構造体です。以下のメンバを持ちます。
 
@@ -21,36 +21,36 @@ uint32_t timestampUs
 
 ---
 
-## CanBusInterface
+## CANBusInterface
 
 バス管理クラスは全てこのクラスを継承し、仮想関数をオーバーライドします。
 
-使用するマイコンによってバス管理クラス(型)が切り替わっても、このクラスが基底クラスであるため、型を変えずにバスオブジェクトを保持することができます。そのため、マイコンが異なっていても、同じコードで `CanNodeInfo` のラッパークラス等を作成することができます。
+使用するマイコンによってバス管理クラス(型)が切り替わっても、このクラスが基底クラスであるため、型を変えずにバスオブジェクトを保持することができます。そのため、マイコンが異なっていても、同じコードで `CANNodeInfo` のラッパークラス等を作成することができます。
 
 -   API
 
     ノードをバスに参加させる。
 
-    -   `virtual joinTX(CanNodeInfo& node)`
-    -   `virtual joinRX(CanNodeInfo& node)`
+    -   `virtual joinTX(CANNodeInfo& node)`
+    -   `virtual joinRX(CANNodeInfo& node)`
 
     ノードをバスから切り離す。
 
-    -   `virtual detachTX(CanNodeInfo& node)`
-    -   `virtual detachRX(CanNodeInfo& node)`
+    -   `virtual detachTX(CANNodeInfo& node)`
+    -   `virtual detachRX(CANNodeInfo& node)`
 
 -   Sample
 
     ```cpp
     uint8_t buffer[10];
-    CanNodeInfo node {
+    CANNodeInfo node {
         /*uint32_t id         */ 0            ,
         /*uint8_t* buffer     */ buffer       ,
         /*size_t   length     */ sizeof buffer,
         /*uint32_t timestampUs*/ 0            ,
     };
 
-    CanBus---- bus;
+    CANBus---- bus;
 
     void setup() {
         bus.joinTX(node);
@@ -60,7 +60,7 @@ uint32_t timestampUs
 
 ---
 
-## CanBusTeensy
+## CANBusTeensy
 
 teensy 内臓 CAN コントローラーを使用して CAN 通信を行うバスクラス
 
@@ -103,19 +103,19 @@ flowchart LR
 
     コンストラクタ
 
-    -   `template<CAN_DEV_TABLE Bus> CanBusTeensy::CanBusTeensy()`
+    -   `template<CAN_DEV_TABLE Bus> CANBusTeensy::CANBusTeensy()`
 
         `@tparam {Bus}` バス種類 (CAN0,CAN1,CAN2,CAN3) [ライブラリドキュメント](https://github.com/tonton81/FlexCAN_T4) 参照
 
     通信開始
 
-    -   `void CanBusTeensy::begin(uint32_t baudrate = 1000000)`
+    -   `void CANBusTeensy::begin(uint32_t baudrate = 1000000)`
 
         `@param {baudrate}` CAN 通信レート
 
     通信更新
 
-    -   `void CanBusTeensy::update(uint32_t writeIntervalUs = 5000)`
+    -   `void CANBusTeensy::update(uint32_t writeIntervalUs = 5000)`
 
         `@param {writeIntervalUs}` 送信間隔
 
@@ -127,14 +127,14 @@ flowchart LR
 
     ```cpp
     uint8_t buffer[10];
-    CanNodeInfo node {
+    CANNodeInfo node {
         /*uint32_t id         */ 0            ,
         /*uint8_t* buffer     */ buffer       ,
         /*size_t   length     */ sizeof buffer,
         /*uint32_t timestampUs*/ 0            ,
     };
 
-    CanBusTeensy<CAN1> bus;
+    CANBusTeensy<CAN1> bus;
     void setup()
     {
         bus.joinRX(node);  // ノードをバスに参加させる(複数参加させることもできます)
@@ -153,11 +153,11 @@ flowchart LR
     }
     ```
 
-    生で `CanNodeInfo` を使うと上のように少し複雑になります。そのため `CanNodeInfo` のラッパークラスである、`CanReader`, `CanWriter` クラス等を使います。
+    生で `CANNodeInfo` を使うと上のように少し複雑になります。そのため `CANNodeInfo` のラッパークラスである、`CANReader`, `CANWriter` クラス等を使います。
 
 ---
 
-## CanBusSpi
+## CANBusSpi
 
 外付け CAN コントローラーを使用して CAN 通信を行うバスクラス
 
@@ -199,9 +199,9 @@ flowchart LR
 
     コンストラクタ
 
-    -   `template<uint8_t Cs, uint8_t Interrupt> CanBusSpi::CanBusSpi(SPIClass& spi, uint32_t spiClock = 10000000)`
+    -   `template<uint8_t CS, uint8_t Interrupt> CANBusSpi::CANBusSpi(SPIClass& spi, uint32_t spiClock = 10000000)`
 
-        `@tparam {Cs}` SPI chip select ピン
+        `@tparam {CS}` SPI chip select ピン
 
         `@tparam {Interrupt}` CAN コントローラー Int 端子接続ピン
 
@@ -211,15 +211,15 @@ flowchart LR
 
     通信開始
 
-    -   `void CanBusSpi::begin(CAN_CLOCK canClock = MCP_20MHZ, CAN_SPEED baudrate = CAN_1000KBPS)`
+    -   `void CANBusSpi::begin(CAN_CLOCK CANClock = MCP_20MHZ, CAN_SPEED baudrate = CAN_1000KBPS)`
 
         `@param {baudrate}` CAN 通信レート [ライブラリドキュメント](https://github.com/autowp/arduino-mcp2515) 参照
 
-        `@param {canClock}` CAN コントローラー動作周波数 [ライブラリドキュメント](https://github.com/autowp/arduino-mcp2515) 参照
+        `@param {CANClock}` CAN コントローラー動作周波数 [ライブラリドキュメント](https://github.com/autowp/arduino-mcp2515) 参照
 
     通信更新
 
-    -   `void CanBusTeensy::update(uint32_t writeIntervalUs = 5000)`
+    -   `void CANBusTeensy::update(uint32_t writeIntervalUs = 5000)`
 
         `@param {writeIntervalUs}` 送信間隔
 
@@ -228,7 +228,7 @@ flowchart LR
 -   Sample
 
     ```cpp
-    CanBusSpi<9, 2> bus(SPI);
+    CANBusSpi<9, 2> bus(SPI);
     void setup() {
         bus.begin();
     }

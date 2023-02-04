@@ -1,8 +1,8 @@
 #pragma once
 
-#include "CanBus.hpp"
+#include "CANBus.hpp"
 
-#include "CanWriter.hpp"
-#include "CanReader.hpp"
+#include "CANWriter.hpp"
+#include "CANReader.hpp"
 
 #include "Message.hpp"

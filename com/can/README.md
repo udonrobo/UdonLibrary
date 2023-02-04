@@ -7,10 +7,10 @@ CAN 通信のコードを簡単に記述できるクラス群です。
 -   送信者例
 
     ```cpp
-	#include <CanCommon.hpp>
+	#include <CANCommon.hpp>
 
-    CanBusTeensy<CAN1> bus;
-    CanWriter<Message::Motor> writer(bus, 0);
+    CANBusTeensy<CAN1> bus;
+    CANWriter<Message::Motor> writer(bus, 0);
 
     void setup() {
     	bus.begin();
@@ -23,24 +23,24 @@ CAN 通信のコードを簡単に記述できるクラス群です。
 
 -   受信例
     ```cpp
-	#include <CanCommon.hpp>
+	#include <CANCommon.hpp>
 
-    CanBusTeensy<CAN1> bus;
-    CanReader<Message::Motor> reader(bus, 0);
+    CANBusTeensy<CAN1> bus;
+    CANReader<Message::Motor> reader(bus, 0);
 
     void setup() {
     	bus.begin();
     }
     void loop() {
-    	reader.show('\n');
+    	Serial.println(reader.getMessage().power);
     	bus.update();
     }
     ```
 
 # Document
 
-## [CanBus](./CanBus/README.md)
+## [CANBus](./CANBus/README.md)
 
-## [CanReader](./CanReader/README.md)
+## [CANReader](./CANReader/README.md)
 
-## [CanWriter](./CanWriter/README.md)
+## [CANWriter](./CANWriter/README.md)

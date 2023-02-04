@@ -1,10 +1,10 @@
-# CanReader
+# CANReader
 
 ## Description
 
 CAN 通信構造体受信クラス
 
-メッセージ構造体オブジェクトを受信できるように `CanNodeInfo` 構造体をラップしたクラスです。
+メッセージ構造体オブジェクトを受信できるように `CANNodeInfo` 構造体をラップしたクラスです。
 
 -   対応マイコン
 
@@ -23,13 +23,13 @@ CAN 通信構造体受信クラス
 
 # Usage
 
-`CanBusTeensy` バスを使用し、`Message::Motor` 構造体を使用してモーターの情報を受信する例
+`CANBusTeensy` バスを使用し、`Message::Motor` 構造体を使用してモーターの情報を受信する例
 
 ```cpp
-#include "CanCommon.hpp"
+#include "CANCommon.hpp"
 
-CanBusTeensy<CAN1> bus;
-CanReader<Message::Motor> reader(bus, 0);
+CANBusTeensy<CAN1> bus;
+CANReader<Message::Motor> reader(bus, 0);
 
 void setup() {
 	bus.begin();
@@ -52,7 +52,7 @@ void loop() {
 
 -   コンストラクタ
 
-    -   `template<class MessageTy> CanReader::CanReader(BusTy& bus, uint32_t id)`
+    -   `template<class MessageTy> CANReader::CANReader(BusTy& bus, uint32_t id)`
 
         `@tparam {MessageTy}` 受信する構造体の型
 
@@ -60,19 +60,19 @@ void loop() {
 
 -   通信監視(WDT)
 
-    -   `CanReader::operator bool()`
+    -   `CANReader::operator bool()`
 
         `@return` 通信しているか
 
 -   データ取得
 
-    -   `MessageTy CanReader::getMessage()`
+    -   `MessageTy CANReader::getMessage()`
 
         `@return` 受信したデータ
 
 -   デバッグ出力
 
-    -   `void CanReader::show(char end = {})`
+    -   `void CANReader::show(char end = {})`
 
         `@param end` 最後に出力される文字
 

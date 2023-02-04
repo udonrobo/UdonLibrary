@@ -1,6 +1,6 @@
-#include "I2cSlaveReader.hpp"
+#include "I2CSlaveReader.hpp"
 
-I2cSlaveReader<4> receive(5);
+I2CSlaveReader<4> receive(5);
 
 void setup() {
 	Serial.begin(115200);

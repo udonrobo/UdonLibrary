@@ -1,13 +1,13 @@
-#include "CanCommon.hpp"
+#include "CANCommon.hpp"
 
 #include <vector>
 
 
-CanBusSpi<0, 0> bus(SPI);
+CANBusSPI<0, 0> bus(SPI);
 
-CanBusTeensy <CAN1> bubu;
+CANBusTeensy <CAN1> bubu;
 
-CanWriter<Message::Motor> writers[] {
+CANWriter<Message::Motor> writers[] {
 	{ bus, 0 },
 	{ bus, 1 },
 	{ bus, 2 },
@@ -17,7 +17,7 @@ CanWriter<Message::Motor> writers[] {
 	{ bus, 6 }
 };
 
-CanReader<Message::RGB> rgb(bus, 0);
+CANReader<Message::RGB> rgb(bus, 0);
 
 void setup() {
 	bus.begin();

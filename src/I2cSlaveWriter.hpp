@@ -9,20 +9,20 @@
 
 /// @param N 送信サイズ
 template<size_t N>
-class I2cSlaveWriter {
+class I2CSlaveWriter {
 
 	public:
 
 		/// @param address I2cアドレス
 		/// @param clock   通信レート
-		I2cSlaveWriter(const uint8_t address, const uint32_t clock = 400000UL) noexcept {
+		I2CSlaveWriter(const uint8_t address, const uint32_t clock = 400000UL) noexcept {
 			Wire.begin(address);
 			Wire.setClock(clock);
 			Wire.onRequest([] {
 				Wire.write(buffer, N);
 			});
 		}
-		~I2cSlaveWriter() noexcept {
+		~I2CSlaveWriter() noexcept {
 			Wire.end();
 		}
 
@@ -64,4 +64,4 @@ class I2cSlaveWriter {
 		static uint8_t buffer[N];  /// 送信バッファ
 };
 
-template<size_t N> uint8_t I2cSlaveWriter<N>::buffer[N];
+template<size_t N> uint8_t I2CSlaveWriter<N>::buffer[N];

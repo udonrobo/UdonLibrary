@@ -1,4 +1,3 @@
-#include "Message.hpp"
 #include "BasicReader.hpp"
 #include "BasicWriter.hpp"
 

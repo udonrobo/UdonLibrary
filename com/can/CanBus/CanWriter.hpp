@@ -1,24 +1,24 @@
-/// @file   CanWriter.hpp
+/// @file   CANWriter.hpp
 /// @date   2023/01/15
 /// @brief  CAN通信送信クラス
 /// @author 大河 祐介
 
 #pragma once
 
-#include "CanInfo.hpp"
-#include "CanBusInterface.hpp"
+#include "CANInfo.hpp"
+#include "CANBusInterface.hpp"
 
 template<class MessageTy>
-class CanWriter {
+class CANWriter {
 
-		CanBusInterface& bus                      ;
-		CanNodeInfo      node                     ;
+		CANBusInterface& bus                      ;
+		CANNodeInfo      node                     ;
 		uint8_t          buffer[sizeof(MessageTy)];
 
 	public:
 
 		/// @param id 信号識別ID
-		CanWriter(CanBusInterface& bus, const uint32_t id)
+		CANWriter(CANBusInterface& bus, const uint32_t id)
 			: bus   { bus                           }
 			, node  { id, buffer, sizeof(MessageTy) }
 			, buffer{                               }
@@ -26,7 +26,7 @@ class CanWriter {
 			bus.joinTX(node);
 		}
 
-		~CanWriter()
+		~CANWriter()
 		{
 			bus.detachTX(node);
 		}

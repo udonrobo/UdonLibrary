@@ -6,27 +6,22 @@ $ErrorActionPreference = "Stop"
 $sources =
 ".\actuator\motor\Motor\Motor.hpp",
 ".\algorithm\Utility.hpp",
-
-".\com\common\Message.hpp",
+".\com\message\Message.hpp",
 ".\com\Common\BasicReader.hpp",
 ".\com\Common\BasicWriter.hpp",
-
-".\com\can\CanBus\CanBus.hpp",
-".\com\can\CanBus\CanBusInterface.hpp",
-".\com\can\CanBus\CanBusSpi.hpp",
-".\com\can\CanBus\CanBusPico.hpp",
-".\com\can\CanBus\CanBusTeensy.hpp",
-".\com\can\CanBus\CanCommon.hpp",
-".\com\can\CanBus\CanInfo.hpp",
-".\com\can\CanBus\CanReader.hpp",
-".\com\can\CanBus\CanWriter.hpp",
-
-".\com\i2c\I2cSlaveReader\I2cSlaveReader.hpp",
-".\com\i2c\I2cSlaveWriter\I2cSlaveWriter.hpp",
-
+".\com\CAN\CANBus\CANBus.hpp",
+".\com\CAN\CANBus\CANBusInterface.hpp",
+".\com\CAN\CANBus\CANBusSPI.hpp",
+".\com\CAN\CANBus\CANBusPico.hpp",
+".\com\CAN\CANBus\CANBusTeensy.hpp",
+".\com\CAN\CANBus\CANCommon.hpp",
+".\com\CAN\CANBus\CANInfo.hpp",
+".\com\CAN\CANBus\CANReader.hpp",
+".\com\CAN\CANBus\CANWriter.hpp",
+".\com\I2C\I2CSlaveReader\I2CSlaveReader.hpp",
+".\com\I2C\I2CSlaveWriter\I2CSlaveWriter.hpp",
 ".\sensor\Gyro\Gyro.hpp",
 ".\sensor\Measure\Measure.hpp",
-
 ".\stl\list.hpp",
 ".\stl\memory.hpp",
 ".\stl\functional.hpp"
@@ -56,12 +51,10 @@ foreach ($source in $sources) {
 	$filedir = Split-Path $source -Parent
 	$filename = Split-Path $source -Leaf
 
-	try
-	{
+	try {
 		robocopy $filedir $target $filename | Out-Null
 	}
-	catch
-	{
+	catch {
 		# ぐしゃり✊
 	}
 

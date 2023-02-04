@@ -1,4 +1,4 @@
-/// @file   CanBusSpi.hpp
+/// @file   CANBusSPI.hpp
 /// @date   2023/01/13
 /// @brief  arduino-mcp2515ライブラリを用いたCANバス管理クラス
 /// @flow   [CPU] <--SPI--> [CANコントローラ] <--CAN[TX/RX]--> [CANトランシーバ] <--CAN[H/L]--> [BUS]
@@ -10,21 +10,21 @@
 
 #	include "list.hpp"  // udon::std::list
 
-#	include "CanInfo.hpp"
-#	include "CanBusInterface.hpp"
+#	include "CANInfo.hpp"
+#	include "CANBusInterface.hpp"
 
-template<uint8_t Cs, uint8_t Interrupt>
-class CanBusSpi : public CanBusInterface
+template<uint8_t CS, uint8_t Interrupt>
+class CANBusSPI : public CANBusInterface
 {
 
 		MCP2515 bus;
 
-		using DataLine = udon::std::list<CanNodeInfo*>;
+		using DataLine = udon::std::list<CANNodeInfo*>;
 		DataLine        tx   ;
 		DataLine        rx   ;
-		CanBusErrorInfo error;
+		CANBusErrorInfo error;
 
-		static CanBusSpi* self;
+		static CANBusSPI* self;
 
 	public:
 
@@ -32,15 +32,15 @@ class CanBusSpi : public CanBusInterface
 		/// @param {spi} SPIインスタンス
 		/// @param {spiClock} SPI動作クロック
 		/// @remark 動作クロックは CPUクロック/2 が最大値
-		CanBusSpi(SPIClass& spi, uint32_t spiClock = 10000000)
-			: bus(Cs, spiClock, &spi)
+		CANBusSPI(SPIClass& spi, uint32_t spiClock = 10000000)
+			: bus(CS, spiClock, &spi)
 			, tx()
 			, rx()
 		{
 			self = this;
 		}
 
-		~CanBusSpi()
+		~CANBusSPI()
 		{}
 
 		/// @brief 通信を開始
@@ -60,7 +60,7 @@ class CanBusSpi : public CanBusInterface
 				attachInterrupt(digitalPinToInterrupt(Interrupt), [] {
 					can_frame msg;
 					if (self->bus.readMessage(&msg) == MCP2515::ERROR_OK) {
-						const auto event = [&msg](CanNodeInfo* node)
+						const auto event = [&msg](CANNodeInfo* node)
 						{
 							// 先頭1バイト : パケット番号
 							const uint8_t index = msg.data[0];
@@ -94,7 +94,7 @@ class CanBusSpi : public CanBusInterface
 		{
 			if (tx.size() && micros() - error.timestampUs >= writeIntervalUs)
 			{
-				const auto event = [](CanNodeInfo* node) {
+				const auto event = [](CANNodeInfo* node) {
 					// 一度に8バイトしか送れないため、パケットに分割し送信
 					for (size_t index = 0; index < ceil(node->length / 7.0); index++)
 					{
@@ -127,31 +127,31 @@ class CanBusSpi : public CanBusInterface
 			}
 		}
 
-		CanBusErrorInfo getErrorInfo() const {
+		CANBusErrorInfo getErrorInfo() const {
 			return error;
 		}
 
-		void joinTX(CanNodeInfo& node) override
+		void joinTX(CANNodeInfo& node) override
 		{
 			join(tx, node);
 		}
-		void joinRX(CanNodeInfo& node) override
+		void joinRX(CANNodeInfo& node) override
 		{
 			join(rx, node);
 		}
 
-		void detachRX(CanNodeInfo& node) override
+		void detachRX(CANNodeInfo& node) override
 		{
 			detach(rx, node);
 		}
-		void detachTX(CanNodeInfo& node) override
+		void detachTX(CANNodeInfo& node) override
 		{
 			detach(tx, node);
 		}
 
 	private:
 
-		void join(DataLine& line, CanNodeInfo& node)
+		void join(DataLine& line, CANNodeInfo& node)
 		{
 			for (auto && it : line)
 			{
@@ -163,7 +163,7 @@ class CanBusSpi : public CanBusInterface
 			line.push_back(&node);
 		}
 
-		void detach(DataLine& line, CanNodeInfo& node)
+		void detach(DataLine& line, CANNodeInfo& node)
 		{
 			for (auto && it = line.begin(); it != line.end(); ++it)
 			{
@@ -177,5 +177,5 @@ class CanBusSpi : public CanBusInterface
 
 };
 
-template<uint8_t Cs, uint8_t Interrupt>
-CanBusSpi<Cs, Interrupt>* CanBusSpi<Cs, Interrupt>::self;
+template<uint8_t CS, uint8_t Interrupt>
+CANBusSPI<CS, Interrupt>* CANBusSPI<CS, Interrupt>::self;

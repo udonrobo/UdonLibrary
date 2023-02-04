@@ -1,4 +1,4 @@
-///   @file   I2cSlaveReader.h
+///   @file   I2CSlaveReader.h
 ///   @brief  I2cスレーブ受信用クラス
 ///   @author 大河 祐介
 ///   @date   2022/09/24
@@ -8,13 +8,13 @@
 
 /// @param N 受信サイズ
 template<size_t N>
-class I2cSlaveReader {
+class I2CSlaveReader {
 
 	public:
 
 		/// @param address I2cアドレス
 		/// @param clock   通信レート
-		I2cSlaveReader(const uint8_t address, const uint32_t clock = 400000UL) noexcept
+		I2CSlaveReader(const uint8_t address, const uint32_t clock = 400000UL) noexcept
 			: address(address), clock(clock)
 		{
 			Wire.begin(address);
@@ -27,7 +27,7 @@ class I2cSlaveReader {
 				}
 			});
 		}
-		~I2cSlaveReader() noexcept {
+		~I2CSlaveReader() noexcept {
 			Wire.end();
 		}
 
@@ -97,5 +97,5 @@ class I2cSlaveReader {
 		static uint32_t prevReceiveMs;  /// 前回受信時刻
 };
 
-template<size_t N>uint8_t  I2cSlaveReader<N>::buffer[N];
-template<size_t N>uint32_t I2cSlaveReader<N>::prevReceiveMs;
+template<size_t N>uint8_t  I2CSlaveReader<N>::buffer[N];
+template<size_t N>uint32_t I2CSlaveReader<N>::prevReceiveMs;
