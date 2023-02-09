@@ -4,7 +4,11 @@
 
 ## ライブラリ管理
 
-ライブラリ管理に git を使用します。インストールしていない場合は [公式ページ](https://git-scm.com/download/win) からダウンロードし、インストールしてください。
+-   git
+
+    ライブラリ管理に git を使用します。インストールしていない場合は [公式ページ](https://git-scm.com/download/win) からダウンロードし、インストールしてください。
+
+    またこのライブラリのレポジトリはプライベートであるため、クローンするには udonrobo organization に 参加している github アカウントと、 git が紐づいている必要があります。
 
 -   追加
 
@@ -12,15 +16,11 @@
 
     1. ライブラリを保存するパスを調べる
 
-        初期値は `~\Documents\Arduino\libraries` です。
+        既定値: `~\Documents\Arduino\libraries`
 
-        変更している場合、
-
-        ファイル > 環境設定 > スケッチブックの保存場所欄 + `\libraries`
+        変更している場合: `ファイル > 環境設定 > スケッチブックの保存場所欄` + `\libraries`
 
     2. 1 で調べたディレクトリに移りクローンする
-
-        またこのライブラリのレポジトリはプライベートであるため、クローンするには udonrobo organization に 参加している github アカウントと、 git が紐づいている必要があります。
 
         ```sh
         # 1で調べたディレクトリに移動
@@ -30,13 +30,13 @@
         git clone https://github.com/udonrobo/Library.git
         ```
 
-        ![無題の動画 ‐ Clipchampで作成](https://user-images.githubusercontent.com/91818705/217858896-1b917b6b-e2c7-4b17-9115-b336ba524ea7.gif)
+        ![clone](https://user-images.githubusercontent.com/91818705/217858896-1b917b6b-e2c7-4b17-9115-b336ba524ea7.gif)
 
 -   更新
 
     ```sh
-    # 追加する時に調べたディレクトリに移動
-    cd C:\Users\----\Documents\Arduino\libraries
+    # 追加する時に調べたlibrariesディレクトリに移動
+    cd ~\Documents\Arduino\libraries
 
     # ライブラリを更新
     git pull

@@ -302,14 +302,14 @@ flowchart LR
 
 -   開発者
 
-    大河祐介
+    大河祐介、、、
 
 </details>
 
-<!-- <details>
-<summary>バス管理クラス開発について</summary> -->
+<details>
+<summary>バス管理クラス開発について</summary>
 
-今後マイコンが変わった際など、バス管理クラスを新たに作成することがあるかと思います。開発の待ってます！！
+今後マイコンが変わった際など、バス管理クラスを新たに作成することがあるかと思います。開発待ってます！！
 
 -   留意点
 
@@ -328,8 +328,207 @@ flowchart LR
 
 -   template
 
+    コールバック関数型
+
     ```cpp
+
+    #pragma once
+
+    #if defined() || defined() || defined() || ...
+
+    #	include "list.hpp"  // udon::std::list
+
+    #	include "CANInfo.hpp"
+    #	include "CANBusInterface.hpp"
+
+    class CANBus : public CANBusInterface
+    {
+
+            using DataLine = udon::std::list<CANNodeInfo*>;
+            DataLine        tx   ;
+            DataLine        rx   ;
+            CANBusErrorInfo error;
+
+            static CANBus* self;
+
+        public:
+
+            CANBus()
+                : bus   {}
+                , tx    {}
+                , rx    {}
+                , error {}
+            {
+                self = this;
+            }
+
+            ~CANBus()
+            {
+                end();
+            }
+
+            /// @brief 通信開始
+            /// @param {baudrate} 通信レート
+            void begin(const uint32_t baudrate = 1000000)
+            {
+                if (rx.size() || tx.size())
+                {
+                    bus.begin();
+                }
+                if (rx.size())
+                {
+                    bus.onReceive(eventRX);
+                }
+            }
+
+            /// @brief 通信終了
+            void end()
+            {
+                bus.end();
+            }
+
+            /// @brief バス更新
+            /// @param {writeIntervalUs} 送信間隔
+            void update(uint32_t writeIntervalUs = 5000)
+            {
+                if (tx.size() && micros() - error.timestampUs >= writeIntervalUs)
+                {
+                    eventTX();
+                }
+            }
+
+            /// @brief エラー情報取得
+            /// @return CANBusErrorInfo構造体インスタンス
+            CANBusErrorInfo getErrorInfo() const
+            {
+                return error;
+            }
+
+            /// @brief TXノードをバスに参加
+            /// @param node
+            void joinTX(CANNodeInfo& node) override
+            {
+                join(tx, node);
+            }
+
+            /// @brief RXノードをバスに参加
+            /// @param node
+            void joinRX(CANNodeInfo& node) override
+            {
+                join(rx, node);
+            }
+
+            /// @brief RXノードをバスから解放
+            /// @param node
+            void detachRX(CANNodeInfo& node) override
+            {
+                detach(rx, node);
+            }
+
+            /// @brief TXノードをバスから解放
+            /// @param node
+            void detachTX(CANNodeInfo& node) override
+            {
+                detach(tx, node);
+            }
+
+        private:
+
+            /// @brief ライブラリクラスからバスのエラー情報を取得
+            static CANBusErrorInfo getError()
+            {
+                const auto e = bus.getError();
+                return {
+                    e.TXErrorCounter,
+                    e.RXErrorCounter,
+                    micros()
+                };
+            }
+
+            static void eventRX(const CAN_message_t& msg)
+            {
+                const auto event = [&msg](CANNodeInfo * node)
+                {
+                    const uint8_t index = msg.buf[0];   // 先頭1バイト : パケット番号
+                    for (uint8_t i = 0; i < 7; i++)     // 8バイト受信データをバイト列にデコード
+                    {
+                        const uint8_t bufIndex = i + index * 7;
+                        if (bufIndex < node->length)
+                            node->buffer[bufIndex] = msg.buf[i + 1];
+                        else
+                            break;
+                    }
+                    node->timestampUs = micros();
+                };
+                for (auto && it : self->rx)
+                {
+                    if (msg.id == it->id)
+                    {
+                        event(it);
+                    }
+                }
+                self->error = getError();
+            }
+
+            static void eventTX()
+            {
+                const auto event = [](CANNodeInfo * node)
+                {
+                    // 一度に8バイトしか送れないため、パケットに分割し送信
+                    for (size_t index = 0; index < ceil(node->length / 7.0); index++)
+                    {
+                        CAN_message_t msg;
+                        msg.id = node->id;
+                        msg.buf[0] = index;  // 先頭1バイト : パケット番号
+                        for (uint8_t i = 0; i < 7; i++)  // バイト列を8バイト受信データにエンコード
+                        {
+                            const uint8_t bufIndex = i + index * 7;
+                            if (bufIndex < node->length)
+                                msg.buf[i + 1] = node->buffer[bufIndex];
+                            else
+                                break;
+                        }
+                        self->bus.write(msg);
+                    }
+                    node->timestampUs = micros();
+                };
+                for (auto && it : self->tx) {
+                    event(it);
+                }
+                self->error = getError();
+            }
+
+            void join(DataLine& line, CANNodeInfo& node)
+            {
+                for (auto && it : line)
+                {
+                    if (it == &node)  // インスタンスの重複を除外する
+                    {
+                        return;
+                    }
+                }
+                line.push_back(&node);
+            }
+
+            void detach(DataLine& line, CANNodeInfo& node)
+            {
+                for (auto && it = line.begin(); it != line.end(); ++it)
+                {
+                    if (*it == &node)
+                    {
+                        line.erase(it);
+                        break;
+                    }
+                }
+            }
+
+    };
+
+    template<CAN_DEV_TABLE Bus>
+    CANBus<Bus>* CANBusTeensy<Bus>::self;
+
+    #endif
 
     ```
 
-<!-- </details> -->
+</details>
