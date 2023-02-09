@@ -8,7 +8,9 @@
 
 -   追加
 
-    1. ライブラリパスを調べる
+    1. ライブラリを保存するパスを調べる
+
+        初期値は `~\Documents\Arduino\libraries` です。
 
         ファイル > 環境設定 > スケッチブックの保存場所
 
@@ -16,19 +18,17 @@
 
     2. 1 で調べたディレクトリに移りクローンする
 
-        またライブラリはプライベートであるため、クローンするには udonrobo organization に 参加している github アカウントと、 git が紐づいている必要があります。
+        またこのライブラリのレポジトリはプライベートであるため、クローンするには udonrobo organization に 参加している github アカウントと、 git が紐づいている必要があります。
 
         ```sh
         # 1で調べたディレクトリに移動
-        cd C:\Users\----\Documents\Arduino\libraries
+        cd ~\Documents\Arduino\libraries
 
         # ライブラリをクローン
         git clone https://github.com/udonrobo/Library.git
         ```
 
 -   更新
-
-    ライブラリ追加時に移動したディレクトリに移り、`git pull`を実行
 
     ```sh
     # 追加する時に調べたディレクトリに移動
@@ -101,7 +101,6 @@
     ```
 
 </details>
-
 
 <details>
 <summary>命名規則</summary>
@@ -226,3 +225,52 @@
 
 </details>
 
+<details>
+<summary>テストケース</summary>
+
+-   リンクエラー
+
+    リンクエラーはきもいです(唐突)複数の .cpp ファイルから include した際にリンクエラーにならないようにしてください。主にヘッダーファイルに関数や変数の実体がある場合にリンクエラーになります。一つの .cpp ファイルから include する際はエラーにならないので注意が必要です。`#pragma once` は多重インクルードは防ぐことができますが、リンクエラーは防ぐことができません。
+
+    -   エラー文
+
+        ```
+        gcc: multiple definition of `識別名名` 😭
+        msvc: LNK2005 "public: void __cdecl Hoge::f(void)" (?f@Hoge@@QEAAXXZ) は既に erro.obj で定義されています。🤪🤪🤪
+        ```
+
+    -   変数
+
+        ```cpp
+        // エラー(変数実体がヘッダーに記述されているため)
+        int value;
+        ```
+
+    -   関数
+
+        ```cpp
+        void f() {}  // NG
+        inline void f() {} // OK
+        ```
+
+    -   クラス
+
+        ```cpp
+        class Hoge {
+            static int value;
+            void f();
+        };
+        int Hoge::value;         // NG
+        void Hoge::f() {};       // NG
+        inline void Hoge::f() {} // OK
+
+        template<class T>
+        class Hoge {
+            static int value;
+        };
+        template<class T> Hoge<T>::value; // OK
+        ```
+
+-   メモリリーク
+
+</details>

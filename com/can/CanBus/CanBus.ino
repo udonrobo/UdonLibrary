@@ -2,7 +2,6 @@
 
 #include <vector>
 
-
 CANBusSPI<0, 0> bus(SPI);
 
 CANBusTeensy <CAN1> bubu;

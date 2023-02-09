@@ -2,13 +2,14 @@
 
 バス管理クラス
 
-バス管理クラスのみではデータの読み取り、書き込みはできません。
+バス管理クラス単体ではデータの読み取り、書き込みはできません。
 
 `CANNodeInfo` 構造体と組み合わせて、通信データの読み取り書き込みを行います。
 
----
+## Common
 
-## CANNodeInfo
+<details>
+<summary>CANNodeInfo</summary>
 
 各ノードを管理する構造体です。以下のメンバを持ちます。
 
@@ -19,9 +20,20 @@ size_t   length
 uint32_t timestampUs
 ```
 
----
+`id` : 自身の ID もしくは監視する ID
 
-## CANBusInterface
+`buffer` : 送信、受信バッファをさすポインタ
+
+`length` : 送信、受信バッファ長
+
+`timestampUs` : 最後に送信、受信バッファにアクセスした時間[μs]
+
+</details>
+
+<details>
+<summary>CANBusInterface</summary>
+
+バス管理クラスを一律に使用できるようにするインターフェースクラスです。
 
 バス管理クラスは全てこのクラスを継承し、仮想関数をオーバーライドします。
 
@@ -29,12 +41,12 @@ uint32_t timestampUs
 
 -   API
 
-    ノードをバスに参加させる。
+    ノードをバスに参加させる
 
     -   `virtual joinTX(CANNodeInfo& node)`
     -   `virtual joinRX(CANNodeInfo& node)`
 
-    ノードをバスから切り離す。
+    ノードをバスから切り離す
 
     -   `virtual detachTX(CANNodeInfo& node)`
     -   `virtual detachRX(CANNodeInfo& node)`
@@ -58,25 +70,68 @@ uint32_t timestampUs
     void loop() {}
     ```
 
----
+    ```cpp
+    /// @brief 可変長データを送受信する CANNodeInfo ラッパークラス
+    class CANWriterVLA
+    {
+            // 全バス管理クラスがCANBusInterfaceを継承しているので、このように全バス管理クラスの参照を一律に保持できます。
+            CANBusInterface& bus ;
+            CANNodeInfo      info;
+        public:
+            CANWriterVLA(CANBusInterface& bus, uint32_t id)
+                : bus(bus)
+                , info(
+                    /*uint32_t id         */ id     ,
+                    /*uint8_t* buffer     */ nullptr,
+                    /*size_t   length     */ 0      ,
+                    /*uint32_t timestampUs*/ 0      ,
+                )
+            {
+                bus.joinTX(info);
+            }
+            ~CANWriterVLA()
+            {
+                bus.detachTX(info);
+                delete[] info.buffer;
+            }
+            void resize(size_t n)
+            {
+                delete[] info.buffer;
+                info.buffer = new uint8_t[n]();
+                info.length = n;
+                // バス管理クラスは CANNodeInfo インスタンスのポインタを内部に保持しています。そのためインスタンスを書き換えると、バス管理クラスにも書き換えが反映されます。
+            }
+    };
 
-## CANBusTeensy
+    CANBusTeensy<CAN1> mainBus    ;
+    CANBusSPI<1, 2>    subBus(SPI);
 
-teensy 内臓 CAN コントローラーを使用して CAN 通信を行うバスクラス
+    CANWriterVLA writer0(mainBus, 0);
+    CANWriterVLA writer1(subBus , 0);
+    ```
+
+</details>
+
+## Bus Class
+
+<details>
+<summary>CANBusTeensy</summary>
+
+teensy 内臓 CAN コントローラーを使用して、 CAN 通信を行うバス管理クラス
 
 ```mermaid
 flowchart LR
 
-	bus[CAN BUS] --- |CAN H/L|CANトランシーバ --- |CAN TX/RX|FlexCAN_T4
+	bus[CAN BUS] --- |CAN H/L|CANトランシーバ --- |CAN TX/RX|lib
 
     subgraph Soft
 
         subgraph CANBusTeensy
             direction RL
-            FlexCAN_T4
+            lib[FlexCAN_T4]
             CANBusInterface
         end
-        FlexCAN_T4 --- |transform|CANBusInterface
+        lib --- |transform|CANBusInterface
 
         CANBusInterface --- reader
 
@@ -121,6 +176,10 @@ flowchart LR
 
         バスに大量のデータが流れないよう、ループ周期に関係なく設定間隔以下で送信されないようになっています。
 
+-   メモリ
+
+    CANNodeInfo のインスタンスを指すポインタをリストとしてヒープ領域に保持します。
+
 -   Sample
 
     ノード ID0 が送信しているデータを取得する。
@@ -153,28 +212,32 @@ flowchart LR
     }
     ```
 
-    生で `CANNodeInfo` を使うと上のように少し複雑になります。そのため `CANNodeInfo` のラッパークラスである、`CANReader`, `CANWriter` クラス等を使います。
+    生で `CANNodeInfo` を使うと少し複雑になります。そのため `CANNodeInfo` のラッパークラスである、`CANReader`, `CANWriter` クラス等を使います。ラッパークラス
 
----
+-   開発者
 
-## CANBusSpi
+    大河祐介
 
-外付け CAN コントローラーを使用して CAN 通信を行うバスクラス
+</details>
+
+<details>
+<summary>CANBusSPI</summary>
+外付け CAN コントローラーを使用して CAN 通信を行うバス管理クラス
 
 ```mermaid
 flowchart LR
 
-	bus[CAN BUS] --- |CAN H/L|CANトランシーバ --- |CAN TX/RX|CANコントローラ --- |SPI|arduino-mcp2515
+	bus[CAN BUS] --- |CAN H/L|CANトランシーバ --- |CAN TX/RX|CANコントローラ --- |SPI|lib
 
     subgraph Soft
 
         subgraph CANBusSPI
             direction RL
-            arduino-mcp2515
+            lib[arduino-mcp2515]
             CANBusInterface
         end
 
-        arduino-mcp2515 --- |transform|CANBusInterface
+        lib --- |transform|CANBusInterface
 
         CANBusInterface --- reader
 
@@ -199,19 +262,19 @@ flowchart LR
 
     コンストラクタ
 
-    -   `template<uint8_t CS, uint8_t Interrupt> CANBusSpi::CANBusSpi(SPIClass& spi, uint32_t spiClock = 10000000)`
+    -   `template<uint8_t CS, uint8_t Interrupt> CANBusSPI::CANBusSPI(SPIClass& SPI, uint32_t SPIClock = 10000000)`
 
         `@tparam {CS}` SPI chip select ピン
 
         `@tparam {Interrupt}` CAN コントローラー Int 端子接続ピン
 
-        `@param {spi}` SPI クラスインスタンス
+        `@param {SPI}` SPI クラスインスタンス
 
-        `@param {spiClock}` SPI クロック
+        `@param {SPIClock}` SPI クロック
 
     通信開始
 
-    -   `void CANBusSpi::begin(CAN_CLOCK CANClock = MCP_20MHZ, CAN_SPEED baudrate = CAN_1000KBPS)`
+    -   `void CANBusSPI::begin(CAN_CLOCK CANClock = MCP_20MHZ, CAN_SPEED baudrate = CAN_1000KBPS)`
 
         `@param {baudrate}` CAN 通信レート [ライブラリドキュメント](https://github.com/autowp/arduino-mcp2515) 参照
 
@@ -228,7 +291,7 @@ flowchart LR
 -   Sample
 
     ```cpp
-    CANBusSpi<9, 2> bus(SPI);
+    CANBusSPI<9, 2> bus(SPI);
     void setup() {
         bus.begin();
     }
@@ -236,3 +299,37 @@ flowchart LR
         bus.update();
     }
     ```
+
+-   開発者
+
+    大河祐介
+
+</details>
+
+<!-- <details>
+<summary>バス管理クラス開発について</summary> -->
+
+今後マイコンが変わった際など、バス管理クラスを新たに作成することがあるかと思います。開発の待ってます！！
+
+-   留意点
+
+    `CANBusInterface` クラスを継承してください。`CANNodeInfo` のラッパークラスは、バス管理クラスが`CANBusInterface` クラスを継承している前提で作られているためです。また`CANBusInterface` クラスの仮想関数をオーバーライドしてください。
+
+    バス管理クラスごとにファイル分割して、`CANBus.hpp` から include してください。
+
+    プリプロセッサーを使って、特定のマイコンの場合にバス管理クラスが有効になるようにしてください。
+
+    ```cpp
+    #if defined(__MK20DX256__) || defined(__MK64FX512__) ...
+    class CANBus--- {
+    };
+    #endif
+    ```
+
+-   template
+
+    ```cpp
+
+    ```
+
+<!-- </details> -->
