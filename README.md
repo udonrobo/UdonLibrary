@@ -8,13 +8,15 @@
 
 -   追加
 
+    libraries ディレクトリにライブラリを追加します。
+
     1. ライブラリを保存するパスを調べる
 
         初期値は `~\Documents\Arduino\libraries` です。
 
-        ファイル > 環境設定 > スケッチブックの保存場所
+        変更している場合、
 
-        スケッチブックの保存場所欄にあるパスの階層に libraries ディレクトリがあります。ここがライブラリを追加するディレクトリになっています。
+        ファイル > 環境設定 > スケッチブックの保存場所欄 + `\libraries`
 
     2. 1 で調べたディレクトリに移りクローンする
 
@@ -27,6 +29,8 @@
         # ライブラリをクローン
         git clone https://github.com/udonrobo/Library.git
         ```
+
+        ![無題の動画 ‐ Clipchampで作成](https://user-images.githubusercontent.com/91818705/217858896-1b917b6b-e2c7-4b17-9115-b336ba524ea7.gif)
 
 -   更新
 
