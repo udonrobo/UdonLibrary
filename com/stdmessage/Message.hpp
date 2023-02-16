@@ -403,10 +403,10 @@ namespace Message
         uint8_t down : 1;
         uint8_t left : 1;
 
-        int16_t analogRightX : 7;
-        int16_t analogRightY : 7;
-        int16_t analogLeftX : 7;
-        int16_t analogLeftY : 7;
+        int16_t analogRightX : 9;
+        int16_t analogRightY : 9;
+        int16_t analogLeftX  : 9;
+        int16_t analogLeftY  : 9;
         uint8_t analogL2;
         uint8_t analogR2;
 
@@ -436,10 +436,10 @@ namespace Message
         uint8_t down : 1;
         uint8_t left : 1;
 
-        int16_t analogRightX : 7;
-        int16_t analogRightY : 7;
-        int16_t analogLeftX : 7;
-        int16_t analogLeftY : 7;
+        int16_t analogRightX : 9;
+        int16_t analogRightY : 9;
+        int16_t analogLeftX  : 9;
+        int16_t analogLeftY  : 9;
         uint8_t analogL2;
         uint8_t analogR2;
 
