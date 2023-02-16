@@ -26,6 +26,15 @@ class CANWriter {
 			bus.joinTX(node);
 		}
 
+		/// @param コピーコンストラクタ
+		CANWriter(const CANWriter& rhs)
+			: bus   { rhs.bus                                }
+			, node  { rhs.node.id, buffer, sizeof(MessageTy) }
+			, buffer{                                        }
+		{
+			bus.joinTX(node);
+		}
+
 		~CANWriter()
 		{
 			bus.detachTX(node);

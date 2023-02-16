@@ -2,11 +2,9 @@
 
 #include <vector>
 
-CANBusSPI<0, 0> bus(SPI);
+CANBusTeensy <CAN1> bus;
 
-CANBusTeensy <CAN1> bubu;
-
-CANWriter<Message::Motor> writers[] {
+std::vector<CANWriter<Message::Motor>> writers {
 	{ bus, 0 },
 	{ bus, 1 },
 	{ bus, 2 },
@@ -16,14 +14,12 @@ CANWriter<Message::Motor> writers[] {
 	{ bus, 6 }
 };
 
-CANReader<Message::RGB> rgb(bus, 0);
 
 void setup() {
 	bus.begin();
 }
 
 void loop() {
-	rgb.getMessage().show();
 	for (auto && writer : writers) {
 		writer.setMessage( { (int16_t)millis() } );
 		if (writer)

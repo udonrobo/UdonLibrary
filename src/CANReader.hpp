@@ -26,6 +26,15 @@ class CANReader {
 			bus.joinRX(node);
 		}
 
+		/// @param コピーコンストラクタ
+		CANReader(const CANReader& rhs)
+			: bus   { rhs.bus                                }
+			, node  { rhs.node.id, buffer, sizeof(MessageTy) }
+			, buffer{                                        }
+		{
+			bus.joinRX(node);
+		}
+
 		~CANReader()
 		{
 			bus.detachRX(node);
