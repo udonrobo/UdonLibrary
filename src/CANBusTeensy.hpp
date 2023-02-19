@@ -160,7 +160,7 @@ class CANBusTeensy : public CANBusInterface
 					event(it);
 				}
 			}
-			self->error = getError();
+			// self->error = getError();
 		}
 
 		static void eventTX()
@@ -188,7 +188,7 @@ class CANBusTeensy : public CANBusInterface
 			for (auto && it : self->tx) {
 				event(it);
 			}
-			self->error = getError();
+			// self->error = getError();
 		}
 
 		void join(DataLine& line, CANNodeInfo& node)
