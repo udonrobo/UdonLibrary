@@ -8,30 +8,27 @@ $ErrorActionPreference = "Stop"
 $tofrom =
 @(".\src\", ".\dev\actuator\motor\Motor\Motor.hpp"),
 @(".\src\", ".\dev\algorithm\Utility.hpp"),
-@(".\src\", ".\dev\com\common\BasicReader.hpp"),
-@(".\src\", ".\dev\com\common\BasicWriter.hpp"),
-@(".\src\", ".\dev\com\can\CANBus\CANBus.hpp"),
-@(".\src\", ".\dev\com\can\CANBus\CANBusInterface.hpp"),
-@(".\src\", ".\dev\com\can\CANBus\CANBusSPI.hpp"),
-@(".\src\", ".\dev\com\can\CANBus\CANBusPico.hpp"),
-@(".\src\", ".\dev\com\can\CANBus\CANBusTeensy.hpp"),
-@(".\src\", ".\dev\com\can\CANBus\CANCommon.hpp"),
-@(".\src\", ".\dev\com\can\CANBus\CANInfo.hpp"),
-@(".\src\", ".\dev\com\can\CANBus\CANReader.hpp"),
-@(".\src\", ".\dev\com\can\CANBus\CANWriter.hpp"),
-@(".\src\", ".\dev\com\i2c\I2CSlaveReader\I2CSlaveReader.hpp"),
-@(".\src\", ".\dev\com\i2c\I2CSlaveWriter\I2CSlaveWriter.hpp"),
-@(".\src\", ".\dev\com\stdmessage\Message.hpp"),
+@(".\src\com\", ".\dev\com\common\BasicReader.hpp"),
+@(".\src\com\", ".\dev\com\common\BasicWriter.hpp"),
+@(".\src\com\", ".\dev\com\can\CANBus\CANBus.hpp"),
+@(".\src\com\", ".\dev\com\can\CANBus\CANBusInterface.hpp"),
+@(".\src\com\", ".\dev\com\can\CANBus\CANBusSPI.hpp"),
+@(".\src\com\", ".\dev\com\can\CANBus\CANBusPico.hpp"),
+@(".\src\com\", ".\dev\com\can\CANBus\CANBusTeensy.hpp"),
+@(".\src\com\", ".\dev\com\can\CANBus\CANCommon.hpp"),
+@(".\src\com\", ".\dev\com\can\CANBus\CANInfo.hpp"),
+@(".\src\com\", ".\dev\com\can\CANBus\CANReader.hpp"),
+@(".\src\com\", ".\dev\com\can\CANBus\CANWriter.hpp"),
+@(".\src\com\", ".\dev\com\i2c\I2CSlaveReader\I2CSlaveReader.hpp"),
+@(".\src\com\", ".\dev\com\i2c\I2CSlaveWriter\I2CSlaveWriter.hpp"),
+@(".\src\com\", ".\dev\com\stdmessage\Message.hpp"),
 @(".\src\", ".\dev\sensor\Gyro\Gyro.hpp"),
 @(".\src\", ".\dev\sensor\Measure\Measure.hpp"),
 @(".\src\", ".\dev\stl\list.hpp"),
 @(".\src\", ".\dev\stl\memory.hpp"),
 @(".\src\", ".\dev\stl\functional.hpp")
 
-Write-Host "`n-------------------------- Source ---------------------------`n"
-
-Remove-Item -Path ".\src\"
-
+## ui
 foreach ($source in $tofrom) {
 	if (Test-Path $source[0]) {
 		Write-Host -NoNewline $source[0]
@@ -52,12 +49,9 @@ foreach ($source in $tofrom) {
 	Write-Host
 }
 
-Write-Host "`n-------------------------- Output ---------------------------`n"
 
-# Write-Host $target
-
-## ファイル収集
-
+## file collection
+Remove-Item ".\src\" -Recurse -Force
 foreach ($source in $tofrom) {
 
 	$copydir = $source[0]
@@ -68,9 +62,8 @@ foreach ($source in $tofrom) {
 		robocopy /E $filedir $copydir $filename | Out-Null
 	}
 	catch {
-		# ぐしゃり✊
+		# ✊
 	}
 
 }
 
-Write-Host "`n"

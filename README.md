@@ -30,8 +30,6 @@
         git clone https://github.com/udonrobo/Library.git
         ```
 
-        ![clone](https://user-images.githubusercontent.com/91818705/217858896-1b917b6b-e2c7-4b17-9115-b336ba524ea7.gif)
-
 -   更新
 
     ```sh
