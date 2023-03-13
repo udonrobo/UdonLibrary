@@ -35,7 +35,7 @@ namespace Message {
     PACK(template <class Ty> struct Vector2D {
         Ty x;
         Ty y;
-        void show() {
+        void show() const {
             Serial.print("x: ");
             Serial.print(x);
             Serial.print('\t');
@@ -52,7 +52,7 @@ namespace Message {
         Ty x;
         Ty y;
         Ty z;
-        void show() {
+        void show() const {
             Serial.print("x: ");
             Serial.print(x);
             Serial.print('\t');
@@ -73,7 +73,7 @@ namespace Message {
         Ty x;
         Ty y;
         Ty yaw;
-        void show() {
+        void show() const {
             Serial.print("x: ");
             Serial.print(x);
             Serial.print('\t');
@@ -105,7 +105,7 @@ namespace Message {
     /// @brief エンコーダー
     PACK(struct Encoder {
         int32_t count;
-        void show() {
+        void show() const {
             Serial.print("count: ");
             Serial.print(count);
             Serial.print('\t');
@@ -115,7 +115,7 @@ namespace Message {
     /// @brief スイッチ
     PACK(struct Switch {
         bool isPress;
-        void show() {
+        void show() const {
             Serial.print("press: ");
             Serial.print(isPress);
             Serial.print('\t');
@@ -123,7 +123,7 @@ namespace Message {
     });
     PACK(template <size_t N> struct Switches {
         Switch sw[N];
-        void show() {
+        void show() const {
             Serial.print("press: ");
             for (auto &&it : sw) {
                 Serial.print(sw.isPress);
@@ -137,7 +137,7 @@ namespace Message {
         floatPoint_t roll;
         floatPoint_t pitch;
         floatPoint_t yaw;
-        void show() {
+        void show() const {
             Serial.print("roll: ");
             Serial.print(roll);
             Serial.print('\t');
@@ -153,7 +153,7 @@ namespace Message {
     });
     PACK(struct GyroYaw {
         floatPoint_t yaw;
-        void show() {
+        void show() const {
             Serial.print("yaw: ");
             Serial.print(yaw);
             Serial.print('\t');
@@ -171,7 +171,7 @@ namespace Message {
     PACK(struct Steering {
         int16_t power;
         floatPoint_t angle;
-        void show() {
+        void show() const {
             Serial.print("power: ");
             Serial.print(power);
             Serial.print('\t');
@@ -185,7 +185,7 @@ namespace Message {
     /// @brief モーター
     PACK(struct Motor {
         int16_t power;
-        void show() {
+        void show() const {
             Serial.print("power: ");
             Serial.print(power);
             Serial.print('\t');
@@ -195,7 +195,7 @@ namespace Message {
     /// @brief サーボモーター
     PACK(struct Servo {
         uint16_t angle;
-        void show() {
+        void show() const {
             Serial.print("angle: ");
             Serial.print(angle);
             Serial.print('\t');
@@ -205,7 +205,7 @@ namespace Message {
     /// @brief ブラシレス
     PACK(struct BrushLess {
         int32_t speed;
-        void show() {
+        void show() const {
             Serial.print("speed: ");
             Serial.print(speed);
             Serial.print('\t');
@@ -215,7 +215,7 @@ namespace Message {
     /// @brief ソレノイド
     PACK(struct Solenoid {
         bool release;
-        void show() {
+        void show() const {
             Serial.print("release: ");
             Serial.print(release);
             Serial.print('\t');
@@ -225,7 +225,7 @@ namespace Message {
     /// @brief ステッピングモーター
     PACK(struct Stepping {
         int32_t count;
-        void show() {
+        void show() const {
             Serial.print("count: ");
             Serial.print(count);
             Serial.print('\t');
@@ -245,7 +245,7 @@ namespace Message {
 
     PACK(template <size_t N> struct String {
         char string[N];
-        void show() {
+        void show() const {
             for (auto &&it : string) {
                 Serial.print(it);
             }
@@ -261,7 +261,7 @@ namespace Message {
     PACK(struct Lcd1602 {
         String<16> top;
         String<16> bottom;
-        void show() {
+        void show() const {
             Serial.print("Lcd1602: \n");
             top.show();
             Serial.print('\n');
@@ -275,7 +275,7 @@ namespace Message {
         String<20> line2;
         String<20> line3;
         String<20> line4;
-        void show() {
+        void show() const {
             Serial.print("Lcd2004: \n");
             line1.show();
             Serial.print('\n');
@@ -298,7 +298,7 @@ namespace Message {
         uint8_t r;
         uint8_t g;
         uint8_t b;
-        void show() {
+        void show() const {
             Serial.print("RGB: ");
 
             Serial.print(r);
@@ -317,7 +317,7 @@ namespace Message {
         uint8_t h;
         uint8_t s;
         uint8_t v;
-        void show() {
+        void show() const {
             Serial.print("HSV: ");
 
             Serial.print(h);
@@ -336,7 +336,7 @@ namespace Message {
         uint8_t h;
         uint8_t s;
         uint8_t l;
-        void show() {
+        void show() const {
             Serial.print("HSL: ");
 
             Serial.print(h);

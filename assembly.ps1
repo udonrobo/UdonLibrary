@@ -1,64 +1,72 @@
 # @brief ファイル群を特定のフォルダに収集する
 
+Set-Location (Split-Path -Parent $MyInvocation.MyCommand.Path)
 $ErrorActionPreference = "Stop"
 
-$selfpath = (Get-Location).Path;
-
-# 収集ファイルのターゲットパス配列
-$sources =
-"${selfpath}\actuator\motor\Motor\Motor.hpp",
-"${selfpath}\algorithm\Utility.hpp",
-"${selfpath}\com\common\BasicReader.hpp",
-"${selfpath}\com\common\BasicWriter.hpp",
-"${selfpath}\com\can\CANBus\CANBus.hpp",
-"${selfpath}\com\can\CANBus\CANBusInterface.hpp",
-"${selfpath}\com\can\CANBus\CANBusSPI.hpp",
-"${selfpath}\com\can\CANBus\CANBusPico.hpp",
-"${selfpath}\com\can\CANBus\CANBusTeensy.hpp",
-"${selfpath}\com\can\CANBus\CANCommon.hpp",
-"${selfpath}\com\can\CANBus\CANInfo.hpp",
-"${selfpath}\com\can\CANBus\CANReader.hpp",
-"${selfpath}\com\can\CANBus\CANWriter.hpp",
-"${selfpath}\com\i2c\I2CSlaveReader\I2CSlaveReader.hpp",
-"${selfpath}\com\i2c\I2CSlaveWriter\I2CSlaveWriter.hpp",
-"${selfpath}\com\stdmessage\Message.hpp",
-"${selfpath}\sensor\Gyro\Gyro.hpp",
-"${selfpath}\sensor\Measure\Measure.hpp",
-"${selfpath}\stl\list.hpp",
-"${selfpath}\stl\memory.hpp",
-"${selfpath}\stl\functional.hpp"
-
-# 収集フォルダ
-$target = "${selfpath}\src"
-
+$tofrom =
+@(".\src\", ".\actuator\motor\Motor\Motor.hpp"),
+@(".\src\", ".\algorithm\Utility.hpp"),
+@(".\src\com\", ".\com\common\BasicReader.hpp"),
+@(".\src\", ".\com\common\BasicWriter.hpp"),
+@(".\src\", ".\com\can\CANBus\CANBus.hpp"),
+@(".\src\", ".\com\can\CANBus\CANBusInterface.hpp"),
+@(".\src\", ".\com\can\CANBus\CANBusSPI.hpp"),
+@(".\src\", ".\com\can\CANBus\CANBusPico.hpp"),
+@(".\src\", ".\com\can\CANBus\CANBusTeensy.hpp"),
+@(".\src\", ".\com\can\CANBus\CANCommon.hpp"),
+@(".\src\", ".\com\can\CANBus\CANInfo.hpp"),
+@(".\src\", ".\com\can\CANBus\CANReader.hpp"),
+@(".\src\", ".\com\can\CANBus\CANWriter.hpp"),
+@(".\src\", ".\com\i2c\I2CSlaveReader\I2CSlaveReader.hpp"),
+@(".\src\", ".\com\i2c\I2CSlaveWriter\I2CSlaveWriter.hpp"),
+@(".\src\", ".\com\stdmessage\Message.hpp"),
+@(".\src\", ".\sensor\Gyro\Gyro.hpp"),
+@(".\src\", ".\sensor\Measure\Measure.hpp"),
+@(".\src\", ".\stl\list.hpp"),
+@(".\src\", ".\stl\memory.hpp"),
+@(".\src\", ".\stl\functional.hpp")
 
 Write-Host "`n-------------------------- Source ---------------------------`n"
 
-foreach ($source in $sources) {
-	if (Test-Path $source) {
-		Write-Host $source
+foreach ($source in $tofrom) {
+	if (Test-Path $source[0]) {
+		Write-Host -NoNewline $source[0]
 	}
 	else {
-		Write-Host $source -ForegroundColor Red
+		Write-Host -NoNewline $source[0] -ForegroundColor Red
 	}
+
+	Write-Host -NoNewline "  <<  "
+
+	if (Test-Path $source[1]) {
+		Write-Host -NoNewline $source[1]
+	}
+	else {
+		Write-Host -NoNewline $source[1] -ForegroundColor Red
+	}
+
+	Write-Host
 }
 
 Write-Host "`n-------------------------- Output ---------------------------`n"
 
-Write-Host $target
+# Write-Host $target
 
 ## ファイル収集
 
-foreach ($source in $sources) {
-	$filedir = Split-Path $source -Parent
-	$filename = Split-Path $source -Leaf
+foreach ($source in $tofrom) {
+
+	$copydir = $source[0]
+	$filename = Split-Path $source[1] -Leaf
+	$filedir = Split-Path $source[1] -Parent
 
 	try {
-		robocopy $filedir $target $filename | Out-Null
+		robocopy /E /XC $filedir $copydir $filename
 	}
 	catch {
 		# ぐしゃり✊
 	}
 
 }
+
 Write-Host "`n"
