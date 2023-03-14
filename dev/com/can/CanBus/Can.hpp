@@ -1,7 +1,7 @@
 #pragma once
 
 /// @brief バス管理クラス
-#include "CanBusPico.hpp"
+// #include "CanBusPico.hpp"
 #include "CanBusSpi.hpp"
 #include "CanBusTeensy.hpp"
 

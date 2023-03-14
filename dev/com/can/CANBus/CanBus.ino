@@ -1,4 +1,4 @@
-#include "CanCommon.hpp"
+#include "Can.hpp"
 
 #include <vector>
 
@@ -14,12 +14,9 @@ std::vector<CanWriter<Message::Motor>> writers{
     { bus, 6 }
 };
 
-CanWriter<double> d(bus, 3);
-
 void setup()
 {
     bus.begin();
-    d.show();
 }
 
 void loop()
