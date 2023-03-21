@@ -1,6 +1,5 @@
 ## ファイル群を特定のフォルダに収集する
-## 実行時にファイルパスが赤く出力される場合、ファイルが存在しません
-## また、フォルダパスが黄色く出力される場合、コピー先フォルダがないため自動的に作成します
+## 実行時にファイル、フォルダパスが赤く出力される場合、ファイル、フォルダが存在しません
 
 Set-Location (Split-Path -Parent $MyInvocation.MyCommand.Path)
 $ErrorActionPreference = "Stop"
@@ -33,7 +32,7 @@ foreach ($source in $tofrom) {
 		Write-Host -NoNewline $source[0]
 	}
 	else {
-		Write-Host -NoNewline $source[0] -ForegroundColor Yellow
+		Write-Host -NoNewline $source[0] -ForegroundColor Red
 	}
 
 	Write-Host -NoNewline "  <<  "
@@ -58,7 +57,7 @@ foreach ($source in $tofrom) {
 	$filedir = Split-Path $source[1] -Parent
 
 	try {
-		robocopy /E $filedir $copydir $filename | Out-Null
+		robocopy $filedir $copydir $filename | Out-Null
 	}
 	catch {
 		# ✊
