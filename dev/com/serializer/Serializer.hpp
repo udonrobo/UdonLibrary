@@ -125,7 +125,7 @@ namespace udon
 	};
 
 	/// @brief エンディアン変換マニピュレータ
-	inline void ReverceEndian(std::vector<uint8_t>& buffer)
+	inline void ReverseEndian(std::vector<uint8_t>& buffer)
 	{
 		std::reverse(buffer.begin(), buffer.end());
 	}
@@ -133,17 +133,17 @@ namespace udon
 	/// @brief バイト列にシリアライズ
 	/// @remark オブジェクトの型がシリアライズ用演算子を実装している必要があります
 	/// @param rhs 変換するオブジェクト
-	/// @param reverceEndian エンディアン変換を行うか
+	/// @param reverseEndian エンディアン変換を行うか
 	/// @return バイト列
 	template<class Ty>
-	inline std::vector<uint8_t> Pack(const Ty& rhs, bool reverceEndian = false)
+	inline std::vector<uint8_t> Pack(const Ty& rhs, bool reverseEndian = false)
 	{
 		udon::Serializer builder;
 		builder << rhs;
 
-		if (reverceEndian)
+		if (reverseEndian)
 		{
-			builder << udon::ReverceEndian;
+			builder << udon::ReverseEndian;
 		}
 
 		return builder.data();
@@ -152,16 +152,16 @@ namespace udon
 	/// @brief バイト列からデシリアライズ
 	/// @remark オブジェクトの型がデシリアライズ用演算子を実装している必要があります
 	/// @param buffer バイト列
-	/// @param reverceEndian エンディアン変換を行うか
+	/// @param reverseEndian エンディアン変換を行うか
 	/// @return 変換後のオブジェクト
 	template<class Ty>
-	inline Ty Unpack(const std::vector<uint8_t>& buffer, bool reverceEndian = false)
+	inline Ty Unpack(const std::vector<uint8_t>& buffer, bool reverseEndian = false)
 	{
 		udon::Serializer builder{ buffer };
 
-		if (reverceEndian)
+		if (reverseEndian)
 		{
-			builder >> udon::ReverceEndian;
+			builder >> udon::ReverseEndian;
 		}
 
 		Ty retval;
