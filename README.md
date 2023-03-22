@@ -23,7 +23,7 @@
     > cd ~\Documents\Arduino\libraries
     >
     > # ライブラリをクローン
-    > git clone https://github.com/udonrobo/Library.git
+    > git clone https://github.com/udonrobo/UdonLibrary.git
     > ```
 
 -   更新
