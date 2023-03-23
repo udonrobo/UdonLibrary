@@ -1,0 +1,30 @@
+## clang format
+
+## key reference: https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+
+UseTab: Never
+IndentWidth: 4
+ConstructorInitializerIndentWidth: 4
+ContinuationIndentWidth: 4
+TabWidth: 4
+SpacesBeforeTrailingComments: 4
+BinPackParameters: true
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+AlignEscapedNewlinesLeft: true
+BreakBeforeBraces: Allman
+AllowShortIfStatementsOnASingleLine: false
+IndentCaseLabels: false
+ColumnLimit: 0
+AccessModifierOffset: -4
+NamespaceIndentation: All
+FixNamespaceComments: true
+AllowShortLambdasOnASingleLine: Inline
+BreakInheritanceList: BeforeComma
+Cpp11BracedListStyle: false
+AllowShortCaseLabelsOnASingleLine: true
+SortIncludes: CaseSensitive
+PPIndentWidth: 4
+BreakConstructorInitializers: BeforeComma
+PointerAlignment: Left
+ReferenceAlignment: Left

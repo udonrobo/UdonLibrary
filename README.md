@@ -1,64 +1,53 @@
-# library
+# UdonLibrary
 
-香川高専高松ライブラリ
+香川高専高松機械システム研究部 Arduino ライブラリ
 
-## Adruino ライブラリに追加
+## ライブラリ管理
 
-1. ライブラリパスを調べる
+-   git
 
-    ArduinoIDE を起動 > ファイル > 環境設定 > スケッチブックの保存場所
+    ライブラリ管理に git を使用します。インストールしていない場合は [公式ページ](https://git-scm.com/download/win) からダウンロードし、インストールしてください。
 
-    スケッチブックの保存場所欄にあるパスの階層に libraries ディレクトリがあります
+    > このライブラリのレポジトリはプライベートです。クローンするには udonrobo organization に 参加している github アカウントと、 git が紐付いている必要があります。git インストール後、初回のクローン時に紐付けを求められます。
 
-2. 1 で調べたディレクトリに移りクローンする
+-   追加
 
-    ```sh
-    cd ---\arduino\programs\libraries  ## 1で調べたディレクトリ
-    git clone https://github.com/udonrobo/Library.git
-    ```
+    ライブラリを保存するディレクトリを調べライブラリを追加します。
+
+    > 既定値: `~\Documents\Arduino\libraries`
+    >
+    > 変更している場合: `ファイル > 環境設定 > スケッチブックの保存場所欄` + `\libraries`
+
+    > ```sh
+    > # 調べたディレクトリに移動
+    > cd ~\Documents\Arduino\libraries
+    >
+    > # ライブラリをクローン
+    > git clone https://github.com/udonrobo/UdonLibrary.git
+    > ```
+
+-   更新
+
+    > ```sh
+    > # 追加する時に調べたlibrariesディレクトリに移動
+    > cd ~\Documents\Arduino\libraries
+    >
+    > # ライブラリを更新
+    > git pull
+    > ```
+
+## 機能一覧
+
+-   通信
+
+
 
 ## ディレクトリ構造
 
--   スケッチ例、開発用ディレクトリ
+-   dev
 
-    -   actuator
+    スケッチ例、開発用ディレクトリ
 
-        アクチュエータ関連
+-   src
 
-    -   algorithm
-
-        アルゴリズム関連
-
-    -   com
-
-        通信関連
-
-        [CAN](./com/can/README.md)
-
-        <!-- [I2C](./com/i2c/README.md) -->
-
-    -   sensor
-
-        センサー関連
-
-    -   stl
-
-        C++標準ライブラリ関連
-
-    -   assembly.ps1
-
-        Arduino のライブラリとして使用できるよう src ディレクトリにヘッダーを集めてくるスクリプト
-
--   ライブラリディレクトリ
-
-    -   src
-
-        ArduinoIDE からインクルードされるヘッダー群
-
-## 開発の流れ
-
-1. 開発用ディレクトリにてヘッダーファイル等を作成
-
-2. assembly.ps1 の sources 配列に開発したファイルのパス(library ディレクトリからの相対パス)を追加
-
-3. assembly.ps1 を powershell で実行(src ディレクトリに開発したファイルがコピーされます)
+    ライブラリのヘッダー、ソースファイル群
