@@ -10,7 +10,7 @@ $tofrom =
 @(".\src\", ".\dev\com\common\BasicReader.hpp"),
 @(".\src\", ".\dev\com\common\BasicWriter.hpp"),
 @(".\src\", ".\dev\com\can\CanBusInterface.hpp"),
-@(".\src\", ".\dev\com\can\CanBusSPI.hpp"),
+@(".\src\", ".\dev\com\can\CanBusSpi.hpp"),
 @(".\src\", ".\dev\com\can\CanBusPico.hpp"),
 @(".\src\", ".\dev\com\can\CanBusTeensy.hpp"),
 @(".\src\", ".\dev\com\can\Can.hpp"),
@@ -21,10 +21,9 @@ $tofrom =
 @(".\src\", ".\dev\com\i2c\I2CSlaveWriter\I2CSlaveWriter.hpp"),
 @(".\src\", ".\dev\com\serializer\Serializer.hpp"),
 @(".\src\", ".\dev\common\types\Message.hpp"),
-@(".\src\", ".\dev\common\types\Predef.hpp"),
 @(".\src\", ".\dev\common\types\Quaternion.hpp"),
 @(".\src\", ".\dev\common\types\Vector2D.hpp"),
-@(".\src\", ".\dev\common\Float.hpp"),
+@(".\src\", ".\dev\common\types\Float.hpp"),
 @(".\src\", ".\dev\sensor\Gyro\Gyro.hpp"),
 @(".\src\", ".\dev\sensor\Measure\Measure.hpp"),
 @(".\src\", ".\dev\stl\list.hpp"),
@@ -54,6 +53,7 @@ foreach ($source in $tofrom) {
 
 
 ## file collection
+Remove-Item ".\src\" -Recurse -Force
 foreach ($source in $tofrom) {
 
 	$copydir = $source[0]

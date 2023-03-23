@@ -1,14 +1,13 @@
 #pragma once
 
-#include <Predef.hpp>
+#include <float.hpp>
 
 #ifndef UDON_HAS_STL
-#	include <ArduinoSTL.h>
+#	include <StandardCplusplus.h>
 #endif
 
 #include <vector>
 #include <algorithm>
-
 
 namespace udon
 {
