@@ -5,8 +5,11 @@
 // Distributed under the Boost Software License,
 // Version 1.0. (See accompanying file LICENSE_1_0.txt
 // or copy at http://www.boost.org/LICENSE_1_0.txt)
-
-// 固定 bit 浮動小数点型を提供する
+//
+// 固定 bit 浮動小数点型を定義する(プラットフォームによっては定義されない型もあります)
+//
+// 定義される型: udon::float16_t, udon::float32_t, udon::float64_t, udon::float80_t, udon::float128_t
+//
 
 #pragma once
 
@@ -166,6 +169,7 @@
   #endif
 #endif
 
+
 namespace udon
 {
 
@@ -205,6 +209,7 @@ namespace udon
 	#endif
 
 }
+
 
 #undef BOOST_CSTDFLOAT_MAXIMUM_AVAILABLE_WIDTH
 #undef BOOST_CSTDFLOAT_HAS_FLOAT16_NATIVE_TYPE
