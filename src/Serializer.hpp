@@ -1,6 +1,6 @@
 #pragma once
 
-#include <float.hpp>
+#include <Float.hpp>
 
 #ifndef UDON_HAS_STL
 #	include <StandardCplusplus.h>
@@ -50,8 +50,13 @@ namespace udon
 		Serializer& operator<<(uint16_t rhs) { pack(rhs); return *this; }
 		Serializer& operator<<(uint32_t rhs) { pack(rhs); return *this; }
 		Serializer& operator<<(uint64_t rhs) { pack(rhs); return *this; }
+
+#ifdef UDON_HAS_FLOAT32
 		Serializer& operator<<(float    rhs) { pack(static_cast<udon::float32_t>(rhs)); return *this; }
 		Serializer& operator<<(double   rhs) { pack(static_cast<udon::float32_t>(rhs)); return *this; }
+#else
+#	error シリアライズを行うには udon::float32_t が定義されている必要があります。
+#endif
 
 		Serializer& operator>>(bool    & rhs) { rhs = unpack<bool    >(); return *this; }
 		Serializer& operator>>(int8_t  & rhs) { rhs = unpack<int8_t  >(); return *this; }
@@ -62,8 +67,13 @@ namespace udon
 		Serializer& operator>>(uint16_t& rhs) { rhs = unpack<uint16_t>(); return *this; }
 		Serializer& operator>>(uint32_t& rhs) { rhs = unpack<uint32_t>(); return *this; }
 		Serializer& operator>>(uint64_t& rhs) { rhs = unpack<uint64_t>(); return *this; }
+
+#ifdef UDON_HAS_FLOAT32
 		Serializer& operator>>(float   & rhs) { rhs = static_cast<float >(unpack<udon::float32_t>()); return *this; }
 		Serializer& operator>>(double  & rhs) { rhs = static_cast<double>(unpack<udon::float32_t>()); return *this; }
+#else
+#	error デシリアライズを行うには udon::float32_t が定義されている必要があります。
+#endif
 
 		/// @brief manipulator
 		Serializer& operator<< (void(*f)(std::vector<uint8_t>&)) { f(buffer); return *this; }
