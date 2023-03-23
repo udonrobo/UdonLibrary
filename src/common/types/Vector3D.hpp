@@ -15,3 +15,9 @@ inline udon::Vector4D<Ty> udon::Vector3D<Ty>::xyz0() const
 {
     return { x, y, z, 0 };
 }
+
+
+namespace udon
+{
+    using Vec3 = Vector3D<double>;
+}

@@ -15,3 +15,9 @@ inline udon::Vector4D<Ty> udon::Vector2D<Ty>::xy00() const
 {
     return { x, y, 0, 0 };
 }
+
+
+namespace udon
+{
+    using Vec2 = Vector2D<double>;
+}
