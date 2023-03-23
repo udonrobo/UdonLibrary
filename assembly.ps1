@@ -24,6 +24,7 @@ $tofrom =
 @(".\src\", ".\dev\common\types\Predef.hpp"),
 @(".\src\", ".\dev\common\types\Quaternion.hpp"),
 @(".\src\", ".\dev\common\types\Vector2D.hpp"),
+@(".\src\", ".\dev\common\Float.hpp"),
 @(".\src\", ".\dev\sensor\Gyro\Gyro.hpp"),
 @(".\src\", ".\dev\sensor\Measure\Measure.hpp"),
 @(".\src\", ".\dev\stl\list.hpp"),
