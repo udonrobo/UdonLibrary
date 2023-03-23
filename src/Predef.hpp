@@ -1,13 +1,9 @@
 #pragma once
 
-#ifdef _WIN64
-asd
-#endif
-
 namespace udon
 {
 
-#if __has_include(<vector>) && !defined(UDON_HAS_STL)
+#if __has_include(<vector>)
 #	define UDON_HAS_STL
 #endif
 
