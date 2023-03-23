@@ -1,10 +1,7 @@
 #pragma once
 
-#include <Float.hpp>
-
-#ifndef UDON_HAS_STL
-#	include <StandardCplusplus.h>
-#endif
+#include <common/EnableSTL.hpp>
+#include <common/types/Float.hpp>
 
 #include <vector>
 #include <algorithm>
