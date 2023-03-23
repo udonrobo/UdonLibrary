@@ -53,7 +53,6 @@ foreach ($source in $tofrom) {
 
 
 ## file collection
-Remove-Item ".\src\" -Recurse -Force
 foreach ($source in $tofrom) {
 
 	$copydir = $source[0]
