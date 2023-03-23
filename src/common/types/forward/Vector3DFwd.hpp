@@ -27,6 +27,7 @@ namespace udon
 
 		Vector4D<value_type> xyz0() const;
 
+        /// @brief シリアライザ用オーバーロード
         friend Serializer& operator<<(Serializer& builder, const Vector3D& rhs)
         {
 			builder.reserve(sizeof(value_type) * Vector3D::Dimension);
