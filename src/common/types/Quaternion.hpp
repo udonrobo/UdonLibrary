@@ -1,15 +1,10 @@
 #pragma once
 
-#include <Predef.hpp>
-
 #ifdef UDON_ENABLE_STL
-#   ifndef UDON_HAS_STL
-#       include <StandardCplusplus.h>
-#   endif
 #   include <ostream>
 #endif
 
-#include <Serializer.hpp>
+#include <com\serializer\Serializer.hpp>
 
 namespace udon
 {

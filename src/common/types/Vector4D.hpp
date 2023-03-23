@@ -5,13 +5,13 @@
 #include <common\types\forward\Vector4Dfwd.hpp>
 
 template<class Ty>
-inline udon::Vector3D<Ty> udon::Vector2D<Ty>::xy0() const
+inline udon::Vector2D<Ty> udon::Vector4D<Ty>::xy() const
 {
-    return { x, y, 0 };
+    return { x, y };
 }
 
 template<class Ty>
-inline udon::Vector4D<Ty> udon::Vector2D<Ty>::xy00() const
+inline udon::Vector3D<Ty> udon::Vector4D<Ty>::xyz() const
 {
-    return { x, y, 0, 0 };
+    return { x, y, z };
 }
