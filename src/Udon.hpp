@@ -2,8 +2,8 @@
 
 #define UDON_INCLUDED
 
-/// @brief 算術関数
-#include <udon\math\Math.hpp>
+/// @brief アクチュエーター
+#include <udon\actuator\Motor.hpp>
 
 /// @brief フィードバック制御器
 #include <udon\algorithm\PidController.hpp>
@@ -11,8 +11,14 @@
 /// @brief 移動平均
 #include <udon\algorithm\MovingAverage.hpp>
 
-/// @brief ループ周期制御
-#include <udon\system\LoopCycleController.hpp>
+/// @brief CAN通信
+#include <udon\com\can\Can.hpp>
+
+/// @brief コントローラー
+#include <udon\com\pad\PadPS5.hpp>
+
+/// @brief 算術関数
+#include <udon\math\Math.hpp>
 
 /// @brief ベクトル演算
 #include <udon\common\types\Vector2D.hpp>
@@ -32,10 +38,8 @@
 /// @brief 連続する線分
 #include <udon\common\types\LineString.hpp>
 
-/// @brief アクチュエーター
-#include <udon\actuator\Motor.hpp>
-
 /// @brief シリアライザー
 #include <udon\com\serializer\Serializer.hpp>
 
-
+/// @brief ループ周期制御
+#include <udon\system\LoopCycleController.hpp>

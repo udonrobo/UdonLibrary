@@ -8,7 +8,7 @@
 
 #include <mcp2515.h>    // https://github.com/autowp/arduino-mcp2515
 
-#include <udon\stl\list.hpp>    // udon::std::list
+#include <udon\stl\list.hpp>    // udon::list
 
 #include <udon\com\can\CanBusInterface.hpp>
 #include <udon\com\can\CanInfo.hpp>
@@ -22,7 +22,7 @@ namespace udon
 
         MCP2515 bus;
 
-        using DataLine = udon::std::list<CanNodeInfo*>;
+        using DataLine = udon::list<CanNodeInfo*>;
         DataLine        tx;
         DataLine        rx;
         CanBusErrorInfo error;

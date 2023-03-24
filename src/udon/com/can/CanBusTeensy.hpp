@@ -14,7 +14,7 @@
 
 #include <udon\com\can\CanBusInterface.hpp>
 #include <udon\com\can\CanInfo.hpp>
-#include <udon\stl\list.hpp>    // udon::std::list
+#include <udon\stl\list.hpp>    // udon::list
 
 namespace udon
 {
@@ -28,7 +28,7 @@ namespace udon
         FlexCAN_T4<Bus, RX_SIZE_256, TX_SIZE_256> bus;
         IntervalTimer                             isr;
 
-        using DataLine = udon::std::list<CanNodeInfo*>;
+        using DataLine = udon::list<CanNodeInfo*>;
         DataLine        tx;
         DataLine        rx;
         CanBusErrorInfo error;
@@ -220,5 +220,6 @@ namespace udon
     template <CAN_DEV_TABLE Bus>
     CanBusTeensy<Bus>* CanBusTeensy<Bus>::self;
 
-#endif
 }
+
+#endif

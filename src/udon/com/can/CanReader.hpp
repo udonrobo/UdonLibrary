@@ -23,7 +23,7 @@ namespace udon
         /// @param id 信号識別ID
         CanReader(CanBusInterface& bus, const uint32_t id)
             : bus{ bus }
-            , node{ id, buffer, sizeof(MessageTy) }
+            , node{ id, buffer, sizeof(MessageTy), 0 }
             , buffer{}
         {
             bus.joinRX(node);
@@ -32,7 +32,7 @@ namespace udon
         /// @param コピーコンストラクタ
         CanReader(const CanReader& rhs)
             : bus{ rhs.bus }
-            , node{ rhs.node.id, buffer, sizeof(MessageTy) }
+            , node{ rhs.node.id, buffer, sizeof(MessageTy), 0 }
             , buffer{}
         {
             bus.joinRX(node);
@@ -47,6 +47,10 @@ namespace udon
         {
             return sizeof(MessageTy);
         }
+        constexpr const uint8_t* data() const noexcept
+        {
+            return buffer;
+        }
 
         /// @brief 通信できているか
         operator bool() const noexcept
@@ -58,7 +62,7 @@ namespace udon
         MessageTy getMessage() const noexcept
         {
             MessageTy msg;
-            memcpy(&msg, node.buffer, sizeof msg);
+            // memcpy(&msg, node.buffer, sizeof msg);
             return msg;
         }
 

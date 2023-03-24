@@ -28,7 +28,7 @@ namespace udon
         /// @param id 信号識別ID
         CanWriter(CanBusInterface& bus, const uint32_t id)
             : bus{ bus }
-            , node{ id, u.buffer, sizeof(MessageTy) }
+            , node{ id, u.buffer, sizeof(MessageTy), 0 }
             , u{}
         {
             bus.joinTX(node);
@@ -37,7 +37,7 @@ namespace udon
         /// @param コピーコンストラクタ
         CanWriter(const CanWriter& rhs)
             : bus{ rhs.bus }
-            , node{ rhs.node.id, u.buffer, sizeof(MessageTy) }
+            , node{ rhs.node.id, u.buffer, sizeof(MessageTy), 0 }
             , u{}
         {
             bus.joinTX(node);
