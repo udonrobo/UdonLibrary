@@ -1,13 +1,12 @@
 /// @file   CanBusTeensy.hpp
 /// @date   2023/01/13
 /// @brief  FlexCan_T4ライブラリを用いたCanバス管理クラス
-/// @remark [CPU] <--Can[TX/RX]--> [Canトランシーバ] <--Can[H/L]--> [BUS]
 /// @author 大河 祐介
 
 #pragma once
 
-//     vvv teensy3.2 vvv        vvv teensy3.5 vvv         vvv teensy3.6 vvv       vvv teensy4.0/4.1 vvv
-#if defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__)
+//                                   vvv teensy3.2 vvv        vvv teensy3.5 vvv         vvv teensy3.6 vvv       vvv teensy4.0/4.1 vvv
+#if defined(UDON_HAS_ARDUINO) && (defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__))
 
 #include <FlexCAN_T4.h>       // https://github.com/tonton81/FlexCan_T4.git
 #include <IntervalTimer.h>    // https://github.com/loglow/IntervalTimer.git

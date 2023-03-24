@@ -1,14 +1,14 @@
 /**
         @file   MovingAverage.hpp
         @brief  移動平均クラス
-        @auther 谷川　豊章
+        @author 谷川　豊章
         @date   2016/9/15
 */
 
 #ifndef DEF_MovingAverage_H
 #define DEF_MovingAverage_H
 
-#include <udon\math\Math.hpp>
+#include <udon\math\Math.hpp>  // udon::Max
 
 namespace udon
 {

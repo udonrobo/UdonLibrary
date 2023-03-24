@@ -2,6 +2,9 @@
 
 #define UDON_INCLUDED
 
+/// @brief 定義
+#include <udon\system\PreDefine.hpp>
+
 /// @brief アクチュエーター
 #include <udon\actuator\Motor.hpp>
 
@@ -21,22 +24,22 @@
 #include <udon\math\Math.hpp>
 
 /// @brief ベクトル演算
-#include <udon\common\types\Vector2D.hpp>
-#include <udon\common\types\Vector3D.hpp>
-#include <udon\common\types\Vector4D.hpp>
+#include <udon\types\Vector2D.hpp>
+#include <udon\types\Vector3D.hpp>
+#include <udon\types\Vector4D.hpp>
 
 /// @brief ロボットの位置
-#include <udon\common\types\Position.hpp>
+#include <udon\types\Position.hpp>
 
 /// @brief クオータニオン
-#include <udon\common\types\Quaternion.hpp>
+#include <udon\types\Quaternion.hpp>
 
 /// @brief 曲線
-#include <udon\common\types\Spline2D.hpp>
-#include <udon\common\types\Spline3D.hpp>
+#include <udon\types\Spline2D.hpp>
+#include <udon\types\Spline3D.hpp>
 
 /// @brief 連続する線分
-#include <udon\common\types\LineString.hpp>
+#include <udon\types\LineString.hpp>
 
 /// @brief シリアライザー
 #include <udon\com\serializer\Serializer.hpp>

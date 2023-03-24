@@ -8,7 +8,7 @@
 #ifndef DEF_PidController_H
 #define DEF_PidController_H
 
-#include <udon\math\Math.hpp>
+#include <udon\math\Math.hpp>  // udon::Constrain
 
 namespace udon
 {

@@ -10,6 +10,8 @@
 namespace udon
 {
 
+#ifdef UDON_HAS_ARDUINO
+
     class Motor2 : private udon::MovingAverage
     {
         const uint8_t pinA;
@@ -59,6 +61,8 @@ namespace udon
             analogWrite(pinP, udon::Abs(p));
         }
     };
+
+#endif
 
 }    // namespace udon
 

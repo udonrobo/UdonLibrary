@@ -24,9 +24,9 @@ namespace udon
 		value_type z;
 		value_type w;
 
-		Vector2D<value_type> xy() const;
+		udon::Vector2D<value_type> xy() const;
 
-		Vector3D<value_type> xyz() const;
+		udon::Vector3D<value_type> xyz() const;
 
         /// @brief シリアライザ用オーバーロード
         friend Serializer& operator<<(Serializer& builder, const Vector4D& rhs)

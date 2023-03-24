@@ -38,7 +38,7 @@ namespace udon
     inline constexpr A
     Constrain(const A& amt, const B& low, const B& high)
     {
-        return (amt < low ? low : (amt > high ? high : amt));
+        return udon::Min(udon::Max(amt, low), high);
     }
 
     template <class Ty>
