@@ -2,13 +2,10 @@
 
 /// @brief バス管理クラス
 // #include "CanBusPico.hpp"
-#include "CanBusSpi.hpp"
-#include "CanBusTeensy.hpp"
+#include <com\can\CanBusSpi.hpp>
+#include <com\can\CanBusTeensy.hpp>
 
 /// @brief 仮想ノードクラス
-#include "CanInfo.hpp"
-#include "CanReader.hpp"
-#include "CanWriter.hpp"
-
-/// @brief 通信用構造体
-#include "Message.hpp"
+#include <com\can\CanInfo.hpp>
+#include <com\can\CanReader.hpp>
+#include <com\can\CanWriter.hpp>

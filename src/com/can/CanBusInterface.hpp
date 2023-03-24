@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "CanInfo.hpp"
+#include <com\can\CanInfo.hpp>
 
 class CanBusInterface
 {

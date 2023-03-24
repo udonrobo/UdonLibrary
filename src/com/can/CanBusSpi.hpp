@@ -8,10 +8,10 @@
 
 #include <mcp2515.h>    // https://github.com/autowp/arduino-mcp2515
 
-#include "list.hpp"    // udon::std::list
+#include <stl\list.hpp>    // udon::std::list
 
-#include "CanInfo.hpp"
-#include "CanBusInterface.hpp"
+#include <com\can\CanBusInterface.hpp>
+#include <com\can\CanInfo.hpp>
 
 template <uint8_t CS, uint8_t Interrupt>
 class CanBusSpi : public CanBusInterface
@@ -19,20 +19,22 @@ class CanBusSpi : public CanBusInterface
 
     MCP2515 bus;
 
-    using DataLine = udon::std::list<CanNodeInfo *>;
+    using DataLine = udon::std::list<CanNodeInfo*>;
     DataLine        tx;
     DataLine        rx;
     CanBusErrorInfo error;
 
-    static CanBusSpi *self;
+    static CanBusSpi* self;
 
 public:
     /// @brief constructor
     /// @param {spi} SPIインスタンス
     /// @param {spiClock} SPI動作クロック
     /// @remark 動作クロックは CPUクロック/2 が最大値
-    CanBusSpi(SPIClass &spi, uint32_t spiClock = 10000000)
-        : bus(CS, spiClock, &spi), tx(), rx()
+    CanBusSpi(SPIClass& spi, uint32_t spiClock = 10000000)
+        : bus(CS, spiClock, &spi)
+        , tx()
+        , rx()
     {
         self = this;
     }
@@ -94,7 +96,7 @@ public:
     {
         if (tx.size() && micros() - error.timestampUs >= writeIntervalUs)
         {
-            const auto event = [](CanNodeInfo *node)
+            const auto event = [](CanNodeInfo* node)
             {
                 // 一度に8バイトしか送れないため、パケットに分割し送信
                 for (size_t index = 0; index < ceil(node->length / 7.0); index++)
@@ -121,7 +123,7 @@ public:
                 node->timestampUs = micros();
             };
 
-            for (auto &&it : self->tx)
+            for (auto&& it : self->tx)
             {
                 event(it);
             }
@@ -134,28 +136,28 @@ public:
         return error;
     }
 
-    void joinTX(CanNodeInfo &node) override
+    void joinTX(CanNodeInfo& node) override
     {
         join(tx, node);
     }
-    void joinRX(CanNodeInfo &node) override
+    void joinRX(CanNodeInfo& node) override
     {
         join(rx, node);
     }
 
-    void detachRX(CanNodeInfo &node) override
+    void detachRX(CanNodeInfo& node) override
     {
         detach(rx, node);
     }
-    void detachTX(CanNodeInfo &node) override
+    void detachTX(CanNodeInfo& node) override
     {
         detach(tx, node);
     }
 
 private:
-    void join(DataLine &line, CanNodeInfo &node)
+    void join(DataLine& line, CanNodeInfo& node)
     {
-        for (auto &&it : line)
+        for (auto&& it : line)
         {
             if (it == &node)    // インスタンスの重複を除外する
             {
@@ -165,9 +167,9 @@ private:
         line.push_back(&node);
     }
 
-    void detach(DataLine &line, CanNodeInfo &node)
+    void detach(DataLine& line, CanNodeInfo& node)
     {
-        for (auto &&it = line.begin(); it != line.end(); ++it)
+        for (auto&& it = line.begin(); it != line.end(); ++it)
         {
             if (*it == &node)
             {
@@ -179,4 +181,4 @@ private:
 };
 
 template <uint8_t CS, uint8_t Interrupt>
-CanBusSpi<CS, Interrupt> *CanBusSpi<CS, Interrupt>::self;
+CanBusSpi<CS, Interrupt>* CanBusSpi<CS, Interrupt>::self;

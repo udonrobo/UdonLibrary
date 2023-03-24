@@ -5,77 +5,77 @@
 
 #pragma once
 
-#include "CanInfo.hpp"
-#include "CanBusInterface.hpp"
+#include <com\can\CanBusInterface.hpp>
+#include <com\can\CanInfo.hpp>
 
-template<class MessageTy>
-class CanWriter {
+template <class MessageTy>
+class CanWriter
+{
 
-		CanBusInterface& bus                      ;
-		CanNodeInfo      node                     ;
+    CanBusInterface& bus;
+    CanNodeInfo      node;
 
-		union {
-			uint8_t   buffer[sizeof(MessageTy)];
-			MessageTy message                  ;
-		} u;
+    union
+    {
+        uint8_t   buffer[sizeof(MessageTy)];
+        MessageTy message;
+    } u;
 
-	public:
+public:
+    /// @param id 信号識別ID
+    CanWriter(CanBusInterface& bus, const uint32_t id)
+        : bus{ bus }
+        , node{ id, u.buffer, sizeof(MessageTy) }
+        , u{}
+    {
+        bus.joinTX(node);
+    }
 
-		/// @param id 信号識別ID
-		CanWriter(CanBusInterface& bus, const uint32_t id)
-			: bus   { bus                             }
-			, node  { id, u.buffer, sizeof(MessageTy) }
-			, u{                                 }
-		{
-			bus.joinTX(node);
-		}
+    /// @param コピーコンストラクタ
+    CanWriter(const CanWriter& rhs)
+        : bus{ rhs.bus }
+        , node{ rhs.node.id, u.buffer, sizeof(MessageTy) }
+        , u{}
+    {
+        bus.joinTX(node);
+    }
 
-		/// @param コピーコンストラクタ
-		CanWriter(const CanWriter& rhs)
-			: bus   { rhs.bus                                  }
-			, node  { rhs.node.id, u.buffer, sizeof(MessageTy) }
-			, u{                                          }
-		{
-			bus.joinTX(node);
-		}
+    ~CanWriter()
+    {
+        bus.detachTX(node);
+    }
 
-		~CanWriter()
-		{
-			bus.detachTX(node);
-		}
+    constexpr size_t length() const noexcept
+    {
+        return sizeof(MessageTy);
+    }
 
-		constexpr size_t length() const noexcept
-		{
-			return sizeof(MessageTy);
-		}
+    /// @brief 通信できているか
+    operator bool() const noexcept
+    {
+        return micros() - node.timestampUs < 50000;
+    }
 
-		/// @brief 通信できているか
-		operator bool() const noexcept
-		{
-			return micros() - node.timestampUs < 50000;
-		}
+    /// @brief メッセージ構造体をセット
+    void setMessage(const MessageTy& message) noexcept
+    {
+        u.message = message;
+    }
 
-		/// @brief メッセージ構造体をセット
-		void setMessage(const MessageTy& message) noexcept
-		{
-			u.message = message;
-		}
+    void showBinary(char end = {}) const noexcept
+    {
+        for (auto&& it : u.buffer)
+        {
+            Serial.print(it);
+            Serial.print('\t');
+        }
+        Serial.print(end);
+    }
 
-		void showBinary(char end = {}) const noexcept
-		{
-			for (auto && it : u.buffer)
-			{
-				Serial.print(it);
-				Serial.print('\t');
-			}
-			Serial.print(end);
-		}
-
-		/// @brief 受信内容を表示
-		void show(char end = {}) const noexcept
-		{
-			u.message.show();
-			Serial.print(end);
-		}
-
+    /// @brief 受信内容を表示
+    void show(char end = {}) const noexcept
+    {
+        u.message.show();
+        Serial.print(end);
+    }
 };

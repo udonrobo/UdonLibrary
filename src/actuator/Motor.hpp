@@ -4,7 +4,8 @@
 /// @author 大河 祐介
 
 #pragma once
-#include "MovingAverage.h"
+
+#include <algorithm\MovingAverage.hpp>
 
 class Motor2 : private MovingAverage {
 		const uint8_t pinA;

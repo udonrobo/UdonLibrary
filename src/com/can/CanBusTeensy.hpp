@@ -11,10 +11,10 @@
 
 #include <FlexCAN_T4.h>       // https://github.com/tonton81/FlexCan_T4.git
 #include <IntervalTimer.h>    // https://github.com/loglow/IntervalTimer.git
-#include "list.hpp"    // udon::std::list
+#include <stl\list.hpp>       // udon::std::list
 
-#include "CanBusInterface.hpp"
-#include "CanInfo.hpp"
+#include <com\can\CanBusInterface.hpp>
+#include <com\can\CanInfo.hpp>
 
 /// @tparam {Bus} バス種類 (Can0,Can1,Can2,Can3)
 template <CAN_DEV_TABLE Bus>
