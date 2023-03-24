@@ -1,8 +1,8 @@
 #pragma once
 
-#include <udon/common/types/Float.hpp>
+#include <udon/types/Float.hpp>
 
-#include <udon/common/EnableSTL.hpp>
+#include <udon/stl/EnableSTL.hpp>
 
 #include <vector>
 #include <algorithm>

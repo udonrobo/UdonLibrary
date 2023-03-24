@@ -29,7 +29,7 @@ namespace udon
             udon::MovingAverage::update(udon::Constrain(power, -250, 250));
             const int16_t p = udon::MovingAverage::getValue();
             digitalWrite(pinA, p >= 0);
-            analogWrite(pinP, abs(p));
+            analogWrite(pinP, udon::Abs(p));
         }
     };
 
@@ -56,7 +56,7 @@ namespace udon
             const int16_t p = udon::MovingAverage::getValue();
             digitalWrite(pinA, p >= 0);
             digitalWrite(pinB, p <= 0);
-            analogWrite(pinP, abs(p));
+            analogWrite(pinP, udon::Abs(p));
         }
     };
 

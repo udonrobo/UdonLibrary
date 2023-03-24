@@ -1,6 +1,6 @@
 #pragma once
 
-#include <udon\common\types\Vector2D.hpp>
+#include <udon\types\Vector2D.hpp>
 
 namespace udon
 {
