@@ -4,8 +4,10 @@
 
 #include <algorithm>
 
-#include <udon\com\can\CanReader.hpp>
-#include <udon\com\message\PadPS5.hpp>
+#include <udon\algorithm\Input.hpp>
+
+#include <udon\types\Position.hpp>
+#include <udon\types\Vector2D.hpp>
 
 namespace udon
 {
@@ -22,10 +24,27 @@ namespace udon
         {
         }
 
+        udon::Vector2D<int16_t> getLeftAxis() const { return {}; }
+        udon::Vector2D<int16_t> getRightAxis() const { return {}; }
+
+        udon::Position<int16_t> getStick() const
+        {
+            return {};
+        }
+
         void update()
         {
+            reader.update();
         }
     };
+
+}    // namespace udon
+
+#include <udon\com\can\CanReader.hpp>
+#include <udon\com\message\PadPS5.hpp>
+
+namespace udon
+{
 
     using CanPadPS5 = udon::PadPS5<udon::CanReader<udon::message::PadPS5>>;
 
