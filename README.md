@@ -38,16 +38,94 @@
 
 ## 機能一覧
 
+-   アクチュエーター
+
+    -   モーター
+
+        > `udon::Motor2`
+        >
+        > `udon::Motor3`
+
+    -   サーボ
+
+        > --
+
+-   アルゴリズム
+
+    -   フィードバック制御器
+
+        > `udon::PidController`
+
+    -   移動平均
+
+        > `udon::MovingAverage`
+
 -   通信
 
+    -   CAN 通信
 
+        > `udon::CanBusTeensy`
+        >
+        > `udon::CanBusSpi`
+        >
+        > `udon::CanReader`
+        >
+        > `udon::CanWriter`
 
-## ディレクトリ構造
+    -   I2C 通信
 
--   dev
+        > --
 
-    スケッチ例、開発用ディレクトリ
+    -   SPI 通信
 
--   src
+        > --
 
-    ライブラリのヘッダー、ソースファイル群
+    -   UART 通信
+
+        > --
+
+    -   シリアライゼーション
+
+        > `udon::Serializer`
+
+    -   コントローラー
+
+        > `udon::PadPS5`
+        >
+        > `udon::PadPS4`
+
+-   センサー
+
+    -   BNO055
+
+        > --
+
+-   システム
+
+    -   ループ周期制御
+
+        > `udon::LoopCycleController`
+
+-   ユーザー定義型
+
+    -   固定 bit 長浮動小数点型
+
+        > `udon::float16_t`, `udon::float32_t`, `udon::float64_t`, `udon::float80_t`, `udon::float128_t`
+
+    -   ベクトル演算
+
+        > `udon::Vector2D`: 二次元ベクトル
+        >
+        > `udon::Vector3D`: 三次元ベクトル
+        >
+        > `udon::Vector4D`: 四次元ベクトル
+        >
+        > `udon::Position`: ロボットの位置
+        >
+        > `udon::Quaternion`: クオータニオン
+
+    -   線
+
+        > `udon::Spline2D`: 二次元スプライン曲線
+        >
+        > `udon::Spline3D`: 三次元スプライン曲線

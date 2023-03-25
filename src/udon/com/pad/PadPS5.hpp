@@ -3,6 +3,7 @@
 #include <udon\stl\EnableSTL.hpp>
 
 #include <algorithm>
+#include <type_traits>
 
 #include <udon\algorithm\Input.hpp>
 
@@ -32,9 +33,26 @@ namespace udon
             return {};
         }
 
-        void update()
+        /// @brief reader クラスに update メンバがあるときの更新
+        template<class Ty = Reader>
+        typename std::enable_if<std::is_same<decltype(Ty::update), void(Ty::*)()>::value, void>::type
+        update()
         {
-            reader.update();
+            // reader.update();
+            mainUpdate();
+        }
+
+        /// @brief reader クラスに update メンバがないときの更新
+        template<class Ty = Reader>
+        typename std::enable_if<!std::is_same<decltype(Ty::update), void(Ty::*)()>::value, void>::type
+        update()
+        {
+            mainUpdate();
+        }
+
+        void mainUpdate()
+        {
+
         }
     };
 
