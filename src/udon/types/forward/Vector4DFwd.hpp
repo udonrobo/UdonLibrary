@@ -9,7 +9,7 @@ namespace udon
 	struct Vector2D;
 
 	template<class Ty>
-	struct Vector4D;
+	struct Vector3D;
 
 	template<class Ty>
 	struct Vector4D
