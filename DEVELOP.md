@@ -1,26 +1,6 @@
 
 ## 開発
 
-<details>
-<summary>ファイル操作</summary>
-
-1. 開発用ディレクトリでヘッダーファイル等を作成、または編集
-
-2. 新規追加時の場合、`assembly.ps1` 内 `sources` 配列に開発したファイルのパスを追加
-
-    `Library\hoge\hogehoge.hpp` ファイルを収集対象に追加する場合、`"${selfpath}\hoge\hogehoge.hpp"` の様にパスを指定し、配列に追加します。
-
-    `selfpath` には `assembly.ps1` の親ディレクトリのパスが代入されています。
-
-3. assembly.ps1 を powershell で実行
-
-    src ディレクトリに開発したファイルがコピーされます
-
-    ```sh
-    cd ---\Library
-    .\assembly.ps1
-    ```
-
 </details>
 
 <details>
@@ -123,7 +103,7 @@
 
     ```cpp
     class SerialWriter {};
-    class PIDController {};  // PIDのような単語は頭文字をとった略語であるため、Pid のようにしない
+    class PidController {};
 
     template<typename T, typename U>
     struct is_same {};
@@ -151,7 +131,7 @@
 
 -   リンクエラー
 
-    リンクエラーはきもいです(唐突)複数の .cpp ファイルから include した際にリンクエラーにならないようにしてください。主にヘッダーファイルに関数や変数の実体がある場合にリンクエラーになります。一つの .cpp ファイルから include する際はエラーにならないので注意が必要です。`#pragma once` は多重インクルードは防ぐことができますが、リンクエラーは防ぐことができません。
+    複数の .cpp ファイルから include した際にリンクエラーにならないようにしてください。主にヘッダーファイルに関数や変数の実体がある場合にリンクエラーになります。一つの .cpp ファイルから include する際はエラーにならないので注意が必要です。`#pragma once` は多重インクルードは防ぐことができますが、リンクエラーは防ぐことができません。
 
     -   エラー文
 
