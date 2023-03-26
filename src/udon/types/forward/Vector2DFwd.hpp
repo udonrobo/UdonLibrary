@@ -1,7 +1,6 @@
 #pragma once
 
 #include <udon\com\serializer\Serializer.hpp>
-#include <udon\math\Math.hpp>
 
 namespace udon
 {
@@ -19,45 +18,32 @@ namespace udon
         /// @brief 要素の型
         using value_type = Ty;
 
+        /// @brief 成分
+        value_type x;
+        value_type y;
+
         /// @brief 次元数
         static constexpr size_t Dimension = 2;
 
-        /// @brief x成分
-        value_type x;
-
-        /// @brief y成分
-        value_type y;
-
         /// @brief デフォルトコンストラクタ
-        Vector2D() = default;
+        constexpr Vector2D() noexcept
+            : x()
+            , y()
+        {}
 
         /// @brief デフォルトコピーコンストラクタ
-        Vector2D(const Vector2D& rhs) = default;
+        constexpr Vector2D(const Vector2D& rhs) noexcept
+            : x(rhs.x)
+            , y(rhs.y)
+        {}
+
 
         /// @brief コンストラクタ
         /// @param x x成分
         /// @param y y成分
-        constexpr Vector2D(value_type x, value_type y)
+        constexpr Vector2D(value_type x, value_type y) noexcept
             : x(x)
             , y(y)
-        {
-        }
-
-        /// @brief 変換コンストラクタ
-        /// @tparam Ty
-        /// @param rhs
-        template <class T>
-        constexpr Vector2D(const Vector2D<T>& rhs)
-            : x(static_cast<value_type>(rhs.x))
-            , y(static_cast<value_type>(rhs.y))
-        {
-        }
-
-        /// @brief 変換コンストラクタ
-        /// @param rhs
-        constexpr Vector2D(value_type rhs)
-            : x(rhs)
-            , y(rhs)
         {
         }
 
@@ -71,6 +57,10 @@ namespace udon
         constexpr Vector2D operator-(const Vector2D& rhs) const noexcept { return { x - rhs.x, y - rhs.y }; }
         constexpr Vector2D operator*(const Vector2D& rhs) const noexcept { return { x * rhs.x, y * rhs.y }; }
         constexpr Vector2D operator/(const Vector2D& rhs) const noexcept { return { x / rhs.x, y / rhs.y }; }
+        constexpr Vector2D operator+(value_type rhs) const noexcept { return { x + rhs, y + rhs }; }
+        constexpr Vector2D operator-(value_type rhs) const noexcept { return { x - rhs, y - rhs }; }
+        constexpr Vector2D operator*(value_type rhs) const noexcept { return { x * rhs, y * rhs }; }
+        constexpr Vector2D operator/(value_type rhs) const noexcept { return { x / rhs, y / rhs }; }
 
         /// @brief 複合代入演算子
         /// @param rhs 被演算子
@@ -79,6 +69,10 @@ namespace udon
         constexpr Vector2D& operator-=(const Vector2D& rhs) noexcept { return *this = *this - rhs; };
         constexpr Vector2D& operator*=(const Vector2D& rhs) noexcept { return *this = *this * rhs; };
         constexpr Vector2D& operator/=(const Vector2D& rhs) noexcept { return *this = *this / rhs; };
+        constexpr Vector2D& operator+=(value_type rhs) noexcept { return *this = *this + rhs; };
+        constexpr Vector2D& operator-=(value_type rhs) noexcept { return *this = *this - rhs; };
+        constexpr Vector2D& operator*=(value_type rhs) noexcept { return *this = *this * rhs; };
+        constexpr Vector2D& operator/=(value_type rhs) noexcept { return *this = *this / rhs; };
 
         /// @brief 比較演算子
         /// @param rhs 被演算子
@@ -93,10 +87,17 @@ namespace udon
             return !(*this == rhs);
         };
 
+        /// @brief 要素のいずれかに0以外の値があるかどうかを返す
+        /// @return
+        explicit constexpr operator bool() const noexcept
+        {
+            return x || y;
+        }
+
         /// @brief ゼロベクトルであるかを返す
         constexpr bool isZero() const noexcept
         {
-            return (x || y);
+            return !Vector2D::operator bool();
         }
 
         /// @brief 値クリア
@@ -105,7 +106,7 @@ namespace udon
             *this = {};
         }
 
-        /// @brief 指定された点を中心に回転
+        /// @brief 指定された点を中心に回転したベクトルを返す
         /// @param center 回転の中心
         /// @param angle 回転する角度 [rad]
         /// @return 回転後の座標
@@ -117,7 +118,7 @@ namespace udon
             return center + Vector2D{ (d.x * c - d.y * s), (d.x * s + d.y * c) };
         }
 
-        /// @brief 原点を中心に回転
+        /// @brief 原点を中心に回転したベクトルを返す
         /// @param angle 回転する角度 [rad]
         /// @return 回転後の座標
         Vector2D rotated(value_type angle) const noexcept
@@ -148,7 +149,7 @@ namespace udon
         value_type distanceFrom(const Vector2D& rhs) const noexcept
         {
             const auto d = *this - rhs;
-            return sqrt(udon::Sq(d.x) + udon::Sq(d.y));
+            return sqrt(d.x * d.x + d.y * d.y);
         }
 
         /// @brief 原点からの距離を求める
@@ -162,13 +163,20 @@ namespace udon
 
         udon::Vector4D<value_type> xy00() const noexcept;
 
+        /// @brief メモリアラインを除去したサイズを取得する
+        /// @return
+        static constexpr size_t PackedSize() noexcept
+        {
+            return sizeof(value_type) * Dimension;
+        }
+
         /// @brief メンバイテレーション演算子
         /// @tparam MIterator
         /// @param mit
         /// @param rhs
         /// @return
         template<class MIterator>
-        friend MIterator& operator|(MIterator& mit, udon::Vector2D<Ty>& rhs)
+        friend MIterator& operator|(MIterator& mit, Vector2D<Ty>& rhs)
         {
             return mit
                 | rhs.x

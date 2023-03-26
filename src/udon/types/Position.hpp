@@ -20,6 +20,91 @@ namespace udon
 		/// @brief 旋回角 [rad]
 		value_type turn;
 
+		/// @brief デフォルトコンストラクタ
+		constexpr Position() noexcept
+			: vector()
+			, turn  ()
+		{}
+
+		/// @brief デフォルトコピーコンストラクタ
+		constexpr Position(const Position& rhs) noexcept
+			: vector(rhs.vector)
+			, turn  (rhs.turn  )
+		{}
+
+		/// @brief コンストラクタ
+		constexpr Position(const udon::Vector2D<value_type>& vector, value_type turn) noexcept
+			: vector(vector)
+			, turn  (turn  )
+		{}
+
+		/// @brief デフォルトコピー代入演算子
+		Position& operator=(const Position&) = default;
+
+        /// @brief 算術演算子
+        /// @param rhs 被演算子
+        /// @return
+		constexpr Position operator+(const Position& rhs) const noexcept { return { vector + rhs.vector, turn + rhs.turn }; }
+		constexpr Position operator-(const Position& rhs) const noexcept { return { vector - rhs.vector, turn - rhs.turn }; }
+		constexpr Position operator*(const Position& rhs) const noexcept { return { vector * rhs.vector, turn * rhs.turn }; }
+		constexpr Position operator/(const Position& rhs) const noexcept { return { vector / rhs.vector, turn / rhs.turn }; }
+		constexpr Position operator+(value_type rhs) const noexcept { return { vector + rhs, turn + rhs }; }
+		constexpr Position operator-(value_type rhs) const noexcept { return { vector - rhs, turn - rhs }; }
+		constexpr Position operator*(value_type rhs) const noexcept { return { vector * rhs, turn * rhs }; }
+		constexpr Position operator/(value_type rhs) const noexcept { return { vector / rhs, turn / rhs }; }
+
+        /// @brief 複合代入演算子
+        /// @param rhs 被演算子
+        /// @return
+		constexpr Position operator+=(const Position& rhs) noexcept { return *this = *this + rhs; }
+		constexpr Position operator-=(const Position& rhs) noexcept { return *this = *this - rhs; }
+		constexpr Position operator*=(const Position& rhs) noexcept { return *this = *this * rhs; }
+		constexpr Position operator/=(const Position& rhs) noexcept { return *this = *this / rhs; }
+		constexpr Position operator+=(value_type rhs) noexcept { return *this = *this + rhs; }
+		constexpr Position operator-=(value_type rhs) noexcept { return *this = *this - rhs; }
+		constexpr Position operator*=(value_type rhs) noexcept { return *this = *this * rhs; }
+		constexpr Position operator/=(value_type rhs) noexcept { return *this = *this / rhs; }
+
+        /// @brief 要素のいずれかに0以外の値があるかどうかを返す
+		constexpr operator bool() const noexcept
+		{
+			return vector || turn;
+		}
+
+        /// @brief 要素がすべて0であるかを変えす
+        constexpr bool isZero() const noexcept
+        {
+            return !Position::operator bool();
+        }
+
+        /// @brief 値クリア
+        constexpr void clear() noexcept
+        {
+            *this = {};
+        }
+
+        /// @brief メモリアラインを除去したサイズを取得する
+        /// @return
+        static constexpr size_t PackedSize() noexcept
+        {
+            return
+                udon::Vector2D<value_type>::PackedSize() +
+                sizeof(value_type);
+        }
+
+        /// @brief メンバイテレーション演算子
+        /// @tparam MIterator
+        /// @param mit
+        /// @param rhs
+        /// @return
+        template<class MIterator>
+        friend MIterator& operator|(MIterator& mit, Position<Ty>& rhs)
+        {
+            return mit
+                | rhs.vector
+                | rhs.turn;
+        }
+
 	};
 
 	using Pos = Position<double>;
