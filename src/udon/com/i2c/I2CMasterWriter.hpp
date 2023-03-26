@@ -51,7 +51,7 @@ class MasterWriter {
         data[i] = 0;
     }
 
-    void show() {
+    void show() const {
       for (int i = 0; i < size; i++) {
         Serial.print(data[i]);
         Serial.print("\t");

@@ -14,7 +14,7 @@
 #include <Arduino.h>
 #include <SdFat.h>
 
-namespace udon{
+namespace udon {
 
 class parameter {
   private:
@@ -37,7 +37,7 @@ class parameter {
     void setParameter(int dataNum, double data) {
       writeData[dataNum - 1] = data;
     }
-    void setParameter() {
+    void setNewParameter()const {
       if (Card_Insertion) {
         dataFile.open(name, O_RDWR);
         dataFile.seek(dataFile.size());  //ファイルの最後に移動
@@ -76,17 +76,17 @@ class parameter {
           readData[i] = 0.0;
       }
     }
-    double getParameter(int dataNum) {
+    double getParameter(int dataNum)const {
       return readData[dataNum - 1];
     }
-    void readShow(char end = {}) {
+    void readShow(char end = {})const {
       for (int i = 0; i < size; i++) {
         Serial.print(readData[i]);
         Serial.print("\t");
       }
       Serial.print(end);
     }
-    void writeShow(char end = {}) {
+    void writeShow(char end = {})const {
       for (int i = 0; i < size; i++) {
         Serial.print(writeData[i]);
         Serial.print("\t");

@@ -27,15 +27,15 @@ class MasterReader {
       }
     }
 
-    byte GetData(int array_num) {
+    byte GetData(int array_num) const {
       return data[array_num - 1];
     }
 
-    bool GetBitData(int array_num, int bit_num) {
+    bool GetBitData(int array_num, int bit_num) const {
       return bitRead(data[array_num - 1], bit_num);
     }
 
-    void read_show() {
+    void read_show() const {
       for (int i = 0; i < size; i++) {
         Serial.print(data[i]);
         Serial.print("\t");
