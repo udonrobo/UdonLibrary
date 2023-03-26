@@ -16,14 +16,20 @@ namespace udon
         double y;
         double z;
 
-        // friend Serializer& operator<<(Serializer& builder, const Quaternion& rhs)
-        // {
-        //     return builder << rhs.i << rhs.j << rhs.k << rhs.w;
-        // }
-        // friend Serializer& operator>>(Serializer& builder, Quaternion& rhs)
-        // {
-        //     return builder >> rhs.i >> rhs.j >> rhs.k >> rhs.w;
-        // }
+        /// @brief メンバイテレーション演算子
+        /// @tparam MIterator
+        /// @param mit
+        /// @param rhs
+        /// @return
+        template<class MIterator>
+        friend MIterator& operator|(MIterator& mit, udon::Quaternion& rhs)
+        {
+            return mit
+                | rhs.w
+                | rhs.x
+                | rhs.y
+                | rhs.z;
+        }
 
 #ifdef UDON_ENABLE_STL
         friend std::ostream& operator<<(std::ostream& ostm, const Quaternion& rhs)

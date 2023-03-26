@@ -42,67 +42,41 @@ namespace udon
 
             bool mic;
 
-            friend udon::Serializer& operator<<(udon::Serializer& builder, const udon::message::PadPS5& rhs)
+            /// @brief メンバイテレーション演算子
+            /// @tparam MIterator
+            /// @param mit
+            /// @param rhs
+            /// @return
+	        template<class MIterator>
+            friend MIterator& operator|(MIterator& mit, udon::message::PadPS5& rhs) noexcept
             {
-                builder.reserve(9);
-                return builder
-                       << rhs.isConnected
-                       << rhs.isConnected
-                       << rhs.triangle
-                       << rhs.circle
-                       << rhs.cross
-                       << rhs.square
-                       << rhs.l1
-                       << rhs.r1
-                       << rhs.l2
-                       << rhs.r2
-                       << rhs.l3
-                       << rhs.r3
-                       << rhs.up
-                       << rhs.right
-                       << rhs.down
-                       << rhs.left
-                       << rhs.analogRightX
-                       << rhs.analogRightY
-                       << rhs.analogLeftX
-                       << rhs.analogLeftY
-                       << rhs.analogL2
-                       << rhs.analogR2
-                       << rhs.create
-                       << rhs.option
-                       << rhs.touch
-                       << rhs.mic;
-            }
-
-            friend udon::Serializer& operator>>(udon::Serializer& builder, udon::message::PadPS5& rhs)
-            {
-                return builder
-                       >> rhs.isConnected
-                       >> rhs.isConnected
-                       >> rhs.triangle
-                       >> rhs.circle
-                       >> rhs.cross
-                       >> rhs.square
-                       >> rhs.l1
-                       >> rhs.r1
-                       >> rhs.l2
-                       >> rhs.r2
-                       >> rhs.l3
-                       >> rhs.r3
-                       >> rhs.up
-                       >> rhs.right
-                       >> rhs.down
-                       >> rhs.left
-                       >> rhs.analogRightX
-                       >> rhs.analogRightY
-                       >> rhs.analogLeftX
-                       >> rhs.analogLeftY
-                       >> rhs.analogL2
-                       >> rhs.analogR2
-                       >> rhs.create
-                       >> rhs.option
-                       >> rhs.touch
-                       >> rhs.mic;
+                return mit
+                    | rhs.isConnected
+                    | rhs.isConnected
+                    | rhs.triangle
+                    | rhs.circle
+                    | rhs.cross
+                    | rhs.square
+                    | rhs.l1
+                    | rhs.r1
+                    | rhs.l2
+                    | rhs.r2
+                    | rhs.l3
+                    | rhs.r3
+                    | rhs.up
+                    | rhs.right
+                    | rhs.down
+                    | rhs.left
+                    | rhs.analogRightX
+                    | rhs.analogRightY
+                    | rhs.analogLeftX
+                    | rhs.analogLeftY
+                    | rhs.analogL2
+                    | rhs.analogR2
+                    | rhs.create
+                    | rhs.option
+                    | rhs.touch
+                    | rhs.mic;
             }
 
         };

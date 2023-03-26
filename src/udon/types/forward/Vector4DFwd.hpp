@@ -28,17 +28,20 @@ namespace udon
 
 		udon::Vector3D<value_type> xyz() const;
 
-        /// @brief シリアライザ用オーバーロード
-        friend Serializer& operator<<(Serializer& builder, const Vector4D& rhs)
+        /// @brief メンバイテレーション演算子
+        /// @tparam MIterator
+        /// @param mit
+        /// @param rhs
+        /// @return
+        template<class MIterator>
+        friend MIterator& operator|(MIterator& mit, udon::Vector4D<Ty>& rhs)
         {
-			builder.reserve(sizeof(value_type) * Vector4D::Dimension);
-            return builder << rhs.x << rhs.y << rhs.z << rhs.w;
+            return mit
+                | rhs.x
+                | rhs.y
+                | rhs.z
+                | rhs.w;
         }
-        friend Serializer& operator>>(Serializer& builder, Vector4D& rhs)
-        {
-            return builder >> rhs.x >> rhs.y >> rhs.z >> rhs.w;
-        }
-
 
 	};
 

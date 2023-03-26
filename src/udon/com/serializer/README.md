@@ -1,6 +1,6 @@
 # Serializer
 
-Serializer は構造体など任意の型のオブジェクトをバイト列に変換します。
+このファイルには、構造体など任意の型のオブジェクトをバイト列に変換する `Serializer` クラス、バイト列からオブジェクトに変換する `Deserializer` クラスが含まれます。また、
 
 メモリアライメントを意識せずに安全に変換できます。
 
@@ -43,9 +43,7 @@ STL などの外部ライブラリで定義された型についても変換用�
 
 -   ユーザー定義型の変換
 
-    ユーザー定義型をシリアライズ、デシリアライするには変換用の関数が実装されている必要があります。
-
-    例えば x,y のデータを持つ 2 次元ベクトルの場合、変換用の挿入演算子、抽出演算子を次のようにオーバーロードします。`operator<<` はシリアライズ時に使用され、`operator>>` はデシリアライズ時に使用されます。
+    ユーザー定義型をシリアライズ、デシリアライするにはメンバイテレーション用演算子 `operator|` がオーバーロードされている必要があります。
 
     ```cpp
     struct Vec2
@@ -54,14 +52,13 @@ STL などの外部ライブラリで定義された型についても変換用�
     	double x;
     	double y;
 
-    	friend udon::Serializer& operator<<(udon::Serializer& builder, const Vec2& rhs)
-    	{
-    		return builder << rhs.x << rhs.y;
-    	}
-    	friend udon::Serializer& operator>>(udon::Serializer& builder, Vec2& rhs)
-    	{
-    		return builder >> rhs.x >> rhs.y;
-    	}
+        template<class MIterator>
+        friend MIterator& operator|(MIterator& mit, Vec2& rhs)
+        {
+            return mit
+                | rhs.x
+                | rhs.y;
+        }
 
     };
     ```
@@ -77,13 +74,12 @@ STL などの外部ライブラリで定義された型についても変換用�
     	double y;
     };
 
-    udon::Serializer& operator<<(udon::Serializer& builder, const Vec2& rhs)
+    template<class MIterator>
+    MIterator& operator|(MIterator& mit, Vec2& rhs)
     {
-    	return builder << rhs.x << rhs.y;
-    }
-    udon::Serializer& operator>>(udon::Serializer& builder, Vec2& rhs)
-    {
-    	return builder >> rhs.x >> rhs.y;
+        return mit
+            | rhs.x
+            | rhs.y;
     }
     ```
 
@@ -100,109 +96,134 @@ STL などの外部ライブラリで定義された型についても変換用�
     Serial.print(unpacked.x), Serial.print(unpacked.y);
     ```
 
--   高速化
-
-    シリアライズ時に挿入演算子が呼ばれるたび `Serializer` クラスのバッファーにバイト列を挿入する処理が行われます。この処理の都度、バッファーが再アロケーションを行う可能性があります。再アロケーションはほかの処理に比べ非常に重たいです。`Serializer::reserve()` を使い、あらかじめメモリ領域を確保することで再アロケーションを防ぐことができます。
-
-    ```cpp
-    struct Vec2
-    {
-
-    	double x;
-    	double y;
-
-    	friend udon::Serializer& operator<<(udon::Serializer& builder, const Vec2& rhs)
-    	{
-    		builder.reserve(sizeof rhs.x + sizeof rhs.y);  // メモリアラインを含めたサイズになるため sizeof rhs としてはいけません
-    		return builder << rhs.x << rhs.y;
-    	}
-    	friend udon::Serializer& operator>>(udon::Serializer& builder, Vec2& rhs)
-    	{
-    		return builder >> rhs.x >> rhs.y;
-    	}
-
-    };
-    ```
-
 ## API
 
--   `std::vector<uint8_t> Pack(const Ty& object, bool reverseEndian = false)`
+-   グローバル関数
 
-    > オブジェクトをバイト列にシリアライズする
-    >
-    > double型, float型の場合、 `udon::float32_t` 型にキャストされシリアライズされます。
-    >
-    > `object` シリアライズされるオブジェクト
-    >
-    > `reverseEndian` エンディアンの変換を行うか
-    >
-    > `return` シリアライズ後のバイト列
+    -   `std::vector<uint8_t> udon::Pack(const Ty& object, bool reverseEndian = false)`
 
--   `Ty Unpack<Ty>(const std::vector<uint8_t>& buffer, bool reverseEndian = false)`
-
-    > バイト列からオブジェクトを構築する
-    >
-    > double型, float型の場合、`udon::float32_t` 型にデシリアライズ後、キャストされ返却されます。
-    >
-    > `Ty` 構築するオブジェクトの型
-    >
-    > `buffer` デシリアライズされるバイト列
-    >
-    > `reverseEndian` エンディアンの変換を行うか
-    >
-    > `return` 構築されたオブジェクト
-
--   `ReverseEndian`
-
-    > エンディアン変換用マニピュレータ
-    >
-    > エンディアン変換は、シリアライズ後、デシリアライズ前に行うこと
-    >
-    > ```cpp
-    > // シリアライズ時
-    > udon::Serializer builder;
-    > builder << object << ReverseEndian;
-    >
-    > // デシリアライズ時
-    > udon::Serializer builder { buffer };
-    > builder >> ReverseEndian >> object;
-
--   `class Serializer`
-
-    -   `Serializer()`
-
-        > デフォルトコンストラクタ
+        > オブジェクトをバイト列にシリアライズする
         >
-        > シリアライズ時に使用
-
-    -   `Serializer(const std::vector<uint8_t>& buffer)`
-
-        > コンストラクタ
+        > double 型, float 型の場合、 `udon::float32_t` 型にキャストされシリアライズされます。
         >
-        > `buffer` デシリアライズされるバッファ
+        > `object` シリアライズされるオブジェクト
         >
-        > デシリアライズ時に使用
-
-    -   `void reserve(size_t size)`
-
-        > バッファの capacity を変更する
+        > `reverseEndian` エンディアンの変換を行うか
         >
-        > `size` 変更するサイズ
+        > `return` シリアライズ後のバイト列
 
-    -   `std::vector<uint8_t> data()`
+    -   `Ty udon::Unpack<Ty>(const std::vector<uint8_t>& buffer, bool reverseEndian = false)`
 
-        > バッファを取得する
+        > バイト列からオブジェクトを構築する
         >
-        > `return` バッファのコピー
-
-    -   `operator<<(scalar rhs)`
-
-        > シリアライザを行う
+        > double 型, float 型の場合、`udon::float32_t` 型にデシリアライズ後、キャストされ返却されます。
         >
-        > `rhs` シリアライズされるオブジェクト
-
-    -   `operator>>(scalar& rhs)`
-
-        > デシリアライズを行う
+        > `Ty` 構築するオブジェクトの型
         >
-        > `rhs` デシリアライズ後のオブジェクトが代入されるオブジェクト
+        > `buffer` デシリアライズされるバイト列
+        >
+        > `reverseEndian` エンディアンの変換を行うか
+        >
+        > `return` 構築されたオブジェクト
+
+-   マニピュレータ
+
+    -   `udon::ReverseEndian`
+
+        > エンディアン変換用マニピュレータ
+        >
+        > エンディアン変換は、シリアライズ後、デシリアライズ前に行うこと
+        >
+        > ```cpp
+        > // シリアライズ時
+        > udon::Serializer builder;
+        > builder | object | udon::ReverseEndian;
+        >
+        > // デシリアライズ時
+        > udon::Deserializer builder { buffer };
+        > builder | udon::ReverseEndian | object;
+        > ```
+
+-   クラス
+
+    -   `udon::Serializer`
+
+        オブジェクトからバイト列に変換します。
+
+        -   `Serializer()`
+
+            > デフォルトコンストラクタ
+
+        -   `void reserve(size_t size)`
+
+            > バッファの capacity を変更する
+            >
+            > `size` 変更するサイズ
+
+        -   `std::vector<uint8_t> data()`
+
+            > バッファを取得する
+            >
+            > `return` バッファのコピー
+
+        -   `Serializer& operator|(scalar rhs)`
+
+            > スカラ型のシリアライザを行う
+            >
+            > `rhs` シリアライズされるオブジェクト
+
+        -   `Serializer& operator|(Ty(&rhs)[N])`
+
+            > 配列型のシリアライズを行う
+            >
+            > 配列のシリアライズは再帰的に行われるため、多次元配列であってもシリアライズ可能です。
+            >
+            > 配列の要素がシリアライズ可能である場合のみ、シリアライズ可能です。
+            >
+            > `rhs` シリアライズされる配列オブジェクト
+
+    -   `udon::Deserializer`
+
+        バイト列からオブジェクトに変換します。
+
+        -   `Deserializer(const std::vector<uint8_t>& buffer)`
+
+            > コンストラクタ
+            >
+            > `buffer` デシリアライズされるバッファ
+
+        -   `Deserializer& operator|(scalar& rhs)`
+
+            > スカラ型のデシリアライズを行う
+            >
+            > `rhs` デシリアライズ後のオブジェクトが代入されるオブジェクト
+
+        -   `Deserializer& operator|(Ty(&rhs)[N])`
+
+            > 配列型のデシリアライズを行う
+            >
+            > 配列のデシリアライズは再帰的に行われるため、多次元配列であってもデシリアライズ可能です。
+            >
+            > 配列の要素がデシリアライズ可能である場合のみ、デシリアライズ可能です。
+            >
+            > `rhs` デシリアライズ後のオブジェクトが代入される配列オブジェクト
+
+    -   `udon::PackedSizeChecker`
+
+        オブジェクトのメモリアラインを除去したサイズを求めます。
+
+        -   `PackedSizeChecker`
+
+            > デフォルトコンストラクタ
+
+        -   `PackedSizeChecker& operator|(scalar& rhs)`
+
+            > スカラ型のサイズを求める
+
+        -   `PackedSizeChecker& operator|(Ty(&rhs)[N])`
+
+            > 配列型のサイズを再帰的に求める
+
+        -   `size_t size()`
+
+            > メモリアラインを除去したサイズを取得する
