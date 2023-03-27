@@ -30,7 +30,7 @@
 
     > ```sh
     > # 追加する時に調べたlibrariesディレクトリに移動
-    > cd ~\Documents\Arduino\libraries
+    > cd ~\Documents\Arduino\libraries\UdonLibrary
     >
     > # ライブラリを更新
     > git pull
