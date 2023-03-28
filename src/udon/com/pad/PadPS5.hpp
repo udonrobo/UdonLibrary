@@ -2,8 +2,10 @@
 
 #include <udon\stl\EnableSTL.hpp>
 
-#include <algorithm>
-#include <type_traits>
+#include <algorithm>    // std::move
+#include <type_traits>  // std::enable_if std::is_same
+
+#include <udon\metapro\has_member.hpp>   // udon::has_update_v<T>
 
 #include <udon\algorithm\Input.hpp>
 
@@ -35,16 +37,16 @@ namespace udon
 
         /// @brief reader クラスに update メンバがあるときの更新
         template<class Ty = Reader>
-        typename std::enable_if<std::is_same<decltype(Ty::update), void(Ty::*)()>::value, void>::type
+        typename std::enable_if<udon::has_update_v<Ty>, void>::type
         update()
         {
-            // reader.update();
+            reader.update();
             mainUpdate();
         }
 
         /// @brief reader クラスに update メンバがないときの更新
         template<class Ty = Reader>
-        typename std::enable_if<!std::is_same<decltype(Ty::update), void(Ty::*)()>::value, void>::type
+        typename std::enable_if<!udon::has_update_v<Ty>, void>::type
         update()
         {
             mainUpdate();
