@@ -1,45 +1,70 @@
 #pragma once
-#include <arduino.h>
-#include <Wire.h>
+
+#include <udon\com\i2c\I2cBus.hpp>
+
+#include <udon\com\serializer\serializer.hpp>
 
 namespace udon
 {
 
-class MasterReader {
-  private:
-    int size;
-    int address;
-    byte* data;
-  public:
-    MasterReader(int Address, int Size) {
-      data = new byte[Size];
-      for (int i = 0; i < Size; i++)
-        data[i] = 0;
-      address = Address;
-      size = Size;
-    }
+	template<class Message>
+	class I2cMasterReader
+	{
 
-    void Update() {
-      Wire.requestFrom(address, size);
-      while (Wire.available()) {
-        for (int i = 0; i < size; i++)
-          data[i] = Wire.read();
-      }
-    }
+	public:
 
-    byte GetData(int array_num) const {
-      return data[array_num - 1];
-    }
+		static constexpr size_t Size = Message::PackedSize;
 
-    bool GetBitData(int array_num, int bit_num) const {
-      return bitRead(data[array_num - 1], bit_num);
-    }
+	private:
 
-    void read_show() const {
-      for (int i = 0; i < size; i++) {
-        Serial.print(data[i]);
-        Serial.print("\t");
-      }
-    }
-};
-}
+		udon::I2cBus& bus;
+
+		uint8_t address;
+
+		uint8_t buffer[Size];
+
+		uint32_t errorCount;
+
+	public:
+
+		I2cMasterReader(udon::I2cBus& bus, uint8_t address)
+			: bus(bus)
+			, address(address)
+			, buffer()
+		{}
+
+		void update()
+		{
+    		bus.requestFrom(address, Size);
+			while (bus.available())
+			{
+				for (auto&& it : buffer)
+				{
+					const auto d = bus.read();;
+					if (d == -1)
+					{
+						++errorCount;
+					}
+					else
+					{
+						it = d;
+					}
+				}
+			}
+		}
+
+		Message getMessage() const
+		{
+			return udon::Unpack<Message>({ std::begin(buffer), std::end(buffer) });
+		}
+
+		const uint8_t* data() const
+		{
+			return buffer;
+		}
+
+	};
+
+} // namespace udon
+
+

@@ -1,65 +1,53 @@
-///   @file   I2cSlaveReader.h
+///   @file   I2cSlaveReader.hpp
 ///   @brief  I2cスレーブ送信用クラス
 ///   @author 大河 祐介
-///   @date   2022/09/24
+///   @date   2023/03/31
 
 #pragma once
-#include <Wire.h>
+
+#include <udon\com\i2c\I2cBus.hpp>
+
+#include <udon\com\serializer\serializer.hpp>
 
 namespace udon
 {
 
-    /// @param N 送信サイズ
-    template <size_t N>
+
+    template<class Message>
     class I2CSlaveWriter
     {
 
+	public:
+
+		static constexpr size_t Size = Message::PackedSize;
+
+	private:
+
+		udon::I2cBus& bus;
+
+		uint8_t buffer[Size];
+
+		static I2CSlaveWriter* self;
+
     public:
+
         /// @param address I2cアドレス
         /// @param clock   通信レート
-        I2CSlaveWriter(const uint8_t address, const uint32_t clock = 400000UL) noexcept
+        I2CSlaveWriter(udon::I2cBus& bus)
+			: bus(bus)
+			, buffer()
         {
-            Wire.begin(address);
-            Wire.setClock(clock);
-            Wire.onRequest([]
-                           { Wire.write(buffer, N); });
-        }
-        ~I2CSlaveWriter() noexcept
-        {
-            Wire.end();
+			self = this;
+            bus.onRequest([] {
+				self->bus.write(self->buffer, Size);
+			});
         }
 
-        /// @return 設定送信サイズ
-        constexpr uint8_t size() const noexcept
-        {
-            return N;
-        }
-
-        /// @brief 送信データセット
-        void setArrayData(const uint8_t array[]) noexcept
-        {
-            memcpy(buffer, array, size);
-        }
-        void setSingleData(const uint8_t index, const uint8_t value) noexcept
-        {
-            buffer[index] = value;
-        }
-        void setByteData(const uint8_t index, const uint8_t value) noexcept
-        {
-            buffer[index] = value;
-        }
-        void setBitData(const uint8_t byteIndex, const uint8_t bitIndex, const bool value) noexcept
-        {
-            bitWrite(buffer[byteIndex], bitIndex, value);
-        }
-        uint8_t& operator[](const uint8_t index) const noexcept
-        {
-            return buffer[index];
-        }
-        void clear() noexcept
-        {
-            buffer = {};
-        }
+		void setMessage(const Message& message)
+		{
+			const auto packed = udon::Pack(message);
+			std::copy(buffer, packed.begin(), packed.end());
+		}
 
         /// @brief 送信内容を表示
         /// @param end   オプション [\n, \t ..]
@@ -71,11 +59,9 @@ namespace udon
             Serial.print(end);
         }
 
-    private:
-        static uint8_t buffer[N];    /// 送信バッファ
     };
 
-    template <size_t N>
-    uint8_t I2CSlaveWriter<N>::buffer[N];
+    template<class Message>
+    I2CSlaveWriter<Message>* I2CSlaveWriter<Message>::self;
 
 }    // namespace udon
