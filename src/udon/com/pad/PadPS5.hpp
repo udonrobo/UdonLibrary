@@ -61,11 +61,16 @@ namespace udon
 }    // namespace udon
 
 #include <udon\com\can\CanReader.hpp>
+#include <udon\com\uart\UartReader.hpp>
 #include <udon\com\message\PadPS5.hpp>
 
 namespace udon
 {
 
+    /// @brief CAN通信経由
     using CanPadPS5 = udon::PadPS5<udon::CanReader<udon::message::PadPS5>>;
+
+    /// @brief UART通信経由
+    using UartPadPS5 = udon::PadPS5<udon::UartReader<udon::message::PadPS5>>;
 
 }    // namespace udon

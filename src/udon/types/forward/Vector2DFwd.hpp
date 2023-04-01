@@ -1,6 +1,7 @@
 #pragma once
 
 #include <udon\com\serializer\Serializer.hpp>
+#include <udon\utility\Sizeof.hpp>
 
 namespace udon
 {
@@ -24,6 +25,9 @@ namespace udon
 
         /// @brief 次元数
         static constexpr size_t Dimension = 2;
+
+        /// @brief メモリアラインを除去したサイズ
+        static constexpr size_t PackedSize = udon::PackedSizeof<value_type>() * Dimension;
 
         /// @brief デフォルトコンストラクタ
         constexpr Vector2D() noexcept
@@ -163,11 +167,10 @@ namespace udon
 
         udon::Vector4D<value_type> xy00() const noexcept;
 
-        /// @brief メモリアラインを除去したサイズを取得する
-        /// @return
-        static constexpr size_t PackedSize() noexcept
+        void show() const
         {
-            return sizeof(value_type) * Dimension;
+            Serial.print(x), Serial.print('\t');
+            Serial.print(y);
         }
 
         /// @brief メンバイテレーション演算子

@@ -26,4 +26,7 @@ namespace udon
 	// udon::has_update<T>, udon::has_update_v<T>
 	UDON_MAKE_HAS_MEMBER(update);
 
+	// udon::has_show<T>, udon::has_show_v<T>
+	UDON_MAKE_HAS_MEMBER(show);
+
 }

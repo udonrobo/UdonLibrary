@@ -37,6 +37,9 @@
 /// @brief CAN通信
 #include <udon\com\can\Can.hpp>
 
+/// @brief UART通信
+#include <udon\com\uart\Uart.hpp>
+
 /// @brief シリアライザー
 #include <udon\com\serializer\Serializer.hpp>
 
