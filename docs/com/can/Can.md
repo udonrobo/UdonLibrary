@@ -39,8 +39,8 @@ CAN 通信のコードを簡単に記述できるクラス群です。
 
 # Document
 
-## [CANBus](./CANBus/README.md)
+## [CanBus](./CanBus.md)
 
-## [CANReader](./CANReader/README.md)
+## [CanReader](./CanReader.md)
 
-## [CANWriter](./CANWriter/README.md)
+## [CanWriter](./CanWriter.md)
