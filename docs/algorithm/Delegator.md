@@ -21,42 +21,42 @@ TwoWire クラスの onReceive のような高階関数の引数に静的でな�
 <details>
 <summary>開発経緯</summary>
 
-	例えば下のような i2c 通信を使用したスレーブ側の受信クラスを考えます。一見正しそうに見えますが、このコードはエラーになります。`I2cSlaveReader::receiveEvent` 関数が静的関数でないため、`TwoWire::onReceive` 関数の引数に登録することができないからです。
+例えば下のような i2c 通信を使用したスレーブ側の受信クラスを考えます。一見正しそうに見えますが、このコードはエラーになります。`I2cSlaveReader::receiveEvent` 関数が静的関数でないため、`TwoWire::onReceive` 関数の引数に登録することができないからです。
 
-	そこで`I2cSlaveReader::receiveEvent` を静的関数にするとなるわけですが、静的関数から通常のメンバ変数にアクセスすることはできないため、`buffer` も静的変数にする必要が出てきます。すると、`I2cSlaveReader` クラスはインスタンス間を複数作成しても `buffer` はインスタンス間で共有されるため複数インスタンス間を作ることができなくなってしまいます。この問題を解消するために `Delegator` を開発しました。
+そこで`I2cSlaveReader::receiveEvent` を静的関数にするとなるわけですが、静的関数から通常のメンバ変数にアクセスすることはできないため、`buffer` も静的変数にする必要が出てきます。すると、`I2cSlaveReader` クラスはインスタンス間を複数作成しても `buffer` はインスタンス間で共有されるため複数インスタンス間を作ることができなくなってしまいます。この問題を解消するために `Delegator` を開発しました。
 
-	```cpp
-	class I2cSlaveReader
+```cpp
+class I2cSlaveReader
+{
+
+	TwoWire& wire;
+
+	uint8_t buffer[--];
+
+public:
+
+	I2cSlaveReader(TwoWire& wire)
+		: wire(wire)
 	{
+		wire.onReceive(receiveEvent);
+	}
 
-		TwoWire& wire;
-
-		uint8_t buffer[--];
-
-	public:
-
-		I2cSlaveReader(TwoWire& wire)
-			: wire(wire)
+	void receiveEvent(int)
+	{
+		while (wire.available())
 		{
-			wire.onReceive(receiveEvent);
-		}
-
-		void receiveEvent(int)
-		{
-			while (wire.available())
+			for (auto&& it : buffer)
 			{
-				for (auto&& it : buffer)
-				{
-					it = wire.read();
-				}
+				it = wire.read();
 			}
 		}
+	}
 
-	};
+};
 
-	I2cSlaveReader reader0 { Wire  };
-	I2cSlaveReader reader1 { Wire1 };
-	```
+I2cSlaveReader reader0 { Wire  };
+I2cSlaveReader reader1 { Wire1 };
+```
 </details>
 
 ## Usage
