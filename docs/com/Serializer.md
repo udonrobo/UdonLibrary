@@ -18,8 +18,6 @@ STL などの外部ライブラリで定義された型についても変換用�
 
     STL: `vector` `algorithm`
 
-    STL が使用できない環境: `ArduinoSTL.h` `vector` `algorithm`
-
 -   名前空間
 
     `udon`
@@ -49,8 +47,8 @@ STL などの外部ライブラリで定義された型についても変換用�
     struct Vec2
     {
 
-    	double x;
-    	double y;
+        double x;
+        double y;
 
         template<class MIterator>
         friend MIterator& operator|(MIterator& mit, Vec2& rhs)
