@@ -21,10 +21,10 @@ namespace udon
     template<> inline constexpr size_t PackedSizeof<float   >() { return sizeof(udon::float32_t); }
     template<> inline constexpr size_t PackedSizeof<double  >() { return sizeof(udon::float32_t); }
 
-    template<class... Args>
-    inline constexpr size_t PackedSizeof<Args&&...>()
-    {
+    // template<class... Args>
+    // inline constexpr size_t PackedSizeof<Args&&...>()
+    // {
 
-    }
+    // }
 
 }    // namespace udon

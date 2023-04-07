@@ -63,23 +63,7 @@
 //
 /////////////////////////////////////////////////////////////////////
 
-/// @brief ベクトル演算
-#include <udon\types\Vector2D.hpp>
-#include <udon\types\Vector3D.hpp>
-#include <udon\types\Vector4D.hpp>
-
-/// @brief ロボットの位置
-#include <udon\types\Position.hpp>
-
-/// @brief クオータニオン
-#include <udon\types\Quaternion.hpp>
-
-/// @brief 曲線
-#include <udon\types\Spline2D.hpp>
-#include <udon\types\Spline3D.hpp>
-
-/// @brief 連続する線分
-#include <udon\types\LineString.hpp>
+#include <udon\types\types.hpp>
 
 
 /////////////////////////////////////////////////////////////////////
