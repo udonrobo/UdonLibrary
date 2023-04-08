@@ -3,8 +3,10 @@
 namespace udon
 {
 
-	struct Euler
+	class Euler
 	{
+
+    public:
 
         /// @brief 要素の型
 		using value_type = double;

@@ -11,7 +11,6 @@ namespace udon
     constexpr double TwoPi    = 6.283185307179586476925286766559;
     constexpr double DegToRad = 0.017453292519943295769236907684886;
     constexpr double RadToDeg = 57.295779513082320876798154814105;
-    constexpr double Euler    = 2.718281828459045235360287471352;
 
     template <class L, class R>
     inline constexpr auto
