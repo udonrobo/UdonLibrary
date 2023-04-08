@@ -93,16 +93,30 @@ namespace udon
             return roll || pitch || yaw;
         }
 
-        /// @brief ゼロベクトルであるかを返す
-        constexpr bool isZero() const noexcept
+        /// @brief 正規化されたオイラー角を取得する
+        /// @param min
+        /// @param max
+        /// @return
+        Euler normalized(double min, double max) const
         {
-            return !Euler::operator bool();
+            return {
+                udon::NormalizedAngle(roll , min, max),
+                udon::NormalizedAngle(pitch, min, max),
+                udon::NormalizedAngle(yaw  , min, max),
+            };
         }
 
         /// @brief 値クリア
         constexpr void clear() noexcept
         {
             *this = {};
+        }
+
+        void show() const
+        {
+            Serial.print(F("roll: " )), Serial.print(roll ), Serial.print('\t');
+            Serial.print(F("pitch: ")), Serial.print(pitch), Serial.print('\t');
+            Serial.print(F("yaw: "  )), Serial.print(yaw  ), Serial.print('\t');
         }
 
 	};
