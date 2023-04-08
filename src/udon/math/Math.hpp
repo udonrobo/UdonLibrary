@@ -96,4 +96,21 @@ namespace udon
         value ? bitSet(rhs, bit) : bitClear(rhs, bit);
     }
 
+    inline double
+    NormalizedAngle(const double angle, const double min, const double max)
+    {
+        const auto cycle = max - min;
+
+        const auto modAngle = fmod((angle - min), cycle) + min;
+
+        if (modAngle < min)
+        {
+            return modAngle + cycle;
+        }
+        else
+        {
+            return modAngle;
+        }
+    }
+
 }    // namespace udon
