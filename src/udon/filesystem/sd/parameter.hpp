@@ -37,7 +37,7 @@ class parameter {
     void setParameter(int dataNum, double data) {
       writeData[dataNum - 1] = data;
     }
-    void setNewParameter()const {
+    void writeParameter()const {
       if (Card_Insertion) {
         dataFile.open(name, O_RDWR);
         dataFile.seek(dataFile.size());  //ファイルの最後に移動
@@ -50,7 +50,7 @@ class parameter {
       }
     }
     //読み取り
-    void getLastParameter() {
+    void readParameter() {
       if (Card_Insertion) {
         dataFile.open(name, O_RDWR);
         String str;
