@@ -1,5 +1,8 @@
 #pragma once
 
+/// @brief 固定長浮動小数点型
+#include <udon\types\Float.hpp>
+
 /// @brief ベクトル演算
 #include <udon\types\Vector2D.hpp>
 #include <udon\types\Vector3D.hpp>
