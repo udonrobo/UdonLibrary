@@ -101,7 +101,7 @@ namespace udon
 		inline Serializer& operator|(float    rhs) { pack(static_cast<udon::float32_t>(rhs)); return *this; }
 		inline Serializer& operator|(double   rhs) { pack(static_cast<udon::float32_t>(rhs)); return *this; }
 #else
-#	error シリアライズを行うには udon::float32_t が定義されている必要があります。
+#	error udon::float32_t must be defined for serialization.
 #endif
 
 		/// @brief 配列型シリアライズ
@@ -175,7 +175,7 @@ namespace udon
 		inline Deserializer& operator|(float& rhs) { rhs = static_cast<float>(unpack<udon::float32_t>()); return *this; }
 		inline Deserializer& operator|(double& rhs) { rhs = static_cast<double>(unpack<udon::float32_t>()); return *this; }
 #else
-#	error デシリアライズを行うには udon::float32_t が定義されている必要があります。
+#	error udon::float32_t must be defined for serialization.
 #endif
 
 		/// @brief 配列型デシリアライズ
