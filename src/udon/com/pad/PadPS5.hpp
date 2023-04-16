@@ -5,7 +5,7 @@
 #include <algorithm>    // std::move
 #include <type_traits>  // std::enable_if std::is_same
 
-#include <udon\metapro\has_member.hpp>   // udon::has_update_v<T>
+#include <udon\traits\has_member.hpp>   // udon::has_update_v<T>
 
 #include <udon\algorithm\Input.hpp>
 
