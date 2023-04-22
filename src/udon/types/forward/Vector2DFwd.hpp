@@ -105,7 +105,7 @@ namespace udon
         }
 
         /// @brief 値クリア
-        constexpr void clear() noexcept
+        void clear() noexcept
         {
             *this = {};
         }
@@ -128,6 +128,14 @@ namespace udon
         Vector2D rotated(value_type angle) const noexcept
         {
             return rotatedAt({ 0, 0 }, angle);
+        }
+
+        /// @brief 原点からの角度を求める
+        /// @remark y軸の正が 0rad
+        /// @return
+        value_type angle() const noexcept
+        {
+            return angleAt({ 0, 0 });
         }
 
         /// @brief 指定された点からの角度を求める
