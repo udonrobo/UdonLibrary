@@ -25,7 +25,8 @@
 //    SOFTWARE.
 //
 
-#include <stdlib.h>
+#pragma once
+
 #include <stdint.h>
 
 

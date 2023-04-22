@@ -6,7 +6,6 @@
 #include <udon\stl\EnableSTL.hpp>
 
 #include <type_traits>
-#include <udon\metapro\has_member.hpp>
 
 namespace udon
 {

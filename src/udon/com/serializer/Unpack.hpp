@@ -46,7 +46,7 @@ namespace udon
         /// @param rhs
         /// @return
         template <typename T>
-        inline auto operator()(T& rhs) -> std::enable_if<std::is_integral<T>::value>::type
+        inline auto operator()(T& rhs) -> typename std::enable_if<std::is_integral<T>::value>::type
         {
             if (isCheckSumSuccess)
             {
@@ -59,7 +59,7 @@ namespace udon
         /// @param rhs
         /// @return
         template <typename T>
-        inline auto operator()(T& rhs) -> std::enable_if<std::is_floating_point<T>::value>::type
+        inline auto operator()(T& rhs) -> typename std::enable_if<std::is_floating_point<T>::value>::type
         {
             if (isCheckSumSuccess)
             {
@@ -85,7 +85,7 @@ namespace udon
         /// @param rhs
         /// @return
         template <typename T>
-        inline auto operator()(const T& rhs) -> std::enable_if<udon::has_member_iterator_accessor_v<Deserializer, T>>::type
+        inline auto operator()(const T& rhs) -> typename std::enable_if<udon::has_member_iterator_accessor_v<Deserializer, T>>::type
         {
             // T::accessor が const なメンバ関数でない場合に const rhs から呼び出せないため、const_cast によって const を除去
             const_cast<T&>(rhs).accessor(*this);
@@ -112,7 +112,7 @@ namespace udon
         Ty unpack()
         {
 
-            static_assert(std::is_scalar_v<Ty>, "Ty must be scalar type.");
+            static_assert(std::is_scalar<Ty>::value, "Ty must be scalar type.");
 
             Ty retval{};
 
@@ -148,7 +148,7 @@ namespace udon
     template <typename T>
     udon::optional<T> Unpack(const uint8_t* buffer, size_t size)
     {
-        return Unpack(std::vector<uint8_t>{ buffer, size });
+        return Unpack<T>(std::vector<uint8_t>{ buffer, size });
     }
 
 }    // namespace udon

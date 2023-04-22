@@ -2,8 +2,10 @@
 
 #include <vector>
 
+#include <udon\traits\HasMember.hpp>
 #include <udon\algorithm\CRC8.hpp>
 #include <udon\algorithm\Endian.hpp>
+#include <udon\types\Float.hpp>
 
 namespace udon
 {
@@ -24,7 +26,7 @@ namespace udon
         /// @param rhs
         /// @return
         template <typename T>
-        inline auto operator()(const T& rhs) -> std::enable_if<std::is_integral<T>::value>::type
+        inline auto operator()(const T& rhs) -> typename std::enable_if<std::is_integral<T>::value>::type
         {
             pack(rhs);
         }
@@ -34,7 +36,7 @@ namespace udon
         /// @param rhs
         /// @return
         template <typename T>
-        inline auto operator()(const T& rhs) -> std::enable_if<std::is_floating_point<T>::value>::type
+        inline auto operator()(const T& rhs) -> typename std::enable_if<std::is_floating_point<T>::value>::type
         {
             pack(static_cast<udon::float32_t>(rhs));
         }
@@ -57,7 +59,7 @@ namespace udon
         /// @param rhs
         /// @return
         template <typename T>
-        inline auto operator()(const T& rhs) -> std::enable_if<has_member_iterator_accessor_v<Serializer, T>>::type
+        inline auto operator()(const T& rhs) -> typename std::enable_if<has_member_iterator_accessor_v<Serializer, T>>::type
         {
             // T::accessor が const なメンバ関数でない場合に const rhs から呼び出せないため、const_cast によって const を除去
             const_cast<T&>(rhs).accessor(*this);

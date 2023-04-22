@@ -15,10 +15,10 @@ namespace udon
 		/// @param rhs
 		/// @return
 		template<typename T>
-		auto operator()(const T& rhs) -> std::enable_if<!has_member_iterator_accessor_v<MemberViewer, T> && !std::is_array_v<T>>::type
+		auto operator()(const T& rhs) -> typename std::enable_if<std::is_integral<T>::value>::type
 		{
-            Serial.print(rhs);
-            Serial.print(gap);
+            // Serial.print(rhs);
+            // Serial.print(gap);
         }
 
 		/// @brief
@@ -26,7 +26,7 @@ namespace udon
 		/// @param rhs
 		/// @return
 		template<typename T>
-		auto operator()(const T& rhs) -> std::enable_if<std::is_array_v<T>>::type
+		auto operator()(const T& rhs) -> typename std::enable_if<std::is_array<T>::value>::type
 		{
 			for (auto&& it : rhs)
 			{
@@ -39,7 +39,7 @@ namespace udon
 		/// @param rhs
 		/// @return
 		template<typename T>
-		auto operator()(const T& rhs) -> std::enable_if<has_member_iterator_accessor_v<MemberViewer, T>>::type
+		auto operator()(const T& rhs) -> typename std::enable_if<has_member_iterator_accessor_v<MemberViewer, T>>::type
 		{
 			// T::accessor が const なメンバ関数でない場合に const rhs から呼び出せないため、const_cast によって const を除去
 			const_cast<T&>(rhs).accessor(*this);

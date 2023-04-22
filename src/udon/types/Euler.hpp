@@ -139,7 +139,7 @@ namespace udon
         /// @return
         constexpr size_t capacity() const
         {
-            return udon::Capacity(rall, pitch, yaw);
+            return udon::Capacity(roll, pitch, yaw);
         }
 
         /// @brief
@@ -148,7 +148,7 @@ namespace udon
         template <typename Acc>
         void accessor(Acc& acc)
         {
-            acc(rall, pitch, yaw);
+            acc(roll, pitch, yaw);
         }
 
 	};

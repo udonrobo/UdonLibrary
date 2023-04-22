@@ -1,7 +1,6 @@
 #pragma once
 
 #include <udon\com\serializer\Serializer.hpp>
-#include <udon\utility\Sizeof.hpp>
 
 namespace udon
 {
@@ -167,6 +166,20 @@ namespace udon
         value_type length() const noexcept
         {
             return distanceFrom({ 0, 0 });
+        }
+
+        /// @brief ベクトルの長さを指定された値にする
+        /// @param length 指定された長さ
+        Vector2D& setLength(value_type length) noexcept
+        {
+            if (*this)
+            {
+                if (const auto l = this->length())
+                {
+                    *this *= length / l;
+                }
+            }
+            return *this;
         }
 
         udon::Vector3D<value_type> xy0() const noexcept;
