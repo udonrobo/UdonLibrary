@@ -135,6 +135,22 @@ namespace udon
             Serial.print(F("yaw: "  )), Serial.print(yaw  ), Serial.print('\t');
         }
 
+        /// @brief シリアライズ後のバイト数を求める
+        /// @return
+        constexpr size_t capacity() const
+        {
+            return udon::Capacity(rall, pitch, yaw);
+        }
+
+        /// @brief
+        /// @tparam T
+        /// @param acc
+        template <typename Acc>
+        void accessor(Acc& acc)
+        {
+            acc(rall, pitch, yaw);
+        }
+
 	};
 
     using Euler = Euler3D<double>;

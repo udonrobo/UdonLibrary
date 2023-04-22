@@ -107,19 +107,20 @@ namespace udon
 
 		udon::Vector3D<value_type> xyz() const;
 
-        /// @brief メンバイテレーション演算子
-        /// @tparam MIterator
-        /// @param mit
-        /// @param rhs
+        /// @brief シリアライズ後のバイト数を求める
         /// @return
-        template<class MIterator>
-        friend MIterator& operator|(MIterator& mit, udon::Vector4D<Ty>& rhs)
+        constexpr size_t capacity() const
         {
-            return mit
-                | rhs.x
-                | rhs.y
-                | rhs.z
-                | rhs.w;
+            return udon::Capacity(x, y, z, w);
+        }
+
+        /// @brief
+        /// @tparam T
+        /// @param acc
+        template <typename Acc>
+        void accessor(Acc& acc)
+        {
+            acc(x, y, z, w);
         }
 
 	};

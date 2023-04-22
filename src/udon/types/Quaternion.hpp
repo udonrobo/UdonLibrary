@@ -11,35 +11,25 @@ namespace udon
     struct Quaternion
     {
 
-        double w;
         double x;
         double y;
         double z;
+        double w;
 
-        /// @brief メンバイテレーション演算子
-        /// @tparam MIterator
-        /// @param mit
-        /// @param rhs
+        /// @brief シリアライズ後のバイト数を求める
         /// @return
-        template<class MIterator>
-        friend MIterator& operator|(MIterator& mit, udon::Quaternion& rhs)
+        constexpr size_t capacity() const
         {
-            return mit
-                | rhs.w
-                | rhs.x
-                | rhs.y
-                | rhs.z;
+            return udon::Capacity(x, y, z, w);
         }
 
-#ifdef UDON_ENABLE_STL
-        friend std::ostream& operator<<(std::ostream& ostm, const Quaternion& rhs)
+        /// @brief
+        /// @tparam T
+        /// @param acc
+        template <typename Acc>
+        void accessor(Acc& acc)
         {
-            return ostm << "{ " << rhs.i
-                        << ", " << rhs.j
-                        << ", " << rhs.k
-                        << ", " << rhs.w
-                        << " }";
+            acc(x, y, z, w);
         }
-#endif
     };
 }    // namespace udon

@@ -59,21 +59,6 @@ namespace udon
             return message;
         }
 
-
-		template<class T = Message>
-        typename std::enable_if<udon::has_show_v<T>, void>::type
-        show()
-        {
-            message.show();
-        }
-
-
-		template<class T = Message>
-        typename std::enable_if<!udon::has_show_v<T>, void>::type
-        show()
-        {
-            message.show();
-        }
     };
 
 }    // namespace udon

@@ -26,21 +26,19 @@ namespace udon
         /// @brief 次元数
         static constexpr size_t Dimension = 2;
 
-        /// @brief メモリアラインを除去したサイズ
-        static constexpr size_t PackedSize = udon::PackedSizeof<value_type>() * Dimension;
-
         /// @brief デフォルトコンストラクタ
         constexpr Vector2D() noexcept
             : x()
             , y()
-        {}
+        {
+        }
 
         /// @brief デフォルトコピーコンストラクタ
         constexpr Vector2D(const Vector2D& rhs) noexcept
             : x(rhs.x)
             , y(rhs.y)
-        {}
-
+        {
+        }
 
         /// @brief コンストラクタ
         /// @param x x成分
@@ -181,19 +179,21 @@ namespace udon
             Serial.print(y);
         }
 
-        /// @brief メンバイテレーション演算子
-        /// @tparam MIterator
-        /// @param mit
-        /// @param rhs
+        /// @brief シリアライズ後のバイト数を求める
         /// @return
-        template<class MIterator>
-        friend MIterator& operator|(MIterator& mit, Vector2D<Ty>& rhs)
+        constexpr size_t capacity() const
         {
-            return mit
-                | rhs.x
-                | rhs.y;
+            return udon::Capacity(x, y);
         }
 
+        /// @brief
+        /// @tparam T
+        /// @param acc
+        template <typename Acc>
+        void accessor(Acc& acc)
+        {
+            acc(x, y);
+        }
     };
 
 }    // namespace udon
