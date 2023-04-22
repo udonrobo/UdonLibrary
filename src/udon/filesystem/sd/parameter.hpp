@@ -37,7 +37,7 @@ class parameter {
     void setParameter(int dataNum, double data) {
       writeData[dataNum - 1] = data;
     }
-    void writeParameter()const {
+    void writeParameter() {
       if (Card_Insertion) {
         dataFile.open(name, O_RDWR);
         dataFile.seek(dataFile.size());  //ファイルの最後に移動
@@ -60,7 +60,7 @@ class parameter {
         char c[size * 15];
         str.toCharArray(c, size * 15);
         char tmp[15];
-        uint32_t i = 0, j = 0, k = 0;
+        int32_t i = 0, j = 0, k = 0;
         while (k < size) {
           if (c[i] == '\0' || c[i] == ',') {
             tmp[j] = '\0';
