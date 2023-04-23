@@ -5,8 +5,8 @@
 
 #pragma once
 
-#include <udon\com\can\CanBusInterface.hpp>
-#include <udon\com\can\CanInfo.hpp>
+#include <udon/com/can/CanBusInterface.hpp>
+#include <udon/com/can/CanInfo.hpp>
 
 namespace udon
 {
@@ -70,7 +70,7 @@ namespace udon
             for (auto&& it : u.buffer)
             {
                 Serial.print(it);
-                Serial.print('\t');
+                Serial.print('/t');
             }
             Serial.print(end);
         }

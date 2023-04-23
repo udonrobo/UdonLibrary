@@ -1,6 +1,6 @@
 #pragma once
 
-#include <udon\com\serializer\Serializer.hpp>
+#include <udon/com/serializer/Serializer.hpp>
 
 namespace udon
 {
@@ -188,7 +188,7 @@ namespace udon
 
         void show() const
         {
-            Serial.print(x), Serial.print('\t');
+            Serial.print(x), Serial.print('/t');
             Serial.print(y);
         }
 

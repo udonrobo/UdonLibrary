@@ -1,4 +1,5 @@
-#include <Udon.hpp>
+#include <UdonFwd.hpp>
+#include <udon/types/Vector2D.hpp>
 
 void setup()
 {

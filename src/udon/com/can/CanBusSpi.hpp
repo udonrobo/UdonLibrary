@@ -8,10 +8,10 @@
 
 #include <mcp2515.h>    // https://github.com/autowp/arduino-mcp2515
 
-#include <udon\stl\list.hpp>    // udon::list
+#include <udon/stl/list.hpp>    // udon::list
 
-#include <udon\com\can\CanBusInterface.hpp>
-#include <udon\com\can\CanInfo.hpp>
+#include <udon/com/can/CanBusInterface.hpp>
+#include <udon/com/can/CanInfo.hpp>
 
 namespace udon
 {

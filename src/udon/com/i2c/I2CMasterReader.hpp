@@ -1,8 +1,8 @@
 #pragma once
 
-#include <udon\com\i2c\I2cBus.hpp>
+#include <udon/com/i2c/I2cBus.hpp>
 
-#include <udon\com\serializer\serializer.hpp>
+#include <udon/com/serializer/serializer.hpp>
 
 namespace udon
 {

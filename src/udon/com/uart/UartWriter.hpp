@@ -1,7 +1,7 @@
 #pragma once
 
-#include <udon\com\serializer\serializer.hpp>
-#include <udon\com\uart\UartBus.hpp>
+#include <udon/com/serializer/serializer.hpp>
+#include <udon/com/uart/UartBus.hpp>
 
 namespace udon
 {

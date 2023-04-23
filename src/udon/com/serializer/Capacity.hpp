@@ -2,8 +2,8 @@
 
 #include <type_traits>
 
-#include <udon\types\Float.hpp>
-#include <udon\traits\HasMember.hpp>
+#include <udon/types/Float.hpp>
+#include <udon/traits/HasMember.hpp>
 
 namespace udon
 {

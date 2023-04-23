@@ -5,9 +5,9 @@
 
 #pragma once
 
-#include <udon\com\i2c\I2cBus.hpp>
+#include <udon/com/i2c/I2cBus.hpp>
 
-#include <udon\com\serializer\serializer.hpp>
+#include <udon/com/serializer/serializer.hpp>
 
 namespace udon
 {
@@ -50,12 +50,12 @@ namespace udon
 		}
 
         /// @brief 送信内容を表示
-        /// @param end   オプション [\n, \t ..]
+        /// @param end   オプション [/n, /t ..]
         /// @param radix 基数      [BIN, HEX ..]
         void show(const char end = {}, const uint16_t radix = DEC) const noexcept
         {
             for (const auto& buffer : buffer)
-                Serial.print(buffer, radix), Serial.print('\t');
+                Serial.print(buffer, radix), Serial.print('/t');
             Serial.print(end);
         }
 

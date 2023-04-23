@@ -8,7 +8,7 @@
 // https://github.com/adafruit/Adafruit_BNO055.git
 // https://github.com/adafruit/Adafruit_BusIO.git
 
-#include <udon\types\Euler.hpp>
+#include <udon/types/Euler.hpp>
 
 namespace udon
 {

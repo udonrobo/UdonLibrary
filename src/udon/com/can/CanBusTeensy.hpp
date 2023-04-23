@@ -11,9 +11,9 @@
 #include <FlexCAN_T4.h>       // https://github.com/tonton81/FlexCan_T4.git
 #include <IntervalTimer.h>    // https://github.com/loglow/IntervalTimer.git
 
-#include <udon\com\can\CanBusInterface.hpp>
-#include <udon\com\can\CanInfo.hpp>
-#include <udon\stl\list.hpp>    // udon::list
+#include <udon/com/can/CanBusInterface.hpp>
+#include <udon/com/can/CanInfo.hpp>
+#include <udon/stl/list.hpp>    // udon::list
 
 namespace udon
 {
