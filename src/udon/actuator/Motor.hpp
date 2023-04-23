@@ -5,12 +5,10 @@
 
 #pragma once
 
-#include <udon\algorithm\MovingAverage.hpp>
+#include <udon/algorithm/MovingAverage.hpp>
 
 namespace udon
 {
-
-#ifdef UDON_HAS_ARDUINO
 
     class Motor2 : private udon::MovingAverage
     {
@@ -28,10 +26,10 @@ namespace udon
 
         void move(const int16_t power)
         {
-            udon::MovingAverage::update(udon::Constrain(power, -250, 250));
+            udon::MovingAverage::update(constrain(power, -250, 250));
             const int16_t p = udon::MovingAverage::getValue();
             digitalWrite(pinA, p >= 0);
-            analogWrite(pinP, udon::Abs(p));
+            analogWrite(pinP, abs(p));
         }
     };
 
@@ -54,15 +52,13 @@ namespace udon
 
         void move(const int16_t power)
         {
-            udon::MovingAverage::update(udon::Constrain(power, -250, 250));
+            udon::MovingAverage::update(constrain(power, -250, 250));
             const int16_t p = udon::MovingAverage::getValue();
             digitalWrite(pinA, p >= 0);
             digitalWrite(pinB, p <= 0);
-            analogWrite(pinP, udon::Abs(p));
+            analogWrite(pinP, abs(p));
         }
     };
-
-#endif
 
 }    // namespace udon
 

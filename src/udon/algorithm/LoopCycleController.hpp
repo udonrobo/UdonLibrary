@@ -8,7 +8,7 @@
 #ifndef DEF_LoopCycleController_H
 #define DEF_LoopCycleController_H
 
-#include <arduino.h>
+#include <Arduino.h>
 
 namespace udon
 {

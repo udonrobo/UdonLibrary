@@ -8,7 +8,7 @@
 #ifndef DEF_MovingAverage_H
 #define DEF_MovingAverage_H
 
-#include <udon\math\Math.hpp>  // udon::Max
+#include <udon/math/Math.hpp>  // udon::Max
 
 namespace udon
 {

@@ -4,7 +4,6 @@ name: Sketch Build
 
 on:
   push:
-    branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
@@ -20,7 +19,7 @@ jobs:
         # ボード
         board:
 
-          - fqbn: arduino:avr:nano
+          # - fqbn: arduino:avr:nano
 
           - fqbn: teensy:avr:teensy40
             platforms: |
@@ -51,3 +50,8 @@ jobs:
           libraries: |
             - source-path: ./
             - source-url: https://github.com/FastLED/FastLED.git
+            - source-url: https://github.com/autowp/arduino-mcp2515.git
+            - source-url: https://github.com/adafruit/Adafruit_Sensor.git
+            - source-url: https://github.com/adafruit/Adafruit_BNO055.git
+            - source-url: https://github.com/adafruit/Adafruit_BusIO.git
+

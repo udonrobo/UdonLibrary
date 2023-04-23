@@ -1,9 +1,9 @@
 #pragma once
 
-#include <udon\com\serializer\serializer.hpp>
-#include <udon\com\uart\UartBus.hpp>
+#include <udon/com/serializer/Serializer.hpp>
+#include <udon/com/uart/UartBus.hpp>
 
-#include <udon\stl\EnableSTL.hpp>
+#include <udon/stl/EnableSTL.hpp>
 
 #include <type_traits>
 

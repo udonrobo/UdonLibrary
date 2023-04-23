@@ -1,6 +1,6 @@
 #pragma once
 
-#include <udon\math\Math.hpp>
+#include <udon/math/Math.hpp>
 
 namespace udon
 {

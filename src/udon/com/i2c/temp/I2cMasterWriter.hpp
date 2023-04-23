@@ -1,5 +1,5 @@
 #pragma once
-#include <arduino.h>
+#include <Arduino.h>
 #include <Wire.h>
 
 namespace udon

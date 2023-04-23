@@ -5,8 +5,8 @@
 
 #pragma once
 
-#include <udon\com\can\CanBusInterface.hpp>
-#include <udon\com\can\CanInfo.hpp>
+#include <udon/com/can/CanBusInterface.hpp>
+#include <udon/com/can/CanInfo.hpp>
 
 namespace udon
 {

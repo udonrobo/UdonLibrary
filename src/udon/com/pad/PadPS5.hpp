@@ -1,16 +1,16 @@
 #pragma once
 
-#include <udon\stl\EnableSTL.hpp>
+#include <udon/stl/EnableSTL.hpp>
 
 #include <algorithm>    // std::move
 #include <type_traits>  // std::enable_if std::is_same
 
-#include <udon\traits\HasMember.hpp>   // udon::has_update_v<T>
+#include <udon/traits/HasMember.hpp>   // udon::has_update_v<T>
 
-#include <udon\algorithm\Input.hpp>
+#include <udon/algorithm/Input.hpp>
 
-#include <udon\types\Position.hpp>
-#include <udon\types\Vector2D.hpp>
+#include <udon/types/Position.hpp>
+#include <udon/types/Vector2D.hpp>
 
 namespace udon
 {
@@ -60,9 +60,9 @@ namespace udon
 
 }    // namespace udon
 
-#include <udon\com\can\CanReader.hpp>
-#include <udon\com\uart\UartReader.hpp>
-#include <udon\com\message\PadPS5.hpp>
+#include <udon/com/can/CanReader.hpp>
+#include <udon/com/uart/UartReader.hpp>
+#include <udon/com/message/PadPS5.hpp>
 
 namespace udon
 {
