@@ -6,7 +6,7 @@
 #pragma once
 
 //                                   vvv teensy3.2 vvv        vvv teensy3.5 vvv         vvv teensy3.6 vvv       vvv teensy4.0/4.1 vvv
-#if defined(UDON_HAS_ARDUINO) && (defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__))
+#if defined(UDON_INCLUDED) && (defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__))
 
 #include <FlexCAN_T4.h>       // https://github.com/tonton81/FlexCan_T4.git
 #include <IntervalTimer.h>    // https://github.com/loglow/IntervalTimer.git
