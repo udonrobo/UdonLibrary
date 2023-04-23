@@ -5,40 +5,42 @@
 namespace udon
 {
 
-	template<class Ty>
-	struct Vector2D;
+    template <class Ty>
+    struct Vector2D;
 
-	template<class Ty>
-	struct Vector4D;
+    template <class Ty>
+    struct Vector4D;
 
-	template<class Ty>
-	struct Vector3D
-	{
+    template <class Ty>
+    struct Vector3D
+    {
 
         /// @brief 要素の型
-		using value_type = Ty;
+        using value_type = Ty;
 
-		/// @brief 要素
-		value_type x;
-		value_type y;
-		value_type z;
+        /// @brief 要素
+        value_type x;
+        value_type y;
+        value_type z;
 
         /// @brief 次元数
-		static constexpr size_t Dimension = 3;
+        static constexpr size_t Dimension = 3;
 
         /// @brief デフォルトコンストラクタ
         constexpr Vector3D() noexcept
             : x()
             , y()
             , z()
-        {}
+        {
+        }
 
         /// @brief デフォルトコピーコンストラクタ
         constexpr Vector3D(const Vector3D& rhs) noexcept
             : x(rhs.x)
             , y(rhs.y)
             , z(rhs.z)
-        {}
+        {
+        }
 
         /// @brief コンストラクタ
         /// @param x x成分
@@ -60,10 +62,10 @@ namespace udon
         constexpr Vector3D operator-(const Vector3D& rhs) const noexcept { return { x - rhs.x, y - rhs.y, z - rhs.z }; }
         constexpr Vector3D operator*(const Vector3D& rhs) const noexcept { return { x * rhs.x, y * rhs.y, z * rhs.z }; }
         constexpr Vector3D operator/(const Vector3D& rhs) const noexcept { return { x / rhs.x, y / rhs.y, z / rhs.z }; }
-        constexpr Vector3D operator+(value_type rhs) const noexcept { return { x + rhs, y + rhs, z + rhs  }; }
-        constexpr Vector3D operator-(value_type rhs) const noexcept { return { x - rhs, y - rhs, z - rhs  }; }
-        constexpr Vector3D operator*(value_type rhs) const noexcept { return { x * rhs, y * rhs, z * rhs  }; }
-        constexpr Vector3D operator/(value_type rhs) const noexcept { return { x / rhs, y / rhs, z / rhs  }; }
+        constexpr Vector3D operator+(value_type rhs) const noexcept { return { x + rhs, y + rhs, z + rhs }; }
+        constexpr Vector3D operator-(value_type rhs) const noexcept { return { x - rhs, y - rhs, z - rhs }; }
+        constexpr Vector3D operator*(value_type rhs) const noexcept { return { x * rhs, y * rhs, z * rhs }; }
+        constexpr Vector3D operator/(value_type rhs) const noexcept { return { x / rhs, y / rhs, z / rhs }; }
 
         /// @brief 複合代入演算子
         /// @param rhs 被演算子
@@ -98,24 +100,25 @@ namespace udon
             return x || y || z;
         }
 
-		udon::Vector2D<value_type> xy() const;
+        udon::Vector2D<value_type> xy() const;
 
-		udon::Vector4D<value_type> xyz0() const;
+        udon::Vector4D<value_type> xyz0() const;
 
-        /// @brief メンバイテレーション演算子
-        /// @tparam MIterator
-        /// @param mit
-        /// @param rhs
+        /// @brief シリアライズ後のバイト数を求める
         /// @return
-        template<class MIterator>
-        friend MIterator& operator|(MIterator& mit, udon::Vector3D<Ty>& rhs)
+        constexpr size_t capacity() const
         {
-            return mit
-                | rhs.x
-                | rhs.y
-                | rhs.z;
+            return udon::Capacity(x, y, z);
         }
 
-	};
+        /// @brief
+        /// @tparam T
+        /// @param acc
+        template <typename T>
+        void accessor(T& acc)
+        {
+            acc(x, y, z);
+        }
+    };
 
-}
+}    // namespace udon

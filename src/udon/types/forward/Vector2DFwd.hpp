@@ -1,7 +1,6 @@
 #pragma once
 
 #include <udon\com\serializer\Serializer.hpp>
-#include <udon\utility\Sizeof.hpp>
 
 namespace udon
 {
@@ -26,21 +25,19 @@ namespace udon
         /// @brief 次元数
         static constexpr size_t Dimension = 2;
 
-        /// @brief メモリアラインを除去したサイズ
-        static constexpr size_t PackedSize = udon::PackedSizeof<value_type>() * Dimension;
-
         /// @brief デフォルトコンストラクタ
         constexpr Vector2D() noexcept
             : x()
             , y()
-        {}
+        {
+        }
 
         /// @brief デフォルトコピーコンストラクタ
         constexpr Vector2D(const Vector2D& rhs) noexcept
             : x(rhs.x)
             , y(rhs.y)
-        {}
-
+        {
+        }
 
         /// @brief コンストラクタ
         /// @param x x成分
@@ -171,6 +168,20 @@ namespace udon
             return distanceFrom({ 0, 0 });
         }
 
+        /// @brief ベクトルの長さを指定された値にする
+        /// @param length 指定された長さ
+        Vector2D& setLength(value_type length) noexcept
+        {
+            if (*this)
+            {
+                if (const auto l = this->length())
+                {
+                    *this *= length / l;
+                }
+            }
+            return *this;
+        }
+
         udon::Vector3D<value_type> xy0() const noexcept;
 
         udon::Vector4D<value_type> xy00() const noexcept;
@@ -181,19 +192,21 @@ namespace udon
             Serial.print(y);
         }
 
-        /// @brief メンバイテレーション演算子
-        /// @tparam MIterator
-        /// @param mit
-        /// @param rhs
+        /// @brief シリアライズ後のバイト数を求める
         /// @return
-        template<class MIterator>
-        friend MIterator& operator|(MIterator& mit, Vector2D<Ty>& rhs)
+        constexpr size_t capacity() const
         {
-            return mit
-                | rhs.x
-                | rhs.y;
+            return udon::Capacity(x, y);
         }
 
+        /// @brief
+        /// @tparam T
+        /// @param acc
+        template <typename Acc>
+        void accessor(Acc& acc)
+        {
+            acc(x, y);
+        }
     };
 
 }    // namespace udon

@@ -11,7 +11,9 @@
 */
 
 #pragma once
-#include <Arduino.h>
+
+#if defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__)
+
 #include <SdFat.h>
 
 namespace udon {
@@ -95,3 +97,5 @@ class parameter {
     }
 };
 }
+
+#endif

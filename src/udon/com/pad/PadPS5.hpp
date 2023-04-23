@@ -5,7 +5,7 @@
 #include <algorithm>    // std::move
 #include <type_traits>  // std::enable_if std::is_same
 
-#include <udon\traits\has_member.hpp>   // udon::has_update_v<T>
+#include <udon\traits\HasMember.hpp>   // udon::has_update_v<T>
 
 #include <udon\algorithm\Input.hpp>
 
@@ -37,7 +37,7 @@ namespace udon
 
         /// @brief reader クラスに update メンバがあるときの更新
         template<class Ty = Reader>
-        typename std::enable_if<udon::has_update_v<Ty>, void>::type
+        typename std::enable_if<udon::has_member_function_update_v<Ty>, void>::type
         update()
         {
             reader.update();
@@ -46,7 +46,7 @@ namespace udon
 
         /// @brief reader クラスに update メンバがないときの更新
         template<class Ty = Reader>
-        typename std::enable_if<!udon::has_update_v<Ty>, void>::type
+        typename std::enable_if<!udon::has_member_function_update_v<Ty>, void>::type
         update()
         {
             mainUpdate();
