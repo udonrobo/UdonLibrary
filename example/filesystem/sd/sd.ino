@@ -1,4 +1,5 @@
 #include<Udon.hpp>
+
 using udon::parameter;
 
 const int dataSize = 10;
