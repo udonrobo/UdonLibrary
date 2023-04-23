@@ -32,7 +32,8 @@ namespace udon
             }
 
             // チャックサム確認
-            const auto checkSum = udon::CRC8(buffer.data(), buffer.size() - 1);
+			constexpr size_t checkSumSize = sizeof(decltype(udon::CRC8(nullptr, 0)));
+			const auto checkSum = udon::CRC8(buffer.data(), buffer.size() - checkSumSize);
             isCheckSumSuccess   = (buffer.back() == checkSum);
         }
 
@@ -129,21 +130,21 @@ namespace udon
         }
     };
 
-    template <typename T>
-    udon::optional<T> Unpack(const std::vector<uint8_t>& buffer)
-    {
-        Deserializer deserializer(buffer);
-        if (deserializer)
-        {
-            T retval;
-            deserializer(retval);
-            return retval;
-        }
-        else
-        {
-            return udon::nullopt;
-        }
-    }
+	template<typename T>
+	udon::optional<T> Unpack(const std::vector<uint8_t>& buffer)
+	{
+		Deserializer deserializer(buffer);
+		if (deserializer)
+		{
+			T retval;
+			deserializer(retval);
+			return retval;
+		}
+		else
+		{
+			return udon::nullopt;
+		}
+	}
 
 	template<typename T>
 	udon::optional<T> Unpack(const uint8_t* buffer, size_t size)
@@ -154,7 +155,7 @@ namespace udon
 	template<typename T, size_t N>
 	udon::optional<T> Unpack(const uint8_t(&array)[N])
 	{
-		return Unpack<T>({ std::begin(array), std::end(array) });
+		return Unpack<T>(array, N);
 	}
 
 }    // namespace udon

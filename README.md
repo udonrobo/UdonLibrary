@@ -2,6 +2,8 @@
 
 香川高専高松機械システム研究部 Arduino ライブラリ
 
+[![Sketch Build](https://github.com/udonrobo/UdonLibrary/actions/workflows/arduino-cli.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/arduino-cli.yml)
+
 ## ライブラリ管理
 
 -   git

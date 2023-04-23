@@ -88,7 +88,7 @@ namespace udon
 
         /// @brief バッファを取得する
         /// @remarke 取得後のバッファは無効です。
-        std::vector<uint8_t> flash()
+        std::vector<uint8_t> flush()
         {
             buffer.push_back(udon::CRC8(buffer.data(), buffer.size()));
             if (udon::GetEndian() == Endian::Big)
@@ -114,32 +114,52 @@ namespace udon
         }
     };
 
-    template <typename T>
-    inline std::vector<uint8_t> Pack(const T& rhs)
-    {
-        Serializer serializer;
-        serializer(rhs);
-        return serializer.flash();
-    }
-
 	template<typename T>
-	inline void Pack(const T& rhs, uint8_t* buffer, size_t size)
+	inline std::vector<uint8_t> Pack(const T& rhs)
 	{
-		if (udon::Capacity(rhs) + 1 == size)
+		Serializer serializer(udon::CapacityWithChecksum(rhs));
+		serializer(rhs);
+		return serializer.flush();
+	}
+
+	/// @brief バッファにシリアル化する
+	/// @tparam T
+	/// @param rhs
+	/// @param buffer
+	/// @param size
+	/// @remark バッファのサイズはCapacityWithChecksum関数で取得したサイズ以上である必要があります。
+	/// @return シリアル化に成功したかどうか
+	template<typename T>
+	inline bool Pack(const T& rhs, uint8_t* buffer, size_t size)
+	{
+		if (size >= udon::CapacityWithChecksum(rhs))
 		{
 			const auto vector = Pack(rhs);
 			std::copy(vector.begin(), vector.end(), buffer);
+			return true;
+		}
+		else
+		{
+			// サイズが足りない場合falseを返します。
+			// この場合、bufferは変更されません。
+			// CapacityWithChecksum関数を用いてバッファのサイズを指定しているか確認してください。
+			// CapacityWithChecksum関数はチャックサムバイトを含めたバイト数を返します。
+			return false;
 		}
 	}
 
+	/// @brief バッファにシリアル化する
+	/// @tparam T
+	/// @tparam N
+	/// @param rhs
+	/// @param array
+	/// @remark バッファのサイズはCapacityWithChecksum関数で取得したサイズ以上である必要があります。
+	/// @return シリアル化に成功したかどうか
 	template<typename T, size_t N>
-	inline void Pack(const T& rhs, uint8_t(&array)[N])
+	inline bool Pack(const T& rhs, uint8_t(&array)[N])
 	{
-		if (udon::Capacity(rhs) + 1 == sizeof(array))
-		{
-			const auto vector = Pack(rhs);
-			std::copy(vector.begin(), vector.end(), array);
-		}
+		return Pack(rhs, array, N);
 	}
+
 
 }    // namespace udon
