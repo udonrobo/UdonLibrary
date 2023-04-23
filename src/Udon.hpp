@@ -43,6 +43,9 @@
 /// @brief コントローラー
 #include <udon/com/pad/PadPS5.hpp>
 
+/// @brief 通信用構造体群
+#include <udon/com/message/Message.hpp>
+
 
 /////////////////////////////////////////////////////////////////////
 //
