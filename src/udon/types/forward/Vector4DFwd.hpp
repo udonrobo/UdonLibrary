@@ -5,18 +5,18 @@
 namespace udon
 {
 
-	template<class Ty>
+	template<typename T>
 	struct Vector2D;
 
-	template<class Ty>
+	template<typename T>
 	struct Vector3D;
 
-	template<class Ty>
+	template<typename T>
 	struct Vector4D
 	{
 
         /// @brief 要素の型
-		using value_type = Ty;
+		using value_type = T;
 
 		/// @brief 要素
 		value_type x;
@@ -103,9 +103,32 @@ namespace udon
             return x || y || z || w;
         }
 
+        /// @brief ゼロベクトルであるかを返す
+        constexpr bool isZero() const noexcept
+        {
+            return !operator bool();
+        }
+
+        /// @brief 値クリア
+        void clear() noexcept
+        {
+            *this = {};
+        }
+
 		udon::Vector2D<value_type> xy() const;
 
 		udon::Vector3D<value_type> xyz() const;
+
+#ifdef ARDUINO
+        /// @brief デバッグ出力
+        void show() const
+        {
+            Serial.print(F("x: ")), Serial.print(x), Serial.print('\t');
+            Serial.print(F("y: ")), Serial.print(y), Serial.print('\t');
+            Serial.print(F("z: ")), Serial.print(z), Serial.print('\t');
+            Serial.print(F("w: ")), Serial.print(w), Serial.print('\t');
+        }
+#endif
 
         /// @brief シリアライズ後のバイト数を求める
         /// @return

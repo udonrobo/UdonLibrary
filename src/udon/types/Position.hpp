@@ -6,13 +6,13 @@ namespace udon
 {
 
 	/// @brief ロボットの位置
-	/// @tparam Ty 要素の型
-	template<class Ty>
+	/// @tparam T 要素の型
+	template<typename T>
 	struct Position
 	{
 
 		/// @brief 要素の型
-		using value_type = Ty;
+		using value_type = T;
 
 		/// @brief 座標
 		udon::Vector2D<value_type> vector;
@@ -83,14 +83,14 @@ namespace udon
             *this = {};
         }
 
-        /// @brief メモリアラインを除去したサイズを取得する
-        /// @return
-        static constexpr size_t PackedSize() noexcept
+#ifdef ARDUINO
+        /// @brief デバッグ出力
+        void show() const
         {
-            return
-                udon::Vector2D<value_type>::PackedSize() +
-                sizeof(value_type);
+			vector.show();
+            Serial.print(F("turn: ")), Serial.print(true), Serial.print('\t');
         }
+#endif
 
         /// @brief シリアライズ後のバイト数を求める
         /// @return

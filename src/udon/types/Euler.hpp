@@ -1,11 +1,12 @@
 #pragma once
 
-#include <udon/math/Math.hpp>
+#include <udon/math/Math.hpp>  // udon::NormalizedAngle
+#include <udon/com/serializer/Serializer.hpp>
 
 namespace udon
 {
 
-    template<class T>
+    template<typename T>
 	class Euler3D
 	{
 
@@ -96,6 +97,12 @@ namespace udon
             return roll || pitch || yaw;
         }
 
+        /// @brief 要素がゼロであるか返す
+        constexpr bool isZero() const noexcept
+        {
+            return !operator bool();
+        }
+
         /// @brief 正規化されたオイラー角を取得する
         /// @param min
         /// @param max
@@ -128,12 +135,15 @@ namespace udon
             *this = {};
         }
 
+#ifdef ARDUINO
+        /// @brief デバッグ出力
         void show() const
         {
-            Serial.print(F("roll: " )), Serial.print(roll ), Serial.print('\t');
-            Serial.print(F("pitch: ")), Serial.print(pitch), Serial.print('\t');
-            Serial.print(F("yaw: "  )), Serial.print(yaw  ), Serial.print('\t');
+            Serial.print(F("r: ")), Serial.print(roll ), Serial.print('\t');
+            Serial.print(F("p: ")), Serial.print(pitch), Serial.print('\t');
+            Serial.print(F("y: ")), Serial.print(yaw  ), Serial.print('\t');
         }
+#endif
 
         /// @brief シリアライズ後のバイト数を求める
         /// @return
