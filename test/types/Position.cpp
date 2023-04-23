@@ -1,5 +1,6 @@
 #include <Arduino.h>
 
+#include <UdonFwd.hpp>
 #include <udon/types/Position.hpp>
 
 inline void test()

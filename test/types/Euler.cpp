@@ -1,5 +1,6 @@
 #include <Arduino.h>
 
+#include <UdonFwd.hpp>
 #include <udon/types/Euler.hpp>
 
 inline void test()
