@@ -1,32 +1,28 @@
-#include <UdonFwd.hpp>
+#include <Arduino.h>
+
 #include <udon/types/Vector2D.hpp>
 
-void setup()
+inline void test()
 {
-
-//	std::vector<int> a;
-//	std::reverse(a.begin(), a.end());
-
-//	Serial.print('\t');
 
     // コンストラクタ
     {
-        constexpr udon::Vector2D<double> a;
+        constexpr udon::Vec2 a;
 
-        constexpr udon::Vector2D<double> b = a;
+        constexpr udon::Vec2 b = a;
 
-        constexpr udon::Vector2D<double> c = { 100, 200 };
+        constexpr udon::Vec2 c = { 100, 200 };
     }
 
     // コピー代入演算子
     {
-        udon::Vector2D<double> a, b;
+        udon::Vec2 a, b;
         a = b;
     }
 
-    // 算術演算子
+    // 二項演算子
     {
-        udon::Vector2D<double> a, b;
+        constexpr udon::Vec2 a, b = { 10, 20 };
         a + b;
         a - b;
         a* b;
@@ -35,7 +31,11 @@ void setup()
         a - 100;
         a * 100;
         a / 100;
+    }
 
+    // 複合代入演算子
+    {
+        udon::Vec2 a, b;
         a += b;
         a -= b;
         a *= b;
@@ -48,24 +48,23 @@ void setup()
 
     // 比較演算子
     {
-        constexpr udon::Vector2D<double> a = { 100, 200 };
-        constexpr udon::Vector2D<double> b = { 100, 200 };
+        constexpr udon::Vec2 a = { 100, 200 };
+        constexpr udon::Vec2 b = { 100, 200 };
 
         static_assert(a == b, "");
     }
 
     // operator bool
     {
-        constexpr udon::Vector2D<double> a = { 0, 0 };
+        constexpr udon::Vec2 a = { 0, 0 };
 
-        static_assert(!a, "");
+        static_assert((bool)a == false, "");
         static_assert(a.isZero(), "");
     }
 
     // その他関数
     {
-        udon::Vector2D<double> a;
-
+        udon::Vec2 a;
         a.clear();
         a.rotatedAt({}, 0);
         a.rotated(0);
@@ -75,8 +74,12 @@ void setup()
         a.length();
         a.show();
     }
-}
 
-void loop()
-{
+    // シリアライズ
+    {
+        udon::Vec2 a;
+        static_assert(udon::CapacityWithChecksum(a) == 8 + 1, "");
+        const auto b = udon::Pack(a);
+        (void)udon::Unpack<udon::Vec2>(b);
+    }
 }

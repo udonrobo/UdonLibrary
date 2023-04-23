@@ -18,10 +18,12 @@ namespace udon
         std::vector<uint8_t> buffer;
 
     public:
-        Serializer()
-            : buffer()
-        {
-        }
+
+		Serializer(size_t capacity = 0)
+			: buffer()
+		{
+			buffer.reserve(capacity);
+		}
 
         /// @brief
         /// @tparam T 整数型

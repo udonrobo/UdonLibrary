@@ -7,19 +7,28 @@ on:
   pull_request:
     branches: [ "master" ]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
 
-  compile:
+  build:
 
+    # 実行するOS
     runs-on: ubuntu-latest
 
     strategy:
+
+      # すべてのジョブを実行する
+      fail-fast: false
+
       matrix:
 
-        # ボード
+        # テストするボード
         board:
 
-          # - fqbn: arduino:avr:nano
+          - fqbn: arduino:avr:nano
 
           - fqbn: teensy:avr:teensy40
             platforms: |
@@ -33,12 +42,18 @@ jobs:
 
     steps:
 
-      - uses: actions/checkout@v2
+      - name: Checkout
 
-      - name: Arduino-cli Test
+        uses: actions/checkout@v2
+
+      - name: Arduino-cli test
+
         uses: arduino/compile-sketches@v1
+
         with:
+
           fqbn: ${{ matrix.board.fqbn }}
+
           platforms: ${{ matrix.board.platforms }}
 
           # テスト用スケッチがあるディレクトリ(再帰的)
@@ -49,9 +64,7 @@ jobs:
           # 依存するライブラリ
           libraries: |
             - source-path: ./
-            - source-url: https://github.com/FastLED/FastLED.git
             - source-url: https://github.com/autowp/arduino-mcp2515.git
+            - source-url: https://github.com/adafruit/Adafruit_BusIO.git
             - source-url: https://github.com/adafruit/Adafruit_Sensor.git
             - source-url: https://github.com/adafruit/Adafruit_BNO055.git
-            - source-url: https://github.com/adafruit/Adafruit_BusIO.git
-
