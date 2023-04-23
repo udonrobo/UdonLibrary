@@ -42,42 +42,102 @@ namespace udon
 
             bool mic;
 
-            /// @brief メンバイテレーション演算子
-            /// @tparam MIterator
-            /// @param mit
-            /// @param rhs
-            /// @return
-	        template<class MIterator>
-            friend MIterator& operator|(MIterator& mit, udon::message::PadPS5& rhs) noexcept
-            {
-                return mit
-                    | rhs.isConnected
-                    | rhs.isConnected
-                    | rhs.triangle
-                    | rhs.circle
-                    | rhs.cross
-                    | rhs.square
-                    | rhs.l1
-                    | rhs.r1
-                    | rhs.l2
-                    | rhs.r2
-                    | rhs.l3
-                    | rhs.r3
-                    | rhs.up
-                    | rhs.right
-                    | rhs.down
-                    | rhs.left
-                    | rhs.analogRightX
-                    | rhs.analogRightY
-                    | rhs.analogLeftX
-                    | rhs.analogLeftY
-                    | rhs.analogL2
-                    | rhs.analogR2
-                    | rhs.create
-                    | rhs.option
-                    | rhs.touch
-                    | rhs.mic;
-            }
+#ifdef ARDUINO
+			/// @brief デバッグ出力
+			void show() const
+			{
+                // todo
+                // Serial.print(isConnected);
+                // Serial.print(triangle);
+                // Serial.print(circle);
+                // Serial.print(cross);
+                // Serial.print(square);
+                // Serial.print(l1);
+                // Serial.print(r1);
+                // Serial.print(l2);
+                // Serial.print(r2);
+                // Serial.print(l3);
+                // Serial.print(r3);
+                // Serial.print(up);
+                // Serial.print(right);
+                // Serial.print(down);
+                // Serial.print(left);
+                // Serial.print(analogRightX);
+                // Serial.print(analogRightY);
+                // Serial.print(analogLeftX);
+                // Serial.print(analogLeftY);
+                // Serial.print(analogL2);
+                // Serial.print(analogR2);
+                // Serial.print(create);
+                // Serial.print(option);
+                // Serial.print(touch);
+                // Serial.print(mic);
+			}
+#endif
+
+			/// @brief シリアライズ後のバイト数を求める
+			/// @return
+			constexpr size_t capacity() const
+			{
+				return udon::Capacity(isConnected
+                                    , triangle
+                                    , circle
+                                    , cross
+                                    , square
+                                    , l1
+                                    , r1
+                                    , l2
+                                    , r2
+                                    , l3
+                                    , r3
+                                    , up
+                                    , right
+                                    , down
+                                    , left
+                                    , analogRightX
+                                    , analogRightY
+                                    , analogLeftX
+                                    , analogLeftY
+                                    , analogL2
+                                    , analogR2
+                                    , create
+                                    , option
+                                    , touch
+                                    , mic);
+			}
+
+			/// @brief
+			/// @tparam T
+			/// @param acc
+			template <typename Acc>
+			void accessor(Acc& acc)
+			{
+				acc(isConnected
+                    , triangle
+                    , circle
+                    , cross
+                    , square
+                    , l1
+                    , r1
+                    , l2
+                    , r2
+                    , l3
+                    , r3
+                    , up
+                    , right
+                    , down
+                    , left
+                    , analogRightX
+                    , analogRightY
+                    , analogLeftX
+                    , analogLeftY
+                    , analogL2
+                    , analogR2
+                    , create
+                    , option
+                    , touch
+                    , mic);
+			}
 
         };
     }    // namespace message
