@@ -1,11 +1,13 @@
 #pragma once
 
 #include <vector>
+#include <algorithm>
 
 #include <udon/traits/HasMember.hpp>
 #include <udon/algorithm/CRC8.hpp>
 #include <udon/algorithm/Endian.hpp>
 #include <udon/types/Float.hpp>
+#include <udon/com/serializer/Capacity.hpp>
 
 namespace udon
 {
