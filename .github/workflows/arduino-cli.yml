@@ -50,3 +50,4 @@ jobs:
           libraries: |
             - source-path: ./
             - source-url: https://github.com/FastLED/FastLED.git
+            - source-url: https://github.com/autowp/arduino-mcp2515.git
