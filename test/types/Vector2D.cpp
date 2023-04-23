@@ -1,6 +1,5 @@
 #include <Arduino.h>
 
-#include <UdonFwd.hpp>
 #include <udon/types/Vector2D.hpp>
 
 inline void test()

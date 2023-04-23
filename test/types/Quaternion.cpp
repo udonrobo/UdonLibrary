@@ -1,6 +1,5 @@
 #include <Arduino.h>
 
-#include <UdonFwd.hpp>
 #include <udon/types/Quaternion.hpp>
 
 inline void test()

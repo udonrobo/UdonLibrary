@@ -1,6 +1,5 @@
-#include <UdonFwd.hpp>
-#include <udon\types\Float.hpp>
-#include <udon\com\serializer\Serializer.hpp>
+#include <udon/types/Float.hpp>
+#include <udon/com/serializer/Serializer.hpp>
 
 inline void test()
 {
