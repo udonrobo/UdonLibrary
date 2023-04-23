@@ -72,7 +72,7 @@ namespace udon
         /// @param rhs
         /// @return
         template <typename T, size_t N>
-        inline auto operator()(const T (&rhs)[N])
+        inline auto operator()(T (&rhs)[N])
         {
             for (auto&& it : rhs)
             {
@@ -85,7 +85,7 @@ namespace udon
         /// @param rhs
         /// @return
         template <typename T>
-        inline auto operator()(const T& rhs) -> typename std::enable_if<udon::has_member_iterator_accessor_v<Deserializer, T>>::type
+        inline auto operator()(T& rhs) -> typename std::enable_if<udon::has_member_iterator_accessor_v<Deserializer, T>>::type
         {
             // T::accessor が const なメンバ関数でない場合に const rhs から呼び出せないため、const_cast によって const を除去
             const_cast<T&>(rhs).accessor(*this);
@@ -97,7 +97,7 @@ namespace udon
         /// @param head
         /// @param ...tails
         template <typename Head, typename... Tails>
-        inline void operator()(const Head& head, const Tails&... tails)
+        inline void operator()(Head& head, Tails&... tails)
         {
             operator()(head);
             operator()(tails...);
@@ -145,10 +145,16 @@ namespace udon
         }
     }
 
-    template <typename T>
-    udon::optional<T> Unpack(const uint8_t* buffer, size_t size)
-    {
-        return Unpack<T>(std::vector<uint8_t>{ buffer, size });
-    }
+	template<typename T>
+	udon::optional<T> Unpack(const uint8_t* buffer, size_t size)
+	{
+		return Unpack<T>({ buffer, buffer + size });
+	}
+
+	template<typename T, size_t N>
+	udon::optional<T> Unpack(const uint8_t(&array)[N])
+	{
+		return Unpack<T>({ std::begin(array), std::end(array) });
+	}
 
 }    // namespace udon

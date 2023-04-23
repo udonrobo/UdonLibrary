@@ -59,7 +59,7 @@ namespace udon
         /// @param rhs
         /// @return
         template <typename T>
-        inline auto operator()(const T& rhs) -> typename std::enable_if<has_member_iterator_accessor_v<Serializer, T>>::type
+        inline auto operator()(const T& rhs) -> typename std::enable_if<udon::has_member_iterator_accessor_v<Serializer, T>>::type
         {
             // T::accessor が const なメンバ関数でない場合に const rhs から呼び出せないため、const_cast によって const を除去
             const_cast<T&>(rhs).accessor(*this);
@@ -120,11 +120,24 @@ namespace udon
         return serializer.flash();
     }
 
-    template <typename T>
-    inline void Pack(uint8_t* buffer, const T& rhs)
-    {
-        const auto vector = Pack(rhs).data();
-        memcpy(buffer, vector.data(), vector.size());
-    }
+	template<typename T>
+	inline void Pack(const T& rhs, uint8_t* buffer, size_t size)
+	{
+		if (udon::Capacity(rhs) + 1 == size)
+		{
+			const auto vector = Pack(rhs);
+			std::copy(vector.begin(), vector.end(), buffer);
+		}
+	}
+
+	template<typename T, size_t N>
+	inline void Pack(const T& rhs, uint8_t(&array)[N])
+	{
+		if (udon::Capacity(rhs) + 1 == sizeof(array))
+		{
+			const auto vector = Pack(rhs);
+			std::copy(vector.begin(), vector.end(), array);
+		}
+	}
 
 }    // namespace udon

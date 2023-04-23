@@ -82,4 +82,5 @@ namespace udon
         return Capacity(arg) + Capacity(std::forward<Args>(args)...);
     }
 
+
 }    // namespace udon

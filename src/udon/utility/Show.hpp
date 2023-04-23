@@ -15,10 +15,10 @@ namespace udon
 		/// @param rhs
 		/// @return
 		template<typename T>
-		auto operator()(const T& rhs) -> typename std::enable_if<std::is_integral<T>::value>::type
+		auto operator()(const T& rhs) -> typename std::enable_if<std::is_scalar<T>::value>::type
 		{
-            // Serial.print(rhs);
-            // Serial.print(gap);
+            Serial.print(rhs);
+            Serial.print(gap);
         }
 
 		/// @brief
@@ -60,7 +60,7 @@ namespace udon
 	};
 
 	template<typename T>
-	void Show(const T& rhs, const char* gap = "\t")
+	inline void Show(const T& rhs, const char* gap = "\t")
 	{
 		MemberViewer viewer{ gap };
 		viewer(rhs);
