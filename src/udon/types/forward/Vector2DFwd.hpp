@@ -188,8 +188,8 @@ namespace udon
 
         void show() const
         {
-            Serial.print(x), Serial.print('/t');
-            Serial.print(y);
+            Serial.print(x), Serial.print('\t');
+            Serial.print(y), Serial.print('\t');
         }
 
         /// @brief シリアライズ後のバイト数を求める

@@ -51,3 +51,7 @@ jobs:
             - source-path: ./
             - source-url: https://github.com/FastLED/FastLED.git
             - source-url: https://github.com/autowp/arduino-mcp2515.git
+            - source-url: https://github.com/adafruit/Adafruit_Sensor.git
+            - source-url: https://github.com/adafruit/Adafruit_BNO055.git
+            - source-url: https://github.com/adafruit/Adafruit_BusIO.git
+

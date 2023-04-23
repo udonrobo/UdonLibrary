@@ -70,7 +70,7 @@ namespace udon
             for (auto&& it : u.buffer)
             {
                 Serial.print(it);
-                Serial.print('/t');
+                Serial.print('\t');
             }
             Serial.print(end);
         }

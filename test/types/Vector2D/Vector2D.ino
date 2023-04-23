@@ -4,6 +4,8 @@
 void setup()
 {
 
+	Serial.print('\t');
+
     // コンストラクタ
     {
         constexpr Vector2D<double> a;

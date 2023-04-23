@@ -55,7 +55,7 @@ namespace udon
         void show(const char end = {}, const uint16_t radix = DEC) const noexcept
         {
             for (const auto& buffer : buffer)
-                Serial.print(buffer, radix), Serial.print('/t');
+                Serial.print(buffer, radix), Serial.print('\t');
             Serial.print(end);
         }
 

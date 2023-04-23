@@ -130,9 +130,9 @@ namespace udon
 
         void show() const
         {
-            Serial.print(F("roll: " )), Serial.print(roll ), Serial.print('/t');
-            Serial.print(F("pitch: ")), Serial.print(pitch), Serial.print('/t');
-            Serial.print(F("yaw: "  )), Serial.print(yaw  ), Serial.print('/t');
+            Serial.print(F("roll: " )), Serial.print(roll ), Serial.print('\t');
+            Serial.print(F("pitch: ")), Serial.print(pitch), Serial.print('\t');
+            Serial.print(F("yaw: "  )), Serial.print(yaw  ), Serial.print('\t');
         }
 
         /// @brief シリアライズ後のバイト数を求める
