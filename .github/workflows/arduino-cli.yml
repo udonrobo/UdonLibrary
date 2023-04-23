@@ -19,7 +19,7 @@ jobs:
         # ボード
         board:
 
-          - fqbn: arduino:avr:nano
+          # - fqbn: arduino:avr:nano
 
           - fqbn: teensy:avr:teensy40
             platforms: |
