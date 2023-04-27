@@ -17,6 +17,11 @@ namespace udon
             bool cross;
             bool square;
 
+            bool up;
+            bool right;
+            bool down;
+            bool left;
+
             bool l1;
             bool r1;
             bool l2;
@@ -24,17 +29,12 @@ namespace udon
             bool l3;
             bool r3;
 
-            bool up;
-            bool right;
-            bool down;
-            bool left;
-
             uint8_t analogRightX;
             uint8_t analogRightY;
             uint8_t analogLeftX;
             uint8_t analogLeftY;
-            uint8_t analogL2;
             uint8_t analogR2;
+            uint8_t analogL2;
 
             bool create;
             bool option;
