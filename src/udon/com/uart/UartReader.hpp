@@ -28,7 +28,7 @@ namespace udon
 
         void update() noexcept
         {
-            uint8_t buffer[Message::PackedSize];
+            uint8_t buffer[udon::CapacityWithChecksum<Message>()];
             bool    isError = false;
             while (uart.available())
             {
@@ -48,13 +48,15 @@ namespace udon
 
             if (isError == false)
             {
-                message = udon::Unpack<Message>({ std::begin(buffer), std::end(buffer) });
+                if (const auto m = udon::Unpack<Message>(buffer))
+                {
+                    message = m.value();
+                }
             }
         }
 
         Message getMessage() const noexcept
         {
-			// static_assert(udon::has_show_v<T>, "");
             return message;
         }
 

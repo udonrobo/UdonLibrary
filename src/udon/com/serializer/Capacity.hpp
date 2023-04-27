@@ -123,14 +123,5 @@ namespace udon
 		return Capacity(T{}) + sizeof(decltype(udon::CRC8(nullptr, 0)));
 	}
 
-	/// @brief チェックサムを含めたシリアライズ後のバイト数を求める
-	/// @tparam T
-	/// @return
-	template <typename T, typename... Args>
-	inline constexpr size_t CapacityWithChecksum()
-	{
-		return Capacity(T{}) + Capacity(Args{}...) + sizeof(decltype(udon::CRC8(nullptr, 0)));
-	}
-
 
 }    // namespace udon
