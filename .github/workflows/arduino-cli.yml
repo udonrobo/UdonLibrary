@@ -68,3 +68,4 @@ jobs:
             - source-url: https://github.com/adafruit/Adafruit_BusIO.git
             - source-url: https://github.com/adafruit/Adafruit_Sensor.git
             - source-url: https://github.com/adafruit/Adafruit_BNO055.git
+            - source-url: ttps://github.com/Richard-Gemmell/teensy4_i2c.git
