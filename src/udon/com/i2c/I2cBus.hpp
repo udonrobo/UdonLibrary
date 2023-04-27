@@ -57,9 +57,8 @@ namespace udon
 			inline uint8_t endTransmission(                ) { return wire.endTransmission(        ); }
 			inline uint8_t endTransmission(uint8_t sendStop) { return wire.endTransmission(sendStop); }
 
-			inline uint8_t requestFrom(uint8_t address, uint8_t quantity)                                                     { return wire.requestFrom(address, quantity);                            }
-			inline uint8_t requestFrom(uint8_t address, uint8_t quantity, uint8_t sendStop)                                   { return wire.requestFrom(address, quantity, sendStop);                  }
-			inline uint8_t requestFrom(uint8_t address, uint8_t quantity, uint32_t iaddress, uint8_t isize, uint8_t sendStop) { return wire.requestFrom(address, quantity, iaddress, isize, sendStop); }
+			inline uint8_t requestFrom(uint8_t address, uint8_t quantity)                   { return wire.requestFrom(address, quantity);           }
+			inline uint8_t requestFrom(uint8_t address, uint8_t quantity, uint8_t sendStop) { return wire.requestFrom(address, quantity, sendStop); }
 
 			inline size_t write(uint8_t        data                 ) { return wire.write(data          ); }
 			inline size_t write(unsigned long  data                 ) { return wire.write(data          ); }
