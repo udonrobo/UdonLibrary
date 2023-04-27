@@ -14,37 +14,36 @@ namespace udon
 
     public:
         /// @brief デフォルトコンストラクタ
-        Input() noexcept
+        Input()
             : prev()
             , curr()
         {
         }
 
         /// @brief 入力値を更新する
-        /// @remark 返却されたInputオブジェクトを更新しにくくするため静的関数化
         /// @param value 新規入力値
-        static void Update(Input& input, bool value) noexcept
+        void update(bool value)
         {
-            input.prev = input.curr;
-            input.curr = value;
+            prev = curr;
+            curr = value;
         }
 
         /// @brief 入力値が trueであり続けているかを返す
         /// @return
-        bool press() const noexcept
+        bool press() const
         {
             return curr;
         }
 
         /// @brief 入力値が true になった瞬間かどうかを返す
         /// @return
-        bool clicked() const noexcept
+        bool clicked() const
         {
             return !prev && curr;
         }
 
         /// @brief 入力値が false になった瞬間かどうかを返す
-        bool released() const noexcept
+        bool released() const
         {
             return prev && !curr;
         }
