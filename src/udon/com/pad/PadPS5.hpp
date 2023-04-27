@@ -1,19 +1,45 @@
 #pragma once
 
-#include <udon/stl/EnableSTL.hpp>
-
 #include <algorithm>    // std::move
-#include <type_traits>  // std::enable_if std::is_same
-
-#include <udon/traits/HasMember.hpp>   // udon::has_update_v<T>
-
 #include <udon/algorithm/Input.hpp>
-
+#include <udon/traits/HasMember.hpp>    // udon::has_update_v<T>
 #include <udon/types/Position.hpp>
 #include <udon/types/Vector2D.hpp>
 
 namespace udon
 {
+
+    template <typename<typename> typename Reader>
+    class PadPS5
+    {
+
+        Reader<udon::message::PadPS5> reader;
+
+    public:
+
+        PadPS5(Reader<udon::message::PadPS5>&& reader)
+            : reader(std::move(reader))
+        {
+        }
+
+
+
+        template<typename T = Reader>
+        auto update() -> typename std::enable_if_t<udon::has_member_function_update_v<T>>::type
+        {
+            reader.update();
+            mainUpdate();
+        }
+        template<typename T = Reader>
+        auto update() -> typename std::enable_if_t<!udon::has_member_function_update_v<T>>::type
+        {
+            mainUpdate();
+        }
+
+        void mainUpdate()
+        {
+        }
+    };
 
     template <class Reader>
     class PadPS5
@@ -36,7 +62,7 @@ namespace udon
         }
 
         /// @brief reader クラスに update メンバがあるときの更新
-        template<class Ty = Reader>
+        template <class Ty = Reader>
         typename std::enable_if<udon::has_member_function_update_v<Ty>, void>::type
         update()
         {
@@ -45,7 +71,7 @@ namespace udon
         }
 
         /// @brief reader クラスに update メンバがないときの更新
-        template<class Ty = Reader>
+        template <class Ty = Reader>
         typename std::enable_if<!udon::has_member_function_update_v<Ty>, void>::type
         update()
         {
@@ -54,7 +80,6 @@ namespace udon
 
         void mainUpdate()
         {
-
         }
     };
 
@@ -62,7 +87,7 @@ namespace udon
 
 #include <udon/com/can/CanReader.hpp>
 #include <udon/com/uart/UartReader.hpp>
-#include <udon/com/message/PadPS5.hpp>
+#include <udon/message/PadPS5.hpp>
 
 namespace udon
 {
