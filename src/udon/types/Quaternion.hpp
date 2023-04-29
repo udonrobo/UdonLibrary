@@ -64,14 +64,14 @@ namespace udon
         /// @brief 複合代入演算子
         /// @param rhs 被演算子
         /// @return
-        constexpr Quaternion& operator+=(const Quaternion& rhs) noexcept { return *this = *this + rhs; };
-        constexpr Quaternion& operator-=(const Quaternion& rhs) noexcept { return *this = *this - rhs; };
-        constexpr Quaternion& operator*=(const Quaternion& rhs) noexcept { return *this = *this * rhs; };
-        constexpr Quaternion& operator/=(const Quaternion& rhs) noexcept { return *this = *this / rhs; };
-        constexpr Quaternion& operator+=(value_type rhs) noexcept { return *this = *this + rhs; };
-        constexpr Quaternion& operator-=(value_type rhs) noexcept { return *this = *this - rhs; };
-        constexpr Quaternion& operator*=(value_type rhs) noexcept { return *this = *this * rhs; };
-        constexpr Quaternion& operator/=(value_type rhs) noexcept { return *this = *this / rhs; };
+        Quaternion& operator+=(const Quaternion& rhs) noexcept { return *this = *this + rhs; };
+        Quaternion& operator-=(const Quaternion& rhs) noexcept { return *this = *this - rhs; };
+        Quaternion& operator*=(const Quaternion& rhs) noexcept { return *this = *this * rhs; };
+        Quaternion& operator/=(const Quaternion& rhs) noexcept { return *this = *this / rhs; };
+        Quaternion& operator+=(value_type rhs) noexcept { return *this = *this + rhs; };
+        Quaternion& operator-=(value_type rhs) noexcept { return *this = *this - rhs; };
+        Quaternion& operator*=(value_type rhs) noexcept { return *this = *this * rhs; };
+        Quaternion& operator/=(value_type rhs) noexcept { return *this = *this / rhs; };
 
         /// @brief 比較演算子
         /// @param rhs 被演算子

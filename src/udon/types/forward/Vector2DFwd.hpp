@@ -66,14 +66,14 @@ namespace udon
         /// @brief 複合代入演算子
         /// @param rhs 被演算子
         /// @return
-        constexpr Vector2D& operator+=(const Vector2D& rhs) noexcept { return *this = *this + rhs; };
-        constexpr Vector2D& operator-=(const Vector2D& rhs) noexcept { return *this = *this - rhs; };
-        constexpr Vector2D& operator*=(const Vector2D& rhs) noexcept { return *this = *this * rhs; };
-        constexpr Vector2D& operator/=(const Vector2D& rhs) noexcept { return *this = *this / rhs; };
-        constexpr Vector2D& operator+=(value_type rhs) noexcept { return *this = *this + rhs; };
-        constexpr Vector2D& operator-=(value_type rhs) noexcept { return *this = *this - rhs; };
-        constexpr Vector2D& operator*=(value_type rhs) noexcept { return *this = *this * rhs; };
-        constexpr Vector2D& operator/=(value_type rhs) noexcept { return *this = *this / rhs; };
+        Vector2D& operator+=(const Vector2D& rhs) noexcept { return *this = *this + rhs; };
+        Vector2D& operator-=(const Vector2D& rhs) noexcept { return *this = *this - rhs; };
+        Vector2D& operator*=(const Vector2D& rhs) noexcept { return *this = *this * rhs; };
+        Vector2D& operator/=(const Vector2D& rhs) noexcept { return *this = *this / rhs; };
+        Vector2D& operator+=(value_type rhs) noexcept { return *this = *this + rhs; };
+        Vector2D& operator-=(value_type rhs) noexcept { return *this = *this - rhs; };
+        Vector2D& operator*=(value_type rhs) noexcept { return *this = *this * rhs; };
+        Vector2D& operator/=(value_type rhs) noexcept { return *this = *this / rhs; };
 
         /// @brief 比較演算子
         /// @param rhs 被演算子

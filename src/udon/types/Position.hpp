@@ -56,14 +56,14 @@ namespace udon
         /// @brief 複合代入演算子
         /// @param rhs 被演算子
         /// @return
-		constexpr Position operator+=(const Position& rhs) noexcept { return *this = *this + rhs; }
-		constexpr Position operator-=(const Position& rhs) noexcept { return *this = *this - rhs; }
-		constexpr Position operator*=(const Position& rhs) noexcept { return *this = *this * rhs; }
-		constexpr Position operator/=(const Position& rhs) noexcept { return *this = *this / rhs; }
-		constexpr Position operator+=(value_type rhs) noexcept { return *this = *this + rhs; }
-		constexpr Position operator-=(value_type rhs) noexcept { return *this = *this - rhs; }
-		constexpr Position operator*=(value_type rhs) noexcept { return *this = *this * rhs; }
-		constexpr Position operator/=(value_type rhs) noexcept { return *this = *this / rhs; }
+		Position operator+=(const Position& rhs) noexcept { return *this = *this + rhs; }
+		Position operator-=(const Position& rhs) noexcept { return *this = *this - rhs; }
+		Position operator*=(const Position& rhs) noexcept { return *this = *this * rhs; }
+		Position operator/=(const Position& rhs) noexcept { return *this = *this / rhs; }
+		Position operator+=(value_type rhs) noexcept { return *this = *this + rhs; }
+		Position operator-=(value_type rhs) noexcept { return *this = *this - rhs; }
+		Position operator*=(value_type rhs) noexcept { return *this = *this * rhs; }
+		Position operator/=(value_type rhs) noexcept { return *this = *this / rhs; }
 
         /// @brief 要素のいずれかに0以外の値があるかどうかを返す
 		constexpr operator bool() const noexcept
