@@ -17,9 +17,7 @@ class has_type_##name {                                                         
     { return false; }                                                               \
 public:                                                                             \
     static constexpr bool value = check<T>(nullptr);                                \
-};                                                                                  \
-template<class T>                                                                   \
-constexpr bool has_type_##name##_v = has_type_##name<T>::value;
+};
 
 
 /// @brief 通常メンバ関数の有無を取得する
@@ -42,9 +40,7 @@ struct has_member_function_##name##_impl{                                       
 };                                                                                                                                \
 template <class T>                                                                                                                \
 class has_member_function_##name :                                                                                                \
-    public decltype(has_member_function_##name##_impl::check<T>(std::declval<T>())) {};                                           \
-template <class T>                                                                                                                \
-constexpr bool has_member_function_##name##_v = has_member_function_##name<T>::value;
+    public decltype(has_member_function_##name##_impl::check<T>(std::declval<T>())) {};
 
 
 /// @brief 静的メンバ関数の有無を取得する
@@ -61,9 +57,7 @@ struct has_static_member_function_##name##_impl {                               
 };                                                                                                  \
 template <class T>                                                                                  \
 class has_static_member_function_##name :                                                           \
-    public decltype(has_static_member_function_##name##_impl::check<T>(std::declval<T>())) {};      \
-template <class T>                                                                                  \
-constexpr bool has_static_member_function_##name##_v = has_static_member_function_##name<T>::value;
+    public decltype(has_static_member_function_##name##_impl::check<T>(std::declval<T>())) {};
 
 
 #define UDON_HAS_MEMBER_ITERATOR_FUNCTION(name)                                                                                                 \
@@ -81,9 +75,7 @@ constexpr bool has_static_member_function_##name##_v = has_static_member_functio
         static auto test(...) -> std::false_type;                                                                                               \
     public:                                                                                                                                     \
         static const bool value = std::is_same<decltype(test<T, A>(0)), std::true_type>::value;                                                 \
-    };                                                                                                                                          \
-    template<typename A, typename T>                                                                                                            \
-    constexpr bool has_member_iterator_##name##_v = has_member_iterator_##name<A, T>::value;
+    };
 
 namespace udon
 {

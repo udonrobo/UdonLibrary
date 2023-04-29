@@ -94,7 +94,7 @@ namespace udon
         /// @tparam T
         /// @return
         template <typename T = reader_type>
-        auto begin() -> typename std::enable_if<udon::has_member_function_begin_v<T>>::type
+        auto begin() -> typename std::enable_if<udon::has_member_function_begin<T>::value>::type
         {
             reader.begin();
         }
@@ -103,14 +103,14 @@ namespace udon
         /// @tparam T
         /// @return
         template <typename T = reader_type>
-        auto update() -> typename std::enable_if<udon::has_member_function_update_v<T>>::type
+        auto update() -> typename std::enable_if<udon::has_member_function_update<T>::value>::type
         {
             reader.update();
             _update();
         }
         /// @brief 更新
         template <typename T = reader_type>
-        auto update() -> typename std::enable_if<!udon::has_member_function_update_v<T>>::type
+        auto update() -> typename std::enable_if<!udon::has_member_function_update<T>::value>::type
         {
             _update();
         }

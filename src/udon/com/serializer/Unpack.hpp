@@ -74,7 +74,7 @@ namespace udon
         /// @param rhs
         /// @return
         template <typename T, size_t N>
-        inline auto operator()(T (&rhs)[N])
+        inline void operator()(T (&rhs)[N])
         {
             for (auto&& it : rhs)
             {
@@ -87,7 +87,7 @@ namespace udon
         /// @param rhs
         /// @return
         template <typename T>
-        inline auto operator()(T& rhs) -> typename std::enable_if<udon::has_member_iterator_accessor_v<Deserializer, T>>::type
+        inline auto operator()(T& rhs) -> typename std::enable_if<udon::has_member_iterator_accessor<Deserializer, T>::value>::type
         {
             // T::accessor が const なメンバ関数でない場合に const rhs から呼び出せないため、const_cast によって const を除去
             const_cast<T&>(rhs).accessor(*this);

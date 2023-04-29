@@ -39,7 +39,7 @@ namespace udon
 		/// @param rhs
 		/// @return
 		template<typename T>
-		auto operator()(const T& rhs) -> typename std::enable_if<has_member_iterator_accessor_v<MemberViewer, T>>::type
+		auto operator()(const T& rhs) -> typename std::enable_if<has_member_iterator_accessor<MemberViewer, T>::value>::type
 		{
 			// T::accessor が const なメンバ関数でない場合に const rhs から呼び出せないため、const_cast によって const を除去
 			const_cast<T&>(rhs).accessor(*this);

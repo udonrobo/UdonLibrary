@@ -14,7 +14,7 @@ namespace udon
     /// @param
     /// @return
     template <typename T>
-    inline constexpr auto Capacity(const T&) -> std::enable_if_t<std::is_integral<T>::value, size_t>
+    inline constexpr auto Capacity(const T&) -> typename std::enable_if<std::is_integral<T>::value, size_t>::type
     {
         return sizeof(T);
     }
@@ -24,20 +24,20 @@ namespace udon
     /// @param
     /// @return
     template <typename T>
-    inline constexpr auto Capacity(const T&) -> std::enable_if_t<std::is_floating_point<T>::value, size_t>
+    inline constexpr auto Capacity(const T&) -> typename std::enable_if<std::is_floating_point<T>::value, size_t>::type
     {
         return sizeof(udon::float32_t);
     }
 
-    UDON_HAS_MEMBER_FUNCTION(capacity);           // udon::has_member_function_capacity_v<T>
-    UDON_HAS_STATIC_MEMBER_FUNCTION(Capacity);    // udon::has_static_member_function_Capacity_v<T>
+    UDON_HAS_MEMBER_FUNCTION(capacity);           // udon::has_member_function_capacity<T>
+    UDON_HAS_STATIC_MEMBER_FUNCTION(Capacity);    // udon::has_static_member_function_Capacity<T>
 
     /// @brief シリアライズ後のバイト数を求める
     /// @tparam T capacity メンバ関数を持つ型
     /// @param obj
     /// @return
     template <typename T>
-    inline constexpr auto Capacity(const T& obj) -> typename std::enable_if<udon::has_member_function_capacity_v<T>, size_t>::type
+    inline constexpr auto Capacity(const T& obj) -> typename std::enable_if<udon::has_member_function_capacity<T>::value, size_t>::type
     {
         return const_cast<T&>(obj).capacity();    // T::capacity() が const でないメンバ関数な場合、obj から呼び出しできないためconstを外す
     }
@@ -47,7 +47,7 @@ namespace udon
     /// @param obj
     /// @return
     template <typename T>
-    inline constexpr auto Capacity(const T&) -> typename std::enable_if<udon::has_static_member_function_Capacity_v<T>, size_t>::type
+    inline constexpr auto Capacity(const T&) -> typename std::enable_if<udon::has_static_member_function_Capacity<T>::value, size_t>::type
     {
         return T::Capacity();
     }
@@ -70,7 +70,7 @@ namespace udon
     template <typename T>
     inline constexpr size_t Capacity(T&& arg)
     {
-        return Capacity<std::remove_reference_t<T>>(arg);
+        return Capacity<std::remove_reference<T>::type>(arg);
     }
 
     /// @brief シリアライズ後のバイト数を求める
