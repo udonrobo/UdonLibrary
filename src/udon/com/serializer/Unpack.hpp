@@ -1,5 +1,6 @@
 #pragma once
 
+#include <udon/stl/EnableSTL.hpp>
 #include <vector>
 
 #include <udon/algorithm/CRC8.hpp>
