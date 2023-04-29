@@ -64,5 +64,6 @@ jobs:
           # 依存するライブラリ
           libraries: |
             - source-path: ./
+            - source-url: https://github.com/udonrobo/UdonArduinoSTL.git
             - source-url: https://github.com/autowp/arduino-mcp2515.git
             - source-url: https://github.com/Richard-Gemmell/teensy4_i2c.git
