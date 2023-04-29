@@ -2,7 +2,7 @@
 
 #include <type_traits>
 
-/// @brief クラスに含まれる型の有無を取得する
+/// @brief メンバ型名の有無を取得する
 /// @remark 生成される trait クラス
 ///         has_type_'name'<T>::value
 ///         has_type_'name'_v<T>
@@ -87,6 +87,8 @@ constexpr bool has_static_member_function_##name##_v = has_static_member_functio
 
 namespace udon
 {
+
+	UDON_HAS_MEMBER_FUNCTION(begin);
 
 	UDON_HAS_MEMBER_FUNCTION(update);
 
