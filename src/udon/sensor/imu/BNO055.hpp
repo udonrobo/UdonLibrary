@@ -1,8 +1,6 @@
 #pragma once
 
-#include <Wire.h>
-#include <Adafruit_Sensor.h>
-#include <Adafruit_BNO055.h>
+#include "udon/thirdparty/Adafruit_BNO055/Adafruit_BNO055.h"
 
 // https://github.com/adafruit/Adafruit_Sensor.git
 // https://github.com/adafruit/Adafruit_BNO055.git
