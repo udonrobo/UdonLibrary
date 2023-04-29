@@ -5,5 +5,5 @@
 #undef abs
 
 #if !__has_include(<vector>)
-#	include <UdonArduinoSTL.h>
+#	include <UdonArduinoSTL.hpp>
 #endif
