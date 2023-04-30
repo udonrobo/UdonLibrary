@@ -4,11 +4,11 @@
 
 /// @brief メンバ型名の有無を取得する
 /// @remark 生成される trait クラス
-///         has_type_'name'<T>::value
-///         has_type_'name'_v<T>
-#define UDON_HAS_TYPE(name)                                                         \
+///         has_member_type_'name'<T>::value
+///         has_member_type_'name'_v<T>
+#define UDON_HAS_MEMBER_TYPE(name)                                                  \
 template <class T>                                                                  \
-class has_type_##name {                                                             \
+class has_member_type_##name {                                                      \
     template <class U>                                                              \
     static constexpr bool check(typename U::name*)                                  \
     { return true; }                                                                \

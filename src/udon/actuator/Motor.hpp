@@ -10,14 +10,15 @@
 namespace udon
 {
 
-    class Motor2 : private udon::MovingAverage
+    class Motor2
+        : udon::MovingAverage
     {
         const uint8_t pinA;
         const uint8_t pinP;
 
     public:
         Motor2(const uint8_t pinA, const uint8_t pinP)
-            : MovingAverage(20)
+            : udon::MovingAverage(20)
             , pinA(pinA)
             , pinP(pinP)
         {
@@ -31,9 +32,16 @@ namespace udon
             digitalWrite(pinA, p >= 0);
             analogWrite(pinP, abs(p));
         }
+
+        void show() const
+        {
+            Serial.print(udon::MovingAverage::getValue());
+            Serial.print('\t');
+        }
     };
 
-    class Motor3 : private MovingAverage
+    class Motor3
+        : MovingAverage
     {
         const uint8_t pinA;
         const uint8_t pinB;
@@ -57,6 +65,12 @@ namespace udon
             digitalWrite(pinA, p >= 0);
             digitalWrite(pinB, p <= 0);
             analogWrite(pinP, abs(p));
+        }
+
+        void show() const
+        {
+            Serial.print(udon::MovingAverage::getValue());
+            Serial.print('\t');
         }
     };
 
