@@ -2,10 +2,10 @@ name: Convert tabs to spaces
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   convert:
@@ -25,5 +25,5 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          branch: main
+          branch: master
           force: true
