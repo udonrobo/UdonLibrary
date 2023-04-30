@@ -4,13 +4,13 @@
 
 #include <Udon.hpp>
 
-using udon::parameter;
+using udon::Parameter;
 
 
 const int dataSize = 10;
 const char* fileName = "parameter.csv";
 
-parameter myParameter(dataSize, fileName);
+Parameter myParameter(dataSize, fileName);
 
 void setup() {
   // put your setup code here, to run once:
@@ -31,13 +31,7 @@ void loop() {
 #else
 
 
-void setup()
-{
-
-}
-void loop()
-{
-
-}
+void setup() {}
+void loop() {}
 
 #endif
