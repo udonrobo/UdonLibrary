@@ -1,5 +1,6 @@
 #pragma once
 
+#include <udon/stl/EnableSTL.hpp>
 #include <type_traits>
 
 /// @brief メンバ型名の有無を取得する

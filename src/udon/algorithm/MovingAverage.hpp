@@ -8,7 +8,7 @@
 #ifndef DEF_MovingAverage_H
 #define DEF_MovingAverage_H
 
-#include <udon/math/Math.hpp>  // udon::Max
+#include <Arduino.h>
 
 namespace udon
 {
@@ -30,7 +30,7 @@ namespace udon
                 @param  dataSize    [in]移動平均するデータの個数
         */
         MovingAverage(size_t dataSize)
-            : dataSize(udon::Max(dataSize, 1ULL))
+            : dataSize(max(dataSize, 1ULL))
             , data(new int[dataSize]())
             , writeIndex()
             , sum()
