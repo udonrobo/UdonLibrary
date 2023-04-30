@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <udon/com/serializer/Serializer.hpp>
 
@@ -112,9 +112,9 @@ namespace udon
             *this = {};
         }
 
-        udon::Vector2D<value_type> xy() const;
+        udon::Vector2D<value_type> xy() const noexcept;
 
-        udon::Vector4D<value_type> xyz0() const;
+        udon::Vector4D<value_type> xyz0() const noexcept;
 
 #ifdef ARDUINO
         /// @brief デバッグ出力
