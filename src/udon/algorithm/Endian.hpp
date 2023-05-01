@@ -11,8 +11,8 @@ namespace udon
 		Big,
 	};
 
-	/// @brief
-	/// @return
+	/// @brief アーキテクチャのエンディアンを取得する
+	/// @return エンディアン
 	inline Endian GetEndian()
 	{
 		static const uint16_t endian = 0x0100;
