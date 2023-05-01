@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-#include "udon/com/i2c/I2cBus.hpp"
+#include <udon/com/i2c/I2cBus.hpp>
 
 ///< The class which defines how we will talk to this device over I2C
 class Adafruit_I2CDevice {
