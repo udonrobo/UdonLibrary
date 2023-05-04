@@ -7,23 +7,24 @@
 
 #include <udon/com/can/CanBusInterface.hpp>
 #include <udon/com/can/CanInfo.hpp>
+#include <udon/com/serializer/Serializer.hpp>
 
 namespace udon
 {
 
-    template <class MessageTy>
+    template <class Message>
     class CanReader
     {
 
         CanBusInterface& bus;
         CanNodeInfo      node;
-        uint8_t          buffer[sizeof(MessageTy)];
+        uint8_t          buffer[udon::CapacityWithChecksum<Message>()];
 
     public:
         /// @param id 信号識別ID
         CanReader(CanBusInterface& bus, const uint32_t id)
             : bus{ bus }
-            , node{ id, buffer, sizeof(MessageTy), 0 }
+            , node{ id, buffer, sizeof(Message), 0 }
             , buffer{}
         {
             bus.joinRX(node);
@@ -32,7 +33,7 @@ namespace udon
         /// @param コピーコンストラクタ
         CanReader(const CanReader& rhs)
             : bus{ rhs.bus }
-            , node{ rhs.node.id, buffer, sizeof(MessageTy), 0 }
+            , node{ rhs.node.id, buffer, sizeof(Message), 0 }
             , buffer{}
         {
             bus.joinRX(node);
@@ -45,7 +46,7 @@ namespace udon
 
         constexpr size_t length() const noexcept
         {
-            return sizeof(MessageTy);
+            return sizeof(Message);
         }
         constexpr const uint8_t* data() const noexcept
         {
@@ -59,11 +60,13 @@ namespace udon
         }
 
         /// @brief メッセージ構造体を取得
-        MessageTy getMessage() const noexcept
+        Message getMessage() const noexcept
         {
-            MessageTy msg;
-            // memcpy(&msg, node.buffer, sizeof msg);
-            return msg;
+            if(const auto unpacked = udon::Unpack<Message>(buffer))
+            {
+                return *unpacked;
+            }
+            return {};
         }
 
         /// @brief 受信内容を表示

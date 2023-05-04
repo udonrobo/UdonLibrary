@@ -70,7 +70,7 @@ namespace udon
     template <typename T>
     inline constexpr size_t Capacity(T&& arg)
     {
-        return Capacity<std::remove_reference<T>::type>(arg);
+        return Capacity<std::remove_reference_t<T>>(arg);
     }
 
     /// @brief シリアライズ後のバイト数を求める

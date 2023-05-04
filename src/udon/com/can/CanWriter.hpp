@@ -18,18 +18,16 @@ namespace udon
         CanBusInterface& bus;
         CanNodeInfo      node;
 
-        union
-        {
-            uint8_t   buffer[sizeof(MessageTy)];
-            MessageTy message;
-        } u;
+        static constexpr size_t capacity = udon::CapacityWithChecksum<MessageTy>();
+
+        uint8_t buffer[capacity];
 
     public:
         /// @param id 信号識別ID
         CanWriter(CanBusInterface& bus, const uint32_t id)
             : bus{ bus }
-            , node{ id, u.buffer, sizeof(MessageTy), 0 }
-            , u{}
+            , node{ id, buffer, capacity, 0 }
+            , buffer{}
         {
             bus.joinTX(node);
         }
@@ -37,8 +35,8 @@ namespace udon
         /// @param コピーコンストラクタ
         CanWriter(const CanWriter& rhs)
             : bus{ rhs.bus }
-            , node{ rhs.node.id, u.buffer, sizeof(MessageTy), 0 }
-            , u{}
+            , node{ rhs.node.id, buffer, capacity, 0 }
+            , buffer{}
         {
             bus.joinTX(node);
         }
@@ -46,11 +44,6 @@ namespace udon
         ~CanWriter()
         {
             bus.detachTX(node);
-        }
-
-        constexpr size_t length() const noexcept
-        {
-            return sizeof(MessageTy);
         }
 
         /// @brief 通信できているか
@@ -62,12 +55,12 @@ namespace udon
         /// @brief メッセージ構造体をセット
         void setMessage(const MessageTy& message) noexcept
         {
-            u.message = message;
+            udon::Pack(message, buffer);
         }
 
         void showBinary(char end = {}) const noexcept
         {
-            for (auto&& it : u.buffer)
+            for (auto&& it : buffer)
             {
                 Serial.print(it);
                 Serial.print('\t');
@@ -78,7 +71,6 @@ namespace udon
         /// @brief 受信内容を表示
         void show(char end = {}) const noexcept
         {
-            u.message.show();
             Serial.print(end);
         }
     };
