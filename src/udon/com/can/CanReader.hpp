@@ -5,8 +5,7 @@
 
 #pragma once
 
-#include <udon/com/can/CanBusInterface.hpp>
-#include <udon/com/can/CanInfo.hpp>
+#include <udon/com/can/ICanBus.hpp>
 #include <udon/com/serializer/Serializer.hpp>
 
 namespace udon
@@ -16,57 +15,21 @@ namespace udon
     class CanReader
     {
 
-        CanBusInterface& bus;
-        CanNodeInfo      node;
-        uint8_t          buffer[udon::CapacityWithChecksum<Message>()];
+        ICanBus&    bus;
+        CanNodeView node;
 
     public:
         /// @param id 信号識別ID
-        CanReader(CanBusInterface& bus, const uint32_t id)
+        CanReader(ICanBus& bus, const uint32_t id)
             : bus{ bus }
-            , node{ id, buffer, sizeof(Message), 0 }
-            , buffer{}
+            , node{ bus.createRxNode(id, udon::CapacityWithChecksum<Message>()) }
         {
-            bus.joinRX(node);
-        }
-
-        /// @param コピーコンストラクタ
-        CanReader(const CanReader& rhs)
-            : bus{ rhs.bus }
-            , node{ rhs.node.id, buffer, sizeof(Message), 0 }
-            , buffer{}
-        {
-            bus.joinRX(node);
-        }
-
-        ~CanReader()
-        {
-            bus.detachRX(node);
-        }
-
-        constexpr size_t length() const noexcept
-        {
-            return sizeof(Message);
-        }
-        constexpr const uint8_t* data() const noexcept
-        {
-            return buffer;
-        }
-
-        /// @brief 通信できているか
-        operator bool() const noexcept
-        {
-            return micros() - node.timestampUs < 50000;
         }
 
         /// @brief メッセージ構造体を取得
-        Message getMessage() const noexcept
+        udon::optional<Message> getMessage() const noexcept
         {
-            if(const auto unpacked = udon::Unpack<Message>(buffer))
-            {
-                return *unpacked;
-            }
-            return {};
+            return udon::Unpack<Message>(*node.data);
         }
 
         /// @brief 受信内容を表示

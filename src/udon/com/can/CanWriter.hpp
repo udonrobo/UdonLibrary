@@ -5,67 +5,31 @@
 
 #pragma once
 
-#include <udon/com/can/CanBusInterface.hpp>
-#include <udon/com/can/CanInfo.hpp>
+#include <udon/com/can/ICanBus.hpp>
+#include <udon/com/serializer/Serializer.hpp>
 
 namespace udon
 {
 
-    template <class MessageTy>
+    template <class Message>
     class CanWriter
     {
 
-        CanBusInterface& bus;
-        CanNodeInfo      node;
-
-        static constexpr size_t capacity = udon::CapacityWithChecksum<MessageTy>();
-
-        uint8_t buffer[capacity];
+        ICanBus&    bus;
+        CanNodeView node;
 
     public:
         /// @param id 信号識別ID
-        CanWriter(CanBusInterface& bus, const uint32_t id)
+        CanWriter(ICanBus& bus, const uint32_t id)
             : bus{ bus }
-            , node{ id, buffer, capacity, 0 }
-            , buffer{}
+            , node{ bus.createTxNode(id, udon::CapacityWithChecksum<Message>()) }
         {
-            bus.joinTX(node);
-        }
-
-        /// @param コピーコンストラクタ
-        CanWriter(const CanWriter& rhs)
-            : bus{ rhs.bus }
-            , node{ rhs.node.id, buffer, capacity, 0 }
-            , buffer{}
-        {
-            bus.joinTX(node);
-        }
-
-        ~CanWriter()
-        {
-            bus.detachTX(node);
-        }
-
-        /// @brief 通信できているか
-        operator bool() const noexcept
-        {
-            return micros() - node.timestampUs < 50000;
         }
 
         /// @brief メッセージ構造体をセット
-        void setMessage(const MessageTy& message) noexcept
+        void setMessage(const Message& message) noexcept
         {
-            udon::Pack(message, buffer);
-        }
-
-        void showBinary(char end = {}) const noexcept
-        {
-            for (auto&& it : buffer)
-            {
-                Serial.print(it);
-                Serial.print('\t');
-            }
-            Serial.print(end);
+            *node.data = udon::Pack(message);
         }
 
         /// @brief 受信内容を表示

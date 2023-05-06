@@ -1,14 +1,19 @@
 #pragma once
 
+#include <udon/stl/EnableSTL.hpp>
+
+#include <stdint.h>
+#include <vector>
+
 namespace udon
 {
 
-    struct CanNodeInfo
+    /// @brief CanBusクラス内のCanNodeのデータを参照するためのクラス
+    struct CanNodeView
     {
-        uint32_t id;             // node id
-        uint8_t* buffer;         // point buffer array
-        size_t   length;         // buffer length
-        uint32_t timestampUs;    // last buffer interrupt access time [μs]
+        uint32_t              id;
+        std::vector<uint8_t>* data;         // point to can bus data
+        const uint32_t*       timestamp;    // timestamp
     };
 
     struct CanBusErrorInfo
