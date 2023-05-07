@@ -6,15 +6,15 @@
 #pragma once
 
 //                                   vvv teensy3.2 vvv        vvv teensy3.5 vvv         vvv teensy3.6 vvv       vvv teensy4.0/4.1 vvv
-#if 1    // defined(UDON_INCLUDED) && (defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__))
+#if defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__)
 
 #include <FlexCAN_T4.h>       // https://github.com/tonton81/FlexCan_T4.git
 #include <IntervalTimer.h>    // https://github.com/loglow/IntervalTimer.git
 
-#include <udon/com/can/CanInfo.hpp>
-#include <udon/com/can/ICanBus.hpp>
-#include <udon/com/can/CanUtility.hpp>
 #include <udon/algorithm/RingBuffer.hpp>
+#include <udon/com/can/CanInfo.hpp>
+#include <udon/com/can/CanUtility.hpp>
+#include <udon/com/can/ICanBus.hpp>
 
 namespace udon
 {
@@ -68,7 +68,7 @@ namespace udon
 
         /// @brief 通信開始
         /// @param {baudrate} 通信レート
-        void begin(const uint32_t baudrate = 1000000) override
+        void begin(const uint32_t baudrate = 1000000)
         {
             if (rxNodes.size() || txNodes.size())
             {
@@ -79,16 +79,21 @@ namespace udon
             }
             if (rxNodes.size())
             {
-                bus.onReceive(eventRX);
+                bus.onReceive(onReceive);
                 isr.begin(
                     []
-                    { self->bus.events(); },
+                    {
+                        for (int i = 0; i < 10; ++i)
+                        {
+                            self->bus.events();
+                        }
+                    },
                     100);
             }
         }
 
         /// @brief 通信終了
-        void end() override
+        void end()
         {
             isr.end();
             bus.disableFIFO();
@@ -97,11 +102,11 @@ namespace udon
 
         /// @brief バス更新
         /// @param {transmissionIntervalMs} 送信間隔
-        void update(uint32_t transmissionIntervalMs = 5000) override
+        void update(uint32_t transmissionIntervalMs = 5000)
         {
             if (txNodes.size() && micros() - errorInfo.timestampUs >= transmissionIntervalMs)
             {
-                eventTX();
+                onTransmit();
             }
         }
 
@@ -155,7 +160,7 @@ namespace udon
         }
 
     private:
-        static void eventRX(const CAN_message_t& msg)
+        static void onReceive(const CAN_message_t& msg)
         {
             auto node = std::find_if(self->rxNodes.begin(), self->rxNodes.end(), [msg](const Can20ANode& node)
                                      { return node.id == msg.id; });
@@ -169,7 +174,7 @@ namespace udon
                 Can20ANode::SinglePacketSize);
         }
 
-        void eventTX()
+        void onTransmit()
         {
             for (auto&& node : txNodes)
             {
@@ -183,6 +188,7 @@ namespace udon
                     {
                         while (not self->bus.write(msg))
                             ;    // 送信
+                        delayMicroseconds(200);
                     });
             }
         }

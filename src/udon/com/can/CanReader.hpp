@@ -18,24 +18,35 @@ namespace udon
         ICanBus&    bus;
         CanNodeView node;
 
+        Message message;
+
     public:
         /// @param id 信号識別ID
         CanReader(ICanBus& bus, const uint32_t id)
             : bus{ bus }
             , node{ bus.createRxNode(id, udon::CapacityWithChecksum<Message>()) }
+            , message{}
         {
+        }
+
+        void update()
+        {
+            if (const auto unpacked = udon::Unpack<Message>(*node.data))
+            {
+                message = *unpacked;
+            }
         }
 
         /// @brief メッセージ構造体を取得
-        udon::optional<Message> getMessage() const noexcept
+        Message getMessage() const
         {
-            return udon::Unpack<Message>(*node.data);
+            return message;
         }
 
         /// @brief 受信内容を表示
-        void show(char end = {}) const noexcept
+        void show(char end = {}) const
         {
-            getMessage().show();
+            message.show();
             Serial.print(end);
         }
     };

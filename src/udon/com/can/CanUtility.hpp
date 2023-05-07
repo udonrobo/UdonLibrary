@@ -2,8 +2,8 @@
 
 #include <udon/algorithm/ArrayView.hpp>
 
-#include <cmath>
 #include <algorithm>
+#include <cmath>
 
 namespace udon
 {
@@ -137,59 +137,60 @@ namespace udon
     /// @param busName
     /// @param txNodes
     /// @param rxNodes
-    template <typename TxNodesBuffer, typename RxNodesBuffer>
-    inline void PrintBusInfo(
-        const char*        busName,
-        const TxNodesBuffer& txNodes,
-        const RxNodesBuffer& rxNodes,
-        size_t             singlePacketSize)
-    {
-        Serial.printf("Bus: %s\n", busName);
+    // template <typename TxNodesBuffer, typename RxNodesBuffer>
+    // inline void PrintBusInfo(
+    //     const char*          busName,            // _In_
+    //     const TxNodesBuffer& txNodes,            // _In_
+    //     const RxNodesBuffer& rxNodes,            // _In_
+    //     size_t               singlePacketSize    // _In_
+    // )
+    // {
+    //     Serial.printf("Bus: %s\n", busName);
 
-        Serial.printf("\tTX Node\n");
-        for (auto node = txNodes.cbegin(); node != txNodes.cend(); ++node)
-        {
-            Serial.printf("\t\tid:%4x   size:%3dbyte", node->id, (int)node->data.size());
-            if (node->data.size() > singlePacketSize)
-            {
-                Serial.printf(" (multi packet)");
-            }
-            else
-            {
-                Serial.printf(" (single packet)");
-            }
-            for (size_t i = 0; i < node->data.size(); ++i)
-            {
-                if (i % singlePacketSize == 0)
-                {
-                    Serial.printf("\n\t\t\tdata: ");
-                }
-                Serial.printf("%4d", node->data[i]);
-            }
-            Serial.printf("\n");
-        }
+    //     Serial.printf("\tTX Node\n");
+    //     for (auto node = txNodes.cbegin(); node != txNodes.cend(); ++node)
+    //     {
+    //         Serial.printf("\t\tid:%4x   size:%3d byte", node->id, (int)node->data.size());
+    //         if (node->data.size() > singlePacketSize)
+    //         {
+    //             Serial.printf(" (multi packet)");
+    //         }
+    //         else
+    //         {
+    //             Serial.printf(" (single packet)");
+    //         }
+    //         for (size_t i = 0; i < node->data.size(); ++i)
+    //         {
+    //             if (i % singlePacketSize == 0)
+    //             {
+    //                 Serial.printf("\n\t\t\tdata: ");
+    //             }
+    //             Serial.printf("%4d", node->data[i]);
+    //         }
+    //         Serial.printf("\n");
+    //     }
 
-        Serial.printf("\tRX Node\n");
-        for (auto node = rxNodes.cbegin(); node != rxNodes.cend(); ++node)
-        {
-            Serial.printf("\t\tid:%4x   size:%3dbyte", node->id, (int)node->data.size());
-            if (node->data.size() > singlePacketSize)
-            {
-                Serial.printf(" (multi packet)");
-            }
-            else
-            {
-                Serial.printf(" (single packet)");
-            }
-            for (size_t i = 0; i < node->data.size(); ++i)
-            {
-                if (i % singlePacketSize == 0)
-                {
-                    Serial.printf("\n\t\t\tdata: ");
-                }
-                Serial.printf("%4d", node->data[i]);
-            }
-            Serial.printf("\n");
-        }
+    //     Serial.printf("\tRX Node\n");
+    //     for (auto node = rxNodes.cbegin(); node != rxNodes.cend(); ++node)
+    //     {
+    //         Serial.printf("\t\tid:%4x   size:%3d byte", node->id, (int)node->data.size());
+    //         if (node->data.size() > singlePacketSize)
+    //         {
+    //             Serial.printf(" (multi packet)");
+    //         }
+    //         else
+    //         {
+    //             Serial.printf(" (single packet)");
+    //         }
+    //         for (size_t i = 0; i < node->data.size(); ++i)
+    //         {
+    //             if (i % singlePacketSize == 0)
+    //             {
+    //                 Serial.printf("\n\t\t\tdata: ");
+    //             }
+    //             Serial.printf("%4d", node->data[i]);
+    //         }
+    //         Serial.printf("\n");
+    //     }
     }
 }    // namespace udon
