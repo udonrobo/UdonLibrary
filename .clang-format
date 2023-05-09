@@ -28,3 +28,6 @@ PPIndentWidth: 4
 BreakConstructorInitializers: BeforeComma
 PointerAlignment: Left
 ReferenceAlignment: Left
+
+<!-- プリプロセッサーディレクティブのインデント -->
+IndentPPDirectives: AfterHash
