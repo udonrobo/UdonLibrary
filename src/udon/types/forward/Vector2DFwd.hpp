@@ -191,6 +191,13 @@ namespace udon
 
         udon::Polar_impl<value_type> toPolar() const noexcept;
 
+#ifdef SIV3D_INCLUDED
+		s3d::Vec2 asSivVec2() const noexcept
+		{
+			return { x, -y };
+		}
+#endif
+
 #ifdef ARDUINO
         /// @brief デバッグ出力
         void show() const

@@ -91,13 +91,13 @@ namespace udon
             *this = {};
         }
 
-        //template <size_t WheelCount>
-        //std::array<int16_t, WheelCount> toOmni() const noexcept
+        // template <size_t WheelCount>
+        // std::array<int16_t, WheelCount> toOmni() const noexcept
         //{
-        //    std::array<int16_t, WheelCount> omni;
-        //    // todo
-        //    return omni;
-        //}
+        //     std::array<int16_t, WheelCount> omni;
+        //     // todo
+        //     return omni;
+        // }
 
         /// @brief 独立ステアリング機構のタイヤ出力値、旋回角を取得する
         /// @param powerLimit ホイール出力値の最大値
@@ -119,32 +119,31 @@ namespace udon
 
             for (size_t i = 0; i < WheelCount; ++i)
             {
-                vectors.at(i) = vector + turnVec.rotated(udon::Pi * (i + 3) / 4);
+                vectors.at(i) = this->vector + turnVec.rotated(udon::Pi * (i * 2 + 3) / WheelCount);
             }
 
             // 方向ベクトルから極座標系(theta:旋回角, r:タイヤ出力)に変換
-            std::array<udon::Polar, WheelCount> polars;
+            std::array<udon::Polar, WheelCount> modules;
 
             for (size_t i = 0; i < WheelCount; ++i)
             {
-                polars.at(i) = vectors.at(i).toPolar();
+                modules.at(i) = vectors.at(i).toPolar();
             }
 
             // 上で算出した出力値は {limit} を超える場合があります。
             // よって超えた場合、最大出力のモジュールの出力を {limit} として他のモジュールの出力を圧縮します。
             // 出力値はベクトルの長さから求めるため負にならない {max} は正の値であることが保証
-            auto&& max = *std::max_element(polars.begin(), polars.end(), [](const udon::Polar& lhs, const udon::Polar& rhs)
+            auto&& max = *std::max_element(modules.begin(), modules.end(), [](const udon::Polar& lhs, const udon::Polar& rhs)
                                            { return lhs.r < rhs.r; });
 
             if (max.r > powerLimit)
             {
                 const auto ratio = powerLimit / max.r;
-                std::for_each(polars.begin(), polars.end(),
-                              [ratio](udon::Polar& polar)
-                              { polar.r *= ratio; });
+                std::for_each(modules.begin(), modules.end(), [ratio](udon::Polar& module)
+                              { module.r *= ratio; });
             }
 
-			return polars;
+            return modules;
         }
 
 #ifdef ARDUINO
