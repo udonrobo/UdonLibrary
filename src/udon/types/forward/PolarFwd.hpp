@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <udon/com/serializer/Serializer.hpp>
 
@@ -58,7 +58,7 @@ namespace udon
         constexpr bool operator==(const Polar_impl& rhs) const noexcept { return r == rhs.r && theta == rhs.theta; }
         constexpr bool operator!=(const Polar_impl& rhs) const noexcept { return !(*this == rhs); }
 
-        constexpr Vector2D<value_type> toVector();
+        Vector2D<value_type> toVector() const noexcept;
 
         /// @brief シリアライズ後のバイト数を求める
         /// @return

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <math.h>
 #include <stdint.h>
@@ -12,32 +12,11 @@ namespace udon
     constexpr double DegToRad = 0.017453292519943295769236907684886;
     constexpr double RadToDeg = 57.295779513082320876798154814105;
 
-    template <class L, class R>
-    inline constexpr auto
-    Min(const L& lhs, const R& rhs) -> decltype(lhs + rhs)
-    {
-        return lhs < rhs ? lhs : rhs;
-    }
-
-    template <class L, class R>
-    inline constexpr auto
-    Max(const L& lhs, const R& rhs) -> decltype(lhs + rhs)
-    {
-        return lhs > rhs ? lhs : rhs;
-    }
-
-    template <class Ty>
-    inline constexpr Ty
-    Abs(const Ty& rhs)
-    {
-        return rhs > 0 ? rhs : -rhs;
-    }
-
     template <class A, class B>
     inline constexpr A
     Constrain(const A& amt, const B& low, const B& high)
     {
-        return udon::Min(udon::Max(amt, low), high);
+        return min(max(amt, low), high);
     }
 
     template <class Ty>
@@ -111,6 +90,12 @@ namespace udon
         {
             return modAngle;
         }
+    }
+
+    inline double
+    Map(const double value, const double inputMin, const double inputMax, const double outputMin, const double outputMax)
+    {
+        return (value - inputMin) * (outputMax - outputMin) / (inputMax - inputMin) + outputMin;
     }
 
 }    // namespace udon

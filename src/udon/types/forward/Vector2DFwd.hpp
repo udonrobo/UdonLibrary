@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <udon/com/serializer/Serializer.hpp>
 
@@ -8,13 +8,13 @@ namespace udon
     template <typename>
     struct Polar_impl;
 
-    template<typename>
+    template <typename>
     struct Vector3D;
 
-    template<typename>
+    template <typename>
     struct Vector4D;
 
-    template<typename>
+    template <typename T>
     struct Vector2D
     {
 
@@ -189,7 +189,7 @@ namespace udon
 
         udon::Vector4D<value_type> xy00() const noexcept;
 
-        udon::Polar_impl<value_type> toPoler() const noexcept;
+        udon::Polar_impl<value_type> toPolar() const noexcept;
 
 #ifdef ARDUINO
         /// @brief デバッグ出力

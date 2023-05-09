@@ -1,6 +1,6 @@
-#pragma once
+﻿#pragma once
 
-#include <udon/types/forward/PolerFwd.hpp>
+#include <udon/types/forward/PolarFwd.hpp>
 #include <udon/types/forward/Vector2DFwd.hpp>
 
 template <typename T>
