@@ -1,8 +1,9 @@
-/// @file PS5コントローラー受信クラス
+﻿/// @file PS5コントローラー受信クラス
 
 #pragma once
 
-#include <algorithm>    // std::move
+#include <algorithm>
+
 #include <udon/algorithm/Button.hpp>
 #include <udon/message/PadPS5.hpp>
 #include <udon/traits/HasMember.hpp>
@@ -11,8 +12,8 @@
 
 namespace udon
 {
-
-    /// @brief S5コントローラー受信クラス
+	
+    /// @brief PS5コントローラー受信クラス
     /// @tparam Reader 受信クラス
     /// @details
     /// Readerはテンプレート引数にudon::message::PadPS5を指定できる必要があります。
@@ -85,12 +86,26 @@ namespace udon
         uint8_t analogR2 = 0;
 
     public:
+        /// @brief デフォルトコンストラクタ
+        /// @remark 受信クラスがデフォルトコンストラクタを持つ場合インスタンス化されます。
+        /// @tparam T
+        template <typename T = reader_type, typename std::enable_if<std::is_default_constructible_v<T>>::type* = nullptr>
+        PadPS5()
+            : reader()
+        {
+        }
+
+        /// @brief コンストラクタ
+        /// @remark 受信クラスがデフォルトコンストラクタを持たない場合インスタンス化されます。
+        /// @param reader 受信クラス
+        template <typename T = reader_type, typename std::enable_if<!std::is_default_constructible_v<T>>::type* = nullptr>
         PadPS5(reader_type&& reader)
             : reader(std::move(reader))
         {
         }
 
         /// @brief 開始
+        /// @remark 受信クラスがbegin()を持つ場合インスタンス化されます。
         /// @tparam T
         /// @return
         template <typename T = reader_type>
@@ -100,15 +115,20 @@ namespace udon
         }
 
         /// @brief 更新
+        /// @remark 受信クラスがupdate()を持つ場合インスタンス化されます。
         /// @tparam T
         /// @return
-        template <typename T = reader_type>
-        auto update() -> typename std::enable_if<udon::has_member_function_update<T>::value>::type
+        template <typename T = reader_type, typename std::enable_if<udon::has_member_function_update<T>::value>::type* = nullptr>
+        void update()
         {
             reader.update();
             _update();
         }
+
         /// @brief 更新
+        /// @remark 受信クラスがupdate()を持たない場合インスタンス化されます。
+        /// @tparam T
+        /// @return
         template <typename T = reader_type>
         auto update() -> typename std::enable_if<!udon::has_member_function_update<T>::value>::type
         {
@@ -272,26 +292,50 @@ namespace udon
             circle.update(msg.circle);
             cross.update(msg.cross);
             square.update(msg.square);
+
             up.update(msg.up);
             right.update(msg.right);
             down.update(msg.down);
             left.update(msg.left);
+
             l1.update(msg.l1);
             r1.update(msg.r1);
             l2.update(msg.l2);
             r2.update(msg.r2);
             l3.update(msg.l3);
             r3.update(msg.r3);
+
             create.update(msg.create);
             option.update(msg.option);
             touch.update(msg.touch);
             mic.update(msg.mic);
 
-            // 受信したスティックの値は127が中央値で、0～255の範囲で表される
-            // 0～255の範囲を-255～255の範囲に変換する
-            const auto decodeStick = [](uint8_t raw) { return (raw - 127) * 2; };
+            // -127 ~ 127(int8_t) -> -254 ~ 254(int16_t)
+            const auto decodeStick = [](int8_t raw)
+                -> int16_t
+            {
+                return raw * 2;
+            };
 
-            leftStick  = {
+            /// @brief デッドゾーン処理
+            const auto cutDeadCone = [](double value, double deadZone)
+                -> double
+            {
+                if (value > deadZone)
+                {
+                    return 255 * (value - deadZone) / (255 - deadZone);
+                }
+                else if (value < -deadZone)
+                {
+                    return 255 * (value + deadZone) / (255 - deadZone);
+                }
+                else
+                {
+                    return 0.0;
+                }
+            };
+
+            leftStick = {
                 cutDeadCone(decodeStick(msg.analogLeftX), 10),
                 cutDeadCone(decodeStick(msg.analogLeftY), 10),
             };
@@ -303,29 +347,15 @@ namespace udon
             analogL2 = msg.analogL2;
             analogR2 = msg.analogR2;
         }
-
-        /// @brief デッドゾーン処理
-        double cutDeadCone(double value, double deadZone)
-        {
-            if (value > deadZone)
-            {
-                return (value - deadZone) / (255 - deadZone);
-            }
-            else if (value < -deadZone)
-            {
-                return (value + deadZone) / (255 - deadZone);
-            }
-            else
-            {
-                return 0.0;
-            }
-        }
     };
+
 }    // namespace udon
 
+#ifdef ARDUINO
+
 #include <udon/com/can/CanReader.hpp>
-#include <udon/com/uart/UartReader.hpp>
 #include <udon/com/i2c/I2cMasterReader.hpp>
+#include <udon/com/uart/UartReader.hpp>
 
 namespace udon
 {
@@ -340,3 +370,5 @@ namespace udon
     using I2cPadPS5 = udon::PadPS5<udon::I2cMasterReader>;
 
 }    // namespace udon
+
+#endif

@@ -10,37 +10,37 @@ namespace udon
     {
         struct PadPS5
         {
-            bool isConnected;
+			bool isConnected;
 
-            bool triangle;
-            bool circle;
-            bool cross;
-            bool square;
+			bool triangle;
+			bool circle;
+			bool cross;
+			bool square;
 
-            bool up;
-            bool right;
-            bool down;
-            bool left;
+			bool up;
+			bool right;
+			bool down;
+			bool left;
 
-            bool l1;
-            bool r1;
-            bool l2;
-            bool r2;
-            bool l3;
-            bool r3;
+			bool l1;
+			bool r1;
+			bool l2;
+			bool r2;
+			bool l3;
+			bool r3;
 
-            uint8_t analogRightX;
-            uint8_t analogRightY;
-            uint8_t analogLeftX;
-            uint8_t analogLeftY;
-            uint8_t analogR2;
-            uint8_t analogL2;
+			int8_t analogRightX;
+			int8_t analogRightY;
+			int8_t analogLeftX;
+			int8_t analogLeftY;
+			int8_t analogR2;
+			int8_t analogL2;
 
-            bool create;
-            bool option;
-            bool touch;
+			bool create;
+			bool option;
+			bool touch;
 
-            bool mic;
+			bool mic;
 
 #ifdef ARDUINO
 			/// @brief デバッグ出力
