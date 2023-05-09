@@ -5,13 +5,16 @@
 namespace udon
 {
 
-    template<typename T>
+    template <typename>
+    struct Polar_impl;
+
+    template<typename>
     struct Vector3D;
 
-    template<typename T>
+    template<typename>
     struct Vector4D;
 
-    template<typename T>
+    template<typename>
     struct Vector2D
     {
 
@@ -185,6 +188,8 @@ namespace udon
         udon::Vector3D<value_type> xy0() const noexcept;
 
         udon::Vector4D<value_type> xy00() const noexcept;
+
+        udon::Polar_impl<value_type> toPoler() const noexcept;
 
 #ifdef ARDUINO
         /// @brief デバッグ出力
