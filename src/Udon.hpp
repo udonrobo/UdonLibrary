@@ -1,7 +1,9 @@
 #pragma once
 
+// ヘッダーを一括でインクルードしない場合は、{UDON_INCLUDE_SELECTABLE} マクロを定義してから、必要なヘッダーを個別にインクルードしてください。
 #ifndef UDON_INCLUDE_SELECTABLE
 
+// UdonLibrary が含まれているかどうかを判定するマクロ
 #define UDON_INCLUDED
 
 /////////////////////////////////////////////////////////////////////
@@ -10,10 +12,10 @@
 //
 /////////////////////////////////////////////////////////////////////
 
-/// @brief モーター
+// モーター
 #include <udon/actuator/Motor.hpp>
 
-/// @brief サーボ
+// サーボ
 #include <udon/actuator/ServoSpeed.hpp>
 
 /////////////////////////////////////////////////////////////////////
@@ -22,26 +24,26 @@
 //
 /////////////////////////////////////////////////////////////////////
 
-/// @brief 配列参照
-#include <udon/algorithm/ArrayView.hpp>
+// 配列参照
+// #include <udon/algorithm/ArrayView.hpp>
 
-/// @brief デリゲート / メンバ関数ポインタ変換
-#include <udon/algorithm/Delegate.hpp>
+// // デリゲート / メンバ関数ポインタ変換
+// #include <udon/algorithm/Delegate.hpp>
 
-/// @brief CRC-8 チェックサム / 誤り検出
-#include <udon/algorithm/CRC8.hpp>
+// // CRC-8 チェックサム / 誤り検出
+// #include <udon/algorithm/CRC8.hpp>
 
-/// @brief リングバッファ / 静的疑似可変長配列キュー
-#include <udon/algorithm/RingBuffer.hpp>
+// // リングバッファ / 静的疑似可変長配列キュー
+// #include <udon/algorithm/RingBuffer.hpp>
 
-/// @brief PIDフィードバック制御器
-#include <udon/algorithm/PidController.hpp>
+// // PIDフィードバック制御器
+// #include <udon/algorithm/PidController.hpp>
 
-/// @brief 移動平均
-#include <udon/algorithm/MovingAverage.hpp>
+// // 移動平均
+// #include <udon/algorithm/MovingAverage.hpp>
 
-/// @brief ループ周期制御
-#include <udon/algorithm/LoopCycleController.hpp>
+// // ループ周期制御
+// #include <udon/algorithm/LoopCycleController.hpp>
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -49,20 +51,20 @@
 //
 /////////////////////////////////////////////////////////////////////
 
-/// @brief CAN通信
-#include <udon/com/can/Can.hpp>
+// CAN通信
+// #include <udon/com/can/Can.hpp>
 
-/// @brief UART通信
-#include <udon/com/uart/Uart.hpp>
+// // UART通信
+// #include <udon/com/uart/Uart.hpp>
 
-/// @brief シリアライザー
-#include <udon/com/serializer/Serializer.hpp>
+// // シリアライザー
+// #include <udon/com/serializer/Serializer.hpp>
 
-/// @brief コントローラー
-#include <udon/com/pad/PadPS5.hpp>
+// // コントローラー
+// #include <udon/com/pad/PadPS5.hpp>
 
-/// @brief 通信用構造体群
-#include <udon/message/Message.hpp>
+// // 通信用構造体群
+// #include <udon/message/Message.hpp>
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -70,8 +72,8 @@
 //
 /////////////////////////////////////////////////////////////////////
 
-/// @brief SDカード
-#include <udon/filesystem/sd/Parameter.hpp>
+// SDカード
+// #include <udon/filesystem/sd/Parameter.hpp>
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -79,7 +81,7 @@
 //
 /////////////////////////////////////////////////////////////////////
 
-/// @brief 算術関数
+// 算術関数
 #include <udon/math/Math.hpp>
 
 /////////////////////////////////////////////////////////////////////
@@ -88,7 +90,7 @@
 //
 /////////////////////////////////////////////////////////////////////
 
-/// @brief 算術関数
+// IMU / 慣性計測装置
 #include <udon/sensor/imu/Imu.hpp>
 
 /////////////////////////////////////////////////////////////////////
@@ -97,7 +99,35 @@
 //
 /////////////////////////////////////////////////////////////////////
 
-#include <udon/types/Types.hpp>
+// 固定長浮動小数点型
+#include <udon/types/Float.hpp>
+
+// 2次元ベクトル
+#include <udon/types/Vector2D.hpp>
+
+// 3次元ベクトル
+#include <udon/types/Vector3D.hpp>
+
+// 4次元ベクトル
+#include <udon/types/Vector4D.hpp>
+
+// オイラー角
+#include <udon/types/Euler.hpp>
+
+// ロボットの位置
+#include <udon/types/Position.hpp>
+
+// クオータニオン
+#include <udon/types/Quaternion.hpp>
+
+// 2次元スプライン曲線
+#include <udon/types/Spline2D.hpp>
+
+// 3次元スプライン曲線
+#include <udon/types/Spline3D.hpp>
+
+// 連続する線分
+#include <udon/types/LineString.hpp>
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -105,7 +135,7 @@
 //
 /////////////////////////////////////////////////////////////////////
 
-/// @brief メンバー関数の有無
+// メンバー関数の有無
 #include <udon/traits/HasMember.hpp>
 
 /////////////////////////////////////////////////////////////////////
@@ -114,7 +144,7 @@
 //
 /////////////////////////////////////////////////////////////////////
 
-/// @brief デバッグ
+// デバッグ / ログ出力
 #include <udon/utility/Show.hpp>
 
 #endif

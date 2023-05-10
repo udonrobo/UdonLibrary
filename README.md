@@ -4,7 +4,7 @@
 
 [![Sketch Build](https://github.com/udonrobo/UdonLibrary/actions/workflows/arduino-cli.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/arduino-cli.yml)
 
-## ライブラリ管理
+## ダウンロード
 
 -   git
 
@@ -24,8 +24,9 @@
     > # 調べたディレクトリに移動
     > cd ~\Documents\Arduino\libraries
     >
-    > # ライブラリクローン
+    > # 必要なライブラリをクローン
     > git clone https://github.com/udonrobo/UdonLibrary.git
+    > git clone https://github.com/udonrobo/UdonArduinoSTL.git
     > git clone https://github.com/autowp/arduino-mcp2515.git
     > git clone https://github.com/adafruit/Adafruit_BusIO.git
     > git clone https://github.com/adafruit/Adafruit_Sensor.git
@@ -41,6 +42,29 @@
     > # ライブラリを更新
     > git pull
     > ```
+
+## 使用方法
+
+`Udon.hpp` をインクルードすることで、全機能を使用できるようになります。
+
+```cpp
+#include <Udon.hpp>
+
+void setup() {}
+void loop() {}
+```
+
+`UDON_INCLUDE_SELECTABLE` を定義することで、個別にインクルードすることもできます。コンパイル時間を短縮することができます。
+
+```cpp
+#define UDON_INCLUDE_SELECTABLE
+
+#include <Udon.hpp>
+#include <udon/types/Vector2D.hpp>  // udon::Vec2
+
+void setup() {}
+void loop() {}
+```
 
 ## 機能一覧
 
@@ -58,6 +82,12 @@
 
 -   アルゴリズム
 
+    -   コンテナ
+
+        > `udon::ArrayView`: 配列参照
+        >
+        > `udon::RingBuffer`: 擬似可変長配列
+
     -   フィードバック制御器
 
         > `udon::PidController`
@@ -70,9 +100,7 @@
 
     -   CAN 通信
 
-        > `udon::CanBusTeensy`
-        >
-        > `udon::CanBusSpi`
+        > `udon::Can20ABus`
         >
         > `udon::CanReader`
         >
@@ -80,7 +108,15 @@
 
     -   I2C 通信
 
-        > --
+        > `udon::I2cBus`
+        >
+        > `udon::I2cMasterReader`
+        >
+        > `udon::I2cMasterWriter`
+        >
+        > `udon::I2cSlaveReader`
+        >
+        > `udon::I2cSlaveWriter`
 
     -   SPI 通信
 
@@ -88,11 +124,15 @@
 
     -   UART 通信
 
-        > --
+        > `udon::UartBus`
+        >
+        > `udon::UartReader`
+        >
+        > `udon::UartWriter`
 
     -   シリアライゼーション
 
-        > `udon::Serializer`
+        > `udon::Pack`, `udon::Unpack`
 
     -   コントローラー
 
@@ -108,9 +148,11 @@
 
 -   センサー
 
-    -   BNO055
+    -   慣性計測装置
 
-        > --
+        > `udon::Imu`
+        >
+        > `udon::BNO055`
 
 -   システム
 
@@ -120,11 +162,11 @@
 
 -   ユーザー定義型
 
-    -   固定 bit 長浮動小数点型
+    -   固定ビット長浮動小数点型
 
         > `udon::float16_t`, `udon::float32_t`, `udon::float64_t`, `udon::float80_t`, `udon::float128_t`
 
-    -   ベクトル演算
+    -   座標系
 
         > `udon::Vector2D`: 二次元ベクトル
         >
@@ -133,6 +175,8 @@
         > `udon::Vector4D`: 四次元ベクトル
         >
         > `udon::Position`: ロボットの位置
+        >
+        > `udon::Polar`: 極座標
         >
         > `udon::Quaternion`: クオータニオン
 
