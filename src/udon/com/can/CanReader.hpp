@@ -5,71 +5,48 @@
 
 #pragma once
 
-#include <udon/com/can/CanBusInterface.hpp>
-#include <udon/com/can/CanInfo.hpp>
+#include <udon/com/can/ICanBus.hpp>
+#include <udon/com/serializer/Serializer.hpp>
 
 namespace udon
 {
 
-    template <class MessageTy>
+    template <class Message>
     class CanReader
     {
 
-        CanBusInterface& bus;
-        CanNodeInfo      node;
-        uint8_t          buffer[sizeof(MessageTy)];
+        ICanBus&    bus;
+        CanNodeView node;
+
+        Message message;
 
     public:
         /// @param id 信号識別ID
-        CanReader(CanBusInterface& bus, const uint32_t id)
+        CanReader(ICanBus& bus, const uint32_t id)
             : bus{ bus }
-            , node{ id, buffer, sizeof(MessageTy), 0 }
-            , buffer{}
+            , node{ bus.createRxNode(id, udon::CapacityWithChecksum<Message>()) }
+            , message{}
         {
-            bus.joinRX(node);
         }
 
-        /// @param コピーコンストラクタ
-        CanReader(const CanReader& rhs)
-            : bus{ rhs.bus }
-            , node{ rhs.node.id, buffer, sizeof(MessageTy), 0 }
-            , buffer{}
+        void update()
         {
-            bus.joinRX(node);
-        }
-
-        ~CanReader()
-        {
-            bus.detachRX(node);
-        }
-
-        constexpr size_t length() const noexcept
-        {
-            return sizeof(MessageTy);
-        }
-        constexpr const uint8_t* data() const noexcept
-        {
-            return buffer;
-        }
-
-        /// @brief 通信できているか
-        operator bool() const noexcept
-        {
-            return micros() - node.timestampUs < 50000;
+            if (const auto unpacked = udon::Unpack<Message>(*node.data))
+            {
+                message = *unpacked;
+            }
         }
 
         /// @brief メッセージ構造体を取得
-        MessageTy getMessage() const noexcept
+        Message getMessage() const
         {
-            MessageTy msg;
-            // memcpy(&msg, node.buffer, sizeof msg);
-            return msg;
+            return message;
         }
 
         /// @brief 受信内容を表示
-        void show(char end = {}) const noexcept
+        void show(char end = {}) const
         {
-            getMessage().show();
+            message.show();
             Serial.print(end);
         }
     };

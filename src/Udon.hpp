@@ -1,5 +1,7 @@
 #pragma once
 
+#ifndef UDON_INCLUDE_SELECTABLE
+
 #define UDON_INCLUDED
 
 /////////////////////////////////////////////////////////////////////
@@ -20,11 +22,26 @@
 //
 /////////////////////////////////////////////////////////////////////
 
-/// @brief フィードバック制御器
+/// @brief 配列参照
+#include <udon/algorithm/ArrayView.hpp>
+
+/// @brief デリゲート / メンバ関数ポインタ変換
+#include <udon/algorithm/Delegate.hpp>
+
+/// @brief CRC-8 チェックサム / 誤り検出
+#include <udon/algorithm/CRC8.hpp>
+
+/// @brief リングバッファ / 静的疑似可変長配列キュー
+#include <udon/algorithm/RingBuffer.hpp>
+
+/// @brief PIDフィードバック制御器
 #include <udon/algorithm/PidController.hpp>
 
 /// @brief 移動平均
 #include <udon/algorithm/MovingAverage.hpp>
+
+/// @brief ループ周期制御
+#include <udon/algorithm/LoopCycleController.hpp>
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -84,15 +101,6 @@
 
 /////////////////////////////////////////////////////////////////////
 //
-//  システム / system
-//
-/////////////////////////////////////////////////////////////////////
-
-/// @brief ループ周期制御
-#include <udon/algorithm/LoopCycleController.hpp>
-
-/////////////////////////////////////////////////////////////////////
-//
 //  トレイト / trait
 //
 /////////////////////////////////////////////////////////////////////
@@ -108,3 +116,5 @@
 
 /// @brief デバッグ
 #include <udon/utility/Show.hpp>
+
+#endif

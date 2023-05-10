@@ -67,3 +67,6 @@ jobs:
             - source-url: https://github.com/udonrobo/UdonArduinoSTL.git
             - source-url: https://github.com/autowp/arduino-mcp2515.git
             - source-url: https://github.com/Richard-Gemmell/teensy4_i2c.git
+            - source-url: https://github.com/adafruit/Adafruit_BusIO.git
+            - source-url: https://github.com/adafruit/Adafruit_Sensor.git
+            - source-url: https://github.com/adafruit/Adafruit_BNO055.git

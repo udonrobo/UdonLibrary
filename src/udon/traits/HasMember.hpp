@@ -21,7 +21,6 @@
         {                                                \
             return false;                                \
         }                                                \
-                                                         \
     public:                                              \
         static constexpr bool value = check<T>(nullptr); \
     };

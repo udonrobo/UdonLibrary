@@ -1,4 +1,4 @@
-/// @file   CanBusTeensy.hpp
+/// @file   Can20ABus.hpp
 /// @date   2023/01/13
 /// @brief  FlexCan_T4ライブラリを用いたCanバス管理クラス
 /// @author 大河 祐介
@@ -6,45 +6,62 @@
 #pragma once
 
 //                                   vvv teensy3.2 vvv        vvv teensy3.5 vvv         vvv teensy3.6 vvv       vvv teensy4.0/4.1 vvv
-#if defined(UDON_INCLUDED) && (defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__))
+#if defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__)
 
 #include <FlexCAN_T4.h>       // https://github.com/tonton81/FlexCan_T4.git
 #include <IntervalTimer.h>    // https://github.com/loglow/IntervalTimer.git
 
-#include <udon/com/can/CanBusInterface.hpp>
+#include <udon/algorithm/RingBuffer.hpp>
 #include <udon/com/can/CanInfo.hpp>
-#include <udon/stl/list.hpp>    // udon::list
+#include <udon/com/can/CanUtility.hpp>
+#include <udon/com/can/ICanBus.hpp>
 
 namespace udon
 {
 
     /// @tparam {Bus} バス種類 (Can0,Can1,Can2,Can3)
     template <CAN_DEV_TABLE Bus>
-    class CanBusTeensy
-        : public CanBusInterface
+    class Can20ABus
+        : public ICanBus
     {
 
         FlexCAN_T4<Bus, RX_SIZE_256, TX_SIZE_256> bus;
         IntervalTimer                             isr;
 
-        using DataLine = udon::list<CanNodeInfo*>;
-        DataLine        tx;
-        DataLine        rx;
-        CanBusErrorInfo error;
+        struct Can20ANode
+        {
+            static constexpr size_t SinglePacketSize = 8;
 
-        static CanBusTeensy* self;
+            uint16_t id;    // id: 11bit
+
+            std::vector<uint8_t> data;
+
+            uint32_t timestamp;
+
+            CanNodeView view()
+            {
+                return { id, &data, &timestamp };
+            }
+        };
+
+        udon::RingBuffer<Can20ANode, 32> txNodes;
+        udon::RingBuffer<Can20ANode, 64> rxNodes;
+
+        udon::CanBusErrorInfo errorInfo;
+
+        static Can20ABus* self;
 
     public:
-        CanBusTeensy()
+        Can20ABus()
             : bus{}
-            , tx{}
-            , rx{}
-            , error{}
+            , isr{}
+            , txNodes{}
+            , rxNodes{}
         {
             self = this;
         }
 
-        ~CanBusTeensy()
+        ~Can20ABus()
         {
             end();
         }
@@ -53,19 +70,24 @@ namespace udon
         /// @param {baudrate} 通信レート
         void begin(const uint32_t baudrate = 1000000)
         {
-            if (rx.size() || tx.size())
+            if (rxNodes.size() || txNodes.size())
             {
                 bus.begin();
                 bus.setBaudRate(baudrate);
                 bus.enableFIFO();
                 bus.enableFIFOInterrupt();
             }
-            if (rx.size())
+            if (rxNodes.size())
             {
-                bus.onReceive(eventRX);
+                bus.onReceive(onReceive);
                 isr.begin(
                     []
-                    { self->bus.events(); },
+                    {
+                        for (int i = 0; i < 10; ++i)
+                        {
+                            self->bus.events();
+                        }
+                    },
                     100);
             }
         }
@@ -79,146 +101,102 @@ namespace udon
         }
 
         /// @brief バス更新
-        /// @param {writeIntervalUs} 送信間隔
-        void update(uint32_t writeIntervalUs = 5000)
+        /// @param {transmissionIntervalMs} 送信間隔
+        void update(uint32_t transmissionIntervalMs = 5000)
         {
-            if (tx.size() && micros() - error.timestampUs >= writeIntervalUs)
+            if (txNodes.size() && micros() - errorInfo.timestampUs >= transmissionIntervalMs)
             {
-                eventTX();
+                onTransmit();
             }
         }
 
-        /// @brief エラー情報取得
-        /// @return CanBusErrorInfo構造体インスタンス
-        CanBusErrorInfo getErrorInfo() const
+        void show()
         {
-            return error;
+            PrintBusInfo("CAN 2.0A", txNodes, rxNodes, Can20ANode::SinglePacketSize);
         }
 
-        /// @brief TXノードをバスに参加
-        /// @param node
-        void joinTX(CanNodeInfo& node) override
+        /// @brief TXノードを作成する
+        /// @param id ノードID [11bit]
+        /// @param size データサイズ [byte]
+        /// @return CanNodeView TXノードバッファの参照
+        CanNodeView createTxNode(uint16_t id, size_t size) override
         {
-            join(tx, node);
+            auto it = std::find_if(txNodes.begin(), txNodes.end(), [id](const Can20ANode& node)
+                                   { return node.id == id; });
+            if (it == txNodes.end())
+            {
+                // not found node => create new node
+                txNodes.push({ id,
+                               std::vector<uint8_t>(size) });
+                return txNodes.back().view();
+            }
+            else
+            {
+                // return existing node
+                return it->view();
+            }
         }
 
-        /// @brief RXノードをバスに参加
-        /// @param node
-        void joinRX(CanNodeInfo& node) override
+        /// @brief RXノードを作成する
+        /// @param id ノードID [11bit]
+        /// @param size データサイズ [byte]
+        /// @return CanNodeView RXノードバッファの参照
+        CanNodeView createRxNode(uint16_t id, size_t size) override
         {
-            join(rx, node);
-        }
-
-        /// @brief RXノードをバスから解放
-        /// @param node
-        void detachRX(CanNodeInfo& node) override
-        {
-            detach(rx, node);
-        }
-
-        /// @brief TXノードをバスから解放
-        /// @param node
-        void detachTX(CanNodeInfo& node) override
-        {
-            detach(tx, node);
+            auto it = std::find_if(rxNodes.begin(), rxNodes.end(), [id](const Can20ANode& node)
+                                   { return node.id == id; });
+            if (it == rxNodes.end())
+            {
+                // not found node => create new node
+                rxNodes.push({ id,
+                               std::vector<uint8_t>(size) });
+                return rxNodes.back().view();
+            }
+            else
+            {
+                // return existing node
+                return it->view();
+            }
         }
 
     private:
-        /// @brief ライブラリクラスからバスのエラー情報を取得
-        static CanBusErrorInfo getError()
+        static void onReceive(const CAN_message_t& msg)
         {
-            CAN_error_t e;
-            self->bus.error(e, false);
-            return {
-                e.TX_ERR_COUNTER,
-                e.RX_ERR_COUNTER,
-                micros()
-            };
-        }
-
-        static void eventRX(const CAN_message_t& msg)
-        {
-            const auto event = [&msg](CanNodeInfo* node)
+            auto node = std::find_if(self->rxNodes.begin(), self->rxNodes.end(), [msg](const Can20ANode& node)
+                                     { return node.id == msg.id; });
+            if (node == self->rxNodes.end())
             {
-                const uint8_t index = msg.buf[0];    // 先頭1バイト : パケット番号
-                for (uint8_t i = 0; i < 7; i++)      // 8バイト受信データをバイト列にデコード
-                {
-                    const uint8_t bufIndex = i + index * 7;
-                    if (bufIndex < node->length)
-                        node->buffer[bufIndex] = msg.buf[i + 1];
-                    else
-                        break;
-                }
-                node->timestampUs = micros();
-            };
-            for (auto&& it : self->rx)
-            {
-                if (msg.id == it->id)
-                {
-                    event(it);
-                }
+                return;
             }
-            // self->error = getError();
+            udon::Unpacketize(
+                { const_cast<CAN_message_t&>(msg).buf },
+                { node->data.data(), node->data.size() },
+                Can20ANode::SinglePacketSize);
         }
 
-        static void eventTX()
+        void onTransmit()
         {
-            const auto event = [](CanNodeInfo* node)
+            for (auto&& node : txNodes)
             {
-                // 一度に8バイトしか送れないため、パケットに分割し送信
-                for (size_t index = 0; index < ceil(node->length / 7.0); index++)
-                {
-                    CAN_message_t msg;
-                    msg.id     = node->id;
-                    msg.buf[0] = index;                // 先頭1バイト : パケット番号
-                    for (uint8_t i = 0; i < 7; i++)    // バイト列を8バイト受信データにエンコード
+                CAN_message_t msg{};
+                msg.id = node.id;
+                udon::Packetize(
+                    { node.data.data(), node.data.size() },
+                    { msg.buf },
+                    Can20ANode::SinglePacketSize,
+                    [&msg]()
                     {
-                        const uint8_t bufIndex = i + index * 7;
-                        if (bufIndex < node->length)
-                            msg.buf[i + 1] = node->buffer[bufIndex];
-                        else
-                            break;
-                    }
-                    while (not self->bus.write(msg))
-                        ;    // 送信
-                }
-                node->timestampUs = micros();
-            };
-            for (auto&& it : self->tx)
-            {
-                event(it);
-            }
-            // self->error = getError();
-        }
-
-        void join(DataLine& line, CanNodeInfo& node)
-        {
-            for (auto&& it : line)
-            {
-                if (it == &node)    // インスタンスの重複を除外する
-                {
-                    return;
-                }
-            }
-            line.push_back(&node);
-        }
-
-        void detach(DataLine& line, CanNodeInfo& node)
-        {
-            for (auto&& it = line.begin(); it != line.end(); ++it)
-            {
-                if (*it == &node)
-                {
-                    line.erase(it);
-                    break;
-                }
+                        while (not self->bus.write(msg))
+                            ;    // 送信
+                        delayMicroseconds(200);
+                    });
             }
         }
     };
 
     template <CAN_DEV_TABLE Bus>
-    CanBusTeensy<Bus>* CanBusTeensy<Bus>::self;
+    Can20ABus<Bus>* Can20ABus<Bus>::self;
 
-}
+}    // namespace udon
 
 #endif

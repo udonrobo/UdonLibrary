@@ -5,80 +5,41 @@
 
 #pragma once
 
-#include <udon/com/can/CanBusInterface.hpp>
-#include <udon/com/can/CanInfo.hpp>
+#include <udon/com/can/ICanBus.hpp>
+#include <udon/com/serializer/Serializer.hpp>
 
 namespace udon
 {
 
-    template <class MessageTy>
+    template <class Message>
     class CanWriter
     {
 
-        CanBusInterface& bus;
-        CanNodeInfo      node;
+        ICanBus&    bus;
+        CanNodeView node;
 
-        union
-        {
-            uint8_t   buffer[sizeof(MessageTy)];
-            MessageTy message;
-        } u;
+        Message message;
 
     public:
         /// @param id 信号識別ID
-        CanWriter(CanBusInterface& bus, const uint32_t id)
+        CanWriter(ICanBus& bus, const uint32_t id)
             : bus{ bus }
-            , node{ id, u.buffer, sizeof(MessageTy), 0 }
-            , u{}
+            , node{ bus.createTxNode(id, udon::CapacityWithChecksum<Message>()) }
+            , message{}
         {
-            bus.joinTX(node);
-        }
-
-        /// @param コピーコンストラクタ
-        CanWriter(const CanWriter& rhs)
-            : bus{ rhs.bus }
-            , node{ rhs.node.id, u.buffer, sizeof(MessageTy), 0 }
-            , u{}
-        {
-            bus.joinTX(node);
-        }
-
-        ~CanWriter()
-        {
-            bus.detachTX(node);
-        }
-
-        constexpr size_t length() const noexcept
-        {
-            return sizeof(MessageTy);
-        }
-
-        /// @brief 通信できているか
-        operator bool() const noexcept
-        {
-            return micros() - node.timestampUs < 50000;
         }
 
         /// @brief メッセージ構造体をセット
-        void setMessage(const MessageTy& message) noexcept
+        void setMessage(const Message& message) noexcept
         {
-            u.message = message;
+            this->message = message;
+            *node.data = udon::Pack(message);
         }
 
-        void showBinary(char end = {}) const noexcept
-        {
-            for (auto&& it : u.buffer)
-            {
-                Serial.print(it);
-                Serial.print('\t');
-            }
-            Serial.print(end);
-        }
-
-        /// @brief 受信内容を表示
+        /// @brief 送信内容を表示
         void show(char end = {}) const noexcept
         {
-            u.message.show();
+            message.show();
             Serial.print(end);
         }
     };

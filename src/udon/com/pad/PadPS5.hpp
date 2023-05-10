@@ -12,7 +12,7 @@
 
 namespace udon
 {
-	
+
     /// @brief PS5コントローラー受信クラス
     /// @tparam Reader 受信クラス
     /// @details
@@ -89,7 +89,7 @@ namespace udon
         /// @brief デフォルトコンストラクタ
         /// @remark 受信クラスがデフォルトコンストラクタを持つ場合インスタンス化されます。
         /// @tparam T
-        template <typename T = reader_type, typename std::enable_if<std::is_default_constructible_v<T>>::type* = nullptr>
+        template <typename T = reader_type, typename std::enable_if<std::is_default_constructible<T>::value>::type* = nullptr>
         PadPS5()
             : reader()
         {
@@ -98,7 +98,7 @@ namespace udon
         /// @brief コンストラクタ
         /// @remark 受信クラスがデフォルトコンストラクタを持たない場合インスタンス化されます。
         /// @param reader 受信クラス
-        template <typename T = reader_type, typename std::enable_if<!std::is_default_constructible_v<T>>::type* = nullptr>
+        template <typename T = reader_type, typename std::enable_if<!std::is_default_constructible<T>::value>::type* = nullptr>
         PadPS5(reader_type&& reader)
             : reader(std::move(reader))
         {
