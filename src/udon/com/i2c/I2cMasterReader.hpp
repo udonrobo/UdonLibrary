@@ -6,82 +6,64 @@
 namespace udon
 {
 
-    template <class Message>
-    class I2cMasterReader
-    {
+	template<class Message>
+	class I2cMasterReader
+	{
 
-        /// @brief I2c バス
-        udon::II2cBus& bus;
+	public:
 
-        /// @brief スレーブのアドレス
-        uint8_t address;
+		static constexpr size_t Size = udon::CapacityWithChecksum<Message>();
 
-        /// @brief メッセージ
-        Message message;
+	private:
 
-        /// @brief エラーカウント
-        uint32_t errorCount;
+		udon::I2cBus& bus;
 
-    public:
-        I2cMasterReader(udon::II2cBus& bus, uint8_t address)
-            : bus(bus)
-            , address(address)
-            , message()
-            , errorCount()
-        {
-        }
+		uint8_t address;
 
-        /// @brief 更新
-        void update()
-        {
-            // メッセージのサイズを取得
-            constexpr size_t size = udon::CapacityWithChecksum<Message>();
+		uint8_t buffer[Size];
 
-            // スレーブにリクエストを送信
-            bus.requestFrom(address, size);
+		uint32_t errorCount;
 
-            uint8_t buffer[size];
-            while (bus.available())
-            {
-                // バッファにデータを読み込む
-                for (auto&& it : buffer)
-                {
-                    const auto d = bus.read();
-                    if (d == -1)
-                    {
-                        errorCount += 5;
-                    }
-                    else
-                    {
-                        --errorCount;
-                        it = d;
-                    }
-                }
+	public:
 
-                // エラーが多すぎる場合はバスをリセット
-                if (errorCount > 255)
-                {
-                    bus.restart();
-                    errorCount = 0;
-                }
-            }
-            if (const auto unpacked = udon::Unpack<Message>(buffer))
-            {
-                message = *unpacked;
-            }
-        }
+		I2cMasterReader(udon::I2cBus& bus, uint8_t address)
+			: bus(bus)
+			, address(address)
+			, buffer()
+		{}
 
-        /// @brief メッセージを取得
-        /// @return メッセージ
-        Message getMessage() const
-        {
-            return message;
-        }
+		void update()
+		{
+    		bus.requestFrom(address, Size);
+			while (bus.available())
+			{
+				for (auto&& it : buffer)
+				{
+					const auto d = bus.read();;
+					if (d == -1)
+					{
+						++errorCount;
+					}
+					else
+					{
+						it = d;
+					}
+				}
+			}
+		}
 
-        void show() const
-        {
-            getMessage().show();
-        }
-    };
+		Message getMessage() const
+		{
+			return udon::Unpack<Message>({ std::begin(buffer), std::end(buffer) });
+		}
 
-}    // namespace udon
+		const uint8_t* data() const
+		{
+			return buffer;
+		}
+
+	};
+
+} // namespace udon
+
+
