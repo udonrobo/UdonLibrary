@@ -25,25 +25,25 @@
 /////////////////////////////////////////////////////////////////////
 
 // 配列参照
-// #include <udon/algorithm/ArrayView.hpp>
+#include <udon/algorithm/ArrayView.hpp>
 
-// // デリゲート / メンバ関数ポインタ変換
-// #include <udon/algorithm/Delegate.hpp>
+// デリゲート / メンバ関数ポインタ変換
+#include <udon/algorithm/Delegate.hpp>
 
-// // CRC-8 チェックサム / 誤り検出
-// #include <udon/algorithm/CRC8.hpp>
+// CRC-8 チェックサム / 誤り検出
+#include <udon/algorithm/CRC8.hpp>
 
-// // リングバッファ / 静的疑似可変長配列キュー
-// #include <udon/algorithm/RingBuffer.hpp>
+// リングバッファ / 静的疑似可変長配列キュー
+#include <udon/algorithm/RingBuffer.hpp>
 
-// // PIDフィードバック制御器
-// #include <udon/algorithm/PidController.hpp>
+// PIDフィードバック制御器
+#include <udon/algorithm/PidController.hpp>
 
-// // 移動平均
-// #include <udon/algorithm/MovingAverage.hpp>
+// 移動平均
+#include <udon/algorithm/MovingAverage.hpp>
 
-// // ループ周期制御
-// #include <udon/algorithm/LoopCycleController.hpp>
+// ループ周期制御
+#include <udon/algorithm/LoopCycleController.hpp>
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -52,19 +52,19 @@
 /////////////////////////////////////////////////////////////////////
 
 // CAN通信
-// #include <udon/com/can/Can.hpp>
+#include <udon/com/can/Can.hpp>
 
-// // UART通信
-// #include <udon/com/uart/Uart.hpp>
+// UART通信
+#include <udon/com/uart/Uart.hpp>
 
-// // シリアライザー
-// #include <udon/com/serializer/Serializer.hpp>
+// シリアライザー
+#include <udon/com/serializer/Serializer.hpp>
 
-// // コントローラー
-// #include <udon/com/pad/PadPS5.hpp>
+// コントローラー
+#include <udon/com/pad/PadPS5.hpp>
 
-// // 通信用構造体群
-// #include <udon/message/Message.hpp>
+// 通信用構造体群
+#include <udon/message/Message.hpp>
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -73,7 +73,7 @@
 /////////////////////////////////////////////////////////////////////
 
 // SDカード
-// #include <udon/filesystem/sd/Parameter.hpp>
+#include <udon/filesystem/sd/Parameter.hpp>
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -147,4 +147,4 @@
 // デバッグ / ログ出力
 #include <udon/utility/Show.hpp>
 
-#endif
+#endif  // UDON_INCLUDE_SELECTABLE
