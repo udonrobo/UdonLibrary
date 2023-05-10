@@ -1,7 +1,9 @@
 #pragma once
 
 #include <udon/stl/EnableSTL.hpp>
+
 #include <iterator>
+#include <cstddef>  // std::ptrdiff_t
 
 namespace udon
 {
