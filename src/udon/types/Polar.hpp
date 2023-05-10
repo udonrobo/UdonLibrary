@@ -6,7 +6,7 @@
 template <typename T>
 inline udon::Vector2D<T> udon::Polar_impl<T>::toVector() const noexcept
 {
-    return { r * std::cos(theta), r * std::sin(theta) };
+    return { x(), y() };
 }
 
 namespace udon

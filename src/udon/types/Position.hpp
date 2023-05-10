@@ -86,7 +86,7 @@ namespace udon
         }
 
         /// @brief 値クリア
-        constexpr void clear() noexcept
+        void clear() noexcept
         {
             *this = {};
         }
