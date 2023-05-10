@@ -21,7 +21,7 @@
     > 変更している場合: `ファイル > 環境設定 > スケッチブックの保存場所欄` + `\libraries`
 
     > ```sh
-    > # 調べたディレクトリに移動
+    > # ターミナルを開き、調べたディレクトリに移動
     > cd ~\Documents\Arduino\libraries
     >
     > # 必要なライブラリをクローン
@@ -86,7 +86,7 @@ void loop() {}
 
         > `udon::ArrayView`: 配列参照
         >
-        > `udon::RingBuffer`: 擬似可変長配列
+        > `udon::RingBuffer`: 静的可変長配列
 
     -   フィードバック制御器
 
@@ -95,6 +95,10 @@ void loop() {}
     -   移動平均
 
         > `udon::MovingAverage`
+
+    -   ループ周期制御
+
+        > `udon::LoopCycleController`
 
 -   通信
 
@@ -153,12 +157,6 @@ void loop() {}
         > `udon::Imu`
         >
         > `udon::BNO055`
-
--   システム
-
-    -   ループ周期制御
-
-        > `udon::LoopCycleController`
 
 -   ユーザー定義型
 

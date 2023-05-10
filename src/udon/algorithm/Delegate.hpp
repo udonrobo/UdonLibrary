@@ -8,12 +8,16 @@
 namespace udon
 {
 
-    template <class, class>
+    template <class, class, int Unique = 0>
     class Delegate;    // 前方宣言
 
     /// @brief 単一のメンバ関数を管理するデリゲータ
-    template <class T, class R, class... Args>
-    class Delegate<T, R(Args...)>
+    /// @tparam T メンバ関数を持つクラス
+    /// @tparam R メンバ関数の戻り値の型
+    /// @tparam Args メンバ関数の引数の型
+    /// @tparam Unique ユニークな値 ※同じクラスの同じ引数、戻り値のメンバ関数を複数登録する場合は、ユニークな値を指定してください。(デフォルト0)
+    template <class T, class R, class... Args, int Unique>
+    class Delegate<T, R(Args...), Unique>
     {
 
         using MemberFunctor = R (T::*)(Args...);
@@ -57,10 +61,10 @@ namespace udon
         }
     };
 
-    template <class T, class R, class... Args>
-    T* Delegate<T, R(Args...)>::object = nullptr;
+    template <class T, class R, class... Args, int Unique>
+    T* Delegate<T, R(Args...), Unique>::object = nullptr;
 
-    template <class T, class R, class... Args>
-    typename Delegate<T, R(Args...)>::MemberFunctor Delegate<T, R(Args...)>::functionPtr;
+    template <class T, class R, class... Args, int Unique>
+    typename Delegate<T, R(Args...), Unique>::MemberFunctor Delegate<T, R(Args...), Unique>::functionPtr;
 
 }    // namespace udon

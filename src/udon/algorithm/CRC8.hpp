@@ -37,6 +37,10 @@
 namespace udon
 {
 
+	/// @brief CRC8アルゴリズムを用いてチェックサムの計算を行う
+	/// @param ptr チェックサムを計算するデータの先頭ポインタ
+	/// @param n データのサイズ
+	/// @return チェックサム
 	inline uint8_t CRC8(const unsigned char* ptr, size_t n)
 	{
 
