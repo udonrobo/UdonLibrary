@@ -1,7 +1,7 @@
 #pragma once
 
 #include <udon/types/Euler.hpp>
-#include <udon/thirdparty/Adafruit_BNO055/Adafruit_BNO055.h>
+#include <Adafruit_BNO055.h>
 
 namespace udon
 {
