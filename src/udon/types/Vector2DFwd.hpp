@@ -192,7 +192,7 @@ namespace udon
         udon::Polar_impl<value_type> toPolar() const noexcept;
 
 #ifdef SIV3D_INCLUDED
-		s3d::Vec2 asSivVec2() const noexcept
+		s3d::Vec2 toSiv() const noexcept
 		{
 			return { x, -y };
 		}
