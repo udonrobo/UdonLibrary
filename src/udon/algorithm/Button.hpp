@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <udon/algorithm/Input.hpp>
 

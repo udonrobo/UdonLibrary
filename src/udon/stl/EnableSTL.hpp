@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 // C++ STL を使用できるようにします・
 
