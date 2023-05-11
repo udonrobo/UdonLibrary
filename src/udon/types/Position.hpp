@@ -108,24 +108,26 @@ namespace udon
         ///
         ///   ↑      ↑
         ///  |２|    |１|
-        template <size_t WheelCount = 4>
-        std::array<udon::Polar, WheelCount> toSteer(uint8_t powerLimit = 255, uint8_t turnPowerLimit = 255) const noexcept
+        std::vector<udon::Polar> toSteer(
+            size_t  wheelCount     = 4,
+            uint8_t powerLimit     = 255,
+            uint8_t turnPowerLimit = 255) const noexcept
         {
             // 旋回移動ベクトル
             const udon::Vec2 turnVec = { 0, udon::Map(this->turn, -255, 255, -turnPowerLimit, turnPowerLimit) };
 
             // 旋回移動ベクトル、進行移動ベクトルから角車輪の進行方向ベクトルを算出
-            std::array<udon::Vec2, WheelCount> vectors;
+            std::vector<udon::Vec2> vectors(wheelCount);
 
-            for (size_t i = 0; i < WheelCount; ++i)
+            for (size_t i = 0; i < wheelCount; ++i)
             {
-                vectors.at(i) = this->vector + turnVec.rotated(udon::Pi * (i * 2 + 3) / WheelCount);
+                vectors.at(i) = this->vector + turnVec.rotated(udon::Pi * (i * 2 + 3) / wheelCount);
             }
 
             // 方向ベクトルから極座標系(theta:旋回角, r:タイヤ出力)に変換
-            std::array<udon::Polar, WheelCount> modules;
+            std::vector<udon::Polar> modules(wheelCount);
 
-            for (size_t i = 0; i < WheelCount; ++i)
+            for (size_t i = 0; i < wheelCount; ++i)
             {
                 modules.at(i) = vectors.at(i).toPolar();
             }

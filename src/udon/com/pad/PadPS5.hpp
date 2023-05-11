@@ -2,13 +2,13 @@
 
 #pragma once
 
-#include <algorithm>
-
 #include <udon/algorithm/Button.hpp>
 #include <udon/message/PadPS5.hpp>
 #include <udon/traits/HasMember.hpp>
 #include <udon/types/Position.hpp>
 #include <udon/types/Vector2D.hpp>
+
+#include <algorithm>
 
 namespace udon
 {
@@ -122,7 +122,7 @@ namespace udon
         void update()
         {
             reader.update();
-            _update();
+            update_impl();
         }
 
         /// @brief 更新
@@ -132,7 +132,7 @@ namespace udon
         template <typename T = reader_type>
         auto update() -> typename std::enable_if<!udon::has_member_function_update<T>::value>::type
         {
-            _update();
+            update_impl();
         }
 
         /// @brief コントローラーが接続されているか
@@ -282,9 +282,9 @@ namespace udon
         }
 
     private:
-        void _update()
+        void update_impl()
         {
-            const auto msg = reader.getMessage();
+            const auto& msg = reader.getMessage();
 
             isConnected = msg.isConnected;
 
@@ -353,9 +353,9 @@ namespace udon
 
 #ifdef ARDUINO
 
-#include <udon/com/can/CanReader.hpp>
-#include <udon/com/i2c/I2cMasterReader.hpp>
-#include <udon/com/uart/UartReader.hpp>
+#    include <udon/com/can/CanReader.hpp>
+#    include <udon/com/i2c/I2cMasterReader.hpp>
+#    include <udon/com/uart/UartReader.hpp>
 
 namespace udon
 {
