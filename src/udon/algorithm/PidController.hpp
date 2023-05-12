@@ -1,4 +1,4 @@
-/**
+﻿/**
         @file   PidController.hpp
         @brief  PIDコントローラクラス
         @author 谷川　豊章
@@ -8,7 +8,7 @@
 #ifndef DEF_PidController_H
 #define DEF_PidController_H
 
-#include <Arduino.h>
+#include <udon/math/Math.hpp>
 
 namespace udon
 {
@@ -73,14 +73,14 @@ namespace udon
 
             // 積分量の計算
             intPower += kInt * error * INTERVAL_S;
-            intPower = constrain(intPower, -MAX_INT_POWER, MAX_INT_POWER);
+            intPower = udon::Constrain(intPower, -MAX_INT_POWER, MAX_INT_POWER);
 
             // 微分量の計算
             difPower = kDif * (error - lastError) / INTERVAL_S;
 
             // 操作量の計算
             power = proPower + intPower + difPower;
-            power = constrain(power, -250, 250);
+            power = udon::Constrain(power, -250, 250);
 
             // 偏差の保存
             lastError = error;
@@ -107,27 +107,27 @@ namespace udon
         }
 
         /**     比例係数の設定
-                @param  kPro    比例係数の値
+                @param  value    比例係数の値
         */
-        void setParamPro(double kPro) noexcept
+        void setParamPro(double value) noexcept
         {
-            this->kPro = kPro;
+            this->kPro = value;
         }
 
         /**     積分係数の設定
-                @param  kInt    積分係数の値
+                @param  value    積分係数の値
         */
-        void setParamInt(double kInt) noexcept
+        void setParamInt(double value) noexcept
         {
-            this->kInt = kInt;
+            this->kInt = value;
         }
 
         /**     微分係数の設定
-                @param  kDif    微分係数の値
+                @param  value    微分係数の値
         */
-        void setParamDif(double kDif) noexcept
+        void setParamDif(double value) noexcept
         {
-            this->kDif = kDif;
+            this->kDif = value;
         }
 
         /**     比例量の取得

@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include <udon/types/forward/Vector2DFwd.hpp>
-#include <udon/types/forward/Vector3DFwd.hpp>
-#include <udon/types/forward/Vector4DFwd.hpp>
-#include <udon/types/forward/PolarFwd.hpp>
+#include <udon/types/Vector2DFwd.hpp>
+#include <udon/types/Vector3DFwd.hpp>
+#include <udon/types/Vector4DFwd.hpp>
+#include <udon/types/PolarFwd.hpp>
 
 template<typename T>
 inline udon::Vector3D<T> udon::Vector2D<T>::xy0() const noexcept

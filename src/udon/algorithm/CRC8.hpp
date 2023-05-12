@@ -1,4 +1,4 @@
-//
+﻿//
 //    Library: libcrc
 //    Author:  Lammert Bies
 //

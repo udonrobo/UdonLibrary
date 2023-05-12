@@ -16,7 +16,7 @@ namespace udon
     inline constexpr A
     Constrain(const A& amt, const B& low, const B& high)
     {
-        return min(max(amt, low), high);
+        return fmin(fmax(amt, low), high);
     }
 
     template <class Ty>

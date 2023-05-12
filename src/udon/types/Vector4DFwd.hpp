@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <udon/com/serializer/Serializer.hpp>
 
