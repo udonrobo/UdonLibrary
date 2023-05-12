@@ -6,42 +6,96 @@
 
 ## ダウンロード
 
--   git
+-   Git
 
     ライブラリ管理に git を使用します。インストールしていない場合は [公式ページ](https://git-scm.com/download/win) からダウンロードし、インストールしてください。
 
     > このライブラリのレポジトリはプライベートです。クローンするには udonrobo organization に 参加している github アカウントと、 git が紐付いている必要があります。git インストール後、初回のクローン時に紐付けを求められます。
 
--   追加
+-   ArduinoIDE
 
-    ライブラリを保存するディレクトリを調べライブラリを追加します。
+    -   追加
 
-    > 既定値: `~\Documents\Arduino\libraries`
-    >
-    > 変更している場合: `ファイル > 環境設定 > スケッチブックの保存場所欄` + `\libraries`
+        ライブラリを保存するディレクトリを調べ、ライブラリを追加します。
 
-    > ```sh
-    > # ターミナルを開き、調べたディレクトリに移動
-    > cd ~\Documents\Arduino\libraries
-    >
-    > # 必要なライブラリをクローン
-    > git clone https://github.com/udonrobo/UdonLibrary.git
-    > git clone https://github.com/udonrobo/UdonArduinoSTL.git
-    > git clone https://github.com/autowp/arduino-mcp2515.git
-    > git clone https://github.com/adafruit/Adafruit_BusIO.git
-    > git clone https://github.com/adafruit/Adafruit_Sensor.git
-    > git clone https://github.com/adafruit/Adafruit_BNO055.git
-    > ```
+        > 既定値: `~\Documents\Arduino\libraries`
+        >
+        > 変更している場合: `ファイル > 環境設定 > スケッチブックの保存場所欄` + `\libraries`
 
--   更新
+        > ```sh
+        > # ターミナルを開き、調べたディレクトリに移動
+        > cd ~\Documents\Arduino\libraries
+        >
+        > # 必要なライブラリをクローン
+        > git clone https://github.com/udonrobo/UdonLibrary.git
+        > git clone https://github.com/udonrobo/UdonArduinoSTL.git
+        > git clone https://github.com/autowp/arduino-mcp2515.git
+        > git clone https://github.com/adafruit/Adafruit_BusIO.git
+        > git clone https://github.com/adafruit/Adafruit_Sensor.git
+        > git clone https://github.com/adafruit/Adafruit_BNO055.git
+        > ```
 
-    > ```sh
-    > # 追加する時に調べたlibrariesディレクトリに移動
-    > cd ~\Documents\Arduino\libraries\UdonLibrary
-    >
-    > # ライブラリを更新
-    > git pull
-    > ```
+    -   更新
+
+        > ```sh
+        > # 追加する時に調べたlibrariesディレクトリに移動
+        > cd ~\Documents\Arduino\libraries\UdonLibrary
+        >
+        > # ライブラリを更新
+        > git pull
+        > ```
+
+-   Visual Studio
+
+    ![setup](https://github.com/udonrobo/UdonLibrary/assets/91818705/ab1b9ac1-58a4-4423-aa06-64db38957d08)
+
+    1.  クローン
+
+        -   プロジェクトがリポジトリにある場合
+
+            git submodule を使用して追加します。
+
+            ```sh
+            cd ソリューションディレクトリ
+            git submodule add -b master https://github.com/udonrobo/UdonLibrary.git .\プロジェクトディレクトリ\UdonLibrary
+            ```
+
+        -   プロジェクトがリポジトリでない場合
+
+            ```sh
+            cd ソリューションディレクトリ\プロジェクトディレクトリ
+            git clone https://github.com/udonrobo/UdonLibrary.git
+            ```
+
+    2.  インクルードパス追加
+
+        ソリューションエクスプローラ > プロジェクト > プロパティ > VC++ディレクトリ > インクルードディレクトリの項目にある `↓` > 編集 > 新しい行の追加(フォルダアイコンボタン)
+
+        に `$(ProjectDir)\UdonLibrary\src\` と入力します。`$(ProjectDir)` は プロジェクトディレクトリのパスを表すマクロです。
+
+    3.  ディレクトリツリー確認
+
+        次のようなディレクトリ構成になっていれば OK です。
+
+        ```
+        test   <-- ソリューションディレクトリ
+        │  .gitmodules  <--- git submodule 使用時に生成
+        │  test.sln
+        │
+        └─test   <-- プロジェクトディレクトリ
+            │  test.cpp
+            │  test.vcxproj
+            │  test.vcxproj.filters
+            │  test.vcxproj.user
+            │
+            └─UdonLibrary   <--- うどん
+                ├─src
+                │  │  Udon.hpp
+                │  │
+                │  └─udon
+                │      ├─
+                ...    ...
+        ```
 
 ## 使用方法
 
