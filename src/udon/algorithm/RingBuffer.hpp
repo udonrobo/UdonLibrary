@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <udon/stl/EnableSTL.hpp>
 #include <iterator>
@@ -126,6 +126,16 @@ namespace udon
         {
             m_size = std::min(size, Capacity);
         }
+
+		bool empty() const
+        {
+			return m_size == 0;
+        }
+
+		bool full() const
+		{
+			return m_size == Capacity;
+		}
 
         /// @brief バッファの先頭に要素を追加
         /// @param value 追加する値
