@@ -96,9 +96,8 @@ namespace udon
         }
 
         /// @brief コンストラクタ
-        /// @remark 受信クラスがデフォルトコンストラクタを持たない場合インスタンス化されます。
         /// @param reader 受信クラス
-        template <typename T = reader_type, typename std::enable_if<!std::is_default_constructible<T>::value>::type* = nullptr>
+        template <typename T = reader_type>
         PadPS5(reader_type&& reader)
             : reader(std::move(reader))
         {
@@ -118,8 +117,8 @@ namespace udon
         /// @remark 受信クラスがupdate()を持つ場合インスタンス化されます。
         /// @tparam T
         /// @return
-        template <typename T = reader_type, typename std::enable_if<udon::has_member_function_update<T>::value>::type* = nullptr>
-        void update()
+        template <typename T = reader_type>
+        auto update() -> typename std::enable_if<udon::has_member_function_update<T>::value>::type
         {
             reader.update();
             update_impl();
@@ -261,7 +260,7 @@ namespace udon
         {
             return rightStick;
         }
-        /// @brief ロボットの移動に必要なスティックの情報を取得
+        /// @brief ロボットの移動に必要なスティックの情報 {x,y,旋回成分} を取得
         /// @remark 左スティックから移動成分、右スティックX軸から旋回成分を取得
         /// @return
         udon::Pos getStick() const
