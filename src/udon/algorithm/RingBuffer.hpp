@@ -2,9 +2,10 @@
 
 #include <udon/stl/EnableSTL.hpp>
 
-#include <iterator>
-#include <cstddef>
 #include <algorithm>
+#include <cstddef>
+#include <iterator>
+
 
 /// @brief リングバッファコンテナ
 namespace udon
@@ -17,23 +18,19 @@ namespace udon
     class RingBuffer
     {
     public:
-
-        using value_type = T;
-        using reference = T&;
+        using value_type      = T;
+        using reference       = T&;
         using const_reference = const T&;
-        using pointer = T*;
-        using const_pointer = const T*;
+        using pointer         = T*;
+        using const_pointer   = const T*;
 
     private:
-
         value_type m_data[Capacity];
-        size_t m_head;
-        size_t m_tail;
-        size_t m_size;
+        size_t     m_head;
+        size_t     m_tail;
+        size_t     m_size;
 
     public:
-
-
         /// @brief コンストラクタ
         RingBuffer()
             : m_data{}
@@ -89,12 +86,12 @@ namespace udon
             , m_tail{}
             , m_size{}
         {
-			resize(init.size());
+            resize(init.size());
             for (auto&& value : init)
             {
-				push(value);
-			}
-		}
+                push(value);
+            }
+        }
 
         /// @brief デフォルトで初期化するコンストラクタ
         /// @param size 使用するサイズ
@@ -107,12 +104,12 @@ namespace udon
             resize(size);
         }
 
-		/// @brief capacityを取得
-		/// @return
-		constexpr size_t capacity() const
-		{
-			return Capacity;
-		}
+        /// @brief capacityを取得
+        /// @return
+        constexpr size_t capacity() const
+        {
+            return Capacity;
+        }
 
         /// @brief バッファサイズを取得
         /// @return
@@ -128,15 +125,15 @@ namespace udon
             m_size = std::min(size, Capacity);
         }
 
-		bool empty() const
+        bool empty() const
         {
-			return m_size == 0;
+            return m_size == 0;
         }
 
-		bool full() const
-		{
-			return m_size == Capacity;
-		}
+        bool full() const
+        {
+            return m_size == Capacity;
+        }
 
         /// @brief バッファの先頭に要素を追加
         /// @param value 追加する値
@@ -147,7 +144,7 @@ namespace udon
                 pop();
             }
             m_data[m_tail] = value;
-            m_tail = (m_tail + 1) % Capacity;
+            m_tail         = (m_tail + 1) % Capacity;
             ++m_size;
         }
 
@@ -160,7 +157,7 @@ namespace udon
                 pop();
             }
             m_data[m_tail] = std::move(value);
-            m_tail = (m_tail + 1) % Capacity;
+            m_tail         = (m_tail + 1) % Capacity;
             ++m_size;
         }
 
@@ -173,15 +170,15 @@ namespace udon
                 return {};
             }
             auto&& retval = std::move(m_data[m_head]);
-            m_head = (m_head + 1) % Capacity;
+            m_head        = (m_head + 1) % Capacity;
             --m_size;
             return retval;
         }
 
         reference back()
         {
-			return m_data[(m_tail + Capacity - 1) % Capacity];
-		}
+            return m_data[(m_tail + Capacity - 1) % Capacity];
+        }
         const_reference back() const
         {
             return m_data[(m_tail + Capacity - 1) % Capacity];
@@ -189,17 +186,17 @@ namespace udon
 
         reference front()
         {
-			return m_data[m_head];
-		}
+            return m_data[m_head];
+        }
         const_reference front() const
         {
-			return m_data[m_head];
-		}
+            return m_data[m_head];
+        }
 
         reference operator[](size_t index)
         {
-			return m_data[(m_head + index) % Capacity];
-		}
+            return m_data[(m_head + index) % Capacity];
+        }
         const_reference operator[](size_t index) const
         {
             return m_data[(m_head + index) % Capacity];
@@ -208,10 +205,10 @@ namespace udon
         struct const_iterator
         {
             using iterator_category = std::random_access_iterator_tag;
-            using value_type = T;
-            using difference_type = std::ptrdiff_t;
-            using pointer = const T*;
-            using reference = const T&;
+            using value_type        = T;
+            using difference_type   = std::ptrdiff_t;
+            using pointer           = const T*;
+            using reference         = const T&;
 
             pointer m_data;
             size_t  m_index;
@@ -298,10 +295,10 @@ namespace udon
             : public const_iterator
         {
             using iterator_category = std::random_access_iterator_tag;
-            using value_type = T;
-            using difference_type = std::ptrdiff_t;
-            using pointer = T*;
-            using reference = T&;
+            using value_type        = T;
+            using difference_type   = std::ptrdiff_t;
+            using pointer           = T*;
+            using reference         = T&;
 
             iterator(pointer data, size_t index, size_t size)
                 : const_iterator{ data, index, size }
