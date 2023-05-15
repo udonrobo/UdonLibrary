@@ -58,33 +58,17 @@ namespace udon
 
                 message.mic = pad.buttons.at(14).pressed();
 
-                const auto cutDeadZone = [](double value, double deadZone) -> double
-                {
-                    if (value > deadZone)
-                    {
-                        return (value - deadZone) / (1 - deadZone);
-                    }
-                    else if (value < -deadZone)
-                    {
-                        return (value + deadZone) / (1 - deadZone);
-                    }
-                    else
-                    {
-                        return 0.0;
-                    }
-                };
-
                 // -1.0 ~ 1.0 -> -127 ~ 127(int8_t)
                 const auto encodeStick = [](double value) -> int8_t
                 {
                     return static_cast<int8_t>(value * 127);
                 };
 
-                message.analogRightX = +encodeStick(cutDeadZone(pad.axes.at(2), 0.1));
-                message.analogRightY = -encodeStick(cutDeadZone(pad.axes.at(5), 0.1));
+                message.analogRightX = +encodeStick(pad.axes.at(2));
+                message.analogRightY = -encodeStick(pad.axes.at(5));
 
-                message.analogLeftX = +encodeStick(cutDeadZone(pad.axes.at(0), 0.1));
-                message.analogLeftY = -encodeStick(cutDeadZone(pad.axes.at(1), 0.1));
+                message.analogLeftX = +encodeStick(pad.axes.at(0));
+                message.analogLeftY = -encodeStick(pad.axes.at(1));
 
                 // -1.0 ~ 1.0 -> 0 ~ 255
                 message.analogR2 = static_cast<int8_t>((pad.axes.at(4) + 1) * 255);

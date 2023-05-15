@@ -336,12 +336,12 @@ namespace udon
             };
 
             leftStick = {
-                cutDeadCone(decodeStick(msg.analogLeftX), 10),
-                cutDeadCone(decodeStick(msg.analogLeftY), 10),
+                cutDeadCone(decodeStick(msg.analogLeftX), 20),
+                cutDeadCone(decodeStick(msg.analogLeftY), 20),
             };
             rightStick = {
-                cutDeadCone(decodeStick(msg.analogRightX), 10),
-                cutDeadCone(decodeStick(msg.analogRightY), 10),
+                cutDeadCone(decodeStick(msg.analogRightX), 20),
+                cutDeadCone(decodeStick(msg.analogRightY), 20),
             };
 
             analogL2 = msg.analogL2;
