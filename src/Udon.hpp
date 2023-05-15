@@ -45,6 +45,9 @@
 // ループ周期制御
 #include <udon/algorithm/LoopCycleController.hpp>
 
+// 独立ステア最適化
+#include <udon/algorithm/SteerOptimizer.hpp>
+
 /////////////////////////////////////////////////////////////////////
 //
 //  通信 / com
