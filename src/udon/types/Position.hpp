@@ -1,11 +1,13 @@
 ﻿#pragma once
 
-#include <array>
-#include <udon/stl/EnableSTL.hpp>
-
 #include <udon/math/Math.hpp>
 #include <udon/types/Polar.hpp>
 #include <udon/types/Vector2D.hpp>
+
+#include <udon/stl/EnableSTL.hpp>
+
+#include <algorithm>
+#include <array>
 
 namespace udon
 {
@@ -92,48 +94,83 @@ namespace udon
         }
 
         // template <size_t WheelCount>
-        // std::array<int16_t, WheelCount> toOmni() const noexcept
+        // std::array<double, WheelCount> toOmni() const
         //{
-        //     std::array<int16_t, WheelCount> omni;
-        //     // todo
-        //     return omni;
+        //     static_assert(WheelCount >= 3, "WheelCount must be greater than or equal to 3.");
+        //     static_assert(WheelCount == 4, "Not supported over 4 wheels now.");
         // }
 
+        // template <>
+        // std::array<double, 4> toOmni<4>() const
+        //{
+        //     uint8_t    powerLimit     = 255;
+        //             uint8_t turnPowerLimit = 255;
+        //     const auto mapedTurn = udon::Map(turn, -255, 255, -turnPowerLimit, turnPowerLimit);
+
+        //    std::array<double, 4> powers{ {
+        //        +vector.x + -vector.y + mapedTurn,
+        //        -vector.x + -vector.y + mapedTurn,
+        //        -vector.x + +vector.y + mapedTurn,
+        //        +vector.x + +vector.y + mapedTurn,
+        //    } };
+
+        //    // 上で算出した出力値は {powerLimit} を超える場合があります。
+        //    // 超えた場合、最大出力のモジュールの出力を {powerLimit} として他のモジュールの出力を圧縮します。
+        //    auto&& max = abs(*std::max_element(powers.begin(), powers.end(), [](double lhs, double rhs)
+        //                                       { return abs(lhs.r) < abs(rhs.r); }));
+
+        //    if (max > powerLimit)
+        //    {
+        //        const auto ratio = powerLimit / max;
+
+        //        std::transform(powers.begin(), powers.end(), powers.begin(),
+        //                       [ratio](double power)
+        //                       { return power * ratio; });
+        //    }
+
+        //    // todo
+        //    return powers;
+        //}
+
         /// @brief 独立ステアリング機構のタイヤ出力値、旋回角を取得する
+        /// @tparam WheelCount タイヤの数
         /// @param powerLimit ホイール出力値の最大値
         /// @param turnPowerLimit 旋回の最大値
-        /// @return 各モジュールの値
+        /// @return ステアの値 (極座標[r:-255~255,theta:[-π~π])の配列)
+        /// @details index順 (頂点から時計回りに 0,1,2...)
         ///   ↑      ↑
         ///  |３|    |０|
         ///
         ///   ↑      ↑
         ///  |２|    |１|
-        std::vector<udon::Polar> toSteer(
-            size_t  wheelCount     = 4,
-            uint8_t powerLimit     = 255,
-            uint8_t turnPowerLimit = 255) const noexcept
+        template <size_t WheelCount = 4>
+        std::array<udon::Polar, WheelCount> toSteer(uint8_t powerLimit     = 255,
+                                                    uint8_t turnPowerLimit = 255) const
         {
+            static_assert(WheelCount >= 3, "WheelCount must be greater than or equal to 3.");
+            static_assert(WheelCount == 4, "Not supported over 4 wheels now.");  // todo: 5輪以上対応
+
             // 旋回移動ベクトル
             const udon::Vec2 turnVec = { 0, udon::Map(this->turn, -255, 255, -turnPowerLimit, turnPowerLimit) };
 
             // 旋回移動ベクトル、進行移動ベクトルから角車輪の進行方向ベクトルを算出
-            std::vector<udon::Vec2> vectors(wheelCount);
+            std::array<udon::Vec2, WheelCount> vectors;
 
-            for (size_t i = 0; i < wheelCount; ++i)
+            for (size_t i = 0; i < WheelCount; ++i)
             {
-                vectors.at(i) = this->vector + turnVec.rotated(udon::Pi * (i * 2 + 3) / wheelCount);
+                vectors.at(i) = vector + turnVec.rotated(udon::Pi * (i * 2 + 3) / WheelCount);
             }
 
             // 方向ベクトルから極座標系(theta:旋回角, r:タイヤ出力)に変換
-            std::vector<udon::Polar> modules(wheelCount);
+            std::array<udon::Polar, WheelCount> modules;
 
-            for (size_t i = 0; i < wheelCount; ++i)
+            for (size_t i = 0; i < WheelCount; ++i)
             {
                 modules.at(i) = vectors.at(i).toPolar();
             }
 
             // 上で算出した出力値は {limit} を超える場合があります。
-            // よって超えた場合、最大出力のモジュールの出力を {limit} として他のモジュールの出力を圧縮します。
+            // 超えた場合、最大出力のモジュールの出力を {limit} として他のモジュールの出力を圧縮します。
             // 出力値はベクトルの長さから求めるため負にならない {max} は正の値であることが保証
             auto&& max = *std::max_element(modules.begin(), modules.end(), [](const udon::Polar& lhs, const udon::Polar& rhs)
                                            { return lhs.r < rhs.r; });
@@ -141,8 +178,10 @@ namespace udon
             if (max.r > powerLimit)
             {
                 const auto ratio = powerLimit / max.r;
-                std::for_each(modules.begin(), modules.end(), [ratio](udon::Polar& module)
-                              { module.r *= ratio; });
+                for (auto&& module : modules)
+                {
+                    module.r *= ratio;
+                }
             }
 
             return modules;
