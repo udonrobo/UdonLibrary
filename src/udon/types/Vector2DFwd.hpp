@@ -51,6 +51,16 @@ namespace udon
         {
         }
 
+#ifdef SIV3D_INCLUDED
+        /// @brief s3d::Vec2からの変換コンストラクタ
+        /// @param v s3d::Vec2
+        constexpr Vector2D(const s3d::Vector2D<value_type>& v) noexcept
+            : x(v.x)
+            , y(-v.y)
+        {
+        }
+#endif
+
         /// @brief デフォルトコピー代入演算子
         Vector2D& operator=(const Vector2D&) = default;
 
@@ -192,10 +202,10 @@ namespace udon
         udon::Polar_impl<value_type> toPolar() const noexcept;
 
 #ifdef SIV3D_INCLUDED
-		operator s3d::Vec2() const noexcept
-		{
-			return { x, -y };
-		}
+        operator s3d::Vector2D<value_type>() const noexcept
+        {
+            return { x, -y };
+        }
 #endif
 
 #ifdef ARDUINO
