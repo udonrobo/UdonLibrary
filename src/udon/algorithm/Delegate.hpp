@@ -1,8 +1,9 @@
 #pragma once
 
+#include <udon/stl/EnableSTL.hpp>
+
 #include <algorithm>
 #include <type_traits>
-#include <udon/stl/EnableSTL.hpp>
 
 /// @brief 単一のメンバ関数を管理するデリゲータ
 namespace udon
