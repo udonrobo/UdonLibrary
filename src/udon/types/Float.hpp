@@ -6,9 +6,14 @@
 // Version 1.0. (See accompanying file LICENSE_1_0.txt
 // or copy at http://www.boost.org/LICENSE_1_0.txt)
 //
-// 固定 bit 浮動小数点型を定義する(プラットフォームによっては定義されない型もあります)
+// 固定ビット長浮動小数点型を定義する(定義されない型もあります)
 //
-// 定義される型: udon::float16_t, udon::float32_t, udon::float64_t, udon::float80_t, udon::float128_t
+// 定義される可能性のある型:
+// - udon::float16_t
+// - udon::float32_t
+// - udon::float64_t
+// - udon::float80_t
+// - udon::float128_t
 //
 
 #pragma once
@@ -157,3 +162,12 @@ namespace udon
 #undef BOOST_CSTDFLOAT_HAS_FLOAT64_NATIVE_TYPE
 #undef BOOST_CSTDFLOAT_HAS_FLOAT80_NATIVE_TYPE
 #undef BOOST_CSTDFLOAT_HAS_FLOAT128_NATIVE_TYPE
+
+#undef BOOST_CSTDFLOAT_FLOAT16_NATIVE_TYPE
+#undef BOOST_CSTDFLOAT_FLOAT32_NATIVE_TYPE
+#undef BOOST_CSTDFLOAT_FLOAT64_NATIVE_TYPE
+#undef BOOST_CSTDFLOAT_FLOAT80_NATIVE_TYPE
+#undef BOOST_CSTDFLOAT_FLOAT128_NATIVE_TYPE
+
+#undef BOOST_CSTDFLOAT_HAS_FLOAT16
+#undef BOOST_CSTDFLOAT_HAS_FLOAT32
