@@ -6,48 +6,39 @@
 #pragma once
 
 #include <udon/com/i2c/I2cBus.hpp>
-
 #include <udon/com/serializer/Serializer.hpp>
 
 namespace udon
 {
 
-
-    template<class Message>
+    template <class Message>
     class I2cSlaveWriter
     {
+        static constexpr size_t Size = udon::CapacityWithChecksum<Message>();
 
-	public:
+        udon::II2cBus& bus;
 
-		static constexpr size_t Size = Message::PackedSize;
+        uint8_t buffer[Size];
 
-	private:
-
-		udon::I2cBus& bus;
-
-		uint8_t buffer[Size];
-
-		static I2cSlaveWriter* self;
+        static I2cSlaveWriter* self;
 
     public:
-
         /// @param address I2cアドレス
         /// @param clock   通信レート
-        I2cSlaveWriter(udon::I2cBus& bus)
-			: bus(bus)
-			, buffer()
+        template <typename Bus>
+        I2cSlaveWriter(Bus& bus)
+            : bus(bus)
+            , buffer()
         {
-			self = this;
-            bus.onRequest([] {
-				self->bus.write(self->buffer, Size);
-			});
+            self = this;
+            bus.onRequest([]
+                          { self->bus.write(self->buffer, Size); });
         }
 
-		void setMessage(const Message& message)
-		{
-			const auto packed = udon::Pack(message);
-			std::copy(buffer, packed.begin(), packed.end());
-		}
+        void setMessage(const Message& message)
+        {
+            udon::Pack(message, buffer);
+        }
 
         /// @brief 送信内容を表示
         /// @param end   オプション [/n, /t ..]
@@ -58,10 +49,9 @@ namespace udon
                 Serial.print(buffer, radix), Serial.print('\t');
             Serial.print(end);
         }
-
     };
 
-    template<class Message>
+    template <class Message>
     I2cSlaveWriter<Message>* I2cSlaveWriter<Message>::self;
 
 }    // namespace udon

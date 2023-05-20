@@ -5,10 +5,6 @@
 
 #pragma once
 
-#ifdef UDON_ENABLE_IOSTREAM
-#include <iostream>
-#endif
-
 namespace udon
 {
 
@@ -57,17 +53,15 @@ namespace udon
             bitWrite(buffer[byteIndex], bitIndex, value);
         }
 
-        /// @brief 送信する構造体をセット
-        /// @details インスタンスのバイト数と設定バイト数を合わせる(コンパイル時エラーが投げられます)
-        /// @tparam Ty    構造体の型
-        /// @param  value 送信する構造体インスタンス
-        template <class Ty>
-        inline constexpr void
-        setMessage(const Ty& value)
-        {
-            static_assert(sizeof(Ty) == Size, "Different from the number of bytes set.");
-            memcpy(buffer, &value, Size);
-        }
+        // /// @brief 送信する構造体をセット
+        // /// @details インスタンスのバイト数と設定バイト数を合わせる(コンパイル時エラーが投げられます)
+        // /// @tparam Ty    構造体の型
+        // /// @param  value 送信する構造体インスタンス
+        // template <class Ty>
+        // inline constexpr void
+        // setMessage(const Ty& value)
+        // {
+        // }
 
         /// @brief 内部バッファにアクセス
         inline constexpr uint8_t&
@@ -92,25 +86,6 @@ namespace udon
                 Serial.print(buf), Serial.print('\t');
             Serial.print(end);
         }
-
-#ifdef UDON_ENABLE_IOSTREAM
-        friend std::istream& operator>>(std::istream& istm, BasicWriter& r)
-        {
-            for (auto& buf : r.buffer)
-            {
-                istm >> buf;
-            }
-            return istm;
-        }
-        friend std::ostream& operator<<(std::ostream& ostm, const BasicWriter& r)
-        {
-            for (const auto& buf : r.buffer)
-            {
-                ostm << buf << '\t';
-            }
-            return ostm;
-        }
-#endif
     };
 
 }    // namespace udon

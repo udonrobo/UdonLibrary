@@ -1,14 +1,15 @@
 ﻿#pragma once
 
 #include <udon/stl/EnableSTL.hpp>
-#include <vector>
-#include <algorithm>
 
-#include <udon/traits/HasMember.hpp>
+#include <algorithm>
+#include <vector>
+
 #include <udon/algorithm/CRC8.hpp>
 #include <udon/algorithm/Endian.hpp>
-#include <udon/types/Float.hpp>
 #include <udon/com/serializer/Capacity.hpp>
+#include <udon/traits/HasMember.hpp>
+#include <udon/types/Float.hpp>
 
 namespace udon
 {
@@ -19,12 +20,11 @@ namespace udon
         std::vector<uint8_t> buffer;
 
     public:
-
-		Serializer(size_t capacity = 0)
-			: buffer()
-		{
-			buffer.reserve(capacity);
-		}
+        Serializer(size_t capacity = 0)
+            : buffer()
+        {
+            buffer.reserve(capacity);
+        }
 
         /// @brief
         /// @tparam T 整数型
@@ -117,52 +117,51 @@ namespace udon
         }
     };
 
-	template<typename T>
-	inline std::vector<uint8_t> Pack(const T& rhs)
-	{
-		Serializer serializer(udon::CapacityWithChecksum(rhs));
-		serializer(rhs);
-		return serializer.flush();
-	}
+    template <typename T>
+    inline std::vector<uint8_t> Pack(const T& rhs)
+    {
+        Serializer serializer(udon::CapacityWithChecksum(rhs));
+        serializer(rhs);
+        return serializer.flush();
+    }
 
-	/// @brief バッファにシリアル化する
-	/// @tparam T
-	/// @param rhs
-	/// @param buffer
-	/// @param size
-	/// @remark バッファのサイズはCapacityWithChecksum関数で取得したサイズ以上である必要があります。
-	/// @return シリアル化に成功したかどうか
-	template<typename T>
-	inline bool Pack(const T& rhs, uint8_t* buffer, size_t size)
-	{
-		if (size >= udon::CapacityWithChecksum(rhs))
-		{
-			const auto vector = Pack(rhs);
-			std::copy(vector.begin(), vector.end(), buffer);
-			return true;
-		}
-		else
-		{
-			// サイズが足りない場合falseを返します。
-			// この場合、bufferは変更されません。
-			// CapacityWithChecksum関数を用いてバッファのサイズを指定しているか確認してください。
-			// CapacityWithChecksum関数はチャックサムバイトを含めたバイト数を返します。
-			return false;
-		}
-	}
+    /// @brief バッファにシリアル化する
+    /// @tparam T
+    /// @param rhs
+    /// @param buffer
+    /// @param size
+    /// @remark バッファのサイズはCapacityWithChecksum関数で取得したサイズ以上である必要があります。
+    /// @return シリアル化に成功したかどうか
+    template <typename T>
+    inline bool Pack(const T& rhs, uint8_t* buffer, size_t size)
+    {
+        if (size >= udon::CapacityWithChecksum(rhs))
+        {
+            const auto vector = Pack(rhs);
+            std::copy(vector.begin(), vector.end(), buffer);
+            return true;
+        }
+        else
+        {
+            // サイズが足りない場合falseを返します。
+            // この場合、bufferは変更されません。
+            // CapacityWithChecksum関数を用いてバッファのサイズを指定しているか確認してください。
+            // CapacityWithChecksum関数はチャックサムバイトを含めたバイト数を返します。
+            return false;
+        }
+    }
 
-	/// @brief バッファにシリアル化する
-	/// @tparam T
-	/// @tparam N
-	/// @param rhs
-	/// @param array
-	/// @remark バッファのサイズはCapacityWithChecksum関数で取得したサイズ以上である必要があります。
-	/// @return シリアル化に成功したかどうか
-	template<typename T, size_t N>
-	inline bool Pack(const T& rhs, uint8_t(&array)[N])
-	{
-		return Pack(rhs, array, N);
-	}
-
+    /// @brief バッファにシリアル化する
+    /// @tparam T
+    /// @tparam N
+    /// @param rhs
+    /// @param array
+    /// @remark バッファのサイズはCapacityWithChecksum関数で取得したサイズ以上である必要があります。
+    /// @return シリアル化に成功したかどうか
+    template <typename T, size_t N>
+    inline bool Pack(const T& rhs, uint8_t (&array)[N])
+    {
+        return Pack(rhs, array, N);
+    }
 
 }    // namespace udon

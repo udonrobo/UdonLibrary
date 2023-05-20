@@ -1,10 +1,13 @@
 ﻿#pragma once
 
-#include <type_traits>
+#include <udon/stl/EnableSTL.hpp>
 
-#include <udon/types/Float.hpp>
-#include <udon/traits/HasMember.hpp>
+#include <type_traits>
+#include <utility>
+
 #include <udon/algorithm/CRC8.hpp>
+#include <udon/traits/HasMember.hpp>
+#include <udon/types/Float.hpp>
 
 namespace udon
 {
@@ -78,50 +81,49 @@ namespace udon
     /// @param arg 可変長引数
     /// @return
     template <typename T, typename... Args>
-    inline constexpr std::size_t Capacity(T&& arg, Args&&... args)
+    inline constexpr size_t Capacity(T&& arg, Args&&... args)
     {
         return Capacity(arg) + Capacity(std::forward<Args>(args)...);
     }
 
-	/// @brief シリアライズ後のバイト数を求める
-	/// @tparam T
-	/// @return
-	template <typename T>
-	inline constexpr size_t Capacity()
-	{
-		return Capacity(T{});
-	}
+    /// @brief シリアライズ後のバイト数を求める
+    /// @tparam T
+    /// @return
+    template <typename T>
+    inline constexpr size_t Capacity()
+    {
+        return Capacity(T{});
+    }
 
-	/// @brief チェックサムを含めたシリアライズ後のバイト数を求める
-	/// @tparam T
-	/// @param obj
-	/// @return
-	template <typename T>
-	inline constexpr size_t CapacityWithChecksum(const T& obj)
-	{
-		return Capacity(obj) + sizeof(decltype(udon::CRC8(nullptr, 0)));
-	}
+    /// @brief チェックサムを含めたシリアライズ後のバイト数を求める
+    /// @tparam T
+    /// @param obj
+    /// @return
+    template <typename T>
+    inline constexpr size_t CapacityWithChecksum(const T& obj)
+    {
+        return Capacity(obj) + sizeof(decltype(udon::CRC8(nullptr, 0)));
+    }
 
-	/// @brief チェックサムを含めたシリアライズ後のバイト数を求める
-	/// @tparam T
-	/// @tparam ...Args
-	/// @param arg
-	/// @param ...args
-	/// @return
-	template<typename T, typename... Args>
-	inline constexpr std::size_t CapacityWithChecksum(const T& head, const Args&... tails)
-	{
-		return Capacity(head) + Capacity(tails...) + sizeof(decltype(udon::CRC8(nullptr, 0)));
-	}
+    /// @brief チェックサムを含めたシリアライズ後のバイト数を求める
+    /// @tparam T
+    /// @tparam ...Args
+    /// @param arg
+    /// @param ...args
+    /// @return
+    template <typename T, typename... Args>
+    inline constexpr size_t CapacityWithChecksum(const T& head, const Args&... tails)
+    {
+        return Capacity(head) + Capacity(tails...) + sizeof(decltype(udon::CRC8(nullptr, 0)));
+    }
 
-	/// @brief チェックサムを含めたシリアライズ後のバイト数を求める
-	/// @tparam T
-	/// @return
-	template <typename T>
-	inline constexpr size_t CapacityWithChecksum()
-	{
-		return Capacity(T{}) + sizeof(decltype(udon::CRC8(nullptr, 0)));
-	}
-
+    /// @brief チェックサムを含めたシリアライズ後のバイト数を求める
+    /// @tparam T
+    /// @return
+    template <typename T>
+    inline constexpr size_t CapacityWithChecksum()
+    {
+        return Capacity(T{}) + sizeof(decltype(udon::CRC8(nullptr, 0)));
+    }
 
 }    // namespace udon

@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <udon/stl/EnableSTL.hpp>
+
 #include <vector>
 
 #include <udon/algorithm/CRC8.hpp>
@@ -33,9 +34,9 @@ namespace udon
             }
 
             // チャックサム確認
-			constexpr size_t checkSumSize = sizeof(decltype(udon::CRC8(nullptr, 0)));
-			const auto checkSum = udon::CRC8(buffer.data(), buffer.size() - checkSumSize);
-            isCheckSumSuccess   = (buffer.back() == checkSum);
+            constexpr size_t checkSumSize = sizeof(decltype(udon::CRC8(nullptr, 0)));
+            const auto       checkSum     = udon::CRC8(buffer.data(), buffer.size() - checkSumSize);
+            isCheckSumSuccess             = (buffer.back() == checkSum);
         }
 
         operator bool() const
@@ -131,32 +132,32 @@ namespace udon
         }
     };
 
-	template<typename T>
-	udon::optional<T> Unpack(const std::vector<uint8_t>& buffer)
-	{
-		Deserializer deserializer(buffer);
-		if (deserializer)
-		{
-			T retval;
-			deserializer(retval);
-			return retval;
-		}
-		else
-		{
-			return udon::nullopt;
-		}
-	}
+    template <typename T>
+    udon::optional<T> Unpack(const std::vector<uint8_t>& buffer)
+    {
+        Deserializer deserializer(buffer);
+        if (deserializer)
+        {
+            T retval;
+            deserializer(retval);
+            return retval;
+        }
+        else
+        {
+            return udon::nullopt;
+        }
+    }
 
-	template<typename T>
-	udon::optional<T> Unpack(const uint8_t* buffer, size_t size)
-	{
-		return Unpack<T>({ buffer, buffer + size });
-	}
+    template <typename T>
+    udon::optional<T> Unpack(const uint8_t* buffer, size_t size)
+    {
+        return Unpack<T>({ buffer, buffer + size });
+    }
 
-	template<typename T, size_t N>
-	udon::optional<T> Unpack(const uint8_t(&array)[N])
-	{
-		return Unpack<T>(array, N);
-	}
+    template <typename T, size_t N>
+    udon::optional<T> Unpack(const uint8_t (&array)[N])
+    {
+        return Unpack<T>(array, N);
+    }
 
 }    // namespace udon

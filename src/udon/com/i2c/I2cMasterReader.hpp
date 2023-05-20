@@ -6,64 +6,64 @@
 namespace udon
 {
 
-	template<class Message>
-	class I2cMasterReader
-	{
+    template <class Message>
+    class I2cMasterReader
+    {
 
-	public:
+        static constexpr size_t Size = udon::CapacityWithChecksum<Message>();
 
-		static constexpr size_t Size = udon::CapacityWithChecksum<Message>();
+        udon::II2cBus& bus;
 
-	private:
+        uint8_t address;
 
-		udon::I2cBus& bus;
+        uint8_t buffer[Size];
 
-		uint8_t address;
+        uint32_t errorCount;
 
-		uint8_t buffer[Size];
+    public:
+        template <typename Bus>
+        I2cMasterReader(Bus& bus, uint8_t address)
+            : bus(bus)
+            , address(address)
+            , buffer()
+        {
+        }
 
-		uint32_t errorCount;
+        void update()
+        {
+            bus.requestFrom(address, Size);
+            while (bus.available())
+            {
+                for (auto&& it : buffer)
+                {
+                    switch (const auto d = bus.read())
+                    {
+                    case -1:    // error
+                        errorCount += 5;
+                        break;
+                    default:
+                        it = d;
+                        --errorCount;
+                        break;
+                    }
+                }
+            }
+        }
 
-	public:
+        explicit operator bool() const
+        {
+            return errorCount < 128;
+        }
 
-		I2cMasterReader(udon::I2cBus& bus, uint8_t address)
-			: bus(bus)
-			, address(address)
-			, buffer()
-		{}
+        udon::optional<Message> getMessage() const
+        {
+            return udon::Unpack<Message>(buffer);
+        }
 
-		void update()
-		{
-    		bus.requestFrom(address, Size);
-			while (bus.available())
-			{
-				for (auto&& it : buffer)
-				{
-					const auto d = bus.read();;
-					if (d == -1)
-					{
-						++errorCount;
-					}
-					else
-					{
-						it = d;
-					}
-				}
-			}
-		}
+        const uint8_t* data() const
+        {
+            return buffer;
+        }
+    };
 
-		Message getMessage() const
-		{
-			return udon::Unpack<Message>({ std::begin(buffer), std::end(buffer) });
-		}
-
-		const uint8_t* data() const
-		{
-			return buffer;
-		}
-
-	};
-
-} // namespace udon
-
-
+}    // namespace udon

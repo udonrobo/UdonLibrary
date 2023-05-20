@@ -97,7 +97,6 @@ namespace udon
 
         /// @brief コンストラクタ
         /// @param reader 受信クラス
-        template <typename T = reader_type>
         PadPS5(reader_type&& reader)
             : reader(std::move(reader))
         {
@@ -309,7 +308,7 @@ namespace udon
             touch.update(msg.touch);
             mic.update(msg.mic);
 
-            // -127 ~ 127(int8_t) -> -254 ~ 254(int16_t)
+            // -127 ~ 127(int8_t) -> -255 ~ 255(int16_t)
             const auto decodeStick = [](int8_t raw)
                 -> int16_t
             {
@@ -349,25 +348,3 @@ namespace udon
     };
 
 }    // namespace udon
-
-#ifdef ARDUINO
-
-#    include <udon/com/can/CanReader.hpp>
-#    include <udon/com/i2c/I2cMasterReader.hpp>
-#    include <udon/com/uart/UartReader.hpp>
-
-namespace udon
-{
-
-    /// @brief CAN通信経由
-    using CanPadPS5 = udon::PadPS5<udon::CanReader>;
-
-    /// @brief UART通信経由
-    using UartPadPS5 = udon::PadPS5<udon::UartReader>;
-
-    /// @brief I2C通信経由
-    using I2cPadPS5 = udon::PadPS5<udon::I2cMasterReader>;
-
-}    // namespace udon
-
-#endif

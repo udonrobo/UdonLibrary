@@ -5,10 +5,6 @@
 
 #pragma once
 
-#ifdef UDON_ENABLE_IOSTREAM
-#include <iostream>
-#endif
-
 namespace udon
 {
 
@@ -46,16 +42,12 @@ namespace udon
             return bitRead(getByteData(byteIndex), bitIndex);
         }
 
-        /// @brief 構造体として取得
-        /// @details 構造体のバイト数と設定バイト数を合わせる(コンパイル時エラーが投げられます)
-        template <class Ty>
-        inline Ty getMessage() const
-        {
-            static_assert(sizeof(Ty) == Size, "Different from the number of bytes set.");
-            Ty retval;
-            memcpy(&retval, buffer, Size);
-            return retval;
-        }
+        // /// @brief 構造体として取得
+        // /// @details 構造体のバイト数と設定バイト数を合わせる(コンパイル時エラーが投げられます)
+        // template <class Message>
+        // inline udon::optional<Message> getMessage() const
+        // {
+        // }
 
         /// @brief 内部バッファにアクセス
         inline constexpr const uint8_t&
@@ -80,17 +72,6 @@ namespace udon
                 Serial.print(buf), Serial.print('\t');
             Serial.print(end);
         }
-
-#ifdef UDON_ENABLE_IOSTREAM
-        friend std::ostream& operator<<(std::ostream& ostm, const BasicReader& r)
-        {
-            for (const auto& buf : r.buffer)
-            {
-                ostm << buf << '\t';
-            }
-            return ostm;
-        }
-#endif
     };
 
 }    // namespace udon

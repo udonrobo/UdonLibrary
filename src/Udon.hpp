@@ -60,6 +60,9 @@
 // UART通信
 #include <udon/com/uart/Uart.hpp>
 
+// UART通信
+#include <udon/com/i2c/I2c.hpp>
+
 // シリアライザー
 #include <udon/com/serializer/Serializer.hpp>
 

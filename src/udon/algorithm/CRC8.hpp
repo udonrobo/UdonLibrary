@@ -27,7 +27,7 @@
 
 #pragma once
 
-#include <stdint.h>
+#include <stddef.h>
 
 
 #if __has_include(<avr/pgmspace.h>)

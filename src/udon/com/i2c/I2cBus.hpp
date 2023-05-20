@@ -56,8 +56,8 @@ namespace udon
 
         virtual void flush() = 0;
 
-        virtual void onReceive(void (*function)(int))  = 0;
-        virtual void onRequest(void (*function)(void)) = 0;
+        virtual void onReceive(void (*function)(int)) = 0;
+        virtual void onRequest(void (*function)())    = 0;
     };
 
     /// @brief I2cBus クラス実装部
@@ -79,18 +79,24 @@ namespace udon
 
         /// @brief C言語スタイルのコールバック関数
         void (*userOnReceive)(int);
-        void (*userOnRequest)(void);
+        void (*userOnRequest)();
 
         /// @brief 登録されたコールバック関数を呼び出す
         void invokeOnReceive(int n)
         {
-            lastTransmitMs = millis();
-            userOnReceive(n);
+            if (userOnReceive)
+            {
+                lastTransmitMs = millis();
+                userOnReceive(n);
+            }
         }
         void invokeOnRequest()
         {
-            lastTransmitMs = millis();
-            userOnRequest();
+            if (userOnRequest)
+            {
+                lastTransmitMs = millis();
+                userOnRequest();
+            }
         }
 
         // TwoWire::onReceive 割り込み発火
@@ -106,6 +112,8 @@ namespace udon
             , lastTransmitMs()
             , onReceiveDelegate(this, &I2cBus_impl::invokeOnReceive)
             , onRequestDelegate(this, &I2cBus_impl::invokeOnRequest)
+            , userOnReceive()
+            , userOnRequest()
         {
         }
 
@@ -225,7 +233,7 @@ namespace udon
             userOnReceive = function;
             wire.onReceive(onReceiveDelegate);
         }
-        inline void onRequest(void (*function)(void)) override
+        inline void onRequest(void (*function)()) override
         {
             userOnRequest = function;
             wire.onRequest(onRequestDelegate);
