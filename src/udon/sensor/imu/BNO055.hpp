@@ -1,59 +1,58 @@
 #pragma once
 
-#include <udon/types/Euler.hpp>
 #include <Adafruit_BNO055.h>
+#include <udon/types/Quaternion.hpp>
+
 
 namespace udon
 {
 
-	class BNO055
-		: Adafruit_BNO055
-	{
+    class BNO055
+        : Adafruit_BNO055
+    {
 
-		udon::Euler euler;
+        udon::Quaternion quaternion;
 
-	public:
+    public:
+        BNO055(TwoWire& wire)
+            : Adafruit_BNO055(-1, 0x28, &wire)
+            , quaternion()
+        {
+        }
 
-		BNO055(TwoWire& wire)
-			: Adafruit_BNO055(-1, 0x28, &wire)
-			, euler()
-		{
-		}
+        /// @brief 通信開始
+        /// @remark Wire.begin() が Adafruit_BNO055ライブラリから呼び出されます
+        /// @return 正常に開始できたかどうか
+        bool begin()
+        {
+            return Adafruit_BNO055::begin();
+        }
 
-		/// @brief 通信開始
-		/// @remark Wire.begin()がAdafruit_BNO055ライブラリ側で呼び出されます
-		/// @return 正常に開始できたかどうか
-		bool begin()
-		{
-			if (!Adafruit_BNO055::begin())
-			{
-				return false;
-			}
-			return true;
-		}
+        /// @brief 更新
+        void update()
+        {
+            const auto q = Adafruit_BNO055::getQuat();
+            quaternion   = udon::Quaternion(q.x(), q.y(), q.z(), q.w());
+        }
 
-		/// @brief 更新
-		void update()
-		{
-			const auto libEuler = Adafruit_BNO055::getVector(Adafruit_BNO055::VECTOR_EULER);
-			euler = udon::Euler {
-				udon::ToRadians(libEuler.y()),  // roll
-				udon::ToRadians(libEuler.z()),  // pitch
-				udon::ToRadians(libEuler.x()),  // yaw
-			};
-		}
+        /// @brief オイラー角取得
+        /// @return オイラー角
+        udon::Euler getEuler() const
+        {
+            return quaternion.toEuler();
+        }
 
-		/// @brief オイラー角取得
-		/// @return オイラー角
-		udon::Euler getEuler() const
-		{
-			return euler;
-		}
+        /// @brief クォータニオン取得
+        /// @return クォータニオン
+        udon::Quaternion getQuaternion() const
+        {
+            return quaternion;
+        }
 
-		void show() const
-		{
-			getEuler().show();
-		}
-	};
+        void show() const
+        {
+            getEuler().show();
+        }
+    };
 
-}  // namespace udon
+}    // namespace udon

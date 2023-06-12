@@ -17,7 +17,7 @@ namespace udon
 		udon::Euler3D<bool> direction;
 
 		/// @brief 内積値消去用オフセット
-		udon::Euler offset;
+		udon::Quaternion offset;
 
 	public:
 
@@ -36,16 +36,22 @@ namespace udon
 		/// @brief 値を消去する
 		void clear()
 		{
-			offset = Device::getEuler();
+			offset = Device::getQuaternion();
 		}
 
 		/// @brief オイラー角を取得
 		/// @return オイラー角
 		udon::Euler getEuler() const
 		{
-			return (Device::getEuler() - offset)
+			return (Device::getEuler() - offset.toEuler())
 					.directionRevision(direction)  // 回転方向補正
-					.normalized(-PI, PI);          // -PI~PI の間に正規化
+					.normalized(-PI, PI)           // -PI~PI の間に正規化
+					;
+		}
+
+		udon::Quaternion getQuaternion() const
+		{
+			return Device::getQuaternion() - offset;
 		}
 
 		/// @brief オイラー角をシリアルポートに出力
