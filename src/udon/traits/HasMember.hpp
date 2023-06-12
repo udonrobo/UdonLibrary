@@ -67,9 +67,9 @@
 /// @param A 走査を行うクラスの型
 /// @param T 被走査側のクラスの型
 /// @remark 生成される trait クラス
-///         has_member_iterator_'name'<A, T>::value
-#define UDON_HAS_MEMBER_ITERATOR_FUNCTION(name)                                                                     \
-    struct has_member_iterator_##name##_impl                                                                        \
+///         has_member_iterate_'name'<A, T>::value
+#define UDON_HAS_MEMBER_ITERATE_FUNCTION(name)                                                                      \
+    struct has_member_iterate_##name##_impl                                                                         \
     {                                                                                                               \
         template <typename AA, typename TT>                                                                         \
         static auto call_##name(AA& ar, TT& t) -> decltype(t.name(ar))                                              \
@@ -82,19 +82,31 @@
         static auto test(...) -> std::false_type;                                                                   \
     };                                                                                                              \
     template <typename A, typename T>                                                                               \
-    struct has_member_iterator_##name : decltype(has_member_iterator_##name##_impl::test<A, T>(0))                  \
+    struct has_member_iterate_##name : decltype(has_member_iterate_##name##_impl::test<A, T>(0))                    \
     {                                                                                                               \
     };
 
 namespace udon
 {
 
+#ifndef UDON_HAS_MEMBER_FUNCTION_BEGIN
+#define UDON_HAS_MEMBER_FUNCTION_BEGIN
     UDON_HAS_MEMBER_FUNCTION(begin);
+#endif
 
+#ifndef UDON_HAS_MEMBER_FUNCTION_UPDATE
+#define UDON_HAS_MEMBER_FUNCTION_UPDATE
     UDON_HAS_MEMBER_FUNCTION(update);
+#endif
 
+#ifndef UDON_HAS_MEMBER_FUNCTION_SHOW
+#define UDON_HAS_MEMBER_FUNCTION_SHOW
     UDON_HAS_MEMBER_FUNCTION(show);
+#endif
 
-    UDON_HAS_MEMBER_ITERATOR_FUNCTION(accessor);
+#ifndef UDON_HAS_MEMBER_FUNCTION_ACCESSOR
+#    define UDON_HAS_MEMBER_FUNCTION_ACCESSOR
+    UDON_HAS_MEMBER_ITERATE_FUNCTION(accessor);
+#endif
 
 }    // namespace udon
