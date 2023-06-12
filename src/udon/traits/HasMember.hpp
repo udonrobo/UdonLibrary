@@ -7,22 +7,17 @@
 /// @brief メンバ型名の有無を取得する
 /// @remark 生成される trait クラス
 ///         has_member_type_'name'<T>::value
-#define UDON_HAS_MEMBER_TYPE(name)                       \
-    template <class T>                                   \
-    class has_member_type_##name                         \
-    {                                                    \
-        template <class U>                               \
-        static constexpr bool check(typename U::name*)   \
-        {                                                \
-            return true;                                 \
-        }                                                \
-        template <class U>                               \
-        static constexpr bool check(...)                 \
-        {                                                \
-            return false;                                \
-        }                                                \
-    public:                                              \
-        static constexpr bool value = check<T>(nullptr); \
+#define UDON_HAS_MEMBER_TYPE(name)                                                             \
+    struct has_member_type_##name##_impl                                                       \
+    {                                                                                          \
+        template <typename U>                                                                  \
+        static auto check(typename U::name*) -> std::true_type;                                \
+        template <typename U>                                                                  \
+        static auto check(...) -> std::false_type;                                             \
+    };                                                                                         \
+    template <typename T>                                                                      \
+    struct has_member_type_##name : decltype(has_member_type_##name##_impl::check<T>(nullptr)) \
+    {                                                                                          \
     };
 
 /// @brief 通常メンバ関数の有無を取得する
@@ -32,20 +27,20 @@
 #define UDON_HAS_MEMBER_FUNCTION(name)                                                                                             \
     struct has_not_static_member_function_##name##_impl                                                                            \
     {                                                                                                                              \
-        template <class T>                                                                                                         \
+        template <typename T>                                                                                                      \
         static auto check(T&&) -> decltype(T::name(), std::false_type{});                                                          \
-        template <class T>                                                                                                         \
+        template <typename T>                                                                                                      \
         static auto check(...) -> std::true_type;                                                                                  \
     };                                                                                                                             \
     struct has_member_function_##name##_impl                                                                                       \
     {                                                                                                                              \
-        template <class T>                                                                                                         \
+        template <typename T>                                                                                                      \
         static auto check(T&& x) -> decltype(x.name(), has_not_static_member_function_##name##_impl::check<T>(std::declval<T>())); \
-        template <class T>                                                                                                         \
+        template <typename T>                                                                                                      \
         static auto check(...) -> std::false_type;                                                                                 \
     };                                                                                                                             \
-    template <class T>                                                                                                             \
-    class has_member_function_##name : public decltype(has_member_function_##name##_impl::check<T>(std::declval<T>()))             \
+    template <typename T>                                                                                                          \
+    struct has_member_function_##name : decltype(has_member_function_##name##_impl::check<T>(std::declval<T>()))                   \
     {                                                                                                                              \
     };
 
@@ -53,38 +48,38 @@
 /// @remark 通常メンバ関数の場合は除きます
 ///         生成される trait クラス
 ///         has_static_member_function_'name'<T>::value
-#define UDON_HAS_STATIC_MEMBER_FUNCTION(name)                                                                                        \
-    struct has_static_member_function_##name##_impl                                                                                  \
-    {                                                                                                                                \
-        template <class T>                                                                                                           \
-        static auto check(T&&) -> decltype(T::name(), std::true_type{});                                                             \
-        template <class T>                                                                                                           \
-        static auto check(...) -> std::false_type;                                                                                   \
-    };                                                                                                                               \
-    template <class T>                                                                                                               \
-    class has_static_member_function_##name : public decltype(has_static_member_function_##name##_impl::check<T>(std::declval<T>())) \
-    {                                                                                                                                \
+#define UDON_HAS_STATIC_MEMBER_FUNCTION(name)                                                                                  \
+    struct has_static_member_function_##name##_impl                                                                            \
+    {                                                                                                                          \
+        template <typename T>                                                                                                  \
+        static auto check(T&&) -> decltype(T::name(), std::true_type{});                                                       \
+        template <typename T>                                                                                                  \
+        static auto check(...) -> std::false_type;                                                                             \
+    };                                                                                                                         \
+    template <typename T>                                                                                                      \
+    struct has_static_member_function_##name : decltype(has_static_member_function_##name##_impl::check<T>(std::declval<T>())) \
+    {                                                                                                                          \
     };
 
 /// @brief メンバ変数を走査する関数の有無を取得する
 /// @remark 生成される trait クラス
 ///         has_member_iterator_'name'<T>::value
 #define UDON_HAS_MEMBER_ITERATOR_FUNCTION(name)                                                                     \
-    template <class A, class T>                                                                                     \
-    class has_member_iterator_##name                                                                                \
+    struct has_member_iterator_##name##_impl                                                                        \
     {                                                                                                               \
-        template <class AA, class TT>                                                                               \
+        template <typename AA, typename TT>                                                                         \
         static auto call_##name(AA& ar, TT& t) -> decltype(t.name(ar))                                              \
         {                                                                                                           \
             return t.name(ar);                                                                                      \
         }                                                                                                           \
-        template <class TT, class AA>                                                                               \
+        template <typename AA, typename TT>                                                                         \
         static auto test(int) -> decltype(call_##name(std::declval<AA&>(), std::declval<TT&>()), std::true_type{}); \
-        template <class, class>                                                                                     \
+        template <typename, typename>                                                                               \
         static auto test(...) -> std::false_type;                                                                   \
-                                                                                                                    \
-    public:                                                                                                         \
-        static const bool value = std::is_same<decltype(test<T, A>(0)), std::true_type>::value;                     \
+    };                                                                                                              \
+    template <typename A, typename T>                                                                               \
+    struct has_member_iterator_##name : decltype(has_member_iterator_##name##_impl::test<A, T>(0))                  \
+    {                                                                                                               \
     };
 
 namespace udon
