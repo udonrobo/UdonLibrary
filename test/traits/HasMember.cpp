@@ -64,10 +64,10 @@ namespace has_static_member_function
 
 }
 
-namespace has_member_iterator_function
+namespace has_member_iterate_function
 {
 
-	UDON_HAS_MEMBER_ITERATOR_FUNCTION(accessor);
+	UDON_has_member_iterate_FUNCTION(accessor);
 
 	struct TestStruct1
 	{
@@ -87,8 +87,8 @@ namespace has_member_iterator_function
 
 	void test()
 	{
-		static_assert(has_member_iterator_accessor<DummyMemberAccessor, TestStruct1>::value == true, "");
-		static_assert(has_member_iterator_accessor<DummyMemberAccessor, TestStruct2>::value == false, "");
+		static_assert(has_member_iterate_accessor<DummyMemberAccessor, TestStruct1>::value == true, "");
+		static_assert(has_member_iterate_accessor<DummyMemberAccessor, TestStruct2>::value == false, "");
 	}
 
 }
