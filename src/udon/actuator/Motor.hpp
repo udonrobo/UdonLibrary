@@ -5,6 +5,7 @@
 #include <algorithm>
 
 #include <udon/message/Motor.hpp>
+#include <udon/traits/MaybeInvoke.hpp>
 
 namespace udon
 {
@@ -35,8 +36,9 @@ namespace udon
 
         void update()
         {
-            writer.setMessage(power * (direction ? 1 : -1));
-            writer.update();
+            const auto sendPower = power * (direction ? 1 : -1);
+            writer.setMessage({ static_cast<int16_t>(sendPower) });
+            udon::MaybeInvoke_update(writer);
         }
 
         void show() const

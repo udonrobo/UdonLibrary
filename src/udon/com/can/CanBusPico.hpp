@@ -16,10 +16,10 @@
 
 namespace udon
 {
-    class Can20ABus
+    class CanBusPico
         : public ICanBus
     {
-        using Delegate = udon::Delegate<Can20ABus, void()>;
+        using Delegate = udon::Delegate<CanBusPico, void()>;
 
         Delegate delegate;
 
@@ -49,14 +49,14 @@ namespace udon
         uint8_t intPin;
 
     public:
-        Can20ABus(
+        CanBusPico(
             uint8_t  intPin,
             uint8_t  mosiPin,
             uint8_t  misoPin,
             uint8_t  sckPin,
             uint8_t  csPin,
             uint32_t spiClock = 1000000)
-            : delegate(this, &Can20ABus::onReceive)
+            : delegate(this, &CanBusPico::onReceive)
             , bus(csPin, mosiPin, misoPin, sckPin, spiClock)
             , intPin(intPin)
         {

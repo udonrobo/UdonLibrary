@@ -1,4 +1,4 @@
-/// @file   Can20ABus.hpp
+/// @file   CanBusTeensy.hpp
 /// @date   2023/01/13
 /// @brief  FlexCan_T4ライブラリを用いたCanバス管理クラス
 /// @author 大河 祐介
@@ -21,7 +21,7 @@ namespace udon
 
     /// @tparam {Bus} バス種類 (Can0,Can1,Can2,Can3)
     template <CAN_DEV_TABLE Bus>
-    class Can20ABus
+    class CanBusTeensy
         : public ICanBus
     {
 
@@ -49,10 +49,10 @@ namespace udon
 
         udon::CanBusErrorInfo errorInfo;
 
-        static Can20ABus* self;
+        static CanBusTeensy* self;
 
     public:
-        Can20ABus()
+        CanBusTeensy()
             : bus{}
             , isr{}
             , txNodes{}
@@ -61,7 +61,7 @@ namespace udon
             self = this;
         }
 
-        ~Can20ABus()
+        ~CanBusTeensy()
         {
             end();
         }
@@ -195,7 +195,7 @@ namespace udon
     };
 
     template <CAN_DEV_TABLE Bus>
-    Can20ABus<Bus>* Can20ABus<Bus>::self;
+    CanBusTeensy<Bus>* CanBusTeensy<Bus>::self;
 
 }    // namespace udon
 

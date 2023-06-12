@@ -1,5 +1,12 @@
 #pragma once
 
+#include <udon/stl/EnableSTL.hpp>
+
+#include <algorithm>
+
+#include <udon/message/Motor.hpp>
+#include <udon/traits/MaybeInvoke.hpp>
+
 namespace udon
 {
 
@@ -12,20 +19,29 @@ namespace udon
 
         int32_t count;
 
+		double speed;
+
         bool direction;
 
     public:
         Encoder(reader_type&& reader, bool direction)
             : reader(std::move(reader))
+			, count()
+			, speed()
             , direction(direction)
         {
         }
 
         void update()
         {
-            reader.update();
+			udon::MaybeInvoke_update(reader);
             count = reader.getMessage() * (direction ? 1 : -1);
         }
+
+		void getSpeed() const
+		{
+
+		}
 
         void getCount() const
         {
