@@ -22,6 +22,7 @@
 
 /// @brief 通常メンバ関数の有無を取得する
 /// @remark 静的メンバ関数の場合は除きます
+///         引数はvoidである必要があり、戻り値の型は関係ありません
 ///         生成される trait クラス
 ///         has_member_function_'name'<T>::value
 #define UDON_HAS_MEMBER_FUNCTION(name)                                                                                             \
@@ -46,6 +47,7 @@
 
 /// @brief 静的メンバ関数の有無を取得する
 /// @remark 通常メンバ関数の場合は除きます
+///         引数はvoidである必要があり、戻り値の型は関係ありません
 ///         生成される trait クラス
 ///         has_static_member_function_'name'<T>::value
 #define UDON_HAS_STATIC_MEMBER_FUNCTION(name)                                                                                  \
@@ -62,8 +64,10 @@
     };
 
 /// @brief メンバ変数を走査する関数の有無を取得する
+/// @param A 走査を行うクラスの型
+/// @param T 被走査側のクラスの型
 /// @remark 生成される trait クラス
-///         has_member_iterator_'name'<T>::value
+///         has_member_iterator_'name'<A, T>::value
 #define UDON_HAS_MEMBER_ITERATOR_FUNCTION(name)                                                                     \
     struct has_member_iterator_##name##_impl                                                                        \
     {                                                                                                               \
