@@ -4,7 +4,7 @@
 
 #include <udon/algorithm/Button.hpp>
 #include <udon/message/PadPS5.hpp>
-#include <udon/traits/HasMember.hpp>
+#include <udon/traits/MaybeInvoke.hpp>
 #include <udon/types/Position.hpp>
 #include <udon/types/Vector2D.hpp>
 
@@ -117,20 +117,72 @@ namespace udon
         /// @tparam T
         /// @return
         template <typename T = reader_type>
-        auto update() -> typename std::enable_if<udon::has_member_function_update<T>::value>::type
+        void update()
         {
-            reader.update();
-            update_impl();
-        }
+            udon::maybe_invoke_update(reader);
 
-        /// @brief 更新
-        /// @remark 受信クラスがupdate()を持たない場合インスタンス化されます。
-        /// @tparam T
-        /// @return
-        template <typename T = reader_type>
-        auto update() -> typename std::enable_if<!udon::has_member_function_update<T>::value>::type
-        {
-            update_impl();
+            const auto message = reader.getMessage();
+
+            isConnected = message.isConnected;
+
+            triangle.update(message.triangle);
+            circle.update(message.circle);
+            cross.update(message.cross);
+            square.update(message.square);
+
+            up.update(message.up);
+            right.update(message.right);
+            down.update(message.down);
+            left.update(message.left);
+
+            l1.update(message.l1);
+            r1.update(message.r1);
+            l2.update(message.l2);
+            r2.update(message.r2);
+            l3.update(message.l3);
+            r3.update(message.r3);
+
+            create.update(message.create);
+            option.update(message.option);
+            touch.update(message.touch);
+            mic.update(message.mic);
+
+            // -127 ~ 127(int8_t) -> -255 ~ 255(int16_t)
+            const auto decodeStick = [](int8_t raw)
+                -> int16_t
+            {
+                return raw * 2;
+            };
+
+            /// @brief デッドゾーン処理
+            const auto cutDeadCone = [](double value, double deadZone)
+                -> double
+            {
+                if (value > deadZone)
+                {
+                    return 255 * (value - deadZone) / (255 - deadZone);
+                }
+                else if (value < -deadZone)
+                {
+                    return 255 * (value + deadZone) / (255 - deadZone);
+                }
+                else
+                {
+                    return 0.0;
+                }
+            };
+
+            leftStick = {
+                cutDeadCone(decodeStick(message.analogLeftX), 20),
+                cutDeadCone(decodeStick(message.analogLeftY), 20),
+            };
+            rightStick = {
+                cutDeadCone(decodeStick(message.analogRightX), 20),
+                cutDeadCone(decodeStick(message.analogRightY), 20),
+            };
+
+            analogL2 = message.analogL2;
+            analogR2 = message.analogR2;
         }
 
         /// @brief コントローラーが接続されているか
@@ -259,10 +311,10 @@ namespace udon
         {
             return rightStick;
         }
-        /// @brief ロボットの移動に必要なスティックの情報 {x,y,旋回成分} を取得
+        /// @brief ロボットの移動に必要なスティックの情報 udon::Positionオブジェクト {{x,y},turn} を取得
         /// @remark 左スティックから移動成分、右スティックX軸から旋回成分を取得
         /// @return
-        udon::Pos getStick() const
+        udon::Pos getMovementInfo() const
         {
             return { leftStick, rightStick.x };
         }
@@ -277,73 +329,6 @@ namespace udon
         uint8_t getR2Analog() const
         {
             return analogR2;
-        }
-
-    private:
-        void update_impl()
-        {
-            const auto& msg = reader.getMessage();
-
-            isConnected = msg.isConnected;
-
-            triangle.update(msg.triangle);
-            circle.update(msg.circle);
-            cross.update(msg.cross);
-            square.update(msg.square);
-
-            up.update(msg.up);
-            right.update(msg.right);
-            down.update(msg.down);
-            left.update(msg.left);
-
-            l1.update(msg.l1);
-            r1.update(msg.r1);
-            l2.update(msg.l2);
-            r2.update(msg.r2);
-            l3.update(msg.l3);
-            r3.update(msg.r3);
-
-            create.update(msg.create);
-            option.update(msg.option);
-            touch.update(msg.touch);
-            mic.update(msg.mic);
-
-            // -127 ~ 127(int8_t) -> -255 ~ 255(int16_t)
-            const auto decodeStick = [](int8_t raw)
-                -> int16_t
-            {
-                return raw * 2;
-            };
-
-            /// @brief デッドゾーン処理
-            const auto cutDeadCone = [](double value, double deadZone)
-                -> double
-            {
-                if (value > deadZone)
-                {
-                    return 255 * (value - deadZone) / (255 - deadZone);
-                }
-                else if (value < -deadZone)
-                {
-                    return 255 * (value + deadZone) / (255 - deadZone);
-                }
-                else
-                {
-                    return 0.0;
-                }
-            };
-
-            leftStick = {
-                cutDeadCone(decodeStick(msg.analogLeftX), 20),
-                cutDeadCone(decodeStick(msg.analogLeftY), 20),
-            };
-            rightStick = {
-                cutDeadCone(decodeStick(msg.analogRightX), 20),
-                cutDeadCone(decodeStick(msg.analogRightY), 20),
-            };
-
-            analogL2 = msg.analogL2;
-            analogR2 = msg.analogR2;
         }
     };
 
