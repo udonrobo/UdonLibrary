@@ -64,6 +64,7 @@ inline void test()
     // その他関数
     {
         udon::Quaternion a;
+        a.toEuler();
         a.clear();
         a.show();
     }

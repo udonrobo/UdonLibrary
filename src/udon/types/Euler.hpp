@@ -6,12 +6,12 @@
 template <typename T>
 udon::Quaternion udon::Euler3D<T>::toQuaternion() const noexcept
 {
-    const auto cr = std::cos(roll  / 2);
-    const auto cp = std::cos(pitch / 2);
-    const auto cy = std::cos(yaw   / 2);
-    const auto sr = std::sin(roll  / 2);
-    const auto sp = std::sin(pitch / 2);
-    const auto sy = std::sin(yaw   / 2);
+    const auto cr = cos(roll  / 2);
+    const auto cp = cos(pitch / 2);
+    const auto cy = cos(yaw   / 2);
+    const auto sr = sin(roll  / 2);
+    const auto sp = sin(pitch / 2);
+    const auto sy = sin(yaw   / 2);
     return {
         cy * cp * sr - sy * sp * cr, /*x*/
         sy * cp * sr + cy * sp * cr, /*y*/

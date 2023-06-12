@@ -25,7 +25,7 @@ inline void test()
         constexpr udon::Euler a, b = { 10, 20, 30 };
         a + b;
         a - b;
-        a * b;
+        a* b;
         a / b;
         a + 100;
         a - 100;
@@ -64,8 +64,9 @@ inline void test()
     // その他関数
     {
         udon::Euler a;
-		a.normalized(-PI, PI);
-		a.directionRevision({ true, false, true });
+        a.normalized(-PI, PI);
+        a.toQuaternion();
+        a.directionRevision({ true, false, true });
         a.clear();
         a.show();
     }
