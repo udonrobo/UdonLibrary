@@ -1,15 +1,13 @@
 ﻿#pragma once
 
-#ifdef ARDUINO
-
 #include <udon/algorithm/Delegate.hpp>
 
-#    ifdef UDON_TEENSY_I2C_SLAVE_MODE
-#        include <i2c_driver.h>
-#        include <i2c_driver_wire.h>
-#    else
-#        include <Wire.h>
-#    endif
+#ifdef UDON_TEENSY_I2C_SLAVE_MODE
+#    include <i2c_driver.h>
+#    include <i2c_driver_wire.h>
+#else
+#    include <Wire.h>
+#endif
 
 namespace udon
 {
@@ -245,7 +243,5 @@ namespace udon
 }    // namespace udon
 
 /// @brief I2C バスのラッパークラス
-#    define I2cBus \
-        I2cBus_impl<__COUNTER__>
-
-#endif
+#define I2cBus \
+    I2cBus_impl<__COUNTER__>

@@ -6,8 +6,6 @@
 
 #pragma once
 
-#ifdef ARDUINO
-
 #include <mcp2515.h>    // https://github.com/autowp/arduino-mcp2515
 
 #include <udon/algorithm/RingBuffer.hpp>
@@ -198,6 +196,3 @@
 //     CanBusSpi<CS, Interrupt>* CanBusSpi<CS, Interrupt>::self;
 
 // }    // namespace udon
-
-
-#endif
