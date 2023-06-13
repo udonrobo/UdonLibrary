@@ -1,6 +1,9 @@
-#pragma once
+﻿#pragma once
 
 // #include <iostream>
+
+#ifdef ARDUINO
+
 #include <Arduino.h>
 
 /*
@@ -90,3 +93,5 @@ class ServoSpeed {
   float speedValue() const { return speed; }
 };
 }  // namespace udon
+
+#endif

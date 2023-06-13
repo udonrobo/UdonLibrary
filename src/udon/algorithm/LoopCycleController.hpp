@@ -1,4 +1,4 @@
-/**
+﻿/**
         @file   LoopCycleController.h
         @brief  ループ周期を一定にする
         @author 谷川　豊章
@@ -8,7 +8,9 @@
 #ifndef DEF_LoopCycleController_H
 #define DEF_LoopCycleController_H
 
-#include <Arduino.h>
+#ifdef ARDUINO
+
+#    include <Arduino.h>
 
 namespace udon
 {
@@ -89,5 +91,6 @@ namespace udon
     };
 
 }    // namespace udon
+#endif
 
 #endif

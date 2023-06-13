@@ -1,4 +1,4 @@
-/**
+﻿/**
         @file   MovingAverage.hpp
         @brief  移動平均クラス
         @author 谷川　豊章
@@ -8,7 +8,7 @@
 #ifndef DEF_MovingAverage_H
 #define DEF_MovingAverage_H
 
-#include <Arduino.h>
+#include <math.h>
 
 namespace udon
 {
@@ -30,7 +30,7 @@ namespace udon
                 @param  dataSize    [in]移動平均するデータの個数
         */
         MovingAverage(size_t dataSize)
-            : dataSize(max(dataSize, 1ULL))
+            : dataSize(fmax(dataSize, 1ULL))
             , data(new int[dataSize]())
             , writeIndex()
             , sum()

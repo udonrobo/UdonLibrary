@@ -1,8 +1,9 @@
-#pragma once
+﻿#pragma once
 
-#include <Adafruit_BNO055.h>
-#include <udon/types/Quaternion.hpp>
+#ifdef ARDUINO
 
+#    include <Adafruit_BNO055.h>
+#    include <udon/types/Quaternion.hpp>
 
 namespace udon
 {
@@ -56,3 +57,5 @@ namespace udon
     };
 
 }    // namespace udon
+
+#endif
