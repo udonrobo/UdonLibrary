@@ -8,13 +8,13 @@
 ///         呼び出し関数
 #define UDON_MAYBE_INVOKE(MethodName)                                                         \
     template <typename T>                                                                     \
-    auto maybe_invoke_##MethodName(T&& instance)                                               \
+    auto MaybeInvoke_##MethodName(T&& instance)                                               \
         ->typename std::enable_if<udon::has_member_function_##MethodName<T>::value>::type     \
     {                                                                                         \
         instance.MethodName();                                                                \
     }                                                                                         \
     template <typename T>                                                                     \
-    auto maybe_invoke_##MethodName(T&&)                                                        \
+    auto MaybeInvoke_##MethodName(T&&)                                                        \
         ->typename std::enable_if<not udon::has_member_function_##MethodName<T>::value>::type \
     {                                                                                         \
     }

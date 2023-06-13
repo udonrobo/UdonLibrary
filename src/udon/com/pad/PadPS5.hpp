@@ -119,7 +119,7 @@ namespace udon
         template <typename T = reader_type>
         void update()
         {
-            udon::maybe_invoke_update(reader);
+            udon::MaybeInvoke_update(reader);
 
             const auto message = reader.getMessage();
 
