@@ -8,7 +8,7 @@
 #ifndef DEF_MovingAverage_H
 #define DEF_MovingAverage_H
 
-#include <math.h>
+#include <Arduino.h>
 
 namespace udon
 {
