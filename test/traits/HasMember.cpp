@@ -67,7 +67,7 @@ namespace has_static_member_function
 namespace has_member_iterate_function
 {
 
-	UDON_has_member_iterate_FUNCTION(accessor);
+	UDON_HAS_MEMBER_ITERATE_FUNCTION(accessor);
 
 	struct TestStruct1
 	{
