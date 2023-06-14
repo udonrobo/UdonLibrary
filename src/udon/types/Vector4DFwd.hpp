@@ -35,14 +35,6 @@ namespace udon
 			, w()
         {}
 
-        /// @brief デフォルトコピーコンストラクタ
-        constexpr Vector4D(const Vector4D& rhs) noexcept
-            : x(rhs.x)
-            , y(rhs.y)
-            , z(rhs.z)
-			, w(rhs.w)
-        {}
-
         /// @brief コンストラクタ
         /// @param x x成分
         /// @param y y成分
@@ -53,6 +45,9 @@ namespace udon
 			, w(w)
         {
         }
+
+        /// @brief デフォルトコピーコンストラクタ
+        Vector4D(const Vector4D&) = default;
 
         /// @brief デフォルトコピー代入演算子
         Vector4D& operator=(const Vector4D&) = default;

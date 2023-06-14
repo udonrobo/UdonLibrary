@@ -35,13 +35,6 @@ namespace udon
         {
         }
 
-        /// @brief デフォルトコピーコンストラクタ
-        constexpr Vector2D(const Vector2D& rhs) noexcept
-            : x(rhs.x)
-            , y(rhs.y)
-        {
-        }
-
         /// @brief コンストラクタ
         /// @param x x成分
         /// @param y y成分
@@ -60,6 +53,9 @@ namespace udon
         {
         }
 #endif
+
+        /// @brief デフォルトコピーコンストラクタ
+        Vector2D(const Vector2D&) = default;
 
         /// @brief デフォルトコピー代入演算子
         Vector2D& operator=(const Vector2D&) = default;

@@ -1,19 +1,20 @@
 #pragma once
 
-#include <udon/math/Math.hpp>  // udon::NormalizedAngle
 #include <udon/com/serializer/Serializer.hpp>
+#include <udon/math/Math.hpp>    // udon::NormalizedAngle
+
 
 namespace udon
 {
 
     struct Quaternion;
 
-    template<typename T>
-	struct Euler3D
-	{
+    template <typename T>
+    struct Euler3D
+    {
 
         /// @brief 要素の型
-		using value_type = T;
+        using value_type = T;
 
         /// @brief ロール角
         value_type roll;
@@ -24,30 +25,27 @@ namespace udon
         /// @brief ヨー角
         value_type yaw;
 
-		/// @brief デフォルトコンストラクタ
+        /// @brief デフォルトコンストラクタ
         constexpr Euler3D() noexcept
-            : roll ()
+            : roll()
             , pitch()
-            , yaw  ()
-        {}
-
-        /// @brief デフォルトコピーコンストラクタ
-        constexpr Euler3D(const Euler3D& rhs) noexcept
-            : roll (rhs.roll )
-            , pitch(rhs.pitch)
-			, yaw  (rhs.yaw  )
-        {}
+            , yaw()
+        {
+        }
 
         /// @brief コンストラクタ
         /// @param roll ロール角
         /// @param pitch ピッチ角
         /// @param yaw ヨー角
         constexpr Euler3D(value_type roll, value_type pitch, value_type yaw) noexcept
-            : roll (roll )
+            : roll(roll)
             , pitch(pitch)
-			, yaw  (yaw  )
+            , yaw(yaw)
         {
         }
+
+        /// @brief デフォルトコピーコンストラクタ
+        Euler3D(const Euler3D&) = default;
 
         /// @brief デフォルトコピー代入演算子
         Euler3D& operator=(const Euler3D&) = default;
@@ -81,9 +79,9 @@ namespace udon
         /// @return
         constexpr bool operator==(const Euler3D& rhs) const noexcept
         {
-            return roll  == rhs.roll  &&
+            return roll == rhs.roll &&
                    pitch == rhs.pitch &&
-                   yaw   == rhs.yaw  ;
+                   yaw == rhs.yaw;
         };
         constexpr bool operator!=(const Euler3D& rhs) const noexcept
         {
@@ -110,9 +108,9 @@ namespace udon
         Euler3D normalized(value_type min, value_type max) const
         {
             return {
-                udon::NormalizedAngle(roll , min, max),
+                udon::NormalizedAngle(roll, min, max),
                 udon::NormalizedAngle(pitch, min, max),
-                udon::NormalizedAngle(yaw  , min, max),
+                udon::NormalizedAngle(yaw, min, max),
             };
         }
 
@@ -121,12 +119,11 @@ namespace udon
         /// @return 修正後のオイラー角
         Euler3D directionRevision(const Euler3D<bool>& direction)
         {
-			return
-			{
-				roll  * (direction.roll  ? 1 : -1),
-				pitch * (direction.pitch ? 1 : -1),
-				yaw   * (direction.yaw   ? 1 : -1),
-			};
+            return {
+                roll * (direction.roll ? 1 : -1),
+                pitch * (direction.pitch ? 1 : -1),
+                yaw * (direction.yaw ? 1 : -1),
+            };
         }
 
         Quaternion toQuaternion() const noexcept;
@@ -141,9 +138,9 @@ namespace udon
         /// @brief デバッグ出力
         void show() const
         {
-            Serial.print(F("r: ")), Serial.print(roll ), Serial.print('\t');
+            Serial.print(F("r: ")), Serial.print(roll), Serial.print('\t');
             Serial.print(F("p: ")), Serial.print(pitch), Serial.print('\t');
-            Serial.print(F("y: ")), Serial.print(yaw  ), Serial.print('\t');
+            Serial.print(F("y: ")), Serial.print(yaw), Serial.print('\t');
         }
 #endif
 
@@ -162,9 +159,8 @@ namespace udon
         {
             acc(roll, pitch, yaw);
         }
-
-	};
+    };
 
     using Euler = Euler3D<double>;
 
-} // namespace udon
+}    // namespace udon

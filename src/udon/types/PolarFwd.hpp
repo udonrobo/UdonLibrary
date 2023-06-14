@@ -21,17 +21,13 @@ namespace udon
         {
         }
 
-        constexpr Polar_impl(const Polar_impl& rhs) noexcept
-            : r(rhs.r)
-            , theta(rhs.theta)
-        {
-        }
-
         constexpr Polar_impl(value_type r, value_type theta) noexcept
             : r(r)
             , theta(theta)
         {
         }
+
+        Polar_impl(const Polar_impl&) = default;
 
         Polar_impl& operator=(const Polar_impl&) = default;
 
