@@ -1,48 +1,49 @@
 #pragma once
 
+#include <stdarg.h>
 #include <stdint.h>
 #include <udon/com/serialization/Serializer.hpp>
+#include <udon/utility/Parsable.hpp>
 
 namespace udon
 {
 
-	namespace message
-	{
+    namespace message
+    {
 
-		struct Lcd1602
-		{
+        template <size_t Column, size_t Row>
+        struct Lcd
+        {
+            /// @brief LCDのテキスト
+            char text[Row][Column];
 
-			/// @brief LCDのテキスト
-			char top[16];
-			char bottom[16];
+            void printf(size_t index, const char* format, ...)
+            {
+                va_list args;
+                va_start(args, format);
+                vsnprintf(text[index], Column, format, args);
+                va_end(args);
+            }
 
 #ifdef ARDUINO
-			/// @brief デバッグ出力
-			void show() const
-			{
-				Serial.print(F("lcd: "));
-				Serial.print(top)   , Serial.print(' ');
-				Serial.print(bottom), Serial.print('\t');
-			}
+            /// @brief デバッグ出力
+            void show() const
+            {
+                Serial.print(F("lcd: "));
+                for (size_t i = 0; i < Row; ++i)
+                {
+                    Serial.print(text[i]), Serial.print(' ');
+                }
+                Serial.print('\t');
+            }
 #endif
 
-			/// @brief シリアライズ後のバイト数を求める
-			/// @return
-			constexpr size_t capacity() const
-			{
-				return udon::Capacity(top, bottom);
-			}
+            UDON_PARSABLE(text);
+        };
 
-			/// @brief
-			/// @tparam T
-			/// @param acc
-			template <typename Acc>
-			void accessor(Acc& acc)
-			{
-				acc(top, bottom);
-			}
-		};
+        using Lcd1602 = Lcd<2, 16>;
+        using Lcd2004 = Lcd<4, 20>;
 
-	}
+    }    // namespace message
 
-} // namespace udon
+}    // namespace udon
