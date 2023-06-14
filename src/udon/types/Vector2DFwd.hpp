@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include <udon/com/serialization/Serializer.hpp>
+#include <udon/utility/Parsable.hpp>
 
 namespace udon
 {
@@ -213,21 +213,7 @@ namespace udon
         }
 #endif
 
-        /// @brief シリアライズ後のバイト数を求める
-        /// @return
-        constexpr size_t capacity() const
-        {
-            return udon::Capacity(x, y);
-        }
-
-        /// @brief
-        /// @tparam T
-        /// @param acc
-        template <typename Acc>
-        void accessor(Acc& acc)
-        {
-            acc(x, y);
-        }
+        UDON_PARSABLE(x, y);
     };
 
 }    // namespace udon

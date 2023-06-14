@@ -1,39 +1,40 @@
 ﻿#pragma once
 
-#include <udon/com/serialization/Serializer.hpp>
+#include <udon/utility/Parsable.hpp>
 
 namespace udon
 {
 
-	template<typename T>
-	struct Vector2D;
+    template <typename T>
+    struct Vector2D;
 
-	template<typename T>
-	struct Vector3D;
+    template <typename T>
+    struct Vector3D;
 
-	template<typename T>
-	struct Vector4D
-	{
+    template <typename T>
+    struct Vector4D
+    {
 
         /// @brief 要素の型
-		using value_type = T;
+        using value_type = T;
 
-		/// @brief 要素
-		value_type x;
-		value_type y;
-		value_type z;
-		value_type w;
+        /// @brief 要素
+        value_type x;
+        value_type y;
+        value_type z;
+        value_type w;
 
         /// @brief 次元数
-		static constexpr size_t Dimension = 4;
+        static constexpr size_t Dimension = 4;
 
         /// @brief デフォルトコンストラクタ
         constexpr Vector4D() noexcept
             : x()
             , y()
             , z()
-			, w()
-        {}
+            , w()
+        {
+        }
 
         /// @brief コンストラクタ
         /// @param x x成分
@@ -42,7 +43,7 @@ namespace udon
             : x(x)
             , y(y)
             , z(z)
-			, w(w)
+            , w(w)
         {
         }
 
@@ -59,10 +60,10 @@ namespace udon
         constexpr Vector4D operator-(const Vector4D& rhs) const noexcept { return { x - rhs.x, y - rhs.y, z - rhs.z, w - rhs.w }; }
         constexpr Vector4D operator*(const Vector4D& rhs) const noexcept { return { x * rhs.x, y * rhs.y, z * rhs.z, w * rhs.w }; }
         constexpr Vector4D operator/(const Vector4D& rhs) const noexcept { return { x / rhs.x, y / rhs.y, z / rhs.z, w / rhs.w }; }
-        constexpr Vector4D operator+(value_type rhs) const noexcept { return { x + rhs, y + rhs, z + rhs, w + rhs  }; }
-        constexpr Vector4D operator-(value_type rhs) const noexcept { return { x - rhs, y - rhs, z - rhs, w - rhs  }; }
-        constexpr Vector4D operator*(value_type rhs) const noexcept { return { x * rhs, y * rhs, z * rhs, w * rhs  }; }
-        constexpr Vector4D operator/(value_type rhs) const noexcept { return { x / rhs, y / rhs, z / rhs, w / rhs  }; }
+        constexpr Vector4D operator+(value_type rhs) const noexcept { return { x + rhs, y + rhs, z + rhs, w + rhs }; }
+        constexpr Vector4D operator-(value_type rhs) const noexcept { return { x - rhs, y - rhs, z - rhs, w - rhs }; }
+        constexpr Vector4D operator*(value_type rhs) const noexcept { return { x * rhs, y * rhs, z * rhs, w * rhs }; }
+        constexpr Vector4D operator/(value_type rhs) const noexcept { return { x / rhs, y / rhs, z / rhs, w / rhs }; }
 
         /// @brief 複合代入演算子
         /// @param rhs 被演算子
@@ -110,9 +111,9 @@ namespace udon
             *this = {};
         }
 
-		udon::Vector2D<value_type> xy() const;
+        udon::Vector2D<value_type> xy() const;
 
-		udon::Vector3D<value_type> xyz() const;
+        udon::Vector3D<value_type> xyz() const;
 
 #ifdef ARDUINO
         /// @brief デバッグ出力
@@ -125,22 +126,7 @@ namespace udon
         }
 #endif
 
-        /// @brief シリアライズ後のバイト数を求める
-        /// @return
-        constexpr size_t capacity() const
-        {
-            return udon::Capacity(x, y, z, w);
-        }
+        UDON_PARSABLE(x, y, z, w);
+    };
 
-        /// @brief
-        /// @tparam T
-        /// @param acc
-        template <typename Acc>
-        void accessor(Acc& acc)
-        {
-            acc(x, y, z, w);
-        }
-
-	};
-
-}
+}    // namespace udon

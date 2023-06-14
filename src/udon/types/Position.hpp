@@ -3,6 +3,7 @@
 #include <udon/math/Math.hpp>
 #include <udon/types/Polar.hpp>
 #include <udon/types/Vector2D.hpp>
+#include <udon/utility/Parsable.hpp>
 
 #include <udon/stl/EnableSTL.hpp>
 
@@ -148,7 +149,7 @@ namespace udon
                                                     uint8_t turnPowerLimit = 255) const
         {
             static_assert(WheelCount >= 3, "WheelCount must be greater than or equal to 3.");
-            static_assert(WheelCount == 4, "Not supported over 4 wheels now.");  // todo: 5輪以上対応
+            static_assert(WheelCount == 4, "Not supported over 4 wheels now.");    // todo: 5輪以上対応
 
             // 旋回移動ベクトル
             const udon::Vec2 turnVec = { 0, udon::Map(this->turn, -255, 255, -turnPowerLimit, turnPowerLimit) };
@@ -196,21 +197,7 @@ namespace udon
         }
 #endif
 
-        /// @brief シリアライズ後のバイト数を求める
-        /// @return
-        constexpr size_t capacity() const
-        {
-            return udon::Capacity(vector, turn);
-        }
-
-        /// @brief
-        /// @tparam T
-        /// @param acc
-        template <typename Acc>
-        void accessor(Acc& acc)
-        {
-            acc(vector, turn);
-        }
+        UDON_PARSABLE(vector, turn);
     };
 
     using Pos = Position<double>;

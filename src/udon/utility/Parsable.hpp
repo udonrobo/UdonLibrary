@@ -1,5 +1,7 @@
 #pragma once
 
+#include <udon/com/serialization/Serializer.hpp>
+
 /// @brief 自作クラスのパースを可能にする
 /// @param ... パース可能なメンバー変数(,区切り)
 /// @details

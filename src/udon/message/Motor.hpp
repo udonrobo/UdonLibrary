@@ -1,7 +1,6 @@
 #pragma once
 
 #include <stdint.h>
-#include <udon/com/serialization/Serializer.hpp>
 #include <udon/utility/Parsable.hpp>
 
 namespace udon

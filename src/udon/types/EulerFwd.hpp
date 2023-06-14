@@ -1,8 +1,7 @@
 #pragma once
 
-#include <udon/com/serialization/Serializer.hpp>
 #include <udon/math/Math.hpp>    // udon::NormalizedAngle
-
+#include <udon/utility/Parsable.hpp>
 
 namespace udon
 {
@@ -144,21 +143,8 @@ namespace udon
         }
 #endif
 
-        /// @brief シリアライズ後のバイト数を求める
-        /// @return
-        constexpr size_t capacity() const
-        {
-            return udon::Capacity(roll, pitch, yaw);
-        }
+        UDON_PARSABLE(roll, pitch, yaw);
 
-        /// @brief
-        /// @tparam T
-        /// @param acc
-        template <typename Acc>
-        void accessor(Acc& acc)
-        {
-            acc(roll, pitch, yaw);
-        }
     };
 
     using Euler = Euler3D<double>;

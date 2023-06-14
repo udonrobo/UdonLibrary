@@ -1,17 +1,17 @@
 ﻿#pragma once
 
-#include <udon/com/serialization/Serializer.hpp>
+#include <udon/utility/Parsable.hpp>
 
 namespace udon
 {
 
-    template<typename T>
+    template <typename T>
     struct Vector2D;
 
-    template<typename T>
+    template <typename T>
     struct Vector4D;
 
-    template<typename T>
+    template <typename T>
     struct Vector3D
     {
 
@@ -45,7 +45,7 @@ namespace udon
         }
 
         /// @brief デフォルトコピーコンストラクタ
-        Vector3D(const Vector3D&)  = default;
+        Vector3D(const Vector3D&) = default;
 
         /// @brief デフォルトコピー代入演算子
         Vector3D& operator=(const Vector3D&) = default;
@@ -120,22 +120,7 @@ namespace udon
             Serial.print("z: "), Serial.print(z), Serial.print('\t');
         }
 #endif
-
-        /// @brief シリアライズ後のバイト数を求める
-        /// @return
-        constexpr size_t capacity() const
-        {
-            return udon::Capacity(x, y, z);
-        }
-
-        /// @brief
-        /// @tparam T
-        /// @param acc
-        template <typename Acc>
-        void accessor(Acc& acc)
-        {
-            acc(x, y, z);
-        }
+        UDON_PARSABLE(x, y, z);
     };
 
 }    // namespace udon
