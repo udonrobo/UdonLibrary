@@ -1,7 +1,7 @@
 #pragma once
 
 #include <stdint.h>
-#include <udon/com/serializer/Serializer.hpp>
+#include <udon/com/serialization/Serializer.hpp>
 
 namespace udon
 {

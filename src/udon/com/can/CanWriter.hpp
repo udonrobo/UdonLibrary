@@ -6,7 +6,7 @@
 #pragma once
 
 #include <udon/com/can/ICanBus.hpp>
-#include <udon/com/serializer/Serializer.hpp>
+#include <udon/com/serialization/Serializer.hpp>
 
 namespace udon
 {

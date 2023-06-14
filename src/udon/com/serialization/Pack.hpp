@@ -7,7 +7,7 @@
 
 #include <udon/algorithm/CRC8.hpp>
 #include <udon/algorithm/Endian.hpp>
-#include <udon/com/serializer/Capacity.hpp>
+#include <udon/com/serialization/Capacity.hpp>
 #include <udon/traits/HasMember.hpp>
 #include <udon/types/Float.hpp>
 

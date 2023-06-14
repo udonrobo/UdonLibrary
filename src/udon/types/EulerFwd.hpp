@@ -1,6 +1,6 @@
 #pragma once
 
-#include <udon/com/serializer/Serializer.hpp>
+#include <udon/com/serialization/Serializer.hpp>
 #include <udon/math/Math.hpp>    // udon::NormalizedAngle
 
 
