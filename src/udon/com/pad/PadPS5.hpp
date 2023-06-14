@@ -121,7 +121,7 @@ namespace udon
         {
             udon::MaybeInvoke_update(reader);
 
-            const auto message = reader.getMessage();
+            const auto& message = reader.getMessage();
 
             isConnected = message.isConnected;
 
