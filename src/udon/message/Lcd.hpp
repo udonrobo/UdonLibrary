@@ -30,11 +30,10 @@ namespace udon
             void show() const
             {
                 Serial.print(F("lcd: "));
-                for (size_t i = 0; i < Row; ++i)
+                for (auto&& row : text)
                 {
-                    Serial.print(text[i]), Serial.print(' ');
+                    Serial.println(row);
                 }
-                Serial.print('\t');
             }
 #endif
 
