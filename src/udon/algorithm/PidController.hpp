@@ -18,7 +18,6 @@ namespace udon
     */
     class PidController
     {
-    protected:
         double kPro;    ///< 比例定数
         double kInt;    ///< 積分定数
         double kDif;    ///< 微分定数
@@ -55,15 +54,11 @@ namespace udon
         {
         }
 
-        /**     デストラクタ
-         */
-        virtual ~PidController() {}
-
         /**     データ更新
                 @param  controlValue    制御量
                 @param  targetValue     目標値
         */
-        virtual void update(double controlValue, double targetValue) noexcept
+        void update(double controlValue, double targetValue) noexcept
         {
             // 偏差の計算
             double error = targetValue - controlValue;
@@ -97,7 +92,7 @@ namespace udon
         /**     操作量のクリア
                 内部の量をすべて0にする。
         */
-        virtual void clearPower() noexcept
+        void clearPower() noexcept
         {
             proPower  = 0.0;
             intPower  = 0.0;
