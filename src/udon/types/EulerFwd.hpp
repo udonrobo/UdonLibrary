@@ -132,7 +132,7 @@ namespace udon
         Quaternion toQuaternion() const noexcept;
 
         /// @brief 値クリア
-        constexpr void clear() noexcept
+        void clear() noexcept
         {
             *this = {};
         }
