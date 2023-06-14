@@ -6,40 +6,26 @@
 namespace udon
 {
 
-	namespace message
-	{
+    namespace message
+    {
 
-		struct Stepping
-		{
+        struct Stepping
+        {
 
-			/// @brief ステッピングモーターの出力値
-			int32_t position;
+            /// @brief ステッピングモーターの出力値
+            int32_t position;
 
 #ifdef ARDUINO
-			/// @brief デバッグ出力
-			void show() const
-			{
-				Serial.print(F("pos: ")), Serial.print(position), Serial.print('\t');
-			}
+            /// @brief デバッグ出力
+            void show() const
+            {
+                Serial.print(F("pos: ")), Serial.print(position), Serial.print('\t');
+            }
 #endif
 
-			/// @brief シリアライズ後のバイト数を求める
-			/// @return
-			constexpr size_t capacity() const
-			{
-				return udon::Capacity(position);
-			}
+            UDON_PARSABLE(position);
+        };
 
-			/// @brief
-			/// @tparam T
-			/// @param acc
-			template <typename Acc>
-			void accessor(Acc& acc)
-			{
-				acc(position);
-			}
-		};
+    }    // namespace message
 
-	}
-
-} // namespace udon
+}    // namespace udon

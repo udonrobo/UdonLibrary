@@ -17,11 +17,13 @@ namespace udon
 	public:
 
 		optional()
-			: m_hasValue()
+			: m_value()
+			, m_hasValue()
 		{}
 
 		optional(nullopt_t)
-			: m_hasValue()
+			: m_value()
+			, m_hasValue()
 		{}
 
 		optional(const T& value)

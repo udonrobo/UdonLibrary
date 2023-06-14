@@ -10,42 +10,42 @@ namespace udon
     {
         struct PadPS5
         {
-			bool isConnected;
+            bool isConnected;
 
-			bool triangle;
-			bool circle;
-			bool cross;
-			bool square;
+            bool triangle;
+            bool circle;
+            bool cross;
+            bool square;
 
-			bool up;
-			bool right;
-			bool down;
-			bool left;
+            bool up;
+            bool right;
+            bool down;
+            bool left;
 
-			bool l1;
-			bool r1;
-			bool l2;
-			bool r2;
-			bool l3;
-			bool r3;
+            bool l1;
+            bool r1;
+            bool l2;
+            bool r2;
+            bool l3;
+            bool r3;
 
-			int8_t analogRightX;
-			int8_t analogRightY;
-			int8_t analogLeftX;
-			int8_t analogLeftY;
-			int8_t analogR2;
-			int8_t analogL2;
+            int8_t analogRightX;
+            int8_t analogRightY;
+            int8_t analogLeftX;
+            int8_t analogLeftY;
+            int8_t analogR2;
+            int8_t analogL2;
 
-			bool create;
-			bool option;
-			bool touch;
+            bool create;
+            bool option;
+            bool touch;
 
-			bool mic;
+            bool mic;
 
 #ifdef ARDUINO
-			/// @brief デバッグ出力
-			void show() const
-			{
+            /// @brief デバッグ出力
+            void show() const
+            {
                 // todo
                 // Serial.print(isConnected);
                 // Serial.print(triangle);
@@ -72,73 +72,10 @@ namespace udon
                 // Serial.print(option);
                 // Serial.print(touch);
                 // Serial.print(mic);
-			}
+            }
 #endif
 
-			/// @brief シリアライズ後のバイト数を求める
-			/// @return
-			constexpr size_t capacity() const
-			{
-				return udon::Capacity(isConnected
-                                    , triangle
-                                    , circle
-                                    , cross
-                                    , square
-                                    , l1
-                                    , r1
-                                    , l2
-                                    , r2
-                                    , l3
-                                    , r3
-                                    , up
-                                    , right
-                                    , down
-                                    , left
-                                    , analogRightX
-                                    , analogRightY
-                                    , analogLeftX
-                                    , analogLeftY
-                                    , analogL2
-                                    , analogR2
-                                    , create
-                                    , option
-                                    , touch
-                                    , mic);
-			}
-
-			/// @brief
-			/// @tparam T
-			/// @param acc
-			template <typename Acc>
-			void accessor(Acc& acc)
-			{
-				acc(isConnected
-                    , triangle
-                    , circle
-                    , cross
-                    , square
-                    , l1
-                    , r1
-                    , l2
-                    , r2
-                    , l3
-                    , r3
-                    , up
-                    , right
-                    , down
-                    , left
-                    , analogRightX
-                    , analogRightY
-                    , analogLeftX
-                    , analogLeftY
-                    , analogL2
-                    , analogR2
-                    , create
-                    , option
-                    , touch
-                    , mic);
-			}
-
+            UDON_PARSABLE(isConnected, triangle, circle, cross, square, up, right, down, left, l1, r1, l2, r2, l3, r3, analogRightX, analogRightY, analogLeftX, analogLeftY, analogR2, analogL2, create, option, touch, mic);
         };
     }    // namespace message
 }    // namespace udon

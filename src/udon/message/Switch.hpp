@@ -5,42 +5,28 @@
 namespace udon
 {
 
-	namespace message
-	{
+    namespace message
+    {
 
-		struct Switch
-		{
+        struct Switch
+        {
 
-			/// @brief エンコーダーのカウント値
-			bool isPress;
+            /// @brief エンコーダーのカウント値
+            bool isPress;
 
 #ifdef ARDUINO
-			/// @brief デバッグ出力
-			void show() const
-			{
-				Serial.print(F("switch: ")), Serial.print(isPress), Serial.print('\t');
-			}
+            /// @brief デバッグ出力
+            void show() const
+            {
+                Serial.print(F("switch: ")), Serial.print(isPress), Serial.print('\t');
+            }
 #endif
 
-			/// @brief シリアライズ後のバイト数を求める
-			/// @return
-			constexpr size_t capacity() const
-			{
-				return udon::Capacity(isPress);
-			}
+            UDON_PARSABLE(isPress);
+        };
 
-			/// @brief
-			/// @tparam T
-			/// @param acc
-			template <typename Acc>
-			void accessor(Acc& acc)
-			{
-				acc(isPress);
-			}
-		};
+        using EmergencySwitch = Switch;
 
-    	using EmergencySwitch = Switch;
+    }    // namespace message
 
-	}
-
-} // namespace udon
+}    // namespace udon

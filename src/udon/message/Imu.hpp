@@ -6,40 +6,27 @@
 namespace udon
 {
 
-	namespace message
-	{
+    namespace message
+    {
+		/// @brief IMUの姿勢角(yaw角)
+		/// @details 3軸の姿勢角を格納する場合はudon::Eulerを使用してください。
+        struct Yaw
+        {
 
-		struct Yaw
-		{
-
-			/// @brief 旋回角
-			double yaw;
+            /// @brief 旋回角
+            double yaw;
 
 #ifdef ARDUINO
-			/// @brief デバッグ出力
-			void show() const
-			{
-				Serial.print(F("yaw: ")), Serial.print(yaw), Serial.print('\t');
-			}
+            /// @brief デバッグ出力
+            void show() const
+            {
+                Serial.print(F("yaw: ")), Serial.print(yaw), Serial.print('\t');
+            }
 #endif
 
-			/// @brief シリアライズ後のバイト数を求める
-			/// @return
-			constexpr size_t capacity() const
-			{
-				return udon::Capacity(yaw);
-			}
+            UDON_PARSABLE(yaw);
+        };
 
-			/// @brief
-			/// @tparam T
-			/// @param acc
-			template <typename Acc>
-			void accessor(Acc& acc)
-			{
-				acc(yaw);
-			}
-		};
+    }    // namespace message
 
-	}
-
-} // namespace udon
+}    // namespace udon
