@@ -82,15 +82,8 @@ namespace udon
             operator()(tails...);
         }
 
-        /// @brief バッファのキャパシティを変更する
-        /// @param size サイズ
-        void reserve(size_t size)
-        {
-            buffer.reserve(size);
-        }
-
         /// @brief バッファを取得する
-        /// @remarke 取得後のバッファは無効です。
+        /// @remark 取得後のバッファは無効です。
         std::vector<uint8_t> flush()
         {
             buffer.push_back(udon::CRC8(buffer.data(), buffer.size()));
@@ -109,6 +102,8 @@ namespace udon
         template <class Ty>
         void pack(const Ty& rhs)
         {
+            static_assert(std::is_scalar<Ty>::value, "Ty must be scalar type.");
+
             // バッファの後方に挿入
             buffer.insert(
                 buffer.end(),
