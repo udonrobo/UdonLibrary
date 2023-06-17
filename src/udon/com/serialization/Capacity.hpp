@@ -5,7 +5,7 @@
 #include <type_traits>
 #include <utility>
 
-#include <udon/math/ceil.hpp>
+#include <udon/math/Ceil.hpp>
 #include <udon/algorithm/CRC8.hpp>
 #include <udon/traits/HasMember.hpp>
 #include <udon/types/Float.hpp>
