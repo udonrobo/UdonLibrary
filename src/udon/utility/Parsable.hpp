@@ -11,7 +11,7 @@
 ///     - パース可能な型の配列
 /// - このマクロを使用すると、以下のメンバー関数が定義される
 ///   - constexpr size_t capacity() const
-///     - シリアライズ時に必要なバッファのバイトサイズを返す
+///     - シリアライズ時に必要なバッファのビットサイズを返す
 ///   - template <typename Acc> void accessor(Acc& acc)
 ///     - シリアライズ、デシリアライズ時に使用するアクセッサ
 #define UDON_PARSABLE(...)                  \
