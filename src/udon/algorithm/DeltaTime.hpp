@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Arduino.h>
+
 namespace udon
 {
     class DeltaTime
