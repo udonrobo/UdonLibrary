@@ -4,18 +4,17 @@
 #include <udon/types/Vector3DFwd.hpp>
 #include <udon/types/Vector4DFwd.hpp>
 
-template<class Ty>
+template <class Ty>
 inline udon::Vector2D<Ty> udon::Vector3D<Ty>::xy() const noexcept
 {
     return { x, y };
 }
 
-template<class Ty>
+template <class Ty>
 inline udon::Vector4D<Ty> udon::Vector3D<Ty>::xyz0() const noexcept
 {
     return { x, y, z, 0 };
 }
-
 
 namespace udon
 {

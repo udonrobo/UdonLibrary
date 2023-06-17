@@ -31,15 +31,15 @@ namespace udon
 
         void update()
         {
-			bus.beginTransmission(address);
-			bus.write(buffer, Size);
-			bus.endTransmission();
+            bus.beginTransmission(address);
+            bus.write(buffer, Size);
+            bus.endTransmission();
         }
 
-		void setMessage(const Message& message)
-		{
-			udon::Pack(message, buffer);
-		}
+        void setMessage(const Message& message)
+        {
+            udon::Pack(message, buffer);
+        }
 
         const uint8_t* data() const
         {

@@ -6,40 +6,38 @@
 namespace udon
 {
 
-	template<class Message>
-	class UartWriter
-	{
+    template <class Message>
+    class UartWriter
+    {
 
-			udon::UartBus& uart;
+        udon::UartBus& uart;
 
-			Message message;
+        Message message;
 
-		public:
+    public:
+        UartWriter(udon::UartBus& uart) noexcept
+            : uart(uart)
+            , message()
+        {
+        }
 
-			UartWriter(udon::UartBus& uart) noexcept
-				: uart(uart)
-				, message()
-			{}
+        void setMessage(const Message& rhs)
+        {
+            message = rhs;
+        }
 
+        void update()
+        {
+            for (auto&& it : udon::Pack(message))
+            {
+                uart.write(it);
+            }
+        }
 
-			void setMessage(const Message& rhs)
-			{
-				message = rhs;
-			}
+        void show() const
+        {
+            message.show();
+        }
+    };
 
-			void update()
-			{
-				for (auto && it : udon::Pack(message))
-				{
-					uart.write(it);
-				}
-			}
-
-			void show() const
-			{
-				message.show();
-			}
-
-	};
-
-} // namespace udon
+}    // namespace udon

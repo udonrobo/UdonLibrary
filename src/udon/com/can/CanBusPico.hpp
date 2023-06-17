@@ -4,15 +4,15 @@
 
 #if defined(ARDUINO_ARCH_RP2040)
 
-#include <stdint.h>
-#include <udon/algorithm/Delegate.hpp>
-#include <udon/algorithm/RingBuffer.hpp>
-#include <udon/com/can/CanInfo.hpp>
-#include <udon/com/can/CanUtility.hpp>
-#include <udon/com/can/ICanBus.hpp>
-#include <udon/pio/PicoPioClock.hpp>
+#    include <stdint.h>
+#    include <udon/algorithm/Delegate.hpp>
+#    include <udon/algorithm/RingBuffer.hpp>
+#    include <udon/com/can/CanInfo.hpp>
+#    include <udon/com/can/CanUtility.hpp>
+#    include <udon/com/can/ICanBus.hpp>
+#    include <udon/pio/PicoPioClock.hpp>
 
-#include <udon/thirdparty/PicoMcp2515/mcp2515.h>
+#    include <udon/thirdparty/PicoMcp2515/mcp2515.h>
 
 namespace udon
 {
@@ -99,7 +99,7 @@ namespace udon
         CanNodeView createTxNode(uint16_t id, size_t size) override
         {
             auto node = std::find_if(txNodes.begin(), txNodes.end(), [id](const Can20ANode& node)
-                                   { return node.id == id; });
+                                     { return node.id == id; });
             if (node == txNodes.end())
             {
                 // not found node => create new node
@@ -121,7 +121,7 @@ namespace udon
         CanNodeView createRxNode(uint16_t id, size_t size) override
         {
             auto node = std::find_if(rxNodes.begin(), rxNodes.end(), [id](const Can20ANode& node)
-                                   { return node.id == id; });
+                                     { return node.id == id; });
             if (node == rxNodes.end())
             {
                 // not found node => create new node

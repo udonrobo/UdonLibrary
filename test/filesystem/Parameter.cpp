@@ -4,14 +4,14 @@
 
 inline void test()
 {
-	udon::Parameter p(10, "hoge.csv");
+    udon::Parameter p(10, "hoge.csv");
 
-	p.readParameter();
-	p.readShow();
-	for (int i = 0; i < 10; i++)
-		p.setParameter(i + 1, random(100));
-	p.writeShow();
-	p.writeParameter();
+    p.readParameter();
+    p.readShow();
+    for (int i = 0; i < 10; i++)
+        p.setParameter(i + 1, random(100));
+    p.writeShow();
+    p.writeParameter();
 }
 
 #endif

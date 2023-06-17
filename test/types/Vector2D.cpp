@@ -25,7 +25,7 @@ inline void test()
         constexpr udon::Vec2 a, b = { 10, 20 };
         a + b;
         a - b;
-        a* b;
+        a * b;
         a / b;
         a + 100;
         a - 100;

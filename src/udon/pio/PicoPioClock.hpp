@@ -2,7 +2,7 @@
 
 #if defined(ARDUINO_ARCH_RP2040)
 
-#include <udon/pio/SquareWave.pio.hpp>
+#    include <udon/pio/SquareWave.pio.hpp>
 
 namespace udon
 {
@@ -15,10 +15,10 @@ namespace udon
         for (unsigned int i = 0; i < count_of(pio::sqwave::squarewave_program_instructions); i++)
             pio->instr_mem[i] = pio::sqwave::squarewave_program_instructions[i];
 
-        pio->sm[0].clkdiv  = (uint32_t)(F_CPU * 0.25f * (1 << 16) / clockSpeed);                                    // 周波数設定(周波数低めのほうが誤差が少ない)
+        pio->sm[0].clkdiv  = (uint32_t)(F_CPU * 0.25f * (1 << 16) / clockSpeed);                              // 周波数設定(周波数低めのほうが誤差が少ない)
         pio->sm[0].pinctrl = (1 << PIO_SM0_PINCTRL_SET_COUNT_LSB) | (pin << PIO_SM0_PINCTRL_SET_BASE_LSB);    // PIOがIOピンにアクセスできるようにする
 
-		gpio_set_function(pin, GPIO_FUNC_PIO0);
+        gpio_set_function(pin, GPIO_FUNC_PIO0);
         hw_set_bits(&pio->ctrl, 1 << (PIO_CTRL_SM_ENABLE_LSB + 0));
     }
 

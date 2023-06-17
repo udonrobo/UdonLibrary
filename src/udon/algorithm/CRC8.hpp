@@ -20,7 +20,7 @@ namespace udon
         {
             crc ^= ptr[i];
 
-            for (uint8_t bit = 0; bit < 8 /* CHAR_BIT */ ; ++bit)
+            for (uint8_t bit = 0; bit < 8 /* CHAR_BIT */; ++bit)
             {
                 if (crc & 0x80)
                 {

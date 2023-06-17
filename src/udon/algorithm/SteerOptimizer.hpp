@@ -4,8 +4,9 @@
 
 #include <array>
 
-#include <udon/types/Polar.hpp>
 #include <udon/math/Math.hpp>
+#include <udon/types/Polar.hpp>
+
 
 namespace udon
 {

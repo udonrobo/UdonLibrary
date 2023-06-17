@@ -4,9 +4,10 @@
 
 #include <algorithm>
 
+#include <udon/algorithm/DeltaTime.hpp>
 #include <udon/com/message/Motor.hpp>
 #include <udon/traits/MaybeInvoke.hpp>
-#include <udon/algorithm/DeltaTime.hpp>
+
 
 namespace udon
 {
@@ -29,7 +30,6 @@ namespace udon
         double speed;
 
     public:
-
         /// @brief コンストラクタ
         /// @param reader 受信クラスオブジェクト
         /// @param direction 回転方向

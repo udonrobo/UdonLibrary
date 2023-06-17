@@ -4,7 +4,6 @@
 
 #pragma once
 
-#include <udon/com/message/Motor.hpp>
 #include <udon/com/message/BrushLess.hpp>
 #include <udon/com/message/Encoder.hpp>
 #include <udon/com/message/Imu.hpp>
@@ -15,3 +14,4 @@
 #include <udon/com/message/Solenoid.hpp>
 #include <udon/com/message/Stepping.hpp>
 #include <udon/com/message/Switch.hpp>
+

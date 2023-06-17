@@ -2,8 +2,9 @@
 
 #include <udon/stl/EnableSTL.hpp>
 
+#include <cstddef>    // std::ptrdiff_t
 #include <iterator>
-#include <cstddef>  // std::ptrdiff_t
+
 
 namespace udon
 {
@@ -11,7 +12,7 @@ namespace udon
     template <typename T>
     class ArrayView
     {
-        T* m_data;
+        T*     m_data;
         size_t m_size;
 
     public:
@@ -22,7 +23,7 @@ namespace udon
         }
 
         template <size_t N>
-        ArrayView(T(&m_data)[N])
+        ArrayView(T (&m_data)[N])
             : m_data(m_data)
             , m_size(N)
         {
@@ -60,10 +61,10 @@ namespace udon
         struct iterator
         {
             using iterator_category = std::random_access_iterator_tag;
-            using value_type = T;
-            using difference_type = std::ptrdiff_t;
-            using pointer = T*;
-            using reference = T&;
+            using value_type        = T;
+            using difference_type   = std::ptrdiff_t;
+            using pointer           = T*;
+            using reference         = T&;
 
             T* p;
 
