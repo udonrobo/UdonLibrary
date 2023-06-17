@@ -116,7 +116,7 @@ namespace udon
         void update();
 
         /// @brief コントローラーが接続されているか
-        operator bool() const
+        explicit operator bool() const
         {
             return isConnected;
         }
@@ -263,29 +263,29 @@ namespace udon
 
         if (auto&& message = reader.getMessage())
         {
-            isConnected = message.isConnected;
+            isConnected = message->isConnected;
 
-            triangle.update(message.triangle);
-            circle.update(message.circle);
-            cross.update(message.cross);
-            square.update(message.square);
+            triangle.update(message->triangle);
+            circle.update(message->circle);
+            cross.update(message->cross);
+            square.update(message->square);
 
-            up.update(message.up);
-            right.update(message.right);
-            down.update(message.down);
-            left.update(message.left);
+            up.update(message->up);
+            right.update(message->right);
+            down.update(message->down);
+            left.update(message->left);
 
-            l1.update(message.l1);
-            r1.update(message.r1);
-            l2.update(message.l2);
-            r2.update(message.r2);
-            l3.update(message.l3);
-            r3.update(message.r3);
+            l1.update(message->l1);
+            r1.update(message->r1);
+            l2.update(message->l2);
+            r2.update(message->r2);
+            l3.update(message->l3);
+            r3.update(message->r3);
 
-            create.update(message.create);
-            option.update(message.option);
-            touch.update(message.touch);
-            mic.update(message.mic);
+            create.update(message->create);
+            option.update(message->option);
+            touch.update(message->touch);
+            mic.update(message->mic);
 
             // -127 ~ 127(int8_t) -> -255 ~ 255(int16_t)
             const auto decodeStick = [](int8_t raw)
@@ -313,12 +313,12 @@ namespace udon
             };
 
             leftStick = {
-                cutDeadCone(decodeStick(message.analogLeftX), 20),
-                cutDeadCone(decodeStick(message.analogLeftY), 20),
+                cutDeadCone(decodeStick(message->analogLeftX), 20),
+                cutDeadCone(decodeStick(message->analogLeftY), 20),
             };
             rightStick = {
-                cutDeadCone(decodeStick(message.analogRightX), 20),
-                cutDeadCone(decodeStick(message.analogRightY), 20),
+                cutDeadCone(decodeStick(message->analogRightX), 20),
+                cutDeadCone(decodeStick(message->analogRightY), 20),
             };
         }
         else
