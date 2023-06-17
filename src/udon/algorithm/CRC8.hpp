@@ -45,7 +45,7 @@ namespace udon
 	{
 
 #ifdef PROGMEM
-		static constexpr uint8_t table[] PROGMEM
+		static constexpr uint8_t table[] /*PROGMEM*/
 #else
 		static constexpr uint8_t table[]
 #endif
