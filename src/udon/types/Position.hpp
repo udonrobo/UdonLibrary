@@ -77,7 +77,7 @@ namespace udon
         Position operator/=(value_type rhs) noexcept { return *this = *this / rhs; }
 
         /// @brief 要素のいずれかに0以外の値があるかどうかを返す
-        constexpr operator bool() const noexcept
+        constexpr explicit operator bool() const noexcept
         {
             return vector || turn;
         }

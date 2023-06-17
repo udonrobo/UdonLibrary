@@ -18,7 +18,7 @@ namespace udon
     public:
         virtual ~II2cBus() = default;
 
-        virtual operator bool() const = 0;
+        virtual explicit operator bool() const = 0;
 
         /// @brief 更新
         virtual bool update() = 0;
@@ -118,7 +118,7 @@ namespace udon
         }
 
         /// @brief I2cバスの有効性を取得
-        operator bool() const override
+        explicit operator bool() const override
         {
             return millis() - lastTransmitMs < timeoutMs;
         }

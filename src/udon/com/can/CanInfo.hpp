@@ -22,7 +22,7 @@ namespace udon
         uint8_t  RXErrorCount;
         uint32_t timestampUs;
 
-        operator bool() const
+        explicit operator bool() const
         {
             return TXErrorCount < 100 &&
                    RXErrorCount < 100 &&

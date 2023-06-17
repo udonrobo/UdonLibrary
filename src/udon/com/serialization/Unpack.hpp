@@ -44,7 +44,7 @@ namespace udon
             isChecksumSuccess   = buffer.back() == checksum;
         }
 
-        operator bool() const
+        explicit operator bool() const
         {
             return isChecksumSuccess;
         }
