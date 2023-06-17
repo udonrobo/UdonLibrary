@@ -39,7 +39,7 @@ namespace udon
             const std::array<udon::Polar, WheelCount>& raw) -> std::array<udon::Polar, WheelCount>;
 
         /// @brief 最適化を行う(前回の制御値と比較する)
-        /// @param raw 最適化前の値 (極座標配列 r:[-π~π(radians)] theta:[自由　　　     ])
+        /// @param raw 最適化前の値 (極座標配列 r:[-π~π(radians)] theta:[自由])
         /// @return    最適化後の値 (極座標配列 r:[-∞~∞(radians)] theta:[±最適化前theta])
         auto operator()(
             const std::array<udon::Polar, WheelCount>& raw) -> std::array<udon::Polar, WheelCount>
