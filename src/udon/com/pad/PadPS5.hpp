@@ -49,7 +49,7 @@ namespace udon
     {
 
         /// @brief 受信クラスの型
-        using reader_type = Reader<udon::message::PadPS5>;
+        using reader_type = Reader<message::PadPS5>;
 
         /// @brief 受信クラス
         reader_type reader;
@@ -81,10 +81,6 @@ namespace udon
         udon::Vec2 rightStick;
         udon::Vec2 leftStick;
 
-        /// @brief アナログトリガー [-255~255]
-        uint8_t analogL2 = 0;
-        uint8_t analogR2 = 0;
-
     public:
         /// @brief デフォルトコンストラクタ
         /// @remark 受信クラスがデフォルトコンストラクタを持つ場合インスタンス化されます。
@@ -107,7 +103,8 @@ namespace udon
         /// @tparam T
         /// @return
         template <typename T = reader_type>
-        auto begin() -> typename std::enable_if<udon::has_member_function_begin<T>::value>::type
+        auto begin()
+            -> typename std::enable_if<udon::has_member_function_begin<T>::value>::type
         {
             reader.begin();
         }
@@ -116,74 +113,7 @@ namespace udon
         /// @remark 受信クラスがupdate()を持つ場合インスタンス化されます。
         /// @tparam T
         /// @return
-        template <typename T = reader_type>
-        void update()
-        {
-            udon::MaybeInvoke_update(reader);
-
-            const auto& message = reader.getMessage();
-
-            isConnected = message.isConnected;
-
-            triangle.update(message.triangle);
-            circle.update(message.circle);
-            cross.update(message.cross);
-            square.update(message.square);
-
-            up.update(message.up);
-            right.update(message.right);
-            down.update(message.down);
-            left.update(message.left);
-
-            l1.update(message.l1);
-            r1.update(message.r1);
-            l2.update(message.l2);
-            r2.update(message.r2);
-            l3.update(message.l3);
-            r3.update(message.r3);
-
-            create.update(message.create);
-            option.update(message.option);
-            touch.update(message.touch);
-            mic.update(message.mic);
-
-            // -127 ~ 127(int8_t) -> -255 ~ 255(int16_t)
-            const auto decodeStick = [](int8_t raw)
-                -> int16_t
-            {
-                return raw * 2;
-            };
-
-            /// @brief デッドゾーン処理
-            const auto cutDeadCone = [](double value, double deadZone)
-                -> double
-            {
-                if (value > deadZone)
-                {
-                    return 255 * (value - deadZone) / (255 - deadZone);
-                }
-                else if (value < -deadZone)
-                {
-                    return 255 * (value + deadZone) / (255 - deadZone);
-                }
-                else
-                {
-                    return 0.0;
-                }
-            };
-
-            leftStick = {
-                cutDeadCone(decodeStick(message.analogLeftX), 20),
-                cutDeadCone(decodeStick(message.analogLeftY), 20),
-            };
-            rightStick = {
-                cutDeadCone(decodeStick(message.analogRightX), 20),
-                cutDeadCone(decodeStick(message.analogRightY), 20),
-            };
-
-            analogL2 = message.analogL2;
-            analogR2 = message.analogR2;
-        }
+        void update();
 
         /// @brief コントローラーが接続されているか
         operator bool() const
@@ -318,18 +248,108 @@ namespace udon
         {
             return { leftStick, rightStick.x };
         }
-        /// @brief L2アナログ
-        /// @return
-        uint8_t getL2Analog() const
-        {
-            return analogL2;
-        }
-        /// @brief R2アナログ
-        /// @return
-        uint8_t getR2Analog() const
-        {
-            return analogR2;
-        }
     };
+
+    // detail
+
+    /// @brief 更新
+    /// @remark 受信クラスがupdate()を持つ場合インスタンス化されます。
+    /// @tparam T
+    /// @return
+    template <template <typename> typename Reader>
+    void PadPS5<Reader>::update()
+    {
+        udon::MaybeInvoke_update(reader);
+
+        if (auto&& message = reader.getMessage())
+        {
+            isConnected = message.isConnected;
+
+            triangle.update(message.triangle);
+            circle.update(message.circle);
+            cross.update(message.cross);
+            square.update(message.square);
+
+            up.update(message.up);
+            right.update(message.right);
+            down.update(message.down);
+            left.update(message.left);
+
+            l1.update(message.l1);
+            r1.update(message.r1);
+            l2.update(message.l2);
+            r2.update(message.r2);
+            l3.update(message.l3);
+            r3.update(message.r3);
+
+            create.update(message.create);
+            option.update(message.option);
+            touch.update(message.touch);
+            mic.update(message.mic);
+
+            // -127 ~ 127(int8_t) -> -255 ~ 255(int16_t)
+            const auto decodeStick = [](int8_t raw)
+                -> int16_t
+            {
+                return raw * 2;
+            };
+
+            /// @brief デッドゾーン処理
+            const auto cutDeadCone = [](double value, double deadZone)
+                -> double
+            {
+                if (value > deadZone)
+                {
+                    return 255 * (value - deadZone) / (255 - deadZone);
+                }
+                else if (value < -deadZone)
+                {
+                    return 255 * (value + deadZone) / (255 - deadZone);
+                }
+                else
+                {
+                    return 0.0;
+                }
+            };
+
+            leftStick = {
+                cutDeadCone(decodeStick(message.analogLeftX), 20),
+                cutDeadCone(decodeStick(message.analogLeftY), 20),
+            };
+            rightStick = {
+                cutDeadCone(decodeStick(message.analogRightX), 20),
+                cutDeadCone(decodeStick(message.analogRightY), 20),
+            };
+        }
+        else
+        {
+            isConnected = false;
+
+            triangle.update(false);
+            circle.update(false);
+            cross.update(false);
+            square.update(false);
+
+            up.update(false);
+            right.update(false);
+            down.update(false);
+            left.update(false);
+
+            l1.update(false);
+            r1.update(false);
+            l2.update(false);
+            r2.update(false);
+            l3.update(false);
+            r3.update(false);
+
+            create.update(false);
+            option.update(false);
+            touch.update(false);
+            mic.update(false);
+
+            leftStick.clear();
+            rightStick.clear();
+        }
+    }
 
 }    // namespace udon
