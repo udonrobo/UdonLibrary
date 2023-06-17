@@ -1,7 +1,7 @@
 #pragma once
 
 // IMUデバイス
-#include <udon/sensor/imu/BNO055.hpp>
+#include <udon/sensor/BNO055.hpp>
 
 #include <udon/types/Euler.hpp>
 
