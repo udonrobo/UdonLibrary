@@ -8,6 +8,7 @@
 #include <udon/algorithm/CRC8.hpp>
 #include <udon/algorithm/Endian.hpp>
 #include <udon/com/serialization/Capacity.hpp>
+#include <udon/math/Math.hpp>
 #include <udon/traits/HasMember.hpp>
 #include <udon/types/Float.hpp>
 
@@ -17,33 +18,45 @@ namespace udon
     class Serializer
     {
 
+        size_t  insertIndex     = 0;    // 次に挿入するインデックス(バッファの先端からのオオフセット)
+        uint8_t boolCount       = 0;    // bool の挿入回数
+        size_t  boolInsertIndex = 0;    // bool の挿入インデックス(バッファの先端からのオオフセット)
+
         std::vector<uint8_t> buffer;
 
     public:
-        Serializer(size_t capacity = 0)
-            : buffer()
+        Serializer(size_t capacity)
+            : buffer(capacity)
         {
-            buffer.reserve(capacity);
+        }
+
+        template <typename Bool>
+        inline auto operator()(const Bool& rhs)
+            -> typename std::enable_if<std::is_same<Bool, bool>::value>::type
+        {
+            packBool(rhs);
         }
 
         /// @brief
-        /// @tparam T 整数型
+        /// @tparam Integer 整数型
         /// @param rhs
         /// @return
-        template <typename T>
-        inline auto operator()(const T& rhs) -> typename std::enable_if<std::is_integral<T>::value>::type
+        template <typename Integer>
+        inline auto operator()(const Integer& rhs)
+            -> typename std::enable_if<std::is_integral<Integer>::value && not std::is_same<Integer, bool>::value>::type
         {
-            pack(rhs);
+            packScalar(rhs);
         }
 
         /// @brief
-        /// @tparam T 浮動小数点型
+        /// @tparam Floating 浮動小数点型
         /// @param rhs
         /// @return
-        template <typename T>
-        inline auto operator()(const T& rhs) -> typename std::enable_if<std::is_floating_point<T>::value>::type
+        template <typename Floating>
+        inline auto operator()(const Floating& rhs)
+            -> typename std::enable_if<std::is_floating_point<Floating>::value>::type
         {
-            pack(static_cast<udon::float32_t>(rhs));
+            packScalar(static_cast<udon::float32_t>(rhs));
         }
 
         /// @brief
@@ -86,7 +99,7 @@ namespace udon
         /// @remark 取得後のバッファは無効です。
         std::vector<uint8_t> flush()
         {
-            buffer.push_back(udon::CRC8(buffer.data(), buffer.size()));
+            buffer.back() = udon::CRC8(buffer.data(), buffer.size() - udon::CRC8_SIZE);
             if (udon::GetEndian() == Endian::Big)
             {
                 std::reverse(buffer.begin(), buffer.end());
@@ -99,16 +112,36 @@ namespace udon
         /// @remark オブジェクトはスカラ型である必要があります
         /// @tparam Ty
         /// @param rhs シリアル化するオブジェクト
-        template <class Ty>
-        void pack(const Ty& rhs)
+        template <typename T>
+        void packScalar(const T& rhs)
         {
-            static_assert(std::is_scalar<Ty>::value, "Ty must be scalar type.");
+            static_assert(std::is_scalar<T>::value, "T must be scalar type.");
+
+            constexpr size_t size = sizeof(T);
 
             // バッファの後方に挿入
-            buffer.insert(
-                buffer.end(),
+            std::copy(
                 reinterpret_cast<const uint8_t*>(&rhs),
-                reinterpret_cast<const uint8_t*>(&rhs) + sizeof(Ty));
+                reinterpret_cast<const uint8_t*>(&rhs) + size,
+                buffer.begin() + insertIndex);
+
+            // 次に挿入するインデックスを更新
+            insertIndex += size;
+        }
+
+        void packBool(bool rhs)
+        {
+            if (boolCount == 0)
+            {
+                boolInsertIndex = insertIndex++;
+            }
+
+            udon::BitWrite(buffer.at(boolInsertIndex), boolCount, rhs);
+
+            if (++boolCount >= CHAR_BIT)
+            {
+                boolCount = 0;
+            }
         }
     };
 
