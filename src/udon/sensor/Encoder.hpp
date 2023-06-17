@@ -4,7 +4,7 @@
 
 #include <algorithm>
 
-#include <udon/message/Motor.hpp>
+#include <udon/com/message/Motor.hpp>
 #include <udon/traits/MaybeInvoke.hpp>
 #include <udon/algorithm/DeltaTime.hpp>
 

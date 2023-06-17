@@ -73,7 +73,7 @@
 #include <udon/com/pad/PadPS5.hpp>
 
 // 通信用構造体群
-#include <udon/message/Message.hpp>
+#include <udon/com/message/Message.hpp>
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -93,6 +93,8 @@
 // 算術関数
 #include <udon/math/Math.hpp>
 
+#include <udon/math/Ceil.hpp>
+
 /////////////////////////////////////////////////////////////////////
 //
 //  センサー / sensor
@@ -100,7 +102,10 @@
 /////////////////////////////////////////////////////////////////////
 
 // IMU / 慣性計測装置
-#include <udon/sensor/imu/Imu.hpp>
+#include <udon/sensor/Imu.hpp>
+
+// BNO055(IMU)
+#include <udon/sensor/BNO055.hpp>
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -123,17 +128,14 @@
 // オイラー角
 #include <udon/types/Euler.hpp>
 
+// 直交座標系
+#include <udon/types/Polar.hpp>
+
 // ロボットの位置
 #include <udon/types/Position.hpp>
 
 // クオータニオン
 #include <udon/types/Quaternion.hpp>
-
-// 2次元スプライン曲線
-#include <udon/types/Spline2D.hpp>
-
-// 3次元スプライン曲線
-#include <udon/types/Spline3D.hpp>
 
 // 連続する線分
 #include <udon/types/LineString.hpp>
@@ -146,6 +148,9 @@
 
 // メンバー関数の有無
 #include <udon/traits/HasMember.hpp>
+
+// メンバ関数の呼び出し
+#include <udon/traits/MaybeInvoke.hpp>
 
 /////////////////////////////////////////////////////////////////////
 //

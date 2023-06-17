@@ -3,7 +3,7 @@
 #pragma once
 
 #include <udon/algorithm/Button.hpp>
-#include <udon/message/PadPS5.hpp>
+#include <udon/com/message/PadPS5.hpp>
 #include <udon/traits/MaybeInvoke.hpp>
 #include <udon/types/Position.hpp>
 #include <udon/types/Vector2D.hpp>
