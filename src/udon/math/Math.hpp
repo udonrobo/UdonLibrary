@@ -72,7 +72,7 @@ namespace udon
     inline void
     BitWrite(Ty& rhs, uint8_t bit, bool value)
     {
-        value ? bitSet(rhs, bit) : bitClear(rhs, bit);
+        value ? BitSet(rhs, bit) : BitClear(rhs, bit);
     }
 
     inline double

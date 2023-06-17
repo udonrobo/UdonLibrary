@@ -1,11 +1,14 @@
 ﻿#pragma once
 
+#include <limits.h>
+
 #include <udon/stl/EnableSTL.hpp>
 
 #include <vector>
 
 #include <udon/algorithm/CRC8.hpp>
 #include <udon/algorithm/Endian.hpp>
+#include <udon/math/Math.hpp>
 #include <udon/stl/optional.hpp>
 #include <udon/traits/HasMember.hpp>
 #include <udon/types/Float.hpp>
@@ -16,9 +19,13 @@ namespace udon
     class Deserializer
     {
 
+        size_t  popIndex     = 0;    // 次に抽出するインデックス(バッファの先端からのオオフセット)
+        uint8_t boolCount    = 0;    // bool の抽出回数
+        size_t  boolPopIndex = 0;    // bool の抽出インデックス(バッファの先端からのオオフセット)
+
         std::vector<uint8_t> buffer;
 
-        bool isCheckSumSuccess;
+        bool isChecksumSuccess;
 
     public:
         /// @brief コンストラクタ
@@ -26,7 +33,6 @@ namespace udon
         Deserializer(const std::vector<uint8_t>& buf)
             : buffer(buf)
         {
-
             // エンディアン変換
             if (udon::GetEndian() == Endian::Big)
             {
@@ -34,40 +40,42 @@ namespace udon
             }
 
             // チャックサム確認
-            constexpr size_t checkSumSize = sizeof(decltype(udon::CRC8(nullptr, 0)));
-            const auto       checkSum     = udon::CRC8(buffer.data(), buffer.size() - checkSumSize);
-            isCheckSumSuccess             = (buffer.back() == checkSum);
+            const auto checksum = udon::CRC8(buffer.data(), buffer.size() - udon::CRC8_SIZE);
+            isChecksumSuccess   = buffer.back() == checksum;
         }
 
         operator bool() const
         {
-            return isCheckSumSuccess;
+            return isChecksumSuccess;
+        }
+
+        template <typename Bool>
+        inline auto operator()(Bool& rhs)
+            -> typename std::enable_if<std::is_same<Bool, bool>::value>::type
+        {
+            rhs = unpackBool();
         }
 
         /// @brief
         /// @tparam T 整数型
         /// @param rhs
         /// @return
-        template <typename T>
-        inline auto operator()(T& rhs) -> typename std::enable_if<std::is_integral<T>::value>::type
+        template <typename Integer>
+        inline auto operator()(Integer& rhs)
+            -> typename std::enable_if<std::is_integral<Integer>::value && not std::is_same<Integer, bool>::value>::type
         {
-            if (isCheckSumSuccess)
-            {
-                rhs = unpack<T>();
-            }
+            rhs = unpackScalar<Integer>();
         }
 
         /// @brief
         /// @tparam T 浮動小数点型
         /// @param rhs
         /// @return
-        template <typename T>
-        inline auto operator()(T& rhs) -> typename std::enable_if<std::is_floating_point<T>::value>::type
+        template <typename Floating>
+        inline auto operator()(Floating& rhs)
+            -> typename std::enable_if<std::is_floating_point<Floating>::value>::type
         {
-            if (isCheckSumSuccess)
-            {
-                rhs = unpack<udon::float32_t>();
-            }
+            rhs = unpackScalar<udon::float32_t>();
         }
 
         /// @brief
@@ -109,24 +117,42 @@ namespace udon
     private:
         /// @brief 逆シリアル化
         /// @remark オブジェクトはスカラ型である必要があります
-        /// @tparam Ty
+        /// @tparam T
         /// @return 復元されたオブジェクト
-        template <class Ty>
-        Ty unpack()
+        template <class T>
+        T unpackScalar()
         {
+            static_assert(std::is_scalar<T>::value, "T must be scalar type.");
 
-            static_assert(std::is_scalar<Ty>::value, "Ty must be scalar type.");
+            T retval{};
 
-            Ty retval{};
+            constexpr size_t size = sizeof(T);
 
             // 逆シリアル化されたオブジェクトをバッファの前方から抽出
             std::copy(
-                buffer.begin(),
-                buffer.begin() + sizeof(Ty),
+                buffer.cbegin() + popIndex,
+                buffer.cbegin() + popIndex + size,
                 reinterpret_cast<uint8_t*>(&retval));
 
-            // 抽出した分、バッファを縮小
-            buffer.erase(buffer.begin(), buffer.begin() + sizeof(Ty));
+            // 抽出したオブジェクトのバイト数分インデックスを進める
+            popIndex += size;
+
+            return retval;
+        }
+
+        bool unpackBool()
+        {
+            if (boolCount == 0)
+            {
+                boolPopIndex = popIndex++;
+            }
+
+            const auto retval = udon::BitRead(buffer.at(boolPopIndex), boolCount);
+
+            if (++boolCount >= CHAR_BIT)
+            {
+                boolCount = 0;
+            }
 
             return retval;
         }
@@ -135,7 +161,13 @@ namespace udon
     template <typename T>
     udon::optional<T> Unpack(const std::vector<uint8_t>& buffer)
     {
+        if (buffer.size() != udon::CapacityWithChecksum<T>())
+        {
+            return udon::nullopt;
+        }
+
         Deserializer deserializer(buffer);
+
         if (deserializer)
         {
             T retval;

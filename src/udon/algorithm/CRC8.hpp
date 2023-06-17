@@ -37,6 +37,8 @@
 namespace udon
 {
 
+	constexpr size_t CRC8_SIZE = 1;
+
 	/// @brief CRC8アルゴリズムを用いてチェックサムの計算を行う
 	/// @param ptr チェックサムを計算するデータの先頭ポインタ
 	/// @param n データのサイズ
