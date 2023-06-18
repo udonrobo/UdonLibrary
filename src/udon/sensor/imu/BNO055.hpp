@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#ifdef ARDUINO
+#if defined(ARDUINO) && !defined(UDON_TEENSY_I2C_SLAVE_MODE)
 
 #    include <Adafruit_BNO055.h>
 #    include <udon/types/Quaternion.hpp>

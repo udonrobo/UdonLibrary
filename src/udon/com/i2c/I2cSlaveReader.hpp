@@ -6,6 +6,7 @@
 #pragma once
 
 #include <udon/com/i2c/I2cBus.hpp>
+#include <udon/utility/Show.hpp>
 #include <udon/com/serialization/Serializer.hpp>
 
 namespace udon
@@ -47,11 +48,22 @@ namespace udon
         /// @brief 送信内容を表示
         /// @param end   オプション [/n, /t ..]
         /// @param radix 基数      [BIN, HEX ..]
-        void show(const char end = {}, const uint16_t radix = DEC) const noexcept
+        void show() const
+        {
+            if (const auto message = getMessage())
+            {
+                udon::Show(*message);
+            }
+            else
+            {
+                Serial.print(F("receive error!"));
+            }
+        }
+
+        void showRaw() const
         {
             for (const auto& buffer : buffer)
-                Serial.print(buffer, radix), Serial.print('\t');
-            Serial.print(end);
+                Serial.print(buffer, BIN), Serial.print(' ');
         }
     };
 

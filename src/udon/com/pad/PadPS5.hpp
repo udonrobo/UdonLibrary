@@ -248,6 +248,11 @@ namespace udon
         {
             return { leftStick, rightStick.x };
         }
+
+        void showRaw() const
+        {
+            reader.showRaw();
+        }
     };
 
     // detail
@@ -259,6 +264,10 @@ namespace udon
     template <template <typename> typename Reader>
     void PadPS5<Reader>::update()
     {
+        if(not reader)
+        {
+            Serial.println("reader is not initialized");
+        }
         udon::MaybeInvoke_update(reader);
 
         if (auto&& message = reader.getMessage())

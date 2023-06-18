@@ -60,7 +60,7 @@ namespace udon
 	};
 
 	template<typename T>
-	inline void Show(const T& rhs, const char* gap = "/t")
+	inline void Show(const T& rhs, const char* gap = "\t")
 	{
 		MemberViewer viewer{ gap };
 		viewer(rhs);

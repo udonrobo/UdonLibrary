@@ -1,6 +1,7 @@
 #pragma once
 
 #include <udon/com/i2c/I2cBus.hpp>
+#include <udon/utility/Show.hpp>
 #include <udon/com/serialization/Serializer.hpp>
 
 namespace udon
@@ -31,20 +32,42 @@ namespace udon
 
         void update()
         {
-			bus.beginTransmission(address);
-			bus.write(buffer, Size);
-			bus.endTransmission();
+            bus.beginTransmission(address);
+            bus.write(buffer, Size);
+            bus.endTransmission();
         }
 
-		void setMessage(const Message& message)
-		{
-			udon::Pack(message, buffer);
-		}
+        void setMessage(const Message& message)
+        {
+            udon::Pack(message, buffer);
+        }
 
-        const uint8_t* data() const
+        uint8_t* data()
         {
             return buffer;
         }
+
+        void show() const
+        {
+            if (const auto message = udon::Unpack<Message>(buffer))
+            {
+                udon::Show(*message);
+            }
+            else
+            {
+                Serial.print(F("receive error!"));
+            }
+        }
+
+        void showRaw() const
+        {
+            for (auto&& it : buffer)
+            {
+                Serial.print(it, HEX);
+                Serial.print(" ");
+            }
+        }
+
     };
 
 }    // namespace udon
