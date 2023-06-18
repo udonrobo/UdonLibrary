@@ -76,6 +76,16 @@ namespace udon
         Position operator*=(value_type rhs) noexcept { return *this = *this * rhs; }
         Position operator/=(value_type rhs) noexcept { return *this = *this / rhs; }
 
+        /// @brief 比較演算子
+        /// @param rhs 被演算子
+        /// @return
+        constexpr bool operator==(const Position& rhs) const noexcept{ return vector == rhs.vector && turn == rhs.turn; }
+
+        /// @brief 比較演算子
+        /// @param rhs 被演算子
+        /// @return
+        constexpr bool operator!=(const Position& rhs) const noexcept{ return !(*this == rhs); }
+        
         /// @brief 要素のいずれかに0以外の値があるかどうかを返す
         constexpr explicit operator bool() const noexcept
         {
