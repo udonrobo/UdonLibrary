@@ -5,7 +5,7 @@
 namespace udon
 {
 
-    template<typename T>
+    template <typename T>
     struct Euler3D;
 
     struct Quaternion
@@ -24,8 +24,9 @@ namespace udon
             : x()
             , y()
             , z()
-			, w()
-        {}
+            , w()
+        {
+        }
 
         /// @brief コンストラクタ
         /// @param x x成分
@@ -34,7 +35,7 @@ namespace udon
             : x(x)
             , y(y)
             , z(z)
-			, w(w)
+            , w(w)
         {
         }
 
@@ -51,10 +52,10 @@ namespace udon
         constexpr Quaternion operator-(const Quaternion& rhs) const noexcept { return { x - rhs.x, y - rhs.y, z - rhs.z, w - rhs.w }; }
         constexpr Quaternion operator*(const Quaternion& rhs) const noexcept { return { x * rhs.x, y * rhs.y, z * rhs.z, w * rhs.w }; }
         constexpr Quaternion operator/(const Quaternion& rhs) const noexcept { return { x / rhs.x, y / rhs.y, z / rhs.z, w / rhs.w }; }
-        constexpr Quaternion operator+(value_type rhs) const noexcept { return { x + rhs, y + rhs, z + rhs, w + rhs  }; }
-        constexpr Quaternion operator-(value_type rhs) const noexcept { return { x - rhs, y - rhs, z - rhs, w - rhs  }; }
-        constexpr Quaternion operator*(value_type rhs) const noexcept { return { x * rhs, y * rhs, z * rhs, w * rhs  }; }
-        constexpr Quaternion operator/(value_type rhs) const noexcept { return { x / rhs, y / rhs, z / rhs, w / rhs  }; }
+        constexpr Quaternion operator+(value_type rhs) const noexcept { return { x + rhs, y + rhs, z + rhs, w + rhs }; }
+        constexpr Quaternion operator-(value_type rhs) const noexcept { return { x - rhs, y - rhs, z - rhs, w - rhs }; }
+        constexpr Quaternion operator*(value_type rhs) const noexcept { return { x * rhs, y * rhs, z * rhs, w * rhs }; }
+        constexpr Quaternion operator/(value_type rhs) const noexcept { return { x / rhs, y / rhs, z / rhs, w / rhs }; }
 
         /// @brief 複合代入演算子
         /// @param rhs 被演算子
@@ -102,7 +103,7 @@ namespace udon
             *this = {};
         }
 
-        template<typename T = double>
+        template <typename T = double>
         Euler3D<T> toEuler() const noexcept;
 
 #ifdef ARDUINO
@@ -117,6 +118,5 @@ namespace udon
 #endif
 
         UDON_PARSABLE(x, y, z, w)
-
     };
 }    // namespace udon

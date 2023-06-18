@@ -19,7 +19,6 @@ namespace udon
         Message message;
 
     public:
-
         UartReader(udon::UartBus& uart) noexcept
             : uart(uart)
             , message()
@@ -59,7 +58,6 @@ namespace udon
         {
             return message;
         }
-
     };
 
 }    // namespace udon

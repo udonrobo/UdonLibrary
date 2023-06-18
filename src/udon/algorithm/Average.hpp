@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stddef.h>
+
 namespace udon
 {
 
@@ -24,7 +26,6 @@ namespace udon
         value_type sum;
 
     public:
-
         Average() noexcept
             : buffer()
             , index()

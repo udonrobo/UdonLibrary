@@ -37,13 +37,13 @@ namespace udon
 							for (auto& buf : self->buffer)
 								{
 									buf = Wire.read();
-								}});
+								} });
         }
 
-		udon::optional<Message> getMessage() const
-		{
-			return udon::Unpack<Message>(buffer);
-		}
+        udon::optional<Message> getMessage() const
+        {
+            return udon::Unpack<Message>(buffer);
+        }
 
         /// @brief 送信内容を表示
         /// @param end   オプション [/n, /t ..]

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Arduino.h>
+
 namespace udon
 {
     class DeltaTime
@@ -23,7 +25,7 @@ namespace udon
         {
             previousMs = currentMs;
             currentMs  = millis();
-			return *this;
+            return *this;
         }
 
         /// @brief 経過時間を取得

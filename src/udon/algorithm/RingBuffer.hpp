@@ -6,7 +6,6 @@
 #include <cstddef>
 #include <iterator>
 
-
 /// @brief リングバッファコンテナ
 namespace udon
 {

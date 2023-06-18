@@ -1,3 +1,5 @@
+#pragma once
+
 namespace udon
 {
     constexpr int Ceil(double x)

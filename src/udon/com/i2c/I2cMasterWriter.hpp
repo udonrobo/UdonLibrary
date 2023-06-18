@@ -19,8 +19,6 @@ namespace udon
 
         uint8_t buffer[Size];
 
-        uint32_t errorCount;
-
     public:
         template <typename Bus>
         I2cMasterWriter(Bus& bus, uint8_t address)

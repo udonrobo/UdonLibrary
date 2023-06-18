@@ -33,7 +33,7 @@ namespace udon
         void setMessage(const Message& message) noexcept
         {
             this->message = message;
-            *node.data = udon::Pack(message);
+            *node.data    = udon::Pack(message);
         }
 
         /// @brief 送信内容を表示

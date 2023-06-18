@@ -5,19 +5,21 @@
 namespace udon
 {
 
-	enum class Endian
-	{
-		Little,
-		Big,
-	};
+    enum class Endian
+    {
+        Little,
+        Big,
+    };
 
-	/// @brief アーキテクチャのエンディアンを取得する
-	/// @return エンディアン
-	inline Endian GetEndian()
-	{
-		static const uint16_t endian = 0x0100;
-		const bool isBig = *reinterpret_cast<const uint8_t*>(&endian) == 0x01;
-		return isBig ? Endian::Big : Endian::Little;
-	}
+    /// @brief アーキテクチャのエンディアンを取得する
+    /// @return エンディアン
+    inline Endian GetEndian()
+    {
+        static const uint16_t endian = 0x0100;
 
-} // namespace udon
+        const bool isBig = *reinterpret_cast<const uint8_t*>(&endian) == 0x01;
+
+        return isBig ? Endian::Big : Endian::Little;
+    }
+
+}    // namespace udon

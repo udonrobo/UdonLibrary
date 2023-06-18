@@ -144,7 +144,6 @@ namespace udon
 #endif
 
         UDON_PARSABLE(roll, pitch, yaw);
-
     };
 
     using Euler = Euler3D<double>;

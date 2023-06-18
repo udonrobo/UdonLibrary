@@ -7,7 +7,7 @@ namespace udon
 
     class ICanBus
     {
-	public:
+    public:
         virtual ~ICanBus() {}
 
         virtual udon::CanNodeView createTxNode(uint16_t id, size_t size) = 0;
