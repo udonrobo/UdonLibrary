@@ -68,8 +68,8 @@ namespace udon
         }
 
         /// @brief 受信内容を表示
-        /// @param gap 区切り文字 (default: "\t")
-        void show(const char* gap = "\t") const
+        /// @param gap 区切り文字 (default: '\t')
+        void show(char gap = '\t') const
         {
             if (const auto message = getMessage())
             {
@@ -82,8 +82,8 @@ namespace udon
         }
 
         /// @brief 受信バッファを表示
-        /// @param gap 区切り文字 (default: " ")
-        void showRaw(const char* gap = " ") const
+        /// @param gap 区切り文字 (default: ' ')
+        void showRaw(char gap = ' ') const
         {
             for (auto&& it : buffer)
             {
