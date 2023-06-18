@@ -8,7 +8,7 @@ namespace udon
     struct MemberViewer
     {
 
-        const char* gap;
+        char gap;
 
         /// @brief
         /// @tparam T 整数型
@@ -74,7 +74,7 @@ namespace udon
     };
 
     template <typename T>
-    inline void Show(const T& rhs, const char* gap = "\t")
+    inline void Show(const T& rhs, char gap = '\t')
     {
         MemberViewer viewer{ gap };
         viewer(rhs);
