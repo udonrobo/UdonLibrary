@@ -20,14 +20,18 @@ namespace udon
         uint8_t buffer[Size];
 
     public:
-        template <typename Bus>
-        I2cMasterWriter(Bus& bus, uint8_t address)
+
+        /// @brief コンストラクタ
+        /// @param bus I2cバス
+        /// @param address スレーブアドレス
+        I2cMasterWriter(udon::II2cBus& bus, uint8_t address)
             : bus(bus)
             , address(address)
             , buffer()
         {
         }
 
+        /// @brief 更新
         void update()
         {
             bus.beginTransmission(address);
@@ -35,21 +39,27 @@ namespace udon
             bus.endTransmission();
         }
 
+        /// @brief 送信するメッセージを設定
+        /// @param message 送信するメッセージ
         void setMessage(const Message& message)
         {
             udon::Pack(message, buffer);
         }
 
-        uint8_t* data()
+        /// @brief 送信バッファの参照を取得
+        /// @return 送信バッファの参照
+        uint8_t (&data())[Size]
         {
             return buffer;
         }
 
-        void show() const
+        /// @brief 送信内容を表示
+        /// @param gap 区切り文字 (default: "\t")
+        void show(const char* gap = "\t") const
         {
             if (const auto message = udon::Unpack<Message>(buffer))
             {
-                udon::Show(*message);
+                udon::Show(*message, gap);
             }
             else
             {
@@ -57,12 +67,14 @@ namespace udon
             }
         }
 
-        void showRaw() const
+        /// @brief 送信バッファを表示
+        /// @param gap 区切り文字 (default: " ")
+        void showRaw(const char* gap = " ") const
         {
             for (auto&& it : buffer)
             {
-                Serial.print(it, HEX);
-                Serial.print(" ");
+                Serial.print(it);
+                Serial.print(gap);
             }
         }
 

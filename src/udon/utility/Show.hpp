@@ -15,7 +15,8 @@ namespace udon
         /// @param rhs
         /// @return
         template <typename T>
-        auto operator()(const T& rhs) -> typename std::enable_if<std::is_scalar<T>::value>::type
+        auto operator()(const T& rhs)
+            -> typename std::enable_if<std::is_scalar<T>::value>::type
         {
             Serial.print(rhs);
             Serial.print(gap);
@@ -26,7 +27,8 @@ namespace udon
         /// @param rhs
         /// @return
         template <typename T>
-        auto operator()(const T& rhs) -> typename std::enable_if<std::is_array<T>::value>::type
+        auto operator()(const T& rhs)
+            -> typename std::enable_if<std::is_array<T>::value>::type
         {
             for (auto&& it : rhs)
             {
@@ -34,12 +36,25 @@ namespace udon
             }
         }
 
+
+        /// @brief 
+        /// @tparam T メンバ関数 show を持つ型
+        /// @param rhs 
+        /// @return 
+        template <typename T>
+        auto operator()(const T& rhs)
+            -> typename std::enable_if<has_member_function_show<T>::value>::type
+        {
+            rhs.show();
+        }
+
         /// @brief
-        /// @tparam T メンバにaccessorを持つ型
+        /// @tparam T メンバにaccessorを持つ型 
         /// @param rhs
         /// @return
         template <typename T>
-        auto operator()(const T& rhs) -> typename std::enable_if<has_member_iterate_accessor<MemberViewer, T>::value>::type
+        auto operator()(const T& rhs)
+            -> typename std::enable_if<has_member_iterate_accessor<MemberViewer, T>::value && not has_member_function_show<T>::value>::type
         {
             // T::accessor が const なメンバ関数でない場合に const rhs から呼び出せないため、const_cast によって const を除去
             const_cast<T&>(rhs).accessor(*this);
@@ -58,11 +73,11 @@ namespace udon
         }
     };
 
-	template<typename T>
-	inline void Show(const T& rhs, const char* gap = "\t")
-	{
-		MemberViewer viewer{ gap };
-		viewer(rhs);
-	}
+    template <typename T>
+    inline void Show(const T& rhs, const char* gap = "\t")
+    {
+        MemberViewer viewer{ gap };
+        viewer(rhs);
+    }
 
-}
+}    // namespace udon

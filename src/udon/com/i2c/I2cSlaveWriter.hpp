@@ -6,8 +6,8 @@
 #pragma once
 
 #include <udon/com/i2c/I2cBus.hpp>
-#include <udon/utility/Show.hpp>
 #include <udon/com/serialization/Serializer.hpp>
+#include <udon/utility/Show.hpp>
 
 namespace udon
 {
@@ -24,29 +24,36 @@ namespace udon
         static I2cSlaveWriter* self;
 
     public:
-        /// @param address I2cアドレス
-        /// @param clock   通信レート
-        template <typename Bus>
-        I2cSlaveWriter(Bus& bus)
+        /// @brief コンストラクタ
+        /// @param bus I2cバス
+        I2cSlaveWriter(udon::II2cBus& bus)
             : bus(bus)
             , buffer()
         {
             self = this;
-            bus.onRequest([]
-                          { Serial.print("call"); self->bus.write(self->buffer, Size); });
         }
 
+        /// @brief 送信開始
+        void begin()
+        {
+            const auto onRequest = []()
+            {
+                Serial.println("onRequest");
+                self->bus.write(self->buffer, Size);
+            };
+            bus.onRequest(onRequest);
+        }
+
+        /// @brief 送信するメッセージを設定
+        /// @param message 送信するメッセージ
         void setMessage(const Message& message)
         {
             udon::Pack(message, buffer);
         }
 
-        size_t size() const
-        {
-            return Size;
-        }
-
-        uint8_t* data()
+        /// @brief 送信バッファの参照を取得
+        /// @return 送信バッファの参照
+        uint8_t (&data())[Size]
         {
             return buffer;
         }
@@ -57,7 +64,7 @@ namespace udon
         {
             if (const auto message = udon::Unpack<Message>(buffer))
             {
-                udon::Show(*message);
+                udon::Show(*message, gap);
             }
             else
             {
@@ -65,10 +72,15 @@ namespace udon
             }
         }
 
-        void showRaw(const char* gap = "\t") const
+        /// @brief 送信バッファを表示
+        /// @param gap 区切り文字 (default: " ")
+        void showRaw(const char* gap = " ") const
         {
-            for (const auto& buffer : buffer)
-                Serial.print(buffer), Serial.print(' ');
+            for (auto&& it : buffer)
+            {
+                Serial.print(it);
+                Serial.print(gap);
+            }
         }
     };
 

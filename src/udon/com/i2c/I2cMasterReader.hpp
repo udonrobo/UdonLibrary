@@ -1,8 +1,9 @@
 #pragma once
 
 #include <udon/com/i2c/I2cBus.hpp>
-#include <udon/utility/Show.hpp>
 #include <udon/com/serialization/Serializer.hpp>
+#include <udon/utility/Show.hpp>
+
 
 namespace udon
 {
@@ -19,51 +20,55 @@ namespace udon
 
         uint8_t buffer[Size];
 
-        uint32_t errorCount;
-
     public:
-        template <typename Bus>
-        I2cMasterReader(Bus& bus, uint8_t address)
+
+        /// @brief コンストラクタ
+        /// @param bus I2cバス
+        /// @param address スレーブアドレス
+        I2cMasterReader(udon::II2cBus& bus, uint8_t address)
             : bus(bus)
             , address(address)
             , buffer()
-            , errorCount()
         {
         }
 
+        /// @brief 更新
         void update()
         {
             bus.requestFrom(address, Size);
             while (bus.available())
             {
-                Serial.println("callll");
                 for (auto&& it : buffer)
                 {
-                    switch (const auto d = bus.read())
-                    {
-                    case -1:    // error
-                        errorCount += 5;
-                        break;
-                    default:
-                        it = d;
-                        --errorCount;
-                        break;
-                    }
+                    it = bus.read();
                 }
             }
         }
 
-        explicit operator bool() const
-        {
-            return errorCount < 128;
-        }
-
+        /// @brief 受信したメッセージを取得
+        /// @return 受信したメッセージ
         udon::optional<Message> getMessage() const
         {
-            return udon::Unpack<Message>(buffer);
+            if (bus)
+            {
+                return udon::Unpack<Message>(buffer);
+            }
+            else
+            {
+                return udon::nullopt;
+            }
         }
 
-        void show() const
+        /// @brief 受信バッファの参照を取得
+        /// @return 受信バッファの参照
+        const uint8_t (&data() const)[Size]
+        {
+            return buffer;
+        }
+
+        /// @brief 受信内容を表示
+        /// @param gap 区切り文字 (default: "\t")
+        void show(const char* gap = "\t") const
         {
             if (const auto message = getMessage())
             {
@@ -71,22 +76,19 @@ namespace udon
             }
             else
             {
-                Serial.print(F("receive error!"));
+                Serial.print(F("receive failed!"));
             }
         }
 
-        void showRaw() const
+        /// @brief 受信バッファを表示
+        /// @param gap 区切り文字 (default: " ")
+        void showRaw(const char* gap = " ") const
         {
             for (auto&& it : buffer)
             {
-                Serial.print(it, HEX);
-                Serial.print(' ');
+                Serial.print(buffer);
+                Serial.print(gap);
             }
-        }
-
-        const uint8_t* data() const
-        {
-            return buffer;
         }
     };
 

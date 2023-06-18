@@ -18,13 +18,19 @@ namespace udon
     public:
         virtual ~II2cBus() = default;
 
+        /// @brief バスの有効性を取得
         virtual explicit operator bool() const = 0;
 
         /// @brief 更新
         virtual bool update() = 0;
 
-        /// @brief 以下メンバは Arduino TwoWire クラスと同等
-        virtual void begin()                = 0;
+        /// @brief バスの状態を表示
+        virtual void show() const = 0;
+
+        // 以下メンバは Arduino TwoWire クラスと同等
+
+        virtual void begin() = 0;
+
         virtual void begin(uint8_t address) = 0;
 
         virtual void end() = 0;
@@ -35,17 +41,16 @@ namespace udon
 
         virtual void beginTransmission(uint8_t address) = 0;
 
-        virtual uint8_t endTransmission()                 = 0;
+        virtual uint8_t endTransmission() = 0;
+
         virtual uint8_t endTransmission(uint8_t sendStop) = 0;
 
-        virtual uint8_t requestFrom(uint8_t address, uint8_t quantity)                   = 0;
+        virtual uint8_t requestFrom(uint8_t address, uint8_t quantity) = 0;
+
         virtual uint8_t requestFrom(uint8_t address, uint8_t quantity, uint8_t sendStop) = 0;
 
-        virtual size_t write(uint8_t data)                         = 0;
-        virtual size_t write(unsigned long data)                   = 0;
-        virtual size_t write(long data)                            = 0;
-        virtual size_t write(unsigned int data)                    = 0;
-        virtual size_t write(int data)                             = 0;
+        virtual size_t write(uint8_t data) = 0;
+
         virtual size_t write(const uint8_t* data, size_t quantity) = 0;
 
         virtual int available() = 0;
@@ -57,7 +62,8 @@ namespace udon
         virtual void flush() = 0;
 
         virtual void onReceive(void (*function)(int)) = 0;
-        virtual void onRequest(void (*function)())    = 0;
+
+        virtual void onRequest(void (*function)()) = 0;
     };
 
     /// @brief I2cBus クラス実装部
@@ -72,6 +78,8 @@ namespace udon
         const uint32_t timeoutMs;
 
         uint32_t lastTransmitMs;
+
+        uint32_t restartCount;
 
         /// @brief C言語スタイルのコールバック関数に メンバ関数を登録するためのデリゲート
         udon::Delegate<I2cBus_impl, void(int)>  onReceiveDelegate;
@@ -110,6 +118,7 @@ namespace udon
             : wire(wire)
             , timeoutMs(timeoutMs)
             , lastTransmitMs()
+            , restartCount()
             , onReceiveDelegate(this, &I2cBus_impl::invokeOnReceive)
             , onRequestDelegate(this, &I2cBus_impl::invokeOnRequest)
             , userOnReceive()
@@ -134,11 +143,20 @@ namespace udon
             return true;
         }
 
+        void show() const override
+        {
+            Serial.print("restart: ");
+            Serial.print(restartCount);
+            Serial.print(" transmit[ms]: ");
+            Serial.print(lastTransmitMs);
+        }
+
         /// @brief 以下メンバは TwoWire クラスと同等のメンバ
         inline void begin() override
         {
             wire.begin();
         }
+
         inline void begin(uint8_t address) override
         {
             wire.begin(address);
@@ -151,6 +169,7 @@ namespace udon
 
         inline void restart() override
         {
+            ++restartCount;
             wire.end();
             wire.begin();
         }
@@ -167,42 +186,44 @@ namespace udon
 
         inline uint8_t endTransmission() override
         {
-            return wire.endTransmission();
+            return endTransmission(true);
         }
+
         inline uint8_t endTransmission(uint8_t sendStop) override
         {
-            return wire.endTransmission(sendStop);
+            const auto ret = wire.endTransmission(sendStop);
+            if (ret == 0)    // 送信成功
+            {
+                lastTransmitMs = millis();
+            }
+            return ret;
         }
 
         inline uint8_t requestFrom(uint8_t address, uint8_t quantity) override
         {
-            return wire.requestFrom(address, quantity);
+            const auto ret = wire.requestFrom(address, quantity);
+            if (ret == quantity)    // 送信成功
+            {
+                lastTransmitMs = millis();
+            }
+            return ret;
         }
+
         inline uint8_t requestFrom(uint8_t address, uint8_t quantity, uint8_t sendStop) override
         {
-            return wire.requestFrom(address, quantity, sendStop);
+            const auto ret = wire.requestFrom(address, quantity, sendStop);
+            if (ret == quantity)    // 送信成功
+            {
+                lastTransmitMs = millis();
+            }
+            return ret;
         }
 
         inline size_t write(uint8_t data) override
         {
             return wire.write(data);
         }
-        inline size_t write(unsigned long data) override
-        {
-            return wire.write(data);
-        }
-        inline size_t write(long data) override
-        {
-            return wire.write(data);
-        }
-        inline size_t write(unsigned int data) override
-        {
-            return wire.write(data);
-        }
-        inline size_t write(int data) override
-        {
-            return wire.write(data);
-        }
+
         inline size_t write(const uint8_t* data, size_t quantity) override
         {
             return wire.write(data, quantity);
@@ -233,6 +254,7 @@ namespace udon
             userOnReceive = function;
             wire.onReceive(onReceiveDelegate);
         }
+
         inline void onRequest(void (*function)()) override
         {
             userOnRequest = function;
