@@ -39,8 +39,8 @@ namespace udon
             UDON_PARSABLE(text);
         };
 
-        using Lcd1602 = Lcd<2, 16>;
-        using Lcd2004 = Lcd<4, 20>;
+        using Lcd1602 = Lcd<16, 2>;
+        using Lcd2004 = Lcd<20, 4>;
 
     }    // namespace message
 
