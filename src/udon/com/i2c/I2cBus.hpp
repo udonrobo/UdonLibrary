@@ -77,7 +77,7 @@ namespace udon
 
         const uint32_t timeoutMs;
 
-        uint32_t lastTransmitMs;
+        uint32_t transmitMs;
 
         uint32_t restartCount;
 
@@ -94,7 +94,7 @@ namespace udon
         {
             if (userOnReceive)
             {
-                lastTransmitMs = millis();
+                transmitMs = millis();
                 userOnReceive(n);
             }
         }
@@ -102,7 +102,7 @@ namespace udon
         {
             if (userOnRequest)
             {
-                lastTransmitMs = millis();
+                transmitMs = millis();
                 userOnRequest();
             }
         }
@@ -117,7 +117,7 @@ namespace udon
         I2cBus_impl(TwoWire& wire, uint32_t timeoutMs = 50)
             : wire(wire)
             , timeoutMs(timeoutMs)
-            , lastTransmitMs()
+            , transmitMs()
             , restartCount()
             , onReceiveDelegate(this, &I2cBus_impl::invokeOnReceive)
             , onRequestDelegate(this, &I2cBus_impl::invokeOnRequest)
@@ -129,7 +129,7 @@ namespace udon
         /// @brief I2cバスの有効性を取得
         explicit operator bool() const override
         {
-            return millis() - lastTransmitMs < timeoutMs;
+            return millis() - transmitMs < timeoutMs;
         }
 
         /// @brief 更新
@@ -148,7 +148,7 @@ namespace udon
             Serial.print("restart: ");
             Serial.print(restartCount);
             Serial.print(" transmit[ms]: ");
-            Serial.print(lastTransmitMs);
+            Serial.print(transmitMs);
         }
 
         /// @brief 以下メンバは TwoWire クラスと同等のメンバ
@@ -161,6 +161,20 @@ namespace udon
         {
             wire.begin(address);
         }
+
+#ifdef ARDUINO_ARCH_RP2040
+
+        inline void setSDA(uint8_t pin)
+        {
+            wire.setSDA(pin);
+        }
+
+        inline void setSCL(uint8_t pin)
+        {
+            wire.setSCL(pin);
+        }
+
+#endif
 
         inline void end() override
         {
@@ -194,7 +208,7 @@ namespace udon
             const auto ret = wire.endTransmission(sendStop);
             if (ret == 0)    // 送信成功
             {
-                lastTransmitMs = millis();
+                transmitMs = millis();
             }
             return ret;
         }
@@ -204,7 +218,7 @@ namespace udon
             const auto ret = wire.requestFrom(address, quantity);
             if (ret == quantity)    // 送信成功
             {
-                lastTransmitMs = millis();
+                transmitMs = millis();
             }
             return ret;
         }
@@ -214,7 +228,7 @@ namespace udon
             const auto ret = wire.requestFrom(address, quantity, sendStop);
             if (ret == quantity)    // 送信成功
             {
-                lastTransmitMs = millis();
+                transmitMs = millis();
             }
             return ret;
         }
