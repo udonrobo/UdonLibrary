@@ -20,13 +20,10 @@ namespace udon
 
         uint32_t transmitMs;
 
-        bool nextTimeSender;
-
     public:
         Im920(UartBus& uart)
             : uart(uart)
             , transmitMs()
-            , nextTimeSender()
         {
         }
 
@@ -71,46 +68,19 @@ namespace udon
                 break;
             case TransmitMode::TwoWay:
 
-                // static byte receiveCount;
-                // if (!im920::receiver.flag())
-                // {
-                //     receiveCount++;
-                //     if (receiveCount > 5)
-                //     {
-                //         receiveCount = 0;
-                //         im920::receiver.start();
-                //     }
-                //     im920::receiver.update();
-                // }
-                // else
-                // {
-                //     receiveCount = 0;
-                //     im920::sender.update();
-                //     im920::receiver.flagreset();
-                // }
+                // todo 
 
                 // if (millis() - transmitMs > 1000 + random(2000))
                 // {
-                //     transmitMs = millis();
                 //     sendUpdate();
-                //     Serial.println("WakeUp");
                 // }
-                // if (receiveUpdate())
+                // else
                 // {
-                //     Serial.println("Receive");
+                //     if (receiveUpdate())
+                //     {
+                //         sendUpdate();
+                //     }
                 // }
-
-                if (millis() - transmitMs > 1000 + random(2000))
-                {
-                    sendUpdate();
-                }
-                else
-                {
-                    if (receiveUpdate())
-                    {
-                        sendUpdate();
-                    }
-                }
                 break;
             }
         }
@@ -136,7 +106,8 @@ namespace udon
                 Serial.print("ReceiveMode ");
                 break;
             case TransmitMode::TwoWay:
-                Serial.print("TwoWayMode ");
+                // todo
+                Serial.print("(TwoWayMode) unsupported! ");
                 break;
             }
         }
