@@ -20,7 +20,7 @@ namespace udon
     public:
         UartReader(Stream& uart)
             : uart(uart)
-            , message()
+            , buffer()
             , transmitMs()
         {
         }
