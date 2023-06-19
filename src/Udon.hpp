@@ -57,16 +57,22 @@
 //
 /////////////////////////////////////////////////////////////////////
 
-// CAN通信
+// CAN
 #include <udon/com/can/Can.hpp>
 
-// UART通信
+// UART
 #include <udon/com/uart/Uart.hpp>
 
-// UART通信
+// I2c
 #include <udon/com/i2c/I2c.hpp>
 
-// シリアライザー
+// im920
+#include <udon/com/im920/Im920.hpp>
+
+// フォワーディング
+#include <udon/com/common/Forwarding.hpp>
+
+// シリアライズ
 #include <udon/com/serialization/Serializer.hpp>
 
 // コントローラー

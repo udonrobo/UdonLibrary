@@ -1,54 +1,43 @@
+// /*
+//     @program IM920モジュールを用いてArduino間の無線通信を行うライブラリ(送信用)
+//     @date 2018/10/25
+//     @author Watanabe Rui
+// */
+
 #pragma once
 
-#include <udon/com/i2c/I2cBus.hpp>
-#include <udon/utility/Show.hpp>
+#include <udon/com/im920/IIm920.hpp>
 #include <udon/com/serialization/Serializer.hpp>
 
 namespace udon
 {
 
-    template <class Message>
-    class I2cMasterWriter
+    template <typename Message>
+    class Im920Writer
     {
-
         static constexpr size_t Size = udon::CapacityWithChecksum<Message>();
 
-        udon::II2cBus& bus;
+        static_assert(Size <= 64, "The send buffer size for IM920 is limited to 64 bytes");
 
-        uint8_t address;
+        IIm920& im920;
 
-        uint8_t buffer[Size];
+        std::vector<uint8_t>& buffer;
 
     public:
-
-        /// @brief コンストラクタ
-        /// @param bus I2cバス
-        /// @param address スレーブアドレス
-        I2cMasterWriter(udon::II2cBus& bus, uint8_t address)
-            : bus(bus)
-            , address(address)
-            , buffer()
+        Im920Writer(IIm920& im920)
+            : im920(im920)
+            , buffer(im920.registerSender(Size))
         {
         }
 
-        /// @brief 更新
-        void update()
-        {
-            bus.beginTransmission(address);
-            bus.write(buffer, Size);
-            bus.endTransmission();
-        }
-
-        /// @brief 送信するメッセージを設定
-        /// @param message 送信するメッセージ
         void setMessage(const Message& message)
         {
-            udon::Pack(message, buffer);
+            buffer = udon::Pack(message);
         }
 
         /// @brief 送信バッファの参照を取得
         /// @return 送信バッファの参照
-        uint8_t (&data())[Size]
+        std::vector<uint8_t>& data()
         {
             return buffer;
         }
@@ -63,7 +52,7 @@ namespace udon
             }
             else
             {
-                Serial.print(F("receive error!"));
+                Serial.print(F("unpack failed!"));    // 通常来ない
             }
         }
 
@@ -77,7 +66,5 @@ namespace udon
                 Serial.print(gap);
             }
         }
-
     };
-
 }    // namespace udon

@@ -72,7 +72,7 @@ namespace udon
                 @retval false   ループ周期は一定
                 @retval true    ループ周期は一定でない
         */
-        operator bool() const noexcept
+        explicit operator bool() const noexcept
         {
             return isError;
         }

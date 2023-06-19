@@ -54,7 +54,7 @@ namespace udon
         constexpr bool operator==(const Polar_impl& rhs) const noexcept { return r == rhs.r && theta == rhs.theta; }
         constexpr bool operator!=(const Polar_impl& rhs) const noexcept { return !(*this == rhs); }
 
-        constexpr operator bool() const noexcept { return r || theta; }
+        constexpr explicit operator bool() const noexcept { return r || theta; }
 
         Vector2D<value_type> toVector() const noexcept;
 

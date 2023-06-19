@@ -33,8 +33,6 @@ namespace udon
             int8_t analogRightY;
             int8_t analogLeftX;
             int8_t analogLeftY;
-            int8_t analogR2;
-            int8_t analogL2;
 
             bool create;
             bool option;
@@ -66,8 +64,6 @@ namespace udon
                 // Serial.print(analogRightY);
                 // Serial.print(analogLeftX);
                 // Serial.print(analogLeftY);
-                // Serial.print(analogL2);
-                // Serial.print(analogR2);
                 // Serial.print(create);
                 // Serial.print(option);
                 // Serial.print(touch);
@@ -75,7 +71,7 @@ namespace udon
             }
 #endif
 
-            UDON_PARSABLE(isConnected, triangle, circle, cross, square, up, right, down, left, l1, r1, l2, r2, l3, r3, analogRightX, analogRightY, analogLeftX, analogLeftY, analogR2, analogL2, create, option, touch, mic);
+            UDON_PARSABLE(isConnected, triangle, circle, cross, square, up, right, down, left, l1, r1, l2, r2, l3, r3, analogRightX, analogRightY, analogLeftX, analogLeftY, create, option, touch, mic);
         };
     }    // namespace message
 }    // namespace udon
