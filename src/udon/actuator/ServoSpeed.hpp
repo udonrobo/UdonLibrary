@@ -1,4 +1,19 @@
-﻿#pragma once
+﻿//-----------------------------------------------
+//
+//	UdonLibrary
+//
+//	Copyright (c) 2022-2023 fujimoto ryo
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  サーボ速度制御クラス
+//
+//-----------------------------------------------
+
+#pragma once
 
 #include <Arduino.h>
 

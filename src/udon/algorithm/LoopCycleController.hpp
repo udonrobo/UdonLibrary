@@ -1,5 +1,5 @@
 ﻿/**
-        @file   LoopCycleController.h
+        @file   LoopCycleController.hpp
         @brief  ループ周期を一定にする
         @author 谷川　豊章
         @date   2016/8/11

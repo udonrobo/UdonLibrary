@@ -1,3 +1,19 @@
+//-----------------------------------------------
+//
+//	UdonLibrary
+// 
+//	Copyright (c) 2022-2023 Okawa Yusuke
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  汎用表示関数
+//
+//-----------------------------------------------
+
+
 #pragma once
 
 #include <udon/traits/HasMember.hpp>

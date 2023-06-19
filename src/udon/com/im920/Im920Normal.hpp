@@ -1,9 +1,21 @@
-#pragma once
+//-----------------------------------------------
+//
+//	UdonLibrary
+// 
+//                2018-2023 Watanabe Rui
+//	Copyright (c) 2022-2023 Okawa Yusuke
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  通常 IM920
+//
+//-----------------------------------------------
 
-// 修正
-// - ASCIIコード送信 -> バイナリ送信
-// - 送受信対応
-// - メンバ関数の整理
+
+#pragma once
 
 #include <udon/com/im920/IIm920.hpp>
 
@@ -70,18 +82,7 @@ namespace udon
             case TransmitMode::TwoWay:
 
                 // todo
-
-                // if (millis() - transmitMs > 1000 + random(2000))
-                // {
-                //     sendUpdate();
-                // }
-                // else
-                // {
-                //     if (receiveUpdate())
-                //     {
-                //         sendUpdate();
-                //     }
-                // }
+                
                 break;
             }
         }

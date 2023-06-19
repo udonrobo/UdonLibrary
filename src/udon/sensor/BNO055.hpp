@@ -1,4 +1,20 @@
-﻿#pragma once
+﻿//-----------------------------------------------
+//
+//	UdonLibrary
+// 
+//	Copyright (c) 2022-2023 Okawa Yusuke
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  BNO055 9軸センサー
+//
+//-----------------------------------------------
+
+
+#pragma once
 
 #if defined(ARDUINO) && !defined(UDON_TEENSY_I2C_SLAVE_MODE)
 

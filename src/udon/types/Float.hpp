@@ -1,20 +1,20 @@
-﻿///////////////////////////////////////////////////////////////////////////////
-// Copyright Christopher Kormanyos 2014.
-// Copyright John Maddock 2014.
-// Copyright Paul Bristow 2014.
-// Distributed under the Boost Software License,
-// Version 1.0. (See accompanying file LICENSE_1_0.txt
-// or copy at http://www.boost.org/LICENSE_1_0.txt)
+﻿//-----------------------------------------------
 //
-// 固定ビット長浮動小数点型を定義する(定義されない型もあります)
+//	UdonLibrary
 //
-// 定義される可能性のある型:
-// - udon::float16_t
-// - udon::float32_t
-// - udon::float64_t
-// - udon::float80_t
-// - udon::float128_t
+//  Copyright (c) 2014 Christopher Korman
+//  Copyright (c) 2014 John Maddock
+//  Copyright (c) 2014 Paul Bristow
+//	Copyright (c) 2022-2023 Okawa Yusuke
+//	Copyright (c) 2022-2023 udonrobo
 //
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  固定ビット長浮動小数点型
+//
+//-----------------------------------------------
 
 #pragma once
 
@@ -116,6 +116,13 @@
 
 namespace udon
 {
+
+    //  定義されている可能性のある型は以下の通りです(処理系によって異なります)
+    //  udon::float16_t
+    //  udon::float32_t
+    //  udon::float64_t
+    //  udon::float80_t
+    //  udon::float128_t
 
 #if BOOST_CSTDFLOAT_HAS_FLOAT16_NATIVE_TYPE
     using float16_t = BOOST_CSTDFLOAT_FLOAT16_NATIVE_TYPE;

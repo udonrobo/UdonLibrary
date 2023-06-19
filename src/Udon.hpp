@@ -1,6 +1,17 @@
+//-----------------------------------------------
+//
+//	UdonLibrary
+// 
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+
+
 #pragma once
 
-// ヘッダーを一括でインクルードしない場合は、{UDON_INCLUDE_SELECTABLE} マクロを定義してから、必要なヘッダーを個別にインクルードしてください。
+// ヘッダーを一括でインクルードしない場合、UDON_INCLUDE_SELECTABLE マクロを定義し個別にインクルードしてください。
 #ifndef UDON_INCLUDE_SELECTABLE
 
 // UdonLibrary が含まれているかどうかを判定するマクロ
@@ -36,7 +47,7 @@
 // CRC-8 チェックサム / 誤り検出
 #include <udon/algorithm/CRC8.hpp>
 
-// リングバッファ / 静的疑似可変長配列キュー
+// 疑似可変長リングバッファ
 #include <udon/algorithm/RingBuffer.hpp>
 
 // PIDフィードバック制御器

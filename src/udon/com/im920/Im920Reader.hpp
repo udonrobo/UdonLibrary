@@ -1,8 +1,19 @@
-// /*
-//     @program IM920モジュールを用いてArduino間の無線通信を行うライブラリ(送信用)
-//     @date 2018/10/25
-//     @author Watanabe Rui
-// */
+//-----------------------------------------------
+//
+//	UdonLibrary
+// 
+//                2018-2023 Watanabe Rui
+//	Copyright (c) 2022-2023 Okawa Yusuke
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  IM920 受信クラス
+//
+//-----------------------------------------------
+
 
 #pragma once
 

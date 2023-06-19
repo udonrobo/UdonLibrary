@@ -1,4 +1,20 @@
-﻿#pragma once
+﻿//-----------------------------------------------
+//
+//	UdonLibrary
+//
+//	Copyright (c) 2022-2023 Okawa Yusuke
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  三次元ベクトル前方定義
+//
+//-----------------------------------------------
+
+
+#pragma once
 
 #include <udon/utility/Parsable.hpp>
 

@@ -1,4 +1,20 @@
-﻿#pragma once
+﻿//-----------------------------------------------
+//
+//	UdonLibrary
+//
+//	Copyright (c) 2022-2023 Okawa Yusuke
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  ロボットの位置
+//
+//-----------------------------------------------
+
+
+#pragma once
 
 #include <udon/math/Math.hpp>
 #include <udon/types/Polar.hpp>
