@@ -1,8 +1,21 @@
+//-----------------------------------------------
+//
+//	UdonLibrary
+//
+//	Copyright (c) 2022-2023 Okawa Yusuke
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  OpenSiv3D用 PS5コントローラー
+//
+//-----------------------------------------------
+
 #pragma once
 
-#ifdef SIV3D_INCLUDED
-
-#    include <udon/message/PadPS5.hpp>
+#include <udon/com/message/PadPS5.hpp>
 
 namespace udon
 {
@@ -116,5 +129,3 @@ namespace udon
         }
     };
 }    // namespace udon
-
-#endif

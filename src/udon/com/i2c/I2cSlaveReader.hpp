@@ -1,7 +1,18 @@
-///   @file   I2cSlaveReader.hpp
-///   @brief  I2cスレーブ送信用クラス
-///   @author 大河 祐介
-///   @date   2023/03/31
+//-----------------------------------------------
+//
+//	UdonLibrary
+//
+//	Copyright (c) 2022-2023 Okawa Yusuke
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  I2c スレーブ側受信クラス
+//
+//-----------------------------------------------
+
 
 #pragma once
 
