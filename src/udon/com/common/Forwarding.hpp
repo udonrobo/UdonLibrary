@@ -5,7 +5,7 @@
 namespace udon
 {
 
-    /// @brief 異なる通信間でメッセージを転送するクラス
+    /// @brief 異なる通信間にメッセージを転送するクラス
     /// @tparam Reader 受信クラス
     /// @tparam Writer 送信クラス
     /// @tparam Message メッセージ型
