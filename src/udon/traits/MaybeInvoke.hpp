@@ -22,34 +22,48 @@
 namespace udon
 {
 
+    /// @brief udon::MaybeInvoke_begin
+
 #ifndef UDON_HAS_MEMBER_FUNCTION_BEGIN
 #    define UDON_HAS_MEMBER_FUNCTION_BEGIN
     UDON_HAS_MEMBER_FUNCTION(begin);
 #endif
-
 #ifndef UDON_MAYBE_INVOKE_BEGIN
 #    define UDON_MAYBE_INVOKE_BEGIN
     UDON_MAYBE_INVOKE(begin);
 #endif
 
+    /// @brief udon::MaybeInvoke_update
+
 #ifndef UDON_HAS_MEMBER_FUNCTION_UPDATE
 #    define UDON_HAS_MEMBER_FUNCTION_UPDATE
     UDON_HAS_MEMBER_FUNCTION(update);
 #endif
-
 #ifndef UDON_MAYBE_INVOKE_UPDATE
 #    define UDON_MAYBE_INVOKE_UPDATE
     UDON_MAYBE_INVOKE(update);
 #endif
 
+    /// @brief udon::MaybeInvoke_show
+
 #ifndef UDON_HAS_MEMBER_FUNCTION_SHOW
 #    define UDON_HAS_MEMBER_FUNCTION_SHOW
     UDON_HAS_MEMBER_FUNCTION(show);
 #endif
-
 #ifndef UDON_MAYBE_INVOKE_SHOW
 #    define UDON_MAYBE_INVOKE_SHOW
     UDON_MAYBE_INVOKE(show);
+#endif
+
+    /// @brief udon::MaybeInvoke_showRaw
+
+#ifndef UDON_HAS_MEMBER_FUNCTION_SHOW_RAW
+#    define UDON_HAS_MEMBER_FUNCTION_SHOW_RAW
+    UDON_HAS_MEMBER_FUNCTION(showRaw);
+#endif
+#ifndef UDON_MAYBE_INVOKE_SHOW_RAW
+#    define UDON_MAYBE_INVOKE_SHOW_RAW
+    UDON_MAYBE_INVOKE(showRaw);
 #endif
 
 }    // namespace udon
