@@ -73,7 +73,7 @@ namespace udon
         {
             if (const auto message = getMessage())
             {
-                udon::Show(*message);
+                udon::Show(*message, gap);
             }
             else
             {

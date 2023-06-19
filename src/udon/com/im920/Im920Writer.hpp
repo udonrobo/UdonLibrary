@@ -48,7 +48,7 @@ namespace udon
         {
             if (const auto message = udon::Unpack<Message>(buffer))
             {
-                udon::Show(*message);
+                udon::Show(*message, gap);
             }
             else
             {
