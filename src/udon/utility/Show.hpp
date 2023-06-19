@@ -18,8 +18,17 @@ namespace udon
         auto operator()(const T& rhs)
             -> typename std::enable_if<std::is_scalar<T>::value>::type
         {
+            
+#ifdef ARDUINO
             Serial.print(rhs);
             Serial.print(gap);
+#endif
+
+#ifdef SIV3D_INCLUDED
+            s3d::Print.write(rhs);
+            s3d::Print.write(gap);
+#endif
+
         }
 
         /// @brief
@@ -36,11 +45,10 @@ namespace udon
             }
         }
 
-
-        /// @brief 
+        /// @brief
         /// @tparam T メンバ関数 show を持つ型
-        /// @param rhs 
-        /// @return 
+        /// @param rhs
+        /// @return
         template <typename T>
         auto operator()(const T& rhs)
             -> typename std::enable_if<has_member_function_show<T>::value>::type
@@ -49,7 +57,7 @@ namespace udon
         }
 
         /// @brief
-        /// @tparam T メンバにaccessorを持つ型 
+        /// @tparam T メンバにaccessorを持つ型
         /// @param rhs
         /// @return
         template <typename T>

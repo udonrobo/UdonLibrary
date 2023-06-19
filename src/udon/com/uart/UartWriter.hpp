@@ -1,7 +1,7 @@
 #pragma once
 
 #include <udon/com/serialization/Serializer.hpp>
-#include <udon/com/uart/UartBus.hpp>
+#include <udon/utility/Show.hpp>
 
 namespace udon
 {
@@ -10,33 +10,46 @@ namespace udon
     class UartWriter
     {
 
-        udon::UartBus& uart;
+        Stream& uart;
 
         Message message;
 
     public:
-        UartWriter(udon::UartBus& uart) noexcept
+        /// @brief コンストラクタ
+        UartWriter(Stream& uart) noexcept
             : uart(uart)
             , message()
         {
         }
 
+        /// @brief 送信内容を更新
+        /// @details 送信も行う
+        /// @param rhs 送信内容
         void setMessage(const Message& rhs)
         {
             message = rhs;
-        }
-
-        void update()
-        {
-            for (auto&& it : udon::Pack(message))
+            for (auto&& it : udon::Pack(rhs))
             {
                 uart.write(it);
             }
         }
 
-        void show() const
+        /// @brief 送信内容を表示
+        /// @param gap 区切り文字 (default: '\t')
+        void show(char gap = '\t') const
         {
-            message.show();
+            udon::Show(message, gap);
+        }
+
+        /// @brief 生の送信内容を表示
+        /// @param gap 区切り文字 (default: ' ')
+        void showRaw(char gap = ' ') const
+        {
+            for (auto&& it : udon::Pack(message))
+            {
+                Serial.print(it);
+                Serial.print(gap);
+            }
         }
     };
 
