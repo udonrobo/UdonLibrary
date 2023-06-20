@@ -1,7 +1,7 @@
 //-----------------------------------------------
 //
 //	UdonLibrary
-// 
+//
 //	Copyright (c) 2022-2023 Okawa Yusuke
 //	Copyright (c) 2022-2023 udonrobo
 //
@@ -12,7 +12,6 @@
 //  OpenSiv3D用 UART 受信クラス
 //
 //-----------------------------------------------
-
 
 #pragma once
 
@@ -39,21 +38,25 @@ namespace udon
         SivUartReader(s3d::Serial& bus)
             : serial(bus)
             , buffer()
-            , thread([this]()
-                     {
-                        while(isRunning)
-                        {
-                            if (not serial) continue;
-                            if (serial.available() < Size) continue;
+            , thread(
+                  [this]()
+                  {
+                      while (isRunning)
+                      {
+                          if (not serial)
+                              continue;
+                          if (serial.available() < Size)
+                              continue;
 
-                            Array<uint8> d;
-                            if(serial.readBytes(d) && d.size() == Size)
-                            {
-                                std::copy(d.begin(), d.end(), buffer);
-                            }
+                          Array<uint8> d;
+                          if (serial.readBytes(d) && d.size() == Size)
+                          {
+                              std::copy(d.begin(), d.end(), buffer);
+                          }
 
-                            serial.clearInput();
-                        } })
+                          serial.clearInput();
+                      }
+                  })
             , isRunning(true)
         {
         }

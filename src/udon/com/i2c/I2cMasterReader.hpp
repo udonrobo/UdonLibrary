@@ -102,7 +102,7 @@ namespace udon
         {
             for (auto&& it : buffer)
             {
-                Serial.print(buffer);
+                Serial.print(it);
                 Serial.print(gap);
             }
         }

@@ -74,7 +74,7 @@ namespace udon
             }
             else
             {
-                Serial.print(F("receive error!"));
+                Serial.print(F("unpack failed!"));  // 通常はここには到達しない
             }
         }
 
