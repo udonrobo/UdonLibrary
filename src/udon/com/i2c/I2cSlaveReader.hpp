@@ -13,7 +13,6 @@
 //
 //-----------------------------------------------
 
-
 #pragma once
 
 #include <udon/com/i2c/I2cBus.hpp>
@@ -47,14 +46,14 @@ namespace udon
         /// @brief 受信開始
         void begin()
         {
-            const auto onReceive = [](int)
-            {
-                for (auto& buf : self->buffer)
+            bus.onReceive(
+                [](int)
                 {
-                    buf = Wire.read();
-                }
-            };
-            bus.onReceive(onReceive);
+                    for (auto& buf : self->buffer)
+                    {
+                        buf = Wire.read();
+                    }
+                });
         }
 
         /// @brief 受信したメッセージを取得

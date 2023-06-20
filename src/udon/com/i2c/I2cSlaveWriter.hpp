@@ -13,7 +13,6 @@
 //
 //-----------------------------------------------
 
-
 #pragma once
 
 #include <udon/com/i2c/I2cBus.hpp>
@@ -47,12 +46,12 @@ namespace udon
         /// @brief 送信開始
         void begin()
         {
-            const auto onRequest = []()
-            {
-                Serial.println("onRequest");
-                self->bus.write(self->buffer, Size);
-            };
-            bus.onRequest(onRequest);
+            bus.onRequest(
+                []()
+                {
+                    Serial.println("onRequest");
+                    self->bus.write(self->buffer, Size);
+                });
         }
 
         /// @brief 送信するメッセージを設定
