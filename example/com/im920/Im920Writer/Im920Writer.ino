@@ -13,7 +13,7 @@
 //
 //-----------------------------------------------
 
-#ifdef ARDUINO
+#if defined(ARDUINO) && defined(HAVE_HWSERIAL1)
 
 #    include <Udon.hpp>
 
