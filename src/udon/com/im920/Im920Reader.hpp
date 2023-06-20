@@ -53,13 +53,6 @@ namespace udon
             }
         }
 
-        /// @brief 送信バッファの参照を取得
-        /// @return 送信バッファの参照
-        const std::vector<uint8_t>& data() const
-        {
-            return buffer;
-        }
-
         /// @brief 送信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
