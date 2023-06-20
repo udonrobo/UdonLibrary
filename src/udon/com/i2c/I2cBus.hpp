@@ -13,7 +13,6 @@
 //
 //-----------------------------------------------
 
-
 #pragma once
 
 #include <udon/algorithm/Delegate.hpp>
@@ -161,9 +160,9 @@ namespace udon
 
         void show() const override
         {
-            Serial.print("restart: ");
+            Serial.print(F("restart: "));
             Serial.print(restartCount);
-            Serial.print(" transmit[ms]: ");
+            Serial.print(F(" transmit[ms]: "));
             Serial.print(transmitMs);
         }
 

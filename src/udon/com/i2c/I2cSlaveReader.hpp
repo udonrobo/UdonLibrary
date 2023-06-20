@@ -70,13 +70,6 @@ namespace udon
             }
         }
 
-        /// @brief 受信バッファの参照を取得
-        /// @return 受信バッファの参照
-        const uint8_t (&data() const)[Size]
-        {
-            return buffer;
-        }
-
         /// @brief 受信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
@@ -87,7 +80,7 @@ namespace udon
             }
             else
             {
-                Serial.print(F("receive failed!"));
+                udon::Show(F("receive failed!"));
             }
         }
 
@@ -95,11 +88,7 @@ namespace udon
         /// @param gap 区切り文字 (default: ' ')
         void showRaw(char gap = ' ') const
         {
-            for (auto&& it : buffer)
-            {
-                Serial.print(buffer);
-                Serial.print(gap);
-            }
+            udon::Show(buffer, gap);
         }
     };
 

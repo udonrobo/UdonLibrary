@@ -13,12 +13,12 @@
 //
 //-----------------------------------------------
 
-
 #pragma once
 
 #include <udon/com/i2c/I2cBus.hpp>
-#include <udon/utility/Show.hpp>
 #include <udon/com/serialization/Serializer.hpp>
+#include <udon/utility/Show.hpp>
+
 
 namespace udon
 {
@@ -36,7 +36,6 @@ namespace udon
         uint8_t buffer[Size];
 
     public:
-
         /// @brief コンストラクタ
         /// @param bus I2cバス
         /// @param address スレーブアドレス
@@ -51,17 +50,13 @@ namespace udon
         /// @param message 送信するメッセージ
         void setMessage(const Message& message)
         {
+            // シリアライズ
             udon::Pack(message, buffer);
+
+            // 送信
             bus.beginTransmission(address);
             bus.write(buffer, Size);
             bus.endTransmission();
-        }
-
-        /// @brief 送信バッファの参照を取得
-        /// @return 送信バッファの参照
-        uint8_t (&data())[Size]
-        {
-            return buffer;
         }
 
         /// @brief 送信内容を表示
@@ -74,7 +69,7 @@ namespace udon
             }
             else
             {
-                Serial.print(F("unpack failed!"));  // 通常はここには到達しない
+                udon::Show(F("unpack failed!"));    // 通常はここには到達しない
             }
         }
 
@@ -82,13 +77,8 @@ namespace udon
         /// @param gap 区切り文字 (default: ' ')
         void showRaw(char gap = ' ') const
         {
-            for (auto&& it : buffer)
-            {
-                Serial.print(it);
-                Serial.print(gap);
-            }
+            udon::Show(buffer, gap);
         }
-
     };
 
 }    // namespace udon

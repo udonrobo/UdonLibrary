@@ -133,6 +133,8 @@ namespace udon
         }
     }
 
+#if defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__) || defined(ARDUINO_ARCH_RP2040)
+
     /// @brief バスの情報をプリントする
     /// @tparam Nodes
     /// @param busName
@@ -192,4 +194,6 @@ namespace udon
             Serial.printf("\n");
         }
     }
+
+#endif
 }    // namespace udon

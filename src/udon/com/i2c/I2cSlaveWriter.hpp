@@ -49,7 +49,6 @@ namespace udon
             bus.onRequest(
                 []()
                 {
-                    Serial.println("onRequest");
                     self->bus.write(self->buffer, Size);
                 });
         }
@@ -59,13 +58,6 @@ namespace udon
         void setMessage(const Message& message)
         {
             udon::Pack(message, buffer);
-        }
-
-        /// @brief 送信バッファの参照を取得
-        /// @return 送信バッファの参照
-        uint8_t (&data())[Size]
-        {
-            return buffer;
         }
 
         /// @brief 送信内容を表示
@@ -78,7 +70,7 @@ namespace udon
             }
             else
             {
-                Serial.print(F("receive error!"));
+                udon::Show(F("unpack failed!"));    // 通常はここには到達しない
             }
         }
 
@@ -86,11 +78,7 @@ namespace udon
         /// @param gap 区切り文字 (default: ' ')
         void showRaw(char gap = ' ') const
         {
-            for (auto&& it : buffer)
-            {
-                Serial.print(it);
-                Serial.print(gap);
-            }
+            udon::Show(buffer, gap);
         }
     };
 
