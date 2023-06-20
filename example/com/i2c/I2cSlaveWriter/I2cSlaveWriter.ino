@@ -13,8 +13,6 @@
 //
 //-----------------------------------------------
 
-#ifdef ARDUINO
-
 #    include <Udon.hpp>
 
 // I2C バス管理クラス
@@ -69,5 +67,3 @@ void loop()
 // restart: 1 transmit[ms]: 26774
 // restart: 1 transmit[ms]: 26774
 // restart: 1 transmit[ms]: 26787
-
-#endif

@@ -13,9 +13,7 @@
 //
 //-----------------------------------------------
 
-#ifdef ARDUINO
-
-#    include <Udon.hpp>
+#include <Udon.hpp>
 
 // I2C バス管理クラス
 udon::I2cBus bus{ Wire };
@@ -75,5 +73,3 @@ void loop()
 // restart: 1 transmit[ms]: 22451    x: 18646.00	y: 18646564.00
 // restart: 1 transmit[ms]: 22463    x: 18657.00	y: 18658244.00
 // restart: 1 transmit[ms]: 22474    x: 18669.00	y: 18669936.00
-
-#endif

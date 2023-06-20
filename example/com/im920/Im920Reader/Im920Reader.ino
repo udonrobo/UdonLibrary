@@ -13,7 +13,7 @@
 //
 //-----------------------------------------------
 
-#if defined(ARDUINO) && defined(HAVE_HWSERIAL1)
+#ifdef HAVE_HWSERIAL1
 
 #    include <Udon.hpp>
 
