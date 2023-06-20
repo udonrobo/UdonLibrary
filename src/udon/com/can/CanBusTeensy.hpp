@@ -85,7 +85,7 @@ namespace udon
 
         /// @brief 通信開始
         /// @param baudrate 通信レート
-        void begin(const uint32_t baudrate = 1'000'000)
+        void begin(const uint32_t baudrate = 1000000)
         {
             if (rxNodes.size() || txNodes.size())
             {
@@ -130,7 +130,7 @@ namespace udon
 
         explicit operator bool() const
         {
-            return micros() - transmitUs < 100'000;
+            return micros() - transmitUs < 100000;
         }
 
         void show() const
