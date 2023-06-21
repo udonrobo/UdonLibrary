@@ -15,4 +15,4 @@
 
 #pragma once
 
-#include <udon/types/ColorFwd.hpp>
+#include <udon/types/RGBFwd.hpp>

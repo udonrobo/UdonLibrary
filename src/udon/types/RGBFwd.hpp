@@ -20,7 +20,7 @@
 namespace udon
 {
 
-    struct Color
+    struct RGB
     {
 
         /// @brief 要素の型
@@ -35,30 +35,37 @@ namespace udon
         /// @brief 青成分
         value_type b;
 
-        constexpr Color() noexcept
+        constexpr RGB() noexcept
             : r()
             , g()
             , b()
         {
         }
 
-        constexpr Color(value_type r, value_type g, value_type b) noexcept
+        constexpr RGB(value_type r, value_type g, value_type b) noexcept
             : r(r)
             , g(g)
             , b(b)
         {
         }
 
-        Color(const Color&) = default;
+        RGB(uint32_t rgb) noexcept
+            : r(rgb >> 16)
+            , g(rgb >> 8)
+            , b(rgb >> 0)
+        {
+        }
 
-        Color& operator=(const Color&) = default;
+        RGB(const RGB&) = default;
 
-        constexpr bool operator==(const Color& rhs) const noexcept
+        RGB& operator=(const RGB&) = default;
+
+        constexpr bool operator==(const RGB& rhs) const noexcept
         {
             return r == rhs.r && g == rhs.g && b == rhs.b;
         }
 
-        constexpr bool operator!=(const Color& rhs) const noexcept
+        constexpr bool operator!=(const RGB& rhs) const noexcept
         {
             return !(*this == rhs);
         }

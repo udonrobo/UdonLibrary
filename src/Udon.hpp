@@ -169,6 +169,9 @@
 // 連続する線分
 #include <udon/types/LineString.hpp>
 
+// RGB色空間
+#include <udon/types/RGB.hpp>
+
 /////////////////////////////////////////////////////////////////////
 //
 //  トレイト / trait
