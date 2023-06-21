@@ -1,7 +1,7 @@
 ﻿//-----------------------------------------------
 //
 //	UdonLibrary
-// 
+//
 //	Copyright (c) 2022-2023 Okawa Yusuke
 //	Copyright (c) 2022-2023 udonrobo
 //
@@ -12,7 +12,6 @@
 //  PS5コントローラー受信クラス
 //
 //-----------------------------------------------
-
 
 #pragma once
 
@@ -90,6 +89,7 @@ namespace udon
         udon::Input option;
         udon::Input touch;
         udon::Input mic;
+        udon::Input ps;
 
         /// @brief アナログスティック [-255~255]
         udon::Vec2 rightStick;
@@ -243,6 +243,12 @@ namespace udon
         {
             return mic;
         }
+        /// @brief PSボタン
+        /// @return
+        udon::Button getPs() const
+        {
+            return ps;
+        }
         /// @brief 左スティック
         /// @return
         udon::Vec2 getLeftStick() const
@@ -258,14 +264,19 @@ namespace udon
         /// @brief ロボットの移動に必要なスティックの情報 udon::Positionオブジェクト {{x,y},turn} を取得
         /// @remark 左スティックから移動成分、右スティックX軸から旋回成分を取得
         /// @return
-        udon::Pos getMovementInfo() const
+        udon::Pos getMoveInfo() const
         {
             return { leftStick, rightStick.x };
         }
 
+        void show() const
+        {
+            udon::MaybeInvoke_show(reader);
+        }
+
         void showRaw() const
         {
-            reader.showRaw();
+            udon::MaybeInvoke_showRaw(reader);
         }
     };
 
@@ -278,10 +289,6 @@ namespace udon
     template <template <typename> typename Reader>
     void PadPS5<Reader>::update()
     {
-        if(not reader)
-        {
-            Serial.println("reader is not initialized");
-        }
         udon::MaybeInvoke_update(reader);
 
         if (auto&& message = reader.getMessage())
@@ -309,17 +316,16 @@ namespace udon
             option.update(message->option);
             touch.update(message->touch);
             mic.update(message->mic);
+            ps.update(message->ps);
 
-            // -127 ~ 127(int8_t) -> -255 ~ 255(int16_t)
-            const auto decodeStick = [](int8_t raw)
-                -> int16_t
+            // -128 ~ 127(int8_t) -> -255 ~ 255(int16_t)
+            const auto decodeStick = [](int8_t raw) -> int16_t
             {
-                return raw * 2;
+                return raw * 2 + 1;  // (raw + 128) * 2 - 255
             };
 
             /// @brief デッドゾーン処理
-            const auto cutDeadCone = [](double value, double deadZone)
-                -> double
+            const auto cutDeadZone = [](double value, double deadZone) -> double
             {
                 if (value > deadZone)
                 {
@@ -336,12 +342,12 @@ namespace udon
             };
 
             leftStick = {
-                cutDeadCone(decodeStick(message->analogLeftX), 20),
-                cutDeadCone(decodeStick(message->analogLeftY), 20),
+                cutDeadZone(decodeStick(message->analogLeftX), 20),
+                cutDeadZone(decodeStick(message->analogLeftY), 20),
             };
             rightStick = {
-                cutDeadCone(decodeStick(message->analogRightX), 20),
-                cutDeadCone(decodeStick(message->analogRightY), 20),
+                cutDeadZone(decodeStick(message->analogRightX), 20),
+                cutDeadZone(decodeStick(message->analogRightY), 20),
             };
         }
         else
