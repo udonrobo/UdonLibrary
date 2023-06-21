@@ -45,9 +45,8 @@ namespace udon
         {
         }
 
-        /// @brief 受信したメッセージを取得
-        /// @return 受信したメッセージ
-        udon::optional<Message> getMessage()
+        /// @brief 更新
+        void update()
         {
             bus.requestFrom(address, Size);
             while (bus.available())
@@ -57,6 +56,12 @@ namespace udon
                     it = bus.read();
                 }
             }
+        }
+
+        /// @brief 受信したメッセージを取得
+        /// @return 受信したメッセージ
+        udon::optional<Message> getMessage()
+        {
             if (bus)
             {
                 return udon::Unpack<Message>(buffer);

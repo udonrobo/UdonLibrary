@@ -37,6 +37,9 @@ void loop()
     // バスの状態を表示します。
     bus.show();
 
+    // スレーブに送信リクエストを行います。
+    reader.update();
+
     // getMessage 関数によって、受信クラスのテンプレートクラス引数で指定した型の optional 値を取得します。
     // 通信エラー時は、udon::nullopt が返るため if 文で判定してください。
     if (const auto message = reader.getMessage())

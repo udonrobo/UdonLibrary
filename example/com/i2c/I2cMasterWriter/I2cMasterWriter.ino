@@ -40,6 +40,9 @@ void loop()
     // 送信データを設定します。送信クラスのテンプレート引数で指定した型の値を設定してください。
     writer.setMessage({ millis(), micros() });
 
+    // スレーブに送信を行います。
+    writer.update();
+
     Serial.println();
 
     delay(10);
