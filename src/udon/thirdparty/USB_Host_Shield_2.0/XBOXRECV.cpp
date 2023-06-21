@@ -373,10 +373,10 @@ void XBOXRECV::readReport(uint8_t controller) {
 
         ButtonState[controller] = (uint32_t)(readBuf[9] | ((uint16_t)readBuf[8] << 8) | ((uint32_t)readBuf[7] << 16) | ((uint32_t)readBuf[6] << 24));
 
-        hatValue[controller][LeftHatX] = (int16_t)(((uint16_t)readBuf[11] << 8) | readBuf[10]);
-        hatValue[controller][LeftHatY] = (int16_t)(((uint16_t)readBuf[13] << 8) | readBuf[12]);
-        hatValue[controller][RightHatX] = (int16_t)(((uint16_t)readBuf[15] << 8) | readBuf[14]);
-        hatValue[controller][RightHatY] = (int16_t)(((uint16_t)readBuf[17] << 8) | readBuf[16]);
+        hatValue[controller][(size_t)AnalogHatEnum::LeftHatX] = (int16_t)(((uint16_t)readBuf[11] << 8) | readBuf[10]);
+        hatValue[controller][(size_t)AnalogHatEnum::LeftHatY] = (int16_t)(((uint16_t)readBuf[13] << 8) | readBuf[12]);
+        hatValue[controller][(size_t)AnalogHatEnum::RightHatX] = (int16_t)(((uint16_t)readBuf[15] << 8) | readBuf[14]);
+        hatValue[controller][(size_t)AnalogHatEnum::RightHatY] = (int16_t)(((uint16_t)readBuf[17] << 8) | readBuf[16]);
 
         //Notify(PSTR("\r\nButtonState: "), 0x80);
         //PrintHex<uint32_t>(ButtonState[controller], 0x80);
@@ -409,22 +409,22 @@ void XBOXRECV::printReport(uint8_t controller __attribute__((unused)), uint8_t n
 
 uint8_t XBOXRECV::getButtonPress(ButtonEnum b, uint8_t controller) {
         const int8_t index = getButtonIndexXbox(b); if (index < 0) return 0;
-        if(index == ButtonIndex(L2)) // These are analog buttons
+        if(index == ButtonIndex(ButtonEnum::L2)) // These are analog buttons
                 return (uint8_t)(ButtonState[controller] >> 8);
-        else if(index == ButtonIndex(R2))
+        else if(index == ButtonIndex(ButtonEnum::R2))
                 return (uint8_t)ButtonState[controller];
         return (bool)(ButtonState[controller] & ((uint32_t)pgm_read_word(&XBOX_BUTTONS[index]) << 16));
 }
 
 bool XBOXRECV::getButtonClick(ButtonEnum b, uint8_t controller) {
         const int8_t index = getButtonIndexXbox(b); if (index < 0) return 0;
-        if(index == ButtonIndex(L2)) {
+        if(index == ButtonIndex(ButtonEnum::L2)) {
                 if(L2Clicked[controller]) {
                         L2Clicked[controller] = false;
                         return true;
                 }
                 return false;
-        } else if(index == ButtonIndex(R2)) {
+        } else if(index == ButtonIndex(ButtonEnum::R2)) {
                 if(R2Clicked[controller]) {
                         R2Clicked[controller] = false;
                         return true;
@@ -438,7 +438,7 @@ bool XBOXRECV::getButtonClick(ButtonEnum b, uint8_t controller) {
 }
 
 int16_t XBOXRECV::getAnalogHat(AnalogHatEnum a, uint8_t controller) {
-        return hatValue[controller][a];
+        return hatValue[controller][(size_t)a];
 }
 
 bool XBOXRECV::buttonChanged(uint8_t controller) {

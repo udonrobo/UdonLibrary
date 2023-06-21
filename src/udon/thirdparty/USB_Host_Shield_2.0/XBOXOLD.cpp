@@ -260,10 +260,10 @@ void XBOXOLD::readReport() {
         for(uint8_t i = 0; i < sizeof (buttonValues); i++)
                 buttonValues[i] = readBuf[i + 4]; // A, B, X, Y, BLACK, WHITE, L1, and R1
 
-        hatValue[LeftHatX] = (int16_t)(((uint16_t)readBuf[12] << 8) | readBuf[13]);
-        hatValue[LeftHatY] = (int16_t)(((uint16_t)readBuf[14] << 8) | readBuf[15]);
-        hatValue[RightHatX] = (int16_t)(((uint16_t)readBuf[16] << 8) | readBuf[17]);
-        hatValue[RightHatY] = (int16_t)(((uint16_t)readBuf[18] << 8) | readBuf[19]);
+        hatValue[(size_t)AnalogHatEnum::LeftHatX] = (int16_t)(((uint16_t)readBuf[12] << 8) | readBuf[13]);
+        hatValue[(size_t)AnalogHatEnum::LeftHatY] = (int16_t)(((uint16_t)readBuf[14] << 8) | readBuf[15]);
+        hatValue[(size_t)AnalogHatEnum::RightHatX] = (int16_t)(((uint16_t)readBuf[16] << 8) | readBuf[17]);
+        hatValue[(size_t)AnalogHatEnum::RightHatY] = (int16_t)(((uint16_t)readBuf[18] << 8) | readBuf[19]);
 
         //Notify(PSTR("\r\nButtonState"), 0x80);
         //PrintHex<uint8_t>(ButtonState, 0x80);
@@ -299,10 +299,10 @@ int8_t XBOXOLD::getAnalogIndex(ButtonEnum b) {
         // we have to transpose the keys before passing them through
         // the button index function
         switch (b) {
-        case(LT): b = L1; break;  // normally L2
-        case(RT): b = R1; break;  // normally R2
-        case(LB): b = WHITE; break;  // normally L1
-        case(RB): b = BLACK; break;  // normally R1
+        case(ButtonEnum::LT): b = ButtonEnum::L1; break;  // normally L2
+        case(ButtonEnum::RT): b = ButtonEnum::R1; break;  // normally R2
+        case(ButtonEnum::LB): b = ButtonEnum::WHITE; break;  // normally L1
+        case(ButtonEnum::RB): b = ButtonEnum::BLACK; break;  // normally R1
         default: break;
         }
 
@@ -310,14 +310,14 @@ int8_t XBOXOLD::getAnalogIndex(ButtonEnum b) {
         const int8_t index = ButtonIndex(b);
 
         switch (index) {
-        case ButtonIndex(A):
-        case ButtonIndex(B):
-        case ButtonIndex(X):
-        case ButtonIndex(Y):
-        case ButtonIndex(BLACK):
-        case ButtonIndex(WHITE):
-        case ButtonIndex(L1):
-        case ButtonIndex(R1):
+        case ButtonIndex(ButtonEnum::A):
+        case ButtonIndex(ButtonEnum::B):
+        case ButtonIndex(ButtonEnum::X):
+        case ButtonIndex(ButtonEnum::Y):
+        case ButtonIndex(ButtonEnum::BLACK):
+        case ButtonIndex(ButtonEnum::WHITE):
+        case ButtonIndex(ButtonEnum::L1):
+        case ButtonIndex(ButtonEnum::R1):
                 return index;
         default: break;
         }
@@ -330,14 +330,14 @@ int8_t XBOXOLD::getDigitalIndex(ButtonEnum b) {
         const int8_t index = ButtonIndex(b);
 
         switch (index) {
-        case ButtonIndex(UP):
-        case ButtonIndex(DOWN):
-        case ButtonIndex(LEFT):
-        case ButtonIndex(RIGHT):
-        case ButtonIndex(START):
-        case ButtonIndex(BACK):
-        case ButtonIndex(L3):
-        case ButtonIndex(R3):
+        case ButtonIndex(ButtonEnum::UP):
+        case ButtonIndex(ButtonEnum::DOWN):
+        case ButtonIndex(ButtonEnum::LEFT):
+        case ButtonIndex(ButtonEnum::RIGHT):
+        case ButtonIndex(ButtonEnum::START):
+        case ButtonIndex(ButtonEnum::BACK):
+        case ButtonIndex(ButtonEnum::L3):
+        case ButtonIndex(ButtonEnum::R3):
                 return index;
         default: break;
         }
@@ -380,7 +380,7 @@ bool XBOXOLD::getButtonClick(ButtonEnum b) {
 }
 
 int16_t XBOXOLD::getAnalogHat(AnalogHatEnum a) {
-        return hatValue[a];
+        return hatValue[(size_t)a];
 }
 
 /* Xbox Controller commands */

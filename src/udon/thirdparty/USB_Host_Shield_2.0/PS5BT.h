@@ -149,7 +149,7 @@ protected:
 
                 // Only call this is a user function has not been set
                 if (!pFuncOnInit)
-                        setLed(Red); // Set the LED to red, as the PS5 controller turns Bluetooth when searching for a device
+                        setLed(ColorsEnum::Red); // Set the LED to red, as the PS5 controller turns Bluetooth when searching for a device
         };
 
         /** Used to reset the different buffers to there default values */

@@ -331,9 +331,9 @@ void XBOXONE::readReport() {
         if(readBuf[0] == 0x07) {
                 // The XBOX button has a separate message
                 if(readBuf[4] == 1)
-                        ButtonState |= pgm_read_word(&XBOX_BUTTONS[ButtonIndex(XBOX)]);
+                        ButtonState |= pgm_read_word(&XBOX_BUTTONS[ButtonIndex(ButtonEnum::XBOX)]);
                 else
-                        ButtonState &= ~pgm_read_word(&XBOX_BUTTONS[ButtonIndex(XBOX)]);
+                        ButtonState &= ~pgm_read_word(&XBOX_BUTTONS[ButtonIndex(ButtonEnum::XBOX)]);
 
                 if(ButtonState != OldButtonState) {
                     ButtonClickState = ButtonState & ~OldButtonState; // Update click state variable
@@ -348,17 +348,17 @@ void XBOXONE::readReport() {
                 return;
         }
 
-        uint16_t xbox = ButtonState & pgm_read_word(&XBOX_BUTTONS[ButtonIndex(XBOX)]); // Since the XBOX button is separate, save it and add it back in
+        uint16_t xbox = ButtonState & pgm_read_word(&XBOX_BUTTONS[ButtonIndex(ButtonEnum::XBOX)]); // Since the XBOX button is separate, save it and add it back in
         // xbox button from before, dpad, abxy, start/back, sync, stick click, shoulder buttons
         ButtonState = xbox | (((uint16_t)readBuf[5] & 0xF) << 8) | (readBuf[4] & 0xF0)  | (((uint16_t)readBuf[4] & 0x0C) << 10) | ((readBuf[4] & 0x01) << 3) | (((uint16_t)readBuf[5] & 0xC0) << 8) | ((readBuf[5] & 0x30) >> 4);
 
         triggerValue[0] = (uint16_t)(((uint16_t)readBuf[7] << 8) | readBuf[6]);
         triggerValue[1] = (uint16_t)(((uint16_t)readBuf[9] << 8) | readBuf[8]);
 
-        hatValue[LeftHatX] = (int16_t)(((uint16_t)readBuf[11] << 8) | readBuf[10]);
-        hatValue[LeftHatY] = (int16_t)(((uint16_t)readBuf[13] << 8) | readBuf[12]);
-        hatValue[RightHatX] = (int16_t)(((uint16_t)readBuf[15] << 8) | readBuf[14]);
-        hatValue[RightHatY] = (int16_t)(((uint16_t)readBuf[17] << 8) | readBuf[16]);
+        hatValue[(size_t)AnalogHatEnum::LeftHatX] = (int16_t)(((uint16_t)readBuf[11] << 8) | readBuf[10]);
+        hatValue[(size_t)AnalogHatEnum::LeftHatY] = (int16_t)(((uint16_t)readBuf[13] << 8) | readBuf[12]);
+        hatValue[(size_t)AnalogHatEnum::RightHatX] = (int16_t)(((uint16_t)readBuf[15] << 8) | readBuf[14]);
+        hatValue[(size_t)AnalogHatEnum::RightHatY] = (int16_t)(((uint16_t)readBuf[17] << 8) | readBuf[16]);
 
         // Read and store share button separately
         const bool newShare = (readBuf[22] & 0x01) ? 1 : 0;
@@ -386,19 +386,19 @@ uint16_t XBOXONE::getButtonPress(ButtonEnum b) {
         // special handling for 'SHARE' button due to index collision with 'BACK',
         // since the 'SHARE' value originally came from the PS4 controller and
         // the 'SHARE' button was added to Xbox later with the Series S/X controllers
-        if (b == SHARE) return sharePressed;
+        if (b == ButtonEnum::SHARE) return sharePressed;
 
         const int8_t index = getButtonIndexXbox(b); if (index < 0) return 0;
-        if(index == ButtonIndex(L2)) // These are analog buttons
+        if(index == ButtonIndex(ButtonEnum::L2)) // These are analog buttons
                 return triggerValue[0];
-        else if(index == ButtonIndex(R2))
+        else if(index == ButtonIndex(ButtonEnum::R2))
                 return triggerValue[1];
         return (bool)(ButtonState & ((uint16_t)pgm_read_word(&XBOX_BUTTONS[index])));
 }
 
 bool XBOXONE::getButtonClick(ButtonEnum b) {
         // special handling for 'SHARE' button, ibid the above
-        if (b == SHARE) {
+        if (b == ButtonEnum::SHARE) {
                 if (shareClicked) {
                         shareClicked = false;
                         return true;
@@ -407,13 +407,13 @@ bool XBOXONE::getButtonClick(ButtonEnum b) {
         }
 
         const int8_t index = getButtonIndexXbox(b); if (index < 0) return 0;
-        if(index == ButtonIndex(L2)) {
+        if(index == ButtonIndex(ButtonEnum::L2)) {
                 if(L2Clicked) {
                         L2Clicked = false;
                         return true;
                 }
                 return false;
-        } else if(index == ButtonIndex(R2)) {
+        } else if(index == ButtonIndex(ButtonEnum::R2)) {
                 if(R2Clicked) {
                         R2Clicked = false;
                         return true;
@@ -427,7 +427,7 @@ bool XBOXONE::getButtonClick(ButtonEnum b) {
 }
 
 int16_t XBOXONE::getAnalogHat(AnalogHatEnum a) {
-        return hatValue[a];
+        return hatValue[(size_t)a];
 }
 
 /* Xbox Controller commands */

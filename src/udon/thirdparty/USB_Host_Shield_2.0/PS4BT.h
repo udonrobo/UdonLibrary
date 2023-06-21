@@ -66,7 +66,7 @@ protected:
                 PS4Parser::Reset();
                 enable_sixaxis(); // Make the controller send out the entire output report
                 if (!pFuncOnInit)
-                        setLed(Blue); // Only call this is a user function has not been set
+                        setLed(ColorsEnum::Blue); // Only call this is a user function has not been set
         };
 
         /** Used to reset the different buffers to there default values */

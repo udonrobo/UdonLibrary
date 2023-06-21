@@ -182,7 +182,7 @@ public:
          * @return   Return the angle in the range of 0-360.
          */
         float getAngle(AngleEnum a) {
-                if (a == Pitch)
+                if (a == AngleEnum::Pitch)
                         return (atan2f(-switchProData.imu[0].accY, -switchProData.imu[0].accZ) + PI) * RAD_TO_DEG;
                 else
                         return (atan2f(switchProData.imu[0].accX, -switchProData.imu[0].accZ) + PI) * RAD_TO_DEG;
@@ -195,17 +195,17 @@ public:
          */
         int16_t getSensor(SensorEnum s) {
                 switch(s) {
-                        case gX:
+                        case SensorEnum::gX:
                                 return switchProData.imu[0].gyroX;
-                        case gY:
+                        case SensorEnum::gY:
                                 return switchProData.imu[0].gyroY;
-                        case gZ:
+                        case SensorEnum::gZ:
                                 return switchProData.imu[0].gyroZ;
-                        case aX:
+                        case SensorEnum::aX:
                                 return switchProData.imu[0].accX;
-                        case aY:
+                        case SensorEnum::aY:
                                 return switchProData.imu[0].accY;
-                        case aZ:
+                        case SensorEnum::aZ:
                                 return switchProData.imu[0].accZ;
                         default:
                                 return 0;

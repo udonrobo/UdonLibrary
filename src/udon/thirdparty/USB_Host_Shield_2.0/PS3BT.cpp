@@ -70,14 +70,14 @@ uint8_t PS3BT::getAnalogHat(AnalogHatEnum a) {
 
 int16_t PS3BT::getSensor(SensorEnum a) {
         if(PS3Connected) {
-                if(a == aX || a == aY || a == aZ || a == gZ)
+                if(a == SensorEnum::aX || a == SensorEnum::aY || a == SensorEnum::aZ || a == SensorEnum::gZ)
                         return ((l2capinbuf[(uint16_t)a] << 8) | l2capinbuf[(uint16_t)a + 1]);
                 else
                         return 0;
         } else if(PS3MoveConnected) {
-                if(a == mXmove || a == mYmove) // These are all 12-bits long
+                if(a == SensorEnum::mXmove || a == SensorEnum::mYmove) // These are all 12-bits long
                         return (((l2capinbuf[(uint16_t)a] & 0x0F) << 8) | (l2capinbuf[(uint16_t)a + 1]));
-                else if(a == mZmove || a == tempMove) // The tempearature is also 12 bits long
+                else if(a == SensorEnum::mZmove || a == SensorEnum::tempMove) // The tempearature is also 12 bits long
                         return ((l2capinbuf[(uint16_t)a] << 4) | ((l2capinbuf[(uint16_t)a + 1] & 0xF0) >> 4));
                 else // aXmove, aYmove, aZmove, gXmove, gYmove and gZmove
                         return (l2capinbuf[(uint16_t)a] | (l2capinbuf[(uint16_t)a + 1] << 8));
@@ -91,22 +91,22 @@ float PS3BT::getAngle(AngleEnum a) {
         if(PS3Connected) {
                 // Data for the Kionix KXPC4 used in the DualShock 3
                 const float zeroG = 511.5f; // 1.65/3.3*1023 (1.65V)
-                accXval = -((float)getSensor(aX) - zeroG);
-                accYval = -((float)getSensor(aY) - zeroG);
-                accZval = -((float)getSensor(aZ) - zeroG);
+                accXval = -((float)getSensor(SensorEnum::aX) - zeroG);
+                accYval = -((float)getSensor(SensorEnum::aY) - zeroG);
+                accZval = -((float)getSensor(SensorEnum::aZ) - zeroG);
         } else if(PS3MoveConnected) {
                 // It's a Kionix KXSC4 inside the Motion controller
                 const uint16_t zeroG = 0x8000;
-                accXval = -(int16_t)(getSensor(aXmove) - zeroG);
-                accYval = (int16_t)(getSensor(aYmove) - zeroG);
-                accZval = (int16_t)(getSensor(aZmove) - zeroG);
+                accXval = -(int16_t)(getSensor(SensorEnum::aXmove) - zeroG);
+                accYval = (int16_t)(getSensor(SensorEnum::aYmove) - zeroG);
+                accZval = (int16_t)(getSensor(SensorEnum::aZmove) - zeroG);
         } else
                 return 0;
 
         // Convert to 360 degrees resolution
         // atan2 outputs the value of -π to π (radians)
         // We are then converting it to 0 to 2π and then to degrees
-        if(a == Pitch)
+        if(a == AngleEnum::Pitch)
                 return (atan2f(accYval, accZval) + PI) * RAD_TO_DEG;
         else
                 return (atan2f(accXval, accZval) + PI) * RAD_TO_DEG;
@@ -116,24 +116,24 @@ float PS3BT::get9DOFValues(SensorEnum a) { // Thanks to Manfred Piendl
         if(!PS3MoveConnected)
                 return 0;
         int16_t value = getSensor(a);
-        if(a == mXmove || a == mYmove || a == mZmove) {
+        if(a == SensorEnum::mXmove || a == SensorEnum::mYmove || a == SensorEnum::mZmove) {
                 if(value > 2047)
                         value -= 0x1000;
                 return (float)value / 3.2f; // unit: muT = 10^(-6) Tesla
-        } else if(a == aXmove || a == aYmove || a == aZmove) {
+        } else if(a == SensorEnum::aXmove || a == SensorEnum::aYmove || a == SensorEnum::aZmove) {
                 if(value < 0)
                         value += 0x8000;
                 else
                         value -= 0x8000;
                 return (float)value / 442.0f; // unit: m/(s^2)
-        } else if(a == gXmove || a == gYmove || a == gZmove) {
+        } else if(a == SensorEnum::gXmove || a == SensorEnum::gYmove || a == SensorEnum::gZmove) {
                 if(value < 0)
                         value += 0x8000;
                 else
                         value -= 0x8000;
-                if(a == gXmove)
+                if(a == SensorEnum::gXmove)
                         return (float)value / 11.6f; // unit: deg/s
-                else if(a == gYmove)
+                else if(a == SensorEnum::gYmove)
                         return (float)value / 11.2f; // unit: deg/s
                 else // gZmove
                         return (float)value / 9.6f; // unit: deg/s
@@ -143,7 +143,7 @@ float PS3BT::get9DOFValues(SensorEnum a) { // Thanks to Manfred Piendl
 
 String PS3BT::getTemperature() {
         if(PS3MoveConnected) {
-                int16_t input = getSensor(tempMove);
+                int16_t input = getSensor(SensorEnum::tempMove);
 
                 String output = String(input / 100);
                 output += ".";
@@ -542,7 +542,7 @@ void PS3BT::setRumbleOff() {
 
 void PS3BT::setRumbleOn(RumbleEnum mode) {
         uint8_t power[2] = {0xff, 0x00}; // Defaults to RumbleLow
-        if(mode == RumbleHigh) {
+        if(mode == RumbleEnum::RumbleHigh) {
                 power[0] = 0x00;
                 power[1] = 0xff;
         }
@@ -614,7 +614,7 @@ void PS3BT::moveSetBulb(uint8_t r, uint8_t g, uint8_t b) { // Use this to set th
 }
 
 void PS3BT::moveSetBulb(ColorsEnum color) { // Use this to set the Color using the predefined colors in enum
-        moveSetBulb((uint8_t)(color >> 16), (uint8_t)(color >> 8), (uint8_t)(color));
+        moveSetBulb((uint8_t)((int)color >> 16), (uint8_t)((int)color >> 8), (uint8_t)(color));
 }
 
 void PS3BT::moveSetRumble(uint8_t rumble) {
@@ -633,7 +633,7 @@ void PS3BT::onInit() {
                 pFuncOnInit(); // Call the user function
         else {
                 if(PS3MoveConnected)
-                        moveSetBulb(Red);
+                        moveSetBulb(ColorsEnum::Red);
                 else // Dualshock 3 or Navigation controller
                         setLedOn(static_cast<LEDEnum>(LED1));
         }

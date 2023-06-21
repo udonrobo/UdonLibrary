@@ -44,13 +44,13 @@ int8_t PS5Parser::getButtonIndexPS5(ButtonEnum b) {
 
 bool PS5Parser::checkDpad(ButtonEnum b) {
         switch (b) {
-                case UP:
+                case ButtonEnum::UP:
                         return ps5Data.btn.dpad == DPAD_LEFT_UP || ps5Data.btn.dpad == DPAD_UP || ps5Data.btn.dpad == DPAD_UP_RIGHT;
-                case RIGHT:
+                case ButtonEnum::RIGHT:
                         return ps5Data.btn.dpad == DPAD_UP_RIGHT || ps5Data.btn.dpad == DPAD_RIGHT || ps5Data.btn.dpad == DPAD_RIGHT_DOWN;
-                case DOWN:
+                case ButtonEnum::DOWN:
                         return ps5Data.btn.dpad == DPAD_RIGHT_DOWN || ps5Data.btn.dpad == DPAD_DOWN || ps5Data.btn.dpad == DPAD_DOWN_LEFT;
-                case LEFT:
+                case ButtonEnum::LEFT:
                         return ps5Data.btn.dpad == DPAD_DOWN_LEFT || ps5Data.btn.dpad == DPAD_LEFT || ps5Data.btn.dpad == DPAD_LEFT_UP;
                 default:
                         return false;
@@ -59,7 +59,7 @@ bool PS5Parser::checkDpad(ButtonEnum b) {
 
 bool PS5Parser::getButtonPress(ButtonEnum b) {
         const int8_t index = getButtonIndexPS5(b); if (index < 0) return 0;
-        if (index <= LEFT) // Dpad
+        if (index <= (int8_t)ButtonEnum::LEFT) // Dpad
                 return checkDpad(b);
         else
                 return ps5Data.btn.val & (1UL << pgm_read_byte(&PS5_BUTTONS[index]));
@@ -75,9 +75,9 @@ bool PS5Parser::getButtonClick(ButtonEnum b) {
 
 uint8_t PS5Parser::getAnalogButton(ButtonEnum b) {
         const int8_t index = getButtonIndexPS5(b); if (index < 0) return 0;
-        if (index == ButtonIndex(L2)) // These are the only analog buttons on the controller
+        if (index == ButtonIndex(ButtonEnum::L2)) // These are the only analog buttons on the controller
                 return ps5Data.trigger[0];
-        else if (index == ButtonIndex(R2))
+        else if (index == ButtonIndex(ButtonEnum::R2))
                 return ps5Data.trigger[1];
         return 0;
 }
@@ -124,14 +124,14 @@ void PS5Parser::Parse(uint8_t len, uint8_t *buf) {
 
                         // The DPAD buttons does not set the different bits, but set a value corresponding to the buttons pressed, we will simply set the bits ourself
                         uint8_t newDpad = 0;
-                        if (checkDpad(UP))
-                                newDpad |= 1 << UP;
-                        if (checkDpad(RIGHT))
-                                newDpad |= 1 << RIGHT;
-                        if (checkDpad(DOWN))
-                                newDpad |= 1 << DOWN;
-                        if (checkDpad(LEFT))
-                                newDpad |= 1 << LEFT;
+                        if (checkDpad(ButtonEnum::UP))
+                                newDpad |= 1 << (int)ButtonEnum::UP;
+                        if (checkDpad(ButtonEnum::RIGHT))
+                                newDpad |= 1 << (int)ButtonEnum::RIGHT;
+                        if (checkDpad(ButtonEnum::DOWN))
+                                newDpad |= 1 << (int)ButtonEnum::DOWN;
+                        if (checkDpad(ButtonEnum::LEFT))
+                                newDpad |= 1 << (int)ButtonEnum::LEFT;
                         if (newDpad != oldDpad) {
                                 buttonClickState.dpad = newDpad & ~oldDpad; // Override values
                                 oldDpad = newDpad;

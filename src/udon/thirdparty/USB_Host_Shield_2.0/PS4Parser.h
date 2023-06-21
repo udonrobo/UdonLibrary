@@ -23,10 +23,10 @@
 
 /** Buttons on the controller */
 const uint8_t PS4_BUTTONS[] PROGMEM = {
-        UP, // UP
-        RIGHT, // RIGHT
-        DOWN, // DOWN
-        LEFT, // LEFT
+        (uint8_t)ButtonEnum::UP, // UP
+        (uint8_t)ButtonEnum::RIGHT, // RIGHT
+        (uint8_t)ButtonEnum::DOWN, // DOWN
+        (uint8_t)ButtonEnum::LEFT, // LEFT
 
         0x0C, // SHARE
         0x0D, // OPTIONS
@@ -213,7 +213,7 @@ public:
          * @return   Return the angle in the range of 0-360.
          */
         float getAngle(AngleEnum a) {
-                if (a == Pitch)
+                if (a == AngleEnum::Pitch)
                         return (atan2f(ps4Data.accY, ps4Data.accZ) + PI) * RAD_TO_DEG;
                 else
                         return (atan2f(ps4Data.accX, ps4Data.accZ) + PI) * RAD_TO_DEG;
@@ -226,17 +226,17 @@ public:
          */
         int16_t getSensor(SensorEnum s) {
                 switch(s) {
-                        case gX:
+                        case SensorEnum::gX:
                                 return ps4Data.gyroX;
-                        case gY:
+                        case SensorEnum::gY:
                                 return ps4Data.gyroY;
-                        case gZ:
+                        case SensorEnum::gZ:
                                 return ps4Data.gyroZ;
-                        case aX:
+                        case SensorEnum::aX:
                                 return ps4Data.accX;
-                        case aY:
+                        case SensorEnum::aY:
                                 return ps4Data.accY;
-                        case aZ:
+                        case SensorEnum::aZ:
                                 return ps4Data.accZ;
                         default:
                                 return 0;
@@ -291,7 +291,7 @@ public:
          * @param mode Either ::RumbleHigh or ::RumbleLow.
          */
         void setRumbleOn(RumbleEnum mode) {
-                if (mode == RumbleLow)
+                if (mode == RumbleEnum::RumbleLow)
                         setRumbleOn(0x00, 0xFF);
                 else
                         setRumbleOn(0xFF, 0x00);
@@ -329,7 +329,7 @@ public:
          * @param color The desired color.
          */
         void setLed(ColorsEnum color) {
-                setLed((uint8_t)(color >> 16), (uint8_t)(color >> 8), (uint8_t)(color));
+                setLed((uint8_t)((int)color >> 16), (uint8_t)((int)color >> 8), (uint8_t)(color));
         };
 
         /**

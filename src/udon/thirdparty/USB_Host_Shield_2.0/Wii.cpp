@@ -601,10 +601,10 @@ void WII::ACLData(uint8_t* l2capinbuf) {
                                                         accYnunchuck = ((l2capinbuf[18] << 2) | (l2capinbuf[20] & 0x30 >> 4)) - 416;
                                                         accZnunchuck = ((l2capinbuf[19] << 2) | (l2capinbuf[20] & 0xC0 >> 6)) - 416;
                                                 } else if(wiiUProControllerConnected) {
-                                                        hatValues[LeftHatX] = (l2capinbuf[15] | l2capinbuf[16] << 8);
-                                                        hatValues[RightHatX] = (l2capinbuf[17] | l2capinbuf[18] << 8);
-                                                        hatValues[LeftHatY] = (l2capinbuf[19] | l2capinbuf[20] << 8);
-                                                        hatValues[RightHatY] = (l2capinbuf[21] | l2capinbuf[22] << 8);
+                                                        hatValues[(size_t)AnalogHatEnum::LeftHatX] = (l2capinbuf[15] | l2capinbuf[16] << 8);
+                                                        hatValues[(size_t)AnalogHatEnum::RightHatX] = (l2capinbuf[17] | l2capinbuf[18] << 8);
+                                                        hatValues[(size_t)AnalogHatEnum::LeftHatY] = (l2capinbuf[19] | l2capinbuf[20] << 8);
+                                                        hatValues[(size_t)AnalogHatEnum::RightHatY] = (l2capinbuf[21] | l2capinbuf[22] << 8);
                                                 }
 #endif
                                                 break;

@@ -81,7 +81,7 @@ protected:
                         if (pFuncOnInit)
                                 pFuncOnInit(); // Call the user function
                         else
-                                setLed(Blue);
+                                setLed(ColorsEnum::Blue);
                 };
                 return 0;
         };

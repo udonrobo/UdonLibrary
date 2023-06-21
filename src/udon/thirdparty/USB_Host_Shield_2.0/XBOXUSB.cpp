@@ -250,10 +250,10 @@ void XBOXUSB::readReport() {
 
         ButtonState = (uint32_t)(readBuf[5] | ((uint16_t)readBuf[4] << 8) | ((uint32_t)readBuf[3] << 16) | ((uint32_t)readBuf[2] << 24));
 
-        hatValue[LeftHatX] = (int16_t)(((uint16_t)readBuf[7] << 8) | readBuf[6]);
-        hatValue[LeftHatY] = (int16_t)(((uint16_t)readBuf[9] << 8) | readBuf[8]);
-        hatValue[RightHatX] = (int16_t)(((uint16_t)readBuf[11] << 8) | readBuf[10]);
-        hatValue[RightHatY] = (int16_t)(((uint16_t)readBuf[13] << 8) | readBuf[12]);
+        hatValue[(size_t)AnalogHatEnum::LeftHatX] = (int16_t)(((uint16_t)readBuf[7] << 8) | readBuf[6]);
+        hatValue[(size_t)AnalogHatEnum::LeftHatY] = (int16_t)(((uint16_t)readBuf[9] << 8) | readBuf[8]);
+        hatValue[(size_t)AnalogHatEnum::RightHatX] = (int16_t)(((uint16_t)readBuf[11] << 8) | readBuf[10]);
+        hatValue[(size_t)AnalogHatEnum::RightHatY] = (int16_t)(((uint16_t)readBuf[13] << 8) | readBuf[12]);
 
         //Notify(PSTR("\r\nButtonState"), 0x80);
         //PrintHex<uint32_t>(ButtonState, 0x80);
@@ -282,22 +282,22 @@ void XBOXUSB::printReport() { //Uncomment "#define PRINTREPORT" to print the rep
 
 uint8_t XBOXUSB::getButtonPress(ButtonEnum b) {
         const int8_t index = getButtonIndexXbox(b); if (index < 0) return 0;
-        if(index == ButtonIndex(L2)) // These are analog buttons
+        if(index == ButtonIndex(ButtonEnum::L2)) // These are analog buttons
                 return (uint8_t)(ButtonState >> 8);
-        else if(index == ButtonIndex(R2))
+        else if(index == ButtonIndex(ButtonEnum::R2))
                 return (uint8_t)ButtonState;
         return (bool)(ButtonState & ((uint32_t)pgm_read_word(&XBOX_BUTTONS[index]) << 16));
 }
 
 bool XBOXUSB::getButtonClick(ButtonEnum b) {
         const int8_t index = getButtonIndexXbox(b); if (index < 0) return 0;
-        if(index == ButtonIndex(L2)) {
+        if(index == ButtonIndex(ButtonEnum::L2)) {
                 if(L2Clicked) {
                         L2Clicked = false;
                         return true;
                 }
                 return false;
-        } else if(index == ButtonIndex(R2)) {
+        } else if(index == ButtonIndex(ButtonEnum::R2)) {
                 if(R2Clicked) {
                         R2Clicked = false;
                         return true;
@@ -311,7 +311,7 @@ bool XBOXUSB::getButtonClick(ButtonEnum b) {
 }
 
 int16_t XBOXUSB::getAnalogHat(AnalogHatEnum a) {
-        return hatValue[a];
+        return hatValue[(size_t)a];
 }
 
 /* Xbox Controller commands */

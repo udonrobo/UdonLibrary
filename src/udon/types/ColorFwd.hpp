@@ -49,23 +49,23 @@ namespace udon
         {
         }
 
-        constexpr Color(const Color&) = default;
+        Color(const Color&) = default;
 
-        constexpr Color& operator=(const Color&) = default;
+        Color& operator=(const Color&) = default;
 
-        constexpr operator==(const Color& rhs) const noexcept
+        constexpr bool operator==(const Color& rhs) const noexcept
         {
             return r == rhs.r && g == rhs.g && b == rhs.b;
         }
 
-        constexpr operator!=(const Color& rhs) const noexcept
+        constexpr bool operator!=(const Color& rhs) const noexcept
         {
             return !(*this == rhs);
         }
 
         explicit constexpr operator bool() const noexcept
         {
-            return r | g | b;
+            return r || g || b;
         }
 
 #ifdef ARDUINO

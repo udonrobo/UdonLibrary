@@ -83,7 +83,7 @@ protected:
                         if (pFuncOnInit)
                                 pFuncOnInit(); // Call the user function
                         else
-                                setLed(Red); // Set the LED to red, so it is consistent with the PS5BT driver
+                                setLed(ColorsEnum::Red); // Set the LED to red, so it is consistent with the PS5BT driver
                 };
                 return 0;
         };

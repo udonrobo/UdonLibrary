@@ -345,14 +345,14 @@ float PS3USB::getAngle(AngleEnum a) {
 
                 // Data for the Kionix KXPC4 used in the DualShock 3
                 const float zeroG = 511.5f; // 1.65/3.3*1023 (1,65V)
-                accXval = -((float)getSensor(aX) - zeroG);
-                accYval = -((float)getSensor(aY) - zeroG);
-                accZval = -((float)getSensor(aZ) - zeroG);
+                accXval = -((float)getSensor(SensorEnum::aX) - zeroG);
+                accYval = -((float)getSensor(SensorEnum::aY) - zeroG);
+                accZval = -((float)getSensor(SensorEnum::aZ) - zeroG);
 
                 // Convert to 360 degrees resolution
                 // atan2 outputs the value of -π to π (radians)
                 // We are then converting it to 0 to 2π and then to degrees
-                if(a == Pitch)
+                if(a == AngleEnum::Pitch)
                         return (atan2f(accYval, accZval) + PI) * RAD_TO_DEG;
                 else
                         return (atan2f(accXval, accZval) + PI) * RAD_TO_DEG;
@@ -421,9 +421,9 @@ void PS3USB::setRumbleOff() {
 }
 
 void PS3USB::setRumbleOn(RumbleEnum mode) {
-        if((mode & 0x30) > 0x00) {
+        if(((int)mode & 0x30) > 0x00) {
                 uint8_t power[2] = {0xff, 0x00}; // Defaults to RumbleLow
-                if(mode == RumbleHigh) {
+                if(mode == RumbleEnum::RumbleHigh) {
                         power[0] = 0x00;
                         power[1] = 0xff;
                 }
@@ -514,7 +514,7 @@ void PS3USB::moveSetBulb(uint8_t r, uint8_t g, uint8_t b) { // Use this to set t
 }
 
 void PS3USB::moveSetBulb(ColorsEnum color) { // Use this to set the Color using the predefined colors in "enums.h"
-        moveSetBulb((uint8_t)(color >> 16), (uint8_t)(color >> 8), (uint8_t)(color));
+        moveSetBulb((uint8_t)((int)color >> 16), (uint8_t)((int)color >> 8), (uint8_t)(color));
 }
 
 void PS3USB::moveSetRumble(uint8_t rumble) {
@@ -570,7 +570,7 @@ void PS3USB::onInit() {
                 pFuncOnInit(); // Call the user function
         else {
                 if(PS3MoveConnected)
-                        moveSetBulb(Red);
+                        moveSetBulb(ColorsEnum::Red);
                 else // Dualshock 3 or Navigation controller
                         setLedOn(static_cast<LEDEnum>(LED1));
         }

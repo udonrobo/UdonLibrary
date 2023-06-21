@@ -22,10 +22,10 @@
 
 /** Buttons on the controller */
 const uint8_t XBOX_ONE_S_BUTTONS[] PROGMEM = {
-        UP, // UP
-        RIGHT, // RIGHT
-        DOWN, // DOWN
-        LEFT, // LEFT
+        (uint8_t)ButtonEnum::UP, // UP
+        (uint8_t)ButtonEnum::RIGHT, // RIGHT
+        (uint8_t)ButtonEnum::DOWN, // DOWN
+        (uint8_t)ButtonEnum::LEFT, // LEFT
 
         0x0E, // VIEW
         0x0F, // MENU
@@ -63,13 +63,13 @@ int8_t XBOXONESParser::getButtonIndexXboxOneS(ButtonEnum b) {
 
 bool XBOXONESParser::checkDpad(ButtonEnum b) {
         switch (b) {
-                case UP:
+                case ButtonEnum::UP:
                         return xboxOneSData.btn.dpad == DPAD_LEFT_UP || xboxOneSData.btn.dpad == DPAD_UP || xboxOneSData.btn.dpad == DPAD_UP_RIGHT;
-                case RIGHT:
+                case ButtonEnum::RIGHT:
                         return xboxOneSData.btn.dpad == DPAD_UP_RIGHT || xboxOneSData.btn.dpad == DPAD_RIGHT || xboxOneSData.btn.dpad == DPAD_RIGHT_DOWN;
-                case DOWN:
+                case ButtonEnum::DOWN:
                         return xboxOneSData.btn.dpad == DPAD_RIGHT_DOWN || xboxOneSData.btn.dpad == DPAD_DOWN || xboxOneSData.btn.dpad == DPAD_DOWN_LEFT;
-                case LEFT:
+                case ButtonEnum::LEFT:
                         return xboxOneSData.btn.dpad == DPAD_DOWN_LEFT || xboxOneSData.btn.dpad == DPAD_LEFT || xboxOneSData.btn.dpad == DPAD_LEFT_UP;
                 default:
                         return false;
@@ -78,32 +78,32 @@ bool XBOXONESParser::checkDpad(ButtonEnum b) {
 
 uint16_t XBOXONESParser::getButtonPress(ButtonEnum b) {
         const int8_t index = getButtonIndexXboxOneS(b); if (index < 0) return 0;
-        if (index == ButtonIndex(L2))
+        if (index == ButtonIndex(ButtonEnum::L2))
                 return xboxOneSData.trigger[0];
-        else if (index == ButtonIndex(R2))
+        else if (index == ButtonIndex(ButtonEnum::R2))
                 return xboxOneSData.trigger[1];
-        else if (index <= LEFT) // Dpad
+        else if (index <= (int)ButtonEnum::LEFT) // Dpad
                 return checkDpad(b);
-        else if (index == ButtonIndex(XBOX))
+        else if (index == ButtonIndex(ButtonEnum::XBOX))
                 return xboxButtonState;
         return xboxOneSData.btn.val & (1UL << pgm_read_byte(&XBOX_ONE_S_BUTTONS[index]));
 }
 
 bool XBOXONESParser::getButtonClick(ButtonEnum b) {
         const int8_t index = getButtonIndexXboxOneS(b); if (index < 0) return 0;
-        if(index == ButtonIndex(L2)) {
+        if(index == ButtonIndex(ButtonEnum::L2)) {
                 if(L2Clicked) {
                         L2Clicked = false;
                         return true;
                 }
                 return false;
-        } else if(index == ButtonIndex(R2)) {
+        } else if(index == ButtonIndex(ButtonEnum::R2)) {
                 if(R2Clicked) {
                         R2Clicked = false;
                         return true;
                 }
                 return false;
-        } else if (index == ButtonIndex(XBOX)) {
+        } else if (index == ButtonIndex(ButtonEnum::XBOX)) {
                 bool click = xboxbuttonClickState;
                 xboxbuttonClickState = 0; // Clear "click" event
                 return click;
@@ -153,14 +153,14 @@ void XBOXONESParser::Parse(uint8_t len, uint8_t *buf) {
 
                         // The DPAD buttons does not set the different bits, but set a value corresponding to the buttons pressed, we will simply set the bits ourself
                         uint8_t newDpad = 0;
-                        if (checkDpad(UP))
-                                newDpad |= 1 << UP;
-                        if (checkDpad(RIGHT))
-                                newDpad |= 1 << RIGHT;
-                        if (checkDpad(DOWN))
-                                newDpad |= 1 << DOWN;
-                        if (checkDpad(LEFT))
-                                newDpad |= 1 << LEFT;
+                        if (checkDpad(ButtonEnum::UP))
+                                newDpad |= 1 << (int)ButtonEnum::UP;
+                        if (checkDpad(ButtonEnum::RIGHT))
+                                newDpad |= 1 << (int)ButtonEnum::RIGHT;
+                        if (checkDpad(ButtonEnum::DOWN))
+                                newDpad |= 1 << (int)ButtonEnum::DOWN;
+                        if (checkDpad(ButtonEnum::LEFT))
+                                newDpad |= 1 << (int)ButtonEnum::LEFT;
                         if (newDpad != oldDpad) {
                                 buttonClickState.dpad = newDpad & ~oldDpad; // Override values
                                 oldDpad = newDpad;
