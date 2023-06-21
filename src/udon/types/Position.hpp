@@ -219,7 +219,7 @@ namespace udon
         void show() const
         {
             vector.show();
-            Serial.print(F("turn: ")), Serial.print(true), Serial.print('\t');
+            Serial.print(F("turn: ")), Serial.print(turn), Serial.print('\t');
         }
 #endif
 
