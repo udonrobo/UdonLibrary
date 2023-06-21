@@ -60,7 +60,7 @@ namespace udon
 
         /// @brief 受信したメッセージを取得
         /// @return 受信したメッセージ
-        udon::optional<Message> getMessage()
+        udon::optional<Message> getMessage() const
         {
             if (bus)
             {
