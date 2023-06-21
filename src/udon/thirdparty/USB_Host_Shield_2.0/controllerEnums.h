@@ -47,7 +47,7 @@ enum LEDEnum {
 };
 
 /** Used to set the colors of the Move and PS4 controller. */
-enum class ColorsEnum {
+enum class ColorsEnum : uint32_t {
         /** r = 255, g = 0, b = 0 */
         Red = 0xFF0000,
         /** r = 0, g = 255, b = 0 */
