@@ -207,6 +207,11 @@ namespace udon
             return *this;
         }
 
+        Vector2D clamped(value_type min, value_type max) const noexcept
+        {
+            return { udon::Constrain(x, min, max), udon::Constrain(y, min, max) };
+        }
+
         udon::Vector3D<value_type> xy0() const noexcept;
 
         udon::Vector4D<value_type> xy00() const noexcept;
