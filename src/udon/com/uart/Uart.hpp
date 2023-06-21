@@ -1,6 +1,27 @@
+//-----------------------------------------------
+//
+//	UdonLibrary
+// 
+//	Copyright (c) 2022-2023 Okawa Yusuke
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  UART 通信
+//
+//-----------------------------------------------
+
+
 #pragma once
 
-#include <udon/com/uart/UartBus.hpp>
+#ifdef ARDUINO
+#    include <udon/com/uart/UartReader.hpp>
+#    include <udon/com/uart/UartWriter.hpp>
+#endif
 
-#include <udon/com/uart/UartReader.hpp>
-#include <udon/com/uart/UartWriter.hpp>
+#ifdef SIV3D_INCLUDED
+#    include <udon/com/uart/SivUartReader.hpp>
+#    include <udon/com/uart/SivUartWriter.hpp>
+#endif

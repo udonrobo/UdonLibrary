@@ -1,4 +1,19 @@
-﻿#pragma once
+﻿//-----------------------------------------------
+//
+//  UdonLibrary
+//
+//  Copyright (c) 2022-2023 Okawa Yusuke
+//  Copyright (c) 2022-2023 udonrobo
+//
+//  Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  入力クラス
+//
+//-----------------------------------------------
+
+#pragma once
 
 namespace udon
 {

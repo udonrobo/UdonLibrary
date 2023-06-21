@@ -1,4 +1,20 @@
-﻿#pragma once
+﻿//-----------------------------------------------
+//
+//  UdonLibrary
+//
+//  Copyright (c) 2022-2023 Okawa Yusuke
+//  Copyright (c) 2022-2023 udonrobo
+//
+//  Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  ロボットの位置
+//
+//-----------------------------------------------
+
+
+#pragma once
 
 #include <udon/math/Math.hpp>
 #include <udon/types/Polar.hpp>
@@ -76,8 +92,18 @@ namespace udon
         Position operator*=(value_type rhs) noexcept { return *this = *this * rhs; }
         Position operator/=(value_type rhs) noexcept { return *this = *this / rhs; }
 
+        /// @brief 比較演算子
+        /// @param rhs 被演算子
+        /// @return
+        constexpr bool operator==(const Position& rhs) const noexcept{ return vector == rhs.vector && turn == rhs.turn; }
+
+        /// @brief 比較演算子
+        /// @param rhs 被演算子
+        /// @return
+        constexpr bool operator!=(const Position& rhs) const noexcept{ return !(*this == rhs); }
+        
         /// @brief 要素のいずれかに0以外の値があるかどうかを返す
-        constexpr operator bool() const noexcept
+        constexpr explicit operator bool() const noexcept
         {
             return vector || turn;
         }

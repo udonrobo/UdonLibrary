@@ -5,8 +5,8 @@
 #pragma once
 
 #if !PICO_NO_HARDWARE
-#include "hardware/pio.h"
-#include "pico/stdlib.h"
+#    include "hardware/pio.h"
+#    include "pico/stdlib.h"
 
 #endif
 
@@ -36,16 +36,16 @@ namespace udon
                 .origin       = -1,
             };
 
-#define squarewave_wrap_target 0
-#define squarewave_wrap 3
+#    define squarewave_wrap_target 0
+#    define squarewave_wrap 3
             static inline pio_sm_config squarewave_program_get_default_config(uint offset)
             {
                 pio_sm_config c = pio_get_default_sm_config();
                 sm_config_set_wrap(&c, offset + squarewave_wrap_target, offset + squarewave_wrap);
                 return c;
             }
-#undef squarewave_wrap_target
-#undef squarewave_wrap
+#    undef squarewave_wrap_target
+#    undef squarewave_wrap
 #endif
         }    // namespace sqwave
     }        // namespace pio

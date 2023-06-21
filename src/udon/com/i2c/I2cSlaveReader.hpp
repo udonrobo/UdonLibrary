@@ -1,12 +1,23 @@
-///   @file   I2cSlaveReader.hpp
-///   @brief  I2cスレーブ送信用クラス
-///   @author 大河 祐介
-///   @date   2023/03/31
+//-----------------------------------------------
+//
+//  UdonLibrary
+//
+//  Copyright (c) 2022-2023 Okawa Yusuke
+//  Copyright (c) 2022-2023 udonrobo
+//
+//  Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  I2c スレーブ側受信クラス
+//
+//-----------------------------------------------
 
 #pragma once
 
 #include <udon/com/i2c/I2cBus.hpp>
 #include <udon/com/serialization/Serializer.hpp>
+#include <udon/utility/Show.hpp>
 
 namespace udon
 {
@@ -23,35 +34,61 @@ namespace udon
         static I2cSlaveReader* self;
 
     public:
-        /// @param address I2cアドレス
-        /// @param clock   通信レート
-        template <typename Bus>
-        I2cSlaveReader(Bus& bus)
+        /// @brief コンストラクタ
+        /// @param bus I2cバス
+        I2cSlaveReader(udon::II2cBus& bus)
             : bus(bus)
             , buffer()
         {
             self = this;
-            bus.onReceive([](int)
-                          {
-							for (auto& buf : self->buffer)
-								{
-									buf = Wire.read();
-								}});
         }
 
-		udon::optional<Message> getMessage() const
-		{
-			return udon::Unpack<Message>(buffer);
-		}
-
-        /// @brief 送信内容を表示
-        /// @param end   オプション [/n, /t ..]
-        /// @param radix 基数      [BIN, HEX ..]
-        void show(const char end = {}, const uint16_t radix = DEC) const noexcept
+        /// @brief 受信開始
+        void begin()
         {
-            for (const auto& buffer : buffer)
-                Serial.print(buffer, radix), Serial.print('\t');
-            Serial.print(end);
+            bus.onReceive(
+                [](int)
+                {
+                    for (auto& buf : self->buffer)
+                    {
+                        buf = Wire.read();
+                    }
+                });
+        }
+
+        /// @brief 受信したメッセージを取得
+        /// @return 受信したメッセージ
+        udon::optional<Message> getMessage() const
+        {
+            if (bus)
+            {
+                return udon::Unpack<Message>(buffer);
+            }
+            else
+            {
+                return udon::nullopt;
+            }
+        }
+
+        /// @brief 受信内容を表示
+        /// @param gap 区切り文字 (default: '\t')
+        void show(char gap = '\t') const
+        {
+            if (const auto message = getMessage())
+            {
+                udon::Show(*message, gap);
+            }
+            else
+            {
+                udon::Show(F("receive failed!"));
+            }
+        }
+
+        /// @brief 受信バッファを表示
+        /// @param gap 区切り文字 (default: ' ')
+        void showRaw(char gap = ' ') const
+        {
+            udon::Show(buffer, gap);
         }
     };
 

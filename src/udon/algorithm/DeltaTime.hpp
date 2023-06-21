@@ -1,4 +1,21 @@
+//-----------------------------------------------
+//
+//  UdonLibrary
+//
+//  Copyright (c) 2022-2023 Okawa Yusuke
+//  Copyright (c) 2022-2023 udonrobo
+//
+//  Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  変化時間クラス
+//
+//-----------------------------------------------
+
 #pragma once
+
+#include <Arduino.h>
 
 namespace udon
 {
@@ -23,7 +40,7 @@ namespace udon
         {
             previousMs = currentMs;
             currentMs  = millis();
-			return *this;
+            return *this;
         }
 
         /// @brief 経過時間を取得

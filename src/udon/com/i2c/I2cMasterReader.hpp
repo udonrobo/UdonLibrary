@@ -1,7 +1,23 @@
+//-----------------------------------------------
+//
+//  UdonLibrary
+//
+//  Copyright (c) 2022-2023 Okawa Yusuke
+//  Copyright (c) 2022-2023 udonrobo
+//
+//  Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  I2c マスター側受信クラス
+//
+//-----------------------------------------------
+
 #pragma once
 
 #include <udon/com/i2c/I2cBus.hpp>
 #include <udon/com/serialization/Serializer.hpp>
+#include <udon/utility/Show.hpp>
 
 namespace udon
 {
@@ -18,51 +34,58 @@ namespace udon
 
         uint8_t buffer[Size];
 
-        uint32_t errorCount;
-
     public:
-        template <typename Bus>
-        I2cMasterReader(Bus& bus, uint8_t address)
+        /// @brief コンストラクタ
+        /// @param bus I2cバス
+        /// @param address スレーブアドレス
+        I2cMasterReader(udon::II2cBus& bus, uint8_t address)
             : bus(bus)
             , address(address)
             , buffer()
         {
         }
 
-        void update()
+        /// @brief 受信したメッセージを取得
+        /// @return 受信したメッセージ
+        udon::optional<Message> getMessage()
         {
             bus.requestFrom(address, Size);
             while (bus.available())
             {
                 for (auto&& it : buffer)
                 {
-                    switch (const auto d = bus.read())
-                    {
-                    case -1:    // error
-                        errorCount += 5;
-                        break;
-                    default:
-                        it = d;
-                        --errorCount;
-                        break;
-                    }
+                    it = bus.read();
                 }
+            }
+            if (bus)
+            {
+                return udon::Unpack<Message>(buffer);
+            }
+            else
+            {
+                return udon::nullopt;
             }
         }
 
-        explicit operator bool() const
+        /// @brief 受信内容を表示
+        /// @param gap 区切り文字 (default: '\t')
+        void show(char gap = '\t') const
         {
-            return errorCount < 128;
+            if (const auto message = getMessage())
+            {
+                udon::Show(*message, gap);
+            }
+            else
+            {
+                udon::Show(F("receive failed!"));
+            }
         }
 
-        udon::optional<Message> getMessage() const
+        /// @brief 受信バッファを表示
+        /// @param gap 区切り文字 (default: ' ')
+        void showRaw(char gap = ' ') const
         {
-            return udon::Unpack<Message>(buffer);
-        }
-
-        const uint8_t* data() const
-        {
-            return buffer;
+            udon::Show(buffer, gap);
         }
     };
 

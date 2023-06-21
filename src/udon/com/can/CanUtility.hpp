@@ -80,7 +80,7 @@ namespace udon
     /// @param input バイト列
     /// @param output パケット化したデータの格納先
     /// @param singlePacketSize 1パケットのサイズ
-    /// @param func パケット化した後に呼び出される関数オブジェクト
+    /// @param func パケット化した後に呼び出される関数オブジェクト(引数 size_t: パケットに含まれるデータサイズ)
     template <typename Function>
     inline void Packetize(
         udon::ArrayView<uint8_t>&& input,               // _In_
@@ -109,6 +109,7 @@ namespace udon
                         input.begin() + index * dataSize,
                         std::min(dataSize, input.size() - index * dataSize),
                         output.begin() + 1);
+                    func(input.size() - index * dataSize);    // callback
                 }
                 else
                 {
@@ -116,8 +117,8 @@ namespace udon
                         input.begin() + index * dataSize,
                         dataSize,
                         output.begin() + 1);
+                    func(singlePacketSize);    // callback
                 }
-                func();    // callback
             }
         }
         else
@@ -128,69 +129,71 @@ namespace udon
                 input.begin(),
                 input.size(),
                 output.begin());
-            func();    // callback
+            func(input.size());    // callback
         }
     }
+
+#if defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__) || defined(ARDUINO_ARCH_RP2040)
 
     /// @brief バスの情報をプリントする
     /// @tparam Nodes
     /// @param busName
     /// @param txNodes
     /// @param rxNodes
-    // template <typename TxNodesBuffer, typename RxNodesBuffer>
-    // inline void PrintBusInfo(
-    //     const char*          busName,            // _In_
-    //     const TxNodesBuffer& txNodes,            // _In_
-    //     const RxNodesBuffer& rxNodes,            // _In_
-    //     size_t               singlePacketSize    // _In_
-    // )
-    // {
-    //     Serial.printf("Bus: %s\n", busName);
+    template <typename TxNodesBuffer, typename RxNodesBuffer>
+    inline void PrintBusInfo(
+        const char*          busName,            // _In_
+        const TxNodesBuffer& txNodes,            // _In_
+        const RxNodesBuffer& rxNodes,            // _In_
+        size_t               singlePacketSize    // _In_
+    )
+    {
+        Serial.printf("Bus: %s\n", busName);
 
-    //     Serial.printf("\tTX Node\n");
-    //     for (auto node = txNodes.cbegin(); node != txNodes.cend(); ++node)
-    //     {
-    //         Serial.printf("\t\tid:%4x   size:%3d byte", node->id, (int)node->data.size());
-    //         if (node->data.size() > singlePacketSize)
-    //         {
-    //             Serial.printf(" (multi packet)");
-    //         }
-    //         else
-    //         {
-    //             Serial.printf(" (single packet)");
-    //         }
-    //         for (size_t i = 0; i < node->data.size(); ++i)
-    //         {
-    //             if (i % singlePacketSize == 0)
-    //             {
-    //                 Serial.printf("\n\t\t\tdata: ");
-    //             }
-    //             Serial.printf("%4d", node->data[i]);
-    //         }
-    //         Serial.printf("\n");
-    //     }
+        Serial.printf("\tTX Node\n");
+        for (auto node = txNodes.cbegin(); node != txNodes.cend(); ++node)
+        {
+            Serial.printf("\t\tid:%4d   size:%3zu byte", node->id, node->data.size());
+            if (node->data.size() > singlePacketSize)
+            {
+                Serial.printf(" (multi packet)");
+            }
+            else
+            {
+                Serial.printf(" (single packet)");
+            }
 
-    //     Serial.printf("\tRX Node\n");
-    //     for (auto node = rxNodes.cbegin(); node != rxNodes.cend(); ++node)
-    //     {
-    //         Serial.printf("\t\tid:%4x   size:%3d byte", node->id, (int)node->data.size());
-    //         if (node->data.size() > singlePacketSize)
-    //         {
-    //             Serial.printf(" (multi packet)");
-    //         }
-    //         else
-    //         {
-    //             Serial.printf(" (single packet)");
-    //         }
-    //         for (size_t i = 0; i < node->data.size(); ++i)
-    //         {
-    //             if (i % singlePacketSize == 0)
-    //             {
-    //                 Serial.printf("\n\t\t\tdata: ");
-    //             }
-    //             Serial.printf("%4d", node->data[i]);
-    //         }
-    //         Serial.printf("\n");
-    //     }
-    // }
+            Serial.printf("\n\t\t\tdata: ");
+            for (auto&& data : node->data)
+            {
+                Serial.printf("%4d", data);
+            }
+
+            Serial.printf("\n");
+        }
+
+        Serial.printf("\tRX Node\n");
+        for (auto node = rxNodes.cbegin(); node != rxNodes.cend(); ++node)
+        {
+            Serial.printf("\t\tid:%4d   size:%3zu byte", node->id, node->data.size());
+            if (node->data.size() > singlePacketSize)
+            {
+                Serial.printf(" (multi packet)");
+            }
+            else
+            {
+                Serial.printf(" (single packet)");
+            }
+
+            Serial.printf("\n\t\t\tdata: ");
+            for (auto&& data : node->data)
+            {
+                Serial.printf("%4d", data);
+            }
+
+            Serial.printf("\n");
+        }
+    }
+
+#endif
 }    // namespace udon

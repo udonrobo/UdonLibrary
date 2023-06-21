@@ -1,6 +1,17 @@
+//-----------------------------------------------
+//
+//	UdonLibrary
+// 
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+
+
 #pragma once
 
-// ヘッダーを一括でインクルードしない場合は、{UDON_INCLUDE_SELECTABLE} マクロを定義してから、必要なヘッダーを個別にインクルードしてください。
+// ヘッダーを一括でインクルードしない場合、UDON_INCLUDE_SELECTABLE マクロを定義し個別にインクルードしてください。
 #ifndef UDON_INCLUDE_SELECTABLE
 
 // UdonLibrary が含まれているかどうかを判定するマクロ
@@ -36,7 +47,7 @@
 // CRC-8 チェックサム / 誤り検出
 #include <udon/algorithm/CRC8.hpp>
 
-// リングバッファ / 静的疑似可変長配列キュー
+// 疑似可変長リングバッファ
 #include <udon/algorithm/RingBuffer.hpp>
 
 // PIDフィードバック制御器
@@ -57,23 +68,29 @@
 //
 /////////////////////////////////////////////////////////////////////
 
-// CAN通信
+// CAN
 #include <udon/com/can/Can.hpp>
 
-// UART通信
+// UART
 #include <udon/com/uart/Uart.hpp>
 
-// UART通信
+// I2c
 #include <udon/com/i2c/I2c.hpp>
 
-// シリアライザー
+// im920
+#include <udon/com/im920/Im920.hpp>
+
+// フォワーディング
+#include <udon/com/common/Forwarding.hpp>
+
+// シリアライズ
 #include <udon/com/serialization/Serializer.hpp>
 
 // コントローラー
 #include <udon/com/pad/PadPS5.hpp>
 
 // 通信用構造体群
-#include <udon/message/Message.hpp>
+#include <udon/com/message/Message.hpp>
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -93,6 +110,8 @@
 // 算術関数
 #include <udon/math/Math.hpp>
 
+#include <udon/math/Ceil.hpp>
+
 /////////////////////////////////////////////////////////////////////
 //
 //  センサー / sensor
@@ -100,7 +119,22 @@
 /////////////////////////////////////////////////////////////////////
 
 // IMU / 慣性計測装置
-#include <udon/sensor/imu/Imu.hpp>
+#include <udon/sensor/Imu.hpp>
+
+// BNO055(IMU)
+#include <udon/sensor/BNO055.hpp>
+
+// ディップスイッチ
+#include <udon/sensor/DipSwitch.hpp>
+
+/////////////////////////////////////////////////////////////////////
+//
+//  表示系 / display
+//
+/////////////////////////////////////////////////////////////////////
+
+// 7セグメントLED
+#include <udon/display/SegmentsLed.hpp>
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -123,17 +157,14 @@
 // オイラー角
 #include <udon/types/Euler.hpp>
 
+// 直交座標系
+#include <udon/types/Polar.hpp>
+
 // ロボットの位置
 #include <udon/types/Position.hpp>
 
 // クオータニオン
 #include <udon/types/Quaternion.hpp>
-
-// 2次元スプライン曲線
-#include <udon/types/Spline2D.hpp>
-
-// 3次元スプライン曲線
-#include <udon/types/Spline3D.hpp>
 
 // 連続する線分
 #include <udon/types/LineString.hpp>
@@ -146,6 +177,9 @@
 
 // メンバー関数の有無
 #include <udon/traits/HasMember.hpp>
+
+// メンバ関数の呼び出し
+#include <udon/traits/MaybeInvoke.hpp>
 
 /////////////////////////////////////////////////////////////////////
 //

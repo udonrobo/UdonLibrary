@@ -1,11 +1,23 @@
+//-----------------------------------------------
+//
+//	UdonLibrary
+// 
+//	Copyright (c) 2022-2023 Okawa Yusuke
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  UART 受信クラス
+//
+//-----------------------------------------------
+
+
 #pragma once
 
 #include <udon/com/serialization/Serializer.hpp>
-#include <udon/com/uart/UartBus.hpp>
-
-#include <udon/stl/EnableSTL.hpp>
-
-#include <type_traits>
+#include <udon/utility/Show.hpp>
 
 namespace udon
 {
@@ -13,53 +25,92 @@ namespace udon
     template <class Message>
     class UartReader
     {
+        static constexpr size_t Size = udon::CapacityWithChecksum<Message>();
 
-        udon::UartBus& uart;
+        Stream& uart;
 
-        Message message;
+        uint8_t buffer[Size];
+
+        uint32_t transmitMs;
 
     public:
-
-        UartReader(udon::UartBus& uart) noexcept
+        UartReader(Stream& uart)
             : uart(uart)
-            , message()
+            , buffer()
+            , transmitMs()
         {
         }
 
-        void update() noexcept
+        explicit operator bool() const
         {
-            uint8_t buffer[udon::CapacityWithChecksum<Message>()];
-            bool    isError = false;
-            while (uart.available())
+            return millis() - transmitMs < 100;
+        }
+
+        void update()
+        {
+            if (uart.available() >= Size)
             {
+
+                // バッファにデータを格納
                 for (auto&& it : buffer)
                 {
                     const auto d = uart.read();
                     if (d == -1)
                     {
-                        isError = true;
+                        break;
                     }
                     else
                     {
                         it = d;
                     }
                 }
-            }
 
-            if (isError == false)
-            {
-                if (const auto m = udon::Unpack<Message>(buffer))
+                // タイミングによってバッファにデータが残っている可能性があるためクリア
+                while (uart.available())
                 {
-                    message = m.value();
+                    (void)uart.read();
                 }
+
+                transmitMs = millis();
             }
         }
 
-        Message getMessage() const noexcept
+        udon::optional<Message> getMessage() const
         {
-            return message;
+            if (operator bool())
+            {
+                return udon::Unpack<Message>(buffer);
+            }
+            else
+            {
+                return udon::nullopt;
+            }
         }
 
+        /// @brief 送信内容を表示
+        /// @param gap 区切り文字 (default: '\t')
+        void show(char gap = '\t') const
+        {
+            if (const auto message = getMessage())
+            {
+                udon::Show(*message, gap);
+            }
+            else
+            {
+                Serial.print(F("receive failed!"));
+            }
+        }
+
+        /// @brief 送信内容を表示
+        /// @param gap 区切り文字 (default: ' ')
+        void showRaw(char gap = ' ') const
+        {
+            for (auto&& it : buffer)
+            {
+                Serial.print(it);
+                Serial.print(gap);
+            }
+        }
     };
 
 }    // namespace udon

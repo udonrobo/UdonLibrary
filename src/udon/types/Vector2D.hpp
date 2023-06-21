@@ -1,17 +1,34 @@
-﻿#pragma once
+﻿//-----------------------------------------------
+//
+//  UdonLibrary
+//
+//  Copyright (c) 2022-2023 Okawa Yusuke
+//  Copyright (c) 2022-2023 udonrobo
+//
+//  Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  二次元ベクトル
+//
+//-----------------------------------------------
 
+
+#pragma once
+
+#include <udon/types/PolarFwd.hpp>
 #include <udon/types/Vector2DFwd.hpp>
 #include <udon/types/Vector3DFwd.hpp>
 #include <udon/types/Vector4DFwd.hpp>
-#include <udon/types/PolarFwd.hpp>
 
-template<typename T>
+
+template <typename T>
 inline udon::Vector3D<T> udon::Vector2D<T>::xy0() const noexcept
 {
     return { x, y, 0 };
 }
 
-template<typename T>
+template <typename T>
 inline udon::Vector4D<T> udon::Vector2D<T>::xy00() const noexcept
 {
     return { x, y, 0, 0 };

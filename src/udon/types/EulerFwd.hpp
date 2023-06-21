@@ -1,3 +1,19 @@
+//-----------------------------------------------
+//
+//	UdonLibrary
+// 
+//	Copyright (c) 2022-2023 Okawa Yusuke
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  オイラー角前方定義
+//
+//-----------------------------------------------
+
+
 #pragma once
 
 #include <udon/math/Math.hpp>    // udon::NormalizedAngle
@@ -144,7 +160,6 @@ namespace udon
 #endif
 
         UDON_PARSABLE(roll, pitch, yaw);
-
     };
 
     using Euler = Euler3D<double>;

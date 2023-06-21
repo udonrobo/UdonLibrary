@@ -1,4 +1,20 @@
-﻿#pragma once
+﻿//-----------------------------------------------
+//
+//	UdonLibrary
+// 
+//	Copyright (c) 2022-2023 Okawa Yusuke
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  デシリアライザ
+//
+//-----------------------------------------------
+
+
+#pragma once
 
 #include <limits.h>
 
@@ -44,7 +60,7 @@ namespace udon
             isChecksumSuccess   = buffer.back() == checksum;
         }
 
-        operator bool() const
+        explicit operator bool() const
         {
             return isChecksumSuccess;
         }

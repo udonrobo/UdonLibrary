@@ -1,12 +1,29 @@
+//-----------------------------------------------
+//
+//	UdonLibrary
+// 
+//	Copyright (c) 2022-2023 Okawa Yusuke
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  通信経由ロータリーエンコーダー
+//
+//-----------------------------------------------
+
+
 #pragma once
 
 #include <udon/stl/EnableSTL.hpp>
 
 #include <algorithm>
 
-#include <udon/message/Motor.hpp>
-#include <udon/traits/MaybeInvoke.hpp>
 #include <udon/algorithm/DeltaTime.hpp>
+#include <udon/com/message/Motor.hpp>
+#include <udon/traits/MaybeInvoke.hpp>
+
 
 namespace udon
 {
@@ -29,7 +46,6 @@ namespace udon
         double speed;
 
     public:
-
         /// @brief コンストラクタ
         /// @param reader 受信クラスオブジェクト
         /// @param direction 回転方向

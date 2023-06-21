@@ -12,21 +12,21 @@ namespace udon
     struct CanNodeView
     {
         uint32_t              id;
-        std::vector<uint8_t>* data;         // point to can bus data
-        const uint32_t*       timestamp;    // timestamp
+        std::vector<uint8_t>* data;          // point to can bus data
+        const uint32_t*       transmitMs;    // timestamp
     };
 
     struct CanBusErrorInfo
     {
         uint8_t  TXErrorCount;
         uint8_t  RXErrorCount;
-        uint32_t timestampUs;
+        uint32_t transmitMs;
 
-        operator bool() const
+        explicit operator bool() const
         {
             return TXErrorCount < 100 &&
                    RXErrorCount < 100 &&
-                   micros() - timestampUs < 50000;
+                   micros() - transmitMs < 50000;
         }
     };
 

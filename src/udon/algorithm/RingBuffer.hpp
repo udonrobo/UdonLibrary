@@ -1,4 +1,19 @@
-﻿#pragma once
+﻿//-----------------------------------------------
+//
+//  UdonLibrary
+//
+//  Copyright (c) 2022-2023 Okawa Yusuke
+//  Copyright (c) 2022-2023 udonrobo
+//
+//  Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  疑似可変長リングバッファコンテナ
+//
+//-----------------------------------------------
+
+#pragma once
 
 #include <udon/stl/EnableSTL.hpp>
 
@@ -6,8 +21,6 @@
 #include <cstddef>
 #include <iterator>
 
-
-/// @brief リングバッファコンテナ
 namespace udon
 {
 

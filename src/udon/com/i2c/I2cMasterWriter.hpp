@@ -1,7 +1,24 @@
+//-----------------------------------------------
+//
+//  UdonLibrary
+//
+//  Copyright (c) 2022-2023 Okawa Yusuke
+//  Copyright (c) 2022-2023 udonrobo
+//
+//  Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  I2c マスター側送信クラス
+//
+//-----------------------------------------------
+
 #pragma once
 
 #include <udon/com/i2c/I2cBus.hpp>
 #include <udon/com/serialization/Serializer.hpp>
+#include <udon/utility/Show.hpp>
+
 
 namespace udon
 {
@@ -18,32 +35,49 @@ namespace udon
 
         uint8_t buffer[Size];
 
-        uint32_t errorCount;
-
     public:
-        template <typename Bus>
-        I2cMasterWriter(Bus& bus, uint8_t address)
+        /// @brief コンストラクタ
+        /// @param bus I2cバス
+        /// @param address スレーブアドレス
+        I2cMasterWriter(udon::II2cBus& bus, uint8_t address)
             : bus(bus)
             , address(address)
             , buffer()
         {
         }
 
-        void update()
+        /// @brief 送信するメッセージを設定、送信
+        /// @param message 送信するメッセージ
+        void setMessage(const Message& message)
         {
-			bus.beginTransmission(address);
-			bus.write(buffer, Size);
-			bus.endTransmission();
+            // シリアライズ
+            udon::Pack(message, buffer);
+
+            // 送信
+            bus.beginTransmission(address);
+            bus.write(buffer, Size);
+            bus.endTransmission();
         }
 
-		void setMessage(const Message& message)
-		{
-			udon::Pack(message, buffer);
-		}
-
-        const uint8_t* data() const
+        /// @brief 送信内容を表示
+        /// @param gap 区切り文字 (default: '\t')
+        void show(char gap = '\t') const
         {
-            return buffer;
+            if (const auto message = udon::Unpack<Message>(buffer))
+            {
+                udon::Show(*message, gap);
+            }
+            else
+            {
+                udon::Show(F("unpack failed!"));    // 通常はここには到達しない
+            }
+        }
+
+        /// @brief 送信バッファを表示
+        /// @param gap 区切り文字 (default: ' ')
+        void showRaw(char gap = ' ') const
+        {
+            udon::Show(buffer, gap);
         }
     };
 

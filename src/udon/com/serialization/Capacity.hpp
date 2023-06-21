@@ -1,4 +1,20 @@
-﻿#pragma once
+﻿//-----------------------------------------------
+//
+//	UdonLibrary
+// 
+//	Copyright (c) 2022-2023 Okawa Yusuke
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  シリアライズ関係
+//
+//-----------------------------------------------
+
+
+#pragma once
 
 #include <limits.h>
 
@@ -7,10 +23,11 @@
 #include <type_traits>
 #include <utility>
 
-#include <udon/math/Ceil.hpp>
 #include <udon/algorithm/CRC8.hpp>
+#include <udon/math/Ceil.hpp>
 #include <udon/traits/HasMember.hpp>
 #include <udon/types/Float.hpp>
+
 
 namespace udon
 {

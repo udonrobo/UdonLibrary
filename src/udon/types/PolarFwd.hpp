@@ -1,4 +1,20 @@
-﻿#pragma once
+﻿//-----------------------------------------------
+//
+//  UdonLibrary
+//
+//  Copyright (c) 2022-2023 Okawa Yusuke
+//  Copyright (c) 2022-2023 udonrobo
+//
+//  Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  直交座標系前方定義
+//
+//-----------------------------------------------
+
+
+#pragma once
 
 #include <udon/utility/Parsable.hpp>
 
@@ -54,7 +70,7 @@ namespace udon
         constexpr bool operator==(const Polar_impl& rhs) const noexcept { return r == rhs.r && theta == rhs.theta; }
         constexpr bool operator!=(const Polar_impl& rhs) const noexcept { return !(*this == rhs); }
 
-        constexpr operator bool() const noexcept { return r || theta; }
+        constexpr explicit operator bool() const noexcept { return r || theta; }
 
         Vector2D<value_type> toVector() const noexcept;
 

@@ -1,4 +1,20 @@
-﻿#pragma once
+﻿//-----------------------------------------------
+//
+//	UdonLibrary
+// 
+//	Copyright (c) 2022-2023 Okawa Yusuke
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  メンバ関数有無判定トレイト作成マクロ
+//
+//-----------------------------------------------
+
+
+#pragma once
 
 #include <udon/stl/EnableSTL.hpp>
 
@@ -90,17 +106,17 @@ namespace udon
 {
 
 #ifndef UDON_HAS_MEMBER_FUNCTION_BEGIN
-#define UDON_HAS_MEMBER_FUNCTION_BEGIN
+#    define UDON_HAS_MEMBER_FUNCTION_BEGIN
     UDON_HAS_MEMBER_FUNCTION(begin);
 #endif
 
 #ifndef UDON_HAS_MEMBER_FUNCTION_UPDATE
-#define UDON_HAS_MEMBER_FUNCTION_UPDATE
+#    define UDON_HAS_MEMBER_FUNCTION_UPDATE
     UDON_HAS_MEMBER_FUNCTION(update);
 #endif
 
 #ifndef UDON_HAS_MEMBER_FUNCTION_SHOW
-#define UDON_HAS_MEMBER_FUNCTION_SHOW
+#    define UDON_HAS_MEMBER_FUNCTION_SHOW
     UDON_HAS_MEMBER_FUNCTION(show);
 #endif
 

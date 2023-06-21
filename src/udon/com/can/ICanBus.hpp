@@ -7,11 +7,13 @@ namespace udon
 
     class ICanBus
     {
-	public:
+    public:
         virtual ~ICanBus() {}
 
-        virtual udon::CanNodeView createTxNode(uint16_t id, size_t size) = 0;
+        virtual operator bool() const = 0;
 
-        virtual udon::CanNodeView createRxNode(uint16_t id, size_t size) = 0;
+        virtual udon::CanNodeView createTxNode(uint32_t id, size_t size) = 0;
+
+        virtual udon::CanNodeView createRxNode(uint32_t id, size_t size) = 0;
     };
 }    // namespace udon

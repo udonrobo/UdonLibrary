@@ -1,5 +1,5 @@
 ﻿/**
-        @file   LoopCycleController.h
+        @file   LoopCycleController.hpp
         @brief  ループ周期を一定にする
         @author 谷川　豊章
         @date   2016/8/11
@@ -72,7 +72,7 @@ namespace udon
                 @retval false   ループ周期は一定
                 @retval true    ループ周期は一定でない
         */
-        operator bool() const noexcept
+        explicit operator bool() const noexcept
         {
             return isError;
         }
