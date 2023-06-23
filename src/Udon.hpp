@@ -169,8 +169,8 @@
 // 連続する線分
 #include <udon/types/LineString.hpp>
 
-// RGB色空間
-#include <udon/types/RGB.hpp>
+// 色空間 / RGB / HSV
+#include <udon/types/Color.hpp>
 
 /////////////////////////////////////////////////////////////////////
 //
