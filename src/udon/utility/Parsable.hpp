@@ -16,6 +16,7 @@
 #pragma once
 
 #include <udon/traits/HasMember.hpp>
+#include <udon/com/serialization/Capacity.hpp>
 
 /// @brief 自作クラスのパースを可能にする
 /// @param ... パース可能なメンバー変数(,区切り)

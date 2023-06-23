@@ -20,6 +20,7 @@
 #include <udon/types/Polar.hpp>
 #include <udon/types/Vector2D.hpp>
 #include <udon/utility/Parsable.hpp>
+#include <udon/com/serialization/Serializer.hpp>
 
 #include <udon/stl/EnableSTL.hpp>
 
