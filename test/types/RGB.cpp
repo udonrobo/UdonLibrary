@@ -1,3 +1,5 @@
+#include <Arduino.h>
+
 #include <udon/types/RGB.hpp>
 
 inline void test()

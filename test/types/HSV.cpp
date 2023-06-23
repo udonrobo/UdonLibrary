@@ -1,3 +1,5 @@
+#include <Arduino.h>
+
 #include <udon/types/HSV.hpp>
 
 inline void test()
