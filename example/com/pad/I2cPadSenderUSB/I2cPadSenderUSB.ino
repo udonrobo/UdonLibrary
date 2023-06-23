@@ -1,3 +1,21 @@
+//-----------------------------------------------
+//
+//	UdonLibrary
+//
+//	Copyright (c) 2022-2023 Okawa Yusuke
+//	Copyright (c) 2022-2023 udonrobo
+//
+//	Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//  PS5コントローラー送信クラス スケッチ例 (I2C)
+//
+//  Controller --[USB]--> sender --[I2C]--> master
+//                        ^^^^^^
+//
+//-----------------------------------------------
+
 #include <Udon.hpp>
 #include <udon/com/pad/PadPS5USB.hpp>
 
@@ -30,17 +48,18 @@ void loop()
 
     pad.update();
 
-    // pad -> i2c<message::PadPS5>
+    //   pad --[i2c<message::PadPS5>]--> master
     padWriter.setMessage(pad.getButtons());
 
-    // i2c<Color> -> pad color
+    //   master --[i2c<RGB>]--> pad
     if (const auto color = padColorReader.getMessage())
     {
         pad.setColor(*color);
     }
     else
     {
-        pad.setColor(udon::RGB{ 0x38b48b });    // default: jade green
+        // default: jade green
+        pad.setColor(udon::RGB{ 0x38b48b });
     }
 
     Serial.println();
