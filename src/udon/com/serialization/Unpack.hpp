@@ -26,7 +26,6 @@
 #include <udon/algorithm/Endian.hpp>
 #include <udon/math/Math.hpp>
 #include <udon/stl/optional.hpp>
-#include <udon/traits/HasMember.hpp>
 #include <udon/types/Float.hpp>
 #include <udon/utility/Parsable.hpp>
 

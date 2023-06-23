@@ -120,9 +120,4 @@ namespace udon
     UDON_HAS_MEMBER_FUNCTION(show);
 #endif
 
-#ifndef UDON_HAS_MEMBER_FUNCTION_ACCESSOR
-#    define UDON_HAS_MEMBER_FUNCTION_ACCESSOR
-    UDON_HAS_MEMBER_ITERATE_FUNCTION(accessor);
-#endif
-
 }    // namespace udon
