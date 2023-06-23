@@ -1,7 +1,5 @@
-#ifndef ARDUINO_ARCH_RP2040
-
-#    include <Udon.hpp>
-#    include <udon/com/pad/PadPS5USB.hpp>
+#include <Udon.hpp>
+#include <udon/com/pad/PadPS5USB.hpp>
 
 udon::I2cBus bus{ Wire };
 
@@ -48,8 +46,3 @@ void loop()
     Serial.println();
     delay(10);
 }
-
-#else
-void setup() {}
-void loop() {}
-#endif

@@ -1,6 +1,4 @@
-#ifndef ARDUINO_ARCH_RP2040
-
-#    include <Udon.hpp>
+#include <Udon.hpp>
 
 udon::I2cBus bus{ Wire };
 
@@ -29,8 +27,3 @@ void loop()
     }
     delay(10);
 }
-
-#else
-void setup() {}
-void loop() {}
-#endif
