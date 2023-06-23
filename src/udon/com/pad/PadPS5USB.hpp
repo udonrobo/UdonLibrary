@@ -23,6 +23,8 @@ namespace udon
         {
         }
 
+        /// @brief コントローラーと通信開始
+        /// @return 
         bool begin()
         {
             if (usb.Init() == -1)
@@ -35,6 +37,7 @@ namespace udon
             }
         }
 
+        /// @brief 更新
         void update()
         {
             usb.Task();
@@ -80,14 +83,33 @@ namespace udon
             }
         }
 
+        /// @brief message::PadPS5型のメッセージを取得する
+        /// @return 
         message::PadPS5 getButtons() const
         {
             return buttons;
         }
 
+        /// @brief LEDバーの色を設定する
+        /// @param color 
         void setColor(const udon::RGB& color)
         {
             pad.setLed(color.r, color.g, color.b);
+        }
+
+        /// @brief マイクのLEDの点灯を設定する
+        /// @param on 
+        void setMicLed(bool on)
+        {
+            pad.setMicLed(on);
+        }
+
+        /// @brief バイブレーションの強さ設定する
+        /// @param big 大きい振動モーターの強さ 0~255
+        /// @param small 小さい振動モーターの強さ 0~255
+        void vibration(uint8_t big, uint8_t small)
+        {
+            pad.setRumbleOn(big, small);
         }
     };
 }    // namespace udon
