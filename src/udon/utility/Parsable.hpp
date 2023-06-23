@@ -44,6 +44,11 @@
 namespace udon
 {
 
+#ifndef UDON_HAS_MEMBER_FUNCTION_ACCESSOR
+#    define UDON_HAS_MEMBER_FUNCTION_ACCESSOR
+    UDON_HAS_MEMBER_ITERATE_FUNCTION(accessor);
+#endif
+
 #ifndef UDON_HAS_MEMBER_TYPE_IS_PARSABLE_TAG
 #    define UDON_HAS_MEMBER_TYPE_IS_PARSABLE_TAG
     UDON_HAS_MEMBER_TYPE(is_parsable_tag);
@@ -56,12 +61,5 @@ namespace udon
             udon::has_member_type_is_parsable_tag<T>::value ||    // パース可能な型
             std::is_arithmetic<T>::value;                         // アトミック型 (整数、浮動小数)
     };
-
-    struct Hoge
-    {
-        int value;
-    };
-
-    constexpr bool a = is_parsable<Hoge[]>::value;
 
 }    // namespace udon
