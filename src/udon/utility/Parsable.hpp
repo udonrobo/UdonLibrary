@@ -1,7 +1,7 @@
 //-----------------------------------------------
 //
 //	UdonLibrary
-// 
+//
 //	Copyright (c) 2022-2023 Okawa Yusuke
 //	Copyright (c) 2022-2023 udonrobo
 //
@@ -13,10 +13,9 @@
 //
 //-----------------------------------------------
 
-
 #pragma once
 
-#include <udon/com/serialization/Serializer.hpp>
+#include <udon/traits/HasMember.hpp>
 
 /// @brief 自作クラスのパースを可能にする
 /// @param ... パース可能なメンバー変数(,区切り)
@@ -31,6 +30,7 @@
 ///   - template <typename Acc> void accessor(Acc& acc)
 ///     - シリアライズ、デシリアライズ時に使用するアクセッサ
 #define UDON_PARSABLE(...)                  \
+    using is_parsable_tag = void;           \
     constexpr size_t capacity() const       \
     {                                       \
         return udon::Capacity(__VA_ARGS__); \
@@ -40,3 +40,28 @@
     {                                       \
         acc(__VA_ARGS__);                   \
     }
+
+namespace udon
+{
+
+#ifndef UDON_HAS_MEMBER_TYPE_IS_PARSABLE_TAG
+#    define UDON_HAS_MEMBER_TYPE_IS_PARSABLE_TAG
+    UDON_HAS_MEMBER_TYPE(is_parsable_tag);
+#endif
+
+    template <typename T>
+    struct is_parsable
+    {
+        static constexpr bool value =
+            udon::has_member_type_is_parsable_tag<T>::value ||    // パース可能な型
+            std::is_arithmetic<T>::value;                         // アトミック型 (整数、浮動小数)
+    };
+
+    struct Hoge
+    {
+        int value;
+    };
+
+    constexpr bool a = is_parsable<Hoge[]>::value;
+
+}    // namespace udon
