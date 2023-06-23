@@ -104,10 +104,10 @@ namespace udon
             pad.setMicLed(on);
         }
 
-        /// @brief バイブレーションの強さ設定する
+        /// @brief バイブレーション
         /// @param big 大きい振動モーターの強さ 0~255
         /// @param small 小さい振動モーターの強さ 0~255
-        void vibration(uint8_t big, uint8_t small)
+        void vibrate(uint8_t big = 100, uint8_t small = 100)
         {
             pad.setRumbleOn(big, small);
         }
