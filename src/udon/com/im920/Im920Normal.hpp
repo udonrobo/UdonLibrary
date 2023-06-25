@@ -151,7 +151,8 @@ namespace udon
             uart.print("TXDA ");
             uint8_t recoveryBuffer = 0;
             uint8_t pos            = 0;
-            for (uint8_t i = 1, auto&& it : sendBuffer)
+            uint8_t i              = 1;
+            for (auto&& it : sendBuffer)
             {
                 BitWrite(recoveryBuffer, pos, BitRead(it, 7));
                 pos++;
@@ -173,98 +174,97 @@ namespace udon
                 i++;
             }
             // 最後の回復ビットの準備
-            if (pos != 0)//最後のビットのセットが７ビット目じゃないときだけする
+            if (pos != 0)    // 最後のビットのセットが７ビット目じゃないときだけする
             {
                 BitWrite(recoveryBuffer, 7, 1);
                 uart.write(recoveryBuffer);
             }
-        }
-        uart.print("\r\n");
-        transmitMs = millis();
-    }
-
-    void
-    setRecoveryBit(uint8_t& buffer)
-    {
-
-        return buffer;
-    }
-
-    bool receiveUpdate()
-    {
-        // header = [Node id: 2byte] + [,] + [Transmission module ID: 4byte] + [,] + [RSSI:2byte] + [: ]
-        constexpr int HeaderSize = 2 + 1 + 4 + 1 + 2 + 2;
-
-        // footer = [\r] + [\n]
-        constexpr int FooterSize = 1 + 1;
-
-        const int frameSize = HeaderSize + receiveBuffer.size() + FooterSize;
-
-        if (uart.available() >= frameSize)
-        {
-
-            // ヘッダを読み飛ばす
-            for (size_t i = 0; i < HeaderSize; ++i)
-            {
-                (void)uart.read();
-            }
-
-            // データ取得
-            for (auto&& it : receiveBuffer)
-            {
-                it = uart.read();
-            }
-
-            // フッタを読み飛ばす
-            for (size_t i = 0; i < FooterSize; ++i)
-            {
-                (void)uart.read();
-            }
-
-            // 送信タイミングをリセット
-            while (uart.available())
-            {
-                (void)uart.read();
-            }
-
+            uart.print("\r\n");
             transmitMs = millis();
-
-            return true;
         }
-        else
+
+        void
+        setRecoveryBit(uint8_t& buffer)
         {
-            return false;
+
+            return buffer;
         }
-    }
-};
 
-// detail
+        bool receiveUpdate()
+        {
+            // header = [Node id: 2byte] + [,] + [Transmission module ID: 4byte] + [,] + [RSSI:2byte] + [: ]
+            constexpr int HeaderSize = 2 + 1 + 4 + 1 + 2 + 2;
 
-inline void Im920::begin(uint8_t channel)
-{
-    // ボーレート設定
-    uart.begin(115200);
+            // footer = [\r] + [\n]
+            constexpr int FooterSize = 1 + 1;
 
-    // チャンネル設定
-    uart.print("STCH ");
-    if (channel < 10)
+            const int frameSize = HeaderSize + receiveBuffer.size() + FooterSize;
+
+            if (uart.available() >= frameSize)
+            {
+
+                // ヘッダを読み飛ばす
+                for (size_t i = 0; i < HeaderSize; ++i)
+                {
+                    (void)uart.read();
+                }
+
+                // データ取得
+                for (auto&& it : receiveBuffer)
+                {
+                    it = uart.read();
+                }
+
+                // フッタを読み飛ばす
+                for (size_t i = 0; i < FooterSize; ++i)
+                {
+                    (void)uart.read();
+                }
+
+                // 送信タイミングをリセット
+                while (uart.available())
+                {
+                    (void)uart.read();
+                }
+
+                transmitMs = millis();
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    };
+
+    // detail
+
+    inline void Im920::begin(uint8_t channel)
     {
-        uart.print("0");    // 0埋め
+        // ボーレート設定
+        uart.begin(115200);
+
+        // チャンネル設定
+        uart.print("STCH ");
+        if (channel < 10)
+        {
+            uart.print("0");    // 0埋め
+        }
+        uart.print(channel);
+        uart.print("\r\n");
+        delay(100);
+
+        // 送信出力[10mW]
+        uart.print("STPO 3\r\n");
+        delay(100);
+
+        // 高速通信モード[50kbps]
+        uart.print("STRT 1\r\n");
+        delay(100);
+
+        // キャラクタ入出力モード
+        uart.print("ECIO\r\n");
+        delay(1000);
     }
-    uart.print(channel);
-    uart.print("\r\n");
-    delay(100);
-
-    // 送信出力[10mW]
-    uart.print("STPO 3\r\n");
-    delay(100);
-
-    // 高速通信モード[50kbps]
-    uart.print("STRT 1\r\n");
-    delay(100);
-
-    // キャラクタ入出力モード
-    uart.print("ECIO\r\n");
-    delay(1000);
-}
 }    // namespace udon
