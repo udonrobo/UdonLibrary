@@ -183,13 +183,6 @@ namespace udon
             transmitMs = millis();
         }
 
-        void
-        setRecoveryBit(uint8_t& buffer)
-        {
-
-            return buffer;
-        }
-
         bool receiveUpdate()
         {
             // header = [Node id: 2byte] + [,] + [Transmission module ID: 4byte] + [,] + [RSSI:2byte] + [: ]
