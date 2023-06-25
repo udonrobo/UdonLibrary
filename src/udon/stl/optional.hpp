@@ -63,7 +63,7 @@ namespace udon
         {
         }
 
-        constexpr optional(optional&& other)
+        constexpr optional(optional&& other) noexcept
             : m_value(std::move(other.m_value))
             , m_hasValue(other.m_hasValue)
         {
