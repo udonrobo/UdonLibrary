@@ -1,7 +1,7 @@
 //-----------------------------------------------
 //
 //	UdonLibrary
-// 
+//
 //	Copyright (c) 2022-2023 Okawa Yusuke
 //	Copyright (c) 2022-2023 udonrobo
 //
@@ -12,7 +12,6 @@
 //  9軸センサー
 //
 //-----------------------------------------------
-
 
 #pragma once
 
@@ -56,8 +55,8 @@ namespace udon
         udon::Euler getEuler() const
         {
             return (Device::getEuler() - offset.toEuler())
-                .directionRevision(direction)    // 回転方向補正
-                .normalized(-PI, PI)             // -PI~PI の間に正規化
+                .directionRevision(direction)       // 回転方向補正
+                .normalized(-udon::Pi, udon::Pi)    // -PI~PI の間に正規化
                 ;
         }
 

@@ -15,7 +15,10 @@
 
 #pragma once
 
-#include <udon/algorithm/MovingAverage.hpp>
+#if __has_include(<Arduino.h>)
+
+#    include <Arduino.h>
+#    include <udon/algorithm/MovingAverage.hpp>
 
 namespace udon
 {
@@ -91,3 +94,5 @@ namespace udon
 // TCCR1B |= B00000001;
 // TCCR2B &= B11111000;
 // TCCR2B |= B00000001;
+
+#endif

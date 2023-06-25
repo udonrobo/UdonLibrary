@@ -44,7 +44,7 @@ namespace udon
             }
             else
             {
-                Serial.print(F("unpack failed!"));    // 通常はここには到達しない
+                udon::Show(F("unpack failed!"));    // 通常はここには到達しない
             }
         }
 
@@ -54,8 +54,7 @@ namespace udon
         {
             for (auto&& it : *node.data)
             {
-                Serial.print(it);
-                Serial.print(gap);
+                udon::Show(it, gap);
             }
         }
     };

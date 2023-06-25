@@ -17,6 +17,7 @@
 
 #include <udon/com/message/Motor.hpp>
 #include <udon/traits/MaybeInvoke.hpp>
+#include <udon/utility/Show.hpp>
 
 namespace udon
 {
@@ -54,8 +55,7 @@ namespace udon
 
         void show() const
         {
-            Serial.print(power);
-            Serial.print('\t');
+            udon::Show(power);
         }
     };
 

@@ -1,9 +1,11 @@
 #pragma once
 
-#include <Arduino.h>
+#if __has_include(<Arduino.h>)
 
-#include <udon/types/HSV.hpp>
-#include <udon/types/RGB.hpp>
+#    include <Arduino.h>
+
+#    include <udon/types/HSV.hpp>
+#    include <udon/types/RGB.hpp>
 
 namespace udon
 {
@@ -11,4 +13,6 @@ namespace udon
     {
         return HSV{ static_cast<uint8_t>(millis() / 10.), 255, 255 }.toRGB();
     }
-} // namespace udon
+}    // namespace udon
+
+#endif

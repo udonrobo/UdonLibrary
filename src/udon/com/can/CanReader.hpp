@@ -5,9 +5,11 @@
 
 #pragma once
 
-#include <udon/com/can/ICanBus.hpp>
-#include <udon/com/serialization/Serializer.hpp>
-#include <udon/utility/Show.hpp>
+#ifdef ARDUINO
+
+#    include <udon/com/can/ICanBus.hpp>
+#    include <udon/com/serialization/Serializer.hpp>
+#    include <udon/utility/Show.hpp>
 
 namespace udon
 {
@@ -21,7 +23,6 @@ namespace udon
         CanNodeView node;
 
     public:
-    
         /// @brief コンストラクタ
         /// @param bus I2cバス
         /// @param id 信号識別ID
@@ -39,7 +40,7 @@ namespace udon
         }
 
         /// @brief メッセージ構造体を取得
-        /// @return メッセージ構造体(optional)        
+        /// @return メッセージ構造体(optional)
         udon::optional<Message> getMessage() const
         {
             return udon::Unpack<Message>(*node.data);
@@ -55,7 +56,7 @@ namespace udon
             }
             else
             {
-                Serial.print(F("receive failed!"));
+                udon::Show(F("receive failed!"));
             }
         }
 
@@ -65,10 +66,11 @@ namespace udon
         {
             for (auto&& it : *node.data)
             {
-                Serial.print(it);
-                Serial.print(gap);
+                udon::Show(it, gap);
             }
         }
     };
 
 }    // namespace udon
+
+#endif

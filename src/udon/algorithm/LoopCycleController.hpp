@@ -8,7 +8,9 @@
 #ifndef DEF_LoopCycleController_H
 #define DEF_LoopCycleController_H
 
-#include <Arduino.h>
+#if __has_include(<Arduino.h>)
+
+#    include <Arduino.h>
 
 namespace udon
 {
@@ -90,4 +92,5 @@ namespace udon
 
 }    // namespace udon
 
+#endif
 #endif

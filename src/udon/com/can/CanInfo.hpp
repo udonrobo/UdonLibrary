@@ -16,18 +16,4 @@ namespace udon
         const uint32_t*       transmitMs;    // timestamp
     };
 
-    struct CanBusErrorInfo
-    {
-        uint8_t  TXErrorCount;
-        uint8_t  RXErrorCount;
-        uint32_t transmitMs;
-
-        explicit operator bool() const
-        {
-            return TXErrorCount < 100 &&
-                   RXErrorCount < 100 &&
-                   micros() - transmitMs < 50000;
-        }
-    };
-
 }    // namespace udon

@@ -8,8 +8,6 @@
 #ifndef DEF_MovingAverage_H
 #define DEF_MovingAverage_H
 
-#include <Arduino.h>
-
 namespace udon
 {
 
@@ -18,8 +16,8 @@ namespace udon
     class MovingAverage
     {
 
-        int  dataSize;    ///< 平均を取るデータのサイズ
-        int* data;        ///< 平均を取るデータ
+        size_t dataSize;    ///< 平均を取るデータのサイズ
+        int*   data;        ///< 平均を取るデータ
 
         int writeIndex;    ///< 次の値のdataへの書き込み場所
 
@@ -30,7 +28,7 @@ namespace udon
                 @param  dataSize    [in]移動平均するデータの個数
         */
         MovingAverage(size_t dataSize)
-            : dataSize(fmax(dataSize, 1ULL))
+            : dataSize(std::max(dataSize, 1ULL))
             , data(new int[dataSize]())
             , writeIndex()
             , sum()

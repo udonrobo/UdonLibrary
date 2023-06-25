@@ -6,12 +6,13 @@
 
 #pragma once
 
-#include <mcp2515.h>    // https://github.com/autowp/arduino-mcp2515
+#ifdef ARDUINO
+#    include <mcp2515.h>    // https://github.com/autowp/arduino-mcp2515
 
-#include <udon/algorithm/RingBuffer.hpp>
-#include <udon/com/can/CanInfo.hpp>
-#include <udon/com/can/CanUtility.hpp>
-#include <udon/com/can/ICanBus.hpp>
+#    include <udon/algorithm/RingBuffer.hpp>
+#    include <udon/com/can/CanInfo.hpp>
+#    include <udon/com/can/CanUtility.hpp>
+#    include <udon/com/can/ICanBus.hpp>
 
 // #pragma once
 
@@ -196,3 +197,5 @@
 //     CanBusSpi<CS, Interrupt>* CanBusSpi<CS, Interrupt>::self;
 
 // }    // namespace udon
+
+#endif
