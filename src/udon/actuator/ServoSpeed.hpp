@@ -80,7 +80,7 @@ namespace udon
             {
                 status = false;
                 value  = udon::Constrain(speed / static_cast<float>(loopCycle),
-                                   abs(move_angle) * -1, abs(move_angle)) *
+                                   udon::Abs(move_angle) * -1, udon::Abs(move_angle)) *
                         (move_angle < 0 ? -1 : 1);
                 next_angle += value;
                 next_angle = udon::Constrain(next_angle, 0.0, static_cast<double>(servo_preset));

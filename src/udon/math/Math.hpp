@@ -1,7 +1,7 @@
 ﻿//-----------------------------------------------
 //
 //	UdonLibrary
-// 
+//
 //	Copyright (c) 2022-2023 Okawa Yusuke
 //	Copyright (c) 2022-2023 udonrobo
 //
@@ -12,7 +12,6 @@
 //  数学関数、定数
 //
 //-----------------------------------------------
-
 
 #pragma once
 
@@ -54,6 +53,27 @@ namespace udon
     Sq(const Ty& rhs)
     {
         return rhs * rhs;
+    }
+
+    template <class T>
+    inline constexpr T
+    Abs(const T& rhs)
+    {
+        return rhs < 0 ? -rhs : rhs;
+    }
+
+    template <class T>
+    inline constexpr T
+    Min(const T& lhs, const T& rhs)
+    {
+        return lhs < rhs ? lhs : rhs;
+    }
+
+    template <class T>
+    inline constexpr T
+    Max(const T& lhs, const T& rhs)
+    {
+        return lhs > rhs ? lhs : rhs;
     }
 
     template <class Ty>

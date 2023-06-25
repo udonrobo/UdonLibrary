@@ -8,6 +8,8 @@
 #ifndef DEF_MovingAverage_H
 #define DEF_MovingAverage_H
 
+#include <udon/math/Math.hpp>
+
 namespace udon
 {
 
@@ -19,7 +21,7 @@ namespace udon
         size_t dataSize;    ///< 平均を取るデータのサイズ
         int*   data;        ///< 平均を取るデータ
 
-        int writeIndex;    ///< 次の値のdataへの書き込み場所
+        size_t writeIndex;    ///< 次の値のdataへの書き込み場所
 
         long sum;    /// dataに保存されているデータの合計値
 
@@ -28,7 +30,7 @@ namespace udon
                 @param  dataSize    [in]移動平均するデータの個数
         */
         MovingAverage(size_t dataSize)
-            : dataSize(std::max(dataSize, 1ULL))
+            : dataSize(udon::Max(dataSize, 1ULL))
             , data(new int[dataSize]())
             , writeIndex()
             , sum()
