@@ -1,4 +1,4 @@
-﻿/// @file   CanBusSpi.hpp
+/// @file   CanBusSpi.hpp
 /// @date   2023/01/13
 /// @brief  arduino-mcp2515ライブラリを用いたCanバス管理クラス
 /// @flow   [CPU] <--SPI--> [Canコントローラ] <--Can[TX/RX]--> [Canトランシーバ] <--Can[H/L]--> [BUS]

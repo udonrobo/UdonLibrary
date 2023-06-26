@@ -83,6 +83,9 @@
 // フォワーディング
 #include <udon/com/common/Forwarding.hpp>
 
+// 配列送受信
+#include <udon/com/common/ArrayTransmitter.hpp>
+
 // シリアライズ
 #include <udon/com/serialization/Serializer.hpp>
 

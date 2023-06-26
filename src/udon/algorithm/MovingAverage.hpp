@@ -1,4 +1,4 @@
-﻿/**
+/**
         @file   MovingAverage.hpp
         @brief  移動平均クラス
         @author 谷川　豊章

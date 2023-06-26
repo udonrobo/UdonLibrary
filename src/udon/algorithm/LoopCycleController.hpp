@@ -1,4 +1,4 @@
-﻿/**
+/**
         @file   LoopCycleController.hpp
         @brief  ループ周期を一定にする
         @author 谷川　豊章
