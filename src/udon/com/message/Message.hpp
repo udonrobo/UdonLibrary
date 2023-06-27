@@ -26,3 +26,5 @@
 #include <udon/com/message/Solenoid.hpp>
 #include <udon/com/message/Stepping.hpp>
 #include <udon/com/message/Switch.hpp>
+#include <udon/com/message/AirCylinder.hpp>
+#include <udon/com/message/PhotoSensor.hpp>
