@@ -185,6 +185,8 @@ namespace udon
 
         bool receiveUpdate()
         {
+            std::vector<uint8_t> lastBuff = receiveBuffer;
+
             // header = [Node id: 2byte] + [,] + [Transmission module ID: 4byte] + [,] + [RSSI:2byte] + [: ]
             constexpr int HeaderSize = 2 + 1 + 4 + 1 + 2 + 2;
 
@@ -204,20 +206,18 @@ namespace udon
                 // データ取得
                 uint8_t loopCount = 1;    // ループカウンタ
                 uint8_t bitCount  = 0;
-                uint8_t lastBuff;
                 for (auto&& it : receiveBuffer)
                 {
                     // 復元ビットが含まれないバッファの数
 
                     // ビット復元処理
-
-                    it = uart.read();
+                    lastBuff[bitCount] = it = uart.read();
                     bitCount++;
 
+                    uint8_t buf;    // 復元バッファ一時保管データ
                     if (bitCount >= 7)
                     {
                         // 復元バッファの時にビット操作
-                        uint8_t buf;
                         buf = uart.read();
                         for (uint8_t i = 0; i < 7; ++i)
                         {
@@ -226,67 +226,74 @@ namespace udon
                         }
                         bitCount = 0;
                     }
-                    // 最終データと認識されたとき
-                    if ((receiveBuffer.size() + 1) == loopCount)
+                    else if (receiveBuffer.size() == loopCount)    // 最終データと認識されたとき
                     {
+                        buf = uart.read();
+                        for (uint8_t i = 0; i < bitCount; ++i)
+                        {
+                            BitWrite(receiveBuffer[loopCount - 1 - bitCount + i], 7,
+                                     BitRead(buf, i));
+                        }
                     }
-                    else
+                    if (not BitRead(buf, 7) && receiveBuffer.size() == loopCount)
                     {
+                        Serial.print("7bit to 8bit is error!!");
+                        Serial.print("\t");
+                        receiveBuffer = lastBuff;    // errorが出たときは前周期のデータにする。
                     }
                     loopCount++;
                 }
-            }
 
-            // フッタを読み飛ばす
-            for (size_t i = 0; i < FooterSize; ++i)
+                // フッタを読み飛ばす
+                for (size_t i = 0; i < FooterSize; ++i)
+                {
+                    (void)uart.read();
+                }
+
+                // 送信タイミングをリセット
+                while (uart.available())
+                {
+                    (void)uart.read();
+                }
+
+                transmitMs = millis();
+
+                return true;
+            }
+            else
             {
-                (void)uart.read();
+                return false;
             }
-
-            // 送信タイミングをリセット
-            while (uart.available())
-            {
-                (void)uart.read();
-            }
-
-            transmitMs = millis();
-
-            return true;
         }
-        else
-        {
-            return false;
-        }
-    }
-};
+    };
 
-// detail
+    // detail
 
-inline void Im920::begin(uint8_t channel)
-{
-    // ボーレート設定
-    uart.begin(115200);
-
-    // チャンネル設定
-    uart.print("STCH ");
-    if (channel < 10)
+    inline void Im920::begin(uint8_t channel)
     {
-        uart.print("0");    // 0埋め
+        // ボーレート設定
+        uart.begin(115200);
+
+        // チャンネル設定
+        uart.print("STCH ");
+        if (channel < 10)
+        {
+            uart.print("0");    // 0埋め
+        }
+        uart.print(channel);
+        uart.print("\r\n");
+        delay(100);
+
+        // 送信出力[10mW]
+        uart.print("STPO 3\r\n");
+        delay(100);
+
+        // 高速通信モード[50kbps]
+        uart.print("STRT 1\r\n");
+        delay(100);
+
+        // キャラクタ入出力モード
+        uart.print("ECIO\r\n");
+        delay(1000);
     }
-    uart.print(channel);
-    uart.print("\r\n");
-    delay(100);
-
-    // 送信出力[10mW]
-    uart.print("STPO 3\r\n");
-    delay(100);
-
-    // 高速通信モード[50kbps]
-    uart.print("STRT 1\r\n");
-    delay(100);
-
-    // キャラクタ入出力モード
-    uart.print("ECIO\r\n");
-    delay(1000);
-}
 }    // namespace udon
