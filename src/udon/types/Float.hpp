@@ -1,18 +1,18 @@
 //-----------------------------------------------
 //
-//	UdonLibrary
+//	  UdonLibrary
 //
-//  Copyright (c) 2014 Christopher Korman
-//  Copyright (c) 2014 John Maddock
-//  Copyright (c) 2014 Paul Bristow
-//	Copyright (c) 2022-2023 Okawa Yusuke
-//	Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2014 Christopher Korman
+//    Copyright (c) 2014 John Maddock
+//    Copyright (c) 2014 Paul Bristow
+//	  Copyright (c) 2022-2023 Okawa Yusuke
+//	  Copyright (c) 2022-2023 udonrobo
 //
-//	Licensed under the MIT License.
+//	  Licensed under the MIT License.
 //
 //-----------------------------------------------
 //
-//  固定ビット長浮動小数点型
+//    固定ビット長浮動小数点型
 //
 //-----------------------------------------------
 

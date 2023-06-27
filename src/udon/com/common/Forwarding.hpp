@@ -1,15 +1,18 @@
 //-----------------------------------------------
 //
-//  UdonLibrary
+//    UdonLibrary
 //
-//  Copyright (c) 2022-2023 Okawa Yusuke
-//  Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
 //
-//  Licensed under the MIT License.
+//    Licensed under the MIT License.
 //
 //-----------------------------------------------
 //
-//  通信転送クラス
+//    通信転送クラス
+//
+//    Sender --[CAN ect.]--> Forwarding --[UART etc.]--> Receiver
+//                           ^^^^^^^^^^
 //
 //-----------------------------------------------
 

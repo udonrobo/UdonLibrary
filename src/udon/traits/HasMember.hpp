@@ -1,15 +1,15 @@
 //-----------------------------------------------
 //
-//	UdonLibrary
-// 
-//	Copyright (c) 2022-2023 Okawa Yusuke
-//	Copyright (c) 2022-2023 udonrobo
+//    UdonLibrary
 //
-//	Licensed under the MIT License.
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
+//
+//    Licensed under the MIT License.
 //
 //-----------------------------------------------
 //
-//  メンバ関数有無判定トレイト作成マクロ
+//    メンバ関数有無判定トレイト作成マクロ
 //
 //-----------------------------------------------
 

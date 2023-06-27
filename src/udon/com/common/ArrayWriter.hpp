@@ -1,3 +1,18 @@
+//-----------------------------------------------
+//
+//    UdonLibrary
+//
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
+//
+//    Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//    メッセージ配列送信クラス
+//
+//-----------------------------------------------
+
 #pragma once
 
 #include <udon/traits/MaybeInvoke.hpp>
@@ -41,6 +56,16 @@ namespace udon
         void show() const
         {
             udon::MaybeInvoke_show(writer);
+        }
+
+        void showRaw() const
+        {
+            udon::MaybeInvoke_showRaw(writer);
+        }
+
+        writer_type& getWriter()
+        {
+            return writer;
         }
 
         Message& at(size_t index)

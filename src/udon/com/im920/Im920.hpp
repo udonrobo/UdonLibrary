@@ -1,15 +1,18 @@
 //-----------------------------------------------
 //
-//  UdonLibrary
+//    UdonLibrary
 //
-//  Copyright (c) 2022-2023 Okawa Yusuke
-//  Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
 //
-//  Licensed under the MIT License.
+//    Licensed under the MIT License.
 //
 //-----------------------------------------------
 //
-//  IM920 
+//    IM920 
+//
+//    Sender --[UART]--> IM920 ~~[920MHz]~~> IM920 --[UART]--> Receiver
+//    ^^^^^^                                                   ^^^^^^^^
 //
 //-----------------------------------------------
 

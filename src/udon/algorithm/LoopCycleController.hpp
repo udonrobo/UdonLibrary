@@ -1,9 +1,17 @@
-/**
-        @file   LoopCycleController.hpp
-        @brief  ループ周期を一定にする
-        @author 谷川　豊章
-        @date   2016/8/11
-*/
+//-----------------------------------------------
+//
+//    UdonLibrary
+//
+//    Copyright (c) 2016-2023 谷川 豊章
+//    Copyright (c) 2016-2023 udonrobo
+//
+//    Licensed under the MIT License.
+//
+//-----------------------------------------------
+// 
+//    ループ周期を一定にする
+//
+//-----------------------------------------------
 
 #ifndef DEF_LoopCycleController_H
 #define DEF_LoopCycleController_H

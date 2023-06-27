@@ -1,15 +1,15 @@
 //-----------------------------------------------
 //
-//  UdonLibrary
+//    UdonLibrary
 //
-//  Copyright (c) 2022-2023 Okawa Yusuke
-//  Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
 //
-//  Licensed under the MIT License.
+//    Licensed under the MIT License.
 //
 //-----------------------------------------------
 //
-//  デリケートクラス
+//    デリケートクラス
 //
 //-----------------------------------------------
 
@@ -20,7 +20,6 @@
 #include <algorithm>
 #include <type_traits>
 
-/// @brief 単一のメンバ関数を管理するデリゲータ
 namespace udon
 {
 

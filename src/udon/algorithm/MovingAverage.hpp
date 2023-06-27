@@ -1,9 +1,17 @@
-/**
-        @file   MovingAverage.hpp
-        @brief  移動平均クラス
-        @author 谷川　豊章
-        @date   2016/9/15
-*/
+//-----------------------------------------------
+//
+//    UdonLibrary
+//
+//    Copyright (c) 2016-2023 谷川 豊章
+//    Copyright (c) 2016-2023 udonrobo
+//
+//    Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//    移動平均クラス
+//
+//-----------------------------------------------
 
 #ifndef DEF_MovingAverage_H
 #define DEF_MovingAverage_H

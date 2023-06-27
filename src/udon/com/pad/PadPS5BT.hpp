@@ -1,3 +1,21 @@
+//-----------------------------------------------
+//
+//    UdonLibrary
+//
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
+//
+//    Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//    Bluetooth経由PS5コントローラークラス
+//
+//    Controller --[Bluetooth]--> Sender --> Master
+//                                ^^^^^^
+//
+//-----------------------------------------------
+
 #pragma once
 
 #include <udon/thirdparty/USB_Host_Shield_2.0/PS5BT.h>

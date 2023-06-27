@@ -1,3 +1,21 @@
+//-----------------------------------------------
+//
+//    UdonLibrary
+//
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
+//
+//    Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//    有線USB経由PS5コントローラークラス
+//
+//    Controller --[USB]--> Sender --> Master
+//                          ^^^^^^
+//
+//-----------------------------------------------
+
 #pragma once
 
 #include <udon/thirdparty/USB_Host_Shield_2.0/PS5USB.h>
@@ -24,7 +42,7 @@ namespace udon
         }
 
         /// @brief コントローラーと通信開始
-        /// @return 
+        /// @return
         bool begin()
         {
             if (usb.Init() == -1)
@@ -71,11 +89,11 @@ namespace udon
                 buttons.mic   = pad.getButtonPress(ButtonEnum::MICROPHONE);    // ミュートボタン
                 buttons.ps    = pad.getButtonPress(ButtonEnum::PS);            // PSボタン
 
-                buttons.analogRightX = +(pad.getAnalogHat(AnalogHatEnum::RightHatX) - 128);  // 0~255 -> -128~127
-                buttons.analogRightY = -(pad.getAnalogHat(AnalogHatEnum::RightHatY) - 127);  // 0~255 -> -128~127
+                buttons.analogRightX = +(pad.getAnalogHat(AnalogHatEnum::RightHatX) - 128);    // 0~255 -> -128~127
+                buttons.analogRightY = -(pad.getAnalogHat(AnalogHatEnum::RightHatY) - 127);    // 0~255 -> -128~127
 
-                buttons.analogLeftX = +(pad.getAnalogHat(AnalogHatEnum::LeftHatX) - 128);  // 0~255 -> -128~127
-                buttons.analogLeftY = -(pad.getAnalogHat(AnalogHatEnum::LeftHatY) - 127);  // 0~255 -> -128~127
+                buttons.analogLeftX = +(pad.getAnalogHat(AnalogHatEnum::LeftHatX) - 128);    // 0~255 -> -128~127
+                buttons.analogLeftY = -(pad.getAnalogHat(AnalogHatEnum::LeftHatY) - 127);    // 0~255 -> -128~127
             }
             else
             {
@@ -84,21 +102,21 @@ namespace udon
         }
 
         /// @brief message::PadPS5型のメッセージを取得する
-        /// @return 
+        /// @return
         message::PadPS5 getButtons() const
         {
             return buttons;
         }
 
         /// @brief LEDバーの色を設定する
-        /// @param color 
+        /// @param color
         void setColor(const udon::RGB& color)
         {
             pad.setLed(color.r, color.g, color.b);
         }
 
         /// @brief マイクのLEDの点灯を設定する
-        /// @param on 
+        /// @param on
         void setMicLed(bool on)
         {
             pad.setMicLed(on);

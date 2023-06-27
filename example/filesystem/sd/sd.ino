@@ -1,3 +1,18 @@
+//-----------------------------------------------
+//
+//	  UdonLibrary
+//
+//	  Copyright (c) 2022-2023 Maeda Tomoki
+//	  Copyright (c) 2022-2023 udonrobo
+//
+//	  Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//    SD カードパラーメーター保存 スケッチ例
+//
+//-----------------------------------------------
+
 // teensy のみ対応
 
 #if defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__)

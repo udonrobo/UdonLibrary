@@ -1,10 +1,24 @@
+//-----------------------------------------------
+//
+//    UdonLibrary
+//
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
+//
+//    Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//    疑似可変長配列コンテナ
+//
+//-----------------------------------------------
+
 #pragma once
 
 #include <udon/stl/EnableSTL.hpp>
 
 #include <algorithm>
 #include <initializer_list>
-#include <iostream>
 #include <iterator>
 
 namespace udon

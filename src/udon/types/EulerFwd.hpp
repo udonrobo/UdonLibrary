@@ -1,15 +1,15 @@
 //-----------------------------------------------
 //
-//	UdonLibrary
-// 
-//	Copyright (c) 2022-2023 Okawa Yusuke
-//	Copyright (c) 2022-2023 udonrobo
+//    UdonLibrary
 //
-//	Licensed under the MIT License.
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
+//
+//    Licensed under the MIT License.
 //
 //-----------------------------------------------
 //
-//  オイラー角前方定義
+//    オイラー角 前方定義
 //
 //-----------------------------------------------
 

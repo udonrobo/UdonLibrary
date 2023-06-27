@@ -1,15 +1,18 @@
 //-----------------------------------------------
 //
-//  UdonLibrary
+//    UdonLibrary
 //
-//  Copyright (c) 2022-2023 Okawa Yusuke
-//  Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
 //
-//  Licensed under the MIT License.
+//    Licensed under the MIT License.
 //
 //-----------------------------------------------
 //
-//  I2c マスター側送信クラス
+//    I2c マスター側送信クラス
+//
+//    master --[I2C]--> slave
+//    ^^^^^^             
 //
 //-----------------------------------------------
 
@@ -18,7 +21,6 @@
 #include <udon/com/i2c/I2cBus.hpp>
 #include <udon/com/serialization/Serializer.hpp>
 #include <udon/utility/Show.hpp>
-
 
 namespace udon
 {

@@ -1,15 +1,18 @@
 //-----------------------------------------------
 //
-//  UdonLibrary
+//    UdonLibrary
 //
-//  Copyright (c) 2022-2023 Okawa Yusuke
-//  Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
 //
-//  Licensed under the MIT License.
+//    Licensed under the MIT License.
 //
 //-----------------------------------------------
 //
-//  I2c バス
+//    I2c バス
+//
+//    master <--[I2C]--> slave
+//    ^^^^^^             ^^^^^
 //
 //-----------------------------------------------
 
@@ -141,6 +144,18 @@ namespace udon
         {
         }
 
+        I2cBus_impl(const I2cBus_impl& rhs)
+            : wire(rhs.wire)
+            , timeoutMs(rhs.timeoutMs)
+            , transmitMs(rhs.transmitMs)
+            , restartCount(rhs.restartCount)
+            , onReceiveDelegate(this, &I2cBus_impl::invokeOnReceive)
+            , onRequestDelegate(this, &I2cBus_impl::invokeOnRequest)
+            , userOnReceive()
+            , userOnRequest()
+        {
+        }
+
         /// @brief I2cバスの有効性を取得
         explicit operator bool() const override
         {
@@ -164,6 +179,7 @@ namespace udon
             Serial.print(restartCount);
             Serial.print(F(" transmit[ms]: "));
             Serial.print(transmitMs);
+            Serial.print('\t');
         }
 
         /// @brief 以下メンバは TwoWire クラスと同等のメンバ

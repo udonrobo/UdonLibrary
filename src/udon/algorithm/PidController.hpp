@@ -1,9 +1,17 @@
-/**
-        @file   PidController.hpp
-        @brief  PIDコントローラクラス
-        @author 谷川　豊章
-        @date   2016/8/21
-*/
+//-----------------------------------------------
+//
+//    UdonLibrary
+//
+//    Copyright (c) 2016-2023 谷川 豊章
+//    Copyright (c) 2016-2023 udonrobo
+//
+//    Licensed under the MIT License.
+//
+//-----------------------------------------------
+//
+//    PIDコントローラクラス
+//
+//-----------------------------------------------
 
 #ifndef DEF_PidController_H
 #define DEF_PidController_H
