@@ -127,7 +127,7 @@ namespace udon
         }
 
         /// @brief 更新
-        /// @remark 受信クラスがupdate()を持つ場合インスタンス化されます。
+        /// @remark
         /// @tparam T
         /// @return
         void update();

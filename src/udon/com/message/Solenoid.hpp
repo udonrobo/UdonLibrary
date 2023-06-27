@@ -29,18 +29,20 @@ namespace udon
         {
 
             /// @brief ソレノイドの位置
-            bool release;
+            bool push;
 
 #ifdef ARDUINO
             /// @brief デバッグ出力
             void show() const
             {
-                Serial.print(F("Sole: ")), Serial.print(release), Serial.print('\t');
+                Serial.print(F("Sole: ")), Serial.print(push), Serial.print('\t');
             }
 #endif
 
-            UDON_PARSABLE(release);
+            UDON_PARSABLE(push);
         };
+
+
 
     }    // namespace message
 

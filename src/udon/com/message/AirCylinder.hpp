@@ -2,16 +2,17 @@
 //
 //    UdonLibrary
 //
-//	  Copyright (c) 2022-2023 Okawa Yusuke
-//	  Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
 //
-//	  Licensed under the MIT License.
+//    Licensed under the MIT License.
 //
 //-----------------------------------------------
-//
+//  
 //    通信用メッセージ
 //
 //-----------------------------------------------
+
 
 #pragma once
 
@@ -24,23 +25,24 @@ namespace udon
     namespace message
     {
 
-        struct Button
+        struct AirCylinder
         {
 
-            /// @brief ボタンが押されているか
-            bool press;
+            /// @brief シリンダーの位置
+            bool push;
 
 #ifdef ARDUINO
             /// @brief デバッグ出力
             void show() const
             {
-                Serial.print(press ? F("press") : F("not press"));
-                Serial.print('\t');
+                Serial.print(F("Air: ")), Serial.print(push), Serial.print('\t');
             }
 #endif
 
-            UDON_PARSABLE(count);
+            UDON_PARSABLE(push);
         };
+
+        
 
     }    // namespace message
 

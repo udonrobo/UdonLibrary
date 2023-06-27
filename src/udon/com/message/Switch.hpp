@@ -27,21 +27,20 @@ namespace udon
         struct Switch
         {
 
-            /// @brief エンコーダーのカウント値
-            bool isPress;
+            /// @brief ボタンが押されているか
+            bool press;
 
 #ifdef ARDUINO
             /// @brief デバッグ出力
             void show() const
             {
-                Serial.print(F("switch: ")), Serial.print(isPress), Serial.print('\t');
+                Serial.print(press ? F("press") : F("not press"));
+                Serial.print('\t');
             }
 #endif
 
-            UDON_PARSABLE(isPress);
+            UDON_PARSABLE(press);
         };
-
-        using EmergencySwitch = Switch;
 
     }    // namespace message
 
