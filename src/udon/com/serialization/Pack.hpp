@@ -27,8 +27,8 @@
 #include <udon/algorithm/Endian.hpp>
 #include <udon/com/serialization/Capacity.hpp>
 #include <udon/math/Math.hpp>
-#include <udon/traits/HasMember.hpp>
 #include <udon/types/Float.hpp>
+#include <udon/utility/Parsable.hpp>
 
 namespace udon
 {
@@ -166,13 +166,16 @@ namespace udon
     template <typename T>
     inline std::vector<uint8_t> Pack(const T& rhs)
     {
+        // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+        static_assert(udon::is_parsable<T>::value, "T must be parsable type.");
+
         Serializer serializer(udon::CapacityWithChecksum(rhs));
         serializer(rhs);
         return serializer.flush();
     }
 
     /// @brief バッファにシリアル化する
-    /// @tparam T
+    /// @tparam T シリアル化する型()
     /// @param rhs
     /// @param buffer
     /// @param size
@@ -181,6 +184,9 @@ namespace udon
     template <typename T>
     inline bool Pack(const T& rhs, uint8_t* buffer, size_t size)
     {
+        // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+        static_assert(udon::is_parsable<T>::value, "T must be parsable type.");
+
         if (size >= udon::CapacityWithChecksum(rhs))
         {
             const auto vector = Pack(rhs);
@@ -207,6 +213,9 @@ namespace udon
     template <typename T, size_t N>
     inline bool Pack(const T& rhs, uint8_t (&array)[N])
     {
+        // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+        static_assert(udon::is_parsable<T>::value, "T must be parsable type.");
+        
         return Pack(rhs, array, N);
     }
 

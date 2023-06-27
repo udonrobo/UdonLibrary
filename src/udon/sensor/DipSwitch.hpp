@@ -1,7 +1,7 @@
 //-----------------------------------------------
 //
 //	UdonLibrary
-// 
+//
 //	Copyright (c) 2022-2023 Okawa Yusuke
 //	Copyright (c) 2022-2023 udonrobo
 //
@@ -13,7 +13,6 @@
 //
 //-----------------------------------------------
 
-
 #pragma once
 
 #include <udon/stl/EnableSTL.hpp>
@@ -21,8 +20,9 @@
 #include <stdint.h>
 #include <vector>
 
+#if __has_include(<Arduino.h>)
 
-#include <Arduino.h>
+#    include <Arduino.h>
 
 namespace udon
 {
@@ -58,3 +58,5 @@ namespace udon
     };
 
 }    // namespace udon
+
+#endif    // __has_include(<Arduino.h>)

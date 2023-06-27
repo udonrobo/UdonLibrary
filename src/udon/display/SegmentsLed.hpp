@@ -1,7 +1,7 @@
 //-----------------------------------------------
 //
 //	UdonLibrary
-// 
+//
 //	Copyright (c) 2022-2023 Okawa Yusuke
 //	Copyright (c) 2022-2023 udonrobo
 //
@@ -13,7 +13,6 @@
 //
 //-----------------------------------------------
 
-
 #pragma once
 
 #include <udon/stl/EnableSTL.hpp>
@@ -22,13 +21,15 @@
 #include <stdint.h>
 #include <vector>
 
-#include <Arduino.h>
+#if __has_include(<Arduino.h>)
+
+#    include <Arduino.h>
 
 namespace udon
 {
 
     /// @brief 7セグメントLEDを制御するクラス
-    /// @details 
+    /// @details
     ///     ダイナミック制御により、複数の7セグメントLEDを制御します。
     ///     ループ毎に1桁ずつ表示します。
     class SegmentsLed
@@ -41,7 +42,6 @@ namespace udon
         uint8_t digit;    // 表示中の桁
 
     public:
-
         /// @brief コンストラクタ
         /// @param cathode カソードのピン番号
         /// @param anode アノードのピン番号
@@ -75,9 +75,9 @@ namespace udon
         {
             // ループ毎に1桁ずつ表示
             const uint8_t single = static_cast<uint8_t>(value / pow(10, digit)) % 10;
-            
+
             // 表示中の桁消灯
-            digitalWrite(anode.at(digit), HIGH);   
+            digitalWrite(anode.at(digit), HIGH);
 
             digit++;
             digit %= anode.size();
@@ -93,3 +93,5 @@ namespace udon
     };
 
 }    // namespace udon
+
+#endif

@@ -15,13 +15,13 @@
 
 #pragma once
 
-#include <Arduino.h>
-
 /*
    サーボの動く速さを調整するクラス
    非常停止時に瞬時に止めることができる
    稼働速度は選択できるが、速度をあげすぎるとサーボが追い付かなくなるので注意
 */
+
+#include <udon/math/Math.hpp>
 
 namespace udon
 {
@@ -79,11 +79,11 @@ namespace udon
             else
             {
                 status = false;
-                value  = constrain(speed / static_cast<float>(loopCycle),
-                                   abs(move_angle) * -1, abs(move_angle)) *
+                value  = udon::Constrain(speed / static_cast<float>(loopCycle),
+                                   udon::Abs(move_angle) * -1, udon::Abs(move_angle)) *
                         (move_angle < 0 ? -1 : 1);
                 next_angle += value;
-                next_angle = constrain(next_angle, 0.0, static_cast<float>(servo_preset));
+                next_angle = udon::Constrain(next_angle, 0.0, static_cast<double>(servo_preset));
             }
         }
 

@@ -381,6 +381,19 @@ namespace udon
 
         /// @brief バッファの先頭イテレーターを取得
         /// @return
+        const_iterator begin() const
+        {
+            return { m_data, m_head, Capacity };
+        }
+        /// @brief バッファの末尾イテレーターを取得
+        /// @return
+        const_iterator end() const
+        {
+            return { m_data, m_head + m_size, Capacity };
+        }
+
+        /// @brief バッファの先頭イテレーターを取得
+        /// @return
         const_iterator cbegin() const
         {
             return { m_data, m_head, Capacity };

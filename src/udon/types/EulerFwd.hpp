@@ -18,6 +18,7 @@
 
 #include <udon/math/Math.hpp>    // udon::NormalizedAngle
 #include <udon/utility/Parsable.hpp>
+#include <udon/com/serialization/Serializer.hpp>
 
 namespace udon
 {

@@ -16,6 +16,7 @@
 #pragma once
 
 #include <udon/traits/MaybeInvoke.hpp>
+#include <udon/utility/Show.hpp>
 
 namespace udon
 {
@@ -77,9 +78,9 @@ namespace udon
         /// @details 受信クラス、または送信クラスに show メンバ関数がある場合、呼び出す
         void show()
         {
-            Serial.print(F("read: "));
+            udon::Show(F("read: "));
             udon::MaybeInvoke_show(reader);
-            Serial.print(F("write: "));
+            udon::Show(F("write: "));
             udon::MaybeInvoke_show(writer);
         }
 
@@ -87,9 +88,9 @@ namespace udon
         /// @details 受信クラス、または送信クラスに showRaw メンバ関数がある場合、呼び出す
         void showRaw()
         {
-            Serial.print(F("read: "));
+            udon::Show(F("read: "));
             udon::MaybeInvoke_showRaw(reader);
-            Serial.print(F("write: "));
+            udon::Show(F("write: "));
             udon::MaybeInvoke_showRaw(writer);
         }
     };

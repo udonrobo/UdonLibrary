@@ -26,8 +26,8 @@
 #include <udon/algorithm/Endian.hpp>
 #include <udon/math/Math.hpp>
 #include <udon/stl/optional.hpp>
-#include <udon/traits/HasMember.hpp>
 #include <udon/types/Float.hpp>
+#include <udon/utility/Parsable.hpp>
 
 namespace udon
 {
@@ -177,6 +177,9 @@ namespace udon
     template <typename T>
     udon::optional<T> Unpack(const std::vector<uint8_t>& buffer)
     {
+        // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+        static_assert(udon::is_parsable<T>::value, "T must be parsable type.");
+        
         if (buffer.size() != udon::CapacityWithChecksum<T>())
         {
             return udon::nullopt;
@@ -199,12 +202,18 @@ namespace udon
     template <typename T>
     udon::optional<T> Unpack(const uint8_t* buffer, size_t size)
     {
+        // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+        static_assert(udon::is_parsable<T>::value, "T must be parsable type.");
+
         return Unpack<T>({ buffer, buffer + size });
     }
 
     template <typename T, size_t N>
     udon::optional<T> Unpack(const uint8_t (&array)[N])
     {
+        // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+        static_assert(udon::is_parsable<T>::value, "T must be parsable type.");
+
         return Unpack<T>(array, N);
     }
 

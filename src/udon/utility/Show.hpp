@@ -18,6 +18,10 @@
 
 #include <udon/traits/HasMember.hpp>
 
+#ifndef F
+#    define F(x) (x)
+#endif
+
 namespace udon
 {
 
