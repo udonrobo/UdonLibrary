@@ -9,7 +9,10 @@
 //
 //-----------------------------------------------
 //
-//  I2c スレーブ側受信クラス
+//    I2c スレーブ側受信クラス
+//  
+//    master --[I2C]--> slave
+//                      ^^^^^
 //
 //-----------------------------------------------
 
@@ -38,6 +41,15 @@ namespace udon
         /// @param bus I2cバス
         I2cSlaveReader(udon::II2cBus& bus)
             : bus(bus)
+            , buffer()
+        {
+            self = this;
+        }
+
+        /// @brief コピーコンストラクタ
+        /// @param rhs
+        I2cSlaveReader(const I2cSlaveReader& rhs)
+            : bus(rhs.bus)
             , buffer()
         {
             self = this;

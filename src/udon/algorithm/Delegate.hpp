@@ -49,6 +49,12 @@ namespace udon
             functionPtr = callback;
         }
 
+        Delegate(const Delegate& rhs)
+        {
+            object      = rhs.object;
+            functionPtr = rhs.functionPtr;
+        }
+
         template <class Ty = R>
         static auto Execute(Args... args) -> typename std::enable_if<std::is_same<Ty, void>::value, R>::type
         {

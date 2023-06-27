@@ -11,6 +11,9 @@
 //
 //  I2c スレーブ側送信クラス
 //
+//  master <--[I2C]-- slave
+//                    ^^^^^
+//
 //-----------------------------------------------
 
 #pragma once
@@ -38,6 +41,15 @@ namespace udon
         /// @param bus I2cバス
         I2cSlaveWriter(udon::II2cBus& bus)
             : bus(bus)
+            , buffer()
+        {
+            self = this;
+        }
+
+        /// @brief コピーコンストラクタ
+        /// @param rhs 
+        I2cSlaveWriter(const I2cSlaveWriter& rhs)
+            : bus(rhs.bus)
             , buffer()
         {
             self = this;
