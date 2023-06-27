@@ -1,4 +1,4 @@
-﻿//-----------------------------------------------
+//-----------------------------------------------
 //
 //	UdonLibrary
 //
@@ -27,9 +27,9 @@ namespace udon
     constexpr double DegToRad = 0.017453292519943295769236907684886;
     constexpr double RadToDeg = 57.295779513082320876798154814105;
 
-    template <typename A, typename B>
+    template <typename A, typename B, typename C>
     inline constexpr A
-    Constrain(const A& amt, const B& low, const B& high)
+    Constrain(const A& amt, const B& low, const C& high)
     {
         return fmin(fmax(amt, low), high);
     }
