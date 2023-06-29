@@ -194,5 +194,3 @@
 
 // デバッグ / ログ出力
 #include <udon/utility/Show.hpp>
-
-#endif  // UDON_INCLUDE_SELECTABLE
