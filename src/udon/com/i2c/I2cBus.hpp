@@ -132,7 +132,7 @@ namespace udon
         // userOnReceive(I2cBus_impl::onReceiveで登録したコールバック関数) 呼び出し
 
     public:
-        I2cBus_impl(TwoWire& wire, uint32_t timeoutMs = 50)
+        I2cBus_impl(TwoWire& wire, uint32_t timeoutMs = 100)
             : wire(wire)
             , timeoutMs(timeoutMs)
             , transmitMs()
@@ -162,6 +162,18 @@ namespace udon
             return millis() - transmitMs < timeoutMs;
         }
 
+
+#if defined(__MK64FX512__)  // Teensy 3.5 ではバスの再起動が適切に行えなかった。
+
+        /// @brief 更新
+        bool update() override
+        {
+            Serial.print(F("This board does not support I2C bus restart.\n"));
+            return false;
+        }
+
+#else
+
         /// @brief 更新
         bool update() override
         {
@@ -173,11 +185,19 @@ namespace udon
             return true;
         }
 
+#endif
+
         void show() const override
         {
             Serial.print(F("restart: "));
+
+#if defined(__MK64FX512__)
+            Serial.print('-');
+#else
             Serial.print(restartCount);
-            Serial.print(F(" transmit[ms]: "));
+#endif
+
+            Serial.print(F("\t transmit[ms]: "));
             Serial.print(transmitMs);
             Serial.print('\t');
         }
@@ -193,7 +213,7 @@ namespace udon
             wire.begin(address);
         }
 
-#ifdef ARDUINO_ARCH_RP2040
+#    ifdef ARDUINO_ARCH_RP2040
 
         inline void setSDA(uint8_t pin)
         {
@@ -205,7 +225,7 @@ namespace udon
             wire.setSCL(pin);
         }
 
-#endif
+#    endif
 
         inline void end() override
         {
@@ -215,8 +235,8 @@ namespace udon
         inline void restart() override
         {
             ++restartCount;
-            wire.end();
-            wire.begin();
+            end();
+            begin();
         }
 
         inline void setClock(uint32_t clock) override
@@ -310,5 +330,5 @@ namespace udon
 }    // namespace udon
 
 /// @brief I2C バスのラッパークラス
-#define I2cBus \
-    I2cBus_impl<__COUNTER__>
+#    define I2cBus \
+        I2cBus_impl<__COUNTER__>
