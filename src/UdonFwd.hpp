@@ -16,10 +16,10 @@
 //
 //    ex: Master.ino
 //    #include <UdonFwd.hpp>
-//    #include <udon/sencor/Imu.hpp>
+//    #include <Udon/sencor/Imu.hpp>
 //
 //    ex: Steering.hpp
-//    #include <udon/algorithm/PidController.hpp>
+//    #include <Udon/Algorithm/PidController.hpp>
 //
 //-------------------------------------------------------------------
 
