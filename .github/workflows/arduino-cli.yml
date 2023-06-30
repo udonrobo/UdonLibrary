@@ -42,7 +42,7 @@ jobs:
           fqbn: ${{ matrix.board.fqbn }}
           platforms: ${{ matrix.board.platforms }}
           sketch-paths: |
-            - ./test
+            - ./Test
           libraries: |
             - source-path: ./
             - source-url: https://github.com/udonrobo/UdonArduinoSTL.git
