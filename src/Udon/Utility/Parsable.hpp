@@ -18,7 +18,7 @@
 #include <Udon/Traits/HasMember.hpp>
 #include <Udon/Com/Serialization/Capacity.hpp>
 
-/// @brief 自作クラスのパースを可能にする
+/// @brief メンバ変数のパースを可能にする
 /// @param ... パース可能なメンバー変数(,区切り)
 /// @details
 /// - パース可能なメンバー変数は、以下の条件を満たす必要がある
@@ -55,21 +55,30 @@ namespace Udon
     UDON_HAS_MEMBER_TYPE(is_parsable_tag);
 #endif
 
-    template <typename T>
-    struct is_parsable_helper
+    namespace detail
     {
-        static constexpr bool value = std::is_arithmetic<T>::value || Udon::has_member_type_is_parsable_tag<T>::value;
-    };
+        template <typename T>
+        struct is_parsable_helper
+        {
+            static constexpr bool value = std::is_arithmetic<T>::value || Udon::has_member_type_is_parsable_tag<T>::value;
+        };
+
+        template <typename T>
+        struct is_parsable_helper<T[]> : is_parsable_helper<T>
+        {
+        };
+
+        template <typename T, size_t N>
+        struct is_parsable_helper<T[N]> : is_parsable_helper<T>
+        {
+        };
+        
+    }
 
     template <typename T>
-    struct is_parsable_helper<T[]>
+    struct is_parsable : detail::is_parsable_helper<T>
     {
-        static constexpr bool value = is_parsable_helper<T>::value;
     };
 
-    template <typename T>
-    struct is_parsable : is_parsable_helper<T>
-    {
-    };
 
 }    // namespace Udon
