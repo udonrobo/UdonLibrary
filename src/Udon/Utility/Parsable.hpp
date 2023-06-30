@@ -56,11 +56,20 @@ namespace Udon
 #endif
 
     template <typename T>
-    struct is_parsable
+    struct is_parsable_helper
     {
-        static constexpr bool value =
-            Udon::has_member_type_is_parsable_tag<T>::value ||    // パース可能な型
-            std::is_arithmetic<T>::value;                         // アトミック型 (整数、浮動小数)
+        static constexpr bool value = std::is_arithmetic<T>::value || Udon::has_member_type_is_parsable_tag<T>::value;
+    };
+
+    template <typename T>
+    struct is_parsable_helper<T[]>
+    {
+        static constexpr bool value = is_parsable_helper<T>::value;
+    };
+
+    template <typename T>
+    struct is_parsable : is_parsable_helper<T>
+    {
     };
 
 }    // namespace Udon
