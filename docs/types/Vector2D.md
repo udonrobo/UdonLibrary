@@ -17,7 +17,7 @@ x 軸の右方向を正、y 軸の上方向を正とする直交座標系を使�
     ```cpp
     #include <Udon.hpp>
     // or
-    #include <udon/types/Vector2D.hpp>
+    #include <Udon/Types/Vector2D.hpp>
     ```
 
 2.  インスタンス化
@@ -25,23 +25,23 @@ x 軸の右方向を正、y 軸の上方向を正とする直交座標系を使�
     Vector2D クラスは、テンプレート引数を使用して `x` と `y` の要素の型を指定することができます。例えば、要素を `double` 型にしたい場合は次のように記述します。
 
     ```cpp
-    udon::Vector2D<double> vector;
+    Udon::Vector2D<double> vector;
     ```
 
-    また、`udon::Vector2D<double>` のエイリアス(別名)である `udon::Vec2` 型を使用するとより簡潔に記述できます。
+    また、`Udon::Vector2D<double>` のエイリアス(別名)である `Udon::Vec2` 型を使用するとより簡潔に記述できます。
 
     ```cpp
-    udon::Vec2 vector;
+    Udon::Vec2 vector;
     ```
 
     インスタンス化例
 
     ```cpp
-    udon::Vec2 vector;
-    udon::Vec2 vector ( 1234.5, 6.789 );
-    udon::Vec2 vector { 1234.5, 6.789 };
-    udon::Vec2 vector = { 1234.5, 6.789 };
-    auto vector = udon::Vec2 { 1234.5, 6.789 };
+    Udon::Vec2 vector;
+    Udon::Vec2 vector ( 1234.5, 6.789 );
+    Udon::Vec2 vector { 1234.5, 6.789 };
+    Udon::Vec2 vector = { 1234.5, 6.789 };
+    auto vector = Udon::Vec2 { 1234.5, 6.789 };
     ```
 
 -   要素へのアクセス
@@ -51,7 +51,7 @@ x 軸の右方向を正、y 軸の上方向を正とする直交座標系を使�
     書き込み
 
     ```cpp
-    udon::Vec2 vector { 2, 3 };
+    Udon::Vec2 vector { 2, 3 };
     vector.x = 1234.5;
     vector.y = 5678;
     ```
@@ -59,7 +59,7 @@ x 軸の右方向を正、y 軸の上方向を正とする直交座標系を使�
     読み取り
 
     ```cpp
-    udon::Vec2 vector { 1234.5, 6.789 };
+    Udon::Vec2 vector { 1234.5, 6.789 };
     double x = vector.x;
     double y = vector.y;
     ```
@@ -71,30 +71,30 @@ x 軸の右方向を正、y 軸の上方向を正とする直交座標系を使�
     加算
 
     ```cpp
-    udon::Vec2 vector1 { 2.0, 3.0 };
-    udon::Vec2 vector2 { 1.0, -1.5 };
+    Udon::Vec2 vector1 { 2.0, 3.0 };
+    Udon::Vec2 vector2 { 1.0, -1.5 };
 
-    udon::Vec2 result = vector1 + vector2;
+    Udon::Vec2 result = vector1 + vector2;
     // result = { 3.0, 1.5 }
     ```
 
     減算
 
     ```cpp
-    udon::Vec2 vector1 { 2.0, 3.0 };
-    udon::Vec2 vector2 { 1.0, -1.5 };
+    Udon::Vec2 vector1 { 2.0, 3.0 };
+    Udon::Vec2 vector2 { 1.0, -1.5 };
 
-    udon::Vec2 result = vector1 - vector2;
+    Udon::Vec2 result = vector1 - vector2;
     // result = { 1.0, 4.5 }
     ```
 
     スカラ倍
 
     ```cpp
-    udon::Vec2 vector { 2.0, 3.0 };
+    Udon::Vec2 vector { 2.0, 3.0 };
     double scalar = 1.5;
 
-    udon::Vec2 result = vector * scalar;
+    Udon::Vec2 result = vector * scalar;
     // result = { 3.0, 4.5 }
     ```
 
@@ -111,7 +111,7 @@ x 軸の右方向を正、y 軸の上方向を正とする直交座標系を使�
         {
         	Serial.begin(115200);
 
-        	udon::Vec2 vector { 3.0, 4.0 };
+        	Udon::Vec2 vector { 3.0, 4.0 };
         	vector.show();
 
         	//> x: 3.0 [tab] y: 4.0 [tab]
@@ -123,7 +123,7 @@ x 軸の右方向を正、y 軸の上方向を正とする直交座標系を使�
         このクラスはシリアライズ(バイト列化)に対応しています。したがって各通信用クラスに渡すことでマイコン同士でベクトルデータのやり取りができます。詳細は各通信用クラスのドキュメントを参照してください。
 
         ```cpp
-        udon::Vec2 vector { 3.0, 4.0 };
+        Udon::Vec2 vector { 3.0, 4.0 };
         writer.setMessage(vector);
         ```
 
@@ -134,7 +134,7 @@ x 軸の右方向を正、y 軸の上方向を正とする直交座標系を使�
         三平方の定理を用いてベクトルの長さを求めます。
 
         ```cpp
-        udon::Vec2 vector { 3.0, 4.0 };
+        Udon::Vec2 vector { 3.0, 4.0 };
 
         double length = vector.length();
         // length = 5.0
@@ -145,8 +145,8 @@ x 軸の右方向を正、y 軸の上方向を正とする直交座標系を使�
         `distanceFrom` メンバ関数を使用します。
 
         ```cpp
-        udon::Vec2 vector1 { 1.0, 2.0 };
-        udon::Vec2 vector2 { 4.0, 6.0 };
+        Udon::Vec2 vector1 { 1.0, 2.0 };
+        Udon::Vec2 vector2 { 4.0, 6.0 };
 
         double distance = vector1.distanceFrom(vector2);  // ベクトル間の距離
         // distance = 5.0
@@ -159,7 +159,7 @@ x 軸の右方向を正、y 軸の上方向を正とする直交座標系を使�
         ベクトルの長さ（大きさ）を指定した値に設定します。ベクトルの向きは変わらず、大きさのみが変更されます。
 
         ```cpp
-        udon::Vec2 vector(3.0, 4.0);
+        Udon::Vec2 vector(3.0, 4.0);
         double newLength = 2.0;
 
         vector.setLength(newLength);  // ベクトルの長さを設定
@@ -175,10 +175,10 @@ x 軸の右方向を正、y 軸の上方向を正とする直交座標系を使�
         回転の中心は原点、回転方向は時計回りです。
 
         ```cpp
-        udon::Vec2 vector { 1.0, 0.0 };
+        Udon::Vec2 vector { 1.0, 0.0 };
         double angle = 45.0 * M_PI / 180;  // 45度をラジアンに変換
 
-        udon::Vec2 result = vector.rotated(angle);
+        Udon::Vec2 result = vector.rotated(angle);
         // result = { 0.707, 0.707 }  (45度回転したベクトル)
         ```
 
@@ -191,10 +191,10 @@ x 軸の右方向を正、y 軸の上方向を正とする直交座標系を使�
         回転方向は時計回りです。
 
         ```cpp
-        udon::Vec2 vector { 2.0, 1.0 };
-        udon::Vec2 center { 1.0, 1.0 };
+        Udon::Vec2 vector { 2.0, 1.0 };
+        Udon::Vec2 center { 1.0, 1.0 };
         double angle = 90.0 * M_PI / 180.0;  // 90度をラジアンに変換
 
-        udon::Vec2 result = vector.rotatedAt(center, angle);  // ベクトルの回転
+        Udon::Vec2 result = vector.rotatedAt(center, angle);  // ベクトルの回転
         // result = { 1.0, 0.0 }  (中心を軸にして90度回転したベクトル)
         ```

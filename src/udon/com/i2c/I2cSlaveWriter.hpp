@@ -18,19 +18,19 @@
 
 #pragma once
 
-#include <udon/com/i2c/I2cBus.hpp>
-#include <udon/com/serialization/Serializer.hpp>
-#include <udon/utility/Show.hpp>
+#include <Udon/Com/I2c/I2cBus.hpp>
+#include <Udon/Com/Serialization/Serializer.hpp>
+#include <Udon/Utility/Show.hpp>
 
-namespace udon
+namespace Udon
 {
 
     template <class Message>
     class I2cSlaveWriter
     {
-        static constexpr size_t Size = udon::CapacityWithChecksum<Message>();
+        static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
 
-        udon::II2cBus& bus;
+        Udon::II2cBus& bus;
 
         uint8_t buffer[Size];
 
@@ -39,7 +39,7 @@ namespace udon
     public:
         /// @brief コンストラクタ
         /// @param bus I2cバス
-        I2cSlaveWriter(udon::II2cBus& bus)
+        I2cSlaveWriter(Udon::II2cBus& bus)
             : bus(bus)
             , buffer()
         {
@@ -69,20 +69,20 @@ namespace udon
         /// @param message 送信するメッセージ
         void setMessage(const Message& message)
         {
-            udon::Pack(message, buffer);
+            Udon::Pack(message, buffer);
         }
 
         /// @brief 送信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
-            if (const auto message = udon::Unpack<Message>(buffer))
+            if (const auto message = Udon::Unpack<Message>(buffer))
             {
-                udon::Show(*message, gap);
+                Udon::Show(*message, gap);
             }
             else
             {
-                udon::Show(F("unpack failed!"));    // 通常はここには到達しない
+                Udon::Show(F("unpack failed!"));    // 通常はここには到達しない
             }
         }
 
@@ -90,11 +90,11 @@ namespace udon
         /// @param gap 区切り文字 (default: ' ')
         void showRaw(char gap = ' ') const
         {
-            udon::Show(buffer, gap);
+            Udon::Show(buffer, gap);
         }
     };
 
     template <class Message>
     I2cSlaveWriter<Message>* I2cSlaveWriter<Message>::self;
 
-}    // namespace udon
+}    // namespace Udon

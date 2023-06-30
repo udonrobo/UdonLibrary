@@ -1,28 +1,28 @@
 #include <Arduino.h>
 
-#include <udon/types/Euler.hpp>
+#include <Udon/Types/Euler.hpp>
 
 inline void test()
 {
 
     // コンストラクタ
     {
-        constexpr udon::Euler a;
+        constexpr Udon::Euler a;
 
-        constexpr udon::Euler b = a;
+        constexpr Udon::Euler b = a;
 
-        constexpr udon::Euler c = { 100, 200, 300 };
+        constexpr Udon::Euler c = { 100, 200, 300 };
     }
 
     // コピー代入演算子
     {
-        udon::Euler a, b;
+        Udon::Euler a, b;
         a = b;
     }
 
     // 二項演算子
     {
-        constexpr udon::Euler a, b = { 10, 20, 30 };
+        constexpr Udon::Euler a, b = { 10, 20, 30 };
         a + b;
         a - b;
         a* b;
@@ -35,7 +35,7 @@ inline void test()
 
     // 複合代入演算子
     {
-        udon::Euler a, b;
+        Udon::Euler a, b;
         a += b;
         a -= b;
         a *= b;
@@ -48,22 +48,22 @@ inline void test()
 
     // 比較演算子
     {
-        constexpr udon::Euler a = { 100, 200, 300 };
-        constexpr udon::Euler b = { 100, 200, 300 };
+        constexpr Udon::Euler a = { 100, 200, 300 };
+        constexpr Udon::Euler b = { 100, 200, 300 };
 
         static_assert(a == b, "");
     }
 
     // operator bool
     {
-        constexpr udon::Euler a = { 0, 0, 0 };
+        constexpr Udon::Euler a = { 0, 0, 0 };
         static_assert((bool)a == false, "");
         static_assert(a.isZero(), "");
     }
 
     // その他関数
     {
-        udon::Euler a;
+        Udon::Euler a;
         a.normalized(-PI, PI);
         a.toQuaternion();
         a.directionRevision({ true, false, true });
@@ -73,9 +73,9 @@ inline void test()
 
     // シリアライズ
     {
-        udon::Euler a;
-        static_assert(udon::CapacityWithChecksum(a) == 12 + 1, "");
-        const auto b = udon::Pack(a);
-        (void)udon::Unpack<udon::Euler>(b);
+        Udon::Euler a;
+        static_assert(Udon::CapacityWithChecksum(a) == 12 + 1, "");
+        const auto b = Udon::Pack(a);
+        (void)Udon::Unpack<Udon::Euler>(b);
     }
 }

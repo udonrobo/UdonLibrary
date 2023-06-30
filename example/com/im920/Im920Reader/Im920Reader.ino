@@ -21,10 +21,10 @@
 #    include <Udon.hpp>
 
 // IM920 引数にはIm920と通信するシリアルクラスのインスタンスを指定します。
-udon::Im920 im920{ Serial1 };
+Udon::Im920 im920{ Serial1 };
 
 // IM920 受信クラス クラステンプレート引数には受信データの型を指定します。
-udon::Im920Reader<udon::Vec2> reader{ im920 };
+Udon::Im920Reader<Udon::Vec2> reader{ im920 };
 
 void setup()
 {
@@ -43,8 +43,8 @@ void loop()
     // 通信状態を表示します
     im920.show();
 
-    // getMessage 関数によって、受信クラスのテンプレートクラス引数で指定した型の optional 値を取得します。
-    // 通信エラー時は、udon::nullopt が返るため if 文で判定してください。
+    // getMessage 関数によって、受信クラスのテンプレートクラス引数で指定した型の Optional 値を取得します。
+    // 通信エラー時は、Udon::nullopt が返るため if 文で判定してください。
     if (const auto message = reader.getMessage())
     {
         // 正常時

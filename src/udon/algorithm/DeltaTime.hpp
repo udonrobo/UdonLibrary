@@ -17,7 +17,7 @@
 
 #include <Arduino.h>
 
-namespace udon
+namespace Udon
 {
     class DeltaTime
     {
@@ -57,4 +57,4 @@ namespace udon
             return getDeltaTimeMs() / 1000.;
         }
     }
-}    // namespace udon
+}    // namespace Udon

@@ -155,7 +155,7 @@ void loop() {}
 
 ```cpp
 #include <UdonFwd.hpp>
-#include <udon/types/Vector2D.hpp>  // udon::Vec2
+#include <Udon/Types/Vector2D.hpp>  // Udon::Vec2
 
 void setup() {}
 void loop() {}

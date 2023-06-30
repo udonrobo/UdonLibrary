@@ -1,28 +1,28 @@
 #include <Arduino.h>
 
-#include <udon/types/Vector2D.hpp>
+#include <Udon/Types/Vector2D.hpp>
 
 inline void test()
 {
 
     // コンストラクタ
     {
-        constexpr udon::Vec2 a;
+        constexpr Udon::Vec2 a;
 
-        constexpr udon::Vec2 b = a;
+        constexpr Udon::Vec2 b = a;
 
-        constexpr udon::Vec2 c = { 100, 200 };
+        constexpr Udon::Vec2 c = { 100, 200 };
     }
 
     // コピー代入演算子
     {
-        udon::Vec2 a, b;
+        Udon::Vec2 a, b;
         a = b;
     }
 
     // 二項演算子
     {
-        constexpr udon::Vec2 a, b = { 10, 20 };
+        constexpr Udon::Vec2 a, b = { 10, 20 };
         a + b;
         a - b;
         a * b;
@@ -35,7 +35,7 @@ inline void test()
 
     // 複合代入演算子
     {
-        udon::Vec2 a, b;
+        Udon::Vec2 a, b;
         a += b;
         a -= b;
         a *= b;
@@ -48,15 +48,15 @@ inline void test()
 
     // 比較演算子
     {
-        constexpr udon::Vec2 a = { 100, 200 };
-        constexpr udon::Vec2 b = { 100, 200 };
+        constexpr Udon::Vec2 a = { 100, 200 };
+        constexpr Udon::Vec2 b = { 100, 200 };
 
         static_assert(a == b, "");
     }
 
     // operator bool
     {
-        constexpr udon::Vec2 a = { 0, 0 };
+        constexpr Udon::Vec2 a = { 0, 0 };
 
         static_assert((bool)a == false, "");
         static_assert(a.isZero(), "");
@@ -64,7 +64,7 @@ inline void test()
 
     // その他関数
     {
-        udon::Vec2 a;
+        Udon::Vec2 a;
         a.clear();
         a.rotatedAt({}, 0);
         a.rotated(0);
@@ -77,9 +77,9 @@ inline void test()
 
     // シリアライズ
     {
-        udon::Vec2 a;
-        static_assert(udon::CapacityWithChecksum(a) == 8 + 1, "");
-        const auto b = udon::Pack(a);
-        (void)udon::Unpack<udon::Vec2>(b);
+        Udon::Vec2 a;
+        static_assert(Udon::CapacityWithChecksum(a) == 8 + 1, "");
+        const auto b = Udon::Pack(a);
+        (void)Udon::Unpack<Udon::Vec2>(b);
     }
 }

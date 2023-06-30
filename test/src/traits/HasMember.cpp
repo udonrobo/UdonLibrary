@@ -1,4 +1,4 @@
-#include <udon/traits/HasMember.hpp>
+#include <Udon/Traits/HasMember.hpp>
 
 namespace has_type
 {

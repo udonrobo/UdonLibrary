@@ -16,10 +16,10 @@
 
 #pragma once
 
-#include <udon/utility/Parsable.hpp>
-#include <udon/com/serialization/Serializer.hpp>
+#include <Udon/Utility/Parsable.hpp>
+#include <Udon/Com/Serialization/Serializer.hpp>
 
-namespace udon
+namespace Udon
 {
 
     template <typename>
@@ -210,14 +210,14 @@ namespace udon
 
         Vector2D clamped(value_type min, value_type max) const noexcept
         {
-            return { udon::Constrain(x, min, max), udon::Constrain(y, min, max) };
+            return { Udon::Constrain(x, min, max), Udon::Constrain(y, min, max) };
         }
 
-        udon::Vector3D<value_type> xy0() const noexcept;
+        Udon::Vector3D<value_type> xy0() const noexcept;
 
-        udon::Vector4D<value_type> xy00() const noexcept;
+        Udon::Vector4D<value_type> xy00() const noexcept;
 
-        udon::Polar_impl<value_type> toPolar() const noexcept;
+        Udon::Polar_impl<value_type> toPolar() const noexcept;
 
 #ifdef SIV3D_INCLUDED
         operator s3d::Vector2D<value_type>() const noexcept
@@ -238,4 +238,4 @@ namespace udon
         UDON_PARSABLE(x, y);
     };
 
-}    // namespace udon
+}    // namespace Udon

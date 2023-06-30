@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <udon/stl/EnableSTL.hpp>
+#include <Udon/Stl/EnableSTL.hpp>
 
 #include <array>
 #include <stdint.h>
@@ -25,7 +25,7 @@
 
 #    include <Arduino.h>
 
-namespace udon
+namespace Udon
 {
 
     /// @brief 7セグメントLEDを制御するクラス
@@ -92,6 +92,6 @@ namespace udon
         }
     };
 
-}    // namespace udon
+}    // namespace Udon
 
 #endif

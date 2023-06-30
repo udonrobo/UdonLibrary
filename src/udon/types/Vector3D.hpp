@@ -16,23 +16,23 @@
 
 #pragma once
 
-#include <udon/types/Vector2DFwd.hpp>
-#include <udon/types/Vector3DFwd.hpp>
-#include <udon/types/Vector4DFwd.hpp>
+#include <Udon/Types/Vector2DFwd.hpp>
+#include <Udon/Types/Vector3DFwd.hpp>
+#include <Udon/Types/Vector4DFwd.hpp>
 
 template <class Ty>
-inline udon::Vector2D<Ty> udon::Vector3D<Ty>::xy() const noexcept
+inline Udon::Vector2D<Ty> Udon::Vector3D<Ty>::xy() const noexcept
 {
     return { x, y };
 }
 
 template <class Ty>
-inline udon::Vector4D<Ty> udon::Vector3D<Ty>::xyz0() const noexcept
+inline Udon::Vector4D<Ty> Udon::Vector3D<Ty>::xyz0() const noexcept
 {
     return { x, y, z, 0 };
 }
 
-namespace udon
+namespace Udon
 {
     using Vec3 = Vector3D<double>;
 }

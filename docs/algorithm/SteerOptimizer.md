@@ -27,7 +27,7 @@ SteerOptimizer は、独立ステアモジュールの旋回角度と回転方�
     ```cpp
     #include <Udon.hpp>
     // or
-    #include <udon/algorithm/SteerOptimizer.hpp>
+    #include <Udon/Algorithm/SteerOptimizer.hpp>
     ```
 
 2. インスタンス化
@@ -38,14 +38,14 @@ SteerOptimizer は、独立ステアモジュールの旋回角度と回転方�
 
     ```cpp
     // グローバル領域内など
-    udon::SteerOptimizer<4> optimizer;
+    Udon::SteerOptimizer<4> optimizer;
     ```
 
 3. 最適化値算出
 
     `SteerOptimizer` クラスの operator()メンバ関数に最適化前の値を引数として渡すことで、最適化後の値を戻り値として取得することができます。
 
-    > このクラスでは、各モジュールの値を極座標で扱います。ホイールの出力値は r、モジュールの旋回角度は theta として表現されます。そのため、引数と戻り値は極座標（udon::Polar）の配列を使用して、全てのモジュールの値を扱います。
+    > このクラスでは、各モジュールの値を極座標で扱います。ホイールの出力値は r、モジュールの旋回角度は theta として表現されます。そのため、引数と戻り値は極座標（Udon::Polar）の配列を使用して、全てのモジュールの値を扱います。
 
     > 注意点として、SteerOptimizer クラスは各モジュールの値を直接求めるのではなく、最適化処理を行うためのクラスです(各ステアモジュールの配置によって計算方法が異なるため) したがって、事前に最適化前の値を準備しておく必要があります。
     >
@@ -64,10 +64,10 @@ SteerOptimizer は、独立ステアモジュールの旋回角度と回転方�
     ```cpp
     // ループ内
     // 最適化前の値を格納する配列
-    const std::array<udon::Polar, 4> raw = {...};
+    const std::array<Udon::Polar, 4> raw = {...};
 
     // 最適化後
-    const std::array<udon::Polar, 4> optimized = optimizer(raw);  // 最適化後の値を取得
+    const std::array<Udon::Polar, 4> optimized = optimizer(raw);  // 最適化後の値を取得
     ```
 
 ## Sample
@@ -78,13 +78,13 @@ CAN 通信経由のコントローラーの値からステアモジュールの�
 #include <Udon.hpp>
 
 // CAN バスインスタンス化
-udon::CanBus~~~ bus;
+Udon::CanBus~~~ bus;
 
 // 汎用コントローラーインスタンス化
-udon::PadPS5<udon::CanReader> pad {{ bus, 10 /*node id*/ }};
+Udon::PadPS5<Udon::CanReader> pad {{ bus, 10 /*node id*/ }};
 
 // 最適化器インスタンス
-udon::SteerOptimizer<4> optimizer;
+Udon::SteerOptimizer<4> optimizer;
 
 void setup()
 {
@@ -95,8 +95,8 @@ void loop()
 {
 	bus.update();
 
-	// 1. コントローラから udon::Pos {{x, y}, turn} を得る `getMovementInfo()`
-	// 2. udon::Pos からステアの最適化前の値を得る `toSteer()`
+	// 1. コントローラから Udon::Pos {{x, y}, turn} を得る `getMovementInfo()`
+	// 2. Udon::Pos からステアの最適化前の値を得る `toSteer()`
 	// 3. 最適化後の値を得る optimizer()
 	const auto optimized = optimizer(pad.getMovementInfo().toSteer());
 
@@ -111,15 +111,15 @@ OpenSiv3D でシミュレートする
 ```cpp
 #include <Siv3D.hpp>
 
-#include <udon/com/pad/PadPS5.hpp>
-#include <udon/siv3d/SivPadPS5.hpp>
-#include <udon/algorithm/SteerOptimizer.hpp>
+#include <Udon/Com/Pad/PadPS5.hpp>
+#include <Udon/Siv3d/SivPadPS5.hpp>
+#include <Udon/Algorithm/SteerOptimizer.hpp>
 
 void Main()
 {
-	udon::PadPS5<udon::SivPadPS5> pad;
+	Udon::PadPS5<Udon::SivPadPS5> pad;
 
-	udon::SteerOptimizer<4> optimizer;
+	Udon::SteerOptimizer<4> optimizer;
 
 	while (System::Update())
 	{

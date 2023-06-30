@@ -15,13 +15,13 @@
 
 #pragma once
 
-#include <udon/stl/EnableSTL.hpp>
+#include <Udon/Stl/EnableSTL.hpp>
 
 #include <algorithm>
 #include <cstddef>
 #include <iterator>
 
-namespace udon
+namespace Udon
 {
 
     /// @brief リングバッファ
@@ -407,4 +407,4 @@ namespace udon
         }
     };
 
-}    // namespace udon
+}    // namespace Udon

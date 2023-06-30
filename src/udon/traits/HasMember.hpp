@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <udon/stl/EnableSTL.hpp>
+#include <Udon/Stl/EnableSTL.hpp>
 
 #include <type_traits>
 
@@ -102,7 +102,7 @@
     {                                                                                                               \
     };
 
-namespace udon
+namespace Udon
 {
 
 #ifndef UDON_HAS_MEMBER_FUNCTION_BEGIN
@@ -120,4 +120,4 @@ namespace udon
     UDON_HAS_MEMBER_FUNCTION(show);
 #endif
 
-}    // namespace udon
+}    // namespace Udon

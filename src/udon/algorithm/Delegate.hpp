@@ -15,12 +15,12 @@
 
 #pragma once
 
-#include <udon/stl/EnableSTL.hpp>
+#include <Udon/Stl/EnableSTL.hpp>
 
 #include <algorithm>
 #include <type_traits>
 
-namespace udon
+namespace Udon
 {
 
     template <class, class, int Unique = 0>
@@ -88,4 +88,4 @@ namespace udon
     template <class T, class R, class... Args, int Unique>
     typename Delegate<T, R(Args...), Unique>::MemberFunctor Delegate<T, R(Args...), Unique>::functionPtr;
 
-}    // namespace udon
+}    // namespace Udon

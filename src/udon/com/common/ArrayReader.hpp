@@ -15,10 +15,10 @@
 
 #pragma once
 
-#include <udon/traits/MaybeInvoke.hpp>
-#include <udon/utility/Parsable.hpp>
+#include <Udon/Traits/MaybeInvoke.hpp>
+#include <Udon/Utility/Parsable.hpp>
 
-namespace udon
+namespace Udon
 {
     template <template <typename> typename Reader, typename Message, size_t N>
     class ArrayReader
@@ -44,12 +44,12 @@ namespace udon
 
         void begin()
         {
-            udon::MaybeInvoke_begin(reader);
+            Udon::MaybeInvoke_begin(reader);
         }
 
         void update()
         {
-            udon::MaybeInvoke_update(reader);
+            Udon::MaybeInvoke_update(reader);
             if (const auto message = reader.getMessage())
             {
                 this->messages = *message;
@@ -58,7 +58,7 @@ namespace udon
 
         void show() const
         {
-            udon::MaybeInvoke_show(reader);
+            Udon::MaybeInvoke_show(reader);
         }
 
         Message& at(size_t index)
@@ -82,4 +82,4 @@ namespace udon
         }
     };
 
-}    // namespace udon
+}    // namespace Udon

@@ -18,7 +18,7 @@
 #include <math.h>
 #include <stdint.h>
 
-namespace udon
+namespace Udon
 {
 
     constexpr double Pi       = 3.1415926535897932384626433832795;
@@ -134,4 +134,4 @@ namespace udon
         return (value - inputMin) * (outputMax - outputMin) / (inputMax - inputMin) + outputMin;
     }
 
-}    // namespace udon
+}    // namespace Udon

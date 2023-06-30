@@ -21,9 +21,9 @@
    稼働速度は選択できるが、速度をあげすぎるとサーボが追い付かなくなるので注意
 */
 
-#include <udon/math/Math.hpp>
+#include <Udon/Math/Math.hpp>
 
-namespace udon
+namespace Udon
 {
     enum class ServoChoose : uint8_t
     {
@@ -79,11 +79,11 @@ namespace udon
             else
             {
                 status = false;
-                value  = udon::Constrain(speed / static_cast<float>(loopCycle),
-                                   udon::Abs(move_angle) * -1, udon::Abs(move_angle)) *
+                value  = Udon::Constrain(speed / static_cast<float>(loopCycle),
+                                   Udon::Abs(move_angle) * -1, Udon::Abs(move_angle)) *
                         (move_angle < 0 ? -1 : 1);
                 next_angle += value;
-                next_angle = udon::Constrain(next_angle, 0.0, static_cast<double>(servo_preset));
+                next_angle = Udon::Constrain(next_angle, 0.0, static_cast<double>(servo_preset));
             }
         }
 
@@ -114,4 +114,4 @@ namespace udon
         /// @return 現在速度 度/s
         float speedValue() const { return speed; }
     };
-}    // namespace udon
+}    // namespace Udon

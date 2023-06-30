@@ -5,11 +5,11 @@
 
 #pragma once
 
-#include <udon/com/can/ICanBus.hpp>
-#include <udon/com/serialization/Serializer.hpp>
-#include <udon/utility/Show.hpp>
+#include <Udon/Com/Can/ICanBus.hpp>
+#include <Udon/Com/Serialization/Serializer.hpp>
+#include <Udon/Utility/Show.hpp>
 
-namespace udon
+namespace Udon
 {
 
     template <class Message>
@@ -24,27 +24,27 @@ namespace udon
         /// @param id 信号識別ID
         CanWriter(ICanBus& bus, const uint32_t id)
             : bus{ bus }
-            , node{ bus.createTxNode(id, udon::CapacityWithChecksum<Message>()) }
+            , node{ bus.createTxNode(id, Udon::CapacityWithChecksum<Message>()) }
         {
         }
 
         /// @brief メッセージ構造体をセット
         void setMessage(const Message& message) noexcept
         {
-            *node.data = udon::Pack(message);
+            *node.data = Udon::Pack(message);
         }
 
         /// @brief 送信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
-            if (const auto message = udon::Unpack<Message>(*node.data))
+            if (const auto message = Udon::Unpack<Message>(*node.data))
             {
-                udon::Show(*message, gap);
+                Udon::Show(*message, gap);
             }
             else
             {
-                udon::Show(F("unpack failed!"));    // 通常はここには到達しない
+                Udon::Show(F("unpack failed!"));    // 通常はここには到達しない
             }
         }
 
@@ -54,9 +54,9 @@ namespace udon
         {
             for (auto&& it : *node.data)
             {
-                udon::Show(it, gap);
+                Udon::Show(it, gap);
             }
         }
     };
 
-}    // namespace udon
+}    // namespace Udon

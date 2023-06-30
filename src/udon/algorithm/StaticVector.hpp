@@ -15,13 +15,13 @@
 
 #pragma once
 
-#include <udon/stl/EnableSTL.hpp>
+#include <Udon/Stl/EnableSTL.hpp>
 
 #include <algorithm>
 #include <initializer_list>
 #include <iterator>
 
-namespace udon
+namespace Udon
 {
     template <typename T, size_t Capacity = 128>
     class StaticVector
@@ -495,4 +495,4 @@ namespace udon
         }
 #endif
     };
-}    // namespace udon
+}    // namespace Udon

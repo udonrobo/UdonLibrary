@@ -17,12 +17,12 @@
 #pragma once
 
 #include <stdint.h>
-#include <udon/utility/Parsable.hpp>
+#include <Udon/Utility/Parsable.hpp>
 
-namespace udon
+namespace Udon
 {
 
-    namespace message
+    namespace Message
     {
 
         struct Solenoid
@@ -44,6 +44,6 @@ namespace udon
 
 
 
-    }    // namespace message
+    }    // namespace Message
 
-}    // namespace udon
+}    // namespace Udon

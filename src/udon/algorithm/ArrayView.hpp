@@ -15,13 +15,13 @@
 
 #pragma once
 
-#include <udon/stl/EnableSTL.hpp>
+#include <Udon/Stl/EnableSTL.hpp>
 
 #include <cstddef>    // std::ptrdiff_t
 #include <iterator>
 
 
-namespace udon
+namespace Udon
 {
 
     template <typename T>
@@ -153,4 +153,4 @@ namespace udon
         }
     };
 
-}    // namespace udon
+}    // namespace Udon

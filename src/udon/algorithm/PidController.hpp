@@ -16,9 +16,9 @@
 #ifndef DEF_PidController_H
 #define DEF_PidController_H
 
-#include <udon/math/Math.hpp>
+#include <Udon/Math/Math.hpp>
 
-namespace udon
+namespace Udon
 {
 
     /**     PidControllerクラス
@@ -76,14 +76,14 @@ namespace udon
 
             // 積分量の計算
             intPower += kInt * error * INTERVAL_S;
-            intPower = udon::Constrain(intPower, -MAX_INT_POWER, MAX_INT_POWER);
+            intPower = Udon::Constrain(intPower, -MAX_INT_POWER, MAX_INT_POWER);
 
             // 微分量の計算
             difPower = kDif * (error - lastError) / INTERVAL_S;
 
             // 操作量の計算
             power = proPower + intPower + difPower;
-            power = udon::Constrain(power, -250, 250);
+            power = Udon::Constrain(power, -250, 250);
 
             // 偏差の保存
             lastError = error;
@@ -158,6 +158,6 @@ namespace udon
         }
     };
 
-}    // namespace udon
+}    // namespace Udon
 
 #endif

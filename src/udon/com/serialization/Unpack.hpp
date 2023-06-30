@@ -18,18 +18,18 @@
 
 #include <limits.h>
 
-#include <udon/stl/EnableSTL.hpp>
+#include <Udon/Stl/EnableSTL.hpp>
 
 #include <vector>
 
-#include <udon/algorithm/CRC8.hpp>
-#include <udon/algorithm/Endian.hpp>
-#include <udon/math/Math.hpp>
-#include <udon/stl/optional.hpp>
-#include <udon/types/Float.hpp>
-#include <udon/utility/Parsable.hpp>
+#include <Udon/Algorithm/CRC8.hpp>
+#include <Udon/Algorithm/Endian.hpp>
+#include <Udon/Math/Math.hpp>
+#include <Udon/Stl/Optional.hpp>
+#include <Udon/Types/Float.hpp>
+#include <Udon/Utility/Parsable.hpp>
 
-namespace udon
+namespace Udon
 {
 
     class Deserializer
@@ -50,13 +50,13 @@ namespace udon
             : buffer(buf)
         {
             // エンディアン変換
-            if (udon::GetEndian() == Endian::Big)
+            if (Udon::GetEndian() == Endian::Big)
             {
                 std::reverse(buffer.begin(), buffer.end());
             }
 
             // チャックサム確認
-            const auto checksum = udon::CRC8(buffer.data(), buffer.size() - udon::CRC8_SIZE);
+            const auto checksum = Udon::CRC8(buffer.data(), buffer.size() - Udon::CRC8_SIZE);
             isChecksumSuccess   = buffer.back() == checksum;
         }
 
@@ -91,7 +91,7 @@ namespace udon
         inline auto operator()(Floating& rhs)
             -> typename std::enable_if<std::is_floating_point<Floating>::value>::type
         {
-            rhs = unpackScalar<udon::float32_t>();
+            rhs = unpackScalar<Udon::float32_t>();
         }
 
         /// @brief
@@ -112,7 +112,7 @@ namespace udon
         /// @param rhs
         /// @return
         template <typename T>
-        inline auto operator()(T& rhs) -> typename std::enable_if<udon::has_member_iterate_accessor<Deserializer, T>::value>::type
+        inline auto operator()(T& rhs) -> typename std::enable_if<Udon::has_member_iterate_accessor<Deserializer, T>::value>::type
         {
             // T::accessor が const なメンバ関数でない場合に const rhs から呼び出せないため、const_cast によって const を除去
             const_cast<T&>(rhs).accessor(*this);
@@ -163,7 +163,7 @@ namespace udon
                 boolPopIndex = popIndex++;
             }
 
-            const auto retval = udon::BitRead(buffer.at(boolPopIndex), boolCount);
+            const auto retval = Udon::BitRead(buffer.at(boolPopIndex), boolCount);
 
             if (++boolCount >= CHAR_BIT)
             {
@@ -175,14 +175,14 @@ namespace udon
     };
 
     template <typename T>
-    udon::optional<T> Unpack(const std::vector<uint8_t>& buffer)
+    Udon::Optional<T> Unpack(const std::vector<uint8_t>& buffer)
     {
         // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
-        static_assert(udon::is_parsable<T>::value, "T must be parsable type.");
+        static_assert(Udon::is_parsable<T>::value, "T must be parsable type.");
         
-        if (buffer.size() != udon::CapacityWithChecksum<T>())
+        if (buffer.size() != Udon::CapacityWithChecksum<T>())
         {
-            return udon::nullopt;
+            return Udon::nullopt;
         }
 
         Deserializer deserializer(buffer);
@@ -195,26 +195,26 @@ namespace udon
         }
         else
         {
-            return udon::nullopt;
+            return Udon::nullopt;
         }
     }
 
     template <typename T>
-    udon::optional<T> Unpack(const uint8_t* buffer, size_t size)
+    Udon::Optional<T> Unpack(const uint8_t* buffer, size_t size)
     {
         // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
-        static_assert(udon::is_parsable<T>::value, "T must be parsable type.");
+        static_assert(Udon::is_parsable<T>::value, "T must be parsable type.");
 
         return Unpack<T>({ buffer, buffer + size });
     }
 
     template <typename T, size_t N>
-    udon::optional<T> Unpack(const uint8_t (&array)[N])
+    Udon::Optional<T> Unpack(const uint8_t (&array)[N])
     {
         // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
-        static_assert(udon::is_parsable<T>::value, "T must be parsable type.");
+        static_assert(Udon::is_parsable<T>::value, "T must be parsable type.");
 
         return Unpack<T>(array, N);
     }
 
-}    // namespace udon
+}    // namespace Udon

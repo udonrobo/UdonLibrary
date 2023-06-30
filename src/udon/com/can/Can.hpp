@@ -2,10 +2,10 @@
 
 /// @brief バス管理クラス
 // #include "CanBusPico.hpp"
-#include <udon/com/can/CanBusSpi.hpp>
-#include <udon/com/can/CanBusTeensy.hpp>
+#include <Udon/Com/Can/CanBusSpi.hpp>
+#include <Udon/Com/Can/CanBusTeensy.hpp>
 
 /// @brief 仮想ノードクラス
-#include <udon/com/can/CanInfo.hpp>
-#include <udon/com/can/CanReader.hpp>
-#include <udon/com/can/CanWriter.hpp>
+#include <Udon/Com/Can/CanInfo.hpp>
+#include <Udon/Com/Can/CanReader.hpp>
+#include <Udon/Com/Can/CanWriter.hpp>

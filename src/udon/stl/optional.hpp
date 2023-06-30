@@ -9,78 +9,78 @@
 //
 //-------------------------------------------------------------------
 //
-//    optional 
+//    Optional 
 //
 //-------------------------------------------------------------------
 
 
 #pragma once
 
-namespace udon
+namespace Udon
 {
 
-    struct nullopt_t
+    struct Nullopt_t
     {
     };
 
-    constexpr nullopt_t nullopt{};
+    constexpr Nullopt_t nullopt{};
 
     template <typename T>
-    class optional
+    class Optional
     {
 
         T    m_value;
         bool m_hasValue;
 
     public:
-        constexpr optional()
+        constexpr Optional()
             : m_value()
             , m_hasValue()
         {
         }
 
-        constexpr optional(nullopt_t)
+        constexpr Optional(Nullopt_t)
             : m_value()
             , m_hasValue()
         {
         }
 
-        constexpr optional(const T& value)
+        constexpr Optional(const T& value)
             : m_value(value)
             , m_hasValue(true)
         {
         }
 
-        constexpr optional(T&& value)
+        constexpr Optional(T&& value)
             : m_value(std::move(value))
             , m_hasValue(true)
         {
         }
 
-        constexpr optional(const optional& other)
+        constexpr Optional(const Optional& other)
             : m_value(other.m_value)
             , m_hasValue(other.m_hasValue)
         {
         }
 
-        constexpr optional(optional&& other) noexcept
+        constexpr Optional(Optional&& other) noexcept
             : m_value(std::move(other.m_value))
             , m_hasValue(other.m_hasValue)
         {
         }
 
-        optional& operator=(nullopt_t)
+        Optional& operator=(Nullopt_t)
         {
             m_hasValue = false;
             return *this;
         }
-        optional& operator=(const optional& other)
+        Optional& operator=(const Optional& other)
         {
             m_value    = other.m_value;
             m_hasValue = other.m_hasValue;
             return *this;
         }
-        optional& operator=(optional&& other)
+        Optional& operator=(Optional&& other)
         {
             m_value    = std::move(other.m_value);
             m_hasValue = other.m_hasValue;

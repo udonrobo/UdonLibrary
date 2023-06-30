@@ -16,12 +16,12 @@
 
 #pragma once
 
-#include <udon/utility/Parsable.hpp>
+#include <Udon/Utility/Parsable.hpp>
 
-namespace udon
+namespace Udon
 {
 
-    namespace message
+    namespace Message
     {
 
         struct Switch
@@ -42,6 +42,6 @@ namespace udon
             UDON_PARSABLE(press);
         };
 
-    }    // namespace message
+    }    // namespace Message
 
-}    // namespace udon
+}    // namespace Udon

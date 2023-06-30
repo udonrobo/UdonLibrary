@@ -19,10 +19,10 @@
 #    include <Udon.hpp>
 
 // I2C バス管理クラス
-udon::I2cBus bus{ Wire };
+Udon::I2cBus bus{ Wire };
 
 // I2C スレーブ側送信クラス
-udon::I2cSlaveWriter<udon::Vec2> writer{ bus };
+Udon::I2cSlaveWriter<Udon::Vec2> writer{ bus };
 
 void setup()
 {

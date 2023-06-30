@@ -15,21 +15,21 @@
 
 #pragma once
 
-#include <udon/stl/EnableSTL.hpp>
+#include <Udon/Stl/EnableSTL.hpp>
 
 #include <algorithm>
 
-#include <udon/com/message/Motor.hpp>
-#include <udon/traits/MaybeInvoke.hpp>
-#include <udon/utility/Show.hpp>
+#include <Udon/Com/Message/Motor.hpp>
+#include <Udon/Traits/MaybeInvoke.hpp>
+#include <Udon/Utility/Show.hpp>
 
-namespace udon
+namespace Udon
 {
 
     template <template <typename> typename Writer>
     class Motor
     {
-        using writer_type = Writer<message::Motor>;
+        using writer_type = Writer<Message::Motor>;
 
         writer_type writer;
 
@@ -54,13 +54,13 @@ namespace udon
         {
             const auto sendPower = power * (direction ? 1 : -1);
             writer.setMessage({ static_cast<int16_t>(sendPower) });
-            udon::MaybeInvoke_update(writer);
+            Udon::MaybeInvoke_update(writer);
         }
 
         void show() const
         {
-            udon::Show(power);
+            Udon::Show(power);
         }
     };
 
-}    // namespace udon
+}    // namespace Udon

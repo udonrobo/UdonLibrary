@@ -20,11 +20,11 @@
 
 #pragma once
 
-#include <udon/com/im920/IIm920.hpp>
+#include <Udon/Com/Im920/IIm920.hpp>
 
 #include <Arduino.h>
 
-namespace udon
+namespace Udon
 {
     class Im920
         : public IIm920
@@ -230,4 +230,4 @@ namespace udon
         uart.print("ECIO\r\n");
         delay(1000);
     }
-}    // namespace udon
+}    // namespace Udon

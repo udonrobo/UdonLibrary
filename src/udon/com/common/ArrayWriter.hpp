@@ -15,10 +15,10 @@
 
 #pragma once
 
-#include <udon/traits/MaybeInvoke.hpp>
-#include <udon/utility/Parsable.hpp>
+#include <Udon/Traits/MaybeInvoke.hpp>
+#include <Udon/Utility/Parsable.hpp>
 
-namespace udon
+namespace Udon
 {
     template <template <typename> typename Writer, typename Message, size_t N>
     class ArrayWriter
@@ -44,23 +44,23 @@ namespace udon
 
         void begin()
         {
-            udon::MaybeInvoke_begin(writer);
+            Udon::MaybeInvoke_begin(writer);
         }
 
         void update()
         {
             writer.setMessage(messages);
-            udon::MaybeInvoke_update(writer);
+            Udon::MaybeInvoke_update(writer);
         }
 
         void show() const
         {
-            udon::MaybeInvoke_show(writer);
+            Udon::MaybeInvoke_show(writer);
         }
 
         void showRaw() const
         {
-            udon::MaybeInvoke_showRaw(writer);
+            Udon::MaybeInvoke_showRaw(writer);
         }
 
         writer_type& getWriter()
@@ -89,4 +89,4 @@ namespace udon
         }
     };
 
-}    // namespace udon
+}    // namespace Udon

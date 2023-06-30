@@ -15,10 +15,10 @@
 
 #pragma once
 
-#include <udon/utility/Parsable.hpp>
-#include <udon/com/serialization/Serializer.hpp>
+#include <Udon/Utility/Parsable.hpp>
+#include <Udon/Com/Serialization/Serializer.hpp>
 
-namespace udon
+namespace Udon
 {
 
     struct HSV;
@@ -110,4 +110,4 @@ namespace udon
         UDON_PARSABLE(r, g, b);
     };
 
-}    // namespace udon
+}    // namespace Udon

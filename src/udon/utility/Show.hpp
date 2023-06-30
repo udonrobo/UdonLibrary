@@ -16,13 +16,13 @@
 
 #pragma once
 
-#include <udon/traits/HasMember.hpp>
+#include <Udon/Traits/HasMember.hpp>
 
 #ifndef F
 #    define F(x) (x)
 #endif
 
-namespace udon
+namespace Udon
 {
 
     struct MemberViewer
@@ -108,4 +108,4 @@ namespace udon
         viewer(rhs);
     }
 
-}    // namespace udon
+}    // namespace Udon

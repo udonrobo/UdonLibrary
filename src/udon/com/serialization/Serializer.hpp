@@ -16,6 +16,6 @@
 
 #pragma once
 
-#include <udon/com/serialization/Capacity.hpp>
-#include <udon/com/serialization/Pack.hpp>
-#include <udon/com/serialization/Unpack.hpp>
+#include <Udon/Com/Serialization/Capacity.hpp>
+#include <Udon/Com/Serialization/Pack.hpp>
+#include <Udon/Com/Serialization/Unpack.hpp>

@@ -15,9 +15,9 @@
 
 #pragma once
 
-#include <udon/algorithm/Input.hpp>
+#include <Udon/Algorithm/Input.hpp>
 
-namespace udon
+namespace Udon
 {
     struct Button
     {
@@ -47,4 +47,4 @@ namespace udon
         {
         }
     };
-}    // namespace udon
+}    // namespace Udon

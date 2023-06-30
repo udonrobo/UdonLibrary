@@ -20,16 +20,16 @@
 
 #pragma once
 
-#include <udon/com/im920/IIm920.hpp>
-#include <udon/com/serialization/Serializer.hpp>
+#include <Udon/Com/Im920/IIm920.hpp>
+#include <Udon/Com/Serialization/Serializer.hpp>
 
-namespace udon
+namespace Udon
 {
 
     template <typename Message>
     class Im920Reader
     {
-        static constexpr size_t Size = udon::CapacityWithChecksum<Message>();
+        static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
 
         static_assert(Size <= 64, "The send buffer size for IM920 is limited to 64 bytes");
 
@@ -44,15 +44,15 @@ namespace udon
         {
         }
 
-        udon::optional<Message> getMessage() const
+        Udon::Optional<Message> getMessage() const
         {
             if (im920)
             {
-                return udon::Unpack<Message>(buffer);
+                return Udon::Unpack<Message>(buffer);
             }
             else
             {
-                return udon::nullopt;
+                return Udon::nullopt;
             }
         }
 
@@ -62,7 +62,7 @@ namespace udon
         {
             if (const auto message = getMessage())
             {
-                udon::Show(*message, gap);
+                Udon::Show(*message, gap);
             }
             else
             {
@@ -81,4 +81,4 @@ namespace udon
             }
         }
     };
-}    // namespace udon
+}    // namespace Udon

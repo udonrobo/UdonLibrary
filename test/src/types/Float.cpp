@@ -1,14 +1,14 @@
-#include <udon/com/serialization/Serializer.hpp>
-#include <udon/types/Float.hpp>
+#include <Udon/Com/Serialization/Serializer.hpp>
+#include <Udon/Types/Float.hpp>
 
 
 inline void test()
 {
     // シリアライズ
     {
-        udon::float32_t a;
-        static_assert(udon::CapacityWithChecksum(a) == 4 + 1, "");
-        const auto b = udon::Pack(a);
-        (void)udon::Unpack<udon::float32_t>(b);
+        Udon::float32_t a;
+        static_assert(Udon::CapacityWithChecksum(a) == 4 + 1, "");
+        const auto b = Udon::Pack(a);
+        (void)Udon::Unpack<Udon::float32_t>(b);
     }
 }

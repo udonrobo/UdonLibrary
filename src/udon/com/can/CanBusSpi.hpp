@@ -9,21 +9,21 @@
 #ifdef ARDUINO
 #    include <mcp2515.h>    // https://github.com/autowp/arduino-mcp2515
 
-#    include <udon/algorithm/RingBuffer.hpp>
-#    include <udon/com/can/CanInfo.hpp>
-#    include <udon/com/can/CanUtility.hpp>
-#    include <udon/com/can/ICanBus.hpp>
+#    include <Udon/Algorithm/RingBuffer.hpp>
+#    include <Udon/Com/Can/CanInfo.hpp>
+#    include <Udon/Com/Can/CanUtility.hpp>
+#    include <Udon/Com/Can/ICanBus.hpp>
 
 // #pragma once
 
 // #include <mcp2515.h>    // https://github.com/autowp/arduino-mcp2515
 
-// #include <udon/stl/list.hpp>    // udon::list
+// #include <Udon/Stl/list.hpp>    // Udon::list
 
-// #include <udon/com/can/CanBusInterface.hpp>
-// #include <udon/com/can/CanInfo.hpp>
+// #include <Udon/Com/Can/CanBusInterface.hpp>
+// #include <Udon/Com/Can/CanInfo.hpp>
 
-// namespace udon
+// namespace Udon
 // {
 
 //     template <uint8_t CS, uint8_t Interrupt>
@@ -32,7 +32,7 @@
 
 //         MCP2515 bus;
 
-//         using DataLine = udon::list<CanNodeInfo*>;
+//         using DataLine = Udon::list<CanNodeInfo*>;
 //         DataLine        tx;
 //         DataLine        rx;
 //         CanBusErrorInfo error;
@@ -196,6 +196,6 @@
 //     template <uint8_t CS, uint8_t Interrupt>
 //     CanBusSpi<CS, Interrupt>* CanBusSpi<CS, Interrupt>::self;
 
-// }    // namespace udon
+// }    // namespace Udon
 
 #endif

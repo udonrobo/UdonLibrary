@@ -16,9 +16,9 @@
 #ifndef DEF_MovingAverage_H
 #define DEF_MovingAverage_H
 
-#include <udon/math/Math.hpp>
+#include <Udon/Math/Math.hpp>
 
-namespace udon
+namespace Udon
 {
 
     /**     移動平均クラス
@@ -38,7 +38,7 @@ namespace udon
                 @param  dataSize    [in]移動平均するデータの個数
         */
         MovingAverage(size_t dataSize)
-            : dataSize(udon::Max(dataSize, 1ULL))
+            : dataSize(Udon::Max(dataSize, 1ULL))
             , data(new int[dataSize]())
             , writeIndex()
             , sum()
@@ -74,6 +74,6 @@ namespace udon
         }
     };
 
-}    // namespace udon
+}    // namespace Udon
 
 #endif

@@ -1,11 +1,11 @@
 #pragma once
 
-#include <udon/stl/EnableSTL.hpp>
+#include <Udon/Stl/EnableSTL.hpp>
 
 #include <stdint.h>
 #include <vector>
 
-namespace udon
+namespace Udon
 {
 
     /// @brief CanBusクラス内のCanNodeのデータを参照するためのクラス
@@ -16,4 +16,4 @@ namespace udon
         const uint32_t*       transmitMs;    // timestamp
     };
 
-}    // namespace udon
+}    // namespace Udon

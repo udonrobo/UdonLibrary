@@ -16,11 +16,11 @@
 
 #pragma once
 
-#include <udon/math/Math.hpp>    // udon::NormalizedAngle
-#include <udon/utility/Parsable.hpp>
-#include <udon/com/serialization/Serializer.hpp>
+#include <Udon/Math/Math.hpp>    // Udon::NormalizedAngle
+#include <Udon/Utility/Parsable.hpp>
+#include <Udon/Com/Serialization/Serializer.hpp>
 
-namespace udon
+namespace Udon
 {
 
     struct Quaternion;
@@ -124,9 +124,9 @@ namespace udon
         Euler3D normalized(value_type min, value_type max) const
         {
             return {
-                udon::NormalizedAngle(roll, min, max),
-                udon::NormalizedAngle(pitch, min, max),
-                udon::NormalizedAngle(yaw, min, max),
+                Udon::NormalizedAngle(roll, min, max),
+                Udon::NormalizedAngle(pitch, min, max),
+                Udon::NormalizedAngle(yaw, min, max),
             };
         }
 
@@ -165,4 +165,4 @@ namespace udon
 
     using Euler = Euler3D<double>;
 
-}    // namespace udon
+}    // namespace Udon

@@ -17,15 +17,15 @@
 #pragma once
 
 #include <stdint.h>
-#include <udon/utility/Parsable.hpp>
+#include <Udon/Utility/Parsable.hpp>
 
-namespace udon
+namespace Udon
 {
 
-    namespace message
+    namespace Message
     {
         /// @brief IMUの姿勢角(yaw角)
-        /// @details 3軸の姿勢角を格納する場合はudon::Eulerを使用してください。
+        /// @details 3軸の姿勢角を格納する場合はUdon::Eulerを使用してください。
         struct Yaw
         {
 
@@ -43,6 +43,6 @@ namespace udon
             UDON_PARSABLE(yaw);
         };
 
-    }    // namespace message
+    }    // namespace Message
 
-}    // namespace udon
+}    // namespace Udon

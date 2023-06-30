@@ -15,9 +15,9 @@
 
 #pragma once
 
-#include <udon/types/Euler.hpp>
+#include <Udon/Types/Euler.hpp>
 
-namespace udon
+namespace Udon
 {
 
     template <class Device>
@@ -26,10 +26,10 @@ namespace udon
     {
 
         /// @brief 回転方向
-        udon::Euler3D<bool> direction;
+        Udon::Euler3D<bool> direction;
 
         /// @brief 内積値消去用オフセット
-        udon::Quaternion offset;
+        Udon::Quaternion offset;
 
     public:
         /// @brief コンストラクタ
@@ -37,7 +37,7 @@ namespace udon
         /// @param direction 回転方向
         Imu(
             Device&&              device,
-            udon::Euler3D<bool>&& direction = { true, true, true })
+            Udon::Euler3D<bool>&& direction = { true, true, true })
             : Device(std::move(device))
             , direction(direction)
             , offset()
@@ -52,15 +52,15 @@ namespace udon
 
         /// @brief オイラー角を取得
         /// @return オイラー角
-        udon::Euler getEuler() const
+        Udon::Euler getEuler() const
         {
             return (Device::getEuler() - offset.toEuler())
                 .directionRevision(direction)       // 回転方向補正
-                .normalized(-udon::Pi, udon::Pi)    // -PI~PI の間に正規化
+                .normalized(-Udon::Pi, Udon::Pi)    // -PI~PI の間に正規化
                 ;
         }
 
-        udon::Quaternion getQuaternion() const
+        Udon::Quaternion getQuaternion() const
         {
             return Device::getQuaternion() - offset;
         }
@@ -72,4 +72,4 @@ namespace udon
         }
     };
 
-}    // namespace udon
+}    // namespace Udon

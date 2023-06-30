@@ -4,7 +4,7 @@
 
 #if defined(ARDUINO_ARCH_RP2040)
 
-namespace udon
+namespace Udon
 {
     class EncoderPico
     {
@@ -149,6 +149,6 @@ namespace udon
 #    undef RESISTOR_INTERRUPT
         }
     };
-}    // namespace udon
+}    // namespace Udon
 
 #endif    // defined(ARDUINO_ARCH_RP2040)

@@ -16,11 +16,11 @@
 
 #pragma once
 
-#include <udon/types/EulerFwd.hpp>
-#include <udon/types/QuaternionFwd.hpp>
+#include <Udon/Types/EulerFwd.hpp>
+#include <Udon/Types/QuaternionFwd.hpp>
 
 template <typename T>
-udon::Euler3D<T> udon::Quaternion::toEuler() const noexcept
+Udon::Euler3D<T> Udon::Quaternion::toEuler() const noexcept
 {
     return {
         atan2(2 * (w * x + y * z), 1 - 2 * (x * x + y * y)), /* roll  */

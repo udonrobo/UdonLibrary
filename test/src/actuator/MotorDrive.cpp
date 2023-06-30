@@ -1,15 +1,15 @@
-#include <udon/actuator/MotorDrive.hpp>
+#include <Udon/Actuator/MotorDrive.hpp>
 
 inline void test()
 {
     {
-        udon::Motor2Drive motor{ 0, 0 };
+        Udon::Motor2Drive motor{ 0, 0 };
         motor.move(0);
         motor.show();
     }
 
     {
-        udon::Motor3Drive motor{ 0, 0, 0 };
+        Udon::Motor3Drive motor{ 0, 0, 0 };
         motor.move(0);
         motor.show();
     }

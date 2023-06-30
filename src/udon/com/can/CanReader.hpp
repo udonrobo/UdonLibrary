@@ -7,11 +7,11 @@
 
 #ifdef ARDUINO
 
-#    include <udon/com/can/ICanBus.hpp>
-#    include <udon/com/serialization/Serializer.hpp>
-#    include <udon/utility/Show.hpp>
+#    include <Udon/Com/Can/ICanBus.hpp>
+#    include <Udon/Com/Serialization/Serializer.hpp>
+#    include <Udon/Utility/Show.hpp>
 
-namespace udon
+namespace Udon
 {
 
     template <class Message>
@@ -28,7 +28,7 @@ namespace udon
         /// @param id 信号識別ID
         CanReader(ICanBus& bus, const uint32_t id)
             : bus{ bus }
-            , node{ bus.createRxNode(id, udon::CapacityWithChecksum<Message>()) }
+            , node{ bus.createRxNode(id, Udon::CapacityWithChecksum<Message>()) }
         {
         }
 
@@ -40,10 +40,10 @@ namespace udon
         }
 
         /// @brief メッセージ構造体を取得
-        /// @return メッセージ構造体(optional)
-        udon::optional<Message> getMessage() const
+        /// @return メッセージ構造体(Optional)
+        Udon::Optional<Message> getMessage() const
         {
-            return udon::Unpack<Message>(*node.data);
+            return Udon::Unpack<Message>(*node.data);
         }
 
         /// @brief 受信内容を表示
@@ -52,11 +52,11 @@ namespace udon
         {
             if (const auto message = getMessage())
             {
-                udon::Show(*message, gap);
+                Udon::Show(*message, gap);
             }
             else
             {
-                udon::Show(F("receive failed!"));
+                Udon::Show(F("receive failed!"));
             }
         }
 
@@ -66,11 +66,11 @@ namespace udon
         {
             for (auto&& it : *node.data)
             {
-                udon::Show(it, gap);
+                Udon::Show(it, gap);
             }
         }
     };
 
-}    // namespace udon
+}    // namespace Udon
 
 #endif

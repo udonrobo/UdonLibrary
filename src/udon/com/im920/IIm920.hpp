@@ -16,13 +16,13 @@
 
 #pragma once
 
-#include <udon/stl/EnableSTL.hpp>
+#include <Udon/Stl/EnableSTL.hpp>
 
 #include <vector>
 
 #include <stdint.h>
 
-namespace udon
+namespace Udon
 {
 
     /// @brief IM920のインターフェース
@@ -47,4 +47,4 @@ namespace udon
         virtual const std::vector<uint8_t>& registerReceiver(size_t size) = 0;
 
     };
-} // namespace udon
+} // namespace Udon

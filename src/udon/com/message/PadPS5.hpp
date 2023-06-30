@@ -15,13 +15,13 @@
 
 #pragma once
 
-#include <udon/utility/Parsable.hpp>
+#include <Udon/Utility/Parsable.hpp>
 
 #include <stdint.h>
 
-namespace udon
+namespace Udon
 {
-    namespace message
+    namespace Message
     {
 
         /// @brief PS5コントローラーのボタン情報
@@ -151,5 +151,5 @@ namespace udon
                 create, option, touch, mic, ps,
                 analogRightX, analogRightY, analogLeftX, analogLeftY);
         };
-    }    // namespace message
-}    // namespace udon
+    }    // namespace Message
+}    // namespace Udon

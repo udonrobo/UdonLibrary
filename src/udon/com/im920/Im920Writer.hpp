@@ -20,16 +20,16 @@
 
 #pragma once
 
-#include <udon/com/im920/IIm920.hpp>
-#include <udon/com/serialization/Serializer.hpp>
+#include <Udon/Com/Im920/IIm920.hpp>
+#include <Udon/Com/Serialization/Serializer.hpp>
 
-namespace udon
+namespace Udon
 {
 
     template <typename Message>
     class Im920Writer
     {
-        static constexpr size_t Size = udon::CapacityWithChecksum<Message>();
+        static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
 
         static_assert(Size <= 64, "The send buffer size for IM920 is limited to 64 bytes");
 
@@ -46,16 +46,16 @@ namespace udon
 
         void setMessage(const Message& message)
         {
-            buffer = udon::Pack(message);
+            buffer = Udon::Pack(message);
         }
 
         /// @brief 送信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
-            if (const auto message = udon::Unpack<Message>(buffer))
+            if (const auto message = Udon::Unpack<Message>(buffer))
             {
-                udon::Show(*message, gap);
+                Udon::Show(*message, gap);
             }
             else
             {
@@ -74,4 +74,4 @@ namespace udon
             }
         }
     };
-}    // namespace udon
+}    // namespace Udon

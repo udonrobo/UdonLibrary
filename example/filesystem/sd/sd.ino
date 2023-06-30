@@ -19,7 +19,7 @@
 
 #include <Udon.hpp>
 
-using udon::Parameter;
+using Udon::Parameter;
 
 
 const int dataSize = 10;

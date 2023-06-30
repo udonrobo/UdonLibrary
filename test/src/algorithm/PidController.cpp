@@ -1,8 +1,8 @@
-#include <udon/algorithm/PidController.hpp>
+#include <Udon/Algorithm/PidController.hpp>
 
 inline void test()
 {
-    udon::PidController pid{ 0.0, 0.0, 0.0, 1000 };
+    Udon::PidController pid{ 0.0, 0.0, 0.0, 1000 };
     pid.setParamPro(0.0);
     pid.setParamInt(0.0);
     pid.setParamDif(0.0);

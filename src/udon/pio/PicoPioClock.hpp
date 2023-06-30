@@ -20,7 +20,7 @@
 
 #    include <udon/pio/SquareWave.pio.hpp>
 
-namespace udon
+namespace Udon
 {
 
     inline void PicoPio0ClockBegin(uint8_t pin, double clockSpeed)
@@ -38,6 +38,6 @@ namespace udon
         hw_set_bits(&pio->ctrl, 1 << (PIO_CTRL_SM_ENABLE_LSB + 0));
     }
 
-}    // namespace udon
+}    // namespace Udon
 
 #endif

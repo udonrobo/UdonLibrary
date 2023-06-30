@@ -18,18 +18,18 @@
 
 #include <limits.h>
 
-#include <udon/stl/EnableSTL.hpp>
+#include <Udon/Stl/EnableSTL.hpp>
 
 #include <type_traits>
 #include <utility>
 
-#include <udon/algorithm/CRC8.hpp>
-#include <udon/math/Ceil.hpp>
-#include <udon/utility/Parsable.hpp>
-#include <udon/types/Float.hpp>
+#include <Udon/Algorithm/CRC8.hpp>
+#include <Udon/Math/Ceil.hpp>
+#include <Udon/Utility/Parsable.hpp>
+#include <Udon/Types/Float.hpp>
 
 
-namespace udon
+namespace Udon
 {
 
     /// @brief シリアライズ後のビット数を求める
@@ -62,11 +62,11 @@ namespace udon
     inline constexpr auto Capacity(const Floating&)
         -> typename std::enable_if<std::is_floating_point<Floating>::value, size_t>::type
     {
-        return sizeof(udon::float32_t) * CHAR_BIT;
+        return sizeof(Udon::float32_t) * CHAR_BIT;
     }
 
-    UDON_HAS_MEMBER_FUNCTION(capacity);           // udon::has_member_function_capacity<T>
-    UDON_HAS_STATIC_MEMBER_FUNCTION(Capacity);    // udon::has_static_member_function_Capacity<T>
+    UDON_HAS_MEMBER_FUNCTION(capacity);           // Udon::has_member_function_capacity<T>
+    UDON_HAS_STATIC_MEMBER_FUNCTION(Capacity);    // Udon::has_static_member_function_Capacity<T>
 
     /// @brief シリアライズ後のビット数を求める
     /// @tparam T capacity メンバ関数を持つ型
@@ -74,7 +74,7 @@ namespace udon
     /// @return
     template <typename T>
     inline constexpr auto Capacity(const T& obj)
-        -> typename std::enable_if<udon::has_member_function_capacity<T>::value, size_t>::type
+        -> typename std::enable_if<Udon::has_member_function_capacity<T>::value, size_t>::type
     {
         return const_cast<T&>(obj).capacity();    // T::capacity() が const でないメンバ関数な場合、obj から呼び出しできないためconstを外す
     }
@@ -85,7 +85,7 @@ namespace udon
     /// @return
     template <typename T>
     inline constexpr auto Capacity(const T&)
-        -> typename std::enable_if<udon::has_static_member_function_Capacity<T>::value, size_t>::type
+        -> typename std::enable_if<Udon::has_static_member_function_Capacity<T>::value, size_t>::type
     {
         return T::Capacity();
     }
@@ -137,8 +137,8 @@ namespace udon
     template <typename T>
     inline constexpr size_t CapacityWithChecksum(const T& obj)
     {
-        return udon::Ceil(Capacity(obj) / static_cast<double>(CHAR_BIT)) +
-               udon::CRC8_SIZE;
+        return Udon::Ceil(Capacity(obj) / static_cast<double>(CHAR_BIT)) +
+               Udon::CRC8_SIZE;
     }
 
     /// @brief チェックサムを含めたシリアライズ後のバイト数を求める
@@ -147,8 +147,8 @@ namespace udon
     template <typename T>
     inline constexpr size_t CapacityWithChecksum()
     {
-        return udon::Ceil(Capacity(T{}) / static_cast<double>(CHAR_BIT)) +
-               udon::CRC8_SIZE;
+        return Udon::Ceil(Capacity(T{}) / static_cast<double>(CHAR_BIT)) +
+               Udon::CRC8_SIZE;
     }
 
-}    // namespace udon
+}    // namespace Udon

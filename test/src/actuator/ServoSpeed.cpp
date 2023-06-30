@@ -1,8 +1,8 @@
-#include <udon/actuator/ServoSpeed.hpp>
+#include <Udon/Actuator/ServoSpeed.hpp>
 
 inline void test()
 {
-    udon::ServoSpeed servo(10000, udon::ServoChoose::_20kg, 10);
+    Udon::ServoSpeed servo(10000, Udon::ServoChoose::_20kg, 10);
     servo.update();
     servo.setAngle(150, 15.3);
     servo.stop();

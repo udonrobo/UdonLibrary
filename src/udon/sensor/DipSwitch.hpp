@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <udon/stl/EnableSTL.hpp>
+#include <Udon/Stl/EnableSTL.hpp>
 
 #include <stdint.h>
 #include <vector>
@@ -24,7 +24,7 @@
 
 #    include <Arduino.h>
 
-namespace udon
+namespace Udon
 {
 
     class DipSwitch
@@ -57,6 +57,6 @@ namespace udon
         }
     };
 
-}    // namespace udon
+}    // namespace Udon
 
 #endif    // __has_include(<Arduino.h>)

@@ -14,7 +14,7 @@
 // squarewave //
 // ---------- //
 
-namespace udon
+namespace Udon
 {
     namespace pio
     {
@@ -49,4 +49,4 @@ namespace udon
 #endif
         }    // namespace sqwave
     }        // namespace pio
-}    // namespace udon
+}    // namespace Udon

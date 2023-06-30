@@ -19,15 +19,15 @@
 #pragma once
 
 #include <Siv3D/Serial.hpp>
-#include <udon/com/serialization/Serializer.hpp>
-#include <udon/utility/Show.hpp>
+#include <Udon/Com/Serialization/Serializer.hpp>
+#include <Udon/Utility/Show.hpp>
 
-namespace udon
+namespace Udon
 {
     template <typename Message>
     class SivUartReader
     {
-        static constexpr size_t Size = udon::CapacityWithChecksum<Message>();
+        static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
 
         s3d::Serial& serial;
 
@@ -70,16 +70,16 @@ namespace udon
             thread.join();
         }
 
-        udon::optional<Message> getMessage() const
+        Udon::Optional<Message> getMessage() const
         {
-            return udon::Unpack<Message>(buffer);
+            return Udon::Unpack<Message>(buffer);
         }
 
         void show(char gap = '\t') const
         {
             if (const auto message = getMessage())
             {
-                udon::Show(*message, gap);
+                Udon::Show(*message, gap);
                 Print.writeln();
             }
             else
@@ -93,4 +93,4 @@ namespace udon
             Print << buffer;
         }
     };
-}    // namespace udon
+}    // namespace Udon

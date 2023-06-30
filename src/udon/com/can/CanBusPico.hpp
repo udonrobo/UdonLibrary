@@ -5,21 +5,21 @@
 #if defined(ARDUINO_ARCH_RP2040)
 
 #    include <stdint.h>
-#    include <udon/algorithm/Delegate.hpp>
-#    include <udon/algorithm/RingBuffer.hpp>
-#    include <udon/com/can/CanInfo.hpp>
-#    include <udon/com/can/CanUtility.hpp>
-#    include <udon/com/can/ICanBus.hpp>
+#    include <Udon/Algorithm/Delegate.hpp>
+#    include <Udon/Algorithm/RingBuffer.hpp>
+#    include <Udon/Com/Can/CanInfo.hpp>
+#    include <Udon/Com/Can/CanUtility.hpp>
+#    include <Udon/Com/Can/ICanBus.hpp>
 #    include <udon/pio/PicoPioClock.hpp>
 
 #    include <udon/thirdparty/PicoMcp2515/mcp2515.h>
 
-namespace udon
+namespace Udon
 {
     class CanBusPico
         : public ICanBus
     {
-        using Delegate = udon::Delegate<CanBusPico, void()>;
+        using Delegate = Udon::Delegate<CanBusPico, void()>;
 
         Delegate delegate;
 
@@ -41,10 +41,10 @@ namespace udon
             }
         };
 
-        udon::RingBuffer<Can20ANode, 32> txNodes;
-        udon::RingBuffer<Can20ANode, 64> rxNodes;
+        Udon::RingBuffer<Can20ANode, 32> txNodes;
+        Udon::RingBuffer<Can20ANode, 64> rxNodes;
 
-        udon::CanBusErrorInfo errorInfo;
+        Udon::CanBusErrorInfo errorInfo;
 
         uint8_t intPin;
 
@@ -148,7 +148,7 @@ namespace udon
                 {
                     return;
                 }
-                udon::Unpacketize(
+                Udon::Unpacketize(
                     { const_cast<can_frame&>(msg).data },
                     { node->data.data(), node->data.size() },
                     Can20ANode::SinglePacketSize);
@@ -161,7 +161,7 @@ namespace udon
                 can_frame msg{};
                 msg.can_id  = node.id;
                 msg.can_dlc = 8;
-                udon::Packetize(
+                Udon::Packetize(
                     { node.data.data(), node.data.size() },
                     { msg.data },
                     Can20ANode::SinglePacketSize,
@@ -173,6 +173,6 @@ namespace udon
             }
         }
     };
-}    // namespace udon
+}    // namespace Udon
 
 #endif

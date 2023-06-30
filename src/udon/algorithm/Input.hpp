@@ -15,7 +15,7 @@
 
 #pragma once
 
-namespace udon
+namespace Udon
 {
 
     class Input
@@ -64,4 +64,4 @@ namespace udon
         }
     };
 
-}    // namespace udon
+}    // namespace Udon

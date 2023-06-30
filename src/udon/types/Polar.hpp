@@ -16,16 +16,16 @@
 
 #pragma once
 
-#include <udon/types/PolarFwd.hpp>
-#include <udon/types/Vector2DFwd.hpp>
+#include <Udon/Types/PolarFwd.hpp>
+#include <Udon/Types/Vector2DFwd.hpp>
 
 template <typename T>
-inline udon::Vector2D<T> udon::Polar_impl<T>::toVector() const noexcept
+inline Udon::Vector2D<T> Udon::Polar_impl<T>::toVector() const noexcept
 {
     return { x(), y() };
 }
 
-namespace udon
+namespace Udon
 {
-    using Polar = udon::Polar_impl<double>;
+    using Polar = Udon::Polar_impl<double>;
 }

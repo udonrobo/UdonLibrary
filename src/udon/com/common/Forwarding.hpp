@@ -18,10 +18,10 @@
 
 #pragma once
 
-#include <udon/traits/MaybeInvoke.hpp>
-#include <udon/utility/Show.hpp>
+#include <Udon/Traits/MaybeInvoke.hpp>
+#include <Udon/Utility/Show.hpp>
 
-namespace udon
+namespace Udon
 {
 
     /// @brief 異なる通信間にメッセージを転送するクラス
@@ -61,40 +61,40 @@ namespace udon
         /// @details 受信クラス、または送信クラスに begin メンバ関数がある場合、呼び出す
         void begin()
         {
-            udon::MaybeInvoke_begin(reader);
-            udon::MaybeInvoke_begin(writer);
+            Udon::MaybeInvoke_begin(reader);
+            Udon::MaybeInvoke_begin(writer);
         }
 
         /// @brief 更新
         /// @details 受信クラス、または送信クラスに update メンバ関数がある場合、呼び出す
         void update()
         {
-            udon::MaybeInvoke_update(reader);
+            Udon::MaybeInvoke_update(reader);
             if (const auto message = reader.getMessage())
             {
                 writer.setMessage(*message);
             }
-            udon::MaybeInvoke_update(writer);
+            Udon::MaybeInvoke_update(writer);
         }
 
         /// @brief 通信状態を表示する
         /// @details 受信クラス、または送信クラスに show メンバ関数がある場合、呼び出す
         void show()
         {
-            udon::Show(F("read: "));
-            udon::MaybeInvoke_show(reader);
-            udon::Show(F("write: "));
-            udon::MaybeInvoke_show(writer);
+            Udon::Show(F("read: "));
+            Udon::MaybeInvoke_show(reader);
+            Udon::Show(F("write: "));
+            Udon::MaybeInvoke_show(writer);
         }
 
         /// @brief 通信状態を表示する
         /// @details 受信クラス、または送信クラスに showRaw メンバ関数がある場合、呼び出す
         void showRaw()
         {
-            udon::Show(F("read: "));
-            udon::MaybeInvoke_showRaw(reader);
-            udon::Show(F("write: "));
-            udon::MaybeInvoke_showRaw(writer);
+            Udon::Show(F("read: "));
+            Udon::MaybeInvoke_showRaw(reader);
+            Udon::Show(F("write: "));
+            Udon::MaybeInvoke_showRaw(writer);
         }
     };
-}    // namespace udon
+}    // namespace Udon

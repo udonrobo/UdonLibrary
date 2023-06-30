@@ -18,21 +18,21 @@
 
 #pragma once
 
-#include <udon/algorithm/Button.hpp>
-#include <udon/com/message/PadPS5.hpp>
-#include <udon/traits/MaybeInvoke.hpp>
-#include <udon/types/Position.hpp>
-#include <udon/types/Vector2D.hpp>
+#include <Udon/Algorithm/Button.hpp>
+#include <Udon/Com/Message/PadPS5.hpp>
+#include <Udon/Traits/MaybeInvoke.hpp>
+#include <Udon/Types/Position.hpp>
+#include <Udon/Types/Vector2D.hpp>
 
 #include <algorithm>
 
-namespace udon
+namespace Udon
 {
 
     /// @brief PS5コントローラー受信クラス
     /// @tparam Reader 受信クラス
     /// @details
-    /// Readerはテンプレート引数にudon::message::PadPS5を指定できる必要があります。
+    /// Readerはテンプレート引数にUdon::Message::PadPS5を指定できる必要があります。
     /// 以下のメンバ関数を持つ必要があります。
     ///   - Message getMessage()
     /// 以下のメンバ関数を持つ場合、自動的に呼び出されます。
@@ -65,7 +65,7 @@ namespace udon
     {
 
         /// @brief 受信クラスの型
-        using reader_type = Reader<message::PadPS5>;
+        using reader_type = Reader<Message::PadPS5>;
 
         /// @brief 受信クラス
         reader_type reader;
@@ -74,29 +74,29 @@ namespace udon
         bool isConnected = false;
 
         /// @brief ボタン [true/false]
-        udon::Input triangle;
-        udon::Input circle;
-        udon::Input cross;
-        udon::Input square;
-        udon::Input up;
-        udon::Input right;
-        udon::Input down;
-        udon::Input left;
-        udon::Input l1;
-        udon::Input r1;
-        udon::Input l2;
-        udon::Input r2;
-        udon::Input l3;
-        udon::Input r3;
-        udon::Input create;
-        udon::Input option;
-        udon::Input touch;
-        udon::Input mic;
-        udon::Input ps;
+        Udon::Input triangle;
+        Udon::Input circle;
+        Udon::Input cross;
+        Udon::Input square;
+        Udon::Input up;
+        Udon::Input right;
+        Udon::Input down;
+        Udon::Input left;
+        Udon::Input l1;
+        Udon::Input r1;
+        Udon::Input l2;
+        Udon::Input r2;
+        Udon::Input l3;
+        Udon::Input r3;
+        Udon::Input create;
+        Udon::Input option;
+        Udon::Input touch;
+        Udon::Input mic;
+        Udon::Input ps;
 
         /// @brief アナログスティック [-255~255]
-        udon::Vec2 rightStick;
-        udon::Vec2 leftStick;
+        Udon::Vec2 rightStick;
+        Udon::Vec2 leftStick;
 
     public:
         /// @brief デフォルトコンストラクタ
@@ -121,7 +121,7 @@ namespace udon
         /// @return
         template <typename T = reader_type>
         auto begin()
-            -> typename std::enable_if<udon::has_member_function_begin<T>::value>::type
+            -> typename std::enable_if<Udon::has_member_function_begin<T>::value>::type
         {
             reader.begin();
         }
@@ -140,146 +140,146 @@ namespace udon
 
         /// @brief トライアングルボタン
         /// @return
-        udon::Button getTriangle() const
+        Udon::Button getTriangle() const
         {
             return triangle;
         }
         /// @brief サークルボタン
         /// @return
-        udon::Button getCircle() const
+        Udon::Button getCircle() const
         {
             return circle;
         }
         /// @brief クロスボタン
         /// @return
-        udon::Button getCross() const
+        Udon::Button getCross() const
         {
             return cross;
         }
         /// @brief スクエアボタン
         /// @return
-        udon::Button getSquare() const
+        Udon::Button getSquare() const
         {
             return square;
         }
         /// @brief 十字キー上
         /// @return
-        udon::Button getUp() const
+        Udon::Button getUp() const
         {
             return up;
         }
         /// @brief 十字キー右
         /// @return
-        udon::Button getRight() const
+        Udon::Button getRight() const
         {
             return right;
         }
         /// @brief 十字キー下
         /// @return
-        udon::Button getDown() const
+        Udon::Button getDown() const
         {
             return down;
         }
         /// @brief 十字キー左
         /// @return
-        udon::Button getLeft() const
+        Udon::Button getLeft() const
         {
             return left;
         }
         /// @brief L1ボタン
         /// @return
-        udon::Button getL1() const
+        Udon::Button getL1() const
         {
             return l1;
         }
         /// @brief R1ボタン
         /// @return
-        udon::Button getR1() const
+        Udon::Button getR1() const
         {
             return r1;
         }
         /// @brief L2ボタン
         /// @return
-        udon::Button getL2() const
+        Udon::Button getL2() const
         {
             return l2;
         }
         /// @brief R2ボタン
         /// @return
-        udon::Button getR2() const
+        Udon::Button getR2() const
         {
             return r2;
         }
         /// @brief 左スティック押し込み
         /// @return
-        udon::Button getL3() const
+        Udon::Button getL3() const
         {
             return l3;
         }
         /// @brief 右スティック押し込み
         /// @return
-        udon::Button getR3() const
+        Udon::Button getR3() const
         {
             return r3;
         }
         /// @brief クリエイトボタン(左上ボタン)
         /// @return
-        udon::Button getCreate() const
+        Udon::Button getCreate() const
         {
             return create;
         }
         /// @brief オプションボタン(右上ボタン)
         /// @return
-        udon::Button getOption() const
+        Udon::Button getOption() const
         {
             return option;
         }
         /// @brief タッチパッドボタン
         /// @return
-        udon::Button getTouch() const
+        Udon::Button getTouch() const
         {
             return touch;
         }
         /// @brief マイクボタン
         /// @return
-        udon::Button getMic() const
+        Udon::Button getMic() const
         {
             return mic;
         }
         /// @brief PSボタン
         /// @return
-        udon::Button getPs() const
+        Udon::Button getPs() const
         {
             return ps;
         }
         /// @brief 左スティック
         /// @return
-        udon::Vec2 getLeftStick() const
+        Udon::Vec2 getLeftStick() const
         {
             return leftStick;
         }
         /// @brief 右スティック
         /// @return
-        udon::Vec2 getRightStick() const
+        Udon::Vec2 getRightStick() const
         {
             return rightStick;
         }
-        /// @brief ロボットの移動に必要なスティックの情報 udon::Positionオブジェクト {{x,y},turn} を取得
+        /// @brief ロボットの移動に必要なスティックの情報 Udon::Positionオブジェクト {{x,y},turn} を取得
         /// @remark 左スティックから移動成分、右スティックX軸から旋回成分を取得
         /// @return
-        udon::Pos getMoveInfo() const
+        Udon::Pos getMoveInfo() const
         {
             return { leftStick, rightStick.x };
         }
 
         void show() const
         {
-            udon::MaybeInvoke_show(reader);
+            Udon::MaybeInvoke_show(reader);
         }
 
         void showRaw() const
         {
-            udon::MaybeInvoke_showRaw(reader);
+            Udon::MaybeInvoke_showRaw(reader);
         }
     };
 
@@ -292,7 +292,7 @@ namespace udon
     template <template <typename> typename Reader>
     void PadPS5<Reader>::update()
     {
-        udon::MaybeInvoke_update(reader);
+        Udon::MaybeInvoke_update(reader);
 
         if (auto&& message = reader.getMessage())
         {
@@ -384,4 +384,4 @@ namespace udon
         }
     }
 
-}    // namespace udon
+}    // namespace Udon

@@ -15,15 +15,15 @@
 
 #pragma once
 
-#include <udon/stl/EnableSTL.hpp>
+#include <Udon/Stl/EnableSTL.hpp>
 
 #include <array>
 
-#include <udon/math/Math.hpp>
-#include <udon/types/Polar.hpp>
+#include <Udon/Math/Math.hpp>
+#include <Udon/Types/Polar.hpp>
 
 
-namespace udon
+namespace Udon
 {
 
     /// @brief 独立ステアリング機構最適化クラス
@@ -36,7 +36,7 @@ namespace udon
         std::array<double, WheelCount> offset;
 
         /// @brief 最適値
-        std::array<udon::Polar, WheelCount> optimized;
+        std::array<Udon::Polar, WheelCount> optimized;
 
     public:
         /// @brief コンストラクタ
@@ -51,14 +51,14 @@ namespace udon
         /// @param raw     最適化前の値                     (極座標配列 r:[-π~π(radians)] theta:[自由])
         /// @return        最適化後の値                     (極座標配列 r:[-∞~∞(radians)] theta:[±最適化前theta])
         inline auto operator()(
-            const std::array<udon::Polar, WheelCount>& current,
-            const std::array<udon::Polar, WheelCount>& raw) -> std::array<udon::Polar, WheelCount>;
+            const std::array<Udon::Polar, WheelCount>& current,
+            const std::array<Udon::Polar, WheelCount>& raw) -> std::array<Udon::Polar, WheelCount>;
 
         /// @brief 最適化を行う(前回の制御値と比較する)
         /// @param raw 最適化前の値 (極座標配列 r:[-π~π(radians)] theta:[自由])
         /// @return    最適化後の値 (極座標配列 r:[-∞~∞(radians)] theta:[±最適化前theta])
         auto operator()(
-            const std::array<udon::Polar, WheelCount>& raw) -> std::array<udon::Polar, WheelCount>
+            const std::array<Udon::Polar, WheelCount>& raw) -> std::array<Udon::Polar, WheelCount>
         {
             return (*this)(optimized, raw);
         }
@@ -66,11 +66,11 @@ namespace udon
 
     template <size_t WheelCount>
     inline auto SteerOptimizer<WheelCount>::operator()(
-        const std::array<udon::Polar, WheelCount>& current,
-        const std::array<udon::Polar, WheelCount>& raw) -> std::array<udon::Polar, WheelCount>
+        const std::array<Udon::Polar, WheelCount>& current,
+        const std::array<Udon::Polar, WheelCount>& raw) -> std::array<Udon::Polar, WheelCount>
     {
         // タイヤのどれも動いていない -> 前回値
-        if (std::any_of(raw.begin(), raw.end(), [](const udon::Polar& steer)
+        if (std::any_of(raw.begin(), raw.end(), [](const Udon::Polar& steer)
                         { return steer.r == 0.; }))
         {
             for (auto&& it : optimized)
@@ -84,40 +84,40 @@ namespace udon
         {
             // atan2 から求めた角度 [-π ~ π] から無限回転に変換
             const auto infinitemized = [](
-                                           const udon::Polar& prev,
+                                           const Udon::Polar& prev,
                                            double&            offsetRef,
-                                           const udon::Polar& raw) -> udon::Polar
+                                           const Udon::Polar& raw) -> Udon::Polar
             {
                 // 変化角
                 const auto dAngle = raw.theta + offsetRef - prev.theta;
 
                 // 変化量がいきなり半周を超えた -> -π~π の間を通過 -> 一周分オフセットを加算
-                if (dAngle > udon::Pi)
+                if (dAngle > Udon::Pi)
                 {
-                    offsetRef -= udon::Pi * 2;
+                    offsetRef -= Udon::Pi * 2;
                 }
-                else if (dAngle < -udon::Pi)
+                else if (dAngle < -Udon::Pi)
                 {
-                    offsetRef += udon::Pi * 2;
+                    offsetRef += Udon::Pi * 2;
                 }
                 return { raw.r, raw.theta + offsetRef };
             }(current.at(i), offset.at(i), raw.at(i));
 
             // 旋回方向、ホイール回転方向最適化後
             const auto reversibled = [](const Polar& prev,
-                                        const Polar& raw) -> udon::Polar
+                                        const Polar& raw) -> Udon::Polar
             {
                 // 変化角
                 const auto dAngle = raw.theta - prev.theta;
 
                 // 90度以上回転するときはホイールを逆回転させ、半周旋回
-                if (dAngle > udon::Pi / 2)
+                if (dAngle > Udon::Pi / 2)
                 {
-                    return { raw.r * -1, raw.theta - udon::Pi };
+                    return { raw.r * -1, raw.theta - Udon::Pi };
                 }
-                else if (dAngle < -udon::Pi / 2)
+                else if (dAngle < -Udon::Pi / 2)
                 {
-                    return { raw.r * -1, raw.theta + udon::Pi };
+                    return { raw.r * -1, raw.theta + Udon::Pi };
                 }
                 else
                 {
@@ -132,4 +132,4 @@ namespace udon
         return optimized;
     }
 
-}    // namespace udon
+}    // namespace Udon

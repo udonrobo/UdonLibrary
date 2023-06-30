@@ -21,10 +21,10 @@
 #    include <Udon.hpp>
 
 // IM920 引数にはIm920と通信するシリアルクラスのインスタンスを指定します。
-udon::Im920 im920{ Serial1 };
+Udon::Im920 im920{ Serial1 };
 
 // IM920 送信クラス クラステンプレート引数には送信データの型を指定します。
-udon::Im920Writer<udon::Vec2> writer{ im920 };
+Udon::Im920Writer<Udon::Vec2> writer{ im920 };
 
 void setup()
 {

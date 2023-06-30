@@ -1,28 +1,28 @@
 #include <Arduino.h>
 
-#include <udon/types/Quaternion.hpp>
+#include <Udon/Types/Quaternion.hpp>
 
 inline void test()
 {
 
     // コンストラクタ
     {
-        constexpr udon::Quaternion a;
+        constexpr Udon::Quaternion a;
 
-        constexpr udon::Quaternion b = a;
+        constexpr Udon::Quaternion b = a;
 
-        constexpr udon::Quaternion c = { 100, 200, 300, 400 };
+        constexpr Udon::Quaternion c = { 100, 200, 300, 400 };
     }
 
     // コピー代入演算子
     {
-        udon::Quaternion a, b;
+        Udon::Quaternion a, b;
         a = b;
     }
 
     // 二項演算子
     {
-        constexpr udon::Quaternion a, b = { 10, 20, 30, 40 };
+        constexpr Udon::Quaternion a, b = { 10, 20, 30, 40 };
         a + b;
         a - b;
         a * b;
@@ -35,7 +35,7 @@ inline void test()
 
     // 複合代入演算子
     {
-        udon::Quaternion a, b;
+        Udon::Quaternion a, b;
         a += b;
         a -= b;
         a *= b;
@@ -48,22 +48,22 @@ inline void test()
 
     // 比較演算子
     {
-        constexpr udon::Quaternion a = { 100, 200, 300, 40 };
-        constexpr udon::Quaternion b = { 100, 200, 300, 40 };
+        constexpr Udon::Quaternion a = { 100, 200, 300, 40 };
+        constexpr Udon::Quaternion b = { 100, 200, 300, 40 };
 
         static_assert(a == b, "");
     }
 
     // operator bool
     {
-        constexpr udon::Quaternion a = { 0, 0, 0, 0 };
+        constexpr Udon::Quaternion a = { 0, 0, 0, 0 };
         static_assert((bool)a == false, "");
         static_assert(a.isZero(), "");
     }
 
     // その他関数
     {
-        udon::Quaternion a;
+        Udon::Quaternion a;
         a.toEuler();
         a.clear();
         a.show();
@@ -71,9 +71,9 @@ inline void test()
 
     // シリアライズ
     {
-        udon::Quaternion a;
-        static_assert(udon::CapacityWithChecksum(a) == 16 + 1, "");
-        const auto b = udon::Pack(a);
-        (void)udon::Unpack<udon::Quaternion>(b);
+        Udon::Quaternion a;
+        static_assert(Udon::CapacityWithChecksum(a) == 16 + 1, "");
+        const auto b = Udon::Pack(a);
+        (void)Udon::Unpack<Udon::Quaternion>(b);
     }
 }

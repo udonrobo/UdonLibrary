@@ -16,11 +16,11 @@
 
 #pragma once
 
-#include <udon/types/EulerFwd.hpp>
-#include <udon/types/QuaternionFwd.hpp>
+#include <Udon/Types/EulerFwd.hpp>
+#include <Udon/Types/QuaternionFwd.hpp>
 
 template <typename T>
-udon::Quaternion udon::Euler3D<T>::toQuaternion() const noexcept
+Udon::Quaternion Udon::Euler3D<T>::toQuaternion() const noexcept
 {
     const auto cr = cos(roll  / 2);
     const auto cp = cos(pitch / 2);

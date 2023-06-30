@@ -1,8 +1,8 @@
-#include <udon/sensor/EncoderPico.hpp>
+#include <Udon/Sensor/EncoderPico.hpp>
 
 #if defined(ARDUINO_ARCH_RP2040)
 
-namespace udon
+namespace Udon
 {
     EncoderPico::EncoderStatus* EncoderPico::statuses[EncoderPico::PICO_GPOI_PIN_COUNT]; 
 }

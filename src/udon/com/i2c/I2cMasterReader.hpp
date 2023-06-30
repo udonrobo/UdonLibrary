@@ -18,20 +18,20 @@
 
 #pragma once
 
-#include <udon/com/i2c/I2cBus.hpp>
-#include <udon/com/serialization/Serializer.hpp>
-#include <udon/utility/Show.hpp>
+#include <Udon/Com/I2c/I2cBus.hpp>
+#include <Udon/Com/Serialization/Serializer.hpp>
+#include <Udon/Utility/Show.hpp>
 
-namespace udon
+namespace Udon
 {
 
     template <class Message>
     class I2cMasterReader
     {
 
-        static constexpr size_t Size = udon::CapacityWithChecksum<Message>();
+        static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
 
-        udon::II2cBus& bus;
+        Udon::II2cBus& bus;
 
         uint8_t address;
 
@@ -41,7 +41,7 @@ namespace udon
         /// @brief コンストラクタ
         /// @param bus I2cバス
         /// @param address スレーブアドレス
-        I2cMasterReader(udon::II2cBus& bus, uint8_t address)
+        I2cMasterReader(Udon::II2cBus& bus, uint8_t address)
             : bus(bus)
             , address(address)
             , buffer()
@@ -63,15 +63,15 @@ namespace udon
 
         /// @brief 受信したメッセージを取得
         /// @return 受信したメッセージ
-        udon::optional<Message> getMessage() const
+        Udon::Optional<Message> getMessage() const
         {
             if (bus)
             {
-                return udon::Unpack<Message>(buffer);
+                return Udon::Unpack<Message>(buffer);
             }
             else
             {
-                return udon::nullopt;
+                return Udon::nullopt;
             }
         }
 
@@ -81,11 +81,11 @@ namespace udon
         {
             if (const auto message = getMessage())
             {
-                udon::Show(*message, gap);
+                Udon::Show(*message, gap);
             }
             else
             {
-                udon::Show(F("receive failed!"));
+                Udon::Show(F("receive failed!"));
             }
         }
 
@@ -93,8 +93,8 @@ namespace udon
         /// @param gap 区切り文字 (default: ' ')
         void showRaw(char gap = ' ') const
         {
-            udon::Show(buffer, gap);
+            Udon::Show(buffer, gap);
         }
     };
 
-}    // namespace udon
+}    // namespace Udon

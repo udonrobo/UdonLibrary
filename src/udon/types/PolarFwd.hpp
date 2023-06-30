@@ -16,10 +16,10 @@
 
 #pragma once
 
-#include <udon/utility/Parsable.hpp>
-#include <udon/com/serialization/Serializer.hpp>
+#include <Udon/Utility/Parsable.hpp>
+#include <Udon/Com/Serialization/Serializer.hpp>
 
-namespace udon
+namespace Udon
 {
     template <typename T>
     struct Vector2D;
@@ -77,4 +77,4 @@ namespace udon
 
         UDON_PARSABLE(r, theta);
     };
-}    // namespace udon
+}    // namespace Udon

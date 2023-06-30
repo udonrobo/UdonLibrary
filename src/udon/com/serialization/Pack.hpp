@@ -18,19 +18,19 @@
 
 #include <limits.h>
 
-#include <udon/stl/EnableSTL.hpp>
+#include <Udon/Stl/EnableSTL.hpp>
 
 #include <algorithm>
 #include <vector>
 
-#include <udon/algorithm/CRC8.hpp>
-#include <udon/algorithm/Endian.hpp>
-#include <udon/com/serialization/Capacity.hpp>
-#include <udon/math/Math.hpp>
-#include <udon/types/Float.hpp>
-#include <udon/utility/Parsable.hpp>
+#include <Udon/Algorithm/CRC8.hpp>
+#include <Udon/Algorithm/Endian.hpp>
+#include <Udon/Com/Serialization/Capacity.hpp>
+#include <Udon/Math/Math.hpp>
+#include <Udon/Types/Float.hpp>
+#include <Udon/Utility/Parsable.hpp>
 
-namespace udon
+namespace Udon
 {
 
     class Serializer
@@ -74,7 +74,7 @@ namespace udon
         inline auto operator()(const Floating& rhs)
             -> typename std::enable_if<std::is_floating_point<Floating>::value>::type
         {
-            packScalar(static_cast<udon::float32_t>(rhs));
+            packScalar(static_cast<Udon::float32_t>(rhs));
         }
 
         /// @brief
@@ -95,7 +95,7 @@ namespace udon
         /// @param rhs
         /// @return
         template <typename T>
-        inline auto operator()(const T& rhs) -> typename std::enable_if<udon::has_member_iterate_accessor<Serializer, T>::value>::type
+        inline auto operator()(const T& rhs) -> typename std::enable_if<Udon::has_member_iterate_accessor<Serializer, T>::value>::type
         {
             // T::accessor が const なメンバ関数でない場合に const rhs から呼び出せないため、const_cast によって const を除去
             const_cast<T&>(rhs).accessor(*this);
@@ -117,8 +117,8 @@ namespace udon
         /// @remark 取得後のバッファは無効です。
         std::vector<uint8_t> flush()
         {
-            buffer.back() = udon::CRC8(buffer.data(), buffer.size() - udon::CRC8_SIZE);
-            if (udon::GetEndian() == Endian::Big)
+            buffer.back() = Udon::CRC8(buffer.data(), buffer.size() - Udon::CRC8_SIZE);
+            if (Udon::GetEndian() == Endian::Big)
             {
                 std::reverse(buffer.begin(), buffer.end());
             }
@@ -154,7 +154,7 @@ namespace udon
                 boolInsertIndex = insertIndex++;
             }
 
-            udon::BitWrite(buffer.at(boolInsertIndex), boolCount, rhs);
+            Udon::BitWrite(buffer.at(boolInsertIndex), boolCount, rhs);
 
             if (++boolCount >= CHAR_BIT)
             {
@@ -167,9 +167,9 @@ namespace udon
     inline std::vector<uint8_t> Pack(const T& rhs)
     {
         // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
-        static_assert(udon::is_parsable<T>::value, "T must be parsable type.");
+        static_assert(Udon::is_parsable<T>::value, "T must be parsable type.");
 
-        Serializer serializer(udon::CapacityWithChecksum(rhs));
+        Serializer serializer(Udon::CapacityWithChecksum(rhs));
         serializer(rhs);
         return serializer.flush();
     }
@@ -185,9 +185,9 @@ namespace udon
     inline bool Pack(const T& rhs, uint8_t* buffer, size_t size)
     {
         // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
-        static_assert(udon::is_parsable<T>::value, "T must be parsable type.");
+        static_assert(Udon::is_parsable<T>::value, "T must be parsable type.");
 
-        if (size >= udon::CapacityWithChecksum(rhs))
+        if (size >= Udon::CapacityWithChecksum(rhs))
         {
             const auto vector = Pack(rhs);
             std::copy(vector.begin(), vector.end(), buffer);
@@ -214,9 +214,9 @@ namespace udon
     inline bool Pack(const T& rhs, uint8_t (&array)[N])
     {
         // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
-        static_assert(udon::is_parsable<T>::value, "T must be parsable type.");
+        static_assert(Udon::is_parsable<T>::value, "T must be parsable type.");
         
         return Pack(rhs, array, N);
     }
 
-}    // namespace udon
+}    // namespace Udon

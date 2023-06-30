@@ -18,11 +18,11 @@
 
 #include <Udon.hpp>
 
-udon::I2cBus bus{ Wire };
+Udon::I2cBus bus{ Wire };
 
-udon::PadPS5<udon::I2cMasterReader> pad{ { bus, 6 } };
+Udon::PadPS5<Udon::I2cMasterReader> pad{ { bus, 6 } };
 
-udon::I2cMasterWriter<udon::RGB> writer{ bus, 6 };
+Udon::I2cMasterWriter<Udon::RGB> writer{ bus, 6 };
 
 void setup()
 {

@@ -18,7 +18,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-namespace udon
+namespace Udon
 {
 
     constexpr size_t CRC8_SIZE = 1;
@@ -51,4 +51,4 @@ namespace udon
         return crc;
     }
 
-}    // namespace udon
+}    // namespace Udon

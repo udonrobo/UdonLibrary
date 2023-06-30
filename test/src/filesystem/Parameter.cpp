@@ -1,10 +1,10 @@
-#include <udon/filesystem/sd/Parameter.hpp>
+#include <Udon/Filesystem/Sd/Parameter.hpp>
 
 #if defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__)
 
 inline void test()
 {
-    udon::Parameter p(10, "hoge.csv");
+    Udon::Parameter p(10, "hoge.csv");
 
     p.readParameter();
     p.readShow();

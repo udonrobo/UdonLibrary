@@ -19,10 +19,10 @@
 
 #pragma once
 
-#include <udon/com/serialization/Serializer.hpp>
-#include <udon/utility/Show.hpp>
+#include <Udon/Com/Serialization/Serializer.hpp>
+#include <Udon/Utility/Show.hpp>
 
-namespace udon
+namespace Udon
 {
 
     template <class Message>
@@ -44,7 +44,7 @@ namespace udon
         /// @brief 更新
         void update()
         {
-            for (auto&& it : udon::Pack(message))
+            for (auto&& it : Udon::Pack(message))
             {
                 uart.write(it);
             }
@@ -62,14 +62,14 @@ namespace udon
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
-            udon::Show(message, gap);
+            Udon::Show(message, gap);
         }
 
         /// @brief 生の送信内容を表示
         /// @param gap 区切り文字 (default: ' ')
         void showRaw(char gap = ' ') const
         {
-            for (auto&& it : udon::Pack(message))
+            for (auto&& it : Udon::Pack(message))
             {
                 Serial.print(it);
                 Serial.print(gap);
@@ -77,4 +77,4 @@ namespace udon
         }
     };
 
-}    // namespace udon
+}    // namespace Udon

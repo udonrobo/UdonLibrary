@@ -18,16 +18,16 @@
 
 #pragma once
 
-#include <udon/com/message/PadPS5.hpp>
+#include <Udon/Com/Message/PadPS5.hpp>
 
-namespace udon
+namespace Udon
 {
 
     template <typename DummyMessage>
     class SivPadPS5
     {
 
-        udon::message::PadPS5 message = {};
+        Udon::Message::PadPS5 message = {};
 
         size_t index = 0;
 
@@ -126,9 +126,9 @@ namespace udon
             }
         }
 
-        const udon::message::PadPS5& getMessage() const
+        const Udon::Message::PadPS5& getMessage() const
         {
             return message;
         }
     };
-}    // namespace udon
+}    // namespace Udon

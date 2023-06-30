@@ -16,18 +16,18 @@
 
 #pragma once
 
-#include <udon/math/Math.hpp>
-#include <udon/types/Polar.hpp>
-#include <udon/types/Vector2D.hpp>
-#include <udon/utility/Parsable.hpp>
-#include <udon/com/serialization/Serializer.hpp>
+#include <Udon/Math/Math.hpp>
+#include <Udon/Types/Polar.hpp>
+#include <Udon/Types/Vector2D.hpp>
+#include <Udon/Utility/Parsable.hpp>
+#include <Udon/Com/Serialization/Serializer.hpp>
 
-#include <udon/stl/EnableSTL.hpp>
+#include <Udon/Stl/EnableSTL.hpp>
 
 #include <algorithm>
 #include <array>
 
-namespace udon
+namespace Udon
 {
 
     /// @brief ロボットの位置
@@ -40,7 +40,7 @@ namespace udon
         using value_type = T;
 
         /// @brief 座標
-        udon::Vector2D<value_type> vector;
+        Udon::Vector2D<value_type> vector;
 
         /// @brief 旋回角 [rad]
         value_type turn;
@@ -60,7 +60,7 @@ namespace udon
         }
 
         /// @brief コンストラクタ
-        constexpr Position(const udon::Vector2D<value_type>& vector, value_type turn) noexcept
+        constexpr Position(const Udon::Vector2D<value_type>& vector, value_type turn) noexcept
             : vector(vector)
             , turn(turn)
         {
@@ -133,7 +133,7 @@ namespace udon
         //{
         //     uint8_t    powerLimit     = 255;
         //             uint8_t turnPowerLimit = 255;
-        //     const auto mapedTurn = udon::Map(turn, -255, 255, -turnPowerLimit, turnPowerLimit);
+        //     const auto mapedTurn = Udon::Map(turn, -255, 255, -turnPowerLimit, turnPowerLimit);
 
         //    std::array<double, 4> powers{ {
         //        +vector.x + -vector.y + mapedTurn,
@@ -172,25 +172,25 @@ namespace udon
         ///   ↑      ↑
         ///  |２|    |１|
         template <size_t WheelCount = 4>
-        std::array<udon::Polar, WheelCount> toSteer(uint8_t powerLimit     = 255,
+        std::array<Udon::Polar, WheelCount> toSteer(uint8_t powerLimit     = 255,
                                                     uint8_t turnPowerLimit = 255) const
         {
             static_assert(WheelCount >= 3, "WheelCount must be greater than or equal to 3.");
             static_assert(WheelCount == 4, "Not supported over 4 wheels now.");    // todo: 5輪以上対応
 
             // 旋回移動ベクトル
-            const udon::Vec2 turnVec = { 0, udon::Map(this->turn, -255, 255, -turnPowerLimit, turnPowerLimit) };
+            const Udon::Vec2 turnVec = { 0, Udon::Map(this->turn, -255, 255, -turnPowerLimit, turnPowerLimit) };
 
             // 旋回移動ベクトル、進行移動ベクトルから角車輪の進行方向ベクトルを算出
-            std::array<udon::Vec2, WheelCount> vectors;
+            std::array<Udon::Vec2, WheelCount> vectors;
 
             for (size_t i = 0; i < WheelCount; ++i)
             {
-                vectors.at(i) = vector + turnVec.rotated(udon::Pi * (i * 2 + 3) / WheelCount);
+                vectors.at(i) = vector + turnVec.rotated(Udon::Pi * (i * 2 + 3) / WheelCount);
             }
 
             // 方向ベクトルから極座標系(theta:旋回角, r:タイヤ出力)に変換
-            std::array<udon::Polar, WheelCount> modules;
+            std::array<Udon::Polar, WheelCount> modules;
 
             for (size_t i = 0; i < WheelCount; ++i)
             {
@@ -200,7 +200,7 @@ namespace udon
             // 上で算出した出力値は {limit} を超える場合があります。
             // 超えた場合、最大出力のモジュールの出力を {limit} として他のモジュールの出力を圧縮します。
             // 出力値はベクトルの長さから求めるため負にならない {max} は正の値であることが保証
-            auto&& max = *std::max_element(modules.begin(), modules.end(), [](const udon::Polar& lhs, const udon::Polar& rhs)
+            auto&& max = *std::max_element(modules.begin(), modules.end(), [](const Udon::Polar& lhs, const Udon::Polar& rhs)
                                            { return lhs.r < rhs.r; });
 
             if (max.r > powerLimit)
@@ -229,4 +229,4 @@ namespace udon
 
     using Pos = Position<double>;
 
-}    // namespace udon
+}    // namespace Udon

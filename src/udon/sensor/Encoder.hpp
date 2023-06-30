@@ -16,26 +16,26 @@
 
 #pragma once
 
-#include <udon/stl/EnableSTL.hpp>
+#include <Udon/Stl/EnableSTL.hpp>
 
 #include <algorithm>
 
-#include <udon/algorithm/DeltaTime.hpp>
-#include <udon/com/message/Motor.hpp>
-#include <udon/traits/MaybeInvoke.hpp>
+#include <Udon/Algorithm/DeltaTime.hpp>
+#include <Udon/Com/Message/Motor.hpp>
+#include <Udon/Traits/MaybeInvoke.hpp>
 
 
-namespace udon
+namespace Udon
 {
 
     template <template <typename> typename Reader>
     class Encoder
     {
-        using reader_type = Reader<message::Encoder>;
+        using reader_type = Reader<Message::Encoder>;
 
         reader_type reader;
 
-        udon::DeltaTime deltaTime;
+        Udon::DeltaTime deltaTime;
 
         bool direction;
 
@@ -62,7 +62,7 @@ namespace udon
         /// @brief 更新
         void update()
         {
-            udon::MaybeInvoke_update(reader);
+            Udon::MaybeInvoke_update(reader);
 
             const auto prev = getCount();
 
@@ -101,4 +101,4 @@ namespace udon
         }
     };
 
-}    // namespace udon
+}    // namespace Udon

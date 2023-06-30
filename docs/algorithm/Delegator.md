@@ -60,11 +60,11 @@ TwoWire クラスの onReceive のような高階関数は関数ポインタを�
 
 -   file
 
-    [Delegate.hpp](../../src/udon/algorithm/Delegate.hpp)
+    [Delegate.hpp](../../Src/Udon/Algorithm/Delegate.hpp)
 
 -   名前空間
 
-    `udon`
+    `Udon`
 
 ## Usage
 
@@ -73,7 +73,7 @@ TwoWire クラスの onReceive のような高階関数は関数ポインタを�
     ```cpp
     #include <Udon.hpp>
     // or
-    #include <udon/algorithm/Delegate.hpp>
+    #include <Udon/Algorithm/Delegate.hpp>
     ```
 
 2. 登録したいメンバ関数があるクラス内でインスタンス化します。
@@ -83,10 +83,10 @@ TwoWire クラスの onReceive のような高階関数は関数ポインタを�
     コンストラクタの引数には、メンバ関数があるクラスのインスタンスを指すポインタ(this ポインタ)、メンバ関数ポインタを指定します。
 
     ```cpp
-    #include <udon/algorithm/Delegate.hpp>
+    #include <Udon/Algorithm/Delegate.hpp>
     class Sample
     {
-    	udon::Delegate<Sample, void(int)> delegate;
+    	Udon::Delegate<Sample, void(int)> delegate;
     public:
     	Sample()
     		: delegate(this, &Sample::onReceive)
@@ -123,8 +123,8 @@ TwoWire クラスの onReceive のような高階関数は関数ポインタを�
     ```cpp
       class Sample
       {
-      	udon::Delegate<Sample, void(int)> delegate0;
-      	udon::Delegate<Sample, void(int)> delegate1;
+      	Udon::Delegate<Sample, void(int)> delegate0;
+      	Udon::Delegate<Sample, void(int)> delegate1;
       public:
       	Sample()
       		: delegate0(this, &Sample::onReceive)
@@ -135,17 +135,17 @@ TwoWire クラスの onReceive のような高階関数は関数ポインタを�
       };
     ```
 
-    `Delegate` クラスの第三テンプレート引数にユニークな値を指定することで `udon::Delegate<Sample, void(int), 0>` `udon::Delegate<Sample, void(int), 1>` はそれぞれ異なる型となるので保持することができます。(ゴリ押し)
+    `Delegate` クラスの第三テンプレート引数にユニークな値を指定することで `Udon::Delegate<Sample, void(int), 0>` `Udon::Delegate<Sample, void(int), 1>` はそれぞれ異なる型となるので保持することができます。(ゴリ押し)
 
     `__COUNTER__` マクロを使うことでユニークな値を生成できます。
 
     ```cpp
       class Sample
       {
-      	// udon::Delegate<Sample, void(int), 0> delegate0;
-      	// udon::Delegate<Sample, void(int), 1> delegate1;
-      	udon::Delegate<Sample, void(int), __COUNTER__> delegate0;
-      	udon::Delegate<Sample, void(int), __COUNTER__> delegate1;
+      	// Udon::Delegate<Sample, void(int), 0> delegate0;
+      	// Udon::Delegate<Sample, void(int), 1> delegate1;
+      	Udon::Delegate<Sample, void(int), __COUNTER__> delegate0;
+      	Udon::Delegate<Sample, void(int), __COUNTER__> delegate1;
       public:
       	Sample()
       		: delegate0(this, &Sample::onReceive)
@@ -164,7 +164,7 @@ TwoWire クラスの onReceive のような高階関数は関数ポインタを�
     template<int Unique>
       class Sample_impl
       {
-      	udon::Delegate<Sample_impl, void(int)> delegate;
+      	Udon::Delegate<Sample_impl, void(int)> delegate;
       public:
       	Sample_impl()
       		: delegate(this, &Sample_impl::onReceive)
@@ -188,14 +188,14 @@ TwoWire クラスの高階関数にメンバ関数を登録する例
 
 ```cpp
 #include <Wire.h>
-#include <udon/algorithm/Delegate.hpp>
+#include <Udon/Algorithm/Delegate.hpp>
 
 class I2cSlaveReader
 {
 
 	TwoWire& wire;
 
-	udon::Delegate<I2cSlaveReader, void(int)> onReceiveDelegate;
+	Udon::Delegate<I2cSlaveReader, void(int)> onReceiveDelegate;
 
 public:
 

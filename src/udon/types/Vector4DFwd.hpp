@@ -16,10 +16,10 @@
 
 #pragma once
 
-#include <udon/utility/Parsable.hpp>
-#include <udon/com/serialization/Serializer.hpp>
+#include <Udon/Utility/Parsable.hpp>
+#include <Udon/Com/Serialization/Serializer.hpp>
 
-namespace udon
+namespace Udon
 {
 
     template <typename T>
@@ -128,9 +128,9 @@ namespace udon
             *this = {};
         }
 
-        udon::Vector2D<value_type> xy() const;
+        Udon::Vector2D<value_type> xy() const;
 
-        udon::Vector3D<value_type> xyz() const;
+        Udon::Vector3D<value_type> xyz() const;
 
 #ifdef ARDUINO
         /// @brief デバッグ出力
@@ -146,4 +146,4 @@ namespace udon
         UDON_PARSABLE(x, y, z, w);
     };
 
-}    // namespace udon
+}    // namespace Udon

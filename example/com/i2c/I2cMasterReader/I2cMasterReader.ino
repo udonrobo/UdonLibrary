@@ -19,10 +19,10 @@
 #include <Udon.hpp>
 
 // I2C バス管理クラス
-udon::I2cBus bus{ Wire };
+Udon::I2cBus bus{ Wire };
 
 // I2C マスター側受信クラス
-udon::I2cMasterReader<udon::Vec2> reader{ bus, 6 };
+Udon::I2cMasterReader<Udon::Vec2> reader{ bus, 6 };
 
 void setup()
 {
@@ -43,8 +43,8 @@ void loop()
     // スレーブに送信リクエストを行います。
     reader.update();
 
-    // getMessage 関数によって、受信クラスのテンプレートクラス引数で指定した型の optional 値を取得します。
-    // 通信エラー時は、udon::nullopt が返るため if 文で判定してください。
+    // getMessage 関数によって、受信クラスのテンプレートクラス引数で指定した型の Optional 値を取得します。
+    // 通信エラー時は、Udon::nullopt が返るため if 文で判定してください。
     if (const auto message = reader.getMessage())
     {
         // 正常時

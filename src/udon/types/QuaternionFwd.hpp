@@ -16,10 +16,10 @@
 
 #pragma once
 
-#include <udon/utility/Parsable.hpp>
-#include <udon/com/serialization/Serializer.hpp>
+#include <Udon/Utility/Parsable.hpp>
+#include <Udon/Com/Serialization/Serializer.hpp>
 
-namespace udon
+namespace Udon
 {
 
     template <typename T>
@@ -136,4 +136,4 @@ namespace udon
 
         UDON_PARSABLE(x, y, z, w)
     };
-}    // namespace udon
+}    // namespace Udon

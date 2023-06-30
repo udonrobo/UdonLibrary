@@ -11,12 +11,12 @@
 #    include <FlexCAN_T4.h>       // https://github.com/tonton81/FlexCan_T4.git
 #    include <IntervalTimer.h>    // https://github.com/loglow/IntervalTimer.git
 
-#    include <udon/algorithm/RingBuffer.hpp>
-#    include <udon/com/can/CanInfo.hpp>
-#    include <udon/com/can/CanUtility.hpp>
-#    include <udon/com/can/ICanBus.hpp>
+#    include <Udon/Algorithm/RingBuffer.hpp>
+#    include <Udon/Com/Can/CanInfo.hpp>
+#    include <Udon/Com/Can/CanUtility.hpp>
+#    include <Udon/Com/Can/ICanBus.hpp>
 
-namespace udon
+namespace Udon
 {
 
     /// @brief FlexCan_T4ライブラリを用いたCANバス管理クラス
@@ -63,8 +63,8 @@ namespace udon
             }
         };
 
-        udon::RingBuffer<Can20ANode, 32> txNodes = {};
-        udon::RingBuffer<Can20ANode, 64> rxNodes = {};
+        Udon::RingBuffer<Can20ANode, 32> txNodes = {};
+        Udon::RingBuffer<Can20ANode, 64> rxNodes = {};
 
         uint32_t transmitUs = 0;
 
@@ -164,7 +164,7 @@ namespace udon
         /// @param nodes
         /// @return
         template <size_t N>
-        CanNodeView createNode(uint16_t id, size_t size, udon::RingBuffer<Can20ANode, N>& nodes)
+        CanNodeView createNode(uint16_t id, size_t size, Udon::RingBuffer<Can20ANode, N>& nodes)
         {
             auto it = std::find_if(nodes.begin(), nodes.end(), [id](const Can20ANode& node)
                                    { return node.id == id; });
@@ -213,7 +213,7 @@ namespace udon
             {
                 return;
             }
-            udon::Unpacketize(
+            Udon::Unpacketize(
                 { const_cast<CAN_message_t&>(msg).buf },
                 { node->temp.data(), node->temp.size() },
                 Can20ANode::SinglePacketSize);
@@ -236,7 +236,7 @@ namespace udon
             {
                 CAN_message_t msg{};
                 msg.id = node.id;
-                udon::Packetize(
+                Udon::Packetize(
                     { node.data.data(), node.data.size() },
                     { msg.buf },
                     Can20ANode::SinglePacketSize,
@@ -254,6 +254,6 @@ namespace udon
     template <CAN_DEV_TABLE Bus>
     CanBusTeensy<Bus>* CanBusTeensy<Bus>::self;
 
-}    // namespace udon
+}    // namespace Udon
 
 #endif

@@ -18,12 +18,12 @@
 
 #include <stdarg.h>
 #include <stdint.h>
-#include <udon/utility/Parsable.hpp>
+#include <Udon/Utility/Parsable.hpp>
 
-namespace udon
+namespace Udon
 {
 
-    namespace message
+    namespace Message
     {
 
         template <size_t Column, size_t Row>
@@ -58,6 +58,6 @@ namespace udon
         using Lcd1602 = Lcd<16, 2>;
         using Lcd2004 = Lcd<20, 4>;
 
-    }    // namespace message
+    }    // namespace Message
 
-}    // namespace udon
+}    // namespace Udon

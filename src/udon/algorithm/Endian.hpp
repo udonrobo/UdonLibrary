@@ -17,7 +17,7 @@
 
 #include <stdint.h>
 
-namespace udon
+namespace Udon
 {
 
     enum class Endian
@@ -37,4 +37,4 @@ namespace udon
         return isBig ? Endian::Big : Endian::Little;
     }
 
-}    // namespace udon
+}    // namespace Udon

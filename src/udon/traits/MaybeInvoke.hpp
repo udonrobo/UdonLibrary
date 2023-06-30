@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <udon/traits/HasMember.hpp>
+#include <Udon/Traits/HasMember.hpp>
 
 /// @brief インスタンスに特定のメンバ関数があれば呼び出す。存在しなければ何もしない。
 /// @param MethodName メンバ関数名
@@ -25,20 +25,20 @@
 #define UDON_MAYBE_INVOKE(MethodName)                                                         \
     template <typename T>                                                                     \
     auto MaybeInvoke_##MethodName(T&& instance)                                               \
-        ->typename std::enable_if<udon::has_member_function_##MethodName<T>::value>::type     \
+        ->typename std::enable_if<Udon::has_member_function_##MethodName<T>::value>::type     \
     {                                                                                         \
         instance.MethodName();                                                                \
     }                                                                                         \
     template <typename T>                                                                     \
     auto MaybeInvoke_##MethodName(T&&)                                                        \
-        ->typename std::enable_if<not udon::has_member_function_##MethodName<T>::value>::type \
+        ->typename std::enable_if<not Udon::has_member_function_##MethodName<T>::value>::type \
     {                                                                                         \
     }
 
-namespace udon
+namespace Udon
 {
 
-    /// @brief udon::MaybeInvoke_begin
+    /// @brief Udon::MaybeInvoke_begin
 
 #ifndef UDON_HAS_MEMBER_FUNCTION_BEGIN
 #    define UDON_HAS_MEMBER_FUNCTION_BEGIN
@@ -49,7 +49,7 @@ namespace udon
     UDON_MAYBE_INVOKE(begin);
 #endif
 
-    /// @brief udon::MaybeInvoke_update
+    /// @brief Udon::MaybeInvoke_update
 
 #ifndef UDON_HAS_MEMBER_FUNCTION_UPDATE
 #    define UDON_HAS_MEMBER_FUNCTION_UPDATE
@@ -60,7 +60,7 @@ namespace udon
     UDON_MAYBE_INVOKE(update);
 #endif
 
-    /// @brief udon::MaybeInvoke_show
+    /// @brief Udon::MaybeInvoke_show
 
 #ifndef UDON_HAS_MEMBER_FUNCTION_SHOW
 #    define UDON_HAS_MEMBER_FUNCTION_SHOW
@@ -71,7 +71,7 @@ namespace udon
     UDON_MAYBE_INVOKE(show);
 #endif
 
-    /// @brief udon::MaybeInvoke_showRaw
+    /// @brief Udon::MaybeInvoke_showRaw
 
 #ifndef UDON_HAS_MEMBER_FUNCTION_SHOW_RAW
 #    define UDON_HAS_MEMBER_FUNCTION_SHOW_RAW
@@ -82,4 +82,4 @@ namespace udon
     UDON_MAYBE_INVOKE(showRaw);
 #endif
 
-}    // namespace udon
+}    // namespace Udon

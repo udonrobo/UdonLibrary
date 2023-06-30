@@ -16,10 +16,10 @@
 
 #pragma once
 
-#include <udon/types/HSV.hpp>
-#include <udon/types/RGB.hpp>
+#include <Udon/Types/HSV.hpp>
+#include <Udon/Types/RGB.hpp>
 
-namespace udon
+namespace Udon
 {
 #ifdef ARDUINO
     inline RGB Rainbow() noexcept
@@ -27,4 +27,4 @@ namespace udon
         return HSV{ static_cast<uint8_t>(millis() / 10.), 255, 255 }.toRGB();
     }
 #endif
-}    // namespace udon
+}    // namespace Udon

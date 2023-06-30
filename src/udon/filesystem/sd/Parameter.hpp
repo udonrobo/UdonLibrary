@@ -22,7 +22,7 @@
 
 #    include <SdFat.h>
 
-namespace udon
+namespace Udon
 {
 
     class Parameter
@@ -122,6 +122,6 @@ namespace udon
             Serial.print(end);
         }
     };
-}    // namespace udon
+}    // namespace Udon
 
 #endif

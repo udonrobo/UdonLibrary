@@ -1,11 +1,11 @@
 #pragma once
 
-#include <udon/algorithm/ArrayView.hpp>
+#include <Udon/Algorithm/ArrayView.hpp>
 
 #include <algorithm>
 #include <cmath>
 
-namespace udon
+namespace Udon
 {
     /// @brief 複数のパケット、単一のパケットからバイト列にアンパケット化する
     /// @details
@@ -16,8 +16,8 @@ namespace udon
     /// @param output アンパケット化したデータの格納先
     /// @param singlePacketSize 1パケットのサイズ
     inline void Unpacketize(
-        udon::ArrayView<uint8_t>&& input,              // _In_
-        udon::ArrayView<uint8_t>&& output,             // _Out_
+        Udon::ArrayView<uint8_t>&& input,              // _In_
+        Udon::ArrayView<uint8_t>&& output,             // _Out_
         size_t                     singlePacketSize    // _In_
     )
     {
@@ -83,8 +83,8 @@ namespace udon
     /// @param func パケット化した後に呼び出される関数オブジェクト(引数 size_t: パケットに含まれるデータサイズ)
     template <typename Function>
     inline void Packetize(
-        udon::ArrayView<uint8_t>&& input,               // _In_
-        udon::ArrayView<uint8_t>&& output,              // _Out_
+        Udon::ArrayView<uint8_t>&& input,               // _In_
+        Udon::ArrayView<uint8_t>&& output,              // _Out_
         size_t                     singlePacketSize,    // _In_
         Function                   func                 // _In_
     )
@@ -196,4 +196,4 @@ namespace udon
     }
 
 #endif
-}    // namespace udon
+}    // namespace Udon

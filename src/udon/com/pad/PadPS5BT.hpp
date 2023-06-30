@@ -18,13 +18,13 @@
 
 #pragma once
 
-#include <udon/thirdparty/USB_Host_Shield_2.0/PS5BT.h>
+#include <Udon/thirdparty/USB_Host_Shield_2.0/PS5BT.h>
 
-#include <udon/com/message/PadPS5.hpp>
-#include <udon/stl/optional.hpp>
-#include <udon/types/RGB.hpp>
+#include <Udon/Com/Message/PadPS5.hpp>
+#include <Udon/Stl/Optional.hpp>
+#include <Udon/Types/RGB.hpp>
 
-namespace udon
+namespace Udon
 {
     class PadPS5BT
     {
@@ -34,7 +34,7 @@ namespace udon
 
         PS5BT pad;
 
-        message::PadPS5 buttons;
+        Message::PadPS5 buttons;
 
     public:
         PadPS5BT(bool pair = false)
@@ -109,16 +109,16 @@ namespace udon
             }
         }
 
-        /// @brief message::PadPS5型のメッセージを取得する
+        /// @brief Message::PadPS5型のメッセージを取得する
         /// @return
-        message::PadPS5 getButtons() const
+        Message::PadPS5 getButtons() const
         {
             return buttons;
         }
 
         /// @brief LEDバーの色を設定する
         /// @param color
-        void setColor(const udon::RGB& color)
+        void setColor(const Udon::RGB& color)
         {
             pad.setLed(color.r, color.g, color.b);
         }
@@ -138,4 +138,4 @@ namespace udon
             pad.setRumbleOn(big, small);
         }
     };
-}    // namespace udon
+}    // namespace Udon

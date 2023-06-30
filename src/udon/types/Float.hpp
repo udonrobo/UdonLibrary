@@ -114,15 +114,15 @@
 #    endif
 #endif
 
-namespace udon
+namespace Udon
 {
 
     //  定義されている可能性のある型は以下の通りです(処理系によって異なります)
-    //  udon::float16_t
-    //  udon::float32_t
-    //  udon::float64_t
-    //  udon::float80_t
-    //  udon::float128_t
+    //  Udon::float16_t
+    //  Udon::float32_t
+    //  Udon::float64_t
+    //  Udon::float80_t
+    //  Udon::float128_t
 
 #if BOOST_CSTDFLOAT_HAS_FLOAT16_NATIVE_TYPE
     using float16_t = BOOST_CSTDFLOAT_FLOAT16_NATIVE_TYPE;
@@ -159,7 +159,7 @@ namespace udon
 #    define UDON_HAS_FLOAT128
 #endif
 
-}    // namespace udon
+}    // namespace Udon
 
 #undef BOOST_CSTDFLOAT_MAXIMUM_AVAILABLE_WIDTH
 #undef BOOST_CSTDFLOAT_HAS_FLOAT16_NATIVE_TYPE

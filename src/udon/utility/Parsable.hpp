@@ -15,8 +15,8 @@
 
 #pragma once
 
-#include <udon/traits/HasMember.hpp>
-#include <udon/com/serialization/Capacity.hpp>
+#include <Udon/Traits/HasMember.hpp>
+#include <Udon/Com/Serialization/Capacity.hpp>
 
 /// @brief 自作クラスのパースを可能にする
 /// @param ... パース可能なメンバー変数(,区切り)
@@ -34,7 +34,7 @@
     using is_parsable_tag = void;           \
     constexpr size_t capacity() const       \
     {                                       \
-        return udon::Capacity(__VA_ARGS__); \
+        return Udon::Capacity(__VA_ARGS__); \
     }                                       \
     template <typename Acc>                 \
     void accessor(Acc& acc)                 \
@@ -42,7 +42,7 @@
         acc(__VA_ARGS__);                   \
     }
 
-namespace udon
+namespace Udon
 {
 
 #ifndef UDON_HAS_MEMBER_FUNCTION_ACCESSOR
@@ -59,8 +59,8 @@ namespace udon
     struct is_parsable
     {
         static constexpr bool value =
-            udon::has_member_type_is_parsable_tag<T>::value ||    // パース可能な型
+            Udon::has_member_type_is_parsable_tag<T>::value ||    // パース可能な型
             std::is_arithmetic<T>::value;                         // アトミック型 (整数、浮動小数)
     };
 
-}    // namespace udon
+}    // namespace Udon

@@ -18,7 +18,7 @@
 
 #pragma once
 
-#include <udon/algorithm/Delegate.hpp>
+#include <Udon/Algorithm/Delegate.hpp>
 
 #ifdef UDON_TEENSY_I2C_SLAVE_MODE
 #    include <i2c_driver.h>
@@ -27,7 +27,7 @@
 #    include <Wire.h>
 #endif
 
-namespace udon
+namespace Udon
 {
 
     /// @brief I2cBus クラスのインターフェース
@@ -100,8 +100,8 @@ namespace udon
         uint32_t restartCount;
 
         /// @brief C言語スタイルのコールバック関数に メンバ関数を登録するためのデリゲート
-        udon::Delegate<I2cBus_impl, void(int)>  onReceiveDelegate;
-        udon::Delegate<I2cBus_impl, void(void)> onRequestDelegate;
+        Udon::Delegate<I2cBus_impl, void(int)>  onReceiveDelegate;
+        Udon::Delegate<I2cBus_impl, void(void)> onRequestDelegate;
 
         /// @brief C言語スタイルのコールバック関数
         void (*userOnReceive)(int);
@@ -327,7 +327,7 @@ namespace udon
         }
     };
 
-}    // namespace udon
+}    // namespace Udon
 
 /// @brief I2C バスのラッパークラス
 #    define I2cBus \

@@ -1,13 +1,13 @@
-#include <udon/com/message/Switch.hpp>
+#include <Udon/Com/Message/Switch.hpp>
 
-namespace udon
+namespace Udon
 {
 
-    namespace message
+    namespace Message
     {
 
         using EmergencySwitch = Switch;
 
     }
 
-}    // namespace udon
+}    // namespace Udon

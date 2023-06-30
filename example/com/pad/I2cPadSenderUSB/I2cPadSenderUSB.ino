@@ -17,15 +17,15 @@
 //-------------------------------------------------------------------
 
 #include <Udon.hpp>
-#include <udon/com/pad/PadPS5USB.hpp>
+#include <Udon/Com/Pad/PadPS5USB.hpp>
 
-udon::I2cBus bus{ Wire };
+Udon::I2cBus bus{ Wire };
 
-udon::I2cSlaveWriter<udon::message::PadPS5> padWriter{ bus };
+Udon::I2cSlaveWriter<Udon::Message::PadPS5> padWriter{ bus };
 
-udon::I2cSlaveReader<udon::RGB> padColorReader{ bus };
+Udon::I2cSlaveReader<Udon::RGB> padColorReader{ bus };
 
-udon::PadPS5USB pad;
+Udon::PadPS5USB pad;
 
 void setup()
 {
@@ -48,7 +48,7 @@ void loop()
 
     pad.update();
 
-    //   pad --[i2c<message::PadPS5>]--> master
+    //   pad --[i2c<Message::PadPS5>]--> master
     padWriter.setMessage(pad.getButtons());
 
     //   master --[i2c<RGB>]--> pad
@@ -59,7 +59,7 @@ void loop()
     else
     {
         // default: jade green
-        pad.setColor(udon::RGB{ 0x38b48b });
+        pad.setColor(Udon::RGB{ 0x38b48b });
     }
 
     Serial.println();

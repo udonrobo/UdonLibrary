@@ -20,7 +20,7 @@
 
 #    include <Arduino.h>
 
-namespace udon
+namespace Udon
 {
 
     /**     LoopCycleControllerクラス
@@ -98,7 +98,7 @@ namespace udon
         }
     };
 
-}    // namespace udon
+}    // namespace Udon
 
 #endif
 #endif

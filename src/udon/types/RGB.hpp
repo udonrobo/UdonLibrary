@@ -15,19 +15,19 @@
 
 #pragma once
 
-#include <udon/types/RGBFwd.hpp>
-#include <udon/types/HSVFwd.hpp>
+#include <Udon/Types/RGBFwd.hpp>
+#include <Udon/Types/HSVFwd.hpp>
 
 /// @brief HSV色空間からRGB色空間への変換
 /// @param rgb RGB色空間
-inline udon::HSV::HSV(const RGB& rgb) noexcept
+inline Udon::HSV::HSV(const RGB& rgb) noexcept
     : HSV(rgb.toHSV())
 {
 }
 
 /// @brief RGB色空間からHSV色空間への変換
 /// @return HSV色空間
-inline udon::HSV udon::RGB::toHSV() const noexcept
+inline Udon::HSV Udon::RGB::toHSV() const noexcept
 {
     const value_type max = std::max({ r, g, b });
     const value_type min = std::min({ r, g, b });

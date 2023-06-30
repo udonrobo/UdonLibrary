@@ -18,9 +18,9 @@
 #if __has_include(<Arduino.h>)
 
 #    include <Arduino.h>
-#    include <udon/algorithm/MovingAverage.hpp>
+#    include <Udon/Algorithm/MovingAverage.hpp>
 
-namespace udon
+namespace Udon
 {
 
     class Motor2Drive
@@ -87,7 +87,7 @@ namespace udon
         }
     };
 
-}    // namespace udon
+}    // namespace Udon
 
 // pwm周期変更 (arduino nano用)
 // TCCR1B &= B11111000;
