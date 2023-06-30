@@ -109,12 +109,12 @@ x 軸の右方向を正、y 軸の上方向を正とする直交座標系を使�
         ```cpp
         void setup()
         {
-        	Serial.begin(115200);
+            Serial.begin(115200);
 
-        	Udon::Vec2 vector { 3.0, 4.0 };
-        	vector.show();
+            Udon::Vec2 vector { 3.0, 4.0 };
+            vector.show();
 
-        	//> x: 3.0 [tab] y: 4.0 [tab]
+            //> x: 3.0 [tab] y: 4.0 [tab]
         }
         ```
 

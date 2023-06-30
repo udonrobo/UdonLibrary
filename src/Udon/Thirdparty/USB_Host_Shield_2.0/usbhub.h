@@ -170,7 +170,7 @@ class USBHub : USBDeviceConfig {
 
         uint8_t bAddress; // address
         uint8_t bNbrPorts; // number of ports
-        //        uint8_t bInitState; // initialization state variable
+        //      uint8_t bInitState; // initialization state variable
         uint32_t qNextPollTime; // next poll time
         bool bPollEnable; // poll enable flag
 

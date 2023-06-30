@@ -20,17 +20,17 @@ TwoWire クラスの onReceive のような高階関数は関数ポインタを�
     ```cpp
     class Sample
     {
-    	int value;
+        int value;
     public:
-    	Sample(Receiver& receiver)
-    	{
-    		receiver.onReceive(onReceive, this);
-    	}
-    	static void onReceive(void* p)  // pにvoidポインタにキャストされたthisポインタがわたる(ライブラリ側が渡してくれる)
-    	{
-    		auto self = static_cast<Sample*>(p);  // voidポインタからthisポインタに復元(?)
-    		self->value = 1234;  // 通常メンバにアクセスできる ﾔｯﾀｰｰｰｰ
-    	}
+        Sample(Receiver& receiver)
+        {
+            receiver.onReceive(onReceive, this);
+        }
+        static void onReceive(void* p)  // pにvoidポインタにキャストされたthisポインタがわたる(ライブラリ側が渡してくれる)
+        {
+            auto self = static_cast<Sample*>(p);  // voidポインタからthisポインタに復元(?)
+            self->value = 1234;  // 通常メンバにアクセスできる ﾔｯﾀｰｰｰｰ
+        }
     };
     ```
 
@@ -39,14 +39,14 @@ TwoWire クラスの onReceive のような高階関数は関数ポインタを�
     ```cpp
     class Sample
     {
-    	int value;
+        int value;
     public:
-    	Sample(Receiver& receiver)
-    	{
-    		receiver.onReceive([this]() {  // thisポインタをキャプチャ
-    			value = 123;
-    		});
-    	}
+        Sample(Receiver& receiver)
+        {
+            receiver.onReceive([this]() {  // thisポインタをキャプチャ
+                value = 123;
+            });
+        }
     };
     ```
 
@@ -86,16 +86,16 @@ TwoWire クラスの onReceive のような高階関数は関数ポインタを�
     #include <Udon/Algorithm/Delegate.hpp>
     class Sample
     {
-    	Udon::Delegate<Sample, void(int)> delegate;
+        Udon::Delegate<Sample, void(int)> delegate;
     public:
-    	Sample()
-    		: delegate(this, &Sample::onReceive)
-    	{
-    	}
-    	void onReceive(int)
-    	{
-    		// do something
-    	}
+        Sample()
+            : delegate(this, &Sample::onReceive)
+        {
+        }
+        void onReceive(int)
+        {
+            // do something
+        }
     };
     ```
 
@@ -123,15 +123,15 @@ TwoWire クラスの onReceive のような高階関数は関数ポインタを�
     ```cpp
       class Sample
       {
-      	Udon::Delegate<Sample, void(int)> delegate0;
-      	Udon::Delegate<Sample, void(int)> delegate1;
+          Udon::Delegate<Sample, void(int)> delegate0;
+          Udon::Delegate<Sample, void(int)> delegate1;
       public:
-      	Sample()
-      		: delegate0(this, &Sample::onReceive)
-      		, delegate1(this, &Sample::onRequest)  // delegate0に登録しているメンバ関数を上書き🫠🫠
-      	{}
-      	void onReceive(int) {}
-    	void onRequest(int) {}
+          Sample()
+              : delegate0(this, &Sample::onReceive)
+              , delegate1(this, &Sample::onRequest)  // delegate0に登録しているメンバ関数を上書き🫠🫠
+          {}
+          void onReceive(int) {}
+        void onRequest(int) {}
       };
     ```
 
@@ -142,17 +142,17 @@ TwoWire クラスの onReceive のような高階関数は関数ポインタを�
     ```cpp
       class Sample
       {
-      	// Udon::Delegate<Sample, void(int), 0> delegate0;
-      	// Udon::Delegate<Sample, void(int), 1> delegate1;
-      	Udon::Delegate<Sample, void(int), __COUNTER__> delegate0;
-      	Udon::Delegate<Sample, void(int), __COUNTER__> delegate1;
+          // Udon::Delegate<Sample, void(int), 0> delegate0;
+          // Udon::Delegate<Sample, void(int), 1> delegate1;
+          Udon::Delegate<Sample, void(int), __COUNTER__> delegate0;
+          Udon::Delegate<Sample, void(int), __COUNTER__> delegate1;
       public:
-      	Sample()
-      		: delegate0(this, &Sample::onReceive)
-      		, delegate1(this, &Sample::onReceive)
-      	{}
-      	void onReceive(int) {}
-    	void onRequest(int) {}
+          Sample()
+              : delegate0(this, &Sample::onReceive)
+              , delegate1(this, &Sample::onReceive)
+          {}
+          void onReceive(int) {}
+        void onRequest(int) {}
       };
     ```
 
@@ -164,16 +164,16 @@ TwoWire クラスの onReceive のような高階関数は関数ポインタを�
     template<int Unique>
       class Sample_impl
       {
-      	Udon::Delegate<Sample_impl, void(int)> delegate;
+          Udon::Delegate<Sample_impl, void(int)> delegate;
       public:
-      	Sample_impl()
-      		: delegate(this, &Sample_impl::onReceive)
-      	{
-      	}
-      	void onReceive(int)
-      	{
-      		// do something
-      	}
+          Sample_impl()
+              : delegate(this, &Sample_impl::onReceive)
+          {
+          }
+          void onReceive(int)
+          {
+              // do something
+          }
       };
 
     #define Sample Sample_impl<__COUNTER__>  // 😶‍🌫️😶‍🌫️😶‍🌫️😶‍🌫️
@@ -193,25 +193,25 @@ TwoWire クラスの高階関数にメンバ関数を登録する例
 class I2cSlaveReader
 {
 
-	TwoWire& wire;
+    TwoWire& wire;
 
-	Udon::Delegate<I2cSlaveReader, void(int)> onReceiveDelegate;
+    Udon::Delegate<I2cSlaveReader, void(int)> onReceiveDelegate;
 
 public:
 
-	I2cSlaveReader(TwoWire& wire)
-		: wire(wire)
-		, onReceiveDelegate(this, &I2cSlaveReader::onReceive)
-	{
-		wire.onReceive(onReceiveDelegate);
-	}
+    I2cSlaveReader(TwoWire& wire)
+        : wire(wire)
+        , onReceiveDelegate(this, &I2cSlaveReader::onReceive)
+    {
+        wire.onReceive(onReceiveDelegate);
+    }
 
-	// 受信時にここが呼び出される
-	void onReceive(int)
-	{
-		int data = wire.read();
-		...
-	}
+    // 受信時にここが呼び出される
+    void onReceive(int)
+    {
+        int data = wire.read();
+        ...
+    }
 
 };
 
@@ -231,28 +231,28 @@ void loop() {}
 class I2cSlaveReader
 {
 
-	TwoWire& wire;
+    TwoWire& wire;
 
-	uint8_t buffer[--];
+    uint8_t buffer[--];
 
 public:
 
-	I2cSlaveReader(TwoWire& wire)
-		: wire(wire)
-	{
-		wire.onReceive(onReceive);  // 🫠🫠🫠🫠
-	}
+    I2cSlaveReader(TwoWire& wire)
+        : wire(wire)
+    {
+        wire.onReceive(onReceive);  // 🫠🫠🫠🫠
+    }
 
-	void onReceive(int)
-	{
-		while (wire.available())
-		{
-			for (auto&& it : buffer)
-			{
-				it = wire.read();
-			}
-		}
-	}
+    void onReceive(int)
+    {
+        while (wire.available())
+        {
+            for (auto&& it : buffer)
+            {
+                it = wire.read();
+            }
+        }
+    }
 
 };
 

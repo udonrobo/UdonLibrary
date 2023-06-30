@@ -62,17 +62,17 @@ void loop()
 }
 
 // 以下、シリアルモニタに表示される内容例
-// restart: 1 transmit[ms]: 22346    x: 18540.00	y: 18541388.00
-// restart: 1 transmit[ms]: 22358    x: 18552.00	y: 18553076.00
-// restart: 1 transmit[ms]: 22369    x: 18564.00	y: 18564760.00
-// restart: 1 transmit[ms]: 22381    x: 18576.00	y: 18576444.00
-// restart: 1 transmit[ms]: 22381    x: 18576.00	y: 18576444.00
-// restart: 1 transmit[ms]: 22393    x: 18587.00	y: 18588128.00
-// restart: 1 transmit[ms]: 22404    x: 18598.00	y: 18599812.00
-// restart: 1 transmit[ms]: 22416    x: 18611.00	y: 18611512.00
-// restart: 1 transmit[ms]: 22428    x: 18622.00	y: 18623196.00
-// restart: 1 transmit[ms]: 22439    x: 18634.00	y: 18634880.00
-// restart: 1 transmit[ms]: 22451    x: 18646.00	y: 18646564.00
-// restart: 1 transmit[ms]: 22451    x: 18646.00	y: 18646564.00
-// restart: 1 transmit[ms]: 22463    x: 18657.00	y: 18658244.00
-// restart: 1 transmit[ms]: 22474    x: 18669.00	y: 18669936.00
+// restart: 1 transmit[ms]: 22346    x: 18540.00    y: 18541388.00
+// restart: 1 transmit[ms]: 22358    x: 18552.00    y: 18553076.00
+// restart: 1 transmit[ms]: 22369    x: 18564.00    y: 18564760.00
+// restart: 1 transmit[ms]: 22381    x: 18576.00    y: 18576444.00
+// restart: 1 transmit[ms]: 22381    x: 18576.00    y: 18576444.00
+// restart: 1 transmit[ms]: 22393    x: 18587.00    y: 18588128.00
+// restart: 1 transmit[ms]: 22404    x: 18598.00    y: 18599812.00
+// restart: 1 transmit[ms]: 22416    x: 18611.00    y: 18611512.00
+// restart: 1 transmit[ms]: 22428    x: 18622.00    y: 18623196.00
+// restart: 1 transmit[ms]: 22439    x: 18634.00    y: 18634880.00
+// restart: 1 transmit[ms]: 22451    x: 18646.00    y: 18646564.00
+// restart: 1 transmit[ms]: 22451    x: 18646.00    y: 18646564.00
+// restart: 1 transmit[ms]: 22463    x: 18657.00    y: 18658244.00
+// restart: 1 transmit[ms]: 22474    x: 18669.00    y: 18669936.00

@@ -73,32 +73,32 @@
 //                 attachInterrupt(
 //                     digitalPinToInterrupt(Interrupt), []
 //                     {
-// 					can_frame msg;
-// 					if (self->bus.readMessage(&msg) == MCP2515::ERROR_OK) {
-// 						const auto event = [&msg](CanNodeInfo* node)
-// 						{
-// 							// 先頭1バイト : パケット番号
-// 							const uint8_t index = msg.data[0];
+//                     can_frame msg;
+//                     if (self->bus.readMessage(&msg) == MCP2515::ERROR_OK) {
+//                         const auto event = [&msg](CanNodeInfo* node)
+//                         {
+//                             // 先頭1バイト : パケット番号
+//                             const uint8_t index = msg.data[0];
 
-// 							// 8バイト受信データをバイト列にデコード
-// 							for (uint8_t i = 0; i < 7; i++)
-// 							{
-// 								const uint8_t bufIndex = i + index * 7;
-// 								if (bufIndex < node->length)
-// 									node->buffer[bufIndex] = msg.data[i + 1];
-// 								else
-// 									break;
-// 							}
-// 							node->timestampUs = micros();
-// 						};
-// 						for (auto && it : self->rx) {
-// 							if (msg.can_id == it->id)
-// 							{
-// 								event(it);
-// 							}
-// 						}
-// 						self->error.timestampUs = micros();
-// 					} },
+//                             // 8バイト受信データをバイト列にデコード
+//                             for (uint8_t i = 0; i < 7; i++)
+//                             {
+//                                 const uint8_t bufIndex = i + index * 7;
+//                                 if (bufIndex < node->length)
+//                                     node->buffer[bufIndex] = msg.data[i + 1];
+//                                 else
+//                                     break;
+//                             }
+//                             node->timestampUs = micros();
+//                         };
+//                         for (auto && it : self->rx) {
+//                             if (msg.can_id == it->id)
+//                             {
+//                                 event(it);
+//                             }
+//                         }
+//                         self->error.timestampUs = micros();
+//                     } },
 //                     CHANGE);
 //             }
 //         }

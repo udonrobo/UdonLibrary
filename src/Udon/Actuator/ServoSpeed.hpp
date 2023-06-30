@@ -1,11 +1,11 @@
 //-------------------------------------------------------------------
 //
-//	  UdonLibrary
+//    UdonLibrary
 //
-//	  Copyright (c) 2022-2023 fujimoto ryo
-//	  Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2023 fujimoto ryo
+//    Copyright (c) 2022-2023 udonrobo
 //
-//	  Licensed under the MIT License.
+//    Licensed under the MIT License.
 //
 //-------------------------------------------------------------------
 //
@@ -65,7 +65,7 @@ namespace Udon
                 break;
             }
         }
-        /// @brief サーボの状態を更新する関数　毎周期実行する
+        /// @brief サーボの状態を更新する関数 毎周期実行する
         void update()
         {
             /*変化量の計算は少数で行い、計算後は整数型で返す*/

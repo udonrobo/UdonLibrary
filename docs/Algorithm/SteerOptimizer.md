@@ -88,19 +88,19 @@ Udon::SteerOptimizer<4> optimizer;
 
 void setup()
 {
-	bus.begin();
+    bus.begin();
 }
 
 void loop()
 {
-	bus.update();
+    bus.update();
 
-	// 1. コントローラから Udon::Pos {{x, y}, turn} を得る `getMovementInfo()`
-	// 2. Udon::Pos からステアの最適化前の値を得る `toSteer()`
-	// 3. 最適化後の値を得る optimizer()
-	const auto optimized = optimizer(pad.getMovementInfo().toSteer());
+    // 1. コントローラから Udon::Pos {{x, y}, turn} を得る `getMovementInfo()`
+    // 2. Udon::Pos からステアの最適化前の値を得る `toSteer()`
+    // 3. 最適化後の値を得る optimizer()
+    const auto optimized = optimizer(pad.getMovementInfo().toSteer());
 
-	//... // 車輪 Node に送信するなど
+    //... // 車輪 Node に送信するなど
 }
 ```
 
@@ -117,36 +117,36 @@ OpenSiv3D でシミュレートする
 
 void Main()
 {
-	Udon::PadPS5<Udon::SivPadPS5> pad;
+    Udon::PadPS5<Udon::SivPadPS5> pad;
 
-	Udon::SteerOptimizer<4> optimizer;
+    Udon::SteerOptimizer<4> optimizer;
 
-	while (System::Update())
-	{
-		pad.update();
+    while (System::Update())
+    {
+        pad.update();
 
-		const auto optimized = optimizer(pad.getMovementInfo().toSteer());
+        const auto optimized = optimizer(pad.getMovementInfo().toSteer());
 
-		const RectF frame { Arg::center = Scene::CenterF(), 300, 300 };
-		frame.drawFrame();
+        const RectF frame { Arg::center = Scene::CenterF(), 300, 300 };
+        frame.drawFrame();
 
-		const auto stretchedFrame = frame.stretched(-50);
+        const auto stretchedFrame = frame.stretched(-50);
 
-		const auto lines = Array{
-			Line{ stretchedFrame.point(1), Arg::angle = optimized.at(0).theta, optimized.at(0).r + 0.000000001 },
-			Line{ stretchedFrame.point(2), Arg::angle = optimized.at(1).theta, optimized.at(1).r + 0.000000001 },
-			Line{ stretchedFrame.point(3), Arg::angle = optimized.at(2).theta, optimized.at(2).r + 0.000000001 },
-			Line{ stretchedFrame.point(0), Arg::angle = optimized.at(3).theta, optimized.at(3).r + 0.000000001 }
-		};
+        const auto lines = Array{
+            Line{ stretchedFrame.point(1), Arg::angle = optimized.at(0).theta, optimized.at(0).r + 0.000000001 },
+            Line{ stretchedFrame.point(2), Arg::angle = optimized.at(1).theta, optimized.at(1).r + 0.000000001 },
+            Line{ stretchedFrame.point(3), Arg::angle = optimized.at(2).theta, optimized.at(2).r + 0.000000001 },
+            Line{ stretchedFrame.point(0), Arg::angle = optimized.at(3).theta, optimized.at(3).r + 0.000000001 }
+        };
 
-		for (auto&& line : lines)
-		{
-			RectF{ Arg::center = line.begin, 30, 60 }
-				.rotated(line.vector().getAngle())
-				.drawFrame();
-			line.drawArrow();
-		}
+        for (auto&& line : lines)
+        {
+            RectF{ Arg::center = line.begin, 30, 60 }
+                .rotated(line.vector().getAngle())
+                .drawFrame();
+            line.drawArrow();
+        }
 
-	}
+    }
 }
 ```

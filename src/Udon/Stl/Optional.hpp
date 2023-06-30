@@ -9,10 +9,9 @@
 //
 //-------------------------------------------------------------------
 //
-//    Optional 
+//    Optional
 //
 //-------------------------------------------------------------------
-
 
 #pragma once
 
@@ -87,56 +86,55 @@ namespace Udon
             return *this;
         }
 
-		constexpr explicit operator bool() const
-		{
-			return m_hasValue;
-		}
+        constexpr explicit operator bool() const
+        {
+            return m_hasValue;
+        }
 
-		constexpr const T& operator*() const
-		{
-			return m_value;
-		}
+        constexpr const T& operator*() const
+        {
+            return m_value;
+        }
 
-		T& operator*()
-		{
-			return m_value;
-		}
+        T& operator*()
+        {
+            return m_value;
+        }
 
-		constexpr const T* operator->() const
-		{
-			return &m_value;
-		}
+        constexpr const T* operator->() const
+        {
+            return &m_value;
+        }
 
-		T* operator->()
-		{
-			return &m_value;
-		}
+        T* operator->()
+        {
+            return &m_value;
+        }
 
-		constexpr bool has_value() const
-		{
-			return m_hasValue;
-		}
+        constexpr bool has_value() const
+        {
+            return m_hasValue;
+        }
 
-		constexpr const T& value() const
-		{
-			return m_value;
-		}
+        constexpr const T& value() const
+        {
+            return m_value;
+        }
 
-		T& value()
-		{
-			return m_value;
-		}
+        T& value()
+        {
+            return m_value;
+        }
 
-		constexpr const T& value_or(const T& defaultValue) const
-		{
-			return m_hasValue ? m_value : defaultValue;
-		}
+        constexpr const T& value_or(const T& defaultValue) const
+        {
+            return m_hasValue ? m_value : defaultValue;
+        }
 
-		T& value_or(T& defaultValue)
-		{
-			return m_hasValue ? m_value : defaultValue;
-		}
+        T& value_or(T& defaultValue)
+        {
+            return m_hasValue ? m_value : defaultValue;
+        }
+    };
 
-	};
-
-}
+}    // namespace Udon

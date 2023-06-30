@@ -9,9 +9,9 @@ namespace Udon
 {
     /// @brief 複数のパケット、単一のパケットからバイト列にアンパケット化する
     /// @details
-    ///		出力バッファ(output)のサイズによってアンパケット方法が変わります。
-    ///		0 < output.size <= singlePacketSize:  シングルパケットとしてアンパケット化(コピー)
-    ///		singlePacketSize < output.size     :  マルチパケット  としてアンパケット化(先頭バイトをパケットインデックスとしてコピー)
+    ///        出力バッファ(output)のサイズによってアンパケット方法が変わります。
+    ///        0 < output.size <= singlePacketSize:  シングルパケットとしてアンパケット化(コピー)
+    ///        singlePacketSize < output.size     :  マルチパケット  としてアンパケット化(先頭バイトをパケットインデックスとしてコピー)
     /// @param input 入力パケット[何番目かのパケット]
     /// @param output アンパケット化したデータの格納先
     /// @param singlePacketSize 1パケットのサイズ
@@ -73,9 +73,9 @@ namespace Udon
 
     /// @brief バイト列を複数のパケット、単一のパケットにパケット化する
     /// @details
-    ///		入力バッファ(input)のサイズによってアンパケット方法が変わります。
-    ///		0 < input.size <= singlePacketSize:  シングルパケットとしてアンパケット化(コピー)
-    ///		singlePacketSize < input.size     :  マルチパケット  としてアンパケット化(先頭バイトをパケットインデックスとしてコピー)
+    ///        入力バッファ(input)のサイズによってアンパケット方法が変わります。
+    ///        0 < input.size <= singlePacketSize:  シングルパケットとしてアンパケット化(コピー)
+    ///        singlePacketSize < input.size     :  マルチパケット  としてアンパケット化(先頭バイトをパケットインデックスとしてコピー)
     /// @tparam Function
     /// @param input バイト列
     /// @param output パケット化したデータの格納先
