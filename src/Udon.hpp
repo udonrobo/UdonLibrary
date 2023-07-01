@@ -22,7 +22,7 @@
 //-------------------------------------------------------------------
 
 // モーター(基板用)
-#include <Udon/Actuator/MotorDrive.hpp>
+#include <Udon/Actuator/MotorDriver.hpp>
 
 // モーター(メイン側)
 #include <Udon/Actuator/Motor.hpp>
