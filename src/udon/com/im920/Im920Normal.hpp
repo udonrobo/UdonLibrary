@@ -293,7 +293,7 @@ namespace udon
                         uint8_t buf = uart.read();
                         for (uint8_t i = 0; i < 7; ++i)
                         {
-                            udon::BitWrite(receiveBuffer[static_cast<std::vector<uint8_t, std::allocator<uint8_t>>::size_type>(loopCount) - 7 + i], 7,
+                            udon::BitWrite(receiveBuffer[loopCount - 7 + i], 7,
                                            udon::BitRead(buf, i));
                         }
                         bitCount = 0;
@@ -305,7 +305,7 @@ namespace udon
                     uint8_t buf = uart.read();
                     for (uint8_t i = 0; i < bitCount; ++i)
                     {
-                        udon::BitWrite(receiveBuffer[static_cast<std::vector<uint8_t, std::allocator<uint8_t>>::size_type>(loopCount) - bitCount + i], 7,
+                        udon::BitWrite(receiveBuffer[loopCount - bitCount + i], 7,
                                        udon::BitRead(buf, i));
                     }
                 }
