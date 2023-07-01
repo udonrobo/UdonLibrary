@@ -203,7 +203,14 @@ namespace Udon
     {
         static_assert(Udon::is_parsable<T>::value, "T must be parsable type.");   // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
         
-        return Unpack<T>({ buffer, buffer + size });
+            // return Udon::nullopt;
+        std::vector<uint8_t> v;
+        v.reserve(size);
+        for(size_t i =0; i< size;++i)
+        {
+            v.push_back(buffer[i]);
+        }
+        return Unpack<T>(v);
     }
 
     template <typename T, size_t N>
