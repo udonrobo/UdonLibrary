@@ -30,6 +30,7 @@ namespace udon
 
         std::vector<uint8_t> receiveBuffer;
         std::vector<uint8_t> sendBuffer;
+        uint8_t       s1bufsize[128];
 
         uint32_t transmitMs;
 
@@ -46,7 +47,7 @@ namespace udon
         /// @return IM920が使用可能ならtrue
         operator bool() const override
         {
-            return uart /*&& (millis() - transmitMs < 1000)*/;
+            return uart && (millis() - transmitMs < 500);
             return true;
         }
 
@@ -82,8 +83,6 @@ namespace udon
                 break;
             case TransmitMode::TwoWay:
                 twoWayUpdate();
-                // todo
-
                 break;
             }
         }
@@ -144,41 +143,43 @@ namespace udon
         {
             // 常時、受信動作を行い、受信、送信を交互に繰り返すように動作させる
 
-            uart.print("TXDA ");
+            sendUpdate();
+            receiveUpdate();
         }
+
         void sendUpdate()
         {
-            uart.print("TXDA ");
             uint8_t recoveryBuffer = 0;
-            uint8_t pos            = 0;
-            uint8_t loopCount      = 1;
+            uint8_t bitCount       = 0;
+            uint8_t loopCount      = 0;
+            uart.print("TXDA ");
 
             for (auto&& it : sendBuffer)
             {
-                udon::BitWrite(recoveryBuffer, pos, udon::BitRead(it, 7));
-                pos++;
+                loopCount++;
+                udon::BitWrite(recoveryBuffer, bitCount, udon::BitRead(it, 7));
+                bitCount++;
 
                 if (loopCount == 1)
                 {
-                    udon::BitWrite(it, 7, 1);
-                    uart.write(it);
+                    uart.write(it | 0b10000000);
+                    // 最初のビットの８ビット目に１を入れる
                 }
                 else
                 {
                     uart.write(it & 0b01111111);
-                }    // 最初のビットの８ビット目に１を入れる
+                }
 
-                if (pos >= 7)
+                if (bitCount >= 7)
                 {
                     uart.write(recoveryBuffer);
 
                     recoveryBuffer = 0;
-                    pos            = 0;
+                    bitCount       = 0;
                     // 回復ビットを送信したらリセット
                 }
-                loopCount++;
             }
-            if (pos != 0)
+            if (bitCount != 0)
             {
                 uart.write(recoveryBuffer);
             }
@@ -188,8 +189,6 @@ namespace udon
 
         bool receiveUpdate()
         {
-            std::vector<uint8_t> lastBuff = receiveBuffer;
-
             // header = [Node id: 2byte] + [,] + [Transmission module ID: 4byte] + [,] + [RSSI:2byte] + [: ]
             constexpr int HeaderSize = 2 + 1 + 4 + 1 + 2 + 2;
 
@@ -199,62 +198,18 @@ namespace udon
             const int frameSize = HeaderSize + static_cast<int>(ceil(receiveBuffer.size() * 1.14)) + FooterSize;
             // const int frameSize = HeaderSize + receiveBuffer.size() + FooterSize;
 
-            Serial.print(uart.available());
-            Serial.print("\t");
-
             if (uart.available() >= frameSize)
-            {    // ヘッダの内容によって受信対応を決める
-
-                // // ヘッダを読み飛ばす
-                // for (size_t i = 0; i < HeaderSize; ++i)
-                // {
-                //     if (i < 2)
-                //     {
-                //         uint8_t buf = uart.read();
-                //         Serial.print((char)buf);
-                //         if ( buf !=48)
-                //         {
-                //             Serial.print("Data different!");
-                //             while (uart.available())
-                //             {
-                //                 (void)uart.read();
-                //             }
-                //             transmitMs = millis();
-                //             return true;
-                //         }
-                //     }
-                //     else
-                //     {
-                //         Serial.print((char) uart.read());
-                //     }
-                // }
-
-                uint8_t loopCount = 0;    // ループカウンタ
-                uint8_t bitCount  = 0;    // ビットカウンタ
-                uint8_t pribuff   = 0;
-
+            {
+                uint8_t loopCount = 0, bitCount = 0, firstBit;
                 do
                 {
-                    pribuff = uart.read();
-                } while (not(pribuff & 0b10000000));
-                // if (uart.available() <= frameSize - (HeaderSize + FooterSize) - 1)
-                // {
-                //     Serial.print("a");
-                // }
+                    firstBit = uart.read();
+                } while (not(firstBit & 0b10000000));
                 bitCount++;
-                // 最初のビットであることを確認してから次の動作を実行する
-                receiveBuffer[0] = pribuff & 0b01111111;
 
-                // 合わない時はスキップ
-                // Serial.print("7bit to 8bit!!");
-                // Serial.print("\t");
-                // receiveBufferを触らずループを抜ける
+                // 最初のデータであることを確認
+                receiveBuffer[0] = firstBit & 0b01111111;
 
-                // forを一回スキップ
-
-                // // データ取得
-                // uint8_t loopCount = 0;    // ループカウンタ
-                // uint8_t bitCount  = 0;    // ビットカウンタ
                 for (auto&& it : receiveBuffer)
                 {
                     loopCount++;
@@ -262,28 +217,6 @@ namespace udon
                     {
                         continue;
                     }
-
-                    // if (loopCount == 1)
-                    // {    // 最初の周期のみ実行したい
-                    //     uint8_t pribuff;
-                    //     pribuff = uart.read();
-                    //     bitCount++;
-
-                    //     if (udon::BitRead(pribuff, 7))
-                    //     {
-                    //         // 最初のビットであることを確認してから次の動作を実行する
-                    //         it = pribuff & 0b01111111;
-                    //     }
-                    //     else
-                    //     {
-                    //         // 合わない時はスキップ
-                    //         Serial.print("7bit to 8bit is error!!");
-                    //         Serial.print("\t");
-                    //         break;    // receiveBufferを触らずループを抜ける
-                    //     }
-                    //     continue;    // forを一回スキップ
-                    // }
-
                     // ビット復元処理
                     it = uart.read();
                     bitCount++;
@@ -310,15 +243,7 @@ namespace udon
                     }
                 }
 
-                // // フッタを読み飛ばす
-                // for (size_t i = 0; i < FooterSize; ++i)
-                // {
-                //     (void)uart.read();
-                // }
-
-                // //送信タイミングをリセット
-
-                while (uart.available() > frameSize*3)
+                while (uart.available() > 100)
                 {
                     (void)uart.read();
                 }
@@ -340,6 +265,7 @@ namespace udon
     {
         // ボーレート設定
         uart.begin(115200);
+        uart.addMemoryForRead(s1bufsize, 128);
 
         // チャンネル設定
         uart.print("STCH ");
