@@ -96,5 +96,20 @@ namespace Udon
             Udon::Show(F("write: "));
             Udon::MaybeInvoke_showRaw(writer);
         }
+
+        /// @brief 受信クラスの参照を取得する
+        /// @return 受信クラスの参照
+        reader_type& getReader()
+        {
+            return reader;
+        }
+
+        /// @brief 送信クラスの参照を取得する
+        /// @return 送信クラスの参照
+        writer_type& getWriter()
+        {
+            return writer;
+        }
+        
     };
 }    // namespace Udon

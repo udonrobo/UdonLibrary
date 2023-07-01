@@ -80,7 +80,10 @@ namespace Udon
             digitalWrite(anode.at(digit), HIGH);
 
             digit++;
-            digit %= anode.size();
+            if (digit >= anode.size())
+            {
+                digit = 0;
+            }
 
             for (uint8_t i = 0; i < cathode.size(); i++)
             {

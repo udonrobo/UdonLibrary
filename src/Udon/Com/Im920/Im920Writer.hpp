@@ -22,6 +22,7 @@
 
 #include <Udon/Com/Im920/IIm920.hpp>
 #include <Udon/Com/Serialization/Serializer.hpp>
+#include <Udon/Utility/Show.hpp>
 
 namespace Udon
 {
