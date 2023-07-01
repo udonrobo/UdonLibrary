@@ -27,19 +27,18 @@ namespace Udon
         struct PhotoSensor
         {
 
-            /// @brief 遮光しているかどうか
-            bool shade;
+            /// @brief 入光中であるかどうか
+            bool light;
 
 #ifdef ARDUINO
             /// @brief デバッグ出力
             void show() const
             {
-                Serial.print(shade ? F("shade") : F("ray"));
-                Serial.print('\t');
+                Serial.print(light ? "Light\t" : "Dark\t");
             }
 #endif
 
-            UDON_PARSABLE(shade);
+            UDON_PARSABLE(light);
         };
 
     }    // namespace Message
