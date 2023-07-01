@@ -46,7 +46,7 @@ namespace udon
         /// @return IM920が使用可能ならtrue
         operator bool() const override
         {
-            return uart && (millis() - transmitMs < 500);
+            return uart /*&& (millis() - transmitMs < 1000)*/;
             return true;
         }
 
@@ -144,7 +144,7 @@ namespace udon
         {
             // 常時、受信動作を行い、受信、送信を交互に繰り返すように動作させる
 
-            uart.print("TXDA");
+            uart.print("TXDA ");
         }
         void sendUpdate()
         {
@@ -152,31 +152,34 @@ namespace udon
             uint8_t recoveryBuffer = 0;
             uint8_t pos            = 0;
             uint8_t loopCount      = 1;
+
             for (auto&& it : sendBuffer)
             {
-                BitWrite(recoveryBuffer, pos, BitRead(it, 7));
+                udon::BitWrite(recoveryBuffer, pos, udon::BitRead(it, 7));
                 pos++;
 
-                uart.write(it & 0b01111111);
+                if (loopCount == 1)
+                {
+                    udon::BitWrite(it, 7, 1);
+                    uart.write(it);
+                }
+                else
+                {
+                    uart.write(it & 0b01111111);
+                }    // 最初のビットの８ビット目に１を入れる
 
                 if (pos >= 7)
                 {
-                    if (sendBuffer.size() == loopCount)
-                    {
-                        // 最後の周回のときどうする？
-                        BitWrite(recoveryBuffer, 7, 1);
-                    }
                     uart.write(recoveryBuffer);
+
                     recoveryBuffer = 0;
                     pos            = 0;
                     // 回復ビットを送信したらリセット
                 }
                 loopCount++;
             }
-            // 最後の回復ビットの準備
-            if (pos != 0)    // 最後のビットのセットが７ビット目じゃないときだけする
+            if (pos != 0)
             {
-                BitWrite(recoveryBuffer, 7, 1);
                 uart.write(recoveryBuffer);
             }
             uart.print("\r\n");
@@ -194,64 +197,128 @@ namespace udon
             constexpr int FooterSize = 1 + 1;
 
             const int frameSize = HeaderSize + static_cast<int>(ceil(receiveBuffer.size() * 1.14)) + FooterSize;
+            // const int frameSize = HeaderSize + receiveBuffer.size() + FooterSize;
+
+            Serial.print(uart.available());
+            Serial.print("\t");
 
             if (uart.available() >= frameSize)
-            {
-                // ヘッダを読み飛ばす
-                for (size_t i = 0; i < HeaderSize; ++i)
-                {
-                    (void)uart.read();
-                }
+            {    // ヘッダの内容によって受信対応を決める
 
-                // データ取得
-                uint8_t loopCount = 1;    // ループカウンタ
-                uint8_t bitCount  = 0;
+                // // ヘッダを読み飛ばす
+                // for (size_t i = 0; i < HeaderSize; ++i)
+                // {
+                //     if (i < 2)
+                //     {
+                //         uint8_t buf = uart.read();
+                //         Serial.print((char)buf);
+                //         if ( buf !=48)
+                //         {
+                //             Serial.print("Data different!");
+                //             while (uart.available())
+                //             {
+                //                 (void)uart.read();
+                //             }
+                //             transmitMs = millis();
+                //             return true;
+                //         }
+                //     }
+                //     else
+                //     {
+                //         Serial.print((char) uart.read());
+                //     }
+                // }
+
+                uint8_t loopCount = 0;    // ループカウンタ
+                uint8_t bitCount  = 0;    // ビットカウンタ
+                uint8_t pribuff   = 0;
+
+                do
+                {
+                    pribuff = uart.read();
+                } while (not(pribuff & 0b10000000));
+                // if (uart.available() <= frameSize - (HeaderSize + FooterSize) - 1)
+                // {
+                //     Serial.print("a");
+                // }
+                bitCount++;
+                // 最初のビットであることを確認してから次の動作を実行する
+                receiveBuffer[0] = pribuff & 0b01111111;
+
+                // 合わない時はスキップ
+                // Serial.print("7bit to 8bit!!");
+                // Serial.print("\t");
+                // receiveBufferを触らずループを抜ける
+
+                // forを一回スキップ
+
+                // // データ取得
+                // uint8_t loopCount = 0;    // ループカウンタ
+                // uint8_t bitCount  = 0;    // ビットカウンタ
                 for (auto&& it : receiveBuffer)
                 {
-                    // 復元ビットが含まれないバッファの数
+                    loopCount++;
+                    if (loopCount == 1)
+                    {
+                        continue;
+                    }
+
+                    // if (loopCount == 1)
+                    // {    // 最初の周期のみ実行したい
+                    //     uint8_t pribuff;
+                    //     pribuff = uart.read();
+                    //     bitCount++;
+
+                    //     if (udon::BitRead(pribuff, 7))
+                    //     {
+                    //         // 最初のビットであることを確認してから次の動作を実行する
+                    //         it = pribuff & 0b01111111;
+                    //     }
+                    //     else
+                    //     {
+                    //         // 合わない時はスキップ
+                    //         Serial.print("7bit to 8bit is error!!");
+                    //         Serial.print("\t");
+                    //         break;    // receiveBufferを触らずループを抜ける
+                    //     }
+                    //     continue;    // forを一回スキップ
+                    // }
 
                     // ビット復元処理
-                    lastBuff[bitCount] = it = uart.read();
+                    it = uart.read();
                     bitCount++;
-
-                    uint8_t buf;    // 復元バッファ一時保管データ
                     if (bitCount >= 7)
                     {
                         // 復元バッファの時にビット操作
-                        buf = uart.read();
+                        uint8_t buf = uart.read();
                         for (uint8_t i = 0; i < 7; ++i)
                         {
-                            BitWrite(receiveBuffer[loopCount - 1 - 7 + i], 7,
-                                     BitRead(buf, i));
+                            udon::BitWrite(receiveBuffer[static_cast<std::vector<uint8_t, std::allocator<uint8_t>>::size_type>(loopCount) - 7 + i], 7,
+                                           udon::BitRead(buf, i));
                         }
                         bitCount = 0;
                     }
-                    else if (receiveBuffer.size() == loopCount)    // 最終データと認識されたとき
-                    {
-                        buf = uart.read();
-                        for (uint8_t i = 0; i < bitCount; ++i)
-                        {
-                            BitWrite(receiveBuffer[loopCount - 1 - bitCount + i], 7,
-                                     BitRead(buf, i));
-                        }
-                    }
-                    if (not BitRead(buf, 7) && receiveBuffer.size() == loopCount)
-                    {
-                        Serial.print("7bit to 8bit is error!!");
-                        Serial.print("\t");
-                        receiveBuffer = lastBuff;    // errorが出たときは前周期のデータにする。
-                    }
-                    loopCount++;
                 }
 
-                // フッタを読み飛ばす
-                for (size_t i = 0; i < FooterSize; ++i)
+                if (receiveBuffer.size() == loopCount)    // 最終データと認識されたとき
                 {
-                    (void)uart.read();
+                    uint8_t buf = uart.read();
+                    for (uint8_t i = 0; i < bitCount; ++i)
+                    {
+                        udon::BitWrite(receiveBuffer[static_cast<std::vector<uint8_t, std::allocator<uint8_t>>::size_type>(loopCount) - bitCount + i], 7,
+                                       udon::BitRead(buf, i));
+                    }
                 }
 
-                // 送信タイミングをリセット
-                while (uart.available())
+                // // フッタを読み飛ばす
+                // for (size_t i = 0; i < FooterSize; ++i)
+                // {
+                //     (void)uart.read();
+                // }
+
+                // //送信タイミングをリセット
+
+                while (uart.available() > frameSize*3)
                 {
                     (void)uart.read();
                 }
