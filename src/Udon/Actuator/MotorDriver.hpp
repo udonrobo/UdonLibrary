@@ -23,14 +23,14 @@
 namespace Udon
 {
 
-    class Motor2Drive
+    class Motor2Driver
         : MovingAverage
     {
         const uint8_t pinA;
         const uint8_t pinP;
 
     public:
-        Motor2Drive(const uint8_t pinA, const uint8_t pinP)
+        Motor2Driver(const uint8_t pinA, const uint8_t pinP)
             : MovingAverage(20)
             , pinA(pinA)
             , pinP(pinP)
@@ -46,6 +46,11 @@ namespace Udon
             analogWrite(pinP, abs(p));
         }
 
+        void stop()
+        {
+            move(0);
+        }
+
         void show() const
         {
             Serial.print(MovingAverage::getValue());
@@ -53,7 +58,7 @@ namespace Udon
         }
     };
 
-    class Motor3Drive
+    class Motor3Driver
         : MovingAverage
     {
         const uint8_t pinA;
@@ -61,7 +66,7 @@ namespace Udon
         const uint8_t pinP;
 
     public:
-        Motor3Drive(const uint8_t pinA, const uint8_t pinB, const uint8_t pinP)
+        Motor3Driver(const uint8_t pinA, const uint8_t pinB, const uint8_t pinP)
             : MovingAverage(20)
             , pinA(pinA)
             , pinB(pinB)
@@ -78,6 +83,11 @@ namespace Udon
             digitalWrite(pinA, p >= 0);
             digitalWrite(pinB, p <= 0);
             analogWrite(pinP, abs(p));
+        }
+
+        void stop()
+        {
+            move(0);
         }
 
         void show() const
