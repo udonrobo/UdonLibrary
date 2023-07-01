@@ -329,7 +329,7 @@ public:
          * @param color The desired color.
          */
         void setLed(ColorsEnum color) {
-                setLed((uint8_t)((int)color >> 16), (uint8_t)((int)color >> 8), (uint8_t)(color));
+                setLed((uint8_t)((uint32_t)color >> 16), (uint8_t)((int)color >> 8), (uint8_t)(color));
         };
 
         /**

@@ -514,7 +514,7 @@ void PS3USB::moveSetBulb(uint8_t r, uint8_t g, uint8_t b) { // Use this to set t
 }
 
 void PS3USB::moveSetBulb(ColorsEnum color) { // Use this to set the Color using the predefined colors in "enums.h"
-        moveSetBulb((uint8_t)((int)color >> 16), (uint8_t)((int)color >> 8), (uint8_t)(color));
+        moveSetBulb((uint8_t)((uint32_t)color >> 16), (uint8_t)((int)color >> 8), (uint8_t)(color));
 }
 
 void PS3USB::moveSetRumble(uint8_t rumble) {
