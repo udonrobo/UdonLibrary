@@ -26,18 +26,23 @@ namespace udon
     class Im920
         : public IIm920
     {
-        HardwareSerial& uart;
-
+        HardwareSerial&      uart;
+        bool                 twoWayNum;
         std::vector<uint8_t> receiveBuffer;
         std::vector<uint8_t> sendBuffer;
-        uint8_t       s1bufsize[128];
+        uint8_t              s1bufsize[128];
 
         uint32_t transmitMs;
+        bool     NextTrans;
+        uint8_t      receiveCount;
 
     public:
-        Im920(HardwareSerial& uart)
+        Im920(HardwareSerial& uart, bool twoWayNum)
             : uart(uart)
+            , twoWayNum(twoWayNum)
             , transmitMs()
+            , NextTrans()
+            , receiveCount()
         {
         }
 
@@ -47,7 +52,7 @@ namespace udon
         /// @return IM920が使用可能ならtrue
         operator bool() const override
         {
-            return uart && (millis() - transmitMs < 500);
+            return uart /*&& (millis() - transmitMs < 500)*/;
             return true;
         }
 
@@ -108,8 +113,7 @@ namespace udon
                 Serial.print("ReceiveMode ");
                 break;
             case TransmitMode::TwoWay:
-                // todo
-                Serial.print("(TwoWayMode) unsupported! hyahha- ");
+                Serial.print("TwoWayMode ");
                 break;
             }
         }
@@ -139,12 +143,75 @@ namespace udon
             }
         }
 
+        enum class NextMode
+        {
+            Send,
+            Receive
+        };
+
         void twoWayUpdate()
         {
+            receiveCount++;
             // 常時、受信動作を行い、受信、送信を交互に繰り返すように動作させる
+            // transTime =[内部処理時間:10~20ms]+[キャリアセンス:初回5.2ms 連続通信時0.5ms]+[不要データの通信:3.2ms]+[バイトごとの送信時間:0.16ms]
+            const double sendTime    = 15.0 + 0.5 + 3.2 + sendBuffer.size() * 0.16;
+            const double receiveTime = 15.0 + 0.5 + 3.2 + receiveBuffer.size() * 0.16;
 
-            sendUpdate();
-            receiveUpdate();
+            // 受信は二周期に一回
+            if (twoWayNum)
+            {
+                // 発信側
+                if (millis() - transmitMs > sendTime*1 + receiveTime*1)
+                {    // 時間経過により再送信
+                    sendUpdate();
+                    //sendUpdate();
+
+                    Serial.print("resend");
+                    Serial.print("\t");
+                }
+                else
+                {
+                    if (receiveCount >= 1)
+                    {
+                        if (receiveUpdate())
+                        {
+                            // 受け取れたら送り返す
+                            sendUpdate();
+                            //sendUpdate();
+                        }
+                        else
+                        {
+                            // 受信できなかったらもう一周期待つ
+                            Serial.print("buffer didn't charge");
+                            Serial.print("\t");
+                        }
+                        receiveCount = 0;
+                    }
+                }
+                // 再送信までの待機時間
+            }
+            else
+            {
+                // 受信待ちおよびレスポンス側
+                if (receiveCount >= 1)
+                {
+                    if (receiveUpdate())
+                    {
+                        // 受信出来たら送信モードへ変更
+                        // NextTrans = NextMode::Send;
+                        sendUpdate();
+                        sendUpdate();
+                    }
+                    else
+                    {
+                       // Serial.print("receive miss!");
+                        //Serial.print("\t");
+                        // 受信できなかったらもう一周期待つ
+                    }
+                    receiveCount = 0;
+                }
+            }
+            // 再送信までの待機時間
         }
 
         void sendUpdate()
