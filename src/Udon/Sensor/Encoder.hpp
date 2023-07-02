@@ -17,7 +17,6 @@
 #pragma once
 
 #include <Udon/Stl/EnableSTL.hpp>
-
 #include <algorithm>
 
 #include <Udon/Algorithm/DeltaTime.hpp>

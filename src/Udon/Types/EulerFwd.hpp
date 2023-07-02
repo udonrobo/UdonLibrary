@@ -16,9 +16,9 @@
 
 #pragma once
 
-#include <Udon/Math/Math.hpp>    // Udon::NormalizedAngle
+#include <Udon/Math/Functions.hpp>    // Udon::Normalized
 #include <Udon/Utility/Parsable.hpp>
-#include <Udon/Com/Serialization/Serializer.hpp>
+ #include <Udon/Com/Serialization.hpp>
 
 namespace Udon
 {
@@ -124,9 +124,9 @@ namespace Udon
         Euler3D normalized(value_type min, value_type max) const
         {
             return {
-                Udon::NormalizedAngle(roll, min, max),
-                Udon::NormalizedAngle(pitch, min, max),
-                Udon::NormalizedAngle(yaw, min, max),
+                Udon::Normalized(roll, min, max),
+                Udon::Normalized(pitch, min, max),
+                Udon::Normalized(yaw, min, max),
             };
         }
 

@@ -16,17 +16,16 @@
 
 #pragma once
 
-#include <limits.h>
 
 #include <Udon/Stl/EnableSTL.hpp>
-
 #include <algorithm>
 #include <vector>
+#include <limits.h>
 
 #include <Udon/Algorithm/CRC8.hpp>
 #include <Udon/Algorithm/Endian.hpp>
 #include <Udon/Com/Serialization/Capacity.hpp>
-#include <Udon/Math/Math.hpp>
+#include <Udon/Algorithm/Bit.hpp>
 #include <Udon/Types/Float.hpp>
 #include <Udon/Utility/Parsable.hpp>
 

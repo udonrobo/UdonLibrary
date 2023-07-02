@@ -16,15 +16,14 @@
 
 #pragma once
 
-#include <limits.h>
 
 #include <Udon/Stl/EnableSTL.hpp>
-
 #include <type_traits>
 #include <utility>
+#include <limits.h>
 
+#include <Udon/Math/Functions.hpp>
 #include <Udon/Algorithm/CRC8.hpp>
-#include <Udon/Math/Ceil.hpp>
 #include <Udon/Utility/Parsable.hpp>
 #include <Udon/Types/Float.hpp>
 

@@ -15,6 +15,7 @@
 // UdonLibrary が含まれているかどうかを判定するマクロ
 #define UDON_INCLUDED
 
+
 //-------------------------------------------------------------------
 //
 //    アクチュエーター / actuator
@@ -30,11 +31,13 @@
 // サーボ
 #include <Udon/Actuator/ServoSpeed.hpp>
 
+
 //-------------------------------------------------------------------
 //
 //    アルゴリズム / algorithm
 //
 //-------------------------------------------------------------------
+
 
 // 配列参照
 #include <Udon/Algorithm/ArrayView.hpp>
@@ -60,6 +63,7 @@
 // 独立ステア最適化
 #include <Udon/Algorithm/SteerOptimizer.hpp>
 
+
 //-------------------------------------------------------------------
 //
 //    通信 / com
@@ -67,16 +71,16 @@
 //-------------------------------------------------------------------
 
 // CAN
-#include <Udon/Com/Can/Can.hpp>
+#include <Udon/Com/Can.hpp>
 
 // UART
-#include <Udon/Com/Uart/Uart.hpp>
+#include <Udon/Com/Uart.hpp>
 
 // I2c
-#include <Udon/Com/I2c/I2c.hpp>
+#include <Udon/Com/I2c.hpp>
 
 // im920
-#include <Udon/Com/Im920/Im920.hpp>
+#include <Udon/Com/Im920.hpp>
 
 // フォワーディング
 #include <Udon/Com/Common/Forwarding.hpp>
@@ -86,13 +90,14 @@
 #include <Udon/Com/Common/ArrayWriter.hpp>
 
 // シリアライズ
-#include <Udon/Com/Serialization/Serializer.hpp>
+ #include <Udon/Com/Serialization.hpp>
 
 // コントローラー
 #include <Udon/Com/Pad/PadPS5.hpp>
 
 // 通信用構造体群
-#include <Udon/Com/Message/Message.hpp>
+#include <Udon/Com/Message.hpp>
+
 
 //-------------------------------------------------------------------
 //
@@ -103,16 +108,19 @@
 // SDカード
 #include <Udon/Filesystem/Sd/Parameter.hpp>
 
+
 //-------------------------------------------------------------------
 //
 //    数学 / math
 //
 //-------------------------------------------------------------------
 
-// 算術関数
-#include <Udon/Math/Math.hpp>
+// 数学定数
+#include <Udon/Math/Constants.hpp>
 
-#include <Udon/Math/Ceil.hpp>
+// 数学関数
+#include <Udon/Math/Functions.hpp>
+
 
 //-------------------------------------------------------------------
 //
@@ -132,6 +140,7 @@
 // raspberrypi pico エンコーダー
 #include <Udon/Sensor/EncoderPico.hpp>
 
+
 //-------------------------------------------------------------------
 //
 //    表示系 / display
@@ -141,26 +150,21 @@
 // 7セグメントLED
 #include <Udon/Display/SegmentsLed.hpp>
 
+
 //-------------------------------------------------------------------
 //
 //    ユーザー定義型 / types
 //
 //-------------------------------------------------------------------
 
-// 固定長浮動小数点型
-#include <Udon/Types/Float.hpp>
-
-// 2次元ベクトル
-#include <Udon/Types/Vector2D.hpp>
-
-// 3次元ベクトル
-#include <Udon/Types/Vector3D.hpp>
-
-// 4次元ベクトル
-#include <Udon/Types/Vector4D.hpp>
+// 色空間
+#include <Udon/Types/Color.hpp>
 
 // オイラー角
 #include <Udon/Types/Euler.hpp>
+
+// 固定長浮動小数点型
+#include <Udon/Types/Float.hpp>
 
 // 直交座標系
 #include <Udon/Types/Polar.hpp>
@@ -171,8 +175,21 @@
 // クオータニオン
 #include <Udon/Types/Quaternion.hpp>
 
-// 色空間 / RGB / HSV
-#include <Udon/Types/Color.hpp>
+// HSV色空間
+#include <Udon/Types/HSV.hpp>
+
+// RGB色空間
+#include <Udon/Types/RGB.hpp>
+
+// 2次元ベクトル
+#include <Udon/Types/Vector2D.hpp>
+
+// 3次元ベクトル
+#include <Udon/Types/Vector3D.hpp>
+
+// 4次元ベクトル
+#include <Udon/Types/Vector4D.hpp>
+
 
 //-------------------------------------------------------------------
 //
@@ -185,6 +202,7 @@
 
 // メンバ関数の呼び出し
 #include <Udon/Traits/MaybeInvoke.hpp>
+
 
 //-------------------------------------------------------------------
 //

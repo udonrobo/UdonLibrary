@@ -16,7 +16,6 @@
 #pragma once
 
 #include <Udon/Stl/EnableSTL.hpp>
-
 #include <algorithm>
 #include <initializer_list>
 #include <iterator>

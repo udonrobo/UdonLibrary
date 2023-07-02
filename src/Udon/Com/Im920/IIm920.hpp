@@ -17,9 +17,7 @@
 #pragma once
 
 #include <Udon/Stl/EnableSTL.hpp>
-
 #include <vector>
-
 #include <stdint.h>
 
 namespace Udon

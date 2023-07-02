@@ -16,7 +16,6 @@
 #pragma once
 
 #include <Udon/Stl/EnableSTL.hpp>
-
 #include <cstddef>    // std::ptrdiff_t
 #include <iterator>
 

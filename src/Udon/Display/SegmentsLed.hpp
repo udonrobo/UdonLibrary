@@ -16,10 +16,9 @@
 #pragma once
 
 #include <Udon/Stl/EnableSTL.hpp>
-
 #include <array>
-#include <stdint.h>
 #include <vector>
+#include <stdint.h>
 
 #if __has_include(<Arduino.h>)
 

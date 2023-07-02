@@ -16,16 +16,15 @@
 
 #pragma once
 
-#include <Udon/Math/Math.hpp>
+#include <Udon/Stl/EnableSTL.hpp>
+#include <algorithm>
+#include <array>
+
+#include <Udon/Math/Functions.hpp>
 #include <Udon/Types/Polar.hpp>
 #include <Udon/Types/Vector2D.hpp>
 #include <Udon/Utility/Parsable.hpp>
-#include <Udon/Com/Serialization/Serializer.hpp>
-
-#include <Udon/Stl/EnableSTL.hpp>
-
-#include <algorithm>
-#include <array>
+ #include <Udon/Com/Serialization.hpp>
 
 namespace Udon
 {
