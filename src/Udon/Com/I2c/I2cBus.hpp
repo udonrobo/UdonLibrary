@@ -177,19 +177,30 @@ namespace Udon
         /// @brief 更新
         bool update() override
         {
-            if (not operator bool())
+            if (operator bool())
+            {
+                return true;
+            }
+            else
             {
                 restart();
                 return false;
             }
-            return true;
         }
 
 #endif
 
         void show() const override
         {
-            Serial.print(F("restart: "));
+            if (operator bool())
+            {
+                Serial.print(F("I2C: OK "));
+            }
+            else
+            {
+                Serial.print(F("I2C: NG "));
+            }
+            Serial.print(F("restart[n]: "));
 
 #if defined(__MK64FX512__)
             Serial.print('-');
