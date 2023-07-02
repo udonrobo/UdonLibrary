@@ -26,15 +26,18 @@ namespace udon
     class Im920
         : public IIm920
     {
+#ifdef Teensy
+        uint8_t s1bufsize[128];
+#endif
+
         HardwareSerial&      uart;
         bool                 twoWayNum;
         std::vector<uint8_t> receiveBuffer;
         std::vector<uint8_t> sendBuffer;
-        uint8_t              s1bufsize[128];
 
         uint32_t transmitMs;
         bool     NextTrans;
-        uint8_t      receiveCount;
+        uint8_t  receiveCount;
 
     public:
         Im920(HardwareSerial& uart, bool twoWayNum)
@@ -161,10 +164,10 @@ namespace udon
             if (twoWayNum)
             {
                 // 発信側
-                if (millis() - transmitMs > sendTime*1 + receiveTime*1)
+                if (millis() - transmitMs > sendTime * 1 + receiveTime * 1)
                 {    // 時間経過により再送信
                     sendUpdate();
-                    //sendUpdate();
+                    // sendUpdate();
 
                     Serial.print("resend");
                     Serial.print("\t");
@@ -177,7 +180,7 @@ namespace udon
                         {
                             // 受け取れたら送り返す
                             sendUpdate();
-                            //sendUpdate();
+                            // sendUpdate();
                         }
                         else
                         {
@@ -204,8 +207,8 @@ namespace udon
                     }
                     else
                     {
-                       // Serial.print("receive miss!");
-                        //Serial.print("\t");
+                        // Serial.print("receive miss!");
+                        // Serial.print("\t");
                         // 受信できなかったらもう一周期待つ
                     }
                     receiveCount = 0;
@@ -332,8 +335,9 @@ namespace udon
     {
         // ボーレート設定
         uart.begin(115200);
+#ifdef Teensy
         uart.addMemoryForRead(s1bufsize, 128);
-
+#endif
         // チャンネル設定
         uart.print("STCH ");
         if (channel < 10)
