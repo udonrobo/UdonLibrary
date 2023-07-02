@@ -40,7 +40,7 @@ namespace udon
         uint8_t  receiveCount;
 
     public:
-        Im920(HardwareSerial& uart, bool twoWayNum)
+        Im920(HardwareSerial& uart, bool twoWayNum = false)
             : uart(uart)
             , twoWayNum(twoWayNum)
             , transmitMs()
