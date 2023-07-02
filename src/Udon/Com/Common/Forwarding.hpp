@@ -83,8 +83,9 @@ namespace Udon
         {
             Udon::Show(F("read: "));
             Udon::MaybeInvoke_show(reader);
-            Udon::Show(F("write: "));
+            Udon::Show(F("  write: "));
             Udon::MaybeInvoke_show(writer);
+            Udon::Show(F("  "));
         }
 
         /// @brief 通信状態を表示する
@@ -93,8 +94,9 @@ namespace Udon
         {
             Udon::Show(F("read: "));
             Udon::MaybeInvoke_showRaw(reader);
-            Udon::Show(F("write: "));
+            Udon::Show(F("  write: "));
             Udon::MaybeInvoke_showRaw(writer);
+            Udon::Show(F("  "));
         }
 
         /// @brief 受信クラスの参照を取得する

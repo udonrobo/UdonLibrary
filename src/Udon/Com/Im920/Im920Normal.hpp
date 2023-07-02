@@ -95,11 +95,11 @@ namespace Udon
         {
             if (operator bool())
             {
-                Serial.print("OK ");
+                Serial.print("IM920: OK  ");
             }
             else
             {
-                Serial.print("NG ");
+                Serial.print("IM920: NG  ");
             }
 
             switch (getTransmitMode())
