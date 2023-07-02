@@ -16,7 +16,7 @@
 #ifndef DEF_MovingAverage_H
 #define DEF_MovingAverage_H
 
-#include <Udon/Math/Functions.hpp>
+#include <Udon/Math/Math.hpp>
 
 namespace Udon
 {
