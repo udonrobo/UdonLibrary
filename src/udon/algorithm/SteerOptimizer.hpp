@@ -11,6 +11,102 @@ namespace udon
 {
 
     /// @brief 独立ステアリング機構最適化クラス
+    /// @remark 1モジュールの最適化を行う(モジュールごとをオブジェクトで管理したいときはこっちがオヌヌメ)
+    /// @tparam WheelCount タイヤの数
+    class SteerModuleOptimizer
+    {
+
+        /// @brief モジュールを無限回転させるためのオフセット
+        double offset;
+
+        /// @brief 最適値
+        udon::Polar optimized;
+
+    public:
+        /// @brief コンストラクタ
+        SteerModuleOptimizer()
+            : offset()
+            , optimized()
+        {
+        }
+
+        /// @brief 最適化を行う(実測値と比較する)
+        /// @param current エンコーダー等から算出した現在の値 (極座標配列 r:[-∞~∞(radians)] theta:[自由])
+        /// @param raw     最適化前の値                     (極座標配列 r:[-π~π(radians)] theta:[自由])
+        /// @return        最適化後の値                     (極座標配列 r:[-∞~∞(radians)] theta:[±最適化前theta])
+        inline auto operator()(
+            const udon::Polar& current,
+            const udon::Polar& raw) -> udon::Polar
+        {
+            // タイヤのどれも動いていない -> 前回値
+            if (raw.r == 0)
+            {
+                optimized.r = 0;
+                return optimized;
+            }
+
+            // atan2 から求めた角度 [-π ~ π] から無限回転に変換
+            const auto infinitemized = [](
+                                        const udon::Polar& prev,
+                                        double&            offsetRef,
+                                        const udon::Polar& raw) -> udon::Polar
+            {
+                // 変化角
+                const auto dTheta = raw.theta + offsetRef - prev.theta;
+
+                // 変化量がいきなり半周を超えた -> 計算値が-π~π間を通過 -> 一周分オフセットを加減算
+                if (dTheta > udon::Pi)
+                {
+                    offsetRef -= udon::Pi * 2;
+                }
+                else if (dTheta < -udon::Pi)
+                {
+                    offsetRef += udon::Pi * 2;
+                }
+                return { raw.r, raw.theta + offsetRef };
+
+            }(current, offset, raw);
+
+            // 旋回方向、ホイール回転方向最適化後
+            const auto reversibled = [](const Polar& prev,
+                                        const Polar& raw) -> udon::Polar
+            {
+                // 変化角
+                const auto dTheta = raw.theta - prev.theta;
+
+                // 90度以上回転するときはホイールを逆回転させ、半周旋回
+                if (dTheta > udon::Pi / 2)
+                {
+                    return { raw.r * -1, raw.theta - udon::Pi };
+                }
+                else if (dTheta < -udon::Pi / 2)
+                {
+                    return { raw.r * -1, raw.theta + udon::Pi };
+                }
+                else
+                {
+                    return raw;
+                }
+                
+            }(current, infinitemized);
+
+            // 最適化値更新
+            optimized = reversibled;
+
+            return optimized;
+        }
+
+        /// @brief 最適化を行う(前回の制御値と比較する)
+        /// @param raw 最適化前の値 (極座標配列 r:[-π~π(radians)] theta:[自由          ])
+        /// @return    最適化後の値 (極座標配列 r:[-∞~∞(radians)] theta:[±最適化前theta])
+        auto operator()(
+            const udon::Polar& raw) -> udon::Polar
+        {
+            return (*this)(optimized, raw);
+        }
+    };
+
+    /// @brief 独立ステアリング機構最適化クラス
     /// @tparam WheelCount タイヤの数
     template <size_t WheelCount = 4>
     class SteerOptimizer
@@ -73,14 +169,14 @@ namespace udon
                                            const udon::Polar& raw) -> udon::Polar
             {
                 // 変化角
-                const auto dAngle = raw.theta + offsetRef - prev.theta;
+                const auto dTheta = raw.theta + offsetRef - prev.theta;
 
                 // 変化量がいきなり半周を超えた -> -π~π の間を通過 -> 一周分オフセットを加算
-                if (dAngle > udon::Pi)
+                if (dTheta > udon::Pi)
                 {
                     offsetRef -= udon::Pi * 2;
                 }
-                else if (dAngle < -udon::Pi)
+                else if (dTheta < -udon::Pi)
                 {
                     offsetRef += udon::Pi * 2;
                 }
@@ -92,14 +188,14 @@ namespace udon
                                         const Polar& raw) -> udon::Polar
             {
                 // 変化角
-                const auto dAngle = raw.theta - prev.theta;
+                const auto dTheta = raw.theta - prev.theta;
 
                 // 90度以上回転するときはホイールを逆回転させ、半周旋回
-                if (dAngle > udon::Pi / 2)
+                if (dTheta > udon::Pi / 2)
                 {
                     return { raw.r * -1, raw.theta - udon::Pi };
                 }
-                else if (dAngle < -udon::Pi / 2)
+                else if (dTheta < -udon::Pi / 2)
                 {
                     return { raw.r * -1, raw.theta + udon::Pi };
                 }
@@ -115,5 +211,6 @@ namespace udon
 
         return optimized;
     }
+
 
 }    // namespace udon
