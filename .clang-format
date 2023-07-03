@@ -23,7 +23,7 @@ AllowShortLambdasOnASingleLine: Inline
 BreakInheritanceList: BeforeComma
 Cpp11BracedListStyle: false
 AllowShortCaseLabelsOnASingleLine: true
-SortIncludes: CaseSensitive
+SortIncludes: false
 PPIndentWidth: 4
 BreakConstructorInitializers: BeforeComma
 PointerAlignment: Left

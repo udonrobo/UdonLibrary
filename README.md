@@ -151,13 +151,11 @@ void setup() {}
 void loop() {}
 ```
 
-`UDON_INCLUDE_SELECTABLE` を定義することで、個別にインクルードすることもできます。コンパイル時間を短縮することができます。
+`UdonFwd.hpp` をインクルードすることで、必要なヘッダーだけ個別にインクルードできるようになり、コンパイル時間を短縮できます。
 
 ```cpp
-#define UDON_INCLUDE_SELECTABLE
-
-#include <Udon.hpp>
-#include <udon/types/Vector2D.hpp>  // udon::Vec2
+#include <UdonFwd.hpp>
+#include <Udon/Types/Vector2D.hpp>  // Udon::Vec2
 
 void setup() {}
 void loop() {}

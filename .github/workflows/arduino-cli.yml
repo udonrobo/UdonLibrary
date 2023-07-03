@@ -12,21 +12,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-
   build:
-
-    # 実行するOS
     runs-on: ubuntu-latest
-
     strategy:
-
-      # すべてのジョブを実行する
-      fail-fast: false
-
+      fail-fast: false  # すべてのジョブを実行する
       matrix:
 
-        # テストするボード
-        board:
+        board:  # テストするボード
 
           - fqbn: arduino:avr:nano
 
@@ -39,29 +31,18 @@ jobs:
             platforms: |
               - name: rp2040:rp2040
                 source-url: https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
-
     steps:
-
       - name: Checkout
-
         uses: actions/checkout@v3
 
       - name: Arduino-cli test
-
         uses: arduino/compile-sketches@v1
 
         with:
-
           fqbn: ${{ matrix.board.fqbn }}
-
           platforms: ${{ matrix.board.platforms }}
-
-          # テスト用スケッチがあるディレクトリ(再帰的)
           sketch-paths: |
             - ./test
-            - ./example
-
-          # 依存するライブラリ
           libraries: |
             - source-path: ./
             - source-url: https://github.com/udonrobo/UdonArduinoSTL.git
