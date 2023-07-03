@@ -354,7 +354,7 @@ namespace udon
 #if defined(ARDUINO_TEENSY40)
         uart.addMemoryForRead(s1bufsize, 128);
 #endif
-        uart.addMemoryForRead(s1bufsize, 128);
+        //    uart.addMemoryForRead(s1bufsize, 128);
 
         // チャンネル設定
         uart.print("STCH ");
