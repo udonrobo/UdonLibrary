@@ -46,5 +46,6 @@ namespace udon
         /// @param size 受信バッファのサイズ
         virtual const std::vector<uint8_t>& registerReceiver(size_t size) = 0;
 
+        virtual void update();
     };
 } // namespace udon

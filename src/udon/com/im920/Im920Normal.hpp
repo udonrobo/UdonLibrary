@@ -26,9 +26,10 @@ namespace udon
     class Im920
         : public IIm920
     {
-#ifdef Teensy
+#if defined(ARDUINO_TEENSY40)
         uint8_t s1bufsize[128];
 #endif
+        // uint8_t s1bufsize[128];
 
         HardwareSerial&      uart;
         bool                 twoWayNum;
@@ -38,6 +39,7 @@ namespace udon
         uint32_t transmitMs;
         bool     NextTrans;
         uint8_t  receiveCount;
+        int      dicConnectCount;
 
     public:
         Im920(HardwareSerial& uart, bool twoWayNum = false)
@@ -46,6 +48,7 @@ namespace udon
             , transmitMs()
             , NextTrans()
             , receiveCount()
+            , dicConnectCount()
         {
         }
 
@@ -85,6 +88,8 @@ namespace udon
             {
             case TransmitMode::Send:
                 sendUpdate();
+                //  sendUpdate();
+
                 break;
             case TransmitMode::Receive:
                 receiveUpdate();
@@ -267,6 +272,8 @@ namespace udon
 
             const int frameSize = HeaderSize + static_cast<int>(ceil(receiveBuffer.size() * 1.14)) + FooterSize;
             // const int frameSize = HeaderSize + receiveBuffer.size() + FooterSize;
+            Serial.print(uart.available());
+            Serial.print("\t");
 
             if (uart.available() >= frameSize)
             {
@@ -313,17 +320,26 @@ namespace udon
                     }
                 }
 
-                while (uart.available() > 100)
-                {
-                    (void)uart.read();
-                }
+                // ここで udon::optional<Message> getMessage()の内容、Unpackを実行したい
 
-                transmitMs = millis();
+                // while (uart.available() > 100)
+                // {
+                //     (void)uart.read();
+                // }
 
+                transmitMs      = millis();
+                dicConnectCount = 0;
                 return true;
             }
             else
             {
+                dicConnectCount++;
+                if (dicConnectCount > 10)
+                {    // 何度も続けて切れているときはリセット
+                    receiveBuffer.clear();
+                    dicConnectCount = 0;
+                }
+                Serial.print("bit did not charged!");
                 return false;
             }
         }
@@ -335,9 +351,11 @@ namespace udon
     {
         // ボーレート設定
         uart.begin(115200);
-#ifdef Teensy
+#if defined(ARDUINO_TEENSY40)
         uart.addMemoryForRead(s1bufsize, 128);
 #endif
+        uart.addMemoryForRead(s1bufsize, 128);
+
         // チャンネル設定
         uart.print("STCH ");
         if (channel < 10)
