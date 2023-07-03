@@ -1,19 +1,11 @@
 //-------------------------------------------------------------------
 //
-<<<<<<< HEAD:src/udon/com/im920/Im920Normal.hpp
 //	UdonLibrary
 //
 //                2018-2023 Watanabe Rui
 //	Copyright (c) 2022-2023 Okawa Yusuke
 //	Copyright (c) 2022-2023 Fujimoto Ryo
 //	Copyright (c) 2022-2023 udonrobo
-=======
-//    UdonLibrary
-//
-//                  2018-2023 Watanabe Rui
-//    Copyright (c) 2022-2023 Okawa Yusuke
-//    Copyright (c) 2022-2023 udonrobo
->>>>>>> master:src/Udon/Com/Im920/Im920Normal.hpp
 //
 //    Licensed under the MIT License.
 //
