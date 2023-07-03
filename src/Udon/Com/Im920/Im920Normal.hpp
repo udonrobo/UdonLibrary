@@ -9,7 +9,7 @@
 //	Copyright (c) 2022-2023 udonrobo
 =======
 //    UdonLibrary
-// 
+//
 //                  2018-2023 Watanabe Rui
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
@@ -243,7 +243,7 @@ namespace Udon
             for (auto&& it : sendBuffer)
             {
                 loopCount++;
-                udon::BitWrite(recoveryBuffer, bitCount, udon::BitRead(it, 7));
+                Udon::BitWrite(recoveryBuffer, bitCount, Udon::BitRead(it, 7));
                 bitCount++;
 
                 if (loopCount == 1)
@@ -314,8 +314,8 @@ namespace Udon
                         uint8_t buf = uart.read();
                         for (uint8_t i = 0; i < 7; ++i)
                         {
-                            udon::BitWrite(receiveBuffer[loopCount - 7 + i], 7,
-                                           udon::BitRead(buf, i));
+                            Udon::BitWrite(receiveBuffer[loopCount - 7 + i], 7,
+                                           Udon::BitRead(buf, i));
                         }
                         bitCount = 0;
                     }
@@ -326,8 +326,8 @@ namespace Udon
                     uint8_t buf = uart.read();
                     for (uint8_t i = 0; i < bitCount; ++i)
                     {
-                        udon::BitWrite(receiveBuffer[loopCount - bitCount + i], 7,
-                                       udon::BitRead(buf, i));
+                        Udon::BitWrite(receiveBuffer[loopCount - bitCount + i], 7,
+                                       Udon::BitRead(buf, i));
                     }
                 }
 
