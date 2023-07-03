@@ -1,7 +1,7 @@
 //-------------------------------------------------------------------
 //
 //    UdonLibrary
-// 
+//
 //                2018-2023 Watanabe Rui
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
@@ -17,7 +17,6 @@
 //
 //-------------------------------------------------------------------
 
-
 #pragma once
 
 #include <Udon/Com/Im920/IIm920.hpp>
@@ -32,6 +31,7 @@ namespace Udon
     {
         static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
 
+    private:
         static_assert(Size <= 64, "The send buffer size for IM920 is limited to 64 bytes");
 
         IIm920& im920;
@@ -49,7 +49,24 @@ namespace Udon
         {
             if (im920)
             {
-                return Udon::Unpack<Message>(buffer);
+                if (const auto first = Udon::Unpack<Message>(buffer))
+                {
+                    return first;
+                }
+                else
+                {
+                    im920.update();
+                    if (const auto second = Udon::Unpack<Message>(buffer))
+                    {
+                        return second;
+                    }
+                    else
+                    {
+                        im920.update();
+                        return Udon::Unpack<Message>(buffer);
+                    }
+                }
+                // return udon::Unpack<Message>(buffer);
             }
             else
             {
