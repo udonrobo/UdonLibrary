@@ -3,7 +3,7 @@
 //    UdonLibrary
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2023 Udonrobo
 //
 //    Licensed under the MIT License.
 //
@@ -35,7 +35,7 @@ namespace Udon
         double offset;
 
         /// @brief 最適値
-        udon::Polar optimized;
+        Udon::Polar optimized;
 
     public:
         /// @brief コンストラクタ
@@ -45,13 +45,19 @@ namespace Udon
         {
         }
 
+        void clear() 
+        {
+            offset = 0;
+            optimized = {};
+        }
+
         /// @brief 最適化を行う(実測値と比較する)
         /// @param current エンコーダー等から算出した現在の値 (極座標配列 r:[-∞~∞(radians)] theta:[自由])
         /// @param raw     最適化前の値                     (極座標配列 r:[-π~π(radians)] theta:[自由])
         /// @return        最適化後の値                     (極座標配列 r:[-∞~∞(radians)] theta:[±最適化前theta])
         inline auto operator()(
-            const udon::Polar& current,
-            const udon::Polar& raw) -> udon::Polar
+            const Udon::Polar& current,
+            const Udon::Polar& raw) -> Udon::Polar
         {
             // タイヤのどれも動いていない -> 前回値
             if (raw.r == 0)
@@ -62,21 +68,21 @@ namespace Udon
 
             // atan2 から求めた角度 [-π ~ π] から無限回転に変換
             const auto infinitemized = [](
-                                        const udon::Polar& prev,
+                                        const Udon::Polar& prev,
                                         double&            offsetRef,
-                                        const udon::Polar& raw) -> udon::Polar
+                                        const Udon::Polar& raw) -> Udon::Polar
             {
                 // 変化角
                 const auto dTheta = raw.theta + offsetRef - prev.theta;
 
                 // 変化量がいきなり半周を超えた -> 計算値が-π~π間を通過 -> 一周分オフセットを加減算
-                if (dTheta > udon::Pi)
+                if (dTheta > Udon::Pi)
                 {
-                    offsetRef -= udon::Pi * 2;
+                    offsetRef -= Udon::Pi * 2;
                 }
-                else if (dTheta < -udon::Pi)
+                else if (dTheta < -Udon::Pi)
                 {
-                    offsetRef += udon::Pi * 2;
+                    offsetRef += Udon::Pi * 2;
                 }
                 return { raw.r, raw.theta + offsetRef };
 
@@ -84,19 +90,19 @@ namespace Udon
 
             // 旋回方向、ホイール回転方向最適化後
             const auto reversibled = [](const Polar& prev,
-                                        const Polar& raw) -> udon::Polar
+                                        const Polar& raw) -> Udon::Polar
             {
                 // 変化角
                 const auto dTheta = raw.theta - prev.theta;
 
                 // 90度以上回転するときはホイールを逆回転させ、半周旋回
-                if (dTheta > udon::Pi / 2)
+                if (dTheta > Udon::Pi / 2)
                 {
-                    return { raw.r * -1, raw.theta - udon::Pi };
+                    return { raw.r * -1, raw.theta - Udon::Pi };
                 }
-                else if (dTheta < -udon::Pi / 2)
+                else if (dTheta < -Udon::Pi / 2)
                 {
-                    return { raw.r * -1, raw.theta + udon::Pi };
+                    return { raw.r * -1, raw.theta + Udon::Pi };
                 }
                 else
                 {
@@ -115,7 +121,7 @@ namespace Udon
         /// @param raw 最適化前の値 (極座標配列 r:[-π~π(radians)] theta:[自由          ])
         /// @return    最適化後の値 (極座標配列 r:[-∞~∞(radians)] theta:[±最適化前theta])
         auto operator()(
-            const udon::Polar& raw) -> udon::Polar
+            const Udon::Polar& raw) -> Udon::Polar
         {
             return (*this)(optimized, raw);
         }
@@ -187,11 +193,11 @@ namespace Udon
                 const auto dTheta = raw.theta + offsetRef - prev.theta;
 
                 // 変化量がいきなり半周を超えた -> -π~π の間を通過 -> 一周分オフセットを加算
-                if (dTheta > udon::Pi)
+                if (dTheta > Udon::Pi)
                 {
                     offsetRef -= Udon::Pi * 2;
                 }
-                else if (dTheta < -udon::Pi)
+                else if (dTheta < -Udon::Pi)
                 {
                     offsetRef += Udon::Pi * 2;
                 }
@@ -206,11 +212,11 @@ namespace Udon
                 const auto dTheta = raw.theta - prev.theta;
 
                 // 90度以上回転するときはホイールを逆回転させ、半周旋回
-                if (dTheta > udon::Pi / 2)
+                if (dTheta > Udon::Pi / 2)
                 {
                     return { raw.r * -1, raw.theta - Udon::Pi };
                 }
-                else if (dTheta < -udon::Pi / 2)
+                else if (dTheta < -Udon::Pi / 2)
                 {
                     return { raw.r * -1, raw.theta + Udon::Pi };
                 }
