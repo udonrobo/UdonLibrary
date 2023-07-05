@@ -20,7 +20,7 @@
 #pragma once
 
 #include <Udon/Com/Im920/IIm920.hpp>
- #include <Udon/Com/Serialization.hpp>
+#include <Udon/Com/Serialization.hpp>
 #include <Udon/Utility/Show.hpp>
 
 namespace Udon
@@ -45,31 +45,15 @@ namespace Udon
         {
         }
 
-        Udon::Optional<Message> getMessage() const
+        Udon::Optional<Message> getMessage()
         {
             if (im920)
             {
-                if (const auto first = Udon::Unpack<Message>(buffer))
-                {
-                    return first;
-                }
-                else
-                {
-                    im920.update();
-                    if (const auto second = Udon::Unpack<Message>(buffer))
-                    {
-                        return second;
-                    }
-                    else
-                    {
-                        im920.update();
-                        return Udon::Unpack<Message>(buffer);
-                    }
-                }
-                // return udon::Unpack<Message>(buffer);
+                return Udon::Unpack<Message>(buffer);
             }
             else
             {
+                Serial.print(F("IM920 disconnected!!"));
                 return Udon::nullopt;
             }
         }
