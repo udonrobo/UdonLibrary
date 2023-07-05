@@ -60,7 +60,8 @@ namespace Udon
             }
             else
             {
-                Serial.print(F("unpack failed!"));    // 通常来ない
+                Serial.print(F("unpack failed!"));
+                // ここへ到達する: setMessage()で値を設定していない
             }
         }
 

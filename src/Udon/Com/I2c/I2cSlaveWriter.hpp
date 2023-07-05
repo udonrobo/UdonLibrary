@@ -82,7 +82,8 @@ namespace Udon
             }
             else
             {
-                Udon::Show(F("unpack failed!"));    // 通常はここには到達しない
+                Udon::Show(F("unpack failed!"));
+                // ここへ到達する: setMessage()で値を設定していない
             }
         }
 
