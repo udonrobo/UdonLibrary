@@ -1,7 +1,5 @@
 #pragma once
 
-#include <Arduino.h>
-
 #if defined(ARDUINO_ARCH_RP2040)
 
 namespace Udon
