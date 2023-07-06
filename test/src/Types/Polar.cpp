@@ -62,7 +62,7 @@ inline void test()
     // シリアライズ
     {
         Udon::Polar a;
-        static_assert(Udon::CapacityWithChecksum(a) == 8 + 1, "");
+        static_assert(Udon::CapacityWithChecksum<Udon::Polar>() == 8 + 1, "");
         const auto b = Udon::Pack(a);
         (void)Udon::Unpack<Udon::Polar>(b);
     }

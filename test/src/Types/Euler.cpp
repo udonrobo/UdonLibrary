@@ -74,7 +74,7 @@ inline void test()
     // シリアライズ
     {
         Udon::Euler a;
-        static_assert(Udon::CapacityWithChecksum(a) == 12 + 1, "");
+        static_assert(Udon::CapacityWithChecksum<Udon::Euler>() == 12 + 1, "");
         const auto b = Udon::Pack(a);
         (void)Udon::Unpack<Udon::Euler>(b);
     }

@@ -45,6 +45,8 @@ namespace Udon
 #elif defined(SIV3D_INCLUDED)
             s3d::Print.write(rhs);
             s3d::Print.write(gap);
+#else
+            std::cout << rhs << gap;
 #endif
 
         }

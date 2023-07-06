@@ -17,9 +17,6 @@
 
 #include <UdonFwd.hpp>
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-variable"  // 未使用変数の警告無視
-
 void setup() {}
 
 void loop() {}

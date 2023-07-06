@@ -71,7 +71,7 @@ inline void test()
     // シリアライズ
     {
         Udon::Pos a;
-        static_assert(Udon::CapacityWithChecksum(a) == 12 + 1, "");
+        static_assert(Udon::CapacityWithChecksum<Udon::Pos>() == 12 + 1, "");
         const auto b = Udon::Pack(a);
         (void)Udon::Unpack<Udon::Pos>(b);
     }
