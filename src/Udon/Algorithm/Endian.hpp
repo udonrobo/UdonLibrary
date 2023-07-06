@@ -40,4 +40,3 @@
 #else
 #    error "Unknown Endian"
 #endif
-

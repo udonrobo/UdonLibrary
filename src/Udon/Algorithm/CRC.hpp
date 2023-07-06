@@ -17,6 +17,9 @@
 
 #pragma once
 
+#include <Udon/Stl/EnableSTL.hpp>
+#include <type_traits>
+#include <iterator>
 #include <stddef.h>
 #include <stdint.h>
 
