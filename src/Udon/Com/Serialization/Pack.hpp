@@ -22,7 +22,7 @@
 #include <vector>
 #include <limits.h>
 
-#include <Udon/Algorithm/CRC8.hpp>
+#include <Udon/Algorithm/CRC.hpp>
 #include <Udon/Algorithm/Endian.hpp>
 #include <Udon/Com/Serialization/Capacity.hpp>
 #include <Udon/Algorithm/Bit.hpp>
@@ -116,11 +116,11 @@ namespace Udon
         /// @remark 取得後のバッファは無効です。
         std::vector<uint8_t> flush()
         {
-            buffer.back() = Udon::CRC8(buffer.data(), buffer.size() - Udon::CRC8_SIZE);
             if (Udon::GetEndian() == Endian::Big)
             {
-                std::reverse(buffer.begin(), buffer.end());
+                std::reverse(buffer.begin(), buffer.end() - Udon::CRC8_SIZE);
             }
+            buffer.back() = Udon::CRC8(buffer.data(), buffer.size() - Udon::CRC8_SIZE);
             return buffer;
         }
 

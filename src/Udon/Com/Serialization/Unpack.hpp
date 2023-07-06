@@ -20,7 +20,7 @@
 #include <vector>
 #include <limits.h>
 
-#include <Udon/Algorithm/CRC8.hpp>
+#include <Udon/Algorithm/CRC.hpp>
 #include <Udon/Algorithm/Endian.hpp>
 #include <Udon/Algorithm/Bit.hpp>
 #include <Udon/Stl/Optional.hpp>
@@ -47,15 +47,21 @@ namespace Udon
         Deserializer(const std::vector<uint8_t>& buf)
             : buffer(buf)
         {
+
+            // チャックサム確認
+            const auto checksum = Udon::CRC8(buffer.data(), buffer.size() - Udon::CRC8_SIZE);
+            isChecksumSuccess   = buffer.back() == checksum;
+
+            if (not isChecksumSuccess)
+            {
+                return;
+            }
+
             // エンディアン変換
             if (Udon::GetEndian() == Endian::Big)
             {
                 std::reverse(buffer.begin(), buffer.end());
             }
-
-            // チャックサム確認
-            const auto checksum = Udon::CRC8(buffer.data(), buffer.size() - Udon::CRC8_SIZE);
-            isChecksumSuccess   = buffer.back() == checksum;
         }
 
         explicit operator bool() const
@@ -143,10 +149,20 @@ namespace Udon
             constexpr size_t size = sizeof(T);
 
             // 逆シリアル化されたオブジェクトをバッファの前方から抽出
+
             std::copy(
                 buffer.cbegin() + popIndex,
                 buffer.cbegin() + popIndex + size,
                 reinterpret_cast<uint8_t*>(&retval));
+            // Q 上記のコードはリトルエンディアンのみ動きそうな気がしていますが、ビッグエンディアンでも動きますか？
+            // A ビッグエンディアンでも動きます。ビッグエンディアンの場合、バッファの前方から抽出する際に、
+            //   バッファの後方から抽出するようにすることで、ビッグエンディアンのオブジェクトを復元できます。
+            // Q ではこのコードでは動かないってことですか？
+            // A はい。ビッグエンディアンのオブジェクトを復元する場合は、バッファの後方から抽出するようにしてください。
+            // Q お願いします。
+            // Q platform.hpp というファイルはどのディレクトリに入れるべきですか？
+            // Q Com/ に入れるのはあっていますか？
+            // A 
 
             // 抽出したオブジェクトのバイト数分インデックスを進める
             popIndex += size;
@@ -171,6 +187,21 @@ namespace Udon
             return retval;
         }
     };
+
+    template <typename T>
+    bool CanUnpack(const std::vector<uint8_t>& buffer)
+    {
+        static_assert(Udon::is_parsable<T>::value, "T must be parsable type.");   // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+        
+        if (buffer.size() < Udon::CapacityWithChecksum<T>())
+        {
+            return false;
+        }
+
+        const auto checksum = Udon::CRC8(buffer.data(), buffer.size() - Udon::CRC8_SIZE);
+
+        return buffer.back() == checksum;
+    }
 
     template <typename T>
     Udon::Optional<T> Unpack(const std::vector<uint8_t>& buffer)
@@ -201,7 +232,7 @@ namespace Udon
     {
         static_assert(Udon::is_parsable<T>::value, "T must be parsable type.");   // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
         
-            // return Udon::nullopt;
+// #ifdef 
         std::vector<uint8_t> v;
         v.reserve(size);
         for(size_t i =0; i< size;++i)
