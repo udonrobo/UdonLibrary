@@ -13,9 +13,7 @@
 //
 //-------------------------------------------------------------------
 
-
 #pragma once
-
 
 #include <Udon/Stl/EnableSTL.hpp>
 #include <algorithm>
@@ -113,14 +111,17 @@ namespace Udon
         }
 
         /// @brief バッファを取得する
-        /// @remark 取得後のバッファは無効です。
+        /// @remark 取得後の内部バッファは無効になります
         std::vector<uint8_t> flush()
         {
-            if (Udon::GetEndian() == Endian::Big)
-            {
-                std::reverse(buffer.begin(), buffer.end() - Udon::CRC8_SIZE);
-            }
-            buffer.back() = Udon::CRC8(buffer.data(), buffer.size() - Udon::CRC8_SIZE);
+
+#ifdef UDON_BIG_ENDIAN
+            std::reverse(buffer.begin(), buffer.end() - Udon::CRC8_SIZE);
+#endif
+
+            // チェックサム挿入
+            buffer.back() = Udon::CRC8(buffer.cbegin(), buffer.cend() - Udon::CRC8_SIZE);
+
             return buffer;
         }
 
@@ -137,10 +138,17 @@ namespace Udon
             constexpr size_t size = sizeof(T);
 
             // バッファの後方に挿入
+#if defined(UDON_LITTLE_ENDIAN)
             std::copy(
                 reinterpret_cast<const uint8_t*>(&rhs),
                 reinterpret_cast<const uint8_t*>(&rhs) + size,
                 buffer.begin() + insertIndex);
+#elif defined(UDON_BIG_ENDIAN)
+            std::copy(
+                reinterpret_cast<const uint8_t*>(&rhs),
+                reinterpret_cast<const uint8_t*>(&rhs) + size,
+                buffer.rbegin() + insertIndex);
+#endif
 
             // 次に挿入するインデックスを更新
             insertIndex += size;
@@ -165,8 +173,8 @@ namespace Udon
     template <typename T>
     inline std::vector<uint8_t> Pack(const T& rhs)
     {
-        
-        static_assert(Udon::is_parsable<T>::value, "T must be parsable type.");   // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+
+        static_assert(Udon::is_parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
 
         Serializer serializer(Udon::CapacityWithChecksum(rhs));
         serializer(rhs);
@@ -183,7 +191,7 @@ namespace Udon
     template <typename T>
     inline bool Pack(const T& rhs, uint8_t* buffer, size_t size)
     {
-        static_assert(Udon::is_parsable<T>::value, "T must be parsable type.");   // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+        static_assert(Udon::is_parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
 
         if (size >= Udon::CapacityWithChecksum(rhs))
         {
@@ -211,8 +219,8 @@ namespace Udon
     template <typename T, size_t N>
     inline bool Pack(const T& rhs, uint8_t (&array)[N])
     {
-        static_assert(Udon::is_parsable<T>::value, "T must be parsable type.");   // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
-        
+        static_assert(Udon::is_parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+
         return Pack(rhs, array, N);
     }
 

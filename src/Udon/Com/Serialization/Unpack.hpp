@@ -49,7 +49,7 @@ namespace Udon
         {
 
             // チャックサム確認
-            const auto checksum = Udon::CRC8(buffer.data(), buffer.size() - Udon::CRC8_SIZE);
+            const auto checksum = Udon::CRC8(buffer.cbegin(), buffer.cend() - Udon::CRC8_SIZE);
             isChecksumSuccess   = buffer.back() == checksum;
 
             if (not isChecksumSuccess)
@@ -57,11 +57,9 @@ namespace Udon
                 return;
             }
 
-            // エンディアン変換
-            if (Udon::GetEndian() == Endian::Big)
-            {
-                std::reverse(buffer.begin(), buffer.end());
-            }
+#ifdef UDON_BIG_ENDIAN
+            std::reverse(buffer.begin(), buffer.end() - Udon::CRC8_SIZE);
+#endif
         }
 
         explicit operator bool() const
@@ -150,19 +148,17 @@ namespace Udon
 
             // 逆シリアル化されたオブジェクトをバッファの前方から抽出
 
+#if defined(UDON_LITTLE_ENDIAN)
             std::copy(
                 buffer.cbegin() + popIndex,
                 buffer.cbegin() + popIndex + size,
                 reinterpret_cast<uint8_t*>(&retval));
-            // Q 上記のコードはリトルエンディアンのみ動きそうな気がしていますが、ビッグエンディアンでも動きますか？
-            // A ビッグエンディアンでも動きます。ビッグエンディアンの場合、バッファの前方から抽出する際に、
-            //   バッファの後方から抽出するようにすることで、ビッグエンディアンのオブジェクトを復元できます。
-            // Q ではこのコードでは動かないってことですか？
-            // A はい。ビッグエンディアンのオブジェクトを復元する場合は、バッファの後方から抽出するようにしてください。
-            // Q お願いします。
-            // Q platform.hpp というファイルはどのディレクトリに入れるべきですか？
-            // Q Com/ に入れるのはあっていますか？
-            // A 
+#elif defined(UDON_BIG_ENDIAN)
+            std::copy(
+                buffer.crbegin() + popIndex,
+                buffer.crbegin() + popIndex + size,
+                reinterpret_cast<uint8_t*>(&retval));
+#endif
 
             // 抽出したオブジェクトのバイト数分インデックスを進める
             popIndex += size;
@@ -231,15 +227,19 @@ namespace Udon
     Udon::Optional<T> Unpack(const uint8_t* buffer, size_t size)
     {
         static_assert(Udon::is_parsable<T>::value, "T must be parsable type.");   // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
-        
-// #ifdef 
+
+#ifdef __AVR_ATmega328P__
+        // todo: 
+        // Arduino nano さん、なぜかイテレーターベースコピーできない
+        // UdonArduinoSTLで使用しているEASTL内の vector::allocate() で処理落ち
+        // std::vector<uint8_t> v(buffer, buffer + size);
         std::vector<uint8_t> v;
-        v.reserve(size);
-        for(size_t i =0; i< size;++i)
-        {
-            v.push_back(buffer[i]);
-        }
+        v.resize(size);
+        std::copy(buffer, buffer + size, v.begin());
         return Unpack<T>(v);
+#else
+        return Unpack<T>(std::vector<uint8_t>(buffer, buffer + size));
+#endif
     }
 
     template <typename T, size_t N>
