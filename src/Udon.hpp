@@ -15,7 +15,6 @@
 // UdonLibrary が含まれているかどうかを判定するマクロ
 #define UDON_INCLUDED
 
-
 //-------------------------------------------------------------------
 //
 //    アクチュエーター / actuator
@@ -46,7 +45,7 @@
 #include <Udon/Algorithm/Delegate.hpp>
 
 // CRC-8 チェックサム / 誤り検出
-#include <Udon/Algorithm/CRC8.hpp>
+#include <Udon/Algorithm/CRC.hpp>
 
 // 疑似可変長リングバッファ
 #include <Udon/Algorithm/RingBuffer.hpp>

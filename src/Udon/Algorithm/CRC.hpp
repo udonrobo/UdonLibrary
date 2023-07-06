@@ -60,11 +60,12 @@ namespace Udon
 
     /// @brief CRC-8 checksum
     /// @tparam Iterator
-    /// @param begin
-    /// @param end
-    /// @return checksum
+    /// @param begin     begin iterator of source byte string
+    /// @param end       end iterator of source byte string
+    /// @param algorithm checksum algorithm
+    /// @return          checksum
     template <typename Iterator>
-    inline uint8_t CRC8(Iterator begin, Iterator end, ChecksumAlgorithm::CRC8 algorithm = ChecksumAlgorithm::CRC8_ITU)
+    inline uint8_t CRC8(Iterator begin, Iterator end, ChecksumAlgorithm::CRC8 algorithm = ChecksumAlgorithm::CRC8_SAE_J1850)
     {
         static_assert(std::is_same<typename std::iterator_traits<Iterator>::value_type, uint8_t>::value, "Iterator type must be uint8_t.");
 
@@ -91,12 +92,13 @@ namespace Udon
     }
 
     /// @brief CRC-8 checksum
-    /// @param ptr
-    /// @param length
-    /// @return
-    inline uint8_t CRC8(const uint8_t* ptr, size_t length, ChecksumAlgorithm::CRC8 algorithm = ChecksumAlgorithm::CRC8_ITU)
+    /// @param p         pointer of source byte string
+    /// @param length    length of source byte string
+    /// @param algorithm checksum algorithm
+    /// @return          checksum
+    inline uint8_t CRC8(const uint8_t* p, size_t length, ChecksumAlgorithm::CRC8 algorithm = ChecksumAlgorithm::CRC8_SAE_J1850)
     {
-        return CRC8(ptr, ptr + length);
+        return CRC8(p, p + length);
     }
 
 }    // namespace Udon
