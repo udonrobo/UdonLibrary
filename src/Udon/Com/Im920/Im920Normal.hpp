@@ -34,7 +34,6 @@ namespace Udon
         std::vector<uint8_t> receiveBuffer;
         std::vector<uint8_t> sendBuffer;
         bool                 twoWayNum;
-        bool                 NextTrans;
         uint32_t             transmitMs;
         uint32_t             deadTime;
 
@@ -42,7 +41,6 @@ namespace Udon
         Im920(HardwareSerial& uart, bool twoWayNum = false)
             : uart(uart)
             , twoWayNum(twoWayNum)
-            , NextTrans(NextTrans)
             , transmitMs()
             , deadTime()
         {
@@ -55,7 +53,6 @@ namespace Udon
         operator bool() const override
         {
             return uart && (millis() - transmitMs < 500);
-            return true;
         }
 
         /// @brief 送信バッファを登録する
@@ -86,8 +83,6 @@ namespace Udon
                 sendUpdate();
                 break;
             case TransmitMode::Receive:
-                Serial.print(uart.available());
-                Serial.print("\t");
                 receiveUpdate();
                 break;
             case TransmitMode::TwoWay:
@@ -264,23 +259,17 @@ namespace Udon
             return false;
         }
 
-        enum class TwoWayMode
-        {
-            Receive,
-            Send
-        };
-
         void twoWayUpdate()
         {
             // transTime =[内部処理時間:10~20ms]+[キャリアセンス:初回5.2ms 連続通信時0.5ms]+[不要データの通信:3.2ms]+[バイトごとの送信時間:0.16ms]
             const double sendTime    = 10.0 + 5.2 + 3.2 + sendBuffer.size() * 0.16;
             const double receiveTime = 10.0 + 5.2 + 3.2 + receiveBuffer.size() * 0.16;
+
             if (twoWayNum)
             {
                 if (millis() - transmitMs > sendTime + receiveTime)
                 {    // 時間経過により再送信
                     sendUpdate();
-
                     // Serial.print("resend");
                     // Serial.print("\t");
                 }
@@ -295,6 +284,14 @@ namespace Udon
                 {
                     sendUpdate();
                 }
+                // else
+                // {
+                //     if (millis() - transmitMs > receiveTime)
+                //     {
+                //         Serial.print("Not Data!!");
+                //         Serial.print("\t");
+                //     }
+                // }
             }
         }
     };
