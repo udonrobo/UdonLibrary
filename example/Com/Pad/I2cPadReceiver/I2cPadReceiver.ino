@@ -11,8 +11,8 @@
 //
 //    PS5コントローラー受信クラス スケッチ例 (I2C)
 //
-//    Controller --[Bluetooth]--> sender --[I2C]--> master
-//                                                  ^^^^^^
+//    Controller --[Bluetooth]--> USBHost --[SPI]--> Sender --> Master
+//                                                              ^^^^^^
 //
 //-------------------------------------------------------------------
 
@@ -21,8 +21,6 @@
 Udon::I2cBus bus{ Wire };
 
 Udon::PadPS5<Udon::I2cMasterReader> pad{ { bus, 6 } };
-
-Udon::I2cMasterWriter<Udon::RGB> writer{ bus, 6 };
 
 void setup()
 {
@@ -36,9 +34,18 @@ void loop()
 
     if (pad)
     {
-        writer.setMessage({ 0xffffff });
-        writer.update();
+        Serial.print(pad.getRightStick().x);    // 右スティックのx軸
+        Serial.print(", ");
+        Serial.print(pad.getRightStick().y);    // 右スティックのy軸
+        Serial.print(", ");
+        Serial.print(pad.getUp().press);    // 上ボタンの押下状態
+        Serial.print(", ");
+        Serial.println();
     }
-    
+    else
+    {
+        Serial.println("disconnected.");
+    }
+
     delay(10);
 }

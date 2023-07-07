@@ -11,8 +11,14 @@
 //
 //    Bluetooth経由PS5コントローラークラス
 //
-//    Controller --[Bluetooth]--> Sender --> Master
-//                                ^^^^^^
+//    Controller --[Bluetooth]--> USBHost --[SPI]--> Sender --> 
+//                                                   ^^^^^^
+//
+//    ペアリング手順:
+//        1. コンストラクタの引数 pair に true を渡して書き込む
+//        2. コントローラーの \|/ボタン と PSボタン を同時に押し続ける
+//        3. コントローラーのLEDが点滅し始める
+//        4. ペアリングが完了するとLEDが点灯する
 //
 //-------------------------------------------------------------------
 
@@ -116,16 +122,26 @@ namespace Udon
             return buttons;
         }
 
-        /// @brief LEDバーの色を設定する
+        /// @brief ライトバーの色を設定する
         /// @param color
-        void setColor(const Udon::RGB& color)
+        void setLightBar(const Udon::RGB& color)
         {
             pad.setLed(color.r, color.g, color.b);
         }
 
+        /// @brief 5つのプレイヤーのランプの点灯を設定する
+        /// @param mask
+        ///     0b001:  HIGH LOW  LOW  LOW  HIGH
+        ///     0b010:  LOW  HIGH LOW  HIGH LOW
+        ///     0b100:  LOW  LOW  HIGH LOW  LOW
+        void setPlayerLamp(uint8_t mask = 0b011)
+        {
+            pad.setPlayerLed(mask);
+        }
+
         /// @brief マイクのLEDの点灯を設定する
         /// @param on
-        void setMicLed(bool on)
+        void setMicLed(bool on = true)
         {
             pad.setMicLed(on);
         }

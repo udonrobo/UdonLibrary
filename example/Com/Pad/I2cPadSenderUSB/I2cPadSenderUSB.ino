@@ -11,8 +11,8 @@
 //
 //    PS5コントローラー送信クラス スケッチ例 (I2C)
 //
-//    Controller --[USB]--> sender --[I2C]--> master
-//                          ^^^^^^
+//    Controller --[USB]--> USBHost --[SPI]--> Sender --> 
+//                                             ^^^^^^
 //
 //-------------------------------------------------------------------
 
@@ -21,9 +21,7 @@
 
 Udon::I2cBus bus{ Wire };
 
-Udon::I2cSlaveWriter<Udon::Message::PadPS5> padWriter{ bus };
-
-Udon::I2cSlaveReader<Udon::RGB> padColorReader{ bus };
+Udon::I2cSlaveWriter<Udon::Message::PadPS5> writer{ bus };
 
 Udon::PadPS5USB pad;
 
@@ -37,31 +35,18 @@ void setup()
             ;
     }
     bus.begin(6);
-    padWriter.begin();
-    padColorReader.begin();
+    writer.begin();
 }
 
 void loop()
 {
     bus.update();
-    bus.show();
-
     pad.update();
 
     //   pad --[i2c<Message::PadPS5>]--> master
-    padWriter.setMessage(pad.getButtons());
+    writer.setMessage(pad.getButtons());
 
-    //   master --[i2c<RGB>]--> pad
-    if (const auto color = padColorReader.getMessage())
-    {
-        pad.setColor(*color);
-    }
-    else
-    {
-        // default: jade green
-        pad.setColor(Udon::RGB{ 0x38b48b });
-    }
+    pad.setLightBar(Udon::RGB{ 0x38b48b });
+    pad.setMicLed(true);
 
-    Serial.println();
-    delay(10);
 }
