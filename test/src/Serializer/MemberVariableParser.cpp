@@ -17,22 +17,22 @@ struct UnParsable
 inline void test()
 {
     // パース可能
-    static_assert(Udon::is_parsable<int>::value, "");               // プリミティブ型
-    static_assert(Udon::is_parsable<int[]>::value, "");             // プリミティブ型配列
-    static_assert(Udon::is_parsable<int[2][2]>::value, "");         // プリミティブ型多次元配列
-    static_assert(Udon::is_parsable<float>::value, "");             // プリミティブ型
-    static_assert(Udon::is_parsable<float[]>::value, "");           // プリミティブ型配列
-    static_assert(Udon::is_parsable<float[2][2]>::value, "");       // プリミティブ型多次元配列
-    static_assert(Udon::is_parsable<Parsable>::value, "");          // ユーザー定義型
-    static_assert(Udon::is_parsable<Parsable[]>::value, "");        // ユーザー定義型配列
-    static_assert(Udon::is_parsable<Parsable[2][2]>::value, "");    // ユーザー定義型多次元配列
+    static_assert(Udon::IsParsable<int>::value, "");               // プリミティブ型
+    static_assert(Udon::IsParsable<int[]>::value, "");             // プリミティブ型配列
+    static_assert(Udon::IsParsable<int[2][2]>::value, "");         // プリミティブ型多次元配列
+    static_assert(Udon::IsParsable<float>::value, "");             // プリミティブ型
+    static_assert(Udon::IsParsable<float[]>::value, "");           // プリミティブ型配列
+    static_assert(Udon::IsParsable<float[2][2]>::value, "");       // プリミティブ型多次元配列
+    static_assert(Udon::IsParsable<Parsable>::value, "");          // ユーザー定義型
+    static_assert(Udon::IsParsable<Parsable[]>::value, "");        // ユーザー定義型配列
+    static_assert(Udon::IsParsable<Parsable[2][2]>::value, "");    // ユーザー定義型多次元配列
 
     // パース不可
-    static_assert(not Udon::is_parsable<int*>::value, "");          // プリミティブ型ポインタ
-    static_assert(not Udon::is_parsable<int*[]>::value, "");        // プリミティブ型ポインタ配列
-    static_assert(not Udon::is_parsable<float*>::value, "");        // プリミティブ型ポインタ
-    static_assert(not Udon::is_parsable<float*[]>::value, "");      // プリミティブ型ポインタ配列
-    static_assert(not Udon::is_parsable<int&>::value, "");          // プリミティブ型参照
-    static_assert(not Udon::is_parsable<float&>::value, "");        // プリミティブ型参照
-    static_assert(not Udon::is_parsable<UnParsable>::value, "");    // パース不可能なユーザー定義型
+    static_assert(not Udon::IsParsable<int*>::value, "");          // プリミティブ型ポインタ
+    static_assert(not Udon::IsParsable<int*[]>::value, "");        // プリミティブ型ポインタ配列
+    static_assert(not Udon::IsParsable<float*>::value, "");        // プリミティブ型ポインタ
+    static_assert(not Udon::IsParsable<float*[]>::value, "");      // プリミティブ型ポインタ配列
+    static_assert(not Udon::IsParsable<int&>::value, "");          // プリミティブ型参照
+    static_assert(not Udon::IsParsable<float&>::value, "");        // プリミティブ型参照
+    static_assert(not Udon::IsParsable<UnParsable>::value, "");    // パース不可能なユーザー定義型
 }

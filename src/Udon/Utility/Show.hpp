@@ -39,14 +39,14 @@ namespace Udon
             -> typename std::enable_if<std::is_scalar<T>::value>::type
         {
             
-#ifdef ARDUINO
+#if defined(ARDUINO)
             Serial.print(rhs);
             Serial.print(gap);
-#endif
-
-#ifdef SIV3D_INCLUDED
+#elif defined(SIV3D_INCLUDED)
             s3d::Print.write(rhs);
             s3d::Print.write(gap);
+#else
+            std::cout << rhs << gap;
 #endif
 
         }

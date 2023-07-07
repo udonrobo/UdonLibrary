@@ -31,7 +31,7 @@
 ///   - template <typename Acc> void accessor(Acc& acc)
 ///     - シリアライズ、デシリアライズ時に使用するアクセッサ
 #define UDON_PARSABLE(...)                  \
-    using is_parsable_tag = void;           \
+    using IsParsable_tag = void;           \
     constexpr size_t capacity() const       \
     {                                       \
         return Udon::Capacity(__VA_ARGS__); \
@@ -50,33 +50,33 @@ namespace Udon
     UDON_HAS_MEMBER_ITERATE_FUNCTION(accessor);
 #endif
 
-#ifndef UDON_HAS_MEMBER_TYPE_IS_PARSABLE_TAG
-#    define UDON_HAS_MEMBER_TYPE_IS_PARSABLE_TAG
-    UDON_HAS_MEMBER_TYPE(is_parsable_tag);
+#ifndef UDON_HAS_MEMBER_TYPE_IsParsable_TAG
+#    define UDON_HAS_MEMBER_TYPE_IsParsable_TAG
+    UDON_HAS_MEMBER_TYPE(IsParsable_tag);
 #endif
 
     namespace detail
     {
         template <typename T>
-        struct is_parsable_helper
+        struct IsParsable_helper
         {
-            static constexpr bool value = std::is_arithmetic<T>::value || Udon::has_member_type_is_parsable_tag<T>::value;
+            static constexpr bool value = std::is_arithmetic<T>::value || Udon::has_member_type_IsParsable_tag<T>::value;
         };
 
         template <typename T>
-        struct is_parsable_helper<T[]> : is_parsable_helper<T>
+        struct IsParsable_helper<T[]> : IsParsable_helper<T>
         {
         };
 
         template <typename T, size_t N>
-        struct is_parsable_helper<T[N]> : is_parsable_helper<T>
+        struct IsParsable_helper<T[N]> : IsParsable_helper<T>
         {
         };
         
     }
 
     template <typename T>
-    struct is_parsable : detail::is_parsable_helper<T>
+    struct IsParsable : detail::IsParsable_helper<T>
     {
     };
 
