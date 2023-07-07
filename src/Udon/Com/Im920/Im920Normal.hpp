@@ -31,21 +31,20 @@ namespace Udon
         : public IIm920
     {
         HardwareSerial&      uart;
-        bool                 twoWayNum;
         std::vector<uint8_t> receiveBuffer;
         std::vector<uint8_t> sendBuffer;
-
-        uint32_t transmitMs;
-        bool     NextTrans;
-        uint32_t dicConnectCount;
+        bool                 twoWayNum;
+        bool                 NextTrans;
+        uint32_t             transmitMs;
+        uint32_t             deadTime;
 
     public:
         Im920(HardwareSerial& uart, bool twoWayNum = false)
             : uart(uart)
             , twoWayNum(twoWayNum)
+            , NextTrans(NextTrans)
             , transmitMs()
-            , NextTrans()
-            , dicConnectCount()
+            , deadTime()
         {
         }
 
@@ -148,76 +147,23 @@ namespace Udon
             }
         }
 
-        void twoWayUpdate()
-        {
-            // 常時、受信動作を行い、受信、送信を交互に繰り返すように動作させる
-            // transTime =[内部処理時間:10~20ms]+[キャリアセンス:初回5.2ms 連続通信時0.5ms]+[不要データの通信:3.2ms]+[バイトごとの送信時間:0.16ms]
-            const double sendTime    = 15.0 + 0.5 + 3.2 + sendBuffer.size() * 0.16;
-            const double receiveTime = 15.0 + 0.5 + 3.2 + receiveBuffer.size() * 0.16;
-
-            // 受信は二周期に一回
-            if (twoWayNum)
-            {
-                // 発信側
-                if (millis() - transmitMs > sendTime + receiveTime)
-                {    // 時間経過により再送信
-                    sendUpdate();
-
-                    Serial.print("resend");
-                    Serial.print("\t");
-                }
-                else
-                {
-                    if (receiveUpdate())
-                    {
-                        // 受け取れたら送り返す
-                        sendUpdate();
-                    }
-                    else
-                    {
-                        // 受信できなかったらもう一周期待つ
-                        Serial.print("buffer didn't charge");
-                        Serial.print("\t");
-                    }
-                }
-                // 再送信までの待機時間
-            }
-            else
-            {
-                // 受信待ちおよびレスポンス側
-
-                if (receiveUpdate())
-                {
-                    // 受信出来たら送信モードへ変更
-                    sendUpdate();
-                }
-                else
-                {
-                    Serial.print("receive miss!");
-                    // Serial.print("\t");
-                    // 受信できなかったらもう一周期待つ
-                }
-            }
-            // 再送信までの待機時間
-        }
-
         void sendUpdate()
         {
             uint8_t recoveryBuffer = 0;
-            uint8_t bitCount       = 0;
-            uint8_t loopCount      = 0;
+            size_t  bitCount       = 0;
+            size_t  loopCount      = 0;
             uart.print("TXDA ");
 
             for (auto&& it : sendBuffer)
             {
-                loopCount++;
+                ++loopCount;
+
                 Udon::BitWrite(recoveryBuffer, bitCount, Udon::BitRead(it, 7));
-                bitCount++;
+                ++bitCount;
 
                 if (loopCount == 1)
                 {
                     uart.write(it | 0b10000000);
-                    // 最初のビットの８ビット目に１を入れる
                 }
                 else
                 {
@@ -227,7 +173,6 @@ namespace Udon
                 if (bitCount >= 7)
                 {
                     uart.write(recoveryBuffer);
-
                     recoveryBuffer = 0;
                     bitCount       = 0;
                 }
@@ -256,52 +201,47 @@ namespace Udon
 
             if (uart.available() >= frameSize)
             {
-                uint8_t loopCount = 0;
-                uint8_t bitCount  = 0;
-                uint8_t firstBit;
+                size_t  loopCount = 0;
+                size_t  bitCount  = 0;
+                uint8_t firstBuf;
                 do
                 {
-                    if (uart.available() < frameSize)
+                    if (uart.available() < dataSize)
                     {
-                        ++dicConnectCount;
-                        return true;
+                        return false;
                     }
-                    firstBit = uart.read();
-                } while (not(firstBit & 0b10000000));
+                    firstBuf = uart.read();
+                } while (not(firstBuf & 0b10000000));
                 ++bitCount;
-
-                newBuffer[0] = firstBit & 0b01111111;
 
                 for (auto&& it : newBuffer)
                 {
                     ++loopCount;
                     if (loopCount == 1)
                     {
+                        it = firstBuf & 0b01111111;
                         continue;
                     }
                     it = uart.read();
                     ++bitCount;
                     if (bitCount >= 7)
                     {
-                        uint8_t buf = uart.read();
-                        for (uint8_t i = 0; i < 7; ++i)
+                        uint8_t recoveryBuf = uart.read();
+                        for (size_t i = 0; i < 7; ++i)
                         {
                             Udon::BitWrite(newBuffer[loopCount - 7 + i], 7,
-                                           Udon::BitRead(buf, i));
+                                           Udon::BitRead(recoveryBuf, i));
                         }
                         bitCount = 0;
                     }
                 }
-
-                if (newBuffer.size() == loopCount)
+                uint8_t lastBuf = uart.read();
+                for (size_t i = 0; i < bitCount; ++i)
                 {
-                    uint8_t buf = uart.read();
-                    for (uint8_t i = 0; i < bitCount; ++i)
-                    {
-                        Udon::BitWrite(newBuffer[loopCount - bitCount + i], 7,
-                                       Udon::BitRead(buf, i));
-                    }
+                    Udon::BitWrite(newBuffer[loopCount - bitCount + i], 7,
+                                   Udon::BitRead(lastBuf, i));
                 }
+
                 for (size_t i = 0; i < FooterSize; ++i)
                 {
                     (void)uart.read();
@@ -310,40 +250,54 @@ namespace Udon
                 Deserializer deserializer(newBuffer);
                 if (deserializer)
                 {
-                    receiveBuffer   = newBuffer;
-                    transmitMs      = millis();
-                    dicConnectCount = 0;
+                    receiveBuffer = newBuffer;
+                    transmitMs    = millis();
+                    deadTime      = millis();
                 }
-                else
-                {
-                    ++dicConnectCount;
-                    // Serial.print("data is not correct!");
-                }
-            }
-            else
-            {
-                ++dicConnectCount;
-            }
-
-            if (dicConnectCount > 20)
-            {
-                while (uart.available())
-                {
-                    (void)uart.read();
-                }
-                receiveBuffer.clear();
-                Serial.print("bit did not charged!");
-                return false;
-            }
-            else
-            {
                 return true;
+            }
+            if (millis() - deadTime > 1000)
+            {    // タイムアウト時エラー吐出
+                Serial.print("Im920 is TimeOut!");
+                Serial.print("\t");
+            }
+            return false;
+        }
+
+        enum class TwoWayMode
+        {
+            Receive,
+            Send
+        };
+
+        void twoWayUpdate()
+        {
+            // transTime =[内部処理時間:10~20ms]+[キャリアセンス:初回5.2ms 連続通信時0.5ms]+[不要データの通信:3.2ms]+[バイトごとの送信時間:0.16ms]
+            const double sendTime    = 10.0 + 5.2 + 3.2 + sendBuffer.size() * 0.16;
+            const double receiveTime = 10.0 + 5.2 + 3.2 + receiveBuffer.size() * 0.16;
+            if (twoWayNum)
+            {
+                if (millis() - transmitMs > sendTime + receiveTime)
+                {    // 時間経過により再送信
+                    sendUpdate();
+
+                    // Serial.print("resend");
+                    // Serial.print("\t");
+                }
+                if (receiveUpdate())
+                {
+                    sendUpdate();
+                }
+            }
+            else
+            {
+                if (receiveUpdate())
+                {
+                    sendUpdate();
+                }
             }
         }
     };
-
-    // detail
-
     inline void Im920::begin(uint8_t channel)
     {
         // ボーレート設定
