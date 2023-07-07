@@ -9,11 +9,17 @@
 //
 //-------------------------------------------------------------------
 //
-//    有線USB経由PS5コントローラークラス
+//    有線USB経由 PS5コントローラークラス
 //
-//    Controller --[USB]--> Sender --> Master
-//                          ^^^^^^
+//    Controller --[USB]--> USBHost --[SPI]--> Sender --> 
+//                                             ^^^^^^
 //
+//    Raspberrypi Pico SPI Pins:
+//        CLK     : 18
+//        MOSI(TX): 19
+//        MISO(RX): 16
+//        CS      : 17
+//        
 //-------------------------------------------------------------------
 
 #pragma once
@@ -39,6 +45,11 @@ namespace Udon
             : usb()
             , pad(&usb)
         {
+        }
+
+        explicit operator bool() const
+        {
+            return const_cast<PadPS5USB*>(this)->pad.connected();
         }
 
         /// @brief コントローラーと通信開始
@@ -108,16 +119,26 @@ namespace Udon
             return buttons;
         }
 
-        /// @brief LEDバーの色を設定する
+        /// @brief ライトバーの色を設定する
         /// @param color
-        void setColor(const Udon::RGB& color)
+        void setLightBar(const Udon::RGB& color)
         {
             pad.setLed(color.r, color.g, color.b);
         }
 
+        /// @brief 5つのプレイヤーのランプの点灯を設定する
+        /// @param mask 
+        ///     0b001:  HIGH LOW  LOW  LOW  HIGH
+        ///     0b010:  LOW  HIGH LOW  HIGH LOW
+        ///     0b100:  LOW  LOW  HIGH LOW  LOW
+        void setPlayerLamp(uint8_t mask = 0b011)
+        {
+            pad.setPlayerLed(mask);
+        }
+
         /// @brief マイクのLEDの点灯を設定する
         /// @param on
-        void setMicLed(bool on)
+        void setMicLed(bool on = true)
         {
             pad.setMicLed(on);
         }
