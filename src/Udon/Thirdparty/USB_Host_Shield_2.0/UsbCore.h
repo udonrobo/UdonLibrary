@@ -54,6 +54,8 @@ typedef MAX3421e<P5, P17> MAX3421E; // ESP32 boards
 typedef MAX3421e<Pb4, Pb3> MAX3421E; // MightyCore
 #elif (defined(__AVR_ATmega644P__) || defined(__AVR_ATmega1284P__))
 typedef MAX3421e<Pb4, Pb3> MAX3421E; // Sanguino
+#elif defined(ARDUINO_ARCH_RP2040)  // add by udonrobo
+typedef MAX3421e<P17, P20> MAX3421E; // RP2040 based boards
 #else
 typedef MAX3421e<P10, P9> MAX3421E; // Official Arduinos (UNO, Duemilanove, Mega, 2560, Leonardo, Due etc.), Intel Edison, Intel Galileo 2 or Teensy 2.0 and 3.x
 #endif

@@ -1519,30 +1519,31 @@ MAKE_PIN(P33, (9));
 
 #        elif defined(ARDUINO_ARCH_RP2040)  // add by udonrobo
 
-#            define MAKE_PIN(className, pin)     \
-                class className                  \
-                {                                \
-                public:                          \
-                    static void Set()            \
-                    {                            \
-                        digitalWrite(pin, HIGH); \
-                    }                            \
-                    static void Clear()          \
-                    {                            \
-                        digitalWrite(pin, LOW);  \
-                    }                            \
-                    static void SetDirRead()     \
-                    {                            \
-                        pinMode(pin, INPUT);     \
-                    }                            \
-                    static void SetDirWrite()    \
-                    {                            \
-                        pinMode(pin, OUTPUT);    \
-                    }                            \
-                    static uint8_t IsSet()       \
-                    {                            \
-                        return digitalRead(pin); \
-                    }                            \
+#            define MAKE_PIN(className, pin)            \
+                class className                         \
+                {                                       \
+                public:                                 \
+                    static constexpr uint8_t Pin = pin; \
+                    static void Set()                   \
+                    {                                   \
+                        digitalWrite(pin, HIGH);        \
+                    }                                   \
+                    static void Clear()                 \
+                    {                                   \
+                        digitalWrite(pin, LOW);         \
+                    }                                   \
+                    static void SetDirRead()            \
+                    {                                   \
+                        pinMode(pin, INPUT);            \
+                    }                                   \
+                    static void SetDirWrite()           \
+                    {                                   \
+                        pinMode(pin, OUTPUT);           \
+                    }                                   \
+                    static uint8_t IsSet()              \
+                    {                                   \
+                        return digitalRead(pin);        \
+                    }                                   \
                 };
 
 MAKE_PIN(P0, 0);

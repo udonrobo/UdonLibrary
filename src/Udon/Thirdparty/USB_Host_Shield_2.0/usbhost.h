@@ -46,6 +46,7 @@ public:
                 SPI_SS::SetDirWrite();
                 SPI_SS::Set();
         }
+
 #elif defined(SPI_HAS_TRANSACTION)
         static void init() {
                 USB_SPI.begin(); // The SPI library with transaction will take care of setting up the pins - settings is set in beginTransaction()
