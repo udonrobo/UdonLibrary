@@ -1523,7 +1523,6 @@ MAKE_PIN(P33, (9));
                 class className                         \
                 {                                       \
                 public:                                 \
-                    static constexpr uint8_t Pin = pin; \
                     static void Set()                   \
                     {                                   \
                         digitalWrite(pin, HIGH);        \
