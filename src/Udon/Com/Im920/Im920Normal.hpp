@@ -35,14 +35,14 @@ namespace Udon
         std::vector<uint8_t> sendBuffer;
         bool                 twoWayNum;
         uint32_t             sendMitMs;
-        uint32_t             receiverDeadTime;
+        uint32_t             receiveDeadTime;
 
     public:
         Im920(HardwareSerial& uart, bool twoWayNum = false)
             : uart(uart)
             , twoWayNum(twoWayNum)
             , sendMitMs()
-            , receiverDeadTime()
+            , receiveDeadTime()
         {
         }
 
@@ -245,11 +245,11 @@ namespace Udon
                 if (Udon::CanUnpack(newBuffer))
                 {
                     receiveBuffer    = newBuffer;
-                    receiverDeadTime = millis();
+                    receiveDeadTime = millis();
                 }
                 return true;
             }
-            if (millis() - receiverDeadTime > 1000)
+            if (millis() - receiveDeadTime > 1000)
             {    // タイムアウト時エラー吐出
                 Serial.print("Im920 is TimeOut!");
                 Serial.print("\t");
