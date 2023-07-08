@@ -268,8 +268,6 @@ namespace Udon
                 if (2 * millis() - (sendMitMs + receiveDeadTime) > sendTime + receiveTime)
                 {    // 時間経過により再送信
                     sendUpdate();
-                    // Serial.print("resend");
-                    // Serial.print("\t");
                 }
                 if (receiveUpdate())
                 {
@@ -282,14 +280,6 @@ namespace Udon
                 {
                     sendUpdate();
                 }
-                // else
-                // {
-                //     if (millis() - sendMitMs > receiveTime)
-                //     {
-                //         Serial.print("Not Data!!");
-                //         Serial.print("\t");
-                //     }
-                // }
             }
         }
     };
