@@ -20,56 +20,33 @@
 namespace Udon
 {
     /// @brief 逆シリアル化可能かどうかを判定します
-    /// @tparam T 逆シリアル化する型
     /// @param buffer バイト列
     /// @return 逆シリアル化可能かどうか
-    template <typename T>
-    bool CanUnpack(const std::vector<uint8_t>& buffer)
+    inline bool CanUnpack(const std::vector<uint8_t>& buffer)
     {
-        static_assert(Udon::IsParsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
-
-        if (buffer.size() == Udon::CapacityWithChecksum<T>())
-        {
-            const auto checksum = Udon::CRC8(buffer.data(), buffer.size() - Udon::CRC8_SIZE);
-            return buffer.back() == checksum;
-        }
-        else
-        {
-            return false;
-        }
+        const auto checksum = Udon::CRC8(buffer.data(), buffer.size() - Udon::CRC8_SIZE);
+        return buffer.back() == checksum;
     }
 
     /// @brief 逆シリアル化可能かどうかを判定します
-    /// @tparam T 逆シリアル化する型
     /// @param buffer バイト列
     /// @param size バイト列のサイズ
     /// @return 逆シリアル化可能かどうか
-    template <typename T>
-    bool CanUnpack(const uint8_t* buffer, size_t size)
+    inline bool CanUnpack(const uint8_t* buffer, size_t size)
     {
-        static_assert(Udon::IsParsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
-
-        if (size == Udon::CapacityWithChecksum<T>())
-        {
-            const auto checksum = Udon::CRC8(buffer, size - Udon::CRC8_SIZE);
-            return buffer[size - 1] == checksum;
-        }
-        else
-        {
-            return false;
-        }
+        const auto checksum = Udon::CRC8(buffer, size - Udon::CRC8_SIZE);
+        return buffer[size - 1] == checksum;
     }
 
-    /// @brief バイト列からオブジェクトを逆シリアル化します
+    /// @brief 逆シリアル化可能かどうかを判定します
     /// @remark 配列の参照を引数にとります
-    /// @tparam T 逆シリアル化する型
     /// @tparam N バイト配列の要素数
     /// @param array バイト列
-    /// @return 逆シリアル化されたオブジェクト
-    template <typename T, size_t N>
-    bool CanUnpack(const uint8_t (&array)[N])
+    /// @return 逆シリアル化可能かどうか
+    template <size_t N>
+    inline bool CanUnpack(const uint8_t (&array)[N])
     {
-        return CanUnpack<T>(array, N);
+        return CanUnpack(array, N);
     }
 
 
