@@ -47,7 +47,18 @@ namespace Udon
         /// @param format 表示フォーマット(0~9)
         SegmentsLed(const std::array<uint8_t, 7>&  cathode,
                     const std::vector<uint8_t>&    anode,
-                    const std::array<uint8_t, 10>& format)
+                    const std::array<uint8_t, 10>& format = {
+                        0b0111111,    // 0
+                        0b0000110,    // 1
+                        0b1011011,    // 2
+                        0b1001111,    // 3
+                        0b1100110,    // 4
+                        0b1101101,    // 5
+                        0b1111101,    // 6
+                        0b0100111,    // 7
+                        0b1111111,    // 8
+                        0b1101111     // 9
+                    })
             : cathode(cathode)
             , anode(anode)
             , format(format)
