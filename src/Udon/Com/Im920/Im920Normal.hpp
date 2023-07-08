@@ -34,15 +34,15 @@ namespace Udon
         std::vector<uint8_t> receiveBuffer;
         std::vector<uint8_t> sendBuffer;
         bool                 twoWayNum;
-        uint32_t             transmitMs;
-        uint32_t             deadTime;
+        uint32_t             sendMitMs;
+        uint32_t             receiverDeadTime;
 
     public:
         Im920(HardwareSerial& uart, bool twoWayNum = false)
             : uart(uart)
             , twoWayNum(twoWayNum)
-            , transmitMs()
-            , deadTime()
+            , sendMitMs()
+            , receiverDeadTime()
         {
         }
 
@@ -52,7 +52,7 @@ namespace Udon
         /// @return IM920が使用可能ならtrue
         operator bool() const override
         {
-            return uart && (millis() - transmitMs < 500);
+            return uart && (2 * millis() - (sendMitMs + receiveDeadTime) < 500);
         }
 
         /// @brief 送信バッファを登録する
@@ -177,7 +177,7 @@ namespace Udon
                 uart.write(recoveryBuffer);
             }
             uart.print("\r\n");
-            transmitMs = millis();
+            sendMitMs = millis();
         }
 
         bool receiveUpdate()
@@ -242,16 +242,14 @@ namespace Udon
                     (void)uart.read();
                 }
 
-                Deserializer deserializer(newBuffer);
-                if (deserializer)
+                if (Udon::CanUnpack(newBuffer))
                 {
-                    receiveBuffer = newBuffer;
-                    transmitMs    = millis();
-                    deadTime      = millis();
+                    receiveBuffer    = newBuffer;
+                    receiverDeadTime = millis();
                 }
                 return true;
             }
-            if (millis() - deadTime > 1000)
+            if (millis() - receiverDeadTime > 1000)
             {    // タイムアウト時エラー吐出
                 Serial.print("Im920 is TimeOut!");
                 Serial.print("\t");
@@ -267,7 +265,7 @@ namespace Udon
 
             if (twoWayNum)
             {
-                if (millis() - transmitMs > sendTime + receiveTime)
+                if (2 * millis() - (sendMitMs + receiveDeadTime) > sendTime + receiveTime)
                 {    // 時間経過により再送信
                     sendUpdate();
                     // Serial.print("resend");
@@ -286,7 +284,7 @@ namespace Udon
                 }
                 // else
                 // {
-                //     if (millis() - transmitMs > receiveTime)
+                //     if (millis() - sendMitMs > receiveTime)
                 //     {
                 //         Serial.print("Not Data!!");
                 //         Serial.print("\t");
