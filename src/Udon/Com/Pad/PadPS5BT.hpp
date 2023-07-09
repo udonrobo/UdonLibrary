@@ -15,7 +15,7 @@
 //                                                   ^^^^^^
 //
 //    ペアリング手順:
-//        1. コンストラクタの引数 pair に true を渡して書き込む
+//        1. コンストラクタの引数 pair に PAIR(true) を渡して書き込む
 //        2. コントローラーの \|/ボタン と PSボタン を同時に押し続ける
 //        3. コントローラーのLEDが点滅し始める
 //        4. ペアリングが完了するとLEDが点灯する
@@ -43,6 +43,10 @@ namespace Udon
         Message::PadPS5 buttons;
 
     public:
+
+        /// @brief コンストラクタ
+        /// @param pair ペアリングするかどうか
+        /// @details ペアリングする場合は PAIR を渡す
         PadPS5BT(bool pair = false)
             : usb()
             , btd(&usb)
@@ -51,7 +55,7 @@ namespace Udon
         }
 
         /// @brief コントローラーと通信開始
-        /// @return
+        /// @return 成功したら true
         bool begin()
         {
             if (usb.Init() == -1)
