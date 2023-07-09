@@ -1,7 +1,17 @@
-/// @file   CanBusTeensy.hpp
-/// @date   2023/01/13
-/// @brief  FlexCan_T4ライブラリを用いたCanバス管理クラス
-/// @author 大河 祐介
+//-------------------------------------------------------------------
+//
+//    UdonLibrary
+//
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
+//
+//    Licensed under the MIT License.
+//
+//-------------------------------------------------------------------
+//
+//    CAN通信 Teensy用バス管理クラス
+//
+//-------------------------------------------------------------------
 
 #pragma once
 
@@ -11,10 +21,10 @@
 #    include <FlexCAN_T4.h>       // https://github.com/tonton81/FlexCan_T4.git
 #    include <IntervalTimer.h>    // https://github.com/loglow/IntervalTimer.git
 
-#    include <Udon/Algorithm/RingBuffer.hpp>
-#    include <Udon/Com/Can/CanInfo.hpp>
-#    include <Udon/Com/Can/CanUtility.hpp>
 #    include <Udon/Com/Can/ICanBus.hpp>
+#    include <Udon/Com/Can/CanNode.hpp>
+#    include <Udon/Com/Can/CanUtility.hpp>
+#    include <Udon/Algorithm/StaticVector.hpp>
 
 namespace Udon
 {
@@ -31,40 +41,22 @@ namespace Udon
         : public ICanBus
     {
 
-#    if defined(__MK20DX256__) || defined(__MK64FX512__)
-        static_assert(Bus == CAN0, "Only CAN0 works on Teensy 3.2/3.5");
-#    endif
-#    if defined(__MK66FX1M0__)
-        static_assert(Bus == CAN0 || Bus == CAN1, "Only CAN0 & CAN1 works on Teensy 3.6");
-#    endif
-#    if defined(__IMXRT1062__)
-        static_assert(Bus == CAN1 || Bus == CAN2 || Bus == CAN3, "Only CAN1 & CAN2 & CAN3 works on Teensy 4.0/4.1");
-#    endif
-
-        FlexCAN_T4<Bus, RX_SIZE_256, TX_SIZE_256> bus;
+        FlexCAN_T4<Bus, RX_SIZE_128, TX_SIZE_256> bus;
 
         IntervalTimer isr;
 
-        struct Can20ANode
+        constexpr static uint32_t SingleFrameSize = 8;
+
+        using TxNode = CanNode;
+        struct RxNode
         {
-            static constexpr size_t SinglePacketSize = 8;
-
-            uint16_t id;    // id: 11bit
-
-            std::vector<uint8_t> data;    // データ
-
-            std::vector<uint8_t> temp;    // 一時的にデータを格納するバッファ(マルチフレームの場合に使用)
-
-            uint32_t transmitUs;
-
-            CanNodeView view()
-            {
-                return { id, &data, &transmitUs };
-            }
+            CanNode* node;
+            void (*onReceive)(void*);
+            void* p;
         };
 
-        Udon::RingBuffer<Can20ANode, 32> txNodes = {};
-        Udon::RingBuffer<Can20ANode, 64> rxNodes = {};
+        Udon::StaticVector<TxNode*> txNodes;
+        Udon::StaticVector<RxNode>  rxNodes;
 
         uint32_t transmitUs = 0;
 
@@ -73,6 +65,11 @@ namespace Udon
     public:
         /// @brief コンストラクタ
         CanBusTeensy()
+        {
+            self = this;
+        }
+
+        CanBusTeensy(const CanBusTeensy&)
         {
             self = this;
         }
@@ -100,12 +97,9 @@ namespace Udon
                 isr.begin(
                     []
                     {
-                        for (int i = 0; i < 1; ++i)
-                        {
-                            self->bus.events();
-                        }
+                        self->bus.events();
                     },
-                    100);
+                    200);
             }
         }
 
@@ -135,114 +129,128 @@ namespace Udon
 
         void show() const
         {
-            PrintBusInfo("CAN 2.0A", txNodes, rxNodes, Can20ANode::SinglePacketSize);
-        }
+            Serial.print("Bus: CAN 2.0B\n");
 
-        /// @brief TXノードを作成する
-        /// @param id ノードID [11bit]
-        /// @param size データサイズ [byte]
-        /// @return CanNodeView TXノードバッファの参照
-        CanNodeView createTxNode(uint32_t id, size_t size) override
-        {
-            return createNode(static_cast<uint16_t>(id), size, txNodes);
-        }
-
-        /// @brief RXノードを作成する
-        /// @param id ノードID [11bit]
-        /// @param size データサイズ [byte]
-        /// @return CanNodeView RXノードバッファの参照
-        CanNodeView createRxNode(uint32_t id, size_t size) override
-        {
-            return createNode(static_cast<uint16_t>(id), size, rxNodes);
-        }
-
-    private:
-        /// @brief 仮想ノード作成
-        /// @tparam N
-        /// @param id
-        /// @param size
-        /// @param nodes
-        /// @return
-        template <size_t N>
-        CanNodeView createNode(uint16_t id, size_t size, Udon::RingBuffer<Can20ANode, N>& nodes)
-        {
-            auto it = std::find_if(nodes.begin(), nodes.end(), [id](const Can20ANode& node)
-                                   { return node.id == id; });
-            if (it == nodes.end())
+            Serial.print("\tTX Node\n");
+            for (auto&& node : txNodes)
             {
-                // 仮想ノードがない場合は新規作成する
-                if (size > Can20ANode::SinglePacketSize)
+                Serial.printf("\t\tid:%4d   length:%3zu byte", node->id, node->length);
+                if (node->length > SingleFrameSize)
                 {
-                    // マルチフレームの場合は一時的にデータを格納するバッファを確保する
-                    nodes.push({
-                        id,                            // id
-                        std::vector<uint8_t>(size),    // data
-                        std::vector<uint8_t>(size),    // temp
-                    });
+                    Serial.print(" (multi packet)");
                 }
                 else
                 {
-                    // シングルフレームの場合は一時的にデータを格納するバッファは不要
-                    nodes.push({
-                        id,                            // id
-                        std::vector<uint8_t>(size),    // data
-                        std::vector<uint8_t>(),        // temp
-                    });
-                }
-                return nodes.back().view();
-            }
-            else
-            {
-                // サイズが異なる場合はリサイズする(良くない)
-                if (it->data.size() != size)
-                {
-                    it->data.resize(max(it->data.size(), size));
+                    Serial.print(" (single packet)");
                 }
 
-                // 既存の仮想ノードがある場合はそれを返す
-                return it->view();
+                Serial.print("\n\t\t\tdata: ");
+                for (size_t i = 0; i < node->length; ++i)
+                {
+                    Serial.printf("%4d", node->data[i]);
+                }
+
+                Serial.println();
+            }
+
+            Serial.print("\tRX Node\n");
+            for (auto&& rxNode : rxNodes)
+            {
+                Serial.printf("\t\tid:%4d   size:%3zu byte", rxNode.node->id, rxNode.node->length);
+                if (rxNode.node->length > SingleFrameSize)
+                {
+                    Serial.print(" (multi packet)");
+                }
+                else
+                {
+                    Serial.print(" (single packet)");
+                }
+
+                Serial.print("\n\t\t\tdata: ");
+                for (size_t i = 0; i < rxNode.node->length; ++i)
+                {
+                    Serial.printf("%4d", rxNode.node->data[i]);
+                }
+
+                Serial.println();
             }
         }
 
+        void joinTx(CanNode& node) override
+        {
+            txNodes.push_back(&node);
+        }
+
+        void joinRx(CanNode& node, void (*onReceive)(void*), void* p) override
+        {
+            rxNodes.push_back({ &node, onReceive, p });
+        }
+
+        void leaveTx(CanNode& node) override
+        {
+            txNodes.erase(std::find(txNodes.begin(), txNodes.end(), &node));
+        }
+
+        void leaveRx(CanNode& node) override
+        {
+            rxNodes.erase(std::find_if(rxNodes.begin(), rxNodes.end(), [&node](const RxNode& rxNode)
+                                       { return rxNode.node == &node; }));
+        }
+
+    private:
         /// @brief 受信コールバック
         static void onReceive(const CAN_message_t& msg)
         {
-            auto node = std::find_if(self->rxNodes.begin(), self->rxNodes.end(), [msg](const Can20ANode& node)
-                                     { return node.id == msg.id; });
-            if (node == self->rxNodes.end())
+            auto rxNode = std::find_if(self->rxNodes.begin(), self->rxNodes.end(), [&msg](const RxNode& rx)
+                                       { return rx.node->id == msg.id; });
+            if (rxNode == self->rxNodes.end())
             {
                 return;
             }
+
             Udon::Unpacketize(
                 { const_cast<CAN_message_t&>(msg).buf },
-                { node->temp.data(), node->temp.size() },
-                Can20ANode::SinglePacketSize);
+                { rxNode->node->data, rxNode->node->length },
+                SingleFrameSize);
 
             const size_t packetCount = static_cast<size_t>(std::ceil(
-                static_cast<double>(node->data.size()) / Can20ANode::SinglePacketSize - 1 /*-1: index*/));
+                static_cast<double>(rxNode->node->length) / SingleFrameSize - 1 /*-1: index*/));
 
-            if (node->data.size() > Can20ANode::SinglePacketSize && msg.buf[0] == packetCount)
+            if (rxNode->node->length > SingleFrameSize)
             {
-                // マルチフレームの最終フレームの場合はデータをコピーする
-                // この動作を行わないと欠落したデータを取得することになる
-                std::copy(node->temp.begin(), node->temp.end(), node->data.begin());
+                if (msg.buf[0] == packetCount)
+                {
+                    // マルチフレームの最終フレームを受信したらコールバックを呼ぶ
+                    if (rxNode->onReceive)
+                    {
+                        rxNode->onReceive(rxNode->p);
+                    }
+                }
+            }
+            else
+            {
+                // シングルフレームの場合は即時コールバックを呼ぶ
+                if (rxNode->onReceive)
+                {
+                    rxNode->onReceive(rxNode->p);
+                }
             }
         }
 
         /// @brief 送信処理
         void onTransmit()
         {
-            for (auto&& node : txNodes)
+            for (auto&& txNode : txNodes)
             {
                 CAN_message_t msg{};
-                msg.id = node.id;
+                msg.id = txNode->id;
                 Udon::Packetize(
-                    { node.data.data(), node.data.size() },
+                    { txNode->data, txNode->length },
                     { msg.buf },
-                    Can20ANode::SinglePacketSize,
+                    SingleFrameSize,
                     [&msg](size_t size)
                     {
-                        msg.len = static_cast<uint8_t>(8);
+                        msg.len = SingleFrameSize;
                         while (not self->bus.write(msg))
                             ;    // 送信
                         delayMicroseconds(200);

@@ -10,7 +10,7 @@
 #    include <mcp2515.h>    // https://github.com/autowp/arduino-mcp2515
 
 #    include <Udon/Algorithm/RingBuffer.hpp>
-#    include <Udon/Com/Can/CanInfo.hpp>
+// #    include <Udon/Com/Can/CanInfo.hpp>
 #    include <Udon/Com/Can/CanUtility.hpp>
 #    include <Udon/Com/Can/ICanBus.hpp>
 

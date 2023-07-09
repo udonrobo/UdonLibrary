@@ -5,11 +5,11 @@
 
 #pragma once
 
-#ifdef ARDUINO
+#include <Udon/Com/Can/ICanBus.hpp>
+#include <Udon/Com/Can/CanNode.hpp>
 
-#    include <Udon/Com/Can/ICanBus.hpp>
-#    include <Udon/Com/Serialization.hpp>
-#    include <Udon/Utility/Show.hpp>
+#include <Udon/Com/Serialization.hpp>
+#include <Udon/Utility/Show.hpp>
 
 namespace Udon
 {
@@ -20,7 +20,11 @@ namespace Udon
 
         ICanBus& bus;
 
-        CanNodeView node;
+        uint8_t buffer[Udon::CapacityWithChecksum<Message>()];
+
+        CanNode node;
+
+        Udon::Optional<Message> message;
 
     public:
         /// @brief コンストラクタ
@@ -28,29 +32,44 @@ namespace Udon
         /// @param id 信号識別ID
         CanReader(ICanBus& bus, const uint32_t id)
             : bus{ bus }
-            , node{ bus.createRxNode(id, Udon::CapacityWithChecksum<Message>()) }
+            , node{ id, buffer, sizeof buffer, 0 }
         {
+            join();
+        }
+
+        /// @brief コピーコンストラクタ
+        CanReader(const CanReader& other)
+            : bus{ other.bus }
+            , node{ other.node }
+        {
+            join();
+        }
+
+        /// @brief デストラクタ
+        ~CanReader()
+        {
+            bus.leaveRx(node);
         }
 
         /// @brief 受信しているか
         /// @return 受信していればtrue
         explicit operator bool() const
         {
-            return millis() - *node.transmitMs < 100;
+            return millis() - node.transmitMs < 100;
         }
 
         /// @brief メッセージ構造体を取得
         /// @return メッセージ構造体(Optional)
         Udon::Optional<Message> getMessage() const
         {
-            return Udon::Unpack<Message>(*node.data);
+            return message;
         }
 
         /// @brief 受信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
-            if (const auto message = getMessage())
+            if (message)
             {
                 Udon::Show(*message, gap);
             }
@@ -64,13 +83,24 @@ namespace Udon
         /// @param gap 区切り文字 (default: ' ')
         void showRaw(char gap = ' ') const
         {
-            for (auto&& it : *node.data)
+            for (size_t i = 0; i < node.length; ++i)
             {
-                Udon::Show(it, gap);
+                Udon::Show(node.data[i], gap);
             }
+        }
+
+    private:
+        void join()
+        {
+            bus.joinRx(
+                node,
+                [](void* p)
+                {
+                    auto self     = static_cast<CanReader*>(p);
+                    self->message = Udon::Unpack<Message>(self->node.data, self->node.length);
+                },
+                this);
         }
     };
 
 }    // namespace Udon
-
-#endif

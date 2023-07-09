@@ -6,7 +6,9 @@
 #pragma once
 
 #include <Udon/Com/Can/ICanBus.hpp>
- #include <Udon/Com/Serialization.hpp>
+#include <Udon/Com/Can/CanNode.hpp>
+
+#include <Udon/Com/Serialization.hpp>
 #include <Udon/Utility/Show.hpp>
 
 namespace Udon
@@ -18,27 +20,42 @@ namespace Udon
 
         ICanBus& bus;
 
-        CanNodeView node;
+        uint8_t buffer[Udon::CapacityWithChecksum<Message>()];
+
+        CanNode node;
 
     public:
         /// @param id 信号識別ID
         CanWriter(ICanBus& bus, const uint32_t id)
             : bus{ bus }
-            , node{ bus.createTxNode(id, Udon::CapacityWithChecksum<Message>()) }
+            , node{ id, buffer, sizeof buffer, 0 }
         {
+            bus.joinTx(node);
+        }
+
+        /// @brief コピーコンストラクタ
+        CanWriter(const CanWriter& other)
+        {
+            bus.joinTx(node);
+        }
+
+        /// @brief デストラクタ
+        ~CanWriter()
+        {
+            bus.leaveTx(node);
         }
 
         /// @brief メッセージ構造体をセット
         void setMessage(const Message& message) noexcept
         {
-            *node.data = Udon::Pack(message);
+            Udon::Pack(message, node.data, node.length);
         }
 
         /// @brief 送信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
-            if (const auto message = Udon::Unpack<Message>(*node.data))
+            if (const auto message = Udon::Unpack<Message>(node.data, node.length))
             {
                 Udon::Show(*message, gap);
             }
@@ -53,9 +70,9 @@ namespace Udon
         /// @param gap 区切り文字 (default: ' ')
         void showRaw(char gap = ' ') const
         {
-            for (auto&& it : *node.data)
+            for (size_t i = 0; i < node.length; ++i)
             {
-                Udon::Show(it, gap);
+                Udon::Show(node.data[i], gap);
             }
         }
     };
