@@ -16,9 +16,9 @@
 
 namespace Udon
 {
-    namespace pio
+    namespace Pio
     {
-        namespace sqwave
+        namespace Sqwave
         {
             static const uint16_t squarewave_program_instructions[] = {
                 //     .wrap_target
