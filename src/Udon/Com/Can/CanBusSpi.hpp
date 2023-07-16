@@ -1,18 +1,26 @@
-/// @file   CanBusSpi.hpp
-/// @date   2023/01/13
-/// @brief  arduino-mcp2515ライブラリを用いたCanバス管理クラス
-/// @flow   [CPU] <--SPI--> [Canコントローラ] <--Can[TX/RX]--> [Canトランシーバ] <--Can[H/L]--> [BUS]
-/// @author 大河 祐介
+//-------------------------------------------------------------------
+//
+//    UdonLibrary
+//
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
+//
+//    Licensed under the MIT License.
+//
+//-------------------------------------------------------------------
+//
+//    CANコントローラー経由 CANバス管理クラス
+//
+//-------------------------------------------------------------------
 
 #pragma once
 
-#ifdef ARDUINO
-#    include <mcp2515.h>    // https://github.com/autowp/arduino-mcp2515
+// #include <mcp2515.h>    // https://github.com/autowp/arduino-mcp2515
 
-#    include <Udon/Algorithm/RingBuffer.hpp>
+// #include <Udon/Algorithm/RingBuffer.hpp>
 // #    include <Udon/Com/Can/CanInfo.hpp>
-#    include <Udon/Com/Can/CanUtility.hpp>
-#    include <Udon/Com/Can/ICanBus.hpp>
+// #include <Udon/Com/Can/CanUtility.hpp>
+// #include <Udon/Com/Can/ICanBus.hpp>
 
 // #pragma once
 
@@ -197,5 +205,3 @@
 //     CanBusSpi<CS, Interrupt>* CanBusSpi<CS, Interrupt>::self;
 
 // }    // namespace Udon
-
-#endif
