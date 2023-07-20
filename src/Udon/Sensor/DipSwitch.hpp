@@ -19,7 +19,7 @@
 #include <vector>
 #include <stdint.h>
 
-#if __has_include(<Arduino.h>)
+#ifdef ARDUINO
 
 #    include <Arduino.h>
 
@@ -58,4 +58,4 @@ namespace Udon
 
 }    // namespace Udon
 
-#endif    // __has_include(<Arduino.h>)
+#endif     

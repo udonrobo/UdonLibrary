@@ -15,7 +15,7 @@
 
 #pragma once
 
-#if __has_include(<Arduino.h>)
+#ifdef ARDUINO
 
 #    include <Arduino.h>
 #    include <Udon/Algorithm/MovingAverage.hpp>
