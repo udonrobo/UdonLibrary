@@ -130,9 +130,7 @@
 
    新しい項目に `$(ProjectDir)\UdonLibrary\src\` と入力します。`$(ProjectDir)` は プロジェクトディレクトリのパスを表すマクロです。
 
-- 追加している様子
-
-  submodule
+- 追加している様子 (submodule使用時)
 
   ![setup](https://github.com/udonrobo/UdonLibrary/assets/91818705/aaecedbc-2490-4b11-85e5-fbf0a7d09302)
 
