@@ -141,14 +141,14 @@
   submodule 使用時
 
   ```sh
-  # プロジェクトのリポジトリ内で実行
+  # 追加先のリポジトリ内で実行
   git submodule update --remote
   ```
 
   通常クローン時
 
   ```sh
-  # プロジェクトのリポジトリ内で実行
+  # UdonLibrary内で実行
   git pull
   ```
 
