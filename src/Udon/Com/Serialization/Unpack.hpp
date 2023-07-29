@@ -96,8 +96,13 @@ namespace Udon
         // UdonArduinoSTLで使用しているEASTL内の vector::allocate() で処理落ち
         // std::vector<uint8_t> v(buffer, buffer + size);
         std::vector<uint8_t> v;
-        v.resize(size);
-        std::copy(buffer, buffer + size, v.begin());
+        v.reserve(size);
+        for(size_t i = 0;i < size;++i)
+        {
+            v.push_back(buffer[i]);
+        }
+        // v.resize(size);
+        // std::copy(buffer, buffer + size, v.begin());
         return Unpack<T>(v);
 #else
         return Unpack<T>(std::vector<uint8_t>(buffer, buffer + size));
