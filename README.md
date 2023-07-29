@@ -42,7 +42,7 @@
   git version
   ```
 
-> 本ライブラリのレポジトリはプライベートです。クローンするには udonrobo organization に 参加している github アカウントと、 git が紐付いている必要があります。git インストール後、初回のクローン時に紐付けを求められます。
+> 本ライブラリのレポジトリはプライベートであるため、クローンするには udonrobo organization に 参加している github アカウントと、 git が紐付いている必要があります。git インストール後、初回のクローン時に紐付けを求められます。
 
 </details>
 
@@ -83,55 +83,88 @@
 <details>
 <summary> Visual Studio </summary>
 
-1. クローン
+1. 追加
 
-   プロジェクトを git で管理している場合 -> `git submodule` 推奨
+   追加先が git で管理されている場合 -> submodule を使用
 
    ```sh
-   # プロジェクトディレクトリで実行
+   # VisualStudioのプロジェクトディレクトリで実行
    git submodule add https://github.com/udonrobo/UdonLibrary.git
+
+   git commit -m "add UdonLibrary" # submodule add でステージングも行われるため git add 不要
    ```
 
-   プロジェクトを git で管理していない場合 -> `git clone`
+   追加先が git で管理されていない場合 -> クローン
 
    ```sh
-   # プロジェクトディレクトリで実行
+   # VisualStudioのプロジェクトディレクトリで実行
    git clone https://github.com/udonrobo/UdonLibrary.git
    ```
 
-2. インクルードパス追加
+   > 次のようなディレクトリ構成になっていれば OK です。
+   >
+   > ```sh
+   > Test   <-- ソリューションディレクトリ
+   > │  Test.sln
+   > │
+   > └─Test   <-- プロジェクトディレクトリ
+   >     │  Test.cpp
+   >     │  Test.vcxproj
+   >     │  Test.vcxproj.filters
+   >     │  Test.vcxproj.user
+   >     │
+   >     └─UdonLibrary   <--- うどん
+   >         ├─src
+   >         │  │  Udon.hpp
+   >         │  │
+   >         │  └─Udon
+   >         │      ├─
+   >         ...    ...
+   > ```
 
-   以下の手順で追加します。
+2. インクルードパス設定
 
-   1. ソリューションエクスプローラ > プロジェクトを右クリック > プロパティ > VC++ディレクトリ > インクルードディレクトリの項目にある `↓` > 編集 > 新しい行の追加(フォルダアイコンボタン)
+   以下の手順でインクルードパスを設定することで　`#include <Udon.hpp>`　のように記述できるようになります。
 
-   2. 新しい項目に `$(ProjectDir)\UdonLibrary\src\` と入力します。`$(ProjectDir)` は プロジェクトディレクトリのパスを表すマクロです。
+   ソリューションエクスプローラ > プロジェクトを右クリック > プロパティ > VC++ディレクトリ > インクルードディレクトリの項目にある `↓` > 編集 > 新しい行の追加(フォルダアイコンボタン)
 
-   ![setup](https://github.com/udonrobo/UdonLibrary/assets/91818705/aaecedbc-2490-4b11-85e5-fbf0a7d09302)
+   新しい項目に `$(ProjectDir)\UdonLibrary\src\` と入力します。`$(ProjectDir)` は プロジェクトディレクトリのパスを表すマクロです。
 
-3. ディレクトリツリー確認
+- 追加している様子
 
-   次のようなディレクトリ構成になっていれば OK です。[サンプルレポジトリ](https://github.com/udonrobo/UdonLibraryDemoOnVisualStudio)
+  submodule
 
-   ```sh
-   Test   <-- ソリューションディレクトリ
-   │  .gitmodules  <--- git submodule 使用時に生成
-   │  Test.sln
-   │
-   └─Test   <-- プロジェクトディレクトリ
-       │  Test.cpp
-       │  Test.vcxproj
-       │  Test.vcxproj.filters
-       │  Test.vcxproj.user
-       │
-       └─UdonLibrary   <--- うどん
-           ├─src
-           │  │  Udon.hpp
-           │  │
-           │  └─udon
-           │      ├─
-           ...    ...
-   ```
+  ![setup](https://github.com/udonrobo/UdonLibrary/assets/91818705/aaecedbc-2490-4b11-85e5-fbf0a7d09302)
+
+  [サンプルレポジトリ](https://github.com/udonrobo/UdonLibraryDemoOnVisualStudio)
+
+- 更新
+
+  submodule 使用時
+
+  ```sh
+  # プロジェクトのリポジトリ内で実行
+  git submodule update --remote
+  ```
+
+  通常クローン時
+
+  ```sh
+  # プロジェクトのリポジトリ内で実行
+  git pull
+  ```
+
+- `git submodule` 使用時の注意点
+
+  > 追加先のプロジェクト自体のクローンを行うとき `--recursive` オプションを与えなければライブラリがクローンされません(空フォルダになります)。
+  >
+  > ```sh
+  > git clone --recursive <プロジェクトURL>
+  > ```
+
+  > また submodule は追加時のコミットを参照するため、追加先のプロジェクトをクローンしてもライブラリは submodule 追加時のコミットの内容になります。
+  >
+  > 最新のライブラリを使用する場合は submodule を更新する必要があります。(`git submodule` 使用時の更新を参照)
 
 </details>
 
