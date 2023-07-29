@@ -15,6 +15,8 @@
 
 #pragma once
 
+#include <Udon/Utility/Show.hpp>
+
 namespace Udon
 {
 
@@ -135,6 +137,19 @@ namespace Udon
         {
             return m_hasValue ? m_value : defaultValue;
         }
+
+        void show() const
+        {
+            if (m_hasValue)
+            {
+                Udon::Show(m_value);
+            }
+            else
+            {
+                Udon::Show("nullopt");
+            }
+        }
+
     };
 
 }    // namespace Udon

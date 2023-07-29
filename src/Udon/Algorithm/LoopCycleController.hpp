@@ -8,7 +8,7 @@
 //    Licensed under the MIT License.
 //
 //-------------------------------------------------------------------
-// 
+//
 //    ループ周期を一定にする
 //
 //-------------------------------------------------------------------
@@ -16,7 +16,7 @@
 #ifndef DEF_LoopCycleController_H
 #define DEF_LoopCycleController_H
 
-#if __has_include(<Arduino.h>)
+#ifdef ARDUINO
 
 #    include <Arduino.h>
 
@@ -100,5 +100,5 @@ namespace Udon
 
 }    // namespace Udon
 
-#endif
-#endif
+#endif    // ARDUINO
+#endif    // DEF_LoopCycleController_H
