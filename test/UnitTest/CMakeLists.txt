@@ -22,7 +22,8 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Thirdparty/googletest)
 include(GoogleTest)
 enable_testing()
 
-set(UDON_LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../src PARENT_SCOPE)
+# Set UdonLibrary directory path
+set(UDON_LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../src CACHE)
 
 # Add test directory
 add_subdirectory(./Serialization)
