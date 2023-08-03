@@ -1,9 +1,22 @@
+#-------------------------------------------------------------------
+#
+#    UdonLibrary
+#
+#    Copyright (c) 2022-2023 udonrobo
+#
+#    Licensed under the MIT License.
+#
+#-------------------------------------------------------------------
+#
+#    Serialization Test
+#
+#-------------------------------------------------------------------
+
 cmake_minimum_required(VERSION 3.14)
 
 # set test source files
-add_executable(
-  Test
-  Serialization.cpp
+add_executable(Test
+    Serialization.cpp
 )
 
 # Add include directory
