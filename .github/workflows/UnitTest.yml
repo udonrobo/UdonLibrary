@@ -1,4 +1,18 @@
-name: CI
+####################################################################
+#
+#    UdonLibrary
+#
+#    Copyright (c) 2022-2023 udonrobo
+#
+#    Licensed under the MIT License.
+#
+####################################################################
+#
+#    Unit Tests
+#
+####################################################################
+
+name: Unit Tests
 
 on:
   push:
@@ -21,12 +35,11 @@ jobs:
         run: git submodule update --init
 
       - name: Build
-        working-directory: ./test/GoogleTest
+        working-directory: ./test/Thirdparty/GoogleTest
         run: |
           cmake -S . -B Build
           cmake --build Build
 
       - name: Run tests
-        working-directory: ./test/GoogleTest/Build
+        working-directory: ./test/Thirdparty/GoogleTest/Build
         run: ctest
-        
