@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <Udon/Com/Serialization.hpp>
 
 TEST(Serialization, huga)
 {
