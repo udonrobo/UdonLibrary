@@ -2,7 +2,7 @@
 
 香川高専高松機械システム研究部 Arduino ライブラリ
 
-[![Sketch Build](https://github.com/udonrobo/UdonLibrary/actions/workflows/arduino-cli.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/arduino-cli.yml)
+[![ArduinoCI](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoCI.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoCI.yml)
 
 ## Install
 

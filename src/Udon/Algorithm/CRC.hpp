@@ -101,7 +101,7 @@ namespace Udon
     /// @return          checksum
     inline uint8_t CRC8(const uint8_t* p, size_t length, ChecksumAlgorithm::CRC8 algorithm = ChecksumAlgorithm::CRC8_SAE_J1850)
     {
-        return CRC8(p, p + length);
+        return CRC8(p, p + length, algorithm);
     }
 
 }    // namespace Udon

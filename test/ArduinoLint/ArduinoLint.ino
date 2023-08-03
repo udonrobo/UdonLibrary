@@ -8,15 +8,23 @@
 //
 //-------------------------------------------------------------------
 //
-//    CI (ビルドテスト) 用スケッチ
+//    CI用スケッチ
 //
-//    ./src/ にあるソースファイルは再帰的にビルドされ、エラーがあればCIが失敗します。
+//    ArduinoIDEでコンパイルできるかのみ検証します。
+//
+//    ./src/ にあるソースファイルは再帰的にビルドされます。
 //
 //-------------------------------------------------------------------
 
 
 #include <UdonFwd.hpp>
 
-void setup() {}
+void setup()
+{
+    // put your setup code here, to run once:
+}
 
-void loop() {}
+void loop()
+{
+    // put your main code here, to run repeatedly:
+}
