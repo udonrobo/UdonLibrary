@@ -7,7 +7,8 @@ add_executable(
 )
 
 # Add include directory
-target_include_directories(Test PUBLIC ${UDON_LIBRARY_DIR})
+target_include_directories(Test PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../../src)
+# set(UDON_LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../src PARENT_SCOPE)
 
 # link with gtest
 target_link_libraries(
