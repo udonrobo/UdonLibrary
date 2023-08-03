@@ -22,8 +22,5 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Thirdparty/googletest)
 include(GoogleTest)
 enable_testing()
 
-# Add include directory
-target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../src)
-
 # Add test directory
 add_subdirectory(./Serialization)

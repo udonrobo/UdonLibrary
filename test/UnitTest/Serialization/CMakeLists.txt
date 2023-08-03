@@ -10,4 +10,7 @@ target_link_libraries(
   gtest_main
 )
 
+# Add include directory
+target_include_directories(Test PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../../src)
+
 gtest_discover_tests(Test)
