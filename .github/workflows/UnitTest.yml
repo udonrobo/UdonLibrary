@@ -17,14 +17,13 @@ name: Unit Tests
 on:
   push:
   pull_request:
-    branches: ["master"]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  build:
+  Linux:
     runs-on: ubuntu-latest
 
     steps:
@@ -33,10 +32,40 @@ jobs:
 
       - name: Build
         working-directory: test/UnitTest
-        run: |
-          cmake -S . -B Build
-          cmake --build Build
+        run: cmake -S . -B Build && cmake --build Build
 
       - name: Run tests
         working-directory: test/UnitTest/Build
-        run: ctest
+        run: ctest -C Debug -V
+
+        
+  MacOS:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build
+        working-directory: test/UnitTest
+        run: cmake -S . -B Build && cmake --build Build
+
+      - name: Run tests
+        working-directory: test/UnitTest/Build
+        run: ctest -C Debug -V
+
+        
+  Windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build
+        working-directory: test/UnitTest
+        run: cmake -S . -B Build && cmake --build Build
+
+      - name: Run tests
+        working-directory: test/UnitTest/Build
+        run: ctest -C Debug -V
