@@ -31,9 +31,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Clone Submodules
-        run: git submodule update --init
-
       - name: Build
         working-directory: test/UnitTest
         run: |
