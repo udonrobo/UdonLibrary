@@ -23,7 +23,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  Linux:
+  build:
     runs-on: ubuntu-latest
 
     strategy:
