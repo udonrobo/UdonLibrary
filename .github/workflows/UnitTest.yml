@@ -35,11 +35,11 @@ jobs:
         run: git submodule update --init
 
       - name: Build
-        working-directory: test/Thirdparty/GoogleTest
+        working-directory: test/UnitTest
         run: |
           cmake -S . -B Build
           cmake --build Build
 
       - name: Run tests
-        working-directory: test/Thirdparty/GoogleTest/Build
+        working-directory: test/UnitTest/Build
         run: ctest
