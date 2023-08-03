@@ -7,7 +7,7 @@ add_executable(
 )
 
 # Add include directory
-target_include_directories(Test ${UDON_LIBRARY_DIR})
+target_include_directories(Test PUBLIC ${UDON_LIBRARY_DIR})
 
 # link with gtest
 target_link_libraries(Test gtest_main)
