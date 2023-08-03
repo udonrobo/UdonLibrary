@@ -33,11 +33,11 @@ jobs:
         board: # Board to be tested
           - fqbn: arduino:avr:nano
           - fqbn: teensy:avr:teensy40
-            platforms: |
+            platforms:
               - name: teensy:avr
                 source-url: https://www.pjrc.com/teensy/td_156/package_teensy_index.json
           - fqbn: rp2040:rp2040:rpipico
-            platforms: |
+            platforms:
               - name: rp2040:rp2040
                 source-url: https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
     steps:
