@@ -8,18 +8,19 @@
 #
 ####################################################################
 #
-#    UdonLibrary CI
+#    Arduino Lint
 #
 ####################################################################
 
-name: Arduino CI
+name: Arduino Lint
 
 on:
   push:
   pull_request:
     branches: ["master"]
 
-concurrency: # Cancels only the execution of a job in progress or the current workflow.
+# Cancels only the execution of a job in progress or the current workflow.
+concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
@@ -50,7 +51,7 @@ jobs:
           fqbn: ${{ matrix.board.fqbn }}
           platforms: ${{ matrix.board.platforms }}
           sketch-paths: |
-            - ./test
+            - ./test/ArduinoLint
           libraries: |
             - source-path: ./
             - source-url: https://github.com/udonrobo/UdonArduinoSTL.git
@@ -59,3 +60,4 @@ jobs:
             - source-url: https://github.com/adafruit/Adafruit_BusIO.git
             - source-url: https://github.com/adafruit/Adafruit_Sensor.git
             - source-url: https://github.com/adafruit/Adafruit_BNO055.git
+          
