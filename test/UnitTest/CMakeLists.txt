@@ -23,7 +23,8 @@ include(GoogleTest)
 enable_testing()
 
 # Set UdonLibrary directory path
-set(UDON_LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../src CACHE)
+get_filename_component(ABSOLUTE_UDON_LIBRARY_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../src" ABSOLUTE)
+set(UDON_LIBRARY_DIR ${ABSOLUTE_UDON_LIBRARY_DIR} CACHE STRING "UdonLibrary include path")
 
 # Add test directory
 add_subdirectory(./Serialization)

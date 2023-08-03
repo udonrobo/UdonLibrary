@@ -10,10 +10,7 @@ add_executable(
 target_include_directories(Test ${UDON_LIBRARY_DIR})
 
 # link with gtest
-target_link_libraries(
-  Test
-  gtest_main
-)
+target_link_libraries(Test gtest_main)
 
 # discover tests
 gtest_discover_tests(Test)
