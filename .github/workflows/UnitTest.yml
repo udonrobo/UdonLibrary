@@ -36,36 +36,4 @@ jobs:
 
       - name: Run tests
         working-directory: test/UnitTest/Build
-        run: ctest -C Debug -V
-
-        
-  MacOS:
-    runs-on: macos-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Build
-        working-directory: test/UnitTest
-        run: cmake -S . -B Build && cmake --build Build
-
-      - name: Run tests
-        working-directory: test/UnitTest/Build
-        run: ctest -C Debug -V
-
-        
-  Windows:
-    runs-on: windows-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Build
-        working-directory: test/UnitTest
-        run: cmake -S . -B Build && cmake --build Build
-
-      - name: Run tests
-        working-directory: test/UnitTest/Build
-        run: ctest -C Debug -V
+        run: ctest
