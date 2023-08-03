@@ -1,13 +1,25 @@
-# https://github.com/arduino/compile-sketches#repository-1
+####################################################################
+#
+#    UdonLibrary
+#
+#    Copyright (c) 2022-2023 udonrobo
+#
+#    Licensed under the MIT License.
+#
+####################################################################
+#
+#    UdonLibrary CI
+#
+####################################################################
 
-name: Sketch Build
+name: Arduino CI
 
 on:
   push:
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 
-concurrency:
+concurrency: # Cancels only the execution of a job in progress or the current workflow.
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
@@ -15,18 +27,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false  # すべてのジョブを実行する
+      fail-fast: false # all jobs should run
       matrix:
-
-        board:  # テストするボード
-
+        board: # Board to be tested
           - fqbn: arduino:avr:nano
-
           - fqbn: teensy:avr:teensy40
             platforms: |
               - name: teensy:avr
                 source-url: https://www.pjrc.com/teensy/td_156/package_teensy_index.json
-
           - fqbn: rp2040:rp2040:rpipico
             platforms: |
               - name: rp2040:rp2040
