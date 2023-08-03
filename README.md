@@ -2,7 +2,8 @@
 
 香川高専高松機械システム研究部 Arduino ライブラリ
 
-[![ArduinoCI](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoCI.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoCI.yml)
+[![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml)
+[![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
 
 ## Install
 
