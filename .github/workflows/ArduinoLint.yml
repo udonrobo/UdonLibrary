@@ -17,15 +17,13 @@ name: Arduino Lint
 on:
   push:
   pull_request:
-    branches: ["master"]
 
-# Cancels only the execution of a job in progress or the current workflow.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  build:
+  Linux:
     runs-on: ubuntu-latest
 
     strategy:
