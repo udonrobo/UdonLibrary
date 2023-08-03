@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 
 add_executable(
   Test
-  SerializationTest.cpp
+  Serialization.cpp
 )
 
 target_link_libraries(
