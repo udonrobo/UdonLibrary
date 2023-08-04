@@ -1,4 +1,5 @@
- #include <Udon/Com/Serialization.hpp>
+#include <Arduino.h>
+#include <Udon/Com/Serialization.hpp>
 #include <Udon/Utility/Parsable.hpp>
 
 struct Hoge

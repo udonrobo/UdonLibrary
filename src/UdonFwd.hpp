@@ -16,7 +16,7 @@
 //
 //    ex: Master.ino
 //    #include <UdonFwd.hpp>
-//    #include <Udon/sencor/Imu.hpp>
+//    #include <Udon/Sensor/Imu.hpp>
 //
 //    ex: Steering.hpp
 //    #include <Udon/Algorithm/PidController.hpp>

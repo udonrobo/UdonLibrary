@@ -2,145 +2,172 @@
 
 香川高専高松機械システム研究部 Arduino ライブラリ
 
-[![Sketch Build](https://github.com/udonrobo/UdonLibrary/actions/workflows/arduino-cli.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/arduino-cli.yml)
+[![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml)
+[![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
 
-## ダウンロード
+## Install
 
 <details>
 <summary> git </summary>
 
 ライブラリのバージョン管理に git を使用します。インストールしていない場合はインストールしてください。
 
--   公式ページから
+- 公式ページから
 
-    https://git-scm.com/download
+  <https://git-scm.com/download>
 
--   ターミナルから
+- ターミナルから
 
-    winget (windows)
+  winget (windows)
 
-    ```sh
-    winget install --id Git.Git -e --source winget
-    ```
+  ```sh
+  winget install --id Git.Git -e --source winget
+  ```
 
-    apt (linux)
+  apt (linux)
 
-    ```sh
-    sudo apt-get update
-    sudo apt-get install git-all
-    ```
+  ```sh
+  sudo apt-get update
+  sudo apt-get install git-all
+  ```
 
-    homebrew (mac os 等)
+  homebrew (mac os 等)
 
-    ```sh
-    brew install git
-    ```
+  ```sh
+  brew install git
+  ```
 
-    インストール確認
+  インストール確認
 
-    ```sh
-    git version
-    ```
+  ```sh
+  git version
+  ```
 
-> 本ライブラリのレポジトリはプライベートです。クローンするには udonrobo organization に 参加している github アカウントと、 git が紐付いている必要があります。git インストール後、初回のクローン時に紐付けを求められます。
+> 本ライブラリのレポジトリはプライベートであるため、クローンするには udonrobo organization に 参加している github アカウントと、 git が紐付いている必要があります。git インストール後、初回のクローン時に紐付けを求められます。
 
 </details>
 
 <details>
 <summary> ArduinoIDE </summary>
 
--   追加
+- 追加
 
-    Arduinoにはライブラリを保存する特定のディレクトリがあります。その場所を見つけて、新しいライブラリを追加します。
+  Arduino にはライブラリを保存する特定のディレクトリがあります。その場所を見つけて、新しいライブラリを追加します。
 
-    > 既定値: `~/Documents/Arduino/libraries`
-    >
-    > 変更している場合: `ファイル > 環境設定 > スケッチブックの保存場所欄` + `/libraries`
+  > 既定値: `~/Documents/Arduino/libraries`
+  >
+  > 変更している場合: `ファイル > 環境設定 > スケッチブックの保存場所欄` + `/libraries`
+  >
+  > ```sh
+  > # ターミナルを開き、調べたディレクトリに移動
+  > cd ~/Documents/Arduino/libraries
+  >
+  > # 本ライブラリクローン
+  > git clone https://github.com/udonrobo/UdonLibrary.git
+  >
+  > # セットアップ実行(依存ライブラリの追加等)
+  > ./UdonLibrary/setup.sh
+  > ```
 
-    > ```sh
-    > # ターミナルを開き、調べたディレクトリに移動
-    > cd ~/Documents/Arduino/libraries
-    >
-    > # 本ライブラリクローン
-    > git clone https://github.com/udonrobo/UdonLibrary.git
-    >
-    > # セットアップ実行(依存ライブラリの追加等)
-    > ./UdonLibrary/setup.sh
-    > ```
+- 更新
 
--   更新
+  ```sh
+  # 追加する時に調べたlibrariesディレクトリに移動
+  cd ~/Documents/Arduino/libraries/UdonLibrary
 
-    > ```sh
-    > # 追加する時に調べたlibrariesディレクトリに移動
-    > cd ~/Documents/Arduino/libraries/UdonLibrary
-    >
-    > # ライブラリを更新
-    > git pull
-    > ```
+  # ライブラリを更新
+  git pull
+  ```
 
 </details>
 
 <details>
 <summary> Visual Studio </summary>
 
-1.  クローン
+1. 追加
 
-    -   プロジェクトがリポジトリにある場合
+   追加先が git で管理されている場合 -> submodule を使用
 
-        git submodule を使用して追加します。
+   ```sh
+   # VisualStudioのプロジェクトディレクトリで実行
+   git submodule add https://github.com/udonrobo/UdonLibrary.git
 
-        ```sh
-        cd ソリューションディレクトリ
-        git submodule add -b master https://github.com/udonrobo/UdonLibrary.git ./プロジェクトディレクトリ/UdonLibrary
-        ```
+   git commit -m "add UdonLibrary" # submodule add でステージングも行われるため git add 不要
+   ```
 
-    -   プロジェクトがリポジトリでない場合
+   追加先が git で管理されていない場合 -> クローン
 
-        ```sh
-        cd ソリューションディレクトリ/プロジェクトディレクトリ
-        git clone https://github.com/udonrobo/UdonLibrary.git
-        ```
+   ```sh
+   # VisualStudioのプロジェクトディレクトリで実行
+   git clone https://github.com/udonrobo/UdonLibrary.git
+   ```
 
-2.  インクルードパス追加
+   > 次のようなディレクトリ構成になっていれば OK です。
+   >
+   > ```sh
+   > Test   <-- ソリューションディレクトリ
+   > │  Test.sln
+   > │
+   > └─Test   <-- プロジェクトディレクトリ
+   >     │  Test.cpp
+   >     │  Test.vcxproj
+   >     │  Test.vcxproj.filters
+   >     │  Test.vcxproj.user
+   >     │
+   >     └─UdonLibrary   <--- うどん
+   >         ├─src
+   >         │  │  Udon.hpp
+   >         │  │
+   >         │  └─Udon
+   >         │      ├─
+   >         ...    ...
+   > ```
 
+2. インクルードパス設定
 
-    以下の手順で操作します。
+   以下の手順でインクルードパスを設定することで　`#include <Udon.hpp>`　のように記述できるようになります。
 
-    ソリューションエクスプローラ > プロジェクトを右クリック > プロパティ > VC++ディレクトリ > インクルードディレクトリの項目にある `↓` > 編集 > 新しい行の追加(フォルダアイコンボタン)
+   ソリューションエクスプローラ > プロジェクトを右クリック > プロパティ > VC++ディレクトリ > インクルードディレクトリの項目にある `↓` > 編集 > 新しい行の追加(フォルダアイコンボタン)
 
-    新しい項目に `$(ProjectDir)\UdonLibrary\src\` と入力します。`$(ProjectDir)` は プロジェクトディレクトリのパスを表すマクロです。
+   新しい項目に `$(ProjectDir)\UdonLibrary\src\` と入力します。`$(ProjectDir)` は プロジェクトディレクトリのパスを表すマクロです。
 
-3.  ディレクトリツリー確認
+- 追加している様子 (submodule使用時)
 
-    次のようなディレクトリ構成になっていれば OK です。
+  ![setup](https://github.com/udonrobo/UdonLibrary/assets/91818705/aaecedbc-2490-4b11-85e5-fbf0a7d09302)
 
-    ```
-    test   <-- ソリューションディレクトリ
-    │  .gitmodules  <--- git submodule 使用時に生成
-    │  test.sln
-    │
-    └─test   <-- プロジェクトディレクトリ
-        │  test.cpp
-        │  test.vcxproj
-        │  test.vcxproj.filters
-        │  test.vcxproj.user
-        │
-        └─UdonLibrary   <--- うどん
-            ├─src
-            │  │  Udon.hpp
-            │  │
-            │  └─udon
-            │      ├─
-            ...    ...
-    ```
+  [サンプルレポジトリ](https://github.com/udonrobo/UdonLibraryDemoOnVisualStudio)
 
--   追加してる図
+- 更新
 
-    ![setup](https://github.com/udonrobo/UdonLibrary/assets/91818705/ab1b9ac1-58a4-4423-aa06-64db38957d08)
+  submodule 使用時
+
+  ```sh
+  # 追加先のリポジトリ内で実行
+  git submodule update --remote
+  ```
+
+  通常クローン時
+
+  ```sh
+  # UdonLibrary内で実行
+  git pull
+  ```
+
+- `git submodule` 使用時の注意点
+
+  > 追加先のプロジェクト自体のクローンを行うとき `--recursive` オプションを与えなければライブラリがクローンされません(空フォルダになります)。
+  >
+  > ```sh
+  > git clone --recursive <プロジェクトURL>
+  > ```
+
+  > また submodule は追加時のコミットを参照するため、追加先のプロジェクトをクローンしてもライブラリは submodule 追加時のコミットの内容になります。
+  >
+  > 最新のライブラリを使用する場合は submodule を更新する必要があります。(`git submodule` 使用時の更新を参照)
 
 </details>
 
-## 使用方法
+## Usage
 
 `Udon.hpp` をインクルードすることで、全機能を使用できるようになります。
 
