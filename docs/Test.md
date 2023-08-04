@@ -88,7 +88,7 @@
 
 - ローカル環境で実行する
 
-  `./test/ArduinoLint/ArduinoLint.ino` を ArduinoIDE で開き検証ボタンを押すことで、プッシュせずにでテストを実行できます。
+  `./test/ArduinoLint/ArduinoLint.ino` を ArduinoIDE で開き、検証ボタンを押すことで、プッシュせずにテストを実行できます。
 
 ## Google Unit Test
 
