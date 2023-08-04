@@ -25,6 +25,7 @@
 #    include <Udon/Com/Can/CanNode.hpp>
 #    include <Udon/Com/Can/CanUtility.hpp>
 #    include <Udon/Algorithm/StaticVector.hpp>
+#    include <Udon/Algorithm/RingBuffer.hpp>
 
 namespace Udon
 {
@@ -43,7 +44,8 @@ namespace Udon
 
         FlexCAN_T4<Bus, RX_SIZE_128, TX_SIZE_256> bus;
 
-        IntervalTimer isr;
+        IntervalTimer readTimer;
+        IntervalTimer writeTimer;
 
         constexpr static uint32_t SingleFrameSize = 8;
 
@@ -57,6 +59,8 @@ namespace Udon
 
         Udon::StaticVector<TxNode*> txNodes;
         Udon::StaticVector<RxNode>  rxNodes;
+
+        Udon::RingBuffer<CAN_message_t, 256> txBuffer;
 
         uint32_t transmitUs = 0;
 
@@ -94,19 +98,37 @@ namespace Udon
             if (rxNodes.size())
             {
                 bus.onReceive(onReceive);
-                isr.begin(
+                readTimer.begin(
                     []
                     {
                         self->bus.events();
                     },
                     200);
             }
+            if (txNodes.size())
+            {
+                writeTimer.begin(
+                    []
+                    {
+                        if (self->txBuffer.size())
+                        {
+                            Serial.print(self->txBuffer.size());
+                            Serial.print(" ");
+                            auto o = self->txBuffer.pop();
+                            Serial.print(o.id);
+                                Serial.print(o.buf[0], HEX);
+                            Serial.println();
+                            while (not self->bus.write(o))
+                                ;
+                        }
+                    },
+                    1000);
+            }
         }
 
         /// @brief 通信終了
         void end()
         {
-            isr.end();
             bus.disableFIFO();
             bus.disableFIFOInterrupt();
         }
@@ -248,12 +270,10 @@ namespace Udon
                     { txNode->data, txNode->length },
                     { msg.buf },
                     SingleFrameSize,
-                    [&msg](size_t size)
+                    [this, &msg](size_t size)
                     {
                         msg.len = SingleFrameSize;
-                        while (not self->bus.write(msg))
-                            ;    // 送信
-                        delayMicroseconds(200);
+                        txBuffer.push(msg);
                     });
             }
         }
