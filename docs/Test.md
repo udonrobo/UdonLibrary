@@ -4,13 +4,13 @@
 
 この検証を行うことで、ライブラリ追加時にコンパイルエラーになったり、バグが生じることを大幅に減らすことができます。
 
-検証の状態は [Action タブ](https://github.com/udonrobo/UdonLibrary/actions) から見ることができます。ワークフローは `./.github/workflows/` に定義されています。
-
-またのメインページの README に貼られているバッジから見ることもできます(反映に少し時間がかかります)。
-
-[![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml)
-[![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
-
+> 検証の状態は [Action タブ](https://github.com/udonrobo/UdonLibrary/actions) から見ることができます。ワークフローは `./.github/workflows/` に定義されています。
+>
+> またのメインページの README に貼られているバッジから見ることもできます(反映に少し時間がかかります)。
+>
+> [![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml)
+> [![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
+>
 > 検証が成功している場合 `passing` と表示され、失敗していると `failing` と表示されます。
 
 ## Arduino Lint
@@ -124,7 +124,7 @@
     cmake_minimum_required(VERSION 3.14)
 
     # ソースファイル登録
-    add_executable(Test
+    add_executable(SampleTest
         Sample.cpp
         # ...
         # 複数ソースファイルがある場合はここに追加していく
@@ -132,13 +132,13 @@
     )
 
     # インクルードパス設定
-    target_include_directories(Test PUBLIC ${UDON_LIBRARY_DIR})
+    target_include_directories(SampleTest PUBLIC ${UDON_LIBRARY_DIR})
 
     # GoogleTestとリンク
-    target_link_libraries(Test gtest_main)
+    target_link_libraries(SampleTest gtest_main)
 
     # discover tests
-    gtest_discover_tests(Test)
+    gtest_discover_tests(SampleTest)
     ```
 
     > `${UDON_LIBRARY_DIR}` は `./src` の絶対パス名で `./test/UnitTest/CMakeLists.txt` 内で定義されています。
