@@ -1,19 +1,17 @@
 #pragma once
 
-#if !defined(ARDUINO_ARCH_RP2040)
-#    error "This library requires Arduino RP2040 core!"
-#endif
+#if defined(ARDUINO_ARCH_RP2040)
 
-#include <Udon/Com/Can/ICanBus.hpp>
-#include <Udon/Com/Can/CanNode.hpp>
-#include <Udon/Com/Can/CanUtility.hpp>
+#    include <Udon/Com/Can/ICanBus.hpp>
+#    include <Udon/Com/Can/CanNode.hpp>
+#    include <Udon/Com/Can/CanUtility.hpp>
 
-#include <Udon/Algorithm/StaticVector.hpp>
-#include <Udon/Algorithm/RingBuffer.hpp>
+#    include <Udon/Algorithm/StaticVector.hpp>
+#    include <Udon/Algorithm/RingBuffer.hpp>
 
-#include <udon/pio/PicoPioClock.hpp>
+#    include <Udon/Pio/PicoPioClock.hpp>
 
-#include <Udon/Thirdparty/PicoMcp2515/mcp2515.h>
+#    include <Udon/Thirdparty/PicoMcp2515/mcp2515.h>
 
 namespace Udon
 {
@@ -40,7 +38,6 @@ namespace Udon
         uint32_t timestampUs = 0;
 
         uint8_t intPin;
-
 
     public:
         CanBusPico(
@@ -167,7 +164,7 @@ namespace Udon
             if (bus.readMessage(&msg) == MCP2515::ERROR_OK)
             {
                 auto rxNode = std::find_if(rxNodes.begin(), rxNodes.end(), [msg](const RxNode& rx)
-                                         { return rx.node->id == msg.can_id; });
+                                           { return rx.node->id == msg.can_id; });
                 if (rxNode == rxNodes.end())
                 {
                     return;
@@ -220,3 +217,5 @@ namespace Udon
         }
     };
 }    // namespace Udon
+
+#endif
