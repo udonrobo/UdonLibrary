@@ -25,7 +25,7 @@
 namespace Udon
 {
 
-    template <class Message>
+    template <typename Message>
     class UartReader
     {
         static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();

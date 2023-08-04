@@ -24,7 +24,7 @@
 namespace Udon
 {
 
-    template <class Message>
+    template <typename Message>
     class CanReader
     {
 

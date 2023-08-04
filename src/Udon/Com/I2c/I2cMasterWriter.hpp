@@ -25,7 +25,7 @@
 namespace Udon
 {
 
-    template <class Message>
+    template <typename Message>
     class I2cMasterWriter
     {
 
