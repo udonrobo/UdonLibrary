@@ -1,6 +1,6 @@
 # UdonLibrary
 
-香川高専高松機械システム研究部 Arduino ライブラリ
+香川高専高松機械システム研究部 C++ ライブラリ
 
 [![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml)
 [![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
@@ -131,7 +131,7 @@
 
    新しい項目に `$(ProjectDir)\UdonLibrary\src\` と入力します。`$(ProjectDir)` は プロジェクトディレクトリのパスを表すマクロです。
 
-- 追加している様子 (submodule使用時)
+- 追加している様子 (submodule 使用時)
 
   ![setup](https://github.com/udonrobo/UdonLibrary/assets/91818705/aaecedbc-2490-4b11-85e5-fbf0a7d09302)
 
@@ -169,7 +169,7 @@
 
 ## Usage
 
-`Udon.hpp` をインクルードすることで、全機能を使用できるようになります。
+`Udon.hpp` をインクルードすることで、全ての機能を使用できるようになります。
 
 ```cpp
 #include <Udon.hpp>
@@ -178,7 +178,7 @@ void setup() {}
 void loop() {}
 ```
 
-`UdonFwd.hpp` をインクルードすることで、必要なヘッダーだけ個別にインクルードできるようになり、コンパイル時間を短縮できます。
+必要なヘッダーだけ個別にインクルードしたい場合 `UdonFwd.hpp` をインクルードします。これは Arduino の仕様であり、Arduino 以外では不要です。
 
 ```cpp
 #include <UdonFwd.hpp>
@@ -188,4 +188,9 @@ void setup() {}
 void loop() {}
 ```
 
-各機能の使い方の詳細は [docs](./docs/) にあるドキュメント、 [example](./example/) にあるスケッチ例を参照してください。
+各機能の使い方の詳細は次のドキュメント、[example](./example/) にあるスケッチ例を参照してください。
+
+## Documents
+
+- [通信](./docs/Com/Communication.md)
+- [ライブラリ構造](./docs/)
