@@ -8,8 +8,7 @@
 >
 > またのメインページの README に貼られているバッジから見ることもできます(反映に少し時間がかかります)。
 >
-> [![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml)
-> [![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
+> [![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml) > [![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
 >
 > 検証が成功している場合 `passing` と表示され、失敗していると `failing` と表示されます。
 
@@ -84,7 +83,7 @@
 
   本テストの GitHub Actions のワークフローは `./.github/workflows/ArduinoLint.yml` に定義されています。
 
-  このファイルにある `matrix: bord:` に `fqbn` を調べ追加することでボードの追加ができます。
+  このファイルにある `matrix: bord:` に `fqbn` を調べ追加することでボードの追加ができます。詳しくは [公式ドキュメント](https://github.com/arduino/compile-sketches) 参照。
 
 - ローカル環境で実行する
 
