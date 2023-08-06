@@ -62,7 +62,7 @@ namespace Udon
         /// @brief デフォルトコピー代入演算子
         Quaternion& operator=(const Quaternion&) = default;
 
-        /// @brief 算術演算子
+        /// @brief 内積
         /// @param rhs 被演算子
         /// @return
         constexpr Quaternion operator*(const Quaternion& rhs) const noexcept
@@ -74,6 +74,11 @@ namespace Udon
                 w * rhs.z + x * rhs.y - y * rhs.x + z * rhs.w,
                 w * rhs.w - x * rhs.x - y * rhs.y - z * rhs.z,
             };
+        }
+
+        constexpr Quaternion inverce() const noexcept
+        {
+            return { -x, -y, -z, w };
         }
 
         /// @brief 複合代入演算子
