@@ -76,11 +76,6 @@ namespace Udon
             };
         }
 
-        constexpr Quaternion inverce() const noexcept
-        {
-            return { -x, -y, -z, w };
-        }
-
         /// @brief 複合代入演算子
         /// @param rhs 被演算子
         /// @return
@@ -108,22 +103,43 @@ namespace Udon
             return x || y || z || w;
         }
 
+        constexpr Quaternion inverce() const noexcept
+        {
+            return { -x, -y, -z, w };
+        }
+
+        /// @brief 単位クオータニオン
+        /// @return 
+        static Quaternion Identity() noexcept
+        {
+            return { 0, 0, 0, 1 };
+        }
+
+        /// @brief X軸回転クオータニオン
+        /// @param angle 回転角度
+        /// @return
         static Quaternion RotateX(value_type angle) noexcept
         {
             return { sin(angle / 2), 0, 0, cos(angle / 2) };
         }
 
+        /// @brief Y軸回転クオータニオン
+        /// @param angle 回転角度
+        /// @return
         static Quaternion RotateY(value_type angle) noexcept
         {
             return { 0, sin(angle / 2), 0, cos(angle / 2) };
         }
 
+        /// @brief Z軸回転クオータニオン
+        /// @param angle 回転角度
+        /// @return
         static Quaternion RotateZ(value_type angle) noexcept
         {
             return { 0, 0, sin(angle / 2), cos(angle / 2) };
         }
 
-        /// @brief 要素がゼロであるかを返す
+        /// @brief 要素がゼロであるか
         constexpr bool isZero() const noexcept
         {
             return !operator bool();
