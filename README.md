@@ -57,17 +57,17 @@
   > 既定値: `~/Documents/Arduino/libraries`
   >
   > 変更している場合: `ファイル > 環境設定 > スケッチブックの保存場所欄` + `/libraries`
-
-  ```sh
-  # ターミナルを開き、調べたディレクトリに移動
-  cd ~/Documents/Arduino/libraries
-
-  # 本ライブラリクローン
-  git clone https://github.com/udonrobo/UdonLibrary.git
-
-  # セットアップ実行(依存ライブラリの追加等)
-  ./UdonLibrary/setup.sh
-  ```
+  >
+  > ```sh
+  > # ターミナルを開き、調べたディレクトリに移動
+  > cd ~/Documents/Arduino/libraries
+  >
+  > # 本ライブラリクローン
+  > git clone https://github.com/udonrobo/UdonLibrary.git --recursive
+  >
+  > # セットアップ実行(依存ライブラリの追加等)
+  > ./UdonLibrary/setup.sh
+  > ```
 
 - 更新
 
@@ -90,7 +90,7 @@
 
   ```sh
   # プロジェクト内の lib ディレクトリで実行
-  git clone https://github.com/udonrobo/UdonLibrary.git
+  git clone https://github.com/udonrobo/UdonLibrary.git --recursive
 
   # セットアップ実行(依存ライブラリの追加等)
   ./UdonLibrary/setup.sh
@@ -128,7 +128,7 @@
 
    ```sh
    # VisualStudioのプロジェクトディレクトリで実行
-   git clone https://github.com/udonrobo/UdonLibrary.git
+   git clone https://github.com/udonrobo/UdonLibrary.git --recursive
    ```
 
    > 次のようなディレクトリ構成になっていれば OK です。(プロジェクトディレクトリへ追加した場合)
@@ -207,7 +207,7 @@ void setup() {}
 void loop() {}
 ```
 
-必要なヘッダーだけ個別にインクルードしたい場合 `UdonFwd.hpp` をインクルードします。これは Arduino の仕様であり、Arduino 以外では不要です。
+必要なヘッダーだけ個別にインクルードしたい場合 `UdonFwd.hpp` をインクルードします。ArduinoIDE 以外で使用する場合 `UdonFwd.hpp` のインクルードは不要です。
 
 ```cpp
 #include <UdonFwd.hpp>
@@ -221,5 +221,18 @@ void loop() {}
 
 ## Documents
 
-- [通信](./docs/Com/Communication.md)
-- [ライブラリ構造](./docs/)
+- 通信
+  - [共通](./docs/Communication/Common.md)
+  - [CAN通信](./docs/Communication/CAN.md)
+  - [I2C通信](./docs/Communication/I2C.md)
+  - [UART通信](./docs/Communication/UART.md)
+  - [IM920](./docs/Communication/IM920.md)
+  - [コントローラ](./docs/Communication/Pad.md)
+  - [シリアライザ](./docs/Communication/Serialization.md)
+- ユーザー定義型
+  - [色空間](./docs/Types/Color.md)
+  - [二次元ベクトル](./docs/Types/Vector2D.md)
+  - [三次元ベクトル](./docs/Types/Vector3D.md)
+- 開発者用
+  - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
+  - [自動テスト](./docs/Developer/CI.md)
