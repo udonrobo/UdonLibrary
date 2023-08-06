@@ -45,6 +45,12 @@ namespace Udon
         {
         }
 
+        Im920Reader(const Im920Reader&) 
+            : im920(im920)
+            , buffer(im920.registerReceiver(Size))
+        {
+        }
+
         Udon::Optional<Message> getMessage()
         {
             if (im920)
