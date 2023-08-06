@@ -222,7 +222,6 @@ void loop() {}
 ## Documents
 
 - 通信
-  - [共通](./docs/Communication/Common.md)
   - [CAN通信](./docs/Communication/CAN.md)
   - [I2C通信](./docs/Communication/I2C.md)
   - [UART通信](./docs/Communication/UART.md)

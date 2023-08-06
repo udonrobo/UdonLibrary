@@ -8,7 +8,8 @@
 >
 > またのメインページの README に貼られているバッジから見ることもできます(反映に少し時間がかかります)。
 >
-> [![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml) > [![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
+> [![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml)
+> [![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
 >
 > 検証が成功している場合 `passing` と表示され、失敗していると `failing` と表示されます。
 
@@ -24,11 +25,11 @@
 
 - サブディレクトリ
 
-  `src`ディレクトリ内のファイルは再帰的にコンパイルされるため、`src/HogeHoge/Huga.cpp` のようにサブディレクトリ内にあるファイルも自動的に検証されます。
+  フォルダを作成するだけですることはありません。`src` ディレクトリ内のファイルは再帰的にコンパイルされるため、`src/HogeHoge/Huga.cpp` のようにサブディレクトリ内にあるファイルも自動的に検証されます。
 
 - テストファイルを作成する
 
-  このテストでは構文のチェックを行うだけで、アルゴリズムのチェックは行いません。よって次のようにメンバ関数を呼び出すだけでよいです。加えて `test` 関数はどこからも呼び出されません。
+  このテストでは構文のチェックを行うだけで、アルゴリズムのチェックは行いません。よって次のようにメンバ関数を呼び出すだけでよいです。また `test` 関数はどこからも呼び出されません。
 
   ```cpp
   // ./src/Udon/Sample.hpp
@@ -51,7 +52,7 @@
   }
   ```
 
-  > `test` 関数は他のソースファイルにも存在しています。そのためリンクエラーを起こさないようにインライン関数にします。
+  > `test` 関数は同じ名前の関数が他のソースファイルにも存在しています。そのためリンクエラーを起こさないようにインライン関数にします。
 
 - コンパイル時に計算可能なアルゴリズムのテスト
 
@@ -101,7 +102,7 @@
 
   - ディレクトリ追加
 
-    ディレクトリを追加する場合、追加した親ディレクトリ内の`CMakeLists.txt` に `add_subdirectory` を使用してディレクトリを登録します。
+    ディレクトリを追加する場合、追加した親ディレクトリ内の `CMakeLists.txt` に `add_subdirectory` を使用してディレクトリを登録します。
 
     ```cmake
     # ./test/UnitTest/CMakeLists.txt (親ディレクトリのCMakeLists.txt)
@@ -180,7 +181,7 @@
   cd ..
   ```
 
-  > GoogleTest はサブモジュールとして追加されているため、本ライブラリをクローンするだけでは追加されません。サブモジュールをクローンするには次のコマンドを実行します。
+  > GoogleTest はサブモジュールとして追加されているため、本ライブラリを `--recursive` オプションを付けずクローンした場合追加されません。サブモジュールをクローンするには次のコマンドを実行します。
   >
   > ```sh
   > git submodule update --init --recursive
