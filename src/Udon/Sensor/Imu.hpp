@@ -21,48 +21,41 @@ namespace Udon
 {
 
     template <class Device>
-    class Imu
-        : public Device
+    class Imu : public Device
     {
-
         /// @brief 回転方向
-        Udon::Euler3D<bool> direction;
+        Udon::Quaternion direction;
 
         /// @brief 内積値消去用オフセット
-        Udon::Quaternion offset;
+        Udon::Quaternion home;
 
     public:
         /// @brief コンストラクタ
         /// @param Device Deviceオブジェクト
         /// @param direction 回転方向
-        Imu(
-            Device&&              device,
-            Udon::Euler3D<bool>&& direction = { true, true, true })
+        Imu(Device&& device, Udon::Euler3D<bool>&& direction = { true, true, true })
             : Device(std::move(device))
-            , direction(direction)
-            , offset()
+            , direction(direction.toQuaternion())
+            , home()
         {
         }
 
         /// @brief 値を消去する
         void clear()
         {
-            offset = Device::getQuaternion();
+            home = Device::getQuaternion();
         }
 
         /// @brief オイラー角を取得
         /// @return オイラー角
         Udon::Euler getEuler() const
         {
-            return (Device::getEuler() - offset.toEuler())
-                .directionRevision(direction)       // 回転方向補正
-                .normalized(-Udon::Pi, Udon::Pi)    // -PI~PI の間に正規化
-                ;
+            return getQuaternion().getEuler();
         }
 
         Udon::Quaternion getQuaternion() const
         {
-            return Device::getQuaternion() - offset;
+            return home.inverce() * Device::getQuaternion() * direction;
         }
 
         /// @brief オイラー角をシリアルポートに出力
