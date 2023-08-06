@@ -57,17 +57,17 @@
   > 既定値: `~/Documents/Arduino/libraries`
   >
   > 変更している場合: `ファイル > 環境設定 > スケッチブックの保存場所欄` + `/libraries`
-  >
-  > ```sh
-  > # ターミナルを開き、調べたディレクトリに移動
-  > cd ~/Documents/Arduino/libraries
-  >
-  > # 本ライブラリクローン
-  > git clone https://github.com/udonrobo/UdonLibrary.git
-  >
-  > # セットアップ実行(依存ライブラリの追加等)
-  > ./UdonLibrary/setup.sh
-  > ```
+
+  ```sh
+  # ターミナルを開き、調べたディレクトリに移動
+  cd ~/Documents/Arduino/libraries
+
+  # 本ライブラリクローン
+  git clone https://github.com/udonrobo/UdonLibrary.git
+
+  # セットアップ実行(依存ライブラリの追加等)
+  ./UdonLibrary/setup.sh
+  ```
 
 - 更新
 
@@ -84,14 +84,38 @@
 <details>
 <summary> Platform IO </summary>
 
+- 追加
+
+  プロジェクトの `lib` ディレクトリへクローンすることで追加できます。
+
+  ```sh
+  # プロジェクト内の lib ディレクトリで実行
+  git clone https://github.com/udonrobo/UdonLibrary.git
+
+  # セットアップ実行(依存ライブラリの追加等)
+  ./UdonLibrary/setup.sh
+  ```
+
+- 更新
+
+  ```sh
+  # プロジェクト内の lib ディレクトリで実行
+  cd ~/Documents/Arduino/libraries/UdonLibrary
+
+  # ライブラリを更新
+  git pull
+  ```
+
 </details>
 
 <details>
 <summary> Visual Studio </summary>
 
+プロジェクトディレクトリまたはソリューションディレクトリにクローンし、インクルードパスを設定することで使用できます。
+
 1. 追加
 
-   追加先が git で管理されている場合 -> submodule を使用
+   追加先が git で管理されている場合
 
    ```sh
    # VisualStudioのプロジェクトディレクトリで実行
@@ -100,14 +124,14 @@
    git commit -m "add UdonLibrary" # submodule add でステージングも行われるため git add 不要
    ```
 
-   追加先が git で管理されていない場合 -> クローン
+   追加先が git で管理されていない場合
 
    ```sh
    # VisualStudioのプロジェクトディレクトリで実行
    git clone https://github.com/udonrobo/UdonLibrary.git
    ```
 
-   > 次のようなディレクトリ構成になっていれば OK です。
+   > 次のようなディレクトリ構成になっていれば OK です。(プロジェクトディレクトリへ追加した場合)
    >
    > ```sh
    > Test   <-- ソリューションディレクトリ
@@ -130,11 +154,11 @@
 
 2. インクルードパス設定
 
-   以下の手順でインクルードパスを設定することで　`#include <Udon.hpp>`　のように記述できるようになります。
+   インクルードパスを設定することで　`#include <Udon.hpp>`　のように記述できるようになります。
 
    ソリューションエクスプローラ > プロジェクトを右クリック > プロパティ > VC++ディレクトリ > インクルードディレクトリの項目にある `↓` > 編集 > 新しい行の追加(フォルダアイコンボタン)
 
-   新しい項目に `$(ProjectDir)\UdonLibrary\src\` と入力します。`$(ProjectDir)` は プロジェクトディレクトリのパスを表すマクロです。
+   新しい項目に `$(ProjectDir)\UdonLibrary\src\` を追加します。`$(ProjectDir)` は プロジェクトディレクトリのパスを表すマクロです。ソリューションディレクトリへ追加する場合 `$(SolutionDir)` を使用します。
 
 - 追加している様子 (submodule 使用時)
 
