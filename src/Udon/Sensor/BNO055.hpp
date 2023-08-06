@@ -13,7 +13,6 @@
 //
 //-------------------------------------------------------------------
 
-
 #pragma once
 
 #if defined(ARDUINO) && !defined(UDON_TEENSY_I2C_SLAVE_MODE)
@@ -49,7 +48,8 @@ namespace Udon
         void update()
         {
             const auto q = Adafruit_BNO055::getQuat();
-            quaternion   = Udon::Quaternion(q.x(), q.y(), q.z(), q.w());
+
+            quaternion = Udon::Quaternion(q.x(), q.y(), q.z(), q.w());
         }
 
         /// @brief オイラー角取得
