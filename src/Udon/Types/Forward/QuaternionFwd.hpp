@@ -103,6 +103,8 @@ namespace Udon
             return x || y || z || w;
         }
 
+        /// @brief 逆クオータニオン
+        /// @return 
         constexpr Quaternion inverce() const noexcept
         {
             return { -x, -y, -z, w };
@@ -151,8 +153,26 @@ namespace Udon
             *this = {};
         }
 
-        template <typename T = double>
+        template <typename T = value_type>
         Euler3D<T> toEuler() const noexcept;
+
+        /// @brief ヨー角を取得
+        double toYaw() const noexcept
+        {
+            return atan2(2 * (w * z + x * y), 1 - 2 * (y * y + z * z));
+        }
+
+        /// @brief ピッチ角を取得
+        double toPitch() const noexcept
+        {
+            return asin(2 * (w * y - z * x));
+        }
+
+        /// @brief ロール角を取得
+        double toRoll() const noexcept
+        {
+            return atan2(2 * (w * x + y * z), 1 - 2 * (x * x + y * y));
+        }
 
 #ifdef SIV3D_INCLUDED
         /// @brief s3d::Vec2からの変換コンストラクタ
