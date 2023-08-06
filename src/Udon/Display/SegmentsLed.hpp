@@ -45,9 +45,15 @@ namespace Udon
         /// @param cathode カソードのピン番号
         /// @param anode アノードのピン番号
         /// @param format 表示フォーマット(0~9)
-        SegmentsLed(const std::array<uint8_t, 7>&  cathode,
-                    const std::vector<uint8_t>&    anode,
-                    const std::array<uint8_t, 10>& format = {
+        /// ピン配置 cathode { 0, 1, 2, 3, 4, 5, 6 }
+        ///     0
+        ///  5     1
+        ///     6
+        ///  4     2
+        ///     3
+        SegmentsLed(std::array<uint8_t, 7>&&  cathode,
+                    std::vector<uint8_t>&&    anode,
+                    std::array<uint8_t, 10>&& format = {
                         0b0111111,    // 0
                         0b0000110,    // 1
                         0b1011011,    // 2
@@ -60,8 +66,13 @@ namespace Udon
                         0b1101111     // 9
                     })
             : cathode(cathode)
-            , anode(anode)
+            , anode(std::move(anode))
             , format(format)
+        {
+        }
+
+        /// @brief 開始
+        void begin()
         {
             for (auto&& pin : cathode)
             {

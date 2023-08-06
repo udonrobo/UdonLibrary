@@ -44,157 +44,157 @@ x 軸の右方向を正、y 軸の上方向を正とする直交座標系を使�
     auto vector = Udon::Vec2 { 1234.5, 6.789 };
     ```
 
--   要素へのアクセス
+- 要素へのアクセス
 
-    `Vector2D` 型のインスタンスには、`x` と `y` という 2 つの要素があります。これらの要素にアクセスするには、メンバ変数へのドット演算子(`.`)を使用します。
+  `Vector2D` 型のインスタンスには、`x` と `y` という 2 つの要素があります。これらの要素にアクセスするには、メンバ変数へのドット演算子(`.`)を使用します。
 
-    書き込み
+  書き込み
+
+  ```cpp
+  Udon::Vec2 vector { 2, 3 };
+  vector.x = 1234.5;
+  vector.y = 5678;
+  ```
+
+  読み取り
+
+  ```cpp
+  Udon::Vec2 vector { 1234.5, 6.789 };
+  double x = vector.x;
+  double y = vector.y;
+  ```
+
+- ベクトル演算
+
+  `Vector2D` クラスにはベクトル演算を行うための各種演算子の実装がされています。
+
+  加算
+
+  ```cpp
+  Udon::Vec2 vector1 { 2.0, 3.0 };
+  Udon::Vec2 vector2 { 1.0, -1.5 };
+
+  Udon::Vec2 result = vector1 + vector2;
+  // result = { 3.0, 1.5 }
+  ```
+
+  減算
+
+  ```cpp
+  Udon::Vec2 vector1 { 2.0, 3.0 };
+  Udon::Vec2 vector2 { 1.0, -1.5 };
+
+  Udon::Vec2 result = vector1 - vector2;
+  // result = { 1.0, 4.5 }
+  ```
+
+  スカラ倍
+
+  ```cpp
+  Udon::Vec2 vector { 2.0, 3.0 };
+  double scalar = 1.5;
+
+  Udon::Vec2 result = vector * scalar;
+  // result = { 3.0, 4.5 }
+  ```
+
+- お便利な関数
+
+  - ベクトルデータをシリアルモニターに送信する
+
+    `show` メンバ関数を使用します。デバッグ時などに有用です。
+
+    `setup` 関数内で `Serial.begin` を呼び出しシリアル通信が開始されている必要があります。
 
     ```cpp
-    Udon::Vec2 vector { 2, 3 };
-    vector.x = 1234.5;
-    vector.y = 5678;
-    ```
+    void setup()
+    {
+        Serial.begin(115200);
 
-    読み取り
-
-    ```cpp
-    Udon::Vec2 vector { 1234.5, 6.789 };
-    double x = vector.x;
-    double y = vector.y;
-    ```
-
--   ベクトル演算
-
-    `Vector2D` クラスにはベクトル演算を行うための各種演算子の実装がされています。
-
-    加算
-
-    ```cpp
-    Udon::Vec2 vector1 { 2.0, 3.0 };
-    Udon::Vec2 vector2 { 1.0, -1.5 };
-
-    Udon::Vec2 result = vector1 + vector2;
-    // result = { 3.0, 1.5 }
-    ```
-
-    減算
-
-    ```cpp
-    Udon::Vec2 vector1 { 2.0, 3.0 };
-    Udon::Vec2 vector2 { 1.0, -1.5 };
-
-    Udon::Vec2 result = vector1 - vector2;
-    // result = { 1.0, 4.5 }
-    ```
-
-    スカラ倍
-
-    ```cpp
-    Udon::Vec2 vector { 2.0, 3.0 };
-    double scalar = 1.5;
-
-    Udon::Vec2 result = vector * scalar;
-    // result = { 3.0, 4.5 }
-    ```
-
--   お便利な関数
-
-    -   ベクトルデータをシリアルモニターに送信する
-
-        `show` メンバ関数を使用します。デバッグ時などに有用です。
-
-        `setup` 関数内で `Serial.begin` を呼び出しシリアル通信が開始されている必要があります。
-
-        ```cpp
-        void setup()
-        {
-            Serial.begin(115200);
-
-            Udon::Vec2 vector { 3.0, 4.0 };
-            vector.show();
-
-            //> x: 3.0 [tab] y: 4.0 [tab]
-        }
-        ```
-
-    -   シリアライズ
-
-        このクラスはシリアライズ(バイト列化)に対応しています。したがって各通信用クラスに渡すことでマイコン同士でベクトルデータのやり取りができます。詳細は各通信用クラスのドキュメントを参照してください。
-
-        ```cpp
         Udon::Vec2 vector { 3.0, 4.0 };
-        writer.setMessage(vector);
-        ```
+        vector.show();
 
-    -   ベクトルの長さを求める
+        //> x: 3.0 [tab] y: 4.0 [tab]
+    }
+    ```
 
-        `length` メンバ関数を使用します。
+  - シリアライズ
 
-        三平方の定理を用いてベクトルの長さを求めます。
+    このクラスはシリアライズ(バイト列化)に対応しています。したがって各通信用クラスに渡すことでマイコン同士でベクトルデータのやり取りができます。詳細は各通信用クラスのドキュメントを参照してください。
 
-        ```cpp
-        Udon::Vec2 vector { 3.0, 4.0 };
+    ```cpp
+    Udon::Vec2 vector { 3.0, 4.0 };
+    writer.setMessage(vector);
+    ```
 
-        double length = vector.length();
-        // length = 5.0
-        ```
+  - ベクトルの長さを求める
 
-    -   他のベクトルとの距離を求める
+    `length` メンバ関数を使用します。
 
-        `distanceFrom` メンバ関数を使用します。
+    三平方の定理を用いてベクトルの長さを求めます。
 
-        ```cpp
-        Udon::Vec2 vector1 { 1.0, 2.0 };
-        Udon::Vec2 vector2 { 4.0, 6.0 };
+    ```cpp
+    Udon::Vec2 vector { 3.0, 4.0 };
 
-        double distance = vector1.distanceFrom(vector2);  // ベクトル間の距離
-        // distance = 5.0
-        ```
+    double length = vector.length();
+    // length = 5.0
+    ```
 
-    -   ベクトルの長さを変更する
+  - 他のベクトルとの距離を求める
 
-        `setLength` メンバ関数を使用します。
+    `distanceFrom` メンバ関数を使用します。
 
-        ベクトルの長さ（大きさ）を指定した値に設定します。ベクトルの向きは変わらず、大きさのみが変更されます。
+    ```cpp
+    Udon::Vec2 vector1 { 1.0, 2.0 };
+    Udon::Vec2 vector2 { 4.0, 6.0 };
 
-        ```cpp
-        Udon::Vec2 vector(3.0, 4.0);
-        double newLength = 2.0;
+    double distance = vector1.distanceFrom(vector2);  // ベクトル間の距離
+    // distance = 5.0
+    ```
 
-        vector.setLength(newLength);  // ベクトルの長さを設定
-        // vector = { 1.2, 1.6 }  (大きさが2.0に設定されたベクトル)
-        ```
+  - ベクトルの長さを変更する
 
-    -   原点を中心にベクトルを指定角度回転させる
+    `setLength` メンバ関数を使用します。
 
-        `rotated` メンバ関数を使用します。
+    ベクトルの長さ（大きさ）を指定した値に設定します。ベクトルの向きは変わらず、大きさのみが変更されます。
 
-        回転行列を用いて、ベクトルを指定した角度（ラジアン）だけ、回転させた新しいベクトルを返します。
+    ```cpp
+    Udon::Vec2 vector(3.0, 4.0);
+    double newLength = 2.0;
 
-        回転の中心は原点、回転方向は時計回りです。
+    vector.setLength(newLength);  // ベクトルの長さを設定
+    // vector = { 1.2, 1.6 }  (大きさが2.0に設定されたベクトル)
+    ```
 
-        ```cpp
-        Udon::Vec2 vector { 1.0, 0.0 };
-        double angle = 45.0 * M_PI / 180;  // 45度をラジアンに変換
+  - 原点を中心にベクトルを指定角度回転させる
 
-        Udon::Vec2 result = vector.rotated(angle);
-        // result = { 0.707, 0.707 }  (45度回転したベクトル)
-        ```
+    `rotated` メンバ関数を使用します。
 
-    -   指定した点を中心にベクトルを指定角度回転させる
+    回転行列を用いて、ベクトルを指定した角度（ラジアン）だけ、回転させた新しいベクトルを返します。
 
-        `rotatedAt` メンバ関数を使用します。
+    回転の中心は原点、回転方向は時計回りです。
 
-        回転行列を用いて、指定した回転中心（中心点）を基準にベクトルを指定した角度（ラジアン）だけ回転させた新しいベクトルを返します。
+    ```cpp
+    Udon::Vec2 vector { 1.0, 0.0 };
+    double angle = 45.0 * M_PI / 180;  // 45度をラジアンに変換
 
-        回転方向は時計回りです。
+    Udon::Vec2 result = vector.rotated(angle);
+    // result = { 0.707, 0.707 }  (45度回転したベクトル)
+    ```
 
-        ```cpp
-        Udon::Vec2 vector { 2.0, 1.0 };
-        Udon::Vec2 center { 1.0, 1.0 };
-        double angle = 90.0 * M_PI / 180.0;  // 90度をラジアンに変換
+  - 指定した点を中心にベクトルを指定角度回転させる
 
-        Udon::Vec2 result = vector.rotatedAt(center, angle);  // ベクトルの回転
-        // result = { 1.0, 0.0 }  (中心を軸にして90度回転したベクトル)
-        ```
+    `rotatedAt` メンバ関数を使用します。
+
+    回転行列を用いて、指定した回転中心（中心点）を基準にベクトルを指定した角度（ラジアン）だけ回転させた新しいベクトルを返します。
+
+    回転方向は時計回りです。
+
+    ```cpp
+    Udon::Vec2 vector { 2.0, 1.0 };
+    Udon::Vec2 center { 1.0, 1.0 };
+    double angle = 90.0 * M_PI / 180.0;  // 90度をラジアンに変換
+
+    Udon::Vec2 result = vector.rotatedAt(center, angle);  // ベクトルの回転
+    // result = { 1.0, 0.0 }  (中心を軸にして90度回転したベクトル)
+    ```
