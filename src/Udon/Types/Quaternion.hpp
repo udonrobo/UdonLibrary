@@ -16,8 +16,8 @@
 
 #pragma once
 
-#include <Udon/Types/EulerFwd.hpp>
-#include <Udon/Types/QuaternionFwd.hpp>
+#include <Udon/Types/Forward/EulerFwd.hpp>
+#include <Udon/Types/Forward/QuaternionFwd.hpp>
 
 template <typename T>
 Udon::Euler3D<T> Udon::Quaternion::toEuler() const noexcept

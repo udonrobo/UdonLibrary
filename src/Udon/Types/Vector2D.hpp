@@ -16,10 +16,10 @@
 
 #pragma once
 
-#include <Udon/Types/PolarFwd.hpp>
-#include <Udon/Types/Vector2DFwd.hpp>
-#include <Udon/Types/Vector3DFwd.hpp>
-#include <Udon/Types/Vector4DFwd.hpp>
+#include <Udon/Types/Forward/PolarFwd.hpp>
+#include <Udon/Types/Forward/Vector2DFwd.hpp>
+#include <Udon/Types/Forward/Vector3DFwd.hpp>
+#include <Udon/Types/Forward/Vector4DFwd.hpp>
 
 
 template <typename T>
