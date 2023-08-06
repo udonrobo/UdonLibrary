@@ -89,7 +89,7 @@
 #include <Udon/Com/Common/ArrayWriter.hpp>
 
 // シリアライズ
- #include <Udon/Com/Serialization.hpp>
+#include <Udon/Com/Serialization.hpp>
 
 // コントローラー
 #include <Udon/Com/Pad/PadPS5.hpp>
