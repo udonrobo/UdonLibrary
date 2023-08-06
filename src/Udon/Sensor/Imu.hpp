@@ -26,7 +26,7 @@ namespace Udon
         Udon::Quaternion direction;
 
         /// @brief 内積値消去用オフセット
-        Udon::Quaternion home;
+        Udon::Quaternion offset;
 
     public:
         /// @brief コンストラクタ
@@ -34,7 +34,7 @@ namespace Udon
         /// @param direction 回転方向
         Imu(const Udon::Euler3D<bool>& direction = { true, true, true })
             : direction(direction.toQuaternion())
-            , home({ 0, 0, 0, 1 })
+            , offset(Udon::Quaternion::Identity())
         {
         }
 
@@ -43,7 +43,7 @@ namespace Udon
         /// @brief 値を消去する
         void clear()
         {
-            home = getRawQuaternion();
+            offset = getRawQuaternion();
         }
 
         /// @brief オイラー角を取得
@@ -55,13 +55,13 @@ namespace Udon
 
         Udon::Quaternion getQuaternion() const
         {
-            return home.inverce() * getRawQuaternion() * direction;
+            return offset.inverce() * getRawQuaternion() * direction;
         }
 
         /// @brief オイラー角をシリアルポートに出力
         void show()
         {
-            getEuler().show();
+            Udon::Show(getEuler());
         }
     };
 
