@@ -20,6 +20,8 @@
 namespace Udon
 {
 
+    /// @brief 9軸センサー
+    /// @remark このクラスを継承し、getRawQuaternion() を実装することでクォータニオン角、オイラー角を取得できます。
     class Imu
     {
         /// @brief 回転方向
@@ -38,6 +40,9 @@ namespace Udon
         {
         }
 
+        /// @brief センサーからの生のクォータニオンを取得
+        /// @remark この値は内部で保持されるオフセット値によって補正されていない生の値です(この値を直接使用することは推奨されません)
+        /// @return クォータニオン
         virtual Udon::Quaternion getRawQuaternion() const = 0;
 
         /// @brief 値を消去する
@@ -53,6 +58,8 @@ namespace Udon
             return getQuaternion().toEuler();
         }
 
+        /// @brief クォータニオンを取得
+        /// @return クォータニオン
         Udon::Quaternion getQuaternion() const
         {
             return offset.inverce() * getRawQuaternion() * direction;

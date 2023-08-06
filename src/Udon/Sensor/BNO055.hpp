@@ -23,6 +23,8 @@
 namespace Udon
 {
 
+    /// @brief BNO055 9軸センサー
+    /// @remark 継承しているImuクラスからクオータニオン、オイラー角を取得できます
     class BNO055
         : public Imu
         , Adafruit_BNO055
@@ -30,8 +32,7 @@ namespace Udon
 
         Udon::Quaternion quaternion;
 
-        /// @brief クォータニオン取得
-        /// @return クォータニオン
+        /// @brief 生クォータニオン取得
         Udon::Quaternion getRawQuaternion() const override
         {
             return quaternion;
