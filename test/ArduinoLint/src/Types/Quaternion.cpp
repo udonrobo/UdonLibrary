@@ -51,6 +51,9 @@ inline void test()
     {
         Udon::Quaternion a;
         a.inverce();
+        a.toPitch();
+        a.toRoll();
+        a.toYaw();
         a.toEuler();
         a.clear();
         a.show();
