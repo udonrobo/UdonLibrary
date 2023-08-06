@@ -23,27 +23,15 @@ inline void test()
     // 二項演算子
     {
         constexpr Udon::Quaternion a, b = { 10, 20, 30, 40 };
-        a + b;
-        a - b;
         a * b;
-        a / b;
-        a + 100;
-        a - 100;
         a * 100;
-        a / 100;
     }
 
     // 複合代入演算子
     {
         Udon::Quaternion a, b;
-        a += b;
-        a -= b;
         a *= b;
-        a /= b;
-        a += 100;
-        a -= 100;
         a *= 100;
-        a /= 100;
     }
 
     // 比較演算子
@@ -64,6 +52,7 @@ inline void test()
     // その他関数
     {
         Udon::Quaternion a;
+        a..inverse();
         a.toEuler();
         a.clear();
         a.show();
