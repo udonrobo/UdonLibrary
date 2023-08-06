@@ -1,0 +1,24 @@
+{
+    "name": "UdonLibrary",
+    "description": "KNCTT udonrobo library",
+    "keywords": "",
+    "authors": {
+        "name": "udonrobo",
+        "url": "https://github.com/udonrobo",
+        "maintainer": true
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/udonrobo/UdonLibrary.git"
+    },
+    "version": "1.0.0",
+    "frameworks": "arduino",
+    "platforms": "*",
+    "headers": [
+        "Udon.hpp",
+        "UdonFwd.hpp"
+    ],
+    "build": {
+        "libArchive": false
+    }
+}
