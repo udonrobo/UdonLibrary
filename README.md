@@ -52,7 +52,7 @@
 
 - 追加
 
-  Arduino にはライブラリを保存する特定のディレクトリがあります。その場所を見つけて、新しいライブラリを追加します。
+  Arduino にはライブラリを保存する特定のディレクトリがあります。
 
   > 既定値: `~/Documents/Arduino/libraries`
   >
@@ -78,6 +78,11 @@
   # ライブラリを更新
   git pull
   ```
+
+</details>
+
+<details>
+<summary> Platform IO </summary>
 
 </details>
 
