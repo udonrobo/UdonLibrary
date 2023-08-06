@@ -18,20 +18,29 @@
 #if defined(ARDUINO) && !defined(UDON_TEENSY_I2C_SLAVE_MODE)
 
 #    include <Adafruit_BNO055.h>
-#    include <Udon/Types/Quaternion.hpp>
+#    include <Udon/Sensor/Imu.hpp>
 
 namespace Udon
 {
 
     class BNO055
-        : Adafruit_BNO055
+        : public Imu
+        , Adafruit_BNO055
     {
 
         Udon::Quaternion quaternion;
 
+        /// @brief クォータニオン取得
+        /// @return クォータニオン
+        Udon::Quaternion getRawQuaternion() const override
+        {
+            return quaternion;
+        }
+
     public:
-        BNO055(TwoWire& wire)
-            : Adafruit_BNO055(-1, 0x28, &wire)
+        BNO055(TwoWire& wire, const Udon::Euler3D<bool>& direction = { true, true, true })
+            : Imu{ direction }
+            , Adafruit_BNO055(-1, 0x28, &wire)
             , quaternion()
         {
         }
@@ -48,27 +57,7 @@ namespace Udon
         void update()
         {
             const auto q = Adafruit_BNO055::getQuat();
-
-            quaternion = Udon::Quaternion(q.x(), q.y(), q.z(), q.w());
-        }
-
-        /// @brief オイラー角取得
-        /// @return オイラー角
-        Udon::Euler getEuler() const
-        {
-            return quaternion.toEuler();
-        }
-
-        /// @brief クォータニオン取得
-        /// @return クォータニオン
-        Udon::Quaternion getQuaternion() const
-        {
-            return quaternion;
-        }
-
-        void show() const
-        {
-            getEuler().show();
+            quaternion   = Udon::Quaternion(q.x(), q.y(), q.z(), q.w());
         }
     };
 

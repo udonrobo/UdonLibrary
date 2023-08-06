@@ -20,8 +20,7 @@
 namespace Udon
 {
 
-    template <class Device>
-    class Imu : public Device
+    class Imu
     {
         /// @brief 回転方向
         Udon::Quaternion direction;
@@ -33,29 +32,30 @@ namespace Udon
         /// @brief コンストラクタ
         /// @param Device Deviceオブジェクト
         /// @param direction 回転方向
-        Imu(Device&& device, Udon::Euler3D<bool>&& direction = { true, true, true })
-            : Device(std::move(device))
-            , direction(direction.toQuaternion())
-            , home()
+        Imu(const Udon::Euler3D<bool>& direction = { true, true, true })
+            : direction(direction.toQuaternion())
+            , home({ 0, 0, 0, 1 })
         {
         }
+
+        virtual Udon::Quaternion getRawQuaternion() const = 0;
 
         /// @brief 値を消去する
         void clear()
         {
-            home = Device::getQuaternion();
+            home = getRawQuaternion();
         }
 
         /// @brief オイラー角を取得
         /// @return オイラー角
         Udon::Euler getEuler() const
         {
-            return getQuaternion().getEuler();
+            return getQuaternion().toEuler();
         }
 
         Udon::Quaternion getQuaternion() const
         {
-            return home.inverce() * Device::getQuaternion() * direction;
+            return home.inverce() * getRawQuaternion() * direction;
         }
 
         /// @brief オイラー角をシリアルポートに出力
