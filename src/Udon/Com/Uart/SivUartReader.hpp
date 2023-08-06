@@ -19,7 +19,7 @@
 #pragma once
 
 #include <Siv3D/Serial.hpp>
- #include <Udon/Com/Serialization.hpp>
+#include <Udon/Com/Serialization.hpp>
 #include <Udon/Utility/Show.hpp>
 
 namespace Udon
@@ -31,7 +31,7 @@ namespace Udon
 
         s3d::Serial& serial;
 
-        uint8_t buffer[Size];
+        s3d::Array<uint8_t> buffer;
 
         std::thread thread;
 
@@ -40,7 +40,7 @@ namespace Udon
     public:
         SivUartReader(s3d::Serial& bus)
             : serial(bus)
-            , buffer()
+            , buffer(Size)
             , thread(
                   [this]()
                   {
@@ -51,10 +51,10 @@ namespace Udon
                           if (serial.available() < Size)
                               continue;
 
-                          Array<uint8> d;
-                          if (serial.readBytes(d) && d.size() == Size)
+                          s3d::Array<uint8> temp;
+                          if (serial.readBytes(temp) && temp.size() == Size)
                           {
-                              std::copy(d.begin(), d.end(), buffer);
+                              buffer = std::move(temp);
                           }
 
                           serial.clearInput();
@@ -80,17 +80,17 @@ namespace Udon
             if (const auto message = getMessage())
             {
                 Udon::Show(*message, gap);
-                Print.writeln();
+                s3d::Print.writeln();
             }
             else
             {
-                Print << U"receive failed!";
+                s3d::Print << U"receive failed!";
             }
         }
 
         void showRaw() const
         {
-            Print << buffer;
+            s3d::Print << buffer;
         }
     };
 }    // namespace Udon
