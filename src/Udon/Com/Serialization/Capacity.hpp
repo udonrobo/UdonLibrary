@@ -13,9 +13,7 @@
 //
 //-------------------------------------------------------------------
 
-
 #pragma once
-
 
 #include <Udon/Stl/EnableSTL.hpp>
 #include <type_traits>
@@ -26,55 +24,49 @@
 #include <Udon/Algorithm/CRC.hpp>
 #include <Udon/Utility/Parsable.hpp>
 #include <Udon/Types/Float.hpp>
-
+#include <Udon/Utility/Concept.hpp>
 
 namespace Udon
 {
 
     /// @brief シリアライズ後のビット数を求める
+    /// @tparam T capacity メンバ関数を持つ型
+    /// @param obj
+    /// @return
+    UDON_CONCEPT_CAPACITIVE
+    inline constexpr size_t Capacity(Capacitive&& obj)
+    {
+        return const_cast<Capacitive&>(obj).capacity();
+    }
+
+    /// @brief シリアライズ後のビット数を求める
     /// @tparam Bool bool型
     /// @param
     /// @return
-    template <typename Bool>
-    inline constexpr auto Capacity(const Bool&)
-        -> typename std::enable_if<std::is_same<Bool, bool>::value, size_t>::type
+    UDON_CONCEPT_BOOL
+    inline constexpr size_t Capacity(Bool&&)
     {
         return 1;
     }
 
     /// @brief シリアライズ後のビット数を求める
-    /// @tparam Integer 整数型
+    /// @tparam IntegerIgnoreBool 整数型
     /// @param
     /// @return
-    template <typename Integer>
-    inline constexpr auto Capacity(const Integer&)
-        -> typename std::enable_if<std::is_integral<Integer>::value && not std::is_same<Integer, bool>::value, size_t>::type
+    UDON_CONCEPT_INTEGRAL_NOT_BOOL
+    inline constexpr size_t Capacity(IntegralNotBool&&)
     {
-        return sizeof(Integer) * CHAR_BIT;
+        return sizeof(IntegralNotBool) * CHAR_BIT;
     }
 
     /// @brief シリアライズ後のビット数を求める
     /// @tparam T 浮動小数点型
     /// @param
     /// @return
-    template <typename Floating>
-    inline constexpr auto Capacity(const Floating&)
-        -> typename std::enable_if<std::is_floating_point<Floating>::value, size_t>::type
+    UDON_CONCEPT_FLOATING_POINT
+    inline constexpr size_t Capacity(FloatingPoint&&)
     {
         return sizeof(Udon::float32_t) * CHAR_BIT;
-    }
-
-    UDON_HAS_MEMBER_FUNCTION(capacity);           // Udon::has_member_function_capacity<T>
-
-    /// @brief シリアライズ後のビット数を求める
-    /// @tparam T capacity メンバ関数を持つ型
-    /// @param obj
-    /// @return
-    template <typename T>
-    inline constexpr auto Capacity(const T& obj)
-        -> typename std::enable_if<Udon::has_member_function_capacity<T>::value, size_t>::type
-    {
-        return const_cast<T&>(obj).capacity();    // T::capacity() が const でないメンバ関数な場合、obj から呼び出しできないためconstを外す
     }
 
     /// @brief シリアライズ後のビット数を求める
@@ -82,39 +74,25 @@ namespace Udon
     /// @tparam N 配列の要素数
     /// @param obj
     /// @return
-    template <typename T, size_t N>
-    inline constexpr size_t Capacity(const T (&obj)[N])
+    UDON_CONCEPT_ARRAY
+    inline constexpr size_t Capacity(Array&& obj)
     {
-        return Capacity(*obj) * N;
-    }
+        return Capacity(*obj) * (sizeof obj / sizeof *obj);
+	}
 
-    /// @brief 可変長引数展開用関数
-    /// @tparam T
-    /// @param arg
-    /// @return
-    template <typename T>
-    inline constexpr size_t Capacity(T&& arg)
-    {
-        return Capacity<typename std::remove_reference<T>::type>(arg);
-    }
-
-    /// @brief シリアライズ後のビット数を求める
-    /// @tparam T
-    /// @param arg 可変長引数
-    /// @return
-    template <typename T, typename... Args>
-    inline constexpr size_t Capacity(T&& arg, Args&&... args)
-    {
-        return Capacity(std::forward<T>(arg)) + Capacity(std::forward<Args>(args)...);
-    }
-
-    /// @brief シリアライズ後のビット数を求める
-    /// @tparam T
-    /// @return
-    template <typename T>
+    /// @brief 可変長引数展開用関数 最終呼び出し
     inline constexpr size_t Capacity()
     {
-        return Capacity(T{});
+        return 0;
+    }
+
+    /// @brief シリアライズ後のビット数を求める
+    /// @param arg 可変長引数
+    /// @return シリアライズ後のビット数
+    template <typename Head, typename... Args>
+    inline constexpr size_t Capacity(Head&& head, Args&&... args)
+    {
+        return Capacity(std::forward<Head>(head)) + Capacity(std::forward<Args>(args)...);
     }
 
     /// @brief チェックサムを含めたシリアライズ後のバイト数を求める
@@ -123,8 +101,7 @@ namespace Udon
     template <typename T>
     inline constexpr size_t CapacityWithChecksum()
     {
-        return Udon::Ceil(Capacity(T{}) / static_cast<double>(CHAR_BIT)) +
-               Udon::CRC8_SIZE;
+        return Udon::Ceil(Capacity(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
     }
 
 }    // namespace Udon
