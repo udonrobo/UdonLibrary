@@ -34,17 +34,10 @@ namespace Udon
     /// @param obj
     /// @return
     UDON_CONCEPT_CAPACITIVE
-    inline constexpr size_t Capacity(Capacitive&& obj)
+    inline constexpr size_t Capacity(const Capacitive& obj)
     {
         return const_cast<const Capacitive&>(obj).capacity();
     }
-
- //   template <typename T>
- //   inline constexpr auto Capacity(const T& rhs)
- //       -> decltype(Capacity(rhs), size_t{})
- //   {
- //       return ::Capacity(rhs);
-	//}
 
     /// @brief シリアライズ後のビット数を求める
     /// @tparam Bool bool型
@@ -81,11 +74,11 @@ namespace Udon
     /// @tparam N 配列の要素数
     /// @param obj
     /// @return
-    UDON_CONCEPT_ARRAY
-    inline constexpr size_t Capacity(Array&& obj)
+    template <typename T, size_t N>
+    inline constexpr size_t Capacity(const T (&obj)[N])
     {
-        return Capacity(*obj) * (sizeof obj / sizeof *obj);
-	}
+        return Capacity(*obj) * N;
+    }
 
     /// @brief 可変長引数展開用関数 最終呼び出し
     inline constexpr size_t Capacity()
@@ -96,10 +89,10 @@ namespace Udon
     /// @brief シリアライズ後のビット数を求める
     /// @param arg 可変長引数
     /// @return シリアライズ後のビット数
-    template <typename Head, typename... Args>
-    inline constexpr size_t Capacity(Head&& head, Args&&... args)
+    template <typename First, typename... Args>
+    inline constexpr size_t Capacity(const First& first, const Args&... args)
     {
-        return Capacity(std::forward<Head>(head)) + Capacity(std::forward<Args>(args)...);
+        return Capacity(first) + Capacity(args...);
     }
 
     /// @brief チェックサムを含めたシリアライズ後のバイト数を求める
@@ -108,7 +101,7 @@ namespace Udon
     template <typename T>
     inline constexpr size_t CapacityWithChecksum()
     {
-        return Udon::Ceil(Capacity(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
+        return Udon::Ceil(Capacity(T()) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
     }
 
 }    // namespace Udon
