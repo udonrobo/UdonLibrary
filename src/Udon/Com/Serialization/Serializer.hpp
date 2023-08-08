@@ -49,6 +49,7 @@ namespace Udon
         {
         }
 
+        /// @brief bool型
         template <typename Bool>
         inline auto operator()(const Bool& object)
             -> typename std::enable_if<std::is_same<Bool, bool>::value>::type
@@ -56,7 +57,7 @@ namespace Udon
             packBool(object);
         }
 
-        /// @brief 整数型
+        /// @brief 整数型 && bool型以外
         template <typename Integer>
         inline auto operator()(const Integer& object)
             -> typename std::enable_if<std::is_integral<Integer>::value && not std::is_same<Integer, bool>::value>::type
@@ -84,11 +85,20 @@ namespace Udon
 
         /// @brief メンバにaccessorを持つ型
         template <typename T>
-        inline auto operator()(const T& object) -> typename std::enable_if<Udon::has_member_iterate_accessor<Serializer, T>::value>::type
+        inline auto operator()(const T& object)
+            -> typename std::enable_if<Udon::has_member_iterate_accessor<Serializer, T>::value>::type
         {
             // T::accessor が const なメンバ関数でない場合に const object から呼び出せないため、const_cast によって const を除去
             const_cast<T&>(object).accessor(*this);
         }
+
+        // template <typename T>
+        // inline auto operator()(const T& object)
+        //     -> typename std::enable_if<Udon::has_member_iterate_accessor<Serializer, T>::value == false>::type
+        // {
+        //     // T::accessor が存在しない場合は、T::accessor が存在しないことを示す static_assert が発生する
+        //     static_assert(Udon::has_member_iterate_accessor<Serializer, T>::value, "T must have accessor member function.");
+        // }
 
         /// @brief 可変長テンプレート引数再帰展開
         template <typename Head, typename... Tails>
