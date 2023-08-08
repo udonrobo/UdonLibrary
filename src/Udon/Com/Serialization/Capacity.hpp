@@ -36,15 +36,22 @@ namespace Udon
     UDON_CONCEPT_CAPACITIVE
     inline constexpr size_t Capacity(Capacitive&& obj)
     {
-        return const_cast<Capacitive&>(obj).capacity();
+        return const_cast<const Capacitive&>(obj).capacity();
     }
+
+ //   template <typename T>
+ //   inline constexpr auto Capacity(const T& rhs)
+ //       -> decltype(Capacity(rhs), size_t{})
+ //   {
+ //       return ::Capacity(rhs);
+	//}
 
     /// @brief シリアライズ後のビット数を求める
     /// @tparam Bool bool型
     /// @param
     /// @return
     UDON_CONCEPT_BOOL
-    inline constexpr size_t Capacity(Bool&&)
+    inline constexpr size_t Capacity(Bool)
     {
         return 1;
     }
@@ -54,7 +61,7 @@ namespace Udon
     /// @param
     /// @return
     UDON_CONCEPT_INTEGRAL_NOT_BOOL
-    inline constexpr size_t Capacity(IntegralNotBool&&)
+    inline constexpr size_t Capacity(IntegralNotBool)
     {
         return sizeof(IntegralNotBool) * CHAR_BIT;
     }
@@ -64,7 +71,7 @@ namespace Udon
     /// @param
     /// @return
     UDON_CONCEPT_FLOATING_POINT
-    inline constexpr size_t Capacity(FloatingPoint&&)
+    inline constexpr size_t Capacity(FloatingPoint)
     {
         return sizeof(Udon::float32_t) * CHAR_BIT;
     }
