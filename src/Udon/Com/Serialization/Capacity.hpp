@@ -74,11 +74,11 @@ namespace Udon
     /// @tparam N 配列の要素数
     /// @param obj
     /// @return
-    template <typename T, size_t N>
-    inline constexpr size_t Capacity(const T (&obj)[N])
+    UDON_CONCEPT_ARRAY
+    inline constexpr size_t Capacity(const Array& obj)
     {
-        return Capacity(*obj) * N;
-    }
+        return Capacity(*obj) * std::extent<Array>::value;
+	}
 
     /// @brief 可変長引数展開用関数 最終呼び出し
     inline constexpr size_t Capacity()
