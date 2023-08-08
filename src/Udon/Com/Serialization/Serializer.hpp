@@ -52,30 +52,30 @@ namespace Udon
 
         /// @brief bool型
         UDON_CONCEPT_BOOL
-        inline void operator()(Bool object)
+        inline void operator()(Bool rhs)
         {
-            packBool(object);
+            packBool(rhs);
         }
 
         /// @brief 整数型 && bool型以外
         UDON_CONCEPT_INTEGRAL_NOT_BOOL
-        inline void operator()(IntegralNotBool object)
+        inline void operator()(IntegralNotBool rhs)
         {
-            packScalar(object);
+            packScalar(rhs);
         }
 
         /// @brief 浮動小数点型
         UDON_CONCEPT_FLOATING_POINT
-        inline void operator()(FloatingPoint object)
+        inline void operator()(FloatingPoint rhs)
         {
-            packScalar(static_cast<Udon::float32_t>(object));
+            packScalar(static_cast<Udon::float32_t>(rhs));
         }
 
         /// @brief 配列
         template <typename T, size_t N>
-        inline void operator()(const T (&object)[N])
+        inline void operator()(const T (&rhs)[N])
         {
-            for (auto&& it : object)
+            for (auto&& it : rhs)
             {
                 operator()(it);
             }
@@ -83,18 +83,23 @@ namespace Udon
 
         /// @brief メンバ関数 accessor<Acc>(Acc&) が存在する型
         template <typename T>
-        inline auto operator()(const T& object)
-            -> decltype(std::declval<T>().accessor(*this), void())
+        inline auto operator()(const T& rhs)
+            -> decltype(std::declval<T>().accessor(*this), std::declval<void>())
         {
-            const_cast<T&>(object).accessor(*this);
+            const_cast<T&>(rhs).accessor(*this);
         }
 
         /// @brief グローバル関数に Accessor<Acc>(Acc&, T&) が存在する型
         template <typename T>
-        inline auto operator()(const T& object)
-            -> decltype(Accessor(*this, std::declval<T&>()), void())
+        inline auto operator()(const T& rhs)
+            -> decltype(Accessor(*this, std::declval<T&>()), std::declval<void>())
         {
-            Accessor(*this, const_cast<T&>(object));
+            Accessor(*this, const_cast<T&>(rhs));
+        }
+
+        /// @brief 可変長引数展開の終端
+        void operator()()
+        {
         }
 
         /// @brief 可変長テンプレート引数再帰展開
@@ -123,7 +128,7 @@ namespace Udon
     private:
         /// @brief シリアル化
         template <typename T>
-        void packScalar(const T& object)
+        void packScalar(const T& rhs)
         {
             static_assert(std::is_scalar<T>::value, "T must be scalar type.");
 
@@ -132,13 +137,13 @@ namespace Udon
             // バッファの後方に挿入
 #if defined(UDON_LITTLE_ENDIAN)
             std::copy(
-                reinterpret_cast<const uint8_t*>(&object),
-                reinterpret_cast<const uint8_t*>(&object) + size,
+                reinterpret_cast<const uint8_t*>(&rhs),
+                reinterpret_cast<const uint8_t*>(&rhs) + size,
                 buffer.begin() + insertIndex);
 #elif defined(UDON_BIG_ENDIAN)
             std::copy(
-                reinterpret_cast<const uint8_t*>(&object),
-                reinterpret_cast<const uint8_t*>(&object) + size,
+                reinterpret_cast<const uint8_t*>(&rhs),
+                reinterpret_cast<const uint8_t*>(&rhs) + size,
                 buffer.rbegin() + insertIndex);
 #endif
 
@@ -146,14 +151,14 @@ namespace Udon
             insertIndex += size;
         }
 
-        void packBool(bool object)
+        void packBool(bool rhs)
         {
             if (boolCount == 0)
             {
                 boolInsertIndex = insertIndex++;
             }
 
-            Udon::BitWrite(buffer.at(boolInsertIndex), boolCount, object);
+            Udon::BitWrite(buffer.at(boolInsertIndex), boolCount, rhs);
 
             if (++boolCount >= CHAR_BIT)
             {

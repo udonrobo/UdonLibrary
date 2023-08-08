@@ -101,7 +101,7 @@ namespace Udon
     template <typename T>
     inline constexpr size_t CapacityWithChecksum()
     {
-        return Udon::Ceil(Capacity(T()) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
+        return Udon::Ceil(Capacity(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
     }
 
 }    // namespace Udon

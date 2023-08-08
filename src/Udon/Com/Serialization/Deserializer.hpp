@@ -29,6 +29,7 @@
 #include <Udon/Stl/Optional.hpp>
 #include <Udon/Types/Float.hpp>
 #include <Udon/Utility/Parsable.hpp>
+#include <Udon/Utility/Concept.hpp>
 
 namespace Udon
 {
@@ -72,25 +73,22 @@ namespace Udon
         }
 
         /// @brief bool型
-        template <typename Bool>
-        inline auto operator()(Bool& rhs)
-            -> typename std::enable_if<std::is_same<Bool, bool>::value>::type
+        UDON_CONCEPT_BOOL
+        inline void operator()(Bool rhs)
         {
             rhs = unpackBool();
         }
 
         /// @brief 整数型
-        template <typename Integer>
-        inline auto operator()(Integer& rhs)
-            -> typename std::enable_if<std::is_integral<Integer>::value && not std::is_same<Integer, bool>::value>::type
+        UDON_CONCEPT_INTEGRAL_NOT_BOOL
+        inline void operator()(IntegralNotBool& rhs)
         {
-            rhs = unpackScalar<Integer>();
+            rhs = unpackScalar<IntegralNotBool>();
         }
 
         /// @brief 浮動小数点型
-        template <typename Floating>
-        inline auto operator()(Floating& rhs)
-            -> typename std::enable_if<std::is_floating_point<Floating>::value>::type
+        UDON_CONCEPT_FLOATING_POINT
+        inline void operator()(FloatingPoint rhs)
         {
             rhs = unpackScalar<Udon::float32_t>();
         }
@@ -105,12 +103,25 @@ namespace Udon
             }
         }
 
-        /// @brief メンバにaccessorを持つ型
+        /// @brief メンバ関数 accessor<Acc>(Acc&) が存在する型
         template <typename T>
-        inline auto operator()(T& rhs) -> typename std::enable_if<Udon::has_member_iterate_accessor<Deserializer, T>::value>::type
+        inline auto operator()(T& rhs)
+            -> decltype(std::declval<T>().accessor(*this), std::declval<void>())
         {
-            // T::accessor が const なメンバ関数でない場合に const rhs から呼び出せないため、const_cast によって const を除去
-            const_cast<T&>(rhs).accessor(*this);
+            rhs.accessor(*this);
+        }
+
+        /// @brief グローバル関数に Accessor<Acc>(Acc&, T&) が存在する型
+        template <typename T>
+        inline auto operator()(T& rhs)
+            -> decltype(Accessor(*this, std::declval<T&>()), std::declval<void>())
+        {
+            Accessor(*this, rhs);
+        }
+
+        /// @brief 可変長引数展開の終端
+        void operator()()
+        {
         }
 
         /// @brief 可変長テンプレート引数再帰展開
