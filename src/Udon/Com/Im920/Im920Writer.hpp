@@ -21,7 +21,7 @@
 #pragma once
 
 #include <Udon/Com/Im920/IIm920.hpp>
- #include <Udon/Com/Serialization.hpp>
+#include <Udon/Com/Serialization.hpp>
 #include <Udon/Utility/Show.hpp>
 
 namespace Udon
@@ -40,6 +40,12 @@ namespace Udon
 
     public:
         Im920Writer(IIm920& im920)
+            : im920(im920)
+            , buffer(im920.registerSender(Size))
+        {
+        }
+
+        Im920Writer(const Im920Writer&) 
             : im920(im920)
             , buffer(im920.registerSender(Size))
         {

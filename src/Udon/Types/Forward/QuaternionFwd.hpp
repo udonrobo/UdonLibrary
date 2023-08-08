@@ -17,7 +17,7 @@
 #pragma once
 
 #include <Udon/Utility/Parsable.hpp>
- #include <Udon/Com/Serialization.hpp>
+#include <Udon/Com/Serialization.hpp>
 
 namespace Udon
 {
@@ -62,29 +62,24 @@ namespace Udon
         /// @brief デフォルトコピー代入演算子
         Quaternion& operator=(const Quaternion&) = default;
 
-        /// @brief 算術演算子
+        /// @brief 内積
         /// @param rhs 被演算子
         /// @return
-        constexpr Quaternion operator+(const Quaternion& rhs) const noexcept { return { x + rhs.x, y + rhs.y, z + rhs.z, w + rhs.w }; }
-        constexpr Quaternion operator-(const Quaternion& rhs) const noexcept { return { x - rhs.x, y - rhs.y, z - rhs.z, w - rhs.w }; }
-        constexpr Quaternion operator*(const Quaternion& rhs) const noexcept { return { x * rhs.x, y * rhs.y, z * rhs.z, w * rhs.w }; }
-        constexpr Quaternion operator/(const Quaternion& rhs) const noexcept { return { x / rhs.x, y / rhs.y, z / rhs.z, w / rhs.w }; }
-        constexpr Quaternion operator+(value_type rhs) const noexcept { return { x + rhs, y + rhs, z + rhs, w + rhs }; }
-        constexpr Quaternion operator-(value_type rhs) const noexcept { return { x - rhs, y - rhs, z - rhs, w - rhs }; }
-        constexpr Quaternion operator*(value_type rhs) const noexcept { return { x * rhs, y * rhs, z * rhs, w * rhs }; }
-        constexpr Quaternion operator/(value_type rhs) const noexcept { return { x / rhs, y / rhs, z / rhs, w / rhs }; }
+        constexpr Quaternion operator*(const Quaternion& rhs) const noexcept
+        {
+            return 
+            {
+                w * rhs.x + x * rhs.w + y * rhs.z - z * rhs.y,
+                w * rhs.y - x * rhs.z + y * rhs.w + z * rhs.x,
+                w * rhs.z + x * rhs.y - y * rhs.x + z * rhs.w,
+                w * rhs.w - x * rhs.x - y * rhs.y - z * rhs.z,
+            };
+        }
 
         /// @brief 複合代入演算子
         /// @param rhs 被演算子
         /// @return
-        Quaternion& operator+=(const Quaternion& rhs) noexcept { return *this = *this + rhs; };
-        Quaternion& operator-=(const Quaternion& rhs) noexcept { return *this = *this - rhs; };
         Quaternion& operator*=(const Quaternion& rhs) noexcept { return *this = *this * rhs; };
-        Quaternion& operator/=(const Quaternion& rhs) noexcept { return *this = *this / rhs; };
-        Quaternion& operator+=(value_type rhs) noexcept { return *this = *this + rhs; };
-        Quaternion& operator-=(value_type rhs) noexcept { return *this = *this - rhs; };
-        Quaternion& operator*=(value_type rhs) noexcept { return *this = *this * rhs; };
-        Quaternion& operator/=(value_type rhs) noexcept { return *this = *this / rhs; };
 
         /// @brief 比較演算子
         /// @param rhs 被演算子
@@ -108,7 +103,45 @@ namespace Udon
             return x || y || z || w;
         }
 
-        /// @brief 要素がゼロであるかを返す
+        /// @brief 逆クオータニオン
+        /// @return 
+        constexpr Quaternion inverce() const noexcept
+        {
+            return { -x, -y, -z, w };
+        }
+
+        /// @brief 単位クオータニオン
+        /// @return 
+        static Quaternion Identity() noexcept
+        {
+            return { 0, 0, 0, 1 };
+        }
+
+        /// @brief X軸回転クオータニオン
+        /// @param angle 回転角度
+        /// @return
+        static Quaternion RotateX(value_type angle) noexcept
+        {
+            return { sin(angle / 2), 0, 0, cos(angle / 2) };
+        }
+
+        /// @brief Y軸回転クオータニオン
+        /// @param angle 回転角度
+        /// @return
+        static Quaternion RotateY(value_type angle) noexcept
+        {
+            return { 0, sin(angle / 2), 0, cos(angle / 2) };
+        }
+
+        /// @brief Z軸回転クオータニオン
+        /// @param angle 回転角度
+        /// @return
+        static Quaternion RotateZ(value_type angle) noexcept
+        {
+            return { 0, 0, sin(angle / 2), cos(angle / 2) };
+        }
+
+        /// @brief 要素がゼロであるか
         constexpr bool isZero() const noexcept
         {
             return !operator bool();
@@ -120,8 +153,35 @@ namespace Udon
             *this = {};
         }
 
-        template <typename T = double>
+        template <typename T = value_type>
         Euler3D<T> toEuler() const noexcept;
+
+        /// @brief ヨー角を取得
+        double toYaw() const noexcept
+        {
+            return atan2(2 * (w * z + x * y), 1 - 2 * (y * y + z * z));
+        }
+
+        /// @brief ピッチ角を取得
+        double toPitch() const noexcept
+        {
+            return asin(2 * (w * y - z * x));
+        }
+
+        /// @brief ロール角を取得
+        double toRoll() const noexcept
+        {
+            return atan2(2 * (w * x + y * z), 1 - 2 * (x * x + y * y));
+        }
+
+#ifdef SIV3D_INCLUDED
+        /// @brief s3d::Vec2からの変換コンストラクタ
+        /// @param v s3d::Vec2
+        operator s3d::Quaternion() const noexcept
+        {
+            return s3d::Quaternion(x, y, z, w);
+        }
+#endif
 
 #ifdef ARDUINO
         /// @brief デバッグ出力

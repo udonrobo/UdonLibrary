@@ -15,8 +15,8 @@
 
 #pragma once
 
-#include <Udon/Types/RGBFwd.hpp>
-#include <Udon/Types/HSVFwd.hpp>
+#include <Udon/Types/Forward/RGBFwd.hpp>
+#include <Udon/Types/Forward/HSVFwd.hpp>
 
 /// @brief HSV色空間からRGB色空間への変換
 /// @param rgb RGB色空間

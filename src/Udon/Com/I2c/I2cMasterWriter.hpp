@@ -19,7 +19,7 @@
 #pragma once
 
 #include <Udon/Com/I2c/I2cBus.hpp>
- #include <Udon/Com/Serialization.hpp>
+#include <Udon/Com/Serialization.hpp>
 #include <Udon/Utility/Show.hpp>
 
 namespace Udon

@@ -16,8 +16,8 @@
 
 #pragma once
 
-#include <Udon/Types/PolarFwd.hpp>
-#include <Udon/Types/Vector2DFwd.hpp>
+#include <Udon/Types/Forward/PolarFwd.hpp>
+#include <Udon/Types/Forward/Vector2DFwd.hpp>
 
 template <typename T>
 inline Udon::Vector2D<T> Udon::Polar_impl<T>::toVector() const noexcept
