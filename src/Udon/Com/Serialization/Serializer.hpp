@@ -31,6 +31,7 @@
 #include <Udon/Types/Float.hpp>
 #include <Udon/Utility/Parsable.hpp>
 #include <Udon/Utility/Concept.hpp>
+#include <Udon/Com/Serialization/Traits.hpp>
 
 namespace Udon
 {
@@ -54,59 +55,58 @@ namespace Udon
         UDON_CONCEPT_BOOL
         inline void operator()(Bool rhs)
         {
-            packBool(rhs);
+            packBoolValue(rhs);
         }
 
         /// @brief 整数型 && bool型以外
         UDON_CONCEPT_INTEGRAL_NOT_BOOL
         inline void operator()(IntegralNotBool rhs)
         {
-            packScalar(rhs);
+            packArithmeticValue(rhs);
         }
 
         /// @brief 浮動小数点型
         UDON_CONCEPT_FLOATING_POINT
         inline void operator()(FloatingPoint rhs)
         {
-            packScalar(static_cast<Udon::float32_t>(rhs));
+            packArithmeticValue(static_cast<Udon::float32_t>(rhs));
         }
-
-        /// @brief 配列
-        template <typename T, size_t N>
-        inline void operator()(const T (&rhs)[N])
+        
+        /// @brief 配列型
+        UDON_CONCEPT_ARRAY
+        inline void operator()(const Array& rhs)
         {
-            for (auto&& it : rhs)
+            for (const auto& element : rhs)
             {
-                operator()(it);
+                operator()(element);
             }
         }
 
         /// @brief メンバ関数 accessor<Acc>(Acc&) が存在する型
-        template <typename T>
-        inline auto operator()(const T& rhs)
-            -> decltype(std::declval<T>().accessor(*this), std::declval<void>())
+        template <typename Accessible, typename std::enable_if<Udon::Details::Accessible<Accessible>::value, std::nullptr_t>::type* = nullptr>
+        inline void operator()(const Accessible& rhs)
         {
-            const_cast<T&>(rhs).accessor(*this);
-        }
+            const_cast<Accessible&>(rhs).accessor(*this);
+		}
 
-        /// @brief グローバル関数に Accessor<Acc>(Acc&, T&) が存在する型
-        template <typename T>
-        inline auto operator()(const T& rhs)
-            -> decltype(Accessor(*this, std::declval<T&>()), std::declval<void>())
+        /// @brief グローバル関数に Accessor<Acc>(Acc&, Accessible&) が存在する型
+        template <typename Accessible, typename std::enable_if<Udon::Details::AccessorCallable<Accessible>::value, std::nullptr_t>::type* = nullptr>
+        inline void operator()(const Accessible& rhs)
         {
-            Accessor(*this, const_cast<T&>(rhs));
+            ::Accessor(*this, const_cast<Accessible&>(rhs));
         }
 
         /// @brief 可変長引数展開の終端
-        void operator()()
+        inline void operator()()
         {
         }
 
-        /// @brief 可変長テンプレート引数再帰展開
-        template <typename Head, typename... Tails>
-        inline void operator()(const Head& head, const Tails&... tails)
+        /// @brief 可変長テンプレート引数
+        template <typename First, typename Second, typename... Tails>
+        inline void operator()(const First& first, const Second& second, const Tails&... tails)
         {
-            operator()(head);
+            operator()(first);
+            operator()(second);
             operator()(tails...);
         }
 
@@ -128,11 +128,9 @@ namespace Udon
     private:
         /// @brief シリアル化
         template <typename T>
-        void packScalar(const T& rhs)
+        void packArithmeticValue(const T& rhs)
         {
-            static_assert(std::is_scalar<T>::value, "T must be scalar type.");
-
-            constexpr size_t size = sizeof(T);
+            constexpr auto size = sizeof(T);
 
             // バッファの後方に挿入
 #if defined(UDON_LITTLE_ENDIAN)
@@ -151,7 +149,8 @@ namespace Udon
             insertIndex += size;
         }
 
-        void packBool(bool rhs)
+        /// @brief bool値のシリアル化
+        void packBoolValue(bool rhs)
         {
             if (boolCount == 0)
             {

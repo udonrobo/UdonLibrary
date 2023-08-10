@@ -30,6 +30,7 @@
 #include <Udon/Types/Float.hpp>
 #include <Udon/Utility/Parsable.hpp>
 #include <Udon/Utility/Concept.hpp>
+#include <Udon/Com/Serialization/Traits.hpp>
 
 namespace Udon
 {
@@ -76,79 +77,76 @@ namespace Udon
         UDON_CONCEPT_BOOL
         inline void operator()(Bool& rhs)
         {
-            rhs = unpackBool();
+            rhs = unpackBoolValue();
         }
 
         /// @brief 整数型
         UDON_CONCEPT_INTEGRAL_NOT_BOOL
         inline void operator()(IntegralNotBool& rhs)
         {
-            rhs = unpackScalar<IntegralNotBool>();
+            rhs = unpackArithmeticValue<IntegralNotBool>();
         }
 
         /// @brief 浮動小数点型
         UDON_CONCEPT_FLOATING_POINT
         inline void operator()(FloatingPoint& rhs)
         {
-            rhs = unpackScalar<Udon::float32_t>();
+            rhs = unpackArithmeticValue<Udon::float32_t>();
         }
 
-        /// @brief 配列
-        template <typename T, size_t N>
-        inline void operator()(T (&rhs)[N])
+        /// @brief 配列型
+        UDON_CONCEPT_ARRAY
+        inline void operator()(Array& rhs)
         {
-            for (auto&& it : rhs)
+            for (auto& element : rhs)
             {
-                operator()(it);
+                operator()(element);
             }
         }
 
         /// @brief メンバ関数 accessor<Acc>(Acc&) が存在する型
-        template <typename T>
-        inline auto operator()(T& rhs)
-            -> decltype(std::declval<T>().accessor(*this), std::declval<void>())
+        template <typename Accessible, typename std::enable_if<Udon::Details::Accessible<Accessible>::value, std::nullptr_t>::type* = nullptr>
+        inline void operator()(Accessible& rhs)
         {
             rhs.accessor(*this);
-        }
+		}
 
-        /// @brief グローバル関数に Accessor<Acc>(Acc&, T&) が存在する型
-        template <typename T>
-        inline auto operator()(T& rhs)
-            -> decltype(Accessor(*this, std::declval<T&>()), std::declval<void>())
+        /// @brief グローバル関数に Accessor<Acc>(Acc&, Accessible&) が存在する型
+        template <typename Accessible, typename std::enable_if<Udon::Details::AccessorCallable<Accessible>::value, std::nullptr_t>::type* = nullptr>
+        inline void operator()(Accessible& rhs)
         {
-            Accessor(*this, rhs);
+            ::Accessor(*this, rhs);
         }
 
         /// @brief 可変長引数展開の終端
-        void operator()()
+        inline void operator()()
         {
         }
 
-        /// @brief 可変長テンプレート引数再帰展開
-        template <typename Head, typename... Tails>
-        inline void operator()(Head& head, Tails&... tails)
+        /// @brief 可変長テンプレート引数
+        template <typename First, typename Second, typename... Tails>
+        inline void operator()(const First& first, const Second& second, const Tails&... tails)
         {
-            operator()(head);
+            operator()(first);
+            operator()(second);
             operator()(tails...);
         }
 
     private:
         /// @brief 逆シリアル化
         template <class T>
-        T unpackScalar()
+        T unpackArithmeticValue()
         {
-            static_assert(std::is_scalar<T>::value, "T must be scalar type.");
+            T unpacked;
 
-            T retval{};
-
-            constexpr size_t size = sizeof(T);
+            constexpr auto size = sizeof(T);
 
             // 逆シリアル化されたオブジェクトをバッファから抽出
 #if defined(UDON_LITTLE_ENDIAN)
             std::copy(
                 buffer.cbegin() + popIndex,
                 buffer.cbegin() + popIndex + size,
-                reinterpret_cast<uint8_t*>(&retval));
+                reinterpret_cast<uint8_t*>(&unpacked));
 #elif defined(UDON_BIG_ENDIAN)
             std::copy(
                 buffer.crbegin() + popIndex,
@@ -159,25 +157,25 @@ namespace Udon
             // 抽出したオブジェクトのバイト数分インデックスを進める
             popIndex += size;
 
-            return retval;
+            return unpacked;
         }
 
         /// @brief bool値の逆シリアル化
-        bool unpackBool()
+        bool unpackBoolValue()
         {
             if (boolCount == 0)
             {
                 boolPopIndex = popIndex++;
             }
 
-            const auto retval = Udon::BitRead(buffer.at(boolPopIndex), boolCount);
+            const auto unpacked = Udon::BitRead(buffer.at(boolPopIndex), boolCount);
 
             if (++boolCount >= CHAR_BIT)
             {
                 boolCount = 0;
             }
 
-            return retval;
+            return unpacked;
         }
     };
 

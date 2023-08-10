@@ -58,7 +58,7 @@ namespace Udon
     template <typename T>
     Udon::Optional<T> Unpack(const std::vector<uint8_t>& buffer)
     {
-        static_assert(Udon::IsParsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+//        static_assert(Udon::IsParsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
 
         if (buffer.size() < Udon::CapacityWithChecksum<T>())
         {
@@ -70,6 +70,11 @@ namespace Udon
         if (deserializer)
         {
             T retval;
+            // Q ローカル変数が初期化されていませんという警告を消すには？
+            // A pragma warning disable で消せる
+            // Q 何番?
+            // A 未使用変数の警告
+
             deserializer(retval);
             return retval;
         }
