@@ -3,17 +3,6 @@
 #include <Udon/Stl/EnableSTL.hpp>
 #include <type_traits>
 
-//namespace Udon
-//{
-//    namespace Details
-//    {
-//
-//        class DummyAccessor;
-//
-//    }
-//
-//}    // namespace Udon
-
 namespace Udon
 {
     class DummyAccessor;
@@ -52,11 +41,6 @@ namespace Udon
         };
 
     }    // namespace Details
-
-}    // namespace Udon
-
-namespace Udon
-{
 
     namespace Details
     {

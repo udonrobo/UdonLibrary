@@ -125,7 +125,7 @@ namespace Udon
 
         /// @brief 可変長テンプレート引数
         template <typename First, typename Second, typename... Tails>
-        inline void operator()(const First& first, const Second& second, const Tails&... tails)
+        inline void operator()(First& first, Second& second, Tails&... tails)
         {
             operator()(first);
             operator()(second);
