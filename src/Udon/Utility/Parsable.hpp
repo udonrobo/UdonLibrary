@@ -80,5 +80,13 @@ namespace Udon
     {
     };
 
+ //   template <typename T>
+ //   struct IsConstexprCapasitive
+ //   {
+	//	static constexpr bool value = Udon::has_member_function_capacity<T>::value && std::is_const<decltype(std::declval<T>().capacity())>::value;
+	//};
+    // Q コンパイル時に求められるか、求められないか判別する方法はありますか？
+    // A ないです。constexprの場合、コンパイル時に求められるか、求められないか判別する方法はありません。
+
 
 }    // namespace Udon

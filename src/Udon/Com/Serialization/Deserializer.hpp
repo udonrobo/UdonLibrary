@@ -74,7 +74,7 @@ namespace Udon
 
         /// @brief bool型
         UDON_CONCEPT_BOOL
-        inline void operator()(Bool rhs)
+        inline void operator()(Bool& rhs)
         {
             rhs = unpackBool();
         }
@@ -88,7 +88,7 @@ namespace Udon
 
         /// @brief 浮動小数点型
         UDON_CONCEPT_FLOATING_POINT
-        inline void operator()(FloatingPoint rhs)
+        inline void operator()(FloatingPoint& rhs)
         {
             rhs = unpackScalar<Udon::float32_t>();
         }
