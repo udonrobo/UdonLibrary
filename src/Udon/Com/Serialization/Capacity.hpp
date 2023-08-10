@@ -30,16 +30,6 @@ namespace Udon
 {
 
     /// @brief シリアライズ後のビット数を求める
-    /// @tparam T capacity メンバ関数を持つ型
-    /// @param obj
-    /// @return
-    UDON_CONCEPT_CAPACITIVE
-    inline constexpr size_t Capacity(const Capacitive& obj)
-    {
-        return const_cast<const Capacitive&>(obj).capacity();
-    }
-
-    /// @brief シリアライズ後のビット数を求める
     /// @tparam Bool bool型
     /// @param
     /// @return
@@ -70,6 +60,16 @@ namespace Udon
     }
 
     /// @brief シリアライズ後のビット数を求める
+    /// @tparam T capacity メンバ関数を持つ型
+    /// @param obj
+    /// @return
+    UDON_CONCEPT_CAPACITIVE
+    inline constexpr size_t Capacity(const Capacitive& obj)
+    {
+        return obj.capacity();
+    }
+
+    /// @brief シリアライズ後のビット数を求める
     /// @tparam T 配列の要素の型
     /// @tparam N 配列の要素数
     /// @param obj
@@ -78,7 +78,7 @@ namespace Udon
     inline constexpr size_t Capacity(const Array& obj)
     {
         return Capacity(*obj) * std::extent<Array>::value;
-	}
+    }
 
     /// @brief 可変長引数展開用関数 最終呼び出し
     inline constexpr size_t Capacity()
