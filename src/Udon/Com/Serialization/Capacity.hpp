@@ -109,7 +109,7 @@ namespace Udon
     /// @param args シリアライズ対象の値
     /// @return シリアライズ後のビット数
     template <typename... Args>
-    inline constexpr size_t Capacity(Args&&... args)
+    inline constexpr size_t CapacityBits(Args&&... args)
     {
 		return Details::CapacityArgsUnpack(std::forward<Args>(args)...);
 	}
@@ -122,7 +122,7 @@ namespace Udon
     {
         //static_assert(std::is_arithmetic<T>::value or Details::HasMemberFunctionCapacity<T>::value or Details::CapacityCallable<T>::value, "Capacity is not defined.");
 
-        return Udon::Ceil(Capacity(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
+        return Udon::Ceil(CapacityBits(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
     }
 
 }    // namespace Udon

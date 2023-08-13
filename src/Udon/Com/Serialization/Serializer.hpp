@@ -51,64 +51,14 @@ namespace Udon
         {
         }
 
-        /// @brief bool型
-        UDON_CONCEPT_BOOL
-        inline void operator()(Bool rhs)
+        /// @brief シリアライズ
+        /// @tparam ...Args 
+        /// @param ...args 
+        template <typename... Args>
+        inline void operator()(Args&&... args)
         {
-            packBoolValue(rhs);
-        }
-
-        /// @brief 整数型 && bool型以外
-        UDON_CONCEPT_INTEGRAL_NOT_BOOL
-        inline void operator()(IntegralNotBool rhs)
-        {
-            packArithmeticValue(rhs);
-        }
-
-        /// @brief 浮動小数点型
-        UDON_CONCEPT_FLOATING_POINT
-        inline void operator()(FloatingPoint rhs)
-        {
-            packArithmeticValue(static_cast<Udon::float32_t>(rhs));
-        }
-        
-        /// @brief 配列型
-        UDON_CONCEPT_ARRAY
-        inline void operator()(const Array& rhs)
-        {
-            for (const auto& element : rhs)
-            {
-                operator()(element);
-            }
-        }
-
-        /// @brief メンバ関数 accessor<Acc>(Acc&) が存在する型
-        template <typename Accessible, typename std::enable_if<Udon::Details::Accessible<Accessible>::value, std::nullptr_t>::type* = nullptr>
-        inline void operator()(const Accessible& rhs)
-        {
-            const_cast<Accessible&>(rhs).accessor(*this);
+            argumentUnpack(std::forward<Args>(args)...);
 		}
-
-        /// @brief グローバル関数に Accessor<Acc>(Acc&, Accessible&) が存在する型
-        template <typename Accessible, typename std::enable_if<Udon::Details::AccessorCallable<Accessible>::value, std::nullptr_t>::type* = nullptr>
-        inline void operator()(const Accessible& rhs)
-        {
-            Accessor(*this, const_cast<Accessible&>(rhs));
-        }
-
-        /// @brief 可変長引数展開の終端
-        inline void operator()()
-        {
-        }
-
-        /// @brief 可変長テンプレート引数
-        template <typename First, typename Second, typename... Tails>
-        inline void operator()(const First& first, const Second& second, const Tails&... tails)
-        {
-            operator()(first);
-            operator()(second);
-            operator()(tails...);
-        }
 
         /// @brief バッファを取得する
         /// @remark 取得後の内部バッファは無効になります
@@ -126,9 +76,76 @@ namespace Udon
         }
 
     private:
+
+        /// @brief bool型
+        UDON_CONCEPT_BOOL
+        inline void serialize(Bool rhs)
+        {
+            serializeBool(rhs);
+        }
+
+        /// @brief 整数型 && bool型以外
+        UDON_CONCEPT_INTEGRAL_NOT_BOOL
+        inline void serialize(IntegralNotBool rhs)
+        {
+            serializeArithmetic(rhs);
+        }
+
+        /// @brief 浮動小数点型
+        UDON_CONCEPT_FLOATING_POINT
+        inline void serialize(FloatingPoint rhs)
+        {
+            serializeArithmetic(static_cast<Udon::float32_t>(rhs));
+        }
+
+        /// @brief 配列型
+        UDON_CONCEPT_ARRAY
+        inline void serialize(const Array& rhs)
+        {
+            for (const auto& element : rhs)
+            {
+                serialize(element);
+            }
+        }
+
+        /// @brief メンバ関数 accessor<Acc>(Acc&) が存在する型
+        template <typename Accessible, typename std::enable_if<Udon::Details::Accessible<Accessible>::value, std::nullptr_t>::type* = nullptr>
+        inline void serialize(const Accessible& rhs)
+        {
+            const_cast<Accessible&>(rhs).accessor(*this);
+        }
+
+        /// @brief グローバル関数に Accessor<Acc>(Acc&, Accessible&) が存在する型
+        template <typename Accessible, typename std::enable_if<Udon::Details::AccessorCallable<Accessible>::value, std::nullptr_t>::type* = nullptr>
+        inline void serialize(const Accessible& rhs)
+        {
+            Accessor(*this, const_cast<Accessible&>(rhs));
+        }
+
+        /// @brief 可変長引数展開の終端
+        inline void argumentUnpack()
+        {
+        }
+
+        /// @brief 可変長引数展開
+        template <typename T>
+        inline void argumentUnpack(const T& rhs)
+        {
+			serialize(rhs);
+		}
+
+        /// @brief 可変長引数展開
+        template <typename Head, typename... Tails>
+        inline void argumentUnpack(const Head& head, const Tails&... tails)
+        {
+            operator()(head);
+            operator()(tails...);
+        }
+
+
         /// @brief シリアル化
         template <typename T>
-        void packArithmeticValue(const T& rhs)
+        void serializeArithmetic(const T& rhs)
         {
             constexpr auto size = sizeof(T);
 
@@ -150,7 +167,7 @@ namespace Udon
         }
 
         /// @brief bool値のシリアル化
-        void packBoolValue(bool rhs)
+        void serializeBool(bool rhs)
         {
             if (boolCount == 0)
             {

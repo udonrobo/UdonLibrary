@@ -73,69 +73,82 @@ namespace Udon
             return isChecksumSuccess;
         }
 
+        /// @brief デシリアライズ
+        template <typename... Args>
+        void operator()(Args&... args)
+        {
+            argumentUnpack(args...);
+        }
+
+    private:
         /// @brief bool型
         UDON_CONCEPT_BOOL
-        inline void operator()(Bool& rhs)
+        inline void deserialize(Bool& rhs)
         {
-            rhs = unpackBoolValue();
+            rhs = deserializeBool();
         }
 
         /// @brief 整数型
         UDON_CONCEPT_INTEGRAL_NOT_BOOL
-        inline void operator()(IntegralNotBool& rhs)
+        inline void deserialize(IntegralNotBool& rhs)
         {
-            rhs = unpackArithmeticValue<IntegralNotBool>();
+            rhs = deserializeArithmetic<IntegralNotBool>();
         }
 
         /// @brief 浮動小数点型
         UDON_CONCEPT_FLOATING_POINT
-        inline void operator()(FloatingPoint& rhs)
+        inline void deserialize(FloatingPoint& rhs)
         {
-            rhs = unpackArithmeticValue<Udon::float32_t>();
+            rhs = deserializeArithmetic<Udon::float32_t>();
         }
 
         /// @brief 配列型
         UDON_CONCEPT_ARRAY
-        inline void operator()(Array& rhs)
+        inline void deserialize(Array& rhs)
         {
             for (auto& element : rhs)
             {
-                operator()(element);
+                deserialize(element);
             }
         }
 
         /// @brief メンバ関数 accessor<Acc>(Acc&) が存在する型
         template <typename Accessible, typename std::enable_if<Udon::Details::Accessible<Accessible>::value, std::nullptr_t>::type* = nullptr>
-        inline void operator()(Accessible& rhs)
+        inline void deserialize(Accessible& rhs)
         {
             rhs.accessor(*this);
-		}
+        }
 
         /// @brief グローバル関数に Accessor<Acc>(Acc&, Accessible&) が存在する型
         template <typename Accessible, typename std::enable_if<Udon::Details::AccessorCallable<Accessible>::value, std::nullptr_t>::type* = nullptr>
-        inline void operator()(Accessible& rhs)
+        inline void deserialize(Accessible& rhs)
         {
             Accessor(*this, rhs);
         }
 
         /// @brief 可変長引数展開の終端
-        inline void operator()()
+        inline void argumentUnpack()
         {
+        }
+
+        /// @brief 可変長引数展開
+        template <typename T>
+        inline void argumentUnpack(T& head)
+        {
+            deserialize(head);
         }
 
         /// @brief 可変長テンプレート引数
-        template <typename First, typename Second, typename... Tails>
-        inline void operator()(First& first, Second& second, Tails&... tails)
+        template <typename Head, typename... Tails>
+        inline void argumentUnpack(Head& head, Tails&... tails)
         {
-            operator()(first);
-            operator()(second);
-            operator()(tails...);
+            argumentUnpack(head);
+            argumentUnpack(tails...);
         }
 
-    private:
-        /// @brief 逆シリアル化
+        /// @brief アトミック (整数, 浮動小数点) 値のデシリアライズ
         template <class T>
-        T unpackArithmeticValue()
+        T deserializeArithmetic()
         {
             T unpacked;
 
@@ -161,7 +174,7 @@ namespace Udon
         }
 
         /// @brief bool値の逆シリアル化
-        bool unpackBoolValue()
+        bool deserializeBool()
         {
             if (boolCount == 0)
             {
