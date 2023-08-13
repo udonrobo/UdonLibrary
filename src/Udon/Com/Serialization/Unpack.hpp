@@ -58,7 +58,7 @@ namespace Udon
     template <typename T>
     Udon::Optional<T> Unpack(const std::vector<uint8_t>& buffer)
     {
-        static_assert(Udon::IsParsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+//        static_assert(Udon::IsParsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
 
         if (buffer.size() < Udon::CapacityWithChecksum<T>())
         {

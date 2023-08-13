@@ -20,18 +20,18 @@
 namespace Udon
 {
 
-    constexpr double Pi       = 3.1415926535897932384626433832795;
-    constexpr double HalfPi   = 1.5707963267948966192313216916398;
-    constexpr double TwoPi    = 6.283185307179586476925286766559;
-    constexpr double DegToRad = 0.017453292519943295769236907684886;
-    constexpr double RadToDeg = 57.295779513082320876798154814105;
+    constexpr double Pi       = 3.1415926535897932384626433832795;    // std::numbers::pi_v<double>       (C++20)
+    constexpr double HalfPi   = 1.5707963267948966192313216916398;    // std::numbers::pi_v<double> / 2   (C++20)
+    constexpr double TwoPi    = 6.283185307179586476925286766559;     // std::numbers::pi_v<double> * 2   (C++20)
+    constexpr double DegToRad = 0.017453292519943295769236907684886;  // std::numbers::pi_v<double> / 180 (C++20)
+    constexpr double RadToDeg = 57.295779513082320876798154814105;    // 180 / std::numbers::pi_v<double> (C++20)
 
 };
 
 namespace Udon
 {
 
-    /// @brief 2つの値のうち小さい方を返す
+    /// @brief 2つの値のうち小さい方を返す (std::min)
     template <typename A, typename B>
     inline constexpr auto
     Min(const A& lhs, const B& rhs) -> decltype(lhs + rhs)
@@ -39,7 +39,7 @@ namespace Udon
         return lhs < rhs ? lhs : rhs;
     }
 
-    /// @brief 2つの値のうち大きい方を返す
+    /// @brief 2つの値のうち大きい方を返す (std::max)
     template <typename A, typename B>
     inline constexpr auto
     Max(const A& lhs, const B& rhs) -> decltype(lhs + rhs)
@@ -47,7 +47,7 @@ namespace Udon
         return lhs > rhs ? lhs : rhs;
     }
 
-    /// @brief 値を指定された範囲内に収める
+    /// @brief 値を指定された範囲内に収める (std::clamp)
     /// @param amt  範囲内に収めたい値
     /// @param low  最小値
     /// @param high 最大値
@@ -59,7 +59,7 @@ namespace Udon
         return Min(Max(amt, low), high);
     }
 
-    /// @brief 度数法の角度を弧度法に変換する
+    /// @brief 度数法の角度を弧度法に変換する 
     /// @param rhs 度数法の角度
     /// @return    弧度法の角度
     template <typename T>
@@ -69,7 +69,7 @@ namespace Udon
         return rhs * DegToRad;
     }
 
-    /// @brief 弧度法の角度を度数法に変換する
+    /// @brief 弧度法の角度を度数法に変換する 
     /// @param rhs 弧度法の角度
     /// @return    度数法の角度
     template <typename T>
@@ -79,7 +79,7 @@ namespace Udon
         return rhs * RadToDeg;
     }
 
-    /// @brief 絶対値を返す
+    /// @brief 絶対値を返す (std::abs)
     /// @param rhs 絶対値を求めたい値
     /// @return    絶対値
     template <typename T>
@@ -89,7 +89,7 @@ namespace Udon
         return rhs < 0 ? -rhs : rhs;
     }
 
-    /// @brief 二乗を求める
+    /// @brief 二乗を求める (std::pow(x, 2))
     /// @param rhs 二乗を求めたい値
     /// @return
     template <typename T>
@@ -99,35 +99,36 @@ namespace Udon
         return x * x;
     }
 
-    /// @brief 小数点切り捨て
+    /// @brief 小数点切り捨て (std::floor)
     inline constexpr int
     Floor(double x)
     {
         return x - (int)x < 0 ? (int)x - 1 : (int)x;
     }
 
-    /// @brief 四捨五入
+    /// @brief 四捨五入 (std::round)
     inline constexpr int
     Round(double x)
     {
         return x - (int)x >= 0.5 ? (int)x + 1 : (int)x;
     }
 
-    /// @brief 小数点切り上げ
+    /// @brief 小数点切り上げ (std::ceil)
     inline constexpr int 
     Ceil(double x)
     {
         return x - (int)x > 0 ? (int)x + 1 : (int)x;
     }
 
-    /// @brief 数値をある範囲から別の範囲に再マッピングする
-    inline double
+    /// @brief 数値をある範囲から別の範囲に再マッピングする 
+    inline constexpr double
     Map(const double value, const double inputMin, const double inputMax, const double outputMin, const double outputMax)
     {
         return (value - inputMin) * (outputMax - outputMin) / (inputMax - inputMin) + outputMin;
     }
 
     /// @brief 値を正規化する
+    /// @remark -∞~+∞ の範囲を min~max の範囲に変換する (剰余算に最小値が設定できるようになったイメージ)
     /// @param value 正規化したい値
     /// @param min   最小値
     /// @param max   最大値
