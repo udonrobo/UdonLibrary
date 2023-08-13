@@ -93,7 +93,7 @@ namespace Udon
         template <typename Accessible, typename std::enable_if<Udon::Details::AccessorCallable<Accessible>::value, std::nullptr_t>::type* = nullptr>
         inline void operator()(const Accessible& rhs)
         {
-            ::Accessor(*this, const_cast<Accessible&>(rhs));
+            Accessor(*this, const_cast<Accessible&>(rhs));
         }
 
         /// @brief 可変長引数展開の終端

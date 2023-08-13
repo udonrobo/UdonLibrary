@@ -70,11 +70,6 @@ namespace Udon
         if (deserializer)
         {
             T retval;
-            // Q ローカル変数が初期化されていませんという警告を消すには？
-            // A pragma warning disable で消せる
-            // Q 何番?
-            // A 未使用変数の警告
-
             deserializer(retval);
             return retval;
         }
