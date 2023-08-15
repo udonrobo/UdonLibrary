@@ -52,30 +52,24 @@
 
 - 追加
 
-  Arduino にはライブラリを保存する特定のディレクトリがあります。
+  ArduinoIDE はライブラリを置く専用のディレクトリがあるので、そこへクローンします。
 
-  > 既定値: `~/Documents/Arduino/libraries`
-  >
-  > 変更している場合: `ファイル > 環境設定 > スケッチブックの保存場所欄` + `/libraries`
-  >
-  > ```sh
-  > # ターミナルを開き、調べたディレクトリに移動
-  > cd ~/Documents/Arduino/libraries
-  >
-  > # 本ライブラリクローン
-  > git clone https://github.com/udonrobo/UdonLibrary.git --recursive
-  >
-  > # セットアップ実行(依存ライブラリの追加等)
-  > ./UdonLibrary/setup.sh
-  > ```
+  既定値: `~/Documents/Arduino/libraries`
+  
+  見つからない場合: `ファイル > 環境設定 > スケッチブックの保存場所欄` + `/libraries`
+  
+  ```sh
+  cd ~/Documents/Arduino/libraries
+  git clone https://github.com/udonrobo/UdonLibrary.git --recursive
+  ./UdonLibrary/setup.sh
+  ```
 
 - 更新
 
-  ```sh
-  # 追加する時に調べたlibrariesディレクトリに移動
-  cd ~/Documents/Arduino/libraries/UdonLibrary
+  追加する際に調べた `libraries` ディレクトリに移動し、プルします。
 
-  # ライブラリを更新
+  ```sh
+  cd ~/Documents/Arduino/libraries/UdonLibrary
   git pull
   ```
 
@@ -89,20 +83,15 @@
   プロジェクトの `lib` ディレクトリへクローンすることで追加できます。
 
   ```sh
-  # プロジェクト内の lib ディレクトリで実行
   git clone https://github.com/udonrobo/UdonLibrary.git --recursive
-
-  # セットアップ実行(依存ライブラリの追加等)
   ./UdonLibrary/setup.sh
   ```
 
 - 更新
 
-  ```sh
-  # プロジェクト内の lib ディレクトリで実行
-  cd ~/Documents/Arduino/libraries/UdonLibrary
+  プロジェクト内の lib ディレクトリでプルします。
 
-  # ライブラリを更新
+  ```sh
   git pull
   ```
 
@@ -113,15 +102,14 @@
 
 プロジェクトディレクトリまたはソリューションディレクトリにクローンし、インクルードパスを設定することで使用できます。
 
-1. 追加
+- 追加
 
    追加先が git で管理されている場合
 
    ```sh
    # VisualStudioのプロジェクトディレクトリで実行
    git submodule add https://github.com/udonrobo/UdonLibrary.git
-
-   git commit -m "add UdonLibrary" # submodule add でステージングも行われるため git add 不要
+   git commit -m "add UdonLibrary"
    ```
 
    追加先が git で管理されていない場合
@@ -152,7 +140,7 @@
    >         ...    ...
    > ```
 
-2. インクルードパス設定
+- インクルードパス設定
 
    インクルードパスを設定することで　`#include <Udon.hpp>`　のように記述できるようになります。
 
