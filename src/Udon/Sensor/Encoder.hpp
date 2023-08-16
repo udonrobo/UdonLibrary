@@ -80,14 +80,14 @@ namespace Udon
 
         /// @brief 速度を取得
         /// @return 速度[ppr/s]
-        void getSpeed() const
+        double getSpeed() const
         {
             return speed;
         }
 
         /// @brief カウント値を取得
         /// @return カウント値
-        void getCount() const
+        int32_t getCount() const
         {
             return count - offset;
         }

@@ -30,16 +30,16 @@
 ///     - シリアライズ時に必要なバッファのビットサイズを返す
 ///   - template <typename Acc> void accessor(Acc& acc)
 ///     - シリアライズ、デシリアライズ時に使用するアクセッサ
-#define UDON_PARSABLE(...)                  \
-    using IsParsable_tag = void;           \
-    constexpr size_t capacity() const       \
-    {                                       \
-        return Udon::Capacity(__VA_ARGS__); \
-    }                                       \
-    template <typename Acc>                 \
-    void accessor(Acc& acc)                 \
-    {                                       \
-        acc(__VA_ARGS__);                   \
+#define UDON_PARSABLE(...)                      \
+    using IsParsable_tag = void;                \
+    constexpr size_t capacity() const           \
+    {                                           \
+        return Udon::CapacityBits(__VA_ARGS__); \
+    }                                           \
+    template <typename Acc>                     \
+    void accessor(Acc& acc)                     \
+    {                                           \
+        acc(__VA_ARGS__);                       \
     }
 
 namespace Udon
@@ -72,13 +72,20 @@ namespace Udon
         struct IsParsable_helper<T[N]> : IsParsable_helper<T>
         {
         };
-        
-    }
+
+    }    // namespace detail
 
     template <typename T>
     struct IsParsable : detail::IsParsable_helper<T>
     {
     };
 
+    //   template <typename T>
+    //   struct IsConstexprCapasitive
+    //   {
+    //	static constexpr bool value = Udon::has_member_function_capacity<T>::value && std::is_const<decltype(std::declval<T>().capacity())>::value;
+    //};
+    // Q コンパイル時に求められるか、求められないか判別する方法はありますか？
+    // A ないです。constexprの場合、コンパイル時に求められるか、求められないか判別する方法はありません。
 
 }    // namespace Udon

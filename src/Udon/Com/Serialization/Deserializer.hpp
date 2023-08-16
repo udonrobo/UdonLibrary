@@ -29,6 +29,8 @@
 #include <Udon/Stl/Optional.hpp>
 #include <Udon/Types/Float.hpp>
 #include <Udon/Utility/Parsable.hpp>
+#include <Udon/Utility/Concept.hpp>
+#include <Udon/Com/Serialization/Traits.hpp>
 
 namespace Udon
 {
@@ -71,73 +73,93 @@ namespace Udon
             return isChecksumSuccess;
         }
 
-        /// @brief bool型
-        template <typename Bool>
-        inline auto operator()(Bool& rhs)
-            -> typename std::enable_if<std::is_same<Bool, bool>::value>::type
+        /// @brief デシリアライズ
+        template <typename... Args>
+        void operator()(Args&... args)
         {
-            rhs = unpackBool();
-        }
-
-        /// @brief 整数型
-        template <typename Integer>
-        inline auto operator()(Integer& rhs)
-            -> typename std::enable_if<std::is_integral<Integer>::value && not std::is_same<Integer, bool>::value>::type
-        {
-            rhs = unpackScalar<Integer>();
-        }
-
-        /// @brief 浮動小数点型
-        template <typename Floating>
-        inline auto operator()(Floating& rhs)
-            -> typename std::enable_if<std::is_floating_point<Floating>::value>::type
-        {
-            rhs = unpackScalar<Udon::float32_t>();
-        }
-
-        /// @brief 配列
-        template <typename T, size_t N>
-        inline void operator()(T (&rhs)[N])
-        {
-            for (auto&& it : rhs)
-            {
-                operator()(it);
-            }
-        }
-
-        /// @brief メンバにaccessorを持つ型
-        template <typename T>
-        inline auto operator()(T& rhs) -> typename std::enable_if<Udon::has_member_iterate_accessor<Deserializer, T>::value>::type
-        {
-            // T::accessor が const なメンバ関数でない場合に const rhs から呼び出せないため、const_cast によって const を除去
-            const_cast<T&>(rhs).accessor(*this);
-        }
-
-        /// @brief 可変長テンプレート引数再帰展開
-        template <typename Head, typename... Tails>
-        inline void operator()(Head& head, Tails&... tails)
-        {
-            operator()(head);
-            operator()(tails...);
+            argumentUnpack(args...);
         }
 
     private:
-        /// @brief 逆シリアル化
-        template <class T>
-        T unpackScalar()
+        /// @brief bool型
+        UDON_CONCEPT_BOOL
+        inline void deserialize(Bool& rhs)
         {
-            static_assert(std::is_scalar<T>::value, "T must be scalar type.");
+            rhs = deserializeBool();
+        }
 
-            T retval{};
+        /// @brief 整数型
+        UDON_CONCEPT_INTEGRAL_NOT_BOOL
+        inline void deserialize(IntegralNotBool& rhs)
+        {
+            rhs = deserializeArithmetic<IntegralNotBool>();
+        }
 
-            constexpr size_t size = sizeof(T);
+        /// @brief 浮動小数点型
+        UDON_CONCEPT_FLOATING_POINT
+        inline void deserialize(FloatingPoint& rhs)
+        {
+            rhs = deserializeArithmetic<Udon::float32_t>();
+        }
+
+        /// @brief 配列型
+        UDON_CONCEPT_ARRAY
+        inline void deserialize(Array& rhs)
+        {
+            for (auto& element : rhs)
+            {
+                deserialize(element);
+            }
+        }
+
+        /// @brief メンバ関数 accessor<Acc>(Acc&) が存在する型
+        template <typename Accessible, typename std::enable_if<Udon::Details::Accessible<Accessible>::value, std::nullptr_t>::type* = nullptr>
+        inline void deserialize(Accessible& rhs)
+        {
+            rhs.accessor(*this);
+        }
+
+        /// @brief グローバル関数に Accessor<Acc>(Acc&, Accessible&) が存在する型
+        template <typename Accessible, typename std::enable_if<Udon::Details::AccessorCallable<Accessible>::value, std::nullptr_t>::type* = nullptr>
+        inline void deserialize(Accessible& rhs)
+        {
+            Accessor(*this, rhs);
+        }
+
+        /// @brief 可変長引数展開の終端
+        inline void argumentUnpack()
+        {
+        }
+
+        /// @brief 可変長引数展開
+        template <typename T>
+        inline void argumentUnpack(T& head)
+        {
+            deserialize(head);
+        }
+
+        /// @brief 可変長テンプレート引数
+        template <typename Head, typename... Tails>
+        inline void argumentUnpack(Head& head, Tails&... tails)
+        {
+            argumentUnpack(head);
+            argumentUnpack(tails...);
+        }
+
+        /// @brief アトミック (整数, 浮動小数点) 値のデシリアライズ
+        template <class T>
+        T deserializeArithmetic()
+        {
+            T unpacked;
+
+            constexpr auto size = sizeof(T);
 
             // 逆シリアル化されたオブジェクトをバッファから抽出
 #if defined(UDON_LITTLE_ENDIAN)
             std::copy(
                 buffer.cbegin() + popIndex,
                 buffer.cbegin() + popIndex + size,
-                reinterpret_cast<uint8_t*>(&retval));
+                reinterpret_cast<uint8_t*>(&unpacked));
 #elif defined(UDON_BIG_ENDIAN)
             std::copy(
                 buffer.crbegin() + popIndex,
@@ -148,25 +170,25 @@ namespace Udon
             // 抽出したオブジェクトのバイト数分インデックスを進める
             popIndex += size;
 
-            return retval;
+            return unpacked;
         }
 
         /// @brief bool値の逆シリアル化
-        bool unpackBool()
+        bool deserializeBool()
         {
             if (boolCount == 0)
             {
                 boolPopIndex = popIndex++;
             }
 
-            const auto retval = Udon::BitRead(buffer.at(boolPopIndex), boolCount);
+            const auto unpacked = Udon::BitRead(buffer.at(boolPopIndex), boolCount);
 
             if (++boolCount >= CHAR_BIT)
             {
                 boolCount = 0;
             }
 
-            return retval;
+            return unpacked;
         }
     };
 

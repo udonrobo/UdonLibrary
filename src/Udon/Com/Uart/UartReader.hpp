@@ -51,7 +51,7 @@ namespace Udon
 
         void update()
         {
-            if (uart.available() >= Size)
+            if (uart.available() >= static_cast<int>(Size))
             {
 
                 // バッファにデータを格納

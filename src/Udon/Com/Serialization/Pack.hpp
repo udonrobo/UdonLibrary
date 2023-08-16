@@ -27,8 +27,7 @@ namespace Udon
     template <typename T>
     inline std::vector<uint8_t> Pack(const T& object)
     {
-
-        static_assert(Udon::IsParsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+//        static_assert(Udon::IsParsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
 
         Serializer serializer(Udon::CapacityWithChecksum<T>());
         serializer(object);

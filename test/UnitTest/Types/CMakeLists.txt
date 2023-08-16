@@ -8,22 +8,22 @@
 #
 #-------------------------------------------------------------------
 #
-#    Serialization Test
+#    Types Test
 #
 #-------------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.14)
 
 # set test source files
-add_executable(SerializationTest
-    Serialization.cpp
+add_executable(TypesTest
+    Vector2D.cpp
 )
 
 # Add include directory
-target_include_directories(SerializationTest PUBLIC ${UDON_LIBRARY_DIR})
+target_include_directories(TypesTest PUBLIC ${UDON_LIBRARY_DIR})
 
 # link with gtest
-target_link_libraries(SerializationTest gtest_main)
+target_link_libraries(TypesTest gtest_main)
 
 # discover tests
-gtest_discover_tests(SerializationTest)
+gtest_discover_tests(TypesTest)

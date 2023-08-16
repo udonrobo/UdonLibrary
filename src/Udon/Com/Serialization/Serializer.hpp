@@ -30,6 +30,8 @@
 #include <Udon/Algorithm/Bit.hpp>
 #include <Udon/Types/Float.hpp>
 #include <Udon/Utility/Parsable.hpp>
+#include <Udon/Utility/Concept.hpp>
+#include <Udon/Com/Serialization/Traits.hpp>
 
 namespace Udon
 {
@@ -49,54 +51,14 @@ namespace Udon
         {
         }
 
-        template <typename Bool>
-        inline auto operator()(const Bool& object)
-            -> typename std::enable_if<std::is_same<Bool, bool>::value>::type
+        /// @brief シリアライズ
+        /// @tparam ...Args 
+        /// @param ...args 
+        template <typename... Args>
+        inline void operator()(Args&&... args)
         {
-            packBool(object);
-        }
-
-        /// @brief 整数型
-        template <typename Integer>
-        inline auto operator()(const Integer& object)
-            -> typename std::enable_if<std::is_integral<Integer>::value && not std::is_same<Integer, bool>::value>::type
-        {
-            packScalar(object);
-        }
-
-        /// @brief 浮動小数点型
-        template <typename Floating>
-        inline auto operator()(const Floating& object)
-            -> typename std::enable_if<std::is_floating_point<Floating>::value>::type
-        {
-            packScalar(static_cast<Udon::float32_t>(object));
-        }
-
-        /// @brief 配列
-        template <typename T, size_t N>
-        inline void operator()(const T (&object)[N])
-        {
-            for (auto&& it : object)
-            {
-                operator()(it);
-            }
-        }
-
-        /// @brief メンバにaccessorを持つ型
-        template <typename T>
-        inline auto operator()(const T& object) -> typename std::enable_if<Udon::has_member_iterate_accessor<Serializer, T>::value>::type
-        {
-            // T::accessor が const なメンバ関数でない場合に const object から呼び出せないため、const_cast によって const を除去
-            const_cast<T&>(object).accessor(*this);
-        }
-
-        /// @brief 可変長テンプレート引数再帰展開
-        template <typename Head, typename... Tails>
-        inline void operator()(const Head& head, const Tails&... tails)
-        {
-            operator()(head);
-            operator()(tails...);
-        }
+            argumentUnpack(std::forward<Args>(args)...);
+		}
 
         /// @brief バッファを取得する
         /// @remark 取得後の内部バッファは無効になります
@@ -114,24 +76,89 @@ namespace Udon
         }
 
     private:
+
+        /// @brief bool型
+        UDON_CONCEPT_BOOL
+        inline void serialize(Bool rhs)
+        {
+            serializeBool(rhs);
+        }
+
+        /// @brief 整数型 && bool型以外
+        UDON_CONCEPT_INTEGRAL_NOT_BOOL
+        inline void serialize(IntegralNotBool rhs)
+        {
+            serializeArithmetic(rhs);
+        }
+
+        /// @brief 浮動小数点型
+        UDON_CONCEPT_FLOATING_POINT
+        inline void serialize(FloatingPoint rhs)
+        {
+            serializeArithmetic(static_cast<Udon::float32_t>(rhs));
+        }
+
+        /// @brief 配列型
+        UDON_CONCEPT_ARRAY
+        inline void serialize(const Array& rhs)
+        {
+            for (const auto& element : rhs)
+            {
+                serialize(element);
+            }
+        }
+
+        /// @brief メンバ関数 accessor<Acc>(Acc&) が存在する型
+        template <typename Accessible, typename std::enable_if<Udon::Details::Accessible<Accessible>::value, std::nullptr_t>::type* = nullptr>
+        inline void serialize(const Accessible& rhs)
+        {
+            const_cast<Accessible&>(rhs).accessor(*this);
+        }
+
+        /// @brief グローバル関数に Accessor<Acc>(Acc&, Accessible&) が存在する型
+        template <typename Accessible, typename std::enable_if<Udon::Details::AccessorCallable<Accessible>::value, std::nullptr_t>::type* = nullptr>
+        inline void serialize(const Accessible& rhs)
+        {
+            Accessor(*this, const_cast<Accessible&>(rhs));
+        }
+
+        /// @brief 可変長引数展開の終端
+        inline void argumentUnpack()
+        {
+        }
+
+        /// @brief 可変長引数展開
+        template <typename T>
+        inline void argumentUnpack(const T& rhs)
+        {
+			serialize(rhs);
+		}
+
+        /// @brief 可変長引数展開
+        template <typename Head, typename... Tails>
+        inline void argumentUnpack(const Head& head, const Tails&... tails)
+        {
+            operator()(head);
+            operator()(tails...);
+        }
+
+
         /// @brief シリアル化
         template <typename T>
-        void packScalar(const T& object)
+        void serializeArithmetic(const T& rhs)
         {
-            static_assert(std::is_scalar<T>::value, "T must be scalar type.");
-
-            constexpr size_t size = sizeof(T);
+            constexpr auto size = sizeof(T);
 
             // バッファの後方に挿入
 #if defined(UDON_LITTLE_ENDIAN)
             std::copy(
-                reinterpret_cast<const uint8_t*>(&object),
-                reinterpret_cast<const uint8_t*>(&object) + size,
+                reinterpret_cast<const uint8_t*>(&rhs),
+                reinterpret_cast<const uint8_t*>(&rhs) + size,
                 buffer.begin() + insertIndex);
 #elif defined(UDON_BIG_ENDIAN)
             std::copy(
-                reinterpret_cast<const uint8_t*>(&object),
-                reinterpret_cast<const uint8_t*>(&object) + size,
+                reinterpret_cast<const uint8_t*>(&rhs),
+                reinterpret_cast<const uint8_t*>(&rhs) + size,
                 buffer.rbegin() + insertIndex);
 #endif
 
@@ -139,14 +166,15 @@ namespace Udon
             insertIndex += size;
         }
 
-        void packBool(bool object)
+        /// @brief bool値のシリアル化
+        void serializeBool(bool rhs)
         {
             if (boolCount == 0)
             {
                 boolInsertIndex = insertIndex++;
             }
 
-            Udon::BitWrite(buffer.at(boolInsertIndex), boolCount, object);
+            Udon::BitWrite(buffer.at(boolInsertIndex), boolCount, rhs);
 
             if (++boolCount >= CHAR_BIT)
             {

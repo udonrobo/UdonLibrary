@@ -45,6 +45,12 @@ namespace Udon
         {
         }
 
+        Im920Writer(const Im920Writer&) 
+            : im920(im920)
+            , buffer(im920.registerSender(Size))
+        {
+        }
+
         void setMessage(const Message& message)
         {
             buffer = Udon::Pack(message);
