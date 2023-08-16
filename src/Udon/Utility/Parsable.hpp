@@ -20,7 +20,7 @@
 
 /// @brief メンバ変数のパースを可能にする
 /// @param ... パース可能なメンバー変数(,区切り)
-/// @details
+/// @Detailss
 /// - パース可能なメンバー変数は、以下の条件を満たす必要がある
 ///   - メンバー変数の型が、以下のいずれかであること
 ///     - パース可能な型
@@ -55,7 +55,7 @@ namespace Udon
     UDON_HAS_MEMBER_TYPE(IsParsable_tag);
 #endif
 
-    namespace detail
+    namespace Details
     {
         template <typename T>
         struct IsParsable_helper
@@ -73,10 +73,10 @@ namespace Udon
         {
         };
 
-    }    // namespace detail
+    }    // namespace Details
 
     template <typename T>
-    struct IsParsable : detail::IsParsable_helper<T>
+    struct IsParsable : Details::IsParsable_helper<T>
     {
     };
 
