@@ -365,7 +365,7 @@ namespace Udon
             {
                //busyピンがHIGHの間はコマンドを受け付けない
             }
-            Serial1.print("ENWR\r\n");
+            uart.print("ENWR\r\n");
         }
         if (write[0]) {
             while (digitalRead(busy))
