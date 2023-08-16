@@ -52,7 +52,7 @@ namespace Udon
         {
         }
 
-        void begin(CAN_SPEED canSpeed = CAN_1000KBPS, CAN_CLOCK transceiverClock = MCP_8MHZ)
+        void begin(CAN_CLOCK transceiverClock = MCP_16MHZ, CAN_SPEED canSpeed = CAN_1000KBPS)
         {
             SPI.begin();
             bus.reset();
@@ -64,6 +64,7 @@ namespace Udon
                 [](void* self)
                 {
                     static_cast<CanBusPico*>(self)->onReceive();
+                    Serial.println("interrupt");
                 },
                 LOW,
                 this);
@@ -169,7 +170,7 @@ namespace Udon
                 {
                     return;
                 }
-                Udon::Unpacketize(
+                Udon::Details::Unpacketize(
                     { const_cast<can_frame&>(msg).data },
                     { rxNode->node->data, rxNode->node->length },
                     SingleFrameSize);
@@ -205,7 +206,7 @@ namespace Udon
                 can_frame msg{};
                 msg.can_id  = node->id;
                 msg.can_dlc = 8;
-                Udon::Packetize(
+                Udon::Details::Packetize(
                     { node->data, node->length },
                     { msg.data },
                     SingleFrameSize,

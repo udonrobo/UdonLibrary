@@ -47,7 +47,7 @@ namespace Udon
         IntervalTimer readTimer;
         IntervalTimer writeTimer;
 
-        constexpr static uint32_t SingleFrameSize = 8;
+        constexpr static uint8_t SingleFrameSize = 8;
 
         using TxNode = CanNode;
         struct RxNode
@@ -55,6 +55,14 @@ namespace Udon
             CanNode* node;
             void (*onReceive)(void*);
             void* p;
+
+            void callback()
+            {
+                if (onReceive)
+                {
+                    onReceive(p);
+                }
+            }
         };
 
         Udon::StaticVector<TxNode*> txNodes;
@@ -64,7 +72,7 @@ namespace Udon
 
         uint32_t transmitUs = 0;
 
-        static CanBusTeensy* self;
+        static CanBusTeensy* self;    // コールバック関数から自身のインスタンスを参照するためのポインタ (クラステンプレートによってインスタンスごとに別のstatic変数が生成される)
 
     public:
         /// @brief コンストラクタ
@@ -97,13 +105,15 @@ namespace Udon
             }
             if (rxNodes.size())
             {
-                bus.onReceive(onReceive);
                 readTimer.begin(
                     []
                     {
                         self->bus.events();
                     },
                     200);
+                bus.onReceive([]{
+                    self->onReceive();
+                });
             }
             if (txNodes.size())
             {
@@ -116,7 +126,7 @@ namespace Udon
                             Serial.print(" ");
                             auto o = self->txBuffer.pop();
                             Serial.print(o.id);
-                                Serial.print(o.buf[0], HEX);
+                            Serial.print(o.buf[0], HEX);
                             Serial.println();
                             while (not self->bus.write(o))
                                 ;
@@ -221,41 +231,35 @@ namespace Udon
 
     private:
         /// @brief 受信コールバック
-        static void onReceive(const CAN_message_t& msg)
+        void onReceive(const CAN_message_t& msg)
         {
-            auto rxNode = std::find_if(self->rxNodes.begin(), self->rxNodes.end(), [&msg](const RxNode& rx)
+            auto rxNode = std::find_if(rxNodes.begin(), rxNodes.end(), [&msg](const RxNode& rx)
                                        { return rx.node->id == msg.id; });
-            if (rxNode == self->rxNodes.end())
+            if (rxNode == rxNodes.end())
             {
                 return;
             }
 
-            Udon::Unpacketize(
-                { const_cast<CAN_message_t&>(msg).buf },
+            Udon::Details::Unpacketize(
+                { msg.buf },
                 { rxNode->node->data, rxNode->node->length },
                 SingleFrameSize);
 
-            const size_t packetCount = static_cast<size_t>(std::ceil(
-                static_cast<double>(rxNode->node->length) / SingleFrameSize - 1 /*-1: index*/));
-
             if (rxNode->node->length > SingleFrameSize)
             {
-                if (msg.buf[0] == packetCount)
+                // マルチフレーム
+                const size_t frameCount = static_cast<size_t>(std::ceil(
+                    static_cast<double>(rxNode->node->length) / SingleFrameSize - 1 /*-1: index*/));
+
+                if (msg.buf[0] == frameCount)
                 {
-                    // マルチフレームの最終フレームを受信したらコールバックを呼ぶ
-                    if (rxNode->onReceive)
-                    {
-                        rxNode->onReceive(rxNode->p);
-                    }
+                    rxNode->callback();    // マルチフレームの最終フレームを受信したらコールバックを呼ぶ
                 }
             }
             else
             {
-                // シングルフレームの場合は即時コールバックを呼ぶ
-                if (rxNode->onReceive)
-                {
-                    rxNode->onReceive(rxNode->p);
-                }
+                // シングルフレーム
+                rxNode->callback();    // シングルフレームの場合は即時コールバックを呼ぶ
             }
         }
 
@@ -264,9 +268,9 @@ namespace Udon
         {
             for (auto&& txNode : txNodes)
             {
-                CAN_message_t msg{};
+                CAN_message_t msg;
                 msg.id = txNode->id;
-                Udon::Packetize(
+                Udon::Details::Packetize(
                     { txNode->data, txNode->length },
                     { msg.buf },
                     SingleFrameSize,
