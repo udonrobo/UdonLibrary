@@ -13,7 +13,6 @@
 //
 //-------------------------------------------------------------------
 
-
 #pragma once
 
 #include <Udon/Traits/HasMember.hpp>
@@ -38,7 +37,7 @@ namespace Udon
         auto operator()(const T& rhs)
             -> typename std::enable_if<std::is_scalar<T>::value>::type
         {
-            
+
 #if defined(ARDUINO)
             Serial.print(rhs);
             Serial.print(gap);
@@ -46,9 +45,8 @@ namespace Udon
             s3d::Print.write(rhs);
             s3d::Print.write(gap);
 #else
-            std::cout << rhs << gap;
+            std::cout << rhs << gap << std::flush;
 #endif
-
         }
 
         /// @brief
