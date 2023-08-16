@@ -1,5 +1,8 @@
 #include <Arduino.h>
-#include <Udon/Com/Im920.hpp>
+
+#ifdef HAVE_HWSERIAL1
+
+#    include <Udon/Com/Im920.hpp>
 
 inline void testIm920()
 {
@@ -30,3 +33,5 @@ inline void testReaderWriter()
     writer.show();
     writer.showRaw();
 }
+
+#endif    // HAVE_HWSERIAL1
