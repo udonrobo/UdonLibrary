@@ -111,9 +111,11 @@ namespace Udon
                         self->bus.events();
                     },
                     200);
-                bus.onReceive([]{
-                    self->onReceive();
-                });
+                bus.onReceive(
+                    [](const CAN_message_t& msg)
+                    {
+                        self->onReceive(msg);
+                    });
             }
             if (txNodes.size())
             {

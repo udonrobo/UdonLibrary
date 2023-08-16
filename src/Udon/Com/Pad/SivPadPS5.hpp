@@ -19,6 +19,7 @@
 #pragma once
 
 #include <Udon/Com/Message/PadPS5.hpp>
+#include <Udon/Stl/Optional.hpp>
 
 namespace Udon
 {
@@ -47,32 +48,32 @@ namespace Udon
         void update()
         {
 
-            if (auto&& pad = Gamepad(index))
+            if (auto&& gamePad = Gamepad(index))
             {
-                message.isConnected = pad.isConnected();
+                message.isConnected = gamePad.isConnected();
 
-                message.triangle = pad.buttons.at(3).pressed();
-                message.circle   = pad.buttons.at(2).pressed();
-                message.cross    = pad.buttons.at(1).pressed();
-                message.square   = pad.buttons.at(0).pressed();
+                message.triangle = gamePad.buttons.at(3).pressed();
+                message.circle   = gamePad.buttons.at(2).pressed();
+                message.cross    = gamePad.buttons.at(1).pressed();
+                message.square   = gamePad.buttons.at(0).pressed();
 
-                message.up    = pad.buttons.at(15).pressed();
-                message.right = pad.buttons.at(16).pressed();
-                message.down  = pad.buttons.at(17).pressed();
-                message.left  = pad.buttons.at(18).pressed();
+                message.up    = gamePad.buttons.at(15).pressed();
+                message.right = gamePad.buttons.at(16).pressed();
+                message.down  = gamePad.buttons.at(17).pressed();
+                message.left  = gamePad.buttons.at(18).pressed();
 
-                message.l1 = pad.buttons.at(4).pressed();
-                message.r1 = pad.buttons.at(5).pressed();
-                message.l2 = pad.buttons.at(6).pressed();
-                message.r2 = pad.buttons.at(7).pressed();
-                message.l3 = pad.buttons.at(10).pressed();
-                message.r3 = pad.buttons.at(11).pressed();
+                message.l1 = gamePad.buttons.at(4).pressed();
+                message.r1 = gamePad.buttons.at(5).pressed();
+                message.l2 = gamePad.buttons.at(6).pressed();
+                message.r2 = gamePad.buttons.at(7).pressed();
+                message.l3 = gamePad.buttons.at(10).pressed();
+                message.r3 = gamePad.buttons.at(11).pressed();
 
-                message.create = pad.buttons.at(8).pressed();
-                message.option = pad.buttons.at(9).pressed();
-                message.touch  = pad.buttons.at(13).pressed();
+                message.create = gamePad.buttons.at(8).pressed();
+                message.option = gamePad.buttons.at(9).pressed();
+                message.touch  = gamePad.buttons.at(13).pressed();
 
-                message.mic = pad.buttons.at(14).pressed();
+                message.mic = gamePad.buttons.at(14).pressed();
 
                 // -1.0 ~ 1.0 -> -127 ~ 127(int8_t)
                 const auto encodeStick = [](double value) -> int8_t
@@ -80,15 +81,11 @@ namespace Udon
                     return static_cast<int8_t>(value * 127);
                 };
 
-                message.analogRightX = +encodeStick(pad.axes.at(2));
-                message.analogRightY = -encodeStick(pad.axes.at(5));
+                message.analogRightX = +encodeStick(gamePad.axes.at(2));
+                message.analogRightY = -encodeStick(gamePad.axes.at(5));
 
-                message.analogLeftX = +encodeStick(pad.axes.at(0));
-                message.analogLeftY = -encodeStick(pad.axes.at(1));
-
-                // -1.0 ~ 1.0 -> 0 ~ 255
-                message.analogR2 = static_cast<int8_t>((pad.axes.at(4) + 1) * 255);
-                message.analogL2 = static_cast<int8_t>((pad.axes.at(3) + 1) * 255);
+                message.analogLeftX = +encodeStick(gamePad.axes.at(0));
+                message.analogLeftY = -encodeStick(gamePad.axes.at(1));
             }
             else
             {
@@ -121,12 +118,10 @@ namespace Udon
                 message.analogRightY = 0;
                 message.analogLeftX  = 0;
                 message.analogLeftY  = 0;
-                message.analogR2     = 0;
-                message.analogL2     = 0;
             }
         }
 
-        const Udon::Message::PadPS5& getMessage() const
+        Udon::Optional<Message::PadPS5> getMessage() const
         {
             return message;
         }
