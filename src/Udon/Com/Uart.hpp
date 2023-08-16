@@ -13,7 +13,6 @@
 //
 //-------------------------------------------------------------------
 
-
 #pragma once
 
 #ifdef ARDUINO
@@ -24,4 +23,9 @@
 #ifdef SIV3D_INCLUDED
 #    include <Udon/Com/Uart/SivUartReader.hpp>
 #    include <Udon/Com/Uart/SivUartWriter.hpp>
+#endif
+
+#ifdef ROS_VERSION == ROS_VERSION_FOXY || ROS_VERSION == ROS_VERSION_HUMBLE
+#    include <Udon/Com/Uart/Ros2UartReader.hpp>
+#    include <Udon/Com/Uart/Ros2UartWriter.hpp>
 #endif

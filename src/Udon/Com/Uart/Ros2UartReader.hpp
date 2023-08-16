@@ -20,7 +20,7 @@ namespace Udon
         bool isRunning;    // thread stop token
 
     public:
-        SivUartReader(serial::Serial& bus)
+        Ros2UartReader(serial::Serial& bus)
             : serial(bus)
             , buffer(Size)
             , thread(
@@ -29,7 +29,10 @@ namespace Udon
                       while (isRunning)
                       {
                           if (not serial.isOpen())
+                          {
+                              serial.open();
                               continue;
+                          }
                           if (serial.available() < Size)
                               continue;
 
