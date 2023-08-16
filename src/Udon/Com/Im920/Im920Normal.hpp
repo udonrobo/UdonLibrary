@@ -190,7 +190,7 @@ namespace Udon
             // footer = [\r] + [\n]
             constexpr int FooterSize = 1 + 1;
 
-            const int dataSize = static_cast<int>(ceil(receiveBuffer.size() * 1.14));
+            const int dataSize = static_cast<int>(ceil(receiveBuffer.size() * 8.0 / 7.0));
 
             const int frameSize = HeaderSize + dataSize + FooterSize;
 
