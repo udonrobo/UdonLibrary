@@ -11,10 +11,10 @@ namespace Udon
     {
         static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
 
-        serial::serial& serial;
+        serial::Serial& serial;
 
     public:
-        Ros2UartWriter(serial::serial& bus)
+        Ros2UartWriter(serial::Serial& bus)
             : serial(bus)
         {
         }
