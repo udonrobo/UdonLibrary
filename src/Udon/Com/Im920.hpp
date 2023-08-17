@@ -24,4 +24,5 @@
 #    include <Udon/Com/Im920/Im920Reader.hpp>
 #    include <Udon/Com/Im920/Im920Writer.hpp>
 #    include <Udon/Com/Im920/Im920sl.hpp>
+#    include <Udon/Com/Im920/Im920s.hpp>
 #endif
