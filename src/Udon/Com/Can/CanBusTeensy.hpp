@@ -1,6 +1,6 @@
 /// @file   CanBusTeensy.hpp
 /// @date   2023/01/13
-/// @brief  FlexCan_T4ライブラリを用いたCanバス管理クラス
+/// @brief  FlexCan_T4ライブラリを用いたCanバスクラス
 /// @author 大河 祐介
 
 #pragma once
@@ -19,7 +19,7 @@
 namespace Udon
 {
 
-    /// @brief FlexCan_T4ライブラリを用いたCANバス管理クラス
+    /// @brief FlexCan_T4ライブラリを用いたCANバスクラス
     /// @tparam Bus バス種類
     /// @remark 使用するTeensyの種類によってCANバスの種類が異なるので注意(対応していないバスを指定するとstatic_assertが発生します)
     /// - Teensy 3.2: CAN0

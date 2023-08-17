@@ -16,9 +16,7 @@
 //
 //-------------------------------------------------------------------
 
-#ifdef HAVE_HWSERIAL1
-
-#    include <Udon.hpp>
+#include <Udon.hpp>
 
 // IM920 引数にはIm920と通信するシリアルクラスのインスタンスを指定します。
 Udon::Im920 im920{ Serial1 };
@@ -30,7 +28,7 @@ void setup()
 {
     Serial.begin(115200);
 
-    // IDを設定し、通信を開始します。
+    // チャンネル番号を設定し、通信を開始します。
     im920.begin(13);
 }
 
@@ -51,8 +49,3 @@ void loop()
     // IM920 は送信に 3.2ms＋160μs×バイト の処理時間がかかります。
     delay(10);
 }
-
-#else
-void setup() {}
-void loop() {}
-#endif

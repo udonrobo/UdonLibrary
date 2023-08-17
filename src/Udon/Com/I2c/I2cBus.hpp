@@ -87,7 +87,7 @@ namespace Udon
     /// @brief I2cBus クラス実装部
     /// @tparam Counter オブジェクト生成ごとにユニークな値を指定する(複数の I2C バスを使用する場合に必要)
     template <int Counter>
-    class I2cBus_impl
+    class I2cBusImpl
         : public II2cBus
     {
 
@@ -100,8 +100,8 @@ namespace Udon
         uint32_t restartCount;
 
         /// @brief C言語スタイルのコールバック関数に メンバ関数を登録するためのデリゲート
-        Udon::Delegate<I2cBus_impl, void(int)>  onReceiveDelegate;
-        Udon::Delegate<I2cBus_impl, void(void)> onRequestDelegate;
+        Udon::Delegate<I2cBusImpl, void(int)>  onReceiveDelegate;
+        Udon::Delegate<I2cBusImpl, void(void)> onRequestDelegate;
 
         /// @brief C言語スタイルのコールバック関数
         void (*userOnReceive)(int);
@@ -127,30 +127,30 @@ namespace Udon
 
         // TwoWire::onReceive 割り込み発火
         // ↓
-        // デリゲートによって I2cBus_impl::invokeOnReceive 呼び出し
+        // デリゲートによって I2cBusImpl::invokeOnReceive 呼び出し
         // ↓
-        // userOnReceive(I2cBus_impl::onReceiveで登録したコールバック関数) 呼び出し
+        // userOnReceive(I2cBusImpl::onReceiveで登録したコールバック関数) 呼び出し
 
     public:
-        I2cBus_impl(TwoWire& wire, uint32_t timeoutMs = 100)
+        I2cBusImpl(TwoWire& wire, uint32_t timeoutMs = 100)
             : wire(wire)
             , timeoutMs(timeoutMs)
             , transmitMs()
             , restartCount()
-            , onReceiveDelegate(this, &I2cBus_impl::invokeOnReceive)
-            , onRequestDelegate(this, &I2cBus_impl::invokeOnRequest)
+            , onReceiveDelegate(this, &I2cBusImpl::invokeOnReceive)
+            , onRequestDelegate(this, &I2cBusImpl::invokeOnRequest)
             , userOnReceive()
             , userOnRequest()
         {
         }
 
-        I2cBus_impl(const I2cBus_impl& rhs)
+        I2cBusImpl(const I2cBusImpl& rhs)
             : wire(rhs.wire)
             , timeoutMs(rhs.timeoutMs)
             , transmitMs(rhs.transmitMs)
             , restartCount(rhs.restartCount)
-            , onReceiveDelegate(this, &I2cBus_impl::invokeOnReceive)
-            , onRequestDelegate(this, &I2cBus_impl::invokeOnRequest)
+            , onReceiveDelegate(this, &I2cBusImpl::invokeOnReceive)
+            , onRequestDelegate(this, &I2cBusImpl::invokeOnRequest)
             , userOnReceive()
             , userOnRequest()
         {
@@ -342,4 +342,4 @@ namespace Udon
 
 /// @brief I2C バスのラッパークラス
 #    define I2cBus \
-        I2cBus_impl<__COUNTER__>
+        I2cBusImpl<__COUNTER__>
