@@ -92,6 +92,17 @@ namespace Udon
             }
         }
 
+        /// @brief デフォルトで初期化しないコンストラクタ
+        /// @param size 使用するサイズ
+        explicit RingBuffer(size_t size)
+            : m_data{}
+            , m_head{}
+            , m_tail{}
+            , m_size{}
+        {
+            resize(size);
+        }
+
         RingBuffer(std::initializer_list<T> init)
             : m_data{}
             , m_head{}
@@ -103,17 +114,6 @@ namespace Udon
             {
                 push(value);
             }
-        }
-
-        /// @brief デフォルトで初期化するコンストラクタ
-        /// @param size 使用するサイズ
-        explicit RingBuffer(size_t size)
-            : m_data{}
-            , m_head{}
-            , m_tail{}
-            , m_size{}
-        {
-            resize(size);
         }
 
         /// @brief capacityを取得
