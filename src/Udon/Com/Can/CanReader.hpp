@@ -44,7 +44,7 @@ namespace Udon
             : bus{ bus }
             , node{ id, buffer, sizeof buffer, 0 }
         {
-            join();
+            joinBus();
         }
 
         /// @brief コピーコンストラクタ
@@ -52,7 +52,7 @@ namespace Udon
             : bus{ other.bus }
             , node{ other.node }
         {
-            join();
+            joinBus();
         }
 
         /// @brief デストラクタ
@@ -79,6 +79,7 @@ namespace Udon
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
+            Udon::Show(node.id, gap);
             if (message)
             {
                 Udon::Show(*message, gap);
@@ -100,7 +101,7 @@ namespace Udon
         }
 
     private:
-        void join()
+        void joinBus()
         {
             bus.joinRx(
                 node,

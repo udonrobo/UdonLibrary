@@ -96,25 +96,46 @@ namespace Udon
         /// @param baudrate 通信レート
         void begin(const uint32_t baudrate = 1000000)
         {
+            // バス初期化
             bus.begin();
             bus.setBaudRate(baudrate);
-            bus.enableFIFO();
-            bus.enableFIFOInterrupt();
 
-            // bus.setFIFOUserFilter(0, 10, 0xFFF, STD, NONE);
-            // bus.setFIFOUserFilter(1, 11, 0xFFF, STD, NONE);
-            // bus.setFIFOUserFilter(2, 12, 0xFFF, STD, NONE);
-            // Q setFIFOUserFilter の使い方教えて
-            // A https://forum.pjrc.com/threads/58090-FlexCAN_T4-How-to-use-setFIFOUserFilter
-            
+            // 受信開始
             if (rxNodes.size())
             {
+                // 受信フィルタ設定 (ノード数が8以下の場合のみ)
+                if (rxNodes.size() <= 8)
+                {
+                    bus.setFIFOFilter(REJECT_ALL);
+                    for (size_t i = 0; i < rxNodes.size(); ++i)
+                    {
+                        bus.setFIFOUserFilter(
+                            /* Filter       */ i,
+                            /* ID           */ rxNodes[i].node->id,
+                            /* Mask         */ 0x7FF,
+                            /* Frame type   */ STD,
+                            /* Remote frame */ NONE);
+                        // 複数のフィルタを設定する関数が用意されているが、適切に受信できていなかったので1つずつ設定している (2023/08/19)
+                    }
+                }
+                else
+                {
+                    bus.setFIFOFilter(ACCEPT_ALL);
+                }
+
+                // FIFOバッファ有効化
+                bus.enableFIFO();
+                bus.enableFIFOInterrupt();
+
+                // 受信割り込み設定
                 bus.onReceive(
                     [](const CAN_message_t& msg)
                     {
                         self->onReceive(msg);
                     });
             }
+
+            // 送信開始
             if (txNodes.size())
             {
                 writeTimer.begin(
@@ -122,19 +143,18 @@ namespace Udon
                     {
                         if (self->txBuffer.size())
                         {
-                            while (not self->bus.write(self->txBuffer.pop()))
-                                ;
+                            self->bus.write(self->txBuffer.pop());
                         }
                     },
-                    1000);
+                    200);
             }
         }
 
         /// @brief 通信終了
         void end()
         {
-            bus.disableFIFO();
             bus.disableFIFOInterrupt();
+            bus.disableFIFO();
         }
 
         /// @brief バス更新
@@ -156,7 +176,7 @@ namespace Udon
         /// @brief バス情報を表示する
         void show() const
         {
-            Serial.print("Bus: CAN 2.0B\n");
+            Serial.print("CanBusTeensy\n");
 
             Serial.print("\tTX Node\n");
             for (auto&& node : txNodes)
@@ -164,11 +184,11 @@ namespace Udon
                 Serial.printf("\t\tid:%4d   length:%3zu byte", node->id, node->length);
                 if (node->length > SingleFrameSize)
                 {
-                    Serial.print(" (multi packet)");
+                    Serial.print(" (multi frame)");
                 }
                 else
                 {
-                    Serial.print(" (single packet)");
+                    Serial.print(" (single frame)");
                 }
 
                 Serial.print("\n\t\t\tdata: ");
@@ -186,11 +206,11 @@ namespace Udon
                 Serial.printf("\t\tid:%4d   size:%3zu byte", rxNode.node->id, rxNode.node->length);
                 if (rxNode.node->length > SingleFrameSize)
                 {
-                    Serial.print(" (multi packet)");
+                    Serial.print(" (multi frame)");
                 }
                 else
                 {
-                    Serial.print(" (single packet)");
+                    Serial.print(" (single frame)");
                 }
 
                 Serial.print("\n\t\t\tdata: ");
@@ -238,6 +258,11 @@ namespace Udon
         /// @brief 受信コールバック
         void onReceive(const CAN_message_t& msg)
         {
+            //  Q 割り込み時にこのような処理を行うのは良くなこのような
+            // A この関数は割り込みコールバック関数なので、できるだけ短い処理を行う必要があります。
+            //  この関数内で行っている処理は、受信したメッセージをバッファに格納するだけなので問題ありません。
+            // Q いえ、IDの検索を行い、コールバックを呼び出しているので、処理時間が長くなる可能性があるのではないでしょうか？
+            
             auto rxNode = std::find_if(rxNodes.begin(), rxNodes.end(), [&msg](const RxNodePtr& rx)
                                        { return rx.node->id == msg.id; });
             if (rxNode == rxNodes.end())
@@ -282,7 +307,10 @@ namespace Udon
                     [this, &msg](size_t size)
                     {
                         msg.len = SingleFrameSize;
-                        txBuffer.push(msg);
+                        // txBuffer.push(msg);
+                        while (not bus.write(msg))
+                            ;
+                        delayMicroseconds(200);
                     });
             }
         }
