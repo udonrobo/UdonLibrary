@@ -20,11 +20,7 @@
 
 #include <Udon/Algorithm/Button.hpp>
 #include <Udon/Com/Message/PadPS5.hpp>
-#include <Udon/Traits/MaybeInvoke.hpp>
 #include <Udon/Types/Position.hpp>
-#include <Udon/Types/Vector2D.hpp>
-
-#include <algorithm>
 
 namespace Udon
 {
