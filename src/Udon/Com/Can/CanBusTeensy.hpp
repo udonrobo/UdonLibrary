@@ -44,13 +44,12 @@ namespace Udon
 
         FlexCAN_T4<Bus, RX_SIZE_128, TX_SIZE_256> bus;
 
-        IntervalTimer readTimer;
         IntervalTimer writeTimer;
 
         constexpr static uint8_t SingleFrameSize = 8;
 
-        using TxNode = CanNode;
-        struct RxNode
+        using TxNodePtr = CanNode*;
+        struct RxNodePtr
         {
             CanNode* node;
             void (*onReceive)(void*);
@@ -65,8 +64,8 @@ namespace Udon
             }
         };
 
-        Udon::StaticVector<TxNode*> txNodes;
-        Udon::StaticVector<RxNode>  rxNodes;
+        Udon::StaticVector<TxNodePtr> txNodes;
+        Udon::StaticVector<RxNodePtr> rxNodes;
 
         Udon::RingBuffer<CAN_message_t, 256> txBuffer;
 
@@ -81,6 +80,7 @@ namespace Udon
             self = this;
         }
 
+        /// @brief コピーコンストラクタ
         CanBusTeensy(const CanBusTeensy&)
         {
             self = this;
@@ -96,21 +96,19 @@ namespace Udon
         /// @param baudrate 通信レート
         void begin(const uint32_t baudrate = 1000000)
         {
-            if (rxNodes.size() || txNodes.size())
-            {
-                bus.begin();
-                bus.setBaudRate(baudrate);
-                bus.enableFIFO();
-                bus.enableFIFOInterrupt();
-            }
+            bus.begin();
+            bus.setBaudRate(baudrate);
+            bus.enableFIFO();
+            bus.enableFIFOInterrupt();
+
+            // bus.setFIFOUserFilter(0, 10, 0xFFF, STD, NONE);
+            // bus.setFIFOUserFilter(1, 11, 0xFFF, STD, NONE);
+            // bus.setFIFOUserFilter(2, 12, 0xFFF, STD, NONE);
+            // Q setFIFOUserFilter の使い方教えて
+            // A https://forum.pjrc.com/threads/58090-FlexCAN_T4-How-to-use-setFIFOUserFilter
+            
             if (rxNodes.size())
             {
-                readTimer.begin(
-                    []
-                    {
-                        self->bus.events();
-                    },
-                    200);
                 bus.onReceive(
                     [](const CAN_message_t& msg)
                     {
@@ -124,13 +122,7 @@ namespace Udon
                     {
                         if (self->txBuffer.size())
                         {
-                            Serial.print(self->txBuffer.size());
-                            Serial.print(" ");
-                            auto o = self->txBuffer.pop();
-                            Serial.print(o.id);
-                            Serial.print(o.buf[0], HEX);
-                            Serial.println();
-                            while (not self->bus.write(o))
+                            while (not self->bus.write(self->txBuffer.pop()))
                                 ;
                         }
                     },
@@ -161,6 +153,7 @@ namespace Udon
             return micros() - transmitUs < 100000;
         }
 
+        /// @brief バス情報を表示する
         void show() const
         {
             Serial.print("Bus: CAN 2.0B\n");
@@ -210,24 +203,34 @@ namespace Udon
             }
         }
 
+        /// @brief 送信ノードをバスに参加させる
+        /// @param node 送信ノード
         void joinTx(CanNode& node) override
         {
             txNodes.push_back(&node);
         }
 
+        /// @brief 受信ノードをバスに参加させる
+        /// @param node 受信ノード
         void joinRx(CanNode& node, void (*onReceive)(void*), void* p) override
         {
             rxNodes.push_back({ &node, onReceive, p });
         }
 
-        void leaveTx(CanNode& node) override
+        /// @brief 送信ノードをバスから離脱させる
+        /// @remark 送信ノードのインスタンスポインタを基に削除します。
+        /// @param node 送信ノード
+        void leaveTx(const CanNode& node) override
         {
             txNodes.erase(std::find(txNodes.begin(), txNodes.end(), &node));
         }
 
-        void leaveRx(CanNode& node) override
+        /// @brief 受信ノードをバスから離脱させる
+        /// @remark 受信ノードのインスタンスポインタを基に削除します。
+        /// @param node 受信ノード
+        void leaveRx(const CanNode& node) override
         {
-            rxNodes.erase(std::find_if(rxNodes.begin(), rxNodes.end(), [&node](const RxNode& rxNode)
+            rxNodes.erase(std::find_if(rxNodes.begin(), rxNodes.end(), [&node](const RxNodePtr& rxNode)
                                        { return rxNode.node == &node; }));
         }
 
@@ -235,7 +238,7 @@ namespace Udon
         /// @brief 受信コールバック
         void onReceive(const CAN_message_t& msg)
         {
-            auto rxNode = std::find_if(rxNodes.begin(), rxNodes.end(), [&msg](const RxNode& rx)
+            auto rxNode = std::find_if(rxNodes.begin(), rxNodes.end(), [&msg](const RxNodePtr& rx)
                                        { return rx.node->id == msg.id; });
             if (rxNode == rxNodes.end())
             {
