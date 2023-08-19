@@ -219,7 +219,7 @@ namespace Udon
         }
     };
 
-    void IPadPS5::update(const Udon::Optional<Udon::Message::PadPS5>& message)
+    inline void IPadPS5::update(const Udon::Optional<Udon::Message::PadPS5>& message)
     {
         if (message)
         {
