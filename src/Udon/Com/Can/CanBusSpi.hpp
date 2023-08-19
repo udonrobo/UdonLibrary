@@ -1,6 +1,6 @@
 /// @file   CanBusSpi.hpp
 /// @date   2023/01/13
-/// @brief  arduino-mcp2515ライブラリを用いたCanバス管理クラス
+/// @brief  arduino-mcp2515ライブラリを用いたCanバスクラス
 /// @flow   [CPU] <--SPI--> [Canコントローラ] <--Can[TX/RX]--> [Canトランシーバ] <--Can[H/L]--> [BUS]
 /// @author 大河 祐介
 
