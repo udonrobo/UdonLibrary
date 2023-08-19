@@ -39,9 +39,9 @@ namespace Udon
         virtual void joinRx(CanNode& node, void (*onReceive)(void*), void* p) = 0;
 
         /// @brief 送信ノードを登録解除
-        virtual void leaveTx(CanNode& node) = 0;
+        virtual void leaveTx(const CanNode& node) = 0;
 
         /// @brief 受信ノードを登録解除
-        virtual void leaveRx(CanNode& node) = 0;
+        virtual void leaveRx(const CanNode& node) = 0;
     };
 }    // namespace Udon
