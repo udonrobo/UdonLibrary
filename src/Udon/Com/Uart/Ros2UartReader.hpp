@@ -72,7 +72,7 @@ namespace Udon
             }
         }
 
-        void showRaw() const
+        void showRaw(char gap = '\t') const
         {
             Udon::Show(buffer, gap);
         }
