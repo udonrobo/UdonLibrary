@@ -67,7 +67,7 @@ namespace Udon
 
         Deserializer deserializer(buffer);
 
-        if (/*deserializer*/1)
+        if (deserializer)
         {
             T retval;
             deserializer(retval);
