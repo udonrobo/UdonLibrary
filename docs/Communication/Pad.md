@@ -38,24 +38,24 @@
   ボタンの状態を取得する
 
   ```cpp
-  Udon::Button getTriangle()
-  Udon::Button getCircle()
-  Udon::Button getCross()
-  Udon::Button getSquare()
-  Udon::Button getUp()
-  Udon::Button getRight()
-  Udon::Button getDown()
-  Udon::Button getLeft()
-  Udon::Button getL1()
-  Udon::Button getR1()
-  Udon::Button getL2()
-  Udon::Button getR2()
-  Udon::Button getL3()      // 左スティック押し込み
-  Udon::Button getR3()      // 右スティック押し込み
-  Udon::Button getCreate()  // クリエイトボタン(左上ボタン)
-  Udon::Button getOption()  // オプションボタン(右上ボタン)
-  Udon::Button getTouch()
-  Udon::Button getPs()
+  Udon::Button getTriangle();
+  Udon::Button getCircle();
+  Udon::Button getCross();
+  Udon::Button getSquare();
+  Udon::Button getUp();
+  Udon::Button getRight();
+  Udon::Button getDown();
+  Udon::Button getLeft();
+  Udon::Button getL1();
+  Udon::Button getR1();
+  Udon::Button getL2();
+  Udon::Button getR2();
+  Udon::Button getL3();      // 左スティック押し込み
+  Udon::Button getR3();      // 右スティック押し込み
+  Udon::Button getCreate();  // クリエイトボタン(左上ボタン)
+  Udon::Button getOption();  // オプションボタン(右上ボタン)
+  Udon::Button getTouch();
+  Udon::Button getPs();
   ```
 
   ```cpp
@@ -65,9 +65,9 @@
   スティックの状態を取得する
 
   ```cpp
-  Udon::Vec2 getLeftStick()
-  Udon::Vec2 getRightStick()
-  Udon::Pos  getMoveInfo()
+  Udon::Vec2 getLeftStick();
+  Udon::Vec2 getRightStick();
+  Udon::Pos  getMoveInfo();
   ```
 
   ```cpp
