@@ -28,12 +28,5 @@ namespace Udon
 
         /// @brief 離された瞬間か
         bool release;
-
-        /// @brief デフォルトコンストラクタ
-        Button() = default;
-
-        /// @brief デフォルトコピーコンストラクタ
-        /// @param
-        Button(const Button&) = default;
     };
 }    // namespace Udon

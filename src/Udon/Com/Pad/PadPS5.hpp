@@ -45,7 +45,7 @@ namespace Udon
         void update()
         {
             reader.update();
-            IPadPS5::update(reader.getMessage());
+            IPadPS5::updateFromMessageOpt(reader.getMessage());
         }
 
         void show()
@@ -73,7 +73,7 @@ namespace Udon
 
         void update()
         {
-            IPadPS5::update(reader.getMessage());
+            IPadPS5::updateFromMessageOpt(reader.getMessage());
         }
 
         void show()
