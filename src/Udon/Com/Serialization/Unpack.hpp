@@ -62,7 +62,6 @@ namespace Udon
 
         if (buffer.size() < Udon::CapacityWithChecksum<T>())
         {
-          std::cout << "buf error" << std::endl;
           return Udon::nullopt;
         }
 
@@ -76,7 +75,6 @@ namespace Udon
         }
         else
         {
-            std::cout <<"des error!"<<std::endl;
             return Udon::nullopt;
         }
     }
