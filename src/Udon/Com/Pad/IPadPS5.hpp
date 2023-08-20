@@ -18,7 +18,7 @@
 
 #pragma once
 
-#include <Udon/Algorithm/Button.hpp>
+#include <Udon/Algorithm/Input.hpp>
 #include <Udon/Com/Message/PadPS5.hpp>
 #include <Udon/Types/Position.hpp>
 
@@ -65,154 +65,74 @@ namespace Udon
 
     public:
         /// @brief コントローラーが接続されているか
-        explicit operator bool() const
-        {
-            return isConnected;
-        }
+        explicit operator bool() const { return isConnected; }
 
         /// @brief トライアングルボタン
-        /// @return
-        Udon::Button getTriangle() const
-        {
-            return triangle;
-        }
+        Udon::Button getTriangle() const { return triangle; }
+
         /// @brief サークルボタン
-        /// @return
-        Udon::Button getCircle() const
-        {
-            return circle;
-        }
+        Udon::Button getCircle() const { return circle; }
+
         /// @brief クロスボタン
-        /// @return
-        Udon::Button getCross() const
-        {
-            return cross;
-        }
+        Udon::Button getCross() const { return cross; }
+
         /// @brief スクエアボタン
-        /// @return
-        Udon::Button getSquare() const
-        {
-            return square;
-        }
+        Udon::Button getSquare() const { return square; }
+
         /// @brief 十字キー上
-        /// @return
-        Udon::Button getUp() const
-        {
-            return up;
-        }
+        Udon::Button getUp() const { return up; }
+
         /// @brief 十字キー右
-        /// @return
-        Udon::Button getRight() const
-        {
-            return right;
-        }
+        Udon::Button getRight() const { return right; }
+
         /// @brief 十字キー下
-        /// @return
-        Udon::Button getDown() const
-        {
-            return down;
-        }
+        Udon::Button getDown() const { return down; }
+
         /// @brief 十字キー左
-        /// @return
-        Udon::Button getLeft() const
-        {
-            return left;
-        }
+        Udon::Button getLeft() const { return left; }
+
         /// @brief L1ボタン
-        /// @return
-        Udon::Button getL1() const
-        {
-            return l1;
-        }
+        Udon::Button getL1() const { return l1; }
+
         /// @brief R1ボタン
-        /// @return
-        Udon::Button getR1() const
-        {
-            return r1;
-        }
+        Udon::Button getR1() const { return r1; }
+
         /// @brief L2ボタン
-        /// @return
-        Udon::Button getL2() const
-        {
-            return l2;
-        }
+        Udon::Button getL2() const { return l2; }
+
         /// @brief R2ボタン
-        /// @return
-        Udon::Button getR2() const
-        {
-            return r2;
-        }
+        Udon::Button getR2() const { return r2; }
+
         /// @brief 左スティック押し込み
-        /// @return
-        Udon::Button getL3() const
-        {
-            return l3;
-        }
+        Udon::Button getL3() const { return l3; }
+
         /// @brief 右スティック押し込み
-        /// @return
-        Udon::Button getR3() const
-        {
-            return r3;
-        }
+        Udon::Button getR3() const { return r3; }
+
         /// @brief クリエイトボタン(左上ボタン)
-        /// @return
-        Udon::Button getCreate() const
-        {
-            return create;
-        }
+        Udon::Button getCreate() const { return create; }
+
         /// @brief オプションボタン(右上ボタン)
-        /// @return
-        Udon::Button getOption() const
-        {
-            return option;
-        }
+        Udon::Button getOption() const { return option; }
+
         /// @brief タッチパッドボタン
-        /// @return
-        Udon::Button getTouch() const
-        {
-            return touch;
-        }
+        Udon::Button getTouch() const { return touch; }
+
         /// @brief マイクボタン
-        /// @return
-        Udon::Button getMic() const
-        {
-            return mic;
-        }
+        Udon::Button getMic() const { return mic; }
+
         /// @brief PSボタン
-        /// @return
-        Udon::Button getPs() const
-        {
-            return ps;
-        }
+        Udon::Button getPs() const { return ps; }
+
         /// @brief 左スティック
-        /// @return
-        Udon::Vec2 getLeftStick() const
-        {
-            return leftStick;
-        }
+        Udon::Vec2 getLeftStick() const { return leftStick; }
+
         /// @brief 右スティック
-        /// @return
-        Udon::Vec2 getRightStick() const
-        {
-            return rightStick;
-        }
+        Udon::Vec2 getRightStick() const { return rightStick; }
+
         /// @brief ロボットの移動に必要なスティックの情報 Udon::Positionオブジェクト {{x,y},turn} を取得
         /// @remark 左スティックから移動成分、右スティックX軸から旋回成分を取得
-        /// @return
-        Udon::Pos getMoveInfo() const
-        {
-            return { leftStick, rightStick.x };
-        }
-
-        void show() const
-        {
-            // TODO: 未実装
-        }
-
-        void showRaw() const
-        {
-            // TODO: 未実装
-        }
+        Udon::Pos getMoveInfo() const { return { leftStick, rightStick.x }; }
     };
 
     inline void IPadPS5::update(const Udon::Optional<Udon::Message::PadPS5>& message)
