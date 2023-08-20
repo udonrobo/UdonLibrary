@@ -13,12 +13,12 @@ namespace Udon
 
         serial::Serial& serial;
 
-        uint8_t buffer[Size];
+        std::vector<uint8_t> buffer;
 
     public:
         Ros2UartReader(serial::Serial& bus)
             : serial(bus)
-            , buffer()
+            , buffer(Size)
         {
         }
 
@@ -31,6 +31,7 @@ namespace Udon
             if (serial.available() >= static_cast<int>(Size))
             {
                 serial.read(buffer, Size);
+                std::cout << "read" << std::endl;
                 serial.flushInput();
             }
         }
