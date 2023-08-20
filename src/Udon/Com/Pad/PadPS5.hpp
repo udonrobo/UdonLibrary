@@ -21,12 +21,6 @@
 #include <Udon/Com/Pad/IPadPS5.hpp>
 #include <Udon/Com/I2c.hpp>
 #include <Udon/Com/Can.hpp>
-#include <Udon/Com/Message/PadPS5.hpp>
-
-// Q 親クラスが関数を提供するのはおかしい？
-// A そうですね。継承するときには、親クラスの関数をオーバーライドすることを想定しています。
-// Q コードが冗長になるのを防ぐために、親クラスが複数の関数を提供する用意しているのですが、それはよいのでしょうか？
-// A そうですね。コードが冗長になるのを防ぐために、親クラスが複数の関数を提供することは、よいと思います。
 
 namespace Udon
 {
