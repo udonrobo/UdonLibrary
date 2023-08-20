@@ -51,7 +51,7 @@ namespace Udon
         {
         }
 
-        Udon::Optional<Message> getMessage()
+        Udon::Optional<Message> getMessage() const
         {
             if (im920)
             {

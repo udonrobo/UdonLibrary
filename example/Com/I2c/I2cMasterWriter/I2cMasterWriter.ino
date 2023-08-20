@@ -18,7 +18,7 @@
 
 #include <Udon.hpp>
 
-// I2C バス管理クラス
+// I2C バスクラス
 Udon::I2cBus bus{ Wire };
 
 // I2C マスター側送信クラス
@@ -50,21 +50,3 @@ void loop()
 
     delay(10);
 }
-
-// 以下、シリアルモニタに表示される内容例
-// restart: 0 transmit[ms]: 49227
-// restart: 0 transmit[ms]: 49239
-// restart: 0 transmit[ms]: 49251
-// restart: 0 transmit[ms]: 49262
-// restart: 0 transmit[ms]: 49274
-// restart: 0 transmit[ms]: 49286
-// restart: 0 transmit[ms]: 49298
-// restart: 0 transmit[ms]: 49309
-// restart: 0 transmit[ms]: 49320
-// restart: 0 transmit[ms]: 49333
-// restart: 0 transmit[ms]: 49344
-// restart: 0 transmit[ms]: 49356
-// restart: 0 transmit[ms]: 49368
-// restart: 0 transmit[ms]: 49379
-// restart: 0 transmit[ms]: 49391
-// restart: 0 transmit[ms]: 49402

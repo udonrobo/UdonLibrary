@@ -62,7 +62,7 @@ namespace Udon
 
         if (buffer.size() < Udon::CapacityWithChecksum<T>())
         {
-            return Udon::nullopt;
+          return Udon::nullopt;
         }
 
         Deserializer deserializer(buffer);

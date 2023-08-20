@@ -33,7 +33,7 @@
     template <typename T>                                                                      \
     struct has_member_type_##name : decltype(has_member_type_##name##_impl::check<T>(nullptr)) \
     {                                                                                          \
-    };
+    }
 
 /// @brief 通常メンバ関数の有無を取得する
 /// @remark 静的メンバ関数の場合は除きます
@@ -58,7 +58,7 @@
     template <typename T>                                                                                                          \
     struct has_member_function_##name : decltype(has_member_function_##name##_impl::check<T>(std::declval<T>()))                   \
     {                                                                                                                              \
-    };
+    }
 
 /// @brief 静的メンバ関数の有無を取得する
 /// @remark 通常メンバ関数の場合は除きます
@@ -76,7 +76,7 @@
     template <typename T>                                                                                                      \
     struct has_static_member_function_##name : decltype(has_static_member_function_##name##_impl::check<T>(std::declval<T>())) \
     {                                                                                                                          \
-    };
+    }
 
 /// @brief メンバ変数を走査する関数の有無を取得する
 /// @param A 走査を行うクラスの型
@@ -99,7 +99,7 @@
     template <typename A, typename T>                                                                               \
     struct has_member_iterate_##name : decltype(has_member_iterate_##name##_impl::test<A, T>(0))                    \
     {                                                                                                               \
-    };
+    }
 
 namespace Udon
 {

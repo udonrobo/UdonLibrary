@@ -15,7 +15,7 @@
 
 #pragma once
 
-/// @brief バス管理クラス
+/// @brief バスクラス
 // #include "CanBusPico.hpp"
 #include <Udon/Com/Can/CanBusPico.hpp>
 #include <Udon/Com/Can/CanBusSpi.hpp>
