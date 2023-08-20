@@ -27,7 +27,6 @@ namespace Udon
             if (not serial.isOpen())
             {
                 serial.open();
-                continue;
             }
             if (serial.available() >= static_cast<int>(Size))
             {
