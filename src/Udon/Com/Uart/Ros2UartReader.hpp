@@ -13,12 +13,12 @@ namespace Udon
 
         serial::Serial& serial;
 
-        std::vector<uint8_t> buffer;
+        uint8_t buffer[Size];
 
     public:
         Ros2UartReader(serial::Serial& bus)
             : serial(bus)
-            , buffer(Size)
+            , buffer()
         {
         }
 
