@@ -21,4 +21,5 @@
 #    include <Udon/Com/I2c/I2cMasterWriter.hpp>
 #    include <Udon/Com/I2c/I2cSlaveReader.hpp>
 #    include <Udon/Com/I2c/I2cSlaveWriter.hpp>
+#    include <Udon/Com/Pad/I2cPadPS5.hpp>
 #endif
