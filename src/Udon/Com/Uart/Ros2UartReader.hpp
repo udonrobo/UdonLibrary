@@ -15,49 +15,50 @@ namespace Udon
 
         std::vector<uint8_t> buffer;
 
-        std::thread thread;
-
-        bool isRunning;    // thread stop token
+        uint32_t             transmitMs;
 
     public:
         Ros2UartReader(serial::Serial& bus)
             : serial(bus)
             , buffer(Size)
-            , thread(
-                  [this]()
-                  {
-                      while (isRunning)
-                      {
-                          if (not serial.isOpen())
-                          {
-                              serial.open();
-                              continue;
-                          }
-                          if (serial.available() < Size)
-                              continue;
-
-                          std::vector<uint8_t> temp;
-                          if (serial.read(temp) && temp.size() == Size)
-                          {
-                              buffer = std::move(temp);
-                          }
-
-                          serial.flushInput();
-                      }
-                  })
-            , isRunning(true)
         {
         }
 
-        ~Ros2UartReader()
+        explicit operator bool() const
         {
-            isRunning = false;
-            thread.join();
+            return millis() - transmitMs < 1000;
+        }
+
+        void update()
+        {
+            if (not serial.isOpen())
+            {
+                serial.open();
+                continue;
+            }
+
+            if (serial.available() >= static_cast<int>(Size))
+            {
+                std::vector<uint8_t> temp;
+                if (serial.read(temp) && temp.size() == Size)
+                {
+                    buffer = std::move(temp);
+                }
+                transmitMs = millis();
+                serial.flushInput();
+            }
         }
 
         Udon::Optional<Message> getMessage() const
         {
-            return Udon::Unpack<Message>(buffer);
+            if (operator bool())
+            {
+                return Udon::Unpack<Message>(buffer);
+            }
+            else
+            {
+                return Udon::nullopt;
+            }
         }
 
         void show(char gap = '\t') const
