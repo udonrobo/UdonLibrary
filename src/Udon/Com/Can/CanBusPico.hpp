@@ -147,12 +147,12 @@ namespace Udon
             rxNodes.push_back({ &node, onReceive, p });
         }
 
-        void leaveTx(CanNode& node) override
+        void leaveTx(const CanNode& node) override
         {
             txNodes.erase(std::find(txNodes.begin(), txNodes.end(), &node));
         }
 
-        void leaveRx(CanNode& node) override
+        void leaveRx(const CanNode& node) override
         {
             rxNodes.erase(std::find_if(rxNodes.begin(), rxNodes.end(), [&node](const RxNode& rxNode)
                                        { return rxNode.node == &node; }));
