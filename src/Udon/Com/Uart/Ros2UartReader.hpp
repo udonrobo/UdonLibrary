@@ -54,7 +54,11 @@ namespace Udon
 
         void showRaw(char gap = '\t') const
         {
-            Udon::Show(buf, gap);
+            for (int i = 0; i < buf.size(); i++)
+            {
+                std::cout << buf[i] << " ";
+            }
+            std::cout << std::endl;
         }
     };
 }    // namespace Udon
