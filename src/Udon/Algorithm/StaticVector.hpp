@@ -63,7 +63,7 @@ namespace Udon
             std::fill(begin(), end(), value);
         }
 
-        template <typename InputIterator, typename = std::enable_if<std::is_convertible<typename std::iterator_traits<InputIterator>::iterator_category, std::input_iterator_tag>::value>::type>
+        template <typename InputIterator, typename = typename std::enable_if<std::is_convertible<typename std::iterator_traits<InputIterator>::iterator_category, std::input_iterator_tag>::value>::type>
         StaticVector(InputIterator first, InputIterator last)
             : m_size(std::distance(first, last))
         {
@@ -172,7 +172,7 @@ namespace Udon
             }
         }
 
-        template <typename InputIterator, typename = std::enable_if<std::is_convertible<typename std::iterator_traits<InputIterator>::iterator_category, std::input_iterator_tag>::value>::type>
+        template <typename InputIterator, typename = typename std::enable_if<std::is_convertible<typename std::iterator_traits<InputIterator>::iterator_category, std::input_iterator_tag>::value>::type>
         void insert(iterator position, InputIterator first, InputIterator last)
         {
             size_type n = std::distance(first, last);

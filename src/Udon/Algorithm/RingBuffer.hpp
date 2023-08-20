@@ -156,7 +156,10 @@ namespace Udon
                 pop();
             }
             m_data[m_tail] = value;
-            m_tail         = (m_tail + 1) % Capacity;
+            if (++m_tail == Capacity)
+            {
+                m_tail = 0;
+            }
             ++m_size;
         }
 
@@ -169,7 +172,10 @@ namespace Udon
                 pop();
             }
             m_data[m_tail] = std::move(value);
-            m_tail         = (m_tail + 1) % Capacity;
+            if (++m_tail == Capacity)
+            {
+                m_tail = 0;
+            }
             ++m_size;
         }
 
@@ -182,7 +188,10 @@ namespace Udon
                 return {};
             }
             auto&& retval = std::move(m_data[m_head]);
-            m_head        = (m_head + 1) % Capacity;
+            if (++m_head == Capacity)
+            {
+                m_head = 0;
+            }
             --m_size;
             return retval;
         }

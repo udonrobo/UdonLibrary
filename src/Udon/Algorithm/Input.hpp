@@ -15,6 +15,8 @@
 
 #pragma once
 
+#include <Udon/Algorithm/Button.hpp>
+
 namespace Udon
 {
 
@@ -45,22 +47,28 @@ namespace Udon
 
         /// @brief 入力値が trueであり続けているかを返す
         /// @return
-        bool press() const
+        inline bool press() const
         {
             return curr;
         }
 
         /// @brief 入力値が true になった瞬間かどうかを返す
         /// @return
-        bool clicked() const
+        inline bool clicked() const
         {
-            return !prev && curr;
+            return not prev && curr;
         }
 
         /// @brief 入力値が false になった瞬間かどうかを返す
-        bool released() const
+        inline bool released() const
         {
-            return prev && !curr;
+            return prev && not curr;
+        }
+
+        /// @brief ボタンクラスへ変換
+        operator Button() const
+        {
+            return { press(), clicked(), released() };
         }
     };
 

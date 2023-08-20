@@ -25,7 +25,7 @@
 namespace Udon
 {
 
-    template <class Message>
+    template <typename Message>
     class I2cSlaveWriter
     {
         static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
@@ -95,7 +95,7 @@ namespace Udon
         }
     };
 
-    template <class Message>
+    template <typename Message>
     I2cSlaveWriter<Message>* I2cSlaveWriter<Message>::self;
 
 }    // namespace Udon
