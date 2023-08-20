@@ -56,7 +56,7 @@ namespace Udon
         {
             for (int i = 0; i < buf.size(); i++)
             {
-                std::cout << buf[i] << " ";
+                std::cout << static_cast<int>(buf[i]) << " ";
             }
             std::cout << std::endl;
         }
