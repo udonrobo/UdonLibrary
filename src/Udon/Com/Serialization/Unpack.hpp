@@ -62,7 +62,8 @@ namespace Udon
 
         if (buffer.size() < Udon::CapacityWithChecksum<T>())
         {
-            return Udon::nullopt;
+          std::cout << "buf error" << std::endl;
+          return Udon::nullopt;
         }
 
         Deserializer deserializer(buffer);
