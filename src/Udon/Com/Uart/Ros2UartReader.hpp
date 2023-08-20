@@ -30,7 +30,7 @@ namespace Udon
             }
             if (serial.available() >= static_cast<int>(Size))
             {
-                std::vector<uint8_t> buf(Size);
+                std::vector<uint8_t> buf;
                 serial.read(buf, Size);
                 buffer = std::move(buf);
                 serial.flushInput();
