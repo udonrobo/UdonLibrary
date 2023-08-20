@@ -15,8 +15,6 @@
 
 #pragma once
 
-#include <Udon/Algorithm/Input.hpp>
-
 namespace Udon
 {
     struct Button
@@ -37,14 +35,5 @@ namespace Udon
         /// @brief デフォルトコピーコンストラクタ
         /// @param
         Button(const Button&) = default;
-
-        /// @brief Inputクラスからの変換コンストラクタ
-        /// @param input
-        Button(const Input& input)
-            : press(input.press())
-            , click(input.clicked())
-            , release(input.released())
-        {
-        }
     };
 }    // namespace Udon
