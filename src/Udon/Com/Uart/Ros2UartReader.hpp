@@ -15,18 +15,11 @@ namespace Udon
 
         std::vector<uint8_t> buffer;
 
-        uint32_t             transmitMs;
-
     public:
         Ros2UartReader(serial::Serial& bus)
             : serial(bus)
             , buffer(Size)
         {
-        }
-
-        explicit operator bool() const
-        {
-            return millis() - transmitMs < 1000;
         }
 
         void update()
@@ -36,29 +29,16 @@ namespace Udon
                 serial.open();
                 continue;
             }
-
             if (serial.available() >= static_cast<int>(Size))
             {
-                std::vector<uint8_t> temp;
-                if (serial.read(temp) && temp.size() == Size)
-                {
-                    buffer = std::move(temp);
-                }
-                transmitMs = millis();
+                serial.read(buffer, Size);
                 serial.flushInput();
             }
         }
 
         Udon::Optional<Message> getMessage() const
         {
-            if (operator bool())
-            {
-                return Udon::Unpack<Message>(buffer);
-            }
-            else
-            {
-                return Udon::nullopt;
-            }
+            return Udon::Unpack<Message>(buffer);
         }
 
         void show(char gap = '\t') const
