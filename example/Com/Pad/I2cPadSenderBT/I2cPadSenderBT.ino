@@ -46,7 +46,7 @@ void loop()
     //   pad --[i2c<Message::PadPS5>]--> master
     writer.setMessage(pad.getButtons());
 
-    pad.setLightBar(Udon::RGB{ 0x38b48b });
+    pad.setLightBar({ 0x38b48b });
     pad.setMicLed(true);
 
 }

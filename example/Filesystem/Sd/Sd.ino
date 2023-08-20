@@ -15,8 +15,6 @@
 
 // teensy のみ対応
 
-#if defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__)
-
 #include <Udon.hpp>
 
 using Udon::Parameter;
@@ -42,11 +40,3 @@ void loop() {
   // put your main code here, to run repeatedly:
 
 }
-
-#else
-
-
-void setup() {}
-void loop() {}
-
-#endif
