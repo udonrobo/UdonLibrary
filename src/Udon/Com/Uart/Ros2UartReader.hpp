@@ -13,12 +13,12 @@ namespace Udon
 
         serial::Serial& serial;
 
-        std::vector<uint8_t> buffer;
+        std::vector<uint8_t> buf;
 
     public:
         Ros2UartReader(serial::Serial& bus)
             : serial(bus)
-            , buffer(Size)
+            , buf(Size)
         {
         }
 
@@ -30,15 +30,14 @@ namespace Udon
             }
             if (serial.available() >= static_cast<int>(Size))
             {
-                serial.read(buffer, Size);
-                std::cout << "read" << std::endl;
+                serial.read(buf, Size);
                 serial.flushInput();
             }
         }
 
         Udon::Optional<Message> getMessage() const
         {
-            return Udon::Unpack<Message>(buffer);
+            return Udon::Unpack<Message>(buf);
         }
 
         void show(char gap = '\t') const
@@ -55,7 +54,7 @@ namespace Udon
 
         void showRaw(char gap = '\t') const
         {
-            Udon::Show(buffer, gap);
+            Udon::Show(buf, gap);
         }
     };
 }    // namespace Udon
