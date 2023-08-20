@@ -18,7 +18,7 @@ namespace Udon
     public:
         Ros2UartReader(serial::Serial& bus)
             : serial(bus)
-            , buf(Size)
+            , buffer(Size)
         {
         }
 
