@@ -32,7 +32,7 @@ namespace Udon
             {
                 std::vector<uint8_t> buf(Size);
                 serial.read(buf, Size);
-                buffer = buf;
+                buffer = std::move(buf);
                 serial.flushInput();
             }
         }
