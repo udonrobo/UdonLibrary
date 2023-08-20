@@ -18,112 +18,61 @@
 
 #pragma once
 
-#include <Udon/Com/Message/PadPS5.hpp>
-#include <Udon/Stl/Optional.hpp>
+#include <Udon/Com/Pad/IPadPS5.hpp>
 
 namespace Udon
 {
 
-    template <typename DummyMessage>
     class SivPadPS5
+        : public IPadPS5
     {
-
-        Udon::Message::PadPS5 message = {};
-
-        size_t index = 0;
+        size_t index;
 
     public:
-        SivPadPS5() = default;
+        SivPadPS5()
+            : index()
+        {
+        }
 
         SivPadPS5(size_t index)
             : index(index)
         {
         }
 
-        explicit operator bool() const
-        {
-            return message.isConnected;
-        }
-
         void update()
         {
-
-            if (auto&& gamePad = Gamepad(index))
+            if (auto&& gamePad = s3d::Gamepad(index))
             {
-                message.isConnected = gamePad.isConnected();
-
-                message.triangle = gamePad.buttons.at(3).pressed();
-                message.circle   = gamePad.buttons.at(2).pressed();
-                message.cross    = gamePad.buttons.at(1).pressed();
-                message.square   = gamePad.buttons.at(0).pressed();
-
-                message.up    = gamePad.buttons.at(15).pressed();
-                message.right = gamePad.buttons.at(16).pressed();
-                message.down  = gamePad.buttons.at(17).pressed();
-                message.left  = gamePad.buttons.at(18).pressed();
-
-                message.l1 = gamePad.buttons.at(4).pressed();
-                message.r1 = gamePad.buttons.at(5).pressed();
-                message.l2 = gamePad.buttons.at(6).pressed();
-                message.r2 = gamePad.buttons.at(7).pressed();
-                message.l3 = gamePad.buttons.at(10).pressed();
-                message.r3 = gamePad.buttons.at(11).pressed();
-
-                message.create = gamePad.buttons.at(8).pressed();
-                message.option = gamePad.buttons.at(9).pressed();
-                message.touch  = gamePad.buttons.at(13).pressed();
-
-                message.mic = gamePad.buttons.at(14).pressed();
-
-                // -1.0 ~ 1.0 -> -127 ~ 127(int8_t)
-                const auto encodeStick = [](double value) -> int8_t
-                {
-                    return static_cast<int8_t>(value * 127);
-                };
-
-                message.analogRightX = +encodeStick(gamePad.axes.at(2));
-                message.analogRightY = -encodeStick(gamePad.axes.at(5));
-
-                message.analogLeftX = +encodeStick(gamePad.axes.at(0));
-                message.analogLeftY = -encodeStick(gamePad.axes.at(1));
+                IPadPS5::updateFromRawData(
+                    /* bool   isConnected  */ gamePad.isConnected(),
+                    /* bool   triangle     */ gamePad.buttons.at(3).pressed(),
+                    /* bool   circle       */ gamePad.buttons.at(2).pressed(),
+                    /* bool   cross        */ gamePad.buttons.at(1).pressed(),
+                    /* bool   square       */ gamePad.buttons.at(0).pressed(),
+                    /* bool   up           */ gamePad.buttons.at(15).pressed(),
+                    /* bool   right        */ gamePad.buttons.at(16).pressed(),
+                    /* bool   down         */ gamePad.buttons.at(17).pressed(),
+                    /* bool   left         */ gamePad.buttons.at(18).pressed(),
+                    /* bool   l1           */ gamePad.buttons.at(4).pressed(),
+                    /* bool   r1           */ gamePad.buttons.at(5).pressed(),
+                    /* bool   l2           */ gamePad.buttons.at(6).pressed(),
+                    /* bool   r2           */ gamePad.buttons.at(7).pressed(),
+                    /* bool   l3           */ gamePad.buttons.at(10).pressed(),
+                    /* bool   r3           */ gamePad.buttons.at(11).pressed(),
+                    /* bool   create       */ gamePad.buttons.at(8).pressed(),
+                    /* bool   option       */ gamePad.buttons.at(9).pressed(),
+                    /* bool   touch        */ gamePad.buttons.at(13).pressed(),
+                    /* bool   mic          */ gamePad.buttons.at(14).pressed(),
+                    /* bool   ps           */ false,    // TODO: 未実装
+                    /* double analogLeftX  */ +gamePad.axes.at(2) * 255,
+                    /* double analogLeftY  */ -gamePad.axes.at(5) * 255,
+                    /* double analogRightX */ +gamePad.axes.at(0) * 255,
+                    /* double analogRightY */ -gamePad.axes.at(1) * 255);
             }
             else
             {
-                message.isConnected = false;
-
-                message.triangle = false;
-                message.circle   = false;
-                message.cross    = false;
-                message.square   = false;
-
-                message.up    = false;
-                message.right = false;
-                message.down  = false;
-                message.left  = false;
-
-                message.l1 = false;
-                message.r1 = false;
-                message.l2 = false;
-                message.r2 = false;
-                message.l3 = false;
-                message.r3 = false;
-
-                message.create = false;
-                message.option = false;
-                message.touch  = false;
-
-                message.mic = false;
-
-                message.analogRightX = 0;
-                message.analogRightY = 0;
-                message.analogLeftX  = 0;
-                message.analogLeftY  = 0;
+                IPadPS5::clear();
             }
-        }
-
-        Udon::Optional<Message::PadPS5> getMessage() const
-        {
-            return message;
         }
     };
 }    // namespace Udon
