@@ -44,8 +44,6 @@ namespace Udon
 
         FlexCAN_T4<Bus, RX_SIZE_128, TX_SIZE_256> bus;
 
-        IntervalTimer writeTimer;
-
         constexpr static uint8_t SingleFrameSize = 8;
 
         using TxNodePtr = CanNode*;
@@ -133,20 +131,6 @@ namespace Udon
                     {
                         self->onReceive(msg);
                     });
-            }
-
-            // 送信開始
-            if (txNodes.size())
-            {
-                writeTimer.begin(
-                    []
-                    {
-                        if (self->txBuffer.size())
-                        {
-                            self->bus.write(self->txBuffer.pop());
-                        }
-                    },
-                    200);
             }
         }
 
@@ -258,11 +242,6 @@ namespace Udon
         /// @brief 受信コールバック
         void onReceive(const CAN_message_t& msg)
         {
-            //  Q 割り込み時にこのような処理を行うのは良くなこのような
-            // A この関数は割り込みコールバック関数なので、できるだけ短い処理を行う必要があります。
-            //  この関数内で行っている処理は、受信したメッセージをバッファに格納するだけなので問題ありません。
-            // Q いえ、IDの検索を行い、コールバックを呼び出しているので、処理時間が長くなる可能性があるのではないでしょうか？
-            
             auto rxNode = std::find_if(rxNodes.begin(), rxNodes.end(), [&msg](const RxNodePtr& rx)
                                        { return rx.node->id == msg.id; });
             if (rxNode == rxNodes.end())
@@ -291,6 +270,8 @@ namespace Udon
                 // シングルフレーム
                 rxNode->callback();    // シングルフレームの場合は即時コールバックを呼ぶ
             }
+
+            rxNode->node->transmitMs = millis();
         }
 
         /// @brief 送信処理
@@ -307,11 +288,11 @@ namespace Udon
                     [this, &msg](size_t size)
                     {
                         msg.len = SingleFrameSize;
-                        // txBuffer.push(msg);
                         while (not bus.write(msg))
                             ;
                         delayMicroseconds(200);
                     });
+                txNode->transmitMs = millis();
             }
         }
     };

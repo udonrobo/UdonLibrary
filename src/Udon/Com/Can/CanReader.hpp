@@ -72,15 +72,21 @@ namespace Udon
         /// @return メッセージ構造体(Optional)
         Udon::Optional<Message> getMessage() const
         {
-            return message;
+            if (*this)
+            {
+                return message;
+            }
+            else
+            {
+                return Udon::nullopt;
+            }
         }
 
         /// @brief 受信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
-            Udon::Show(node.id, gap);
-            if (message)
+            if (const auto message = getMessage())
             {
                 Udon::Show(*message, gap);
             }
