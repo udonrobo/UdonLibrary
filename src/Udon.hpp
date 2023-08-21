@@ -69,30 +69,29 @@
 //
 //-------------------------------------------------------------------
 
-// CAN
+// CAN通信
 #include <Udon/Com/Can.hpp>
 
-// UART
+// UART通信
 #include <Udon/Com/Uart.hpp>
 
-// I2c
+// I2c通信
 #include <Udon/Com/I2c.hpp>
 
-// im920
+// IM920
 #include <Udon/Com/Im920.hpp>
 
-// フォワーディング
+// フォワーディング / メッセージ転送
 #include <Udon/Com/Common/Forwarding.hpp>
 
-// 配列送受信
+// 配列受信
 #include <Udon/Com/Common/ArrayReader.hpp>
+
+// 配列送信
 #include <Udon/Com/Common/ArrayWriter.hpp>
 
 // シリアライズ
 #include <Udon/Com/Serialization.hpp>
-
-// コントローラー
-#include <Udon/Com/Pad/PadPS5.hpp>
 
 // 通信用構造体群
 #include <Udon/Com/Message.hpp>
