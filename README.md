@@ -1,6 +1,6 @@
 # UdonLibrary
 
-香川高専高松機械システム研究部 C++ ライブラリ
+<img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/85d70980-fc02-4f6a-82d2-da7cf2c1b7d6" height="200px" align="right"/><p>香川高専高松機械システム研究部 C++ ライブラリ</p>
 
 [![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml)
 [![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
