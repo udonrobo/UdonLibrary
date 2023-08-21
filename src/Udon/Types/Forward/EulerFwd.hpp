@@ -133,7 +133,7 @@ namespace Udon
         /// @brief 回転方向を修正したオイラー角を取得する
         /// @param direction 回転方向
         /// @return 修正後のオイラー角
-        Euler3D directionRevision(const Euler3D<bool>& direction)
+        Euler3D directionRevision(const Euler3D<bool>& direction) const noexcept
         {
             return {
                 roll * (direction.roll ? 1 : -1),
@@ -152,7 +152,7 @@ namespace Udon
 
 #ifdef ARDUINO
         /// @brief デバッグ出力
-        void show() const
+        void show() const noexcept
         {
             Serial.print(F("r: ")), Serial.print(roll), Serial.print('\t');
             Serial.print(F("p: ")), Serial.print(pitch), Serial.print('\t');

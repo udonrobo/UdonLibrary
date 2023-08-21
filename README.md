@@ -55,12 +55,12 @@
   ArduinoIDE はライブラリを置く専用のディレクトリがあるので、そこへクローンします。
 
   既定値: `~/Documents/Arduino/libraries`
-  
+
   見つからない場合: `ファイル > 環境設定 > スケッチブックの保存場所欄` + `/libraries`
-  
+
   ```sh
   cd ~/Documents/Arduino/libraries
-  git clone https://github.com/udonrobo/UdonLibrary.git --recursive
+  git clone --recursive https://github.com/udonrobo/UdonLibrary.git
   ./UdonLibrary/setup.sh
   ```
 
@@ -83,7 +83,7 @@
   プロジェクトの `lib` ディレクトリへクローンすることで追加できます。
 
   ```sh
-  git clone https://github.com/udonrobo/UdonLibrary.git --recursive
+  git clone --recursive https://github.com/udonrobo/UdonLibrary.git
   ./UdonLibrary/setup.sh
   ```
 
@@ -104,49 +104,49 @@
 
 - 追加
 
-   追加先が git で管理されている場合
+  追加先が git で管理されている場合
 
-   ```sh
-   # VisualStudioのプロジェクトディレクトリで実行
-   git submodule add https://github.com/udonrobo/UdonLibrary.git
-   git commit -m "add UdonLibrary"
-   ```
+  ```sh
+  # VisualStudioのプロジェクトディレクトリで実行
+  git submodule add https://github.com/udonrobo/UdonLibrary.git
+  git commit -m "add UdonLibrary"
+  ```
 
-   追加先が git で管理されていない場合
+  追加先が git で管理されていない場合
 
-   ```sh
-   # VisualStudioのプロジェクトディレクトリで実行
-   git clone https://github.com/udonrobo/UdonLibrary.git --recursive
-   ```
+  ```sh
+  # VisualStudioのプロジェクトディレクトリで実行
+  git clone --recursive https://github.com/udonrobo/UdonLibrary.git
+  ```
 
-   > 次のようなディレクトリ構成になっていれば OK です。(プロジェクトディレクトリへ追加した場合)
-   >
-   > ```sh
-   > Test   <-- ソリューションディレクトリ
-   > │  Test.sln
-   > │
-   > └─Test   <-- プロジェクトディレクトリ
-   >     │  Test.cpp
-   >     │  Test.vcxproj
-   >     │  Test.vcxproj.filters
-   >     │  Test.vcxproj.user
-   >     │
-   >     └─UdonLibrary   <--- うどん
-   >         ├─src
-   >         │  │  Udon.hpp
-   >         │  │
-   >         │  └─Udon
-   >         │      ├─
-   >         ...    ...
-   > ```
+  > 次のようなディレクトリ構成になっていれば OK です。(プロジェクトディレクトリへ追加した場合)
+  >
+  > ```sh
+  > Test   <-- ソリューションディレクトリ
+  > │  Test.sln
+  > │
+  > └─Test   <-- プロジェクトディレクトリ
+  >     │  Test.cpp
+  >     │  Test.vcxproj
+  >     │  Test.vcxproj.filters
+  >     │  Test.vcxproj.user
+  >     │
+  >     └─UdonLibrary   <--- うどん
+  >         ├─src
+  >         │  │  Udon.hpp
+  >         │  │
+  >         │  └─Udon
+  >         │      ├─
+  >         ...    ...
+  > ```
 
 - インクルードパス設定
 
-   インクルードパスを設定することで　`#include <Udon.hpp>`　のように記述できるようになります。
+  インクルードパスを設定することで `#include <Udon.hpp>` のように記述できるようになります。
 
-   ソリューションエクスプローラ > プロジェクトを右クリック > プロパティ > VC++ディレクトリ > インクルードディレクトリの項目にある `↓` > 編集 > 新しい行の追加(フォルダアイコンボタン)
+  ソリューションエクスプローラ > プロジェクトを右クリック > プロパティ > VC++ディレクトリ > インクルードディレクトリの項目にある `↓` > 編集 > 新しい行の追加(フォルダアイコンボタン)
 
-   新しい項目に `$(ProjectDir)\UdonLibrary\src\` を追加します。`$(ProjectDir)` は プロジェクトディレクトリのパスを表すマクロです。ソリューションディレクトリへ追加する場合 `$(SolutionDir)` を使用します。
+  新しい項目に `$(ProjectDir)\UdonLibrary\src\` を追加します。`$(ProjectDir)` は プロジェクトディレクトリのパスを表すマクロです。ソリューションディレクトリへ追加する場合 `$(SolutionDir)` を使用します。
 
 - 追加している様子 (submodule 使用時)
 
@@ -195,6 +195,12 @@ void setup() {}
 void loop() {}
 ```
 
+```cpp
+#include <Udon.hpp>
+
+int main() {}
+```
+
 必要なヘッダーだけ個別にインクルードしたい場合 `UdonFwd.hpp` をインクルードします。ArduinoIDE 以外で使用する場合 `UdonFwd.hpp` のインクルードは不要です。
 
 ```cpp
@@ -205,14 +211,20 @@ void setup() {}
 void loop() {}
 ```
 
+```cpp
+#include <Udon/Types/Vector2D.hpp>  // Udon::Vec2
+
+int main() {}
+```
+
 各機能の使い方の詳細は次のドキュメント、[example](./example/) にあるスケッチ例を参照してください。
 
 ## Documents
 
 - 通信
-  - [CAN通信](./docs/Communication/CAN.md)
-  - [I2C通信](./docs/Communication/I2C.md)
-  - [UART通信](./docs/Communication/UART.md)
+  - [CAN 通信](./docs/Communication/CAN.md)
+  - [I2C 通信](./docs/Communication/I2C.md)
+  - [UART 通信](./docs/Communication/UART.md)
   - [IM920](./docs/Communication/IM920.md)
   - [コントローラ](./docs/Communication/Pad.md)
   - [シリアライザ](./docs/Communication/Serialization.md)
@@ -220,6 +232,36 @@ void loop() {}
   - [色空間](./docs/Types/Color.md)
   - [二次元ベクトル](./docs/Types/Vector2D.md)
   - [三次元ベクトル](./docs/Types/Vector3D.md)
+  - [オイラー角](./docs/Types/Eular.md)
+  - [クオータニオン](./docs/Types/Quaternion.md)
+  - [固定ビット長浮動小数点型](./docs/Types/Float.md)
 - 開発者用
   - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
   - [自動テスト](./docs/Developer/CI.md)
+
+## Acknowledgments
+
+本ライブラリは以下のオープンソースプロジェクトを使用しています。
+
+| プロジェクト                                                        | ライセンス                 | 著作権                                                             |
+| ------------------------------------------------------------------- | -------------------------- | ------------------------------------------------------------------ |
+| [Arduino](https://github.com/arduino/Arduino)                       | GNU General Public License | Copyright (c) 1989 1991 Free Software Foundation Inc.              |
+| [FlexCAN_T4](https://github.com/tonton81/FlexCAN_T4)                | MIT License                | Copyright (c) 2019 Antonio Brewer                                  |
+| [arduino-mcp2515](https://github.com/autowp/arduino-mcp2515)        | MIT License                | Copyright (c) 2013 Seeed Technology Inc. Copyright (c) 2016 Dmitry |
+| [Adafruit_BusIO](https://github.com/adafruit/Adafruit_BusIO)        | MIT License                | Copyright (c) 2017 Adafruit Industries                             |
+| [Adafruit_Sensor](https://github.com/adafruit/Adafruit_Sensor)      | Apache-2.0 license         |                                                                    |
+| [Adafruit_BNO055](https://github.com/adafruit/Adafruit_BNO055)      | MIT License                | Copyright (c) 2018 Adafruit Industries                             |
+| [USB_Host_Shield_2.0](https://github.com/felis/USB_Host_Shield_2.0) | GNU General Public License |                                                                    |
+| [OpenSiv3D](https://github.com/Siv3D/OpenSiv3D)                     | MIT License                | Copyright (c) 2008-2023 Ryo Suzuki, 2016-2023 OpenSiv3D Project    |
+| [rclcpp](https://github.com/ros2/rclcpp)                            | Apache-2.0 license         |                                                                    |
+| [compile-sketches](https://github.com/arduino/compile-sketches)     | GPL-3.0 license            | Copyright (c) 2007 Free Software Foundation Inc.                   |
+| [GoogleTest](https://github.com/google/googletest)                  | BSD-3-Clause license       | Copyright (c) 2008 Google Inc.                                     |
+
+また本ライブラリの作成において、以下のオープンソースプロジェクトを参考にしました。
+
+| プロジェクト                                    | ライセンス           | 著作権                                                          |
+| ----------------------------------------------- | -------------------- | --------------------------------------------------------------- |
+| [OpenSiv3D](https://github.com/Siv3D/OpenSiv3D) | MIT License          | Copyright (c) 2008-2023 Ryo Suzuki, 2016-2023 OpenSiv3D Project |
+| [cereal](https://github.com/USCiLab/cereal)     | BSD-3-Clause license | Copyright (c) 2013-2022 Randolph Voorhies, Shane Grant          |
+| [boost](https://github.com/boostorg/boost)      | BSL-1.0 license      |                                                                 |
+| [Unity](https://unity.com/ja)                   | MIT License          | Copyright (c) 2019 Unity Technologies Copyright                 |
