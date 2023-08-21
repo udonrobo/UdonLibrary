@@ -30,7 +30,7 @@
 ### 通信イメージ
 
 ```mermaid
-flowchart
+flowchart LR
     メインノード --CAN--> ロガーノード
     メインノード <--CAN-->
     コントローラーノード --CAN--> ロガーノード
