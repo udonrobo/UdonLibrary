@@ -1,6 +1,6 @@
 # UdonLibrary
 
-<img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/85d70980-fc02-4f6a-82d2-da7cf2c1b7d6" height="200px" align="right"/>
+<img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/a2536564-4f7e-452f-aea4-c76ecd03164b" height="200px" align="right"/>
 
 香川高専高松機械システム研究部 C++ ライブラリ
 
