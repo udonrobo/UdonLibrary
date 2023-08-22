@@ -1,6 +1,7 @@
 # I2C 通信
 
-## Description
+<details>
+<summary> I2C 通信について </summary>
 
 複数のデバイス間で通信を行う際の通信方式
 
@@ -25,11 +26,13 @@
 ### 通信イメージ
 
 ```mermaid
-flowchart
+flowchart LR
     マスターマイコン --I2C--> 1[モータースレーブ]
     マスターマイコン --I2C--> 2[モータースレーブ]
     マスターマイコン <--I2C--> コントローラースレーブ
 ```
+
+</details>
 
 ## Usage
 
@@ -38,8 +41,7 @@ I2C 通信クラスは、通信バスクラス、マスター側送受信クラ�
 ### インクルード
 
 ```cpp
-#include <Udon.hpp>
-// or
+
 #include <Udon/Com/I2c.hpp>
 ```
 

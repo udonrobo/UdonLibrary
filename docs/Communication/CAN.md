@@ -1,6 +1,7 @@
 # CAN 通信
 
-## Description
+<details>
+<summary> CAN 通信について </summary>
 
 複数のデバイス間で通信を行う際の通信方式
 
@@ -29,14 +30,16 @@
 ### 通信イメージ
 
 ```mermaid
-flowchart
+flowchart LR
     メインノード --CAN--> ロガーノード
-    メインノード <--CAN--> 
+    メインノード <--CAN-->
     コントローラーノード --CAN--> ロガーノード
     メインノード --CAN--> 1[モーターノード]
     メインノード --CAN--> 2[モーターノード]
     2[モーターノード] --CAN--> ロガーノード
 ```
+
+</details>
 
 ## Usage
 
@@ -45,8 +48,7 @@ CAN 通信クラスは、通信バスクラス、送受信ノードクラスか�
 ### インクルード
 
 ```cpp
-#include <Udon.hpp>
-// or
+
 #include <Udon/Com/Can.hpp>
 ```
 

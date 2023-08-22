@@ -111,8 +111,7 @@ OpenSiv3D でシミュレートする
 ```cpp
 #include <Siv3D.hpp>
 
-#include <Udon/Com/Pad/PadPS5.hpp>
-#include <Udon/Siv3d/SivPadPS5.hpp>
+#include <Udon/Com/Pad/SivPadPS5.hpp>
 #include <Udon/Algorithm/SteerOptimizer.hpp>
 
 void Main()

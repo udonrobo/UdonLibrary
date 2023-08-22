@@ -9,7 +9,7 @@
 //
 //-------------------------------------------------------------------
 //
-//    PS5コントローラー受信クラス スケッチ例 (I2C)
+//    PS5コントローラー受信クラス スケッチ例 (CAN)
 //
 //    Controller --[Bluetooth]--> USBHost --[SPI]--> Sender --> Master
 //                                                              ^^^^^^
@@ -17,11 +17,11 @@
 //-------------------------------------------------------------------
 
 #include <UdonFwd.hpp>
-#include <Udon/Com/I2c.hpp>
+#include <Udon/Com/Can.hpp>
 
-Udon::I2cBus bus{ Wire };
+Udon::CanBusTeensy<CAN1> bus;
 
-Udon::I2cPadPS5 pad{ bus, 6 };
+Udon::CanPadPS5 pad{ bus, 6 };
 
 void setup()
 {

@@ -30,8 +30,9 @@ namespace Udon
             }
             if (serial.available() >= static_cast<int>(Size))
             {
-                serial.read(buffer, Size);
-                std::cout << "read" << std::endl;
+                std::vector<uint8_t> buf;
+                serial.read(buf, Size);
+                buffer = std::move(buf);
                 serial.flushInput();
             }
         }
@@ -55,7 +56,11 @@ namespace Udon
 
         void showRaw(char gap = '\t') const
         {
-            Udon::Show(buffer, gap);
+            for (int i = 0; i < buffer.size(); i++)
+            {
+                std::cout << static_cast<int>(buffer[i]) << " ";
+            }
+            std::cout << std::endl;
         }
     };
 }    // namespace Udon
