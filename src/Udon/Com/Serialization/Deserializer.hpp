@@ -30,7 +30,7 @@
 #include <Udon/Types/Float.hpp>
 #include <Udon/Utility/Parsable.hpp>
 #include <Udon/Utility/Concept.hpp>
-#include <Udon/Com/Serialization/Traits.hpp>
+#include <Udon/Traits/HasMember.hpp>
 
 namespace Udon
 {
@@ -113,14 +113,14 @@ namespace Udon
         }
 
         /// @brief メンバ関数 accessor<Acc>(Acc&) が存在する型
-        template <typename Accessible, typename std::enable_if<Udon::Details::Accessible<Accessible>::value, std::nullptr_t>::type* = nullptr>
+        template <typename Accessible, typename std::enable_if<Udon::Detail::Accessible<Accessible>::value, std::nullptr_t>::type* = nullptr>
         inline void deserialize(Accessible& rhs)
         {
             rhs.accessor(*this);
         }
 
         /// @brief グローバル関数に Accessor<Acc>(Acc&, Accessible&) が存在する型
-        template <typename Accessible, typename std::enable_if<Udon::Details::AccessorCallable<Accessible>::value, std::nullptr_t>::type* = nullptr>
+        template <typename Accessible, typename std::enable_if<Udon::Detail::AccessorCallable<Accessible>::value, std::nullptr_t>::type* = nullptr>
         inline void deserialize(Accessible& rhs)
         {
             Accessor(*this, rhs);

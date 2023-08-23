@@ -270,7 +270,7 @@ namespace Udon
                 return;
             }
 
-            Udon::Details::Unpacketize(
+            Udon::Detail::Unpacketize(
                 { msg.buf },
                 { rxNode->node->data, rxNode->node->length },
                 SingleFrameSize);
@@ -300,7 +300,7 @@ namespace Udon
             {
                 CAN_message_t msg;
                 msg.id = txNode->id;
-                Udon::Details::Packetize(
+                Udon::Detail::Packetize(
                     { txNode->data, txNode->length },
                     { msg.buf },
                     SingleFrameSize,

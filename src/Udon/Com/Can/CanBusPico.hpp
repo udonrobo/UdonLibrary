@@ -170,7 +170,7 @@ namespace Udon
                 {
                     return;
                 }
-                Udon::Details::Unpacketize(
+                Udon::Detail::Unpacketize(
                     { const_cast<can_frame&>(msg).data },
                     { rxNode->node->data, rxNode->node->length },
                     SingleFrameSize);
@@ -206,7 +206,7 @@ namespace Udon
                 can_frame msg{};
                 msg.can_id  = node->id;
                 msg.can_dlc = 8;
-                Udon::Details::Packetize(
+                Udon::Detail::Packetize(
                     { node->data, node->length },
                     { msg.data },
                     SingleFrameSize,

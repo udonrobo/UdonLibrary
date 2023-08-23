@@ -74,7 +74,7 @@
   const Udon::Pos  moveInfo    = pad.getMoveInfo();
   ```
 
-## Details
+## Detail
 
 ボタンを取得する関数からは、ボタンの状態を格納する構造体である `Udon::Button` オブジェクトが取得できます。
 

@@ -173,7 +173,7 @@ void Accessor(Acc& acc, Vec2& rhs)
 
   `Capacity` 関数を外部に定義するときに使用します。引数は可変長引数です。
 
-## Details
+## Detail
 
 - `UDON_PARSABLE`
 
