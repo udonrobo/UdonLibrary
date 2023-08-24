@@ -13,7 +13,6 @@
 //
 //-------------------------------------------------------------------
 
-
 #pragma once
 
 #include <Udon/Stl/EnableSTL.hpp>
@@ -23,6 +22,7 @@
 #include <Udon/Com/Message/Motor.hpp>
 #include <Udon/Traits/MaybeInvoke.hpp>
 
+#include <Udon/Com/Traits.hpp>
 
 namespace Udon
 {
@@ -65,7 +65,10 @@ namespace Udon
 
             const auto prev = getCount();
 
-            count = reader.getMessage() * (direction ? 1 : -1);
+            if (const auto countOpt = reader.getMessage())
+            {
+                count = countOpt->count * (direction ? 1 : -1);
+            }
 
             const auto curr = getCount();
 
