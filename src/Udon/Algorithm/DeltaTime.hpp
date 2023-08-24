@@ -56,5 +56,5 @@ namespace Udon
         {
             return getDeltaTimeMs() / 1000.;
         }
-    }
+    };
 }    // namespace Udon
