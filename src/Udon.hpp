@@ -85,10 +85,10 @@
 #include <Udon/Com/Common/Forwarding.hpp>
 
 // 配列受信
-#include <Udon/Com/Common/ArrayReader.hpp>
+#include <Udon/Com/Common/ArrayElementReader.hpp>
 
 // 配列送信
-#include <Udon/Com/Common/ArrayWriter.hpp>
+#include <Udon/Com/Common/ArrayElementWriter.hpp>
 
 // シリアライズ
 #include <Udon/Com/Serialization.hpp>
@@ -121,6 +121,9 @@
 //    センサー / sensor
 //
 //-------------------------------------------------------------------
+
+// 通信経由エンコーダー
+#include <Udon/Sensor/Encoder.hpp>
 
 // IMU / 慣性計測装置
 #include <Udon/Sensor/Imu.hpp>
