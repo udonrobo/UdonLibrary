@@ -160,7 +160,7 @@
 // 固定長浮動小数点型
 #include <Udon/Types/Float.hpp>
 
-// 直交座標系
+// 極座標系
 #include <Udon/Types/Polar.hpp>
 
 // ロボットの位置
