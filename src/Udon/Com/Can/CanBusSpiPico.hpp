@@ -62,20 +62,19 @@ namespace Udon
                   /* uint32_t    _SPI_CLOCK */ spiClock)
         {
         }
-
         /// @brief 通信開始
         /// @remark SPI通信も開始します。
         /// @param intPin            割り込みピン
-        /// @param txPin             送信ピン
-        /// @param rxPin             受信ピン
+        /// @param txPin             送信ピン (MOSI)
+        /// @param rxPin             受信ピン (MISO)
         /// @param sckPin            クロックピン
         /// @param transceiverClock  CANトランシーバーのクロック周波数
         /// @param canSpeed          CAN通信速度
         void begin(
             uint8_t   intPin,
-            uint8_t   txPin,
-            uint8_t   rxPin,
-            uint8_t   sckPin,
+            uint8_t   txPin            = PICO_DEFAULT_SPI_TX_PIN,
+            uint8_t   rxPin            = PICO_DEFAULT_SPI_RX_PIN,
+            uint8_t   sckPin           = PICO_DEFAULT_SPI_SCK_PIN,
             CAN_CLOCK transceiverClock = MCP_16MHZ,
             CAN_SPEED canSpeed         = CAN_1000KBPS)
         {
@@ -87,7 +86,7 @@ namespace Udon
                 /* pin_size_t tx   */ txPin
             };    // todo: 開始するために一時的に生成するのはちょっとキモイ
             spi.begin();
-            begin(intPin, transceiverClock, canSpeed);
+            beginCanOnly(intPin, transceiverClock, canSpeed);
         }
 
         /// @brief CAN通信のみ開始する
@@ -96,7 +95,7 @@ namespace Udon
         /// @param intPin            割り込みピン
         /// @param transceiverClock  CANトランシーバーのクロック周波数
         /// @param canSpeed          CAN通信速度
-        void begin(uint8_t intPin, CAN_CLOCK transceiverClock = MCP_16MHZ, CAN_SPEED canSpeed = CAN_1000KBPS)
+        void beginCanOnly(uint8_t intPin, CAN_CLOCK transceiverClock = MCP_16MHZ, CAN_SPEED canSpeed = CAN_1000KBPS)
         {
             bus.reset();
 
@@ -135,7 +134,7 @@ namespace Udon
 
             bus.setBitrate(canSpeed, transceiverClock);
 
-            if (rxNodes.size() && not txNodes.size())
+            if (rxNodes && not txNodes)
                 bus.setListenOnlyMode();    // 受信のみの場合は受信モードに設定 (送受信モードのマイコンが再起動したとき、全ノードが停止ししたため。)
             else
                 bus.setNormalMode();
@@ -157,9 +156,10 @@ namespace Udon
         /// @param transmitIntervalMs 送信間隔 [ms]
         void update(uint32_t transmitIntervalMs = 5000)
         {
-            if (txNodes.size() && micros() - timestampUs >= transmitIntervalMs)
+            if (txNodes && micros() - timestampUs >= transmitIntervalMs)
             {
                 onTransmit();
+                timestampUs = micros();
             }
         }
 

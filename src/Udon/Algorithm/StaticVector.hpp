@@ -85,6 +85,11 @@ namespace Udon
             }
         }
 
+        explicit operator bool() const
+        {
+            return m_size > 0;
+        }
+
         size_type size() const
         {
             return m_size;

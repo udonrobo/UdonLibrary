@@ -68,6 +68,7 @@ namespace Udon
         Udon::RingBuffer<CAN_message_t, 256> txBuffer;
 
         uint32_t transmitUs = 0;
+        uint32_t receiveMs  = 0;
 
         static CanBusTeensy* self;    // コールバック関数から自身のインスタンスを参照するためのポインタ (クラステンプレートによってインスタンスごとに別のstatic変数が生成される)
 
@@ -92,14 +93,14 @@ namespace Udon
 
         /// @brief 通信開始
         /// @param baudrate 通信レート
-        void begin(const uint32_t baudrate = 1000000)
+        void begin(const uint32_t baudrate = 1'000'000)
         {
             // バス初期化
             bus.begin();
             bus.setBaudRate(baudrate);
 
             // 受信開始
-            if (rxNodes.size())
+            if (rxNodes)
             {
                 // 受信フィルタ設定 (ノード数が8以下の場合のみ)
                 if (rxNodes.size() <= 8)
@@ -145,7 +146,7 @@ namespace Udon
         /// @param transmitIntervalMs 送信間隔 [ms]
         void update(uint32_t transmissionIntervalUs = 5000)
         {
-            if (txNodes.size() && micros() - transmitUs >= transmissionIntervalUs)
+            if (txNodes && micros() - transmitUs >= transmissionIntervalUs)
             {
                 onTransmit();
                 transmitUs = micros();
@@ -154,7 +155,12 @@ namespace Udon
 
         explicit operator bool() const
         {
-            return micros() - transmitUs < 100000;
+            if (rxNodes)
+                return millis() - receiveMs < 100;
+            else if (txNodes)
+                return micros() - transmitUs < 1'000'00;
+            else
+                return false;
         }
 
         /// @brief バス情報を表示する
@@ -272,10 +278,10 @@ namespace Udon
             else
             {
                 // シングルフレーム
-                rxNode->callback(); 
+                rxNode->callback();
             }
 
-            rxNode->node->transmitMs = millis();
+            receiveMs = rxNode->node->transmitMs = millis();
         }
 
         /// @brief 送信処理
