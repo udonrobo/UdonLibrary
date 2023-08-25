@@ -27,16 +27,13 @@ namespace Udon
     template <typename Message>
     class CanReader
     {
-
-        ICanBus& bus;
-
-        uint8_t buffer[Udon::CapacityWithChecksum<Message>()];
-
-        CanNode node;
-
-        Udon::Optional<Message> message;
-
     public:
+        /// @brief 受信メッセージ型
+        using MessageType = Message;
+
+        /// @brief 受信バッファサイズ
+        static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
+
         /// @brief コンストラクタ
         /// @param bus I2cバス
         /// @param id 信号識別ID
@@ -70,7 +67,7 @@ namespace Udon
 
         /// @brief メッセージ構造体を取得
         /// @return メッセージ構造体(Optional)
-        Udon::Optional<Message> getMessage() const
+        Udon::Optional<MessageType> getMessage() const
         {
             if (*this)
             {
@@ -114,10 +111,18 @@ namespace Udon
                 [](void* p)
                 {
                     auto self     = static_cast<CanReader*>(p);
-                    self->message = Udon::Unpack<Message>(self->node.data, self->node.length);
+                    self->message = Udon::Unpack<MessageType>(self->node.data, self->node.length);
                 },
                 this);
         }
+
+        ICanBus& bus;
+
+        uint8_t buffer[Size];
+
+        CanNode node;
+
+        Udon::Optional<MessageType> message;
     };
 
 }    // namespace Udon

@@ -45,7 +45,8 @@ namespace Udon
 
         Udon::RingBuffer<can_frame, 256> txBuffer;
 
-        uint32_t timestampUs = 0;
+        uint32_t transmitUs = 0;
+        uint32_t receiveMs  = 0;
 
     public:
         /// @brief コンストラクタ
@@ -147,19 +148,24 @@ namespace Udon
         }
 
         /// @brief バスの有効性を取得
-        operator bool() const
+        explicit operator bool() const override
         {
-            return true;
+            if (rxNodes)
+                return millis() - receiveMs < 100;
+            else if (txNodes)
+                return micros() - transmitUs < 100000;
+            else
+                return false;
         }
 
         /// @brief バス更新
         /// @param transmitIntervalMs 送信間隔 [ms]
         void update(uint32_t transmitIntervalMs = 5000)
         {
-            if (txNodes && micros() - timestampUs >= transmitIntervalMs)
+            if (txNodes && micros() - transmitUs >= transmitIntervalMs)
             {
                 onTransmit();
-                timestampUs = micros();
+                transmitUs = micros();
             }
         }
 
@@ -284,7 +290,7 @@ namespace Udon
                 rxNode->callback();
             }
 
-            rxNode->node->transmitMs = millis();
+            receiveMs = rxNode->node->transmitMs = millis();
         }
         void onTransmit()
         {

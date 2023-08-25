@@ -153,12 +153,12 @@ namespace Udon
             }
         }
 
-        explicit operator bool() const
+        explicit operator bool() const override
         {
             if (rxNodes)
                 return millis() - receiveMs < 100;
             else if (txNodes)
-                return micros() - transmitUs < 1'000'00;
+                return micros() - transmitUs < 100000;
             else
                 return false;
         }

@@ -27,14 +27,13 @@ namespace Udon
     template <typename Message>
     class CanWriter
     {
-
-        ICanBus& bus;
-
-        uint8_t buffer[Udon::CapacityWithChecksum<Message>()];
-
-        CanNode node;
-
     public:
+        /// @brief 受信メッセージ型
+        using MessageType = Message;
+
+        /// @brief 受信バッファサイズ
+        static constexpr size_t Size = Udon::CapacityWithChecksum<MessageType>();
+
         /// @param id 信号識別ID
         CanWriter(ICanBus& bus, const uint32_t id)
             : bus{ bus }
@@ -85,6 +84,13 @@ namespace Udon
                 Udon::Show(node.data[i], gap);
             }
         }
+
+    private:
+        ICanBus& bus;
+
+        uint8_t buffer[Size];
+
+        CanNode node;
     };
 
 }    // namespace Udon
