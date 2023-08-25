@@ -1,51 +1,18 @@
-#pragma once
+#ifndef _MCP2515_H_
+#define _MCP2515_H_
 
-#if defined(ARDUINO_ARCH_RP2040)
+#include "can.h"
 
-#include <stdint.h>
-#include <SPI.h>
+#include <hardware/spi.h>
+#include <pico/time.h>
+#include <pico/stdlib.h>
+#include <boards/pico.h>
 
-typedef unsigned char __u8;
-typedef unsigned short __u16;
-typedef unsigned long __u32;
-
-/* special address description flags for the CAN_ID */
-#define CAN_EFF_FLAG 0x80000000UL /* EFF/SFF is set in the MSB */
-#define CAN_RTR_FLAG 0x40000000UL /* remote transmission request */
-#define CAN_ERR_FLAG 0x20000000UL /* error message frame */
-
-/* valid bits in CAN ID for frame formats */
-#define CAN_SFF_MASK 0x000007FFUL /* standard frame format (SFF) */
-#define CAN_EFF_MASK 0x1FFFFFFFUL /* extended frame format (EFF) */
-#define CAN_ERR_MASK 0x1FFFFFFFUL /* omit EFF, RTR, ERR flags */
+#include <cstring>
 
 /*
- * Controller Area Network Identifier structure
- *
- * bit 0-28 : CAN identifier (11/29 bit)
- * bit 29   : error message frame flag (0 = data frame, 1 = error message)
- * bit 30   : remote transmission request flag (1 = rtr frame)
- * bit 31   : frame format flag (0 = standard 11 bit, 1 = extended 29 bit)
+ *  Speed 8M
  */
-typedef __u32 canid_t;
-
-#define CAN_SFF_ID_BITS     11
-#define CAN_EFF_ID_BITS     29
-
-/* CAN payload length and DLC definitions according to ISO 11898-1 */
-#define CAN_MAX_DLC 8
-#define CAN_MAX_DLEN 8
-
-struct can_frame {
-    canid_t can_id;  /* 32 bit CAN_ID + EFF/RTR/ERR flags */
-    __u8    can_dlc; /* frame payload length in byte (0 .. CAN_MAX_DLEN) */
-    __u8    data[CAN_MAX_DLEN] __attribute__((aligned(8)));
-};
-
-
-/*
-    Speed 8M
-*/
 #define MCP_8MHz_1000kBPS_CFG1 (0x00)
 #define MCP_8MHz_1000kBPS_CFG2 (0x80)
 #define MCP_8MHz_1000kBPS_CFG3 (0x80)
@@ -103,8 +70,8 @@ struct can_frame {
 #define MCP_8MHz_5kBPS_CFG3 (0x87)
 
 /*
-    speed 16M
-*/
+ *  speed 16M
+ */
 #define MCP_16MHz_1000kBPS_CFG1 (0x00)
 #define MCP_16MHz_1000kBPS_CFG2 (0xD0)
 #define MCP_16MHz_1000kBPS_CFG3 (0x82)
@@ -162,8 +129,8 @@ struct can_frame {
 #define MCP_16MHz_5kBPS_CFG3 (0x87)
 
 /*
-    speed 20M
-*/
+ *  speed 20M
+ */
 #define MCP_20MHz_1000kBPS_CFG1 (0x00)
 #define MCP_20MHz_1000kBPS_CFG2 (0xD9)
 #define MCP_20MHz_1000kBPS_CFG3 (0x82)
@@ -505,12 +472,13 @@ private:
         { MCP_RXB1CTRL, MCP_RXB1SIDH, MCP_RXB1DATA, CANINTF_RX1IF }
     };
 
-    uint8_t  SPICS;
-    uint32_t SPI_CLOCK;
+    spi_inst_t* SPI_CHANNEL;
+    uint8_t     SPI_CS_PIN;
+    uint32_t    SPI_CLOCK;
 
 private:
-    void startSPI();
-    void endSPI();
+    inline void startSPI();
+    inline void endSPI();
 
     ERROR setMode(const CANCTRL_REQOP_MODE mode);
 
@@ -523,7 +491,10 @@ private:
     void prepareId(uint8_t* buffer, const bool ext, const uint32_t id);
 
 public:
-    MCP2515(uint8_t CS, uint8_t TX, uint8_t RX, uint8_t SCK, uint32_t _SPI_CLOCK);
+    MCP2515(
+        spi_inst_t* CHANNEL    = spi0,
+        uint8_t     CS_PIN     = PICO_DEFAULT_SPI_CSN_PIN,
+        uint32_t    _SPI_CLOCK = DEFAULT_SPI_CLOCK);
     ERROR   reset(void);
     ERROR   setConfigMode();
     ERROR   setListenOnlyMode();
@@ -555,39 +526,50 @@ public:
     uint8_t errorCountTX(void);
 };
 
-
-
-inline MCP2515::MCP2515(uint8_t CS, uint8_t TX, uint8_t RX, uint8_t SCK, uint32_t _SPI_CLOCK)
+inline MCP2515::MCP2515(spi_inst_t* CHANNEL, uint8_t CS_PIN, uint32_t SPI_CLOCK)
 {
-    SPI.setCS(CS);
-    SPI.setTX(TX);
-    SPI.setRX(RX);
-    SPI.setSCK(SCK);
-    SPICS     = CS;
-    SPI_CLOCK = _SPI_CLOCK;
-    pinMode(SPICS, OUTPUT);
+    this->SPI_CHANNEL = CHANNEL;
+    this->SPI_CLOCK   = SPI_CLOCK;
+    spi_init(this->SPI_CHANNEL, SPI_CLOCK);
+
+    spi_set_format(this->SPI_CHANNEL, 8, SPI_CPOL_0, SPI_CPHA_0, SPI_MSB_FIRST);
+
+    this->SPI_CS_PIN = CS_PIN;
+    gpio_init(this->SPI_CS_PIN);
+    gpio_set_dir(this->SPI_CS_PIN, GPIO_OUT);
+
     endSPI();
 }
 
 inline void MCP2515::startSPI()
 {
-    SPI.beginTransaction(SPISettings(SPI_CLOCK, MSBFIRST, SPI_MODE0));
-    digitalWrite(SPICS, LOW);
+    //   SPI.beginTransaction(SPISettings(SPI_CLOCK, MSBFIRST, SPI_MODE0));
+    //   digitalWrite(SPI_CS_PIN, LOW);
+    asm volatile("nop \n nop \n nop");
+    gpio_put(this->SPI_CS_PIN, 0);
+    asm volatile("nop \n nop \n nop");
 }
 
 inline void MCP2515::endSPI()
 {
-    digitalWrite(SPICS, HIGH);
-    SPI.endTransaction();
+    //   digitalWrite(SPI_CS_PIN, HIGH);
+    //   SPI.endTransaction();
+    asm volatile("nop \n nop \n nop");
+    gpio_put(this->SPI_CS_PIN, 1);
+    asm volatile("nop \n nop \n nop");
 }
 
 inline MCP2515::ERROR MCP2515::reset(void)
 {
     startSPI();
-    SPI.transfer(INSTRUCTION_RESET);
+
+    uint8_t instruction = INSTRUCTION_RESET;
+    spi_write_blocking(this->SPI_CHANNEL, &instruction, 1);
+
     endSPI();
 
-    delay(10);
+    // Depends on oscillator & capacitors used
+    sleep_ms(10);
 
     uint8_t zeros[14];
     memset(zeros, 0, sizeof(zeros));
@@ -639,9 +621,17 @@ inline MCP2515::ERROR MCP2515::reset(void)
 inline uint8_t MCP2515::readRegister(const REGISTER reg)
 {
     startSPI();
-    SPI.transfer(INSTRUCTION_READ);
-    SPI.transfer(reg);
-    uint8_t ret = SPI.transfer(0x00);
+
+    uint8_t data[2] = {
+        INSTRUCTION_READ,
+        reg
+    };
+
+    spi_write_blocking(this->SPI_CHANNEL, data, 2);
+
+    uint8_t ret;
+    spi_read_blocking(this->SPI_CHANNEL, 0x00, &ret, 1);
+
     endSPI();
 
     return ret;
@@ -650,55 +640,76 @@ inline uint8_t MCP2515::readRegister(const REGISTER reg)
 inline void MCP2515::readRegisters(const REGISTER reg, uint8_t values[], const uint8_t n)
 {
     startSPI();
-    SPI.transfer(INSTRUCTION_READ);
-    SPI.transfer(reg);
-    // mcp2515 has auto-increment of address-pointer
-    for (uint8_t i = 0; i < n; i++)
-    {
-        values[i] = SPI.transfer(0x00);
-    }
+
+    uint8_t data[2] = {
+        INSTRUCTION_READ,
+        reg
+    };
+    spi_write_blocking(this->SPI_CHANNEL, data, 2);
+
+    spi_read_blocking(this->SPI_CHANNEL, 0x00, values, n);
+
     endSPI();
 }
 
 inline void MCP2515::setRegister(const REGISTER reg, const uint8_t value)
 {
     startSPI();
-    SPI.transfer(INSTRUCTION_WRITE);
-    SPI.transfer(reg);
-    SPI.transfer(value);
+
+    uint8_t data[3] = {
+        INSTRUCTION_WRITE,
+        reg,
+        value
+    };
+    spi_write_blocking(this->SPI_CHANNEL, data, 3);
+
     endSPI();
 }
 
 inline void MCP2515::setRegisters(const REGISTER reg, const uint8_t values[], const uint8_t n)
 {
     startSPI();
-    SPI.transfer(INSTRUCTION_WRITE);
-    SPI.transfer(reg);
-    for (uint8_t i = 0; i < n; i++)
-    {
-        SPI.transfer(values[i]);
-    }
+
+    uint8_t data[2] = {
+        INSTRUCTION_WRITE,
+        reg
+    };
+    spi_write_blocking(this->SPI_CHANNEL, data, 2);
+
+    spi_write_blocking(this->SPI_CHANNEL, values, n);
+
     endSPI();
 }
 
 inline void MCP2515::modifyRegister(const REGISTER reg, const uint8_t mask, const uint8_t data)
 {
     startSPI();
-    SPI.transfer(INSTRUCTION_BITMOD);
-    SPI.transfer(reg);
-    SPI.transfer(mask);
-    SPI.transfer(data);
+
+    uint8_t d[4] = {
+        INSTRUCTION_BITMOD,
+        reg,
+        mask,
+        data
+    };
+
+    spi_write_blocking(this->SPI_CHANNEL, d, 4);
+
     endSPI();
 }
 
 inline uint8_t MCP2515::getStatus(void)
 {
     startSPI();
-    SPI.transfer(INSTRUCTION_READ_STATUS);
-    uint8_t i = SPI.transfer(0x00);
+
+    uint8_t instruction = INSTRUCTION_READ_STATUS;
+    spi_write_blocking(this->SPI_CHANNEL, &instruction, 1);
+
+    uint8_t ret;
+    spi_read_blocking(this->SPI_CHANNEL, 0x00, &ret, 1);
+
     endSPI();
 
-    return i;
+    return ret;
 }
 
 inline MCP2515::ERROR MCP2515::setConfigMode()
@@ -730,21 +741,24 @@ inline MCP2515::ERROR MCP2515::setMode(const CANCTRL_REQOP_MODE mode)
 {
     modifyRegister(MCP_CANCTRL, CANCTRL_REQOP, mode);
 
-    unsigned long endTime   = millis() + 10;
+    unsigned long endTime   = to_ms_since_boot(get_absolute_time()) + 10;
     bool          modeMatch = false;
-    while (millis() < endTime)
+    while (to_ms_since_boot(get_absolute_time()) < endTime)
     {
         uint8_t newmode = readRegister(MCP_CANSTAT);
         newmode &= CANSTAT_OPMOD;
 
         modeMatch = newmode == mode;
+
         if (modeMatch)
         {
             break;
         }
     }
 
-    return modeMatch ? ERROR_OK : ERROR_FAIL;
+    return modeMatch
+               ? ERROR_OK
+               : ERROR_FAIL;
 }
 
 inline MCP2515::ERROR MCP2515::setBitrate(const CAN_SPEED canSpeed)
@@ -1350,5 +1364,4 @@ inline uint8_t MCP2515::errorCountTX(void)
 {
     return readRegister(MCP_TEC);
 }
-
 #endif
