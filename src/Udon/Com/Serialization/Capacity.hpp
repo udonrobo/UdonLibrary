@@ -25,7 +25,7 @@
 #include <Udon/Utility/Parsable.hpp>
 #include <Udon/Types/Float.hpp>
 #include <Udon/Utility/Concept.hpp>
-#include <Udon/Com/Serialization/Traits.hpp>
+#include <Udon/Traits/HasMember.hpp>
 
 #if CHAR_BIT != 8
 #    error "1byte is must be 8bit"
@@ -34,7 +34,7 @@
 namespace Udon
 {
 
-    namespace Details
+    namespace Detail
     {
 
         /// @brief bool型
@@ -59,14 +59,14 @@ namespace Udon
         }
 
         /// @brief Capacity 関数から呼び出し可能な型
-        template <typename CapacityCallable, typename std::enable_if<Details::CapacityCallable<CapacityCallable>::value, std::nullptr_t>::type* = nullptr>
+        template <typename CapacityCallable, typename std::enable_if<Detail::CapacityCallable<CapacityCallable>::value, std::nullptr_t>::type* = nullptr>
         inline constexpr size_t CapacityImpl(CapacityCallable&& obj)
         {
             return Capacity(obj);
         }
 
         /// @tparam Capacitive capacity メソッドを持つ型
-        template <typename Capacitive, typename std::enable_if<Details::HasMemberFunctionCapacity<Capacitive>::value, std::nullptr_t>::type* = nullptr>
+        template <typename Capacitive, typename std::enable_if<Detail::HasMemberFunctionCapacity<Capacitive>::value, std::nullptr_t>::type* = nullptr>
         inline constexpr size_t CapacityImpl(Capacitive&& obj)
         {
             return obj.capacity();
@@ -91,7 +91,7 @@ namespace Udon
         template <typename T>
         inline constexpr size_t CapacityArgsUnpack(T&& obj)
         {
-            return Details::CapacityImpl(std::forward<T>(obj));
+            return Detail::CapacityImpl(std::forward<T>(obj));
         }
 
         /// @brief 可変長引数展開用
@@ -101,7 +101,7 @@ namespace Udon
             return CapacityArgsUnpack(std::forward<Head>(first)) + CapacityArgsUnpack(std::forward<Args>(args)...);
         }
 
-    }    // namespace Details
+    }    // namespace Detail
 
 
     /// @brief シリアライズ後のビット数を求める
@@ -111,7 +111,7 @@ namespace Udon
     template <typename... Args>
     inline constexpr size_t CapacityBits(Args&&... args)
     {
-		return Details::CapacityArgsUnpack(std::forward<Args>(args)...);
+		return Detail::CapacityArgsUnpack(std::forward<Args>(args)...);
 	}
 
     /// @brief チェックサムを含めたシリアライズ後のバイト数を求める
@@ -120,7 +120,7 @@ namespace Udon
     template <typename T>
     inline constexpr size_t CapacityWithChecksum()
     {
-        //static_assert(std::is_arithmetic<T>::value or Details::HasMemberFunctionCapacity<T>::value or Details::CapacityCallable<T>::value, "Capacity is not defined.");
+        //static_assert(std::is_arithmetic<T>::value or Detail::HasMemberFunctionCapacity<T>::value or Detail::CapacityCallable<T>::value, "Capacity is not defined.");
 
         return Udon::Ceil(CapacityBits(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
     }

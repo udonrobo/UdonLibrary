@@ -12,7 +12,7 @@
 //    I2c マスター側送信クラス
 //
 //    master --[I2C]--> slave
-//    ^^^^^^             
+//    ^^^^^^
 //
 //-------------------------------------------------------------------
 
@@ -21,6 +21,8 @@
 #include <Udon/Com/I2c/I2cBus.hpp>
 #include <Udon/Com/Serialization.hpp>
 #include <Udon/Utility/Show.hpp>
+#include <Udon/Com/Common/ParsableArray.hpp>
+#include <Udon/Com/Common/ArrayElementWriter.hpp>
 
 namespace Udon
 {
@@ -28,16 +30,13 @@ namespace Udon
     template <typename Message>
     class I2cMasterWriter
     {
-
-        static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
-
-        Udon::II2cBus& bus;
-
-        uint8_t address;
-
-        uint8_t buffer[Size];
-
     public:
+        /// @brief 受信メッセージ型
+        using MessageType = Message;
+
+        /// @brief 受信バッファサイズ
+        static constexpr size_t Size = Udon::CapacityWithChecksum<MessageType>();
+
         /// @brief コンストラクタ
         /// @param bus I2cバス
         /// @param address スレーブアドレス
@@ -58,7 +57,7 @@ namespace Udon
 
         /// @brief 送信するメッセージを設定、送信
         /// @param message 送信するメッセージ
-        void setMessage(const Message& message)
+        void setMessage(const MessageType& message)
         {
             Udon::Pack(message, buffer);
         }
@@ -67,7 +66,7 @@ namespace Udon
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
-            if (const auto message = Udon::Unpack<Message>(buffer))
+            if (const auto message = Udon::Unpack<MessageType>(buffer))
             {
                 Udon::Show(*message, gap);
             }
@@ -82,6 +81,51 @@ namespace Udon
         void showRaw(char gap = ' ') const
         {
             Udon::Show(buffer, gap);
+        }
+
+    private:
+        Udon::II2cBus& bus;
+
+        uint8_t address;
+
+        uint8_t buffer[Size];
+    };
+
+    /// @brief メッセージ配列受信クラス
+    /// @details
+    ///     メッセージ配列を受信するためのクラスです。
+    ///     I2cMasterWriter<Udon::Vec2[5]> reader(bus, address); のように使用します。
+    ///     at メソッドで各要素を Reader として取得できます。
+    ///     Udon::Encoder<Udon::ArrayElementReader> encoder(reader.at(index)); のように使用します。
+    ///     通常の I2cMasterWriter を継承しているため、I2cMasterWriter 内のメソッドをそのまま使用できます。
+    /// @tparam Message メッセージ型
+    /// @tparam N 配列要素数
+    template <typename Message, size_t N>
+    class I2cMasterWriter<Message[N]>
+        : public I2cMasterWriter<Udon::ParsableArray<Message, N>>
+    {
+
+        using Writer = I2cMasterWriter<Udon::ParsableArray<Message, N>>;
+
+        using ArrayType = typename Writer::MessageType;
+
+        ArrayType array;
+
+    public:
+        /// @brief コンストラクタ
+        using Writer::Writer;
+
+        /// @brief 配列要素を Reader として取得
+        Udon::ArrayElementWriter<Message> at(size_t index)
+        {
+            return { array.at(index) };
+        }
+
+        /// @brief 更新
+        void update()
+        {
+            Writer::setMessage(array);
+            Writer::update();
         }
     };
 

@@ -80,7 +80,7 @@ namespace Udon
         /// @return
         template <typename T>
         auto operator()(const T& rhs)
-            -> typename std::enable_if<has_member_iterate_accessor<MemberViewer, T>::value && not has_member_function_show<T>::value>::type
+            -> typename std::enable_if<Detail::Accessible<T>::value && not has_member_function_show<T>::value>::type
         {
             // T::accessor が const なメンバ関数でない場合に const rhs から呼び出せないため、const_cast によって const を除去
             const_cast<T&>(rhs).accessor(*this);
@@ -104,6 +104,12 @@ namespace Udon
     {
         MemberViewer viewer{ gap };
         viewer(rhs);
+    }
+
+    inline void Show(const char* string, char gap = '\t')
+    {
+        MemberViewer viewer{ gap };
+        viewer(string);
     }
 
 }    // namespace Udon
