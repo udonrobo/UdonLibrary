@@ -1,50 +1,28 @@
-//-------------------------------------------------------------------
-//
-//    UdonLibrary
-//
-//    Copyright (c) 2022-2023 Okawa Yusuke
-//    Copyright (c) 2022-2023 udonrobo
-//
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    CAN通信 Teensy用バス管理クラス
-//
-//-------------------------------------------------------------------
-
 #pragma once
 
-//        vvv teensy3.2 vvv        vvv teensy3.5 vvv         vvv teensy3.6 vvv        vvv teensy4.0/4.1 vvv
-#if defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__)
+#if defined(ARDUINO_ARCH_RP2040)
 
-#    include <FlexCAN_T4.h>       // https://github.com/tonton81/FlexCan_T4.git
-#    include <IntervalTimer.h>    // https://github.com/loglow/IntervalTimer.git
+#    include <SPI.h>
 
 #    include <Udon/Com/Can/ICanBus.hpp>
 #    include <Udon/Com/Can/CanNode.hpp>
 #    include <Udon/Com/Can/CanUtility.hpp>
+
 #    include <Udon/Algorithm/StaticVector.hpp>
 #    include <Udon/Algorithm/RingBuffer.hpp>
 
+#    include <Udon/Pio/PicoPioClock.hpp>
+
+#    include <Udon/Thirdparty/pico_mcp2515/mcp2515.h>
+
 namespace Udon
 {
-
-    /// @brief FlexCan_T4ライブラリを用いたCANバスクラス
-    /// @tparam Bus バス種類
-    /// @remark 使用するTeensyの種類によってCANバスの種類が異なるので注意(対応していないバスを指定するとstatic_assertが発生します)
-    /// - Teensy 3.2: CAN0
-    /// - Teensy 3.5: CAN0
-    /// - Teensy 3.6: CAN0 & CAN1
-    /// - Teensy 4.0: CAN1 & CAN2 & CAN3
-    template <CAN_DEV_TABLE Bus>
-    class CanBusTeensy
+    class CanBusSpi
         : public ICanBus
     {
+        MCP2515 bus;
 
-        FlexCAN_T4<Bus, RX_SIZE_128, TX_SIZE_256> bus;
-
-        constexpr static uint8_t SingleFrameSize = 8;
+        constexpr static uint32_t SingleFrameSize = 8;
 
         using TxNodePtr = CanNode*;
         struct RxNodePtr
@@ -65,94 +43,111 @@ namespace Udon
         Udon::StaticVector<TxNodePtr> txNodes;
         Udon::StaticVector<RxNodePtr> rxNodes;
 
-        Udon::RingBuffer<CAN_message_t, 256> txBuffer;
+        Udon::RingBuffer<can_frame, 256> txBuffer;
 
         uint32_t transmitUs = 0;
         uint32_t receiveMs  = 0;
 
-        static CanBusTeensy* self;    // コールバック関数から自身のインスタンスを参照するためのポインタ (クラステンプレートによってインスタンスごとに別のstatic変数が生成される)
-
     public:
         /// @brief コンストラクタ
-        CanBusTeensy()
+        /// @param spiChannel SPIチャンネル (spi0 or spi1)
+        /// @param csPin      チップセレクトピン
+        /// @param spiClock   SPIクロック周波数 (CANコントローラーとの通信速度)
+        CanBusSpi(
+            spi_inst_t* spiChannel,
+            uint8_t     csPin,
+            uint32_t    spiClock = 1000000)
+            : bus(
+                  /* spi_inst_t* CHANNEL    */ spiChannel,
+                  /* uint8_t     CS_PIN     */ csPin,
+                  /* uint32_t    _SPI_CLOCK */ spiClock)
         {
-            self = this;
         }
-
-        /// @brief コピーコンストラクタ
-        CanBusTeensy(const CanBusTeensy&)
-        {
-            self = this;
-        }
-
-        /// @brief デストラクタ
-        ~CanBusTeensy()
-        {
-            end();
-        }
-
         /// @brief 通信開始
-        /// @param baudrate 通信レート
-        void begin(const uint32_t baudrate = 1'000'000)
+        /// @remark SPI通信も開始します。
+        /// @param intPin            割り込みピン
+        /// @param txPin             送信ピン (MOSI)
+        /// @param rxPin             受信ピン (MISO)
+        /// @param sckPin            クロックピン
+        /// @param transceiverClock  CANトランシーバーのクロック周波数
+        /// @param canSpeed          CAN通信速度
+        void begin(
+            uint8_t   intPin,
+            uint8_t   txPin            = PICO_DEFAULT_SPI_TX_PIN,
+            uint8_t   rxPin            = PICO_DEFAULT_SPI_RX_PIN,
+            uint8_t   sckPin           = PICO_DEFAULT_SPI_SCK_PIN,
+            CAN_CLOCK transceiverClock = MCP_16MHZ,
+            CAN_SPEED canSpeed         = CAN_1000KBPS)
         {
-            // バス初期化
-            bus.begin();
-            bus.setBaudRate(baudrate);
+            SPIClassRP2040 spi{
+                /* spi_inst_t *spi */ bus.getChannel(),
+                /* pin_size_t rx   */ rxPin,
+                /* pin_size_t cs   */ bus.getCS(),
+                /* pin_size_t sck  */ sckPin,
+                /* pin_size_t tx   */ txPin
+            };    // todo: 開始するために一時的に生成するのはちょっとキモイ
+            spi.begin();
+            beginCanOnly(intPin, transceiverClock, canSpeed);
+        }
+
+        /// @brief CAN通信のみ開始する
+        /// @remark SPI通信は別途開始する必要がある
+        ///         SPIバスがCANコントローラーとの通信のみに使用される場合は、この関数を呼び出す必要はない
+        /// @param intPin            割り込みピン
+        /// @param transceiverClock  CANトランシーバーのクロック周波数
+        /// @param canSpeed          CAN通信速度
+        void beginCanOnly(uint8_t intPin, CAN_CLOCK transceiverClock = MCP_16MHZ, CAN_SPEED canSpeed = CAN_1000KBPS)
+        {
+            bus.reset();
 
             // 受信開始
-            if (rxNodes)
+            if (const auto rxSize = rxNodes.size())
             {
-                // 受信フィルタ設定 (ノード数が8以下の場合のみ)
-                if (rxNodes.size() <= 8)
-                {
-                    bus.setFIFOFilter(REJECT_ALL);
-                    for (size_t i = 0; i < rxNodes.size(); ++i)
+                // 割り込み設定
+                pinMode(intPin, INPUT_PULLDOWN);
+                attachInterruptParam(
+                    digitalPinToInterrupt(intPin),
+                    [](void* self)
                     {
-                        bus.setFIFOUserFilter(
-                            /* Filter       */ i,
-                            /* ID           */ rxNodes[i].node->id,
-                            /* Mask         */ 0x7FF,
-                            /* Frame type   */ STD,
-                            /* Remote frame */ NONE);
-                        // 複数のフィルタを設定する関数が用意されているが、適切に受信できていなかったので1つずつ設定している (2023/08/19)
+                        static_cast<CanBusSpi*>(self)->onReceive();
+                    },
+                    LOW,
+                    this);
+
+                // 受信フィルタ設定 (ノード数が8以下の場合のみ)
+                constexpr size_t Mcp2515MaxFilterCount = 6;
+                if (rxSize <= Mcp2515MaxFilterCount)
+                {
+                    bus.setFilterMask(MCP2515::MASK0, false, 0x7FF);
+                    bus.setFilterMask(MCP2515::MASK1, false, 0x7FF);
+
+                    constexpr MCP2515::RXF filters[] = { MCP2515::RXF0, MCP2515::RXF1, MCP2515::RXF2, MCP2515::RXF3, MCP2515::RXF4, MCP2515::RXF5 };
+
+                    for (size_t i = 0; i < Mcp2515MaxFilterCount; ++i)
+                    {
+                        if (i < rxSize)
+                            bus.setFilter(filters[i], false, rxNodes[i].node->id);
+                        else
+                            bus.setFilter(filters[i], false, 0x7FF);    // 未使用のフィルタは全て0x7FFに設定
                     }
                 }
-                else
-                {
-                    bus.setFIFOFilter(ACCEPT_ALL);
-                }
-
-                // FIFOバッファ有効化
-                bus.enableFIFO();
-                bus.enableFIFOInterrupt();
-
-                // 受信割り込み設定
-                bus.onReceive(
-                    [](const CAN_message_t& msg)
-                    {
-                        self->onReceive(msg);
-                    });
             }
+
+            bus.setBitrate(canSpeed, transceiverClock);
+
+            if (rxNodes && not txNodes)
+                bus.setListenOnlyMode();    // 受信のみの場合は受信モードに設定 (送受信モードのマイコンが再起動したとき、全ノードが停止ししたため。)
+            else
+                bus.setNormalMode();
         }
 
         /// @brief 通信終了
         void end()
         {
-            bus.disableFIFOInterrupt();
-            bus.disableFIFO();
+            bus.reset();
         }
 
-        /// @brief バス更新
-        /// @param transmitIntervalMs 送信間隔 [ms]
-        void update(uint32_t transmissionIntervalUs = 5000)
-        {
-            if (txNodes && micros() - transmitUs >= transmissionIntervalUs)
-            {
-                onTransmit();
-                transmitUs = micros();
-            }
-        }
-
+        /// @brief バスの有効性を取得
         explicit operator bool() const override
         {
             if (rxNodes)
@@ -163,10 +158,21 @@ namespace Udon
                 return false;
         }
 
-        /// @brief バス情報を表示する
-        void show() const
+        /// @brief バス更新
+        /// @param transmitIntervalMs 送信間隔 [ms]
+        void update(uint32_t transmitIntervalMs = 5000)
         {
-            Serial.print("CanBusTeensy\n");
+            if (txNodes && micros() - transmitUs >= transmitIntervalMs)
+            {
+                onTransmit();
+                transmitUs = micros();
+            }
+        }
+
+        /// @brief バスの状態を表示する
+        void show()
+        {
+            Serial.print("Bus: CAN 2.0B\n");
 
             Serial.print("\tTX Node\n");
             for (auto&& node : txNodes)
@@ -246,31 +252,34 @@ namespace Udon
 
     private:
         /// @brief 受信割り込み
-        void onReceive(const CAN_message_t& msg)
+        void onReceive()
         {
+            // 受信データ取得
+            can_frame msg;
+            if (bus.readMessage(&msg) != MCP2515::ERROR_OK)
+            {
+                return;
+            }
+
             // IDに対応する受信ノードを探す
-            auto rxNode = std::find_if(rxNodes.begin(), rxNodes.end(), [&msg](const RxNodePtr& rx)
-                                       { return rx.node->id == msg.id; });
+            auto rxNode = std::find_if(rxNodes.begin(), rxNodes.end(), [msg](const RxNodePtr& rx)
+                                       { return rx.node->id == msg.can_id; });
             if (rxNode == rxNodes.end())
             {
                 return;
             }
 
             // 分割されたフレームを結合(マルチフレームの場合)
-            Udon::Detail::Unpacketize(
-                { msg.buf },
-                { rxNode->node->data, rxNode->node->length },
-                SingleFrameSize);
+            Udon::Detail::Unpacketize({ msg.data }, { rxNode->node->data, rxNode->node->length }, SingleFrameSize);
 
             // 登録されている受信クラスのコールバック関数を呼ぶ
             // 最終フレームの到達時にコールバックを呼ぶため、受信中(完全に受信しきっていないとき)にデシリアライズすることを防いでいる。
-
             if (rxNode->node->length > SingleFrameSize)
             {
                 // マルチフレーム
                 const auto frameCount = std::ceil(static_cast<double>(rxNode->node->length) / SingleFrameSize - 1 /*index*/);
 
-                if (msg.buf[0] == frameCount)
+                if (msg.data[0] == frameCount)
                 {
                     rxNode->callback();
                 }
@@ -283,21 +292,19 @@ namespace Udon
 
             receiveMs = rxNode->node->transmitMs = millis();
         }
-
-        /// @brief 送信処理
         void onTransmit()
         {
             for (auto&& node : txNodes)
             {
-                CAN_message_t msg;
-                msg.id  = node->id;
-                msg.len = SingleFrameSize;
+                can_frame msg{};
+                msg.can_id  = node->id;
+                msg.can_dlc = SingleFrameSize;
 
                 // 一度に8バイトしか送れないため、分割し送信
-                Udon::Detail::Packetize({ node->data, node->length }, { msg.buf }, SingleFrameSize,
+                Udon::Detail::Packetize({ node->data, node->length }, { msg.data }, SingleFrameSize,
                                         [this, &msg](size_t)
                                         {
-                                            bus.write(msg);
+                                            bus.sendMessage(&msg);
                                             delayMicroseconds(200);
                                         });
 
@@ -305,10 +312,6 @@ namespace Udon
             }
         }
     };
-
-    template <CAN_DEV_TABLE Bus>
-    CanBusTeensy<Bus>* CanBusTeensy<Bus>::self;
-
 }    // namespace Udon
 
 #endif

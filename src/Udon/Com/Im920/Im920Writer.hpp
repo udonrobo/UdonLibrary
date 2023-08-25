@@ -2,7 +2,6 @@
 //
 //    UdonLibrary
 // 
-//                2018-2023 Watanabe Rui
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //

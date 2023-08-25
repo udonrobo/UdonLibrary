@@ -2,7 +2,6 @@
 //
 //    UdonLibrary
 //
-//                2018-2023 Watanabe Rui
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
@@ -13,7 +12,7 @@
 //    IM920 受信クラス
 //
 //    Sender --[UART]--> IM920 ~~[920MHz]~~> IM920 --[UART]--> Receiver
-//                                                           ^^^^^^^^
+//                                                         　  ^^^^^^^^
 //
 //-------------------------------------------------------------------
 
@@ -59,7 +58,6 @@ namespace Udon
             }
             else
             {
-                Serial.print(F("IM920 disconnected!!"));
                 return Udon::nullopt;
             }
         }

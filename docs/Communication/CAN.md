@@ -1,5 +1,7 @@
 # CAN 通信
 
+CAN 通信クラスは、通信バスクラス、送受信ノードクラスから構成されています。
+
 <details>
 <summary> CAN 通信について </summary>
 
@@ -41,38 +43,129 @@ flowchart LR
 
 </details>
 
-## Usage
-
-CAN 通信クラスは、通信バスクラス、送受信ノードクラスから構成されています。
-
-### インクルード
+## インクルード
 
 ```cpp
 
 #include <Udon/Com/Can.hpp>
 ```
 
-### バスクラス
+## バスクラス
 
 `Udon::CanBus---`
 
-通信が行えているかどうかのチェック、送受信処理を行います。
+送受信処理、通信が行えているかどうかのチェックを行います。使用するマイコンや CAN コントローラーによって使用するクラスが異なります。
 
-- teensy 使用時
+### Teensy
+
+内臓 CAN コントローラーを使用します。
+
+```mermaid
+flowchart LR
+
+    subgraph 基板
+    Teensy --CAN TX/RX--> CANトランシーバー
+    end
+
+    CANトランシーバー --CAN H/L--> CANバス
+
+```
+
+- インスタンス化
 
   ```cpp
   static Udon::CanBusTeensy<CAN1> bus;
   ```
 
-- CAN コントローラ使用時 ( SPI 経由 )
-
-  このクラスは SPI 通信自体の管理には関わりません。そのため、SPI の通信開始等を別で行い、CAN 通信を始める前に SPI でデータを送受信できるようにしておく必要があります。
+- 通信開始
 
   ```cpp
-  static Udon::CanBusSpi bus{ SPI };
+  bus.begin();
+  // bus.begin(baudrate);
   ```
 
-### 送信クラス
+- 更新
+
+  ```cpp
+  bus.update();
+  ```
+
+### Raspberry Pi Pico
+
+外部 CAN コントローラーを使用し、コントローラーとは SPI 通信 でデータをやり取りします。
+
+```mermaid
+flowchart LR
+
+    subgraph 基板
+    Pico --SPI--> CANコントローラー --CAN TX/RX--> CANトランシーバー
+    end
+
+    CANトランシーバー --CAN H/L--> CANバス
+
+```
+
+- インスタンス化
+
+  ```cpp
+  static Udon::CanBusSpi bus{ spi0, csPin };
+  ```
+
+- 通信開始
+
+  通信を開始する関数は `begin()` と `beginCanOnly()` の二つあります。`begin()` 関数は SPI 通信の開始処理も同時に行います。
+
+  ```cpp
+  bus.begin(intPin, txPin, rxPin, sckPin);
+  // bus.begin(intPin, txPin, rxPin, sckPin, transceiverClock);
+  // bus.begin(intPin, txPin, rxPin, sckPin, transceiverClock, canSpeed);
+  ```
+
+  `beginCanOnly()` は CAN 通信の開始処理のみ行い、この関数を呼ぶ前に SPI 通信ができる状態にしておく必要があります。同じ SPI バスを使うセンサー等がある場合、通信開始処理を CAN バスが行うべきでないので、この関数を呼び出します。
+
+  ```cpp
+  SPI.begin();
+
+  bus.beginCanOnly(intPin);
+  // bus.beginCanOnly(intPin, transceiverClock);
+  // bus.beginCanOnly(intPin, transceiverClock, canSpeed);
+
+  otherSensor.begin();
+  ```
+
+- 更新
+
+  ```cpp
+  bus.update();
+  ```
+
+### SPI 経由汎用クラス
+
+```mermaid
+flowchart LR
+
+    subgraph 基板
+    マイコン --SPI--> CANコントローラー --CAN TX/RX--> CANトランシーバー
+    end
+
+    CANトランシーバー --CAN H/L--> CANバス
+
+```
+
+- インスタンス化
+
+  ```cpp
+  static Udon::CanBusSpi bus{ SPI, csPin };
+  ```
+
+> [!WARNING]
+> 工事中
+
+### インターフェース
+
+すべてのバスクラスを一様い扱えるようにするためのインターフェースクラス `Udon::ICanBus` クラスがあります。送受信クラスのコンストラクタの引数はこのインターフェースクラスになっており、どのバスでも使用できます。
+
+## 送信クラス
 
 `Udon::CanWriter<T>`
 
@@ -84,7 +177,7 @@ static Udon::CanWriter<Udon::Vec2> writer{ bus, 10 };  // Udon::Vec2 を bus へ
 
 void setup()
 {
-    bus.begin();  // 通信開始
+    bus.begin();
 }
 
 void loop()
@@ -98,11 +191,11 @@ void loop()
 }
 ```
 
-### 受信クラス
+## 受信クラス
 
 `Udon::CanReader<T>`
 
-`T` に指定された型のオブジェクトをバスから取得します。
+`T` に指定された型のオブジェクトをバスから取得します。送信クラスの `T` と同じ型である必要があります。
 
 ```cpp
 static Udon::CanBusTeensy<CAN1> bus;
@@ -139,7 +232,7 @@ void loop()
 >
 > `Udon::Optional<T>::operator->` で保持しているオブジェクトのメンバへアクセスでき、`Udon::Optional<T>::operator*` で optional が持っているオブジェクトの参照を取得できます。
 
-### デバッグ
+## デバッグ
 
 全 CAN 通信クラスは `show()` メンバ関数を持っており、通信の状態をシリアルモニターへ送信します。
 
@@ -149,7 +242,7 @@ reader.show();  // 受信データを表示
 writer.show();  // 送信データを表示
 ```
 
-### クラスの組み合わせ色々
+## クラスの組み合わせ色々
 
 一つのバスへ複数送受信ノードが参加する(よくある)
 
