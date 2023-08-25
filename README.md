@@ -262,9 +262,9 @@ int main() {}
 
 また本ライブラリの作成において、以下のオープンソースプロジェクトを参考にしました。
 
-| プロジェクト                                    | ライセンス           | 著作権                                                          |
-| ----------------------------------------------- | -------------------- | --------------------------------------------------------------- |
-| [OpenSiv3D](https://github.com/Siv3D/OpenSiv3D)                     | MIT License                | Copyright (c) 2008-2023 Ryo Suzuki <br> Copyright (c) 2016-2023 OpenSiv3D Project                              |
-| [cereal](https://github.com/USCiLab/cereal)     | BSD-3-Clause license | Copyright (c) 2013-2022 Randolph Voorhies, Shane Grant          |
-| [boost](https://github.com/boostorg/boost)      | BSL-1.0 license      |                                                                 |
-| [Unity](https://unity.com/ja)                   | MIT License          | Copyright (c) 2019 Unity Technologies Copyright                 |
+| プロジェクト                                    | ライセンス           | 著作権                                                                            |
+| ----------------------------------------------- | -------------------- | --------------------------------------------------------------------------------- |
+| [OpenSiv3D](https://github.com/Siv3D/OpenSiv3D) | MIT License          | Copyright (c) 2008-2023 Ryo Suzuki <br> Copyright (c) 2016-2023 OpenSiv3D Project |
+| [cereal](https://github.com/USCiLab/cereal)     | BSD-3-Clause license | Copyright (c) 2013-2022 Randolph Voorhies, Shane Grant                            |
+| [boost](https://github.com/boostorg/boost)      | BSL-1.0 license      |                                                                                   |
+| [Unity](https://unity.com/ja)                   | MIT License          | Copyright (c) 2019 Unity Technologies Copyright                                   |
