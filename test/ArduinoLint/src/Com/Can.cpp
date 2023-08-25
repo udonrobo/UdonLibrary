@@ -27,7 +27,7 @@ inline void testBus()
 
 inline void testBus()
 {
-    Udon::CanBusPico bus{ spi0, 1 };
+    Udon::CanBusSpi bus{ spi0, 1 };
 
     bus.begin();
     bus.begin(1000000);
