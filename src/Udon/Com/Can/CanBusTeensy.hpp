@@ -277,22 +277,18 @@ namespace Udon
         /// @brief 送信処理
         void onTransmit()
         {
-            for (auto&& txNode : txNodes)
+            for (auto&& node : txNodes)
             {
                 CAN_message_t msg;
-                msg.id = txNode->id;
-                Udon::Detail::Packetize(
-                    { txNode->data, txNode->length },
-                    { msg.buf },
-                    SingleFrameSize,
-                    [this, &msg](size_t size)
-                    {
-                        msg.len = SingleFrameSize;
-                        while (not bus.write(msg))
-                            ;
-                        delayMicroseconds(200);
-                    });
-                txNode->transmitMs = millis();
+                msg.id  = node->id;
+                msg.len = SingleFrameSize;
+                Udon::Detail::Packetize({ node->data, node->length }, { msg.buf }, SingleFrameSize,
+                                        [this, &msg](size_t)
+                                        {
+                                            bus.write(msg);
+                                            delayMicroseconds(200);
+                                        });
+                node->transmitMs = millis();
             }
         }
     };
