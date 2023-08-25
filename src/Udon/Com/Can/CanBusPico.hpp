@@ -121,14 +121,14 @@ namespace Udon
                     bus.setFilterMask(MCP2515::MASK0, false, 0x7FF);
                     bus.setFilterMask(MCP2515::MASK1, false, 0x7FF);
 
-                    constexpr MCP2515::RXF rxf[] = { MCP2515::RXF0, MCP2515::RXF1, MCP2515::RXF2, MCP2515::RXF3, MCP2515::RXF4, MCP2515::RXF5 };
+                    constexpr MCP2515::RXF filters[] = { MCP2515::RXF0, MCP2515::RXF1, MCP2515::RXF2, MCP2515::RXF3, MCP2515::RXF4, MCP2515::RXF5 };
 
                     for (size_t i = 0; i < Mcp2515MaxFilterCount; ++i)
                     {
                         if (i < rxSize)
-                            bus.setFilter(rxf[i], false, rxNodes[i].node->id);
+                            bus.setFilter(filters[i], false, rxNodes[i].node->id);
                         else
-                            bus.setFilter(rxf[i], false, 0x7FF);    // 未使用のフィルタは全て0x7FFに設定
+                            bus.setFilter(filters[i], false, 0x7FF);    // 未使用のフィルタは全て0x7FFに設定
                     }
                 }
             }
@@ -136,9 +136,15 @@ namespace Udon
             bus.setBitrate(canSpeed, transceiverClock);
 
             if (rxNodes.size() && not txNodes.size())
-                bus.setListenOnlyMode();  // 受信のみの場合は受信モードに設定 (送受信モードのマイコンが再起動したとき、全ノードが停止ししたため。)
+                bus.setListenOnlyMode();    // 受信のみの場合は受信モードに設定 (送受信モードのマイコンが再起動したとき、全ノードが停止ししたため。)
             else
                 bus.setNormalMode();
+        }
+
+        /// @brief 通信終了
+        void end()
+        {
+            bus.reset();
         }
 
         /// @brief バスの有効性を取得
@@ -147,7 +153,7 @@ namespace Udon
             return true;
         }
 
-        /// @brief 更新
+        /// @brief バス更新
         /// @param transmitIntervalMs 送信間隔 [ms]
         void update(uint32_t transmitIntervalMs = 5000)
         {
@@ -165,7 +171,7 @@ namespace Udon
             Serial.print("\tTX Node\n");
             for (auto&& node : txNodes)
             {
-                Serial.printf("\t\tid:%4d   length:%3zu byte", node->id, node->length);
+                Serial.printf("\t\tid:%4d   length:%3zu byte", static_cast<int>(node->id), node->length);
                 if (node->length > SingleFrameSize)
                 {
                     Serial.print(" (multi frame)");
@@ -187,7 +193,7 @@ namespace Udon
             Serial.print("\tRX Node\n");
             for (auto&& rxNode : rxNodes)
             {
-                Serial.printf("\t\tid:%4d   size:%3zu byte", rxNode.node->id, rxNode.node->length);
+                Serial.printf("\t\tid:%4d   size:%3zu byte", static_cast<int>(rxNode.node->id), rxNode.node->length);
                 if (rxNode.node->length > SingleFrameSize)
                 {
                     Serial.print(" (multi frame)");
@@ -207,21 +213,31 @@ namespace Udon
             }
         }
 
+        /// @brief 送信ノードをバスに参加させる
+        /// @param node 送信ノード
         void joinTx(CanNode& node) override
         {
             txNodes.push_back(&node);
         }
 
+        /// @brief 受信ノードをバスに参加させる
+        /// @param node 受信ノード
         void joinRx(CanNode& node, void (*onReceive)(void*), void* p) override
         {
             rxNodes.push_back({ &node, onReceive, p });
         }
 
+        /// @brief 送信ノードをバスから離脱させる
+        /// @remark 送信ノードのインスタンスポインタを基に削除します。
+        /// @param node 送信ノード
         void leaveTx(const CanNode& node) override
         {
             txNodes.erase(std::find(txNodes.begin(), txNodes.end(), &node));
         }
 
+        /// @brief 受信ノードをバスから離脱させる
+        /// @remark 受信ノードのインスタンスポインタを基に削除します。
+        /// @param node 受信ノード
         void leaveRx(const CanNode& node) override
         {
             rxNodes.erase(std::find_if(rxNodes.begin(), rxNodes.end(), [&node](const RxNodePtr& rxNode)
@@ -229,14 +245,17 @@ namespace Udon
         }
 
     private:
+        /// @brief 受信割り込み
         void onReceive()
         {
+            // 受信データ取得
             can_frame msg;
             if (bus.readMessage(&msg) != MCP2515::ERROR_OK)
             {
                 return;
             }
 
+            // IDに対応する受信ノードを探す
             auto rxNode = std::find_if(rxNodes.begin(), rxNodes.end(), [msg](const RxNodePtr& rx)
                                        { return rx.node->id == msg.can_id; });
             if (rxNode == rxNodes.end())
@@ -244,24 +263,24 @@ namespace Udon
                 return;
             }
 
+            // 分割されたフレームを結合(マルチフレームの場合)
             Udon::Detail::Unpacketize({ msg.data }, { rxNode->node->data, rxNode->node->length }, SingleFrameSize);
-
-            const size_t frameCount = static_cast<size_t>(std::ceil(
-                static_cast<double>(rxNode->node->length) / SingleFrameSize - 1 /*index*/));
 
             // 登録されている受信クラスのコールバック関数を呼ぶ
             // 最終フレームの到達時にコールバックを呼ぶため、受信中(完全に受信しきっていないとき)にデシリアライズすることを防いでいる。
             if (rxNode->node->length > SingleFrameSize)
             {
+                // マルチフレーム
+                const auto frameCount = std::ceil(static_cast<double>(rxNode->node->length) / SingleFrameSize - 1 /*index*/);
+
                 if (msg.data[0] == frameCount)
                 {
-                    // マルチフレームの最終フレームを受信したらコールバックを呼ぶ
                     rxNode->callback();
                 }
             }
             else
             {
-                // シングルフレームの場合は即時コールバックを呼ぶ
+                // シングルフレーム
                 rxNode->callback();
             }
 
@@ -274,12 +293,15 @@ namespace Udon
                 can_frame msg{};
                 msg.can_id  = node->id;
                 msg.can_dlc = SingleFrameSize;
+
+                // 一度に8バイトしか送れないため、分割し送信
                 Udon::Detail::Packetize({ node->data, node->length }, { msg.data }, SingleFrameSize,
                                         [this, &msg](size_t)
                                         {
                                             bus.sendMessage(&msg);
                                             delayMicroseconds(200);
                                         });
+
                 node->transmitMs = millis();
             }
         }
