@@ -2,6 +2,8 @@
 
 #if defined(ARDUINO_ARCH_RP2040)
 
+#    include <SPI.h>
+
 #    include <Udon/Com/Can/ICanBus.hpp>
 #    include <Udon/Com/Can/CanNode.hpp>
 #    include <Udon/Com/Can/CanUtility.hpp>
@@ -15,60 +17,128 @@
 
 namespace Udon
 {
-    class CanBusPico
+    class CanBusSpi
         : public ICanBus
     {
         MCP2515 bus;
 
         constexpr static uint32_t SingleFrameSize = 8;
 
-        using TxNode = CanNode;
-        struct RxNode
+        using TxNodePtr = CanNode*;
+        struct RxNodePtr
         {
             CanNode* node;
             void (*onReceive)(void*);
             void* p;
+
+            void callback()
+            {
+                if (onReceive)
+                {
+                    onReceive(p);
+                }
+            }
         };
 
-        Udon::StaticVector<TxNode*> txNodes;
-        Udon::StaticVector<RxNode>  rxNodes;
+        Udon::StaticVector<TxNodePtr> txNodes;
+        Udon::StaticVector<RxNodePtr> rxNodes;
 
         Udon::RingBuffer<can_frame, 256> txBuffer;
 
         uint32_t timestampUs = 0;
 
-        uint8_t intPin;
-
     public:
-        CanBusPico(
+        /// @brief コンストラクタ
+        /// @param spiChannel SPIチャンネル (spi0 or spi1)
+        /// @param csPin      チップセレクトピン
+        /// @param spiClock   SPIクロック周波数 (CANコントローラーとの通信速度)
+        CanBusSpi(
             spi_inst_t* spiChannel,
             uint8_t     csPin,
-            uint8_t     intPin,
             uint32_t    spiClock = 1000000)
             : bus(
                   /* spi_inst_t* CHANNEL    */ spiChannel,
                   /* uint8_t     CS_PIN     */ csPin,
                   /* uint32_t    _SPI_CLOCK */ spiClock)
-            , intPin(intPin)
         {
         }
 
-        void begin(CAN_CLOCK transceiverClock = MCP_16MHZ, CAN_SPEED canSpeed = CAN_1000KBPS)
+        /// @brief 通信開始
+        /// @remark SPI通信も開始します。
+        /// @param intPin            割り込みピン
+        /// @param txPin             送信ピン
+        /// @param rxPin             受信ピン
+        /// @param sckPin            クロックピン
+        /// @param transceiverClock  CANトランシーバーのクロック周波数
+        /// @param canSpeed          CAN通信速度
+        void begin(
+            uint8_t   intPin,
+            uint8_t   txPin,
+            uint8_t   rxPin,
+            uint8_t   sckPin,
+            CAN_CLOCK transceiverClock = MCP_16MHZ,
+            CAN_SPEED canSpeed         = CAN_1000KBPS)
         {
-            SPI.begin();
+            SPIClassRP2040 spi{
+                /* spi_inst_t *spi */ bus.getChannel(),
+                /* pin_size_t rx   */ rxPin,
+                /* pin_size_t cs   */ bus.getCS(),
+                /* pin_size_t sck  */ sckPin,
+                /* pin_size_t tx   */ txPin
+            };    // todo: 開始するために一時的に生成するのはちょっとキモイ
+            spi.begin();
+            begin(intPin, transceiverClock, canSpeed);
+        }
+
+        /// @brief CAN通信のみ開始する
+        /// @remark SPI通信は別途開始する必要がある
+        ///         SPIバスがCANコントローラーとの通信のみに使用される場合は、この関数を呼び出す必要はない
+        /// @param intPin            割り込みピン
+        /// @param transceiverClock  CANトランシーバーのクロック周波数
+        /// @param canSpeed          CAN通信速度
+        void begin(uint8_t intPin, CAN_CLOCK transceiverClock = MCP_16MHZ, CAN_SPEED canSpeed = CAN_1000KBPS)
+        {
             bus.reset();
-            bus.setBitrate(canSpeed, transceiverClock);
-            bus.setNormalMode();
-            pinMode(intPin, INPUT_PULLUP);
-            attachInterruptParam(
-                digitalPinToInterrupt(intPin),
-                [](void* self)
+
+            // 受信開始
+            if (const auto rxSize = rxNodes.size())
+            {
+                // 割り込み設定
+                pinMode(intPin, INPUT_PULLDOWN);
+                attachInterruptParam(
+                    digitalPinToInterrupt(intPin),
+                    [](void* self)
+                    {
+                        static_cast<CanBusSpi*>(self)->onReceive();
+                    },
+                    LOW,
+                    this);
+
+                // 受信フィルタ設定 (ノード数が8以下の場合のみ)
+                constexpr size_t Mcp2515MaxFilterCount = 6;
+                if (rxSize <= Mcp2515MaxFilterCount)
                 {
-                    static_cast<CanBusPico*>(self)->onReceive();
-                    Serial.println("interrupt");
-                },
-                LOW,
-                this);
+                    bus.setFilterMask(MCP2515::MASK0, false, 0x7FF);
+                    bus.setFilterMask(MCP2515::MASK1, false, 0x7FF);
+
+                    constexpr MCP2515::RXF rxf[] = { MCP2515::RXF0, MCP2515::RXF1, MCP2515::RXF2, MCP2515::RXF3, MCP2515::RXF4, MCP2515::RXF5 };
+
+                    for (size_t i = 0; i < Mcp2515MaxFilterCount; ++i)
+                    {
+                        if (i < rxSize)
+                            bus.setFilter(rxf[i], false, rxNodes[i].node->id);
+                        else
+                            bus.setFilter(rxf[i], false, 0x7FF);    // 未使用のフィルタは全て0x7FFに設定
+                    }
+                }
+            }
+
+            bus.setBitrate(canSpeed, transceiverClock);
+
+            if (rxNodes.size() && not txNodes.size())
+                bus.setListenOnlyMode();  // 受信のみの場合は受信モードに設定 (送受信モードのマイコンが再起動したとき、全ノードが停止ししたため。)
+            else
+                bus.setNormalMode();
         }
 
         /// @brief バスの有効性を取得
@@ -85,7 +155,6 @@ namespace Udon
             {
                 onTransmit();
             }
-            onReceive();    // TODO: 受信処理を割り込みに移行する
         }
 
         /// @brief バスの状態を表示する
@@ -99,11 +168,11 @@ namespace Udon
                 Serial.printf("\t\tid:%4d   length:%3zu byte", node->id, node->length);
                 if (node->length > SingleFrameSize)
                 {
-                    Serial.print(" (multi packet)");
+                    Serial.print(" (multi frame)");
                 }
                 else
                 {
-                    Serial.print(" (single packet)");
+                    Serial.print(" (single frame)");
                 }
 
                 Serial.print("\n\t\t\tdata: ");
@@ -121,11 +190,11 @@ namespace Udon
                 Serial.printf("\t\tid:%4d   size:%3zu byte", rxNode.node->id, rxNode.node->length);
                 if (rxNode.node->length > SingleFrameSize)
                 {
-                    Serial.print(" (multi packet)");
+                    Serial.print(" (multi frame)");
                 }
                 else
                 {
-                    Serial.print(" (single packet)");
+                    Serial.print(" (single frame)");
                 }
 
                 Serial.print("\n\t\t\tdata: ");
@@ -155,7 +224,7 @@ namespace Udon
 
         void leaveRx(const CanNode& node) override
         {
-            rxNodes.erase(std::find_if(rxNodes.begin(), rxNodes.end(), [&node](const RxNode& rxNode)
+            rxNodes.erase(std::find_if(rxNodes.begin(), rxNodes.end(), [&node](const RxNodePtr& rxNode)
                                        { return rxNode.node == &node; }));
         }
 
@@ -163,42 +232,40 @@ namespace Udon
         void onReceive()
         {
             can_frame msg;
-            if (bus.readMessage(&msg) == MCP2515::ERROR_OK)
+            if (bus.readMessage(&msg) != MCP2515::ERROR_OK)
             {
-                auto rxNode = std::find_if(rxNodes.begin(), rxNodes.end(), [msg](const RxNode& rx)
-                                           { return rx.node->id == msg.can_id; });
-                if (rxNode == rxNodes.end())
-                {
-                    return;
-                }
-                Udon::Detail::Unpacketize(
-                    { const_cast<can_frame&>(msg).data },
-                    { rxNode->node->data, rxNode->node->length },
-                    SingleFrameSize);
+                return;
+            }
 
-                const size_t packetCount = static_cast<size_t>(std::ceil(
-                    static_cast<double>(rxNode->node->length) / SingleFrameSize - 1 /*-1: index*/));
+            auto rxNode = std::find_if(rxNodes.begin(), rxNodes.end(), [msg](const RxNodePtr& rx)
+                                       { return rx.node->id == msg.can_id; });
+            if (rxNode == rxNodes.end())
+            {
+                return;
+            }
 
-                if (rxNode->node->length > SingleFrameSize)
+            Udon::Detail::Unpacketize({ msg.data }, { rxNode->node->data, rxNode->node->length }, SingleFrameSize);
+
+            const size_t frameCount = static_cast<size_t>(std::ceil(
+                static_cast<double>(rxNode->node->length) / SingleFrameSize - 1 /*index*/));
+
+            // 登録されている受信クラスのコールバック関数を呼ぶ
+            // 最終フレームの到達時にコールバックを呼ぶため、受信中(完全に受信しきっていないとき)にデシリアライズすることを防いでいる。
+            if (rxNode->node->length > SingleFrameSize)
+            {
+                if (msg.data[0] == frameCount)
                 {
-                    if (msg.data[0] == packetCount)
-                    {
-                        // マルチフレームの最終フレームを受信したらコールバックを呼ぶ
-                        if (rxNode->onReceive)
-                        {
-                            rxNode->onReceive(rxNode->p);
-                        }
-                    }
-                }
-                else
-                {
-                    // シングルフレームの場合は即時コールバックを呼ぶ
-                    if (rxNode->onReceive)
-                    {
-                        rxNode->onReceive(rxNode->p);
-                    }
+                    // マルチフレームの最終フレームを受信したらコールバックを呼ぶ
+                    rxNode->callback();
                 }
             }
+            else
+            {
+                // シングルフレームの場合は即時コールバックを呼ぶ
+                rxNode->callback();
+            }
+
+            rxNode->node->transmitMs = millis();
         }
         void onTransmit()
         {
@@ -206,15 +273,14 @@ namespace Udon
             {
                 can_frame msg{};
                 msg.can_id  = node->id;
-                msg.can_dlc = 8;
-                Udon::Detail::Packetize(
-                    { node->data, node->length },
-                    { msg.data },
-                    SingleFrameSize,
-                    [this, &msg](size_t)
-                    {
-                        bus.sendMessage(&msg);
-                    });
+                msg.can_dlc = SingleFrameSize;
+                Udon::Detail::Packetize({ node->data, node->length }, { msg.data }, SingleFrameSize,
+                                        [this, &msg](size_t)
+                                        {
+                                            bus.sendMessage(&msg);
+                                            delayMicroseconds(200);
+                                        });
+                node->transmitMs = millis();
             }
         }
     };

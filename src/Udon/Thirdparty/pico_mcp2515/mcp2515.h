@@ -495,35 +495,38 @@ public:
         spi_inst_t* CHANNEL    = spi0,
         uint8_t     CS_PIN     = PICO_DEFAULT_SPI_CSN_PIN,
         uint32_t    _SPI_CLOCK = DEFAULT_SPI_CLOCK);
-    ERROR   reset(void);
-    ERROR   setConfigMode();
-    ERROR   setListenOnlyMode();
-    ERROR   setSleepMode();
-    ERROR   setLoopbackMode();
-    ERROR   setNormalMode();
-    ERROR   setClkOut(const CAN_CLKOUT divisor);
-    ERROR   setBitrate(const CAN_SPEED canSpeed);
-    ERROR   setBitrate(const CAN_SPEED canSpeed, const CAN_CLOCK canClock);
-    ERROR   setFilterMask(const MASK num, const bool ext, const uint32_t ulData);
-    ERROR   setFilter(const RXF num, const bool ext, const uint32_t ulData);
-    ERROR   sendMessage(const TXBn txbn, const struct can_frame* frame);
-    ERROR   sendMessage(const struct can_frame* frame);
-    ERROR   readMessage(const RXBn rxbn, struct can_frame* frame);
-    ERROR   readMessage(struct can_frame* frame);
-    bool    checkReceive(void);
-    bool    checkError(void);
-    uint8_t getErrorFlags(void);
-    void    clearRXnOVRFlags(void);
-    uint8_t getInterrupts(void);
-    uint8_t getInterruptMask(void);
-    void    clearInterrupts(void);
-    void    clearTXInterrupts(void);
-    uint8_t getStatus(void);
-    void    clearRXnOVR(void);
-    void    clearMERR();
-    void    clearERRIF();
-    uint8_t errorCountRX(void);
-    uint8_t errorCountTX(void);
+    ERROR       reset(void);
+    ERROR       setConfigMode();
+    ERROR       setListenOnlyMode();
+    ERROR       setSleepMode();
+    ERROR       setLoopbackMode();
+    ERROR       setNormalMode();
+    ERROR       setClkOut(const CAN_CLKOUT divisor);
+    ERROR       setBitrate(const CAN_SPEED canSpeed);
+    ERROR       setBitrate(const CAN_SPEED canSpeed, const CAN_CLOCK canClock);
+    ERROR       setFilterMask(const MASK num, const bool ext, const uint32_t ulData);
+    ERROR       setFilter(const RXF num, const bool ext, const uint32_t ulData);
+    ERROR       sendMessage(const TXBn txbn, const struct can_frame* frame);
+    ERROR       sendMessage(const struct can_frame* frame);
+    ERROR       readMessage(const RXBn rxbn, struct can_frame* frame);
+    ERROR       readMessage(struct can_frame* frame);
+    bool        checkReceive(void);
+    bool        checkError(void);
+    uint8_t     getErrorFlags(void);
+    void        clearRXnOVRFlags(void);
+    uint8_t     getInterrupts(void);
+    uint8_t     getInterruptMask(void);
+    void        clearInterrupts(void);
+    void        clearTXInterrupts(void);
+    uint8_t     getStatus(void);
+    void        clearRXnOVR(void);
+    void        clearMERR();
+    void        clearERRIF();
+    uint8_t     errorCountRX(void);
+    uint8_t     errorCountTX(void);
+    spi_inst_t* getChannel() { return this->SPI_CHANNEL; }
+    uint8_t     getClock() { return this->SPI_CLOCK; }
+    uint8_t     getCS() { return this->SPI_CS_PIN; }
 };
 
 inline MCP2515::MCP2515(spi_inst_t* CHANNEL, uint8_t CS_PIN, uint32_t SPI_CLOCK)
