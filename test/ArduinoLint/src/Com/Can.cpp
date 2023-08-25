@@ -29,8 +29,8 @@ inline void testBus()
 {
     Udon::CanBusSpi bus{ spi0, 1 };
 
-    bus.begin();
-    bus.begin(1000000);
+    bus.begin(1, 2, 3, 4);
+    bus.begin(1);
     bus.end();
     bus.update();
     bus.operator bool();
@@ -56,10 +56,10 @@ struct DummyBus
     : Udon::ICanBus
 {
     explicit operator bool() const override { return true; }
-    void joinTx(Udon::CanNode& node) override {}
-    void joinRx(Udon::CanNode& node, void (*onReceive)(void*), void* p) override {}
-    void leaveTx(const Udon::CanNode& node) override {}
-    void leaveRx(const Udon::CanNode& node) override {}
+    void joinTx(Udon::CanNode&) override {}
+    void joinRx(Udon::CanNode&, void (*)(void*), void*) override {}
+    void leaveTx(const Udon::CanNode&) override {}
+    void leaveRx(const Udon::CanNode&) override {}
 };
 
 inline void testReader()
