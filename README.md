@@ -68,7 +68,7 @@
 
 - 更新
 
-  追加する際に調べた `libraries` ディレクトリに移動し、プルします。
+  追加した `UdonLibrary` ディレクトリでプルします。
 
   ```sh
   cd ~/Documents/Arduino/libraries/UdonLibrary
@@ -91,7 +91,7 @@
 
 - 更新
 
-  プロジェクト内の lib ディレクトリでプルします。
+  追加した `UdonLibrary` ディレクトリでプルします。
 
   ```sh
   git pull
