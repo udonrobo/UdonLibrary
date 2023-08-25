@@ -59,7 +59,7 @@ typedef MAX3421e<P17, P20> MAX3421E; // RP2040 based boards
 #elif defined(ARDUINO_SEEED_XIAO_RP2040)  // add by udonrobo
 typedef MAX3421e<P17, P20> MAX3421E; // seeed xiao rp2040 boards
 #else
-typedef MAX3421e<PIN7, P6> MAX3421E; // Official Arduinos (UNO, Duemilanove, Mega, 2560, Leonardo, Due etc.), Intel Edison, Intel Galileo 2 or Teensy 2.0 and 3.x
+typedef MAX3421e<P10, P9> MAX3421E; // Official Arduinos (UNO, Duemilanove, Mega, 2560, Leonardo, Due etc.), Intel Edison, Intel Galileo 2 or Teensy 2.0 and 3.x
 #endif
 
 /* Common setup data constant combinations  */
