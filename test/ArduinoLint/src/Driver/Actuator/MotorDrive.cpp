@@ -1,4 +1,4 @@
-#include <Udon/Actuator/MotorDriver.hpp>
+#include <Udon/Driver/Actuator/Motor.hpp>
 
 inline void test()
 {

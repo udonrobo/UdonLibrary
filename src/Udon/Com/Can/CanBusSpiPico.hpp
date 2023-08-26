@@ -1,3 +1,18 @@
+//-------------------------------------------------------------------
+//
+//    UdonLibrary
+//
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
+//
+//    Licensed under the MIT License.
+//
+//-------------------------------------------------------------------
+//
+//    CAN通信 Raspberry Pi Pico用バスクラス (SPI経由)
+//
+//-------------------------------------------------------------------
+
 #pragma once
 
 #if defined(ARDUINO_ARCH_RP2040)
@@ -10,8 +25,6 @@
 
 #    include <Udon/Algorithm/StaticVector.hpp>
 #    include <Udon/Algorithm/RingBuffer.hpp>
-
-#    include <Udon/Pio/PicoPioClock.hpp>
 
 #    include <Udon/Thirdparty/pico_mcp2515/mcp2515.h>
 
@@ -63,6 +76,7 @@ namespace Udon
                   /* uint32_t    _SPI_CLOCK */ spiClock)
         {
         }
+
         /// @brief 通信開始
         /// @remark SPI通信も開始します。
         /// @param intPin            割り込みピン
@@ -136,7 +150,7 @@ namespace Udon
             bus.setBitrate(canSpeed, transceiverClock);
 
             if (rxNodes && not txNodes)
-                bus.setListenOnlyMode();    // 受信のみの場合は受信モードに設定 (送受信モードのマイコンが再起動したとき、全ノードが停止ししたため。)
+                bus.setListenOnlyMode();    // 受信のみの場合は受信モードに設定 (送受信モードのマイコンが再起動したとき、全ノードが停止したため。)
             else
                 bus.setNormalMode();
         }

@@ -12,6 +12,9 @@ inline void test()
         constexpr Udon::Vec2 b = a;
 
         constexpr Udon::Vec2 c = { 100, 200 };
+
+        (void)b;
+        (void)c;
     }
 
     // コピー代入演算子

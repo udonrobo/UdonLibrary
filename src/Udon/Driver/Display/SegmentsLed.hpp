@@ -15,14 +15,12 @@
 
 #pragma once
 
-#include <Udon/Stl/EnableSTL.hpp>
-#include <array>
-#include <vector>
-#include <stdint.h>
-
 #ifdef ARDUINO
 
-#    include <Arduino.h>
+#    include <Udon/Stl/EnableSTL.hpp>
+#    include <array>
+#    include <vector>
+#    include <stdint.h>
 
 namespace Udon
 {
@@ -118,4 +116,4 @@ namespace Udon
 
 }    // namespace Udon
 
-#endif 
+#endif

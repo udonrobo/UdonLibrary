@@ -36,10 +36,11 @@ namespace Udon
 
         /// @brief コンストラクタ
         /// @param bus I2cバス
-        /// @param id 信号識別ID
+        /// @param id　送信者のノードID
         CanReader(ICanBus& bus, const uint32_t id)
             : bus{ bus }
-            , node{ id, buffer, sizeof buffer, 0 }
+            , buffer{}
+            , node{ id, buffer, Size, 0 }
         {
             joinBus();
         }
@@ -47,7 +48,8 @@ namespace Udon
         /// @brief コピーコンストラクタ
         CanReader(const CanReader& other)
             : bus{ other.bus }
-            , node{ other.node }
+            , buffer{}
+            , node{ other.node.id, buffer, Size, 0 }
         {
             joinBus();
         }
@@ -83,6 +85,7 @@ namespace Udon
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
+            Udon::Show(node.id, gap);
             if (const auto message = getMessage())
             {
                 Udon::Show(*message, gap);
