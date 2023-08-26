@@ -18,7 +18,8 @@
 
 #pragma once
 
-#include <Udon/Com/I2c/I2cBus.hpp>
+#include "I2cBus.hpp"
+
 #include <Udon/Com/Serialization.hpp>
 #include <Udon/Utility/Show.hpp>
 #include <Udon/Com/Common/ParsableArray.hpp>

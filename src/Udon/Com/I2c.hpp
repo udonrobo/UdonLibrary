@@ -16,10 +16,10 @@
 #pragma once
 
 #ifdef ARDUINO
-#    include <Udon/Com/I2c/I2cBus.hpp>
-#    include <Udon/Com/I2c/I2cMasterReader.hpp>
-#    include <Udon/Com/I2c/I2cMasterWriter.hpp>
-#    include <Udon/Com/I2c/I2cSlaveReader.hpp>
-#    include <Udon/Com/I2c/I2cSlaveWriter.hpp>
-#    include <Udon/Com/Pad/I2cPadPS5.hpp>
+#    include "I2c/I2cBus.hpp"
+#    include "I2c/I2cMasterReader.hpp"
+#    include "I2c/I2cMasterWriter.hpp"
+#    include "I2c/I2cSlaveReader.hpp"
+#    include "I2c/I2cSlaveWriter.hpp"
+#    include "Pad/I2cPadPS5.hpp"
 #endif

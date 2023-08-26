@@ -15,8 +15,8 @@
 
 #pragma once
 
-#include <Udon/Com/Can/ICanBus.hpp>
-#include <Udon/Com/Can/CanNode.hpp>
+#include "ICanBus.hpp"
+#include "CanNode.hpp"
 
 #include <Udon/Com/Serialization.hpp>
 #include <Udon/Utility/Show.hpp>

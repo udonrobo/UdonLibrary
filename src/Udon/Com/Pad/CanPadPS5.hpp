@@ -18,7 +18,8 @@
 
 #pragma once
 
-#include <Udon/Com/Pad/IPadPS5.hpp>
+#include "IPadPS5.hpp"
+
 #include <Udon/Com/Can/CanReader.hpp>
 
 namespace Udon

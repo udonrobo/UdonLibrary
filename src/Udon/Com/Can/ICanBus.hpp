@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <Udon/Com/Can/CanNode.hpp>
+#include "CanNode.hpp"
 
 namespace Udon
 {
