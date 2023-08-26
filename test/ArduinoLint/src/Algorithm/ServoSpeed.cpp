@@ -1,4 +1,4 @@
-#include <Udon/Actuator/ServoSpeed.hpp>
+#include <Udon/Algorithm/ServoSpeed.hpp>
 
 inline void test()
 {

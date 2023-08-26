@@ -35,6 +35,10 @@ namespace Udon
             , pinA(pinA)
             , pinP(pinP)
         {
+        }
+
+        void begin()
+        {
             pinMode(pinA, OUTPUT);
         }
 
@@ -71,6 +75,10 @@ namespace Udon
             , pinA(pinA)
             , pinB(pinB)
             , pinP(pinP)
+        {
+        }
+
+        void begin()
         {
             pinMode(pinA, OUTPUT);
             pinMode(pinB, OUTPUT);

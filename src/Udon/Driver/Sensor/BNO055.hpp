@@ -18,7 +18,7 @@
 #if defined(ARDUINO) && !defined(UDON_TEENSY_I2C_SLAVE_MODE)
 
 #    include <Adafruit_BNO055.h>
-#    include <Udon/Sensor/Imu.hpp>
+#    include <Udon/Driver/Sensor/Imu.hpp>
 
 namespace Udon
 {

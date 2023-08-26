@@ -15,21 +15,6 @@
 // UdonLibrary が含まれているかどうかを判定するマクロ
 #define UDON_INCLUDED
 
-//-------------------------------------------------------------------
-//
-//    アクチュエーター / actuator
-//
-//-------------------------------------------------------------------
-
-// モーター(基板用)
-#include <Udon/Actuator/MotorDriver.hpp>
-
-// モーター(メイン側)
-#include <Udon/Actuator/Motor.hpp>
-
-// サーボ
-#include <Udon/Actuator/ServoSpeed.hpp>
-
 
 //-------------------------------------------------------------------
 //
@@ -61,6 +46,9 @@
 
 // 独立ステア最適化
 #include <Udon/Algorithm/SteerOptimizer.hpp>
+
+// サーボ
+#include <Udon/Algorithm/ServoSpeed.hpp>
 
 
 //-------------------------------------------------------------------
@@ -96,6 +84,12 @@
 // 通信用構造体群
 #include <Udon/Com/Message.hpp>
 
+// 通信経由モーター
+#include <Udon/Com/Driver/Motor.hpp>
+
+// 通信経由エンコーダー
+#include <Udon/Com/Driver/Encoder.hpp>
+
 
 //-------------------------------------------------------------------
 //
@@ -118,34 +112,27 @@
 
 //-------------------------------------------------------------------
 //
-//    センサー / sensor
+//    デバイスドライバー
 //
 //-------------------------------------------------------------------
 
-// 通信経由エンコーダー
-#include <Udon/Sensor/Encoder.hpp>
+// モーター(基板用)
+#include <Udon/Driver/Actuator/Motor.hpp>
 
 // IMU / 慣性計測装置
-#include <Udon/Sensor/Imu.hpp>
+#include <Udon/Driver/Sensor/Imu.hpp>
 
 // BNO055(IMU)
-#include <Udon/Sensor/BNO055.hpp>
+#include <Udon/Driver/Sensor/BNO055.hpp>
 
 // ディップスイッチ
-#include <Udon/Sensor/DipSwitch.hpp>
+#include <Udon/Driver/Sensor/DipSwitch.hpp>
 
 // raspberrypi pico エンコーダー
-#include <Udon/Sensor/EncoderPico.hpp>
-
-
-//-------------------------------------------------------------------
-//
-//    表示系 / display
-//
-//-------------------------------------------------------------------
+#include <Udon/Driver/Sensor/EncoderPico.hpp>
 
 // 7セグメントLED
-#include <Udon/Display/SegmentsLed.hpp>
+#include <Udon/Driver/Display/SegmentsLed.hpp>
 
 
 //-------------------------------------------------------------------
