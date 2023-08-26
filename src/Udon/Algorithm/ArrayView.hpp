@@ -19,20 +19,22 @@
 #include <cstddef>    // std::ptrdiff_t
 #include <iterator>
 
-
 namespace Udon
 {
 
     template <typename T>
     class ArrayView
     {
-        using value_type      = T;
-        using reference       = T&;
-        using const_reference = const T&;
-        using pointer         = T*;
-        using const_pointer   = const T*;
-        using iterator        = T*;
-        using const_iterator  = const T*;
+    public:
+        using value_type             = T;
+        using reference              = T&;
+        using const_reference        = const T&;
+        using pointer                = T*;
+        using const_pointer          = const T*;
+        using iterator               = T*;
+        using const_iterator         = const T*;
+        using reverce_iterator       = std::reverse_iterator<iterator>;
+        using const_reverce_iterator = std::reverse_iterator<const_iterator>;
 
     private:
         pointer m_data;
@@ -130,13 +132,14 @@ namespace Udon
         {
             return { m_data };
         }
-        iterator end()
-        {
-            return { m_data + m_size };
-        }
         const_iterator begin() const
         {
             return { m_data };
+        }
+        
+        iterator end()
+        {
+            return { m_data + m_size };
         }
         const_iterator end() const
         {
@@ -147,195 +150,38 @@ namespace Udon
         {
             return { m_data };
         }
+
         const_iterator cend() const
         {
             return { m_data + m_size };
         }
 
-        struct const_reverce_iterator
+        const_reverce_iterator rbegin() const
         {
-            using iterator_category = std::random_access_iterator_tag;
-            using value_type        = T;
-            using difference_type   = std::ptrdiff_t;
-            using pointer           = T*;
-            using reference         = T&;
-
-            pointer p;
-
-            const_reverce_iterator& operator++()
-            {
-                --p;
-                return *this;
-            }
-            const_reverce_iterator operator++(int)
-            {
-                const_reverce_iterator tmp = *this;
-                --p;
-                return tmp;
-            }
-            const_reverce_iterator& operator--()
-            {
-                ++p;
-                return *this;
-            }
-            const_reverce_iterator operator--(int)
-            {
-                const_reverce_iterator tmp = *this;
-                ++p;
-                return tmp;
-            }
-            const_reverce_iterator& operator+=(const difference_type n)
-            {
-                p -= n;
-                return *this;
-            }
-            const_reverce_iterator operator+(const difference_type n) const
-            {
-                return { p - n };
-            }
-            const_reverce_iterator& operator-=(const difference_type n)
-            {
-                p += n;
-                return *this;
-            }
-            const_reverce_iterator operator-(const difference_type n) const
-            {
-                return { p + n };
-            }
-            difference_type operator-(const const_reverce_iterator& rhs) const
-            {
-                return rhs.p - p;
-            }
-            reference operator[](const difference_type n) const
-            {
-                return *(p - n);
-            }
-            reference operator*() const
-            {
-                return *p;
-            }
-            pointer operator->() const
-            {
-                return p;
-            }
-            bool operator==(const const_reverce_iterator& rhs) const
-            {
-                return p == rhs.p;
-            }
-            bool operator!=(const const_reverce_iterator& rhs) const
-            {
-                return p != rhs.p;
-            }
-            bool operator<(const const_reverce_iterator& rhs) const
-            {
-                return p > rhs.p;
-            }
-            bool operator>(const const_reverce_iterator& rhs) const
-            {
-                return p < rhs.p;
-            }
-            bool operator<=(const const_reverce_iterator& rhs) const
-            {
-                return p >= rhs.p;
-            }
-            bool operator>=(const const_reverce_iterator& rhs) const
-            {
-                return p <= rhs.p;
-            }
-        };
-
-        struct reverce_iterator
-            : public const_reverce_iterator
-        {
-            using iterator_category = std::random_access_iterator_tag;
-            using value_type        = T;
-            using difference_type   = std::ptrdiff_t;
-            using pointer           = T*;
-            using reference         = T&;
-
-            reference operator*()
-            {
-                return const_cast<reference>(const_reverce_iterator::operator*());
-            }
-            pointer operator->()
-            {
-                return const_cast<pointer>(const_reverce_iterator::operator->());
-            }
-
-            reverce_iterator& operator++()
-            {
-                const_reverce_iterator::operator++();
-                return *this;
-            }
-            reverce_iterator operator++(int)
-            {
-                reverce_iterator tmp = *this;
-                const_reverce_iterator::operator++();
-                return tmp;
-            }
-            reverce_iterator& operator--()
-            {
-                const_reverce_iterator::operator--();
-                return *this;
-            }
-            reverce_iterator operator--(int)
-            {
-                reverce_iterator tmp = *this;
-                const_reverce_iterator::operator--();
-                return tmp;
-            }
-            reverce_iterator& operator+=(const difference_type n)
-            {
-                const_reverce_iterator::operator+=(n);
-                return *this;
-            }
-            reverce_iterator operator+(const difference_type n) const
-            {
-                return { const_reverce_iterator::operator+(n) };
-            }
-            reverce_iterator& operator-=(const difference_type n)
-            {
-                const_reverce_iterator::operator-=(n);
-                return *this;
-            }
-            reverce_iterator operator-(const difference_type n) const
-            {
-                return { const_reverce_iterator::operator-(n) };
-            }
-            difference_type operator-(const reverce_iterator& rhs) const
-            {
-                return const_reverce_iterator::operator-(rhs);
-            }
-            reference operator[](const difference_type n) const
-            {
-                return const_cast<reference>(const_reverce_iterator::operator[](n));
-            }
-        };
-
+            return const_reverce_iterator{ end() };
+        }
         reverce_iterator rbegin()
         {
-            return { m_data + m_size - 1 };
+            return reverce_iterator{ end() };
+        }
+
+        const_reverce_iterator rend() const
+        {
+            return const_reverce_iterator{ begin() };
         }
         reverce_iterator rend()
         {
-            return { m_data - 1 };
-        }
-        const_reverce_iterator rbegin() const
-        {
-            return { m_data + m_size - 1 };
-        }
-        const_reverce_iterator rend() const
-        {
-            return { m_data - 1 };
+            return reverce_iterator{ begin() };
         }
 
         const_reverce_iterator crbegin() const
         {
-            return { m_data + m_size - 1 };
+            return const_reverce_iterator{ cend() };
         }
+        
         const_reverce_iterator crend() const
         {
-            return { m_data - 1 };
+            return const_reverce_iterator{ cbegin() };
         }
     };
 
