@@ -18,6 +18,8 @@
 
 #ifdef ARDUINO
 
+#    include <Arduino.h>
+
 namespace Udon
 {
 
