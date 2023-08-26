@@ -12,6 +12,9 @@ inline void test()
         constexpr Udon::Pos b = a;
 
         constexpr Udon::Pos c = { { 100, 200 }, 300 };
+
+        (void)b;
+        (void)c;
     }
 
     // コピー代入演算子

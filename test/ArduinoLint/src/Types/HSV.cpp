@@ -12,11 +12,16 @@ inline void test()
         constexpr Udon::HSV b = a;
 
         constexpr Udon::HSV c = { 100, 200, 255 };
+
+        (void)b;
+        (void)c;
     }
 
     // 変換コンストラクタ
     {
         Udon::HSV a = Udon::RGB{ 100, 200, 255 };
+
+        (void)a;
     }
 
     // コピー代入演算子
