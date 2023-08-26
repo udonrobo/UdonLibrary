@@ -19,9 +19,9 @@
 
 #    include <SPI.h>
 
-#    include <Udon/Com/Can/ICanBus.hpp>
-#    include <Udon/Com/Can/CanNode.hpp>
-#    include <Udon/Com/Can/CanUtility.hpp>
+#    include "ICanBus.hpp"
+#    include "CanNode.hpp"
+#    include "CanUtility.hpp"
 
 #    include <Udon/Algorithm/StaticVector.hpp>
 #    include <Udon/Algorithm/RingBuffer.hpp>

@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-#include <Udon/Driver/Sensor/EncoderPico.hpp>
+#include "EncoderPico.hpp"
 
 #if defined(ARDUINO_ARCH_RP2040)
 

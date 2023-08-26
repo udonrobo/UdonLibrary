@@ -19,7 +19,8 @@
 
 #pragma once
 
-#include <Udon/Com/Im920/IIm920.hpp>
+#include "IIm920.hpp"
+
 #include <Udon/Com/Serialization.hpp>
 #include <Udon/Utility/Show.hpp>
 

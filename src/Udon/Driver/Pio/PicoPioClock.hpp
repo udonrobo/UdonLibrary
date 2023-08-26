@@ -18,7 +18,7 @@
 
 #if defined(ARDUINO_ARCH_RP2040)
 
-#    include <Udon/Driver/Pio/SquareWave.pio.hpp>
+#    include "SquareWave.pio.hpp"
 
 namespace Udon
 {

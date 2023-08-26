@@ -15,16 +15,16 @@
 
 #pragma once
 
-#include <Udon/Com/Message/AirCylinder.hpp>
-#include <Udon/Com/Message/BrushLess.hpp>
-#include <Udon/Com/Message/EmergencySwitch.hpp>
-#include <Udon/Com/Message/Encoder.hpp>
-#include <Udon/Com/Message/Imu.hpp>
-#include <Udon/Com/Message/Lcd.hpp>
-#include <Udon/Com/Message/Motor.hpp>
-#include <Udon/Com/Message/PadPS5.hpp>
-#include <Udon/Com/Message/PhotoSensor.hpp>
-#include <Udon/Com/Message/Servo.hpp>
-#include <Udon/Com/Message/Solenoid.hpp>
-#include <Udon/Com/Message/Stepping.hpp>
-#include <Udon/Com/Message/Switch.hpp>
+#include "Message/AirCylinder.hpp"
+#include "Message/BrushLess.hpp"
+#include "Message/EmergencySwitch.hpp"
+#include "Message/Encoder.hpp"
+#include "Message/Imu.hpp"
+#include "Message/Lcd.hpp"
+#include "Message/Motor.hpp"
+#include "Message/PadPS5.hpp"
+#include "Message/PhotoSensor.hpp"
+#include "Message/Servo.hpp"
+#include "Message/Solenoid.hpp"
+#include "Message/Stepping.hpp"
+#include "Message/Switch.hpp"

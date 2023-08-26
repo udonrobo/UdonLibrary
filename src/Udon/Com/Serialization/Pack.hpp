@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <Udon/Com/Serialization/Serializer.hpp>
+#include "Serializer.hpp"
 
 namespace Udon
 {

@@ -5,8 +5,8 @@
 #pragma once
 
 #if !PICO_NO_HARDWARE
-#    include "hardware/pio.h"
-#    include "pico/stdlib.h"
+#    include <hardware/pio.h>
+#    include <pico/stdlib.h>
 
 #endif
 

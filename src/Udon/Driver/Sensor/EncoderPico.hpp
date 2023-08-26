@@ -1,6 +1,6 @@
 #pragma once
 
-#if defined(ARDUINO_ARCH_RP2040)
+#ifdef ARDUINO_ARCH_RP2040
 
 namespace Udon
 {

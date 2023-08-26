@@ -20,9 +20,10 @@
 #include <algorithm>
 #include <array>
 
+#include "Polar.hpp"
+#include "Vector2D.hpp"
+
 #include <Udon/Math/Math.hpp>
-#include <Udon/Types/Polar.hpp>
-#include <Udon/Types/Vector2D.hpp>
 #include <Udon/Utility/Parsable.hpp>
 #include <Udon/Com/Serialization.hpp>
 

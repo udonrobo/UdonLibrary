@@ -16,9 +16,9 @@
 
 #pragma once
 
-#include <Udon/Types/Forward/Vector2DFwd.hpp>
-#include <Udon/Types/Forward/Vector3DFwd.hpp>
-#include <Udon/Types/Forward/Vector4DFwd.hpp>
+#include "Forward/Vector2DFwd.hpp"
+#include "Forward/Vector3DFwd.hpp"
+#include "Forward/Vector4DFwd.hpp"
 
 template <class Ty>
 inline Udon::Vector2D<Ty> Udon::Vector3D<Ty>::xy() const noexcept

@@ -30,11 +30,16 @@ namespace Udon
     class RingBuffer
     {
     public:
-        using value_type      = T;
-        using reference       = T&;
-        using const_reference = const T&;
-        using pointer         = T*;
-        using const_pointer   = const T*;
+        struct iterator;
+        struct const_iterator;
+
+        using value_type             = T;
+        using reference              = T&;
+        using const_reference        = const T&;
+        using pointer                = T*;
+        using const_pointer          = const T*;
+        using reverse_iterator       = std::reverse_iterator<iterator>;
+        using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
     private:
         value_type m_data[Capacity];
@@ -412,6 +417,34 @@ namespace Udon
         const_iterator cend() const
         {
             return { m_data, m_head + m_size, Capacity };
+        }
+
+        const_reverse_iterator rbegin() const
+        {
+            return const_reverse_iterator{ end() };
+        }
+        reverse_iterator rbegin()
+        {
+            return reverse_iterator{ end() };
+        }
+
+        const_reverse_iterator rend() const
+        {
+            return const_reverse_iterator{ begin() };
+        }
+        reverse_iterator rend()
+        {
+            return reverse_iterator{ begin() };
+        }
+
+        const_reverse_iterator crbegin() const
+        {
+            return const_reverse_iterator{ cend() };
+        }
+
+        const_reverse_iterator crend() const
+        {
+            return const_reverse_iterator{ cbegin() };
         }
     };
 
