@@ -33,8 +33,8 @@ namespace Udon
         using const_pointer          = const T*;
         using iterator               = T*;
         using const_iterator         = const T*;
-        using reverce_iterator       = std::reverse_iterator<iterator>;
-        using const_reverce_iterator = std::reverse_iterator<const_iterator>;
+        using reverse_iterator       = std::reverse_iterator<iterator>;
+        using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
     private:
         pointer m_data;
@@ -156,32 +156,32 @@ namespace Udon
             return { m_data + m_size };
         }
 
-        const_reverce_iterator rbegin() const
+        const_reverse_iterator rbegin() const
         {
-            return const_reverce_iterator{ end() };
+            return const_reverse_iterator{ end() };
         }
-        reverce_iterator rbegin()
+        reverse_iterator rbegin()
         {
-            return reverce_iterator{ end() };
-        }
-
-        const_reverce_iterator rend() const
-        {
-            return const_reverce_iterator{ begin() };
-        }
-        reverce_iterator rend()
-        {
-            return reverce_iterator{ begin() };
+            return reverse_iterator{ end() };
         }
 
-        const_reverce_iterator crbegin() const
+        const_reverse_iterator rend() const
         {
-            return const_reverce_iterator{ cend() };
+            return const_reverse_iterator{ begin() };
+        }
+        reverse_iterator rend()
+        {
+            return reverse_iterator{ begin() };
+        }
+
+        const_reverse_iterator crbegin() const
+        {
+            return const_reverse_iterator{ cend() };
         }
         
-        const_reverce_iterator crend() const
+        const_reverse_iterator crend() const
         {
-            return const_reverce_iterator{ cbegin() };
+            return const_reverse_iterator{ cbegin() };
         }
     };
 
