@@ -131,6 +131,9 @@
 // raspberrypi pico エンコーダー
 #include <Udon/Driver/Sensor/EncoderPico.hpp>
 
+// raspberrypi pico PIO
+#include <Udon/Driver/Pio/PicoPioClock.hpp>
+
 // 7セグメントLED
 #include <Udon/Driver/Display/SegmentsLed.hpp>
 
