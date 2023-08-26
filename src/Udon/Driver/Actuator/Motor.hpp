@@ -24,16 +24,19 @@ namespace Udon
 {
 
     class Motor2Driver
-        : MovingAverage
     {
         const uint8_t pinA;
         const uint8_t pinP;
 
+        using MovingAverage = Udon::MovingAverage<20>;
+
+        MovingAverage movingAverage;
+
     public:
         Motor2Driver(const uint8_t pinA, const uint8_t pinP)
-            : MovingAverage(20)
-            , pinA(pinA)
+            : pinA(pinA)
             , pinP(pinP)
+            , movingAverage{}
         {
         }
 
@@ -44,8 +47,8 @@ namespace Udon
 
         void move(const int16_t power)
         {
-            MovingAverage::update(constrain(power, -250, 250));
-            const int16_t p = MovingAverage::getValue();
+            movingAverage.update(constrain(power, -250, 250));
+            const int16_t p = movingAverage.getValue();
             digitalWrite(pinA, p >= 0);
             analogWrite(pinP, abs(p));
         }
@@ -57,24 +60,27 @@ namespace Udon
 
         void show() const
         {
-            Serial.print(MovingAverage::getValue());
+            Serial.print(movingAverage.getValue());
             Serial.print('\t');
         }
     };
 
     class Motor3Driver
-        : MovingAverage
     {
         const uint8_t pinA;
         const uint8_t pinB;
         const uint8_t pinP;
 
+        using MovingAverage = Udon::MovingAverage<20>;
+
+        MovingAverage movingAverage;
+
     public:
         Motor3Driver(const uint8_t pinA, const uint8_t pinB, const uint8_t pinP)
-            : MovingAverage(20)
-            , pinA(pinA)
+            : pinA(pinA)
             , pinB(pinB)
             , pinP(pinP)
+            , movingAverage{}
         {
         }
 
@@ -86,8 +92,8 @@ namespace Udon
 
         void move(const int16_t power)
         {
-            MovingAverage::update(constrain(power, -250, 250));
-            const int16_t p = MovingAverage::getValue();
+            movingAverage.update(constrain(power, -250, 250));
+            const int16_t p = movingAverage.getValue();
             digitalWrite(pinA, p >= 0);
             digitalWrite(pinB, p <= 0);
             analogWrite(pinP, abs(p));
@@ -100,7 +106,7 @@ namespace Udon
 
         void show() const
         {
-            Serial.print(MovingAverage::getValue());
+            Serial.print(movingAverage.getValue());
             Serial.print('\t');
         }
     };
