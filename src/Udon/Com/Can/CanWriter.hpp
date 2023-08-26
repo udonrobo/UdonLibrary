@@ -44,6 +44,9 @@ namespace Udon
 
         /// @brief コピーコンストラクタ
         CanWriter(const CanWriter& other)
+            : bus{ other.bus }
+            , buffer{}
+            , node{ other.node.id, buffer, Size, 0 }
         {
             bus.joinTx(node);
         }
