@@ -36,7 +36,7 @@ namespace Udon
 
         /// @brief コンストラクタ
         /// @param bus I2cバス
-        /// @param id 信号識別ID
+        /// @param id　送信者のノードID
         CanReader(ICanBus& bus, const uint32_t id)
             : bus{ bus }
             , buffer{}

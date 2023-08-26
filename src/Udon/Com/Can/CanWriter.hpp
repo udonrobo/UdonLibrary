@@ -34,7 +34,9 @@ namespace Udon
         /// @brief 受信バッファサイズ
         static constexpr size_t Size = Udon::CapacityWithChecksum<MessageType>();
 
-        /// @param id 信号識別ID
+        /// @brief コンストラクタ
+        /// @param bus CANバス
+        /// @param id  自身のノードID
         CanWriter(ICanBus& bus, const uint32_t id)
             : bus{ bus }
             , node{ id, buffer, sizeof buffer, 0 }
