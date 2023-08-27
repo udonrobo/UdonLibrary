@@ -84,7 +84,7 @@ namespace Udon
             }
         }
 
-        RingBuffer(size_t size, T&& value)
+        RingBuffer(size_t size, value_type&& value)
             : m_data{}
             , m_head{}
             , m_tail{}
@@ -108,7 +108,7 @@ namespace Udon
             resize(size);
         }
 
-        RingBuffer(std::initializer_list<T> init)
+        RingBuffer(std::initializer_list<value_type> init)
             : m_data{}
             , m_head{}
             , m_tail{}
@@ -170,7 +170,7 @@ namespace Udon
 
         /// @brief バッファの先頭に要素を追加
         /// @param value 追加する値
-        void push(T&& value)
+        void push(value_type&& value)
         {
             if (m_size == Capacity)
             {
@@ -186,7 +186,7 @@ namespace Udon
 
         /// @brief バッファの末尾を取得し要素を削除
         /// @return 末尾の要素
-        T pop()
+        value_type pop()
         {
             if (m_size == 0)
             {
