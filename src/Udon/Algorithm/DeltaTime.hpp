@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <Arduino.h>
+#ifdef ARDUINO
 
 namespace Udon
 {
@@ -58,3 +58,5 @@ namespace Udon
         }
     };
 }    // namespace Udon
+
+#endif    // ARDUINO
