@@ -49,6 +49,11 @@ namespace Udon
             this->power = power;
         }
 
+        void setStop()
+        {
+            setPower(0);
+        }
+
         void update()
         {
             const auto sendPower = power * (direction ? 1 : -1);
