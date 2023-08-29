@@ -19,7 +19,7 @@
 #include <algorithm>
 
 #include <Udon/Algorithm/DeltaTime.hpp>
-#include <Udon/Com/Message/Motor.hpp>
+#include <Udon/Com/Message/Encoder.hpp>
 #include <Udon/Traits/MaybeInvoke.hpp>
 
 #include <Udon/Com/Traits.hpp>
@@ -77,7 +77,7 @@ namespace Udon
 
         /// @brief カウント値オフセット
         /// @param value エンコーダーのカウント値
-        void offset(int32_t value = 0)
+        void setOffset(int32_t value = 0)
         {
             offset = count - value;
         }
