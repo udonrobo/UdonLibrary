@@ -19,7 +19,7 @@
 #include <algorithm>
 
 #include <Udon/Com/Message/Motor.hpp>
-#include <Udon/Traits/MaybeInvoke.hpp>
+#include <Udon/Traits/HasMemberFunction.hpp>
 #include <Udon/Utility/Show.hpp>
 
 namespace Udon
@@ -58,7 +58,7 @@ namespace Udon
         {
             const auto sendPower = power * (direction ? 1 : -1);
             writer.setMessage({ static_cast<int16_t>(sendPower) });
-            Udon::MaybeInvoke_update(writer);
+            Udon::Traits::MaybeInvokeUpdate(writer);
         }
 
         void show() const

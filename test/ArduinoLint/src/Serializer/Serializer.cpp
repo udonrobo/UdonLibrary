@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
 #include <Udon/Com/Serialization.hpp>
-#include <Udon/Utility/Parsable.hpp>
+#include <Udon/Traits/Parsable.hpp>
 
 struct Hoge
 {

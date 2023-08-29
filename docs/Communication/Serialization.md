@@ -185,7 +185,7 @@ void Accessor(Acc& acc, Vec2& rhs)
       double x;
       double y;
 
-      using IsParsable_tag = void;
+      using Parsable_tag = void;
 
       constexpr size_t capacity() const
       {
@@ -199,16 +199,6 @@ void Accessor(Acc& acc, Vec2& rhs)
       };
   };
   ```
-
-  - `IsParsable_tag`
-
-    > `IsParsable_tag` は型が解析可能かを区別する際に使用します。
-    >
-    > `Udon::IsParsable<T>` を使用し、型(ここでは Vec2)を解析できるかできないかコンパイル時に判定できるため、`static_assert` によってユーザーに分かりやすくエラーを出すことができます。
-    >
-    > ```cpp
-    > static_assert(Udon::IsParsable<Vec2>::value, "can not serialize");
-    > ```
 
   - `capacity()`
 

@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include <Udon/Com/I2c.hpp>
-#include <Udon/Com/Traits.hpp>
+
+#include <Udon/Traits/IsReader.hpp>
+#include <Udon/Traits/IsWriter.hpp>
 
 inline void testBus()
 {
@@ -30,10 +32,10 @@ inline void testBus()
 
 inline void testIsReaderWriter()
 {
-    static_assert(Udon::IsReader<Udon::I2cMasterReader>::value, "");
-    static_assert(Udon::IsWriter<Udon::I2cMasterWriter>::value, "");
-    static_assert(Udon::IsReader<Udon::I2cSlaveReader>::value, "");
-    static_assert(Udon::IsWriter<Udon::I2cSlaveWriter>::value, "");
+    static_assert(Udon::Traits::IsReader<Udon::I2cMasterReader>::value, "");
+    static_assert(Udon::Traits::IsWriter<Udon::I2cMasterWriter>::value, "");
+    static_assert(Udon::Traits::IsReader<Udon::I2cSlaveReader>::value, "");
+    static_assert(Udon::Traits::IsWriter<Udon::I2cSlaveWriter>::value, "");
 }
 
 inline void testMaster()
