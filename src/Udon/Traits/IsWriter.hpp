@@ -14,12 +14,12 @@ namespace Udon
         /// - `MessageType` というメンバ型名を持つ
         /// - `setMessage()` メンバ関数を持ち、戻り値が `void`、引数型が `const MessageType&` である
         template <template <typename> typename, typename = void>
-        class IsWriter : std::false_type
+        struct IsWriter : std::false_type
         {
         };
 
         template <template <typename> typename T>
-        class IsWriter<T, std::void_t<
+        struct IsWriter<T, std::void_t<
                               typename std::is_same<
                                   decltype(std::declval<T<int>>().setMessage(std::declval<const typename T<int>::MessageType&>())), void>::type>> : std::true_type
         {

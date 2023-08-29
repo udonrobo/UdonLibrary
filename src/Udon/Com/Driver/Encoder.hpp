@@ -20,9 +20,9 @@
 
 #include <Udon/Algorithm/DeltaTime.hpp>
 #include <Udon/Com/Message/Encoder.hpp>
-#include <Udon/Traits/MaybeInvoke.hpp>
+#include <Udon/Traits/HasMemberFunction.hpp>
 
-#include <Udon/Com/Traits.hpp>
+#include <Udon/Traits/IsReader.hpp>
 
 namespace Udon
 {
@@ -61,7 +61,7 @@ namespace Udon
         /// @brief 更新
         void update()
         {
-            Udon::MaybeInvoke_update(reader);
+            Udon::Traits::MaybeInvokeUpdate(reader);
 
             const auto prev = getCount();
 

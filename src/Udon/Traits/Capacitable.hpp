@@ -2,6 +2,7 @@
 
 #include <Udon/Stl/EnableSTL.hpp>
 #include <type_traits>
+#include <stddef.h>
 
 namespace Udon
 {
@@ -50,7 +51,7 @@ namespace Udon
         /// @brief シリアライズ後のバッファのビット数を取得する
         /// @return シリアライズ後のバッファのビット数
         template <typename HasMemberFunctionCapacity, typename std::enable_if<Traits::HasMemberFunctionCapacity<HasMemberFunctionCapacity>::value, std::nullptr_t>::type* = nullptr>
-        constexpr size_t InvokeCapacity(const HasMemberFunctionCapacity& rhs)
+        constexpr size_t InvokeCapacity(HasMemberFunctionCapacity&& rhs)
         {
             return rhs.capacity();
         }
@@ -58,7 +59,7 @@ namespace Udon
         /// @brief シリアライズ後のバッファのビット数を取得する
         /// @return シリアライズ後のバッファのビット数
         template <typename CapacityInvocable, typename std::enable_if<Traits::CapacityInvocable<CapacityInvocable>::value, std::nullptr_t>::type* = nullptr>
-        constexpr size_t InvokeCapacity(const CapacityInvocable& rhs)
+        constexpr size_t InvokeCapacity(CapacityInvocable&& rhs)
         {
             return Capacity(rhs);
         }

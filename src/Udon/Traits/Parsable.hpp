@@ -15,8 +15,52 @@
 
 #pragma once
 
-#include <Udon/Traits/HasMember.hpp>
+#include <Udon/Traits/Capacitable.hpp>
+#include <Udon/Traits/Accessible.hpp>
 #include <Udon/Com/Serialization/Capacity.hpp>
+
+namespace Udon
+{
+
+    namespace Traits
+    {
+
+        /// @brief T がパース可能であるか
+        template <typename, typename = void>
+        struct Parsable : std::false_type
+        {
+        };
+
+        template <typename T>
+        struct Parsable<T, typename std::enable_if<std::is_arithmetic<T>::value>::type> : std::true_type    // 算術型
+        {
+        };
+
+        template <typename T>
+        struct Parsable<T, typename std::enable_if<Traits::Capacitable<T>::value && Traits::Accessible<T>::value && T().parsable()>::type> : std::true_type    // ユーザー定義型かつパース可能(UDON_PARSABLE()で定義されたメンバー関数を持つ)
+        {
+        };
+
+        template <typename T, size_t N>
+        struct Parsable<T[N]> : Parsable<T>    // 配列
+        {
+        };
+
+        /// @brief メンバ変数がパース可能であることをコンパイル時に検証する
+        template <typename Head>
+        inline constexpr bool IsMemberParsable(Head&&)
+        {
+            return Parsable<typename std::remove_reference<Head>::type>::value;
+        }
+        template <typename Head, typename... Tails>
+        inline constexpr bool IsMemberParsable(Head&& head, Tails&&... tails)
+        {
+            return IsMemberParsable(std::forward<Head>(head)) && IsMemberParsable(std::forward<Tails>(tails)...);
+        }
+
+    }    // namespace Traits
+
+}    // namespace Udon
 
 /// @brief メンバ変数のパースを可能にする
 /// @param ... パース可能なメンバー変数(,区切り)
@@ -30,62 +74,17 @@
 ///     - シリアライズ時に必要なバッファのビットサイズを返す
 ///   - template <typename Acc> void accessor(Acc& acc)
 ///     - シリアライズ、デシリアライズ時に使用するアクセッサ
-#define UDON_PARSABLE(...)                      \
-    using IsParsable_tag = void;                \
-    constexpr size_t capacity() const           \
-    {                                           \
-        return Udon::CapacityBits(__VA_ARGS__); \
-    }                                           \
-    template <typename Acc>                     \
-    void accessor(Acc& acc)                     \
-    {                                           \
-        acc(__VA_ARGS__);                       \
+#define UDON_PARSABLE(...)                                  \
+    constexpr bool parsable() const                         \
+    {                                                       \
+        return Udon::Traits::IsMemberParsable(__VA_ARGS__); \
+    }                                                       \
+    constexpr size_t capacity() const                       \
+    {                                                       \
+        return Udon::CapacityBits(__VA_ARGS__);             \
+    }                                                       \
+    template <typename Acc>                                 \
+    void accessor(Acc& acc)                                 \
+    {                                                       \
+        acc(__VA_ARGS__);                                   \
     }
-
-namespace Udon
-{
-
-#ifndef UDON_HAS_MEMBER_FUNCTION_ACCESSOR
-#    define UDON_HAS_MEMBER_FUNCTION_ACCESSOR
-    UDON_HAS_MEMBER_ITERATE_FUNCTION(accessor);
-#endif
-
-#ifndef UDON_HAS_MEMBER_TYPE_IsParsable_TAG
-#    define UDON_HAS_MEMBER_TYPE_IsParsable_TAG
-    UDON_HAS_MEMBER_TYPE(IsParsable_tag);
-#endif
-
-    namespace Detail
-    {
-        template <typename T>
-        struct IsParsable_helper
-        {
-            static constexpr bool value = std::is_arithmetic<T>::value || Udon::has_member_type_IsParsable_tag<T>::value;
-        };
-
-        template <typename T>
-        struct IsParsable_helper<T[]> : IsParsable_helper<T>
-        {
-        };
-
-        template <typename T, size_t N>
-        struct IsParsable_helper<T[N]> : IsParsable_helper<T>
-        {
-        };
-
-    }    // namespace Detail
-
-    template <typename T>
-    struct IsParsable : Detail::IsParsable_helper<T>
-    {
-    };
-
-    //   template <typename T>
-    //   struct IsConstexprCapasitive
-    //   {
-    //	static constexpr bool value = Udon::has_member_function_capacity<T>::value && std::is_const<decltype(std::declval<T>().capacity())>::value;
-    //};
-    // Q コンパイル時に求められるか、求められないか判別する方法はありますか？
-    // A ないです。constexprの場合、コンパイル時に求められるか、求められないか判別する方法はありません。
-
-}    // namespace Udon

@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <Udon/Traits/HasMember.hpp>
+#include <Udon/Traits/Concept.hpp>
 
 #ifndef F
 #    define F(x) (x)
@@ -24,18 +24,49 @@
 namespace Udon
 {
 
-    struct MemberViewer
+    class MemberViewer
     {
-
         char gap;
 
-        /// @brief
-        /// @tparam T 整数型
-        /// @param rhs
-        /// @return
+    public:
+        MemberViewer(char gap)
+            : gap(gap)
+        {
+        }
+
+        /// @brief シリアライズ
+        /// @tparam ...Args
+        /// @param ...args
+        template <typename... Args>
+        inline void operator()(Args&&... args)
+        {
+            argumentUnpack(std::forward<Args>(args)...);
+        }
+
+    private:
+        /// @brief 可変長引数展開
+        template <typename Head, typename... Tails>
+        inline void argumentUnpack(Head&& head, Tails&&... tails)
+        {
+            argumentUnpack(std::forward<Head>(head));
+            argumentUnpack(std::forward<Tails>(tails)...);
+        }
+
+        /// @brief 可変長引数展開
         template <typename T>
-        auto operator()(const T& rhs)
-            -> typename std::enable_if<std::is_scalar<T>::value>::type
+        inline void argumentUnpack(T&& rhs)
+        {
+            print(std::forward<T>(rhs));
+        }
+
+        /// @brief 可変長引数展開の終端
+        inline void argumentUnpack()
+        {
+        }
+
+        /// @brief アトミック型 (bool, char, int, float, double, ...)
+        UDON_CONCEPT_SCALAR
+        void print(const Scalar& rhs)
         {
 
 #if defined(ARDUINO)
@@ -49,13 +80,9 @@ namespace Udon
 #endif
         }
 
-        /// @brief
-        /// @tparam T 配列
-        /// @param rhs
-        /// @return
-        template <typename T>
-        auto operator()(const T& rhs)
-            -> typename std::enable_if<std::is_array<T>::value>::type
+        /// @brief 組み込み配列
+        UDON_CONCEPT_ARRAY
+        void print(const Array& rhs)
         {
             for (auto&& it : rhs)
             {
@@ -63,39 +90,20 @@ namespace Udon
             }
         }
 
-        /// @brief
-        /// @tparam T メンバ関数 show を持つ型
-        /// @param rhs
-        /// @return
-        template <typename T>
-        auto operator()(const T& rhs)
-            -> typename std::enable_if<has_member_function_show<T>::value>::type
+        /// @brief メンバ関数 show を持つ型
+        UDON_CONCEPT_SHOWABLE
+        void print(HasMemberFunctionShow&& rhs)
         {
             rhs.show();
         }
 
-        /// @brief
-        /// @tparam T メンバにaccessorを持つ型
-        /// @param rhs
-        /// @return
-        template <typename T>
-        auto operator()(const T& rhs)
-            -> typename std::enable_if<Detail::Accessible<T>::value && not has_member_function_show<T>::value>::type
+        /// @brief showメンバを持たず、メンバ変数列挙用の関数が定義されている型
+        template <typename AccessibleAndNotShowable, typename std::enable_if<
+                                                         not Udon::Traits::HasMemberFunctionShow<AccessibleAndNotShowable>::value && Udon::Traits::Accessible<AccessibleAndNotShowable>::value,
+                                                         std::nullptr_t>::type* = nullptr>
+        void print(AccessibleAndNotShowable&& rhs)
         {
-            // T::accessor が const なメンバ関数でない場合に const rhs から呼び出せないため、const_cast によって const を除去
-            const_cast<T&>(rhs).accessor(*this);
-        }
-
-        /// @brief 可変長テンプレート引数再帰展開
-        /// @tparam Head
-        /// @tparam ...Tails
-        /// @param head
-        /// @param ...tails
-        template <typename Head, typename... Tails>
-        void operator()(const Head& head, const Tails&... tails)
-        {
-            operator()(head);
-            operator()(tails...);
+            Udon::Traits::InvokeAccessor(*this, const_cast<AccessibleAndNotShowable&>(rhs));
         }
     };
 
@@ -106,10 +114,9 @@ namespace Udon
         viewer(rhs);
     }
 
-    inline void Show(const char* string, char gap = '\t')
+    inline void Show(const char* const string, char gap = '\t')
     {
         MemberViewer viewer{ gap };
         viewer(string);
     }
-
 }    // namespace Udon

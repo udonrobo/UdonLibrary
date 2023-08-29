@@ -28,9 +28,7 @@
 #include <Udon/Algorithm/Endian.hpp>
 #include <Udon/Algorithm/Bit.hpp>
 #include <Udon/Types/Float.hpp>
-#include <Udon/Utility/Parsable.hpp>
-#include <Udon/Utility/Concept.hpp>
-#include <Udon/Traits/HasMember.hpp>
+#include <Udon/Traits/Accessible.hpp>
 
 namespace Udon
 {
@@ -51,14 +49,14 @@ namespace Udon
         }
 
         /// @brief シリアライズ
-        /// @tparam ...Args 
-        /// @param ...args 
+        /// @tparam ...Args
+        /// @param ...args
         template <typename... Args>
         inline void operator()(Args&&... args)
         {
             argumentUnpack(std::forward<Args>(args)...);
-		}
-
+        }
+        
         /// @brief バッファを取得する
         /// @remark 取得後の内部バッファは無効になります
         std::vector<uint8_t> flush()
@@ -75,6 +73,25 @@ namespace Udon
         }
 
     private:
+        /// @brief 可変長引数展開
+        template <typename Head, typename... Tails>
+        inline void argumentUnpack(const Head& head, const Tails&... tails)
+        {
+            argumentUnpack(head);
+            argumentUnpack(tails...);
+        }
+
+        /// @brief 可変長引数展開
+        template <typename T>
+        inline void argumentUnpack(const T& rhs)
+        {
+            serialize(rhs);
+        }
+
+        /// @brief 可変長引数展開の終端
+        inline void argumentUnpack()
+        {
+        }
 
         /// @brief bool型
         UDON_CONCEPT_BOOL
@@ -107,40 +124,12 @@ namespace Udon
             }
         }
 
-        /// @brief メンバ関数 accessor<Acc>(Acc&) が存在する型
-        template <typename Accessible, typename std::enable_if<Udon::Detail::Accessible<Accessible>::value, std::nullptr_t>::type* = nullptr>
+        /// @brief メンバ変数列挙用の関数が定義されている型
+        UDON_CONCEPT_ACCESSIBLE
         inline void serialize(const Accessible& rhs)
         {
-            const_cast<Accessible&>(rhs).accessor(*this);
+            Udon::Traits::InvokeAccessor(*this, const_cast<Accessible&>(rhs));
         }
-
-        /// @brief グローバル関数に Accessor<Acc>(Acc&, Accessible&) が存在する型
-        template <typename Accessible, typename std::enable_if<Udon::Detail::AccessorCallable<Accessible>::value, std::nullptr_t>::type* = nullptr>
-        inline void serialize(const Accessible& rhs)
-        {
-            Accessor(*this, const_cast<Accessible&>(rhs));
-        }
-
-        /// @brief 可変長引数展開の終端
-        inline void argumentUnpack()
-        {
-        }
-
-        /// @brief 可変長引数展開
-        template <typename T>
-        inline void argumentUnpack(const T& rhs)
-        {
-			serialize(rhs);
-		}
-
-        /// @brief 可変長引数展開
-        template <typename Head, typename... Tails>
-        inline void argumentUnpack(const Head& head, const Tails&... tails)
-        {
-            operator()(head);
-            operator()(tails...);
-        }
-
 
         /// @brief シリアル化
         template <typename T>

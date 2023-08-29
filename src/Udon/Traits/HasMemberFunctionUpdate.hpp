@@ -3,7 +3,6 @@
 #include <Udon/Stl/EnableSTL.hpp>
 #include <type_traits>
 
-
 namespace Udon
 {
     namespace Traits
@@ -27,9 +26,9 @@ namespace Udon
 
         /// @brief T に `T::update()` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
         template <typename HasMemberFunctionUpdate, typename std::enable_if<not Traits::HasMemberFunctionUpdate<HasMemberFunctionUpdate>::value, std::nullptr_t>::type* = nullptr>
-        void MaybeInvokeUpdate(HasMemberFunctionUpdate& rhs)
+        void MaybeInvokeUpdate(HasMemberFunctionUpdate&)
         {
             // Do nothing.
         }
-    }
-}
+    }    // namespace Traits
+}    // namespace Udon

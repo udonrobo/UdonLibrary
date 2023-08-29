@@ -180,15 +180,33 @@
 
 //-------------------------------------------------------------------
 //
-//    型トレイト / trait
+//    トレイト / trait
 //
 //-------------------------------------------------------------------
 
-// メンバー関数の有無
-#include "Udon/Traits/HasMember.hpp"
+// メンバー関数の有無判定
+#include "Udon/Traits/HasMemberFunction.hpp"
 
-// メンバ関数の呼び出し
-#include "Udon/Traits/MaybeInvoke.hpp"
+// コンセプト
+#include "Udon/Traits/Concept.hpp"
+
+// 送信クラスであるか
+#include "Udon/Traits/IsWriter.hpp"
+
+// 受信クラスであるか
+#include "Udon/Traits/IsReader.hpp"
+
+// メンバ変数列挙可能か
+#include "Udon/Traits/Accessible.hpp"
+
+// シリアライズ後のサイズ取得を可能か
+#include "Udon/Traits/Capacitable.hpp"
+
+// std::void_t
+#include "Udon/Traits/VoidT.hpp"
+
+// static_assert 失敗遅延
+#include "Udon/Traits/AlwaysFalse.hpp"
 
 
 //-------------------------------------------------------------------

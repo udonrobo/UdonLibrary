@@ -52,13 +52,13 @@ namespace Udon
         {
         };
 
-        template <typename Acc, typename HasMemberFunctionAccessor, typename std::enable_if<Traits::HasMemberFunctionAccessor<T>::value, std::nullptr_t>::type* = nullptr>
+        template <typename Acc, typename HasMemberFunctionAccessor, typename std::enable_if<Traits::HasMemberFunctionAccessor<HasMemberFunctionAccessor>::value, std::nullptr_t>::type* = nullptr>
         void InvokeAccessor(Acc& acc, HasMemberFunctionAccessor& rhs)
         {
             rhs.accessor(acc);
         }
 
-        template <typename Acc, typename AccessorInvocable, typename std::enable_if<Traits::AccessorInvocable<T>::value, std::nullptr_t>::type* = nullptr>
+        template <typename Acc, typename AccessorInvocable, typename std::enable_if<Traits::AccessorInvocable<AccessorInvocable>::value, std::nullptr_t>::type* = nullptr>
         void InvokeAccessor(Acc& acc, AccessorInvocable& rhs)
         {
             Accessor(acc, rhs);
