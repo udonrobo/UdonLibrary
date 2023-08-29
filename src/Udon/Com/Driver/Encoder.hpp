@@ -75,10 +75,11 @@ namespace Udon
             speed = (curr - prev) / deltaTime.update().getDeltaTimeS();
         }
 
-        /// @brief カウント値消去
-        void reset()
+        /// @brief カウント値オフセット
+        /// @param value エンコーダーのカウント値
+        void offset(int32_t value = 0)
         {
-            offset = count;
+            offset = count - value;
         }
 
         /// @brief 速度を取得
