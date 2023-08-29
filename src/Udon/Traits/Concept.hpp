@@ -1,6 +1,10 @@
 #pragma once
 
-#include <Udon/Traits/HasMember.hpp>
+#include "Accessible.hpp"
+#include "Capacitable.hpp"
+#include "HasMemberFunctionShow.hpp"
+#include "HasMemberFuntionBegin.hpp"
+#include "HasMemberFunctionUpdate.hpp"
 
 // bool 型
 #define UDON_CONCEPT_BOOL \
@@ -22,3 +26,22 @@
 #define UDON_CONCEPT_ARRAY \
     template <typename Array, typename std::enable_if<std::is_array<Array>::value, std::nullptr_t>::type* = nullptr>
 
+// メンバ変数列挙用の関数が定義されている型
+#define UDON_CONCEPT_ACCESSIBLE \
+    template <typename Accessible, typename std::enable_if<Udon::Traits::Accessible<Accessible>::value, std::nullptr_t>::type* = nullptr>
+
+// キャパシティを持つ型
+#define UDON_CONCEPT_CAPACITABLE \
+    template <typename Capacitable, typename std::enable_if<Udon::Traits::Capacitable<Capacitable>::value, std::nullptr_t>::type* = nullptr>
+
+// show() 関数を持つ型
+#define UDON_CONCEPT_SHOWABLE \
+    template <typename HasMemberFunctionShow, typename std::enable_if<Udon::Traits::HasMemberFunctionShow<HasMemberFunctionShow>::value, std::nullptr_t>::type* = nullptr>
+
+// begin() 関数を持つ型
+#define UDON_CONCEPT_BEGINNABLE \
+    template <typename HasMemberFuntionBegin, typename std::enable_if<Udon::Traits::HasMemberFuntionBegin<Beginnable>::value, std::nullptr_t>::type* = nullptr>
+
+// update() 関数を持つ型
+#define UDON_CONCEPT_UPDATABLE \
+    template <typename HasMemberFunctionUpdate, typename std::enable_if<Udon::Traits::HasMemberFunctionUpdate<HasMemberFunctionUpdate>::value, std::nullptr_t>::type* = nullptr>
