@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <Udon/Algorithm/Button.hpp>
+#include "Button.hpp"
 
 namespace Udon
 {

@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <Udon/Traits/HasMember.hpp>
+#include "HasMember.hpp"
 
 /// @brief インスタンスに特定のメンバ関数があれば呼び出す。存在しなければ何もしない。
 /// @param MethodName メンバ関数名

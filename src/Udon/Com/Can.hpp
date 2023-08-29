@@ -16,12 +16,12 @@
 #pragma once
 
 /// @brief バスクラス
-#include <Udon/Com/Can/CanBusSpiPico.hpp>
-#include <Udon/Com/Can/CanBusSpi.hpp>
-#include <Udon/Com/Can/CanBusTeensy.hpp>
+#include "Can/CanBusSpiPico.hpp"
+#include "Can/CanBusSpi.hpp"
+#include "Can/CanBusTeensy.hpp"
 
 /// @brief 仮想ノードクラス
-#include <Udon/Com/Can/CanReader.hpp>
-#include <Udon/Com/Can/CanWriter.hpp>
+#include "Can/CanReader.hpp"
+#include "Can/CanWriter.hpp"
 
-#include <Udon/Com/Pad/CanPadPS5.hpp>
+#include "Pad/CanPadPS5.hpp"
