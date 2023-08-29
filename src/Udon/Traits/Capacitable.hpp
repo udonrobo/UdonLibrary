@@ -4,6 +4,8 @@
 #include <type_traits>
 #include <stddef.h>
 
+#include "VoidT.hpp"
+
 namespace Udon
 {
 

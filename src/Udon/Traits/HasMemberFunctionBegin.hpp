@@ -3,6 +3,8 @@
 #include <Udon/Stl/EnableSTL.hpp>
 #include <type_traits>
 
+#include "VoidT.hpp"
+
 namespace Udon
 {
     namespace Traits
