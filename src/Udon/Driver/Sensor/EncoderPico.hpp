@@ -26,10 +26,10 @@ namespace Udon
         /// @brief 開始
         void begin()
         {
-            pinMode(pinA, INPUT_PULLDOWN);
-            pinMode(pinB, INPUT_PULLDOWN);
-            attachInterruptParam(pinA, Interrupt, CHANGE, this);
-            attachInterruptParam(pinB, Interrupt, CHANGE, this);
+            pinMode(pinA, INPUT_PULLUP);
+            pinMode(pinB, INPUT_PULLUP);
+            attachInterruptParam(digitalPinToInterrupt(pinA), Interrupt, CHANGE, this);
+            attachInterruptParam(digitalPinToInterrupt(pinB), Interrupt, CHANGE, this);
         }
 
         /// @brief エンコーダーの値を取得する
