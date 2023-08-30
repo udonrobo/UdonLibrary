@@ -58,18 +58,19 @@ flowchart LR
 
 ### Teensy
 
-内臓 CAN コントローラーを使用します。
+- 概要
 
-```mermaid
-flowchart LR
+  CAN バスとの通信に Teensy 内臓 CAN コントローラーを使用します。
 
+  ```mermaid
+  flowchart LR
+    
     subgraph 基板
-    Teensy --CAN TX/RX--> CANトランシーバー
+      Teensy --CAN TX/RX--> CANトランシーバー
     end
 
-    CANトランシーバー --CAN H/L--> CANバス
-
-```
+  CANトランシーバー --CAN H/L--> CANバス
+  ```
 
 - インスタンス化
 
@@ -92,18 +93,34 @@ flowchart LR
 
 ### Raspberry Pi Pico
 
-外部 CAN コントローラーを使用し、コントローラーとは SPI 通信 でデータをやり取りします。
+- 概要
 
-```mermaid
-flowchart LR
+  CAN バスとの通信に 外部 CAN コントローラーを使用し、コントローラーとは SPI 通信 でデータをやり取りします。
+
+  ```mermaid
+  flowchart LR
 
     subgraph 基板
-    Pico --SPI--> CANコントローラー --CAN TX/RX--> CANトランシーバー
+    Pico --SPI--> CANコントローラー/MCP2515 --CAN TX/RX--> CANトランシーバー
     end
 
     CANトランシーバー --CAN H/L--> CANバス
+  ```
 
-```
+- 必要な情報
+  
+  各値はコンストラクタ、begin 関数の引数で設定できます。
+  
+  - ピンアサイン
+    - CANコントローラー割り込み入力ピン
+    - CANコントローラー動作用クロック信号出力ピン (水晶発振子、PIO端子から出力)
+    - SPI TX ピン
+    - SPI RX ピン
+    - SPI SCK ピン
+    - SPI CS ピン
+  - 通信速度
+    - SPI クロック周期 デフォルト16MHz (CANコントローラーとの通信速度)
+    - CAN 通信速度 デフォルト 1Mbps
 
 - インスタンス化
 
