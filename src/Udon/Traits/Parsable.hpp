@@ -48,14 +48,14 @@ namespace Udon
 
         /// @brief メンバ変数がパース可能であることをコンパイル時に検証する
         template <typename Head>
-        inline constexpr bool IsMemberParsable(Head&&)
+        inline constexpr bool IsMemberParsable(const Head&)
         {
             return Parsable<typename std::remove_reference<Head>::type>::value;
         }
         template <typename Head, typename... Tails>
-        inline constexpr bool IsMemberParsable(Head&& head, Tails&&... tails)
+        inline constexpr bool IsMemberParsable(const Head& head, const Tails&... tails)
         {
-            return IsMemberParsable(std::forward<Head>(head)) && IsMemberParsable(std::forward<Tails>(tails)...);
+            return IsMemberParsable(head) && IsMemberParsable(tails...);
         }
 
     }    // namespace Traits
