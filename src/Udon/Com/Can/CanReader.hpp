@@ -85,7 +85,7 @@ namespace Udon
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
-            Udon::Show(node.id, gap);
+            Serial.print(node.id, HEX);
             if (const auto message = getMessage())
             {
                 Udon::Show(*message, gap);
