@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <Udon/Traits/Parsable.hpp>
+#include <Udon/Traits/ParsableMacro.hpp>
 
 #include <stdint.h>
 

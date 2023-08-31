@@ -20,6 +20,7 @@
 
 #include <Udon/Com/Serialization.hpp>
 #include <Udon/Utility/Show.hpp>
+#include <Udon/Traits/Parsable.hpp>
 
 namespace Udon
 {
@@ -27,6 +28,9 @@ namespace Udon
     template <typename Message>
     class CanWriter
     {
+
+        static_assert(Udon::Traits::Parsable<Message>::value, "Message must be parsable.");
+
     public:
         /// @brief 受信メッセージ型
         using MessageType = Message;

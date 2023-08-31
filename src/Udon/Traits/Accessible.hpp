@@ -61,7 +61,7 @@ namespace Udon
         template <typename T>
         struct Accessible<T, typename std::enable_if<
                                  HasMemberFunctionAccessor<T>::value && AccessorInvocable<T>::value>::type>
-            : std::true_type
+            : std::false_type
         {
             static_assert(AlwaysFalse<T>::value, "T has both member function accessor() and global function Accessor().");    // メンバ関数とグローバル関数の両方が定義されている場合はコンパイルエラー
         };

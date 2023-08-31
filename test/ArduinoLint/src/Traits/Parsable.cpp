@@ -1,4 +1,4 @@
-#include <Udon/Traits/Parsable.hpp>
+#include <Udon/Traits/ParsableMacro.hpp>
 
 /// @brief パース不可能なユーザー定義型
 struct UnParsable

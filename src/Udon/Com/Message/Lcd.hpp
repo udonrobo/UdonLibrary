@@ -18,7 +18,7 @@
 
 #include <stdarg.h>
 #include <stdint.h>
-#include <Udon/Traits/Parsable.hpp>
+#include <Udon/Traits/ParsableMacro.hpp>
 
 namespace Udon
 {

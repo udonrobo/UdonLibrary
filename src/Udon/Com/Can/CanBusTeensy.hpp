@@ -66,8 +66,6 @@ namespace Udon
         Udon::StaticVector<TxNodePtr> txNodes;
         Udon::StaticVector<RxNodePtr> rxNodes;
 
-        Udon::RingBuffer<CAN_message_t, 256> txBuffer;
-
         uint32_t transmitUs = 0;
         uint32_t receiveMs  = 0;
 
