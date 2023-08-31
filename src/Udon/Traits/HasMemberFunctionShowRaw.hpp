@@ -21,14 +21,14 @@ namespace Udon
         };
 
         /// @brief T に `T::showRaw() cosnt` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
-        template <typename HasMemberFunctionShowRaw, typename std::enable_if<Traits::HasMemberFunctionShowRaw<HasMemberFunctionShowRaw>::value, std::nullptr_t>::type* = nullptr>
+        template <typename HasMemberFunctionShowRaw, typename std::enable_if<Traits::HasMemberFunctionShowRaw<HasMemberFunctionShowRaw>::value, std::nullptr_t>::type = nullptr>
         void MaybeInvokeShowRaw(const HasMemberFunctionShowRaw& rhs)
         {
             rhs.showRaw();
         }
 
         /// @brief T に `T::showRaw() cosnt` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
-        template <typename HasMemberFunctionShowRaw, typename std::enable_if<not Traits::HasMemberFunctionShowRaw<HasMemberFunctionShowRaw>::value, std::nullptr_t>::type* = nullptr>
+        template <typename HasMemberFunctionShowRaw, typename std::enable_if<not Traits::HasMemberFunctionShowRaw<HasMemberFunctionShowRaw>::value, std::nullptr_t>::type = nullptr>
         void MaybeInvokeShowRaw(const HasMemberFunctionShowRaw&)
         {
             // Do nothing.

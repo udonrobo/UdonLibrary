@@ -100,7 +100,7 @@ namespace Udon
         /// @brief showメンバを持たず、メンバ変数列挙用の関数が定義されている型
         template <typename AccessibleAndNotShowable, typename std::enable_if<
                                                          not Udon::Traits::HasMemberFunctionShow<AccessibleAndNotShowable>::value && Udon::Traits::Accessible<AccessibleAndNotShowable>::value,
-                                                         std::nullptr_t>::type* = nullptr>
+                                                         std::nullptr_t>::type = nullptr>
         void print(AccessibleAndNotShowable&& rhs)
         {
             Udon::Traits::InvokeAccessor(*this, const_cast<AccessibleAndNotShowable&>(rhs));

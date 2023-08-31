@@ -21,14 +21,14 @@ namespace Udon
         };
 
         /// @brief T に `T::show() cosnt` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
-        template <typename HasMemberFunctionShow, typename std::enable_if<Traits::HasMemberFunctionShow<HasMemberFunctionShow>::value, std::nullptr_t>::type* = nullptr>
+        template <typename HasMemberFunctionShow, typename std::enable_if<Traits::HasMemberFunctionShow<HasMemberFunctionShow>::value, std::nullptr_t>::type = nullptr>
         void MaybeInvokeShow(const HasMemberFunctionShow& rhs)
         {
             rhs.show();
         }
 
         /// @brief T に `T::show() cosnt` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
-        template <typename HasMemberFunctionShow, typename std::enable_if<not Traits::HasMemberFunctionShow<HasMemberFunctionShow>::value, std::nullptr_t>::type* = nullptr>
+        template <typename HasMemberFunctionShow, typename std::enable_if<not Traits::HasMemberFunctionShow<HasMemberFunctionShow>::value, std::nullptr_t>::type = nullptr>
         void MaybeInvokeShow(const HasMemberFunctionShow&)
         {
             // Do nothing.

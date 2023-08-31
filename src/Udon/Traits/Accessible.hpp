@@ -66,13 +66,13 @@ namespace Udon
             static_assert(AlwaysFalse<T>::value, "T has both member function accessor() and global function Accessor().");    // メンバ関数とグローバル関数の両方が定義されている場合はコンパイルエラー
         };
 
-        template <typename Acc, typename HasMemberFunctionAccessor, typename std::enable_if<Traits::HasMemberFunctionAccessor<HasMemberFunctionAccessor>::value, std::nullptr_t>::type* = nullptr>
+        template <typename Acc, typename HasMemberFunctionAccessor, typename std::enable_if<Traits::HasMemberFunctionAccessor<HasMemberFunctionAccessor>::value, std::nullptr_t>::type = nullptr>
         void InvokeAccessor(Acc& acc, HasMemberFunctionAccessor& rhs)
         {
             rhs.accessor(acc);
         }
 
-        template <typename Acc, typename AccessorInvocable, typename std::enable_if<Traits::AccessorInvocable<AccessorInvocable>::value, std::nullptr_t>::type* = nullptr>
+        template <typename Acc, typename AccessorInvocable, typename std::enable_if<Traits::AccessorInvocable<AccessorInvocable>::value, std::nullptr_t>::type = nullptr>
         void InvokeAccessor(Acc& acc, AccessorInvocable& rhs)
         {
             Accessor(acc, rhs);
