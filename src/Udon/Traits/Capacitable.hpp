@@ -64,7 +64,7 @@ namespace Udon
 
         /// @brief シリアライズ後のバッファのビット数を取得する
         /// @return シリアライズ後のバッファのビット数
-        template <typename HasMemberFunctionCapacityBits, typename std::enable_if<Traits::HasMemberFunctionCapacityBits<HasMemberFunctionCapacityBits>::value, std::nullptr_t>::type* = nullptr>
+        template <typename HasMemberFunctionCapacityBits, typename std::enable_if<Traits::HasMemberFunctionCapacityBits<HasMemberFunctionCapacityBits>::value, std::nullptr_t>::type = nullptr>
         constexpr size_t InvokeCapacity(HasMemberFunctionCapacityBits&& rhs)
         {
             return rhs.capacityBits();
@@ -72,7 +72,7 @@ namespace Udon
 
         /// @brief シリアライズ後のバッファのビット数を取得する
         /// @return シリアライズ後のバッファのビット数
-        template <typename CapacityInvocable, typename std::enable_if<Traits::CapacityInvocable<CapacityInvocable>::value, std::nullptr_t>::type* = nullptr>
+        template <typename CapacityInvocable, typename std::enable_if<Traits::CapacityInvocable<CapacityInvocable>::value, std::nullptr_t>::type = nullptr>
         constexpr size_t InvokeCapacity(CapacityInvocable&& rhs)
         {
             return Capacity(rhs);

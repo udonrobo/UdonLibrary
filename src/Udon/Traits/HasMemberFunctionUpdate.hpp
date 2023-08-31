@@ -20,14 +20,14 @@ namespace Udon
         };
 
         /// @brief T に `T::update()` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
-        template <typename HasMemberFunctionUpdate, typename std::enable_if<Traits::HasMemberFunctionUpdate<HasMemberFunctionUpdate>::value, std::nullptr_t>::type* = nullptr>
+        template <typename HasMemberFunctionUpdate, typename std::enable_if<Traits::HasMemberFunctionUpdate<HasMemberFunctionUpdate>::value, std::nullptr_t>::type = nullptr>
         void MaybeInvokeUpdate(HasMemberFunctionUpdate& rhs)
         {
             rhs.update();
         }
 
         /// @brief T に `T::update()` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
-        template <typename HasMemberFunctionUpdate, typename std::enable_if<not Traits::HasMemberFunctionUpdate<HasMemberFunctionUpdate>::value, std::nullptr_t>::type* = nullptr>
+        template <typename HasMemberFunctionUpdate, typename std::enable_if<not Traits::HasMemberFunctionUpdate<HasMemberFunctionUpdate>::value, std::nullptr_t>::type = nullptr>
         void MaybeInvokeUpdate(HasMemberFunctionUpdate&)
         {
             // Do nothing.
