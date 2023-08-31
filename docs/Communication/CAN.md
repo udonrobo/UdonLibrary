@@ -2,7 +2,6 @@
 
 CAN 通信クラスは、通信バスクラス、送受信ノードクラスから構成されています。
 
-- [インクルード](#インクルード)
 - [通信バスクラス](#通信バスクラス)
   - [Teensy](#teensy)
   - [Raspberry Pi Pico](#raspberry-pi-pico)

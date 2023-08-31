@@ -237,6 +237,8 @@ int main() {}
   - [オイラー角](./docs/Types/Eular.md)
   - [クオータニオン](./docs/Types/Quaternion.md)
   - [固定ビット長浮動小数点型](./docs/Types/Float.md)
+- その他
+  - [型トレイト](./docs/Other/Traits.md)
 - 開発者用
   - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
   - [自動テスト](./docs/Developer/CI.md)

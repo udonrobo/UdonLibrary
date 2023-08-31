@@ -80,8 +80,8 @@ CAN 通信経由のコントローラーの値からステアモジュールの�
 // CAN バスインスタンス化
 Udon::CanBus~~~ bus;
 
-// 汎用コントローラーインスタンス化
-Udon::PadPS5<Udon::CanReader> pad {{ bus, 10 /*node id*/ }};
+// コントローラーインスタンス化
+Udon::CanPadPS5 pad { bus, 10 /*node id*/ };
 
 // 最適化器インスタンス
 Udon::SteerOptimizer<4> optimizer;
@@ -116,7 +116,7 @@ OpenSiv3D でシミュレートする
 
 void Main()
 {
-    Udon::PadPS5<Udon::SivPadPS5> pad;
+    Udon::SivPadPS5 pad;
 
     Udon::SteerOptimizer<4> optimizer;
 
