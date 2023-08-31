@@ -15,12 +15,12 @@ namespace Udon
 
         /// @brief T に `size_t T::capacityBits()` 関数が存在するか
         template <typename, typename = void>
-        struct HasMemberFunctionCapacity
+        struct HasMemberFunctionCapacityBits
             : std::false_type
         {
         };
         template <typename T>
-        struct HasMemberFunctionCapacity<T, typename std::enable_if<std::is_same<
+        struct HasMemberFunctionCapacityBits<T, typename std::enable_if<std::is_same<
                                                 decltype(std::declval<T>().capacityBits()), size_t>::value>::type>
             : std::true_type
         {
@@ -50,13 +50,13 @@ namespace Udon
         };
         template <typename T>
         struct Capacitable<T, typename std::enable_if<
-                                  HasMemberFunctionCapacity<T>::value ^ CapacityInvocable<T>::value>::type>
+                                  HasMemberFunctionCapacityBits<T>::value ^ CapacityInvocable<T>::value>::type>
             : std::true_type
         {
         };
         template <typename T>
         struct Capacitable<T, typename std::enable_if<
-                                  HasMemberFunctionCapacity<T>::value && CapacityInvocable<T>::value>::type>
+                                  HasMemberFunctionCapacityBits<T>::value && CapacityInvocable<T>::value>::type>
             : std::false_type
         {
             static_assert(AlwaysFalse<T>::value, "T has both member function capacityBits() and global function Capacity().");    // メンバ関数とグローバル関数の両方が定義されている場合はコンパイルエラー
@@ -64,8 +64,8 @@ namespace Udon
 
         /// @brief シリアライズ後のバッファのビット数を取得する
         /// @return シリアライズ後のバッファのビット数
-        template <typename HasMemberFunctionCapacity, typename std::enable_if<Traits::HasMemberFunctionCapacity<HasMemberFunctionCapacity>::value, std::nullptr_t>::type* = nullptr>
-        constexpr size_t InvokeCapacity(HasMemberFunctionCapacity&& rhs)
+        template <typename HasMemberFunctionCapacityBits, typename std::enable_if<Traits::HasMemberFunctionCapacityBits<HasMemberFunctionCapacityBits>::value, std::nullptr_t>::type* = nullptr>
+        constexpr size_t InvokeCapacity(HasMemberFunctionCapacityBits&& rhs)
         {
             return rhs.capacityBits();
         }
