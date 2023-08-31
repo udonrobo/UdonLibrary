@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include <Udon/Com/Can.hpp>
-#include <Udon/Com/Traits.hpp>
+
+#include <Udon/Traits/IsReader.hpp>
+#include <Udon/Traits/IsWriter.hpp>
 
 #if defined(CORE_TEENSY)
 
@@ -48,8 +50,8 @@ inline void testBus()
 
 inline void testIsReaderWriter()
 {
-    static_assert(Udon::IsReader<Udon::CanReader>::value, "");
-    static_assert(Udon::IsWriter<Udon::CanWriter>::value, "");
+    static_assert(Udon::Traits::IsReader<Udon::CanReader>::value, "");
+    static_assert(Udon::Traits::IsWriter<Udon::CanWriter>::value, "");
 }
 
 struct DummyBus

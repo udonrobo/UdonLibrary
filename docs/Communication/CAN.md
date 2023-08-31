@@ -2,6 +2,16 @@
 
 CAN 通信クラスは、通信バスクラス、送受信ノードクラスから構成されています。
 
+- [インクルード](#インクルード)
+- [通信バスクラス](#通信バスクラス)
+  - [Teensy](#teensy)
+  - [Raspberry Pi Pico](#raspberry-pi-pico)
+  - [インターフェース](#インターフェース)
+- [送信クラス](#送信クラス)
+- [受信クラス](#受信クラス)
+- [デバッグ](#デバッグ)
+- [クラスの組み合わせ色々](#クラスの組み合わせ色々)
+
 <details>
 <summary> CAN 通信について </summary>
 
@@ -46,30 +56,34 @@ flowchart LR
 ## インクルード
 
 ```cpp
-
 #include <Udon/Com/Can.hpp>
 ```
 
-## バスクラス
-
-`Udon::CanBus---`
+## 通信バスクラス
 
 送受信処理、通信が行えているかどうかのチェックを行います。使用するマイコンや CAN コントローラーによって使用するクラスが異なります。
 
+> CAN の通信プロトコルは `CAN2.0A` を使用します。よって ID は `0x000` ~ `0x7FF` の範囲で使用できます。
+>
+> CAN2.0A プロトコルは一度に 8byte までしかデータを送ることができないので、8byte より多いデータは分割し送受信します。この時、1byte 目にはインデックスの番号が付与されます。
+>
+> 8byte 以下のデータはそのまま送受信するため、互換性があります。
+
 ### Teensy
 
-内臓 CAN コントローラーを使用します。
+- 概要
 
-```mermaid
-flowchart LR
+  Teensy 内臓 CAN コントローラーを使用し CAN 通信を行います。
+
+  ```mermaid
+  flowchart LR
 
     subgraph 基板
-    Teensy --CAN TX/RX--> CANトランシーバー
+      Teensy --CAN TX/RX--> CANトランシーバー
     end
 
-    CANトランシーバー --CAN H/L--> CANバス
-
-```
+  CANトランシーバー --CAN H/L--> CANバス
+  ```
 
 - インスタンス化
 
@@ -90,20 +104,43 @@ flowchart LR
   bus.update();
   ```
 
+- 詳細
+
+  受信処理は受信割り込みで、送信は `update` 関数で行われます。
+
+  受信ノードが 8 個以内の場合、受信フィルタの設定を行います。
+
 ### Raspberry Pi Pico
 
-外部 CAN コントローラーを使用し、コントローラーとは SPI 通信 でデータをやり取りします。
+- 概要
 
-```mermaid
-flowchart LR
+  外部 CAN コントローラーを使用し CAN 通信を行います。コントローラーとは SPI で通信します。
+
+  ```mermaid
+  flowchart LR
 
     subgraph 基板
-    Pico --SPI--> CANコントローラー --CAN TX/RX--> CANトランシーバー
+    Pico --SPI--> CANコントローラー/MCP2515 --CAN TX/RX--> CANトランシーバー
     end
 
     CANトランシーバー --CAN H/L--> CANバス
+  ```
 
-```
+- 必要な情報
+
+  Raspberry Pi Pico を用いて CAN 通信を行うには以下の情報が必要です。
+
+  | 名称                                                                          | 指定場所                             | デフォルト値 |
+  | ----------------------------------------------------------------------------- | ------------------------------------ | ------------ |
+  | CAN コントローラー動作用クロック端子と接続しているピン(Pico から出力する場合) | Udon::PicoPio0ClockBegin(pin, clock) | -            |
+  | CAN コントローラー割り込み端子と接続しているピン                              | begin 関数                           | -            |
+  | CAN コントローラー SPI TX (MOSI) 端子と接続しているピン                       | begin 関数                           | 19           |
+  | CAN コントローラー SPI RX (MISO) 端子と接続しているピン                       | begin 関数                           | 16           |
+  | CAN コントローラー SPI SCK 端子と接続しているピン                             | begin 関数                           | 18           |
+  | CAN コントローラー SPI CS 端子と接続しているピン                              | コンストラクタ                       | -            |
+  | SPI 通信バス ( spi0, spi1 )                                                   | コンストラクタ                       | -            |
+  | CAN コントローラー動作用クロック周波数                                        | begin 関数                           | 16MHz        |
+  | CAN 通信速度                                                                  | begin 関数                           | 1Mbps        |
 
 - インスタンス化
 
@@ -113,7 +150,7 @@ flowchart LR
 
 - 通信開始
 
-  通信を開始する関数は `begin()` と `beginCanOnly()` の二つあります。`begin()` 関数は SPI 通信の開始処理も同時に行います。
+  通信を開始する関数は `begin()` と `beginCanOnly()` の二つあります。この関数は SPI 通信の開始処理も同時に行います。
 
   ```cpp
   bus.begin(intPin, txPin, rxPin, sckPin);
@@ -139,16 +176,24 @@ flowchart LR
   bus.update();
   ```
 
+- 詳細
+
+  受信処理は外部割り込みで、送信は `update` 関数で行われます。
+
+  受信ノードが 6 個以内の場合、受信フィルタの設定を行います。
+
+<!--
 ### SPI 経由汎用クラス
 
 ```mermaid
 flowchart LR
 
     subgraph 基板
-    マイコン --SPI--> CANコントローラー --CAN TX/RX--> CANトランシーバー
+    マイコン --SPI-> CANコントローラー --CAN TX/RX-> CANトランシーバー
+
     end
 
-    CANトランシーバー --CAN H/L--> CANバス
+    CANトランシーバー --CAN H/L-> CANバス
 
 ```
 
@@ -156,10 +201,9 @@ flowchart LR
 
   ```cpp
   static Udon::CanBusSpi bus{ SPI, csPin };
-  ```
+````
 
-> [!WARNING]
-> 工事中
+-->
 
 ### インターフェース
 

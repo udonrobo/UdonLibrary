@@ -1,4 +1,4 @@
-#include <Udon/Traits/MaybeInvoke.hpp>
+#include <Udon/Traits/HasMemberFunction.hpp>
 
 struct TestStructure1
 {
@@ -10,8 +10,8 @@ struct TestStructure2
 inline void test()
 {
     TestStructure1 a;
-    Udon::MaybeInvoke_begin(a);    // call
+    Udon::Traits::MaybeInvokeBegin(a);    // call
 
     TestStructure2 b;
-    Udon::MaybeInvoke_begin(b);    // not call
+    Udon::Traits::MaybeInvokeBegin(b);    // not call
 }

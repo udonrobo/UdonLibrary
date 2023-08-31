@@ -27,7 +27,7 @@ namespace Udon
     template <typename T>
     inline std::vector<uint8_t> Pack(const T& object)
     {
-//        static_assert(Udon::IsParsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+//        static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
 
         Serializer serializer(Udon::CapacityWithChecksum<T>());
         serializer(object);
@@ -44,7 +44,7 @@ namespace Udon
     template <typename T>
     inline bool Pack(const T& object, uint8_t* buffer, size_t size)
     {
-        static_assert(Udon::IsParsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+        static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
 
         if (size >= Udon::CapacityWithChecksum<T>())
         {
@@ -67,7 +67,7 @@ namespace Udon
     template <typename T, size_t N>
     inline bool Pack(const T& object, uint8_t (&array)[N])
     {
-        static_assert(Udon::IsParsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+        static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
 
         return Pack(object, array, N);
     }

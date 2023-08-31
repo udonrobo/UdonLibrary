@@ -1,94 +1,41 @@
-#include <Udon/Traits/HasMember.hpp>
+#include <Udon/Traits/HasMemberFunctionBegin.hpp>
+#include <Udon/Traits/HasMemberFunctionShow.hpp>
+#include <Udon/Traits/HasMemberFunctionUpdate.hpp>
 
-namespace has_type
+struct A
 {
-
-    UDON_HAS_MEMBER_TYPE(mType);
-
-    struct TestStruct1
+    void begin()
     {
-        using mType = int;
-    };
-    struct TestStruct2
-    {
-    };
-
-    void test()
-    {
-        static_assert(has_member_type_mType<TestStruct1>::value == true, "");
-        static_assert(has_member_type_mType<TestStruct2>::value == false, "");
     }
+    void show() const
+    {
+    }
+    void update()
+    {
+    }
+};
 
-}    // namespace has_type
-
-namespace has_member_function
+struct B
 {
+};
 
-    UDON_HAS_MEMBER_FUNCTION(mFunc);
-
-    struct TestStruct1
-    {
-        void mFunc() {}
-    };
-    struct TestStruct2
-    {
-    };
-
-    void test()
-    {
-        static_assert(has_member_function_mFunc<TestStruct1>::value == true, "");
-        static_assert(has_member_function_mFunc<TestStruct2>::value == false, "");
-    }
-
-}    // namespace has_member_function
-
-namespace has_static_member_function
+inline void test()
 {
+    static_assert(Udon::Traits::HasMemberFunctionShow<A>::value, "");
+    static_assert(Udon::Traits::HasMemberFunctionUpdate<A>::value, "");
+    static_assert(Udon::Traits::HasMemberFunctionBegin<A>::value, "");
 
-    UDON_HAS_STATIC_MEMBER_FUNCTION(mFunc);
+    static_assert(not Udon::Traits::HasMemberFunctionShow<B>::value, "");
+    static_assert(not Udon::Traits::HasMemberFunctionUpdate<B>::value, "");
+    static_assert(not Udon::Traits::HasMemberFunctionBegin<B>::value, "");
 
-    struct TestStruct1
-    {
-        static void mFunc() {}
-    };
-    struct TestStruct2
-    {
-    };
+    A a;
+    Udon::Traits::MaybeInvokeBegin(a);
+    Udon::Traits::MaybeInvokeShow(a);
+    Udon::Traits::MaybeInvokeUpdate(a);
 
-    void test()
-    {
-        static_assert(has_static_member_function_mFunc<TestStruct1>::value == true, "");
-        static_assert(has_static_member_function_mFunc<TestStruct2>::value == false, "");
-    }
-
-}    // namespace has_static_member_function
-
-namespace has_member_iterate_function
-{
-
-    UDON_HAS_MEMBER_ITERATE_FUNCTION(accessor);
-
-    struct TestStruct1
-    {
-        int value;
-        template <typename T>
-        void accessor(T& acc)
-        {
-            acc(value);
-        }
-    };
-    struct TestStruct2
-    {
-    };
-
-    struct DummyMemberAccessor
-    {
-    };
-
-    void test()
-    {
-        static_assert(has_member_iterate_accessor<DummyMemberAccessor, TestStruct1>::value == true, "");
-        static_assert(has_member_iterate_accessor<DummyMemberAccessor, TestStruct2>::value == false, "");
-    }
-
-}    // namespace has_member_iterate_function
+    B b;
+    Udon::Traits::MaybeInvokeBegin(b);
+    Udon::Traits::MaybeInvokeShow(b);
+    Udon::Traits::MaybeInvokeUpdate(b);
+}
