@@ -45,8 +45,8 @@ namespace Udon
         {
         }
 
-        Im920Reader(const Im920Reader&) 
-            : im920(im920)
+        Im920Reader(const Im920Reader& other) 
+            : im920(other.im920)
             , buffer(im920.registerReceiver(Size))
         {
         }

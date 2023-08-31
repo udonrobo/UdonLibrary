@@ -128,7 +128,7 @@ namespace Udon
                     LOW,
                     this);
 
-                // 受信フィルタ設定 (ノード数が8以下の場合のみ)
+                // 受信フィルタ設定 (ノード数が6以下の場合のみ)
                 constexpr size_t Mcp2515MaxFilterCount = 6;
                 if (rxSize <= Mcp2515MaxFilterCount)
                 {
