@@ -12,26 +12,23 @@
 
 > 各メタ関数は `Udon::Traits` 名前空間に属します。
 
-| 名前                               | 説明                                               | ヘッダーファイル                                                                                 |
-| ---------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `IsWriter<T>`                      | T が送信クラス要件を満たすか調べる                 | [Udon/Traits/IsWriter.hpp](./../../src/Udon/Traits/IsWriter.hpp)                                 |
-| `IsReader<T>`                      | T が受信クラス要件を満たすか調べる                 | [Udon/Traits/IsReader.hpp](./../../src/Udon/Traits/IsReader.hpp)                                 |
-| `Capacitable<T>`                   | T のシリアライズ後サイズを取得可能か調べる         | [Udon/Traits/Capacitable.hpp](./../../src/Udon/Traits/Capacitable.hpp)                           |
-| `Accessible<T>`                    | T のメンバ変数を列挙可能か調べる                   | [Udon/Traits/Accessible.hpp](./../../src/Udon/Traits/Accessible.hpp)                             |
-| `Parsable<T>`                      | T が解析可能であるか調べる                         | [Udon/Traits/Parsable.hpp](./../../src/Udon/Traits/Parsable.hpp)                                 |
-| `AlwaysFalse<T>`                   | 常に `std::false_type` から派生する                | [Udon/Traits/AlwaysFalse.hpp](./../../src/Udon/Traits/AlwaysFalse.hpp)                           |
-| `HasMemberFunctionBegin<T>`        | T に `begin` メンバ関数が存在するか調べる          | [Udon/Traits/HasMemberFunctionBegin.hpp](./../../src/Udon/Traits/HasMemberFunctionBegin.hpp)     |
-| `HasMemberFunctionUpdate<T>`       | T に `update` メンバ関数が存在するか調べる         | [Udon/Traits/HasMemberFunctionUpdate.hpp](./../../src/Udon/Traits/HasMemberFunctionUpdate.hpp)   |
-| `HasMemberFunctionShow<T>`         | T に `show` メンバ関数が存在するか調べる           | [Udon/Traits/HasMemberFunctionShow.hpp](./../../src/Udon/Traits/HasMemberFunctionShow.hpp)       |
-| `HasMemberFunctionShowRaw<T>`      | T に `showRaw` メンバ関数が存在するか調べる        | [Udon/Traits/HasMemberFunctionShowRaw.hpp](./../../src/Udon/Traits/HasMemberFunctionShowRaw.hpp) |
-| `HasMemberFunctionCapacityBits<T>` | T に `capacityBits` メンバ関数が存在するか調べる   | [Udon/Traits/Capacitable.hpp](./../../src/Udon/Traits/Capacitable.hpp)                           |
-| `HasMemberFunctionAccessor<T>`     | T に `accessor(Acc&)` メンバ関数が存在するか調べる | [Udon/Traits/Accessible.hpp](./../../src/Udon/Traits/Accessible.hpp)                             |
-| `HasMemberFunctionParsable<T>`     | T に `parsable` メンバ関数が存在するか調べる       | [Udon/Traits/Parsable.hpp](./../../src/Udon/Traits/Parsable.hpp)                                 |
-| `AccessorInvocable<T>`             | グローバル関数 `Accessor(Acc&, T&)` が呼び出せるか | [Udon/Traits/Accessible.hpp](./../../src/Udon/Traits/Accessible.hpp)                             |
-| `CapacityInvocable<T>`             | グローバル関数 `Capacity(const T&)` が呼び出せるか | [Udon/Traits/Capacitable.hpp](./../../src/Udon/Traits/Capacitable.hpp)                           |
-| `ParsableInvocable<T>`             | グローバル関数 `Parsable(const T&)` が呼び出せるか | [Udon/Traits/Parsable.hpp](./../../src/Udon/Traits/Parsable.hpp)                                 |
+| 名前                          | 説明                                        | ヘッダーファイル                                                                                 |
+| ----------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `IsWriter<T>`                 | T が送信クラス要件を満たすか調べる          | [Udon/Traits/IsWriter.hpp](./../../src/Udon/Traits/IsWriter.hpp)                                 |
+| `IsReader<T>`                 | T が受信クラス要件を満たすか調べる          | [Udon/Traits/IsReader.hpp](./../../src/Udon/Traits/IsReader.hpp)                                 |
+| `Capacitable<T>`              | T のシリアライズ後サイズを取得可能か調べる  | [Udon/Traits/Capacitable.hpp](./../../src/Udon/Traits/Capacitable.hpp)                           |
+| `Accessible<T>`               | T のメンバ変数を列挙可能か調べる            | [Udon/Traits/Accessible.hpp](./../../src/Udon/Traits/Accessible.hpp)                             |
+| `Parsable<T>`                 | T が解析可能であるか調べる                  | [Udon/Traits/Parsable.hpp](./../../src/Udon/Traits/Parsable.hpp)                                 |
+| `AlwaysFalse<T>`              | 常に `std::false_type` から派生する         | [Udon/Traits/AlwaysFalse.hpp](./../../src/Udon/Traits/AlwaysFalse.hpp)                           |
+| `HasMemberFunctionBegin<T>`   | T に `begin` メンバ関数が存在するか調べる   | [Udon/Traits/HasMemberFunctionBegin.hpp](./../../src/Udon/Traits/HasMemberFunctionBegin.hpp)     |
+| `HasMemberFunctionUpdate<T>`  | T に `update` メンバ関数が存在するか調べる  | [Udon/Traits/HasMemberFunctionUpdate.hpp](./../../src/Udon/Traits/HasMemberFunctionUpdate.hpp)   |
+| `HasMemberFunctionShow<T>`    | T に `show` メンバ関数が存在するか調べる    | [Udon/Traits/HasMemberFunctionShow.hpp](./../../src/Udon/Traits/HasMemberFunctionShow.hpp)       |
+| `HasMemberFunctionShowRaw<T>` | T に `showRaw` メンバ関数が存在するか調べる | [Udon/Traits/HasMemberFunctionShowRaw.hpp](./../../src/Udon/Traits/HasMemberFunctionShowRaw.hpp) |
 
-- `static_assert` sample
+- 送信クラス要件
+
+  - `MessageType` というメンバ型名を持つ
+  - `setMessage()` メンバ関数を持ち、戻り値が `void`、引数型が `const MessageType&` である
 
   ```cpp
   // 送信クラス要件を満たすクラス
@@ -52,6 +49,35 @@
   int main()
   {
       static_assert(Udon::Traits::IsWriter<Writer>::value, "");  // OK
+      // static_assert(Udon::Traits::IsWriter<NotWriter>::value, "");  // static_assert failed
+  }
+  ```
+
+- 受信クラス要件
+
+  - `MessageType` というメンバ型名を持つ
+  - `getMessage() const` メンバ関数を持ち、戻り値が `Udon::Optional<MessageType>`、引数が存在しない
+
+  ```cpp
+
+  // 受信クラス要件を満たすクラス
+  template <typename Message>
+  class Reader
+  {
+  public:
+      using MessageType = Message;
+      Udon::Optional<MessageType> getMessage() const
+      {
+      }
+  };
+
+  // 受信クラス要件を満たしていないクラス
+  template <typename>
+  class NotReader {};
+
+  int main()
+  {
+      static_assert(Udon::Traits::IsReader<Reader>::value, "");  // OK
       // static_assert(Udon::Traits::IsWriter<NotWriter>::value, "");  // static_assert failed
   }
   ```
@@ -111,6 +137,8 @@
 特定のメンバ関数が存在する場合呼び出し、存在しない場合何もしない関数です。この関数を使用することで、特定のメンバ関数の有無に関係なく一様な記述が可能になります。
 
 > 各関数は `Udon::Traits` 名前空間に属します。
+>
+> メタ関数 `HasMemberFunction~~` が定義されているヘッダーファイルに定義されています。
 
 | 名前                      | 説明                                           | 戻り値型 | 引数型 |
 | ------------------------- | ---------------------------------------------- | -------- | ------ |
@@ -191,6 +219,8 @@
 ## コンセプト
 
 C++20 で導入されたコンセプトのように型制約を記述できるマクロを提供します。
+
+> [Udon/Traits/Concept.hpp](./../../src/Udon/Traits/Concept.hpp) に定義されています。
 
 | マクロ名                       | コンセプト名             | 説明                                   |
 | ------------------------------ | ------------------------ | -------------------------------------- |
