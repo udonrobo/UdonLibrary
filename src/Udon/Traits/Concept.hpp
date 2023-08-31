@@ -20,11 +20,11 @@
 #define UDON_CONCEPT_FLOATING_POINT \
     template <typename FloatingPoint, typename std::enable_if<std::is_floating_point<FloatingPoint>::value, std::nullptr_t>::type* = nullptr>
 
-// アトミック型 (整数, 浮動小数点) 
+// アトミック型
 #define UDON_CONCEPT_ATOMIC \
     template <typename Atomic, typename std::enable_if<std::is_arithmetic<Atomic>::value, std::nullptr_t>::type* = nullptr>
 
-// スカラー型
+// スカラ型
 #define UDON_CONCEPT_SCALAR \
     template <typename Scalar, typename std::enable_if<std::is_scalar<Scalar>::value, std::nullptr_t>::type* = nullptr>
 
@@ -43,6 +43,10 @@
 // show() 関数を持つ型
 #define UDON_CONCEPT_SHOWABLE \
     template <typename HasMemberFunctionShow, typename std::enable_if<Udon::Traits::HasMemberFunctionShow<HasMemberFunctionShow>::value, std::nullptr_t>::type* = nullptr>
+
+// showRaw() 関数を持つ型
+#define UDON_CONCEPT_SHOW_RAWABLE \
+    template <typename HasMemberFunctionShowRaw, typename std::enable_if<Udon::Traits::HasMemberFunctionShowRaw<HasMemberFunctionShowRaw>::value, std::nullptr_t>::type* = nullptr>
 
 // begin() 関数を持つ型
 #define UDON_CONCEPT_BEGINNABLE \
