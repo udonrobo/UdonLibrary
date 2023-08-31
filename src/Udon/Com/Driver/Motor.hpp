@@ -21,23 +21,25 @@
 #include <Udon/Com/Message/Motor.hpp>
 #include <Udon/Traits/HasMemberFunction.hpp>
 #include <Udon/Utility/Show.hpp>
+#include <Udon/Traits/IsWriter.hpp>
 
 namespace Udon
 {
 
     template <template <typename> typename Writer>
-    class Motor
+    class MotorBy
     {
-        using writer_type = Writer<Message::Motor>;
+        static_assert(Traits::IsWriter<Writer>::value, "Writer is not writer");
 
+        using writer_type = Writer<Message::Motor>;
         writer_type writer;
 
-        int16_t power;
+        int16_t power;    // 出力値 -255 ~ 255
 
-        bool direction;
+        bool direction;    // 回転方向 true: forward, false: backward
 
     public:
-        Motor(writer_type&& writer, bool direction)
+        MotorBy(writer_type&& writer, bool direction)
             : writer(std::move(writer))
             , power()
             , direction(direction)
@@ -54,10 +56,21 @@ namespace Udon
             setPower(0);
         }
 
+        int16_t getPower() const
+        {
+            return power;
+        }
+
         void update()
         {
             const auto sendPower = power * (direction ? 1 : -1);
             writer.setMessage({ static_cast<int16_t>(sendPower) });
+            Udon::Traits::MaybeInvokeUpdate(writer);
+        }
+
+        void stopUpdate()
+        {
+            writer.setMessage({ 0 });
             Udon::Traits::MaybeInvokeUpdate(writer);
         }
 

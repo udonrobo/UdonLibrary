@@ -28,8 +28,10 @@ namespace Udon
 {
 
     template <template <typename> typename Reader>
-    class Encoder
+    class EncoderBy
     {
+        static_assert(Traits::IsReader<Reader>::value, "Reader is not reader");
+
         using reader_type = Reader<Message::Encoder>;
 
         reader_type reader;
@@ -39,8 +41,7 @@ namespace Udon
         bool direction;
 
         int32_t count;
-
-        int32_t offset;
+        int32_t offsetCount;
 
         double speed;
 
@@ -48,12 +49,12 @@ namespace Udon
         /// @brief コンストラクタ
         /// @param reader 受信クラスオブジェクト
         /// @param direction 回転方向
-        Encoder(reader_type&& reader, bool direction)
+        EncoderBy(reader_type&& reader, bool direction)
             : reader(std::move(reader))
             , deltaTime()
             , direction(direction)
             , count()
-            , offset()
+            , offsetCount()
             , speed()
         {
         }
@@ -79,7 +80,7 @@ namespace Udon
         /// @param value エンコーダーのカウント値
         void setOffset(int32_t value = 0)
         {
-            offset = count - value;
+            offsetCount = count - value;
         }
 
         /// @brief 速度を取得
@@ -93,7 +94,7 @@ namespace Udon
         /// @return カウント値
         int32_t getCount() const
         {
-            return count - offset;
+            return count - offsetCount;
         }
 
         /// @brief カウント値をシリアルポートに出力
