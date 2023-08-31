@@ -16,16 +16,16 @@
 #pragma once
 
 #ifdef ARDUINO
-#    include <Udon/Com/Uart/UartReader.hpp>
-#    include <Udon/Com/Uart/UartWriter.hpp>
+#    include "Uart/UartReader.hpp"
+#    include "Uart/UartWriter.hpp"
 #endif
 
 #ifdef SIV3D_INCLUDED
-#    include <Udon/Com/Uart/SivUartReader.hpp>
-#    include <Udon/Com/Uart/SivUartWriter.hpp>
+#    include "Uart/SivUartReader.hpp"
+#    include "Uart/SivUartWriter.hpp"
 #endif
 
 #if defined(ROS_VERSION) && (ROS_VERSION == ROS_VERSION_FOXY || ROS_VERSION == ROS_VERSION_HUMBLE)
-#    include <Udon/Com/Uart/Ros2UartReader.hpp>
-#    include <Udon/Com/Uart/Ros2UartWriter.hpp>
+#    include "Uart/Ros2UartReader.hpp"
+#    include "Uart/Ros2UartWriter.hpp"
 #endif

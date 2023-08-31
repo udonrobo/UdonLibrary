@@ -12,6 +12,9 @@ inline void test()
         constexpr Udon::Euler b = a;
 
         constexpr Udon::Euler c = { 100, 200, 300 };
+
+        (void)b;
+        (void)c;
     }
 
     // コピー代入演算子

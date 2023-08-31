@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
 #include <Udon/Com/Serialization.hpp>
-#include <Udon/Utility/Parsable.hpp>
+#include <Udon/Traits/ParsableMacro.hpp>
 
 struct Hoge
 {
@@ -19,5 +19,5 @@ inline void test()
 
     const auto unpacked = Udon::Unpack<Hoge>(packed);
 
-    // assert(hoge == unpacked);
+    (void)unpacked;
 }

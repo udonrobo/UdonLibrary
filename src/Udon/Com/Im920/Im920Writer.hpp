@@ -2,7 +2,6 @@
 //
 //    UdonLibrary
 // 
-//                2018-2023 Watanabe Rui
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
@@ -20,7 +19,8 @@
 
 #pragma once
 
-#include <Udon/Com/Im920/IIm920.hpp>
+#include "IIm920.hpp"
+
 #include <Udon/Com/Serialization.hpp>
 #include <Udon/Utility/Show.hpp>
 

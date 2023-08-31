@@ -26,14 +26,16 @@ namespace Udon
     class StaticVector
     {
     public:
-        using value_type      = T;
-        using size_type       = size_t;
-        using reference       = T&;
-        using const_reference = const T&;
-        using pointer         = T*;
-        using const_pointer   = const T*;
-        using iterator        = T*;
-        using const_iterator  = const T*;
+        using value_type             = T;
+        using size_type              = size_t;
+        using reference              = T&;
+        using const_reference        = const T&;
+        using pointer                = T*;
+        using const_pointer          = const T*;
+        using iterator               = T*;
+        using const_iterator         = const T*;
+        using reverse_iterator       = std::reverse_iterator<iterator>;
+        using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
     private:
         value_type m_data[Capacity];
@@ -83,6 +85,11 @@ namespace Udon
             {
                 m_data[i] = std::move(other.m_data[i]);
             }
+        }
+
+        explicit operator bool() const
+        {
+            return m_size > 0;
         }
 
         size_type size() const
@@ -245,198 +252,14 @@ namespace Udon
         {
             return m_data;
         }
-        iterator end()
-        {
-            return m_data + m_size;
-        }
-
-        struct reverse_iterator
-        {
-            using iterator_category = std::random_access_iterator_tag;
-            using value_type        = T;
-            using difference_type   = std::ptrdiff_t;
-            using pointer           = T*;
-            using reference         = T&;
-
-            pointer p;
-
-            reference operator*() const
-            {
-                return *p;
-            }
-            pointer operator->() const
-            {
-                return p;
-            }
-            reverse_iterator& operator++()
-            {
-                --p;
-                return *this;
-            }
-            reverse_iterator operator++(int)
-            {
-                reverse_iterator tmp = *this;
-                --p;
-                return tmp;
-            }
-            reverse_iterator& operator--()
-            {
-                ++p;
-                return *this;
-            }
-            reverse_iterator operator--(int)
-            {
-                reverse_iterator tmp = *this;
-                ++p;
-                return tmp;
-            }
-            reverse_iterator& operator+=(difference_type n)
-            {
-                p -= n;
-                return *this;
-            }
-            reverse_iterator operator+(difference_type n) const
-            {
-                return reverse_iterator(p - n);
-            }
-            reverse_iterator& operator-=(difference_type n)
-            {
-                p += n;
-                return *this;
-            }
-            reverse_iterator operator-(difference_type n) const
-            {
-                return reverse_iterator(p + n);
-            }
-            difference_type operator-(const reverse_iterator& rhs) const
-            {
-                return rhs.p - p;
-            }
-            reference operator[](difference_type n) const
-            {
-                return *(*this + n);
-            }
-            bool operator==(const reverse_iterator& rhs) const
-            {
-                return p == rhs.p;
-            }
-            bool operator!=(const reverse_iterator& rhs) const
-            {
-                return p != rhs.p;
-            }
-            bool operator<(const reverse_iterator& rhs) const
-            {
-                return p > rhs.p;
-            }
-            bool operator>(const reverse_iterator& rhs) const
-            {
-                return p < rhs.p;
-            }
-            bool operator<=(const reverse_iterator& rhs) const
-            {
-                return p >= rhs.p;
-            }
-            bool operator>=(const reverse_iterator& rhs) const
-            {
-                return p <= rhs.p;
-            }
-        };
-
-        struct const_reverse_iterator
-        {
-            using iterator_category = std::random_access_iterator_tag;
-            using value_type        = T;
-            using difference_type   = std::ptrdiff_t;
-            using pointer           = const T*;
-            using reference         = const T&;
-
-            pointer p;
-
-            const_reference operator*() const
-            {
-                return *p;
-            }
-            const_pointer operator->() const
-            {
-                return p;
-            }
-            const_reverse_iterator& operator++()
-            {
-                --p;
-                return *this;
-            }
-            const_reverse_iterator operator++(int)
-            {
-                const_reverse_iterator tmp = *this;
-                --p;
-                return tmp;
-            }
-            const_reverse_iterator& operator--()
-            {
-                ++p;
-                return *this;
-            }
-            const_reverse_iterator operator--(int)
-            {
-                const_reverse_iterator tmp = *this;
-                ++p;
-                return tmp;
-            }
-            const_reverse_iterator& operator+=(difference_type n)
-            {
-                p -= n;
-                return *this;
-            }
-            const_reverse_iterator operator+(difference_type n) const
-            {
-                return { p - n };
-            }
-            const_reverse_iterator& operator-=(difference_type n)
-            {
-                p += n;
-                return *this;
-            }
-            const_reverse_iterator operator-(difference_type n) const
-            {
-                return { p + n };
-            }
-            difference_type operator-(const const_reverse_iterator& rhs) const
-            {
-                return rhs.p - p;
-            }
-            const_reference operator[](difference_type n) const
-            {
-                return *(*this + n);
-            }
-            bool operator==(const const_reverse_iterator& rhs) const
-            {
-                return p == rhs.p;
-            }
-            bool operator!=(const const_reverse_iterator& rhs) const
-            {
-                return p != rhs.p;
-            }
-            bool operator<(const const_reverse_iterator& rhs) const
-            {
-                return p > rhs.p;
-            }
-            bool operator>(const const_reverse_iterator& rhs) const
-            {
-                return p < rhs.p;
-            }
-            bool operator<=(const const_reverse_iterator& rhs) const
-            {
-                return p >= rhs.p;
-            }
-            bool operator>=(const const_reverse_iterator& rhs) const
-            {
-                return p <= rhs.p;
-            }
-        };
-
         const_iterator begin() const
         {
             return m_data;
+        }
+
+        iterator end()
+        {
+            return m_data + m_size;
         }
         const_iterator end() const
         {
@@ -447,6 +270,7 @@ namespace Udon
         {
             return m_data;
         }
+
         const_iterator cend() const
         {
             return m_data + m_size;
@@ -456,13 +280,14 @@ namespace Udon
         {
             return reverse_iterator(m_data + m_size - 1);
         }
-        reverse_iterator rend()
-        {
-            return reverse_iterator(m_data - 1);
-        }
         const_reverse_iterator rbegin() const
         {
             return const_reverse_iterator(m_data + m_size - 1);
+        }
+
+        reverse_iterator rend()
+        {
+            return reverse_iterator(m_data - 1);
         }
         const_reverse_iterator rend() const
         {
@@ -473,6 +298,7 @@ namespace Udon
         {
             return const_reverse_iterator(m_data + m_size - 1);
         }
+
         const_reverse_iterator crend() const
         {
             return const_reverse_iterator(m_data - 1);

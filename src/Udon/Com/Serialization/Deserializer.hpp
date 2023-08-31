@@ -28,9 +28,7 @@
 #include <Udon/Algorithm/Bit.hpp>
 #include <Udon/Stl/Optional.hpp>
 #include <Udon/Types/Float.hpp>
-#include <Udon/Utility/Parsable.hpp>
-#include <Udon/Utility/Concept.hpp>
-#include <Udon/Com/Serialization/Traits.hpp>
+#include <Udon/Traits/Accessible.hpp>
 
 namespace Udon
 {
@@ -112,23 +110,19 @@ namespace Udon
             }
         }
 
-        /// @brief メンバ関数 accessor<Acc>(Acc&) が存在する型
-        template <typename Accessible, typename std::enable_if<Udon::Details::Accessible<Accessible>::value, std::nullptr_t>::type* = nullptr>
+        /// @brief メンバ変数列挙用の関数が定義されている型
+        UDON_CONCEPT_ACCESSIBLE
         inline void deserialize(Accessible& rhs)
         {
-            rhs.accessor(*this);
+            Udon::Traits::InvokeAccessor(*this, rhs);
         }
 
-        /// @brief グローバル関数に Accessor<Acc>(Acc&, Accessible&) が存在する型
-        template <typename Accessible, typename std::enable_if<Udon::Details::AccessorCallable<Accessible>::value, std::nullptr_t>::type* = nullptr>
-        inline void deserialize(Accessible& rhs)
+        /// @brief 可変長テンプレート引数
+        template <typename Head, typename... Tails>
+        inline void argumentUnpack(Head& head, Tails&... tails)
         {
-            Accessor(*this, rhs);
-        }
-
-        /// @brief 可変長引数展開の終端
-        inline void argumentUnpack()
-        {
+            argumentUnpack(head);
+            argumentUnpack(tails...);
         }
 
         /// @brief 可変長引数展開
@@ -138,12 +132,9 @@ namespace Udon
             deserialize(head);
         }
 
-        /// @brief 可変長テンプレート引数
-        template <typename Head, typename... Tails>
-        inline void argumentUnpack(Head& head, Tails&... tails)
+        /// @brief 可変長引数展開の終端
+        inline void argumentUnpack()
         {
-            argumentUnpack(head);
-            argumentUnpack(tails...);
         }
 
         /// @brief アトミック (整数, 浮動小数点) 値のデシリアライズ

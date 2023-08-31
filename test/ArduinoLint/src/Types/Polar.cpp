@@ -12,6 +12,9 @@ inline void test()
         constexpr Udon::Polar b = a;
 
         constexpr Udon::Polar c = { 100, 200 };
+
+        (void)b;
+        (void)c;
     }
 
     // コピー代入演算子

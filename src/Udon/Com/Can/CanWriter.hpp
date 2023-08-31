@@ -15,11 +15,12 @@
 
 #pragma once
 
-#include <Udon/Com/Can/ICanBus.hpp>
-#include <Udon/Com/Can/CanNode.hpp>
+#include "ICanBus.hpp"
+#include "CanNode.hpp"
 
 #include <Udon/Com/Serialization.hpp>
 #include <Udon/Utility/Show.hpp>
+#include <Udon/Traits/Parsable.hpp>
 
 namespace Udon
 {
@@ -28,14 +29,18 @@ namespace Udon
     class CanWriter
     {
 
-        ICanBus& bus;
-
-        uint8_t buffer[Udon::CapacityWithChecksum<Message>()];
-
-        CanNode node;
+        static_assert(Udon::Traits::Parsable<Message>::value, "Message must be parsable.");
 
     public:
-        /// @param id 信号識別ID
+        /// @brief 受信メッセージ型
+        using MessageType = Message;
+
+        /// @brief 受信バッファサイズ
+        static constexpr size_t Size = Udon::CapacityWithChecksum<MessageType>();
+
+        /// @brief コンストラクタ
+        /// @param bus CANバス
+        /// @param id  自身のノードID
         CanWriter(ICanBus& bus, const uint32_t id)
             : bus{ bus }
             , node{ id, buffer, sizeof buffer, 0 }
@@ -45,6 +50,9 @@ namespace Udon
 
         /// @brief コピーコンストラクタ
         CanWriter(const CanWriter& other)
+            : bus{ other.bus }
+            , buffer{}
+            , node{ other.node.id, buffer, Size, 0 }
         {
             bus.joinTx(node);
         }
@@ -85,6 +93,13 @@ namespace Udon
                 Udon::Show(node.data[i], gap);
             }
         }
+
+    private:
+        ICanBus& bus;
+
+        uint8_t buffer[Size];
+
+        CanNode node;
     };
 
 }    // namespace Udon

@@ -15,11 +15,12 @@
 
 #pragma once
 
-#include <Udon/Com/Can/ICanBus.hpp>
-#include <Udon/Com/Can/CanNode.hpp>
+#include "ICanBus.hpp"
+#include "CanNode.hpp"
 
 #include <Udon/Com/Serialization.hpp>
 #include <Udon/Utility/Show.hpp>
+#include <Udon/Traits/Parsable.hpp>
 
 namespace Udon
 {
@@ -28,21 +29,22 @@ namespace Udon
     class CanReader
     {
 
-        ICanBus& bus;
-
-        uint8_t buffer[Udon::CapacityWithChecksum<Message>()];
-
-        CanNode node;
-
-        Udon::Optional<Message> message;
+        static_assert(Udon::Traits::Parsable<Message>::value, "Message must be parsable.");
 
     public:
+        /// @brief 受信メッセージ型
+        using MessageType = Message;
+
+        /// @brief 受信バッファサイズ
+        static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
+
         /// @brief コンストラクタ
         /// @param bus I2cバス
-        /// @param id 信号識別ID
+        /// @param id 送信者のノードID
         CanReader(ICanBus& bus, const uint32_t id)
             : bus{ bus }
-            , node{ id, buffer, sizeof buffer, 0 }
+            , buffer{}
+            , node{ id, buffer, Size, 0 }
         {
             joinBus();
         }
@@ -50,7 +52,8 @@ namespace Udon
         /// @brief コピーコンストラクタ
         CanReader(const CanReader& other)
             : bus{ other.bus }
-            , node{ other.node }
+            , buffer{}
+            , node{ other.node.id, buffer, Size, 0 }
         {
             joinBus();
         }
@@ -70,17 +73,24 @@ namespace Udon
 
         /// @brief メッセージ構造体を取得
         /// @return メッセージ構造体(Optional)
-        Udon::Optional<Message> getMessage() const
+        Udon::Optional<MessageType> getMessage() const
         {
-            return message;
+            if (*this)
+            {
+                return message;
+            }
+            else
+            {
+                return Udon::nullopt;
+            }
         }
 
         /// @brief 受信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
-            Udon::Show(node.id, gap);
-            if (message)
+            Serial.print(node.id, HEX);
+            if (const auto message = getMessage())
             {
                 Udon::Show(*message, gap);
             }
@@ -108,10 +118,18 @@ namespace Udon
                 [](void* p)
                 {
                     auto self     = static_cast<CanReader*>(p);
-                    self->message = Udon::Unpack<Message>(self->node.data, self->node.length);
+                    self->message = Udon::Unpack<MessageType>(self->node.data, self->node.length);
                 },
                 this);
         }
+
+        ICanBus& bus;
+
+        uint8_t buffer[Size];
+
+        CanNode node;
+
+        Udon::Optional<MessageType> message;
     };
 
 }    // namespace Udon

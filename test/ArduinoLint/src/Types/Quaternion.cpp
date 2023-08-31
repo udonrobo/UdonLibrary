@@ -12,6 +12,9 @@ inline void test()
         constexpr Udon::Quaternion b = a;
 
         constexpr Udon::Quaternion c = { 100, 200, 300, 400 };
+
+        (void)b;
+        (void)c;
     }
 
     // コピー代入演算子

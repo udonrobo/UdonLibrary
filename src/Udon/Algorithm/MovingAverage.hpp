@@ -16,18 +16,16 @@
 #ifndef DEF_MovingAverage_H
 #define DEF_MovingAverage_H
 
-#include <Udon/Math/Math.hpp>
-
 namespace Udon
 {
 
     /**     移動平均クラス
      */
+    template <size_t DataSize>
     class MovingAverage
     {
 
-        size_t dataSize;    ///< 平均を取るデータのサイズ
-        int*   data;        ///< 平均を取るデータ
+        int data[DataSize];    ///< 平均を取るデータ
 
         size_t writeIndex;    ///< 次の値のdataへの書き込み場所
 
@@ -35,21 +33,13 @@ namespace Udon
 
     public:
         /**     コンストラクタ
-                @param  dataSize    [in]移動平均するデータの個数
+                @param  DataSize    [in]移動平均するデータの個数
         */
-        MovingAverage(size_t dataSize)
-            : dataSize(Udon::Max(dataSize, 1ULL))
-            , data(new int[dataSize]())
+        MovingAverage()
+            : data()
             , writeIndex()
             , sum()
         {
-        }
-
-        /**     ディストラクタ
-         */
-        ~MovingAverage() noexcept
-        {
-            delete[] data;
         }
 
         /**     値の更新
@@ -61,7 +51,7 @@ namespace Udon
             data[writeIndex++] = value;    // データを更新する
             sum += value;                  // 合計値に更新した値を追加する
 
-            if (writeIndex >= dataSize)
+            if (writeIndex >= DataSize)
                 writeIndex = 0;
         }
 
@@ -70,7 +60,7 @@ namespace Udon
         */
         double getValue() const noexcept
         {
-            return double(sum) / double(dataSize);
+            return static_cast<double>(sum) / DataSize;
         }
     };
 

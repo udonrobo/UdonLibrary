@@ -18,8 +18,10 @@
 
 #pragma once
 
-#include <Udon/Traits/MaybeInvoke.hpp>
 #include <Udon/Utility/Show.hpp>
+#include <Udon/Traits/HasMemberFunction.hpp>
+#include <Udon/Traits/IsReader.hpp>
+#include <Udon/Traits/IsWriter.hpp>
 
 namespace Udon
 {
@@ -35,6 +37,9 @@ namespace Udon
     class Forwarding
     {
 
+        static_assert(Udon::Traits::IsReader<Reader>::value, "Reader must be reader.");
+        static_assert(Udon::Traits::IsWriter<Writer>::value, "Writer must be writer.");
+        
         /// @brief 受信クラスの型
         using reader_type = Reader<Message>;
 
@@ -61,20 +66,20 @@ namespace Udon
         /// @details 受信クラス、または送信クラスに begin メンバ関数がある場合、呼び出す
         void begin()
         {
-            Udon::MaybeInvoke_begin(reader);
-            Udon::MaybeInvoke_begin(writer);
+            Udon::Traits::MaybeInvokeBegin(reader);
+            Udon::Traits::MaybeInvokeBegin(writer);
         }
 
         /// @brief 更新
         /// @details 受信クラス、または送信クラスに update メンバ関数がある場合、呼び出す
         void update()
         {
-            Udon::MaybeInvoke_update(reader);
+            Udon::Traits::MaybeInvokeUpdate(reader);
             if (const auto message = reader.getMessage())
             {
                 writer.setMessage(*message);
             }
-            Udon::MaybeInvoke_update(writer);
+            Udon::Traits::MaybeInvokeUpdate(writer);
         }
 
         /// @brief 通信状態を表示する
@@ -82,9 +87,9 @@ namespace Udon
         void show()
         {
             Udon::Show(F("read: "));
-            Udon::MaybeInvoke_show(reader);
+            Udon::Traits::MaybeInvokeShow(reader);
             Udon::Show(F("  write: "));
-            Udon::MaybeInvoke_show(writer);
+            Udon::Traits::MaybeInvokeShow(writer);
             Udon::Show(F("  "));
         }
 
@@ -93,9 +98,9 @@ namespace Udon
         void showRaw()
         {
             Udon::Show(F("read: "));
-            Udon::MaybeInvoke_showRaw(reader);
+            Udon::Traits::MaybeInvokeShowRaw(reader);
             Udon::Show(F("  write: "));
-            Udon::MaybeInvoke_showRaw(writer);
+            Udon::Traits::MaybeInvokeShowRaw(writer);
             Udon::Show(F("  "));
         }
 
@@ -112,6 +117,5 @@ namespace Udon
         {
             return writer;
         }
-        
     };
 }    // namespace Udon

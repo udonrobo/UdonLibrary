@@ -16,8 +16,8 @@
 
 #pragma once
 
-#include <Udon/Types/HSV.hpp>
-#include <Udon/Types/RGB.hpp>
+#include "HSV.hpp"
+#include "RGB.hpp"
 
 namespace Udon
 {

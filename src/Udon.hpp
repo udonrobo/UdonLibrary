@@ -15,21 +15,6 @@
 // UdonLibrary が含まれているかどうかを判定するマクロ
 #define UDON_INCLUDED
 
-//-------------------------------------------------------------------
-//
-//    アクチュエーター / actuator
-//
-//-------------------------------------------------------------------
-
-// モーター(基板用)
-#include <Udon/Actuator/MotorDriver.hpp>
-
-// モーター(メイン側)
-#include <Udon/Actuator/Motor.hpp>
-
-// サーボ
-#include <Udon/Actuator/ServoSpeed.hpp>
-
 
 //-------------------------------------------------------------------
 //
@@ -39,28 +24,31 @@
 
 
 // 配列参照
-#include <Udon/Algorithm/ArrayView.hpp>
+#include "Udon/Algorithm/ArrayView.hpp"
 
 // デリゲート / メンバ関数ポインタ変換
-#include <Udon/Algorithm/Delegate.hpp>
+#include "Udon/Algorithm/Delegate.hpp"
 
 // CRC-8 チェックサム / 誤り検出
-#include <Udon/Algorithm/CRC.hpp>
+#include "Udon/Algorithm/CRC.hpp"
 
 // 疑似可変長リングバッファ
-#include <Udon/Algorithm/RingBuffer.hpp>
+#include "Udon/Algorithm/RingBuffer.hpp"
 
 // PIDフィードバック制御器
-#include <Udon/Algorithm/PidController.hpp>
+#include "Udon/Algorithm/PidController.hpp"
 
 // 移動平均
-#include <Udon/Algorithm/MovingAverage.hpp>
+#include "Udon/Algorithm/MovingAverage.hpp"
 
 // ループ周期制御
-#include <Udon/Algorithm/LoopCycleController.hpp>
+#include "Udon/Algorithm/LoopCycleController.hpp"
 
 // 独立ステア最適化
-#include <Udon/Algorithm/SteerOptimizer.hpp>
+#include "Udon/Algorithm/SteerOptimizer.hpp"
+
+// サーボ
+#include "Udon/Algorithm/ServoSpeed.hpp"
 
 
 //-------------------------------------------------------------------
@@ -70,31 +58,37 @@
 //-------------------------------------------------------------------
 
 // CAN通信
-#include <Udon/Com/Can.hpp>
+#include "Udon/Com/Can.hpp"
 
 // UART通信
-#include <Udon/Com/Uart.hpp>
+#include "Udon/Com/Uart.hpp"
 
 // I2c通信
-#include <Udon/Com/I2c.hpp>
+#include "Udon/Com/I2c.hpp"
 
 // IM920
-#include <Udon/Com/Im920.hpp>
+#include "Udon/Com/Im920.hpp"
 
 // フォワーディング / メッセージ転送
-#include <Udon/Com/Common/Forwarding.hpp>
+#include "Udon/Com/Common/Forwarding.hpp"
 
 // 配列受信
-#include <Udon/Com/Common/ArrayReader.hpp>
+#include "Udon/Com/Common/ArrayElementReader.hpp"
 
 // 配列送信
-#include <Udon/Com/Common/ArrayWriter.hpp>
+#include "Udon/Com/Common/ArrayElementWriter.hpp"
 
 // シリアライズ
-#include <Udon/Com/Serialization.hpp>
+#include "Udon/Com/Serialization.hpp"
 
 // 通信用構造体群
-#include <Udon/Com/Message.hpp>
+#include "Udon/Com/Message.hpp"
+
+// 通信経由モーター
+#include "Udon/Com/Driver/Motor.hpp"
+
+// 通信経由エンコーダー
+#include "Udon/Com/Driver/Encoder.hpp"
 
 
 //-------------------------------------------------------------------
@@ -104,7 +98,7 @@
 //-------------------------------------------------------------------
 
 // SDカード
-#include <Udon/Filesystem/Sd/Parameter.hpp>
+#include "Udon/Filesystem/Sd/Parameter.hpp"
 
 
 //-------------------------------------------------------------------
@@ -113,36 +107,35 @@
 //
 //-------------------------------------------------------------------
 
-#include <Udon/Math/Math.hpp>
+#include "Udon/Math/Math.hpp"
 
 
 //-------------------------------------------------------------------
 //
-//    センサー / sensor
+//    デバイスドライバー
 //
 //-------------------------------------------------------------------
+
+// モーター(基板用)
+#include "Udon/Driver/Actuator/Motor.hpp"
 
 // IMU / 慣性計測装置
-#include <Udon/Sensor/Imu.hpp>
+#include "Udon/Driver/Sensor/Imu.hpp"
 
 // BNO055(IMU)
-#include <Udon/Sensor/BNO055.hpp>
+#include "Udon/Driver/Sensor/BNO055.hpp"
 
 // ディップスイッチ
-#include <Udon/Sensor/DipSwitch.hpp>
+#include "Udon/Driver/Sensor/DipSwitch.hpp"
 
 // raspberrypi pico エンコーダー
-#include <Udon/Sensor/EncoderPico.hpp>
+#include "Udon/Driver/Sensor/EncoderPico.hpp"
 
-
-//-------------------------------------------------------------------
-//
-//    表示系 / display
-//
-//-------------------------------------------------------------------
+// raspberrypi pico PIO
+#include "Udon/Driver/Pio/PicoPioClock.hpp"
 
 // 7セグメントLED
-#include <Udon/Display/SegmentsLed.hpp>
+#include "Udon/Driver/Display/SegmentsLed.hpp"
 
 
 //-------------------------------------------------------------------
@@ -152,50 +145,68 @@
 //-------------------------------------------------------------------
 
 // 色空間
-#include <Udon/Types/Color.hpp>
+#include "Udon/Types/Color.hpp"
 
 // オイラー角
-#include <Udon/Types/Euler.hpp>
+#include "Udon/Types/Euler.hpp"
 
 // 固定長浮動小数点型
-#include <Udon/Types/Float.hpp>
+#include "Udon/Types/Float.hpp"
 
-// 直交座標系
-#include <Udon/Types/Polar.hpp>
+// 極座標系
+#include "Udon/Types/Polar.hpp"
 
 // ロボットの位置
-#include <Udon/Types/Position.hpp>
+#include "Udon/Types/Position.hpp"
 
 // クオータニオン
-#include <Udon/Types/Quaternion.hpp>
+#include "Udon/Types/Quaternion.hpp"
 
 // HSV色空間
-#include <Udon/Types/HSV.hpp>
+#include "Udon/Types/HSV.hpp"
 
 // RGB色空間
-#include <Udon/Types/RGB.hpp>
+#include "Udon/Types/RGB.hpp"
 
 // 2次元ベクトル
-#include <Udon/Types/Vector2D.hpp>
+#include "Udon/Types/Vector2D.hpp"
 
 // 3次元ベクトル
-#include <Udon/Types/Vector3D.hpp>
+#include "Udon/Types/Vector3D.hpp"
 
 // 4次元ベクトル
-#include <Udon/Types/Vector4D.hpp>
+#include "Udon/Types/Vector4D.hpp"
 
 
 //-------------------------------------------------------------------
 //
-//    型トレイト / trait
+//    トレイト / trait
 //
 //-------------------------------------------------------------------
 
-// メンバー関数の有無
-#include <Udon/Traits/HasMember.hpp>
+// メンバー関数の有無判定
+#include "Udon/Traits/HasMemberFunction.hpp"
 
-// メンバ関数の呼び出し
-#include <Udon/Traits/MaybeInvoke.hpp>
+// コンセプト
+#include "Udon/Traits/Concept.hpp"
+
+// 送信クラスであるか
+#include "Udon/Traits/IsWriter.hpp"
+
+// 受信クラスであるか
+#include "Udon/Traits/IsReader.hpp"
+
+// メンバ変数列挙可能か
+#include "Udon/Traits/Accessible.hpp"
+
+// シリアライズ後のサイズ取得を可能か
+#include "Udon/Traits/Capacitable.hpp"
+
+// std::void_t
+#include "Udon/Traits/VoidT.hpp"
+
+// static_assert 失敗遅延
+#include "Udon/Traits/AlwaysFalse.hpp"
 
 
 //-------------------------------------------------------------------
@@ -205,4 +216,4 @@
 //-------------------------------------------------------------------
 
 // デバッグ / ログ出力
-#include <Udon/Utility/Show.hpp>
+#include "Udon/Utility/Show.hpp"

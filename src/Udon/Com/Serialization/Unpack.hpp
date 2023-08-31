@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <Udon/Com/Serialization/Deserializer.hpp>
+#include "Deserializer.hpp"
 
 namespace Udon
 {
@@ -58,7 +58,7 @@ namespace Udon
     template <typename T>
     Udon::Optional<T> Unpack(const std::vector<uint8_t>& buffer)
     {
-//        static_assert(Udon::IsParsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+       static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
 
         if (buffer.size() < Udon::CapacityWithChecksum<T>())
         {
@@ -88,7 +88,7 @@ namespace Udon
     template <typename T>
     Udon::Optional<T> Unpack(const uint8_t* buffer, size_t size)
     {
-        static_assert(Udon::IsParsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+        static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
 
 #ifdef __AVR_ATmega328P__
         // todo:
@@ -118,7 +118,7 @@ namespace Udon
     template <typename T, size_t N>
     Udon::Optional<T> Unpack(const uint8_t (&array)[N])
     {
-        static_assert(Udon::IsParsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+        static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
 
         return Unpack<T>(array, N);
     }

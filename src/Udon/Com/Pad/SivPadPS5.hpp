@@ -18,7 +18,7 @@
 
 #pragma once
 
-#include <Udon/Com/Pad/IPadPS5.hpp>
+#include "IPadPS5.hpp"
 
 namespace Udon
 {
@@ -64,10 +64,10 @@ namespace Udon
                     /* bool   touch        */ gamePad.buttons.at(13).pressed(),
                     /* bool   mic          */ gamePad.buttons.at(14).pressed(),
                     /* bool   ps           */ false,    // TODO: 未実装
-                    /* double analogLeftX  */ +gamePad.axes.at(2) * 255,
-                    /* double analogLeftY  */ -gamePad.axes.at(5) * 255,
-                    /* double analogRightX */ +gamePad.axes.at(0) * 255,
-                    /* double analogRightY */ -gamePad.axes.at(1) * 255);
+                    /* double analogLeftX  */ +gamePad.axes.at(0) * 255,
+                    /* double analogLeftY  */ -gamePad.axes.at(1) * 255,
+                    /* double analogRightX */ +gamePad.axes.at(2) * 255,
+                    /* double analogRightY */ -gamePad.axes.at(5) * 255);
             }
             else
             {

@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <Arduino.h>
+#ifdef ARDUINO
 
 namespace Udon
 {
@@ -56,5 +56,7 @@ namespace Udon
         {
             return getDeltaTimeMs() / 1000.;
         }
-    }
+    };
 }    // namespace Udon
+
+#endif    // ARDUINO

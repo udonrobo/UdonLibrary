@@ -9,7 +9,7 @@
 //
 //-------------------------------------------------------------------
 //
-//    CAN通信 Teensy用バス管理クラス
+//    CAN通信 Teensy用バスクラス
 //
 //-------------------------------------------------------------------
 
@@ -21,9 +21,10 @@
 #    include <FlexCAN_T4.h>       // https://github.com/tonton81/FlexCan_T4.git
 #    include <IntervalTimer.h>    // https://github.com/loglow/IntervalTimer.git
 
-#    include <Udon/Com/Can/ICanBus.hpp>
-#    include <Udon/Com/Can/CanNode.hpp>
-#    include <Udon/Com/Can/CanUtility.hpp>
+#    include "ICanBus.hpp"
+#    include "CanNode.hpp"
+#    include "CanUtility.hpp"
+
 #    include <Udon/Algorithm/StaticVector.hpp>
 #    include <Udon/Algorithm/RingBuffer.hpp>
 
@@ -43,8 +44,6 @@ namespace Udon
     {
 
         FlexCAN_T4<Bus, RX_SIZE_128, TX_SIZE_256> bus;
-
-        IntervalTimer writeTimer;
 
         constexpr static uint8_t SingleFrameSize = 8;
 
@@ -67,9 +66,8 @@ namespace Udon
         Udon::StaticVector<TxNodePtr> txNodes;
         Udon::StaticVector<RxNodePtr> rxNodes;
 
-        Udon::RingBuffer<CAN_message_t, 256> txBuffer;
-
         uint32_t transmitUs = 0;
+        uint32_t receiveMs  = 0;
 
         static CanBusTeensy* self;    // コールバック関数から自身のインスタンスを参照するためのポインタ (クラステンプレートによってインスタンスごとに別のstatic変数が生成される)
 
@@ -94,14 +92,14 @@ namespace Udon
 
         /// @brief 通信開始
         /// @param baudrate 通信レート
-        void begin(const uint32_t baudrate = 1000000)
+        void begin(const uint32_t baudrate = 1'000'000)
         {
             // バス初期化
             bus.begin();
             bus.setBaudRate(baudrate);
 
             // 受信開始
-            if (rxNodes.size())
+            if (rxNodes)
             {
                 // 受信フィルタ設定 (ノード数が8以下の場合のみ)
                 if (rxNodes.size() <= 8)
@@ -134,20 +132,6 @@ namespace Udon
                         self->onReceive(msg);
                     });
             }
-
-            // 送信開始
-            if (txNodes.size())
-            {
-                writeTimer.begin(
-                    []
-                    {
-                        if (self->txBuffer.size())
-                        {
-                            self->bus.write(self->txBuffer.pop());
-                        }
-                    },
-                    200);
-            }
         }
 
         /// @brief 通信終了
@@ -158,19 +142,24 @@ namespace Udon
         }
 
         /// @brief バス更新
-        /// @param {transmissionIntervalUs} 送信間隔
+        /// @param transmitIntervalMs 送信間隔 [ms]
         void update(uint32_t transmissionIntervalUs = 5000)
         {
-            if (txNodes.size() && micros() - transmitUs >= transmissionIntervalUs)
+            if (txNodes && micros() - transmitUs >= transmissionIntervalUs)
             {
                 onTransmit();
                 transmitUs = micros();
             }
         }
 
-        explicit operator bool() const
+        explicit operator bool() const override
         {
-            return micros() - transmitUs < 100000;
+            if (rxNodes)
+                return millis() - receiveMs < 100;
+            else if (txNodes)
+                return micros() - transmitUs < 100000;
+            else
+                return false;
         }
 
         /// @brief バス情報を表示する
@@ -181,7 +170,7 @@ namespace Udon
             Serial.print("\tTX Node\n");
             for (auto&& node : txNodes)
             {
-                Serial.printf("\t\tid:%4d   length:%3zu byte", node->id, node->length);
+                Serial.printf("\t\tid: 0x%-3x length:%3zu byte", static_cast<int>(node->id), node->length);
                 if (node->length > SingleFrameSize)
                 {
                     Serial.print(" (multi frame)");
@@ -191,7 +180,7 @@ namespace Udon
                     Serial.print(" (single frame)");
                 }
 
-                Serial.print("\n\t\t\tdata: ");
+                Serial.print("  data: ");
                 for (size_t i = 0; i < node->length; ++i)
                 {
                     Serial.printf("%4d", node->data[i]);
@@ -203,7 +192,7 @@ namespace Udon
             Serial.print("\tRX Node\n");
             for (auto&& rxNode : rxNodes)
             {
-                Serial.printf("\t\tid:%4d   size:%3zu byte", rxNode.node->id, rxNode.node->length);
+                Serial.printf("\t\tid: 0x%-3x length:%3zu byte", static_cast<int>(rxNode.node->id), rxNode.node->length);
                 if (rxNode.node->length > SingleFrameSize)
                 {
                     Serial.print(" (multi frame)");
@@ -213,7 +202,7 @@ namespace Udon
                     Serial.print(" (single frame)");
                 }
 
-                Serial.print("\n\t\t\tdata: ");
+                Serial.print("  data: ");
                 for (size_t i = 0; i < rxNode.node->length; ++i)
                 {
                     Serial.printf("%4d", rxNode.node->data[i]);
@@ -255,14 +244,10 @@ namespace Udon
         }
 
     private:
-        /// @brief 受信コールバック
+        /// @brief 受信割り込み
         void onReceive(const CAN_message_t& msg)
         {
-            //  Q 割り込み時にこのような処理を行うのは良くなこのような
-            // A この関数は割り込みコールバック関数なので、できるだけ短い処理を行う必要があります。
-            //  この関数内で行っている処理は、受信したメッセージをバッファに格納するだけなので問題ありません。
-            // Q いえ、IDの検索を行い、コールバックを呼び出しているので、処理時間が長くなる可能性があるのではないでしょうか？
-            
+            // IDに対応する受信ノードを探す
             auto rxNode = std::find_if(rxNodes.begin(), rxNodes.end(), [&msg](const RxNodePtr& rx)
                                        { return rx.node->id == msg.id; });
             if (rxNode == rxNodes.end())
@@ -270,48 +255,52 @@ namespace Udon
                 return;
             }
 
-            Udon::Details::Unpacketize(
+            // 分割されたフレームを結合(マルチフレームの場合)
+            Udon::Detail::Unpacketize(
                 { msg.buf },
                 { rxNode->node->data, rxNode->node->length },
                 SingleFrameSize);
 
+            // 登録されている受信クラスのコールバック関数を呼ぶ
+            // 最終フレームの到達時にコールバックを呼ぶため、受信中(完全に受信しきっていないとき)にデシリアライズすることを防いでいる。
+
             if (rxNode->node->length > SingleFrameSize)
             {
                 // マルチフレーム
-                const size_t frameCount = static_cast<size_t>(std::ceil(
-                    static_cast<double>(rxNode->node->length) / SingleFrameSize - 1 /*-1: index*/));
+                const auto frameCount = std::ceil(static_cast<double>(rxNode->node->length) / SingleFrameSize - 1 /*index*/);
 
                 if (msg.buf[0] == frameCount)
                 {
-                    rxNode->callback();    // マルチフレームの最終フレームを受信したらコールバックを呼ぶ
+                    rxNode->callback();
                 }
             }
             else
             {
                 // シングルフレーム
-                rxNode->callback();    // シングルフレームの場合は即時コールバックを呼ぶ
+                rxNode->callback();
             }
+
+            receiveMs = rxNode->node->transmitMs = millis();
         }
 
         /// @brief 送信処理
         void onTransmit()
         {
-            for (auto&& txNode : txNodes)
+            for (auto&& node : txNodes)
             {
                 CAN_message_t msg;
-                msg.id = txNode->id;
-                Udon::Details::Packetize(
-                    { txNode->data, txNode->length },
-                    { msg.buf },
-                    SingleFrameSize,
-                    [this, &msg](size_t size)
-                    {
-                        msg.len = SingleFrameSize;
-                        // txBuffer.push(msg);
-                        while (not bus.write(msg))
-                            ;
-                        delayMicroseconds(200);
-                    });
+                msg.id  = node->id;
+                msg.len = SingleFrameSize;
+
+                // 一度に8バイトしか送れないため、分割し送信
+                Udon::Detail::Packetize({ node->data, node->length }, { msg.buf }, SingleFrameSize,
+                                        [this, &msg](size_t)
+                                        {
+                                            bus.write(msg);
+                                            delayMicroseconds(200);
+                                        });
+
+                node->transmitMs = millis();
             }
         }
     };

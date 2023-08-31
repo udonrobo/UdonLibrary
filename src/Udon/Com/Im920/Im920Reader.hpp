@@ -2,7 +2,6 @@
 //
 //    UdonLibrary
 //
-//                2018-2023 Watanabe Rui
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
@@ -13,13 +12,14 @@
 //    IM920 受信クラス
 //
 //    Sender --[UART]--> IM920 ~~[920MHz]~~> IM920 --[UART]--> Receiver
-//                                                           ^^^^^^^^
+//                                                         　  ^^^^^^^^
 //
 //-------------------------------------------------------------------
 
 #pragma once
 
-#include <Udon/Com/Im920/IIm920.hpp>
+#include "IIm920.hpp"
+
 #include <Udon/Com/Serialization.hpp>
 #include <Udon/Utility/Show.hpp>
 
@@ -45,8 +45,8 @@ namespace Udon
         {
         }
 
-        Im920Reader(const Im920Reader&) 
-            : im920(im920)
+        Im920Reader(const Im920Reader& other) 
+            : im920(other.im920)
             , buffer(im920.registerReceiver(Size))
         {
         }
@@ -59,7 +59,6 @@ namespace Udon
             }
             else
             {
-                Serial.print(F("IM920 disconnected!!"));
                 return Udon::nullopt;
             }
         }

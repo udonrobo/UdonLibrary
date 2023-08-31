@@ -20,7 +20,8 @@
 
 #pragma once
 
-#include <Udon/Com/Im920/IIm920.hpp>
+#include "IIm920.hpp"
+
 #include <Udon/Com/Serialization.hpp>
 
 #include <Arduino.h>
@@ -52,7 +53,17 @@ namespace Udon
         /// @return IM920が使用可能ならtrue
         operator bool() const override
         {
-            return uart && (2 * millis() - (sendMitMs + receiveDeadTime) < 500);
+            switch (getTransmitMode())
+            {
+            case TransmitMode::Send:
+                return uart && (millis() - sendMitMs < 1000);
+            case TransmitMode::Receive:
+                return uart && (millis() - receiveDeadTime < 1000);
+            case TransmitMode::TwoWay:
+                return uart && (2 * millis() - (sendMitMs + receiveDeadTime) < 1000);
+            default:
+                return false;
+            }
         }
 
         /// @brief 送信バッファを登録する
@@ -251,8 +262,8 @@ namespace Udon
             }
             if (millis() - receiveDeadTime > 1000)
             {    // タイムアウト時エラー吐出
-                Serial.print("Im920 is TimeOut!");
-                Serial.print("\t");
+                // Serial.print("Im920 is TimeOut!");
+                // Serial.print("\t");
             }
             return false;
         }

@@ -173,7 +173,7 @@ void Accessor(Acc& acc, Vec2& rhs)
 
   `Capacity` 関数を外部に定義するときに使用します。引数は可変長引数です。
 
-## Details
+## Detail
 
 - `UDON_PARSABLE`
 
@@ -185,9 +185,9 @@ void Accessor(Acc& acc, Vec2& rhs)
       double x;
       double y;
 
-      using IsParsable_tag = void;
+      using Parsable_tag = void;
 
-      constexpr size_t capacity() const
+      constexpr size_t capacityBits() const
       {
           return Udon::CapacityBits(x, y);
       }
@@ -200,19 +200,9 @@ void Accessor(Acc& acc, Vec2& rhs)
   };
   ```
 
-  - `IsParsable_tag`
+  - `capacityBits()`
 
-    > `IsParsable_tag` は型が解析可能かを区別する際に使用します。
-    >
-    > `Udon::IsParsable<T>` を使用し、型(ここでは Vec2)を解析できるかできないかコンパイル時に判定できるため、`static_assert` によってユーザーに分かりやすくエラーを出すことができます。
-    >
-    > ```cpp
-    > static_assert(Udon::IsParsable<Vec2>::value, "can not serialize");
-    > ```
-
-  - `capacity()`
-
-    > `capacity()` はシリアライズ後のバイト列のバイトサイズを求める `CapacityWithChecksum` から呼び出されます。
+    > `capacityBits()` はシリアライズ後のバイト列のバイトサイズを求める `CapacityWithChecksum` から呼び出されます。
 
   - `accessor()`
 
