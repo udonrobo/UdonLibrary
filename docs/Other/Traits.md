@@ -98,7 +98,7 @@
   template <typename T, typename std::enable_if<Udon::Traits::Parsable<T>::value, std::nullptr_t>::type = nullptr>
   void f(const T& rhs)
   {
-      std::cout << "parsable";
+      std::cout << "parsable" << std::endl;
   }
 
   int main()
@@ -118,7 +118,7 @@
   template <typename T, typename std::enable_if<std::is_integral<T>::value, std::nullptr_t>::type = nullptr>
   void f(const T& rhs)
   {
-      std::cout << "integer";
+      std::cout << "integer" << std::endl;
   }
 
   template <typename T, typename std::enable_if<std::is_floating_point<T>::value, std::nullptr_t>::type = nullptr>
@@ -159,7 +159,7 @@
   public:
       void update()
       {
-          std::cout << "Updatable::update()";
+          std::cout << "Updatable::update()" << std::endl;
       }
   };
 
