@@ -242,8 +242,6 @@ uint8_t XBOXUSB::Poll() {
 }
 
 void XBOXUSB::readReport() {
-        if(readBuf == NULL)
-                return;
         if(readBuf[0] != 0x00 || readBuf[1] != 0x14) { // Check if it's the correct report - the controller also sends different status reports
                 return;
         }

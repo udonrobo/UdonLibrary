@@ -328,8 +328,6 @@ uint8_t XBOXRECV::Poll() {
 }
 
 void XBOXRECV::readReport(uint8_t controller) {
-        if(readBuf == NULL)
-                return;
         // This report is send when a controller is connected and disconnected
         if(readBuf[0] == 0x08 && readBuf[1] != Xbox360Connected[controller]) {
                 Xbox360Connected[controller] = readBuf[1];
