@@ -29,7 +29,10 @@ namespace Udon
     template <typename Message>
     class Im920Reader
     {
+    public:
         static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
+
+        using MessageType = Message;
 
     private:
         static_assert(Size <= 64, "The send buffer size for IM920 is limited to 64 bytes");
@@ -45,7 +48,7 @@ namespace Udon
         {
         }
 
-        Im920Reader(const Im920Reader& other) 
+        Im920Reader(const Im920Reader& other)
             : im920(other.im920)
             , buffer(im920.registerReceiver(Size))
         {
