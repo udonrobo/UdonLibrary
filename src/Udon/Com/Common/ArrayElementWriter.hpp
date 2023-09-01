@@ -15,11 +15,16 @@
 
 #pragma once
 
+#include <Udon/Traits/Parsable.hpp>
+
 namespace Udon
 {
     template <typename Message>
     class ArrayElementWriter
     {
+
+        static_assert(Udon::Traits::Parsable<Message>::value, "Message must be parsable.");
+
     public:
         using MessageType = Message;
 

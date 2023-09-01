@@ -20,14 +20,14 @@ namespace Udon
         };
 
         /// @brief T に `T::begin()` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
-        template <typename HasMemberFunctionBegin, typename std::enable_if<Traits::HasMemberFunctionBegin<HasMemberFunctionBegin>::value, std::nullptr_t>::type* = nullptr>
+        template <typename HasMemberFunctionBegin, typename std::enable_if<Traits::HasMemberFunctionBegin<HasMemberFunctionBegin>::value, std::nullptr_t>::type = nullptr>
         void MaybeInvokeBegin(HasMemberFunctionBegin& rhs)
         {
             rhs.begin();
         }
 
         /// @brief T に `T::begin()` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
-        template <typename HasMemberFunctionBegin, typename std::enable_if<not Traits::HasMemberFunctionBegin<HasMemberFunctionBegin>::value, std::nullptr_t>::type* = nullptr>
+        template <typename HasMemberFunctionBegin, typename std::enable_if<not Traits::HasMemberFunctionBegin<HasMemberFunctionBegin>::value, std::nullptr_t>::type = nullptr>
         void MaybeInvokeBegin(HasMemberFunctionBegin&)
         {
             // Do nothing.

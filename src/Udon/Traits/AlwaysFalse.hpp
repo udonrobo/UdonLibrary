@@ -23,7 +23,8 @@ namespace Udon
         ///         f<int>();    // <- NG 実体化された時点で static_assert が失敗する
         ///         f<float>();  // <- OK int型で実体化されていないので static_assert は失敗しない
         template <class T>
-        struct AlwaysFalse : std::false_type
+        struct AlwaysFalse
+            : std::false_type
         {
         };
 

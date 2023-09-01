@@ -187,7 +187,7 @@ void Accessor(Acc& acc, Vec2& rhs)
 
       using Parsable_tag = void;
 
-      constexpr size_t capacity() const
+      constexpr size_t capacityBits() const
       {
           return Udon::CapacityBits(x, y);
       }
@@ -200,9 +200,9 @@ void Accessor(Acc& acc, Vec2& rhs)
   };
   ```
 
-  - `capacity()`
+  - `capacityBits()`
 
-    > `capacity()` はシリアライズ後のバイト列のバイトサイズを求める `CapacityWithChecksum` から呼び出されます。
+    > `capacityBits()` はシリアライズ後のバイト列のバイトサイズを求める `CapacityWithChecksum` から呼び出されます。
 
   - `accessor()`
 

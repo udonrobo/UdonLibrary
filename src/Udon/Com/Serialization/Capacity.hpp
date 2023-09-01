@@ -22,8 +22,8 @@
 
 #include <Udon/Math/Math.hpp>
 #include <Udon/Algorithm/CRC.hpp>
-#include <Udon/Traits/Parsable.hpp>
 #include <Udon/Types/Float.hpp>
+#include <Udon/Traits/Parsable.hpp>
 #include <Udon/Traits/Concept.hpp>
 
 #if CHAR_BIT != 8
@@ -94,7 +94,6 @@ namespace Udon
 
     }    // namespace Detail
 
-
     /// @brief シリアライズ後のビット数を求める
     /// @tparam Args シリアライズ対象の型
     /// @param args シリアライズ対象の値
@@ -102,8 +101,8 @@ namespace Udon
     template <typename... Args>
     inline constexpr size_t CapacityBits(Args&&... args)
     {
-		return Detail::CapacityArgsUnpack(std::forward<Args>(args)...);
-	}
+        return Detail::CapacityArgsUnpack(std::forward<Args>(args)...);
+    }
 
     /// @brief チェックサムを含めたシリアライズ後のバイト数を求める
     /// @tparam T シリアライズ対象の型
@@ -111,8 +110,7 @@ namespace Udon
     template <typename T>
     inline constexpr size_t CapacityWithChecksum()
     {
-        //static_assert(std::is_arithmetic<T>::value or Detail::HasMemberFunctionCapacity<T>::value or Detail::CapacityCallable<T>::value, "Capacity is not defined.");
-
+        static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");
         return Udon::Ceil(CapacityBits(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
     }
 

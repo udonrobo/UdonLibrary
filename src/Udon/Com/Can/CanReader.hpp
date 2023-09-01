@@ -20,6 +20,7 @@
 
 #include <Udon/Com/Serialization.hpp>
 #include <Udon/Utility/Show.hpp>
+#include <Udon/Traits/Parsable.hpp>
 
 namespace Udon
 {
@@ -27,6 +28,9 @@ namespace Udon
     template <typename Message>
     class CanReader
     {
+
+        static_assert(Udon::Traits::Parsable<Message>::value, "Message must be parsable.");
+
     public:
         /// @brief 受信メッセージ型
         using MessageType = Message;
@@ -36,7 +40,7 @@ namespace Udon
 
         /// @brief コンストラクタ
         /// @param bus I2cバス
-        /// @param id　送信者のノードID
+        /// @param id 送信者のノードID
         CanReader(ICanBus& bus, const uint32_t id)
             : bus{ bus }
             , buffer{}
@@ -85,7 +89,7 @@ namespace Udon
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
-            Udon::Show(node.id, gap);
+            Serial.print(node.id, HEX);
             if (const auto message = getMessage())
             {
                 Udon::Show(*message, gap);

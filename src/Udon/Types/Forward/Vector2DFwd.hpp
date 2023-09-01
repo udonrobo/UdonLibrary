@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <Udon/Traits/Parsable.hpp>
+#include <Udon/Traits/ParsableMacro.hpp>
 #include <Udon/Com/Serialization.hpp>
 
 namespace Udon

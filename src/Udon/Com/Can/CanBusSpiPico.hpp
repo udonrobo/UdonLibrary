@@ -128,7 +128,7 @@ namespace Udon
                     LOW,
                     this);
 
-                // 受信フィルタ設定 (ノード数が8以下の場合のみ)
+                // 受信フィルタ設定 (ノード数が6以下の場合のみ)
                 constexpr size_t Mcp2515MaxFilterCount = 6;
                 if (rxSize <= Mcp2515MaxFilterCount)
                 {
@@ -191,7 +191,7 @@ namespace Udon
             Serial.print("\tTX Node\n");
             for (auto&& node : txNodes)
             {
-                Serial.printf("\t\tid:%4d   length:%3zu byte", static_cast<int>(node->id), node->length);
+                Serial.printf("\t\tid: 0x%-3x length:%3zu byte", static_cast<int>(node->id), node->length);
                 if (node->length > SingleFrameSize)
                 {
                     Serial.print(" (multi frame)");
@@ -201,7 +201,7 @@ namespace Udon
                     Serial.print(" (single frame)");
                 }
 
-                Serial.print("\n\t\t\tdata: ");
+                Serial.print("  data: ");
                 for (size_t i = 0; i < node->length; ++i)
                 {
                     Serial.printf("%4d", node->data[i]);
@@ -213,7 +213,7 @@ namespace Udon
             Serial.print("\tRX Node\n");
             for (auto&& rxNode : rxNodes)
             {
-                Serial.printf("\t\tid:%4d   size:%3zu byte", static_cast<int>(rxNode.node->id), rxNode.node->length);
+                Serial.printf("\t\tid: 0x%-3x length:%3zu byte", static_cast<int>(rxNode.node->id), rxNode.node->length);
                 if (rxNode.node->length > SingleFrameSize)
                 {
                     Serial.print(" (multi frame)");
@@ -223,7 +223,7 @@ namespace Udon
                     Serial.print(" (single frame)");
                 }
 
-                Serial.print("\n\t\t\tdata: ");
+                Serial.print("  data: ");
                 for (size_t i = 0; i < rxNode.node->length; ++i)
                 {
                     Serial.printf("%4d", rxNode.node->data[i]);

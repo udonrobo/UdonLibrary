@@ -24,7 +24,7 @@
 #include "Vector2D.hpp"
 
 #include <Udon/Math/Math.hpp>
-#include <Udon/Traits/Parsable.hpp>
+#include <Udon/Traits/ParsableMacro.hpp>
 #include <Udon/Com/Serialization.hpp>
 
 namespace Udon

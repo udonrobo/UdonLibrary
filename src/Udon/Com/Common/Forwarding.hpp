@@ -20,6 +20,8 @@
 
 #include <Udon/Utility/Show.hpp>
 #include <Udon/Traits/HasMemberFunction.hpp>
+#include <Udon/Traits/IsReader.hpp>
+#include <Udon/Traits/IsWriter.hpp>
 
 namespace Udon
 {
@@ -35,6 +37,9 @@ namespace Udon
     class Forwarding
     {
 
+        static_assert(Udon::Traits::IsReader<Reader>::value, "Reader must be reader.");
+        static_assert(Udon::Traits::IsWriter<Writer>::value, "Writer must be writer.");
+        
         /// @brief 受信クラスの型
         using reader_type = Reader<Message>;
 
@@ -112,6 +117,5 @@ namespace Udon
         {
             return writer;
         }
-        
     };
 }    // namespace Udon

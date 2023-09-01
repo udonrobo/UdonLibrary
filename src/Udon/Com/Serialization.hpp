@@ -19,3 +19,5 @@
 #include "Serialization/Capacity.hpp"
 #include "Serialization/Pack.hpp"
 #include "Serialization/Unpack.hpp"
+
+#include <Udon/Traits/ParsableMacro.hpp>
