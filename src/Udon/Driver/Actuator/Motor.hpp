@@ -23,17 +23,16 @@
 namespace Udon
 {
 
-    class Motor2Driver
+    template <size_t DataSize = 20>
+    class Motor2Pin
     {
         const uint8_t pinA;
         const uint8_t pinP;
 
-        using MovingAverage = Udon::MovingAverage<20>;
-
-        MovingAverage movingAverage;
+        Udon::MovingAverage<DataSize> movingAverage;
 
     public:
-        Motor2Driver(const uint8_t pinA, const uint8_t pinP)
+        Motor2Pin(const uint8_t pinA, const uint8_t pinP)
             : pinA(pinA)
             , pinP(pinP)
             , movingAverage{}
@@ -49,7 +48,7 @@ namespace Udon
         {
             movingAverage.update(constrain(power, -250, 250));
             const int16_t p = movingAverage.getValue();
-            digitalWrite(pinA, p >= 0);
+            digitalWrite(pinA, p >= 0 ? HIGH : LOW);
             analogWrite(pinP, abs(p));
         }
 
@@ -65,18 +64,17 @@ namespace Udon
         }
     };
 
-    class Motor3Driver
+    template <size_t DataSize = 20>
+    class Motor3Pin
     {
         const uint8_t pinA;
         const uint8_t pinB;
         const uint8_t pinP;
 
-        using MovingAverage = Udon::MovingAverage<20>;
-
-        MovingAverage movingAverage;
+        Udon::MovingAverage<DataSize> movingAverage;
 
     public:
-        Motor3Driver(const uint8_t pinA, const uint8_t pinB, const uint8_t pinP)
+        Motor3Pin(const uint8_t pinA, const uint8_t pinB, const uint8_t pinP)
             : pinA(pinA)
             , pinB(pinB)
             , pinP(pinP)
@@ -94,8 +92,8 @@ namespace Udon
         {
             movingAverage.update(constrain(power, -250, 250));
             const int16_t p = movingAverage.getValue();
-            digitalWrite(pinA, p >= 0);
-            digitalWrite(pinB, p <= 0);
+            digitalWrite(pinA, p >= 0 ? HIGH : LOW);
+            digitalWrite(pinB, p <= 0 ? HIGH : LOW);
             analogWrite(pinP, abs(p));
         }
 
