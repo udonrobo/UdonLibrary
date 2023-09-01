@@ -4,12 +4,12 @@
 
 namespace Udon
 {
-    class LedDriver
+    class Led
     {
         uint8_t pin;
 
     public:
-        LedDriver(uint8_t pin)
+        Led(uint8_t pin)
             : pin(pin)
         {
         }
