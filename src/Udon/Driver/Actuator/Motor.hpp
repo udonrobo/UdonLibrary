@@ -23,16 +23,15 @@
 namespace Udon
 {
 
-    template <size_t DataSize = 20>
-    class Motor2Pin
+    class Motor2
     {
         const uint8_t pinA;
         const uint8_t pinP;
 
-        Udon::MovingAverage<DataSize> movingAverage;
+        Udon::MovingAverage<30> movingAverage;
 
     public:
-        Motor2Pin(const uint8_t pinA, const uint8_t pinP)
+        Motor2(const uint8_t pinA, const uint8_t pinP)
             : pinA(pinA)
             , pinP(pinP)
             , movingAverage{}
@@ -64,17 +63,16 @@ namespace Udon
         }
     };
 
-    template <size_t DataSize = 20>
-    class Motor3Pin
+    class Motor3
     {
         const uint8_t pinA;
         const uint8_t pinB;
         const uint8_t pinP;
 
-        Udon::MovingAverage<DataSize> movingAverage;
+        Udon::MovingAverage<30> movingAverage;
 
     public:
-        Motor3Pin(const uint8_t pinA, const uint8_t pinB, const uint8_t pinP)
+        Motor3(const uint8_t pinA, const uint8_t pinB, const uint8_t pinP)
             : pinA(pinA)
             , pinB(pinB)
             , pinP(pinP)
