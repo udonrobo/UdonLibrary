@@ -28,8 +28,8 @@ namespace Udon
         struct Servo
         {
 
-            /// @brief モーターの出力値
-            uint16_t angle;
+            /// @brief 角度
+            uint8_t angle;
 
 #ifdef ARDUINO
             /// @brief デバッグ出力
