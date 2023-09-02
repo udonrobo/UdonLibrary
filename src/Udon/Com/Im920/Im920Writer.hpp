@@ -1,7 +1,7 @@
 //-------------------------------------------------------------------
 //
 //    UdonLibrary
-// 
+//
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
@@ -16,7 +16,6 @@
 //
 //-------------------------------------------------------------------
 
-
 #pragma once
 
 #include "IIm920.hpp"
@@ -30,8 +29,12 @@ namespace Udon
     template <typename Message>
     class Im920Writer
     {
+    public:
         static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
 
+        using MessageType = Message;
+
+    private:
         static_assert(Size <= 64, "The send buffer size for IM920 is limited to 64 bytes");
 
         IIm920& im920;
@@ -45,7 +48,7 @@ namespace Udon
         {
         }
 
-        Im920Writer(const Im920Writer&) 
+        Im920Writer(const Im920Writer&)
             : im920(im920)
             , buffer(im920.registerSender(Size))
         {

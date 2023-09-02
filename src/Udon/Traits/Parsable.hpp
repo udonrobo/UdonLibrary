@@ -47,12 +47,12 @@ namespace Udon
         {
         };
 
-        template <typename HasMemberFunctionParsable, typename std::enable_if<Traits::HasMemberFunctionParsable<HasMemberFunctionParsable>::value, std::nullptr_t>::type* = nullptr>
+        template <typename HasMemberFunctionParsable, typename std::enable_if<Traits::HasMemberFunctionParsable<HasMemberFunctionParsable>::value, std::nullptr_t>::type = nullptr>
         inline constexpr bool InvokeParsable(const HasMemberFunctionParsable& rhs)
         {
             return rhs.parsable();
         }
-        template <typename ParsableInvocable, typename std::enable_if<Traits::ParsableInvocable<ParsableInvocable>::value, std::nullptr_t>::type* = nullptr>
+        template <typename ParsableInvocable, typename std::enable_if<Traits::ParsableInvocable<ParsableInvocable>::value, std::nullptr_t>::type = nullptr>
         inline constexpr bool InvokeParsable(const ParsableInvocable& rhs)
         {
             return Parsable(rhs);
