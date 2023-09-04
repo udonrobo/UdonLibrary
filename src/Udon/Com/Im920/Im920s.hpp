@@ -186,9 +186,9 @@ namespace Udon
             // 大量にデータを送らないようにする
             if (millis() - sendMitMs >= 52)
             {
-                uint8_t buffer[10];
-                sprintf((char*)buffer, "TXDU %04d", nodeNumber);
-                uart.write(buffer, 9);
+                // uint8_t buffer[100];
+                // sprintf((char*)buffer, "TXDU %04d", nodeNumber);
+                uart.printf("TXDU %04d", nodeNumber);
 
                 for (auto&& it : sendBuffer)
                 {
