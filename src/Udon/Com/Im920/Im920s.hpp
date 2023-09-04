@@ -34,14 +34,16 @@ namespace Udon
         HardwareSerial&      uart;
         std::vector<uint8_t> receiveBuffer;
         std::vector<uint8_t> sendBuffer;
+        uint16_t             nodeNumber;
         uint8_t              busy;
         bool                 twoWayNum;
         uint32_t             sendMitMs;
         uint32_t             receiveDeadTime;
 
     public:
-        Im920s(HardwareSerial& uart, uint8_t busyPin, bool twoWayNum = false)
+        Im920s(HardwareSerial& uart, int16_t nodeNumber, uint8_t busyPin, bool twoWayNum = false)
             : uart(uart)
+            , nodeNumber(nodeNumber)
             , busy(busyPin)
             , twoWayNum(twoWayNum)
             , sendMitMs()
@@ -55,7 +57,7 @@ namespace Udon
         /// @return IM920が使用可能ならtrue
         operator bool() const override
         {
-          switch (getTransmitMode())
+            switch (getTransmitMode())
             {
             case TransmitMode::Send:
                 return uart && (millis() - sendMitMs < 500);
@@ -64,7 +66,7 @@ namespace Udon
                 return uart && (millis() - receiveDeadTime < 500);
                 break;
             case TransmitMode::TwoWay:
-                return uart && (millis() - ((sendMitMs + receiveDeadTime)/2) < 500);
+                return uart && (millis() - ((sendMitMs + receiveDeadTime) / 2) < 500);
                 break;
             case TransmitMode::Empty:
                 return false;
@@ -162,7 +164,7 @@ namespace Udon
             {
                 return TransmitMode::Send;
             }
-            else if(!sendBuffer.empty() && !receiveBuffer.empty())
+            else if (!sendBuffer.empty() && !receiveBuffer.empty())
             {
                 return TransmitMode::TwoWay;
             }
@@ -179,12 +181,14 @@ namespace Udon
             size_t  loopCount      = 0;
             while (digitalRead(busy))
             {
-                //busyピンがHIGHの間はコマンドを受け付けない
+                // busyピンがHIGHの間はコマンドを受け付けない
             }
-            //大量にデータを送らないようにする
-            if(millis() - sendMitMs >= 52)
+            // 大量にデータを送らないようにする
+            if (millis() - sendMitMs >= 52)
             {
-                uart.print("TXDA ");
+                uint8_t buffer[10];
+                sprintf((char*)buffer, "TXDU %04d", nodeNumber);
+                uart.write(buffer, 9);
 
                 for (auto&& it : sendBuffer)
                 {
@@ -231,7 +235,7 @@ namespace Udon
             const int dataSize = static_cast<int>(ceil(receiveBuffer.size() * (8.0 / 7.0)));
 
             const int frameSize = HeaderSize + dataSize + FooterSize;
-            
+
             if (uart.available() >= frameSize)
             {
                 size_t  loopCount = 0;
@@ -282,7 +286,7 @@ namespace Udon
 
                 if (Udon::CanUnpack(newBuffer))
                 {
-                    receiveBuffer    = newBuffer;
+                    receiveBuffer   = newBuffer;
                     receiveDeadTime = millis();
                 }
                 return true;
@@ -325,100 +329,105 @@ namespace Udon
     {
         // ボーレート設定
         uart.begin(115200);
-        //busyピンの設定
-        pinMode(busy,INPUT);
-        //タイムアウト設定
+        // busyピンの設定
+        pinMode(busy, INPUT);
+        // タイムアウト設定
         uart.setTimeout(1000);
-        //設定書き換えのフラグ
-        bool write[]={false,false,false,false};
-        //設定読み出し
-        int num = 0;
+        // 設定書き換えのフラグ
+        bool write[] = { false, false, false, false };
+        // 設定読み出し
+        int    num = 0;
         String str[22];
-        char c[22][80];//80は適当
+        char   c[22][80];    // 80は適当
         while (digitalRead(busy))
         {
-           //busyピンがHIGHの間はコマンドを受け付けない
+            // busyピンがHIGHの間はコマンドを受け付けない
         }
         uart.print("RPRM\r\n");
-        while(num<22)
+        while (num < 22)
         {
-            //タイムアウトが1000msで入っているので自分でdelayを入れなくていい
+            // タイムアウトが1000msで入っているので自分でdelayを入れなくていい
             str[num++] = uart.readStringUntil('\n');
         }
-        //読み取り確認
+        // 読み取り確認
         for (int i = 0; i < 22; i++)
-            str[i].toCharArray(c[i], 80) ;
-        //チャンネル確認
+            str[i].toCharArray(c[i], 80);
+        // チャンネル確認
         int ch = (c[3][5] - '0') * 10 + (c[3][6] - '0');
         if (ch != channel)
             write[0] = true;
-          //送信電力確認
+        // 送信電力確認
         int power = (c[4][5] - '0');
         if (power != 2)
             write[1] = true;
-        //キャラクタ入出力確認
+        // キャラクタ入出力確認
         if (str[13] != "ECIO\r")
             write[2] = true;
-        //STATUS出力確認
+        // STATUS出力確認
         if (str[20] != "ERXI\r")
             write[3] = true;
-        //設定書き換え
+        // 設定書き換え
         if (write[0] || write[1] || write[2] || write[3])
         {
-            //書き込み許可
+            // 書き込み許可
             while (digitalRead(busy))
             {
-               //busyピンがHIGHの間はコマンドを受け付けない
+                // busyピンがHIGHの間はコマンドを受け付けない
             }
             uart.print("ENWR\r\n");
         }
-        if (write[0]) {
+        if (write[0])
+        {
             while (digitalRead(busy))
             {
-               //busyピンがHIGHの間はコマンドを受け付けない
+                // busyピンがHIGHの間はコマンドを受け付けない
             }
             uart.print("STCH ");
             if (channel < 10)
-                {
-                    uart.print("0");
-                }
+            {
+                uart.print("0");
+            }
             uart.print(channel);
             uart.print("\r\n");
         }
-        if (write[1]) {
+        if (write[1])
+        {
             while (digitalRead(busy))
             {
-               //busyピンがHIGHの間はコマンドを受け付けない
+                // busyピンがHIGHの間はコマンドを受け付けない
             }
             uart.print("STPO 2\r\n");
         }
-        if (write[2]) {
+        if (write[2])
+        {
             while (digitalRead(busy))
             {
-               //busyピンがHIGHの間はコマンドを受け付けない
+                // busyピンがHIGHの間はコマンドを受け付けない
             }
             uart.print("ECIO\r\n");
         }
-        if (write[3]) {
+        if (write[3])
+        {
             while (digitalRead(busy))
             {
-               //busyピンがHIGHの間はコマンドを受け付けない
+                // busyピンがHIGHの間はコマンドを受け付けない
             }
             uart.print("ERXI\r\n");
         }
-        if (write[0] || write[1] || write[2] || write[3]) {//書き込み禁止
+        if (write[0] || write[1] || write[2] || write[3])
+        {    // 書き込み禁止
             while (digitalRead(busy))
             {
-               //busyピンがHIGHの間はコマンドを受け付けない
+                // busyピンがHIGHの間はコマンドを受け付けない
             }
             uart.print("DSWR\r\n");
         }
         while (digitalRead(busy))
         {
-           //busyピンがHIGHの間はコマンドを受け付けない
+            // busyピンがHIGHの間はコマンドを受け付けない
         }
-        //バッファリセット
-        while(uart.available() > 0)
+        // バッファリセット
+        while (uart.available() > 0)
             uart.read();
     }
 }    // namespace Udon
