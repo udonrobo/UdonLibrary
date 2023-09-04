@@ -13,37 +13,47 @@
 //
 //-------------------------------------------------------------------
 
-
 #pragma once
 
 #include <Udon/Stl/EnableSTL.hpp>
 #include <vector>
 #include <stdint.h>
 
+#include <Udon/Algorithm/ArrayView.hpp>
+
 namespace Udon
 {
+
+    struct Im920Node
+    {
+        uint8_t* data;          // バッファを指すポインタ
+        uint8_t  size;          // バッファの長さ
+        uint32_t transmitMs;    // 最終通信時刻
+    };
 
     /// @brief IM920のインターフェース
     /// @details
     ///     IM920の通信を行うクラスはこのインターフェースを実装する
-    ///     これによって、IM920の通信を行うクラスを差し替え(Im920 <-> Im920sl等)が簡単になる
+    ///     これによって、IM920クラス(Im920, Im920s, ...)を一様に扱うことができる
     class IIm920
     {
     public:
+        virtual ~IIm920() {}
 
-        /// @brief デストラクタ
-        virtual ~IIm920() = default;
-
+        /// @brief バスの有効性を取得
         virtual operator bool() const = 0;
 
-        /// @brief 送信バッファを登録する
-        /// @param size 送信バッファのサイズ
-        virtual std::vector<uint8_t>& registerSender(size_t size) = 0;
+        /// @brief 送信ノードを登録
+        /// @param node
+        virtual void joinTx(Im920Node& node) = 0;
 
-        /// @brief 受信バッファを登録する
-        /// @param size 受信バッファのサイズ
-        virtual const std::vector<uint8_t>& registerReceiver(size_t size) = 0;
+        /// @brief 受信ノードを登録
+        virtual void joinRx(Im920Node& node) = 0;
 
-        virtual void update();
+        /// @brief 送信ノードを登録解除
+        virtual void leaveTx() = 0;
+
+        /// @brief 受信ノードを登録解除
+        virtual void leaveRx() = 0;
     };
-} // namespace Udon
+}    // namespace Udon

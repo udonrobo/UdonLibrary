@@ -39,19 +39,28 @@ namespace Udon
 
         IIm920& im920;
 
-        const std::vector<uint8_t>& buffer;
+        uint8_t buffer[Size];
+
+        Im920Node node;
 
     public:
         Im920Reader(IIm920& im920)
             : im920(im920)
-            , buffer(im920.registerReceiver(Size))
+            , buffer()
+            , node{ buffer, Size, 0 }
         {
+            im920.joinRx(node);
         }
-
         Im920Reader(const Im920Reader& other)
             : im920(other.im920)
-            , buffer(im920.registerReceiver(Size))
+            , buffer()
+            , node{ buffer, Size, 0 }
         {
+            im920.joinRx(node);
+        }
+        ~Im920Reader()
+        {
+            im920.leaveRx();
         }
 
         Udon::Optional<Message> getMessage() const
