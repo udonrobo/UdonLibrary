@@ -188,7 +188,7 @@ namespace Udon
             {
                 // uint8_t buffer[100];
                 // sprintf((char*)buffer, "TXDU %04d", nodeNumber);
-                uart.printf("TXDU %04d", nodeNumber);
+                uart.print("TXDU ");
 
                 for (auto&& it : sendBuffer)
                 {
