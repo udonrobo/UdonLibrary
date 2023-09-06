@@ -35,8 +35,6 @@ namespace Udon
         using MessageType = Message;
 
     private:
-        static_assert(Size <= 64, "The send buffer size for IM920 is limited to 64 bytes");
-
         IIm920& im920;
 
         uint8_t buffer[Size];
@@ -57,10 +55,6 @@ namespace Udon
             , node{ buffer, Size, 0 }
         {
             im920.joinTx(node);
-        }
-        ~Im920Writer()
-        {
-            im920.leaveTx();
         }
 
         void setMessage(const Message& message)

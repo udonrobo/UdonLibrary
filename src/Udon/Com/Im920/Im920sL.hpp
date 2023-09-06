@@ -128,12 +128,6 @@ namespace Udon
         /// @brief 受信ノードを登録
         void joinRx(Im920Node& node) override { rxNode = &node; }
 
-        /// @brief 送信ノードを登録解除
-        void leaveTx() override { txNode = nullptr; }
-
-        /// @brief 受信ノードを登録解除
-        void leaveRx() override { rxNode = nullptr; }
-
         /// @brief IM920sLで使用可能なチャンネル数に制限をかける
         static int ClampChannel(int channel)
         {

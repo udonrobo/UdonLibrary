@@ -49,11 +49,5 @@ namespace Udon
 
         /// @brief 受信ノードを登録
         virtual void joinRx(Im920Node& node) = 0;
-
-        /// @brief 送信ノードを登録解除
-        virtual void leaveTx() = 0;
-
-        /// @brief 受信ノードを登録解除
-        virtual void leaveRx() = 0;
     };
 }    // namespace Udon
