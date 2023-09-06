@@ -39,7 +39,8 @@ namespace Udon
         Udon::Optional<uint16_t> nodeNum;
         Udon::Optional<uint8_t>  busyPin;
 
-        uint32_t lastRestartMs;
+        uint32_t lastWaitUntilCommandAcceptMs = 0;
+        uint32_t lastRestartMs                = 0;
 
     public:
         /// @brief 送信者用コンストラクタ
@@ -52,7 +53,6 @@ namespace Udon
             , rxNode()
             , nodeNum(nodeNum)
             , busyPin(busyPin)
-            , lastRestartMs()
         {
         }
 
@@ -65,7 +65,6 @@ namespace Udon
             , rxNode()
             , nodeNum(nodeNum)
             , busyPin()
-            , lastRestartMs()
         {
         }
 
@@ -78,7 +77,6 @@ namespace Udon
             , rxNode()
             , nodeNum()
             , busyPin()
-            , lastRestartMs()
         {
         }
 
@@ -135,6 +133,12 @@ namespace Udon
 
         /// @brief 受信ノードを登録解除
         void leaveRx() override { rxNode = nullptr; }
+
+        /// @brief IM920sLで使用可能なチャンネル数に制限をかける
+        static int ClampChannel(int channel)
+        {
+            return constrain(channel, 1, 45);
+        }
 
     private:
         enum class TransmitMode
@@ -296,19 +300,29 @@ namespace Udon
             {
                 waitUntilCommandAccept();
                 uart.print("SRST\r\n");
-                Serial.println("IM920sL: Software reset");
                 lastRestartMs = millis();
+                while (uart.available())
+                {
+                    uart.read();
+                }
             }
         }
 
         /// @brief IM920がコマンドを受け付けるまで待つ
-        void waitUntilCommandAccept() const
+        void waitUntilCommandAccept()
         {
             if (busyPin)
             {
+                lastWaitUntilCommandAcceptMs = millis();
+
                 while (digitalRead(*busyPin))    // busyピンがHIGHの間はコマンドを受け付けない
                 {
                     delayMicroseconds(10);    // チャタリング防止
+
+                    if (millis() - lastWaitUntilCommandAcceptMs > 200)
+                    {
+                        break;  // タイムアウトした場合は強制的にコマンドを受け付ける
+                    }
                 }
             }
             else
@@ -323,13 +337,18 @@ namespace Udon
         // ボーレート設定
         uart.begin(115200);
 
+        while (uart.available())
+        {
+            uart.read();
+        }        
+
         if (busyPin)
         {
             pinMode(*busyPin, INPUT);
         }
 
         // タイムアウト設定
-        uart.setTimeout(50);
+        uart.setTimeout(10);
 
         // パラメーター一括読み出し
         waitUntilCommandAccept();
