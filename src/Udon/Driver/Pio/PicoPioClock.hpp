@@ -24,9 +24,9 @@ namespace Udon
     inline bool PicoPioClockBegin(uint8_t pin, uint32_t clockSpeed)
     {
         PIOProgram p(&Udon::Pio::Sqwave::squarewave_program);
-        PIO        pio;
-        int
-            sm;
+
+        PIO pio;
+        int sm;
         int offset;
         // 使えるPIOを探す
         if (not p.prepare(&pio, &sm, &offset))

@@ -11,7 +11,7 @@
 //
 //-------------------------------------------------------------------
 //
-//    IM920s
+//    IM920sL
 //
 //    Sender --[UART]--> IM920 ~~[920MHz]~~> IM920 --[UART]--> Receiver
 //    ^^^^^^                                                   ^^^^^^^^
@@ -28,7 +28,7 @@
 
 namespace Udon
 {
-    class Im920s
+    class Im920sL
         : public IIm920
     {
         HardwareSerial& uart;
@@ -39,52 +39,50 @@ namespace Udon
         Udon::Optional<uint16_t> nodeNum;
         Udon::Optional<uint8_t>  busyPin;
 
-        uint32_t lastRestartMs;
+        uint32_t lastWaitUntilCommandAcceptMs = 0;
+        uint32_t lastRestartMs                = 0;
 
     public:
         /// @brief 送信者用コンストラクタ
         /// @param uart IM920と接続されたシリアルポート
         /// @param nodeNum 相手方のノード番号
         /// @param busyPin busyピンのピン番号
-        Im920s(HardwareSerial& uart, uint16_t nodeNum, uint8_t busyPin)
+        Im920sL(HardwareSerial& uart, uint16_t nodeNum, uint8_t busyPin)
             : uart(uart)
             , txNode()
             , rxNode()
             , nodeNum(nodeNum)
             , busyPin(busyPin)
-            , lastRestartMs()
         {
         }
 
         /// @brief 送信者用コンストラクタ
         /// @param uart IM920と接続されたシリアルポート
         /// @param nodeNum 相手方のノード番号
-        Im920s(HardwareSerial& uart, uint16_t nodeNum)
+        Im920sL(HardwareSerial& uart, uint16_t nodeNum)
             : uart(uart)
             , txNode()
             , rxNode()
             , nodeNum(nodeNum)
             , busyPin()
-            , lastRestartMs()
         {
         }
 
         /// @brief 受信者用コンストラクタ
         /// @param uart IM920と接続されたシリアルポート
         /// @remark このコンストラクタを呼び出すのは受信者のみ存在する場合です。送信者が存在する場合は送信先のノード番号を指定する必要があります。
-        Im920s(HardwareSerial& uart)
+        Im920sL(HardwareSerial& uart)
             : uart(uart)
             , txNode()
             , rxNode()
             , nodeNum()
             , busyPin()
-            , lastRestartMs()
         {
         }
 
         /// @brief IM920の有効性を取得
         /// @return 有効ならtrue
-        operator bool() const override { return uart && not isTimeout(700); }
+        operator bool() const override { return not isTimeout(700); }
 
         /// @brief 通信開始
         /// @param channel チャンネル番号
@@ -98,11 +96,11 @@ namespace Udon
         {
             if (operator bool())
             {
-                Serial.print("IM920s: OK  ");
+                Serial.print("IM920sL: OK  ");
             }
             else
             {
-                Serial.print("IM920s: NG  ");
+                Serial.print("IM920sL: NG  ");
             }
 
             switch (getTransmitMode())
@@ -129,6 +127,12 @@ namespace Udon
 
         /// @brief 受信ノードを登録
         void joinRx(Im920Node& node) override { rxNode = &node; }
+
+        /// @brief IM920sLで使用可能なチャンネル数に制限をかける
+        static int ClampChannel(int channel)
+        {
+            return constrain(channel, 1, 45);
+        }
 
     private:
         enum class TransmitMode
@@ -290,19 +294,29 @@ namespace Udon
             {
                 waitUntilCommandAccept();
                 uart.print("SRST\r\n");
-                Serial.println("IM920s: Software reset");
                 lastRestartMs = millis();
+                while (uart.available())
+                {
+                    uart.read();
+                }
             }
         }
 
         /// @brief IM920がコマンドを受け付けるまで待つ
-        void waitUntilCommandAccept() const
+        void waitUntilCommandAccept()
         {
             if (busyPin)
             {
+                lastWaitUntilCommandAcceptMs = millis();
+
                 while (digitalRead(*busyPin))    // busyピンがHIGHの間はコマンドを受け付けない
                 {
                     delayMicroseconds(10);    // チャタリング防止
+
+                    if (millis() - lastWaitUntilCommandAcceptMs > 200)
+                    {
+                        break;  // タイムアウトした場合は強制的にコマンドを受け付ける
+                    }
                 }
             }
             else
@@ -312,10 +326,15 @@ namespace Udon
         }
     };
 
-    inline bool Im920s::begin(uint8_t channel)
+    inline bool Im920sL::begin(uint8_t channel)
     {
         // ボーレート設定
         uart.begin(115200);
+
+        while (uart.available())
+        {
+            uart.read();
+        }        
 
         if (busyPin)
         {
@@ -323,7 +342,7 @@ namespace Udon
         }
 
         // タイムアウト設定
-        uart.setTimeout(50);
+        uart.setTimeout(10);
 
         // パラメーター一括読み出し
         waitUntilCommandAccept();
@@ -427,7 +446,7 @@ namespace Udon
         return true;
     }
 
-    inline void Im920s::update()
+    inline void Im920sL::update()
     {
         switch (getTransmitMode())
         {

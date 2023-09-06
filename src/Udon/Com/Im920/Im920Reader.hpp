@@ -35,34 +35,37 @@ namespace Udon
         using MessageType = Message;
 
     private:
-        static_assert(Size <= 64, "The send buffer size for IM920 is limited to 64 bytes");
-
         IIm920& im920;
 
-        const std::vector<uint8_t>& buffer;
+        uint8_t buffer[Size];
+
+        Im920Node node;
 
     public:
         Im920Reader(IIm920& im920)
             : im920(im920)
-            , buffer(im920.registerReceiver(Size))
+            , buffer()
+            , node{ buffer, Size, 0 }
         {
+            im920.joinRx(node);
         }
-
         Im920Reader(const Im920Reader& other)
             : im920(other.im920)
-            , buffer(im920.registerReceiver(Size))
+            , buffer()
+            , node{ buffer, Size, 0 }
         {
+            im920.joinRx(node);
         }
 
         Udon::Optional<Message> getMessage() const
         {
-            if (im920)
+            if (millis() - node.transmitMs > 700)
             {
-                return Udon::Unpack<Message>(buffer);
+                return Udon::nullopt;
             }
             else
             {
-                return Udon::nullopt;
+                return Udon::Unpack<Message>(buffer);
             }
         }
 

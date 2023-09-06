@@ -22,21 +22,24 @@
 
 #include "IIm920.hpp"
 
-#include <Udon/Com/Serialization.hpp>
-
-#include <Arduino.h>
+#include <Udon/Algorithm/BitPack.hpp>
+#include <Udon/Stl/Optional.hpp>
+#include <Udon/Utility/SerialPrintf.hpp>
+#include <Udon/Algorithm/ArrayView.hpp>
 
 namespace Udon
 {
     class Im920
         : public IIm920
     {
-        HardwareSerial&      uart;
-        std::vector<uint8_t> receiveBuffer;
-        std::vector<uint8_t> sendBuffer;
-        bool                 twoWayNum;
-        uint32_t             sendMitMs;
-        uint32_t             receiveDeadTime;
+        HardwareSerial& uart;
+
+        Im920Node* txNode;
+        Im920Node* rxNode;
+
+        bool     twoWayNum;
+        uint32_t sendMitMs;
+        uint32_t receiveDeadTime;
 
     public:
         Im920(HardwareSerial& uart, bool twoWayNum = false)
@@ -46,8 +49,6 @@ namespace Udon
             , receiveDeadTime()
         {
         }
-
-        ~Im920() override = default;
 
         /// @brief IM920が使用可能かどうか
         /// @return IM920が使用可能ならtrue
@@ -66,22 +67,6 @@ namespace Udon
             }
         }
 
-        /// @brief 送信バッファを登録する
-        /// @param size 送信バッファのサイズ
-        std::vector<uint8_t>& registerSender(size_t size) override
-        {
-            sendBuffer.resize(size);
-            return sendBuffer;
-        }
-
-        /// @brief 受信バッファを登録する
-        /// @param size 受信バッファのサイズ
-        std::vector<uint8_t>& registerReceiver(size_t size) override
-        {
-            receiveBuffer.resize(size);
-            return receiveBuffer;
-        }
-
         /// @brief 通信開始
         /// @param channel チャンネル番号
         void begin(uint8_t channel);
@@ -98,6 +83,8 @@ namespace Udon
                 break;
             case TransmitMode::TwoWay:
                 twoWayUpdate();
+                break;
+            default:
                 break;
             }
         }
@@ -125,8 +112,18 @@ namespace Udon
             case TransmitMode::TwoWay:
                 Serial.print("TwoWayMode ");
                 break;
+            case TransmitMode::Empty:
+                Serial.print("Empty ");
+                break;
             }
         }
+
+        /// @brief 送信ノードを登録
+        /// @param node
+        void joinTx(Im920Node& node) override { txNode = &node; }
+
+        /// @brief 受信ノードを登録
+        void joinRx(Im920Node& node) override { rxNode = &node; }
 
     private:
         enum class TransmitMode
@@ -134,145 +131,100 @@ namespace Udon
             Send,
             Receive,
             TwoWay,
+            Empty,
         };
 
-        /// @brief 通信の状態を取得する
+        /// @brief 通信モードを取得する
         TransmitMode getTransmitMode() const
         {
-            if (sendBuffer.empty())
+            if (txNode)
+            {
+                if (rxNode)
+                {
+                    return TransmitMode::TwoWay;
+                }
+                else
+                {
+                    return TransmitMode::Send;
+                }
+            }
+            else if (rxNode)
             {
                 return TransmitMode::Receive;
             }
-            else if (receiveBuffer.empty())
-            {
-                return TransmitMode::Send;
-            }
             else
             {
-                return TransmitMode::TwoWay;
+                return TransmitMode::Empty;
             }
         }
 
         void sendUpdate()
         {
-            uint8_t recoveryBuffer = 0;
-            size_t  bitCount       = 0;
-            size_t  loopCount      = 0;
             uart.print("TXDA ");
 
-            for (auto&& it : sendBuffer)
-            {
-                ++loopCount;
+            Udon::BitPack(txNode->data, txNode->data + txNode->size, [this](uint8_t data)
+                          { uart.write(data); });
 
-                Udon::BitWrite(recoveryBuffer, bitCount, Udon::BitRead(it, 7));
-                ++bitCount;
-
-                if (loopCount == 1)
-                {
-                    uart.write(it | 0b10000000);
-                }
-                else
-                {
-                    uart.write(it & 0b01111111);
-                }
-
-                if (bitCount >= 7)
-                {
-                    uart.write(recoveryBuffer);
-                    recoveryBuffer = 0;
-                    bitCount       = 0;
-                }
-            }
-            if (bitCount != 0)
-            {
-                uart.write(recoveryBuffer);
-            }
             uart.print("\r\n");
-            sendMitMs = millis();
         }
 
         bool receiveUpdate()
         {
-            std::vector<uint8_t> newBuffer = receiveBuffer;
-
-            // header = [Node id: 2byte] + [,] + [Transmission module ID: 4byte] + [,] + [RSSI:2byte] + [: ]
-            constexpr int HeaderSize = 2 + 1 + 4 + 1 + 2 + 2;
+            // header = [Dummy: 2byte] + [,] + [Node number: 4byte] + [,] + [RSSI: 2byte] + [:]
+            constexpr int HeaderSize = 2 + 1 + 4 + 1 + 2 + 1;
 
             // footer = [\r] + [\n]
             constexpr int FooterSize = 1 + 1;
 
-            const int dataSize = static_cast<int>(ceil(receiveBuffer.size() * 8.0 / 7.0));
+            // FrameSize = header + data + footer
+            const int FrameSize = HeaderSize + Udon::BitPackedSize(rxNode->size) + FooterSize;
 
-            const int frameSize = HeaderSize + dataSize + FooterSize;
-
-            if (uart.available() >= frameSize)
+            // 受信バッファにデータがない場合は何もしない
+            if (uart.available() < FrameSize)
             {
-                size_t  loopCount = 0;
-                size_t  bitCount  = 0;
-                uint8_t firstBuf;
-                do
-                {
-                    if (uart.available() < dataSize)
-                    {
-                        return false;
-                    }
-                    firstBuf = uart.read();
-                } while (not(firstBuf & 0b10000000));
-                ++bitCount;
-
-                for (auto&& it : newBuffer)
-                {
-                    ++loopCount;
-                    if (loopCount == 1)
-                    {
-                        it = firstBuf & 0b01111111;
-                        continue;
-                    }
-                    it = uart.read();
-                    ++bitCount;
-                    if (bitCount >= 7)
-                    {
-                        uint8_t recoveryBuf = uart.read();
-                        for (size_t i = 0; i < 7; ++i)
-                        {
-                            Udon::BitWrite(newBuffer[loopCount - 7 + i], 7,
-                                           Udon::BitRead(recoveryBuf, i));
-                        }
-                        bitCount = 0;
-                    }
-                }
-                uint8_t lastBuf = uart.read();
-                for (size_t i = 0; i < bitCount; ++i)
-                {
-                    Udon::BitWrite(newBuffer[loopCount - bitCount + i], 7,
-                                   Udon::BitRead(lastBuf, i));
-                }
-
-                for (size_t i = 0; i < FooterSize; ++i)
-                {
-                    (void)uart.read();
-                }
-
-                if (Udon::CanUnpack(newBuffer))
-                {
-                    receiveBuffer    = newBuffer;
-                    receiveDeadTime = millis();
-                }
-                return true;
+                return false;
             }
-            if (millis() - receiveDeadTime > 1000)
-            {    // タイムアウト時エラー吐出
-                // Serial.print("Im920 is TimeOut!");
-                // Serial.print("\t");
+
+            // ヘッダー読み捨て
+            for (int i = 0; i < HeaderSize; ++i)
+            {
+                uart.read();
             }
-            return false;
+
+            // データ読み込み
+            if (not Udon::BitUnpack(rxNode->data, rxNode->data + rxNode->size, [this]() -> uint8_t
+                                    { return uart.read(); }))
+            {
+                // 先頭バイトの  MSB が 1 でない場合はデータが壊れているので読み捨て
+                while (uart.available())
+                {
+                    uart.read();
+                }
+                return false;
+            }
+
+            // フッター読み捨て
+            for (int i = 0; i < FooterSize; ++i)
+            {
+                uart.read();
+            }
+
+            // バッファに残っているデータを読み捨て
+            while (uart.available())
+            {
+                uart.read();
+            }
+
+            rxNode->transmitMs = millis();
+
+            return true;
         }
 
         void twoWayUpdate()
         {
             // transTime =[内部処理時間:10~20ms]+[キャリアセンス:初回5.2ms 連続通信時0.5ms]+[不要データの通信:3.2ms]+[バイトごとの送信時間:0.16ms]
-            const double sendTime    = 10.0 + 5.2 + 3.2 + sendBuffer.size() * 0.16;
-            const double receiveTime = 10.0 + 5.2 + 3.2 + receiveBuffer.size() * 0.16;
+            const double sendTime    = 10.0 + 5.2 + 3.2 + txNode->size * 0.16;
+            const double receiveTime = 10.0 + 5.2 + 3.2 + rxNode->size * 0.16;
 
             if (twoWayNum)
             {
@@ -298,14 +250,9 @@ namespace Udon
     {
         // ボーレート設定
         uart.begin(115200);
+
         // チャンネル設定
-        uart.print("STCH ");
-        if (channel < 10)
-        {
-            uart.print("0");    // 0埋め
-        }
-        uart.print(channel);
-        uart.print("\r\n");
+        Udon::SerialPrintf(uart, "STCH %02d\r\n", channel);
         delay(100);
 
         // 送信出力[10mW]

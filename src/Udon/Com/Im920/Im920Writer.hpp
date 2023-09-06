@@ -35,28 +35,31 @@ namespace Udon
         using MessageType = Message;
 
     private:
-        static_assert(Size <= 64, "The send buffer size for IM920 is limited to 64 bytes");
-
         IIm920& im920;
 
-        std::vector<uint8_t>& buffer;
+        uint8_t buffer[Size];
+
+        Im920Node node;
 
     public:
         Im920Writer(IIm920& im920)
             : im920(im920)
-            , buffer(im920.registerSender(Size))
+            , buffer()
+            , node{ buffer, Size, 0 }
         {
+            im920.joinTx(node);
         }
-
-        Im920Writer(const Im920Writer&)
-            : im920(im920)
-            , buffer(im920.registerSender(Size))
+        Im920Writer(const Im920Writer& other)
+            : im920(other.im920)
+            , buffer()
+            , node{ buffer, Size, 0 }
         {
+            im920.joinTx(node);
         }
 
         void setMessage(const Message& message)
         {
-            buffer = Udon::Pack(message);
+            Udon::Pack(message, buffer);
         }
 
         /// @brief 送信内容を表示
