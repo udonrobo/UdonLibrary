@@ -3,6 +3,7 @@
 #include <Udon/Stl/EnableSTL.hpp>
 #include <type_traits>
 #include <iterator>
+#include <vector>
 
 #include "Bit.hpp"
 #include <Udon/Math/Math.hpp>
@@ -55,7 +56,9 @@ namespace Udon
         }
 
         if (extracteCount)    // extracteMsbにデータが残っていれば追加で渡す
+        {
             callback(extracteMsb);
+        }
     }
 
     /// @brief  7bit分割されたデータを結合してコールバック関数に渡す
@@ -128,8 +131,6 @@ namespace Udon
         return true;
     }
 
-#include <vector>
-
     /// @brief ビットパックされたデータのサイズを取得する
     /// @param size ビットパックされる前のデータのサイズ
     /// @return ビットパック後のデータのサイズ
@@ -152,18 +153,24 @@ namespace Udon
     inline std::vector<uint8_t> BitPack(const std::vector<uint8_t>& data)
     {
         std::vector<uint8_t> result(BitPackedSize(data.size()));
-        auto                 it = result.begin();
+
+        auto it = result.begin();
+
         BitPack(data.begin(), data.end(), [&it](uint8_t data)
                 { *it++ = data; });
+
         return result;
     }
 
     inline std::vector<uint8_t> BitUnpack(const std::vector<uint8_t>& data)
     {
         std::vector<uint8_t> result(BitUnpackedSize(data.size()));
-        auto                 it = data.begin();
+
+        auto it = data.begin();
+
         BitUnpack(result.begin(), result.end(), [&it]() -> uint8_t
                   { return *it++; });
+
         return result;
     }
 

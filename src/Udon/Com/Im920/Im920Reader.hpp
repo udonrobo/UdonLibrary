@@ -65,13 +65,13 @@ namespace Udon
 
         Udon::Optional<Message> getMessage() const
         {
-            if (im920)
+            if (millis() - node.transmitMs > 700)
             {
-                return Udon::Unpack<Message>(buffer);
+                return Udon::nullopt;
             }
             else
             {
-                return Udon::nullopt;
+                return Udon::Unpack<Message>(buffer);
             }
         }
 
