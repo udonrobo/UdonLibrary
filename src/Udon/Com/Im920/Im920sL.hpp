@@ -174,19 +174,19 @@ namespace Udon
                 return false;
             }
 
-            const int sendTimeMs = 52;  // 連続で送信する場合、52ms送信休止時間が必要 (説明書 ７－３（２）送信休止時間 参照)
+            const int sendTimeMs = 52;    // 連続で送信する場合、52ms送信休止時間が必要 (説明書 ７－３（２）送信休止時間 参照)
 
             if (millis() - txNode->transmitMs < sendTimeMs)
             {
                 return false;
             }
-            
+
             // データ送信
             {
                 Udon::SerialPrintf(uart, "TXDU %04d ", *nodeNum);
 
                 Udon::BitPack(txNode->data, txNode->data + txNode->size, [this](uint8_t data)
-                            { uart.write(data); });
+                              { uart.write(data); });
 
                 uart.print("\r\n");
             }
@@ -325,13 +325,19 @@ namespace Udon
 
                     if (millis() - lastWaitUntilCommandAcceptMs > 200)
                     {
-                        break;  // タイムアウトした場合は強制的にコマンドを受け付ける
+                        break;    // タイムアウトした場合は強制的にコマンドを受け付ける
                     }
                 }
             }
             else
             {
                 delay(200);    // busy pinが設定されていない場合は200ms待つ
+            }
+
+            // 待機している間に余計なデータが送られてきている可能性があるので読み捨てる
+            while (uart.available())
+            {
+                uart.read();
             }
         }
     };
@@ -344,7 +350,7 @@ namespace Udon
         while (uart.available())
         {
             uart.read();
-        }        
+        }
 
         if (busyPin)
         {
