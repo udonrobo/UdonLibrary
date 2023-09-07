@@ -106,20 +106,20 @@
 
 - 追加
 
-  追加先が git で管理されている場合
+  - 追加先が git で管理されている場合
 
-  ```sh
-  # VisualStudioのプロジェクトディレクトリで実行
-  git submodule add https://github.com/udonrobo/UdonLibrary.git
-  git commit -m "add UdonLibrary"
-  ```
+    ```sh
+    # VisualStudioのプロジェクトディレクトリで実行
+    git submodule add https://github.com/udonrobo/UdonLibrary.git
+    git commit -m "add UdonLibrary"
+    ```
 
-  追加先が git で管理されていない場合
+  - 追加先が git で管理されていない場合
 
-  ```sh
-  # VisualStudioのプロジェクトディレクトリで実行
-  git clone --recursive https://github.com/udonrobo/UdonLibrary.git
-  ```
+    ```sh
+    # VisualStudioのプロジェクトディレクトリで実行
+    git clone --recursive https://github.com/udonrobo/UdonLibrary.git
+    ```
 
   > 次のようなディレクトリ構成になっていれば OK です。(プロジェクトディレクトリへ追加した場合)
   >
@@ -158,19 +158,19 @@
 
 - 更新
 
-  submodule 使用時
+  - submodule 使用時
 
-  ```sh
-  # 追加先のリポジトリ内で実行
-  git submodule update --remote
-  ```
+    ```sh
+    # 追加先のリポジトリ内で実行
+    git submodule update --remote
+    ```
 
-  通常クローン時
+  - 通常クローン時
 
-  ```sh
-  # UdonLibrary内で実行
-  git pull
-  ```
+    ```sh
+    # UdonLibrary内で実行
+    git pull
+    ```
 
 - `git submodule` 使用時の注意点
 
@@ -180,9 +180,9 @@
   > git clone --recursive <プロジェクトURL>
   > ```
 
-  > また submodule は追加時のコミットを参照するため、追加先のプロジェクトをクローンしてもライブラリは submodule 追加時のコミットの内容になります。
+  > また submodule は追加時のコミットを参照するため、追加先のプロジェクトをクローンしても、ライブラリは submodule 追加時のコミットの内容になります。
   >
-  > 最新のライブラリを使用する場合は submodule を更新する必要があります。(`git submodule` 使用時の更新を参照)
+  > 最新のライブラリを使用する場合は submodule を更新する必要があります。(submodule 使用時の更新を参照)
 
 </details>
 
