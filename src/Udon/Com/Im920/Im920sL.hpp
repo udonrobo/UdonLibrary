@@ -174,12 +174,22 @@ namespace Udon
                 return false;
             }
 
-            Udon::SerialPrintf(uart, "TXDU %04d ", *nodeNum);
+            const int sendTimeMs = 52;  // 連続で送信する場合、52ms送信休止時間が必要 (説明書 ７－３（２）送信休止時間 参照)
 
-            Udon::BitPack(txNode->data, txNode->data + txNode->size, [this](uint8_t data)
-                          { uart.write(data); });
+            if (millis() - txNode->transmitMs < sendTimeMs)
+            {
+                return false;
+            }
+            
+            // データ送信
+            {
+                Udon::SerialPrintf(uart, "TXDU %04d ", *nodeNum);
 
-            uart.print("\r\n");
+                Udon::BitPack(txNode->data, txNode->data + txNode->size, [this](uint8_t data)
+                            { uart.write(data); });
+
+                uart.print("\r\n");
+            }
 
             if (uart.readStringUntil('\n') == "OK\r")
             {
