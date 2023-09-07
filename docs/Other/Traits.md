@@ -84,7 +84,7 @@
   }
   ```
 
-- `SFINAE` sample
+- オーバーロード解決の優先順位制御
 
   ```cpp
   struct Parsable
@@ -108,7 +108,7 @@
   }
   ```
 
-- `static_assert` + `SFINAE` + `AlwaysFalse<T>`
+- `AlwaysFalse<T>`
 
   `AlwaysFalse<T>` を使用することで、テンプレート関数、クラスが実体化されたときに限り `static_assert` を失敗させることができる。
 
@@ -151,7 +151,7 @@
   | `MaybeInvokeShow(rhs)`    | `rhs.show() const` を呼び出せる場合呼び出す    | 不定     | void   |
   | `MaybeInvokeShowRaw(rhs)` | `rhs.showRaw() const` を呼び出せる場合呼び出す | 不定     | void   |
 
-- Basic
+- 基本
 
   ```cpp
   class Updatable
