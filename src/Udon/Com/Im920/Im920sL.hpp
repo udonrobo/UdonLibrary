@@ -82,7 +82,7 @@ namespace Udon
 
         /// @brief IM920の有効性を取得
         /// @return 有効ならtrue
-        operator bool() const override { return not isTimeout(700); }
+        operator bool() const override { return uart && not isTimeout(700); }
 
         /// @brief 通信開始
         /// @param channel チャンネル番号
@@ -346,11 +346,6 @@ namespace Udon
     {
         // ボーレート設定
         uart.begin(115200);
-
-        while (uart.available())
-        {
-            uart.read();
-        }
 
         if (busyPin)
         {
