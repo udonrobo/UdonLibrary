@@ -39,7 +39,8 @@ namespace Udon
         Udon::Optional<uint16_t> nodeNum;
         Udon::Optional<uint8_t>  busyPin;
 
-        uint32_t lastRestartMs;
+        uint32_t lastWaitUntilCommandAcceptMs = 0;
+        uint32_t lastRestartMs                = 0;
 
     public:
         /// @brief 送信者用コンストラクタ
@@ -52,7 +53,6 @@ namespace Udon
             , rxNode()
             , nodeNum(nodeNum)
             , busyPin(busyPin)
-            , lastRestartMs()
         {
         }
 
@@ -65,7 +65,6 @@ namespace Udon
             , rxNode()
             , nodeNum(nodeNum)
             , busyPin()
-            , lastRestartMs()
         {
         }
 
@@ -78,7 +77,6 @@ namespace Udon
             , rxNode()
             , nodeNum()
             , busyPin()
-            , lastRestartMs()
         {
         }
 
@@ -130,6 +128,12 @@ namespace Udon
         /// @brief 受信ノードを登録
         void joinRx(Im920Node& node) override { rxNode = &node; }
 
+        /// @brief IM920sLで使用可能なチャンネル数に制限をかける
+        static int ClampChannel(int channel)
+        {
+            return constrain(channel, 1, 29);
+        }
+
     private:
         enum class TransmitMode
         {
@@ -170,12 +174,22 @@ namespace Udon
                 return false;
             }
 
-            Udon::SerialPrintf(uart, "TXDU %04d ", *nodeNum);
+            const int sendTimeMs = 52;    // 連続で送信する場合、52ms送信休止時間が必要 (説明書 ７－３（２）送信休止時間 参照)
 
-            Udon::BitPack(txNode->data, txNode->data + txNode->size, [this](uint8_t data)
-                          { uart.write(data); });
+            if (millis() - txNode->transmitMs < sendTimeMs)
+            {
+                return false;
+            }
 
-            uart.print("\r\n");
+            // データ送信
+            {
+                Udon::SerialPrintf(uart, "TXDU %04d ", *nodeNum);
+
+                Udon::BitPack(txNode->data, txNode->data + txNode->size, [this](uint8_t data)
+                              { uart.write(data); });
+
+                uart.print("\r\n");
+            }
 
             if (uart.readStringUntil('\n') == "OK\r")
             {
@@ -290,24 +304,40 @@ namespace Udon
             {
                 waitUntilCommandAccept();
                 uart.print("SRST\r\n");
-                Serial.println("IM920s: Software reset");
                 lastRestartMs = millis();
+                while (uart.available())
+                {
+                    uart.read();
+                }
             }
         }
 
         /// @brief IM920がコマンドを受け付けるまで待つ
-        void waitUntilCommandAccept() const
+        void waitUntilCommandAccept()
         {
             if (busyPin)
             {
+                lastWaitUntilCommandAcceptMs = millis();
+
                 while (digitalRead(*busyPin))    // busyピンがHIGHの間はコマンドを受け付けない
                 {
                     delayMicroseconds(10);    // チャタリング防止
+
+                    if (millis() - lastWaitUntilCommandAcceptMs > 200)
+                    {
+                        break;    // タイムアウトした場合は強制的にコマンドを受け付ける
+                    }
                 }
             }
             else
             {
                 delay(200);    // busy pinが設定されていない場合は200ms待つ
+            }
+
+            // 待機している間に余計なデータが送られてきている可能性があるので読み捨てる
+            while (uart.available())
+            {
+                uart.read();
             }
         }
     };
@@ -323,7 +353,7 @@ namespace Udon
         }
 
         // タイムアウト設定
-        uart.setTimeout(50);
+        uart.setTimeout(10);
 
         // パラメーター一括読み出し
         waitUntilCommandAccept();
