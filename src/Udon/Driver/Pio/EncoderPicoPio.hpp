@@ -6,8 +6,14 @@ namespace Udon
 {
     class EncoderPicoPio
     {
+        uint8_t pinA;
+        uint8_t pinB;
+        
         PIO pio;
         int sm;
+
+        EncoderPicoPio(uint8_t pinA, uint8_t pinB)
+            : 
 
         bool begin()
         {
@@ -22,7 +28,7 @@ namespace Udon
 
             uint offset = pio_add_program(enc_pio, &quadrature_encoder_program);
 
-            quadrature_encoder_program_init(pio, sm, offset, pin, 0);
+            Pio::Encoder::quadrature_encoder_program_init(pio, sm, offset, pin, 0);
         }
 
         int32_t getCount() const
