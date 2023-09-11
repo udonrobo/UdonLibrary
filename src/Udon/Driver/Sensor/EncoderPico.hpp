@@ -47,9 +47,10 @@ namespace Udon
 
         /// @brief 開始
         /// @param alwaysUseInterrupt 常に割り込みを使用する
-        /// @remark alwaysUseInterrupt が false の場合、PIOを使用できる場合はPIOを使用する
+        /// @remark alwaysUseInterrupt が false の場合、PIOの使用を試みる
         ///         A相とB相のピン番号が隣り合っている場合、PIOを使用可能
-        ///         PIOのステートマシン(8個)が全て使用中の場合はPIOを使用できない
+        ///         各PIOに別のプログラムをロードしている場合、PIOを使用できない
+        ///         PIOを使用できない場合は割り込みを使用する
         void begin(bool alwaysUseInterrupt = false)
         {
             if (alwaysUseInterrupt)
@@ -102,7 +103,7 @@ namespace Udon
 
             const auto pin = pinA < pinB ? pinA : pinB;    // 小さいほうのピン番号を使用する
 
-            // 使用可能なステートマシンを割り当てる
+            // 使用可能なPIOにプログラムをロードする
             if (const auto smOpt = Pio::AllocateStateMachine(Pio::Encoder::quadrature_encoder_program))
             {
                 u.stateMachine = *smOpt;
@@ -138,7 +139,22 @@ namespace Udon
 
             auto self = static_cast<EncoderPico*>(p);
 
-            self->u.interrupt.phase |= (gpio_get(self->pinA) << 1) | gpio_get(self->pinB);    // digitalRead は遅いので、レジスタを直接読み込む
+            // static constexpr int8_t AddCountTable[16]{ 0, 1, -1, 2,
+            //                                            -1, 0, -2, 1,
+            //                                            1, -2, 0, -1,
+            //                                            2, -1, 1, 0 };
+
+            // static constexpr int8_t AddCountTable[16]{ 0, 1, -1, 2,
+            //                                            -1, 0, -2, 1,
+            //                                            1, -2, 0, -1,
+            //                                            2, -1, 1, 0 };
+
+            // state[3] = ((gpio_get(pin[3][0]) & 0x01) << 3) | ((gpio_get(pin[3][1]) & 0x01) << 2) | ((state[3] >> 2) & 0x03);
+            // self->u.interrupt.phase |= (gpio_get(self->pinA) << 1) | gpio_get(self->pinB);
+
+            // self->u.interrupt.count += AddCountTable[self->u.interrupt.phase];
+
+            // self->u.interrupt.phase <<= 2;    // current -> previous
 
             //                _______         _______
             //       A ______|       |_______|       |______ A
@@ -151,13 +167,13 @@ namespace Udon
             //    0      -      1      0      -
             //    1      -      0      1      -
             //    1      -      0      0      +
-            switch (self->u.interrupt.phase & 0b1011)
-            {
-            case 0b0011: ++self->u.interrupt.count; break;
-            case 0b0010: --self->u.interrupt.count; break;
-            case 0b1001: --self->u.interrupt.count; break;
-            case 0b1000: ++self->u.interrupt.count; break;
-            }
+            // switch (self->u.interrupt.phase & 0b1011)
+            // {
+            // case 0b0011: ++self->u.interrupt.count; break;
+            // case 0b0010: --self->u.interrupt.count; break;
+            // case 0b1001: --self->u.interrupt.count; break;
+            // case 0b1000: ++self->u.interrupt.count; break;
+            // }
 
             //  B-phase
             //  prevA  prevB  currA  currB  count
@@ -165,15 +181,13 @@ namespace Udon
             //    -      0      0      1      +
             //    -      1      1      0      +
             //    -      1      0      0      -
-            switch (self->u.interrupt.phase & 0b0111)
-            {
-            case 0b0011: --self->u.interrupt.count; break;
-            case 0b0001: ++self->u.interrupt.count; break;
-            case 0b0110: ++self->u.interrupt.count; break;
-            case 0b0100: --self->u.interrupt.count; break;
-            }
-
-            self->u.interrupt.phase <<= 2;    // current -> previous
+            // switch (self->u.interrupt.phase & 0b0111)
+            // {
+            // case 0b0011: --self->u.interrupt.count; break;
+            // case 0b0001: ++self->u.interrupt.count; break;
+            // case 0b0110: ++self->u.interrupt.count; break;
+            // case 0b0100: --self->u.interrupt.count; break;
+            // }
 
             interrupts();
         }
