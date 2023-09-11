@@ -13,12 +13,18 @@ namespace Udon
         uint8_t pinA;
         uint8_t pinB;
 
-        // 割り込み使用時
-        uint8_t phase;
-        int32_t count;
+        union
+        {
+            // 割り込み使用時
+            struct
+            {
+                uint8_t phase;
+                int32_t count;
+            } interrupt;
 
-        // PIO使用時
-        Pio::StateMachine stateMachine;
+            // PIO使用時
+            Pio::StateMachine stateMachine;
+        } u;
 
         enum class Mode : uint8_t
         {
@@ -34,9 +40,7 @@ namespace Udon
         EncoderPico(uint8_t pinA, uint8_t pinB)
             : pinA(pinA)
             , pinB(pinB)
-            , phase()
-            , count()
-            , stateMachine()
+            , u()
             , mode(Mode::Unstarted)
         {
         }
@@ -67,8 +71,8 @@ namespace Udon
         {
             switch (mode)
             {
-            case Mode::Interrupt: return count;
-            case Mode::Pio: return Pio::Encoder::quadrature_encoder_get_count(stateMachine.pio, stateMachine.index);
+            case Mode::Interrupt: return u.interrupt.count;
+            case Mode::Pio: return Pio::Encoder::quadrature_encoder_get_count(u.stateMachine.pio, u.stateMachine.index);
             default: return 0;
             }
         }
@@ -78,9 +82,9 @@ namespace Udon
         {
             switch (mode)
             {
-            case Mode::Interrupt: Serial.print("Int \t"); break;
-            case Mode::Pio: Serial.print("PIO \t"); break;
-            default: Serial.print("Unstarted\t"); return;
+            case Mode::Interrupt: Serial.print("Int "); break;
+            case Mode::Pio: Serial.print("PIO "); break;
+            default: Serial.print("Unstarted!"); return;
             }
             Serial.print(read());
             Serial.print('\t');
@@ -101,18 +105,15 @@ namespace Udon
             // 使用可能なステートマシンを割り当てる
             if (const auto smOpt = Pio::AllocateStateMachine(Pio::Encoder::quadrature_encoder_program))
             {
-                stateMachine = *smOpt;
+                u.stateMachine = *smOpt;
             }
             else
             {
                 return false;    // 割り当て失敗
             }
 
-            // ステートマシンへプログラムをロードする
-            const uint offset = pio_add_program(stateMachine.pio, &Pio::Encoder::quadrature_encoder_program);
-
             // 計測開始
-            Pio::Encoder::quadrature_encoder_program_init(stateMachine.pio, stateMachine.index, offset, pin, 0);    // 最後の0は変えたほうが良いのかもしれない
+            Pio::Encoder::quadrature_encoder_program_init(u.stateMachine.pio, u.stateMachine.index, u.stateMachine.offset, pin, 0);    // 最後の0は変えたほうが良いのかもしれない
 
             mode = Mode::Pio;
 
@@ -137,7 +138,7 @@ namespace Udon
 
             auto self = static_cast<EncoderPico*>(p);
 
-            self->phase |= (gpio_get(self->pinA) << 1) | gpio_get(self->pinB);    // digitalRead は遅いので、レジスタを直接読み込む
+            self->u.interrupt.phase |= (gpio_get(self->pinA) << 1) | gpio_get(self->pinB);    // digitalRead は遅いので、レジスタを直接読み込む
 
             //                _______         _______
             //       A ______|       |_______|       |______ A
@@ -150,12 +151,12 @@ namespace Udon
             //    0      -      1      0      -
             //    1      -      0      1      -
             //    1      -      0      0      +
-            switch (self->phase & 0b1011)
+            switch (self->u.interrupt.phase & 0b1011)
             {
-            case 0b0011: ++self->count; break;
-            case 0b0010: --self->count; break;
-            case 0b1001: --self->count; break;
-            case 0b1000: ++self->count; break;
+            case 0b0011: ++self->u.interrupt.count; break;
+            case 0b0010: --self->u.interrupt.count; break;
+            case 0b1001: --self->u.interrupt.count; break;
+            case 0b1000: ++self->u.interrupt.count; break;
             }
 
             //  B-phase
@@ -164,15 +165,15 @@ namespace Udon
             //    -      0      0      1      +
             //    -      1      1      0      +
             //    -      1      0      0      -
-            switch (self->phase & 0b0111)
+            switch (self->u.interrupt.phase & 0b0111)
             {
-            case 0b0011: --self->count; break;
-            case 0b0001: ++self->count; break;
-            case 0b0110: ++self->count; break;
-            case 0b0100: --self->count; break;
+            case 0b0011: --self->u.interrupt.count; break;
+            case 0b0001: ++self->u.interrupt.count; break;
+            case 0b0110: ++self->u.interrupt.count; break;
+            case 0b0100: --self->u.interrupt.count; break;
             }
 
-            self->phase <<= 2;    // current -> previous
+            self->u.interrupt.phase <<= 2;    // current -> previous
 
             interrupts();
         }
