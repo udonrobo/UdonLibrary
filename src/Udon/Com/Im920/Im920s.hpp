@@ -174,9 +174,10 @@ namespace Udon
                 return false;
             }
 
-            const int sendTimeMs = 52;    // 連続で送信する場合、52ms送信休止時間が必要 (説明書 ７－３（２）送信休止時間 参照)
+            const int sendTimeMs = Udon::Max(2, Udon::Ceil(4.56 + txNode->size * 0.08));
+            // 連続で送信する場合、52ms送信休止時間が必要 (説明書 ７－３（２）送信休止時間 参照)
 
-            if (millis() - txNode->transmitMs < sendTimeMs)
+            if (millis() - txNode->transmitMs < (unsigned long)sendTimeMs)
             {
                 return false;
             }
@@ -355,55 +356,77 @@ namespace Udon
         // タイムアウト設定
         uart.setTimeout(10);
 
+        waitUntilCommandAccept();
+        Serial1.print("RDVR\r\n");
+
+        Serial1.readStringUntil(' ');
+        Serial1.readStringUntil('.');    // 頭のVer.は捨てる
+        const int version = Serial1.readStringUntil('.').substring(0).toInt() * 100 + Serial1.readStringUntil('\n').substring(0).toInt();
+
+        int    defaultChannel, defaultPower;
+        String defaultCharIOMode, defaultStatusOutputOnReceipt;
         // パラメーター一括読み出し
         waitUntilCommandAccept();
-        uart.print("RPRM\r\n");
-
-        (void)uart.readStringUntil('\n');                                              //  ID:
-        (void)uart.readStringUntil('\n');                                              //  STNN:
-        (void)uart.readStringUntil('\n');                                              //  STGN:
-        (void)uart.readStringUntil('\n');                                              //  STRT:
-        const int defaultChannel = uart.readStringUntil('\n').substring(5).toInt();    //  STCH:
-        const int defaultPower   = uart.readStringUntil('\n').substring(5).toInt();    //  STPO:
-        (void)uart.readStringUntil('\n');                                              //  STNM:
-        (void)uart.readStringUntil('\n');                                              //  STTH:
-        (void)uart.readStringUntil('\n');                                              //  SRTH:
-        (void)uart.readStringUntil('\n');                                              //  WTRT:
-        (void)uart.readStringUntil('\n');                                              //  STTL:
-        (void)uart.readStringUntil('\n');                                              //  STTR:
-        (void)uart.readStringUntil('\n');                                              //  SSTM:
-        (void)uart.readStringUntil('\n');                                              //  SWTM:
-        (void)uart.readStringUntil('\n');                                              //  STTN:
-        (void)uart.readStringUntil('\n');                                              //  STAT:
-        (void)uart.readStringUntil('\n');                                              //  STTG:
-        (void)uart.readStringUntil('\n');                                              // [ENRX]   DSRX   スリープ
-        (void)uart.readStringUntil('\n');                                              // [ENAK]
-        const String defaultCharIOMode = uart.readStringUntil('\n');                   // [ECIO]   DCIO   キャラクタ入出力モード
-        (void)uart.readStringUntil('\n');                                              //  EENC   [DENC]  パケット暗号化
-        (void)uart.readStringUntil('\n');                                              //  ENAD   [DSAD]  AD 入力モード
-        (void)uart.readStringUntil('\n');                                              // [DSAR]   ENAR   リトライ送信
-        (void)uart.readStringUntil('\n');                                              //  ENSS   [DSSS]  同期スリープ開始・解除
-        (void)uart.readStringUntil('\n');                                              //  ESNF   [DSNF]  スニファモード
-        (void)uart.readStringUntil('\n');                                              //  ENRC   [DSRC]  リモートコマンド受信
-        (void)uart.readStringUntil('\n');                                              //  ETRC   [DTRC]  リモートコマンド送信
-        (void)uart.readStringUntil('\n');                                              //  DORT
-        (void)uart.readStringUntil('\n');                                              //  DADR
-        (void)uart.readStringUntil('\n');                                              //  DOMI
-        (void)uart.readStringUntil('\n');                                              //  ENHP
-        (void)uart.readStringUntil('\n');                                              //  DSEF
-        const String defaultStatusOutputOnReceipt = uart.readStringUntil('\n');        // [ERXI]   DRXI    受信時のステータス出力
-        (void)uart.readStringUntil('\n');                                              //  ENWR   [DSWR]   フラッシュメモリ書き込み許可
-
-        // フラッシュメモリ書き込み許可
-        waitUntilCommandAccept();
-        uart.print("ENWR\r\n");
-        if (uart.readStringUntil('\n') != "OK\r")
+        Serial1.print("RPRM\r\n");
+        if (version >= 121)
         {
-            return false;
+            // ver01.21で動作確認済み
+            (void)Serial1.readStringUntil('\n');                                    //  ID:
+            (void)Serial1.readStringUntil('\n');                                    //  STNN:
+            (void)Serial1.readStringUntil('\n');                                    //  STGN:
+            defaultChannel = Serial1.readStringUntil('\n').substring(5).toInt();    //  STCH:
+            defaultPower   = Serial1.readStringUntil('\n').substring(5).toInt();    //  STPO:
+            (void)Serial1.readStringUntil('\n');                                    //  STNM:
+            (void)Serial1.readStringUntil('\n');                                    //  STTH:
+            (void)Serial1.readStringUntil('\n');                                    //  STTL:
+            (void)Serial1.readStringUntil('\n');                                    //  SSTM:
+            (void)Serial1.readStringUntil('\n');                                    //  SWTM:
+            (void)Serial1.readStringUntil('\n');                                    //  STTN:
+            (void)Serial1.readStringUntil('\n');                                    // [ENRX]   DSRX   スリープ
+            (void)Serial1.readStringUntil('\n');                                    // [ENAK]
+            defaultCharIOMode = Serial1.readStringUntil('\n');                      // [ECIO]   DCIO   キャラクタ入出力モード
+            (void)Serial1.readStringUntil('\n');                                    //  ENAD   [DSAD]  AD 入力モード
+            (void)Serial1.readStringUntil('\n');                                    // [DSAR]   ENAR   リトライ送信
+            (void)Serial1.readStringUntil('\n');                                    //  ENSS   [DSSS]  同期スリープ開始・解除
+            (void)Serial1.readStringUntil('\n');                                    //  ESNF   [DSNF]  スニファモード
+            (void)Serial1.readStringUntil('\n');                                    //  ENRC   [DSRC]  リモートコマンド受信
+            (void)Serial1.readStringUntil('\n');                                    //  ETRC   [DTRC]  リモートコマンド送信
+            defaultStatusOutputOnReceipt = Serial1.readStringUntil('\n');           // [ERXI]   DRXI    受信時のステータス出力
+            (void)Serial1.readStringUntil('\n');                                    //  ENWR   [DSWR]   フラッシュメモリ書き込み許可
+        }
+        else
+        {
+            // ver01.03で動作確認済み
+            (void)Serial1.readStringUntil('\n');                                    // ID
+            (void)Serial1.readStringUntil('\n');                                    // STNN
+            (void)Serial1.readStringUntil('\n');                                    // STGN
+            defaultChannel = Serial1.readStringUntil('\n').substring(5).toInt();    // STCH
+            defaultPower   = Serial1.readStringUntil('\n').substring(5).toInt();    // STPO
+            (void)Serial1.readStringUntil('\n');                                    // STNM
+            (void)Serial1.readStringUntil('\n');                                    // STTH
+            (void)Serial1.readStringUntil('\n');                                    // STTL
+            (void)Serial1.readStringUntil('\n');                                    // SSTM
+            (void)Serial1.readStringUntil('\n');                                    // SWTM
+            (void)Serial1.readStringUntil('\n');                                    // ENRX
+            (void)Serial1.readStringUntil('\n');                                    // ENAK
+            defaultCharIOMode = Serial1.readStringUntil('\n');                      //[ECIO]  DCIO
+            (void)Serial1.readStringUntil('\n');                                    // DSSS
+            (void)Serial1.readStringUntil('\n');                                    // DSNF
+            defaultStatusOutputOnReceipt = Serial1.readStringUntil('\n');           //[ERXI]  DRXI
         }
 
+        // 書き換え許可
+        if (defaultChannel != channel || defaultPower != 2 || defaultCharIOMode != "ECIO\r" || defaultStatusOutputOnReceipt != "ERXI\r")
+        {
+            waitUntilCommandAccept();
+            Serial1.print("ENWR\r\n");
+            if (uart.readStringUntil('\n') != "OK\r")
+            {
+                return false;
+            }
+        }
         // チャンネル設定
-        if (channel != defaultChannel)
+        if (defaultChannel != channel)
         {
             waitUntilCommandAccept();
             Udon::SerialPrintf(uart, "STCH %02d\r\n", channel);
@@ -412,8 +435,7 @@ namespace Udon
                 return false;
             }
         }
-
-        // 出力電力設定
+        // 送信出力設定
         if (defaultPower != 2)
         {
             waitUntilCommandAccept();
@@ -423,37 +445,36 @@ namespace Udon
                 return false;
             }
         }
-
-        // キャラクタ入出力モード設定
+        // 入出力モード設定
         if (defaultCharIOMode != "ECIO\r")
         {
             waitUntilCommandAccept();
-            uart.print("ECIO\r\n");
+            Serial1.print("ECIO\r\n");
             if (uart.readStringUntil('\n') != "OK\r")
             {
                 return false;
             }
         }
-
-        // 受信時のステータス出力設定
+        // STATUS出力設定
         if (defaultStatusOutputOnReceipt != "ERXI\r")
         {
             waitUntilCommandAccept();
-            uart.print("ERXI\r\n");
+            Serial1.print("ERXI\r\n");
             if (uart.readStringUntil('\n') != "OK\r")
             {
                 return false;
             }
         }
-
-        // フラッシュメモリ書き込み禁止
-        waitUntilCommandAccept();
-        uart.print("DSWR\r\n");
-        if (uart.readStringUntil('\n') != "OK\r")
+        // 書き換え禁止
+        if (defaultChannel != channel || defaultPower != 2 || defaultCharIOMode != "ECIO\r" || defaultStatusOutputOnReceipt != "ERXI\r")
         {
-            return false;
+            waitUntilCommandAccept();
+            Serial1.print("DSWR\r\n");
+            if (uart.readStringUntil('\n') != "OK\r")
+            {
+                return false;
+            }
         }
-
         return true;
     }
 
