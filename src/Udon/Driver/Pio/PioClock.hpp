@@ -22,7 +22,7 @@
 
 namespace Udon
 {
-    inline bool PicoPioClockBegin(uint8_t pin, uint32_t clockSpeed)
+    inline bool PioClockBegin(uint8_t pin, uint32_t clockSpeed)
     {
         auto sm = Pio::AllocateStateMachine(Udon::Pio::Sqwave::squarewave_program);
         if (not sm)

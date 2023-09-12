@@ -14,7 +14,7 @@
 //    Controller --[USB]--> USBHost --[SPI]--> Sender --> 
 //                                             ^^^^^^
 //
-//    Raspberrypi Pico SPI Pins:
+//    Raspberry Pi Pico SPI Pins:
 //        CLK     : 18
 //        MOSI(TX): 19
 //        MISO(RX): 16

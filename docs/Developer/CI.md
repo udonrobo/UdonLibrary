@@ -17,7 +17,7 @@
 
 [compile-sketches Action](https://github.com/arduino/compile-sketches) を使用してコンパイルできるか検証します。
 
-検証されるボードは `Arduino nano` `Raspberrypi pico` `Teensy4.0` です。
+検証されるボードは `Arduino nano` `Raspberry Pi Pico` `Teensy4.0` です。
 
 - テストスケッチ追加
 
