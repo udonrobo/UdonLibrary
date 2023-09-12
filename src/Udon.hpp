@@ -128,11 +128,11 @@
 // ディップスイッチ
 #include "Udon/Driver/Sensor/DipSwitch.hpp"
 
-// raspberrypi pico エンコーダー
+// Raspberry Pi Pico エンコーダー
 #include "Udon/Driver/Sensor/EncoderPico.hpp"
 
-// raspberrypi pico PIO
-#include "Udon/Driver/Pio/PicoPioClock.hpp"
+// Raspberry Pi Pico PIO
+#include "Udon/Driver/Pio/PioClock.hpp"
 
 // 7セグメントLED
 #include "Udon/Driver/Display/SegmentsLed.hpp"

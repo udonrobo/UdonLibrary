@@ -1517,7 +1517,7 @@ MAKE_PIN(P33, (9));
 
 #            undef MAKE_PIN
 
-#        elif defined(ARDUINO_ARCH_RP2040)    // raspberrypi pico (add by udonrobo)
+#        elif defined(ARDUINO_ARCH_RP2040)    // Raspberry Pi Pico (add by udonrobo)
 
 #            define MAKE_PIN(className, pin)     \
                 class className                  \
