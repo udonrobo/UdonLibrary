@@ -95,10 +95,10 @@ void loop()
 {
     bus.update();
 
-    // 1. コントローラから Udon::Pos {{x, y}, turn} を得る `getMovementInfo()`
+    // 1. コントローラから Udon::Pos {{x, y}, turn} を得る `getMoveInfo()`
     // 2. Udon::Pos からステアの最適化前の値を得る `toSteer()`
     // 3. 最適化後の値を得る optimizer()
-    const auto optimized = optimizer(pad.getMovementInfo().toSteer());
+    const auto optimized = optimizer(pad.getMoveInfo().toSteer());
 
     //... // 車輪 Node に送信するなど
 }
@@ -124,7 +124,7 @@ void Main()
     {
         pad.update();
 
-        const auto optimized = optimizer(pad.getMovementInfo().toSteer());
+        const auto optimized = optimizer(pad.getMoveInfo().toSteer());
 
         const RectF frame { Arg::center = Scene::CenterF(), 300, 300 };
         frame.drawFrame();
