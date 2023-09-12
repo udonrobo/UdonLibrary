@@ -16,7 +16,7 @@
 
 ## Arduino Lint
 
-[compile-sketches](https://github.com/arduino/compile-sketches) を使用してコンパイルできるか検証します。
+[compile-sketches Action](https://github.com/arduino/compile-sketches) を使用してコンパイルできるか検証します。
 
 検証されるボードは `Arduino Nano` `Raspberry Pi Pico` `Teensy4.0` です。
 
