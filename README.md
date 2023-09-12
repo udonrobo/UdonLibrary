@@ -223,6 +223,9 @@ int main() {}
 
 ## Documents
 
+- アルゴリズム
+  - [コンテナ](./docs/Algorithm/Container.md)
+  - [独立ステア最適化](./docs/Algorithm/SteerOptimizer.md)
 - 通信
   - [CAN 通信](./docs/Communication/CAN.md)
   - [I2C 通信](./docs/Communication/I2C.md)
@@ -237,6 +240,8 @@ int main() {}
   - [オイラー角](./docs/Types/Eular.md)
   - [クオータニオン](./docs/Types/Quaternion.md)
   - [固定ビット長浮動小数点型](./docs/Types/Float.md)
+- ドライバー
+  - [ロータリーエンコーダー](./docs/Driver/Encoder.md)
 - その他
   - [型トレイト](./docs/Other/Traits.md)
 - 開発者用
