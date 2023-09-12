@@ -16,6 +16,11 @@
 
   テンプレート引数に要素の型、最大要素数を指定します。
 
+  最大要素数と、サイズは意味が異なるので注意してください
+
+  > 最大要素数は現在割り当てられている領域の容量
+  > サイズは使われている要素数
+
   ```cpp
   Udon::StaticVector<int, 256> vector;                // 空
   Udon::StaticVector<int, 256> vector(10);            // サイズから構築
@@ -113,17 +118,13 @@
 
   テンプレート引数に要素の型、最大要素数を指定します。
 
+  最大要素数と、サイズは意味が異なるので注意してください
+
+  > 最大要素数は現在割り当てられている領域の容量
+  > サイズは使われている要素数
+
   ```cpp
   Udon::RingBuffer<int, 256> buffer;
-  ```
-
-  > この場合、初期サイズは 0 、容量は 256 です。
-  >
-  > `buffer.size() == 0`
-  >
-  > `buffer.capacity() == 256`
-
-  ```cpp
   Udon::RingBuffer<int, 256> buffer(100);                 // サイズから構築
   Udon::RingBuffer<int, 256> buffer(100, 0);              // サイズ、初期値から構築
   Udon::RingBuffer<int, 256> buffer{ 1, 2, 3, 4, 5, 6 };  // initializer_list から構築
