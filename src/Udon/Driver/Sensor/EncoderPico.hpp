@@ -13,17 +13,16 @@ namespace Udon
         uint8_t pinA;
         uint8_t pinB;
 
+        // 割り込み使用時とPIO使用時で使用する変数が異なる
         union
         {
-            // 割り込み使用時
             struct
             {
-                uint8_t phase;
                 int32_t count;
-            } interrupt;
+                uint8_t phase;
+            } interrupt;    // 割り込み使用時
 
-            // PIO使用時
-            Pio::StateMachine stateMachine;
+            Pio::StateMachine stateMachine;    // PIO使用時
         } u;
 
         enum class Mode : uint8_t
@@ -41,7 +40,7 @@ namespace Udon
             : pinA(pinA)
             , pinB(pinB)
             , u()
-            , mode(Mode::Unstarted)
+            , mode()
         {
         }
 
@@ -93,7 +92,7 @@ namespace Udon
 
     private:
         /// @brief PIOを使用してエンコーダーを計測する
-        /// @return
+        /// @return 使用可能な場合 true
         bool beginStateMachine()
         {
             if (abs(pinA - pinB) != 1)
@@ -131,7 +130,6 @@ namespace Udon
         }
 
         /// @brief 割り込みハンドラ
-        /// @param self
         static inline void Interrupt(void* p)
         {
             auto self = static_cast<EncoderPico*>(p);
