@@ -18,39 +18,28 @@
 #if defined(ARDUINO_ARCH_RP2040)
 
 #    include "SquareWave.pio.hpp"
+#    include "StateMachineAllocator.hpp"
 
 namespace Udon
 {
     inline bool PicoPioClockBegin(uint8_t pin, uint32_t clockSpeed)
     {
-        PIOProgram p(&Udon::Pio::Sqwave::squarewave_program);
-
-        PIO pio;
-        int sm;
-        int offset;
-        // 使えるPIOを探す
-        if (not p.prepare(&pio, &sm, &offset))
+        auto sm = Pio::AllocateStateMachine(Udon::Pio::Sqwave::squarewave_program);
+        if (not sm)
         {
             return false;
         }
 
-        // PIO設定(CANコントローラのクロック生成)
-        for (unsigned int i = 0; i < count_of(Pio::Sqwave::squarewave_program_instructions); i++)
-            pio->instr_mem[i] = Pio::Sqwave::squarewave_program_instructions[i];
+        auto c = Udon::Pio::Sqwave::squarewave_program_get_default_config(sm->offset);
 
-        pio->sm[sm].clkdiv  = (uint32_t)(F_CPU * 0.25f * (1 << 16) / clockSpeed);                              // 周波数設定(周波数低めのほうが誤差が少ない)
-        pio->sm[sm].pinctrl = (1 << PIO_SM0_PINCTRL_SET_COUNT_LSB) | (pin << PIO_SM0_PINCTRL_SET_BASE_LSB);    // PIOがIOピンにアクセスできるようにする
+        sm->pio->sm[sm->index].clkdiv = (uint32_t)(F_CPU * 0.25f * (1 << 16) / clockSpeed);    // 周波数設定(周波数低めのほうが誤差が少ない)
 
-        if (pio == pio0)
-        {
-            gpio_set_function(pin, GPIO_FUNC_PIO0);
-        }
-        else if (pio == pio1)
-        {
-            gpio_set_function(pin, GPIO_FUNC_PIO1);
-        }
+        sm->pio->sm[sm->index].pinctrl = (1 << PIO_SM0_PINCTRL_SET_COUNT_LSB) | (pin << PIO_SM0_PINCTRL_SET_BASE_LSB);    // PIOがIOピンにアクセスできるようにする
 
-        hw_set_bits(&pio->ctrl, 1 << (PIO_CTRL_SM_ENABLE_LSB + sm));
+        gpio_set_function(pin, sm->pio == pio0 ? GPIO_FUNC_PIO0 : GPIO_FUNC_PIO1);
+
+        // pio_sm_init(pio, sm, offset, &c);
+        pio_sm_set_enabled(sm->pio, sm->index, true);
 
         return true;
     }

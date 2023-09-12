@@ -10,16 +10,17 @@
 
 #endif
 
-// ---------- //
-// squarewave //
-// ---------- //
-
 namespace Udon
 {
     namespace Pio
     {
         namespace Sqwave
         {
+
+            // ---------- //
+            // squarewave //
+            // ---------- //
+
             static const uint16_t squarewave_program_instructions[] = {
                 //     .wrap_target
                 0xe081,    //  0: set    pindirs, 1
@@ -47,6 +48,6 @@ namespace Udon
 #    undef squarewave_wrap_target
 #    undef squarewave_wrap
 #endif
-        }    // namespace sqwave
-    }        // namespace pio
+        }    // namespace Sqwave
+    }        // namespace Pio
 }    // namespace Udon
