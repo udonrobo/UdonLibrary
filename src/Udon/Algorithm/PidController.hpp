@@ -16,7 +16,7 @@
 #ifndef DEF_PidController_H
 #define DEF_PidController_H
 
-#include <Udon/Algorithm/Math.hpp>
+#include "Math.hpp"
 
 namespace Udon
 {

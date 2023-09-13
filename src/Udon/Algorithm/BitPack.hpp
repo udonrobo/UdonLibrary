@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "Bit.hpp"
-#include <Udon/Algorithm/Math.hpp>
+#include "Math.hpp"
 
 namespace Udon
 {

@@ -18,7 +18,7 @@
 #pragma once
 
 #include <stdint.h>
-#include <Udon/Algorithm/Math.hpp>
+#include "Math.hpp"
 
 namespace Udon
 {

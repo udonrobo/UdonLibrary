@@ -16,10 +16,10 @@
 #pragma once
 
 #include <Udon/Stl/EnableSTL.hpp>
+#include <Udon/Types/Polar.hpp>
 #include <array>
 
-#include <Udon/Algorithm/Math.hpp>
-#include <Udon/Types/Polar.hpp>
+#include "Math.hpp"
 
 namespace Udon
 {
