@@ -20,7 +20,7 @@
 #include <utility>
 #include <limits.h>
 
-#include <Udon/Math/Math.hpp>
+#include <Udon/Algorithm/Math.hpp>
 #include <Udon/Algorithm/CRC.hpp>
 #include <Udon/Types/Float.hpp>
 #include <Udon/Traits/Parsable.hpp>

@@ -18,7 +18,7 @@
 #include <Udon/Stl/EnableSTL.hpp>
 #include <array>
 
-#include <Udon/Math/Math.hpp>
+#include <Udon/Algorithm/Math.hpp>
 #include <Udon/Types/Polar.hpp>
 
 namespace Udon

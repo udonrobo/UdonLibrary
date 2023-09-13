@@ -23,7 +23,7 @@
 #include "Polar.hpp"
 #include "Vector2D.hpp"
 
-#include <Udon/Math/Math.hpp>
+#include <Udon/Algorithm/Math.hpp>
 #include <Udon/Traits/ParsableMacro.hpp>
 #include <Udon/Com/Serialization.hpp>
 

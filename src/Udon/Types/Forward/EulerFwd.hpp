@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <Udon/Math/Math.hpp>    // Udon::Normalized
+#include <Udon/Algorithm/Math.hpp>    // Udon::Normalized
 #include <Udon/Traits/ParsableMacro.hpp>
 #include <Udon/Com/Serialization.hpp>
 
