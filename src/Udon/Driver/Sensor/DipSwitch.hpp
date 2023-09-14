@@ -54,6 +54,25 @@ namespace Udon
         }
     };
 
+    inline int DecodeDipSwitch(std::initializer_list<uint8_t> pins)
+    {
+        for (auto&& pin : pins)
+        {
+            pinMode(pin, INPUT_PULLUP);
+        }
+
+        int dec = 0;
+        int i   = 0;
+
+        for (auto&& pin : pins)
+        {
+            bitWrite(dec, i++, not digitalRead(pin));
+            delayMicroseconds(1);
+        }
+
+        return dec;
+    }
+
 }    // namespace Udon
 
-#endif     
+#endif
