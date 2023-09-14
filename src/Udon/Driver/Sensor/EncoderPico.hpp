@@ -100,7 +100,7 @@ namespace Udon
                 return false;    // A相とB相のピン番号が隣り合っている場合はPIOを使用できない
             }
 
-            const auto pin = pinA < pinB ? pinA : pinB;    // 小さいほうのピン番号を使用する
+            const auto pin = min(pinA, pinB);    // 小さいほうのピン番号を使用する
 
             // 使用可能なPIOにプログラムをロードする
             if (const auto sm = Pio::AllocateStateMachine(Pio::Encoder::quadrature_encoder_program))
