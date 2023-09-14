@@ -173,10 +173,10 @@ namespace Udon
         }
 
         /// @brief バス更新
-        /// @param transmitIntervalMs 送信間隔 [ms]
-        void update(uint32_t transmitIntervalMs = 5000)
+        /// @param transmitIntervalUs 送信間隔 [us]
+        void update(uint32_t transmitIntervalUs = 5000)
         {
-            if (txNodes && micros() - transmitUs >= transmitIntervalMs)
+            if (txNodes && micros() - transmitUs >= transmitIntervalUs)
             {
                 onTransmit();
                 transmitUs = micros();
