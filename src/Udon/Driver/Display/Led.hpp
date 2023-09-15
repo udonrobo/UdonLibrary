@@ -19,12 +19,12 @@ namespace Udon
             pinMode(pin, OUTPUT);
         }
 
-        void on() const
+        void high() const
         {
             digitalWrite(true);
         }
 
-        void off() const
+        void low() const
         {
             digitalWrite(false);
         }
