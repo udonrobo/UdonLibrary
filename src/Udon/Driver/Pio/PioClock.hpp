@@ -30,6 +30,9 @@ namespace Udon
             return false;
         }
 
+        for (unsigned int i = 0; i < count_of(Pio::Sqwave::squarewave_program_instructions); i++)
+            sm->pio->instr_mem[i] = Pio::Sqwave::squarewave_program_instructions[i];
+
         sm->pio->sm[sm->index].clkdiv = (uint32_t)(F_CPU * 0.25f * (1 << 16) / clockSpeed);    // 周波数設定(周波数低めのほうが誤差が少ない)
 
         sm->pio->sm[sm->index].pinctrl = (1 << PIO_SM0_PINCTRL_SET_COUNT_LSB) | (pin << PIO_SM0_PINCTRL_SET_BASE_LSB);    // PIOがIOピンにアクセスできるようにする
