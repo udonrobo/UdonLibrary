@@ -147,7 +147,6 @@ namespace Udon
         /// @param transmitIntervalMs 送信間隔 [ms]
         void update(uint32_t transmissionIntervalUs = 5000)
         {
-            Serial.println(rxBuffer.size());
             onReceive();
             if (txNodes && micros() - transmitUs >= transmissionIntervalUs)
             {
