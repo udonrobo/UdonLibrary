@@ -66,6 +66,8 @@ namespace Udon
         Udon::StaticVector<TxNodePtr> txNodes;
         Udon::StaticVector<RxNodePtr> rxNodes;
 
+        Udon::StaticVector<CAN_message_t, 1024> rxBuffer;
+
         uint32_t transmitUs = 0;
         uint32_t receiveMs  = 0;
 
@@ -129,7 +131,7 @@ namespace Udon
                 bus.onReceive(
                     [](const CAN_message_t& msg)
                     {
-                        self->onReceive(msg);
+                        self->rxBuffer.push_back(msg);
                     });
             }
         }
@@ -145,6 +147,7 @@ namespace Udon
         /// @param transmitIntervalMs 送信間隔 [ms]
         void update(uint32_t transmissionIntervalUs = 5000)
         {
+            onReceive();
             if (txNodes && micros() - transmitUs >= transmissionIntervalUs)
             {
                 onTransmit();
@@ -245,42 +248,46 @@ namespace Udon
 
     private:
         /// @brief 受信割り込み
-        void onReceive(const CAN_message_t& msg)
+        void onReceive()
         {
-            // IDに対応する受信ノードを探す
-            auto rxNode = std::find_if(rxNodes.begin(), rxNodes.end(), [&msg](const RxNodePtr& rx)
-                                       { return rx.node->id == msg.id; });
-            if (rxNode == rxNodes.end())
+            for (auto&& msg : rxBuffer)
             {
-                return;
-            }
-
-            // 分割されたフレームを結合(マルチフレームの場合)
-            Udon::Detail::Unpacketize(
-                { msg.buf },
-                { rxNode->node->data, rxNode->node->length },
-                SingleFrameSize);
-
-            // 登録されている受信クラスのコールバック関数を呼ぶ
-            // 最終フレームの到達時にコールバックを呼ぶため、受信中(完全に受信しきっていないとき)にデシリアライズすることを防いでいる。
-
-            if (rxNode->node->length > SingleFrameSize)
-            {
-                // マルチフレーム
-                const auto frameCount = std::ceil(static_cast<double>(rxNode->node->length) / SingleFrameSize - 1 /*index*/);
-
-                if (msg.buf[0] == frameCount)
+                // IDに対応する受信ノードを探す
+                auto rxNode = std::find_if(rxNodes.begin(), rxNodes.end(), [&msg](const RxNodePtr& rx)
+                                           { return rx.node->id == msg.id; });
+                if (rxNode == rxNodes.end())
                 {
+                    continue;
+                }
+
+                // 分割されたフレームを結合(マルチフレームの場合)
+                Udon::Detail::Unpacketize(
+                    { msg.buf },
+                    { rxNode->node->data, rxNode->node->length },
+                    SingleFrameSize);
+
+                // 登録されている受信クラスのコールバック関数を呼ぶ
+                // 最終フレームの到達時にコールバックを呼ぶため、受信中(完全に受信しきっていないとき)にデシリアライズすることを防いでいる。
+
+                if (rxNode->node->length > SingleFrameSize)
+                {
+                    // マルチフレーム
+                    const auto frameCount = std::ceil(static_cast<double>(rxNode->node->length) / SingleFrameSize - 1 /*index*/);
+
+                    if (msg.buf[0] == frameCount)
+                    {
+                        rxNode->callback();
+                    }
+                }
+                else
+                {
+                    // シングルフレーム
                     rxNode->callback();
                 }
-            }
-            else
-            {
-                // シングルフレーム
-                rxNode->callback();
-            }
 
-            receiveMs = rxNode->node->transmitMs = millis();
+                receiveMs = rxNode->node->transmitMs = millis();
+            }
+            rxBuffer.clear();
         }
 
         /// @brief 送信処理
