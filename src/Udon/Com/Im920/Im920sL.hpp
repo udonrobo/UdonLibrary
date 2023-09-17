@@ -402,6 +402,12 @@ namespace Udon
             return false;
         }
 
+        Udon::SerialPrintf(uart, "STRT 1\r\n");
+        if (uart.readStringUntil('\n') != "OK\r")
+        {
+            return false;
+        }
+
         // チャンネル設定
         if (channel != defaultChannel)
         {
