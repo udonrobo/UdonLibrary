@@ -130,7 +130,7 @@ namespace Udon
 
                 // 受信フィルタ設定 (ノード数が6以下の場合のみ)
                 constexpr size_t Mcp2515MaxFilterCount = 6;
-                if (rxSize <= Mcp2515MaxFilterCount)
+               if (rxSize <= Mcp2515MaxFilterCount)
                 {
                     bus.setFilterMask(MCP2515::MASK0, false, 0x7FF);
                     bus.setFilterMask(MCP2515::MASK1, false, 0x7FF);
@@ -186,12 +186,12 @@ namespace Udon
         /// @brief バスの状態を表示する
         void show()
         {
-            Serial.print("Bus: CAN 2.0B\n");
+            Serial.print("CanBusSpiPico\n");
 
             Serial.print("\tTX Node\n");
             for (auto&& node : txNodes)
             {
-                Serial.printf("\t\tid: 0x%-3x length:%3zu byte", static_cast<int>(node->id), node->length);
+                Serial.printf("\t\tid: 0x%-3x %3zu byte", static_cast<int>(node->id), node->length);
                 if (node->length > SingleFrameSize)
                 {
                     Serial.print(" (multi frame)");
@@ -213,7 +213,7 @@ namespace Udon
             Serial.print("\tRX Node\n");
             for (auto&& rxNode : rxNodes)
             {
-                Serial.printf("\t\tid: 0x%-3x length:%3zu byte", static_cast<int>(rxNode.node->id), rxNode.node->length);
+                Serial.printf("\t\tid: 0x%-3x %3zu byte", static_cast<int>(rxNode.node->id), rxNode.node->length);
                 if (rxNode.node->length > SingleFrameSize)
                 {
                     Serial.print(" (multi frame)");
