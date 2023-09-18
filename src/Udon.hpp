@@ -212,4 +212,4 @@
 #include "Udon/Utility/Show.hpp"
 
 // フォーマット表示
-#include "Udon/Utility/SerialPrintf.hpp"
+#include "Udon/Utility/Printf.hpp"

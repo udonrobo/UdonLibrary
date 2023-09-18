@@ -103,7 +103,9 @@ namespace Udon
                                                          std::nullptr_t>::type = nullptr>
         void print(AccessibleAndNotShowable&& rhs)
         {
-            Udon::Traits::InvokeAccessor(*this, const_cast<AccessibleAndNotShowable&>(rhs));
+            Udon::Traits::InvokeAccessor(
+                const_cast<MemberViewer&>(*this),
+                const_cast<Traits::RemoveModifier_t<AccessibleAndNotShowable>&>(rhs));
         }
     };
 

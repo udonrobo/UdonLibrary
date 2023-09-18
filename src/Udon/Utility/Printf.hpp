@@ -8,8 +8,7 @@
 
 namespace Udon
 {
-
-#if UDON_PLATFORM_OUTPUT_STREAM == UDON_OUTPUT_SERIAL
+#if UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_SERIAL
 
 #    if UDON_PLATFORM_HAS_SERIAL_PRINTF
 
@@ -37,7 +36,7 @@ namespace Udon
         Printf(Serial, format, args...);
     }
 
-#elif UDON_PLATFORM_OUTPUT_STREAM == UDON_OUTPUT_CONSOLE
+#elif UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE
 
     template <typename... Args>
     inline void Printf(const char* format, Args... args)

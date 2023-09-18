@@ -81,7 +81,7 @@ namespace Udon
             m_hasValue = other.m_hasValue;
             return *this;
         }
-        Optional& operator=(Optional&& other)
+        Optional& operator=(Optional&& other) noexcept
         {
             m_value    = std::move(other.m_value);
             m_hasValue = other.m_hasValue;
