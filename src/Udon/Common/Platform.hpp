@@ -81,9 +81,13 @@
 
 #    pragma warning(disable : 4819)
 
-#    define UDON_PLATFORM_HAS_STL __has_include(<vector>)
-#    define UDON_PLATFORM_HAS_SERIAL_PRINTF 0
-#    define UDON_PLATFORM_OUTPUT_STREAM UDON_PLATFORM_OUTPUT_CONSOLE
+//-------------------------------------------------------------------
+//
+//    gcc
+//
+//-------------------------------------------------------------------
+
+#elif defined(__GNUC__)
 
 //-------------------------------------------------------------------
 //
@@ -97,11 +101,25 @@
 
 //-------------------------------------------------------------------
 //
-//    エンディアン定義(無理やり)
+//    無理やり
 //
 //-------------------------------------------------------------------
 
-#if defined(_M_IX86) || defined(_M_X64) || defined(_M_IA64) || defined(_M_ARM) || defined(_M_ARM64) || defined(_M_AMD64) || defined(_M_MRX000) || defined(_M_PPC) || defined(_M_ALPHA) || defined(_M_SH)
+#define UDON_PLATFORM_HAS_STL __has_include(<vector>)
+#define UDON_PLATFORM_OUTPUT_STREAM UDON_PLATFORM_OUTPUT_CONSOLE
+#define UDON_PLATFORM_HAS_SERIAL_PRINTF 0
+
+#if __has_include(<endian.h>)
+#    include <endian.h>
+#endif
+
+#if defined(__BYTE_ORDER__) && defined(__ORDER_LITTLE_ENDIAN__) && defined(__ORDER_BIG_ENDIAN__)
+#    if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+#        define UDON_PLATFORM_ENDIANNESS UDON_PLATFORM_LITTLE_ENDIAN
+#    elif __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+#        define UDON_PLATFORM_ENDIANNESS UDON_PLATFORM_BIG_ENDIAN
+#    endif
+#elif defined(_M_IX86) || defined(_M_X64) || defined(_M_IA64) || defined(_M_ARM) || defined(_M_ARM64) || defined(_M_AMD64) || defined(_M_MRX000) || defined(_M_PPC) || defined(_M_ALPHA) || defined(_M_SH)
 #    define UDON_PLATFORM_ENDIANNESS UDON_PLATFORM_LITTLE_ENDIAN
 #elif defined(_MIPSEB) || defined(_POWER) || defined(__s390__)
 #    define UDON_PLATFORM_ENDIANNESS UDON_PLATFORM_BIG_ENDIAN

@@ -20,6 +20,7 @@ if (MSVC)
     add_compile_options(/permissive-) # Enable conformance mode
 endif()
 
+
 # GoogleTest settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Thirdparty/googletest)
