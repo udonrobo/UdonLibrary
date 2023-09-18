@@ -39,7 +39,7 @@ jobs:
 
       - name: Build
         working-directory: test/UnitTest
-        run: cmake -S . -B Build && cmake --build Build
+        run: cmake -S . -B Build && cmake -DCMAKE_CXX_COMPILER=clang++ --build Build
 
       - name: Run tests
         working-directory: test/UnitTest/Build
