@@ -18,8 +18,8 @@ project(UnitTest)
 if (MSVC)
     add_compile_options(/std:c++14)   # Enable C++14
     add_compile_options(/permissive-) # Enable conformance mode
-    add_compile_options(/wd4819)      # ignore C4819 warning
 endif()
+
 
 # GoogleTest settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
@@ -34,3 +34,4 @@ set(UDON_LIBRARY_DIR ${ABSOLUTE_UDON_LIBRARY_DIR} CACHE STRING "UdonLibrary incl
 # Add test directory
 add_subdirectory(./Serialization)
 add_subdirectory(./Types)
+add_subdirectory(./Common)

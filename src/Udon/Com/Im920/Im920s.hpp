@@ -24,7 +24,7 @@
 
 #include <Udon/Algorithm/BitPack.hpp>
 #include <Udon/Stl/Optional.hpp>
-#include <Udon/Utility/SerialPrintf.hpp>
+#include <Udon/Utility/Printf.hpp>
 
 namespace Udon
 {
@@ -184,7 +184,7 @@ namespace Udon
 
             // データ送信
             {
-                Udon::SerialPrintf(uart, "TXDU %04d ", *nodeNum);
+                Udon::Printf(uart, "TXDU %04d ", *nodeNum);
 
                 Udon::BitPack(txNode->data, txNode->data + txNode->size, [this](uint8_t data)
                               { uart.write(data); });
@@ -429,7 +429,7 @@ namespace Udon
         if (defaultChannel != channel)
         {
             waitUntilCommandAccept();
-            Udon::SerialPrintf(uart, "STCH %02d\r\n", channel);
+            Udon::Printf(uart, "STCH %02d\r\n", channel);
             if (uart.readStringUntil('\n') != "OK\r")
             {
                 return false;
@@ -439,7 +439,7 @@ namespace Udon
         if (defaultPower != 2)
         {
             waitUntilCommandAccept();
-            Udon::SerialPrintf(uart, "STPO %d\r\n", 2);
+            Udon::Printf(uart, "STPO %d\r\n", 2);
             if (uart.readStringUntil('\n') != "OK\r")
             {
                 return false;

@@ -16,9 +16,14 @@
 #pragma once
 
 #include <Udon/Traits/Concept.hpp>
+#include <Udon/Common/Platform.hpp>
 
 #ifndef F
 #    define F(x) (x)
+#endif
+
+#if (UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE) && UDON_PLATFORM_HAS_STL
+#    include <iostream>
 #endif
 
 namespace Udon
@@ -75,7 +80,7 @@ namespace Udon
 #elif defined(SIV3D_INCLUDED)
             s3d::Print.write(rhs);
             s3d::Print.write(gap);
-#else
+#elif (UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE) && UDON_PLATFORM_HAS_STL
             std::cout << rhs << gap << std::flush;
 #endif
         }
@@ -103,7 +108,9 @@ namespace Udon
                                                          std::nullptr_t>::type = nullptr>
         void print(AccessibleAndNotShowable&& rhs)
         {
-            Udon::Traits::InvokeAccessor(*this, const_cast<AccessibleAndNotShowable&>(rhs));
+            Udon::Traits::InvokeAccessor(
+                const_cast<MemberViewer&>(*this),
+                const_cast<Traits::RemoveModifier_t<AccessibleAndNotShowable>&>(rhs));
         }
     };
 

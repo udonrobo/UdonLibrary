@@ -56,7 +56,7 @@ namespace Udon
         Udon::StaticVector<TxNodePtr> txNodes;
         Udon::StaticVector<RxNodePtr> rxNodes;
 
-        Udon::RingBuffer<can_frame, 256> txBuffer;
+        Udon::StaticVector<can_frame, 1024> rxBuffer;
 
         uint32_t transmitUs = 0;
         uint32_t receiveMs  = 0;
@@ -121,9 +121,14 @@ namespace Udon
                 pinMode(intPin, INPUT_PULLDOWN);
                 attachInterruptParam(
                     digitalPinToInterrupt(intPin),
-                    [](void* self)
+                    [](void* p)
                     {
-                        static_cast<CanBusSpi*>(self)->onReceive();
+                        auto      self = static_cast<CanBusSpi*>(p);
+                        can_frame msg;
+                        if (self->bus.readMessage(&msg) == MCP2515::ERROR_OK)
+                        {
+                            self->rxBuffer.push_back(msg);    // 受信データ追加
+                        }
                     },
                     LOW,
                     this);
@@ -176,6 +181,7 @@ namespace Udon
         /// @param transmitIntervalUs 送信間隔 [us]
         void update(uint32_t transmitIntervalUs = 5000)
         {
+            onReceive();
             if (txNodes && micros() - transmitUs >= transmitIntervalUs)
             {
                 onTransmit();
@@ -186,48 +192,44 @@ namespace Udon
         /// @brief バスの状態を表示する
         void show()
         {
-            Serial.print("Bus: CAN 2.0B\n");
+            Serial.print("CanBusSpiPico\n");
 
-            Serial.print("\tTX Node\n");
             for (auto&& node : txNodes)
             {
-                Serial.printf("\t\tid: 0x%-3x length:%3zu byte", static_cast<int>(node->id), node->length);
-                if (node->length > SingleFrameSize)
-                {
-                    Serial.print(" (multi frame)");
-                }
-                else
-                {
-                    Serial.print(" (single frame)");
-                }
+                Serial.print("\tTX  ");
 
-                Serial.print("  data: ");
+                Serial.printf("0x%03x ", static_cast<int>(node->id));
+
+                Serial.printf("%2zu byte  ", node->length);
+
+                Serial.print("[");
                 for (size_t i = 0; i < node->length; ++i)
                 {
                     Serial.printf("%4d", node->data[i]);
                 }
+                Serial.print(" ]  ");
+
+                Serial.print(node->length > SingleFrameSize ? "(multi frame)" : "(single frame)");
 
                 Serial.println();
             }
 
-            Serial.print("\tRX Node\n");
             for (auto&& rxNode : rxNodes)
             {
-                Serial.printf("\t\tid: 0x%-3x length:%3zu byte", static_cast<int>(rxNode.node->id), rxNode.node->length);
-                if (rxNode.node->length > SingleFrameSize)
-                {
-                    Serial.print(" (multi frame)");
-                }
-                else
-                {
-                    Serial.print(" (single frame)");
-                }
+                Serial.print("\tRX  ");
 
-                Serial.print("  data: ");
+                Serial.printf("0x%03x ", static_cast<int>(rxNode.node->id));
+
+                Serial.printf("%2zu byte  ", rxNode.node->length);
+
+                Serial.print("[");
                 for (size_t i = 0; i < rxNode.node->length; ++i)
                 {
                     Serial.printf("%4d", rxNode.node->data[i]);
                 }
+                Serial.print(" ]  ");
+
+                Serial.print(rxNode.node->length > SingleFrameSize ? "(multi frame)" : "(single frame)");
 
                 Serial.println();
             }
@@ -268,43 +270,40 @@ namespace Udon
         /// @brief 受信割り込み
         void onReceive()
         {
-            // 受信データ取得
-            can_frame msg;
-            if (bus.readMessage(&msg) != MCP2515::ERROR_OK)
+            for (auto&& msg : rxBuffer)
             {
-                return;
-            }
-
-            // IDに対応する受信ノードを探す
-            auto rxNode = std::find_if(rxNodes.begin(), rxNodes.end(), [msg](const RxNodePtr& rx)
-                                       { return rx.node->id == msg.can_id; });
-            if (rxNode == rxNodes.end())
-            {
-                return;
-            }
-
-            // 分割されたフレームを結合(マルチフレームの場合)
-            Udon::Detail::Unpacketize({ msg.data }, { rxNode->node->data, rxNode->node->length }, SingleFrameSize);
-
-            // 登録されている受信クラスのコールバック関数を呼ぶ
-            // 最終フレームの到達時にコールバックを呼ぶため、受信中(完全に受信しきっていないとき)にデシリアライズすることを防いでいる。
-            if (rxNode->node->length > SingleFrameSize)
-            {
-                // マルチフレーム
-                const auto frameCount = std::ceil(static_cast<double>(rxNode->node->length) / SingleFrameSize - 1 /*index*/);
-
-                if (msg.data[0] == frameCount)
+                // IDに対応する受信ノードを探す
+                auto rxNode = std::find_if(rxNodes.begin(), rxNodes.end(), [msg](const RxNodePtr& rx)
+                                           { return rx.node->id == msg.can_id; });
+                if (rxNode == rxNodes.end())
                 {
+                    return;
+                }
+
+                // 分割されたフレームを結合(マルチフレームの場合)
+                Udon::Detail::Unpacketize({ msg.data }, { rxNode->node->data, rxNode->node->length }, SingleFrameSize);
+
+                // 登録されている受信クラスのコールバック関数を呼ぶ
+                // 最終フレームの到達時にコールバックを呼ぶため、受信中(完全に受信しきっていないとき)にデシリアライズすることを防いでいる。
+                if (rxNode->node->length > SingleFrameSize)
+                {
+                    // マルチフレーム
+                    const auto frameCount = std::ceil(static_cast<double>(rxNode->node->length) / SingleFrameSize - 1 /*index*/);
+
+                    if (msg.data[0] == frameCount)
+                    {
+                        rxNode->callback();
+                    }
+                }
+                else
+                {
+                    // シングルフレーム
                     rxNode->callback();
                 }
-            }
-            else
-            {
-                // シングルフレーム
-                rxNode->callback();
-            }
 
-            receiveMs = rxNode->node->transmitMs = millis();
+                receiveMs = rxNode->node->transmitMs = millis();
+            }
+            rxBuffer.clear();
         }
         void onTransmit()
         {

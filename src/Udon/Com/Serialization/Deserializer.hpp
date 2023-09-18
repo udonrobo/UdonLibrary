@@ -24,11 +24,11 @@
 #include <limits.h>
 
 #include <Udon/Algorithm/CRC.hpp>
-#include <Udon/Algorithm/Endian.hpp>
 #include <Udon/Algorithm/Bit.hpp>
 #include <Udon/Stl/Optional.hpp>
 #include <Udon/Types/Float.hpp>
 #include <Udon/Traits/Accessible.hpp>
+#include <Udon/Common/Platform.hpp>
 
 namespace Udon
 {
@@ -59,8 +59,8 @@ namespace Udon
             {
                 return;
             }
-
-#ifdef UDON_BIG_ENDIAN
+            
+#if UDON_PLATFORM_ENDIANNESS == UDON_PLATFORM_BIG_ENDIAN
             std::reverse(buffer.begin(), buffer.end() - Udon::CRC8_SIZE);
 #endif
         }
@@ -146,16 +146,20 @@ namespace Udon
             constexpr auto size = sizeof(T);
 
             // 逆シリアル化されたオブジェクトをバッファから抽出
-#if defined(UDON_LITTLE_ENDIAN)
+#if UDON_PLATFORM_ENDIANNESS == UDON_PLATFORM_LITTLE_ENDIAN
+
             std::copy(
                 buffer.cbegin() + popIndex,
                 buffer.cbegin() + popIndex + size,
                 reinterpret_cast<uint8_t*>(&unpacked));
-#elif defined(UDON_BIG_ENDIAN)
+
+#elif UDON_PLATFORM_ENDIANNESS == UDON_PLATFORM_BIG_ENDIAN
+
             std::copy(
                 buffer.crbegin() + popIndex,
                 buffer.crbegin() + popIndex + size,
                 reinterpret_cast<uint8_t*>(&retval));
+
 #endif
 
             // 抽出したオブジェクトのバイト数分インデックスを進める
