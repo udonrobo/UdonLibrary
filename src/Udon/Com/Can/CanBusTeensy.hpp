@@ -170,46 +170,42 @@ namespace Udon
         {
             Serial.print("CanBusTeensy\n");
 
-            Serial.print("\tTX Node\n");
             for (auto&& node : txNodes)
             {
-                Serial.printf("\t\tid: 0x%-3x length:%3zu byte", static_cast<int>(node->id), node->length);
-                if (node->length > SingleFrameSize)
-                {
-                    Serial.print(" (multi frame)");
-                }
-                else
-                {
-                    Serial.print(" (single frame)");
-                }
+                Serial.print("\tTX  ");
 
-                Serial.print("  data: ");
+                Serial.printf("0x%03x ", static_cast<int>(node->id));
+
+                Serial.printf("%2zu byte  ", node->length);
+
+                Serial.print("[");
                 for (size_t i = 0; i < node->length; ++i)
                 {
                     Serial.printf("%4d", node->data[i]);
                 }
+                Serial.print(" ]  ");
+
+                Serial.print(node->length > SingleFrameSize ? "(multi frame)" : "(single frame)");
 
                 Serial.println();
             }
 
-            Serial.print("\tRX Node\n");
             for (auto&& rxNode : rxNodes)
             {
-                Serial.printf("\t\tid: 0x%-3x length:%3zu byte", static_cast<int>(rxNode.node->id), rxNode.node->length);
-                if (rxNode.node->length > SingleFrameSize)
-                {
-                    Serial.print(" (multi frame)");
-                }
-                else
-                {
-                    Serial.print(" (single frame)");
-                }
+                Serial.print("\tRX  ");
 
-                Serial.print("  data: ");
+                Serial.printf("0x%03x ", static_cast<int>(rxNode.node->id));
+
+                Serial.printf("%2zu byte  ", rxNode.node->length);
+
+                Serial.print("[");
                 for (size_t i = 0; i < rxNode.node->length; ++i)
                 {
                     Serial.printf("%4d", rxNode.node->data[i]);
                 }
+                Serial.print(" ]  ");
+
+                Serial.print(rxNode.node->length > SingleFrameSize ? "(multi frame)" : "(single frame)");
 
                 Serial.println();
             }
