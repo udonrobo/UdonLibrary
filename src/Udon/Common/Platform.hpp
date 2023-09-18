@@ -1,4 +1,4 @@
-//-------------------------------------------------------------------
+﻿//-------------------------------------------------------------------
 //
 //    UdonLibrary
 //
@@ -21,7 +21,6 @@
 //     UDON_PLATFORM_ENDIANNESS         (UDON_PLATFORM_LITTLE_ENDIAN or UDON_PLATFORM_BIG_ENDIAN)
 //
 //-------------------------------------------------------------------
-
 
 #pragma once
 
@@ -79,6 +78,8 @@
 //-------------------------------------------------------------------
 
 #elif defined(_MSC_VER)
+
+#    pragma warning(disable : 4819)
 
 #    define UDON_PLATFORM_HAS_STL __has_include(<vector>)
 #    define UDON_PLATFORM_HAS_SERIAL_PRINTF 0
