@@ -92,9 +92,9 @@ namespace Udon
         void show(char gap = '\t') const
         {
             Udon::Printf("0x%03x ", node.id);
-            if (const auto message = getMessage())
+            if (const auto m = getMessage())
             {
-                Udon::Show(*message, gap);
+                Udon::Show(*m, gap);
             }
             else
             {
