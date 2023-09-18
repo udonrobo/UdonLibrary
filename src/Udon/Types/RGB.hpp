@@ -18,12 +18,21 @@
 #include "Forward/RGBFwd.hpp"
 #include "Forward/HSVFwd.hpp"
 
+#ifdef _MSC_VER
+#    pragma warning(push)
+#    pragma warning(disable : 26495)
+#endif
+
 /// @brief HSV色空間からRGB色空間への変換
 /// @param rgb RGB色空間
 inline Udon::HSV::HSV(const RGB& rgb) noexcept
     : HSV(rgb.toHSV())
 {
 }
+
+#ifdef _MSC_VER
+#    pragma warning(pop)
+#endif
 
 /// @brief RGB色空間からHSV色空間への変換
 /// @return HSV色空間
