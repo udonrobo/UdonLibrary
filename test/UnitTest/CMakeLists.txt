@@ -34,3 +34,4 @@ set(UDON_LIBRARY_DIR ${ABSOLUTE_UDON_LIBRARY_DIR} CACHE STRING "UdonLibrary incl
 # Add test directory
 add_subdirectory(./Serialization)
 add_subdirectory(./Types)
+add_subdirectory(./Common)
