@@ -184,8 +184,8 @@ namespace Udon
 
             // データ送信
             {
-                Udon::SerialPrintf(uart, "TXDU %04d ", *nodeNum);
-                // Udon::SerialPrintf(uart, "TXDA ");
+                Udon::Printf(uart, "TXDU %04d ", *nodeNum);
+                // Udon::Printf(uart, "TXDA ");
 
                 Udon::BitPack(txNode->data, txNode->data + txNode->size, [this](uint8_t data)
                               { uart.write(data); });
