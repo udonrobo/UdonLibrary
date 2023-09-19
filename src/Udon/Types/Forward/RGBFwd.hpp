@@ -60,9 +60,9 @@ namespace Udon
         /// @brief コンストラクタ
         /// @param rgb RGB色空間
         RGB(uint32_t rgb) noexcept
-            : r(rgb >> 16)
-            , g(rgb >> 8)
-            , b(rgb >> 0)
+            : r(static_cast<value_type>(rgb >> 16))
+            , g(static_cast<value_type>(rgb >>  8))
+            , b(static_cast<value_type>(rgb >>  0))
         {
         }
 

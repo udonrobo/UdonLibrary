@@ -25,10 +25,10 @@
 #include <limits.h>
 
 #include <Udon/Algorithm/CRC.hpp>
-#include <Udon/Algorithm/Endian.hpp>
 #include <Udon/Algorithm/Bit.hpp>
 #include <Udon/Types/Float.hpp>
 #include <Udon/Traits/Accessible.hpp>
+#include <Udon/Common/Platform.hpp>
 
 namespace Udon
 {
@@ -56,13 +56,13 @@ namespace Udon
         {
             argumentUnpack(std::forward<Args>(args)...);
         }
-        
+
         /// @brief バッファを取得する
         /// @remark 取得後の内部バッファは無効になります
         std::vector<uint8_t> flush()
         {
 
-#ifdef UDON_BIG_ENDIAN
+#if UDON_PLATFORM_ENDIANNESS == UDON_PLATFORM_BIG_ENDIAN
             std::reverse(buffer.begin(), buffer.end() - Udon::CRC8_SIZE);
 #endif
 
@@ -138,16 +138,20 @@ namespace Udon
             constexpr auto size = sizeof(T);
 
             // バッファの後方に挿入
-#if defined(UDON_LITTLE_ENDIAN)
+#if UDON_PLATFORM_ENDIANNESS == UDON_PLATFORM_LITTLE_ENDIAN
+
             std::copy(
                 reinterpret_cast<const uint8_t*>(&rhs),
                 reinterpret_cast<const uint8_t*>(&rhs) + size,
                 buffer.begin() + insertIndex);
-#elif defined(UDON_BIG_ENDIAN)
+
+#elif UDON_PLATFORM_ENDIANNESS == UDON_PLATFORM_BIG_ENDIAN
+
             std::copy(
                 reinterpret_cast<const uint8_t*>(&rhs),
                 reinterpret_cast<const uint8_t*>(&rhs) + size,
                 buffer.rbegin() + insertIndex);
+
 #endif
 
             // 次に挿入するインデックスを更新

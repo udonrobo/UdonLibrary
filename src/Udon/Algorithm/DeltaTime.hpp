@@ -15,7 +15,7 @@
 
 #pragma once
 
-#ifdef ARDUINO
+#include <Udon/Common/Time.hpp>
 
 namespace Udon
 {
@@ -39,7 +39,7 @@ namespace Udon
         DeltaTime& update()
         {
             previousMs = currentMs;
-            currentMs  = millis();
+            currentMs = Millis();
             return *this;
         }
 
@@ -58,5 +58,3 @@ namespace Udon
         }
     };
 }    // namespace Udon
-
-#endif    // ARDUINO

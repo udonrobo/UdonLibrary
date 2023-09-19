@@ -60,9 +60,9 @@ namespace Udon
         /// @brief コンストラクタ
         /// @param hsv HSV色空間
         HSV(uint32_t hsv) noexcept
-            : h(hsv >> 16)
-            , s(hsv >> 8)
-            , v(hsv >> 0)
+            : h(static_cast<value_type>(hsv >> 16))
+            , s(static_cast<value_type>(hsv >>  8))
+            , v(static_cast<value_type>(hsv >>  0))
         {
         }
 
