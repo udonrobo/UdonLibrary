@@ -174,7 +174,7 @@ namespace Udon
                 return false;
             }
 
-            const int sendTimeMs = Udon::Max(2, Udon::Ceil(4.56 + txNode->size * 0.08));
+            const int sendTimeMs = 4.56 + txNode->size * 0.08 + 1.00;
             // 連続で送信する場合、52ms送信休止時間が必要 (説明書 ７－３（２）送信休止時間 参照)
 
             if (millis() - txNode->transmitMs < (unsigned long)sendTimeMs)
@@ -185,6 +185,7 @@ namespace Udon
             // データ送信
             {
                 Udon::Printf(uart, "TXDU %04d ", *nodeNum);
+                // Udon::Printf(uart, "TXDA ");
 
                 Udon::BitPack(txNode->data, txNode->data + txNode->size, [this](uint8_t data)
                               { uart.write(data); });
@@ -346,7 +347,7 @@ namespace Udon
     inline bool Im920s::begin(uint8_t channel)
     {
         // ボーレート設定
-        uart.begin(115200);
+        uart.begin(460800);
 
         if (busyPin)
         {
