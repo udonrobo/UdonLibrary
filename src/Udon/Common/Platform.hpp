@@ -81,7 +81,6 @@
 
 #    pragma warning(disable : 4819)
 #    define UDON_PLATFORM_OUTPUT_STREAM UDON_PLATFORM_OUTPUT_CONSOLE
-#    define UDON_PLATFORM_HAS_SERIAL_PRINTF 0
 
 //-------------------------------------------------------------------
 //
@@ -91,7 +90,6 @@
 
 #elif defined(__GNUC__)
 #    define UDON_PLATFORM_OUTPUT_STREAM UDON_PLATFORM_OUTPUT_CONSOLE
-#    define UDON_PLATFORM_HAS_SERIAL_PRINTF 0
 
 //-------------------------------------------------------------------
 //
@@ -144,12 +142,14 @@
 #    error "UDON_PLATFORM_HAS_STL is not defined!"
 #endif
 
-#ifndef UDON_PLATFORM_HAS_SERIAL_PRINTF
-#    error "UDON_PLATFORM_HAS_SERIAL_PRINTF is not defined!"
-#endif
-
 #ifndef UDON_PLATFORM_OUTPUT_STREAM
 #    error "UDON_PLATFORM_OUTPUT_STREAM is not defined!"
+#endif
+
+#if UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_SERIAL
+#    ifndef UDON_PLATFORM_HAS_SERIAL_PRINTF
+#        error "UDON_PLATFORM_HAS_SERIAL_PRINTF is not defined!"
+#    endif
 #endif
 
 #ifndef UDON_PLATFORM_ENDIANNESS
