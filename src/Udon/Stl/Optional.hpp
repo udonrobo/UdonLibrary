@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <Udon/Utility/Show.hpp>
+#include <Udon/Common/Show.hpp>
 
 namespace Udon
 {

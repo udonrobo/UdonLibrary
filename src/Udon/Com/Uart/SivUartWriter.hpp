@@ -21,7 +21,7 @@
 
 #include <Siv3D/Serial.hpp>
 #include <Udon/Com/Serialization.hpp>
-#include <Udon/Utility/Show.hpp>
+#include <Udon/Common/Show.hpp>
 
 namespace Udon
 {

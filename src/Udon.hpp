@@ -217,7 +217,7 @@
 //-------------------------------------------------------------------
 
 // 汎用表示
-#include "Udon/Utility/Show.hpp"
+#include "Udon/Common/Show.hpp"
 
 // フォーマット表示
-#include "Udon/Utility/Printf.hpp"
+#include "Udon/Common/Printf.hpp"

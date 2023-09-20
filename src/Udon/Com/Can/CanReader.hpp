@@ -19,10 +19,10 @@
 #include "CanNode.hpp"
 
 #include <Udon/Com/Serialization.hpp>
-#include <Udon/Utility/Show.hpp>
+#include <Udon/Common/Show.hpp>
 #include <Udon/Traits/Parsable.hpp>
 #include <Udon/Common/Time.hpp>
-#include <Udon/Utility/Printf.hpp>
+#include <Udon/Common/Printf.hpp>
 
 namespace Udon
 {
