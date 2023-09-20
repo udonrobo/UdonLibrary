@@ -16,7 +16,7 @@
 #pragma once
 
 #include <Udon/Types/Euler.hpp>
-
+#include <Udon/Types/Quaternion.hpp>
 namespace Udon
 {
 
