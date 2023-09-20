@@ -24,7 +24,7 @@
 
 #include <Udon/Algorithm/BitPack.hpp>
 #include <Udon/Stl/Optional.hpp>
-#include <Udon/Utility/Printf.hpp>
+#include <Udon/Common/Printf.hpp>
 
 namespace Udon
 {

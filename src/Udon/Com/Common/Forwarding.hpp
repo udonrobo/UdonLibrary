@@ -18,7 +18,7 @@
 
 #pragma once
 
-#include <Udon/Utility/Show.hpp>
+#include <Udon/Common/Show.hpp>
 #include <Udon/Traits/HasMemberFunction.hpp>
 #include <Udon/Traits/IsReader.hpp>
 #include <Udon/Traits/IsWriter.hpp>
