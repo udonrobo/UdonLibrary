@@ -246,7 +246,8 @@ namespace Udon
         /// @brief 受信処理
         void onReceive()
         {
-            const auto millis = millis();
+            const auto ms = millis();
+            
             for (auto&& msg : rxBuffer)
             {
                 // IDに対応する受信ノードを探す
@@ -282,7 +283,7 @@ namespace Udon
                     rxNode->callback();
                 }
 
-                receiveMs = rxNode->node->transmitMs = millis;
+                receiveMs = rxNode->node->transmitMs = ms;
             }
             rxBuffer.clear();
         }
@@ -290,7 +291,8 @@ namespace Udon
         /// @brief 送信処理
         void onTransmit()
         {
-            const auto millis = millis();
+            const auto ms = millis();
+
             for (auto&& node : txNodes)
             {
                 CAN_message_t msg;
@@ -305,7 +307,7 @@ namespace Udon
                                             delayMicroseconds(200);
                                         });
 
-                node->transmitMs = millis;
+                node->transmitMs = ms;
             }
         }
     };
