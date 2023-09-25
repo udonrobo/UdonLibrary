@@ -177,7 +177,7 @@ namespace Udon
                 Serial.printf("0x%03x ", static_cast<int>(node->id));
 
                 Serial.printf("%2zu byte  ", node->length);
-
+                
                 Serial.print("[");
                 for (size_t i = 0; i < node->length; ++i)
                 {
@@ -197,7 +197,7 @@ namespace Udon
                 Serial.printf("0x%03x ", static_cast<int>(rxNode.node->id));
 
                 Serial.printf("%2zu byte  ", rxNode.node->length);
-
+                
                 Serial.print("[");
                 for (size_t i = 0; i < rxNode.node->length; ++i)
                 {
@@ -243,9 +243,11 @@ namespace Udon
         }
 
     private:
-        /// @brief 受信割り込み
+        /// @brief 受信処理
         void onReceive()
         {
+            const auto ms = millis();
+            
             for (auto&& msg : rxBuffer)
             {
                 // IDに対応する受信ノードを探す
@@ -281,7 +283,7 @@ namespace Udon
                     rxNode->callback();
                 }
 
-                receiveMs = rxNode->node->transmitMs = millis();
+                receiveMs = rxNode->node->transmitMs = ms;
             }
             rxBuffer.clear();
         }
@@ -289,6 +291,8 @@ namespace Udon
         /// @brief 送信処理
         void onTransmit()
         {
+            const auto ms = millis();
+
             for (auto&& node : txNodes)
             {
                 CAN_message_t msg;
@@ -303,7 +307,7 @@ namespace Udon
                                             delayMicroseconds(200);
                                         });
 
-                node->transmitMs = millis();
+                node->transmitMs = ms;
             }
         }
     };

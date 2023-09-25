@@ -5,6 +5,7 @@
 
 #include "VoidT.hpp"
 #include "AlwaysFalse.hpp"
+#include "RemoveModifier.hpp"
 
 namespace Udon
 {
@@ -25,7 +26,7 @@ namespace Udon
         };
         template <typename T>
         struct HasMemberFunctionAccessor<T, typename std::enable_if<std::is_same<
-                                                decltype(std::declval<T>().accessor(std::declval<Detail::DummyAccessor&>())), void>::value>::type>
+                                                decltype(std::declval<RemoveModifier_t<T>>().accessor(std::declval<Detail::DummyAccessor&>())), void>::value>::type>
             : std::true_type
         {
         };
@@ -38,7 +39,7 @@ namespace Udon
         };
         template <typename T>
         struct AccessorInvocable<T, typename std::enable_if<std::is_same<
-                                        decltype(Accessor(std::declval<Detail::DummyAccessor&>(), std::declval<T&>())), void>::value>::type>
+                                        decltype(Accessor(std::declval<Detail::DummyAccessor&>(), std::declval<RemoveModifier_t<T>&>())), void>::value>::type>
             : std::true_type
         {
         };

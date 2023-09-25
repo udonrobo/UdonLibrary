@@ -97,6 +97,17 @@ namespace Udon
             return power;
         }
 
+        /**     更新、操作量の取得
+                @param  controlValue    制御量
+                @param  targetValue     目標値
+                @return 操作量
+        */
+        double operator()(double controlValue, double targetValue) noexcept
+        {
+            update(controlValue, targetValue);
+            return getPower();
+        }
+
         /**     操作量のクリア
                 内部の量をすべて0にする。
         */

@@ -23,6 +23,7 @@
 #include <Udon/Traits/HasMemberFunction.hpp>
 
 #include <Udon/Traits/IsReader.hpp>
+#include <Udon/Common/Printf.hpp>
 
 namespace Udon
 {
@@ -97,12 +98,15 @@ namespace Udon
             return count - offsetCount;
         }
 
+#ifdef ARDUINO
         /// @brief カウント値をシリアルポートに出力
         void show() const
         {
             Serial.print(getCount());
             Serial.print('\t');
         }
+#endif
+
     };
 
 }    // namespace Udon

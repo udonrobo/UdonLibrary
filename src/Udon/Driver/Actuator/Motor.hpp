@@ -28,7 +28,7 @@ namespace Udon
         const uint8_t pinA;
         const uint8_t pinP;
 
-        Udon::MovingAverage<30> movingAverage;
+        Udon::MovingAverage<50> movingAverage;
 
     public:
         Motor2(const uint8_t pinA, const uint8_t pinP)
@@ -69,7 +69,7 @@ namespace Udon
         const uint8_t pinB;
         const uint8_t pinP;
 
-        Udon::MovingAverage<30> movingAverage;
+        Udon::MovingAverage<50> movingAverage;
 
     public:
         Motor3(const uint8_t pinA, const uint8_t pinB, const uint8_t pinP)

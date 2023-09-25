@@ -28,3 +28,4 @@
 #include "Message/Solenoid.hpp"
 #include "Message/Stepping.hpp"
 #include "Message/Switch.hpp"
+#include "Message/DistanceSensor.hpp"
