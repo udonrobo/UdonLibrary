@@ -43,11 +43,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install Homebrew
-        run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
       - name: Install Arduino CLI
-        run: brew update && brew install arduino-cli
+        run: curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
 
       - name: Install Board
         run: |
