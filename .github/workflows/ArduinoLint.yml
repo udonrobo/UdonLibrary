@@ -44,7 +44,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install Arduino CLI
-        run: curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=${HOME}/.local/bin sh
+        run: curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR="${HOME}/.local/bin" sh
 
       - name: Install Board
         run: |
