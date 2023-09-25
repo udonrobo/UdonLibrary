@@ -51,8 +51,7 @@ jobs:
           curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
           echo "./bin" >> $GITHUB_PATH
 
-      - name: Install Board
-        run: |
+      - name: Install board
           arduino-cli config init
           arduino-cli config set library.enable_unsafe_install true
           if [ -n "${{ matrix.board.url }}" ]; then
@@ -61,12 +60,12 @@ jobs:
           arduino-cli core update-index
           arduino-cli core install ${{ matrix.board.platform }}
 
-      - name: Clone Libraries
-        working-directory: 
+      - name: Clone libraries
         run: |
-          mkdir -p ./Arduino/libraries
-          cd ./Arduino/libraries
-          ./../../setup.sh
+          arduino-cli lib install --git-url https://github.com/udonrobo/UdonArduinoSTL.git
+          arduino-cli lib install --git-url https://github.com/adafruit/Adafruit_BusIO.git
+          arduino-cli lib install --git-url https://github.com/adafruit/Adafruit_Sensor.git
+          arduino-cli lib install --git-url https://github.com/adafruit/Adafruit_BNO055.git
 
-      - name: Run Test
+      - name: Run test
         run: arduino-cli compile --library . -b ${{ matrix.board.fqbn }} ./test/ArduinoLint/ArduinoLint.ino
