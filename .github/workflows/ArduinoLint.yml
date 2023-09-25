@@ -47,7 +47,9 @@ jobs:
         run: |
           curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
           echo "./bin" >> $GITHUB_PATH
-
+          arduino-cli config init
+          arduino-cli config set library.enable_unsafe_install true
+        
       - name: Install Board
         run: |
           arduino-cli config add board_manager.additional_urls https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
@@ -59,8 +61,6 @@ jobs:
 
       - name: Clone Other Libraries
         run: |
-          arduino-cli config init
-          arduino-cli config set library.enable_unsafe_install true
           arduino-cli lib install --git-url https://github.com/udonrobo/UdonArduinoSTL.git
           arduino-cli lib install --git-url https://github.com/adafruit/Adafruit_BusIO.git
           arduino-cli lib install --git-url https://github.com/adafruit/Adafruit_Sensor.git
