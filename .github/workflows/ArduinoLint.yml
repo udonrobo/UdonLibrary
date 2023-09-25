@@ -45,7 +45,8 @@ jobs:
 
       - name: Install Arduino CLI
         run: |
-          sudo curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=/usr/bin sh
+          curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+          echo "./bin" >> $GITHUB_PATH
 
       - name: Install Board
         run: |
@@ -54,6 +55,7 @@ jobs:
 
       - name: Clone Other Libraries
         run: |
+          arduino-cli config init
           arduino-cli config set library.enable_unsafe_install true
           arduino-cli lib install --git-url https://github.com/udonrobo/UdonArduinoSTL.git
           arduino-cli lib install --git-url https://github.com/adafruit/Adafruit_BusIO.git
