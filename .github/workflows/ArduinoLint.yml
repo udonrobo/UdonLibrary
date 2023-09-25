@@ -32,7 +32,7 @@ jobs:
     strategy:
       fail-fast: false # all jobs should run
       matrix:
-        include:
+        board:
           - fqbn: arduino:avr:nano
             platform: teensy:avr
           - fqbn: teensy:avr:teensy40
