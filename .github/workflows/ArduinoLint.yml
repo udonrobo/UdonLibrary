@@ -46,12 +46,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup arduino-cli
+      - name: Setup Arduino CLI
         run: |
           curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
           echo "./bin" >> $GITHUB_PATH
-          source ~/.bashrc
 
+      - name: Install Board
+        run: |
           arduino-cli config init
           arduino-cli config set library.enable_unsafe_install true
           if [ -n "${{ matrix.board.url }}" ]; then
@@ -60,9 +61,9 @@ jobs:
           arduino-cli core update-index
           arduino-cli core install ${{ matrix.board.platform }}
 
-      - name: Clone libraries
+      - name: Clone Libraries
         working-directory: Arduino/libraries
         run: setup.sh
 
-      - name: Run test
+      - name: Run Test
         run: arduino-cli compile --library . -b ${{ matrix.board.fqbn }} ./test/ArduinoLint/ArduinoLint.ino
