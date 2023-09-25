@@ -47,6 +47,8 @@ jobs:
         run: |
           curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
           echo "./bin" >> $GITHUB_PATH
+
+      - name: Initialize Arduino CLI
           arduino-cli config init
           arduino-cli config set library.enable_unsafe_install true
         
@@ -59,12 +61,12 @@ jobs:
           arduino-cli core install teensy:avr
           arduino-cli core install rp2040:rp2040
 
-      - name: Clone Other Libraries
+      - name: Clone Libraries
         run: |
           arduino-cli lib install --git-url https://github.com/udonrobo/UdonArduinoSTL.git
           arduino-cli lib install --git-url https://github.com/adafruit/Adafruit_BusIO.git
           arduino-cli lib install --git-url https://github.com/adafruit/Adafruit_Sensor.git
           arduino-cli lib install --git-url https://github.com/adafruit/Adafruit_BNO055.git
 
-      - name: Run Arduino Lint
+      - name: Run Test
         run: arduino-cli compile --library . -b ${{ matrix.board.fqbn }} --warnings all ./test/ArduinoLint/ArduinoLint.ino
