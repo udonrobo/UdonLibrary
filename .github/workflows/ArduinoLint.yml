@@ -52,6 +52,9 @@ jobs:
         run: |
           arduino-cli core update-index --additional-urls https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
           arduino-cli core update-index --additional-urls https://www.pjrc.com/teensy/td_156/package_teensy_index.json
+          arduino-cli core install arduino:avr
+          arduino-cli core install teensy:avr
+          arduino-cli core install rp2040:rp2040
 
       - name: Clone Other Libraries
         run: |
