@@ -36,8 +36,14 @@ jobs:
       matrix:
         board:
           - fqbn: arduino:avr:nano
+          
           - fqbn: teensy:avr:teensy40
+            platforms: |
+              - name: teensy:avr
+              
           - fqbn: rp2040:rp2040:rpipico
+            platforms: |
+              - name: rp2040:rp2040
 
     steps:
       - name: Checkout
@@ -58,9 +64,7 @@ jobs:
           arduino-cli config add board_manager.additional_urls https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
           arduino-cli config add board_manager.additional_urls https://www.pjrc.com/teensy/td_156/package_teensy_index.json
           arduino-cli core update-index
-          arduino-cli core install arduino:avr
-          arduino-cli core install teensy:avr
-          arduino-cli core install rp2040:rp2040
+          arduino-cli core install ${{ matrix.board.platforms }}
 
       - name: Clone Libraries
         run: |
