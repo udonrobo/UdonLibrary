@@ -27,21 +27,24 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-
   ArduinoLint:
-
     runs-on: ubuntu-latest
-
     strategy:
       fail-fast: false # all jobs should run
       matrix:
-        board:
-          - fqbn: arduino:avr:nano
-          - fqbn: teensy:avr:teensy40
-          - fqbn: rp2040:rp2040:rpipico
-        platforms:
-          - name: teensy:avr
-          - name: rp2040:rp2040              
+        - board:
+          - name: Arduino Nano
+            - platform: teensy:avr
+            - fqbn: arduino:avr:nano
+          - name: Teensy 4.0
+            - platform: teensy:avr
+            - fqbn: teensy:avr:teensy40
+            - url: https://www.pjrc.com/teensy/td_156/package_teensy_index.json
+          - name: Raspberry Pi Pico
+            - platform: rp2040:rp2040
+            - fqbn: rp2040:rp2040:rpipico
+            - url: https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+
         library:
           - url: https://github.com/udonrobo/UdonArduinoSTL.git
           - url: https://github.com/adafruit/Adafruit_BusIO.git
@@ -61,16 +64,18 @@ jobs:
         run: |
           arduino-cli config init
           arduino-cli config set library.enable_unsafe_install true
-          arduino-cli config add board_manager.additional_urls https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
-          arduino-cli config add board_manager.additional_urls https://www.pjrc.com/teensy/td_156/package_teensy_index.json
+          arduino-cli config add board_manager.additional_urls ${{ matrix.board.name.url }}
           arduino-cli core update-index
         
       - name: Install Board
-        run: arduino-cli core install ${{ matrix.platforms.name }}
+        run: arduino-cli core install ${{ matrix.board.name.platform }}
 
       - name: Clone Libraries
         run: |
-          arduino-cli lib install --git-url ${{ matrix.library.url }}
+          arduino-cli lib install --git-url https://github.com/udonrobo/UdonArduinoSTL.git
+          arduino-cli lib install --git-url https://github.com/adafruit/Adafruit_BusIO.git
+          arduino-cli lib install --git-url https://github.com/adafruit/Adafruit_Sensor.git
+          arduino-cli lib install --git-url https://github.com/adafruit/Adafruit_BNO055.git
 
       - name: Run Test
-        run: arduino-cli compile --library . -b ${{ matrix.board.fqbn }} --warnings all ./test/ArduinoLint/ArduinoLint.ino
+        run: arduino-cli compile --library . -b ${{ matrix.board.name.fqbn }} --warnings all ./test/ArduinoLint/ArduinoLint.ino
