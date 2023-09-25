@@ -46,7 +46,7 @@ jobs:
       - name: Install Arduino CLI
         run: |
           curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
-          echo "./bin" >> $GITHUB_ENV
+          echo "./bin" >> $GITHUB_PATH
 
       - name: Install Board
         run: |
