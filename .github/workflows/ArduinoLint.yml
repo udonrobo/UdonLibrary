@@ -34,7 +34,7 @@ jobs:
       matrix:
         board:
           - fqbn: arduino:avr:nano
-            platform: teensy:avr
+            platform: arduino:avr
           - fqbn: teensy:avr:teensy40
             platform: teensy:avr
             url: https://www.pjrc.com/teensy/td_156/package_teensy_index.json
