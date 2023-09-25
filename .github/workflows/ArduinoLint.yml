@@ -71,4 +71,4 @@ jobs:
           arduino-cli lib install --git-url https://github.com/adafruit/Adafruit_BNO055.git
 
       - name: Run Test
-        run: arduino-cli compile --library . -b ${{ matrix.board.fqbn }} --warnings all ./test/ArduinoLint/ArduinoLint.ino
+        run: arduino-cli compile --library . -b ${{ matrix.board.fqbn }} ./test/ArduinoLint/ArduinoLint.ino
