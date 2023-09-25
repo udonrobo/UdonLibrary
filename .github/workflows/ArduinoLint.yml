@@ -47,6 +47,7 @@ jobs:
         run: |
           curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
           echo "./bin" >> $GITHUB_PATH
+          echo "ARDUINO_LIBRARY_ENABLE_UNSAFE_INSTALL" >> $GITHUB_PATH
 
       - name: Install Board
         run: |
@@ -55,7 +56,6 @@ jobs:
 
       - name: Clone Other Libraries
         run: |
-          echo "ARDUINO_LIBRARY_ENABLE_UNSAFE_INSTALL" >> $GITHUB_PATH
           arduino-cli lib install --git-url https://github.com/udonrobo/UdonArduinoSTL.git
           arduino-cli lib install --git-url https://github.com/adafruit/Adafruit_BusIO.git
           arduino-cli lib install --git-url https://github.com/adafruit/Adafruit_Sensor.git
