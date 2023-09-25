@@ -42,12 +42,6 @@ jobs:
             platform: rp2040:rp2040
             url: https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
 
-          library:
-            - url: https://github.com/udonrobo/UdonArduinoSTL.git
-            - url: https://github.com/adafruit/Adafruit_BusIO.git
-            - url: https://github.com/adafruit/Adafruit_Sensor.git
-            - url: https://github.com/adafruit/Adafruit_BNO055.git
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
