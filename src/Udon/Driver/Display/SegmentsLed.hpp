@@ -112,6 +112,21 @@ namespace Udon
             // 桁点灯
             digitalWrite(anode.at(digit), LOW);
         }
+
+        void showNan()
+        {
+            for (auto&& pin : anode)
+            {
+                digitalWrite(pin, HIGH);
+            }
+
+            // 中央のLEDのみ点灯させる
+            for (int i = 0; i < 6; ++i)
+            {
+                digitalWrite(cathode.at(i), HIGH);
+            }
+            digitalWrite(cathode.at(6), LOW);
+        }
     };
 
 }    // namespace Udon
