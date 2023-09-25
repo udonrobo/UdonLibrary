@@ -33,16 +33,16 @@ jobs:
       fail-fast: false # all jobs should run
       matrix:
         - board: Arduino Nano
-          - platform: teensy:avr
-          - fqbn: arduino:avr:nano
+          platform: teensy:avr
+          fqbn: arduino:avr:nano
         - board: Teensy 4.0
-          - platform: teensy:avr
-          - fqbn: teensy:avr:teensy40
-          - url: https://www.pjrc.com/teensy/td_156/package_teensy_index.json
+          platform: teensy:avr
+          fqbn: teensy:avr:teensy40
+          url: https://www.pjrc.com/teensy/td_156/package_teensy_index.json
         - board: Raspberry Pi Pico
-          - platform: rp2040:rp2040
-          - fqbn: rp2040:rp2040:rpipico
-          - url: https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+          platform: rp2040:rp2040
+          fqbn: rp2040:rp2040:rpipico
+          url: https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
 
         library:
           - url: https://github.com/udonrobo/UdonArduinoSTL.git
