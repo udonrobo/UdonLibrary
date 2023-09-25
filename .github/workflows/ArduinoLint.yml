@@ -28,66 +28,49 @@ concurrency:
 
 jobs:
 
-  Setup:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Install Arduino CLI
-        run: |
-          curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
-          echo "./bin" >> $GITHUB_PATH
-      - name: Initialize Arduino CLI
-        run: |
-          arduino-cli config init
-          arduino-cli config set library.enable_unsafe_install true
-          arduino-cli config add board_manager.additional_urls https://www.pjrc.com/teensy/td_156/package_teensy_index.json
-          arduino-cli config add board_manager.additional_urls https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
-          arduino-cli core update-index
+  ArduinoLint:
 
-  CloneLibraries:
     runs-on: ubuntu-latest
-    needs: Setup
-    strategy:
-      matrix:
-        library:
-          - url: https://github.com/udonrobo/UdonArduinoSTL.git
-          - url: https://github.com/adafruit/Adafruit_BusIO.git
-          - url: https://github.com/adafruit/Adafruit_Sensor.git
-          - url: https://github.com/adafruit/Adafruit_BNO055.git
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Clone Libraries
-        run: |
-          arduino-cli lib install --git-url ${{ matrix.library.url }}
 
-  InstallBoard:
-    runs-on: ubuntu-latest
-    needs: Setup
     strategy:
-      matrix:
-        board:
-          - name: teensy:avr
-          - name: teensy:avr
-          - name: rp2040:rp2040
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Install Board
-        run: arduino-cli core install ${{ matrix.board.name }}
-
-  Compile:
-    runs-on: ubuntu-latest
-    needs: [Setup, CloneLibraries, InstallBoard]
-    strategy:
+      fail-fast: false # all jobs should run
       matrix:
         board:
           - fqbn: arduino:avr:nano
           - fqbn: teensy:avr:teensy40
           - fqbn: rp2040:rp2040:rpipico
+        platforms:
+          - name: teensy:avr
+          - name: rp2040:rp2040              
+        library:
+          - url: https://github.com/udonrobo/UdonArduinoSTL.git
+          - url: https://github.com/adafruit/Adafruit_BusIO.git
+          - url: https://github.com/adafruit/Adafruit_Sensor.git
+          - url: https://github.com/adafruit/Adafruit_BNO055.git
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Install Arduino CLI
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+          echo "./bin" >> $GITHUB_PATH
+
+      - name: Initialize Arduino CLI
+        run: |
+          arduino-cli config init
+          arduino-cli config set library.enable_unsafe_install true
+          arduino-cli config add board_manager.additional_urls https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+          arduino-cli config add board_manager.additional_urls https://www.pjrc.com/teensy/td_156/package_teensy_index.json
+          arduino-cli core update-index
+        
+      - name: Install Board
+        run: arduino-cli core install ${{ matrix.platforms.name }}
+
+      - name: Clone Libraries
+        run: |
+          arduino-cli lib install --git-url ${{ matrix.library.url }}
+
       - name: Run Test
         run: arduino-cli compile --library . -b ${{ matrix.board.fqbn }} --warnings all ./test/ArduinoLint/ArduinoLint.ino
