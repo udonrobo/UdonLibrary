@@ -62,8 +62,11 @@ jobs:
           arduino-cli core install ${{ matrix.board.platform }}
 
       - name: Clone Libraries
-        working-directory: Arduino/libraries
-        run: setup.sh
+        working-directory: 
+        run: |
+          mkdir -p ./Arduino/libraries
+          cd ./Arduino/libraries
+          ./setup.sh
 
       - name: Run Test
         run: arduino-cli compile --library . -b ${{ matrix.board.fqbn }} ./test/ArduinoLint/ArduinoLint.ino
