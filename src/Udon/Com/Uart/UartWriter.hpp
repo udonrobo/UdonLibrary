@@ -51,7 +51,6 @@ namespace Udon
         }
 
         /// @brief 送信内容を更新
-        /// @details 送信も行う
         /// @param rhs 送信内容
         void setMessage(const Message& rhs)
         {
