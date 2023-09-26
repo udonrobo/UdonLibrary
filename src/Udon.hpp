@@ -126,9 +126,6 @@
 // モーター(基板用)
 #include "Udon/Driver/Actuator/Motor.hpp"
 
-// IMU / 慣性計測装置
-#include "Udon/Driver/Sensor/Imu.hpp"
-
 // BNO055(IMU)
 #include "Udon/Driver/Sensor/BNO055.hpp"
 
