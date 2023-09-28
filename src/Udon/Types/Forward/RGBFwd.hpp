@@ -61,8 +61,8 @@ namespace Udon
         /// @param rgb RGB色空間
         RGB(uint32_t rgb) noexcept
             : r(static_cast<value_type>(rgb >> 16))
-            , g(static_cast<value_type>(rgb >>  8))
-            , b(static_cast<value_type>(rgb >>  0))
+            , g(static_cast<value_type>(rgb >> 8))
+            , b(static_cast<value_type>(rgb >> 0))
         {
         }
 
@@ -74,7 +74,7 @@ namespace Udon
         RGB(const RGB&) = default;
 
         /// @brief コピー代入演算子
-        RGB& operator=(const RGB&) = default;   
+        RGB& operator=(const RGB&) = default;
 
         /// @brief 比較演算子
         constexpr bool operator==(const RGB& rhs) const noexcept
@@ -91,6 +91,13 @@ namespace Udon
         explicit constexpr operator bool() const noexcept
         {
             return r || g || b;
+        }
+
+        /// @brief 27bit値への変換
+        /// @return
+        uint32_t to27bit() const noexcept
+        {
+            return (static_cast<uint32_t>(r) << 16) | (static_cast<uint32_t>(g) << 8) | (static_cast<uint32_t>(b) << 0);
         }
 
         /// @brief HSV色空間に変換
