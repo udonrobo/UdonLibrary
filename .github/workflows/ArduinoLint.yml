@@ -46,7 +46,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup Arduino CLI
+      - name: Install Arduino CLI
         run: |
           curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
           echo "./bin" >> $GITHUB_PATH
@@ -61,7 +61,7 @@ jobs:
           arduino-cli core update-index
           arduino-cli core install ${{ matrix.board.platform }}
 
-      - name: Clone libraries
+      - name: Install libraries
         run: |
           arduino-cli lib install --git-url https://github.com/udonrobo/UdonArduinoSTL.git
           arduino-cli lib install --git-url https://github.com/adafruit/Adafruit_BusIO.git
