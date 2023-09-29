@@ -1,16 +1,12 @@
 # 色空間
 
-## Usage
-
-色空間を表現するには `Udon::RGB` `Udon::HSV` クラスを使用します。
-
-### インクルード
+色空間を表現するには `Udon::RGB`、`Udon::HSV` クラスを使用します。
 
 ```cpp
-#include <Udon/Types/Color.hpp>
+#include <Udon/Types/Color.hpp>  // Udon::RGB Udon::HSV
 ```
 
-### RGB 色空間
+## RGB 色空間
 
 赤緑青 の光の三原色で表現される色空間のことで、次のように定義されています。各要素には 0~255 の数値が入ります。
 
@@ -29,7 +25,7 @@ struct RGB
 const Udon::HSV hsv = rgb.toHSV();
 ```
 
-### HSV 色空間
+## HSV 色空間
 
 色相 (Hue) 彩度(Saturation) 明度(Value) で表現される色空間のことで、次のように定義されています。各要素には 0~255 の数値が入ります。
 
@@ -50,7 +46,7 @@ struct RGB
 const Udon::RGB rgb = hsv.toRGB();
 ```
 
-### お便利な関数
+## その他関数
 
 - `Udon::Rainbow();`
 
