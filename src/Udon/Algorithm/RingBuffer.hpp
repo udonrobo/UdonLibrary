@@ -114,7 +114,6 @@ namespace Udon
             , m_tail{}
             , m_size{}
         {
-            resize(init.size());
             for (auto&& value : init)
             {
                 push(value);
