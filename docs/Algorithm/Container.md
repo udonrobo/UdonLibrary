@@ -31,16 +31,19 @@ Udon::StaticVector<int, 256> vector{ 1, 2, 3, 4 };  // initializer_list から�
 ### 要素の追加、削除
 
 ```cpp
-Udon::StaticVector<int, 256> vector;
-vector.push_back(123);
-vector.push_back(456);
-// vector = { 123, 456 };
-```
-
-```cpp
 Udon::StaticVector<int, 256> vector{ 1, 2, 3, 4 };
+
+vector.push_back(5);
+// vector: { 1, 2, 3, 4, 5    }
+
+vector.push_back(6);
+// vector: { 1, 2, 3, 4, 5, 6 }
+
 vector.pop_back();
-// vector = { 1, 2, 3 };
+// vector: { 1, 2, 3, 4, 5    }
+
+vector.pop_back();
+// vector: { 1, 2, 3, 4       }
 ```
 
 ### イテレーション
@@ -134,10 +137,19 @@ Udon::RingBuffer<int, 256> ring{ 1, 2, 3, 4, 5, 6 };  // initializer_list から
 ### 要素の追加、削除
 
 ```cpp
-Udon::RingBuffer<int, 256> ring{ 1, 2, 3, 4, 5, 6 };  // initializer_list から構築
+Udon::RingBuffer<int, 256> ring{ 1, 2, 3, 4, 5, 6 };
+
 ring.push(7);
+// ring: { 1, 2, 3, 4, 5, 6, 7    }
+
 ring.push(8);
-// ring = { 1, 2, 3, 4, 5, 6, 7, 8 };
+// ring: { 1, 2, 3, 4, 5, 6, 7, 8 }
+
+ring.pop();
+// ring: {    2, 3, 4, 5, 6, 7, 8 }
+
+ring.pop();
+// ring: {       3, 4, 5, 6, 7, 8 }
 ```
 
 ### イテレーション
