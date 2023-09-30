@@ -57,9 +57,9 @@ namespace Udon
             im920.joinRx(node);
         }
 
-        Udon::Optional<Message> getMessage() const
+        Udon::Optional<Message> getMessage(uint32_t timeOut = 700) const
         {
-            if (millis() - node.transmitMs > 700)
+            if (millis() - node.transmitMs > timeOut)
             {
                 return Udon::nullopt;
             }
