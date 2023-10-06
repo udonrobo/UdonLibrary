@@ -106,7 +106,7 @@ namespace Udon
         {
         };
 
-        /// @brief メンバ変数がパース可能であることをコンパイル時に検証する
+        /// @brief メンバ変数がパース可能であるか
         template <typename Head>
         inline constexpr bool IsMemberParsable(const Head&)
         {
