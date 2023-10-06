@@ -68,7 +68,7 @@ namespace Udon
         UDON_CONCEPT_ENUM
         inline constexpr size_t CapacityImpl(Enum)
         {
-            return sizeof(std::underlying_type<Enum>::type) * CHAR_BIT;
+            return sizeof(typename std::underlying_type<Enum>::type) * CHAR_BIT;
         }
 
         /// @brief 組み込み配列型
