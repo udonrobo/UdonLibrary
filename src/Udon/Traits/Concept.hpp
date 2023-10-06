@@ -54,7 +54,7 @@
 
 // begin() 関数を持つ型
 #define UDON_CONCEPT_BEGINNABLE \
-    template <typename HasMemberFuntionBegin, typename std::enable_if<Udon::Traits::HasMemberFuntionBegin<Beginnable>::value, std::nullptr_t>::type = nullptr>
+    template <typename HasMemberFunctionBegin, typename std::enable_if<Udon::Traits::HasMemberFunctionBegin<Beginnable>::value, std::nullptr_t>::type = nullptr>
 
 // update() 関数を持つ型
 #define UDON_CONCEPT_UPDATABLE \
