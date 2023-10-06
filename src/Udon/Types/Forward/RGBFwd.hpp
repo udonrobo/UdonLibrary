@@ -93,10 +93,11 @@ namespace Udon
             return r || g || b;
         }
 
-        /// @brief 27bit値への変換
+        /// @brief 24bit値への変換
         /// @return
-        uint32_t to27bit() const noexcept
+        uint32_t to24bit() const noexcept
         {
+            // Q このような関数はどのような名前が適切ですか？
             return (static_cast<uint32_t>(r) << 16) | (static_cast<uint32_t>(g) << 8) | (static_cast<uint32_t>(b) << 0);
         }
 

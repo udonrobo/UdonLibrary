@@ -42,7 +42,11 @@ namespace Udon
         {
             uint8_t buffer[Size];
             Udon::Pack(message, buffer);
-            serial.write(buffer, Size);
+            for (const auto& byte : buffer)
+            {
+                serial.writeByte(byte);
+			}
+            //serial.write(buffer, Size);
         }
     };
 }    // namespace Udon

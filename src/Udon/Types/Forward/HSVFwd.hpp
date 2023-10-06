@@ -93,9 +93,9 @@ namespace Udon
             return h || s || v;
         }
 
-        /// @brief 27bit値への変換
+        /// @brief 24bit値へ変換
         /// @return 
-        uint32_t to27bit() const noexcept
+        uint32_t to24bit() const noexcept
         {
             return static_cast<uint32_t>(h) << 16 | static_cast<uint32_t>(s) << 8 | static_cast<uint32_t>(v) << 0;
         }

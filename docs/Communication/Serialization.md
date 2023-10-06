@@ -1,5 +1,9 @@
 # シリアライザー
 
+```cpp
+#include <Udon/Com/Serialization.hpp>
+```
+
 オブジェクトのバイト列化、バイト列からオブジェクトへの復元を行います。
 
 > 使用例
@@ -14,9 +18,7 @@
 >     end
 > ```
 
-## Usage
-
-### シリアライズ
+## シリアライズ
 
 シリアライズしたいオブジェクトのデータ構造を構造体、クラスを用いて定義します。`UDON_PARSABLE` マクロにメンバ変数を登録することで、メンバ変数を解析できるようになり、シリアライズできるようになります。
 
@@ -39,7 +41,7 @@ void loop()
 }
 ```
 
-### デシリアライズ
+## デシリアライズ
 
 バイト列をオブジェクトに復元するには `Udon::Unpack<T>(byte[])` を使用します。 `Udon::Unpack` はデシリアライズされたオブジェクトを `Udon::Optional` でラップして返します。
 `Optional`が返ることでデシリアライズできたかどうかの判定ができます。`Optional` は `operator bool()` メンバを持っているため、次のように if 文で判定可能です。
@@ -63,7 +65,7 @@ void loop()
 }
 ```
 
-### 既に定義されている型をシリアライズ、デシリアライズ
+## 既に定義されている型をシリアライズ、デシリアライズ
 
 **クローバル空間** に `Capacity(const T&)` `voidAccessor<Acc>(Acc&, T&)` 関数を次のように定義することで、ライブラリ等で既に定義されている型をシリアライズできます。
 
@@ -91,7 +93,7 @@ void Accessor(Acc& acc, Vec2& rhs)
 
 > `Capacity` は `Udon::CapacityWithChecksum` から呼び出されます。`Udon::CapacityBits(...)` はシリアライズ後のビット数をコンパイル時に取得できる関数です。
 
-### API
+## API
 
 - `Udon::Pack`
 
@@ -146,116 +148,82 @@ void Accessor(Acc& acc, Vec2& rhs)
   uint8_t buffer[Udon::CapacityWithChecksum<Vec2>()];
   ```
 
-- `UDON_PARSABLE(...)`
-
-  メンバ変数を解析出来るようにします。引数に入れられるオブジェクトの型は `整数型` `浮動小数型` `解析可能な型` `これらの配列型` です。
-
-  > 再帰的に解析することができるので次のように書くこともできます。
-  >
-  > ```cpp
-  > struct Double
-  > {
-  >     double value;
-  >     UDON_PARSABLE(value);
-  > };
-  >
-  > struct Vec2
-  > {
-  >     Double x;
-  >     Double y;
-  >     UDON_PARSABLE(x, y);
-  > };
-  > ```
-
 - `Udon::CapacityBits(...)`
 
   オブジェクトをシリアライズした際のバイト列のビットサイズを取得します。(bool 型 を 1bit としてカウントするため)
 
   `Capacity` 関数を外部に定義するときに使用します。引数は可変長引数です。
 
-## Detail
+## 詳細
 
-- `UDON_PARSABLE`
+プリプロセス時、コンパイル時、実行時の各処理の詳細。Vec2 型を例にします。
 
-  `UDON_PARSABLE` はシリアライザがメンバ変数を解析できるようにするためのマクロです。次のように展開されます。
+### プリプロセス時
 
-  ```cpp
-  struct Vec2
-  {
-      double x;
-      double y;
+`UDON_PARSABLE` マクロの展開を行います。
 
-      using Parsable_tag = void;
+`UDON_PARSABLE` 内部で定義されるメンバ関数を使用してメンバ変数の解析を行いシリアライズ処理を行います。
 
-      constexpr size_t capacityBits() const
-      {
-          return Udon::CapacityBits(x, y);
-      }
+```cpp
+struct Vec2
+{
+    double x;
+    double y;
+    UDON_PARSABLE(x, y);
+};
+```
 
-      template <typename Acc>
-      void accessor(Acc& acc)
-      {
-          acc(x, y);
-      };
-  };
-  ```
+↓
 
-  - `capacityBits()`
+```cpp
+struct Vec2
+{
+    double x;
+    double y;
 
-    > `capacityBits()` はシリアライズ後のバイト列のバイトサイズを求める `CapacityWithChecksum` から呼び出されます。
+    constexpr bool parsable() const
+    {
+        return Udon::Traits::IsMemberParsable(x, y);
+    }
 
-  - `accessor()`
+    constexpr size_t capacityBits() const
+    {
+        return Udon::CapacityBits(x, y);
+    }
 
-    > `accessor()` メンバ変数を解析するときに使用します。解析用クラス(ここでは Udon::Serializer)が呼び出します。
-    >
-    > テンプレートパラメータ `Acc` には解析用クラスの型が入ります。
-    >
-    > acc(x, y) とすることで `Udon::Serializer` クラスの可変長 `operator()(...)` が呼ばれ、スカラ型(int, double 等)になるまで再帰的に `operator()()` を呼び出します。このとき、各スカラオブジェクトのシリアル化を行い、`Udon::Serializer` 内部のバッファに挿入していくことでシリアライズを行います。
-    >
-    > 呼び出し例 (Vec2 の場合)
-    >
-    > 1. `Udon::Serializer::operator()(Vec2)`
-    >
-    > 2. `Udon::Serializer::operator()(double, double)`
-    >
-    > 3. `Udon::Serializer::operator()(double)` `x` のシリアル化
-    >
-    > 4. `Udon::Serializer::operator()(double)` `y` のシリアル化
+    template <typename Acc>
+    void accessor(Acc& acc)
+    {
+        acc(x, y);
+    };
+};
+```
 
-- シリアライズ処理順序
+### コンパイル時
 
-  1. `Udon::Pack` 関数を呼び出す
+0. `Udon::Pack<T>` 呼び出し箇所発見
 
-  2. `Udon::Serializer` クラスのオブジェクトが生成される
+1. `Udon::Pack<Vec2>` インスタンス化
 
-  3. `accessor()` を使用してメンバを解析、シリアル化、バッファへ挿入
+2. `Udon::Traits::IsParsable<Vec2>` インスタンス化
 
-  4. バッファを基にチェックサムを求めバッファの末端に挿入
+   1. `parsable()` 関数呼び出し
+   2. `Udon::Traits::IsMemberParsable(x, y)` 関数が引数を展開し解析可能か判定。(再帰的)
 
-  5. シリアル化したデータを`Udon::Pack`が返す
+3. `Udon::CapacityWithChecksum<T>()` 呼び出し箇所発見
 
-- デシリアライズ処理順序
+   1. `capacityBits()` 関数呼び出し
+   2. `Udon::CapacityBits(Args...)` 関数が引数を展開し、シリアライズ後のバイト数を求める。(再帰的)
+   3. 呼び出し箇所定数化
 
-  1. `Udon::Unpack<T>` 関数を呼び出す
+4. `Udon::Serializer` インスタンス化箇所発見
 
-  2. 復元したデータを入れる T 型オブジェクトが作成される
+   1. `accessor<Udon::Serializer>(acc)` インスタンス化
+   2. `Udon::Serializer::operator(Args...)` 呼び出し箇所発見( acc(x, y) )
+   3. `operator(Args...)` へ渡された引数展開
+   4. `Udon::Serializer::serialize<double>` インスタンス化 (x 用)
+   5. `Udon::Serializer::serialize<double>` インスタンス化 (y 用)
 
-  3. `Udon::Deserializer` クラスのオブジェクトが生成される
+### 実行時
 
-  4. チェックサムの整合性チェック -> エラーであれば `Udon::Unpack` が `Udon::nullopt` を返し失敗
-
-  5. `accessor()` を使用してメンバを解析、逆シリアル化、T 型オブジェクトへ代入
-
-  6. シリアル化したデータを`Udon::Unpack`が返す
-
-- 動作仕様
-
-  浮動小数点型はすべて `Udon::Float32_t` にキャストされシリアライズされます
-
-  > アーキテクチャによって浮動小数点のサイズが異なるため
-
-  bool 型オブジェクトは 1 ビットにシリアライズされます。
-
-  エンディアン変換を自動で行います。
-
-  バイト列末端に 1 バイト CRC8 チェックサムを挿入します。
+    todo

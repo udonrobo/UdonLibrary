@@ -167,6 +167,21 @@ namespace Udon
         {
             return difPower;
         }
+
+        double getParamPro() const noexcept
+        {
+            return kPro;
+        }
+
+        double getParamInt() const noexcept
+        {
+            return kInt;
+        }
+
+        double getParamDif() const noexcept
+        {
+            return kDif;
+        }
     };
 
 }    // namespace Udon
