@@ -100,6 +100,13 @@ namespace Udon
             rhs = deserializeArithmetic<Udon::float32_t>();
         }
 
+        /// @brief 列挙型
+        UDON_CONCEPT_ENUM
+            inline void deserialize(Enum& rhs)
+        {
+			rhs = static_cast<Enum>(deserializeArithmetic<typename std::underlying_type<Enum>::type>());
+		}
+
         /// @brief 配列型
         UDON_CONCEPT_ARRAY
         inline void deserialize(Array& rhs)

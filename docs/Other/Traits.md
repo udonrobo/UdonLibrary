@@ -232,7 +232,7 @@ C++20 で導入されたコンセプトのように型制約を記述できる�
 | UDON\_CONCEPT\_ARRAY | Array | 配列型 |
 | UDON\_CONCEPT\_ACCESSIBLE | Accessible | メンバ変数を列挙可能な型 |
 | UDON\_CONCEPT\_CAPACITABLE | Capacitable | シリアライズ後サイズを取得可能な型 |
-| UDON\_CONCEPT\_BEGINNABLE | HasMemberFuntionBegin | `begin` メンバ関数を呼び出し可能な型 |
+| UDON\_CONCEPT\_BEGINNABLE | HasMemberFunctionBegin | `begin` メンバ関数を呼び出し可能な型 |
 | UDON\_CONCEPT\_UPDATABLE | HasMemberFunctionUpdate | `update` メンバ関数を呼び出し可能な型 |
 | UDON\_CONCEPT\_SHOWABLE | HasMemberFunctionShow | `show` メンバ関数を呼び出し可能な型 |
 | UDON\_CONCEPT\_SHOW\_RAWABLE | HasMemberFunctionShowRaw | `showRaw` メンバ関数を呼び出し可能な型 |
