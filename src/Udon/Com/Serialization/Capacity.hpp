@@ -64,6 +64,13 @@ namespace Udon
             return Udon::Traits::InvokeCapacity(std::forward<Capacitable>(obj));
         }
 
+        /// @brief 列挙型
+        UDON_CONCEPT_ENUM
+        inline constexpr size_t CapacityImpl(Enum)
+        {
+            return sizeof(std::underlying_type<Enum>::type) * CHAR_BIT;
+        }
+
         /// @brief 組み込み配列型
         UDON_CONCEPT_ARRAY
         inline constexpr size_t CapacityImpl(const Array& obj)

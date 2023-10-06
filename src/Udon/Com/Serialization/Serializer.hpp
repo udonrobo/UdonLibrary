@@ -114,6 +114,13 @@ namespace Udon
             serializeArithmetic(static_cast<Udon::float32_t>(rhs));
         }
 
+        /// @brief 列挙型
+        UDON_CONCEPT_ENUM
+            inline void serialize(Enum rhs)
+        {
+			serializeArithmetic(static_cast<typename std::underlying_type<Enum>::type>(rhs));
+		}
+
         /// @brief 配列型
         UDON_CONCEPT_ARRAY
         inline void serialize(const Array& rhs)
