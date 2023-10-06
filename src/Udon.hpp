@@ -135,6 +135,9 @@
 // 7セグメントLED
 #include "Udon/Driver/Display/SegmentsLed.hpp"
 
+// LED
+#include "Udon/Driver/Display/Led.hpp"
+
 // Raspberry Pi Pico エンコーダー
 #include "Udon/Driver/Sensor/EncoderPico.hpp"
 
