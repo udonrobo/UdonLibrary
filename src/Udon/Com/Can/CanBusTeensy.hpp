@@ -176,16 +176,16 @@ namespace Udon
 
                 Serial.printf("0x%03x ", static_cast<int>(node->id));
 
-                Serial.printf("%2zu byte  ", node->length);
+                Serial.printf("%2zu byte ", node->length);
+
+                Serial.print(node->length > SingleFrameSize ? "(multi frame) " : "(single frame) ");
                 
                 Serial.print("[");
                 for (size_t i = 0; i < node->length; ++i)
                 {
                     Serial.printf("%4d", node->data[i]);
                 }
-                Serial.print(" ]  ");
-
-                Serial.print(node->length > SingleFrameSize ? "(multi frame)" : "(single frame)");
+                Serial.print(" ]");
 
                 Serial.println();
             }
@@ -196,16 +196,16 @@ namespace Udon
 
                 Serial.printf("0x%03x ", static_cast<int>(rxNode.node->id));
 
-                Serial.printf("%2zu byte  ", rxNode.node->length);
+                Serial.printf("%2zu byte ", rxNode.node->length);
+
+                Serial.print(rxNode.node->length > SingleFrameSize ? "(multi frame) " : "(single frame) ");
                 
                 Serial.print("[");
                 for (size_t i = 0; i < rxNode.node->length; ++i)
                 {
                     Serial.printf("%4d", rxNode.node->data[i]);
                 }
-                Serial.print(" ]  ");
-
-                Serial.print(rxNode.node->length > SingleFrameSize ? "(multi frame)" : "(single frame)");
+                Serial.print(" ]");
 
                 Serial.println();
             }
