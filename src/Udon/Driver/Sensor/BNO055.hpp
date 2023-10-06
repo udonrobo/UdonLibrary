@@ -55,8 +55,9 @@ namespace Udon
         bool begin()
         {
             const auto result = Adafruit_BNO055::begin();
-            update();
-            clear();
+            // update();
+            // delay(500);
+            // clear();
             return result;
         }
 
