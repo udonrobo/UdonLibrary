@@ -80,7 +80,9 @@ void loop()
 
 ## 既に定義されている型のシリアライズ、デシリアライズ
 
-**クローバル空間** に `Capacity(const T&)` `voidAccessor<Acc>(Acc&, T&)` 関数を次のように定義することで、ライブラリ等で既に定義されている型をシリアライズできます。
+> 作成中
+
+<!-- **クローバル空間** に `Capacity(const T&)` `void Accessor<Acc>(Acc&, T&)` 関数を次のように定義することで、ライブラリ等で既に定義されている型をシリアライズできます。
 
 ```cpp
 // ↓ 外部ライブラリ内に定義されている Vec2
@@ -102,7 +104,7 @@ void Accessor(Acc& acc, Vec2& rhs)
 {
     acc(rhs.x, rhs.y);
 };
-```
+``` -->
 
 ## 詳細
 
