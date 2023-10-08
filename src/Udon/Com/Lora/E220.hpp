@@ -13,28 +13,31 @@ namespace Udon
     {
         HardwareSerial& uart;
 
-        LoraNode* txNode;
-        LoraNode* rxNode;
+        uint8_t  channel       = 0;
+        uint16_t targetAddress = 0;
 
-        uint32_t lastWaitUntilCommandAcceptMs;
-
-        Udon::Optional<uint8_t> M0Pin;
-        Udon::Optional<uint8_t> M1Pin;
+        uint8_t                 M0Pin;
+        uint8_t                 M1Pin;
         Udon::Optional<uint8_t> AUXPin;
-        uint8_t                 targetADDH;
-        uint8_t                 targetADDL;
-        uint8_t                 targetChannel;
+
+        LoraNode* txNode = nullptr;
+        LoraNode* rxNode = nullptr;
+
+        uint32_t lastWaitUntilCommandAcceptMs = 0;
 
     public:
-        E220(HardwareSerial& uart, uint8_t M0Pin, uint8_t M1Pin, uint8_t AUXPin, uint8_t targetADDH, uint8_t targetADDL, uint8_t targetChannel)
+        E220(HardwareSerial& uart, uint8_t M0Pin, uint8_t M1Pin)
             : uart(uart)
-            , lastWaitUntilCommandAcceptMs()
+            , M0Pin(M0Pin)
+            , M1Pin(M1Pin)
+            , AUXPin(Udon::nullopt)
+        {
+        }
+        E220(HardwareSerial& uart, uint8_t M0Pin, uint8_t M1Pin, uint8_t AUXPin)
+            : uart(uart)
             , M0Pin(M0Pin)
             , M1Pin(M1Pin)
             , AUXPin(AUXPin)
-            , targetADDH(targetADDH)
-            , targetADDL(targetADDL)
-            , targetChannel(targetChannel)
         {
         }
 
@@ -43,10 +46,10 @@ namespace Udon
         operator bool() const override { return uart && not isTimeout(700); }
 
         /// @brief 通信開始
-        /// @param ADDH 上位アドレス
-        /// @param ADDL 下位アドレス
         /// @param channel チャンネル番号
-        bool begin(uint8_t ADDH, uint8_t ADDL, uint8_t channel);
+        /// @param myAddress 自身のアドレス
+        /// @param targetAddress 送信先のアドレス
+        bool begin(uint8_t channel, uint16_t myAddress, uint16_t targetAddress);
 
         void update();
 
@@ -118,12 +121,12 @@ namespace Udon
 
         bool sendUpdate()
         {
-            //送信休止時間分間隔をあける
+            // 送信休止時間分間隔をあける
             if (millis() - txNode->transmitMs > 50)
             {
-                uart.write(targetADDH);
-                uart.write(targetADDL);
-                uart.write(targetChannel);
+                uart.write((targetAddress >> 8) & 0xFF);    // 上位アドレス
+                uart.write((targetAddress >> 0) & 0xFF);    // 下位アドレス
+                uart.write(channel);
                 Udon::BitPack(txNode->data, txNode->data + txNode->size, [this](uint8_t data)
                               { uart.write(data); });
                 txNode->transmitMs = millis();
@@ -222,23 +225,27 @@ namespace Udon
             }
         }
     };
-    inline bool E220::begin(uint8_t ADDH, uint8_t ADDL, uint8_t channel)
+
+    inline bool E220::begin(uint8_t channel, uint16_t myAddress, uint16_t targetAddress)
     {
-        uart.begin(9600);
-        // パラメータセット時のビットレートは固定されている。
+        this->channel       = channel;
+        this->targetAddress = targetAddress;
+
+        uart.begin(9600);    // パラメータセット時のビットレートは固定されている。
+
         if (AUXPin)
+        {
             pinMode(*AUXPin, INPUT);
-        if (M0Pin)
-            pinMode(*M0Pin, OUTPUT);
-        if (M1Pin)
-            pinMode(*M1Pin, OUTPUT);
+        }
+        pinMode(M0Pin, OUTPUT);
+        pinMode(M1Pin, OUTPUT);
 
         uart.setTimeout(10);
 
         waitUntilCommandAccept();
-        digitalWrite(*M0Pin, HIGH);    // M0をHIGHに設定
-        digitalWrite(*M1Pin, HIGH);    // M1をHIGHに設定
-                                       // configMode パラメータセットモード
+        digitalWrite(M0Pin, HIGH);    // M0をHIGHに設定
+        digitalWrite(M1Pin, HIGH);    // M1をHIGHに設定
+                                      // configMode パラメータセットモード
 
         waitUntilCommandAccept();
         uart.write((uint8_t)0xC1);
@@ -249,6 +256,9 @@ namespace Udon
         uart.read();    // 0xC1
         uart.read();    // 0x00
         uart.read();    // 0x08
+
+        const uint8_t ADDH = (myAddress >> 8) & 0xFF;
+        const uint8_t ADDL = (myAddress >> 0) & 0xFF;
 
         const uint8_t defADDH      = uart.read();    // ADDH
         const uint8_t defADDL      = uart.read();    // ADDL
@@ -308,8 +318,6 @@ namespace Udon
             uart.read();    // 0xC1
             uart.read();    // 0x00
             uart.read();    // 0x01
-            Serial.print("ADDH     :");
-            Serial.println(uart.read(), HEX);
         }
 
         if (ADDL != defADDL)
@@ -323,8 +331,12 @@ namespace Udon
             uart.read();    // 0xC1
             uart.read();    // 0x01
             uart.read();    // 0x01
-            Serial.print("ADDL     :");
-            Serial.println(uart.read(), HEX);
+        }
+
+        if (ADDH != defADDH or ADDL != defADDL)
+        {
+            Serial.print("Address :");
+            Serial.print(myAddress);
         }
 
         if (defRate != 0b11100010)
@@ -390,8 +402,8 @@ namespace Udon
 
         // 設定モードの終了
         waitUntilCommandAccept();
-        digitalWrite(*M0Pin, LOW);
-        digitalWrite(*M1Pin, LOW);
+        digitalWrite(M0Pin, LOW);
+        digitalWrite(M1Pin, LOW);
 
         waitUntilCommandAccept();
         uart.end();
