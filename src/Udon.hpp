@@ -85,6 +85,9 @@
 // IM920
 #include "Udon/Com/Im920.hpp"
 
+// IM920
+#include "Udon/Com/Lora.hpp"
+
 // シリアライズ
 #include "Udon/Com/Serialization.hpp"
 
