@@ -19,10 +19,10 @@ namespace Udon
     /// @brief Loraのインターフェース
     /// @details
     ///     Loraの通信を行うクラスはこのインターフェースを実装する
-    class LLora
+    class ILora
     {
     public:
-        virtual ~LLora() {}
+        virtual ~ILora() {}
 
         /// @brief バスの有効性を取得
         virtual operator bool() const = 0;

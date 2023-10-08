@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "LLora.hpp"
+#include "ILora.hpp"
 
 #include <Udon/Com/Serialization.hpp>
 #include <Udon/Common/Show.hpp>
@@ -18,14 +18,14 @@ namespace Udon
         using MessageType = Message;
 
     private:
-        LLora& lora;
+        ILora& lora;
 
         uint8_t buffer[Size];
 
         LoraNode node;
 
     public:
-        LoraReader(LLora& lora)
+        LoraReader(ILora& lora)
             : lora(lora)
             , buffer()
             , node{ buffer, Size, 0 }

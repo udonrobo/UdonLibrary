@@ -1,6 +1,6 @@
 #pragma once
 
-#include "LLora.hpp"
+#include "ILora.hpp"
 
 #include <Udon/Algorithm/BitPack.hpp>
 #include <Udon/Stl/Optional.hpp>
@@ -9,7 +9,7 @@
 namespace Udon
 {
     class E220
-        : public LLora
+        : public ILora
     {
         HardwareSerial& uart;
 
