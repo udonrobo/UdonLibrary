@@ -118,14 +118,14 @@ namespace Udon
 
         bool sendUpdate()
         {
-            if (millis() - txNode->transmitMs > 40)
+            //送信休止時間分間隔をあける
+            if (millis() - txNode->transmitMs > 50)
             {
                 uart.write(targetADDH);
                 uart.write(targetADDL);
                 uart.write(targetChannel);
                 Udon::BitPack(txNode->data, txNode->data + txNode->size, [this](uint8_t data)
                               { uart.write(data); });
-                uart.write("\r\n");
                 txNode->transmitMs = millis();
             }
             else
@@ -300,7 +300,7 @@ namespace Udon
         if (ADDH != defADDH)
         {
             waitUntilCommandAccept();
-            uart.write((uint8_t)0xC0);
+            uart.write((uint8_t)0xC2);
             uart.write((uint8_t)0x00);
             uart.write((uint8_t)0x01);
             uart.write(ADDH);
@@ -315,7 +315,7 @@ namespace Udon
         if (ADDL != defADDL)
         {
             waitUntilCommandAccept();
-            uart.write((uint8_t)0xC0);
+            uart.write((uint8_t)0xC2);
             uart.write((uint8_t)0x01);
             uart.write((uint8_t)0x01);
             uart.write(ADDL);
@@ -330,7 +330,7 @@ namespace Udon
         if (defRate != 0b11100010)
         {
             waitUntilCommandAccept();
-            uart.write((uint8_t)0xC0);
+            uart.write((uint8_t)0xC2);
             uart.write((uint8_t)0x02);
             uart.write((uint8_t)0x01);
             uart.write((uint8_t)0b11100010);
@@ -345,7 +345,7 @@ namespace Udon
         if (defPower != 0b00000001)
         {
             waitUntilCommandAccept();
-            uart.write((uint8_t)0xC0);
+            uart.write((uint8_t)0xC2);
             uart.write((uint8_t)0x03);
             uart.write((uint8_t)0x01);
             uart.write((uint8_t)0b00000001);
@@ -360,7 +360,7 @@ namespace Udon
         if (channel != defChannel)
         {
             waitUntilCommandAccept();
-            uart.write((uint8_t)0xC0);
+            uart.write((uint8_t)0xC2);
             uart.write((uint8_t)0x04);
             uart.write((uint8_t)0x01);
             uart.write(channel);
@@ -375,7 +375,7 @@ namespace Udon
         if (transMode != 0b01000011)
         {
             waitUntilCommandAccept();
-            uart.write((uint8_t)0xC0);
+            uart.write((uint8_t)0xC2);
             uart.write((uint8_t)0x05);
             uart.write((uint8_t)0x01);
             uart.write((uint8_t)0b01000011);
