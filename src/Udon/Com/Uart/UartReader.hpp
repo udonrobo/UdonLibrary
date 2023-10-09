@@ -37,6 +37,8 @@ namespace Udon
         uint32_t transmitMs;
 
     public:
+        using MessageType = Message;
+        
         UartReader(Stream& uart)
             : uart(uart)
             , buffer()

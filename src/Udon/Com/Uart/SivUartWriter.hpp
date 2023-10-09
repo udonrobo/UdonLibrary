@@ -16,7 +16,6 @@
 //
 //-------------------------------------------------------------------
 
-
 #pragma once
 
 #include <Siv3D/Serial.hpp>
@@ -40,13 +39,10 @@ namespace Udon
 
         void setMessage(const Message& message)
         {
-            uint8_t buffer[Size];
-            Udon::Pack(message, buffer);
-            for (const auto& byte : buffer)
+            if (serial.isOpen())
             {
-                serial.writeByte(byte);
-			}
-            //serial.write(buffer, Size);
+                serial.write(Udon::Pack(message).data(), Size);
+            }
         }
     };
 }    // namespace Udon
