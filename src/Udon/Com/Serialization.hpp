@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include "Serialization/Capacity.hpp"
+#include "Serialization/PackedSize.hpp"
 #include "Serialization/Pack.hpp"
 #include "Serialization/Unpack.hpp"
 

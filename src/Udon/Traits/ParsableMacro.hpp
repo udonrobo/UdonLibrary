@@ -2,7 +2,7 @@
 
 #include "Parsable.hpp"
 
-#include <Udon/Com/Serialization/Capacity.hpp>
+#include <Udon/Com/Serialization/PackedSize.hpp>
 
 /// @brief メンバ変数のパースを可能にする
 /// @param ... パース可能なメンバー変数(,区切り)
