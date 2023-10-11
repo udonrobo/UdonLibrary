@@ -106,7 +106,7 @@ namespace Udon
     /// @param args シリアライズ対象の値
     /// @return シリアライズ後のビット数
     template <typename... Args>
-    inline constexpr size_t CapacityBits(Args&&... args)
+    inline constexpr size_t PackedBitSize(Args&&... args)
     {
         return Detail::CapacityArgsUnpack(std::forward<Args>(args)...);
     }
@@ -118,7 +118,7 @@ namespace Udon
     inline constexpr size_t PackedSize()
     {
         static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");
-        return Udon::Ceil(CapacityBits(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
+        return Udon::Ceil(PackedBitSize(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
     }
 
 }    // namespace Udon

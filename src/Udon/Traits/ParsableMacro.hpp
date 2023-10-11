@@ -32,7 +32,7 @@
     }                                                       \
     constexpr size_t capacityBits() const                   \
     {                                                       \
-        return Udon::CapacityBits(__VA_ARGS__);             \
+        return Udon::PackedBitSize(__VA_ARGS__);             \
     }                                                       \
     template <typename Acc>                                 \
     void accessor(Acc& acc)                                 \
