@@ -38,65 +38,65 @@ namespace Udon
 
         /// @brief bool型
         UDON_CONCEPT_BOOL
-        inline constexpr size_t CapacityImpl(Bool)
+        inline constexpr size_t PackedBitSizeImpl(Bool)
         {
             return 1;
         }
 
         /// @brief 整数型かつbool型でない型
         UDON_CONCEPT_INTEGRAL_NOT_BOOL
-        inline constexpr size_t CapacityImpl(IntegralNotBool)
+        inline constexpr size_t PackedBitSizeImpl(IntegralNotBool)
         {
             return sizeof(IntegralNotBool) * CHAR_BIT;
         }
 
         /// @brief 浮動小数点型
         UDON_CONCEPT_FLOATING_POINT
-        inline constexpr size_t CapacityImpl(FloatingPoint)
+        inline constexpr size_t PackedBitSizeImpl(FloatingPoint)
         {
             return sizeof(Udon::float32_t) * CHAR_BIT;
         }
 
         /// @brief Capacity 関数から呼び出し可能な型
         UDON_CONCEPT_CAPACITABLE
-        inline constexpr size_t CapacityImpl(Capacitable&& obj)
+        inline constexpr size_t PackedBitSizeImpl(Capacitable&& obj)
         {
             return Udon::Traits::InvokeCapacity(std::forward<Capacitable>(obj));
         }
 
         /// @brief 列挙型
         UDON_CONCEPT_ENUM
-        inline constexpr size_t CapacityImpl(Enum)
+        inline constexpr size_t PackedBitSizeImpl(Enum)
         {
             return sizeof(typename std::underlying_type<Enum>::type) * CHAR_BIT;
         }
 
         /// @brief 組み込み配列型
         UDON_CONCEPT_ARRAY
-        inline constexpr size_t CapacityImpl(const Array& obj)
+        inline constexpr size_t PackedBitSizeImpl(const Array& obj)
         {
             // 各要素の容量 * 配列の要素数
-            return CapacityImpl(*obj) * std::extent<Array>::value;
+            return PackedBitSizeImpl(*obj) * std::extent<Array>::value;
         }
 
         /// @brief 可変長引数展開用
-        inline constexpr size_t CapacityArgsUnpack()
+        inline constexpr size_t PackedBitSizeArgsUnpack()
         {
             return 0;
         }
 
         /// @brief 可変長引数展開用
         template <typename T>
-        inline constexpr size_t CapacityArgsUnpack(T&& obj)
+        inline constexpr size_t PackedBitSizeArgsUnpack(T&& obj)
         {
-            return Detail::CapacityImpl(std::forward<T>(obj));
+            return Detail::PackedBitSizeImpl(std::forward<T>(obj));
         }
 
         /// @brief 可変長引数展開用
         template <typename Head, typename... Args>
-        inline constexpr size_t CapacityArgsUnpack(Head&& first, Args&&... args)
+        inline constexpr size_t PackedBitSizeArgsUnpack(Head&& first, Args&&... args)
         {
-            return CapacityArgsUnpack(std::forward<Head>(first)) + CapacityArgsUnpack(std::forward<Args>(args)...);
+            return PackedBitSizeArgsUnpack(std::forward<Head>(first)) + PackedBitSizeArgsUnpack(std::forward<Args>(args)...);
         }
 
     }    // namespace Detail
@@ -108,7 +108,7 @@ namespace Udon
     template <typename... Args>
     inline constexpr size_t PackedBitSize(Args&&... args)
     {
-        return Detail::CapacityArgsUnpack(std::forward<Args>(args)...);
+        return Detail::PackedBitSizeArgsUnpack(std::forward<Args>(args)...);
     }
 
     /// @brief チェックサムを含めたシリアライズ後のバイト数を求める
