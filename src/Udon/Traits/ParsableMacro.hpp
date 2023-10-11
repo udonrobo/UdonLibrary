@@ -19,7 +19,7 @@
 ///   - constexpr bool parsable() const
 ///    - 全メンバ変数がパース可能かどうかを返す
 /// 
-///   - constexpr size_t capacityBits() const
+///   - constexpr size_t packedBitSize() const
 ///     - シリアライズ時に必要なバッファのビットサイズを返す
 /// 
 ///   - template <typename Acc> void accessor(Acc& acc)
@@ -30,7 +30,7 @@
     {                                                       \
         return Udon::Traits::IsMemberParsable(__VA_ARGS__); \
     }                                                       \
-    constexpr size_t capacityBits() const                   \
+    constexpr size_t packedBitSize() const                   \
     {                                                       \
         return Udon::PackedBitSize(__VA_ARGS__);             \
     }                                                       \

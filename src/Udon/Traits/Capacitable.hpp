@@ -13,7 +13,7 @@ namespace Udon
     namespace Traits
     {
 
-        /// @brief T に `size_t T::capacityBits()` 関数が存在するか
+        /// @brief T に `size_t T::packedBitSize()` 関数が存在するか
         template <typename, typename = void>
         struct HasMemberFunctionPackedBitSize
             : std::false_type
@@ -21,7 +21,7 @@ namespace Udon
         };
         template <typename T>
         struct HasMemberFunctionPackedBitSize<T, typename std::enable_if<std::is_same<
-                                                decltype(std::declval<T>().capacityBits()), size_t>::value>::type>
+                                                decltype(std::declval<T>().packedBitSize()), size_t>::value>::type>
             : std::true_type
         {
         };
@@ -41,7 +41,7 @@ namespace Udon
 
         /// @brief シリアライズ後のバッファのビット数を取得可能である
         /// @remark 容量を取得可能であるには、次の "どちらか一方" の要件を満たす必要がある。
-        ///         T に `size_t T::capacityBits()` 関数が存在する
+        ///         T に `size_t T::packedBitSize()` 関数が存在する
         ///         グローバル関数 `template <typename T> size_t Capacity(const T&)` が呼び出せる
         template <typename, typename = void>
         struct Capacitable
@@ -59,7 +59,7 @@ namespace Udon
                                   HasMemberFunctionPackedBitSize<T>::value && CapacityInvocable<T>::value>::type>
             : std::false_type
         {
-            static_assert(AlwaysFalse<T>::value, "T has both member function capacityBits() and global function Capacity().");    // メンバ関数とグローバル関数の両方が定義されている場合はコンパイルエラー
+            static_assert(AlwaysFalse<T>::value, "T has both member function packedBitSize() and global function Capacity().");    // メンバ関数とグローバル関数の両方が定義されている場合はコンパイルエラー
         };
 
         /// @brief シリアライズ後のバッファのビット数を取得する
@@ -67,7 +67,7 @@ namespace Udon
         template <typename HasMemberFunctionPackedBitSize, typename std::enable_if<Traits::HasMemberFunctionPackedBitSize<HasMemberFunctionPackedBitSize>::value, std::nullptr_t>::type = nullptr>
         constexpr size_t InvokeCapacity(HasMemberFunctionPackedBitSize&& rhs)
         {
-            return rhs.capacityBits();
+            return rhs.packedBitSize();
         }
 
         /// @brief シリアライズ後のバッファのビット数を取得する
