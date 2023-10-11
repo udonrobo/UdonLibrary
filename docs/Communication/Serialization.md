@@ -163,14 +163,14 @@ bool CanUnpack(const uint8_t* buffer, size_t size)
 bool CanUnpack(const uint8_t (&array)[N])
 ```
 
-### `Udon::CapacityWithChecksum<T>()`
+### `Udon::PackedSize<T>()`
 
 T 型オブジェクトシリアライズ後のバイト列のバイトサイズを取得します。
 
 コンパイル時にサイズを取得可能なため、バッファの大きさを静的に指定するときなどにも使えます。
 
 ```cpp
-uint8_t buffer[Udon::CapacityWithChecksum<Vec2>()];
+uint8_t buffer[Udon::PackedSize<Vec2>()];
 ```
 
 ### `Udon::CapacityBits(...)`

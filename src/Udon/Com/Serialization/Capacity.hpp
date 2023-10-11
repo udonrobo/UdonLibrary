@@ -115,7 +115,7 @@ namespace Udon
     /// @tparam T シリアライズ対象の型
     /// @return シリアライズ後のバイト数
     template <typename T>
-    inline constexpr size_t CapacityWithChecksum()
+    inline constexpr size_t PackedSize()
     {
         static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");
         return Udon::Ceil(CapacityBits(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
