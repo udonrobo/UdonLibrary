@@ -17,6 +17,7 @@
 
 #include <Udon/Traits/Concept.hpp>
 #include <Udon/Common/Platform.hpp>
+#include <utility>
 
 #ifndef F
 #    define F(x) (x)
