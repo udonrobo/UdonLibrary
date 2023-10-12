@@ -28,13 +28,13 @@ namespace Udon
 
         /// @brief グローバル関数 `template <typename T> size_t Capacity(const T&)` が呼び出せるか
         template <typename, typename = void>
-        struct CapacityInvocable
+        struct PackedSizeInvocable
             : std::false_type
         {
         };
         template <typename T>
-        struct CapacityInvocable<T, typename std::enable_if<std::is_same<
-                                        decltype(Capacity(std::declval<const T&>())), size_t>::value>::type>
+        struct PackedSizeInvocable<T, typename std::enable_if<std::is_same<
+                                        decltype(PackedSize(std::declval<const T&>())), size_t>::value>::type>
             : std::true_type
         {
         };
@@ -44,19 +44,19 @@ namespace Udon
         ///         T に `size_t T::packedBitSize()` 関数が存在する
         ///         グローバル関数 `template <typename T> size_t Capacity(const T&)` が呼び出せる
         template <typename, typename = void>
-        struct Capacitable
+        struct PackedSizable
             : std::false_type
         {
         };
         template <typename T>
-        struct Capacitable<T, typename std::enable_if<
-                                  HasMemberFunctionPackedBitSize<T>::value ^ CapacityInvocable<T>::value>::type>
+        struct PackedSizable<T, typename std::enable_if<
+                                  HasMemberFunctionPackedBitSize<T>::value ^ PackedSizeInvocable<T>::value>::type>
             : std::true_type
         {
         };
         template <typename T>
-        struct Capacitable<T, typename std::enable_if<
-                                  HasMemberFunctionPackedBitSize<T>::value && CapacityInvocable<T>::value>::type>
+        struct PackedSizable<T, typename std::enable_if<
+                                  HasMemberFunctionPackedBitSize<T>::value && PackedSizeInvocable<T>::value>::type>
             : std::false_type
         {
             static_assert(AlwaysFalse<T>::value, "T has both member function packedBitSize() and global function Capacity().");    // メンバ関数とグローバル関数の両方が定義されている場合はコンパイルエラー
@@ -72,10 +72,10 @@ namespace Udon
 
         /// @brief シリアライズ後のバッファのビット数を取得する
         /// @return シリアライズ後のバッファのビット数
-        template <typename CapacityInvocable, typename std::enable_if<Traits::CapacityInvocable<CapacityInvocable>::value, std::nullptr_t>::type = nullptr>
-        constexpr size_t InvokeCapacity(CapacityInvocable&& rhs)
+        template <typename PackedSizeInvocable, typename std::enable_if<Traits::PackedSizeInvocable<PackedSizeInvocable>::value, std::nullptr_t>::type = nullptr>
+        constexpr size_t InvokeCapacity(PackedSizeInvocable&& rhs)
         {
-            return Capacity(rhs);
+            return PackedSize(rhs);
         }
 
     }    // namespace Traits

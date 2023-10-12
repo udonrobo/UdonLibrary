@@ -59,9 +59,9 @@ namespace Udon
 
         /// @brief Capacity 関数から呼び出し可能な型
         UDON_CONCEPT_CAPACITABLE
-        inline constexpr size_t PackedBitSizeImpl(Capacitable&& obj)
+        inline constexpr size_t PackedBitSizeImpl(PackedSizable&& obj)
         {
-            return Udon::Traits::InvokeCapacity(std::forward<Capacitable>(obj));
+            return Udon::Traits::InvokeCapacity(std::forward<PackedSizable>(obj));
         }
 
         /// @brief 列挙型
