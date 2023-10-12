@@ -17,6 +17,7 @@
 #define DEF_PidController_H
 
 #include "Math.hpp"
+#include <Udon/Stl/Optional.hpp>
 
 namespace Udon
 {
@@ -26,9 +27,16 @@ namespace Udon
     */
     class PidController
     {
-        double kPro;    ///< 比例定数
-        double kInt;    ///< 積分定数
-        double kDif;    ///< 微分定数
+        struct Constant
+        {
+            double kPro;    ///< 比例定数
+            double kInt;    ///< 積分定数
+            double kDif;    ///< 微分定数
+        };
+
+        Constant constant;    ///<
+
+        Udon::Optional<Constant> requestConstant;    ///< 一周期だけ定数を変更する場合に使用
 
         double power;        ///< 操作量
         double lastError;    ///< 過去の偏差
@@ -49,9 +57,8 @@ namespace Udon
                 @param  maxIntPower     積分量の最大値
         */
         PidController(double kPro, double kInt, double kDif, unsigned long callInterval_us, double maxIntPower = 1023.0) noexcept
-            : kPro(kPro)
-            , kInt(kInt)
-            , kDif(kDif)
+            : constant{ kPro, kInt, kDif }
+            , requestConstant()
             , power()
             , lastError()
             , proPower()
@@ -68,18 +75,19 @@ namespace Udon
         */
         void update(double controlValue, double targetValue) noexcept
         {
+            const auto c = requestConstant ? *requestConstant : constant;
             // 偏差の計算
             double error = targetValue - controlValue;
 
             // 比例量の計算
-            proPower = kPro * error;
+            proPower = c.kPro * error;
 
             // 積分量の計算
-            intPower += kInt * error * INTERVAL_S;
+            intPower += c.kInt * error * INTERVAL_S;
             intPower = Udon::Constrain(intPower, -MAX_INT_POWER, MAX_INT_POWER);
 
             // 微分量の計算
-            difPower = kDif * (error - lastError) / INTERVAL_S;
+            difPower = c.kDif * (error - lastError) / INTERVAL_S;
 
             // 操作量の計算
             power = proPower + intPower + difPower;
@@ -87,6 +95,11 @@ namespace Udon
 
             // 偏差の保存
             lastError = error;
+        }
+
+        void requestParamPro(double kPro, double kInt, double kDif) noexcept
+        {
+            requestConstant = Constant{ kPro, kInt, kDif };
         }
 
         /**     操作量の取得
@@ -170,17 +183,17 @@ namespace Udon
 
         double getParamPro() const noexcept
         {
-            return kPro;
+            return constant.kPro;
         }
 
         double getParamInt() const noexcept
         {
-            return kInt;
+            return constant.kInt;
         }
 
         double getParamDif() const noexcept
         {
-            return kDif;
+            return constant.kDif;
         }
     };
 
