@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include <Udon/Algorithm/PidController.hpp>
 
 inline void test()
