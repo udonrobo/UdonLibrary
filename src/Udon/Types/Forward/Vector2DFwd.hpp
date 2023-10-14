@@ -194,18 +194,40 @@ namespace Udon
             return distanceFrom({ 0, 0 });
         }
 
-        /// @brief ベクトルの長さを指定された値にする
-        /// @param length 指定された長さ
-        Vector2D& setLength(value_type length) noexcept
+        /// @brief 原点からの距離の二乗を求める
+        /// @return 原点からの距離の二乗
+        constexpr value_type lengthSq() const noexcept
         {
-            if (*this)
+            return x * x + y * y;
+        }
+
+        /// @brief 長さを変更したベクトルを返す
+        /// @param length 指定された長さ
+        Vector2D scaledLength(value_type length) const noexcept
+        {
+            return normalized() * length;
+        }
+
+        /// @brief ベクトルの長さを指定された値にする
+        /// @remark 長さを0にするとゼロベクトルになるので、長さの変更ができなくなる
+        /// @param length 指定された長さ
+        Vector2D& scaleLength(value_type length) noexcept
+        {
+            return *this = scaledToLength(length);
+        }
+
+        /// @brief 正規化したベクトルを返す
+        /// @return 正規化したベクトル
+        Vector2D normalized() const noexcept
+        {
+            if (const auto len = length())
             {
-                if (const auto l = this->length())
-                {
-                    *this *= length / l;
-                }
+                return *this / len;
             }
-            return *this;
+            else
+            {
+                return {};
+            }
         }
 
         Vector2D clamped(value_type min, value_type max) const noexcept

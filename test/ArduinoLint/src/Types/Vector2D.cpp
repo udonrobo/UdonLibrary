@@ -75,6 +75,10 @@ inline void test()
         a.angleAt({});
         a.distanceFrom({});
         a.length();
+        a.lengthSq();
+        a.scaledLength(0);
+        a.scaleLength(0);
+        a.normalized();
         a.show();
     }
 
