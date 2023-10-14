@@ -13,7 +13,6 @@
 //
 //-------------------------------------------------------------------
 
-
 #pragma once
 
 #include <Udon/Traits/ParsableMacro.hpp>
@@ -56,16 +55,6 @@ namespace Udon
             , y(y)
         {
         }
-
-#ifdef SIV3D_INCLUDED
-        /// @brief s3d::Vec2からの変換コンストラクタ
-        /// @param v s3d::Vec2
-        constexpr Vector2D(const s3d::Vector2D& v) noexcept
-            : x(v.x)
-            , y(-v.y)
-        {
-        }
-#endif
 
         /// @brief デフォルトコピーコンストラクタ
         Vector2D(const Vector2D&) = default;
@@ -237,10 +226,34 @@ namespace Udon
 
         Udon::Polar toPolar() const noexcept;
 
-#ifdef SIV3D_INCLUDED
-        operator s3d::Vector2D() const noexcept
+#ifdef SIV3D_INCLUDED    /// OpenSiv3D との連携
+
+        /// @brief s3d::Vec2からの変換コンストラクタ
+        /// @param v s3d::Vec2
+        template <typename T>
+        constexpr Vector2D(const s3d::Vector2D<T>& v) noexcept
+            : x(static_cast<double>(v.x))
+            , y(static_cast<double>(v.y))
         {
-            return { x, -y };
+        }
+
+        /// @brief Siv3Dのベクトルに変換する
+        template <typename T>
+        [[nodiscard]]
+        s3d::Vector2D<T> asSivVec2() const noexcept
+        {
+            return {
+                static_cast<T>(x),
+                static_cast<T>(y),
+            };
+        }
+
+        /// @brief Siv3Dのベクトルに変換する
+        template <typename T>
+        [[nodiscard]]
+        operator s3d::Vector2D<T>() const noexcept
+        {
+            return asSivVec2<T>();
         }
 #endif
 
