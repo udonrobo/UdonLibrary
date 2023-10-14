@@ -213,7 +213,7 @@ namespace Udon
         /// @param length 指定された長さ
         Vector2D& scaleLength(value_type length) noexcept
         {
-            return *this = scaledToLength(length);
+            return *this = scaledLength(length);
         }
 
         /// @brief 正規化したベクトルを返す
