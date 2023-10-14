@@ -20,19 +20,17 @@
 #include "Forward/Vector3DFwd.hpp"
 #include "Forward/Vector4DFwd.hpp"
 
-template <class Ty>
-inline Udon::Vector2D<Ty> Udon::Vector3D<Ty>::xy() const noexcept
+inline Udon::Vector2D Udon::Vector3D::xy() const noexcept
 {
     return { x, y };
 }
 
-template <class Ty>
-inline Udon::Vector4D<Ty> Udon::Vector3D<Ty>::xyz0() const noexcept
+inline Udon::Vector4D Udon::Vector3D::xyz0() const noexcept
 {
     return { x, y, z, 0 };
 }
 
 namespace Udon
 {
-    using Vec3 = Vector3D<double>;
+    using Vec3 = Vector3D;
 }

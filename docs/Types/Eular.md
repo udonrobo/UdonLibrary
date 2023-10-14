@@ -8,41 +8,41 @@
 
 ```cpp
 template <typename T>
-struct Euler3D
+struct Euler
 {
-    using value_type = T;
+    using ValueType = T;
 
-    value_type roll;
-    value_type pitch;
-    value_type yaw;
+    ValueType roll;
+    ValueType pitch;
+    ValueType yaw;
 
-    constexpr Euler3D() noexcept;
-    constexpr Euler3D(value_type roll, value_type pitch, value_type yaw) noexcept;
+    constexpr Euler() noexcept;
+    constexpr Euler(ValueType roll, ValueType pitch, ValueType yaw) noexcept;
 
-    Euler3D(const Euler3D&) = default;
+    Euler(const Euler&) = default;
 
-    Euler3D& operator=(const Euler3D&) = default;
+    Euler& operator=(const Euler&) = default;
 
-    constexpr Euler3D operator+(const Euler3D& rhs) const noexcept;
-    constexpr Euler3D operator-(const Euler3D& rhs) const noexcept;
-    constexpr Euler3D operator*(const Euler3D& rhs) const noexcept;
-    constexpr Euler3D operator/(const Euler3D& rhs) const noexcept;
-    constexpr Euler3D operator+(value_type rhs) const noexcept;
-    constexpr Euler3D operator-(value_type rhs) const noexcept;
-    constexpr Euler3D operator*(value_type rhs) const noexcept;
-    constexpr Euler3D operator/(value_type rhs) const noexcept;
+    constexpr Euler operator+(const Euler& rhs) const noexcept;
+    constexpr Euler operator-(const Euler& rhs) const noexcept;
+    constexpr Euler operator*(const Euler& rhs) const noexcept;
+    constexpr Euler operator/(const Euler& rhs) const noexcept;
+    constexpr Euler operator+(ValueType rhs) const noexcept;
+    constexpr Euler operator-(ValueType rhs) const noexcept;
+    constexpr Euler operator*(ValueType rhs) const noexcept;
+    constexpr Euler operator/(ValueType rhs) const noexcept;
 
-    Euler3D& operator+=(const Euler3D& rhs) noexcept;
-    Euler3D& operator-=(const Euler3D& rhs) noexcept;
-    Euler3D& operator*=(const Euler3D& rhs) noexcept;
-    Euler3D& operator/=(const Euler3D& rhs) noexcept;
-    Euler3D& operator+=(value_type rhs) noexcept;
-    Euler3D& operator-=(value_type rhs) noexcept;
-    Euler3D& operator*=(value_type rhs) noexcept;
-    Euler3D& operator/=(value_type rhs) noexcept;
+    Euler& operator+=(const Euler& rhs) noexcept;
+    Euler& operator-=(const Euler& rhs) noexcept;
+    Euler& operator*=(const Euler& rhs) noexcept;
+    Euler& operator/=(const Euler& rhs) noexcept;
+    Euler& operator+=(ValueType rhs) noexcept;
+    Euler& operator-=(ValueType rhs) noexcept;
+    Euler& operator*=(ValueType rhs) noexcept;
+    Euler& operator/=(ValueType rhs) noexcept;
 
-    constexpr bool operator==(const Euler3D& rhs) const noexcept;
-    constexpr bool operator!=(const Euler3D& rhs) const noexcept;
+    constexpr bool operator==(const Euler& rhs) const noexcept;
+    constexpr bool operator!=(const Euler& rhs) const noexcept;
 
     // 要素のいずれかに0以外の値があるかどうかを返す
     explicit constexpr operator bool() const noexcept;
@@ -51,10 +51,10 @@ struct Euler3D
     constexpr bool isZero() const noexcept;
 
     // 正規化されたオイラー角を取得する
-    Euler3D normalized(value_type min, value_type max) const;
+    Euler normalized(ValueType min, ValueType max) const;
 
     // 回転方向を修正したオイラー角を取得する
-    Euler3D directionRevision(const Euler3D<bool>& direction) const noexcept;
+    Euler directionRevision(bool directionRoll, bool directionPitch, bool directionYaw) const noexcept;
 
     // クオータニオンへ変換
     Quaternion toQuaternion() const noexcept;
@@ -66,5 +66,5 @@ struct Euler3D
     void show() const noexcept;
 };
 
-using Euler = Euler3D<double>;
+using Euler = Euler<double>;
 ```

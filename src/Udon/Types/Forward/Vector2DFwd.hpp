@@ -22,25 +22,21 @@
 namespace Udon
 {
 
-    template <typename>
-    struct Polar_impl;
+    struct Polar;
 
-    template <typename>
     struct Vector3D;
 
-    template <typename>
     struct Vector4D;
 
-    template <typename T>
     struct Vector2D
     {
 
         /// @brief 要素の型
-        using value_type = T;
+        using ValueType = double;
 
         /// @brief 成分
-        value_type x;
-        value_type y;
+        ValueType x;
+        ValueType y;
 
         /// @brief 次元数
         static constexpr size_t Dimension = 2;
@@ -55,7 +51,7 @@ namespace Udon
         /// @brief コンストラクタ
         /// @param x x成分
         /// @param y y成分
-        constexpr Vector2D(value_type x, value_type y) noexcept
+        constexpr Vector2D(ValueType x, ValueType y) noexcept
             : x(x)
             , y(y)
         {
@@ -64,7 +60,7 @@ namespace Udon
 #ifdef SIV3D_INCLUDED
         /// @brief s3d::Vec2からの変換コンストラクタ
         /// @param v s3d::Vec2
-        constexpr Vector2D(const s3d::Vector2D<value_type>& v) noexcept
+        constexpr Vector2D(const s3d::Vector2D& v) noexcept
             : x(v.x)
             , y(-v.y)
         {
@@ -84,10 +80,10 @@ namespace Udon
         constexpr Vector2D operator-(const Vector2D& rhs) const noexcept { return { x - rhs.x, y - rhs.y }; }
         constexpr Vector2D operator*(const Vector2D& rhs) const noexcept { return { x * rhs.x, y * rhs.y }; }
         constexpr Vector2D operator/(const Vector2D& rhs) const noexcept { return { x / rhs.x, y / rhs.y }; }
-        constexpr Vector2D operator+(value_type rhs) const noexcept { return { x + rhs, y + rhs }; }
-        constexpr Vector2D operator-(value_type rhs) const noexcept { return { x - rhs, y - rhs }; }
-        constexpr Vector2D operator*(value_type rhs) const noexcept { return { x * rhs, y * rhs }; }
-        constexpr Vector2D operator/(value_type rhs) const noexcept { return { x / rhs, y / rhs }; }
+        constexpr Vector2D operator+(ValueType rhs) const noexcept { return { x + rhs, y + rhs }; }
+        constexpr Vector2D operator-(ValueType rhs) const noexcept { return { x - rhs, y - rhs }; }
+        constexpr Vector2D operator*(ValueType rhs) const noexcept { return { x * rhs, y * rhs }; }
+        constexpr Vector2D operator/(ValueType rhs) const noexcept { return { x / rhs, y / rhs }; }
 
         /// @brief 複合代入演算子
         /// @param rhs 被演算子
@@ -96,10 +92,10 @@ namespace Udon
         Vector2D& operator-=(const Vector2D& rhs) noexcept { return *this = *this - rhs; };
         Vector2D& operator*=(const Vector2D& rhs) noexcept { return *this = *this * rhs; };
         Vector2D& operator/=(const Vector2D& rhs) noexcept { return *this = *this / rhs; };
-        Vector2D& operator+=(value_type rhs) noexcept { return *this = *this + rhs; };
-        Vector2D& operator-=(value_type rhs) noexcept { return *this = *this - rhs; };
-        Vector2D& operator*=(value_type rhs) noexcept { return *this = *this * rhs; };
-        Vector2D& operator/=(value_type rhs) noexcept { return *this = *this / rhs; };
+        Vector2D& operator+=(ValueType rhs) noexcept { return *this = *this + rhs; };
+        Vector2D& operator-=(ValueType rhs) noexcept { return *this = *this - rhs; };
+        Vector2D& operator*=(ValueType rhs) noexcept { return *this = *this * rhs; };
+        Vector2D& operator/=(ValueType rhs) noexcept { return *this = *this / rhs; };
 
         /// @brief 比較演算子
         /// @param rhs 被演算子
@@ -137,7 +133,7 @@ namespace Udon
         /// @param center 回転の中心
         /// @param angle 回転する角度 [rad]
         /// @return 回転後の座標
-        Vector2D rotatedAt(const Vector2D& center, value_type angle) const noexcept
+        Vector2D rotatedAt(const Vector2D& center, ValueType angle) const noexcept
         {
             const auto s = sin(-angle);
             const auto c = cos(-angle);
@@ -148,7 +144,7 @@ namespace Udon
         /// @brief 原点を中心に回転したベクトルを返す
         /// @param angle 回転する角度 [rad]
         /// @return 回転後の座標
-        Vector2D rotated(value_type angle) const noexcept
+        Vector2D rotated(ValueType angle) const noexcept
         {
             return rotatedAt({ 0, 0 }, angle);
         }
@@ -156,7 +152,7 @@ namespace Udon
         /// @brief 原点からの角度を求める
         /// @remark y軸の正が 0rad
         /// @return
-        value_type angle() const noexcept
+        ValueType angle() const noexcept
         {
             return angleAt({ 0, 0 });
         }
@@ -165,7 +161,7 @@ namespace Udon
         /// @remark y軸の正が 0rad
         /// @param rhs 指定された点
         /// @return
-        value_type angleAt(const Vector2D& rhs) const noexcept
+        ValueType angleAt(const Vector2D& rhs) const noexcept
         {
             if (*this)
             {
@@ -181,7 +177,7 @@ namespace Udon
         /// @brief 指定された点からの距離を求める
         /// @param rhs 指定された点
         /// @return 指定された点からの距離
-        value_type distanceFrom(const Vector2D& rhs) const noexcept
+        ValueType distanceFrom(const Vector2D& rhs) const noexcept
         {
             const auto d = *this - rhs;
             return sqrt(d.x * d.x + d.y * d.y);
@@ -189,21 +185,21 @@ namespace Udon
 
         /// @brief 原点からの距離を求める
         /// @return 原点からの距離
-        value_type length() const noexcept
+        ValueType length() const noexcept
         {
             return distanceFrom({ 0, 0 });
         }
 
         /// @brief 原点からの距離の二乗を求める
         /// @return 原点からの距離の二乗
-        constexpr value_type lengthSq() const noexcept
+        constexpr ValueType lengthSq() const noexcept
         {
             return x * x + y * y;
         }
 
         /// @brief 長さを変更したベクトルを返す
         /// @param length 指定された長さ
-        Vector2D scaledLength(value_type length) const noexcept
+        Vector2D scaledLength(ValueType length) const noexcept
         {
             return normalized() * length;
         }
@@ -211,7 +207,7 @@ namespace Udon
         /// @brief ベクトルの長さを指定された値にする
         /// @remark 長さを0にするとゼロベクトルになるので、長さの変更ができなくなる
         /// @param length 指定された長さ
-        Vector2D& scaleLength(value_type length) noexcept
+        Vector2D& scaleLength(ValueType length) noexcept
         {
             return *this = scaledLength(length);
         }
@@ -230,19 +226,19 @@ namespace Udon
             }
         }
 
-        Vector2D clamped(value_type min, value_type max) const noexcept
+        Vector2D clamped(ValueType min, ValueType max) const noexcept
         {
             return { Udon::Constrain(x, min, max), Udon::Constrain(y, min, max) };
         }
 
-        Udon::Vector3D<value_type> xy0() const noexcept;
+        Udon::Vector3D xy0() const noexcept;
 
-        Udon::Vector4D<value_type> xy00() const noexcept;
+        Udon::Vector4D xy00() const noexcept;
 
-        Udon::Polar_impl<value_type> toPolar() const noexcept;
+        Udon::Polar toPolar() const noexcept;
 
 #ifdef SIV3D_INCLUDED
-        operator s3d::Vector2D<value_type>() const noexcept
+        operator s3d::Vector2D() const noexcept
         {
             return { x, -y };
         }

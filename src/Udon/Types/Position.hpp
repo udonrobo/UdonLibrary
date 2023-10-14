@@ -13,7 +13,6 @@
 //
 //-------------------------------------------------------------------
 
-
 #pragma once
 
 #include <Udon/Stl/EnableSTL.hpp>
@@ -31,19 +30,17 @@ namespace Udon
 {
 
     /// @brief ロボットの位置
-    /// @tparam T 要素の型
-    template <typename T>
     struct Position
     {
 
         /// @brief 要素の型
-        using value_type = T;
+        using ValueType = double;
 
         /// @brief 座標
-        Udon::Vector2D<value_type> vector;
+        Udon::Vector2D vector;
 
         /// @brief 旋回角 [rad]
-        value_type turn;
+        ValueType turn;
 
         /// @brief デフォルトコンストラクタ
         constexpr Position() noexcept
@@ -60,7 +57,7 @@ namespace Udon
         }
 
         /// @brief コンストラクタ
-        constexpr Position(const Udon::Vector2D<value_type>& vector, value_type turn) noexcept
+        constexpr Position(const Udon::Vector2D& vector, ValueType turn) noexcept
             : vector(vector)
             , turn(turn)
         {
@@ -76,10 +73,10 @@ namespace Udon
         constexpr Position operator-(const Position& rhs) const noexcept { return { vector - rhs.vector, turn - rhs.turn }; }
         constexpr Position operator*(const Position& rhs) const noexcept { return { vector * rhs.vector, turn * rhs.turn }; }
         constexpr Position operator/(const Position& rhs) const noexcept { return { vector / rhs.vector, turn / rhs.turn }; }
-        constexpr Position operator+(value_type rhs) const noexcept { return { vector + rhs, turn + rhs }; }
-        constexpr Position operator-(value_type rhs) const noexcept { return { vector - rhs, turn - rhs }; }
-        constexpr Position operator*(value_type rhs) const noexcept { return { vector * rhs, turn * rhs }; }
-        constexpr Position operator/(value_type rhs) const noexcept { return { vector / rhs, turn / rhs }; }
+        constexpr Position operator+(ValueType rhs) const noexcept { return { vector + rhs, turn + rhs }; }
+        constexpr Position operator-(ValueType rhs) const noexcept { return { vector - rhs, turn - rhs }; }
+        constexpr Position operator*(ValueType rhs) const noexcept { return { vector * rhs, turn * rhs }; }
+        constexpr Position operator/(ValueType rhs) const noexcept { return { vector / rhs, turn / rhs }; }
 
         /// @brief 複合代入演算子
         /// @param rhs 被演算子
@@ -88,21 +85,21 @@ namespace Udon
         Position operator-=(const Position& rhs) noexcept { return *this = *this - rhs; }
         Position operator*=(const Position& rhs) noexcept { return *this = *this * rhs; }
         Position operator/=(const Position& rhs) noexcept { return *this = *this / rhs; }
-        Position operator+=(value_type rhs) noexcept { return *this = *this + rhs; }
-        Position operator-=(value_type rhs) noexcept { return *this = *this - rhs; }
-        Position operator*=(value_type rhs) noexcept { return *this = *this * rhs; }
-        Position operator/=(value_type rhs) noexcept { return *this = *this / rhs; }
+        Position operator+=(ValueType rhs) noexcept { return *this = *this + rhs; }
+        Position operator-=(ValueType rhs) noexcept { return *this = *this - rhs; }
+        Position operator*=(ValueType rhs) noexcept { return *this = *this * rhs; }
+        Position operator/=(ValueType rhs) noexcept { return *this = *this / rhs; }
 
         /// @brief 比較演算子
         /// @param rhs 被演算子
         /// @return
-        constexpr bool operator==(const Position& rhs) const noexcept{ return vector == rhs.vector && turn == rhs.turn; }
+        constexpr bool operator==(const Position& rhs) const noexcept { return vector == rhs.vector && turn == rhs.turn; }
 
         /// @brief 比較演算子
         /// @param rhs 被演算子
         /// @return
-        constexpr bool operator!=(const Position& rhs) const noexcept{ return !(*this == rhs); }
-        
+        constexpr bool operator!=(const Position& rhs) const noexcept { return !(*this == rhs); }
+
         /// @brief 要素のいずれかに0以外の値があるかどうかを返す
         constexpr explicit operator bool() const noexcept
         {
@@ -227,7 +224,7 @@ namespace Udon
         UDON_PARSABLE(vector, turn);
     };
 
-    using Pos = Position<double>;
+    using Pos   = Position;
     using Stick = Pos;
 
 }    // namespace Udon
