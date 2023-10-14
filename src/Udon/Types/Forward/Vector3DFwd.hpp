@@ -125,6 +125,39 @@ namespace Udon
 
         Udon::Vector4D xyz0() const noexcept;
 
+#ifdef SIV3D_INCLUDED    /// OpenSiv3D との連携
+
+        /// @brief s3d::Vec2からの変換コンストラクタ
+        /// @param v s3d::Vec2
+        template <typename T>
+        constexpr Vector3D(const s3d::Vector3D<T>& v) noexcept
+            : x(static_cast<double>(v.x))
+            , y(static_cast<double>(v.y))
+            , y(static_cast<double>(v.z))
+        {
+        }
+
+        /// @brief Siv3Dのベクトルに変換する
+        template <typename T>
+        [[nodiscard]]
+        s3d::Vector3D<T> asSivVec3() const noexcept
+        {
+            return {
+                static_cast<T>(x),
+                static_cast<T>(y),
+                static_cast<T>(z),
+            };
+        }
+
+        /// @brief Siv3Dのベクトルに変換する
+        template <typename T>
+        [[nodiscard]]
+        operator s3d::Vector3D<T>() const noexcept
+        {
+            return asSivVec3<T>();
+        }
+#endif
+
 #ifdef ARDUINO
         /// @brief デバッグ出力
         void show() const
