@@ -18,7 +18,6 @@
 #if defined(ARDUINO) && !defined(UDON_TEENSY_I2C_SLAVE_MODE)
 
 #    include <Adafruit_BNO055.h>
-#    include <Udon/Types/Vector3D.hpp>
 #    include <Udon/Types/Euler.hpp>
 #    include <Udon/Types/Quaternion.hpp>
 
@@ -30,22 +29,22 @@ namespace Udon
         : Adafruit_BNO055
     {
         /// @brief 回転方向
-        Udon::Vector3D<bool> direction;
+        QuaternionDirection direction;
 
         /// @brief 内積値消去用オフセット
-        Udon::Quaternion offset;
+        Quaternion offset;
 
-        Udon::Quaternion quaternion;
+        Quaternion quaternion;
 
     public:
         /// @brief コンストラクタ
         /// @param Device Deviceオブジェクト
         /// @param direction 回転方向
-        BNO055(TwoWire& wire, Udon::Vector3D<bool>&& direction = { true, true, true })
+        BNO055(TwoWire& wire, const QuaternionDirection& direction = { true, true, true })
             : Adafruit_BNO055(-1, 0x28, &wire)
             , direction(direction)
-            , offset(Udon::Quaternion::Identity())
-            , quaternion(Udon::Quaternion::Identity())
+            , offset(Quaternion::Identity())
+            , quaternion(Quaternion::Identity())
         {
         }
 
@@ -76,20 +75,14 @@ namespace Udon
 
         /// @brief クォータニオン角を取得
         /// @return クォータニオン角
-        Udon::Quaternion getQuaternion() const
+        Quaternion getQuaternion() const
         {
-            const auto q = offset.inverce() * quaternion;
-            return {
-                q.x * (direction.x ? 1 : -1),
-                q.y * (direction.y ? 1 : -1),
-                q.z * (direction.z ? 1 : -1),
-                q.w
-            };
+            return (offset.inverse() * quaternion).directionRevision(direction);    // オフセットを引き、回転方向を修正
         }
 
         /// @brief オイラー角を取得
         /// @return オイラー角
-        Udon::Euler getEuler() const
+        Euler getEuler() const
         {
             return getQuaternion().toEuler();
         }
@@ -97,7 +90,7 @@ namespace Udon
         /// @brief オイラー角をシリアルポートに出力
         void show() const
         {
-            Udon::Show(getEuler());
+            Show(getEuler());
         }
     };
 

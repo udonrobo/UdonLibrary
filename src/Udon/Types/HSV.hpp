@@ -39,10 +39,10 @@ inline Udon::RGB::RGB(const HSV& hsv) noexcept
 /// @return RGB色空間
 inline Udon::RGB Udon::HSV::toRGB() const noexcept
 {
-    const value_type f = h * 6;
-    const value_type p = (255 - s) * v >> 8;
-    const value_type q = (255 - (f * s >> 8)) * v >> 8;
-    const value_type t = (255 - ((255 - f) * s >> 8)) * v >> 8;
+    const ValueType f = h * 6;
+    const ValueType p = (255 - s) * v >> 8;
+    const ValueType q = (255 - (f * s >> 8)) * v >> 8;
+    const ValueType t = (255 - ((255 - f) * s >> 8)) * v >> 8;
     switch (h * 6 >> 8)
     {
     case 0: return { v, t, p };

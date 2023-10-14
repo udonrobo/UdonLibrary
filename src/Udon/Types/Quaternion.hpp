@@ -19,8 +19,7 @@
 #include "Forward/EulerFwd.hpp"
 #include "Forward/QuaternionFwd.hpp"
 
-template <typename T>
-Udon::Euler3D<T> Udon::Quaternion::toEuler() const noexcept
+inline Udon::Euler Udon::Quaternion::toEuler() const noexcept
 {
     return {
         toRoll(), 

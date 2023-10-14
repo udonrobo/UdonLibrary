@@ -9,15 +9,15 @@
 ```cpp
 struct Quaternion
 {
-    using value_type = double;
+    using ValueType = double;
 
-    value_type x;
-    value_type y;
-    value_type z;
-    value_type w;
+    ValueType x;
+    ValueType y;
+    ValueType z;
+    ValueType w;
 
     constexpr Quaternion() noexcept;
-    constexpr Quaternion(value_type x, value_type y, value_type z, value_type w) noexcept;
+    constexpr Quaternion(ValueType x, ValueType y, ValueType z, ValueType w) noexcept;
 
     Quaternion(const Quaternion&) = default;
     Quaternion& operator=(const Quaternion&) = default;
@@ -33,19 +33,19 @@ struct Quaternion
     explicit constexpr operator bool() const noexcept;
 
     // 逆クオータニオン
-    constexpr Quaternion inverce() const noexcept;
+    constexpr Quaternion inverse() const noexcept;
 
     // 単位クオータニオン
     static Quaternion Identity() noexcept;
 
     // X軸回転クオータニオン
-    static Quaternion RotateX(value_type angle) noexcept;
+    static Quaternion RotateX(ValueType angle) noexcept;
 
     // Y軸回転クオータニオン
-    static Quaternion RotateY(value_type angle) noexcept;
+    static Quaternion RotateY(ValueType angle) noexcept;
 
     // Z軸回転クオータニオン
-    static Quaternion RotateZ(value_type angle) noexcept;
+    static Quaternion RotateZ(ValueType angle) noexcept;
 
     // 要素がゼロであるか
     constexpr bool isZero() const noexcept;
@@ -54,8 +54,8 @@ struct Quaternion
     void clear() noexcept;
 
     // オイラー角へ変換
-    template <typename T = value_type>
-    Euler3D<T> toEuler() const noexcept;
+    template <typename T = ValueType>
+    Euler<T> toEuler() const noexcept;
 
     // ヨー角を取得
     double toYaw() const noexcept;

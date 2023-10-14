@@ -13,19 +13,12 @@
 //
 //-------------------------------------------------------------------
 
-
 #pragma once
 
 #include "Forward/PolarFwd.hpp"
 #include "Forward/Vector2DFwd.hpp"
 
-template <typename T>
-inline Udon::Vector2D<T> Udon::Polar_impl<T>::toVector() const noexcept
+inline Udon::Vector2D Udon::Polar::toVector() const noexcept
 {
     return { x(), y() };
-}
-
-namespace Udon
-{
-    using Polar = Udon::Polar_impl<double>;
 }

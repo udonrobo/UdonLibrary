@@ -22,25 +22,22 @@
 #include "Forward/Vector4DFwd.hpp"
 
 
-template <typename T>
-inline Udon::Vector3D<T> Udon::Vector2D<T>::xy0() const noexcept
+inline Udon::Vector3D Udon::Vector2D::xy0() const noexcept
 {
     return { x, y, 0 };
 }
 
-template <typename T>
-inline Udon::Vector4D<T> Udon::Vector2D<T>::xy00() const noexcept
+inline Udon::Vector4D Udon::Vector2D::xy00() const noexcept
 {
     return { x, y, 0, 0 };
 }
 
-template <typename T>
-inline Udon::Polar_impl<T> Udon::Vector2D<T>::toPolar() const noexcept
+inline Udon::Polar Udon::Vector2D::toPolar() const noexcept
 {
     return { length(), angle() };
 }
 
 namespace Udon
 {
-    using Vec2 = Vector2D<double>;
+    using Vec2 = Vector2D;
 }
