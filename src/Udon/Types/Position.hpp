@@ -118,6 +118,14 @@ namespace Udon
             *this = {};
         }
 
+        Position maped(double inMin, double inMax, double outMin, double outMax) const noexcept
+        {
+            return {
+                vector.maped(inMin, inMax, outMin, outMax),
+                Map(turn, inMin, inMax, outMin, outMax),
+            };
+        }
+
         // template <size_t WheelCount>
         // std::array<double, WheelCount> toOmni() const
         //{
