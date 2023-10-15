@@ -201,6 +201,14 @@ namespace Udon
             return *this = scaledLength(length);
         }
 
+        Vector2D maped(double inMin, double inMax, double outMin, double outMax) const noexcept
+        {
+            return {
+                Map(x, inMin, inMax, outMin, outMax),
+                Map(y, inMin, inMax, outMin, outMax),
+            };
+        }
+
         /// @brief 正規化したベクトルを返す
         /// @return 正規化したベクトル
         Vector2D normalized() const noexcept
