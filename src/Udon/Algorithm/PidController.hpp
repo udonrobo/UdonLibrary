@@ -25,13 +25,14 @@ namespace Udon
     /// @brief PID制御器
     class PidController
     {
+    public:
         struct Parameter
         {
             double p;
             double i;
             double d;
-            void clear() noexcept { p = i = d = 0.0; }
         };
+    private:
 
         Parameter constant;    ///< 係数
 
