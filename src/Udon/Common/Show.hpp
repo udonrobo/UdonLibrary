@@ -108,9 +108,12 @@ namespace Udon
         UDON_CONCEPT_ENUM
         void print(const Enum& e)
         {
-            #if defined(ARDUINO)
+#if defined(ARDUINO)
             Serial.print(static_cast<typename std::underlying_type<Enum>::type>(e));
-            #endif
+#endif
+#if defined(SIV3D_INCLUDED)
+            s3d::Print.write(static_cast<std::underlying_type_t<Enum>>(e));
+#endif
         }
 
         /// @brief 組み込み配列
