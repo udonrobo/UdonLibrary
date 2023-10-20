@@ -17,6 +17,7 @@
 
 #include <Udon/Traits/ParsableMacro.hpp>
 #include <Udon/Com/Serialization.hpp>
+#include <Udon/Traits/Concept.hpp>
 
 namespace Udon
 {
@@ -76,17 +77,25 @@ namespace Udon
         /// @brief コピー代入演算子
         RGB& operator=(const RGB&) = default;
 
-        /// @brief 算術演算子
-        /// @param rhs 被演算子
-        /// @return
-        constexpr RGB operator+(const RGB& rhs) const noexcept { return { r + rhs.r, g + rhs.g, b + rhs.b }; }
-        constexpr RGB operator-(const RGB& rhs) const noexcept { return { r - rhs.r, g - rhs.g, b - rhs.b }; }
-        constexpr RGB operator*(const RGB& rhs) const noexcept { return { r * rhs.r, g * rhs.g, b * rhs.b }; }
-        constexpr RGB operator/(const RGB& rhs) const noexcept { return { r / rhs.r, g / rhs.g, b / rhs.b }; }
-        constexpr RGB operator+(double rhs) const noexcept { return { r + rhs, g + rhs, b + rhs }; }
-        constexpr RGB operator-(double rhs) const noexcept { return { r - rhs, g - rhs, b - rhs }; }
-        constexpr RGB operator*(double rhs) const noexcept { return { r * rhs, g * rhs, b * rhs }; }
-        constexpr RGB operator/(double rhs) const noexcept { return { r / rhs, g / rhs, b / rhs }; }
+        UDON_CONCEPT_FLOATING_POINT
+        constexpr RGB operator*(FloatingPoint rhs) const noexcept
+        {
+            return {
+                static_cast<ValueType>(r * rhs),
+                static_cast<ValueType>(g * rhs),
+                static_cast<ValueType>(b * rhs)
+            };
+        }
+
+        UDON_CONCEPT_FLOATING_POINT
+        constexpr RGB operator/(FloatingPoint rhs) const noexcept
+        {
+            return {
+                static_cast<ValueType>(r / rhs),
+                static_cast<ValueType>(g / rhs),
+                static_cast<ValueType>(b / rhs)
+            };
+        }
 
         /// @brief 比較演算子
         constexpr bool operator==(const RGB& rhs) const noexcept
