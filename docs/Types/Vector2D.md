@@ -1,5 +1,7 @@
 # Vector2D
 
+二次元ベクトルを扱うには `Udon::Vec2` クラスを使用します。
+
 ```cpp
 #include <Udon/Types/Vector2D.hpp>
 ```
