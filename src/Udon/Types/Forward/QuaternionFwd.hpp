@@ -118,7 +118,10 @@ namespace Udon
             return { -x, -y, -z, w };
         }
 
-        Quaternion directionRevision(const QuaternionDirection& direction) const noexcept
+        /// @brief 回転方向を修正したクオータニオンを取得する
+        /// @param direction 回転方向
+        /// @return 修正後のクオータニオン
+        constexpr Quaternion directionRevision(const QuaternionDirection& direction) const noexcept
         {
             return {
                 x * (direction.x ? 1 : -1),

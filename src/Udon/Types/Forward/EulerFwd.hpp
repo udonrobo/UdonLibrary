@@ -139,7 +139,7 @@ namespace Udon
         /// @brief 回転方向を修正したオイラー角を取得する
         /// @param direction 回転方向
         /// @return 修正後のオイラー角
-        Euler directionRevision(const EulerDirection& direction) const noexcept
+        constexpr Euler directionRevision(const EulerDirection& direction) const noexcept
         {
             return {
                 roll  * (direction.roll  ? 1 : -1),
