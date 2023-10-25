@@ -116,7 +116,7 @@ const double length = vector.length();
 // length = 5.0
 ```
 
-### `distanceFrom(double other) -> double`
+### `distanceFrom(Vec2 other) -> double`
 
 他のベクトルとの距離を求めます。
 
