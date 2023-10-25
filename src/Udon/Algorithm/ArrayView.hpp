@@ -49,7 +49,7 @@ namespace Udon
 
         template <size_t N>
         ArrayView(value_type (&array)[N])
-            : m_data(m_data)
+            : m_data(array)
             , m_size(N)
         {
         }
