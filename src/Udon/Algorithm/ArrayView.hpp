@@ -48,15 +48,15 @@ namespace Udon
         }
 
         template <size_t N>
-        ArrayView(value_type (&m_data)[N])
+        ArrayView(value_type (&array)[N])
             : m_data(m_data)
             , m_size(N)
         {
         }
 
-        ArrayView(pointer m_data, const size_t m_size)
-            : m_data(m_data)
-            , m_size(m_size)
+        ArrayView(pointer pointer, const size_t length)
+            : m_data(pointer)
+            , m_size(length)
         {
         }
 
