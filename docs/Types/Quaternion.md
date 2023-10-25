@@ -35,6 +35,9 @@ struct Quaternion
     // 逆クオータニオン
     constexpr Quaternion inverse() const noexcept;
 
+    // 回転方向を修正したクオータニオンを取得する
+    constexpr Quaternion directionRevision(QuaternionDirection direction) const noexcept
+
     // 単位クオータニオン
     static Quaternion Identity() noexcept;
 
@@ -54,8 +57,7 @@ struct Quaternion
     void clear() noexcept;
 
     // オイラー角へ変換
-    template <typename T = ValueType>
-    Euler<T> toEuler() const noexcept;
+    Euler toEuler() const noexcept;
 
     // ヨー角を取得
     double toYaw() const noexcept;
