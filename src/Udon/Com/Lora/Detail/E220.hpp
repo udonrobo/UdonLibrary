@@ -2,7 +2,7 @@
 
 namespace Udon
 {
-    E220::E220(HardwareSerial& uart, uint8_t M0Pin, uint8_t M1Pin)
+    inline E220::E220(HardwareSerial& uart, uint8_t M0Pin, uint8_t M1Pin)
         : uart(uart)
         , M0Pin(M0Pin)
         , M1Pin(M1Pin)
@@ -10,7 +10,7 @@ namespace Udon
     {
     }
 
-    E220::E220(HardwareSerial& uart, uint8_t M0Pin, uint8_t M1Pin, uint8_t AUXPin)
+    inline E220::E220(HardwareSerial& uart, uint8_t M0Pin, uint8_t M1Pin, uint8_t AUXPin)
         : uart(uart)
         , M0Pin(M0Pin)
         , M1Pin(M1Pin)
