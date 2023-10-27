@@ -1,3 +1,13 @@
+//
+//    UdonLibrary
+//
+//	  Copyright (c) 2022-2023 Fujimoto Ryo
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 Udonrobo
+//
+//    E220 Loraモジュール ドライバクラス実装部
+//
+
 #pragma once
 
 namespace Udon
@@ -317,7 +327,8 @@ namespace Udon
         else
         {
             // 先頭バイトの  MSB が 1 でない場合はデータが壊れているので読み捨て
-            while (uart.available()) uart.read();
+            while (uart.available())
+                uart.read();
             return false;
         }
     }
