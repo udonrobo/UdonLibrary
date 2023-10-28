@@ -7,6 +7,9 @@
 //
 //    E220 Loraモジュール ドライバクラス
 //
+//    公式サイト　: https://dragon-torch.tech/cat-components/rf-modules/e220-900t22s-jp/
+//    データシート: https://dragon-torch.tech/wp-content/uploads/2023/05/data_sheet_Rev1.4.pdf
+//
 
 #pragma once
 
