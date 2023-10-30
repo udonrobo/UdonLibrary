@@ -61,13 +61,14 @@ namespace Udon
         }
     }
 
-    /// @brief  7bit分割されたデータを結合してコールバック関数に渡す
+    /// @brief  7bit分割されたデータを結合する
     /// @tparam Functor
     /// @tparam OutputIterator
     /// @param begin
     /// @param end
     /// @param callback
     /// @remark
+    ///     アンパックが失敗する場合、
     ///     7bit分割されたデータは次のように変換されコールバック関数に渡される
     ///     [data(7bit)]*7, [各dataのMSB(7bit)], [data(7bit)]*7, [各dataのMSB(7bit)], ... -> [data(8bit)], [data(8bit)], ...
     /// @return
