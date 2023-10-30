@@ -19,6 +19,11 @@
 #include <Udon/Common/Platform.hpp>
 #include <cstddef>    // std::ptrdiff_t
 #include <iterator>
+#include <algorithm>
+
+#if UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE
+#    include <iostream>
+#endif
 
 namespace Udon
 {
@@ -151,7 +156,7 @@ namespace Udon
         /// @brief 指定された範囲からビューを作成する。
         /// @param beginIndex 開始位置
         /// @param endIndex 終端位置
-        /// @return 
+        /// @return
         ArrayView subView(size_type beginIndex, size_type endIndex) const
         {
             return {
@@ -163,7 +168,7 @@ namespace Udon
         /// @brief 指定された範囲からビューを作成する。
         /// @remark 終端は現在のビューの終端
         /// @param beginIndex 開始位置
-        /// @return 
+        /// @return
         ArrayView subView(size_type beginIndex) const
         {
             return {
@@ -174,7 +179,7 @@ namespace Udon
 
         /// @brief 特定の値まで検索し、そこまでの範囲の一つ手前までをビューとする。
         /// @param terminate 終端の値
-        /// @return 
+        /// @return
         ArrayView subViewUntil(const value_type& terminate) const
         {
             return {
@@ -184,11 +189,11 @@ namespace Udon
         }
 
         /// @brief 自身が指定のビューから始まるかどうか
-        /// @remark 
+        /// @remark
         ///      [0, 1, 2, 3, 4].startsWith([0, 1, 2]) == true
         ///      [4, 3, 2, 1, 0].startsWith([0, 1, 2]) == false
-        /// @param rhs 
-        /// @return 
+        /// @param rhs
+        /// @return
         bool startsWith(const ArrayView& rhs) const
         {
             if (size() >= rhs.size())
