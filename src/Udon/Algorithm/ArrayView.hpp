@@ -60,6 +60,18 @@ namespace Udon
         {
         }
 
+        template <typename InputIterator, typename = typename std::enable_if<std::is_convertible<typename std::iterator_traits<InputIterator>::iterator_category, std::input_iterator_tag>::value>::type>
+        ArrayView(InputIterator first, InputIterator last)
+            : m_data(first)
+            , m_size(std::distance(first, last))
+        {
+        }
+
+        explicit operator bool() const noexcept
+        {
+            return m_size;
+        }
+
         constexpr size_t size() const
         {
             return m_size;
