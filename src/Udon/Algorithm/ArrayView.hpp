@@ -20,6 +20,7 @@
 #include <cstddef>    // std::ptrdiff_t
 #include <iterator>
 #include <algorithm>
+#include <cstring>
 
 #if UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE
 #    include <iostream>
