@@ -11,6 +11,8 @@
 
 #pragma once
 
+#include <Udon/Common/Printf.hpp>
+
 namespace Udon
 {
 
@@ -29,19 +31,19 @@ namespace Udon
         delay(100);
 
         // 周波数設定
-        uart.printf("p2p set_freq %d\r\n", config.frequency);
+        Udon::Printf(uart, "p2p set_freq %d\r\n", config.frequency);
         delay(100);
 
         // 送信電力設定
-        uart.printf("p2p set_pwr %d\r\n", config.power);
+        Udon::Printf(uart, "p2p set_pwr %d\r\n", config.power);
         delay(100);
 
         // 帯域幅設定
-        uart.printf("p2p set_bw %d\r\n", config.bandwidth);
+        Udon::Printf(uart, "p2p set_bw %d\r\n", config.bandwidth);
         delay(100);
 
         // 拡散係数設定
-        uart.printf("p2p set_sf %d\r\n", config.spreadingFactor);
+        Udon::Printf(uart, "p2p set_sf %d\r\n", config.spreadingFactor);
     }
 
     inline void TLM922S::update()
