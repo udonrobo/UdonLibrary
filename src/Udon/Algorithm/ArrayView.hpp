@@ -54,10 +54,10 @@ namespace Udon
             , m_size()
         {
         }
-
-        template <size_type N>
-        ArrayView(value_type (&m_data)[N])
-            : m_data(m_data)
+      
+        template <size_t N>
+        ArrayView(value_type (&array)[N])
+            : m_data(array)
             , m_size(N)
         {
         }

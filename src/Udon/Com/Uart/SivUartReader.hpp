@@ -38,6 +38,8 @@ namespace Udon
         bool isRunning;    // thread stop token
 
     public:
+        using MessageType = Message;
+        
         SivUartReader(s3d::Serial& bus)
             : serial(bus)
             , buffer(Size)
