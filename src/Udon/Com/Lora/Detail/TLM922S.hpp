@@ -56,7 +56,7 @@ namespace Udon
                 uart.print("p2p tx ");
                 for (int i = 0; i < txNode->size; ++i)
                 {
-                    uart.printf("%02x", txNode->data[i]);
+                    Udon::Printf(uart, "%02x", txNode->data[i]);
                 }
                 uart.print("\r\n");
                 txNode->transmitMs = millis();
