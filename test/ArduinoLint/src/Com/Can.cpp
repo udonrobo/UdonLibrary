@@ -29,10 +29,20 @@ inline void testBus()
 
 inline void testBus()
 {
-    Udon::CanBusSpi bus{ spi0, 1 };
+    Udon::CanBusSpi bus{
+        {
+            .channel   = spi0,
+            .cs        = 1,
+            .interrupt = 2,
+            .mosi      = 3,
+            .miso      = 4,
+            .sck       = 5,
+            .clock     = 1'000'000,
+        },
+        {},
+    };
 
-    bus.begin(1, 2, 3, 4);
-    bus.begin(1);
+    bus.begin();
     bus.end();
     bus.update();
     bus.operator bool();

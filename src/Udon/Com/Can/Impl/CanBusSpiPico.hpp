@@ -18,54 +18,39 @@
 namespace Udon
 {
     /// @brief コンストラクタ
-    /// @param spiChannel SPIチャンネル (spi0 or spi1)
-    /// @param csPin      チップセレクトピン
-    /// @param spiClock   SPIクロック周波数 (CANコントローラーとの通信速度)
-    inline CanBusSpi::CanBusSpi(
-        spi_inst_t* spiChannel,
-        uint8_t     csPin,
-        uint32_t    spiClock)
-        : bus(
-              /* spi_inst_t* CHANNEL    */ spiChannel,
-              /* uint8_t     CS_PIN     */ csPin,
-              /* uint32_t    _SPI_CLOCK */ spiClock)
+    /// @param spiConfig SPI 設定情報
+    /// @param canConfig CAN 設定情報
+    inline CanBusSpi::CanBusSpi(const SpiConfig& spiConfig, const CanConfig& canConfig)
+        : spiConfig(spiConfig)
+        , canConfig(canConfig)
+        , bus(
+              /* spi_inst_t* CHANNEL    */ spiConfig.channel,
+              /* uint8_t     CS_PIN     */ spiConfig.cs,
+              /* uint32_t    _SPI_CLOCK */ spiConfig.clock)
     {
     }
 
     /// @brief 通信開始
     /// @remark SPI通信も開始します。
-    /// @param intPin            割り込みピン
-    /// @param txPin             送信ピン (MOSI)
-    /// @param rxPin             受信ピン (MISO)
-    /// @param sckPin            クロックピン
-    /// @param transceiverClock  CANトランシーバーのクロック周波数
-    /// @param canSpeed          CAN通信速度
-    inline void CanBusSpi::begin(
-        uint8_t   intPin,
-        uint8_t   txPin,
-        uint8_t   rxPin,
-        uint8_t   sckPin,
-        CAN_CLOCK transceiverClock,
-        CAN_SPEED canSpeed)
+    inline void CanBusSpi::begin()
     {
         SPIClassRP2040 spi{
-            /* spi_inst_t *spi */ bus.getChannel(),
-            /* pin_size_t rx   */ rxPin,
-            /* pin_size_t cs   */ bus.getCS(),
-            /* pin_size_t sck  */ sckPin,
-            /* pin_size_t tx   */ txPin
-        };    // todo: 開始するために一時的に生成するのはちょっとキモイ
+            /* spi_inst_t *spi */ spiConfig.channel,
+            /* pin_size_t rx   */ spiConfig.miso,
+            /* pin_size_t cs   */ spiConfig.cs,
+            /* pin_size_t sck  */ spiConfig.sck,
+            /* pin_size_t tx   */ spiConfig.mosi
+        };
         spi.begin();
-        beginCanOnly(intPin, transceiverClock, canSpeed);
+        beginCanOnly(spiConfig.interrupt, canConfig);
     }
 
     /// @brief CAN通信のみ開始する
     /// @remark SPI通信は別途開始する必要がある
     ///         SPIバスがCANコントローラーとの通信のみに使用される場合は、この関数を呼び出す必要はない
-    /// @param intPin            割り込みピン
-    /// @param transceiverClock  CANトランシーバーのクロック周波数
-    /// @param canSpeed          CAN通信速度
-    inline void CanBusSpi::beginCanOnly(uint8_t intPin, CAN_CLOCK transceiverClock, CAN_SPEED canSpeed)
+    /// @param interrupt 割り込みピン
+    /// @param canConfig CAN 設定情報
+    inline void CanBusSpi::beginCanOnly(Pin interrupt, const CanConfig& canConfig)
     {
         bus.reset();
 
@@ -73,9 +58,9 @@ namespace Udon
         if (const auto rxSize = rxNodes.size())
         {
             // 割り込み設定
-            pinMode(intPin, INPUT_PULLDOWN);
+            pinMode(interrupt, INPUT_PULLDOWN);
             attachInterruptParam(
-                digitalPinToInterrupt(intPin),
+                digitalPinToInterrupt(interrupt),
                 [](void* p)
                 {
                     auto      self = static_cast<CanBusSpi*>(p);
@@ -107,7 +92,7 @@ namespace Udon
             }
         }
 
-        bus.setBitrate(canSpeed, transceiverClock);
+        bus.setBitrate(canConfig.speed, canConfig.mcpClock);
 
         if (rxNodes && not txNodes)
             bus.setListenOnlyMode();    // 受信のみの場合は受信モードに設定 (送受信モードのマイコンが再起動したとき、全ノードが停止したため。)
@@ -220,7 +205,7 @@ namespace Udon
         rxNodes.erase(std::find_if(rxNodes.begin(), rxNodes.end(), [&node](const RxNodePtr& rxNode)
                                    { return rxNode.node == &node; }));
     }
-    
+
     inline void CanBusSpi::onReceive()
     {
         for (auto&& msg : rxBuffer)

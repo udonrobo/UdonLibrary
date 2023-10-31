@@ -23,6 +23,8 @@
 #    include "CanNode.hpp"
 #    include "CanUtility.hpp"
 
+#    include <Udon/Types/Pin.hpp>
+
 #    include <Udon/Algorithm/StaticVector.hpp>
 #    include <Udon/Thirdparty/pico_mcp2515/mcp2515.h>
 
@@ -33,38 +35,40 @@ namespace Udon
         : public ICanBus
     {
     public:
+        struct SpiConfig
+        {
+            spi_inst_t* channel;    // SPI チャンネル (spi0, spi1)
+
+            Pin cs;           // チップセレクトピン
+            Pin interrupt;    // 受信割り込みピン
+            Pin mosi;         // MOSIピン (TX)
+            Pin miso;         // MISOピン (RX)
+            Pin sck;          // クロックピン
+
+            uint32_t clock = 1'000'000;    // SPIクロック周波数 [Hz]
+        };
+
+        struct CanConfig
+        {
+            CAN_SPEED speed    = CAN_1000KBPS;    // CAN通信速度
+            CAN_CLOCK mcpClock = MCP_16MHZ;       // トランシーバー動作クロック周波数 [Hz]
+        };
+
         /// @brief コンストラクタ
-        /// @param spiChannel SPIチャンネル (spi0 or spi1)
-        /// @param csPin      チップセレクトピン
-        /// @param spiClock   SPIクロック周波数 (CANコントローラーとの通信速度)
-        CanBusSpi(
-            spi_inst_t* spiChannel,
-            uint8_t     csPin,
-            uint32_t    spiClock = 1000000);
+        /// @param spiConfig SPI 設定情報
+        /// @param canConfig CAN 設定情報
+        CanBusSpi(const SpiConfig& spiConfig, const CanConfig& canConfig);
 
         /// @brief 通信開始
         /// @remark SPI通信も開始します。
-        /// @param intPin            割り込みピン
-        /// @param txPin             送信ピン (MOSI)
-        /// @param rxPin             受信ピン (MISO)
-        /// @param sckPin            クロックピン
-        /// @param transceiverClock  CANトランシーバーのクロック周波数
-        /// @param canSpeed          CAN通信速度
-        void begin(
-            uint8_t   intPin,
-            uint8_t   txPin            = PICO_DEFAULT_SPI_TX_PIN,
-            uint8_t   rxPin            = PICO_DEFAULT_SPI_RX_PIN,
-            uint8_t   sckPin           = PICO_DEFAULT_SPI_SCK_PIN,
-            CAN_CLOCK transceiverClock = MCP_16MHZ,
-            CAN_SPEED canSpeed         = CAN_1000KBPS);
+        void begin();
 
         /// @brief CAN通信のみ開始する
         /// @remark SPI通信は別途開始する必要がある
         ///         SPIバスがCANコントローラーとの通信のみに使用される場合は、この関数を呼び出す必要はない
-        /// @param intPin            割り込みピン
-        /// @param transceiverClock  CANトランシーバーのクロック周波数
-        /// @param canSpeed          CAN通信速度
-        void beginCanOnly(uint8_t intPin, CAN_CLOCK transceiverClock = MCP_16MHZ, CAN_SPEED canSpeed = CAN_1000KBPS);
+        /// @param interrupt 割り込みピン
+        /// @param canConfig CAN 設定情報
+        void beginCanOnly(Pin interrupt, const CanConfig& canConfig);
 
         /// @brief 通信終了
         void end();
@@ -78,6 +82,7 @@ namespace Udon
 
         /// @brief バスの状態を表示する
         void show() const;
+        
 
         void joinTx(CanNode& node) override;
 
@@ -88,6 +93,9 @@ namespace Udon
         void leaveRx(const CanNode& node) override;
 
     private:
+        SpiConfig spiConfig;
+        CanConfig canConfig;
+
         MCP2515 bus;
 
         constexpr static uint32_t SingleFrameSize = 8;
