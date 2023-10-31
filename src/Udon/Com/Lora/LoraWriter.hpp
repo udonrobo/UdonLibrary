@@ -44,6 +44,11 @@ namespace Udon
             Udon::Pack(message, buffer);
         }
 
+        void setErrorMessage() noexcept
+        {
+            Udon::FailablePack({ buffer });
+        }
+
         /// @brief 送信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const

@@ -21,6 +21,7 @@
 #include <Udon/Algorithm/Input.hpp>
 #include <Udon/Com/Message/PadPS5.hpp>
 #include <Udon/Types/Position.hpp>
+#include <Udon/Com/Message.hpp>
 
 namespace Udon
 {
@@ -128,6 +129,40 @@ namespace Udon
         /// @brief ロボットの移動に必要なスティックの情報 Udon::Positionオブジェクト {{x,y},turn} を取得
         /// @remark 左スティックから移動成分、右スティックX軸から旋回成分を取得
         Udon::Pos getMoveInfo() const { return { m_leftStick, m_rightStick.x }; }
+
+        Udon::Message::PadPS5 toMessage() const
+        {
+            return {
+                m_isConnected,
+                m_triangle.press(),
+                m_circle.press(),
+                m_cross.press(),
+                m_square.press(),
+
+                m_up.press(),
+                m_right.press(),
+                m_down.press(),
+                m_left.press(),
+
+                m_l1.press(),
+                m_r1.press(),
+                m_l2.press(),
+                m_r2.press(),
+                m_l3.press(),
+                m_r3.press(),
+
+                m_create.press(),
+                m_option.press(),
+                m_touch.press(),
+                m_mic.press(),
+                m_ps.press(),
+
+                static_cast<int8_t>(m_rightStick.x / 2),
+                static_cast<int8_t>(m_rightStick.y / 2),
+                static_cast<int8_t>(m_leftStick.x / 2),
+                static_cast<int8_t>(m_leftStick.y / 2),
+            };
+        }
 
     protected:
         /// @brief 継承したクラスが呼び出す関数

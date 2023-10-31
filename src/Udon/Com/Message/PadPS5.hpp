@@ -25,7 +25,7 @@ namespace Udon
     {
 
         /// @brief PS5コントローラーのボタン情報
-        /// @note 参照: https://controller.dl.playstation.net/controller/lang/jp/DS_partnames.html
+        /// @note ボタン名称: https://controller.dl.playstation.net/controller/lang/jp/DS_partnames.html
         struct PadPS5
         {
             bool isConnected;    // 接続状態
@@ -65,39 +65,7 @@ namespace Udon
 
             void clear()
             {
-                isConnected = false;
-
-                triangle = false;
-                circle   = false;
-                cross    = false;
-                square   = false;
-
-                up    = false;
-                right = false;
-                down  = false;
-                left  = false;
-
-                l1 = false;
-                r1 = false;
-
-                l2 = false;
-                r2 = false;
-
-                l3 = false;
-                r3 = false;
-
-                create = false;
-                option = false;
-
-                touch = false;
-                mic   = false;
-                ps    = false;
-
-                analogRightX = 0;
-                analogRightY = 0;
-
-                analogLeftX = 0;
-                analogLeftY = 0;
+                *this = {};
             }
 
 #ifdef ARDUINO

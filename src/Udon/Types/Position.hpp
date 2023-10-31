@@ -126,6 +126,16 @@ namespace Udon
             };
         }
 
+        Position updateVector(const Udon::Vector2D& v) const noexcept
+        {
+            return { v, turn };
+        }
+
+        Position updateTurn(double t) const noexcept
+        {
+            return { vector, t };
+        }
+        
         // template <size_t WheelCount>
         // std::array<double, WheelCount> toOmni() const
         //{
