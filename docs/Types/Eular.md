@@ -54,7 +54,7 @@ struct Euler
     Euler normalized(ValueType min, ValueType max) const;
 
     // 回転方向を修正したオイラー角を取得する
-    Euler directionRevision(bool directionRoll, bool directionPitch, bool directionYaw) const noexcept;
+    constexpr Euler directionRevision(EulerDirection direction) const noexcept;
 
     // クオータニオンへ変換
     Quaternion toQuaternion() const noexcept;

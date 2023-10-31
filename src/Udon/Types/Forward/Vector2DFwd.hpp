@@ -16,7 +16,6 @@
 #pragma once
 
 #include <Udon/Traits/ParsableMacro.hpp>
-#include <Udon/Com/Serialization.hpp>
 
 namespace Udon
 {
@@ -91,34 +90,40 @@ namespace Udon
         /// @return
         constexpr bool operator==(const Vector2D& rhs) const noexcept
         {
-            return x == rhs.x &&
-                   y == rhs.y;
+            return x == rhs.x and y == rhs.y;
         };
         constexpr bool operator!=(const Vector2D& rhs) const noexcept
         {
-            return !(*this == rhs);
+            return not(*this == rhs);
         };
 
         /// @brief 要素のいずれかに0以外の値があるかどうかを返す
         /// @return
         explicit constexpr operator bool() const noexcept
         {
-            return x || y;
+            return x or y;
+        }
+
+        /// @brief ゼロベクトルを返す
+        /// @return ゼロベクトル
+        static constexpr Vector2D Zero() noexcept
+        {
+            return { 0, 0 };
         }
 
         /// @brief ゼロベクトルであるかを返す
         constexpr bool isZero() const noexcept
         {
-            return !operator bool();
+            return not operator bool();
         }
 
         /// @brief 値クリア
         void clear() noexcept
         {
-            *this = {};
+            *this = Zero();
         }
 
-        /// @brief 指定された点を中心に回転したベクトルを返す
+        /// @brief 指定された点を中心に時計回りに回転したベクトルを返す
         /// @param center 回転の中心
         /// @param angle 回転する角度 [rad]
         /// @return 回転後の座標
@@ -130,20 +135,29 @@ namespace Udon
             return center + Vector2D{ (d.x * c - d.y * s), (d.x * s + d.y * c) };
         }
 
+        /// @brief 指定された点を中心に時計回りに回転させる
+        /// @param center 回転の中心
+        /// @param angle 回転する角度 [rad]
+        /// @return 回転後の座標
+        Vector2D& rotateAt(const Vector2D& center, ValueType angle) noexcept
+        {
+            return *this = rotatedAt(center, angle);
+        }
+
         /// @brief 原点を中心に回転したベクトルを返す
         /// @param angle 回転する角度 [rad]
         /// @return 回転後の座標
         Vector2D rotated(ValueType angle) const noexcept
         {
-            return rotatedAt({ 0, 0 }, angle);
+            return rotatedAt(Zero(), angle);
         }
 
-        /// @brief 原点からの角度を求める
-        /// @remark y軸の正が 0rad
-        /// @return
-        ValueType angle() const noexcept
+        /// @brief 原点を中心に回転させる
+        /// @param angle 回転する角度 [rad]
+        /// @return 回転後の座標
+        Vector2D& rotate(ValueType angle) noexcept
         {
-            return angleAt({ 0, 0 });
+            return *this = rotated(angle);
         }
 
         /// @brief 指定された点からの角度を求める
@@ -159,8 +173,16 @@ namespace Udon
             }
             else
             {
-                return {};
+                return 0.;
             }
+        }
+
+        /// @brief 原点からの時計回りの角度を求める
+        /// @remark y軸の正が 0rad
+        /// @return
+        ValueType angle() const noexcept
+        {
+            return angleAt(Zero());
         }
 
         /// @brief 指定された点からの距離を求める
@@ -176,7 +198,7 @@ namespace Udon
         /// @return 原点からの距離
         ValueType length() const noexcept
         {
-            return distanceFrom({ 0, 0 });
+            return distanceFrom(Zero());
         }
 
         /// @brief 原点からの距離の二乗を求める
@@ -201,12 +223,29 @@ namespace Udon
             return *this = scaledLength(length);
         }
 
-        Vector2D maped(double inMin, double inMax, double outMin, double outMax) const noexcept
+        /// @brief 各要素をある範囲から別の範囲に再マップしたベクトルを返す
+        /// @param fromMin 元の値の下限
+        /// @param fromMax 元の値の上限
+        /// @param toMin   再マップ後の値の下限
+        /// @param toMax   再マップ後の値の上限
+        /// @return
+        constexpr Vector2D maped(ValueType fromMin, ValueType fromMax, ValueType toMin, ValueType toMax) const noexcept
         {
             return {
-                Map(x, inMin, inMax, outMin, outMax),
-                Map(y, inMin, inMax, outMin, outMax),
+                Map(x, fromMin, fromMax, toMin, toMax),
+                Map(y, fromMin, fromMax, toMin, toMax),
             };
+        }
+
+        /// @brief 各要素をある範囲から別の範囲に再マップする
+        /// @param fromMin 元の値の下限
+        /// @param fromMax 元の値の上限
+        /// @param toMin   再マップ後の値の下限
+        /// @param toMax   再マップ後の値の上限
+        /// @return
+        Vector2D& map(ValueType fromMin, ValueType fromMax, ValueType toMin, ValueType toMax) noexcept
+        {
+            return *this = maped(fromMin, fromMax, toMin, toMax);
         }
 
         /// @brief 正規化したベクトルを返す
@@ -219,13 +258,33 @@ namespace Udon
             }
             else
             {
-                return {};
+                return Zero();
             }
         }
 
-        Vector2D clamped(ValueType min, ValueType max) const noexcept
+        /// @brief ベクトルを正規化する
+        /// @return
+        Vector2D& normalize() noexcept
+        {
+            return *this = normalized();
+        }
+
+        /// @brief 各要素に制限をかけたベクトルを返す
+        /// @param min 最小値
+        /// @param max 最大値
+        /// @return
+        constexpr Vector2D clamped(ValueType min, ValueType max) const noexcept
         {
             return { Udon::Constrain(x, min, max), Udon::Constrain(y, min, max) };
+        }
+
+        /// @brief 各要素に制限をかける
+        /// @param min 最小値
+        /// @param max 最大値
+        /// @return
+        Vector2D& clamp(ValueType min, ValueType max) noexcept
+        {
+            return *this = clamped(min, max);
         }
 
         Udon::Vector3D xy0() const noexcept;
@@ -240,15 +299,14 @@ namespace Udon
         /// @param v s3d::Vec2
         template <typename T>
         constexpr Vector2D(const s3d::Vector2D<T>& v) noexcept
-            : x(static_cast<double>(v.x))
-            , y(static_cast<double>(v.y))
+            : x(static_cast<ValueType>(v.x))
+            , y(static_cast<ValueType>(v.y))
         {
         }
 
         /// @brief Siv3Dのベクトルに変換する
         template <typename T>
-        [[nodiscard]]
-        s3d::Vector2D<T> asSivVec2() const noexcept
+        [[nodiscard]] s3d::Vector2D<T> asSivVec2() const noexcept
         {
             return {
                 static_cast<T>(x),
