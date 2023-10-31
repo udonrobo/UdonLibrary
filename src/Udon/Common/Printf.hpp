@@ -18,7 +18,7 @@ namespace Udon
         stream.printf(format, args...);
     }
 
-#    else
+#    elif defined(ARDUINO)
 
     template <typename... Args>
     inline void Printf(Stream& stream, const char* format, Args&&... args)
@@ -27,6 +27,10 @@ namespace Udon
         snprintf(buf, sizeof buf, format, args...);
         stream.print(buf);
     }
+
+#    else
+
+    
 
 #    endif
 
