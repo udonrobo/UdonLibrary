@@ -67,4 +67,4 @@ namespace Udon
 
 }    // namespace Udon
 
-#include "Detail/TLM922S.hpp"
+#include "Impl/TLM922S.hpp"
