@@ -38,8 +38,17 @@ namespace Udon
         : public ICanBus
     {
     public:
+        struct CanConfig
+        {
+            uint32_t transmitInterval = 5;            // 送信間隔 [ms]
+            uint32_t transmitTimeout  = 100;          // 送信タイムアウト時間 [ms]
+            uint32_t receiveTimeout   = 100;          // 受信タイムアウト時間 [ms]
+            uint32_t baudrate         = 1'000'000;    // CAN通信速度
+        };
+
         /// @brief コンストラクタ
-        CanBusTeensy();
+        /// @param config CAN設定情報 [optional]
+        explicit CanBusTeensy(const CanConfig& config = {});
 
         /// @brief コピーコンストラクタ
         CanBusTeensy(const CanBusTeensy&);
@@ -49,33 +58,36 @@ namespace Udon
 
         /// @brief 通信開始
         /// @remark 呼び出し必須
-        /// @param baudrate 通信レート
-        void begin(const uint32_t baudrate = 1'000'000);
+        void begin();
 
         /// @brief 通信終了
         void end();
 
         /// @brief バス更新
         /// @remark 呼び出し必須
-        /// @param transmitIntervalMs 送信間隔 [ms]
-        void update(uint32_t transmissionIntervalUs = 5000);
+        void update();
 
         explicit operator bool() const override;
+
+        bool txTimeout() const;
+
+        bool rxTimeout() const;
 
         /// @brief バス情報を表示する
         void show() const;
 
-
         void joinTx(CanNode& node) override;
-        
+
         void joinRx(CanNode& node, void (*onReceive)(void*), void* p) override;
 
         void leaveTx(const CanNode& node) override;
-        
+
         void leaveRx(const CanNode& node) override;
 
     private:
         static CanBusTeensy* self;    // コールバック関数から自身のインスタンスを参照するためのポインタ (クラステンプレートによってインスタンスごとに別のstatic変数が生成される)
+
+        CanConfig config;
 
         FlexCAN_T4<Bus, RX_SIZE_256, TX_SIZE_256> bus;
 
@@ -102,7 +114,7 @@ namespace Udon
 
         Udon::StaticVector<CAN_message_t, 1024> rxBuffer;
 
-        uint32_t transmitUs = 0;
+        uint32_t transmitMs = 0;
         uint32_t receiveMs  = 0;
 
         /// @brief 受信処理

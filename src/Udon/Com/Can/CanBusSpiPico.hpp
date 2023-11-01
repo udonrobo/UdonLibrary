@@ -49,9 +49,9 @@ namespace Udon
         struct CanConfig
         {
             uint32_t  transmitInterval = 5;               // 送信間隔 [ms]
-            uint32_t  transmitTimeout  = 20;              // 送信タイムアウト時間 [ms]
+            uint32_t  transmitTimeout  = 100;             // 送信タイムアウト時間 [ms]
             uint32_t  receiveTimeout   = 100;             // 受信タイムアウト時間 [ms]
-            CAN_SPEED speed            = CAN_1000KBPS;    // CAN通信速度
+            CAN_SPEED baudrate         = CAN_1000KBPS;    // CAN通信速度
             CAN_CLOCK mcpClock         = MCP_16MHZ;       // トランシーバー動作クロック周波数 [Hz]
         };
 

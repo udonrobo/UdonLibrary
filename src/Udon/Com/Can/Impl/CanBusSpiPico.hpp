@@ -92,7 +92,7 @@ namespace Udon
             }
         }
 
-        bus.setBitrate(canConfig.speed, canConfig.mcpClock);
+        bus.setBitrate(canConfig.baudrate, canConfig.mcpClock);
 
         if (rxNodes && not txNodes)
             bus.setListenOnlyMode();    // 受信のみの場合は受信モードに設定 (送受信モードのマイコンが再起動したとき、全ノードが停止したため。)

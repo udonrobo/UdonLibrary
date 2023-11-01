@@ -17,14 +17,19 @@ namespace Udon
 {
 
     template <CAN_DEV_TABLE Bus>
-    CanBusTeensy<Bus>::CanBusTeensy()
+    CanBusTeensy<Bus>::CanBusTeensy(const CanConfig& config)
+        : config(config)
     {
         self = this;
     }
 
     /// @brief コピーコンストラクタ
     template <CAN_DEV_TABLE Bus>
-    CanBusTeensy<Bus>::CanBusTeensy(const CanBusTeensy&)
+    CanBusTeensy<Bus>::CanBusTeensy(const CanBusTeensy& other)
+        : config(other.config)
+        , bus(other.bus)
+        , txNodes(other.txNodes)
+        , rxNodes(other.rxNodes)
     {
         self = this;
     }
@@ -39,11 +44,11 @@ namespace Udon
     /// @brief 通信開始
     /// @param baudrate 通信レート
     template <CAN_DEV_TABLE Bus>
-    void CanBusTeensy<Bus>::begin(const uint32_t baudrate)
+    void CanBusTeensy<Bus>::begin()
     {
         // バス初期化
         bus.begin();
-        bus.setBaudRate(baudrate);
+        bus.setBaudRate(config.baudrate);
 
         // 受信開始
         if (rxNodes)
@@ -90,25 +95,37 @@ namespace Udon
     }
 
     /// @brief バス更新
-    /// @param transmitIntervalMs 送信間隔 [ms]
     template <CAN_DEV_TABLE Bus>
-    void CanBusTeensy<Bus>::update(uint32_t transmissionIntervalUs)
+    void CanBusTeensy<Bus>::update()
     {
         onReceive();
-        if (txNodes && micros() - transmitUs >= transmissionIntervalUs)
+        if (txNodes && millis() - transmitMs >= config.transmitInterval)
         {
             onTransmit();
-            transmitUs = micros();
+            transmitMs = millis();
         }
     }
 
     template <CAN_DEV_TABLE Bus>
     CanBusTeensy<Bus>::operator bool() const
     {
+        return not(txTimeout() or rxTimeout());
+    }
+
+    template <CAN_DEV_TABLE Bus>
+    bool CanBusTeensy<Bus>::txTimeout() const
+    {
+        if (txNodes)
+            return millis() - transmitMs >= config.transmitTimeout;
+        else
+            return false;
+    }
+
+    template <CAN_DEV_TABLE Bus>
+    bool CanBusTeensy<Bus>::rxTimeout() const
+    {
         if (rxNodes)
-            return millis() - receiveMs < 100;
-        else if (txNodes)
-            return micros() - transmitUs < 100000;
+            return millis() - receiveMs >= config.receiveTimeout;
         else
             return false;
     }

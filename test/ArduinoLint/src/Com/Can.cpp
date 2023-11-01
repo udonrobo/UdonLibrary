@@ -4,14 +4,21 @@
 #include <Udon/Traits/IsReader.hpp>
 #include <Udon/Traits/IsWriter.hpp>
 
-#if defined(CORE_TEENSY)
+#if defined(TEENSYDUINO)
 
 inline void testBus()
 {
-    Udon::CanBusTeensy<CAN1> bus;
+    Udon::CanBusTeensy<CAN1> a;
+    Udon::CanBusTeensy<CAN1> bus{
+        {
+            .transmitInterval = 5,
+            .transmitTimeout  = 100,
+            .receiveTimeout   = 100,
+            .baudrate         = 1'000'000,
+        }
+    };
 
     bus.begin();
-    bus.begin(1000000);
     bus.end();
     bus.update();
     bus.operator bool();
@@ -40,8 +47,11 @@ inline void testBus()
             .clock     = 1'000'000,
         },
         {
-            .speed    = CAN_1000KBPS,
-            .mcpClock = MCP_16MHZ,
+            .transmitInterval = 5,
+            .transmitTimeout  = 100,
+            .receiveTimeout   = 100,
+            .baudrate         = CAN_1000KBPS,
+            .mcpClock         = MCP_16MHZ,
         }
     };
 
@@ -52,7 +62,7 @@ inline void testBus()
             .interrupt = 2,
         },
     };
-    
+
     bus.begin();
     bus.end();
     bus.update();
