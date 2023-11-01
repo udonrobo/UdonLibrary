@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <Udon/Utility/Show.hpp>
+#include <Udon/Common/Show.hpp>
 
 namespace Udon
 {
@@ -81,7 +81,7 @@ namespace Udon
             m_hasValue = other.m_hasValue;
             return *this;
         }
-        Optional& operator=(Optional&& other)
+        Optional& operator=(Optional&& other) noexcept
         {
             m_value    = std::move(other.m_value);
             m_hasValue = other.m_hasValue;
@@ -136,6 +136,11 @@ namespace Udon
         T& value_or(T& defaultValue)
         {
             return m_hasValue ? m_value : defaultValue;
+        }
+
+        void reset()
+        {
+            m_hasValue = false;
         }
 
         void show() const

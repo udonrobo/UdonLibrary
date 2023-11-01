@@ -18,7 +18,7 @@
 #pragma once
 
 #include <stdint.h>
-#include <Udon/Math/Math.hpp>
+#include "Math.hpp"
 
 namespace Udon
 {
@@ -80,7 +80,7 @@ namespace Udon
                                    Udon::Abs(move_angle) * -1, Udon::Abs(move_angle)) *
                         (move_angle < 0 ? -1 : 1);
                 next_angle += value;
-                next_angle = Udon::Constrain(next_angle, 0.0, static_cast<double>(servo_preset));
+                next_angle = Udon::Constrain(next_angle, 0.0f, static_cast<float>(servo_preset));
             }
         }
 

@@ -28,6 +28,10 @@
 #define UDON_CONCEPT_SCALAR \
     template <typename Scalar, typename std::enable_if<std::is_scalar<Scalar>::value, std::nullptr_t>::type = nullptr>
 
+// 列挙型
+#define UDON_CONCEPT_ENUM \
+	template <typename Enum, typename std::enable_if<std::is_enum<Enum>::value, std::nullptr_t>::type = nullptr>
+
 // 配列
 #define UDON_CONCEPT_ARRAY \
     template <typename Array, typename std::enable_if<std::is_array<Array>::value, std::nullptr_t>::type = nullptr>
@@ -50,7 +54,7 @@
 
 // begin() 関数を持つ型
 #define UDON_CONCEPT_BEGINNABLE \
-    template <typename HasMemberFuntionBegin, typename std::enable_if<Udon::Traits::HasMemberFuntionBegin<Beginnable>::value, std::nullptr_t>::type = nullptr>
+    template <typename HasMemberFunctionBegin, typename std::enable_if<Udon::Traits::HasMemberFunctionBegin<Beginnable>::value, std::nullptr_t>::type = nullptr>
 
 // update() 関数を持つ型
 #define UDON_CONCEPT_UPDATABLE \

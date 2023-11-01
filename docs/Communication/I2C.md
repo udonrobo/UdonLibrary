@@ -1,5 +1,11 @@
 # I2C 通信
 
+```cpp
+#include <Udon/Com/I2c.hpp>
+```
+
+I2C 通信クラスは、通信バスクラス、マスター側送受信クラス、スレーブ側送受信クラスから構成されています。
+
 <details>
 <summary> I2C 通信について </summary>
 
@@ -9,7 +15,7 @@
 
 `バス` 通信線
 
-`マスター` 通信を制御するデバイス (1 つのバスに 1 つ)
+`マスター` 通信を制御するデバイス (1 つのバスに通常 1 つ)
 
 `スレーブ` マスターに従って通信を行うデバイス (1 つのバスに複数)
 
@@ -34,69 +40,145 @@ flowchart LR
 
 </details>
 
-## Usage
-
-I2C 通信クラスは、通信バスクラス、マスター側送受信クラス、スレーブ側送受信クラスから構成されています。
-
-### インクルード
-
-```cpp
-
-#include <Udon/Com/I2c.hpp>
-```
-
-### バスクラス
+## バスクラス
 
 `Udon::I2cBus`
 
-Arduino の `TwoWire` クラスとほとんど同等の機能を持ちますが、通信タイムアウト時にバスの再起動を行う機能が追加されています。
-
-```cpp
-Udon::I2cBus bus{ Wire };
-```
-
-使用方法は各送受信クラスのサンプルを参照してください。
+Arduino の `TwoWire` クラスへ通信タイムアウト時にバスの再起動を行う機能を追加したバスクラスです。
 
 通信開始時、マスターモードの場合 `begin(void)`、スレーブモードの場合 `begin(address)` を呼び出す点に注意してください。
 
-### マスター側
+## マスター側
 
-- 送信クラス
+### 送信クラス
 
-  `Udon::I2cMasterWriter<T>`
+`Udon::I2cMasterWriter<T>`
 
-  `T` に指定された型のオブジェクトをスレーブへ送信します。
+`T` に指定された型のオブジェクトをスレーブへ送信します。スレーブの数に応じて複数インスタンス化可能です。
 
-  [サンプル](./../../example/Com/I2c/I2cMasterWriter/I2cMasterWriter.ino)
+```cpp
+#include <Udon.hpp>
 
-- 受信クラス
+Udon::I2cBus bus{ Wire };
+Udon::I2cMasterWriter<Udon::Vec2> writer{ bus, 6 };
 
-  `Udon::I2cMasterReader<T>`
+void setup()
+{
+    bus.begin();
+}
 
-  `T` に指定された型のオブジェクトをスレーブから受信します。
+void loop()
+{
+    bus.update();
 
-  [サンプル](./../../example/Com/I2c/I2cMasterReader/I2cMasterReader.ino)
+    writer.setMessage({ millis(), micros() });
+    writer.update();
 
-> スレーブの個数に合わせて複数インスタンス化できます。
+    delay(10);
+}
+```
 
-### スレーブ側
+### 受信クラス
 
-- 送信クラス
+`Udon::I2cMasterReader<T>`
 
-  `Udon::I2cSlaveWriter<T>`
+`T` に指定された型のオブジェクトをスレーブから受信します。スレーブの数に応じて複数インスタンス化可能です。
 
-  `T` に指定された型のオブジェクトをマスターへ送信します。
+```cpp
+#include <Udon.hpp>
 
-  [サンプル](./../../example/Com/I2c/I2cSlaveWriter/I2cSlaveWriter.ino)
+Udon::I2cBus bus{ Wire };
+Udon::I2cMasterReader<Udon::Vec2> reader{ bus, 6 };
 
-- 受信クラス
+void setup()
+{
+    Serial.begin(115200);
+    bus.begin();
+}
 
-  `Udon::I2cSlaveReader<T>`
+void loop()
+{
+    bus.update();
 
-  `T` に指定された型のオブジェクトをマスターから受信します。
+    reader.update();
+    if (const auto message = reader.getMessage())
+    {
+        message->show();
+    }
+    else
+    {
+        Serial.print("receive failed");
+    }
+    Serial.println();
 
-  [サンプル](./../../example/Com/I2c/I2cSlaveReader/I2cSlaveReader.ino)
+    delay(10);
+}
+```
 
-> マスターは 1 つであるため、複数インスタンス化できません。
->
-> 送受信クラスをそれぞれ一つずつインスタンス化することはできます。
+## スレーブ側
+
+### 送信クラス
+
+`Udon::I2cSlaveWriter<T>`
+
+`T` に指定された型のオブジェクトをマスターへ送信します。複数インスタンス化できません。
+
+```cpp
+#include <Udon.hpp>
+
+Udon::I2cBus bus{ Wire };
+Udon::I2cSlaveWriter<Udon::Vec2> writer{ bus };
+
+void setup()
+{
+    bus.begin(6);  // 自身のアドレス
+    writer.begin();
+}
+
+void loop()
+{
+    bus.update();
+
+    writer.setMessage({ millis(), micros() });
+
+    delay(10);
+}
+```
+
+### 受信クラス
+
+`Udon::I2cSlaveReader<T>`
+
+`T` に指定された型のオブジェクトをマスターから受信します。複数インスタンス化できません。
+
+```cpp
+#include <Udon.hpp>
+
+Udon::I2cBus bus{ Wire };
+Udon::I2cSlaveReader<Udon::Vec2> reader{ bus };
+
+void setup()
+{
+    Serial.begin(115200);
+
+    bus.begin(6);  // 自身のアドレス
+    reader.begin();
+}
+
+void loop()
+{
+    bus.update();
+
+    if (const auto message = reader.getMessage())
+    {
+        message->show();
+    }
+    else
+    {
+        Serial.print("receive failed");
+    }
+    Serial.println();
+
+    delay(10);
+}
+```

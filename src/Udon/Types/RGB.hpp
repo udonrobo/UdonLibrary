@@ -18,6 +18,11 @@
 #include "Forward/RGBFwd.hpp"
 #include "Forward/HSVFwd.hpp"
 
+#ifdef _MSC_VER
+#    pragma warning(push)
+#    pragma warning(disable : 26495)
+#endif
+
 /// @brief HSV色空間からRGB色空間への変換
 /// @param rgb RGB色空間
 inline Udon::HSV::HSV(const RGB& rgb) noexcept
@@ -25,20 +30,24 @@ inline Udon::HSV::HSV(const RGB& rgb) noexcept
 {
 }
 
+#ifdef _MSC_VER
+#    pragma warning(pop)
+#endif
+
 /// @brief RGB色空間からHSV色空間への変換
 /// @return HSV色空間
 inline Udon::HSV Udon::RGB::toHSV() const noexcept
 {
-    const value_type max = std::max({ r, g, b });
-    const value_type min = std::min({ r, g, b });
-    const value_type d = max - min;
-    const value_type s = max == 0 ? 0 : d * 255 / max;
-    const value_type v = max;
+    const ValueType max = std::max({ r, g, b });
+    const ValueType min = std::min({ r, g, b });
+    const ValueType d = max - min;
+    const ValueType s = max == 0 ? 0 : d * 255 / max;
+    const ValueType v = max;
     if (d == 0)
     {
         return { 0, 0, v };
     }
-    const value_type h = [&]() -> value_type
+    const ValueType h = [&]() -> ValueType
     {
         if (max == r)
         {

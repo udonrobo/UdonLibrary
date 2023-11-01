@@ -1,5 +1,9 @@
 # CAN 通信
 
+```cpp
+#include <Udon/Com/Can.hpp>
+```
+
 CAN 通信クラスは、通信バスクラス、送受信ノードクラスから構成されています。
 
 - [通信バスクラス](#通信バスクラス)
@@ -52,12 +56,6 @@ flowchart LR
 
 </details>
 
-## インクルード
-
-```cpp
-#include <Udon/Com/Can.hpp>
-```
-
 ## 通信バスクラス
 
 送受信処理、通信が行えているかどうかのチェックを行います。使用するマイコンや CAN コントローラーによって使用するクラスが異なります。
@@ -70,143 +68,86 @@ flowchart LR
 
 ### Teensy
 
-- 概要
+Teensy 内臓 CAN コントローラーを使用し CAN 通信を行います。
 
-  Teensy 内臓 CAN コントローラーを使用し CAN 通信を行います。
-
-  ```mermaid
-  flowchart LR
-
-    subgraph 基板
-      Teensy --CAN TX/RX--> CANトランシーバー
-    end
-
-  CANトランシーバー --CAN H/L--> CANバス
-  ```
-
-- インスタンス化
-
-  ```cpp
-  static Udon::CanBusTeensy<CAN1> bus;
-  ```
-
-- 通信開始
-
-  ```cpp
-  bus.begin();
-  // bus.begin(baudrate);
-  ```
-
-- 更新
-
-  ```cpp
-  bus.update();
-  ```
-
-- 詳細
-
-  受信処理は受信割り込みで、送信は `update` 関数で行われます。
-
-  受信ノードが 8 個以内の場合、受信フィルタの設定を行います。
-
-### Raspberry Pi Pico
-
-- 概要
-
-  外部 CAN コントローラーを使用し CAN 通信を行います。コントローラーとは SPI で通信します。
-
-  ```mermaid
-  flowchart LR
-
-    subgraph 基板
-    Pico --SPI--> CANコントローラー/MCP2515 --CAN TX/RX--> CANトランシーバー
-    end
-
-    CANトランシーバー --CAN H/L--> CANバス
-  ```
-
-- 必要な情報
-
-  Raspberry Pi Pico を用いて CAN 通信を行うには以下の情報が必要です。
-
-  | 名称                                                                          | 指定場所                        | デフォルト値 |
-  | ----------------------------------------------------------------------------- | ------------------------------- | ------------ |
-  | CAN コントローラー動作用クロック端子と接続しているピン(Pico から出力する場合) | Udon::PioClockBegin(pin, clock) | -            |
-  | CAN コントローラー割り込み端子と接続しているピン                              | begin 関数                      | -            |
-  | CAN コントローラー SPI TX (MOSI) 端子と接続しているピン                       | begin 関数                      | 19           |
-  | CAN コントローラー SPI RX (MISO) 端子と接続しているピン                       | begin 関数                      | 16           |
-  | CAN コントローラー SPI SCK 端子と接続しているピン                             | begin 関数                      | 18           |
-  | CAN コントローラー SPI CS 端子と接続しているピン                              | コンストラクタ                  | -            |
-  | SPI 通信バス ( spi0, spi1 )                                                   | コンストラクタ                  | -            |
-  | CAN コントローラー動作用クロック周波数                                        | begin 関数                      | 16MHz        |
-  | CAN 通信速度                                                                  | begin 関数                      | 1Mbps        |
-
-- インスタンス化
-
-  ```cpp
-  static Udon::CanBusSpi bus{ spi0, csPin };
-  ```
-
-- 通信開始
-
-  通信を開始する関数は `begin()` と `beginCanOnly()` の二つあります。この関数は SPI 通信の開始処理も同時に行います。
-
-  ```cpp
-  bus.begin(intPin, txPin, rxPin, sckPin);
-  // bus.begin(intPin, txPin, rxPin, sckPin, transceiverClock);
-  // bus.begin(intPin, txPin, rxPin, sckPin, transceiverClock, canSpeed);
-  ```
-
-  `beginCanOnly()` は CAN 通信の開始処理のみ行い、この関数を呼ぶ前に SPI 通信ができる状態にしておく必要があります。同じ SPI バスを使うセンサー等がある場合、通信開始処理を CAN バスが行うべきでないので、この関数を呼び出します。
-
-  ```cpp
-  SPI.begin();
-
-  bus.beginCanOnly(intPin);
-  // bus.beginCanOnly(intPin, transceiverClock);
-  // bus.beginCanOnly(intPin, transceiverClock, canSpeed);
-
-  otherSensor.begin();
-  ```
-
-- 更新
-
-  ```cpp
-  bus.update();
-  ```
-
-- 詳細
-
-  受信処理は外部割り込みで、送信は `update` 関数で行われます。
-
-  受信ノードが 6 個以内の場合、受信フィルタの設定を行います。
-
-<!--
-### SPI 経由汎用クラス
+受信ノードが 8 個以内の場合、受信フィルタの設定を行います。
 
 ```mermaid
 flowchart LR
 
-    subgraph 基板
-    マイコン --SPI-> CANコントローラー --CAN TX/RX-> CANトランシーバー
+  subgraph 基板
+    Teensy --CAN TX/RX--> CANトランシーバー
+  end
 
-    end
-
-    CANトランシーバー --CAN H/L-> CANバス
-
+CANトランシーバー --CAN H/L--> CANバス
 ```
 
-- インスタンス化
+```cpp
+static Udon::CanBusTeensy<CAN1> bus;
 
-  ```cpp
-  static Udon::CanBusSpi bus{ SPI, csPin };
-````
+void setup()
+{
+    bus.begin();
+    // bus.begin(baudrate);
+}
+void loop()
+{
+    bus.update();
+}
+```
 
--->
+### Raspberry Pi Pico
+
+外部 CAN コントローラーを使用し CAN 通信を行います。コントローラーとは SPI で通信します。
+
+受信ノードが 6 個以内の場合、受信フィルタの設定を行います。
+
+```mermaid
+flowchart LR
+
+  subgraph 基板
+  RaspberryPiPico --SPI--> CANコントローラー/MCP2515 --CAN TX/RX--> CANトランシーバー
+  end
+
+  CANトランシーバー --CAN H/L--> CANバス
+```
+
+```cpp
+static Udon::CanBusSpi bus{ spi0, csPin };
+
+void setup()
+{
+    // Udon::PioClockBegin(21, 16000000);  CANコントローラー用クロック
+    bus.begin(intPin, txPin, rxPin, sckPin);
+    // bus.begin(intPin, txPin, rxPin, sckPin, transceiverClock);
+    // bus.begin(intPin, txPin, rxPin, sckPin, transceiverClock, canSpeed);
+}
+void loop()
+{
+    bus.update();
+}
+```
+
+通信を開始する関数は `begin()` と `beginCanOnly()` の二つあります。`begin()` は SPI 通信の開始処理も同時に行います。
+
+`beginCanOnly()` を使用する場合、呼ぶ前に SPI 通信ができる状態にしておく必要があります。同じ SPI バスを使うセンサー等がある場合、SPI 通信開始処理を CAN バスが行うべきでないので、この関数を呼び出します。
+
+```cpp
+void setup()
+{
+    SPI.begin();
+
+    bus.beginCanOnly(intPin);
+    // bus.beginCanOnly(intPin, transceiverClock);
+    // bus.beginCanOnly(intPin, transceiverClock, canSpeed);
+
+    otherSensor.begin();
+}
+```
 
 ### インターフェース
 
-すべてのバスクラスを一様い扱えるようにするためのインターフェースクラス `Udon::ICanBus` クラスがあります。送受信クラスのコンストラクタの引数はこのインターフェースクラスになっており、どのバスでも使用できます。
+すべてのバスクラスを一様に扱えるようにするためのインターフェースクラス `Udon::ICanBus` クラスがあります。送受信クラスのコンストラクタの引数はこのインターフェースクラスになっており、どのバスでも使用できます。
 
 ## 送信クラス
 
@@ -216,7 +157,7 @@ flowchart LR
 
 ```cpp
 static Udon::CanBusTeensy<CAN1> bus;
-static Udon::CanWriter<Udon::Vec2> writer{ bus, 10 };  // Udon::Vec2 を bus へ ノードID 10 として送信
+static Udon::CanWriter<Udon::Vec2> writer{ bus, 0x010 };  // Udon::Vec2 をノードID 0x010 として送信
 
 void setup()
 {
@@ -242,7 +183,7 @@ void loop()
 
 ```cpp
 static Udon::CanBusTeensy<CAN1> bus;
-static Udon::CanReader<Udon::Vec2> reader{ bus, 10 };  // bus から ノードID 10 のデータ(Udon::Vec2)を受信
+static Udon::CanReader<Udon::Vec2> reader{ bus, 0x010 };  // ノードID 0x010 から Udon::Vec2を受信
 
 void setup()
 {
@@ -268,8 +209,6 @@ void loop()
 }
 ```
 
-> 通信タイムアウトを引き起こすので、常に受信し続ける必要があります。
->
 > `getMessage` は正常にオブジェクトが受信できたかどうか判定できるように `Udon::Optional<T>` を返します。通信エラー時は `Udon::nullopt` が返されます。
 > `Udon::Optional` は `operator bool` を持っているため if 文で正常に受信できたかどうかで分岐できます。
 >
@@ -291,32 +230,32 @@ writer.show();  // 送信データを表示
 
 ```cpp
 static Udon::CanBusTeensy<CAN1> bus;
-static Udon::CanWriter<Udon::Vec2> writer1{ bus, 11 };
-static Udon::CanWriter<Udon::Vec2> writer2{ bus, 12 };
-static Udon::CanReader<Udon::Vec2> reader1{ bus, 13 };
-static Udon::CanReader<Udon::Vec2> reader2{ bus, 14 };
+static Udon::CanWriter<Udon::Vec2> writer1{ bus, 0x011 };
+static Udon::CanWriter<Udon::Vec2> writer2{ bus, 0x012 };
+static Udon::CanReader<Udon::Vec2> reader1{ bus, 0x013 };
+static Udon::CanReader<Udon::Vec2> reader2{ bus, 0x014 };
 ```
 
 二つのバスへ受信ノードが参加する(バスの負荷分散目的)
 
 ```cpp
 static Udon::CanBusTeensy<CAN1> bus1;
-static Udon::CanWriter<Udon::Vec2> writer1{ bus1, 11 };
-static Udon::CanReader<Udon::Vec2> reader1{ bus1, 13 };
+static Udon::CanWriter<Udon::Vec2> writer1{ bus1, 0x011 };
+static Udon::CanReader<Udon::Vec2> reader1{ bus1, 0x012 };
 
 static Udon::CanBusTeensy<CAN2> bus2;
-static Udon::CanWriter<Udon::Vec2> writer2{ bus2, 12 };
-static Udon::CanReader<Udon::Vec2> reader2{ bus2, 14 };
+static Udon::CanWriter<Udon::Vec2> writer2{ bus2, 0x011 };  // バスが異なるのでID重複してもOK
+static Udon::CanReader<Udon::Vec2> reader2{ bus2, 0x012 };
 ```
 
 異なる種類のバスへ参加する(激レア)
 
 ```cpp
 static Udon::CanBusTeensy<CAN1> bus1;
-static Udon::CanWriter<Udon::Vec2> writer1{ bus1, 11 };
-static Udon::CanReader<Udon::Vec2> reader1{ bus1, 13 };
+static Udon::CanWriter<Udon::Vec2> writer1{ bus1, 0x011 };
+static Udon::CanReader<Udon::Vec2> reader1{ bus1, 0x013 };
 
 static Udon::CanBusSpi bus2{ SPI };
-static Udon::CanWriter<Udon::Vec2> writer2{ bus2, 12 };
-static Udon::CanReader<Udon::Vec2> reader2{ bus2, 14 };
+static Udon::CanWriter<Udon::Vec2> writer2{ bus2, 0x012 };
+static Udon::CanReader<Udon::Vec2> reader2{ bus2, 0x014 };
 ```

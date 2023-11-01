@@ -20,7 +20,7 @@
 #pragma once
 
 #include <Udon/Com/Serialization.hpp>
-#include <Udon/Utility/Show.hpp>
+#include <Udon/Common/Show.hpp>
 
 namespace Udon
 {
@@ -51,7 +51,6 @@ namespace Udon
         }
 
         /// @brief 送信内容を更新
-        /// @details 送信も行う
         /// @param rhs 送信内容
         void setMessage(const Message& rhs)
         {

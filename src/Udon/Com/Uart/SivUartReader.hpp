@@ -20,7 +20,7 @@
 
 #include <Siv3D/Serial.hpp>
 #include <Udon/Com/Serialization.hpp>
-#include <Udon/Utility/Show.hpp>
+#include <Udon/Common/Show.hpp>
 
 namespace Udon
 {
@@ -38,6 +38,8 @@ namespace Udon
         bool isRunning;    // thread stop token
 
     public:
+        using MessageType = Message;
+        
         SivUartReader(s3d::Serial& bus)
             : serial(bus)
             , buffer(Size)

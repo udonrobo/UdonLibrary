@@ -53,7 +53,7 @@ inline void test()
     // その他関数
     {
         Udon::Quaternion a;
-        a.inverce();
+        a.inverse();
         a.toPitch();
         a.toRoll();
         a.toYaw();

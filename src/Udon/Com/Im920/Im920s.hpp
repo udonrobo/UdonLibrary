@@ -1,11 +1,11 @@
 //-------------------------------------------------------------------
 //
-//	UdonLibrary
+//	  UdonLibrary
 //
-//                2018-2023 Watanabe Rui
-//	Copyright (c) 2022-2023 Okawa Yusuke
-//	Copyright (c) 2022-2023 Fujimoto Ryo
-//	Copyright (c) 2022-2023 udonrobo
+//                  2018-2023 Watanabe Rui
+//	  Copyright (c) 2022-2023 Okawa Yusuke
+//	  Copyright (c) 2022-2023 Fujimoto Ryo
+//	  Copyright (c) 2022-2023 udonrobo
 //
 //    Licensed under the MIT License.
 //
@@ -24,7 +24,7 @@
 
 #include <Udon/Algorithm/BitPack.hpp>
 #include <Udon/Stl/Optional.hpp>
-#include <Udon/Utility/SerialPrintf.hpp>
+#include <Udon/Common/Printf.hpp>
 
 namespace Udon
 {
@@ -174,7 +174,7 @@ namespace Udon
                 return false;
             }
 
-            const int sendTimeMs = Udon::Max(2, Udon::Ceil(4.56 + txNode->size * 0.08));
+            const int sendTimeMs = 4.56 + txNode->size * 0.08 + 1.00;
             // 連続で送信する場合、52ms送信休止時間が必要 (説明書 ７－３（２）送信休止時間 参照)
 
             if (millis() - txNode->transmitMs < (unsigned long)sendTimeMs)
@@ -184,7 +184,8 @@ namespace Udon
 
             // データ送信
             {
-                Udon::SerialPrintf(uart, "TXDU %04d ", *nodeNum);
+                Udon::Printf(uart, "TXDU %04d ", *nodeNum);
+                // Udon::Printf(uart, "TXDA ");
 
                 Udon::BitPack(txNode->data, txNode->data + txNode->size, [this](uint8_t data)
                               { uart.write(data); });
@@ -346,7 +347,7 @@ namespace Udon
     inline bool Im920s::begin(uint8_t channel)
     {
         // ボーレート設定
-        uart.begin(115200);
+        uart.begin(460800);
 
         if (busyPin)
         {
@@ -429,7 +430,7 @@ namespace Udon
         if (defaultChannel != channel)
         {
             waitUntilCommandAccept();
-            Udon::SerialPrintf(uart, "STCH %02d\r\n", channel);
+            Udon::Printf(uart, "STCH %02d\r\n", channel);
             if (uart.readStringUntil('\n') != "OK\r")
             {
                 return false;
@@ -439,7 +440,7 @@ namespace Udon
         if (defaultPower != 2)
         {
             waitUntilCommandAccept();
-            Udon::SerialPrintf(uart, "STPO %d\r\n", 2);
+            Udon::Printf(uart, "STPO %d\r\n", 2);
             if (uart.readStringUntil('\n') != "OK\r")
             {
                 return false;

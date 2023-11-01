@@ -18,7 +18,7 @@
 
 #pragma once
 
-#include <Udon/Utility/Show.hpp>
+#include <Udon/Common/Show.hpp>
 #include <Udon/Traits/HasMemberFunction.hpp>
 #include <Udon/Traits/IsReader.hpp>
 #include <Udon/Traits/IsWriter.hpp>
@@ -78,6 +78,10 @@ namespace Udon
             if (const auto message = reader.getMessage())
             {
                 writer.setMessage(*message);
+            }
+            else
+            {
+                writer.setErrorMessage();
             }
             Udon::Traits::MaybeInvokeUpdate(writer);
         }

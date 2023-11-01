@@ -22,19 +22,27 @@
 namespace Udon
 {
 
-    template <typename T>
-    struct Euler3D;
+    struct Euler;
 
+    /// @brief クオータニオンの各成分の正負を表す構造体
+    struct QuaternionDirection
+    {
+        bool x;
+        bool y;
+        bool z;
+    };
+
+    /// @brief クオータニオン
     struct Quaternion
     {
 
         /// @brief 要素の型
-        using value_type = double;
+        using ValueType = double;
 
-        value_type x;
-        value_type y;
-        value_type z;
-        value_type w;
+        ValueType x;
+        ValueType y;
+        ValueType z;
+        ValueType w;
 
         /// @brief デフォルトコンストラクタ
         constexpr Quaternion() noexcept
@@ -48,7 +56,7 @@ namespace Udon
         /// @brief コンストラクタ
         /// @param x x成分
         /// @param y y成分
-        constexpr Quaternion(value_type x, value_type y, value_type z, value_type w) noexcept
+        constexpr Quaternion(ValueType x, ValueType y, ValueType z, ValueType w) noexcept
             : x(x)
             , y(y)
             , z(z)
@@ -105,9 +113,22 @@ namespace Udon
 
         /// @brief 逆クオータニオン
         /// @return 
-        constexpr Quaternion inverce() const noexcept
+        constexpr Quaternion inverse() const noexcept
         {
             return { -x, -y, -z, w };
+        }
+
+        /// @brief 回転方向を修正したクオータニオンを取得する
+        /// @param direction 回転方向
+        /// @return 修正後のクオータニオン
+        constexpr Quaternion directionRevision(const QuaternionDirection& direction) const noexcept
+        {
+            return {
+                x * (direction.x ? 1 : -1),
+                y * (direction.y ? 1 : -1),
+                z * (direction.z ? 1 : -1),
+                w
+            };
         }
 
         /// @brief 単位クオータニオン
@@ -120,7 +141,7 @@ namespace Udon
         /// @brief X軸回転クオータニオン
         /// @param angle 回転角度
         /// @return
-        static Quaternion RotateX(value_type angle) noexcept
+        static Quaternion RotateX(ValueType angle) noexcept
         {
             return { sin(angle / 2), 0, 0, cos(angle / 2) };
         }
@@ -128,7 +149,7 @@ namespace Udon
         /// @brief Y軸回転クオータニオン
         /// @param angle 回転角度
         /// @return
-        static Quaternion RotateY(value_type angle) noexcept
+        static Quaternion RotateY(ValueType angle) noexcept
         {
             return { 0, sin(angle / 2), 0, cos(angle / 2) };
         }
@@ -136,7 +157,7 @@ namespace Udon
         /// @brief Z軸回転クオータニオン
         /// @param angle 回転角度
         /// @return
-        static Quaternion RotateZ(value_type angle) noexcept
+        static Quaternion RotateZ(ValueType angle) noexcept
         {
             return { 0, 0, sin(angle / 2), cos(angle / 2) };
         }
@@ -153,8 +174,7 @@ namespace Udon
             *this = {};
         }
 
-        template <typename T = value_type>
-        Euler3D<T> toEuler() const noexcept;
+        Euler toEuler() const noexcept;
 
         /// @brief ヨー角を取得
         double toYaw() const noexcept

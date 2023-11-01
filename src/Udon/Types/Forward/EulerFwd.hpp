@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <Udon/Math/Math.hpp>    // Udon::Normalized
+#include <Udon/Algorithm/Math.hpp>    // Udon::Normalized
 #include <Udon/Traits/ParsableMacro.hpp>
 #include <Udon/Com/Serialization.hpp>
 
@@ -25,24 +25,30 @@ namespace Udon
 
     struct Quaternion;
 
-    template <typename T>
-    struct Euler3D
+    struct EulerDirection
+    {
+        bool roll;
+        bool pitch;
+        bool yaw;
+    };
+
+    struct Euler
     {
 
         /// @brief 要素の型
-        using value_type = T;
+        using ValueType = double;
 
         /// @brief ロール角
-        value_type roll;
+        ValueType roll;
 
         /// @brief ピッチ角
-        value_type pitch;
+        ValueType pitch;
 
         /// @brief ヨー角
-        value_type yaw;
+        ValueType yaw;
 
         /// @brief デフォルトコンストラクタ
-        constexpr Euler3D() noexcept
+        constexpr Euler() noexcept
             : roll()
             , pitch()
             , yaw()
@@ -53,7 +59,7 @@ namespace Udon
         /// @param roll ロール角
         /// @param pitch ピッチ角
         /// @param yaw ヨー角
-        constexpr Euler3D(value_type roll, value_type pitch, value_type yaw) noexcept
+        constexpr Euler(ValueType roll, ValueType pitch, ValueType yaw) noexcept
             : roll(roll)
             , pitch(pitch)
             , yaw(yaw)
@@ -61,45 +67,45 @@ namespace Udon
         }
 
         /// @brief デフォルトコピーコンストラクタ
-        Euler3D(const Euler3D&) = default;
+        Euler(const Euler&) = default;
 
         /// @brief デフォルトコピー代入演算子
-        Euler3D& operator=(const Euler3D&) = default;
+        Euler& operator=(const Euler&) = default;
 
         /// @brief 算術演算子
         /// @param rhs 被演算子
         /// @return
-        constexpr Euler3D operator+(const Euler3D& rhs) const noexcept { return { roll + rhs.roll, pitch + rhs.pitch, yaw + rhs.yaw }; }
-        constexpr Euler3D operator-(const Euler3D& rhs) const noexcept { return { roll - rhs.roll, pitch - rhs.pitch, yaw - rhs.yaw }; }
-        constexpr Euler3D operator*(const Euler3D& rhs) const noexcept { return { roll * rhs.roll, pitch * rhs.pitch, yaw * rhs.yaw }; }
-        constexpr Euler3D operator/(const Euler3D& rhs) const noexcept { return { roll / rhs.roll, pitch / rhs.pitch, yaw / rhs.yaw }; }
-        constexpr Euler3D operator+(value_type rhs) const noexcept { return { roll + rhs, pitch + rhs, yaw + rhs }; }
-        constexpr Euler3D operator-(value_type rhs) const noexcept { return { roll - rhs, pitch - rhs, yaw - rhs }; }
-        constexpr Euler3D operator*(value_type rhs) const noexcept { return { roll * rhs, pitch * rhs, yaw * rhs }; }
-        constexpr Euler3D operator/(value_type rhs) const noexcept { return { roll / rhs, pitch / rhs, yaw / rhs }; }
+        constexpr Euler operator+(const Euler& rhs) const noexcept { return { roll + rhs.roll, pitch + rhs.pitch, yaw + rhs.yaw }; }
+        constexpr Euler operator-(const Euler& rhs) const noexcept { return { roll - rhs.roll, pitch - rhs.pitch, yaw - rhs.yaw }; }
+        constexpr Euler operator*(const Euler& rhs) const noexcept { return { roll * rhs.roll, pitch * rhs.pitch, yaw * rhs.yaw }; }
+        constexpr Euler operator/(const Euler& rhs) const noexcept { return { roll / rhs.roll, pitch / rhs.pitch, yaw / rhs.yaw }; }
+        constexpr Euler operator+(ValueType rhs) const noexcept { return { roll + rhs, pitch + rhs, yaw + rhs }; }
+        constexpr Euler operator-(ValueType rhs) const noexcept { return { roll - rhs, pitch - rhs, yaw - rhs }; }
+        constexpr Euler operator*(ValueType rhs) const noexcept { return { roll * rhs, pitch * rhs, yaw * rhs }; }
+        constexpr Euler operator/(ValueType rhs) const noexcept { return { roll / rhs, pitch / rhs, yaw / rhs }; }
 
         /// @brief 複合代入演算子
         /// @param rhs 被演算子
         /// @return
-        Euler3D& operator+=(const Euler3D& rhs) noexcept { return *this = *this + rhs; };
-        Euler3D& operator-=(const Euler3D& rhs) noexcept { return *this = *this - rhs; };
-        Euler3D& operator*=(const Euler3D& rhs) noexcept { return *this = *this * rhs; };
-        Euler3D& operator/=(const Euler3D& rhs) noexcept { return *this = *this / rhs; };
-        Euler3D& operator+=(value_type rhs) noexcept { return *this = *this + rhs; };
-        Euler3D& operator-=(value_type rhs) noexcept { return *this = *this - rhs; };
-        Euler3D& operator*=(value_type rhs) noexcept { return *this = *this * rhs; };
-        Euler3D& operator/=(value_type rhs) noexcept { return *this = *this / rhs; };
+        Euler& operator+=(const Euler& rhs) noexcept { return *this = *this + rhs; };
+        Euler& operator-=(const Euler& rhs) noexcept { return *this = *this - rhs; };
+        Euler& operator*=(const Euler& rhs) noexcept { return *this = *this * rhs; };
+        Euler& operator/=(const Euler& rhs) noexcept { return *this = *this / rhs; };
+        Euler& operator+=(ValueType rhs) noexcept { return *this = *this + rhs; };
+        Euler& operator-=(ValueType rhs) noexcept { return *this = *this - rhs; };
+        Euler& operator*=(ValueType rhs) noexcept { return *this = *this * rhs; };
+        Euler& operator/=(ValueType rhs) noexcept { return *this = *this / rhs; };
 
         /// @brief 比較演算子
         /// @param rhs 被演算子
         /// @return
-        constexpr bool operator==(const Euler3D& rhs) const noexcept
+        constexpr bool operator==(const Euler& rhs) const noexcept
         {
             return roll == rhs.roll &&
                    pitch == rhs.pitch &&
                    yaw == rhs.yaw;
         };
-        constexpr bool operator!=(const Euler3D& rhs) const noexcept
+        constexpr bool operator!=(const Euler& rhs) const noexcept
         {
             return !(*this == rhs);
         };
@@ -121,7 +127,7 @@ namespace Udon
         /// @param min
         /// @param max
         /// @return
-        Euler3D normalized(value_type min, value_type max) const
+        Euler normalized(ValueType min, ValueType max) const
         {
             return {
                 Udon::Normalized(roll, min, max),
@@ -133,12 +139,12 @@ namespace Udon
         /// @brief 回転方向を修正したオイラー角を取得する
         /// @param direction 回転方向
         /// @return 修正後のオイラー角
-        Euler3D directionRevision(const Euler3D<bool>& direction) const noexcept
+        constexpr Euler directionRevision(const EulerDirection& direction) const noexcept
         {
             return {
-                roll * (direction.roll ? 1 : -1),
+                roll  * (direction.roll  ? 1 : -1),
                 pitch * (direction.pitch ? 1 : -1),
-                yaw * (direction.yaw ? 1 : -1),
+                yaw   * (direction.yaw   ? 1 : -1),
             };
         }
 
@@ -162,7 +168,5 @@ namespace Udon
 
         UDON_PARSABLE(roll, pitch, yaw);
     };
-
-    using Euler = Euler3D<double>;
 
 }    // namespace Udon

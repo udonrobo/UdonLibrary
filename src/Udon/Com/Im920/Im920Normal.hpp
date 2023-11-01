@@ -24,7 +24,7 @@
 
 #include <Udon/Algorithm/BitPack.hpp>
 #include <Udon/Stl/Optional.hpp>
-#include <Udon/Utility/SerialPrintf.hpp>
+#include <Udon/Common/Printf.hpp>
 #include <Udon/Algorithm/ArrayView.hpp>
 
 namespace Udon
@@ -252,7 +252,7 @@ namespace Udon
         uart.begin(115200);
 
         // チャンネル設定
-        Udon::SerialPrintf(uart, "STCH %02d\r\n", channel);
+        Udon::Printf(uart, "STCH %02d\r\n", channel);
         delay(100);
 
         // 送信出力[10mW]

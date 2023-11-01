@@ -20,7 +20,7 @@
 #pragma once
 
 #include <Udon/Com/Serialization.hpp>
-#include <Udon/Utility/Show.hpp>
+#include <Udon/Common/Show.hpp>
 
 namespace Udon
 {
@@ -37,6 +37,8 @@ namespace Udon
         uint32_t transmitMs;
 
     public:
+        using MessageType = Message;
+        
         UartReader(Stream& uart)
             : uart(uart)
             , buffer()

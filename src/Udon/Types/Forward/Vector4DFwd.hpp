@@ -22,24 +22,21 @@
 namespace Udon
 {
 
-    template <typename T>
     struct Vector2D;
 
-    template <typename T>
     struct Vector3D;
 
-    template <typename T>
     struct Vector4D
     {
 
         /// @brief 要素の型
-        using value_type = T;
+        using ValueType = double;
 
         /// @brief 要素
-        value_type x;
-        value_type y;
-        value_type z;
-        value_type w;
+        ValueType x;
+        ValueType y;
+        ValueType z;
+        ValueType w;
 
         /// @brief 次元数
         static constexpr size_t Dimension = 4;
@@ -56,7 +53,7 @@ namespace Udon
         /// @brief コンストラクタ
         /// @param x x成分
         /// @param y y成分
-        constexpr Vector4D(value_type x, value_type y, value_type z, value_type w) noexcept
+        constexpr Vector4D(ValueType x, ValueType y, ValueType z, ValueType w) noexcept
             : x(x)
             , y(y)
             , z(z)
@@ -77,10 +74,10 @@ namespace Udon
         constexpr Vector4D operator-(const Vector4D& rhs) const noexcept { return { x - rhs.x, y - rhs.y, z - rhs.z, w - rhs.w }; }
         constexpr Vector4D operator*(const Vector4D& rhs) const noexcept { return { x * rhs.x, y * rhs.y, z * rhs.z, w * rhs.w }; }
         constexpr Vector4D operator/(const Vector4D& rhs) const noexcept { return { x / rhs.x, y / rhs.y, z / rhs.z, w / rhs.w }; }
-        constexpr Vector4D operator+(value_type rhs) const noexcept { return { x + rhs, y + rhs, z + rhs, w + rhs }; }
-        constexpr Vector4D operator-(value_type rhs) const noexcept { return { x - rhs, y - rhs, z - rhs, w - rhs }; }
-        constexpr Vector4D operator*(value_type rhs) const noexcept { return { x * rhs, y * rhs, z * rhs, w * rhs }; }
-        constexpr Vector4D operator/(value_type rhs) const noexcept { return { x / rhs, y / rhs, z / rhs, w / rhs }; }
+        constexpr Vector4D operator+(ValueType rhs) const noexcept { return { x + rhs, y + rhs, z + rhs, w + rhs }; }
+        constexpr Vector4D operator-(ValueType rhs) const noexcept { return { x - rhs, y - rhs, z - rhs, w - rhs }; }
+        constexpr Vector4D operator*(ValueType rhs) const noexcept { return { x * rhs, y * rhs, z * rhs, w * rhs }; }
+        constexpr Vector4D operator/(ValueType rhs) const noexcept { return { x / rhs, y / rhs, z / rhs, w / rhs }; }
 
         /// @brief 複合代入演算子
         /// @param rhs 被演算子
@@ -89,10 +86,10 @@ namespace Udon
         Vector4D& operator-=(const Vector4D& rhs) noexcept { return *this = *this - rhs; };
         Vector4D& operator*=(const Vector4D& rhs) noexcept { return *this = *this * rhs; };
         Vector4D& operator/=(const Vector4D& rhs) noexcept { return *this = *this / rhs; };
-        Vector4D& operator+=(value_type rhs) noexcept { return *this = *this + rhs; };
-        Vector4D& operator-=(value_type rhs) noexcept { return *this = *this - rhs; };
-        Vector4D& operator*=(value_type rhs) noexcept { return *this = *this * rhs; };
-        Vector4D& operator/=(value_type rhs) noexcept { return *this = *this / rhs; };
+        Vector4D& operator+=(ValueType rhs) noexcept { return *this = *this + rhs; };
+        Vector4D& operator-=(ValueType rhs) noexcept { return *this = *this - rhs; };
+        Vector4D& operator*=(ValueType rhs) noexcept { return *this = *this * rhs; };
+        Vector4D& operator/=(ValueType rhs) noexcept { return *this = *this / rhs; };
 
         /// @brief 比較演算子
         /// @param rhs 被演算子
@@ -128,9 +125,44 @@ namespace Udon
             *this = {};
         }
 
-        Udon::Vector2D<value_type> xy() const;
+        Udon::Vector2D xy() const;
 
-        Udon::Vector3D<value_type> xyz() const;
+        Udon::Vector3D xyz() const;
+
+#ifdef SIV3D_INCLUDED    /// OpenSiv3D との連携
+
+        /// @brief s3d::Vec2からの変換コンストラクタ
+        /// @param v s3d::Vec2
+        template <typename T>
+        constexpr Vector4D(const s3d::Vector4D<T>& v) noexcept
+            : x(static_cast<double>(v.x))
+            , y(static_cast<double>(v.y))
+            , y(static_cast<double>(v.z))
+            , y(static_cast<double>(v.w))
+        {
+        }
+
+        /// @brief Siv3Dのベクトルに変換する
+        template <typename T>
+        [[nodiscard]]
+        s3d::Vector4D<T> asSivVec4() const noexcept
+        {
+            return {
+                static_cast<T>(x),
+                static_cast<T>(y),
+                static_cast<T>(z),
+                static_cast<T>(w),
+            };
+        }
+
+        /// @brief Siv3Dのベクトルに変換する
+        template <typename T>
+        [[nodiscard]]
+        operator s3d::Vector4D<T>() const noexcept
+        {
+            return asSivVec4<T>();
+        }
+#endif
 
 #ifdef ARDUINO
         /// @brief デバッグ出力

@@ -30,7 +30,8 @@ namespace Udon
             return false;
         }
 
-        auto c = Udon::Pio::Sqwave::squarewave_program_get_default_config(sm->offset);
+        for (unsigned int i = 0; i < count_of(Pio::Sqwave::squarewave_program_instructions); i++)
+            sm->pio->instr_mem[i] = Pio::Sqwave::squarewave_program_instructions[i];
 
         sm->pio->sm[sm->index].clkdiv = (uint32_t)(F_CPU * 0.25f * (1 << 16) / clockSpeed);    // 周波数設定(周波数低めのほうが誤差が少ない)
 

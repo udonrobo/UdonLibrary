@@ -37,16 +37,21 @@ namespace Udon
         {
         }
 
+        explicit operator bool() const
+        {
+            return reader and IPadPS5::operator bool();
+        }
+
         void update()
         {
             IPadPS5::updateFromMessageOpt(reader.getMessage());
         }
 
-        void show()
+        void show() const
         {
             reader.show();
         }
-        void showRaw()
+        void showRaw() const
         {
             reader.showRaw();
         }

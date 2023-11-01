@@ -24,7 +24,7 @@
 
 #include <Udon/Algorithm/BitPack.hpp>
 #include <Udon/Stl/Optional.hpp>
-#include <Udon/Utility/SerialPrintf.hpp>
+#include <Udon/Common/Printf.hpp>
 
 namespace Udon
 {
@@ -183,7 +183,7 @@ namespace Udon
 
             // データ送信
             {
-                Udon::SerialPrintf(uart, "TXDU %04d ", *nodeNum);
+                Udon::Printf(uart, "TXDU %04d ", *nodeNum);
 
                 Udon::BitPack(txNode->data, txNode->data + txNode->size, [this](uint8_t data)
                               { uart.write(data); });
@@ -254,25 +254,24 @@ namespace Udon
         void twoWayUpdate()
         {
             // transTime =[内部処理時間:10~20ms]+[キャリアセンス:初回5.2ms 連続通信時0.5ms]+[不要データの通信:3.2ms]+[バイトごとの送信時間:0.16ms]
-            // const double sendTime    = 10.0 + 5.2 + 3.2 + txNode->size * 0.16;
-            // const double receiveTime = 10.0 + 5.2 + 3.2 + rxNode->size * 0.16;
+            const double sendTime    = 52.0;
+            const double receiveTime = 52.0;
 
-            // static uint32_t lastTransmitMs = 0;
+            static uint32_t lastTransmitMs = 0;
 
-            // if (millis() - lastTransmitMs > sendTime + receiveTime && receiveUpdate())
-            // {
-            //     sendUpdate();
-            //         lastTransmitMs = millis();
-            // }
-            // else
-            // {
-            //     if (millis() - lastTransmitMs > random(2000))
-            //     {
-            //         sendUpdate();
-
-            //         lastTransmitMs = millis();
-            //     }
-            // }
+            if (millis() - lastTransmitMs > sendTime + receiveTime && receiveUpdate())
+            {
+                sendUpdate();
+                lastTransmitMs = millis();
+            }
+            else
+            {
+                if (millis() - lastTransmitMs > random(2000))
+                {
+                    sendUpdate();
+                    lastTransmitMs = millis();
+                }
+            }
         }
 
         bool isTimeout(uint32_t timeoutMs) const
@@ -402,11 +401,17 @@ namespace Udon
             return false;
         }
 
+        Udon::Printf(uart, "STRT 1\r\n");
+        if (uart.readStringUntil('\n') != "OK\r")
+        {
+            return false;
+        }
+
         // チャンネル設定
         if (channel != defaultChannel)
         {
             waitUntilCommandAccept();
-            Udon::SerialPrintf(uart, "STCH %02d\r\n", channel);
+            Udon::Printf(uart, "STCH %02d\r\n", channel);
             if (uart.readStringUntil('\n') != "OK\r")
             {
                 return false;
@@ -417,7 +422,7 @@ namespace Udon
         if (defaultPower != 2)
         {
             waitUntilCommandAccept();
-            Udon::SerialPrintf(uart, "STPO %d\r\n", 2);
+            Udon::Printf(uart, "STPO %d\r\n", 2);
             if (uart.readStringUntil('\n') != "OK\r")
             {
                 return false;

@@ -21,59 +21,57 @@
 
 namespace Udon
 {
-    template <typename T>
     struct Vector2D;
 
-    template <typename T>
-    struct Polar_impl
+    struct Polar
     {
-        using value_type = T;
+        using ValueType = double;
 
-        value_type r;
-        value_type theta;
+        ValueType r;
+        ValueType theta;
 
-        constexpr Polar_impl() noexcept
+        constexpr Polar() noexcept
             : r()
             , theta()
         {
         }
 
-        constexpr Polar_impl(value_type r, value_type theta) noexcept
+        constexpr Polar(ValueType r, ValueType theta) noexcept
             : r(r)
             , theta(theta)
         {
         }
 
-        Polar_impl(const Polar_impl&) = default;
+        Polar(const Polar&) = default;
 
-        Polar_impl& operator=(const Polar_impl&) = default;
+        Polar& operator=(const Polar&) = default;
 
-        value_type x() const noexcept
+        ValueType x() const noexcept
         {
             return r * cos(theta);
         }
 
-        value_type y() const noexcept
+        ValueType y() const noexcept
         {
             return r * sin(theta);
         }
 
-        constexpr Polar_impl operator+(const Polar_impl& rhs) const noexcept { return { r + rhs.r, theta + rhs.theta }; }
-        constexpr Polar_impl operator-(const Polar_impl& rhs) const noexcept { return { r - rhs.r, theta - rhs.theta }; }
-        constexpr Polar_impl operator*(const Polar_impl& rhs) const noexcept { return { r * rhs.r, theta * rhs.theta }; }
-        constexpr Polar_impl operator/(const Polar_impl& rhs) const noexcept { return { r / rhs.r, theta / rhs.theta }; }
+        constexpr Polar operator+(const Polar& rhs) const noexcept { return { r + rhs.r, theta + rhs.theta }; }
+        constexpr Polar operator-(const Polar& rhs) const noexcept { return { r - rhs.r, theta - rhs.theta }; }
+        constexpr Polar operator*(const Polar& rhs) const noexcept { return { r * rhs.r, theta * rhs.theta }; }
+        constexpr Polar operator/(const Polar& rhs) const noexcept { return { r / rhs.r, theta / rhs.theta }; }
 
-        Polar_impl& operator+=(const Polar_impl& rhs) noexcept { return *this = *this + rhs; }
-        Polar_impl& operator-=(const Polar_impl& rhs) noexcept { return *this = *this - rhs; }
-        Polar_impl& operator*=(const Polar_impl& rhs) noexcept { return *this = *this * rhs; }
-        Polar_impl& operator/=(const Polar_impl& rhs) noexcept { return *this = *this / rhs; }
+        Polar& operator+=(const Polar& rhs) noexcept { return *this = *this + rhs; }
+        Polar& operator-=(const Polar& rhs) noexcept { return *this = *this - rhs; }
+        Polar& operator*=(const Polar& rhs) noexcept { return *this = *this * rhs; }
+        Polar& operator/=(const Polar& rhs) noexcept { return *this = *this / rhs; }
 
-        constexpr bool operator==(const Polar_impl& rhs) const noexcept { return r == rhs.r && theta == rhs.theta; }
-        constexpr bool operator!=(const Polar_impl& rhs) const noexcept { return !(*this == rhs); }
+        constexpr bool operator==(const Polar& rhs) const noexcept { return r == rhs.r && theta == rhs.theta; }
+        constexpr bool operator!=(const Polar& rhs) const noexcept { return !(*this == rhs); }
 
         constexpr explicit operator bool() const noexcept { return r || theta; }
 
-        Vector2D<value_type> toVector() const noexcept;
+        Vector2D toVector() const noexcept;
 
         UDON_PARSABLE(r, theta);
     };

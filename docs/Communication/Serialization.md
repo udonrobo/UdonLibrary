@@ -1,6 +1,10 @@
-# シリアライザー
+# シリアライザ
 
-オブジェクトのバイト列化、バイト列からオブジェクトへの復元を行います。
+```cpp
+#include <Udon/Com/Serialization.hpp>
+```
+
+オブジェクトのバイト列化、バイト列からオブジェクトへの復元を行います。主に通信クラス内部で使用されています。
 
 > 使用例
 >
@@ -14,11 +18,21 @@
 >     end
 > ```
 
-## Usage
+## シリアライズ可能な型
 
-### シリアライズ
+整数型 ( `int`, `uint8_t`, `uint16_t` ... )
 
-シリアライズしたいオブジェクトのデータ構造を構造体、クラスを用いて定義します。`UDON_PARSABLE` マクロにメンバ変数を登録することで、メンバ変数を解析できるようになり、シリアライズできるようになります。
+浮動小数点型 ( `double`, `float` ... )
+
+列挙型 ( `enum`, `enum class` )
+
+シリアライズ可能な型の配列 (メンバ変数のみ)
+
+パース可能なユーザー定義型
+
+## シリアライズ
+
+シリアライズしたいオブジェクトのデータ構造を構造体、クラスを用いて定義します。`UDON_PARSABLE` マクロにメンバ変数を登録することで、メンバ変数を走査できるようになり、シリアライズできるようになります。
 
 `Udon::Pack(object)` の引数にオブジェクトを渡すことでバイト列 `std::vector<uint8_t>` が返されます。
 
@@ -39,10 +53,11 @@ void loop()
 }
 ```
 
-### デシリアライズ
+## デシリアライズ
 
-バイト列をオブジェクトに復元するには `Udon::Unpack<T>(byte[])` を使用します。 `Udon::Unpack` はデシリアライズされたオブジェクトを `Udon::Optional` でラップして返します。
-`Optional`が返ることでデシリアライズできたかどうかの判定ができます。`Optional` は `operator bool()` メンバを持っているため、次のように if 文で判定可能です。
+バイト列をオブジェクトに復元するには `Udon::Unpack<T>(...)` を使用します。 `Udon::Unpack` はデシリアライズされたオブジェクトを `Udon::Optional` でラップして返します。
+
+`Optional` 型とは値とエラー値を持つ型で、`Optional::operator bool()` を呼び出すことで次のように if 文でエラー判定可能です。
 
 > バイト列末端バイトに挿入されているチェックサムと、バイト列から求めたチェックサムが異なる場合、デシリアライズが失敗します。
 > チェックサムの整合が取れない場合、データが破損しています。
@@ -63,9 +78,11 @@ void loop()
 }
 ```
 
-### 既に定義されている型をシリアライズ、デシリアライズ
+## 既に定義されている型のシリアライズ、デシリアライズ
 
-**クローバル空間** に `Capacity(const T&)` `voidAccessor<Acc>(Acc&, T&)` 関数を次のように定義することで、ライブラリ等で既に定義されている型をシリアライズできます。
+> 作成中
+
+<!-- **クローバル空間** に `Capacity(const T&)` `void Accessor<Acc>(Acc&, T&)` 関数を次のように定義することで、ライブラリ等で既に定義されている型をシリアライズできます。
 
 ```cpp
 // ↓ 外部ライブラリ内に定義されている Vec2
@@ -87,175 +104,291 @@ void Accessor(Acc& acc, Vec2& rhs)
 {
     acc(rhs.x, rhs.y);
 };
+``` -->
+
+## 詳細
+
+バイト列末尾にチェックサム (CRC8) を付与します。
+
+bool 型は 1bit としてシリアライズします。
+
+浮動小数点型はアーキテクチャによってサイズが異なるので、32bit 浮動小数点型にキャストして扱います。
+
+列挙型は基底型を基にシリアライズします。
+
+エンディアン変換を自動的に行います。
+
+## API
+
+### `Udon::Pack(...)`
+
+オブジェクトをシリアライズします
+
+Pack 関数は次のオーバーロードが定義されています。
+
+```cpp
+std::vector<uint8_t> Pack(const T& object)
+
+bool Pack(const T& object, uint8_t* buffer, size_t size)
+
+bool Pack(const T& object, uint8_t (&array)[N])
 ```
 
-> `Capacity` は `Udon::CapacityWithChecksum` から呼び出されます。`Udon::CapacityBits(...)` はシリアライズ後のビット数をコンパイル時に取得できる関数です。
+### `Udon::Unpack<T>(...)`
 
-### API
+バイト列をオブジェクトにデシリアライズします
 
-- `Udon::Pack`
+Unpack 関数は次のオーバーロードが定義されています。
 
-  オブジェクトをシリアライズします
+```cpp
+template <typename T>
+Udon::Optional<T> Unpack(const std::vector<uint8_t>& buffer)
 
-  Pack 関数は次のオーバーロードが定義されています。
+template <typename T>
+Udon::Optional<T> Unpack(const uint8_t* buffer, size_t size)
 
-  ```cpp
-  std::vector<uint8_t> Pack(const T& object)
+template <typename T>
+Udon::Optional<T> Unpack(const uint8_t (&array)[N])
+```
 
-  bool Pack(const T& object, uint8_t* buffer, size_t size)
+### `Udon::CanUnpack(...)`
 
-  bool Pack(const T& object, uint8_t (&array)[N])
-  ```
+デシリアライズできるかを確認します。(チェックサム確認)
 
-- `Udon::Unpack<T>`
+```cpp
+bool CanUnpack(const std::vector<uint8_t>& buffer)
 
-  バイト列をオブジェクトにデシリアライズします
+bool CanUnpack(const uint8_t* buffer, size_t size)
 
-  Unpack 関数は次のオーバーロードが定義されています。
+bool CanUnpack(const uint8_t (&array)[N])
+```
 
-  ```cpp
-  template <typename T>
-  Udon::Optional<T> Unpack(const std::vector<uint8_t>& buffer)
+### `Udon::CapacityWithChecksum<T>()`
 
-  template <typename T>
-  Udon::Optional<T> Unpack(const uint8_t* buffer, size_t size)
+T 型オブジェクトシリアライズ後のバイト列のバイトサイズを取得します。
 
-  template <typename T>
-  Udon::Optional<T> Unpack(const uint8_t (&array)[N])
-  ```
+コンパイル時にサイズを取得可能なため、バッファの大きさを静的に指定するときなどにも使えます。
 
-- `Udon::CanUnpack`
+```cpp
+uint8_t buffer[Udon::CapacityWithChecksum<Vec2>()];
+```
 
-  デシリアライズできるかを確認します。(チェックサム確認)
+### `Udon::CapacityBits(...)`
 
-  ```cpp
-  bool CanUnpack(const std::vector<uint8_t>& buffer)
+オブジェクトをシリアライズした際のバイト列のビットサイズを取得します。(bool 型 を 1bit としてカウントするため)
 
-  bool CanUnpack(const uint8_t* buffer, size_t size)
+`Capacity` 関数を外部に定義するときに使用します。引数は可変長引数です。
 
-  bool CanUnpack(const uint8_t (&array)[N])
-  ```
+## サンプル
 
-- `Udon::CapacityWithChecksum<T>`
+### 整数型シリアライズ
 
-  T 型オブジェクトシリアライズ後のバイト列のバイトサイズを取得します。
+```cpp
+#include <iostream>
+#include <Udon/Com/Serialization.hpp>
 
-  コンパイル時にサイズを取得可能なため、バッファの大きさを静的に指定するときなどにも使えます。
+int main()
+{
+	const auto packed = Udon::Pack(1000);
 
-  ```cpp
-  uint8_t buffer[Udon::CapacityWithChecksum<Vec2>()];
-  ```
+	if (const auto unpacked = Udon::Unpack<int>(packed))
+	{
+		std::cout << *unpacked << std::endl;
+	}
+	else
+	{
+		std::cout << "unpack failed" << std::endl;
+	}
+}
+```
 
-- `UDON_PARSABLE(...)`
+```
+100
+```
 
-  メンバ変数を解析出来るようにします。引数に入れられるオブジェクトの型は `整数型` `浮動小数型` `解析可能な型` `これらの配列型` です。
+### 列挙型シリアライズ
 
-  > 再帰的に解析することができるので次のように書くこともできます。
-  >
-  > ```cpp
-  > struct Double
-  > {
-  >     double value;
-  >     UDON_PARSABLE(value);
-  > };
-  >
-  > struct Vec2
-  > {
-  >     Double x;
-  >     Double y;
-  >     UDON_PARSABLE(x, y);
-  > };
-  > ```
+```cpp
+#include <iostream>
+#include <Udon/Com/Serialization.hpp>
 
-- `Udon::CapacityBits(...)`
+enum class Language : uint8_t
+{
+	C,
+	Cpp,
+	CSharp,
+	Python,
+};
 
-  オブジェクトをシリアライズした際のバイト列のビットサイズを取得します。(bool 型 を 1bit としてカウントするため)
+int main()
+{
+	const Language lang = Language::Cpp;
 
-  `Capacity` 関数を外部に定義するときに使用します。引数は可変長引数です。
+	const auto packed = Udon::Pack(lang);
 
-## Detail
+	if (const auto unpacked = Udon::Unpack<Language>(packed))
+	{
+		switch (*unpacked)
+		{
+		case Language::C     : std::cout << "C"      << std::endl; break;
+		case Language::Cpp   : std::cout << "C++"    << std::endl; break;
+		case Language::CSharp: std::cout << "C#"     << std::endl; break;
+		case Language::Python: std::cout << "Python" << std::endl; break;
+		}
+	}
+	else
+	{
+		std::cout << "unpack failed" << std::endl;
+	}
+}
+```
 
-- `UDON_PARSABLE`
+```
+C++
+```
 
-  `UDON_PARSABLE` はシリアライザがメンバ変数を解析できるようにするためのマクロです。次のように展開されます。
+### ユーザー定義型シリアライズ
 
-  ```cpp
-  struct Vec2
-  {
-      double x;
-      double y;
+```cpp
+#include <iostream>
+#include <Udon/Com/Serialization.hpp>
 
-      using Parsable_tag = void;
+struct Vec2
+{
+	double x;
+	double y;
+	UDON_PARSABLE(x, y);
+};
 
-      constexpr size_t capacityBits() const
-      {
-          return Udon::CapacityBits(x, y);
-      }
+int main()
+{
+	const Vec2 vector{ 1.0, 2.0 };
 
-      template <typename Acc>
-      void accessor(Acc& acc)
-      {
-          acc(x, y);
-      };
-  };
-  ```
+	const auto packed = Udon::Pack(vector);
 
-  - `capacityBits()`
+	if (const auto unpacked = Udon::Unpack<Vec2>(packed))
+	{
+		std::cout
+            << unpacked->x << ", "
+            << unpacked->y << std::endl;
+	}
+	else
+	{
+		std::cout << "unpack failed" << std::endl;
+	}
+}
+```
 
-    > `capacityBits()` はシリアライズ後のバイト列のバイトサイズを求める `CapacityWithChecksum` から呼び出されます。
+```
+1, 2
+```
 
-  - `accessor()`
+### メンバに配列を持つユーザー定義型
 
-    > `accessor()` メンバ変数を解析するときに使用します。解析用クラス(ここでは Udon::Serializer)が呼び出します。
-    >
-    > テンプレートパラメータ `Acc` には解析用クラスの型が入ります。
-    >
-    > acc(x, y) とすることで `Udon::Serializer` クラスの可変長 `operator()(...)` が呼ばれ、スカラ型(int, double 等)になるまで再帰的に `operator()()` を呼び出します。このとき、各スカラオブジェクトのシリアル化を行い、`Udon::Serializer` 内部のバッファに挿入していくことでシリアライズを行います。
-    >
-    > 呼び出し例 (Vec2 の場合)
-    >
-    > 1. `Udon::Serializer::operator()(Vec2)`
-    >
-    > 2. `Udon::Serializer::operator()(double, double)`
-    >
-    > 3. `Udon::Serializer::operator()(double)` `x` のシリアル化
-    >
-    > 4. `Udon::Serializer::operator()(double)` `y` のシリアル化
+```cpp
+#include <iostream>
+#include <Udon/Com/Serialization.hpp>
 
-- シリアライズ処理順序
+struct Array
+{
+	int array[5];
+	UDON_PARSABLE(array);
+};
 
-  1. `Udon::Pack` 関数を呼び出す
+int main()
+{
+	Array array{ { 1, 2, 3, 4, 5 } };
 
-  2. `Udon::Serializer` クラスのオブジェクトが生成される
+	const auto packed = Udon::Pack(array);
 
-  3. `accessor()` を使用してメンバを解析、シリアル化、バッファへ挿入
+	if (const auto unpacked = Udon::Unpack<Array>(packed))
+	{
+		for (const auto& e : unpacked->array)
+		{
+			std::cout << e << std::endl;
+		}
+	}
+	else
+	{
+		std::cout << "unpack failed" << std::endl;
+	}
+}
+```
 
-  4. バッファを基にチェックサムを求めバッファの末端に挿入
+```
+1
+2
+3
+4
+5
+```
 
-  5. シリアル化したデータを`Udon::Pack`が返す
+### ユーザー定義型のネスト
 
-- デシリアライズ処理順序
+```cpp
+#include <iostream>
+#include <Udon/Com/Serialization.hpp>
 
-  1. `Udon::Unpack<T>` 関数を呼び出す
+struct Vec2
+{
+	struct Double
+	{
+		double value;
+		UDON_PARSABLE(value);
+	};
 
-  2. 復元したデータを入れる T 型オブジェクトが作成される
+	Double x;
+	Double y;
 
-  3. `Udon::Deserializer` クラスのオブジェクトが生成される
+	UDON_PARSABLE(x, y);
+};
 
-  4. チェックサムの整合性チェック -> エラーであれば `Udon::Unpack` が `Udon::nullopt` を返し失敗
+int main()
+{
+	const Vec2 vector{ { 1.0 }, { 2.0 } };
 
-  5. `accessor()` を使用してメンバを解析、逆シリアル化、T 型オブジェクトへ代入
+	const auto packed = Udon::Pack(vector);
 
-  6. シリアル化したデータを`Udon::Unpack`が返す
+	if (const auto unpacked = Udon::Unpack<Vec2>(packed))
+	{
+		std::cout
+			<< unpacked->x.value << ", "
+			<< unpacked->y.value << std::endl;
+	}
+	else
+	{
+		std::cout << "unpack failed" << std::endl;
+	}
+}
+```
 
-- 動作仕様
+```
+1, 2
+```
 
-  浮動小数点型はすべて `Udon::Float32_t` にキャストされシリアライズされます
+### デシリアライズ失敗
 
-  > アーキテクチャによって浮動小数点のサイズが異なるため
+```cpp
+#include <iostream>
+#include <Udon/Com/Serialization.hpp>
 
-  bool 型オブジェクトは 1 ビットにシリアライズされます。
+int main()
+{
+	auto packed = Udon::Pack(1000);
 
-  エンディアン変換を自動で行います。
+	packed.at(1) = 0x00;  // データ破損
 
-  バイト列末端に 1 バイト CRC8 チェックサムを挿入します。
+	if (const auto unpacked = Udon::Unpack<int>(packed))
+	{
+		std::cout << *unpacked << std::endl;
+	}
+	else
+	{
+		std::cout << "unpack failed" << std::endl;
+	}
+}
+```
+
+```
+unpack failed
+```

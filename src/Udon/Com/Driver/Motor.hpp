@@ -20,7 +20,7 @@
 
 #include <Udon/Com/Message/Motor.hpp>
 #include <Udon/Traits/HasMemberFunction.hpp>
-#include <Udon/Utility/Show.hpp>
+#include <Udon/Common/Show.hpp>
 #include <Udon/Traits/IsWriter.hpp>
 
 namespace Udon

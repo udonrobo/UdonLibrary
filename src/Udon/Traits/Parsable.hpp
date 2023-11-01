@@ -89,6 +89,11 @@ namespace Udon
         {
         };
         template <typename T>
+        struct Parsable<T, typename std::enable_if<std::is_enum<T>::value>::type>    // 列挙型
+            : std::true_type
+        {
+		};
+        template <typename T>
         struct Parsable<T, typename std::enable_if<Capacitable<T>::value &&            // バッファサイズを返すメンバー関数を持つ
                                                    Accessible<T>::value &&             // アクセッサを持つ
                                                    MemberParsable<T>::value>::type>    // 各メンバがパース可能である
@@ -101,7 +106,7 @@ namespace Udon
         {
         };
 
-        /// @brief メンバ変数がパース可能であることをコンパイル時に検証する
+        /// @brief メンバ変数がパース可能であるか
         template <typename Head>
         inline constexpr bool IsMemberParsable(const Head&)
         {

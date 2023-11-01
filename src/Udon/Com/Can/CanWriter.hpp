@@ -19,8 +19,9 @@
 #include "CanNode.hpp"
 
 #include <Udon/Com/Serialization.hpp>
-#include <Udon/Utility/Show.hpp>
+#include <Udon/Common/Show.hpp>
 #include <Udon/Traits/Parsable.hpp>
+#include <Udon/Common/Printf.hpp>
 
 namespace Udon
 {
@@ -69,10 +70,16 @@ namespace Udon
             Udon::Pack(message, node.data, node.length);
         }
 
+        void setErrorMessage() noexcept
+        {
+            Udon::FailablePack({ node.data, node.length });
+        }
+
         /// @brief 送信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
+            Udon::Printf("0x%03x ", node.id);
             if (const auto message = Udon::Unpack<Message>(node.data, node.length))
             {
                 Udon::Show(*message, gap);
@@ -88,6 +95,7 @@ namespace Udon
         /// @param gap 区切り文字 (default: ' ')
         void showRaw(char gap = ' ') const
         {
+            Udon::Printf("0x%03x ", node.id);
             for (size_t i = 0; i < node.length; ++i)
             {
                 Udon::Show(node.data[i], gap);

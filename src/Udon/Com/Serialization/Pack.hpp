@@ -16,6 +16,7 @@
 #pragma once
 
 #include "Serializer.hpp"
+#include <Udon/Algorithm/ArrayView.hpp>
 
 namespace Udon
 {
@@ -70,6 +71,15 @@ namespace Udon
         static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
 
         return Pack(object, array, N);
+    }
+
+    /// @brief 必ずチェックサムエラーとなるシリアライズ
+    /// @param buffer シリアル化したデータを格納するバッファ
+    /// @param size バッファのサイズ
+    /// @return シリアル化に成功したかどうか
+    inline void FailablePack(ArrayView<uint8_t> buffer)
+    {
+        buffer.back() = Udon::CRC8(buffer.cbegin(), buffer.cend() - Udon::CRC8_SIZE) ^ 0xff;
     }
 
 }    // namespace Udon

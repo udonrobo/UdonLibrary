@@ -18,31 +18,33 @@
 #if defined(ARDUINO) && !defined(UDON_TEENSY_I2C_SLAVE_MODE)
 
 #    include <Adafruit_BNO055.h>
-#    include "Imu.hpp"
+#    include <Udon/Types/Euler.hpp>
+#    include <Udon/Types/Quaternion.hpp>
 
 namespace Udon
 {
 
     /// @brief BNO055 9軸センサー
-    /// @remark 継承しているImuクラスからクオータニオン、オイラー角を取得できます
     class BNO055
-        : public Imu
-        , Adafruit_BNO055
+        : Adafruit_BNO055
     {
+        /// @brief 回転方向
+        QuaternionDirection direction;
 
-        Udon::Quaternion quaternion;
+        /// @brief 内積値消去用オフセット
+        Quaternion offset;
 
-        /// @brief 生クォータニオン取得
-        Udon::Quaternion getRawQuaternion() const override
-        {
-            return quaternion;
-        }
+        Quaternion quaternion;
 
     public:
-        BNO055(TwoWire& wire, const Udon::Euler3D<bool>& direction = { true, true, true })
-            : Imu{ direction }
-            , Adafruit_BNO055(-1, 0x28, &wire)
-            , quaternion()
+        /// @brief コンストラクタ
+        /// @param Device Deviceオブジェクト
+        /// @param direction 回転方向
+        BNO055(TwoWire& wire, const QuaternionDirection& direction = { true, true, true })
+            : Adafruit_BNO055(-1, 0x28, &wire)
+            , direction(direction)
+            , offset(Quaternion::Identity())
+            , quaternion(Quaternion::Identity())
         {
         }
 
@@ -51,14 +53,44 @@ namespace Udon
         /// @return 正常に開始できたかどうか
         bool begin()
         {
-            return Adafruit_BNO055::begin();
+            const auto result = Adafruit_BNO055::begin();
+            // update();
+            // delay(500);
+            // clear();
+            return result;
+        }
+
+        /// @brief 値を消去する
+        void clear()
+        {
+            offset = quaternion;
         }
 
         /// @brief 更新
         void update()
         {
             const auto q = Adafruit_BNO055::getQuat();
-            quaternion   = Udon::Quaternion(q.x(), q.y(), q.z(), q.w());
+            quaternion   = { q.x(), q.y(), q.z(), q.w() };
+        }
+
+        /// @brief クォータニオン角を取得
+        /// @return クォータニオン角
+        Quaternion getQuaternion() const
+        {
+            return (offset.inverse() * quaternion).directionRevision(direction);    // オフセットを引き、回転方向を修正
+        }
+
+        /// @brief オイラー角を取得
+        /// @return オイラー角
+        Euler getEuler() const
+        {
+            return getQuaternion().toEuler();
+        }
+
+        /// @brief オイラー角をシリアルポートに出力
+        void show() const
+        {
+            Show(getEuler());
         }
     };
 

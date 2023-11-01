@@ -150,4 +150,14 @@ namespace Udon
         }
     }
 
+    /// @brief 三平方の定理を用いて、2辺の長さから斜辺の長さを求める
+    /// @param x X軸方向の辺の長さ
+    /// @param y Y軸方向の辺の長さ
+    /// @return 斜辺の長さ
+    inline double
+    Hypotenuse(double x, double y)
+    {
+        return sqrt(x * x + y * y);
+    }
+
 }    // namespace Udon

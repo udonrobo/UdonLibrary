@@ -30,10 +30,10 @@ class Servo {
       pwm_set_chan_level(slice_num, pwmChannel, writeTime + 1);
     }
     //debug
-    unsigned long readMicroseconds() {
+    unsigned long readMicroseconds() const {
       return writeTime;
     }
-    uint8_t readAngle() {
+    uint8_t read() const {
       return map(readMicroseconds(), 500, 2500, 0, 180);
     }
 };

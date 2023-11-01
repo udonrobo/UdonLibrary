@@ -1,4 +1,4 @@
-//-------------------------------------------------------------------
+﻿//-------------------------------------------------------------------
 //
 //    UdonLibrary
 // 
@@ -15,6 +15,14 @@
 // UdonLibrary が含まれているかどうかを判定するマクロ
 #define UDON_INCLUDED
 
+//-------------------------------------------------------------------
+//
+//    プラットフォーム定義
+//
+//-------------------------------------------------------------------
+
+// プラットフォーム定義
+#include "Udon/Common/Platform.hpp"
 
 //-------------------------------------------------------------------
 //
@@ -22,14 +30,19 @@
 //
 //-------------------------------------------------------------------
 
+// コンテナ / 静的可変長配列
+#include "Udon/Algorithm/StaticVector.hpp"
 
-// 配列参照
+// コンテナ / 配列参照
 #include "Udon/Algorithm/ArrayView.hpp"
+
+// コンテナ / リングバッファ
+#include "Udon/Algorithm/RingBuffer.hpp"
 
 // デリゲート / メンバ関数ポインタ変換
 #include "Udon/Algorithm/Delegate.hpp"
 
-// CRC-8 チェックサム / 誤り検出
+// CRC チェックサム / 誤り検出
 #include "Udon/Algorithm/CRC.hpp"
 
 // 疑似可変長リングバッファ
@@ -50,6 +63,9 @@
 // サーボ
 #include "Udon/Algorithm/ServoSpeed.hpp"
 
+// 数学
+#include "Udon/Algorithm/Math.hpp"
+
 
 //-------------------------------------------------------------------
 //
@@ -69,14 +85,8 @@
 // IM920
 #include "Udon/Com/Im920.hpp"
 
-// フォワーディング / メッセージ転送
-#include "Udon/Com/Common/Forwarding.hpp"
-
-// 配列受信
-#include "Udon/Com/Common/ArrayElementReader.hpp"
-
-// 配列送信
-#include "Udon/Com/Common/ArrayElementWriter.hpp"
+// IM920
+#include "Udon/Com/Lora.hpp"
 
 // シリアライズ
 #include "Udon/Com/Serialization.hpp"
@@ -89,6 +99,15 @@
 
 // 通信経由エンコーダー
 #include "Udon/Com/Driver/Encoder.hpp"
+
+// フォワーディング / メッセージ転送
+#include "Udon/Com/Common/Forwarding.hpp"
+
+// 配列受信
+#include "Udon/Com/Common/ArrayElementReader.hpp"
+
+// 配列送信
+#include "Udon/Com/Common/ArrayElementWriter.hpp"
 
 
 //-------------------------------------------------------------------
@@ -103,15 +122,6 @@
 
 //-------------------------------------------------------------------
 //
-//    数学 / math
-//
-//-------------------------------------------------------------------
-
-#include "Udon/Math/Math.hpp"
-
-
-//-------------------------------------------------------------------
-//
 //    デバイスドライバー
 //
 //-------------------------------------------------------------------
@@ -119,23 +129,23 @@
 // モーター(基板用)
 #include "Udon/Driver/Actuator/Motor.hpp"
 
-// IMU / 慣性計測装置
-#include "Udon/Driver/Sensor/Imu.hpp"
-
 // BNO055(IMU)
 #include "Udon/Driver/Sensor/BNO055.hpp"
 
 // ディップスイッチ
 #include "Udon/Driver/Sensor/DipSwitch.hpp"
 
+// 7セグメントLED
+#include "Udon/Driver/Display/SegmentsLed.hpp"
+
+// LED
+#include "Udon/Driver/Display/Led.hpp"
+
 // Raspberry Pi Pico エンコーダー
 #include "Udon/Driver/Sensor/EncoderPico.hpp"
 
-// Raspberry Pi Pico PIO
+// Raspberry Pi Pico PIO クロック出力
 #include "Udon/Driver/Pio/PioClock.hpp"
-
-// 7セグメントLED
-#include "Udon/Driver/Display/SegmentsLed.hpp"
 
 
 //-------------------------------------------------------------------
@@ -144,29 +154,8 @@
 //
 //-------------------------------------------------------------------
 
-// 色空間
+// 色空間 / RGB / HSV
 #include "Udon/Types/Color.hpp"
-
-// オイラー角
-#include "Udon/Types/Euler.hpp"
-
-// 固定長浮動小数点型
-#include "Udon/Types/Float.hpp"
-
-// 極座標系
-#include "Udon/Types/Polar.hpp"
-
-// ロボットの位置
-#include "Udon/Types/Position.hpp"
-
-// クオータニオン
-#include "Udon/Types/Quaternion.hpp"
-
-// HSV色空間
-#include "Udon/Types/HSV.hpp"
-
-// RGB色空間
-#include "Udon/Types/RGB.hpp"
 
 // 2次元ベクトル
 #include "Udon/Types/Vector2D.hpp"
@@ -176,6 +165,21 @@
 
 // 4次元ベクトル
 #include "Udon/Types/Vector4D.hpp"
+
+// 極座標系
+#include "Udon/Types/Polar.hpp"
+
+// ロボットの位置
+#include "Udon/Types/Position.hpp"
+
+// 固定長浮動小数点型
+#include "Udon/Types/Float.hpp"
+
+// オイラー角
+#include "Udon/Types/Euler.hpp"
+
+// クオータニオン
+#include "Udon/Types/Quaternion.hpp"
 
 
 //-------------------------------------------------------------------
@@ -215,5 +219,8 @@
 //
 //-------------------------------------------------------------------
 
-// デバッグ / ログ出力
-#include "Udon/Utility/Show.hpp"
+// 汎用表示
+#include "Udon/Common/Show.hpp"
+
+// フォーマット表示
+#include "Udon/Common/Printf.hpp"

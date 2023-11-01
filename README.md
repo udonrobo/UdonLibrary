@@ -10,7 +10,7 @@
 ## Install
 
 <details>
-<summary> git </summary>
+<summary> Git </summary>
 
 ライブラリのバージョン管理に git を使用します。インストールしていない場合はインストールしてください。
 
@@ -18,31 +18,22 @@
 
   <https://git-scm.com/download>
 
-- ターミナルから
-
-  winget (windows)
+- Windows
 
   ```sh
   winget install --id Git.Git -e --source winget
   ```
 
-  apt (linux)
+- Linux
 
   ```sh
-  sudo apt-get update
-  sudo apt-get install git-all
+  sudo apt-get update && sudo apt-get install git-all
   ```
 
-  homebrew (mac os 等)
+- macOS or Linux
 
   ```sh
   brew install git
-  ```
-
-  インストール確認
-
-  ```sh
-  git version
   ```
 
 > 本ライブラリのレポジトリはプライベートであるため、クローンするには udonrobo organization に 参加している github アカウントと、 git が紐付いている必要があります。git インストール後、初回のクローン時に紐付けを求められます。
@@ -102,7 +93,7 @@
 <details>
 <summary> Visual Studio </summary>
 
-プロジェクトディレクトリまたはソリューションディレクトリにクローンし、インクルードパスを設定することで使用できます。
+プロジェクトディレクトリにクローンし、インクルードパスを設定することで使用できます。
 
 - 追加
 
@@ -121,7 +112,7 @@
     git clone --recursive https://github.com/udonrobo/UdonLibrary.git
     ```
 
-  > 次のようなディレクトリ構成になっていれば OK です。(プロジェクトディレクトリへ追加した場合)
+  > 次のようなディレクトリ構成になっていれば OK です。
   >
   > ```sh
   > Test   <-- ソリューションディレクトリ
@@ -148,7 +139,7 @@
 
   ソリューションエクスプローラ > プロジェクトを右クリック > プロパティ > VC++ディレクトリ > インクルードディレクトリの項目にある `↓` > 編集 > 新しい行の追加(フォルダアイコンボタン)
 
-  新しい項目に `$(ProjectDir)\UdonLibrary\src\` を追加します。`$(ProjectDir)` は プロジェクトディレクトリのパスを表すマクロです。ソリューションディレクトリへ追加する場合 `$(SolutionDir)` を使用します。
+  新しい項目に `$(ProjectDir)\UdonLibrary\src\` を追加します。`$(ProjectDir)` は プロジェクトディレクトリのパスを表すマクロです。
 
 - 追加している様子 (submodule 使用時)
 
@@ -158,19 +149,19 @@
 
 - 更新
 
-  - submodule 使用時
+  submodule 使用時
 
-    ```sh
-    # 追加先のリポジトリ内で実行
-    git submodule update --remote
-    ```
+  ```sh
+  # 追加先のリポジトリ内で実行
+  git submodule update --remote
+  ```
 
-  - 通常クローン時
+  通常クローン時
 
-    ```sh
-    # UdonLibrary内で実行
-    git pull
-    ```
+  ```sh
+  # UdonLibrary内で実行
+  git pull
+  ```
 
 - `git submodule` 使用時の注意点
 

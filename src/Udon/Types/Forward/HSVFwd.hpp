@@ -27,16 +27,16 @@ namespace Udon
     {
 
         /// @brief 要素の型
-        using value_type = uint8_t;
+        using ValueType = uint8_t;
 
         /// @brief 色相
-        value_type h;
+        ValueType h;
 
         /// @brief 彩度
-        value_type s;
+        ValueType s;
 
         /// @brief 明度
-        value_type v;
+        ValueType v;
 
         /// @brief デフォルトコンストラクタ
         constexpr HSV() noexcept
@@ -50,7 +50,7 @@ namespace Udon
         /// @param h 色相
         /// @param s 彩度
         /// @param v 明度
-        constexpr HSV(value_type h, value_type s, value_type v) noexcept
+        constexpr HSV(ValueType h, ValueType s, ValueType v) noexcept
             : h(h)
             , s(s)
             , v(v)
@@ -60,9 +60,9 @@ namespace Udon
         /// @brief コンストラクタ
         /// @param hsv HSV色空間
         HSV(uint32_t hsv) noexcept
-            : h(hsv >> 16)
-            , s(hsv >> 8)
-            , v(hsv >> 0)
+            : h(static_cast<ValueType>(hsv >> 16))
+            , s(static_cast<ValueType>(hsv >>  8))
+            , v(static_cast<ValueType>(hsv >>  0))
         {
         }
 
@@ -91,6 +91,13 @@ namespace Udon
         explicit constexpr operator bool() const noexcept
         {
             return h || s || v;
+        }
+
+        /// @brief 24bit値へ変換
+        /// @return 
+        uint32_t to24bit() const noexcept
+        {
+            return static_cast<uint32_t>(h) << 16 | static_cast<uint32_t>(s) << 8 | static_cast<uint32_t>(v) << 0;
         }
 
         /// @brief RGB色空間に変換
