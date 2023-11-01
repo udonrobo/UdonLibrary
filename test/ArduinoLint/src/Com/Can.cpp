@@ -29,7 +29,7 @@ inline void testBus()
 
 inline void testBus()
 {
-    Udon::CanBusSpi bus{
+    Udon::CanBusSpi{
         {
             .channel   = spi0,
             .cs        = 1,
@@ -39,9 +39,20 @@ inline void testBus()
             .sck       = 5,
             .clock     = 1'000'000,
         },
-        {},
+        {
+            .speed    = CAN_1000KBPS,
+            .mcpClock = MCP_16MHZ,
+        }
     };
 
+    Udon::CanBusSpi bus{
+        {
+            .channel   = spi0,
+            .cs        = 1,
+            .interrupt = 2,
+        },
+    };
+    
     bus.begin();
     bus.end();
     bus.update();

@@ -20,7 +20,7 @@ namespace Udon
     /// @brief コンストラクタ
     /// @param spiConfig SPI 設定情報
     /// @param canConfig CAN 設定情報
-    inline CanBusSpi::CanBusSpi(const SpiConfig& spiConfig, const CanConfig& canConfig)
+    inline CanBusSpi::CanBusSpi(const SpiConfig& spiConfig, const CanConfig& canConfig = {})
         : spiConfig(spiConfig)
         , canConfig(canConfig)
         , bus(
@@ -50,7 +50,7 @@ namespace Udon
     ///         SPIバスがCANコントローラーとの通信のみに使用される場合は、この関数を呼び出す必要はない
     /// @param interrupt 割り込みピン
     /// @param canConfig CAN 設定情報
-    inline void CanBusSpi::beginCanOnly(Pin interrupt, const CanConfig& canConfig)
+    inline void CanBusSpi::beginCanOnly(uint8_t interrupt, const CanConfig& canConfig)
     {
         bus.reset();
 
@@ -109,23 +109,33 @@ namespace Udon
     /// @brief バスの有効性を取得
     inline CanBusSpi::operator bool() const
     {
+        return not(txTimeout() or rxTimeout());
+    }
+
+    inline bool CanBusSpi::txTimeout() const
+    {
+        if (txNodes)
+            return millis() - transmitMs >= canConfig.transmitTimeout;
+        else
+            return false;
+    }
+
+    inline bool CanBusSpi::rxTimeout() const
+    {
         if (rxNodes)
-            return millis() - receiveMs < 100;
-        else if (txNodes)
-            return micros() - transmitUs < 100000;
+            return millis() - receiveMs >= canConfig.receiveTimeout;
         else
             return false;
     }
 
     /// @brief バス更新
-    /// @param transmitIntervalUs 送信間隔 [us]
-    inline void CanBusSpi::update(uint32_t transmitIntervalUs)
+    inline void CanBusSpi::update()
     {
         onReceive();
-        if (txNodes && micros() - transmitUs >= transmitIntervalUs)
+        if (txNodes and millis() - transmitMs >= canConfig.transmitInterval)
         {
             onTransmit();
-            transmitUs = micros();
+            transmitMs = millis();
         }
     }
 
