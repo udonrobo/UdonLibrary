@@ -266,7 +266,7 @@ namespace Udon
             }
             else
             {
-                if (millis() - lastTransmitMs > random(2000))
+                if (millis() - lastTransmitMs > (uint32_t)random(2000))
                 {
                     sendUpdate();
                     lastTransmitMs = millis();
