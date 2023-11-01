@@ -43,7 +43,7 @@ namespace Udon
             uint32_t transmitInterval = 5;            // 送信間隔 [ms]
             uint32_t transmitTimeout  = 100;          // 送信タイムアウト時間 [ms]
             uint32_t receiveTimeout   = 100;          // 受信タイムアウト時間 [ms]
-            uint32_t baudrate         = 1'000'000;    // CAN通信速度
+            uint32_t baudrate         = 1'000'000;    // CAN通信速度 [bps]
         };
 
         /// @brief コンストラクタ
@@ -67,10 +67,15 @@ namespace Udon
         /// @remark 呼び出し必須
         void update();
 
+        /// @brief バスが有効かどうか
+        /// @remark 受信タイムアウトもしくは送信タイムアウトが発生した場合はfalseを返す
+        /// @remark 全ての受信ノード送信ノードが有効であるかは考慮しない
         explicit operator bool() const override;
 
+        /// @brief 送信タイムアウト
         bool txTimeout() const;
 
+        /// @brief 受信タイムアウト
         bool rxTimeout() const;
 
         /// @brief バス情報を表示する
@@ -109,13 +114,13 @@ namespace Udon
             }
         };
 
-        Udon::StaticVector<TxNodePtr> txNodes;
-        Udon::StaticVector<RxNodePtr> rxNodes;
+        Udon::StaticVector<TxNodePtr> txNodes;    // 送信ノード
+        Udon::StaticVector<RxNodePtr> rxNodes;    // 受信ノード
 
-        Udon::StaticVector<CAN_message_t, 1024> rxBuffer;
+        Udon::StaticVector<CAN_message_t, 1024> rxBuffer;    // 受信バッファ
 
-        uint32_t transmitMs = 0;
-        uint32_t receiveMs  = 0;
+        uint32_t transmitMs = 0;    // 最終送信成功時刻
+        uint32_t receiveMs  = 0;    // 最終受信成功時刻
 
         /// @brief 受信処理
         void onReceive();
