@@ -12,7 +12,16 @@
 
 `std::vector<T>` と同じメンバを持ちます。
 
-- 構築
+```cpp
+template <typename T, size_t Capacity>
+struct StaticVector
+{
+    T m_buffer[Capacity];
+    T* m_end;
+};
+```
+
+### 構築
 
   テンプレート引数に要素の型、最大要素数を指定します。
 
@@ -67,7 +76,16 @@
 
 内部に配列の先頭を指すポインタと、要素数を持っています。
 
-- 構築
+```cpp
+template <typename T>
+struct ArrayView
+{
+    T* m_begin;
+    T* m_end;
+};
+```
+
+### 構築
 
   テンプレート引数に要素の型を指定します。
 
@@ -108,11 +126,75 @@
   view[2] = 100;
   ```
 
+### 文字列操作
+
+ArrayView はメモリ領域を参照する、領域自体を持たないクラスです。そのため参照する範囲を変更することでビューから再アロケートなしで新たなビューを作成することができます。
+
+- 文字列から構築
+
+  文字列が保存されている領域を参照するビューを作成。
+
+  ```cpp
+  int main()
+  {
+      Udon::ArrayView<const char> stringView = "hogehoge hogehoge hogehoge";
+  }
+  ```
+
+- `subView`
+
+  指定された範囲から新しいビューを作成。
+
+  ```cpp
+  int main()
+  {
+      Udon::ArrayView<const char> stringView = "hogehoge hogehoge hogehoge";
+      //                                     begin^     ^end
+      std::cout << stringView.subView(3, 8) << std::endl;
+      //> gehoge
+  }
+  ```
+
+  ```cpp
+  int main()
+  {
+      Udon::ArrayView<const char> stringView = "hogehoge hogehoge hogehoge";
+      //                                             begin^               ^end
+      std::cout << stringView.subView(10) << std::endl;
+      //> ogehoge hogehoge
+  }
+  ```
+
+- `subViewUntil`
+
+  指定された文字までの文字列からビューを作成。
+
+  ```cpp
+  int main()
+  {
+      Udon::ArrayView<const char> stringView = "hogehoge hogehoge hogehoge";
+      //                                   begin^       ^end
+      std::cout << stringView.subViewUntil(' ') << std::endl;
+      //> hogehoge
+  }
+  ```
+
 ## RingBuffer
 
 配列の最初と最後の要素を疑似的に繋げ、リング上にした FIFO バッファ。
 
-要素の個数は可変です(疑似可変長)
+```cpp
+template <typename T, size_t Capacity>
+class RingBuffer
+{
+    T m_data[Capacity];
+    size_t m_head;
+    size_t m_tail;
+    size_t m_size;
+};
+```
+
+### 構築
 
 - 構築
 
