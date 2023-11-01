@@ -223,28 +223,39 @@ int main() {}
 
 ## Documents
 
-- アルゴリズム
-  - [コンテナ](./docs/Algorithm/Container.md)
-  - [独立ステア最適化](./docs/Algorithm/SteerOptimizer.md)
-- 通信
-  - [CAN 通信](./docs/Communication/CAN.md)
-  - [I2C 通信](./docs/Communication/I2C.md)
-  - [UART 通信](./docs/Communication/UART.md)
-  - [IM920](./docs/Communication/IM920.md)
-  - [コントローラ](./docs/Communication/Pad.md)
-  - [シリアライザ](./docs/Communication/Serialization.md)
-- ユーザー定義型
-  - [色空間](./docs/Types/Color.md)
-  - [二次元ベクトル](./docs/Types/Vector2D.md)
-  - [三次元ベクトル](./docs/Types/Vector3D.md)
-  - [オイラー角](./docs/Types/Eular.md)
-  - [クオータニオン](./docs/Types/Quaternion.md)
-  - [固定ビット長浮動小数点型](./docs/Types/Float.md)
-- ドライバー
-  - [ロータリーエンコーダー](./docs/Driver/Encoder.md)
-- その他
-  - [型トレイト](./docs/Other/Traits.md)
-- 開発者用
-  - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
-  - [自動テスト](./docs/Developer/CI.md)
-  - [謝辞](./docs/Other/Acknowledgments.md)
+### アルゴリズム
+
+- [コンテナ](./docs/Algorithm/Container.md)
+- [独立ステア最適化](./docs/Algorithm/SteerOptimizer.md)
+
+### 通信
+
+- [CAN 通信](./docs/Communication/CAN.md)
+- [I2C 通信](./docs/Communication/I2C.md)
+- [UART 通信](./docs/Communication/UART.md)
+- [IM920](./docs/Communication/IM920.md)
+- [コントローラ](./docs/Communication/Pad.md)
+- [シリアライザ](./docs/Communication/Serialization.md)
+
+### ユーザー定義型
+
+- [色空間](./docs/Types/Color.md)
+- [二次元ベクトル](./docs/Types/Vector2D.md)
+- [三次元ベクトル](./docs/Types/Vector3D.md)
+- [オイラー角](./docs/Types/Eular.md)
+- [クオータニオン](./docs/Types/Quaternion.md)
+- [固定ビット長浮動小数点型](./docs/Types/Float.md)
+
+### ドライバー
+
+- [ロータリーエンコーダー](./docs/Driver/Encoder.md)
+
+### 言語
+
+- [型トレイト](./docs/Other/Traits.md)
+
+### 開発者用
+
+- [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
+- [自動テスト](./docs/Developer/CI.md)
+- [謝辞](./docs/Other/Acknowledgments.md)
