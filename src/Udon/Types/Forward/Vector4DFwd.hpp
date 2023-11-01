@@ -89,14 +89,14 @@ namespace Udon
         friend constexpr Vector4D operator/(ValueType lhs, const Vector4D& rhs) noexcept { return { lhs / rhs.x, lhs / rhs.y, lhs / rhs.z, lhs / rhs.w }; }
 
         /// @brief 複合代入演算子
-        /// @remark vector = vector * vector
+        /// @remark vector = vector [operator] vector
         Vector4D& operator+=(const Vector4D& rhs) noexcept { return *this = *this + rhs; };
         Vector4D& operator-=(const Vector4D& rhs) noexcept { return *this = *this - rhs; };
         Vector4D& operator*=(const Vector4D& rhs) noexcept { return *this = *this * rhs; };
         Vector4D& operator/=(const Vector4D& rhs) noexcept { return *this = *this / rhs; };
 
         /// @brief 複合代入演算子
-        /// @remark vector = vector * scalar
+        /// @remark vector = vector [operator] scalar
         Vector4D& operator+=(ValueType rhs) noexcept { return *this = *this + rhs; };
         Vector4D& operator-=(ValueType rhs) noexcept { return *this = *this - rhs; };
         Vector4D& operator*=(ValueType rhs) noexcept { return *this = *this * rhs; };

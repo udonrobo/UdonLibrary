@@ -78,21 +78,21 @@ namespace Udon
         friend constexpr Vector3D operator/(const Vector3D& lhs, ValueType rhs) noexcept { return { lhs.x / rhs, lhs.y / rhs, lhs.z / rhs }; }
 
         /// @brief 算術演算子
-        /// @remark scalar * vector
+        /// @remark scalar [operator] vector
         friend constexpr Vector3D operator+(ValueType lhs, const Vector3D& rhs) noexcept { return { lhs + rhs.x, lhs + rhs.y, lhs + rhs.z }; }
         friend constexpr Vector3D operator-(ValueType lhs, const Vector3D& rhs) noexcept { return { lhs - rhs.x, lhs - rhs.y, lhs - rhs.z }; }
         friend constexpr Vector3D operator*(ValueType lhs, const Vector3D& rhs) noexcept { return { lhs * rhs.x, lhs * rhs.y, lhs * rhs.z }; }
         friend constexpr Vector3D operator/(ValueType lhs, const Vector3D& rhs) noexcept { return { lhs / rhs.x, lhs / rhs.y, lhs / rhs.z }; }
 
         /// @brief 複合代入演算子
-        /// @remark vector = vector * vector
+        /// @remark vector = vector [operator] vector
         Vector3D& operator+=(const Vector3D& rhs) noexcept { return *this = *this + rhs; };
         Vector3D& operator-=(const Vector3D& rhs) noexcept { return *this = *this - rhs; };
         Vector3D& operator*=(const Vector3D& rhs) noexcept { return *this = *this * rhs; };
         Vector3D& operator/=(const Vector3D& rhs) noexcept { return *this = *this / rhs; };
 
         /// @brief 複合代入演算子
-        /// @remark vector = vector * scalar
+        /// @remark vector = vector [operator] scalar
         Vector3D& operator+=(ValueType rhs) noexcept { return *this = *this + rhs; };
         Vector3D& operator-=(ValueType rhs) noexcept { return *this = *this - rhs; };
         Vector3D& operator*=(ValueType rhs) noexcept { return *this = *this * rhs; };
