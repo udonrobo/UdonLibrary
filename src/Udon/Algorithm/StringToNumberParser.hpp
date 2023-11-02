@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string>
+#include <cstring>
 #include <Udon/Traits/AlwaysFalse.hpp>
 
 namespace Udon

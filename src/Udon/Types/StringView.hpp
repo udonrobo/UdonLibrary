@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Udon/Stl/EnableSTL.hpp>
 #include <string>
 #include <vector>
 #include <algorithm>
