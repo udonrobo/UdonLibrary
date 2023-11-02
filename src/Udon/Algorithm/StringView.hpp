@@ -1,6 +1,11 @@
 #pragma once
 
 #include <string>
+#include <vector>
+#include <algorithm>
+#include <iterator>
+#include <iostream>
+#include "StringToNumberParser.hpp"
 
 namespace Udon
 {
@@ -43,7 +48,7 @@ namespace Udon
         {
         }
 
-        BasicStringView(const_pointer begin, const_pointer end)
+        BasicStringView(const_iterator begin, const_iterator end)
             : m_data(begin)
             , m_size(end - begin)
         {
@@ -157,12 +162,12 @@ namespace Udon
             for (auto it = cbegin(); it != cend(); ++it)
             {
                 const auto next = std::next(it);
-                if (*it == delimiter)  // 区切り文字検索
+                if (*it == delimiter)    // 区切り文字検索
                 {
                     tokens.emplace_back(begin, it);
-                    begin = next;  // it は 区切り文字を指しているので飛ばす
+                    begin = next;    // it は 区切り文字を指しているので飛ばす
                 }
-                else if (next == cend())  // 最後は普通に追加
+                else if (next == cend())    // 最後は普通に追加
                 {
                     tokens.emplace_back(begin, cend());
                 }
@@ -170,7 +175,11 @@ namespace Udon
             return tokens;
         }
 
-        template <typename 
+        template <typename T>
+        T parse() const
+        {
+            return StringToNumberParser<T>::Parse({ cbegin(), cend() });
+        }
 
         void swap(BasicStringView& other) noexcept
         {
