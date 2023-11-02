@@ -27,7 +27,7 @@ namespace Udon
     template <typename Message>
     class SivUartReader
     {
-        static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
+        static constexpr size_t Size = Udon::PackedSize<Message>();
 
         s3d::Serial& serial;
 
@@ -38,6 +38,8 @@ namespace Udon
         bool isRunning;    // thread stop token
 
     public:
+        using MessageType = Message;
+        
         SivUartReader(s3d::Serial& bus)
             : serial(bus)
             , buffer(Size)

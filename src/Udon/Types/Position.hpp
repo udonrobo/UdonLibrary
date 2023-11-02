@@ -228,6 +228,7 @@ namespace Udon
     };
 
     using Pos = Position<double>;
+    using Stick = Pos;
 
     using Stick = Pos;
 

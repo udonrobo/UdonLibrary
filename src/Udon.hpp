@@ -85,6 +85,9 @@
 // IM920
 #include "Udon/Com/Im920.hpp"
 
+// IM920
+#include "Udon/Com/Lora.hpp"
+
 // シリアライズ
 #include "Udon/Com/Serialization.hpp"
 
@@ -201,7 +204,7 @@
 #include "Udon/Traits/Accessible.hpp"
 
 // シリアライズ後のサイズ取得を可能か
-#include "Udon/Traits/Capacitable.hpp"
+#include "Udon/Traits/PackedSizable.hpp"
 
 // std::void_t
 #include "Udon/Traits/VoidT.hpp"

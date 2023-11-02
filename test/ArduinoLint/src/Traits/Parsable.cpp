@@ -1,5 +1,13 @@
 #include <Udon/Traits/ParsableMacro.hpp>
 
+/// @brief 列挙型
+enum class Enum
+{
+    A,
+    B,
+    C,
+};
+
 /// @brief パース不可能なユーザー定義型
 struct UnParsable
 {
@@ -41,6 +49,8 @@ inline void test()
     static_assert(Udon::Traits::Parsable<int[2][2]>::value, "");              // プリミティブ型多次元配列
     static_assert(Udon::Traits::Parsable<float>::value, "");                  // プリミティブ型
     static_assert(Udon::Traits::Parsable<float[2][2]>::value, "");            // プリミティブ型多次元配列
+    static_assert(Udon::Traits::Parsable<Enum>::value, "");                   // 列挙型
+    static_assert(Udon::Traits::Parsable<Enum[2][2]>::value, "");             // 列挙型多次元配列
     static_assert(Udon::Traits::Parsable<Parsable>::value, "");               // ユーザー定義型
     static_assert(Udon::Traits::Parsable<Parsable[2][2]>::value, "");         // ユーザー定義型多次元配列
     static_assert(Udon::Traits::Parsable<InnerParsable>::value, "");          // 内部にパース可能なメンバ変数を持つ構造体

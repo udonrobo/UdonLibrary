@@ -1,24 +1,7 @@
-//-------------------------------------------------------------------
-//
-//    UdonLibrary
-//
-//    Copyright (c) 2022-2023 Okawa Yusuke
-//    Copyright (c) 2022-2023 udonrobo
-//
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    IM920 受信クラス
-//
-//    Sender --[UART]--> IM920 ~~[920MHz]~~> IM920 --[UART]--> Receiver
-//                                                         　  ^^^^^^^^
-//
-//-------------------------------------------------------------------
 
 #pragma once
 
-#include "IIm920.hpp"
+#include "ILora.hpp"
 
 #include <Udon/Com/Serialization.hpp>
 #include <Udon/Common/Show.hpp>
@@ -27,7 +10,7 @@ namespace Udon
 {
 
     template <typename Message>
-    class Im920Reader
+    class LoraReader
     {
     public:
         static constexpr size_t Size = Udon::PackedSize<Message>();
@@ -35,26 +18,26 @@ namespace Udon
         using MessageType = Message;
 
     private:
-        IIm920& im920;
+        ILora& lora;
 
         uint8_t buffer[Size];
 
-        Im920Node node;
+        LoraNode node;
 
     public:
-        Im920Reader(IIm920& im920)
-            : im920(im920)
+        LoraReader(ILora& lora)
+            : lora(lora)
             , buffer()
             , node{ buffer, Size, 0 }
         {
-            im920.joinRx(node);
+            lora.joinRx(node);
         }
-        Im920Reader(const Im920Reader& other)
-            : im920(other.im920)
+        LoraReader(const LoraReader& other)
+            : lora(other.lora)
             , buffer()
             , node{ buffer, Size, 0 }
         {
-            im920.joinRx(node);
+            lora.joinRx(node);
         }
 
         Udon::Optional<Message> getMessage(uint32_t timeOut = 700) const
@@ -69,7 +52,7 @@ namespace Udon
             }
         }
 
-        /// @brief 送信内容を表示
+        /// @brief 受信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
@@ -83,7 +66,7 @@ namespace Udon
             }
         }
 
-        /// @brief 送信バッファを表示
+        /// @brief 受信バッファを表示
         /// @param gap 区切り文字 (default: ' ')
         void showRaw(char gap = ' ') const
         {

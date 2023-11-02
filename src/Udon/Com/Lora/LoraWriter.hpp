@@ -1,24 +1,6 @@
-//-------------------------------------------------------------------
-//
-//    UdonLibrary
-//
-//    Copyright (c) 2022-2023 Okawa Yusuke
-//    Copyright (c) 2022-2023 udonrobo
-//
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    IM920 送信クラス
-//
-//    Sender --[UART]--> IM920 ~~[920MHz]~~> IM920 --[UART]--> Receiver
-//    ^^^^^^
-//
-//-------------------------------------------------------------------
-
 #pragma once
 
-#include "IIm920.hpp"
+#include "ILora.hpp"
 
 #include <Udon/Com/Serialization.hpp>
 #include <Udon/Common/Show.hpp>
@@ -27,7 +9,7 @@ namespace Udon
 {
 
     template <typename Message>
-    class Im920Writer
+    class LoraWriter
     {
     public:
         static constexpr size_t Size = Udon::PackedSize<Message>();
@@ -35,26 +17,26 @@ namespace Udon
         using MessageType = Message;
 
     private:
-        IIm920& im920;
+        ILora& lora;
 
         uint8_t buffer[Size];
 
-        Im920Node node;
+        LoraNode node;
 
     public:
-        Im920Writer(IIm920& im920)
-            : im920(im920)
+        LoraWriter(ILora& lora)
+            : lora(lora)
             , buffer()
             , node{ buffer, Size, 0 }
         {
-            im920.joinTx(node);
+            lora.joinTx(node);
         }
-        Im920Writer(const Im920Writer& other)
-            : im920(other.im920)
+        LoraWriter(const LoraWriter& other)
+            : lora(other.lora)
             , buffer()
             , node{ buffer, Size, 0 }
         {
-            im920.joinTx(node);
+            lora.joinTx(node);
         }
 
         void setMessage(const Message& message)

@@ -74,7 +74,7 @@ inline void test()
     // シリアライズ
     {
         Udon::Vec3 a;
-        static_assert(Udon::CapacityWithChecksum<Udon::Vec3>() == 12 + 1, "");
+        static_assert(Udon::PackedSize<Udon::Vec3>() == 12 + 1, "");
         const auto b = Udon::Pack(a);
         (void)Udon::Unpack<Udon::Vec3>(b);
     }

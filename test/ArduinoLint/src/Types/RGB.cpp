@@ -55,7 +55,7 @@ inline void test()
     // シリアライズ
     {
         Udon::RGB a;
-        static_assert(Udon::CapacityWithChecksum<Udon::RGB>() == 3 + 1, "");
+        static_assert(Udon::PackedSize<Udon::RGB>() == 3 + 1, "");
         const auto b = Udon::Pack(a);
         (void)Udon::Unpack<Udon::RGB>(b);
     }

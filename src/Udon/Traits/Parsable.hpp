@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include "Capacitable.hpp"
+#include "PackedSizable.hpp"
 #include "Accessible.hpp"
 
 namespace Udon
@@ -94,7 +94,7 @@ namespace Udon
         {
 		};
         template <typename T>
-        struct Parsable<T, typename std::enable_if<Capacitable<T>::value &&            // バッファサイズを返すメンバー関数を持つ
+        struct Parsable<T, typename std::enable_if<PackedSizable<T>::value &&            // バッファサイズを返すメンバー関数を持つ
                                                    Accessible<T>::value &&             // アクセッサを持つ
                                                    MemberParsable<T>::value>::type>    // 各メンバがパース可能である
             : std::true_type
@@ -106,7 +106,7 @@ namespace Udon
         {
         };
 
-        /// @brief メンバ変数がパース可能であることをコンパイル時に検証する
+        /// @brief メンバ変数がパース可能であるか
         template <typename Head>
         inline constexpr bool IsMemberParsable(const Head&)
         {
