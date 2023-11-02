@@ -5,13 +5,19 @@
 #include <algorithm>
 #include <iterator>
 #include <iostream>
-#include "StringToNumberParser.hpp"
+#include <Udon/Algorithm/StringToNumberParser.hpp>
 
 namespace Udon
 {
     template <typename CharType, typename Traits = std::char_traits<CharType>>
     class BasicStringView
     {
+        static_assert(not std::is_array<CharType>::value, "CharType cannot be an array.");
+
+        static_assert(std::is_trivial<CharType>::value, "CharType must be a trivial type.");
+
+        static_assert(std::is_standard_layout<CharType>::value, "CharType must be a standard layout type.");
+
     public:
         using size_type              = size_t;
         using traits_type            = Traits;
@@ -20,9 +26,9 @@ namespace Udon
         using off_type               = typename traits_type::off_type;
         using pos_type               = typename traits_type::pos_type;
         using state_type             = typename traits_type::state_type;
-        using const_reference        = const CharType&;
-        using const_pointer          = const CharType*;
-        using const_iterator         = const CharType*;
+        using const_reference        = const char_type&;
+        using const_pointer          = const char_type*;
+        using const_iterator         = const char_type*;
         using const_receive_iterator = std::reverse_iterator<const_iterator>;
 
     private:
@@ -54,6 +60,15 @@ namespace Udon
         {
         }
 
+        /// @brief std::string からの変換
+        /// @remark 一時オブジェクトからの変換は禁止(ダングリングポインタになる)
+        /// @param string
+        BasicStringView(const std::basic_string<CharType>& string)
+            : m_data(string.data())
+            , m_size(string.size())
+        {
+        }
+
         BasicStringView(const BasicStringView&) = default;
 
         BasicStringView& operator=(const BasicStringView&) = default;
@@ -70,11 +85,6 @@ namespace Udon
 
         // ヌル終端文字が含まれることは保証されないので、c_str() は提供しない。
         // const_pointer c_str() const noexcept;
-
-        size_type length() const noexcept
-        {
-            return m_size;
-        }
 
         size_type size() const noexcept
         {
@@ -134,10 +144,10 @@ namespace Udon
         }
 
         // から
-        BasicStringView substringFrom(const char_type terminate) const
+        BasicStringView substringFrom(const char_type start) const
         {
             return {
-                std::next(std::find(cbegin(), cend(), terminate)),    // find()はterminateを指しているので、次の文字から
+                std::next(std::find(cbegin(), cend(), start)),    // find()はstartを指しているので、次の文字から
                 cend()
             };
         }
