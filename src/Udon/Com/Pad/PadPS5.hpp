@@ -34,7 +34,7 @@ namespace Udon
         : public Reader<Message::PadPS5>
     {
         static_assert(Traits::IsReader<Reader>::value, "Reader type must meet recipient requirements.");
- 
+
     public:
         /// @brief 受信メッセージ型
         using MessageType = Message::PadPS5;
@@ -49,107 +49,71 @@ namespace Udon
         explicit operator bool() const { return m_isConnected; }
 
         /// @brief ▵ボタン
-        Udon::Input getTriangle() const { return m_triangle; }
+        Input getTriangle() const { return m_triangle; }
 
         /// @brief ○ボタン
-        Udon::Input getCircle() const { return m_circle; }
+        Input getCircle() const { return m_circle; }
 
         /// @brief ×ボタン
-        Udon::Input getCross() const { return m_cross; }
+        Input getCross() const { return m_cross; }
 
         /// @brief □ボタン
-        Udon::Input getSquare() const { return m_square; }
+        Input getSquare() const { return m_square; }
 
         /// @brief 十字キー上
-        Udon::Input getUp() const { return m_up; }
+        Input getUp() const { return m_up; }
 
         /// @brief 十字キー右
-        Udon::Input getRight() const { return m_right; }
+        Input getRight() const { return m_right; }
 
         /// @brief 十字キー下
-        Udon::Input getDown() const { return m_down; }
+        Input getDown() const { return m_down; }
 
         /// @brief 十字キー左
-        Udon::Input getLeft() const { return m_left; }
+        Input getLeft() const { return m_left; }
 
         /// @brief L1ボタン
-        Udon::Input getL1() const { return m_l1; }
+        Input getL1() const { return m_l1; }
 
         /// @brief R1ボタン
-        Udon::Input getR1() const { return m_r1; }
+        Input getR1() const { return m_r1; }
 
         /// @brief L2ボタン
-        Udon::Input getL2() const { return m_l2; }
+        Input getL2() const { return m_l2; }
 
         /// @brief R2ボタン
-        Udon::Input getR2() const { return m_r2; }
+        Input getR2() const { return m_r2; }
 
         /// @brief 左スティック押し込み
-        Udon::Input getL3() const { return m_l3; }
+        Input getL3() const { return m_l3; }
 
         /// @brief 右スティック押し込み
-        Udon::Input getR3() const { return m_r3; }
+        Input getR3() const { return m_r3; }
 
         /// @brief クリエイトボタン(左上ボタン)
-        Udon::Input getCreate() const { return m_create; }
+        Input getCreate() const { return m_create; }
 
         /// @brief オプションボタン(右上ボタン)
-        Udon::Input getOption() const { return m_option; }
+        Input getOption() const { return m_option; }
 
         /// @brief タッチパッドボタン
-        Udon::Input getTouch() const { return m_touch; }
+        Input getTouch() const { return m_touch; }
 
         /// @brief マイクボタン
-        Udon::Input getMic() const { return m_mic; }
+        Input getMic() const { return m_mic; }
 
         /// @brief PSボタン
-        Udon::Input getPs() const { return m_ps; }
+        Input getPs() const { return m_ps; }
 
         /// @brief 左スティック [x,y: -255~255]
-        Udon::Vec2 getLeftStick() const { return m_leftStick; }
+        Vec2 getLeftStick() const { return m_leftStick; }
 
         /// @brief 右スティック [x,y: -255~255]
-        Udon::Vec2 getRightStick() const { return m_rightStick; }
+        Vec2 getRightStick() const { return m_rightStick; }
 
         /// @brief ロボットの移動に必要なスティックの情報 Udon::Position オブジェクト {{x,y},turn} を取得
         /// @remark 左スティックから移動成分、右スティックX軸から旋回成分を取得
-        Udon::Pos getMoveInfo() const { return { m_leftStick, m_rightStick.x }; }
-
-        /// @brief メッセージ構造体に変換
-        MessageType toMessage() const
-        {
-            return {
-                m_isConnected,
-                m_triangle.press,
-                m_circle.press,
-                m_cross.press,
-                m_square.press,
-
-                m_up.press,
-                m_right.press,
-                m_down.press,
-                m_left.press,
-
-                m_l1.press,
-                m_r1.press,
-                m_l2.press,
-                m_r2.press,
-                m_l3.press,
-                m_r3.press,
-
-                m_create.press,
-                m_option.press,
-                m_touch.press,
-                m_mic.press,
-                m_ps.press,
-
-                static_cast<int8_t>(m_rightStick.x / 2),
-                static_cast<int8_t>(m_rightStick.y / 2),
-                static_cast<int8_t>(m_leftStick.x / 2),
-                static_cast<int8_t>(m_leftStick.y / 2),
-            };
-        }
-
+        Pos getMoveInfo() const { return { m_leftStick, m_rightStick.x }; }
         /// @brief 更新
         void update()
         {
@@ -228,50 +192,79 @@ namespace Udon
             }
         }
 
+        /// @brief メッセージ構造体に変換
+        MessageType toMessage() const
+        {
+            return {
+                m_isConnected,
+                m_triangle.press,
+                m_circle.press,
+                m_cross.press,
+                m_square.press,
+
+                m_up.press,
+                m_right.press,
+                m_down.press,
+                m_left.press,
+
+                m_l1.press,
+                m_r1.press,
+                m_l2.press,
+                m_r2.press,
+                m_l3.press,
+                m_r3.press,
+
+                m_create.press,
+                m_option.press,
+                m_touch.press,
+                m_mic.press,
+                m_ps.press,
+
+                static_cast<int8_t>(m_rightStick.x / 2),
+                static_cast<int8_t>(m_rightStick.y / 2),
+                static_cast<int8_t>(m_leftStick.x / 2),
+                static_cast<int8_t>(m_leftStick.y / 2),
+            };
+        }
+
     private:
         // 接続状態
         bool m_isConnected = false;
 
         // ボタン
-        Udon::Input m_triangle;
-        Udon::Input m_circle;
-        Udon::Input m_cross;
-        Udon::Input m_square;
-        Udon::Input m_up;
-        Udon::Input m_right;
-        Udon::Input m_down;
-        Udon::Input m_left;
-        Udon::Input m_l1;
-        Udon::Input m_r1;
-        Udon::Input m_l2;
-        Udon::Input m_r2;
-        Udon::Input m_l3;
-        Udon::Input m_r3;
-        Udon::Input m_create;
-        Udon::Input m_option;
-        Udon::Input m_touch;
-        Udon::Input m_mic;
-        Udon::Input m_ps;
+        Input m_triangle;
+        Input m_circle;
+        Input m_cross;
+        Input m_square;
+        Input m_up;
+        Input m_right;
+        Input m_down;
+        Input m_left;
+        Input m_l1;
+        Input m_r1;
+        Input m_l2;
+        Input m_r2;
+        Input m_l3;
+        Input m_r3;
+        Input m_create;
+        Input m_option;
+        Input m_touch;
+        Input m_mic;
+        Input m_ps;
 
         // アナログスティック [-255~255]
-        Udon::Vec2 m_rightStick;
-        Udon::Vec2 m_leftStick;
+        Vec2 m_rightStick;
+        Vec2 m_leftStick;
 
         /// @brief デッドゾーンをカットする
         static double CutDeadZone(double value, double deadZone)
         {
             if (value > deadZone)
-            {
                 return 255 * (value - deadZone) / (255 - deadZone);
-            }
             else if (value < -deadZone)
-            {
                 return 255 * (value + deadZone) / (255 - deadZone);
-            }
             else
-            {
                 return 0.0;
-            }
         };
     };
 
