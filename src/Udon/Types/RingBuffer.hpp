@@ -78,23 +78,7 @@ namespace Udon
             , m_size{}
         {
             resize(size);
-            for (size_t i = 0; i < size; ++i)
-            {
-                m_data[i] = value;
-            }
-        }
-
-        RingBuffer(size_t size, value_type&& value)
-            : m_data{}
-            , m_head{}
-            , m_tail{}
-            , m_size{}
-        {
-            resize(size);
-            for (size_t i = 0; i < size; ++i)
-            {
-                m_data[i] = std::move(value);
-            }
+            std::fill(begin(), end(), value);
         }
 
         /// @brief デフォルトで初期化しないコンストラクタ
