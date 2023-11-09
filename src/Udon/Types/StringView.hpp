@@ -14,8 +14,12 @@
 #include <vector>
 #include <algorithm>
 #include <iterator>
-#include <iostream>
 #include <Udon/Algorithm/StringToNumberParser.hpp>
+#include <Udon/Common/Platform.hpp>
+
+#if UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE
+#    include <iostream>
+#endif
 
 namespace Udon
 {
@@ -64,16 +68,6 @@ namespace Udon
         BasicStringView(const_pointer string)
             : m_data(string)
             , m_size(strlen(string))
-        {
-        }
-
-        /// @brief 文字配列をもとにビューを構築
-        /// @tparam N
-        /// @param string
-        template <size_t N>
-        constexpr BasicStringView(char_type (&string)[N])
-            : m_data(string)
-            , m_size(N)
         {
         }
 
@@ -306,11 +300,15 @@ namespace Udon
             return not(lhs == rhs);
         }
 
+#if UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE
+
         /// @brief std::ostream への出力
         friend std::basic_ostream<char_type>& operator<<(std::basic_ostream<char_type>& os, const BasicStringView& string)
         {
             return os.write(string.m_data, string.m_size);
         }
+
+#endif
 
         // iterator 要件
         const_iterator begin() const noexcept { return m_data; }
@@ -371,7 +369,7 @@ namespace Udon
 namespace Udon
 {
 
-    namespace Literal
+    namespace Literals
     {
 
         /// @brief Udon::StringView 構築リテラル
