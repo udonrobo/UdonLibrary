@@ -1,3 +1,12 @@
+//
+//    UdonLibrary
+//
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 Udonrobo
+//
+//    文字列参照クラス (std::string_view代替)
+//
+
 #pragma once
 
 #include <Udon/Stl/EnableSTL.hpp>
@@ -10,6 +19,11 @@
 
 namespace Udon
 {
+
+    /// @brief 文字列参照クラス
+    /// @details メモリ所有権を持たないのでヒープへのメモリアロケーションが発生しません
+    /// @tparam CharType 文字列の各要素の型
+    /// @tparam Traits
     template <typename CharType, typename Traits = std::char_traits<CharType>>
     class BasicStringView
     {
@@ -33,31 +47,53 @@ namespace Udon
         using const_receive_iterator = std::reverse_iterator<const_iterator>;
 
     private:
-        const_pointer m_data;
-        size_type     m_size;
+        const_pointer m_data;    // ビューの先頭を指すポインタ
+        size_type     m_size;    // ビューの要素数
 
     public:
-        BasicStringView()
+        /// @brief デフォルトコンストラクタ
+        constexpr BasicStringView()
             : m_data()
             , m_size()
         {
         }
 
+        /// @brief 文字列の先頭を指すポインタをもとにビューを構築
+        /// @remark null終端文字が必須です
+        /// @param string
         BasicStringView(const_pointer string)
             : m_data(string)
             , m_size(strlen(string))
         {
         }
 
-        BasicStringView(const_pointer string, const size_type size)
+        /// @brief 文字配列をもとにビューを構築
+        /// @tparam N
+        /// @param string
+        template <size_t N>
+        BasicStringView(char_type (&string)[N])
             : m_data(string)
-            , m_size(size)
+            , m_size(N)
         {
         }
 
-        BasicStringView(const_iterator begin, const_iterator end)
+        /// @brief 文字列の先頭を指すポインタ、サイズをもとにビューを構築
+        /// @param string 先頭を指すポインタ
+        /// @param size 要素数
+        constexpr BasicStringView(const_pointer string, const size_type length)
+            : m_data(string)
+            , m_size(length)
+        {
+        }
+
+        /// @brief 要素を指すイテレータをもとにビューを構築
+        /// @tparam InputIterator STLの入力イテレータ要件に則す必要ある
+        /// @param begin
+        /// @param end
+        template <typename InputIterator, typename = typename std::enable_if<std::is_convertible<typename std::iterator_traits<InputIterator>::iterator_category, std::input_iterator_tag>::value>::type>
+        constexpr BasicStringView(InputIterator begin, InputIterator end)
             : m_data(begin)
-            , m_size(end - begin)
+            , m_size(std::distance(begin, end))
         {
         }
 
@@ -70,38 +106,51 @@ namespace Udon
         {
         }
 
+        /// @brief デフォルトコピーコンストラクタ
         BasicStringView(const BasicStringView&) = default;
 
+        /// @brief デフォルト代入演算子
         BasicStringView& operator=(const BasicStringView&) = default;
 
+        /// @brief ビューが要素を持つか
         explicit operator bool() const noexcept
         {
             return m_size;
         }
 
+        /// @brief ビューへのポインタを取得する
+        /// @return
         const_pointer data() const noexcept
         {
             return m_data;
         }
 
-        // ヌル終端文字が含まれることは保証されないので、c_str() は提供しない。
-        // const_pointer c_str() const noexcept;
-
+        /// @brief ビューのサイズを取得する
+        /// @return
         size_type size() const noexcept
         {
             return m_size;
         }
 
+        // ヌル終端文字は含まれないので、c_str() は提供しない
+        // const_pointer c_str() const noexcept;
+
+        /// @brief ビューのサイズが0か判定
+        /// @return
         bool empty() const noexcept
         {
             return m_size == 0;
         }
 
+        /// @brief 指定されたインデックスの文字を取得する
+        /// @param index
+        /// @return
         const_reference operator[](const size_type index) const noexcept
         {
             return m_data[index];
         }
 
+        /// @brief 指定されたインデックスの文字を取得する
         const_reference at(const size_type index) const noexcept
         {
             if (index >= m_size)
@@ -112,30 +161,45 @@ namespace Udon
             return m_data[index];
         }
 
+        /// @brief ビューの先頭文字を取得する
+        /// @return
         const_reference front() const noexcept
         {
             return m_data[0];
         }
 
+        /// @brief ビューの終端の文字を取得する
+        /// @return
         const_reference back() const noexcept
         {
             return m_data[m_size - 1];
         }
 
+        /// @brief 指定された範囲のビューを作成する
+        /// @param beginIndex 開始位置
+        /// @param endIndex 終端位置(ビューに含まれない)
+        /// @return 作成されたビュー
         BasicStringView substring(const size_type beginIndex, const size_type endIndex) const
         {
-            return BasicStringView{
+            return {
                 std::next(cbegin(), beginIndex),
                 std::next(cbegin(), std::min(endIndex, m_size)),
             };
         }
 
+        /// @brief 指定された要素のインデックスから始まるビューを作成する
+        /// @param beginIndex 開始位置
+        /// @remark 終端位置は現在のビューの終端位置
+        /// @return 作成されたビュー
         BasicStringView substring(const size_type beginIndex) const
         {
             return substring(beginIndex, m_size);
         }
 
-        // まで
+        /// @brief 指定された終端文字までのビューを作成する
+        /// @param terminate 終端文字(ビューに含まれない)
+        /// @remark 開始位置は現在のビューの開始位置
+        /// @return 作成されたビュー
         BasicStringView substringUntil(const char_type terminate) const
         {
             return {
@@ -144,7 +208,9 @@ namespace Udon
             };
         }
 
-        // から
+        /// @brief 指定された開始文字からのビューを作成する
+        /// @param start 開始文字
+        /// @return 作成されたビュー
         BasicStringView substringFrom(const char_type start) const
         {
             return {
@@ -153,18 +219,27 @@ namespace Udon
             };
         }
 
+        /// @brief ビューが指定したビューから始まっているか判定する
+        /// @param string 判定するビュー
+        /// @return true: 始まっている false: 始まっていない
         bool startsWith(const BasicStringView& string) const noexcept
         {
             return m_size >= string.m_size and
                    std::equal(string.cbegin(), string.cend(), cbegin());
         }
 
+        /// @brief ビューが指定したビューで終わっているか判定する
+        /// @param string 判定するビュー
+        /// @return
         bool endsWith(const BasicStringView& string) const noexcept
         {
             return m_size >= string.m_size and
                    std::equal(string.crbegin(), string.crend(), crbegin());
         }
 
+        /// @brief 指定された区切り文字で区切り、ビューのリストを作成する
+        /// @param delimiter 区切り文字
+        /// @return ビューのリスト
         std::vector<BasicStringView> split(const char_type delimiter) const
         {
             std::vector<BasicStringView> tokens;
@@ -186,30 +261,52 @@ namespace Udon
             return tokens;
         }
 
+        /// @brief ビューを数値に変換する
+        /// @tparam T 変換する数値の型 (アトミック型である必要がある)
+        /// @return 変換された数値
         template <typename T>
         T parse() const
         {
-            return StringToNumberParser<T>::Parse({ cbegin(), cend() });
+            static_assert(std::is_arithmetic<T>::value, "T must be arithmetic type.");
+            return StringToNumberParser<T>::Parse(toString());
         }
 
+        /// @brief STL の文字列に変換する
+        /// @remark メモリアロケーションが発生します。
+        /// @return 文字列
+        std::basic_string<char_type> toString() const
+        {
+            return { cbegin(), cend() };
+        }
+
+        /// @brief ビューを入れ替える
+        /// @param other 入れ変え先
         void swap(BasicStringView& other) noexcept
         {
             std::swap(m_data, other.m_data);
             std::swap(m_size, other.m_size);
         }
 
-        // 比較演算子
+        /// @brief ビューが一致するか比較する
+        /// @param lhs 被演算子
+        /// @param rhs 被演算子
+        /// @return 一致するかどうか
         friend bool operator==(const BasicStringView& lhs, const BasicStringView& rhs) noexcept
         {
             return lhs.m_size == rhs.m_size and
                    std::equal(lhs.cbegin(), lhs.cend(), rhs.cbegin());
         }
+
+        /// @brief ビューが不一致であるか比較する
+        /// @param lhs 被演算子
+        /// @param rhs 被演算子
+        /// @return 不一致かどうか
         friend bool operator!=(const BasicStringView& lhs, const BasicStringView& rhs) noexcept
         {
             return not(lhs == rhs);
         }
 
-        // std::ostream への出力
+        /// @brief std::ostream への出力
         friend std::ostream& operator<<(std::ostream& os, const BasicStringView& string)
         {
             return os.write(string.m_data, string.m_size);
@@ -271,4 +368,21 @@ namespace Udon
 {
     using StringView  = BasicStringView<char>;
     using WStringView = BasicStringView<wchar_t>;
+
+    namespace StringViewLiteral
+    {
+        /// @brief 文字列リテラル (_sv)
+        constexpr StringView operator""_sv(const char* string, size_t length) noexcept
+        {
+            return { string, length };
+        }
+
+        /// @brief 文字列リテラル (_sv)
+        constexpr WStringView operator""_sv(const wchar_t* string, size_t length) noexcept
+        {
+            return { string, length };
+        }
+
+    }    // namespace StringViewLiteral
+
 }    // namespace Udon
