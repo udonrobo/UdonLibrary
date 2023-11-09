@@ -71,7 +71,7 @@ namespace Udon
         /// @tparam N
         /// @param string
         template <size_t N>
-        BasicStringView(char_type (&string)[N])
+        constexpr BasicStringView(char_type (&string)[N])
             : m_data(string)
             , m_size(N)
         {
@@ -113,21 +113,21 @@ namespace Udon
         BasicStringView& operator=(const BasicStringView&) = default;
 
         /// @brief ビューが要素を持つか
-        explicit operator bool() const noexcept
+        constexpr explicit operator bool() const noexcept
         {
             return m_size;
         }
 
         /// @brief ビューへのポインタを取得する
         /// @return
-        const_pointer data() const noexcept
+        constexpr const_pointer data() const noexcept
         {
             return m_data;
         }
 
         /// @brief ビューのサイズを取得する
         /// @return
-        size_type size() const noexcept
+        constexpr size_type size() const noexcept
         {
             return m_size;
         }
@@ -137,7 +137,7 @@ namespace Udon
 
         /// @brief ビューのサイズが0か判定
         /// @return
-        bool empty() const noexcept
+        constexpr bool empty() const noexcept
         {
             return m_size == 0;
         }
@@ -145,7 +145,7 @@ namespace Udon
         /// @brief 指定されたインデックスの文字を取得する
         /// @param index
         /// @return
-        const_reference operator[](const size_type index) const noexcept
+        constexpr const_reference operator[](const size_type index) const noexcept
         {
             return m_data[index];
         }
@@ -163,14 +163,14 @@ namespace Udon
 
         /// @brief ビューの先頭文字を取得する
         /// @return
-        const_reference front() const noexcept
+        constexpr const_reference front() const noexcept
         {
             return m_data[0];
         }
 
         /// @brief ビューの終端の文字を取得する
         /// @return
-        const_reference back() const noexcept
+        constexpr const_reference back() const noexcept
         {
             return m_data[m_size - 1];
         }
@@ -369,15 +369,16 @@ namespace Udon
     using StringView  = BasicStringView<char>;
     using WStringView = BasicStringView<wchar_t>;
 
-    namespace StringViewLiteral
+    namespace Literal
     {
-        /// @brief 文字列リテラル (_sv)
+
+        /// @brief Udon::StringView 構築リテラル
         constexpr StringView operator""_sv(const char* string, size_t length) noexcept
         {
             return { string, length };
         }
 
-        /// @brief 文字列リテラル (_sv)
+        /// @brief Udon::WStringView 構築リテラル
         constexpr WStringView operator""_sv(const wchar_t* string, size_t length) noexcept
         {
             return { string, length };
