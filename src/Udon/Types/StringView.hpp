@@ -307,7 +307,7 @@ namespace Udon
         }
 
         /// @brief std::ostream への出力
-        friend std::ostream& operator<<(std::ostream& os, const BasicStringView& string)
+        friend std::basic_ostream<char_type>& operator<<(std::basic_ostream<char_type>& os, const BasicStringView& string)
         {
             return os.write(string.m_data, string.m_size);
         }
