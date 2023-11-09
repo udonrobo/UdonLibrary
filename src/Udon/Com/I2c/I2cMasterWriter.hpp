@@ -48,19 +48,14 @@ namespace Udon
         {
         }
 
-        /// @brief 更新
-        void update()
-        {
-            bus.beginTransmission(address);
-            bus.write(buffer, Size);
-            bus.endTransmission();
-        }
-
         /// @brief 送信するメッセージを設定、送信
         /// @param message 送信するメッセージ
         void setMessage(const MessageType& message)
         {
             Udon::Pack(message, buffer);
+            bus.beginTransmission(address);
+            bus.write(buffer, Size);
+            bus.endTransmission();
         }
 
         /// @brief 送信内容を表示
