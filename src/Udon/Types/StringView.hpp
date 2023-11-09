@@ -362,12 +362,14 @@ namespace Udon
 
 }    // namespace Udon
 
-#include <string>
-
 namespace Udon
 {
     using StringView  = BasicStringView<char>;
     using WStringView = BasicStringView<wchar_t>;
+}    // namespace Udon
+
+namespace Udon
+{
 
     namespace Literal
     {
@@ -384,6 +386,6 @@ namespace Udon
             return { string, length };
         }
 
-    }    // namespace StringViewLiteral
+    }    // namespace Literal
 
 }    // namespace Udon
