@@ -16,8 +16,8 @@
 
 #pragma once
 
-#include "Forward/EulerFwd.hpp"
-#include "Forward/QuaternionFwd.hpp"
+#include "Forward/Euler.hpp"
+#include "Forward/Quaternion.hpp"
 
 inline Udon::Quaternion Udon::Euler::toQuaternion() const noexcept
 {

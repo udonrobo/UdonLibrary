@@ -13,7 +13,7 @@ namespace Udon
     class LoraReader
     {
     public:
-        static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
+        static constexpr size_t Size = Udon::PackedSize<Message>();
 
         using MessageType = Message;
 

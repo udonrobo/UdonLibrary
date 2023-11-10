@@ -1,20 +1,12 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    PS5コントローラー受信クラス スケッチ例 (I2C)
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    PS5コントローラー受信クラス スケッチ例 (I2C)
-//
 //    Controller --[Bluetooth]--> USBHost --[SPI]--> Sender --> Master
 //                                                              ^^^^^^
 //
-//-------------------------------------------------------------------
 
 #include <UdonFwd.hpp>
 #include <Udon/Com/I2c.hpp>

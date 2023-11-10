@@ -68,43 +68,44 @@ namespace Udon
         Vector4D& operator=(const Vector4D&) = default;
 
         /// @brief 算術演算子
-        /// @param rhs 被演算子
-        /// @return
-        constexpr Vector4D operator+(const Vector4D& rhs) const noexcept { return { x + rhs.x, y + rhs.y, z + rhs.z, w + rhs.w }; }
-        constexpr Vector4D operator-(const Vector4D& rhs) const noexcept { return { x - rhs.x, y - rhs.y, z - rhs.z, w - rhs.w }; }
-        constexpr Vector4D operator*(const Vector4D& rhs) const noexcept { return { x * rhs.x, y * rhs.y, z * rhs.z, w * rhs.w }; }
-        constexpr Vector4D operator/(const Vector4D& rhs) const noexcept { return { x / rhs.x, y / rhs.y, z / rhs.z, w / rhs.w }; }
-        constexpr Vector4D operator+(ValueType rhs) const noexcept { return { x + rhs, y + rhs, z + rhs, w + rhs }; }
-        constexpr Vector4D operator-(ValueType rhs) const noexcept { return { x - rhs, y - rhs, z - rhs, w - rhs }; }
-        constexpr Vector4D operator*(ValueType rhs) const noexcept { return { x * rhs, y * rhs, z * rhs, w * rhs }; }
-        constexpr Vector4D operator/(ValueType rhs) const noexcept { return { x / rhs, y / rhs, z / rhs, w / rhs }; }
+        /// @remark vector [operator] vector
+        friend constexpr Vector4D operator+(const Vector4D& lhs, const Vector4D& rhs) noexcept { return { lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w }; }
+        friend constexpr Vector4D operator-(const Vector4D& lhs, const Vector4D& rhs) noexcept { return { lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w }; }
+        friend constexpr Vector4D operator*(const Vector4D& lhs, const Vector4D& rhs) noexcept { return { lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w }; }
+        friend constexpr Vector4D operator/(const Vector4D& lhs, const Vector4D& rhs) noexcept { return { lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z, lhs.w / rhs.w }; }
+
+        /// @brief 算術演算子
+        /// @remark vector [operator] scalar
+        friend constexpr Vector4D operator+(const Vector4D& lhs, ValueType rhs) noexcept { return { lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs }; }
+        friend constexpr Vector4D operator-(const Vector4D& lhs, ValueType rhs) noexcept { return { lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs }; }
+        friend constexpr Vector4D operator*(const Vector4D& lhs, ValueType rhs) noexcept { return { lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs }; }
+        friend constexpr Vector4D operator/(const Vector4D& lhs, ValueType rhs) noexcept { return { lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs }; }
+
+        /// @brief 算術演算子
+        /// @remark scalar [operator] vector
+        friend constexpr Vector4D operator+(ValueType lhs, const Vector4D& rhs) noexcept { return { lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w }; }
+        friend constexpr Vector4D operator-(ValueType lhs, const Vector4D& rhs) noexcept { return { lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w }; }
+        friend constexpr Vector4D operator*(ValueType lhs, const Vector4D& rhs) noexcept { return { lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w }; }
+        friend constexpr Vector4D operator/(ValueType lhs, const Vector4D& rhs) noexcept { return { lhs / rhs.x, lhs / rhs.y, lhs / rhs.z, lhs / rhs.w }; }
 
         /// @brief 複合代入演算子
-        /// @param rhs 被演算子
-        /// @return
+        /// @remark vector = vector [operator] vector
         Vector4D& operator+=(const Vector4D& rhs) noexcept { return *this = *this + rhs; };
         Vector4D& operator-=(const Vector4D& rhs) noexcept { return *this = *this - rhs; };
         Vector4D& operator*=(const Vector4D& rhs) noexcept { return *this = *this * rhs; };
         Vector4D& operator/=(const Vector4D& rhs) noexcept { return *this = *this / rhs; };
+
+        /// @brief 複合代入演算子
+        /// @remark vector = vector [operator] scalar
         Vector4D& operator+=(ValueType rhs) noexcept { return *this = *this + rhs; };
         Vector4D& operator-=(ValueType rhs) noexcept { return *this = *this - rhs; };
         Vector4D& operator*=(ValueType rhs) noexcept { return *this = *this * rhs; };
         Vector4D& operator/=(ValueType rhs) noexcept { return *this = *this / rhs; };
 
         /// @brief 比較演算子
-        /// @param rhs 被演算子
-        /// @return
-        constexpr bool operator==(const Vector4D& rhs) const noexcept
-        {
-            return x == rhs.x &&
-                   y == rhs.y &&
-                   z == rhs.z &&
-                   w == rhs.w;
-        };
-        constexpr bool operator!=(const Vector4D& rhs) const noexcept
-        {
-            return !(*this == rhs);
-        };
+        /// @remark vector [operator] vector
+        friend constexpr bool operator==(const Vector4D& lhs, const Vector4D& rhs) noexcept { return lhs.x == rhs.x and lhs.y == rhs.y and lhs.z == rhs.z and lhs.w == rhs.w; }
+        friend constexpr bool operator!=(const Vector4D& lhs, const Vector4D& rhs) noexcept { return !(lhs == rhs); }
 
         /// @brief 要素のいずれかに0以外の値があるかどうかを返す
         /// @return

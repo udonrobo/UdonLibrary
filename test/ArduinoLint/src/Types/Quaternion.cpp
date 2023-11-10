@@ -65,7 +65,7 @@ inline void test()
     // シリアライズ
     {
         Udon::Quaternion a;
-        static_assert(Udon::CapacityWithChecksum<Udon::Quaternion>() == 16 + 1, "");
+        static_assert(Udon::PackedSize<Udon::Quaternion>() == 16 + 1, "");
         const auto b = Udon::Pack(a);
         (void)Udon::Unpack<Udon::Quaternion>(b);
     }
