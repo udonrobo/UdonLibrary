@@ -62,6 +62,12 @@ namespace Udon
         {
             return static_cast<double>(sum) / DataSize;
         }
+
+        double operator()(double value) noexcept
+        {
+            update(value);
+            return getValue();
+        }
     };
 
 }    // namespace Udon

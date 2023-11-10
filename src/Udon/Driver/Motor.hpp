@@ -45,8 +45,7 @@ namespace Udon
 
         void move(const int16_t power)
         {
-            movingAverage.update(constrain(power, -250, 250));
-            const int16_t p = movingAverage.getValue();
+            const int16_t p = movingAverage(constrain(power, -250, 250));
             digitalWrite(pinA, p >= 0 ? HIGH : LOW);
             analogWrite(pinP, abs(p));
         }

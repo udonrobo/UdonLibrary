@@ -2,8 +2,8 @@
 
 #ifdef ARDUINO_ARCH_RP2040
 
-#    include <Udon/Driver/Pio/StateMachineAllocator.hpp>
-#    include <Udon/Driver/Pio/QuadratureEncoder.pio.hpp>
+#    include "Pio/StateMachineAllocator.hpp"
+#    include "Pio/QuadratureEncoder.pio.hpp"
 
 namespace Udon
 {
@@ -18,12 +18,12 @@ namespace Udon
         {
             struct
             {
-                int32_t count;
-                uint8_t phase;
+                int32_t count = 0;
+                uint8_t phase = 0;
             } interrupt;    // 割り込み使用時
 
             Pio::StateMachine stateMachine;    // PIO使用時
-        } u;
+        };
 
         enum class Mode : uint8_t
         {
@@ -39,7 +39,6 @@ namespace Udon
         EncoderPico(uint8_t pinA, uint8_t pinB)
             : pinA(pinA)
             , pinB(pinB)
-            , u()
             , mode()
         {
         }
@@ -71,9 +70,14 @@ namespace Udon
         {
             switch (mode)
             {
-            case Mode::Interrupt: return u.interrupt.count;
-            case Mode::Pio: return Pio::Encoder::quadrature_encoder_get_count(u.stateMachine.pio, u.stateMachine.index);
-            default: return 0;
+            case Mode::Interrupt: 
+                return interrupt.count;
+
+            case Mode::Pio: 
+                return Pio::Encoder::quadrature_encoder_get_count(stateMachine.pio, stateMachine.index);
+
+            default: 
+                return 0;
             }
         }
 
@@ -82,9 +86,17 @@ namespace Udon
         {
             switch (mode)
             {
-            case Mode::Interrupt: Serial.print("Int "); break;
-            case Mode::Pio: Serial.print("PIO "); break;
-            default: Serial.print("Unstarted!"); return;
+            case Mode::Interrupt: 
+                Serial.print("Int "); 
+                break;
+
+            case Mode::Pio: 
+                Serial.print("PIO "); 
+                break;
+
+            default: 
+                Serial.print("Unstarted!"); 
+                return;
             }
             Serial.print(read());
             Serial.print('\t');
@@ -105,7 +117,7 @@ namespace Udon
             // 使用可能なPIOにプログラムをロードする
             if (const auto sm = Pio::AllocateStateMachine(Pio::Encoder::quadrature_encoder_program))
             {
-                u.stateMachine = *sm;
+                stateMachine = *sm;
             }
             else
             {
@@ -113,7 +125,7 @@ namespace Udon
             }
 
             // 計測開始
-            Pio::Encoder::quadrature_encoder_program_init(u.stateMachine.pio, u.stateMachine.index, u.stateMachine.offset, pin, 0);    // 最後の0は変えたほうが良いのかもしれない
+            Pio::Encoder::quadrature_encoder_program_init(stateMachine.pio, stateMachine.index, stateMachine.offset, pin, 0);    // 最後の0は変えたほうが良いのかもしれない
 
             mode = Mode::Pio;
             return true;
@@ -137,13 +149,13 @@ namespace Udon
             static constexpr int8_t AddCountTable[16]{ 0, -1, 1, 2, 1, 0, -2, -1, -1, -2, 0, 1, 2, 1, -1, 0 };
 
             // 下位2ビットにA相とB相の状態を格納する
-            self->u.interrupt.phase |= (gpio_get(self->pinA) << 1) | gpio_get(self->pinB);
+            self->interrupt.phase |= (gpio_get(self->pinA) << 1) | gpio_get(self->pinB);
 
             // カウントテーブルを参照してカウントを更新する
-            self->u.interrupt.count += AddCountTable[self->u.interrupt.phase & 0b1111];
+            self->interrupt.count += AddCountTable[self->interrupt.phase & 0b1111];
 
             // 2ビット上へシフトして過去のデータとする
-            self->u.interrupt.phase <<= 2;
+            self->interrupt.phase <<= 2;
         }
     };
 }    // namespace Udon
