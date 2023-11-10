@@ -113,14 +113,17 @@ flowchart LR
 ```
 
 ```cpp
-static Udon::CanBusSpi bus{ spi0, csPin };
+// バスクラスインスタンス化 (設定項目最小)
+static Udon::CanBusSpi bus{{
+    .channel   = spi0,
+    .cs        = csPin,
+    .interrupt = intPin
+}};
 
 void setup()
 {
     // Udon::PioClockBegin(21, 16000000);  CANコントローラー用クロック
-    bus.begin(intPin, txPin, rxPin, sckPin);
-    // bus.begin(intPin, txPin, rxPin, sckPin, transceiverClock);
-    // bus.begin(intPin, txPin, rxPin, sckPin, transceiverClock, canSpeed);
+    bus.begin();
 }
 void loop()
 {
@@ -128,22 +131,59 @@ void loop()
 }
 ```
 
-通信を開始する関数は `begin()` と `beginCanOnly()` の二つあります。`begin()` は SPI 通信の開始処理も同時に行います。
+> ピン設定等は設定値を格納するための構造体 `Udon::CanBusSpi::SpiConfig` `Udon::CanBusSpi::CanConfig` を用いて設定します。これらの構造体は次のように定義されています。
+>
+> ```cpp
+> struct SpiConfig
+> {
+>     spi_inst_t* channel;    // SPI チャンネル (spi0, spi1)
+>     uint8_t cs;                                 // チップセレクトピン
+>     uint8_t interrupt;                          // 受信割り込みピン
+>     uint8_t mosi = PICO_DEFAULT_SPI_TX_PIN;     // MOSIピン (TX)
+>     uint8_t miso = PICO_DEFAULT_SPI_RX_PIN;     // MISOピン (RX)
+>     uint8_t sck  = PICO_DEFAULT_SPI_SCK_PIN;    // クロックピン
+>     uint32_t clock = 1'000'000;    // SPIクロック周波数 [Hz]
+> };
+>
+> struct CanConfig
+> {
+>     uint32_t  transmitInterval = 5;               // 送信間隔 [ms]
+>     uint32_t  transmitTimeout  = 100;             // 送信タイムアウト時間 [ms]
+>     uint32_t  receiveTimeout   = 100;             // 受信タイムアウト時間 [ms]
+>     CAN_SPEED baudrate         = CAN_1000KBPS;    // CAN通信速度
+>     CAN_CLOCK mcpClock         = MCP_16MHZ;       // トランシーバー動作クロック周波数 [Hz]
+> };
+> ```
+>
+> 構造体の初期化時に構造体のメンバ変数名を指定して初期化することができます。メンバ変数を指定することで、インスタンス化部分を見たときに、引数の値が何の意味を持つかすぐわかるように記述できます。
+>
+> ```cpp
+> static Udon::CanBusSpi bus{ spi0, 0, 1, 2, 3, 4 };  // 各値の意味がコンストラクタの実装を見ないと分からない
+> ↓
+> static Udon::CanBusSpi bus{{
+>     .channel   = spi0,
+>     .cs        = 0,
+>     .interrupt = 1,
+>     .mosi      = 2,
+>     .miso      = 3,
+>     .sck       = 4
+> }};
+> ```
 
-`beginCanOnly()` を使用する場合、呼ぶ前に SPI 通信ができる状態にしておく必要があります。同じ SPI バスを使うセンサー等がある場合、SPI 通信開始処理を CAN バスが行うべきでないので、この関数を呼び出します。
-
-```cpp
-void setup()
-{
-    SPI.begin();
-
-    bus.beginCanOnly(intPin);
-    // bus.beginCanOnly(intPin, transceiverClock);
-    // bus.beginCanOnly(intPin, transceiverClock, canSpeed);
-
-    otherSensor.begin();
-}
-```
+> 通信を開始する関数は `begin()` と `beginCanOnly()` の二つあります。`begin()` は SPI 通信の開始処理も同時に> 行います。
+>
+> `beginCanOnly()` を使用する場合、呼ぶ前に SPI 通信ができる状態にしておく必要があります。他のセンサー等と SPI バス を共用する場合、SPI 通信開始処理を CAN バスが行うべきでないので、この関数を呼び出します。
+>
+> ```cpp
+> void setup()
+> {
+>     SPI.begin();
+>
+>     otherSensor.begin();
+>
+>     bus.beginCanOnly(intPin, canConfig);
+> }
+> ```
 
 ### インターフェース
 

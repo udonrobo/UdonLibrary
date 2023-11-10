@@ -70,6 +70,11 @@ namespace Udon
             Udon::Pack(message, node.data, node.length);
         }
 
+        void setErrorMessage() noexcept
+        {
+            Udon::FailablePack({ node.data, node.length });
+        }
+
         /// @brief 送信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const

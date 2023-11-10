@@ -138,6 +138,11 @@ namespace Udon
             return m_hasValue ? m_value : defaultValue;
         }
 
+        void reset()
+        {
+            m_hasValue = false;
+        }
+
         void show() const
         {
             if (m_hasValue)

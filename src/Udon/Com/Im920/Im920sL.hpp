@@ -254,25 +254,24 @@ namespace Udon
         void twoWayUpdate()
         {
             // transTime =[内部処理時間:10~20ms]+[キャリアセンス:初回5.2ms 連続通信時0.5ms]+[不要データの通信:3.2ms]+[バイトごとの送信時間:0.16ms]
-            // const double sendTime    = 10.0 + 5.2 + 3.2 + txNode->size * 0.16;
-            // const double receiveTime = 10.0 + 5.2 + 3.2 + rxNode->size * 0.16;
+            const double sendTime    = 52.0;
+            const double receiveTime = 52.0;
 
-            // static uint32_t lastTransmitMs = 0;
+            static uint32_t lastTransmitMs = 0;
 
-            // if (millis() - lastTransmitMs > sendTime + receiveTime && receiveUpdate())
-            // {
-            //     sendUpdate();
-            //         lastTransmitMs = millis();
-            // }
-            // else
-            // {
-            //     if (millis() - lastTransmitMs > random(2000))
-            //     {
-            //         sendUpdate();
-
-            //         lastTransmitMs = millis();
-            //     }
-            // }
+            if (millis() - lastTransmitMs > sendTime + receiveTime && receiveUpdate())
+            {
+                sendUpdate();
+                lastTransmitMs = millis();
+            }
+            else
+            {
+                if (millis() - lastTransmitMs > (uint32_t)random(2000))
+                {
+                    sendUpdate();
+                    lastTransmitMs = millis();
+                }
+            }
         }
 
         bool isTimeout(uint32_t timeoutMs) const

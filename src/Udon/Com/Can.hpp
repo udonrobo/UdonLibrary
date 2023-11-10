@@ -15,12 +15,22 @@
 
 #pragma once
 
-/// @brief バスクラス
-#include "Can/CanBusSpiPico.hpp"
-#include "Can/CanBusSpi.hpp"
-#include "Can/CanBusTeensy.hpp"
 
-/// @brief 仮想ノードクラス
+//
+//    Raspberry Pi Pico 用バスクラス
+//
+#if defined(ARDUINO_ARCH_RP2040)
+#    include "Can/CanBusSpiPico.hpp"
+#endif
+
+//
+//    Teensy 用バスクラス
+//
+#if defined(TEENSYDUINO)
+#    include "Can/CanBusTeensy.hpp"
+#endif
+
+// 仮想ノードクラス
 #include "Can/CanReader.hpp"
 #include "Can/CanWriter.hpp"
 

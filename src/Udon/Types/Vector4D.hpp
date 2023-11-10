@@ -16,23 +16,21 @@
 
 #pragma once
 
-#include "Forward/Vector2DFwd.hpp"
-#include "Forward/Vector3DFwd.hpp"
-#include "Forward/Vector4DFwd.hpp"
+#include "Forward/Vector2D.hpp"
+#include "Forward/Vector3D.hpp"
+#include "Forward/Vector4D.hpp"
 
-template <class Ty>
-inline Udon::Vector2D<Ty> Udon::Vector4D<Ty>::xy() const
+inline Udon::Vector2D Udon::Vector4D::xy() const
 {
     return { x, y };
 }
 
-template <class Ty>
-inline Udon::Vector3D<Ty> Udon::Vector4D<Ty>::xyz() const
+inline Udon::Vector3D Udon::Vector4D::xyz() const
 {
     return { x, y, z };
 }
 
 namespace Udon
 {
-    using Vec4 = Vector4D<double>;
+    using Vec4 = Vector4D;
 }

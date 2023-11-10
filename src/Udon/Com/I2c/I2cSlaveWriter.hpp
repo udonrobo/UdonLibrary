@@ -83,8 +83,7 @@ namespace Udon
             }
             else
             {
-                Udon::Show(F("unpack failed!"));
-                // ここへ到達する: setMessage()で値を設定していない
+                Udon::Show(F("unpack failed!"));    // ここへ到達する: setMessage()で値を設定していない
             }
         }
 
@@ -101,8 +100,6 @@ namespace Udon
         uint8_t buffer[Size];
 
         static I2cSlaveWriter* self;
-
-    public:
     };
 
     template <typename Message>

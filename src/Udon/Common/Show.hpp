@@ -17,6 +17,7 @@
 
 #include <Udon/Traits/Concept.hpp>
 #include <Udon/Common/Platform.hpp>
+#include <utility>
 
 #ifndef F
 #    define F(x) (x)
@@ -72,7 +73,7 @@ namespace Udon
         }
 
         /// @brief アトミック型 (bool, char, int, float, double, ...)
-        UDON_CONCEPT_SCALAR
+        template <typename Scalar, typename std::enable_if<std::is_scalar<Scalar>::value and not std::is_enum<Scalar>::value, std::nullptr_t>::type = nullptr>
         void print(const Scalar& rhs)
         {
 
@@ -94,13 +95,28 @@ namespace Udon
             {
                 s3d::Print.write(s3d::Unicode::Widen(rhs));
             }
+            else if constexpr (std::is_enum_v<Scalar>)
+            {
+				s3d::Print.write(static_cast<std::underlying_type_t<Scalar>>(rhs));
+			}
             else
             {
-                s3d::Print.write(rhs);
-            }
+				s3d::Print.write(rhs);
+			}
 
 #elif (UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE) && UDON_PLATFORM_HAS_STL
             std::cout << rhs << gap << std::flush;
+#endif
+        }
+
+        UDON_CONCEPT_ENUM
+        void print(const Enum& e)
+        {
+#if defined(ARDUINO)
+            Serial.print(static_cast<typename std::underlying_type<Enum>::type>(e));
+#endif
+#if defined(SIV3D_INCLUDED)
+            s3d::Print.write(static_cast<std::underlying_type_t<Enum>>(e));
 #endif
         }
 

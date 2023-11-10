@@ -17,6 +17,7 @@
 
 #include <Udon/Traits/ParsableMacro.hpp>
 #include <Udon/Com/Serialization.hpp>
+#include <Udon/Traits/Concept.hpp>
 
 namespace Udon
 {
@@ -27,16 +28,16 @@ namespace Udon
     {
 
         /// @brief 要素の型
-        using value_type = uint8_t;
+        using ValueType = uint8_t;
 
         /// @brief 赤成分
-        value_type r;
+        ValueType r;
 
         /// @brief 緑成分
-        value_type g;
+        ValueType g;
 
         /// @brief 青成分
-        value_type b;
+        ValueType b;
 
         /// @brief デフォルトコンストラクタ
         constexpr RGB() noexcept
@@ -50,7 +51,7 @@ namespace Udon
         /// @param r 赤成分
         /// @param g 緑成分
         /// @param b 青成分
-        constexpr RGB(value_type r, value_type g, value_type b) noexcept
+        constexpr RGB(ValueType r, ValueType g, ValueType b) noexcept
             : r(r)
             , g(g)
             , b(b)
@@ -60,9 +61,9 @@ namespace Udon
         /// @brief コンストラクタ
         /// @param rgb RGB色空間
         RGB(uint32_t rgb) noexcept
-            : r(static_cast<value_type>(rgb >> 16))
-            , g(static_cast<value_type>(rgb >> 8))
-            , b(static_cast<value_type>(rgb >> 0))
+            : r(static_cast<ValueType>(rgb >> 16))
+            , g(static_cast<ValueType>(rgb >> 8))
+            , b(static_cast<ValueType>(rgb >> 0))
         {
         }
 
@@ -75,6 +76,26 @@ namespace Udon
 
         /// @brief コピー代入演算子
         RGB& operator=(const RGB&) = default;
+
+        UDON_CONCEPT_FLOATING_POINT
+        constexpr RGB operator*(FloatingPoint rhs) const noexcept
+        {
+            return {
+                static_cast<ValueType>(r * rhs),
+                static_cast<ValueType>(g * rhs),
+                static_cast<ValueType>(b * rhs)
+            };
+        }
+
+        UDON_CONCEPT_FLOATING_POINT
+        constexpr RGB operator/(FloatingPoint rhs) const noexcept
+        {
+            return {
+                static_cast<ValueType>(r / rhs),
+                static_cast<ValueType>(g / rhs),
+                static_cast<ValueType>(b / rhs)
+            };
+        }
 
         /// @brief 比較演算子
         constexpr bool operator==(const RGB& rhs) const noexcept

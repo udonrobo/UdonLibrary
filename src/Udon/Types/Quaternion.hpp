@@ -16,11 +16,10 @@
 
 #pragma once
 
-#include "Forward/EulerFwd.hpp"
-#include "Forward/QuaternionFwd.hpp"
+#include "Forward/Euler.hpp"
+#include "Forward/Quaternion.hpp"
 
-template <typename T>
-Udon::Euler3D<T> Udon::Quaternion::toEuler() const noexcept
+inline Udon::Euler Udon::Quaternion::toEuler() const noexcept
 {
     return {
         toRoll(), 

@@ -15,8 +15,8 @@
 
 #pragma once
 
-#include "Forward/RGBFwd.hpp"
-#include "Forward/HSVFwd.hpp"
+#include "Forward/RGB.hpp"
+#include "Forward/HSV.hpp"
 
 #ifdef _MSC_VER
 #    pragma warning(push)
@@ -38,16 +38,16 @@ inline Udon::HSV::HSV(const RGB& rgb) noexcept
 /// @return HSV色空間
 inline Udon::HSV Udon::RGB::toHSV() const noexcept
 {
-    const value_type max = std::max({ r, g, b });
-    const value_type min = std::min({ r, g, b });
-    const value_type d = max - min;
-    const value_type s = max == 0 ? 0 : d * 255 / max;
-    const value_type v = max;
+    const ValueType max = std::max({ r, g, b });
+    const ValueType min = std::min({ r, g, b });
+    const ValueType d = max - min;
+    const ValueType s = max == 0 ? 0 : d * 255 / max;
+    const ValueType v = max;
     if (d == 0)
     {
         return { 0, 0, v };
     }
-    const value_type h = [&]() -> value_type
+    const ValueType h = [&]() -> ValueType
     {
         if (max == r)
         {

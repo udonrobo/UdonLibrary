@@ -27,16 +27,16 @@ namespace Udon
     {
 
         /// @brief 要素の型
-        using value_type = uint8_t;
+        using ValueType = uint8_t;
 
         /// @brief 色相
-        value_type h;
+        ValueType h;
 
         /// @brief 彩度
-        value_type s;
+        ValueType s;
 
         /// @brief 明度
-        value_type v;
+        ValueType v;
 
         /// @brief デフォルトコンストラクタ
         constexpr HSV() noexcept
@@ -50,7 +50,7 @@ namespace Udon
         /// @param h 色相
         /// @param s 彩度
         /// @param v 明度
-        constexpr HSV(value_type h, value_type s, value_type v) noexcept
+        constexpr HSV(ValueType h, ValueType s, ValueType v) noexcept
             : h(h)
             , s(s)
             , v(v)
@@ -60,9 +60,9 @@ namespace Udon
         /// @brief コンストラクタ
         /// @param hsv HSV色空間
         HSV(uint32_t hsv) noexcept
-            : h(static_cast<value_type>(hsv >> 16))
-            , s(static_cast<value_type>(hsv >>  8))
-            , v(static_cast<value_type>(hsv >>  0))
+            : h(static_cast<ValueType>(hsv >> 16))
+            , s(static_cast<ValueType>(hsv >>  8))
+            , v(static_cast<ValueType>(hsv >>  0))
         {
         }
 
@@ -77,20 +77,20 @@ namespace Udon
         HSV& operator=(const HSV&) = default;
 
         /// @brief 比較演算子
-        constexpr bool operator==(const HSV& rhs) const noexcept
+        friend constexpr bool operator==(const HSV& lhs, const HSV& rhs) noexcept
         {
-            return h == rhs.h && s == rhs.s && v == rhs.v;
+            return lhs.h == rhs.h && lhs.s == rhs.s && lhs.v == rhs.v;
         }
 
         /// @brief 比較演算子
-        constexpr bool operator!=(const HSV& rhs) const noexcept
+        friend constexpr bool operator!=(const HSV& lhs, const HSV& rhs) noexcept
         {
-            return !(*this == rhs);
+            return not(lhs == rhs);
         }
 
         explicit constexpr operator bool() const noexcept
         {
-            return h || s || v;
+            return h or s or v;
         }
 
         /// @brief 24bit値へ変換

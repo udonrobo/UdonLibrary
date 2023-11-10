@@ -79,6 +79,10 @@ namespace Udon
             {
                 writer.setMessage(*message);
             }
+            else
+            {
+                writer.setErrorMessage();
+            }
             Udon::Traits::MaybeInvokeUpdate(writer);
         }
 
