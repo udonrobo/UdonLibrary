@@ -62,40 +62,44 @@ namespace Udon
         Vector2D& operator=(const Vector2D&) = default;
 
         /// @brief 算術演算子
-        /// @param rhs 被演算子
-        /// @return
-        constexpr Vector2D operator+(const Vector2D& rhs) const noexcept { return { x + rhs.x, y + rhs.y }; }
-        constexpr Vector2D operator-(const Vector2D& rhs) const noexcept { return { x - rhs.x, y - rhs.y }; }
-        constexpr Vector2D operator*(const Vector2D& rhs) const noexcept { return { x * rhs.x, y * rhs.y }; }
-        constexpr Vector2D operator/(const Vector2D& rhs) const noexcept { return { x / rhs.x, y / rhs.y }; }
-        constexpr Vector2D operator+(ValueType rhs) const noexcept { return { x + rhs, y + rhs }; }
-        constexpr Vector2D operator-(ValueType rhs) const noexcept { return { x - rhs, y - rhs }; }
-        constexpr Vector2D operator*(ValueType rhs) const noexcept { return { x * rhs, y * rhs }; }
-        constexpr Vector2D operator/(ValueType rhs) const noexcept { return { x / rhs, y / rhs }; }
+        /// @remark vector [operator] vector
+        friend constexpr Vector2D operator+(const Vector2D& lhs, const Vector2D& rhs) noexcept { return { lhs.x + rhs.x, lhs.y + rhs.y }; }
+        friend constexpr Vector2D operator-(const Vector2D& lhs, const Vector2D& rhs) noexcept { return { lhs.x - rhs.x, lhs.y - rhs.y }; }
+        friend constexpr Vector2D operator*(const Vector2D& lhs, const Vector2D& rhs) noexcept { return { lhs.x * rhs.x, lhs.y * rhs.y }; }
+        friend constexpr Vector2D operator/(const Vector2D& lhs, const Vector2D& rhs) noexcept { return { lhs.x / rhs.x, lhs.y / rhs.y }; }
+
+        /// @brief 算術演算子
+        /// @remark vector [operator] scalar
+        friend constexpr Vector2D operator+(const Vector2D& lhs, ValueType rhs) noexcept { return { lhs.x + rhs, lhs.y + rhs }; }
+        friend constexpr Vector2D operator-(const Vector2D& lhs, ValueType rhs) noexcept { return { lhs.x - rhs, lhs.y - rhs }; }
+        friend constexpr Vector2D operator*(const Vector2D& lhs, ValueType rhs) noexcept { return { lhs.x * rhs, lhs.y * rhs }; }
+        friend constexpr Vector2D operator/(const Vector2D& lhs, ValueType rhs) noexcept { return { lhs.x / rhs, lhs.y / rhs }; }
+
+        /// @brief 算術演算子
+        /// @remark scalar [operator] vector
+        friend constexpr Vector2D operator+(ValueType lhs, const Vector2D& rhs) noexcept { return { lhs + rhs.x, lhs + rhs.x }; }
+        friend constexpr Vector2D operator-(ValueType lhs, const Vector2D& rhs) noexcept { return { lhs - rhs.x, lhs - rhs.x }; }
+        friend constexpr Vector2D operator*(ValueType lhs, const Vector2D& rhs) noexcept { return { lhs * rhs.x, lhs * rhs.x }; }
+        friend constexpr Vector2D operator/(ValueType lhs, const Vector2D& rhs) noexcept { return { lhs / rhs.x, lhs / rhs.x }; }
 
         /// @brief 複合代入演算子
-        /// @param rhs 被演算子
-        /// @return
+        /// @remark vector = vector [operator] vector
         Vector2D& operator+=(const Vector2D& rhs) noexcept { return *this = *this + rhs; };
         Vector2D& operator-=(const Vector2D& rhs) noexcept { return *this = *this - rhs; };
         Vector2D& operator*=(const Vector2D& rhs) noexcept { return *this = *this * rhs; };
         Vector2D& operator/=(const Vector2D& rhs) noexcept { return *this = *this / rhs; };
+
+        /// @brief 複合代入演算子
+        /// @remark vector = vector [operator] scalar
         Vector2D& operator+=(ValueType rhs) noexcept { return *this = *this + rhs; };
         Vector2D& operator-=(ValueType rhs) noexcept { return *this = *this - rhs; };
         Vector2D& operator*=(ValueType rhs) noexcept { return *this = *this * rhs; };
         Vector2D& operator/=(ValueType rhs) noexcept { return *this = *this / rhs; };
 
         /// @brief 比較演算子
-        /// @param rhs 被演算子
-        /// @return
-        constexpr bool operator==(const Vector2D& rhs) const noexcept
-        {
-            return x == rhs.x and y == rhs.y;
-        };
-        constexpr bool operator!=(const Vector2D& rhs) const noexcept
-        {
-            return not(*this == rhs);
-        };
+        /// @remark vector [operator] vector
+        friend constexpr bool operator==(const Vector2D& lhs, const Vector2D& rhs) noexcept { return lhs.x == rhs.x and lhs.y == rhs.y; };
+        friend constexpr bool operator!=(const Vector2D& lhs, const Vector2D& rhs) noexcept { return not(lhs == rhs); };
 
         /// @brief 要素のいずれかに0以外の値があるかどうかを返す
         /// @return
