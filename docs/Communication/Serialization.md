@@ -127,11 +127,11 @@ bool 型は 1bit としてシリアライズします。
 Pack 関数は次のオーバーロードが定義されています。
 
 ```cpp
-std::vector<uint8_t> Pack(const T& object)
+std::vector<uint8_t> Pack(const T& object);
 
-bool Pack(const T& object, uint8_t* buffer, size_t size)
+bool Pack(const T& object, uint8_t* buffer, size_t size);
 
-bool Pack(const T& object, uint8_t (&array)[N])
+bool Pack(const T& object, uint8_t (&array)[N]);
 ```
 
 ### `Udon::Unpack<T>(...)`
@@ -142,13 +142,13 @@ Unpack 関数は次のオーバーロードが定義されています。
 
 ```cpp
 template <typename T>
-Udon::Optional<T> Unpack(const std::vector<uint8_t>& buffer)
+Udon::Optional<T> Unpack(const std::vector<uint8_t>& buffer);
 
 template <typename T>
-Udon::Optional<T> Unpack(const uint8_t* buffer, size_t size)
+Udon::Optional<T> Unpack(const uint8_t* buffer, size_t size);
 
 template <typename T>
-Udon::Optional<T> Unpack(const uint8_t (&array)[N])
+Udon::Optional<T> Unpack(const uint8_t (&array)[N]);
 ```
 
 ### `Udon::CanUnpack(...)`
@@ -156,11 +156,11 @@ Udon::Optional<T> Unpack(const uint8_t (&array)[N])
 デシリアライズできるかを確認します。(チェックサム確認)
 
 ```cpp
-bool CanUnpack(const std::vector<uint8_t>& buffer)
+bool CanUnpack(const std::vector<uint8_t>& buffer);
 
-bool CanUnpack(const uint8_t* buffer, size_t size)
+bool CanUnpack(const uint8_t* buffer, size_t size);
 
-bool CanUnpack(const uint8_t (&array)[N])
+bool CanUnpack(const uint8_t (&array)[N]);
 ```
 
 ### `Udon::PackedSize<T>()`
@@ -172,12 +172,12 @@ T 型オブジェクトシリアライズ後のバイト列のバイトサイズ
 ```cpp
 uint8_t buffer[Udon::PackedSize<Vec2>()];
 ```
-
+<!-- 
 ### `Udon::PackedBitSize(...)`
 
 オブジェクトをシリアライズした際のバイト列のビットサイズを取得します。(bool 型 を 1bit としてカウントするため)
 
-`Capacity` 関数を外部に定義するときに使用します。引数は可変長引数です。
+`Capacity` 関数を外部に定義するときに使用します。引数は可変長引数です。 -->
 
 ## サンプル
 
