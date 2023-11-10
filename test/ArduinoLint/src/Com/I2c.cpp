@@ -49,7 +49,6 @@ inline void testMaster()
     reader.showRaw();
 
     Udon::I2cMasterWriter<int> writer{ bus, 0x00 };
-    writer.update();
     writer.setMessage(0);
     writer.show();
     writer.showRaw();

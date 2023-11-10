@@ -1,13 +1,3 @@
-//-------------------------------------------------------------------
-//
-//    UdonLibrary
-//
-//    Copyright (c) 2022-2023 Okawa Yusuke
-//    Copyright (c) 2022-2023 udonrobo
-//
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
 //
 //    PS5コントローラー ペアリングスケッチ
 //
@@ -17,12 +7,14 @@
 //        3. コントローラーのLEDが点滅し始める
 //        4. ペアリングが完了するとLEDが点灯する
 //
-//-------------------------------------------------------------------
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
+//
 
 #include <UdonFwd.hpp>
 #include <Udon/Com/Pad/PadPS5BT.hpp>
 
-Udon::PadPS5BT pad(PAIR);  // <- ここを PAIR に変更する！
+Udon::PadPS5BT pad(PAIR);  // <- ここを PAIR に！
 
 void setup()
 {
