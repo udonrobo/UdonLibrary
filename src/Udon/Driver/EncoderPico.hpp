@@ -2,8 +2,8 @@
 
 #ifdef ARDUINO_ARCH_RP2040
 
-#    include <Udon/Driver/Pio/StateMachineAllocator.hpp>
-#    include <Udon/Driver/Pio/QuadratureEncoder.pio.hpp>
+#    include "Pio/StateMachineAllocator.hpp"
+#    include "Pio/QuadratureEncoder.pio.hpp"
 
 namespace Udon
 {
