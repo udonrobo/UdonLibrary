@@ -95,7 +95,7 @@ struct Vec2
 // シリアライズ後のビット数をコンパイル時に取得する関数
 constexpr size_t Capacity(const Vec2& rhs)
 {
-    return Udon::CapacityBits(rhs.x, rhs.y);
+    return Udon::PackedBitSize(rhs.x, rhs.y);
 }
 
 // シリアライザ、デシリアライザが使用するメンバ変数解析用関数
@@ -127,11 +127,11 @@ bool 型は 1bit としてシリアライズします。
 Pack 関数は次のオーバーロードが定義されています。
 
 ```cpp
-std::vector<uint8_t> Pack(const T& object)
+std::vector<uint8_t> Pack(const T& object);
 
-bool Pack(const T& object, uint8_t* buffer, size_t size)
+bool Pack(const T& object, uint8_t* buffer, size_t size);
 
-bool Pack(const T& object, uint8_t (&array)[N])
+bool Pack(const T& object, uint8_t (&array)[N]);
 ```
 
 ### `Udon::Unpack<T>(...)`
@@ -142,13 +142,13 @@ Unpack 関数は次のオーバーロードが定義されています。
 
 ```cpp
 template <typename T>
-Udon::Optional<T> Unpack(const std::vector<uint8_t>& buffer)
+Udon::Optional<T> Unpack(const std::vector<uint8_t>& buffer);
 
 template <typename T>
-Udon::Optional<T> Unpack(const uint8_t* buffer, size_t size)
+Udon::Optional<T> Unpack(const uint8_t* buffer, size_t size);
 
 template <typename T>
-Udon::Optional<T> Unpack(const uint8_t (&array)[N])
+Udon::Optional<T> Unpack(const uint8_t (&array)[N]);
 ```
 
 ### `Udon::CanUnpack(...)`
@@ -156,28 +156,28 @@ Udon::Optional<T> Unpack(const uint8_t (&array)[N])
 デシリアライズできるかを確認します。(チェックサム確認)
 
 ```cpp
-bool CanUnpack(const std::vector<uint8_t>& buffer)
+bool CanUnpack(const std::vector<uint8_t>& buffer);
 
-bool CanUnpack(const uint8_t* buffer, size_t size)
+bool CanUnpack(const uint8_t* buffer, size_t size);
 
-bool CanUnpack(const uint8_t (&array)[N])
+bool CanUnpack(const uint8_t (&array)[N]);
 ```
 
-### `Udon::CapacityWithChecksum<T>()`
+### `Udon::PackedSize<T>()`
 
 T 型オブジェクトシリアライズ後のバイト列のバイトサイズを取得します。
 
 コンパイル時にサイズを取得可能なため、バッファの大きさを静的に指定するときなどにも使えます。
 
 ```cpp
-uint8_t buffer[Udon::CapacityWithChecksum<Vec2>()];
+uint8_t buffer[Udon::PackedSize<Vec2>()];
 ```
-
-### `Udon::CapacityBits(...)`
+<!-- 
+### `Udon::PackedBitSize(...)`
 
 オブジェクトをシリアライズした際のバイト列のビットサイズを取得します。(bool 型 を 1bit としてカウントするため)
 
-`Capacity` 関数を外部に定義するときに使用します。引数は可変長引数です。
+`Capacity` 関数を外部に定義するときに使用します。引数は可変長引数です。 -->
 
 ## サンプル
 

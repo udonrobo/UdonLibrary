@@ -16,7 +16,7 @@
 | --- | --- | -------- |
 | `IsWriter<T>` | T が送信クラス要件を満たすか調べる | [Udon/Traits/IsWriter.hpp](./../../src/Udon/Traits/IsWriter.hpp) |
 | `IsReader<T>` | T が受信クラス要件を満たすか調べる | [Udon/Traits/IsReader.hpp](./../../src/Udon/Traits/IsReader.hpp) |
-| `Capacitable<T>` | T のシリアライズ後サイズを取得可能か調べる | [Udon/Traits/Capacitable.hpp](./../../src/Udon/Traits/Capacitable.hpp) |
+| `PackedSizable<T>` | T のシリアライズ後サイズを取得可能か調べる | [Udon/Traits/PackedSizable.hpp](./../../src/Udon/Traits/PackedSizable.hpp) |
 | `Accessible<T>` | T のメンバ変数を列挙可能か調べる | [Udon/Traits/Accessible.hpp](./../../src/Udon/Traits/Accessible.hpp) |
 | `Parsable<T>` | T が解析可能であるか調べる | [Udon/Traits/Parsable.hpp](./../../src/Udon/Traits/Parsable.hpp) |
 | `AlwaysFalse<T>` | 常に `std::false_type` から派生する | [Udon/Traits/AlwaysFalse.hpp](./../../src/Udon/Traits/AlwaysFalse.hpp) |
@@ -231,7 +231,7 @@ C++20 で導入されたコンセプトのように型制約を記述できる�
 | UDON\_CONCEPT\_SCALAR | Scalar | スカラ型 |
 | UDON\_CONCEPT\_ARRAY | Array | 配列型 |
 | UDON\_CONCEPT\_ACCESSIBLE | Accessible | メンバ変数を列挙可能な型 |
-| UDON\_CONCEPT\_CAPACITABLE | Capacitable | シリアライズ後サイズを取得可能な型 |
+| UDON\_CONCEPT\_CAPACITABLE | PackedSizable | シリアライズ後サイズを取得可能な型 |
 | UDON\_CONCEPT\_BEGINNABLE | HasMemberFunctionBegin | `begin` メンバ関数を呼び出し可能な型 |
 | UDON\_CONCEPT\_UPDATABLE | HasMemberFunctionUpdate | `update` メンバ関数を呼び出し可能な型 |
 | UDON\_CONCEPT\_SHOWABLE | HasMemberFunctionShow | `show` メンバ関数を呼び出し可能な型 |

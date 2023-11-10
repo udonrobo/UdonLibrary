@@ -12,14 +12,14 @@ struct Vec2
 
 TEST(Serialization, BufferSizeAfterSerialization)
 {
-    EXPECT_EQ(Udon::CapacityWithChecksum<bool    >(), 1     + 1);
-    EXPECT_EQ(Udon::CapacityWithChecksum<uint8_t >(), 1     + 1);
-    EXPECT_EQ(Udon::CapacityWithChecksum<uint16_t>(), 2     + 1);
-    EXPECT_EQ(Udon::CapacityWithChecksum<uint32_t>(), 4     + 1);
-    EXPECT_EQ(Udon::CapacityWithChecksum<uint64_t>(), 8     + 1);
-    EXPECT_EQ(Udon::CapacityWithChecksum<float   >(), 4     + 1);
-    EXPECT_EQ(Udon::CapacityWithChecksum<double  >(), 4     + 1);
-    EXPECT_EQ(Udon::CapacityWithChecksum<Vec2    >(), 4 + 4 + 1);
+    EXPECT_EQ(Udon::PackedSize<bool    >(), 1     + 1);
+    EXPECT_EQ(Udon::PackedSize<uint8_t >(), 1     + 1);
+    EXPECT_EQ(Udon::PackedSize<uint16_t>(), 2     + 1);
+    EXPECT_EQ(Udon::PackedSize<uint32_t>(), 4     + 1);
+    EXPECT_EQ(Udon::PackedSize<uint64_t>(), 8     + 1);
+    EXPECT_EQ(Udon::PackedSize<float   >(), 4     + 1);
+    EXPECT_EQ(Udon::PackedSize<double  >(), 4     + 1);
+    EXPECT_EQ(Udon::PackedSize<Vec2    >(), 4 + 4 + 1);
 }
 
 TEST(Serialization, SerializeDeserialize)
@@ -27,7 +27,7 @@ TEST(Serialization, SerializeDeserialize)
 	Vec2 v{ 1.0, 2.0 };
 
     const auto serialized = Udon::Pack(v);
-    EXPECT_EQ(Udon::CapacityWithChecksum<Vec2>(), serialized.size());    // シリアライズ後のサイズが正しいか確認
+    EXPECT_EQ(Udon::PackedSize<Vec2>(), serialized.size());    // シリアライズ後のサイズが正しいか確認
     EXPECT_EQ(serialized.back(), Udon::CRC8(serialized.data(), serialized.size() - 1));    // CRCが正しいか確認
 
     const auto deserialized = Udon::Unpack<Vec2>(serialized);

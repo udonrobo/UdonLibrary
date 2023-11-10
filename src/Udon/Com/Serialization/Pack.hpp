@@ -30,7 +30,7 @@ namespace Udon
     {
         static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
 
-        Serializer serializer(Udon::CapacityWithChecksum<T>());
+        Serializer serializer(Udon::PackedSize<T>());
         serializer(object);
 
         return serializer.flush();
@@ -47,7 +47,7 @@ namespace Udon
     {
         static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
 
-        if (size >= Udon::CapacityWithChecksum<T>())
+        if (size >= Udon::PackedSize<T>())
         {
             const auto vector = Pack(object);
             std::copy(vector.begin(), vector.end(), buffer);
@@ -63,7 +63,7 @@ namespace Udon
     /// @tparam T シリアル化する型(自動推論)
     /// @param object シリアル化するオブジェクト
     /// @param array シリアル化したデータを格納するバッファ
-    /// @remark バッファのサイズはCapacityWithChecksum関数で取得したサイズ以上である必要があります。
+    /// @remark バッファのサイズはPackedSize関数で取得したサイズ以上である必要があります。
     /// @return シリアル化に成功したかどうか
     template <typename T, size_t N>
     inline bool Pack(const T& object, uint8_t (&array)[N])

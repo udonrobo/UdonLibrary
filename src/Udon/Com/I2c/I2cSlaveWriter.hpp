@@ -36,7 +36,7 @@ namespace Udon
         using MessageType = Message;
 
         /// @brief 受信バッファサイズ
-        static constexpr size_t Size = Udon::CapacityWithChecksum<MessageType>();
+        static constexpr size_t Size = Udon::PackedSize<MessageType>();
 
         /// @brief コンストラクタ
         /// @param bus I2cバス

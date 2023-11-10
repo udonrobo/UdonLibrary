@@ -9,7 +9,7 @@ namespace Udon
     template <typename Message>
     class Ros2UartWriter
     {
-        static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
+        static constexpr size_t Size = Udon::PackedSize<Message>();
 
         serial::Serial& serial;
 
