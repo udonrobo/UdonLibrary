@@ -136,22 +136,22 @@
 //-------------------------------------------------------------------
 
 // モーター(基板用)
-#include "Udon/Driver/Actuator/Motor.hpp"
+#include "Udon/Driver/Motor.hpp"
 
 // BNO055(IMU)
-#include "Udon/Driver/Sensor/BNO055.hpp"
+#include "Udon/Driver/BNO055.hpp"
 
 // ディップスイッチ
-#include "Udon/Driver/Sensor/DipSwitch.hpp"
+#include "Udon/Driver/DipSwitch.hpp"
 
 // 7セグメントLED
-#include "Udon/Driver/Display/SegmentsLed.hpp"
+#include "Udon/Driver/SegmentsLed.hpp"
 
 // LED
-#include "Udon/Driver/Display/Led.hpp"
+#include "Udon/Driver/Led.hpp"
 
 // Raspberry Pi Pico エンコーダー
-#include "Udon/Driver/Sensor/EncoderPico.hpp"
+#include "Udon/Driver/EncoderPico.hpp"
 
 // Raspberry Pi Pico PIO クロック出力
 #include "Udon/Driver/Pio/PioClock.hpp"
