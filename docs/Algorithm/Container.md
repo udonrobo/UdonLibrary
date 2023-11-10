@@ -189,6 +189,17 @@ ArrayView はメモリ領域を参照する、領域自体を持たないクラ�
 
 疑似可変長リングバッファ。配列の最初と最後の要素を疑似的に繋げ、リング上にした FIFO バッファ。
 
+```cpp
+template <typename T, size_t Capacity>
+class RingBuffer
+{
+    T m_data[Capacity];
+    size_t m_head;
+    size_t m_tail;
+    size_t m_size;
+};
+```
+
 ### 構築
 
 テンプレート引数に要素の型、最大要素数を指定します。
