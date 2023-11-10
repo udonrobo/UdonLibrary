@@ -16,9 +16,9 @@
 
 #pragma once
 
-#include "Forward/Vector2DFwd.hpp"
-#include "Forward/Vector3DFwd.hpp"
-#include "Forward/Vector4DFwd.hpp"
+#include "Forward/Vector2D.hpp"
+#include "Forward/Vector3D.hpp"
+#include "Forward/Vector4D.hpp"
 
 inline Udon::Vector2D Udon::Vector3D::xy() const noexcept
 {

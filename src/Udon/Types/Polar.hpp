@@ -15,8 +15,8 @@
 
 #pragma once
 
-#include "Forward/PolarFwd.hpp"
-#include "Forward/Vector2DFwd.hpp"
+#include "Forward/Polar.hpp"
+#include "Forward/Vector2D.hpp"
 
 inline Udon::Vector2D Udon::Polar::toVector() const noexcept
 {

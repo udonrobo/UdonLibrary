@@ -15,8 +15,8 @@
 
 #pragma once
 
-#include "Forward/RGBFwd.hpp"
-#include "Forward/HSVFwd.hpp"
+#include "Forward/RGB.hpp"
+#include "Forward/HSV.hpp"
 
 #ifdef _MSC_VER
 #    pragma warning(push)
