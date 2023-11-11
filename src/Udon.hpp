@@ -24,6 +24,15 @@
 // プラットフォーム定義
 #include "Udon/Common/Platform.hpp"
 
+// 汎用Printf
+#include "Udon/Common/Printf.hpp"
+
+// 汎用表示
+#include "Udon/Common/Show.hpp"
+
+// 汎用時間取得
+#include "Udon/Common/Time.hpp"
+
 //-------------------------------------------------------------------
 //
 //    アルゴリズム / algorithm
@@ -73,7 +82,7 @@
 // IM920
 #include "Udon/Com/Im920.hpp"
 
-// IM920
+// LoRa
 #include "Udon/Com/Lora.hpp"
 
 // シリアライズ
@@ -204,7 +213,7 @@
 #include "Udon/Traits/Accessible.hpp"
 
 // シリアライズ後のサイズ取得を可能か
-#include "Udon/Traits/Capacitable.hpp"
+#include "Udon/Traits/PackedSizable.hpp"
 
 // std::void_t
 #include "Udon/Traits/VoidT.hpp"

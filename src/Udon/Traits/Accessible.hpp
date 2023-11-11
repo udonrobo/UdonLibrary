@@ -68,15 +68,15 @@ namespace Udon
         };
 
         template <typename Acc, typename HasMemberFunctionAccessor, typename std::enable_if<Traits::HasMemberFunctionAccessor<HasMemberFunctionAccessor>::value, std::nullptr_t>::type = nullptr>
-        void InvokeAccessor(Acc& acc, HasMemberFunctionAccessor& rhs)
+        void InvokeAccessor(Acc& acc, HasMemberFunctionAccessor&& rhs)
         {
-            rhs.accessor(acc);
+            const_cast<HasMemberFunctionAccessor&>(rhs).accessor(acc);
         }
 
         template <typename Acc, typename AccessorInvocable, typename std::enable_if<Traits::AccessorInvocable<AccessorInvocable>::value, std::nullptr_t>::type = nullptr>
-        void InvokeAccessor(Acc& acc, AccessorInvocable& rhs)
+        void InvokeAccessor(Acc& acc, AccessorInvocable&& rhs)
         {
-            Accessor(acc, rhs);
+            Accessor(const_cast<AccessorInvocable&>(acc), rhs);
         }
 
     }    // namespace Traits

@@ -77,20 +77,20 @@ namespace Udon
         HSV& operator=(const HSV&) = default;
 
         /// @brief 比較演算子
-        constexpr bool operator==(const HSV& rhs) const noexcept
+        friend constexpr bool operator==(const HSV& lhs, const HSV& rhs) noexcept
         {
-            return h == rhs.h && s == rhs.s && v == rhs.v;
+            return lhs.h == rhs.h && lhs.s == rhs.s && lhs.v == rhs.v;
         }
 
         /// @brief 比較演算子
-        constexpr bool operator!=(const HSV& rhs) const noexcept
+        friend constexpr bool operator!=(const HSV& lhs, const HSV& rhs) noexcept
         {
-            return !(*this == rhs);
+            return not(lhs == rhs);
         }
 
         explicit constexpr operator bool() const noexcept
         {
-            return h || s || v;
+            return h or s or v;
         }
 
         /// @brief 24bit値へ変換

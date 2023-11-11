@@ -70,7 +70,7 @@ namespace Udon
             // 受信文字列解析
             if (const auto receiveStringView = reader.readStringUntil('\n').subView(1 /*先頭文字[\n]*/))
             {
-                if (receiveStringView.startsWith(">> radio_rx "))    // 受信フォーマット \n>> radio_rx 5432abac(data) -90(RSSI) -50(SNR)
+                if (receiveStringView.startsWith(">> radio_rx "))    // 受信フォーマット >> radio_rx 5432abac(data) -90(RSSI) -50(SNR)
                 {
                     const auto dataView = receiveStringView
                                               .subView(12)           // strlen(">> radio_rx ")

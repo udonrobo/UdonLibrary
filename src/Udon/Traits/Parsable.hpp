@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include "Capacitable.hpp"
+#include "PackedSizable.hpp"
 #include "Accessible.hpp"
 
 namespace Udon
@@ -65,13 +65,13 @@ namespace Udon
         };
         template <typename T>
         struct MemberParsable<T, typename std::enable_if<
-                                     HasMemberFunctionParsable<T>::value ^ ParsableInvocable<T>::value>::type>
+                                     HasMemberFunctionParsable<T>::value xor ParsableInvocable<T>::value>::type>
         {
             static constexpr bool value = InvokeParsable(T{});
         };
         template <typename T>
         struct MemberParsable<T, typename std::enable_if<
-                                     HasMemberFunctionParsable<T>::value && ParsableInvocable<T>::value>::type>
+                                     HasMemberFunctionParsable<T>::value and ParsableInvocable<T>::value>::type>
             : std::false_type
         {
             static_assert(AlwaysFalse<T>::value, "T has both member function parsable() and global function Parsable().");    // メンバ関数とグローバル関数の両方が定義されている場合はコンパイルエラー
@@ -94,8 +94,8 @@ namespace Udon
         {
 		};
         template <typename T>
-        struct Parsable<T, typename std::enable_if<Capacitable<T>::value &&            // バッファサイズを返すメンバー関数を持つ
-                                                   Accessible<T>::value &&             // アクセッサを持つ
+        struct Parsable<T, typename std::enable_if<PackedSizable<T>::value and            // バッファサイズを返すメンバー関数を持つ
+                                                   Accessible<T>::value and             // アクセッサを持つ
                                                    MemberParsable<T>::value>::type>    // 各メンバがパース可能である
             : std::true_type
         {
