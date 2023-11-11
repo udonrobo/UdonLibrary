@@ -255,14 +255,16 @@ namespace Udon
             return tokens;
         }
 
-        /// @brief ビューを数値に変換する
-        /// @tparam T 変換する数値の型 (アトミック型である必要がある)
-        /// @return 変換された数値
-        template <typename T>
-        T parse() const
+        /// @brief  ビューを数値に変換する
+        /// @tparam T 変換する数値の型
+        /// @param  radix 基数(整数のみ)
+        /// @return 変換された数値 (変換できない場合はnullopt)
+        template <typename T = int>
+        Udon::Optional<T> toNumber(const int radix = 10) const
         {
             static_assert(std::is_arithmetic<T>::value, "T must be arithmetic type.");
-            return StringToNumberParser<T>::Parse(toString());
+
+            return StringToNumberParser::Parse<T>(cbegin(), cend(), radix);
         }
 
         /// @brief STL の文字列に変換する
