@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include <Udon/Types/StringView.hpp>
 
 using Udon::StringView;
@@ -36,9 +37,9 @@ inline void testMethod()
     (void)stringView.startsWith("100");
     (void)stringView.endsWith("300");
     (void)stringView.split(' ');
-    (void)stringView.parse<int>();
-    (void)stringView.parse<float>();
-    (void)stringView.parse<double>();
+    (void)stringView.toNumber<int>();
+    (void)stringView.toNumber<float>();
+    (void)stringView.toNumber<double>();
     (void)stringView.toString();
 
     auto stringView1 = "100 200.00 300"_sv;
