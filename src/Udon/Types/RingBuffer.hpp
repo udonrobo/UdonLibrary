@@ -178,29 +178,29 @@ namespace Udon
             return retval;
         }
 
-        constexpr reference back()
+        reference back()
         {
             return m_data[(m_tail + Capacity - 1) % Capacity];
         }
-        constexpr const_reference back() const
+        const_reference back() const
         {
             return m_data[(m_tail + Capacity - 1) % Capacity];
         }
 
-        constexpr reference front()
+        reference front()
         {
             return m_data[m_head];
         }
-        constexpr const_reference front() const
+        const_reference front() const
         {
             return m_data[m_head];
         }
 
-        constexpr reference operator[](size_t index)
+        reference operator[](size_t index)
         {
             return m_data[(m_head + index) % Capacity];
         }
-        constexpr const_reference operator[](size_t index) const
+        const_reference operator[](size_t index) const
         {
             return m_data[(m_head + index) % Capacity];
         }
