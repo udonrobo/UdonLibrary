@@ -21,7 +21,7 @@
 #include "CanNode.hpp"
 #include "CanUtility.hpp"
 
-#include <Udon/Algorithm/StaticVector.hpp>
+#include <Udon/Types/StaticVector.hpp>
 
 namespace Udon
 {

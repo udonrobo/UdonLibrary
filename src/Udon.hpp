@@ -39,23 +39,11 @@
 //
 //-------------------------------------------------------------------
 
-// コンテナ / 静的可変長配列
-#include "Udon/Algorithm/StaticVector.hpp"
-
-// コンテナ / 配列参照
-#include "Udon/Algorithm/ArrayView.hpp"
-
-// コンテナ / リングバッファ
-#include "Udon/Algorithm/RingBuffer.hpp"
-
 // デリゲート / メンバ関数ポインタ変換
 #include "Udon/Algorithm/Delegate.hpp"
 
 // CRC チェックサム / 誤り検出
 #include "Udon/Algorithm/CRC.hpp"
-
-// 疑似可変長リングバッファ
-#include "Udon/Algorithm/RingBuffer.hpp"
 
 // PIDフィードバック制御器
 #include "Udon/Algorithm/PidController.hpp"
@@ -189,6 +177,18 @@
 
 // クオータニオン
 #include "Udon/Types/Quaternion.hpp"
+
+// コンテナ / 配列参照
+#include "Udon/Types/ArrayView.hpp"
+
+// コンテナ / 文字列参照 簡易字句解析器
+#include "Udon/Types/StringView.hpp"
+
+// コンテナ / 静的可変長配列
+#include "Udon/Types/StaticVector.hpp"
+
+// コンテナ / リングバッファ
+#include "Udon/Types/RingBuffer.hpp"
 
 
 //-------------------------------------------------------------------

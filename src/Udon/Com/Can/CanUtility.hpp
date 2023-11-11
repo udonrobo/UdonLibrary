@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Udon/Algorithm/ArrayView.hpp>
+#include <Udon/Types/ArrayView.hpp>
 
 #include <algorithm>
 #include <cmath>

@@ -21,7 +21,7 @@
 #include "CanNode.hpp"
 #include "CanUtility.hpp"
 
-#include <Udon/Algorithm/StaticVector.hpp>
+#include <Udon/Types/StaticVector.hpp>
 #include <Udon/Thirdparty/pico_mcp2515/mcp2515.h>
 
 namespace Udon

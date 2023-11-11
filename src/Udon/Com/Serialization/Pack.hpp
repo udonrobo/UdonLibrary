@@ -16,7 +16,7 @@
 #pragma once
 
 #include "Serializer.hpp"
-#include <Udon/Algorithm/ArrayView.hpp>
+#include <Udon/Types/ArrayView.hpp>
 
 namespace Udon
 {

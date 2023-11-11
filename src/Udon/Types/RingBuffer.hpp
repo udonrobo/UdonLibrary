@@ -49,7 +49,7 @@ namespace Udon
 
     public:
         /// @brief コンストラクタ
-        RingBuffer()
+        constexpr RingBuffer()
             : m_data{}
             , m_head{}
             , m_tail{}
@@ -59,13 +59,12 @@ namespace Udon
 
         /// @brief コピーコンストラクタ
         /// @param other
-        RingBuffer(const RingBuffer& other)
-            : m_data{}
+        constexpr RingBuffer(const RingBuffer& other)
+            : m_data{ other.m_data }
             , m_head{ other.m_head }
             , m_tail{ other.m_tail }
             , m_size{ other.m_size }
         {
-            std::copy(other.m_data, other.m_data + Capacity, m_data);
         }
 
         /// @brief デフォルトで初期化するコンストラクタ
@@ -75,49 +74,28 @@ namespace Udon
             : m_data{}
             , m_head{}
             , m_tail{}
-            , m_size{}
+            , m_size{ std::min(size, capacity()) }
         {
-            resize(size);
-            for (size_t i = 0; i < size; ++i)
-            {
-                m_data[i] = value;
-            }
-        }
-
-        RingBuffer(size_t size, value_type&& value)
-            : m_data{}
-            , m_head{}
-            , m_tail{}
-            , m_size{}
-        {
-            resize(size);
-            for (size_t i = 0; i < size; ++i)
-            {
-                m_data[i] = std::move(value);
-            }
+            std::fill(begin(), end(), value);
         }
 
         /// @brief デフォルトで初期化しないコンストラクタ
         /// @param size 使用するサイズ
-        explicit RingBuffer(size_t size)
+        constexpr explicit RingBuffer(size_t size)
             : m_data{}
             , m_head{}
             , m_tail{}
-            , m_size{}
+            , m_size{ std::min(size, capacity()) }
         {
-            resize(size);
         }
 
         RingBuffer(std::initializer_list<value_type> init)
             : m_data{}
             , m_head{}
             , m_tail{}
-            , m_size{}
+            , m_size{ std::min(init.size, capacity()) }
         {
-            for (auto&& value : init)
-            {
-                push(value);
-            }
+            std::copy(init.begin(), init.end(), begin());
         }
 
         /// @brief capacityを取得
@@ -129,7 +107,7 @@ namespace Udon
 
         /// @brief バッファサイズを取得
         /// @return
-        size_t size() const
+        constexpr size_t size() const
         {
             return m_size;
         }
@@ -138,24 +116,24 @@ namespace Udon
         /// @param size
         void resize(size_t size)
         {
-            m_size = std::min(size, Capacity);
+            m_size = std::min(size, capacity());
         }
 
-        bool empty() const
+        constexpr bool empty() const
         {
             return m_size == 0;
         }
 
-        bool full() const
+        constexpr bool full() const
         {
-            return m_size == Capacity;
+            return m_size == capacity();
         }
 
         /// @brief バッファの先頭に要素を追加
         /// @param value 追加する値
         void push(const_reference value)
         {
-            if (m_size == Capacity)
+            if (full())
             {
                 pop();
             }
@@ -171,7 +149,7 @@ namespace Udon
         /// @param value 追加する値
         void push(value_type&& value)
         {
-            if (m_size == Capacity)
+            if (full())
             {
                 pop();
             }
@@ -187,7 +165,7 @@ namespace Udon
         /// @return 末尾の要素
         value_type pop()
         {
-            if (m_size == 0)
+            if (empty())
             {
                 return {};
             }

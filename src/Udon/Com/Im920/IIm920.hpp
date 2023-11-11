@@ -19,7 +19,7 @@
 #include <vector>
 #include <stdint.h>
 
-#include <Udon/Algorithm/ArrayView.hpp>
+#include <Udon/Types/ArrayView.hpp>
 
 namespace Udon
 {
