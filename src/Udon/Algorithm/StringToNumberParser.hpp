@@ -1,68 +1,76 @@
 #pragma once
 
-#include <cstring>
 #include <Udon/Traits/AlwaysFalse.hpp>
+#include <Udon/Stl/Optional.hpp>
+
+#include <string>
+#include <stdlib.h>
 
 namespace Udon
 {
-    template <typename T>
-    struct StringToNumberParser
+    namespace StringToNumberParser
     {
-        static_assert(Traits::AlwaysFalse<T>::value, "T is not parsable.");
-    };
 
-    template <>
-    struct StringToNumberParser<int>
-    {
-        static int Parse(const std::string& string) { return std::stoi(string); }
-    };
+        /// @brief 文字列を数値に変換する
+        /// @tparam T 変換後の数値の型
+        /// @param begin 変換する文字列の先頭
+        /// @param end   変換する文字列の末尾
+        /// @param radix 基数
+        /// @return Udon::Optional<T> 変換後の数値 (変換できなかった場合は nullopt)
+        template <typename T>
+        inline Udon::Optional<T> Parse(const char* const begin, const char* const end, const int radix)
+        {
+            static_assert(Traits::AlwaysFalse<T>::value, "T is not parsable.");
+        }
 
-    template <>
-    struct StringToNumberParser<long>
-    {
-        static long Parse(const std::string& string) { return std::stol(string); }
-    };
+        template <>
+        inline Udon::Optional<long> Parse<long>(const char* const begin, const char* const end, const int radix)
+        {
+            char* endPtr = nullptr;
 
-    template <>
-    struct StringToNumberParser<long long>
-    {
-        static long long Parse(const std::string& string) { return std::stoll(string); }
-    };
+            const auto result = strtol(begin, &endPtr, radix);
 
-    template <>
-    struct StringToNumberParser<unsigned int>
-    {
-        static unsigned int Parse(const std::string& string) { return std::stoul(string); }
-    };
+            // Arduino nano では errno が定義されていないため、errno によるエラー判定は行わない
 
-    template <>
-    struct StringToNumberParser<unsigned long>
-    {
-        static unsigned long Parse(const std::string& string) { return std::stoul(string); }
-    };
+            if (endPtr == end)
+            {
+                return result;
+            }
+            else
+            {
+                return Udon::nullopt;
+            }
+        }
 
-    template <>
-    struct StringToNumberParser<unsigned long long>
-    {
-        static unsigned long long Parse(const std::string& string) { return std::stoull(string); }
-    };
+        template <>
+        inline Udon::Optional<int> Parse<int>(const char* const begin, const char* const end, const int radix)
+        {
+            return Parse<long>(begin, end, radix);
+        }
 
-    template <>
-    struct StringToNumberParser<float>
-    {
-        static float Parse(const std::string& string) { return std::stof(string); }
-    };
+        template <>
+        inline Udon::Optional<double> Parse<double>(const char* const begin, const char* const end, const int /*radix*/)
+        {
+            char* endPtr = nullptr;
 
-    template <>
-    struct StringToNumberParser<double>
-    {
-        static double Parse(const std::string& string) { return std::stod(string); }
-    };
+            const auto result = strtod(begin, &endPtr);
 
-    template <>
-    struct StringToNumberParser<long double>
-    {
-        static long double Parse(const std::string& string) { return std::stold(string); }
-    };
+            if (endPtr == end)
+            {
+                return result;
+            }
+            else
+            {
+                return Udon::nullopt;
+            }
+        }
+
+        template <>
+        inline Udon::Optional<float> Parse<float>(const char* const begin, const char* const end, const int /*radix*/)
+        {
+            return Parse<double>(begin, end, 10);
+        }
+
+    }    // namespace StringToNumberParser
 
 }    // namespace Udon
