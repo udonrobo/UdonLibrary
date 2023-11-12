@@ -1,4 +1,4 @@
-# CAN 通信
+# CAN
 
 ```cpp
 #include <Udon/Com/Can.hpp>

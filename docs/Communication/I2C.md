@@ -1,4 +1,4 @@
-# I2C 通信
+# I2C
 
 ```cpp
 #include <Udon/Com/I2c.hpp>

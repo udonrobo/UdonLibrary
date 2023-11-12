@@ -244,9 +244,9 @@ int main() {}
 
 ### 通信
 
-- [CAN 通信](./docs/Communication/CAN.md)
-- [I2C 通信](./docs/Communication/I2C.md)
-- [UART 通信](./docs/Communication/UART.md)
+- [CAN](./docs/Communication/CAN.md)
+- [I2C](./docs/Communication/I2C.md)
+- [UART](./docs/Communication/UART.md)
 - [IM920](./docs/Communication/IM920.md)
 - [コントローラ](./docs/Communication/Pad.md)
 - [シリアライザ](./docs/Communication/Serialization.md)
