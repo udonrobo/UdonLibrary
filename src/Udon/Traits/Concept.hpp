@@ -20,9 +20,9 @@
 #define UDON_CONCEPT_FLOATING_POINT \
     template <typename FloatingPoint, typename std::enable_if<std::is_floating_point<FloatingPoint>::value, std::nullptr_t>::type = nullptr>
 
-// アトミック型
-#define UDON_CONCEPT_ATOMIC \
-    template <typename Atomic, typename std::enable_if<std::is_arithmetic<Atomic>::value, std::nullptr_t>::type = nullptr>
+// 算術型
+#define UDON_CONCEPT_ARITHMETIC \
+    template <typename Arithmetic, typename std::enable_if<std::is_arithmetic<Arithmetic>::value, std::nullptr_t>::type = nullptr>
 
 // スカラ型
 #define UDON_CONCEPT_SCALAR \
