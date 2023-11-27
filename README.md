@@ -236,11 +236,11 @@ int main() {}
 
 ### アルゴリズム
 
-- [コンテナ](./docs/Algorithm/Container.md)
 - [独立ステア最適化](./docs/Algorithm/SteerOptimizer.md)
 
 ### 通信
 
+- [共通](./docs/Communication/Common.md)
 - [CAN](./docs/Communication/CAN.md)
 - [I2C](./docs/Communication/I2C.md)
 - [UART](./docs/Communication/UART.md)
@@ -267,6 +267,7 @@ int main() {}
 
 ### 開発者用
 
+- [コンテナ](./docs/Algorithm/Container.md)
 - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
 - [自動テスト](./docs/Developer/CI.md)
 - [謝辞](./docs/Other/Acknowledgments.md)
