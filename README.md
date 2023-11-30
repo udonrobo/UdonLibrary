@@ -1,11 +1,8 @@
-# UdonLibrary
+# UdonLibrary [![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml) [![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
 
 <img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/53d063f8-ee25-41c9-b68b-75dcfd8ee5ad" height="300px" align="right"/>
 
 香川高専高松機械システム研究部 C++ ライブラリ
-
-[![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml)
-[![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
 
 ## Install
 
@@ -239,11 +236,11 @@ int main() {}
 
 ### アルゴリズム
 
-- [コンテナ](./docs/Algorithm/Container.md)
 - [独立ステア最適化](./docs/Algorithm/SteerOptimizer.md)
 
 ### 通信
 
+- [共通](./docs/Communication/Common.md)
 - [CAN](./docs/Communication/CAN.md)
 - [I2C](./docs/Communication/I2C.md)
 - [UART](./docs/Communication/UART.md)
@@ -270,6 +267,7 @@ int main() {}
 
 ### 開発者用
 
+- [コンテナ](./docs/Algorithm/Container.md)
 - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
 - [自動テスト](./docs/Developer/CI.md)
 - [謝辞](./docs/Other/Acknowledgments.md)
