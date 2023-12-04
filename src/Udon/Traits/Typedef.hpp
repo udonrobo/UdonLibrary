@@ -50,21 +50,31 @@ namespace Udon
 
     namespace Traits
     {
-        // std::enable_if<std::is_same<T, U>::value, std::nullptr_t>::type
-        // ↓
-        // EnableIfNullptr<std::is_same<T, U>>::type
+        
+        template <bool Test, typename T = void>
+        using EnableIfT = typename std::enable_if<Test, T>::type;
+
+        template <bool Test>
+        using EnableIfVoidT = EnableIfT<Test, void>;
+
+        template <bool Test, typename T = void>
+        using DisableIfT = typename std::enable_if<not Test, T>::type;
+
+        template <bool Test>
+        using DisableIfVoidT = DisableIfT<Test, void>;
+
 
         /// @brief
-        /// @details T::value == true  の場合 type が std::nullptr_t に実体化
-        /// @details T::value == false の場合 type は実体化されない
-        template <typename T>
-        using EnableIfNullptrT = typename std::enable_if<T::value, std::nullptr_t>::type;
+        /// @details Test == true  の場合 type が std::nullptr_t に実体化
+        /// @details Test == false の場合 type は実体化されない
+        template <bool Test>
+        using EnableIfNullptrT = EnableIfT<Test, std::nullptr_t>;
 
         /// @brief
-        /// @details T::value == true  の場合 type は実体化されない
-        /// @details T::value == false の場合 type が std::nullptr_t に実体化
-        template <typename T>
-        using DisableIfNullptrT = typename std::enable_if<not T::value, std::nullptr_t>::type;
+        /// @details Test == true  の場合 type は実体化されない
+        /// @details Test == false の場合 type が std::nullptr_t に実体化
+        template <bool Test>
+        using DisableIfNullptrT = DisableIfT<not Test, std::nullptr_t>;
 
     }    // namespace Traits
 }    // namespace Udon
