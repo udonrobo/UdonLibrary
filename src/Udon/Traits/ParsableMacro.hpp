@@ -39,3 +39,24 @@
     {                                                       \
         acc(__VA_ARGS__);                                   \
     }
+
+// #define UDON_ENUMERABLE(...)                                                                \
+//     template <typename Enumerator>                                                          \
+//     constexpr typename Enumerator::ResultType enumerate(const Enumerator& enumerator) const \
+//     {                                                                                       \
+//         return enumerator(__VA_ARGS__);                                                     \
+//     }
+
+#define UDON_INPUT_ENUMERABLE(...)                                                                         \
+    template <typename InputEnumerator>                                                                    \
+    constexpr typename InputEnumerator::ResultType inputEnumerate(const InputEnumerator& enumerator) const \
+    {                                                                                                      \
+        return enumerator(__VA_ARGS__);                                                                    \
+    }
+
+#define UDON_OUTPUT_ENUMERABLE(...)                                                                           \
+    template <typename OutputEnumerator>                                                                      \
+    constexpr typename OutputEnumerator::ResultType outputEnumerate(const OutputEnumerator& enumerator) const \
+    {                                                                                                         \
+        return enumerator(__VA_ARGS__);                                                                       \
+    }
