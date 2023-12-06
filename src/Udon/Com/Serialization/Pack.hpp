@@ -16,6 +16,7 @@
 #pragma once
 
 #include "Serializer.hpp"
+#include "PackedSize.hpp"
 #include <Udon/Types/ArrayView.hpp>
 
 namespace Udon
@@ -26,11 +27,11 @@ namespace Udon
     /// @param object シリアル化するオブジェクト
     /// @return シリアル化したデータ
     template <typename T>
-    inline std::vector<uint8_t> Pack(const T& object)
+    std::vector<uint8_t> Pack(const T& object)
     {
-        static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+        static_assert(Traits::IsSerializable<T>::value, "T must be serializable type.");  // T はシリアライズ可能な型である必要があります。T クラス内で UDON_ENUMERABLE(...) マクロにメンバ変数をセットすることで、シリアライズ可能になります。
 
-        Serializer serializer(Udon::PackedSize<T>());
+        Impl::Serializer serializer(PackedSize<T>());
         serializer(object);
 
         return serializer.flush();
@@ -43,11 +44,11 @@ namespace Udon
     /// @param size バッファのサイズ
     /// @return シリアル化に成功したかどうか
     template <typename T>
-    inline bool Pack(const T& object, uint8_t* buffer, size_t size)
+    bool Pack(const T& object, uint8_t* buffer, size_t size)
     {
-        static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+        static_assert(Traits::IsSerializable<T>::value, "T must be serializable type.");  // T はシリアライズ可能な型である必要があります。T クラス内で UDON_ENUMERABLE(...) マクロにメンバ変数をセットすることで、シリアライズ可能になります。
 
-        if (size >= Udon::PackedSize<T>())
+        if (size >= PackedSize<T>())
         {
             const auto vector = Pack(object);
             std::copy(vector.begin(), vector.end(), buffer);
@@ -66,9 +67,9 @@ namespace Udon
     /// @remark バッファのサイズはPackedSize関数で取得したサイズ以上である必要があります。
     /// @return シリアル化に成功したかどうか
     template <typename T, size_t N>
-    inline bool Pack(const T& object, uint8_t (&array)[N])
+    bool Pack(const T& object, uint8_t (&array)[N])
     {
-        static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+        static_assert(Traits::IsSerializable<T>::value, "T must be serializable type.");  // T はシリアライズ可能な型である必要があります。T クラス内で UDON_ENUMERABLE(...) マクロにメンバ変数をセットすることで、シリアライズ可能になります。
 
         return Pack(object, array, N);
     }
@@ -79,7 +80,7 @@ namespace Udon
     /// @return シリアル化に成功したかどうか
     inline void FailablePack(ArrayView<uint8_t> buffer)
     {
-        buffer.back() = Udon::CRC8(buffer.cbegin(), buffer.cend() - Udon::CRC8_SIZE) ^ 0xff;
+        buffer.back() = CRC8(buffer.cbegin(), buffer.cend() - CRC8_SIZE) ^ 0xff;
     }
 
 }    // namespace Udon

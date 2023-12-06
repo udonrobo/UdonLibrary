@@ -65,7 +65,7 @@ namespace Udon
           return Udon::nullopt;
         }
 
-        Deserializer deserializer(buffer);
+        Impl::Deserializer deserializer(buffer);
 
         if (deserializer)
         {

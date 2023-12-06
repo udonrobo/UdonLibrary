@@ -1,17 +1,9 @@
-//-------------------------------------------------------------------
 //
 //    UdonLibrary
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    シリアライズ関係
-//
-//-------------------------------------------------------------------
 
 #pragma once
 
@@ -174,10 +166,10 @@ namespace Udon
             template <typename Array>
             struct Sizeof<Array, EnableIfVoidT<IsArray<RemoveReferenceT<Array>>::value>>
             {
-                static constexpr ResultType value(const PackedBitSizeImpl&, Array&& array) noexcept
+                static constexpr ResultType value(const PackedBitSizeImpl& self, Array&& array) noexcept
                 {
                     using ElementT = typename std::remove_extent<RemoveReferenceT<Array>>::type;
-                    return Sizeof<ElementT>::value(*array) * std::extent<RemoveReferenceT<Array>>::value;
+                    return Sizeof<ElementT>::value(self, std::forward<ElementT>(*array)) * std::extent<RemoveReferenceT<Array>>::value;
                 }
             };
 
@@ -200,6 +192,12 @@ namespace Udon
         struct IsPackedSizable : std::integral_constant<bool, Impl::IsPackedSizableImpl{}(T{})>
         {
         };
+
+        template <typename T>
+        using IsSerializable = IsPackedSizable<T>;
+
+        template <typename T>
+        using IsDeserializable = IsPackedSizable<T>;
 
     }    // namespace Traits
 
