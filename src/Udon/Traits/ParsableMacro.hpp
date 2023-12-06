@@ -25,38 +25,24 @@
 ///   - template <typename Acc> void accessor(Acc& acc)
 ///     - メンバ変数の走査用
 ///
-#define UDON_PARSABLE(...)                                  \
-    constexpr bool parsable() const                         \
-    {                                                       \
-        return Udon::Traits::IsMemberParsable(__VA_ARGS__); \
-    }                                                       \
-    constexpr size_t packedBitSize() const                  \
-    {                                                       \
-        return Udon::PackedBitSize(__VA_ARGS__);            \
-    }                                                       \
-    template <typename Acc>                                 \
-    void accessor(Acc& acc)                                 \
-    {                                                       \
-        acc(__VA_ARGS__);                                   \
+#define UDON_PARSABLE(...)                                                                  \
+    constexpr bool parsable() const                                                         \
+    {                                                                                       \
+        return Udon::Traits::IsMemberParsable(__VA_ARGS__);                                 \
+    }                                                                                       \
+    constexpr size_t packedBitSize() const                                                  \
+    {                                                                                       \
+        return true;                                           \
+    }                                                                                       \
+    template <typename Acc>                                                                 \
+    void accessor(Acc& acc)                                                                 \
+    {                                                                                       \
+        acc(__VA_ARGS__);                                                                   \
+    }                                                                                       \
+    template <typename Enumerator>                                                          \
+    constexpr typename Enumerator::ResultType enumerate(const Enumerator& enumerator) const \
+    {                                                                                       \
+        return enumerator(__VA_ARGS__);                                                     \
     }
 
-// #define UDON_ENUMERABLE(...)                                                                \
-//     template <typename Enumerator>                                                          \
-//     constexpr typename Enumerator::ResultType enumerate(const Enumerator& enumerator) const \
-//     {                                                                                       \
-//         return enumerator(__VA_ARGS__);                                                     \
-//     }
-
-#define UDON_INPUT_ENUMERABLE(...)                                                                         \
-    template <typename InputEnumerator>                                                                    \
-    constexpr typename InputEnumerator::ResultType inputEnumerate(const InputEnumerator& enumerator) const \
-    {                                                                                                      \
-        return enumerator(__VA_ARGS__);                                                                    \
-    }
-
-#define UDON_OUTPUT_ENUMERABLE(...)                                                                           \
-    template <typename OutputEnumerator>                                                                      \
-    constexpr typename OutputEnumerator::ResultType outputEnumerate(const OutputEnumerator& enumerator) const \
-    {                                                                                                         \
-        return enumerator(__VA_ARGS__);                                                                       \
-    }
+#define UDON_ENUMERABLE(...) UDON_PARSABLE(__VA_ARGS__)
