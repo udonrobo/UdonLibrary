@@ -25,6 +25,7 @@
 #include <Udon/Types/Float.hpp>
 #include <Udon/Traits/Parsable.hpp>
 #include <Udon/Traits/Concept.hpp>
+#include <Udon/Traits/Typedef.hpp>
 
 #if CHAR_BIT != 8
 #    error "1byte is must be 8bit"
@@ -32,93 +33,186 @@
 
 namespace Udon
 {
-
-    namespace Detail
+    namespace Impl
     {
+        using namespace Udon::Traits;
 
-        /// @brief bool型
-        UDON_CONCEPT_BOOL
-        inline constexpr size_t PackedBitSizeImpl(Bool)
+        struct IsPackedSizableImpl
         {
-            return 1;
-        }
+            using ResultType = bool;
 
-        /// @brief 整数型かつbool型でない型
-        UDON_CONCEPT_INTEGRAL_NOT_BOOL
-        inline constexpr size_t PackedBitSizeImpl(IntegralNotBool)
+            template <typename... Args>
+            constexpr ResultType operator()(Args&&... args) const noexcept
+            {
+                return argsUnpack(std::forward<Args>(args)...);
+            }
+
+        private:
+            // 可変長引数展開
+            template <typename Head, typename... Tail>
+            constexpr ResultType argsUnpack(Head&& head, Tail&&... tail) const noexcept
+            {
+                // 全メンバが出力可能か判定し、論理積を得る
+                return Test<RemoveReferenceT<Head>>::test(*this, std::forward<Head>(head)) and
+                       argsUnpack(std::forward<Tail>(tail)...);
+            }
+
+            // 可変長引数展開 (終端)
+            constexpr ResultType argsUnpack() const noexcept { return true; }
+
+        public:
+            // T のビット数を取得できるか判定するテスト
+            // 部分特殊化を用いる
+            template <typename T, typename = void>
+            struct Test
+            {
+                static constexpr bool test(...) { return false; }
+            };
+
+            // 算術型は可能
+            template <typename Arithmetic>
+            struct Test<Arithmetic, EnableIfVoidT<IsArithmetic<Arithmetic>::value>>
+            {
+                static constexpr bool test(...) { return true; }
+            };
+
+            // 列挙型は可能
+            template <typename Enum>
+            struct Test<Enum, EnableIfVoidT<IsEnum<Enum>::value>>
+            {
+                static constexpr bool test(...) { return true; }
+            };
+
+            // 配列型は要素のサイズを取得可能な場合、サイズ取得可能
+            template <typename Array>
+            struct Test<Array, EnableIfVoidT<IsArray<Array>::value>>
+            {
+                template <typename T>
+                static constexpr bool test(const IsPackedSizableImpl& self, T&& array)
+                {
+                    return Test<typename std::remove_extent<Array>::type>::test(self, *array);    // 要素のサイズが取得可能である場合
+                }
+            };
+
+            // enumerate
+            template <typename Enumeratable>
+            struct Test<Enumeratable, EnableIfVoidT<HasMemberFunctionEnumerate<Enumeratable>::value>>
+            {
+                template <typename T>
+                static constexpr bool test(const IsPackedSizableImpl& tester, T&& e)
+                {
+                    return e.enumerate(tester);    // enumerate 関数が true を返した場合
+                }
+            };
+        };
+
+        struct PackedBitSizeImpl
         {
-            return sizeof(IntegralNotBool) * CHAR_BIT;
-        }
+        public:
+            using ResultType = size_t;
 
-        /// @brief 浮動小数点型
-        UDON_CONCEPT_FLOATING_POINT
-        inline constexpr size_t PackedBitSizeImpl(FloatingPoint)
-        {
-            return sizeof(Udon::float32_t) * CHAR_BIT;
-        }
+            template <typename... Args>
+            constexpr ResultType operator()(Args&&... args) const noexcept
+            {
+                return argsUnpack(std::forward<Args>(args)...);
+            }
 
-        /// @brief Capacity 関数から呼び出し可能な型
-        UDON_CONCEPT_CAPACITABLE
-        inline constexpr size_t PackedBitSizeImpl(PackedSizable&& obj)
-        {
-            return Udon::Traits::InvokeCapacity(std::forward<PackedSizable>(obj));
-        }
+        private:
+            /// @brief 可変長引数展開
+            template <typename Head, typename... Tail>
+            constexpr ResultType argsUnpack(Head&& head, Tail&&... tail) const noexcept
+            {
+                return Sizeof<RemoveReferenceT<Head>&&>::value(std::forward<Head>(head)) +
+                       argsUnpack(std::forward<Tail>(tail)...);
+            }
 
-        /// @brief 列挙型
-        UDON_CONCEPT_ENUM
-        inline constexpr size_t PackedBitSizeImpl(Enum)
-        {
-            return sizeof(typename std::underlying_type<Enum>::type) * CHAR_BIT;
-        }
+            /// @brief 可変長引数展開 (終端)
+            constexpr ResultType argsUnpack() const noexcept { return 0; }
 
-        /// @brief 組み込み配列型
-        UDON_CONCEPT_ARRAY
-        inline constexpr size_t PackedBitSizeImpl(const Array& obj)
-        {
-            // 各要素の容量 * 配列の要素数
-            return PackedBitSizeImpl(*obj) * std::extent<Array>::value;
-        }
+        private:
+            /// @brief T のビット数を取得する
+            /// @remark サイズを取得できないオブジェクトが渡された場合のコンパイルエラーを分かりやすくするために部分特殊化を用いる。
+            template <typename T, typename = void>
+            struct Sizeof   
+            {
+                static constexpr ResultType value(...) noexcept
+                {
+                    static_assert(AlwaysFalse<T>::value, "T is not sizable!! " __FUNCTION__);
+                    return 0;
+                }
+            };
 
-        /// @brief 可変長引数展開用
-        inline constexpr size_t PackedBitSizeArgsUnpack()
-        {
-            return 0;
-        }
+            /// @brief T が bool 型の場合の特殊化
+            template <typename Bool>
+            struct Sizeof<Bool, EnableIfVoidT<IsBool<RemoveReferenceT<Bool>>::value>>
+            {
+                static constexpr ResultType value(...) noexcept { return 1; }
+            };
 
-        /// @brief 可変長引数展開用
+            /// @brief T が算術型の場合の特殊化
+            template <typename Integral>
+            struct Sizeof<Integral, EnableIfVoidT<IsIntegralNotBool<RemoveReferenceT<Integral>>::value>>
+            {
+                static constexpr ResultType value(...) noexcept { return sizeof(Integral) * CHAR_BIT; }
+            };
+
+            /// @brief T が浮動小数点型の場合の特殊化
+            template <typename Float>
+            struct Sizeof<Float, EnableIfVoidT<IsFloatingPoint<RemoveReferenceT<Float>>::value>>
+            {
+                static constexpr ResultType value(...) noexcept { return sizeof(Udon::float32_t) * CHAR_BIT; }
+            };
+
+            /// @brief T が列挙型の場合の特殊化
+            template <typename Enum>
+            struct Sizeof<Enum, EnableIfVoidT<IsEnum<RemoveReferenceT<Enum>>::value>>
+            {
+                static constexpr ResultType value(...) noexcept { return sizeof(Enum) * CHAR_BIT; }
+            };
+
+            /// @brief T が配列型の場合の特殊化
+            template <typename Array>
+            struct Sizeof<Array, EnableIfVoidT<IsArray<RemoveReferenceT<Array>>::value>>
+            {
+                static constexpr ResultType value(Array&& array, const PackedBitSizeImpl&) noexcept
+                {
+                    return Sizeof<typename std::remove_extent<RemoveReferenceT<Array>>::type>::size(*array) *
+                           std::extent<RemoveReferenceT<Array>>::value;
+                }
+            };
+
+            /// @brief T が enumerate 関数を持つ場合の特殊化
+            template <typename Enumeratable>
+            struct Sizeof<Enumeratable, EnableIfVoidT<HasMemberFunctionEnumerate<RemoveReferenceT<Enumeratable>>::value>>
+            {
+                static constexpr ResultType value(Enumeratable&& e, const PackedBitSizeImpl& self) noexcept
+                {
+                    return e.enumerate(self);
+                }
+            };
+        };
+    }    // namespace Impl
+
+    namespace Traits
+    {
+        /// @brief T が シリアライズ後のサイズを取得可能か判定する
         template <typename T>
-        inline constexpr size_t PackedBitSizeArgsUnpack(T&& obj)
+        struct IsPackedSizable : std::integral_constant<bool, Impl::IsPackedSizableImpl{}(T{})>
         {
-            return Detail::PackedBitSizeImpl(std::forward<T>(obj));
+        };
+
+        /// @brief Tをシリアライズした際のバイト列の要素数を取得する
+        /// @tparam T シリアライズ対象の型
+        /// @details シリアライズ後のサイズは、チェックサムのサイズを含む
+        /// @details 実行時にサイズを取得する必要がある場合、この関数を使用する
+        template <typename T>
+        constexpr size_t PackedSize() noexcept
+        {
+            static_assert(IsPackedSizable<T>::value, "T is not packed sizable");    // T は "シリアライズ後のサイズを取得可能な型" である必要がある
+
+            return Udon::Ceil(Impl::PackedBitSizeImpl{}(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
         }
 
-        /// @brief 可変長引数展開用
-        template <typename Head, typename... Args>
-        inline constexpr size_t PackedBitSizeArgsUnpack(Head&& first, Args&&... args)
-        {
-            return PackedBitSizeArgsUnpack(std::forward<Head>(first)) + PackedBitSizeArgsUnpack(std::forward<Args>(args)...);
-        }
-
-    }    // namespace Detail
-
-    /// @brief シリアライズ後のビット数を求める
-    /// @tparam Args シリアライズ対象の型
-    /// @param args シリアライズ対象の値
-    /// @return シリアライズ後のビット数
-    template <typename... Args>
-    inline constexpr size_t PackedBitSize(Args&&... args)
-    {
-        return Detail::PackedBitSizeArgsUnpack(std::forward<Args>(args)...);
-    }
-
-    /// @brief チェックサムを含めたシリアライズ後のバイト数を求める
-    /// @tparam T シリアライズ対象の型
-    /// @return シリアライズ後のバイト数
-    template <typename T>
-    inline constexpr size_t PackedSize()
-    {
-        static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");
-        return Udon::Ceil(PackedBitSize(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
-    }
+    }    // namespace Traits
 
 }    // namespace Udon
