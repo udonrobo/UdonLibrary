@@ -95,8 +95,8 @@ namespace Udon
             };
 
             // enumerate
-            template <typename Enumeratable>
-            struct Test<Enumeratable, EnableIfVoidT<HasMemberFunctionEnumerate<Enumeratable>::value>>
+            template <typename Enumerable>
+            struct Test<Enumerable, EnableIfVoidT<HasMemberFunctionEnumerate<Enumerable>::value>>
             {
                 template <typename T>
                 static constexpr bool test(const IsPackedSizableImpl& tester, T&& e)
@@ -122,7 +122,7 @@ namespace Udon
             template <typename Head, typename... Tail>
             constexpr ResultType argsUnpack(Head&& head, Tail&&... tail) const noexcept
             {
-                return Sizeof<RemoveReferenceT<Head>&&>::value(std::forward<Head>(head)) +
+                return Sizeof<Head&&>::value(*this, std::forward<Head>(head)) +
                        argsUnpack(std::forward<Tail>(tail)...);
             }
 
@@ -131,13 +131,13 @@ namespace Udon
 
         private:
             /// @brief T のビット数を取得する
-            /// @remark サイズを取得できないオブジェクトが渡された場合のコンパイルエラーを分かりやすくするために部分特殊化を用いる。
+            /// @remark サイズを取得できないオブジェクトが渡された場合を検出し、コンパイルエラーを発生させるために部分特殊化を用いる
             template <typename T, typename = void>
-            struct Sizeof   
+            struct Sizeof
             {
                 static constexpr ResultType value(...) noexcept
                 {
-                    static_assert(AlwaysFalse<T>::value, "T is not sizable!! " __FUNCTION__);
+                    static_assert(AlwaysFalse<T>::value, "T is not sizable!");    // サイズを取得できないオブジェクトが渡された場合、コンパイルエラーを発生させる
                     return 0;
                 }
             };
@@ -174,18 +174,18 @@ namespace Udon
             template <typename Array>
             struct Sizeof<Array, EnableIfVoidT<IsArray<RemoveReferenceT<Array>>::value>>
             {
-                static constexpr ResultType value(Array&& array, const PackedBitSizeImpl&) noexcept
+                static constexpr ResultType value(const PackedBitSizeImpl&, Array&& array) noexcept
                 {
-                    return Sizeof<typename std::remove_extent<RemoveReferenceT<Array>>::type>::size(*array) *
-                           std::extent<RemoveReferenceT<Array>>::value;
+                    using ElementT = typename std::remove_extent<RemoveReferenceT<Array>>::type;
+                    return Sizeof<ElementT>::value(*array) * std::extent<RemoveReferenceT<Array>>::value;
                 }
             };
 
             /// @brief T が enumerate 関数を持つ場合の特殊化
-            template <typename Enumeratable>
-            struct Sizeof<Enumeratable, EnableIfVoidT<HasMemberFunctionEnumerate<RemoveReferenceT<Enumeratable>>::value>>
+            template <typename Enumerable>
+            struct Sizeof<Enumerable, EnableIfVoidT<HasMemberFunctionEnumerate<RemoveReferenceT<Enumerable>>::value>>
             {
-                static constexpr ResultType value(Enumeratable&& e, const PackedBitSizeImpl& self) noexcept
+                static constexpr ResultType value(const PackedBitSizeImpl& self, Enumerable&& e) noexcept
                 {
                     return e.enumerate(self);
                 }
@@ -201,18 +201,18 @@ namespace Udon
         {
         };
 
-        /// @brief Tをシリアライズした際のバイト列の要素数を取得する
-        /// @tparam T シリアライズ対象の型
-        /// @details シリアライズ後のサイズは、チェックサムのサイズを含む
-        /// @details 実行時にサイズを取得する必要がある場合、この関数を使用する
-        template <typename T>
-        constexpr size_t PackedSize() noexcept
-        {
-            static_assert(IsPackedSizable<T>::value, "T is not packed sizable");    // T は "シリアライズ後のサイズを取得可能な型" である必要がある
-
-            return Udon::Ceil(Impl::PackedBitSizeImpl{}(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
-        }
-
     }    // namespace Traits
+
+    /// @brief Tをシリアライズした際のバイト列の要素数を取得する
+    /// @tparam T シリアライズ対象の型
+    /// @details シリアライズ後のサイズは、チェックサムのサイズを含む
+    /// @details 実行時にサイズを取得する必要がある場合、この関数を使用する
+    template <typename T>
+    constexpr size_t PackedSize() noexcept
+    {
+        static_assert(Traits::IsPackedSizable<T>::value, "T is not packed sizable");    // T は "シリアライズ後のサイズを取得可能な型" である必要がある
+
+        return Udon::Ceil(Impl::PackedBitSizeImpl{}(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
+    }
 
 }    // namespace Udon

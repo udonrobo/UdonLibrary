@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Accessible.hpp"
-#include "PackedSizable.hpp"
 #include "HasMemberFunction.hpp"
 
 // bool 型
