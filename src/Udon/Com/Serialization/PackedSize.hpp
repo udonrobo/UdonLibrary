@@ -189,7 +189,7 @@ namespace Udon
     {
         /// @brief T が シリアライズ後のサイズを取得可能か判定する
         template <typename T>
-        struct IsPackedSizable : std::integral_constant<bool, Impl::IsPackedSizableImpl{}(T{})>
+        struct IsPackedSizable : std::integral_constant<bool, Impl::IsPackedSizableImpl{}(RemoveReferenceT<T>{})>
         {
         };
 
