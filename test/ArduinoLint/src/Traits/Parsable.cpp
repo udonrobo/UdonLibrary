@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include <Udon/Traits/ParsableMacro.hpp>
 
 /// @brief 列挙型
