@@ -62,13 +62,14 @@ namespace Udon
         {
         }
 
-        ArrayView(iterator m_data, const size_type count)
+        ArrayView(pointer m_data, const size_type count)
             : m_data(m_data)
             , m_size(count)
         {
         }
 
-        ArrayView(iterator first, iterator last)
+        template <typename InputIterator, typename = typename std::enable_if<std::is_convertible<typename std::iterator_traits<InputIterator>::iterator_category, std::input_iterator_tag>::value>::type>
+        ArrayView(InputIterator first, InputIterator last)
             : m_data(first)
             , m_size(std::distance(first, last))
         {
@@ -82,7 +83,7 @@ namespace Udon
         }
 
         template <typename Container, typename = decltype(std::declval<Container>().data(), std::declval<Container>().size())>
-        ArrayView(Container& container)
+        ArrayView(Container&& container)
 			: m_data(container.data())
 			, m_size(container.size())
 		{
