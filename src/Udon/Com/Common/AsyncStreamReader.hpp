@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Udon/Types/ArrayView.hpp>
+
 namespace Udon
 {
     /// @brief 非同期ストリーム読み取り
