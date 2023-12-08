@@ -55,17 +55,4 @@ namespace Udon
         return retval;
     }
 
-    /// @brief バイト列からオブジェクトを逆シリアル化します
-    /// @remark std::vector<uint8_t>を受け取ります。
-    /// @tparam T 逆シリアル化する型
-    /// @param buffer バイト列
-    /// @return 逆シリアル化されたオブジェクト
-    template <typename T>
-    Udon::Optional<T> Deserialize(const std::vector<uint8_t>& buffer)
-    {
-        static_assert(Traits::IsDeserializable<T>::value, "T must be deserializable type.");    // T は逆シリアライズ可能な型である必要があります。T クラス内で UDON_PACKABLE マクロにメンバ変数をセットすることで、逆シリアライズ可能になります。
-
-        return Deserialize<T>(ArrayView<const uint8_t>{ buffer });
-    }
-
 }    // namespace Udon

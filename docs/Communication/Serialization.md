@@ -124,31 +124,21 @@ bool 型は 1bit としてシリアライズします。
 
 オブジェクトをシリアライズします
 
-Serialize 関数は次のオーバーロードが定義されています。
+Serialize 関数は次のオーバーロードが定義されています。`buffer` を引数にとる関数はヒープ領域を使用しません。
 
 ```cpp
 std::vector<uint8_t> Serialize(const T& object);
 
-bool Serialize(const T& object, uint8_t* buffer, size_t size);
-
-bool Serialize(const T& object, uint8_t (&array)[N]);
+bool Serialize(const T& object, ArrayView<uint8_t> buffer);
 ```
 
 ### `Udon::Deserialize<T>(...)`
 
 バイト列をオブジェクトにデシリアライズします
 
-Deserialize 関数は次のオーバーロードが定義されています。
-
 ```cpp
 template <typename T>
-Udon::Optional<T> Deserialize(const std::vector<uint8_t>& buffer);
-
-template <typename T>
-Udon::Optional<T> Deserialize(const uint8_t* buffer, size_t size);
-
-template <typename T>
-Udon::Optional<T> Deserialize(const uint8_t (&array)[N]);
+Udon::Optional<T> Deserialize(ArrayView<const uint8_t> buffer);
 ```
 
 ### `Udon::CanDeserialize(...)`
@@ -156,11 +146,7 @@ Udon::Optional<T> Deserialize(const uint8_t (&array)[N]);
 デシリアライズできるかを確認します。(チェックサム確認)
 
 ```cpp
-bool CanDeserialize(const std::vector<uint8_t>& buffer);
-
-bool CanDeserialize(const uint8_t* buffer, size_t size);
-
-bool CanDeserialize(const uint8_t (&array)[N]);
+bool CanDeserialize(ArrayView<const uint8_t> buffer);
 ```
 
 ### `Udon::SerializedSize<T>()`
@@ -172,12 +158,14 @@ T 型オブジェクトシリアライズ後のバイト列のバイトサイズ
 ```cpp
 uint8_t buffer[Udon::SerializedSize<Vec2>()];
 ```
-<!-- 
-### `Udon::SerializedBitSize(...)`
 
-オブジェクトをシリアライズした際のバイト列のビットサイズを取得します。(bool 型 を 1bit としてカウントするため)
+### `Udon::FailableSerialize(...)`
 
-`Capacity` 関数を外部に定義するときに使用します。引数は可変長引数です。 -->
+バッファのチェックサム部分に、チェックサムエラーとなる値を書き込みます。
+
+```cpp
+void FailableSerialize(ArrayView<uint8_t> buffer);
+```
 
 ## サンプル
 
