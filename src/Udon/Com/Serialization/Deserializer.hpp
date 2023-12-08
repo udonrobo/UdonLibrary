@@ -9,189 +9,103 @@
 //
 //-------------------------------------------------------------------
 //
-//    デシリアライザ
-//
-//    シリアライズされたバイト列をデシリアライズしオブジェクトに復元します。
-//    このクラスはユーザーが直接使用することはありません。
-//    Udon::Unpack<Type>(byte[]) を使用してください。(Udon/Com/Serialization/Unpack.hpp)
+//    デシリアライズ
 //
 //-------------------------------------------------------------------
 
 #pragma once
 
-#include <Udon/Stl/EnableSTL.hpp>
-#include <vector>
-#include <limits.h>
-
-#include <Udon/Algorithm/CRC.hpp>
-#include <Udon/Algorithm/Bit.hpp>
-#include <Udon/Stl/Optional.hpp>
-#include <Udon/Types/Float.hpp>
-#include <Udon/Traits/Accessible.hpp>
-#include <Udon/Common/Platform.hpp>
+#include "DeserializerImpl.hpp"
 
 namespace Udon
 {
-
-    class Deserializer
+    /// @brief 逆シリアル化可能かどうかを判定します
+    /// @param buffer バイト列
+    /// @return 逆シリアル化可能かどうか
+    inline bool CanDeserialize(const std::vector<uint8_t>& buffer)
     {
+        const auto checksum = Udon::CRC8(buffer.data(), buffer.size() - Udon::CRC8_SIZE);
+        return buffer.back() == checksum;
+    }
 
-        size_t  popIndex     = 0;    // 次に抽出するインデックス(バッファの先端からのオオフセット)
-        uint8_t boolCount    = 0;    // bool の抽出回数
-        size_t  boolPopIndex = 0;    // bool を抽出中であるインデックス(バッファの先端からのオオフセット)
+    /// @brief 逆シリアル化可能かどうかを判定します
+    /// @param buffer バイト列
+    /// @param size バイト列のサイズ
+    /// @return 逆シリアル化可能かどうか
+    inline bool CanDeserialize(const uint8_t* buffer, size_t size)
+    {
+        const auto checksum = Udon::CRC8(buffer, size - Udon::CRC8_SIZE);
+        return buffer[size - 1] == checksum;
+    }
 
-        std::vector<uint8_t> buffer;
+    /// @brief 逆シリアル化可能かどうかを判定します
+    /// @remark 配列の参照を引数にとります
+    /// @tparam N バイト配列の要素数
+    /// @param array バイト列
+    /// @return 逆シリアル化可能かどうか
+    template <size_t N>
+    inline bool CanDeserialize(const uint8_t (&array)[N])
+    {
+        return CanDeserialize(array, N);
+    }
 
-        bool isChecksumSuccess;
+    /// @brief バイト列からオブジェクトを逆シリアル化します
+    /// @remark std::vector<uint8_t>を受け取ります。
+    /// @tparam T 逆シリアル化する型
+    /// @param buffer バイト列
+    /// @return 逆シリアル化されたオブジェクト
+    template <typename T>
+    Udon::Optional<T> Deserialize(const std::vector<uint8_t>& buffer)
+    {
+        static_assert(Traits::IsDeserializable<T>::value, "T must be deserializable type.");    // T は逆シリアライズ可能な型である必要があります。T クラス内で UDON_PACKABLE マクロにメンバ変数をセットすることで、逆シリアライズ可能になります。
 
-    public:
-        /// @brief コンストラクタ
-        /// @param buffer デシリアライするバイト列
-        Deserializer(const std::vector<uint8_t>& buf)
-            : buffer(buf)
+        if (buffer.size() < SerializedSize<T>())
         {
+            return Udon::nullopt;
+        }
 
-            // チャックサム確認
-            const auto checksum = Udon::CRC8(buffer.cbegin(), buffer.cend() - Udon::CRC8_SIZE);
-            isChecksumSuccess   = buffer.back() == checksum;
+        Impl::Deserializer deserializer(buffer);
 
-            if (not isChecksumSuccess)
-            {
-                return;
-            }
-            
-#if UDON_PLATFORM_ENDIANNESS == UDON_PLATFORM_BIG_ENDIAN
-            std::reverse(buffer.begin(), buffer.end() - Udon::CRC8_SIZE);
+        if (deserializer)
+        {
+            T retval;
+            deserializer(retval);
+            return retval;
+        }
+        else
+        {
+            return Udon::nullopt;
+        }
+    }
+
+    /// @brief バイト列からオブジェクトを逆シリアル化します
+    /// @remark 配列のポインタ、サイズを受け取ります。
+    /// @tparam T 逆シリアル化する型
+    /// @param buffer バイト列
+    /// @param size バイト列のサイズ
+    /// @return 逆シリアル化されたオブジェクト
+    template <typename T>
+    Udon::Optional<T> Deserialize(ArrayView<const uint8_t> buffer)
+    {
+        static_assert(Traits::IsDeserializable<T>::value, "T must be deserializable type.");    // T は逆シリアライズ可能な型である必要があります。T クラス内で UDON_PACKABLE マクロにメンバ変数をセットすることで、逆シリアライズ可能になります。
+
+#ifdef __AVR_ATmega328P__
+        // todo:
+        // Arduino nano さん、なぜかイテレーターベースコピーできない
+        // UdonArduinoSTLで使用しているEASTL内の vector::allocate() で処理落ち
+        // std::vector<uint8_t> v(buffer, buffer + size);
+        std::vector<uint8_t> v;
+        v.reserve(buffer.size());
+        for (size_t i = 0; i < buffer.size(); ++i)
+        {
+            v.push_back(buffer.at(i));
+        }
+        // v.resize(size);
+        // std::copy(buffer, buffer + size, v.begin());
+        return Deserialize<T>(v);
+#else
+        return Deserialize<T>(std::vector<uint8_t>(buffer.cbegin(), buffer.cend()));
 #endif
-        }
-
-        /// @brief チェックサムが正しいか
-        explicit operator bool() const
-        {
-            return isChecksumSuccess;
-        }
-
-        /// @brief デシリアライズ
-        template <typename... Args>
-        void operator()(Args&... args)
-        {
-            argumentUnpack(args...);
-        }
-
-    private:
-        /// @brief bool型
-        UDON_CONCEPT_BOOL
-        inline void deserialize(Bool& rhs)
-        {
-            rhs = deserializeBool();
-        }
-
-        /// @brief 整数型
-        UDON_CONCEPT_INTEGRAL_NOT_BOOL
-        inline void deserialize(IntegralNotBool& rhs)
-        {
-            rhs = deserializeArithmetic<IntegralNotBool>();
-        }
-
-        /// @brief 浮動小数点型
-        UDON_CONCEPT_FLOATING_POINT
-        inline void deserialize(FloatingPoint& rhs)
-        {
-            rhs = deserializeArithmetic<Udon::float32_t>();
-        }
-
-        /// @brief 列挙型
-        UDON_CONCEPT_ENUM
-            inline void deserialize(Enum& rhs)
-        {
-			rhs = static_cast<Enum>(deserializeArithmetic<typename std::underlying_type<Enum>::type>());
-		}
-
-        /// @brief 配列型
-        UDON_CONCEPT_ARRAY
-        inline void deserialize(Array& rhs)
-        {
-            for (auto& element : rhs)
-            {
-                deserialize(element);
-            }
-        }
-
-        /// @brief メンバ変数列挙用の関数が定義されている型
-        UDON_CONCEPT_ACCESSIBLE
-        inline void deserialize(Accessible& rhs)
-        {
-            Udon::Traits::InvokeAccessor(*this, rhs);
-        }
-
-        /// @brief 可変長テンプレート引数
-        template <typename Head, typename... Tails>
-        inline void argumentUnpack(Head& head, Tails&... tails)
-        {
-            argumentUnpack(head);
-            argumentUnpack(tails...);
-        }
-
-        /// @brief 可変長引数展開
-        template <typename T>
-        inline void argumentUnpack(T& head)
-        {
-            deserialize(head);
-        }
-
-        /// @brief 可変長引数展開の終端
-        inline void argumentUnpack()
-        {
-        }
-
-        /// @brief アトミック (整数, 浮動小数点) 値のデシリアライズ
-        template <class T>
-        T deserializeArithmetic()
-        {
-            T unpacked;
-
-            constexpr auto size = sizeof(T);
-
-            // 逆シリアル化されたオブジェクトをバッファから抽出
-#if UDON_PLATFORM_ENDIANNESS == UDON_PLATFORM_LITTLE_ENDIAN
-
-            std::copy(
-                buffer.cbegin() + popIndex,
-                buffer.cbegin() + popIndex + size,
-                reinterpret_cast<uint8_t*>(&unpacked));
-
-#elif UDON_PLATFORM_ENDIANNESS == UDON_PLATFORM_BIG_ENDIAN
-
-            std::copy(
-                buffer.crbegin() + popIndex,
-                buffer.crbegin() + popIndex + size,
-                reinterpret_cast<uint8_t*>(&retval));
-
-#endif
-
-            // 抽出したオブジェクトのバイト数分インデックスを進める
-            popIndex += size;
-
-            return unpacked;
-        }
-
-        /// @brief bool値の逆シリアル化
-        bool deserializeBool()
-        {
-            if (boolCount == 0)
-            {
-                boolPopIndex = popIndex++;
-            }
-
-            const auto unpacked = Udon::BitRead(buffer.at(boolPopIndex), boolCount);
-
-            if (++boolCount >= CHAR_BIT)
-            {
-                boolCount = 0;
-            }
-
-            return unpacked;
-        }
-    };
+    }
 
 }    // namespace Udon

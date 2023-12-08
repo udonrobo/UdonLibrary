@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Accessible.hpp"
-#include "PackedSizable.hpp"
 #include "HasMemberFunction.hpp"
 
 // bool 型
@@ -42,7 +41,7 @@
 
 // キャパシティを持つ型
 #define UDON_CONCEPT_CAPACITABLE \
-    template <typename PackedSizable, typename std::enable_if<Udon::Traits::PackedSizable<PackedSizable>::value, std::nullptr_t>::type = nullptr>
+    template <typename SerializedSizable, typename std::enable_if<Udon::Traits::SerializedSizable<SerializedSizable>::value, std::nullptr_t>::type = nullptr>
 
 // show() 関数を持つ型
 #define UDON_CONCEPT_SHOWABLE \

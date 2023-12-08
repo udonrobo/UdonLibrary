@@ -1,6 +1,4 @@
-#include <Udon/Traits/HasMemberFunctionBegin.hpp>
-#include <Udon/Traits/HasMemberFunctionShow.hpp>
-#include <Udon/Traits/HasMemberFunctionUpdate.hpp>
+#include <Udon/Traits/HasMemberFunction.hpp>
 
 struct A
 {

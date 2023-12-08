@@ -36,7 +36,7 @@ namespace Udon
         using MessageType = Message;
 
         /// @brief 受信バッファサイズ
-        static constexpr size_t Size = Udon::PackedSize<MessageType>();
+        static constexpr size_t Size = Udon::SerializedSize<MessageType>();
 
         /// @brief コンストラクタ
         /// @param bus I2cバス
@@ -52,7 +52,7 @@ namespace Udon
         /// @param message 送信するメッセージ
         void setMessage(const MessageType& message)
         {
-            Udon::Pack(message, buffer);
+            Udon::Serialize(message, buffer);
             bus.beginTransmission(address);
             bus.write(buffer, Size);
             bus.endTransmission();
@@ -62,7 +62,7 @@ namespace Udon
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
-            if (const auto message = Udon::Unpack<MessageType>(buffer))
+            if (const auto message = Udon::Deserialize<MessageType>(buffer))
             {
                 Udon::Show(*message, gap);
             }

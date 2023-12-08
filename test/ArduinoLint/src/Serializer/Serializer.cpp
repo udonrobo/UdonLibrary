@@ -15,9 +15,9 @@ inline void test()
 {
     Hoge hoge { 1, 2, 3 };
 
-    const auto packed = Udon::Pack(hoge);
+    const auto packed = Udon::Serialize(hoge);
 
-    const auto unpacked = Udon::Unpack<Hoge>(packed);
+    const auto unpacked = Udon::Deserialize<Hoge>(packed);
 
     (void)unpacked;
 }

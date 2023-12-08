@@ -36,7 +36,7 @@ namespace Udon
         using MessageType = Message;
 
         /// @brief 受信バッファサイズ
-        static constexpr size_t Size = Udon::PackedSize<Message>();
+        static constexpr size_t Size = Udon::SerializedSize<Message>();
 
         /// @brief コンストラクタ
         /// @param bus I2cバス
@@ -67,7 +67,7 @@ namespace Udon
         {
             if (bus)
             {
-                return Udon::Unpack<Message>(buffer);
+                return Udon::Deserialize<Message>(buffer);
             }
             else
             {

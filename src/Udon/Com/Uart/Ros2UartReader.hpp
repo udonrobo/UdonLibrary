@@ -9,7 +9,7 @@ namespace Udon
     template <typename Message>
     class Ros2UartReader
     {
-        static constexpr size_t Size = Udon::PackedSize<Message>();
+        static constexpr size_t Size = Udon::SerializedSize<Message>();
 
         serial::Serial& serial;
 
@@ -39,7 +39,7 @@ namespace Udon
 
         Udon::Optional<Message> getMessage() const
         {
-            return Udon::Unpack<Message>(buffer);
+            return Udon::Deserialize<Message>(buffer);
         }
 
         void show(char gap = '\t') const

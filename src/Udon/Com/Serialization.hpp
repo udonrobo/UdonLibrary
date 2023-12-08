@@ -16,8 +16,8 @@
 
 #pragma once
 
-#include "Serialization/PackedSize.hpp"
-#include "Serialization/Pack.hpp"
-#include "Serialization/Unpack.hpp"
+#include "Serialization/SerializedSize.hpp"
+#include "Serialization/Serializer.hpp"
+#include "Serialization/Deserializer.hpp"
 
 #include <Udon/Traits/ParsableMacro.hpp>

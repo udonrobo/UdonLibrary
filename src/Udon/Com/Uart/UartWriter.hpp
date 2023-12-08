@@ -44,7 +44,7 @@ namespace Udon
         /// @brief 更新
         void update()
         {
-            for (auto&& it : Udon::Pack(message))
+            for (auto&& it : Udon::Serialize(message))
             {
                 uart.write(it);
             }
@@ -68,7 +68,7 @@ namespace Udon
         /// @param gap 区切り文字 (default: ' ')
         void showRaw(char gap = ' ') const
         {
-            for (auto&& it : Udon::Pack(message))
+            for (auto&& it : Udon::Serialize(message))
             {
                 Serial.print(it);
                 Serial.print(gap);

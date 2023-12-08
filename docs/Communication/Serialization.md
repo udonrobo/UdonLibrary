@@ -34,7 +34,7 @@
 
 シリアライズしたいオブジェクトのデータ構造を構造体、クラスを用いて定義します。`UDON_PARSABLE` マクロにメンバ変数を登録することで、メンバ変数を走査できるようになり、シリアライズできるようになります。
 
-`Udon::Pack(object)` の引数にオブジェクトを渡すことでバイト列 `std::vector<uint8_t>` が返されます。
+`Udon::Serialize(object)` の引数にオブジェクトを渡すことでバイト列 `std::vector<uint8_t>` が返されます。
 
 ```cpp
 struct Vec2
@@ -49,13 +49,13 @@ void setup() {}
 void loop()
 {
     Vec2 v{ 2.5, 3.4 };
-    const std::vector<uint8_t> packed = Udon::Pack(v);
+    const std::vector<uint8_t> packed = Udon::Serialize(v);
 }
 ```
 
 ## デシリアライズ
 
-バイト列をオブジェクトに復元するには `Udon::Unpack<T>(...)` を使用します。 `Udon::Unpack` はデシリアライズされたオブジェクトを `Udon::Optional` でラップして返します。
+バイト列をオブジェクトに復元するには `Udon::Deserialize<T>(...)` を使用します。 `Udon::Deserialize` はデシリアライズされたオブジェクトを `Udon::Optional` でラップして返します。
 
 `Optional` 型とは値とエラー値を持つ型で、`Optional::operator bool()` を呼び出すことで次のように if 文でエラー判定可能です。
 
@@ -66,14 +66,14 @@ void loop()
 void loop()
 {
     // packed にはシリアライズされたバイト列が入っている
-    if (const Udon::Optional<Vec2> unpacked = Udon::Unpack<Vec2>(packed))
+    if (const Udon::Optional<Vec2> unpacked = Udon::Deserialize<Vec2>(packed))
     {
         Serial.print(unpacked->x);  Serial.print('\t');
         Serial.print(unpacked->y);  Serial.print('\n');
     }
     else
     {
-        Serial.println("Unpack failed!");  // データ破損
+        Serial.println("Deserialize failed!");  // データ破損
     }
 }
 ```
@@ -95,7 +95,7 @@ struct Vec2
 // シリアライズ後のビット数をコンパイル時に取得する関数
 constexpr size_t Capacity(const Vec2& rhs)
 {
-    return Udon::PackedBitSize(rhs.x, rhs.y);
+    return Udon::SerializedBitSize(rhs.x, rhs.y);
 }
 
 // シリアライザ、デシリアライザが使用するメンバ変数解析用関数
@@ -120,60 +120,60 @@ bool 型は 1bit としてシリアライズします。
 
 ## API
 
-### `Udon::Pack(...)`
+### `Udon::Serialize(...)`
 
 オブジェクトをシリアライズします
 
-Pack 関数は次のオーバーロードが定義されています。
+Serialize 関数は次のオーバーロードが定義されています。
 
 ```cpp
-std::vector<uint8_t> Pack(const T& object);
+std::vector<uint8_t> Serialize(const T& object);
 
-bool Pack(const T& object, uint8_t* buffer, size_t size);
+bool Serialize(const T& object, uint8_t* buffer, size_t size);
 
-bool Pack(const T& object, uint8_t (&array)[N]);
+bool Serialize(const T& object, uint8_t (&array)[N]);
 ```
 
-### `Udon::Unpack<T>(...)`
+### `Udon::Deserialize<T>(...)`
 
 バイト列をオブジェクトにデシリアライズします
 
-Unpack 関数は次のオーバーロードが定義されています。
+Deserialize 関数は次のオーバーロードが定義されています。
 
 ```cpp
 template <typename T>
-Udon::Optional<T> Unpack(const std::vector<uint8_t>& buffer);
+Udon::Optional<T> Deserialize(const std::vector<uint8_t>& buffer);
 
 template <typename T>
-Udon::Optional<T> Unpack(const uint8_t* buffer, size_t size);
+Udon::Optional<T> Deserialize(const uint8_t* buffer, size_t size);
 
 template <typename T>
-Udon::Optional<T> Unpack(const uint8_t (&array)[N]);
+Udon::Optional<T> Deserialize(const uint8_t (&array)[N]);
 ```
 
-### `Udon::CanUnpack(...)`
+### `Udon::CanDeserialize(...)`
 
 デシリアライズできるかを確認します。(チェックサム確認)
 
 ```cpp
-bool CanUnpack(const std::vector<uint8_t>& buffer);
+bool CanDeserialize(const std::vector<uint8_t>& buffer);
 
-bool CanUnpack(const uint8_t* buffer, size_t size);
+bool CanDeserialize(const uint8_t* buffer, size_t size);
 
-bool CanUnpack(const uint8_t (&array)[N]);
+bool CanDeserialize(const uint8_t (&array)[N]);
 ```
 
-### `Udon::PackedSize<T>()`
+### `Udon::SerializedSize<T>()`
 
 T 型オブジェクトシリアライズ後のバイト列のバイトサイズを取得します。
 
 コンパイル時にサイズを取得可能なため、バッファの大きさを静的に指定するときなどにも使えます。
 
 ```cpp
-uint8_t buffer[Udon::PackedSize<Vec2>()];
+uint8_t buffer[Udon::SerializedSize<Vec2>()];
 ```
 <!-- 
-### `Udon::PackedBitSize(...)`
+### `Udon::SerializedBitSize(...)`
 
 オブジェクトをシリアライズした際のバイト列のビットサイズを取得します。(bool 型 を 1bit としてカウントするため)
 
@@ -189,9 +189,9 @@ uint8_t buffer[Udon::PackedSize<Vec2>()];
 
 int main()
 {
-	const auto packed = Udon::Pack(1000);
+	const auto packed = Udon::Serialize(1000);
 
-	if (const auto unpacked = Udon::Unpack<int>(packed))
+	if (const auto unpacked = Udon::Deserialize<int>(packed))
 	{
 		std::cout << *unpacked << std::endl;
 	}
@@ -224,9 +224,9 @@ int main()
 {
 	const Language lang = Language::Cpp;
 
-	const auto packed = Udon::Pack(lang);
+	const auto packed = Udon::Serialize(lang);
 
-	if (const auto unpacked = Udon::Unpack<Language>(packed))
+	if (const auto unpacked = Udon::Deserialize<Language>(packed))
 	{
 		switch (*unpacked)
 		{
@@ -264,9 +264,9 @@ int main()
 {
 	const Vec2 vector{ 1.0, 2.0 };
 
-	const auto packed = Udon::Pack(vector);
+	const auto packed = Udon::Serialize(vector);
 
-	if (const auto unpacked = Udon::Unpack<Vec2>(packed))
+	if (const auto unpacked = Udon::Deserialize<Vec2>(packed))
 	{
 		std::cout
             << unpacked->x << ", "
@@ -299,9 +299,9 @@ int main()
 {
 	Array array{ { 1, 2, 3, 4, 5 } };
 
-	const auto packed = Udon::Pack(array);
+	const auto packed = Udon::Serialize(array);
 
-	if (const auto unpacked = Udon::Unpack<Array>(packed))
+	if (const auto unpacked = Udon::Deserialize<Array>(packed))
 	{
 		for (const auto& e : unpacked->array)
 		{
@@ -347,9 +347,9 @@ int main()
 {
 	const Vec2 vector{ { 1.0 }, { 2.0 } };
 
-	const auto packed = Udon::Pack(vector);
+	const auto packed = Udon::Serialize(vector);
 
-	if (const auto unpacked = Udon::Unpack<Vec2>(packed))
+	if (const auto unpacked = Udon::Deserialize<Vec2>(packed))
 	{
 		std::cout
 			<< unpacked->x.value << ", "
@@ -374,11 +374,11 @@ int main()
 
 int main()
 {
-	auto packed = Udon::Pack(1000);
+	auto packed = Udon::Serialize(1000);
 
 	packed.at(1) = 0x00;  // データ破損
 
-	if (const auto unpacked = Udon::Unpack<int>(packed))
+	if (const auto unpacked = Udon::Deserialize<int>(packed))
 	{
 		std::cout << *unpacked << std::endl;
 	}

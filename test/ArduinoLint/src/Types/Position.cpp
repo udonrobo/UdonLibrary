@@ -74,8 +74,8 @@ inline void test()
     // シリアライズ
     {
         Udon::Pos a;
-        static_assert(Udon::PackedSize<Udon::Pos>() == 12 + 1, "");
-        const auto b = Udon::Pack(a);
-        (void)Udon::Unpack<Udon::Pos>(b);
+        static_assert(Udon::SerializedSize<Udon::Pos>() == 12 + 1, "");
+        const auto b = Udon::Serialize(a);
+        (void)Udon::Deserialize<Udon::Pos>(b);
     }
 }

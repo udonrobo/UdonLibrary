@@ -212,9 +212,6 @@
 // メンバ変数列挙可能か
 #include "Udon/Traits/Accessible.hpp"
 
-// シリアライズ後のサイズ取得を可能か
-#include "Udon/Traits/PackedSizable.hpp"
-
 // std::void_t
 #include "Udon/Traits/VoidT.hpp"
 

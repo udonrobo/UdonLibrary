@@ -2,7 +2,7 @@
 
 #include "Parsable.hpp"
 
-#include <Udon/Com/Serialization/PackedSize.hpp>
+#include <Udon/Com/Serialization/SerializedSize.hpp>
 
 /// @brief メンバ変数のパースを可能にする
 /// @param ... パース可能なメンバー変数(,区切り)
@@ -25,17 +25,24 @@
 ///   - template <typename Acc> void accessor(Acc& acc)
 ///     - メンバ変数の走査用
 ///
-#define UDON_PARSABLE(...)                                  \
-    constexpr bool parsable() const                         \
-    {                                                       \
-        return Udon::Traits::IsMemberParsable(__VA_ARGS__); \
-    }                                                       \
-    constexpr size_t packedBitSize() const                  \
-    {                                                       \
-        return Udon::PackedBitSize(__VA_ARGS__);            \
-    }                                                       \
-    template <typename Acc>                                 \
-    void accessor(Acc& acc)                                 \
-    {                                                       \
-        acc(__VA_ARGS__);                                   \
+#define UDON_PARSABLE(...)                                                                  \
+    constexpr bool parsable() const                                                         \
+    {                                                                                       \
+        return Udon::Traits::IsMemberParsable(__VA_ARGS__);                                 \
+    }                                                                                       \
+    constexpr size_t packedBitSize() const                                                  \
+    {                                                                                       \
+        return true;                                           \
+    }                                                                                       \
+    template <typename Acc>                                                                 \
+    void accessor(Acc& acc)                                                                 \
+    {                                                                                       \
+        acc(__VA_ARGS__);                                                                   \
+    }                                                                                       \
+    template <typename Enumerator>                                                          \
+    constexpr typename Enumerator::ResultType enumerate(const Enumerator& enumerator) const \
+    {                                                                                       \
+        return enumerator(__VA_ARGS__);                                                     \
     }
+
+#define UDON_ENUMERABLE(...) UDON_PARSABLE(__VA_ARGS__)
