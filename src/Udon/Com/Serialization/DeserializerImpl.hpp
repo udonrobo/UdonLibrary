@@ -137,7 +137,7 @@ namespace Udon
 #if UDON_PLATFORM_ENDIANNESS == UDON_PLATFORM_LITTLE_ENDIAN
 
                 // buffer をオブジェクトとして解釈
-                std::memcpy(
+                memcpy(
                     std::addressof(object),
                     buffer.data() + popIndex,
                     size);
@@ -152,7 +152,7 @@ namespace Udon
                     reversedBuffer);
 
                 // reversedBuffer をオブジェクトとして解釈
-                std::memcpy(
+                memcpy(
                     std::addressof(object),
                     reversedBuffer,
                     size);
