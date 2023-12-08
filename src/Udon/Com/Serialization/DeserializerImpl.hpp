@@ -29,6 +29,7 @@
 #include <Udon/Types/Float.hpp>
 #include <Udon/Traits/Typedef.hpp>
 #include <Udon/Common/Platform.hpp>
+#include <Udon/Types/ArrayView.hpp>
 
 namespace Udon
 {
@@ -42,37 +43,16 @@ namespace Udon
             uint8_t boolCount    = 0;    // bool の抽出回数
             size_t  boolPopIndex = 0;    // bool を抽出中であるインデックス(バッファの先端からのオフセット)
 
-            std::vector<uint8_t> buffer;
-
-            bool isChecksumSuccess;
+            ArrayView<const uint8_t> buffer;    // デシリアライズするバイト列への参照
 
         public:
             using ResultType = void;
 
             /// @brief コンストラクタ
             /// @param buffer デシリアライするバイト列
-            Deserializer(const std::vector<uint8_t>& buf)
-                : buffer(buf)
+            Deserializer(ArrayView<const uint8_t> buffer)
+                : buffer(buffer)
             {
-
-                // チャックサム確認
-                const auto checksum = Udon::CRC8(buffer.cbegin(), buffer.cend() - Udon::CRC8_SIZE);
-                isChecksumSuccess   = buffer.back() == checksum;
-
-                if (not isChecksumSuccess)
-                {
-                    return;
-                }
-
-#if UDON_PLATFORM_ENDIANNESS == UDON_PLATFORM_BIG_ENDIAN
-                std::reverse(buffer.begin(), buffer.end() - Udon::CRC8_SIZE);
-#endif
-            }
-
-            /// @brief チェックサムが正しいか
-            explicit operator bool() const
-            {
-                return isChecksumSuccess;
             }
 
             /// @brief デシリアライズ
@@ -144,35 +124,45 @@ namespace Udon
                 rhs.enumerate(*this);
             }
 
-            /// @brief アトミック (整数, 浮動小数点) 値として逆シリアル化
-            template <typename T>
-            T popArithmetic()
+            /// @brief 算術型 (整数, 浮動小数点) として逆シリアル化
+            template <typename Arithmetic>
+            Arithmetic popArithmetic()
             {
-                T unpacked;
+                Arithmetic object;
 
-                constexpr auto size = sizeof(T);
+                constexpr auto size = sizeof(Arithmetic);
 
-                // 逆シリアル化されたオブジェクトをバッファから抽出
+                // 逆シリアル化されたオブジェクトをバイト列から抽出
+                // リトルエンディアン環境でのバイト列の並びを順とする
 #if UDON_PLATFORM_ENDIANNESS == UDON_PLATFORM_LITTLE_ENDIAN
 
-                std::copy(
-                    buffer.cbegin() + popIndex,
-                    buffer.cbegin() + popIndex + size,
-                    reinterpret_cast<uint8_t*>(&unpacked));
+                // buffer をオブジェクトとして解釈
+                std::memcpy(
+                    std::addressof(object),
+                    buffer.data() + popIndex,
+                    size);
 
 #elif UDON_PLATFORM_ENDIANNESS == UDON_PLATFORM_BIG_ENDIAN
 
-                std::copy(
-                    buffer.crbegin() + popIndex,
-                    buffer.crbegin() + popIndex + size,
-                    reinterpret_cast<uint8_t*>(&retval));
+                // リトルエンディアンが基準なので、逆順のバイト列を作成
+                uint8_t reversedBuffer[size];
+                std::reverse_copy(
+                    buffer.cbegin() + popIndex,
+                    buffer.cbegin() + popIndex + size,
+                    reversedBuffer);
+
+                // reversedBuffer をオブジェクトとして解釈
+                std::memcpy(
+                    std::addressof(object),
+                    reversedBuffer,
+                    size);
 
 #endif
 
                 // 抽出したオブジェクトのバイト数分インデックスを進める
                 popIndex += size;
 
-                return unpacked;
+                return object;
             }
 
             /// @brief bool値 (1bit) として逆シリアル化

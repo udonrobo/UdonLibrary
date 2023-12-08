@@ -54,7 +54,7 @@ namespace Udon
             , m_size()
         {
         }
-      
+
         template <size_t N>
         ArrayView(value_type (&array)[N])
             : m_data(array)
@@ -62,24 +62,31 @@ namespace Udon
         {
         }
 
-        ArrayView(const char* string)
-            : m_data(string)
-            , m_size(strlen(string))
-        {
-        }
-
-        ArrayView(pointer m_data, const size_type m_size)
+        ArrayView(iterator m_data, const size_type count)
             : m_data(m_data)
-            , m_size(m_size)
+            , m_size(count)
         {
         }
 
-        template <typename InputIterator, typename = typename std::enable_if<std::is_convertible<typename std::iterator_traits<InputIterator>::iterator_category, std::input_iterator_tag>::value>::type>
-        ArrayView(InputIterator first, InputIterator last)
+        ArrayView(iterator first, iterator last)
             : m_data(first)
             , m_size(std::distance(first, last))
         {
         }
+
+        template <typename Other>
+        ArrayView(const ArrayView<Other>& other)
+            : m_data(other.data())
+            , m_size(other.size())
+        {
+        }
+
+        template <typename Container, typename = decltype(std::declval<Container>().data(), std::declval<Container>().size())>
+        ArrayView(Container& container)
+			: m_data(container.data())
+			, m_size(container.size())
+		{
+		}
 
         explicit operator bool() const noexcept
         {
@@ -153,6 +160,23 @@ namespace Udon
                 v = value;
             }
         }
+
+        /// @brief 先頭から指定要素削除したビューを作成する。
+        /// @param count 削除する要素数
+        /// @return
+        ArrayView removeFrontView(size_type count) const
+        {
+            return {
+                std::next(cbegin(), count),
+                m_size - count
+            };
+        }
+
+        /// @brief 末尾から指定要素削除したビューを作成する。
+        /// @param count 削除する要素数
+        /// @return 作成したビュー
+        ArrayView removeBackView(size_type count) { return { begin(), m_size - count }; }
+        ArrayView removeBackView(size_type count) const { return { begin(), m_size - count }; }
 
         /// @brief 指定された範囲からビューを作成する。
         /// @param beginIndex 開始位置

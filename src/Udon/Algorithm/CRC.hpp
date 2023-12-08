@@ -17,31 +17,21 @@
 
 #pragma once
 
-#include <Udon/Stl/EnableSTL.hpp>
-#include <type_traits>
-#include <iterator>
-#include <stddef.h>
-#include <stdint.h>
+#include <Udon/Types/ArrayView.hpp>
 
 namespace Udon
 {
     constexpr size_t CRC8_SIZE = 1;
 
     /// @brief CRC-8 checksum
-    /// @tparam Iterator
-    /// @param begin     begin iterator of source byte string
-    /// @param end       end iterator of source byte string
-    /// @return          checksum
-    template <typename Iterator>
-    inline uint8_t CRC8(Iterator begin, Iterator end)
+    /// @param buffer チェックサムを計算するバッファ
+    inline uint8_t CRC8(ArrayView<const uint8_t> buffer)
     {
-        static_assert(std::is_same<typename std::iterator_traits<Iterator>::value_type, uint8_t>::value, "Iterator type must be uint8_t.");
-
         uint8_t crc = 0xFF;    // initial value
 
-        for (auto it = begin; it != end; ++it)
+        for (const auto& it : buffer)
         {
-            crc ^= *it;
+            crc ^= it;
 
             for (uint8_t bit = 0; bit < 8 /* CHAR_BIT */; ++bit)
             {
@@ -57,15 +47,6 @@ namespace Udon
         }
 
         return crc ^ 0xFF;    // final XOR
-    }
-
-    /// @brief CRC-8 checksum
-    /// @param p         pointer of source byte string
-    /// @param length    length of source byte string
-    /// @return          checksum
-    inline uint8_t CRC8(const uint8_t* p, size_t length)
-    {
-        return CRC8(p, p + length);
     }
 
 }    // namespace Udon
