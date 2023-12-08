@@ -4,14 +4,13 @@
 
 香川高専高松機械システム研究部 C++ ライブラリ
 
-## Install
+## 追加方法
 
-- [git](./docs/Install/git.md)
 - [Arduino IDE](./docs/Install/ArduinoIDE.md)
 - [Platform IO](./docs/Install/PlatformIO.md)
 - [Visual Studio](./docs/Install/VisualStudio.md)
 
-## Usage
+## 使用方法
 
 ### スタート
 
