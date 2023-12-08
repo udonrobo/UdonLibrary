@@ -312,7 +312,7 @@ namespace Udon
 
             static_assert(Traits::IsPrintable<ArduinoStream, Args...>::value, "T is not printable");
             ArduinoStream                stream;
-            Impl::Printer<ArduinoStream> printer{ stream, delimiterEnable };
+            Impl::Printer<ArduinoStream> printer{ stream, enableDelimiter };
 
 #elif defined(SIV3D_INCLUDED)
 
@@ -323,7 +323,7 @@ namespace Udon
 #elif UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE
 
             static_assert(Traits::IsPrintable<std::ostream, Args...>::value, "T is not printable");
-            Impl::Printer<std::ostream> printer{ std::cout, delimiterEnable };
+            Impl::Printer<std::ostream> printer{ std::cout, enableDelimiter };
 
 #endif
 
