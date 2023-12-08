@@ -30,7 +30,7 @@ namespace Udon
     class Im920Reader
     {
     public:
-        static constexpr size_t Size = Udon::PackedSize<Message>();
+        static constexpr size_t Size = Udon::SerializedSize<Message>();
 
         using MessageType = Message;
 

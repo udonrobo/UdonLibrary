@@ -37,7 +37,7 @@ namespace Udon
         using MessageType = Message;
 
         /// @brief 受信バッファサイズ
-        static constexpr size_t Size = Udon::PackedSize<MessageType>();
+        static constexpr size_t Size = Udon::SerializedSize<MessageType>();
 
         /// @brief コンストラクタ
         /// @param bus CANバス

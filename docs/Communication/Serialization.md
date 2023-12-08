@@ -95,7 +95,7 @@ struct Vec2
 // シリアライズ後のビット数をコンパイル時に取得する関数
 constexpr size_t Capacity(const Vec2& rhs)
 {
-    return Udon::PackedBitSize(rhs.x, rhs.y);
+    return Udon::SerializedBitSize(rhs.x, rhs.y);
 }
 
 // シリアライザ、デシリアライザが使用するメンバ変数解析用関数
@@ -163,17 +163,17 @@ bool CanUnpack(const uint8_t* buffer, size_t size);
 bool CanUnpack(const uint8_t (&array)[N]);
 ```
 
-### `Udon::PackedSize<T>()`
+### `Udon::SerializedSize<T>()`
 
 T 型オブジェクトシリアライズ後のバイト列のバイトサイズを取得します。
 
 コンパイル時にサイズを取得可能なため、バッファの大きさを静的に指定するときなどにも使えます。
 
 ```cpp
-uint8_t buffer[Udon::PackedSize<Vec2>()];
+uint8_t buffer[Udon::SerializedSize<Vec2>()];
 ```
 <!-- 
-### `Udon::PackedBitSize(...)`
+### `Udon::SerializedBitSize(...)`
 
 オブジェクトをシリアライズした際のバイト列のビットサイズを取得します。(bool 型 を 1bit としてカウントするため)
 

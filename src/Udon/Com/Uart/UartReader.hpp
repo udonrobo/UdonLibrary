@@ -28,7 +28,7 @@ namespace Udon
     template <typename Message>
     class UartReader
     {
-        static constexpr size_t Size = Udon::PackedSize<Message>();
+        static constexpr size_t Size = Udon::SerializedSize<Message>();
 
         Stream& uart;
 

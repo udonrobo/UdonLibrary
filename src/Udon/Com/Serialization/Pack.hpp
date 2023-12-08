@@ -16,7 +16,7 @@
 #pragma once
 
 #include "Serializer.hpp"
-#include "PackedSize.hpp"
+#include "SerializedSize.hpp"
 #include <Udon/Types/ArrayView.hpp>
 
 namespace Udon
@@ -31,7 +31,7 @@ namespace Udon
     {
         static_assert(Traits::IsSerializable<T>::value, "T must be serializable type.");  // T はシリアライズ可能な型である必要があります。T クラス内で UDON_ENUMERABLE(...) マクロにメンバ変数をセットすることで、シリアライズ可能になります。
 
-        Impl::Serializer serializer(PackedSize<T>());
+        Impl::Serializer serializer(SerializedSize<T>());
         serializer(object);
 
         return serializer.flush();
@@ -48,7 +48,7 @@ namespace Udon
     {
         static_assert(Traits::IsSerializable<T>::value, "T must be serializable type.");  // T はシリアライズ可能な型である必要があります。T クラス内で UDON_ENUMERABLE(...) マクロにメンバ変数をセットすることで、シリアライズ可能になります。
 
-        if (size >= PackedSize<T>())
+        if (size >= SerializedSize<T>())
         {
             const auto vector = Pack(object);
             std::copy(vector.begin(), vector.end(), buffer);
@@ -64,7 +64,7 @@ namespace Udon
     /// @tparam T シリアル化する型(自動推論)
     /// @param object シリアル化するオブジェクト
     /// @param array シリアル化したデータを格納するバッファ
-    /// @remark バッファのサイズはPackedSize関数で取得したサイズ以上である必要があります。
+    /// @remark バッファのサイズはSerializedSize関数で取得したサイズ以上である必要があります。
     /// @return シリアル化に成功したかどうか
     template <typename T, size_t N>
     bool Pack(const T& object, uint8_t (&array)[N])

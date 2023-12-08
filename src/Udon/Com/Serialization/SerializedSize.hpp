@@ -29,7 +29,7 @@ namespace Udon
     {
         using namespace Udon::Traits;
 
-        struct IsPackedSizableImpl
+        struct IsSerializedSizableImpl
         {
             using ResultType = bool;
 
@@ -80,7 +80,7 @@ namespace Udon
             struct Test<Array, EnableIfVoidT<IsArray<Array>::value>>
             {
                 template <typename T>
-                static constexpr bool test(const IsPackedSizableImpl& self, T&& array)
+                static constexpr bool test(const IsSerializedSizableImpl& self, T&& array)
                 {
                     return Test<typename std::remove_extent<Array>::type>::test(self, *array);    // 要素のサイズが取得可能である場合
                 }
@@ -91,14 +91,14 @@ namespace Udon
             struct Test<Enumerable, EnableIfVoidT<HasMemberFunctionEnumerate<Enumerable>::value>>
             {
                 template <typename T>
-                static constexpr bool test(const IsPackedSizableImpl& tester, T&& e)
+                static constexpr bool test(const IsSerializedSizableImpl& tester, T&& e)
                 {
                     return e.enumerate(tester);    // enumerate 関数が true を返した場合
                 }
             };
         };
 
-        struct PackedBitSizeImpl
+        struct SerializedBitSizeImpl
         {
         public:
             using ResultType = size_t;
@@ -166,7 +166,7 @@ namespace Udon
             template <typename Array>
             struct Sizeof<Array, EnableIfVoidT<IsArray<RemoveReferenceT<Array>>::value>>
             {
-                static constexpr ResultType value(const PackedBitSizeImpl& self, Array&& array) noexcept
+                static constexpr ResultType value(const SerializedBitSizeImpl& self, Array&& array) noexcept
                 {
                     using ElementT = typename std::remove_extent<RemoveReferenceT<Array>>::type;
                     return Sizeof<ElementT>::value(self, std::forward<ElementT>(*array)) * std::extent<RemoveReferenceT<Array>>::value;
@@ -177,7 +177,7 @@ namespace Udon
             template <typename Enumerable>
             struct Sizeof<Enumerable, EnableIfVoidT<HasMemberFunctionEnumerate<RemoveReferenceT<Enumerable>>::value>>
             {
-                static constexpr ResultType value(const PackedBitSizeImpl& self, Enumerable&& e) noexcept
+                static constexpr ResultType value(const SerializedBitSizeImpl& self, Enumerable&& e) noexcept
                 {
                     return e.enumerate(self);
                 }
@@ -189,15 +189,15 @@ namespace Udon
     {
         /// @brief T が シリアライズ後のサイズを取得可能か判定する
         template <typename T>
-        struct IsPackedSizable : std::integral_constant<bool, Impl::IsPackedSizableImpl{}(RemoveReferenceT<T>{})>
+        struct IsSerializedSizable : std::integral_constant<bool, Impl::IsSerializedSizableImpl{}(RemoveReferenceT<T>{})>
         {
         };
 
         template <typename T>
-        using IsSerializable = IsPackedSizable<T>;
+        using IsSerializable = IsSerializedSizable<T>;
 
         template <typename T>
-        using IsDeserializable = IsPackedSizable<T>;
+        using IsDeserializable = IsSerializedSizable<T>;
 
     }    // namespace Traits
 
@@ -206,11 +206,11 @@ namespace Udon
     /// @details シリアライズ後のサイズは、チェックサムのサイズを含む
     /// @details 実行時にサイズを取得する必要がある場合、この関数を使用する
     template <typename T>
-    constexpr size_t PackedSize() noexcept
+    constexpr size_t SerializedSize() noexcept
     {
-        static_assert(Traits::IsPackedSizable<T>::value, "T is not packed sizable");    // T は "シリアライズ後のサイズを取得可能な型" である必要がある
+        static_assert(Traits::IsSerializedSizable<T>::value, "T is not packed sizable");    // T は "シリアライズ後のサイズを取得可能な型" である必要がある
 
-        return Udon::Ceil(Impl::PackedBitSizeImpl{}(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
+        return Udon::Ceil(Impl::SerializedBitSizeImpl{}(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
     }
 
 }    // namespace Udon

@@ -27,7 +27,7 @@ namespace Udon
     template <typename Message>
     class SivUartWriter
     {
-        static constexpr size_t Size = Udon::PackedSize<Message>();
+        static constexpr size_t Size = Udon::SerializedSize<Message>();
 
         s3d::Serial& serial;
 

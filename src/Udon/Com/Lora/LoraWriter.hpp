@@ -12,7 +12,7 @@ namespace Udon
     class LoraWriter
     {
     public:
-        static constexpr size_t Size = Udon::PackedSize<Message>();
+        static constexpr size_t Size = Udon::SerializedSize<Message>();
 
         using MessageType = Message;
 

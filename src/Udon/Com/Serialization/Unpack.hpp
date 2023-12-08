@@ -60,7 +60,7 @@ namespace Udon
     {
         static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
 
-        if (buffer.size() < Udon::PackedSize<T>())
+        if (buffer.size() < Udon::SerializedSize<T>())
         {
           return Udon::nullopt;
         }
