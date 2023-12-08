@@ -70,14 +70,14 @@ namespace Udon
         /// @param message 送信するメッセージ
         void setMessage(const MessageType& message)
         {
-            Udon::Pack(message, buffer);
+            Udon::Serialize(message, buffer);
         }
 
         /// @brief 送信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
-            if (const auto message = Udon::Unpack<MessageType>(buffer))
+            if (const auto message = Udon::Deserialize<MessageType>(buffer))
             {
                 Udon::Show(*message, gap);
             }

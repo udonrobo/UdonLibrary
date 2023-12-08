@@ -13,7 +13,7 @@
 //
 //    シリアライズされたバイト列をデシリアライズしオブジェクトに復元します。
 //    このクラスはユーザーが直接使用することはありません。
-//    Udon::Unpack<Type>(byte[]) を使用してください。(Udon/Com/Serialization/Unpack.hpp)
+//    Udon::Deserialize<Type>(byte[]) を使用してください。(Udon/Com/Serialization/Deserialize.hpp)
 //
 //-------------------------------------------------------------------
 
@@ -81,23 +81,23 @@ namespace Udon
             template <typename... Args>
             void operator()(const Args&... args) const
             {
-                argsUnpack(args...);
+                argsDeserialize(args...);
             }
 
         private:
             /// @brief 可変長テンプレート引数
             template <typename Head, typename... Tails>
-            void argsUnpack(const Head& head, const Tails&... tails) const
+            void argsDeserialize(const Head& head, const Tails&... tails) const
             {
                 const_cast<Deserializer&>(*this).deserialize(const_cast<Head&>(head));
                 // 関数を constexpr にするため、enumerate の引数は "const Deserializer& enumerator" になっている (一時オブジェクトを受けれるように)
                 // enumerator (const *this) から deserialize を呼び出すため、const_cast で const を外している
 
-                argsUnpack(tails...);
+                argsDeserialize(tails...);
             }
 
             /// @brief 可変長引数展開の終端
-            void argsUnpack() const {}
+            void argsDeserialize() const {}
 
             /// @brief bool型
             template <typename Bool, EnableIfNullptrT<IsBool<RemoveReferenceT<Bool>>::value> = nullptr>

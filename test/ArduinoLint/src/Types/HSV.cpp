@@ -56,7 +56,7 @@ inline void test()
     {
         Udon::HSV a;
         static_assert(Udon::SerializedSize<Udon::HSV>() == 3 + 1, "");
-        const auto b = Udon::Pack(a);
-        (void)Udon::Unpack<Udon::HSV>(b);
+        const auto b = Udon::Serialize(a);
+        (void)Udon::Deserialize<Udon::HSV>(b);
     }
 }

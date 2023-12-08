@@ -66,7 +66,7 @@ inline void test()
     {
         Udon::Quaternion a;
         static_assert(Udon::SerializedSize<Udon::Quaternion>() == 16 + 1, "");
-        const auto b = Udon::Pack(a);
-        (void)Udon::Unpack<Udon::Quaternion>(b);
+        const auto b = Udon::Serialize(a);
+        (void)Udon::Deserialize<Udon::Quaternion>(b);
     }
 }

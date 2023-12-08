@@ -48,7 +48,7 @@ namespace Udon
             }
             else
             {
-                return Udon::Unpack<Message>(buffer);
+                return Udon::Deserialize<Message>(buffer);
             }
         }
 

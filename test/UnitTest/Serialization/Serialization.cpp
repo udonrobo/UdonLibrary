@@ -26,11 +26,11 @@ TEST(Serialization, SerializeDeserialize)
 {
 	Vec2 v{ 1.0, 2.0 };
 
-    const auto serialized = Udon::Pack(v);
+    const auto serialized = Udon::Serialize(v);
     EXPECT_EQ(Udon::SerializedSize<Vec2>(), serialized.size());    // シリアライズ後のサイズが正しいか確認
     EXPECT_EQ(serialized.back(), Udon::CRC8(serialized.data(), serialized.size() - 1));    // CRCが正しいか確認
 
-    const auto deserialized = Udon::Unpack<Vec2>(serialized);
+    const auto deserialized = Udon::Deserialize<Vec2>(serialized);
     EXPECT_TRUE(deserialized.has_value());    // デシリアライズに成功したか確認
     EXPECT_EQ(v, deserialized.value());       // デシリアライズ後の値が正しいか確認
 }
@@ -38,11 +38,11 @@ TEST(Serialization, SerializeDeserialize)
 TEST(Serialization, DeserializeError)
 {
     Vec2 v{ 1.0, 2.0 };
-    auto serialized = Udon::Pack(v);
+    auto serialized = Udon::Serialize(v);
 
     serialized[2] = 0x00;  // CRCが不正になるように変更
 
-    const auto deserialized = Udon::Unpack<Vec2>(serialized);
+    const auto deserialized = Udon::Deserialize<Vec2>(serialized);
 
     EXPECT_FALSE(deserialized.has_value());
     EXPECT_NE(v, deserialized.value());

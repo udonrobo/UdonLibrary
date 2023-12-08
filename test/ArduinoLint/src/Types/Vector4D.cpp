@@ -75,7 +75,7 @@ inline void test()
     {
         Udon::Vec4 a;
         static_assert(Udon::SerializedSize<Udon::Vec4>() == 16 + 1, "");
-        const auto b = Udon::Pack(a);
-        (void)Udon::Unpack<Udon::Vec4>(b);
+        const auto b = Udon::Serialize(a);
+        (void)Udon::Deserialize<Udon::Vec4>(b);
     }
 }

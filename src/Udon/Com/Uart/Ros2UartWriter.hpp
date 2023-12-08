@@ -22,7 +22,7 @@ namespace Udon
         void setMessage(const Message& message)
         {
             uint8_t buffer[Size];
-            Udon::Pack(message, buffer);
+            Udon::Serialize(message, buffer);
             serial.write(buffer, Size);
         }
     };

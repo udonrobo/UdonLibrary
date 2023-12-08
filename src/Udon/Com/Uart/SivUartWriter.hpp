@@ -41,7 +41,8 @@ namespace Udon
         {
             if (serial.isOpen())
             {
-                serial.write(Udon::Pack(message).data(), Size);
+                const auto packed = Udon::Serialize(message);
+                serial.write(packed.data(), packed.size());
             }
         }
     };

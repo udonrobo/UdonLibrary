@@ -67,7 +67,7 @@ namespace Udon
         {
             if (bus)
             {
-                return Udon::Unpack<Message>(buffer);
+                return Udon::Deserialize<Message>(buffer);
             }
             else
             {

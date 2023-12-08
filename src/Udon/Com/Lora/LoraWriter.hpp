@@ -41,19 +41,19 @@ namespace Udon
 
         void setMessage(const Message& message)
         {
-            Udon::Pack(message, buffer);
+            Udon::Serialize(message, buffer);
         }
 
         void setErrorMessage() noexcept
         {
-            Udon::FailablePack({ buffer });
+            Udon::FailableSerialize({ buffer });
         }
 
         /// @brief 送信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
-            if (const auto message = Udon::Unpack<Message>(buffer))
+            if (const auto message = Udon::Deserialize<Message>(buffer))
             {
                 Udon::Show(*message, gap);
             }

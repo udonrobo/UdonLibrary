@@ -84,7 +84,7 @@ namespace Udon
         {
             if (operator bool())
             {
-                return Udon::Unpack<Message>(buffer);
+                return Udon::Deserialize<Message>(buffer);
             }
             else
             {

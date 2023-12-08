@@ -27,7 +27,7 @@ namespace Udon
     /// @param object シリアル化するオブジェクト
     /// @return シリアル化したデータ
     template <typename T>
-    std::vector<uint8_t> Pack(const T& object)
+    std::vector<uint8_t> Serialize(const T& object)
     {
         static_assert(Traits::IsSerializable<T>::value, "T must be serializable type.");  // T はシリアライズ可能な型である必要があります。T クラス内で UDON_ENUMERABLE(...) マクロにメンバ変数をセットすることで、シリアライズ可能になります。
 
@@ -44,13 +44,13 @@ namespace Udon
     /// @param size バッファのサイズ
     /// @return シリアル化に成功したかどうか
     template <typename T>
-    bool Pack(const T& object, uint8_t* buffer, size_t size)
+    bool Serialize(const T& object, uint8_t* buffer, size_t size)
     {
         static_assert(Traits::IsSerializable<T>::value, "T must be serializable type.");  // T はシリアライズ可能な型である必要があります。T クラス内で UDON_ENUMERABLE(...) マクロにメンバ変数をセットすることで、シリアライズ可能になります。
 
         if (size >= SerializedSize<T>())
         {
-            const auto vector = Pack(object);
+            const auto vector = Serialize(object);
             std::copy(vector.begin(), vector.end(), buffer);
             return true;
         }
@@ -67,18 +67,18 @@ namespace Udon
     /// @remark バッファのサイズはSerializedSize関数で取得したサイズ以上である必要があります。
     /// @return シリアル化に成功したかどうか
     template <typename T, size_t N>
-    bool Pack(const T& object, uint8_t (&array)[N])
+    bool Serialize(const T& object, uint8_t (&array)[N])
     {
         static_assert(Traits::IsSerializable<T>::value, "T must be serializable type.");  // T はシリアライズ可能な型である必要があります。T クラス内で UDON_ENUMERABLE(...) マクロにメンバ変数をセットすることで、シリアライズ可能になります。
 
-        return Pack(object, array, N);
+        return Serialize(object, array, N);
     }
 
     /// @brief 必ずチェックサムエラーとなるシリアライズ
     /// @param buffer シリアル化したデータを格納するバッファ
     /// @param size バッファのサイズ
     /// @return シリアル化に成功したかどうか
-    inline void FailablePack(ArrayView<uint8_t> buffer)
+    inline void FailableSerialize(ArrayView<uint8_t> buffer)
     {
         buffer.back() = CRC8(buffer.cbegin(), buffer.cend() - CRC8_SIZE) ^ 0xff;
     }

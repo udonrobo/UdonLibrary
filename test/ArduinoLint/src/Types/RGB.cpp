@@ -56,7 +56,7 @@ inline void test()
     {
         Udon::RGB a;
         static_assert(Udon::SerializedSize<Udon::RGB>() == 3 + 1, "");
-        const auto b = Udon::Pack(a);
-        (void)Udon::Unpack<Udon::RGB>(b);
+        const auto b = Udon::Serialize(a);
+        (void)Udon::Deserialize<Udon::RGB>(b);
     }
 }

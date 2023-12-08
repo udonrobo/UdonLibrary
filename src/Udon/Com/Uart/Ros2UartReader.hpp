@@ -39,7 +39,7 @@ namespace Udon
 
         Udon::Optional<Message> getMessage() const
         {
-            return Udon::Unpack<Message>(buffer);
+            return Udon::Deserialize<Message>(buffer);
         }
 
         void show(char gap = '\t') const

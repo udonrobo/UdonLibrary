@@ -13,7 +13,7 @@
 //
 //    メンバ変数をスカラ型まで再帰的に解析しバイト列にシリアライズするクラスです。
 //    このクラスはユーザーが直接使用することはありません。
-//    Udon::Pack(object) を使用してください。(Udon/Com/Serialization/Pack.hpp)
+//    Udon::Serialize(object) を使用してください。(Udon/Com/Serialization/Serialize.hpp)
 //
 //-------------------------------------------------------------------
 
