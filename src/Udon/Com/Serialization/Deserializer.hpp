@@ -96,9 +96,9 @@ namespace Udon
         // std::vector<uint8_t> v(buffer, buffer + size);
         std::vector<uint8_t> v;
         v.reserve(buffer.size());
-        for (size_t i = 0; i < size; ++i)
+        for (size_t i = 0; i < buffer.size(); ++i)
         {
-            v.push_back(buffer.buffer[i]);
+            v.push_back(buffer.at(i));
         }
         // v.resize(size);
         // std::copy(buffer, buffer + size, v.begin());
