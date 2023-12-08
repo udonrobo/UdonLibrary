@@ -37,7 +37,9 @@
 - [三次元ベクトル](./docs/Types/Vector3D.md)
 - [オイラー角](./docs/Types/Eular.md)
 - [クオータニオン](./docs/Types/Quaternion.md)
-- [コンテナ](./docs/Algorithm/Container.md)
+- [可変長配列(静的)](./docs/Types/StaticVector.md)
+- [リングバッファ(静的)](./docs/Types/RingBuffer.md)
+- [配列ビュー](./docs/Types/ArrayView.md)
 - [固定ビット長浮動小数点型](./docs/Types/Float.md)
 
 ### ドライバー
