@@ -67,7 +67,7 @@ namespace Udon
         /// @brief メッセージ構造体をセット
         void setMessage(const Message& message) noexcept
         {
-            Udon::Serialize(message, node.data, node.length);
+            Udon::Serialize(message, { node.data, node.length });
         }
 
         void setErrorMessage() noexcept
@@ -80,7 +80,7 @@ namespace Udon
         void show(char gap = '\t') const
         {
             Udon::Printf("0x%03x ", node.id);
-            if (const auto message = Udon::Deserialize<Message>(node.data, node.length))
+            if (const auto message = Udon::Deserialize<Message>({ node.data, node.length }))
             {
                 Udon::Show(*message, gap);
             }

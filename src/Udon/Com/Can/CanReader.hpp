@@ -121,7 +121,7 @@ namespace Udon
                 [](void* p)
                 {
                     auto self     = static_cast<CanReader*>(p);
-                    self->message = Udon::Deserialize<MessageType>(self->node.data, self->node.length);
+                    self->message = Udon::Deserialize<MessageType>({ self->node.data, self->node.length });
                 },
                 this);
         }

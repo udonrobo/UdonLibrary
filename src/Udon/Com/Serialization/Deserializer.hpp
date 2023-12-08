@@ -57,9 +57,9 @@ namespace Udon
     template <typename T>
     Udon::Optional<T> Deserialize(const std::vector<uint8_t>& buffer)
     {
-        static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+        static_assert(Traits::IsDeserializable<T>::value, "T must be deserializable type.");    // T は逆シリアライズ可能な型である必要があります。T クラス内で UDON_PACKABLE マクロにメンバ変数をセットすることで、逆シリアライズ可能になります。
 
-        if (buffer.size() < Udon::SerializedSize<T>())
+        if (buffer.size() < SerializedSize<T>())
         {
             return Udon::nullopt;
         }
@@ -87,7 +87,7 @@ namespace Udon
     template <typename T>
     Udon::Optional<T> Deserialize(ArrayView<const uint8_t> buffer)
     {
-        static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
+        static_assert(Traits::IsDeserializable<T>::value, "T must be deserializable type.");    // T は逆シリアライズ可能な型である必要があります。T クラス内で UDON_PACKABLE マクロにメンバ変数をセットすることで、逆シリアライズ可能になります。
 
 #ifdef __AVR_ATmega328P__
         // todo:
@@ -95,31 +95,17 @@ namespace Udon
         // UdonArduinoSTLで使用しているEASTL内の vector::allocate() で処理落ち
         // std::vector<uint8_t> v(buffer, buffer + size);
         std::vector<uint8_t> v;
-        v.reserve(size);
+        v.reserve(buffer.size());
         for (size_t i = 0; i < size; ++i)
         {
-            v.push_back(buffer[i]);
+            v.push_back(buffer.buffer[i]);
         }
         // v.resize(size);
         // std::copy(buffer, buffer + size, v.begin());
         return Deserialize<T>(v);
 #else
-        return Deserialize<T>(std::vector<uint8_t>(buffer, buffer.buffer + buffer.size()));
+        return Deserialize<T>(std::vector<uint8_t>(buffer.cbegin(), buffer.cend()));
 #endif
-    }
-
-    /// @brief バイト列からオブジェクトを逆シリアル化します
-    /// @remark 配列の参照を引数にとります
-    /// @tparam T 逆シリアル化する型
-    /// @tparam N バイト配列の要素数
-    /// @param array バイト列
-    /// @return 逆シリアル化されたオブジェクト
-    template <typename T, size_t N>
-    Udon::Optional<T> Deserialize(const uint8_t (&array)[N])
-    {
-        static_assert(Udon::Traits::Parsable<T>::value, "T must be parsable type.");    // Tはパース可能である必要があります。クラス内で UDON_PACKABLE マクロを使用することで、パース可能であることを宣言できます。
-
-        return Deserialize<T>(array, N);
     }
 
 }    // namespace Udon
