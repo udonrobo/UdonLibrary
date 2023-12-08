@@ -67,7 +67,11 @@ namespace Udon
             template <typename T, typename = void>
             struct Test
             {
-                static constexpr bool test(...) { return false; }
+                static constexpr bool test(...)
+                {
+                    //static_assert(AlwaysFalse<T>::value, "Udon::Print: T is not printable." __FUNCTION__);
+                    return false;
+                }
             };
 
             // 列挙型は基底型が出力可能であるとき出力可能
@@ -80,8 +84,9 @@ namespace Udon
             // 配列型(文字配列除く)は要素が出力可能であるとき出力可能
             template <typename Array>
             struct Test<Array, EnableIfVoidT<
-                                   IsArray<Array>::value              // 配列である
-                                   and not IsCString<Array>::value    // C言語スタイル文字配列でない
+                                   IsArray<Array>::value                                     // 配列である
+                                   and not IsCString<Array>::value                           // C言語スタイル文字配列でない
+                                   and not IsOutputStreamable<OutputStream, Array>::value    // ストリームへの出力が不可能
                                    >>
             {
                 template <typename T>
@@ -102,7 +107,7 @@ namespace Udon
             // show が存在、もしくはストリームへの出力が可能であれば出力可能
             template <typename Printable>
             struct Test<Printable, EnableIfVoidT<
-                                       HasMemberFunctionShow<Printable>::value           // show 関数が存在する
+                                       HasMemberFunctionShow<Printable>::value                  // show 関数が存在する
                                        or IsOutputStreamable<OutputStream, Printable>::value    // ストリームへの出力が可能
                                        >>
             {
@@ -157,7 +162,7 @@ namespace Udon
             ResultType argsUnpack(Head&& head, Tail&&... tail)
             {
                 print(std::forward<Head>(head));
-                if (delimiterEnable)
+                if (delimiterEnable and sizeof...(Tail) > 0)
                     stream << ", ";
                 argsUnpack(std::forward<Tail>(tail)...);
             }
@@ -171,7 +176,7 @@ namespace Udon
             }
 
             /// @brief 可変長引数展開 (終端 C++11用)
-            ResultType argsUnpack() {}
+            // ResultType argsUnpack() {}
 
         private:
             /// @brief 列挙型
@@ -184,7 +189,9 @@ namespace Udon
             /// @brief 組み込み配列
             /// @details C言語スタイル文字列は配列として扱わない
             template <typename Array, EnableIfNullptrT<
-                                          IsArray<RemoveReferenceT<Array>>::value and not IsCString<RemoveReferenceT<Array>>::value    // C言語スタイル文字列は配列として扱わない
+                                          IsArray<RemoveReferenceT<Array>>::value                                     // 配列である
+                                          and not IsCString<RemoveReferenceT<Array>>::value                           // C言語スタイル文字列は配列として扱わない
+                                          and not IsOutputStreamable<OutputStream, RemoveReferenceT<Array>>::value    // ストリームへの出力が不可能
                                           > = nullptr>
             ResultType print(Array&& array)
             {
@@ -273,50 +280,77 @@ namespace Udon
 
 #endif
 
+#ifdef SIV3D_INCLUDED
+
+    struct Siv3DStream
+    {
+        template <typename T>
+        auto operator<<(T&& rhs)
+            -> decltype(s3d::Print.write(std::forward<T>(rhs)), std::declval<Siv3DStream&>())
+        {
+            s3d::Print.write(std::forward<T>(rhs));
+            return *this;
+        }
+
+        auto operator<<(const char* rhs)
+        {
+            s3d::Print.write(s3d::Unicode::Widen(rhs));
+            return *this;
+        }
+    };
+
+#endif
+
     namespace Impl
     {
 
         template <typename... Args>
-        void ShowImpl(bool delimiterEnable, Args&&... args)
+        void ShowImpl(bool enableDelimiter, bool enableNewline, Args&&... args)
         {
 
-#ifdef ARDUINO
+#if defined(ARDUINO)
 
             static_assert(Traits::IsPrintable<ArduinoStream, Args...>::value, "T is not printable");
             ArduinoStream                stream;
             Impl::Printer<ArduinoStream> printer{ stream, delimiterEnable };
+
+#elif defined(SIV3D_INCLUDED)
+
+            static_assert(Traits::IsPrintable<Siv3DStream, Args...>::value, "T is not printable");
+            Siv3DStream                stream;
+            Impl::Printer<Siv3DStream> printer{ stream, enableDelimiter };
 
 #elif UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE
 
             static_assert(Traits::IsPrintable<std::ostream, Args...>::value, "T is not printable");
             Impl::Printer<std::ostream> printer{ std::cout, delimiterEnable };
 
-#elif defined(SIV3D_INCLUDED)
-
-            static_assert(Traits::IsPrintable<s3d::PrintBuffer, Args...>::value, "T is not printable");
-            Impl::Printer<s3d::PrintBuffer> printer{ s3d::Print, delimiterEnable };
-
 #endif
 
             printer(std::forward<Args>(args)...);
+
+            if (enableNewline)
+            {
+				printer('\n');
+            }
         }
     }    // namespace Impl
 
     template <typename... Args>
     void Show(Args&&... args)
     {
-        Impl::ShowImpl(false, std::forward<Args>(args)...);
+        Impl::ShowImpl(false, false, std::forward<Args>(args)...);
     }
 
     template <typename... Args>
     void Showln(Args&&... args)
     {
-        Impl::ShowImpl(true, std::forward<Args>(args)..., '\n');
+        Impl::ShowImpl(true, true, std::forward<Args>(args)...);
     }
 
     template <typename... Args>
     void ShowRaw(Args... args)
     {
-        Impl::ShowImpl(false, std::forward<Args>(args)...);
+        Impl::ShowImpl(false, false, std::forward<Args>(args)...);
     }
 }    // namespace Udon

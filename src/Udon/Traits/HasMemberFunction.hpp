@@ -4,6 +4,7 @@
 #include <type_traits>
 
 #include "VoidT.hpp"
+#include "Typedef.hpp"
 
 namespace Udon
 {
@@ -142,9 +143,8 @@ namespace Udon
         {
         };
 
-        template <typename OutputStream, typename T>
-        struct IsOutputStreamable<OutputStream, T, typename std::enable_if<std::is_same<decltype(std::declval<OutputStream&>() << std::declval<T>()), OutputStream&>::value    // operator<<(Stream&, T) が存在するか, かつ戻り値が Stream& かどうか
-                                                                           >::type>
+        template <typename OutputStream, typename T> 
+        struct IsOutputStreamable<OutputStream, T, std::void_t<decltype(std::declval<OutputStream&>() << std::declval<T>())>>   // operator<<(Stream&, T) が存在するか, かつ戻り値が Stream& かどうか
             : std::true_type
         {
         };
