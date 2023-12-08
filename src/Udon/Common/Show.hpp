@@ -339,7 +339,7 @@ namespace Udon
     template <typename... Args>
     void Show(Args&&... args)
     {
-        Impl::ShowImpl(false, false, std::forward<Args>(args)...);
+        Impl::ShowImpl(true, false, std::forward<Args>(args)...);
     }
 
     template <typename... Args>
