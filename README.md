@@ -199,40 +199,9 @@ git submodule update --remote
 
 ## Usage
 
-`Udon.hpp` をインクルードすることで、全ての機能を使用できるようになります。
+### スタート
 
-```cpp
-#include <Udon.hpp>
-
-void setup() {}
-void loop() {}
-```
-
-```cpp
-#include <Udon.hpp>
-
-int main() {}
-```
-
-必要なヘッダーだけ個別にインクルードしたい場合 `UdonFwd.hpp` をインクルードします。ArduinoIDE 以外で使用する場合 `UdonFwd.hpp` のインクルードは不要です。
-
-```cpp
-#include <UdonFwd.hpp>
-#include <Udon/Types/Vector2D.hpp>  // Udon::Vec2
-
-void setup() {}
-void loop() {}
-```
-
-```cpp
-#include <Udon/Types/Vector2D.hpp>  // Udon::Vec2
-
-int main() {}
-```
-
-各機能の使い方の詳細は以下のドキュメント、[example](./example/) にあるスケッチ例を参照してください。
-
-## Documents
+- [本ライブラリをインクルードする](./docs/Start/include.md)
 
 ### アルゴリズム
 
@@ -255,19 +224,19 @@ int main() {}
 - [三次元ベクトル](./docs/Types/Vector3D.md)
 - [オイラー角](./docs/Types/Eular.md)
 - [クオータニオン](./docs/Types/Quaternion.md)
+- [コンテナ](./docs/Algorithm/Container.md)
 - [固定ビット長浮動小数点型](./docs/Types/Float.md)
 
 ### ドライバー
 
 - [ロータリーエンコーダー](./docs/Driver/Encoder.md)
 
-### 言語
+### 言語機能
 
 - [型トレイト](./docs/Other/Traits.md)
 
 ### 開発者用
 
-- [コンテナ](./docs/Algorithm/Container.md)
 - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
 - [自動テスト](./docs/Developer/CI.md)
 - [謝辞](./docs/Other/Acknowledgments.md)
