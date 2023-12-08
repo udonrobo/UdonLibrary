@@ -39,9 +39,6 @@
 //
 //-------------------------------------------------------------------
 
-// デリゲート / メンバ関数ポインタ変換
-#include "Udon/Algorithm/Delegate.hpp"
-
 // CRC チェックサム / 誤り検出
 #include "Udon/Algorithm/CRC.hpp"
 
