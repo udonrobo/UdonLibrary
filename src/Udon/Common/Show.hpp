@@ -15,7 +15,6 @@
 
 #pragma once
 
-#include <Udon/Traits/Concept.hpp>
 #include <Udon/Common/Platform.hpp>
 #include <Udon/Traits/Typedef.hpp>
 #include <Udon/Traits/HasMemberFunction.hpp>

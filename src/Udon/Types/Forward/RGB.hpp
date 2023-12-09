@@ -17,7 +17,7 @@
 
 #include <Udon/Traits/ParsableMacro.hpp>
 #include <Udon/Com/Serialization.hpp>
-#include <Udon/Traits/Concept.hpp>
+#include <Udon/Traits/Typedef.hpp>
 
 namespace Udon
 {
@@ -77,7 +77,7 @@ namespace Udon
         /// @brief コピー代入演算子
         RGB& operator=(const RGB&) = default;
 
-        UDON_CONCEPT_FLOATING_POINT
+        template <typename FloatingPoint, Traits::EnableIfNullptrT<Traits::IsFloatingPoint<FloatingPoint>::value> = nullptr>
         constexpr RGB operator*(FloatingPoint rhs) const noexcept
         {
             return {
@@ -87,7 +87,7 @@ namespace Udon
             };
         }
 
-        UDON_CONCEPT_FLOATING_POINT
+        template <typename FloatingPoint, Traits::EnableIfNullptrT<Traits::IsFloatingPoint<FloatingPoint>::value> = nullptr>
         constexpr RGB operator/(FloatingPoint rhs) const noexcept
         {
             return {

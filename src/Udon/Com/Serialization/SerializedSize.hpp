@@ -16,8 +16,8 @@
 #include <Udon/Algorithm/CRC.hpp>
 #include <Udon/Types/Float.hpp>
 #include <Udon/Traits/Parsable.hpp>
-#include <Udon/Traits/Concept.hpp>
 #include <Udon/Traits/Typedef.hpp>
+#include <Udon/Traits/HasMemberFunction.hpp>
 
 #if CHAR_BIT != 8
 #    error "1byte is must be 8bit"
