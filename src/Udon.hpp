@@ -197,9 +197,6 @@
 // メンバー関数の有無判定
 #include "Udon/Traits/HasMemberFunction.hpp"
 
-// コンセプト
-#include "Udon/Traits/Concept.hpp"
-
 // 送信クラスであるか
 #include "Udon/Traits/IsWriter.hpp"
 
