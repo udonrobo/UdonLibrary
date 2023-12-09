@@ -10,7 +10,7 @@ GitHub Actions を使用して、プッシュ時、プルリクエスト作成�
 >
 > またのメインページの README に貼られているバッジから見ることもできます(反映に少し時間がかかります)。
 >
-> [![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml) > [![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
+> [![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml) [![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
 >
 > 検証が成功している場合 `passing` と表示され、失敗していると `failing` と表示されます。
 
@@ -22,7 +22,7 @@ GitHub Actions を使用して、プッシュ時、プルリクエスト作成�
 
 ### サブディレクトリ
 
-`src` ディレクトリ内のファイルは再帰的にコンパイルされるため、`src` ディレクトリ下のファイルも自動的に検証されます。
+Arduino の仕様で `src` ディレクトリ内のソースファイルは再帰的にコンパイルされるため、`src` ディレクトリ下に配置したファイルは全て検証されます。
 
 ### テストファイル
 
@@ -35,7 +35,9 @@ GitHub Actions を使用して、プッシュ時、プルリクエスト作成�
 struct Sample
 {
     double a;
-    double f() const;
+    double f() const {
+        return a;
+    }
 };
 ```
 
@@ -51,7 +53,7 @@ inline void test()
 }
 ```
 
-> `test` 関数は同じ名前の関数が他のソースファイルにも存在しています。そのためリンクエラーを起こさないようにインライン関数にします。
+> `test` という関数は他のソースファイルにも存在しています。そのためリンクエラーを起こさないようにインライン関数にします。
 
 ### コンパイル時に計算可能なアルゴリズムのテスト
 

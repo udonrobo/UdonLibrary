@@ -14,7 +14,7 @@
 
 ### スタート
 
-- [本ライブラリをインクルードする](./docs/Start/include.md)
+- [本ライブラリをインクルードする](./docs/Start/Include.md)
 
 ### アルゴリズム
 
@@ -37,13 +37,14 @@
 - [三次元ベクトル](./docs/Types/Vector3D.md)
 - [オイラー角](./docs/Types/Eular.md)
 - [クオータニオン](./docs/Types/Quaternion.md)
-- [可変長配列(静的)](./docs/Types/StaticVector.md)
-- [リングバッファ(静的)](./docs/Types/RingBuffer.md)
-- [配列ビュー](./docs/Types/ArrayView.md)
+- [コンテナ / 静的可変長配列](./docs/Types/StaticVector.md)
+- [コンテナ / 静的可変長リングバッファ](./docs/Types/RingBuffer.md)
+- [コンテナ / 配列ビュー](./docs/Types/ArrayView.md)
 - [固定ビット長浮動小数点型](./docs/Types/Float.md)
 
 ### ドライバー
 
+- [モーター](./docs/Driver/Motor.md)
 - [ロータリーエンコーダー](./docs/Driver/Encoder.md)
 
 ### 言語機能
