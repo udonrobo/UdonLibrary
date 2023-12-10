@@ -14,7 +14,6 @@
 | [USB_Host_Shield_2.0](https://github.com/felis/USB_Host_Shield_2.0) | GNU General Public License |                                                                                                                |
 | [OpenSiv3D](https://github.com/Siv3D/OpenSiv3D)                     | MIT License                | Copyright (c) 2008-2023 Ryo Suzuki <br> Copyright (c) 2016-2023 OpenSiv3D Project                              |
 | [rclcpp](https://github.com/ros2/rclcpp)                            | Apache-2.0 license         |                                                                                                                |
-| [compile-sketches](https://github.com/arduino/compile-sketches)     | GPL-3.0 license            | Copyright (c) 2007 Free Software Foundation Inc.                                                               |
 | [GoogleTest](https://github.com/google/googletest)                  | BSD-3-Clause license       | Copyright (c) 2008 Google Inc.                                                                                 |
 
 また本ライブラリの作成において、以下のオープンソースプロジェクトを参考にしています。
