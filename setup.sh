@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#
+#    setup script for udonrobo's Arduino libraries
+#
+#    Copyright (c) 2022-2023 udonrobo
+#
+
 # UdonArduinoSTL clone
 git clone https://github.com/udonrobo/UdonArduinoSTL.git
 

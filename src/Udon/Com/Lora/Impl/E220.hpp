@@ -1,11 +1,9 @@
 //
-//    UdonLibrary
+//    E220 Loraモジュール ドライバクラス実装部
 //
 //	  Copyright (c) 2022-2023 Fujimoto Ryo
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 Udonrobo
-//
-//    E220 Loraモジュール ドライバクラス実装部
 //
 
 #pragma once

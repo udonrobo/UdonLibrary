@@ -1,17 +1,9 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    数学定数、関数
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    数学定数、関数
-//
-//-------------------------------------------------------------------
 
 #pragma once
 
@@ -20,13 +12,13 @@
 namespace Udon
 {
 
-    constexpr double Pi       = 3.1415926535897932384626433832795;    // std::numbers::pi_v<double>       (C++20)
-    constexpr double HalfPi   = 1.5707963267948966192313216916398;    // std::numbers::pi_v<double> / 2   (C++20)
-    constexpr double TwoPi    = 6.283185307179586476925286766559;     // std::numbers::pi_v<double> * 2   (C++20)
-    constexpr double DegToRad = 0.017453292519943295769236907684886;  // std::numbers::pi_v<double> / 180 (C++20)
-    constexpr double RadToDeg = 57.295779513082320876798154814105;    // 180 / std::numbers::pi_v<double> (C++20)
+    constexpr double Pi       = 3.1415926535897932384626433832795;      // std::numbers::pi_v<double>       (C++20)
+    constexpr double HalfPi   = 1.5707963267948966192313216916398;      // std::numbers::pi_v<double> / 2   (C++20)
+    constexpr double TwoPi    = 6.283185307179586476925286766559;       // std::numbers::pi_v<double> * 2   (C++20)
+    constexpr double DegToRad = 0.017453292519943295769236907684886;    // std::numbers::pi_v<double> / 180 (C++20)
+    constexpr double RadToDeg = 57.295779513082320876798154814105;      // 180 / std::numbers::pi_v<double> (C++20)
 
-};
+};    // namespace Udon
 
 namespace Udon
 {
@@ -59,7 +51,7 @@ namespace Udon
         return Min(Max(amt, low), high);
     }
 
-    /// @brief 度数法の角度を弧度法に変換する 
+    /// @brief 度数法の角度を弧度法に変換する
     /// @param rhs 度数法の角度
     /// @return    弧度法の角度
     template <typename T>
@@ -69,7 +61,7 @@ namespace Udon
         return rhs * DegToRad;
     }
 
-    /// @brief 弧度法の角度を度数法に変換する 
+    /// @brief 弧度法の角度を度数法に変換する
     /// @param rhs 弧度法の角度
     /// @return    度数法の角度
     template <typename T>
@@ -114,13 +106,13 @@ namespace Udon
     }
 
     /// @brief 小数点切り上げ (std::ceil)
-    inline constexpr int 
+    inline constexpr int
     Ceil(double x)
     {
         return x - (int)x > 0 ? (int)x + 1 : (int)x;
     }
 
-    /// @brief 数値をある範囲から別の範囲に再マッピングする 
+    /// @brief 数値をある範囲から別の範囲に再マッピングする
     inline constexpr double
     Map(const double value, const double inputMin, const double inputMax, const double outputMin, const double outputMax)
     {

@@ -1,17 +1,9 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    汎用表示関数
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    汎用表示関数
-//
-//-------------------------------------------------------------------
 
 #pragma once
 
@@ -68,7 +60,7 @@ namespace Udon
             {
                 static constexpr bool test(...)
                 {
-                    //static_assert(AlwaysFalse<T>::value, "Udon::Print: T is not printable." __FUNCTION__);
+                    // static_assert(AlwaysFalse<T>::value, "Udon::Print: T is not printable." __FUNCTION__);
                     return false;
                 }
             };
@@ -330,7 +322,7 @@ namespace Udon
 
             if (enableNewline)
             {
-				printer('\n');
+                printer('\n');
             }
         }
     }    // namespace Impl

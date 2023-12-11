@@ -1,3 +1,10 @@
+//
+//    Raspberry Pi Pico用PWMサーボドライバ
+//
+//    Copyright (c) 2022-2023 Maeda Tomoki
+//    Copyright (c) 2022-2023 udonrobo
+//
+
 #pragma once
 
 #if defined(ARDUINO_ARCH_RP2040)

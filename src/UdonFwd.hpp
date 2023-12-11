@@ -1,12 +1,9 @@
-//-------------------------------------------------------------------
 //
 //    UdonLibrary
 // 
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
+
 //
 //    ヘッダーを一括でインクルードしたくない場合、代わりにこのファイルをインクルードし、
 //    必要なヘッダーファイルを個別にインクルードしてください。(このファイルをインクルードするのはメインファイルからのみでOK)
@@ -15,12 +12,11 @@
 //
 //    ex: Master.ino
 //    #include <UdonFwd.hpp>
-//    #include <Udon/Sensor/Imu.hpp>
+//    #include <Udon/Driver/Imu.hpp>
 //
 //    ex: Steering.hpp
 //    #include <Udon/Algorithm/PidController.hpp>
 //
-//-------------------------------------------------------------------
 
 
 #pragma once

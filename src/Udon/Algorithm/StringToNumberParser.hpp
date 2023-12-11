@@ -1,3 +1,10 @@
+//
+//    文字列を数値に変換する関数群
+//
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 Udonrobo
+//
+
 #pragma once
 
 #include <Udon/Traits/AlwaysFalse.hpp>

@@ -1,19 +1,14 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    サーボの動く速さを調整するクラス
 //
 //    Copyright (c) 2022-2023 fujimoto ryo
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
+
 //
-//-------------------------------------------------------------------
-//
-//    サーボの動く速さを調整するクラス
 //    非常停止時に瞬時に止めることができる
-//    稼働速度は選択できるが、速度をあげすぎるとサーボが追い付かなくなるので注意
+//    稼働速度は選択できるが、速度を上げすぎるとサーボが追い付かなくなるので注意
 //
-//-------------------------------------------------------------------
 
 #pragma once
 
@@ -77,7 +72,7 @@ namespace Udon
             {
                 status = false;
                 value  = Udon::Constrain(speed / static_cast<float>(loopCycle),
-                                   Udon::Abs(move_angle) * -1, Udon::Abs(move_angle)) *
+                                         Udon::Abs(move_angle) * -1, Udon::Abs(move_angle)) *
                         (move_angle < 0 ? -1 : 1);
                 next_angle += value;
                 next_angle = Udon::Constrain(next_angle, 0.0f, static_cast<float>(servo_preset));

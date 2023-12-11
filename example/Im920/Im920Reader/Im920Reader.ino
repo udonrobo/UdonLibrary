@@ -1,5 +1,5 @@
 //
-//    UdonLibrary
+//    IM920 にデータを受信するサンプル
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo

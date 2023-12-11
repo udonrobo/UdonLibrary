@@ -1,17 +1,9 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    PIDコントローラクラス
 //
 //    Copyright (c) 2016-2023 谷川 豊章
 //    Copyright (c) 2016-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    PIDコントローラクラス
-//
-//-------------------------------------------------------------------
 
 #ifndef DEF_PidController_H
 #define DEF_PidController_H
@@ -32,8 +24,8 @@ namespace Udon
             double i;
             double d;
         };
-    private:
 
+    private:
         Parameter constant;    ///< 係数
 
         Udon::Optional<Parameter> requestConstant;    ///< 一周期だけ適用する係数
@@ -116,7 +108,6 @@ namespace Udon
             lastError = 0.0;
         }
 
-
         /// @brief 一周期のみ適用する比例係数の設定
         /// @param value 係数
         void requestParamPro(double value) noexcept { requestConstant = Parameter{ value, constant.i, constant.d }; }
@@ -132,7 +123,6 @@ namespace Udon
         /// @brief 一周期のみ適用する係数の設定
         /// @param value 係数
         void requestParam(const Parameter& value) noexcept { requestConstant = value; }
-
 
         /// @brief 比例係数の設定
         /// @param value 比例係数
@@ -150,7 +140,6 @@ namespace Udon
         /// @param value 係数
         void setParam(const Parameter& value) noexcept { constant = value; }
 
-
         /// @brief 比例係数の取得
         /// @return 比例係数
         double getParamPro() const noexcept { return constant.p; }
@@ -166,7 +155,6 @@ namespace Udon
         /// @brief 係数の取得
         /// @return 係数
         const Parameter& getParam() const noexcept { return constant; }
-
 
         /// @brief 比例量の取得
         /// @return 比例量

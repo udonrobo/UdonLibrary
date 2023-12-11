@@ -1,20 +1,12 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    OpenSiv3D用 UART 受信クラス
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    OpenSiv3D用 UART 受信クラス
-//
 //    Sender --[UART]--> Receiver
 //                       ^^^^^^^^
 //
-//-------------------------------------------------------------------
 
 #pragma once
 
@@ -39,7 +31,7 @@ namespace Udon
 
     public:
         using MessageType = Message;
-        
+
         SivUartReader(s3d::Serial& bus)
             : serial(bus)
             , buffer(Size)

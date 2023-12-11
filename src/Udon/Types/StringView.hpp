@@ -1,10 +1,8 @@
 //
-//    UdonLibrary
+//    文字列参照クラス (std::string_view代替)
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 Udonrobo
-//
-//    文字列参照クラス (std::string_view代替)
 //
 
 #pragma once
@@ -386,6 +384,6 @@ namespace Udon
             return { string, length };
         }
 
-    }    // namespace Literal
+    }    // namespace Literals
 
 }    // namespace Udon

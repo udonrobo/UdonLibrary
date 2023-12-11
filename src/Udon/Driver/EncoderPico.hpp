@@ -1,3 +1,10 @@
+//
+//    Raspberry Pi Pico 用エンコーダークラス
+//
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
+//
+
 #pragma once
 
 #ifdef ARDUINO_ARCH_RP2040
@@ -70,13 +77,13 @@ namespace Udon
         {
             switch (mode)
             {
-            case Mode::Interrupt: 
+            case Mode::Interrupt:
                 return interrupt.count;
 
-            case Mode::Pio: 
+            case Mode::Pio:
                 return Pio::Encoder::quadrature_encoder_get_count(stateMachine.pio, stateMachine.index);
 
-            default: 
+            default:
                 return 0;
             }
         }
@@ -86,16 +93,16 @@ namespace Udon
         {
             switch (mode)
             {
-            case Mode::Interrupt: 
-                Serial.print("Int "); 
+            case Mode::Interrupt:
+                Serial.print("Int ");
                 break;
 
-            case Mode::Pio: 
-                Serial.print("PIO "); 
+            case Mode::Pio:
+                Serial.print("PIO ");
                 break;
 
-            default: 
-                Serial.print("Unstarted!"); 
+            default:
+                Serial.print("Unstarted!");
                 return;
             }
             Serial.print(read());

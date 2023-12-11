@@ -1,10 +1,8 @@
 //
-//    UdonLibrary
+//    TLM922S LoRaモジュール デバイスドライバー 実装部
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 Udonrobo
-//
-//    TLM922S LoRaモジュール デバイスドライバー 実装部
 //
 //    データシート: https://usermanual.wiki/Kiwi-Technology/TLM922S/pdf
 //

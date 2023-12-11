@@ -1,19 +1,15 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    CRC checksum
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
+
 //
-//-------------------------------------------------------------------
+//    About CRC:
+//    https://www.sunshine2k.de/coding/javascript/crc/crc_js.html
+//    https://www.sunshine2k.de/articles/coding/crc/understanding_crc.html
 //
-//    CRC チェックサム
-//    ref: https://www.sunshine2k.de/coding/javascript/crc/crc_js.html
-//         https://www.sunshine2k.de/articles/coding/crc/understanding_crc.html
-//
-//-------------------------------------------------------------------
 
 #pragma once
 

@@ -1,22 +1,16 @@
-//-------------------------------------------------------------------
-//
-//	UdonLibrary
-//
-//                2018-2023 Watanabe Rui
-//	Copyright (c) 2022-2023 Okawa Yusuke
-//	Copyright (c) 2022-2023 Fujimoto Ryo
-//	Copyright (c) 2022-2023 udonrobo
-//
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
 //
 //    通常 IM920
+//
+//                  2018-2023 Watanabe Rui
+//	  Copyright (c) 2022-2023 Okawa Yusuke
+//	  Copyright (c) 2022-2023 Fujimoto Ryo
+//	  Copyright (c) 2022-2023 udonrobo
+//
+
 //
 //    Sender --[UART]--> IM920 ~~[920MHz]~~> IM920 --[UART]--> Receiver
 //    ^^^^^^                                                   ^^^^^^^^
 //
-//-------------------------------------------------------------------
 
 #pragma once
 

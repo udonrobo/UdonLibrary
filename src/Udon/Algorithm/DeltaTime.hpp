@@ -1,17 +1,9 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    変化時間計測クラス
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    変化時間クラス
-//
-//-------------------------------------------------------------------
 
 #pragma once
 
@@ -39,7 +31,7 @@ namespace Udon
         DeltaTime& update()
         {
             previousMs = currentMs;
-            currentMs = Millis();
+            currentMs  = Millis();
             return *this;
         }
 

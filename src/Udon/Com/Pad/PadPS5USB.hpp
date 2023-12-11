@@ -1,17 +1,10 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    有線USB経由 PS5コントローラークラス
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    有線USB経由 PS5コントローラークラス
-//
-//    Controller --[USB]--> USBHost --[SPI]--> Sender --> 
+//    Controller --[USB]--> USBHost --[SPI]--> Sender -->
 //                                             ^^^^^^
 //
 //    Raspberry Pi Pico SPI Pins:
@@ -19,8 +12,7 @@
 //        MOSI(TX): 19
 //        MISO(RX): 16
 //        CS      : 17
-//        
-//-------------------------------------------------------------------
+//
 
 #pragma once
 
@@ -127,7 +119,7 @@ namespace Udon
         }
 
         /// @brief 5つのプレイヤーのランプの点灯を設定する
-        /// @param mask 
+        /// @param mask
         ///     0b001:  HIGH LOW  LOW  LOW  HIGH
         ///     0b010:  LOW  HIGH LOW  HIGH LOW
         ///     0b100:  LOW  LOW  HIGH LOW  LOW

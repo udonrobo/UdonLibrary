@@ -1,20 +1,14 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    I2c マスター側受信クラス
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    I2c マスター側受信クラス
+
 //
 //    master <--[I2C]-- slave
 //    ^^^^^^
 //
-//-------------------------------------------------------------------
 
 #pragma once
 
@@ -128,7 +122,7 @@ namespace Udon
 
     public:
         using BaseType::BaseType;
-        
+
         Udon::ArrayElementReader<Message> at(size_t index)
         {
             return { array.at(index), hasValue };

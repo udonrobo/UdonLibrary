@@ -1,21 +1,9 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    シリアライザ実装部
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    シリアライザ
-//
-//    メンバ変数をスカラ型まで再帰的に解析しバイト列にシリアライズするクラスです。
-//    このクラスはユーザーが直接使用することはありません。
-//    Udon::Serialize(object) を使用してください。(Udon/Com/Serialization/Serializer.hpp)
-//
-//-------------------------------------------------------------------
 
 #pragma once
 
@@ -41,7 +29,7 @@ namespace Udon
         class Serializer
         {
 
-            size_t  pushIndex     = 0;    // 次に挿入するインデックス(バッファの先端からのオフセット)
+            size_t  pushIndex       = 0;    // 次に挿入するインデックス(バッファの先端からのオフセット)
             uint8_t boolCount       = 0;    // bool の挿入回数
             size_t  boolInsertIndex = 0;    // bool を挿入中であるインデックス(バッファの先端からのオフセット)
 
