@@ -3,7 +3,6 @@
 #include <Udon/Stl/EnableSTL.hpp>
 #include <type_traits>
 
-#include "VoidT.hpp"
 #include "Typedef.hpp"
 
 namespace Udon

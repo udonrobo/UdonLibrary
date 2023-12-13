@@ -26,7 +26,7 @@ namespace Udon
     Udon::Optional<T> Deserialize(ArrayView<const uint8_t> buffer)
     {
         // コンパイル時型チェック
-        static_assert(Traits::IsDeserializable<T>::value, "T must be deserializable type.");    // T は逆シリアライズ可能な型である必要があります。T クラス内で UDON_PACKABLE マクロにメンバ変数をセットすることで、逆シリアライズ可能になります。
+        static_assert(Traits::IsSerializable<T>::value, "T must be deserializable type.");    // T は逆シリアライズ可能な型である必要があります。T クラス内で UDON_PACKABLE マクロにメンバ変数をセットすることで、逆シリアライズ可能になります。
 
         // バッファサイズチェック
         if (buffer.size() != SerializedSize<T>())

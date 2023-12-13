@@ -9,7 +9,7 @@
 
 #include <stdarg.h>
 #include <stdint.h>
-#include <Udon/Traits/ParsableMacro.hpp>
+#include <Udon/Traits/EnumerableMacro.hpp>
 
 namespace Udon
 {
@@ -43,7 +43,7 @@ namespace Udon
             }
 #endif
 
-            UDON_PARSABLE(text);
+            UDON_ENUMERABLE(text);
         };
 
         using Lcd1602 = Lcd<16, 2>;

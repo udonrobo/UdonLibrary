@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include <Udon/Traits/ParsableMacro.hpp>
+#include <Udon/Traits/EnumerableMacro.hpp>
 #include <Udon/Com/Serialization.hpp>
 #include <Udon/Traits/Typedef.hpp>
 
@@ -135,7 +135,7 @@ namespace Udon
         }
 #endif
 
-        UDON_PARSABLE(r, g, b);
+        UDON_ENUMERABLE(r, g, b);
     };
 
 }    // namespace Udon

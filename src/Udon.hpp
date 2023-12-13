@@ -9,7 +9,6 @@
 // UdonLibrary が含まれているかどうかを判定するマクロ
 #define UDON_INCLUDED
 
-//-----------------------------------------------------------------
 //
 //    プラットフォーム定義
 //
@@ -26,7 +25,6 @@
 // 汎用時間取得
 #include "Udon/Common/Time.hpp"
 
-//-------------------------------------------------------------------
 //
 //    アルゴリズム / algorithm
 //
@@ -52,7 +50,6 @@
 // 数学
 #include "Udon/Algorithm/Math.hpp"
 
-//-------------------------------------------------------------------
 //
 //    通信 / com
 //
@@ -93,7 +90,6 @@
 // 配列送信
 #include "Udon/Com/Common/ArrayElementWriter.hpp"
 
-//-------------------------------------------------------------------
 //
 //    ファイルシステム / filesystem
 //
@@ -101,7 +97,6 @@
 // SDカード
 #include "Udon/Filesystem/Sd/Parameter.hpp"
 
-//-------------------------------------------------------------------
 //
 //    デバイスドライバー
 //
@@ -127,7 +122,6 @@
 // Raspberry Pi Pico PIO クロック出力
 #include "Udon/Driver/Pio/PioClock.hpp"
 
-//-------------------------------------------------------------------
 //
 //    ユーザー定義型 / types
 //
@@ -171,7 +165,6 @@
 // コンテナ / リングバッファ
 #include "Udon/Types/RingBuffer.hpp"
 
-//-------------------------------------------------------------------
 //
 //    トレイト / trait
 //
@@ -179,22 +172,15 @@
 // メンバー関数の有無判定
 #include "Udon/Traits/HasMemberFunction.hpp"
 
-// 送信クラスであるか
-#include "Udon/Traits/IsWriter.hpp"
+// 送信クラス、受信クラス判定
+#include "Udon/Traits/ReaderWriterTraits.hpp"
 
-// 受信クラスであるか
-#include "Udon/Traits/IsReader.hpp"
-
-// メンバ変数列挙可能か
-#include "Udon/Traits/Accessible.hpp"
-
-// std::void_t
-#include "Udon/Traits/VoidT.hpp"
+// シリアライズ可能判定
+#include "Udon/Traits/SerializerTraits.hpp"
 
 // static_assert 失敗遅延
 #include "Udon/Traits/AlwaysFalse.hpp"
 
-//-------------------------------------------------------------------
 //
 //    ユーティリティ / utility
 //

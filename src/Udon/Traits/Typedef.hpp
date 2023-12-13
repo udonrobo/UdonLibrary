@@ -50,7 +50,7 @@ namespace Udon
 
     namespace Traits
     {
-        
+
         template <bool Test, typename T = void>
         using EnableIfT = typename std::enable_if<Test, T>::type;
 
@@ -62,7 +62,6 @@ namespace Udon
 
         template <bool Test>
         using DisableIfVoidT = DisableIfT<Test, void>;
-
 
         /// @brief
         /// @details Test == true  の場合 type が std::nullptr_t に実体化
@@ -78,3 +77,11 @@ namespace Udon
 
     }    // namespace Traits
 }    // namespace Udon
+
+#ifndef __cpp_lib_void_t
+namespace std
+{
+    template <typename...>
+    using void_t = void;
+}
+#endif

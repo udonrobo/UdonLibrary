@@ -7,7 +7,7 @@ struct Vec2
     double x, y;
     bool operator==(const Vec2& rhs) const { return x == rhs.x && y == rhs.y; }
     bool operator!=(const Vec2& rhs) const { return !(*this == rhs); }
-    UDON_PARSABLE(x, y);
+    UDON_ENUMERABLE(x, y);
 };
 
 TEST(Serialization, BufferSizeAfterSerialization)

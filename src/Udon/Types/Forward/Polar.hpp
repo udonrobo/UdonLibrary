@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <Udon/Traits/ParsableMacro.hpp>
+#include <Udon/Traits/EnumerableMacro.hpp>
 #include <Udon/Com/Serialization.hpp>
 
 namespace Udon
@@ -96,6 +96,6 @@ namespace Udon
         /// @return 
         Vector2D toVector() const noexcept;
 
-        UDON_PARSABLE(r, theta);
+        UDON_ENUMERABLE(r, theta);
     };
 }    // namespace Udon

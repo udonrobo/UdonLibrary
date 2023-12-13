@@ -1,14 +1,14 @@
 #include <Arduino.h>
 
 #include <Udon/Com/Serialization.hpp>
-#include <Udon/Traits/ParsableMacro.hpp>
+#include <Udon/Traits/EnumerableMacro.hpp>
 
 struct Hoge
 {
     int a;
     int b;
     int c;
-    UDON_PARSABLE(a, b, c);
+    UDON_ENUMERABLE(a, b, c);
 };
 
 inline void test()

@@ -11,4 +11,4 @@
 #include "Serialization/Serializer.hpp"
 #include "Serialization/Deserializer.hpp"
 
-#include <Udon/Traits/ParsableMacro.hpp>
+#include <Udon/Traits/EnumerableMacro.hpp>

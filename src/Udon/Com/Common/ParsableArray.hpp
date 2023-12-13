@@ -18,7 +18,7 @@ namespace Udon
             return at(i);
         }
 
-        UDON_PARSABLE(data);
+        UDON_ENUMERABLE(data);
     };
 
 }    // namespace Udon

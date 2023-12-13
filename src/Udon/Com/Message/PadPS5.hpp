@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <Udon/Traits/ParsableMacro.hpp>
+#include <Udon/Traits/EnumerableMacro.hpp>
 
 #include <stdint.h>
 
@@ -103,7 +103,7 @@ namespace Udon
             }
 #endif
 
-            UDON_PARSABLE(
+            UDON_ENUMERABLE(
                 isConnected,
                 triangle, circle, cross, square,
                 up, right, down, left,

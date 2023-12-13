@@ -88,7 +88,7 @@ struct Parsable
 {
     int a;
     double b;
-    UDON_PARSABLE(a, b);
+    UDON_ENUMERABLE(a, b);
 }
 
 // T が解析可能である場合この関数が実体化される

@@ -15,7 +15,8 @@
 
 #pragma once
 
-#include <Udon/Traits/ParsableMacro.hpp>
+#include <Udon/Algorithm/Math.hpp>
+#include <Udon/Traits/EnumerableMacro.hpp>
 
 namespace Udon
 {
@@ -336,7 +337,7 @@ namespace Udon
         }
 #endif
 
-        UDON_PARSABLE(x, y);
+        UDON_ENUMERABLE(x, y);
     };
 
 }    // namespace Udon

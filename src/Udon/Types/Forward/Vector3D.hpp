@@ -15,8 +15,8 @@
 
 #pragma once
 
-#include <Udon/Traits/ParsableMacro.hpp>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Algorithm/Math.hpp>
+#include <Udon/Traits/EnumerableMacro.hpp>
 
 namespace Udon
 {
@@ -167,7 +167,7 @@ namespace Udon
             Serial.print("z: "), Serial.print(z), Serial.print('\t');
         }
 #endif
-        UDON_PARSABLE(x, y, z);
+        UDON_ENUMERABLE(x, y, z);
     };
 
 }    // namespace Udon
