@@ -14,7 +14,7 @@
 
 #include "IIm920.hpp"
 
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
 
 namespace Udon

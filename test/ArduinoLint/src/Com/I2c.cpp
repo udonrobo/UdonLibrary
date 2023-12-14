@@ -1,8 +1,7 @@
 #include <Arduino.h>
 #include <Udon/Com/I2c.hpp>
 
-#include <Udon/Traits/IsReader.hpp>
-#include <Udon/Traits/IsWriter.hpp>
+#include <Udon/Traits/ReaderWriterTraits.hpp>
 
 inline void testBus()
 {

@@ -14,7 +14,7 @@
 #include <Udon/Com/Message/Encoder.hpp>
 #include <Udon/Traits/HasMemberFunction.hpp>
 
-#include <Udon/Traits/IsReader.hpp>
+#include <Udon/Traits/ReaderWriterTraits.hpp>
 #include <Udon/Common/Printf.hpp>
 
 namespace Udon

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <serial/serial.h>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
 
 namespace Udon

@@ -11,7 +11,7 @@
 #pragma once
 
 #include <Siv3D/Serial.hpp>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
 
 namespace Udon

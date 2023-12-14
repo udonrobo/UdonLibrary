@@ -17,8 +17,8 @@
 #pragma once
 
 #include <Udon/Algorithm/Math.hpp>    // Udon::Normalized
-#include <Udon/Traits/ParsableMacro.hpp>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Traits/EnumerableMacro.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 namespace Udon
 {
@@ -166,7 +166,7 @@ namespace Udon
         }
 #endif
 
-        UDON_PARSABLE(roll, pitch, yaw);
+        UDON_ENUMERABLE(roll, pitch, yaw);
     };
 
 }    // namespace Udon

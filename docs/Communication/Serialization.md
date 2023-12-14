@@ -17,7 +17,7 @@
 ## 個別インクルード
 
 ```cpp
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 ```
 
 ## シリアライズ可能な型
@@ -34,7 +34,7 @@
 
 ## シリアライズ
 
-シリアライズしたいオブジェクトのデータ構造を構造体、クラスを用いて定義します。`UDON_PARSABLE` マクロにメンバ変数を登録することで、メンバ変数を走査できるようになり、シリアライズできるようになります。
+シリアライズしたいオブジェクトのデータ構造を構造体、クラスを用いて定義します。`UDON_ENUMERABLE` マクロにメンバ変数を登録することで、メンバ変数を走査できるようになり、シリアライズできるようになります。
 
 `Udon::Serialize(object)` の引数にオブジェクトを渡すことでバイト列 `std::vector<uint8_t>` が返されます。
 
@@ -43,7 +43,7 @@ struct Vec2
 {
     double x;
     double y;
-    UDON_PARSABLE(x, y);
+    UDON_ENUMERABLE(x, y);
 };
 
 void setup() {}
@@ -175,7 +175,7 @@ void FailableSerialize(ArrayView<uint8_t> buffer);
 
 ```cpp
 #include <iostream>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 int main()
 {
@@ -200,7 +200,7 @@ int main()
 
 ```cpp
 #include <iostream>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 enum class Language : uint8_t
 {
@@ -241,13 +241,13 @@ C++
 
 ```cpp
 #include <iostream>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 struct Vec2
 {
 	double x;
 	double y;
-	UDON_PARSABLE(x, y);
+	UDON_ENUMERABLE(x, y);
 };
 
 int main()
@@ -277,12 +277,12 @@ int main()
 
 ```cpp
 #include <iostream>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 struct Array
 {
 	int array[5];
-	UDON_PARSABLE(array);
+	UDON_ENUMERABLE(array);
 };
 
 int main()
@@ -317,20 +317,20 @@ int main()
 
 ```cpp
 #include <iostream>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 struct Vec2
 {
 	struct Double
 	{
 		double value;
-		UDON_PARSABLE(value);
+		UDON_ENUMERABLE(value);
 	};
 
 	Double x;
 	Double y;
 
-	UDON_PARSABLE(x, y);
+	UDON_ENUMERABLE(x, y);
 };
 
 int main()
@@ -360,7 +360,7 @@ int main()
 
 ```cpp
 #include <iostream>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 int main()
 {

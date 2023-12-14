@@ -18,6 +18,7 @@
 #include <Udon/Stl/Optional.hpp>
 #include <Udon/Types/Float.hpp>
 #include <Udon/Traits/Typedef.hpp>
+#include <Udon/Serializer/SerializerTraits.hpp>
 #include <Udon/Common/Platform.hpp>
 #include <Udon/Types/ArrayView.hpp>
 

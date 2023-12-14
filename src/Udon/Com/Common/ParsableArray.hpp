@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 namespace Udon
 {
@@ -18,7 +18,7 @@ namespace Udon
             return at(i);
         }
 
-        UDON_PARSABLE(data);
+        UDON_ENUMERABLE(data);
     };
 
 }    // namespace Udon

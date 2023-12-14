@@ -10,9 +10,9 @@
 #include "ICanBus.hpp"
 #include "CanNode.hpp"
 
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
+#include <Udon/Serializer/SerializerTraits.hpp>
 #include <Udon/Common/Show.hpp>
-#include <Udon/Traits/Parsable.hpp>
 #include <Udon/Common/Time.hpp>
 #include <Udon/Common/Printf.hpp>
 
@@ -23,7 +23,7 @@ namespace Udon
     class CanReader
     {
 
-        static_assert(Udon::Traits::Parsable<Message>::value, "Message must be parsable.");
+        static_assert(Traits::IsSerializable<Message>::value, "Message must be parsable.");
 
     public:
         /// @brief 受信メッセージ型

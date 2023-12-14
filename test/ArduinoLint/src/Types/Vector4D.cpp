@@ -1,6 +1,7 @@
 #include <Arduino.h>
 
 #include <Udon/Types/Vector4D.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 inline void test()
 {
