@@ -28,7 +28,6 @@
 - [UART](./docs/Communication/UART.md)
 - [IM920](./docs/Communication/IM920.md)
 - [コントローラ](./docs/Communication/Pad.md)
-- [シリアライザ](./docs/Communication/Serialization.md)
 
 ### ユーザー定義型
 
@@ -47,12 +46,13 @@
 - [モーター](./docs/Driver/Motor.md)
 - [ロータリーエンコーダー](./docs/Driver/Encoder.md)
 
-### 言語機能
+### その他
 
-- [型トレイト](./docs/Other/Traits.md)
+- [シリアライザ](./docs/Other/Serialization.md)
+- [トレイト](./docs/Other/Traits.md)
 
 ### 開発者用
 
 - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
 - [自動テスト](./docs/Developer/CI.md)
-- [謝辞](./docs/Other/Acknowledgments.md)
+- [謝辞](./docs/Developer/Acknowledgments.md)
