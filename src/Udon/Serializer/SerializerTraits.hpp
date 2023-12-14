@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Typedef.hpp"
-#include "HasMemberFunction.hpp"
+#include <Udon/Traits/Typedef.hpp>
+#include <Udon/Traits/HasMemberFunction.hpp>
 #include <utility>
 
 namespace Udon

@@ -8,7 +8,7 @@
 #pragma once
 
 #include <Udon/Stl/Optional.hpp>
-#include <Udon/Traits/SerializerTraits.hpp>
+#include <Udon/Serializer/SerializerTraits.hpp>
 
 namespace Udon
 {

@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include <Udon/Traits/EnumerableMacro.hpp>
-#include <Udon/Traits/SerializerTraits.hpp>
+#include <Udon/Serializer/SerializerTraits.hpp>
 
 /// @brief 列挙型
 enum class Enum

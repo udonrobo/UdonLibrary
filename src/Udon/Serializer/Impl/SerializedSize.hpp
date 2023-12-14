@@ -17,7 +17,7 @@
 #include <Udon/Types/Float.hpp>
 #include <Udon/Traits/Typedef.hpp>
 #include <Udon/Traits/AlwaysFalse.hpp>
-#include <Udon/Traits/SerializerTraits.hpp>
+#include <Udon/Serializer/SerializerTraits.hpp>
 #include <Udon/Traits/HasMemberFunction.hpp>
 
 #if CHAR_BIT != 8

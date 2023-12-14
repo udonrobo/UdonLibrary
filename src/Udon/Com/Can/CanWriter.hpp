@@ -12,7 +12,7 @@
 
 #include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
-#include <Udon/Traits/SerializerTraits.hpp>
+#include <Udon/Serializer/SerializerTraits.hpp>
 #include <Udon/Common/Printf.hpp>
 
 namespace Udon

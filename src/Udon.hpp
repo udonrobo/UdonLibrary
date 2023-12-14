@@ -179,7 +179,7 @@
 #include "Udon/Traits/ReaderWriterTraits.hpp"
 
 // シリアライズ可能判定
-#include "Udon/Traits/SerializerTraits.hpp"
+#include "Udon/Serializer/SerializerTraits.hpp"
 
 // static_assert 失敗遅延
 #include "Udon/Traits/AlwaysFalse.hpp"
