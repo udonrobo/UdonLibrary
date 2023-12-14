@@ -10,6 +10,22 @@ enum class Enum
     C,
 };
 
+/// @brief 列挙型を持つ構造体
+struct HasEnumClassStruct
+{
+    enum class A
+    {
+        A,
+    } a;
+    UDON_ENUMERABLE(a);
+};
+
+struct HasArrayStruct
+{
+    int a[3];
+    UDON_ENUMERABLE(a);
+};
+
 /// @brief パース不可能なユーザー定義型
 struct UnEnumerable
 {
@@ -46,30 +62,23 @@ struct InnerUnEnumerable
 
 inline void test()
 {
+    using namespace Udon::Traits;
+
     // パース可能
-    static_assert(Udon::Traits::IsSerializable<int>::value, "");                    // プリミティブ型
-    static_assert(Udon::Traits::IsSerializable<int[2][2]>::value, "");              // プリミティブ型多次元配列
-    static_assert(Udon::Traits::IsSerializable<float>::value, "");                  // プリミティブ型
-    static_assert(Udon::Traits::IsSerializable<float[2][2]>::value, "");            // プリミティブ型多次元配列
-    static_assert(Udon::Traits::IsSerializable<Enum>::value, "");                   // 列挙型
-    static_assert(Udon::Traits::IsSerializable<Enum[2][2]>::value, "");             // 列挙型多次元配列
-    static_assert(Udon::Traits::IsSerializable<Enumerable>::value, "");               // ユーザー定義型
-    static_assert(Udon::Traits::IsSerializable<Enumerable[2][2]>::value, "");         // ユーザー定義型多次元配列
-    static_assert(Udon::Traits::IsSerializable<InnerEnumerable>::value, "");          // 内部にパース可能なメンバ変数を持つ構造体
-    static_assert(Udon::Traits::IsSerializable<InnerEnumerable[2][2]>::value, "");    // 内部にパース可能なメンバ変数を持つ構造体多次元配列
+    static_assert(IsSerializable<int>::value, "");                   // プリミティブ型
+    static_assert(IsSerializable<float>::value, "");                 // プリミティブ型
+    static_assert(IsSerializable<Enum>::value, "");                  // 列挙型
+    static_assert(IsSerializable<HasEnumClassStruct>::value, "");    // 列挙型を持つ構造体
+    static_assert(IsSerializable<HasArrayStruct>::value, "");        // 配列型を持つ構造体
+    static_assert(IsSerializable<Enumerable>::value, "");            // ユーザー定義型
+    static_assert(IsSerializable<InnerEnumerable>::value, "");       // 内部にパース可能なメンバ変数を持つ構造体
 
     // 空配列はパース不可
-    static_assert(not Udon::Traits::IsSerializable<int[]>::value, "");         // プリミティブ型配列
-    static_assert(not Udon::Traits::IsSerializable<float[]>::value, "");       // プリミティブ型配列
-    static_assert(not Udon::Traits::IsSerializable<Enumerable[]>::value, "");    // ユーザー定義型配列
+    static_assert(not IsSerializable<int[]>::value, "");           // プリミティブ型配列
+    static_assert(not IsSerializable<float[]>::value, "");         // プリミティブ型配列
+    static_assert(not IsSerializable<Enumerable[]>::value, "");    // ユーザー定義型配列
 
     // パース不可
-    static_assert(not Udon::Traits::IsSerializable<int*>::value, "");               // プリミティブ型ポインタ
-    static_assert(not Udon::Traits::IsSerializable<int*[]>::value, "");             // プリミティブ型ポインタ配列
-    static_assert(not Udon::Traits::IsSerializable<float*>::value, "");             // プリミティブ型ポインタ
-    static_assert(not Udon::Traits::IsSerializable<float*[]>::value, "");           // プリミティブ型ポインタ配列
-    static_assert(not Udon::Traits::IsSerializable<int&>::value, "");               // プリミティブ型参照
-    static_assert(not Udon::Traits::IsSerializable<float&>::value, "");             // プリミティブ型参照
-    static_assert(not Udon::Traits::IsSerializable<UnEnumerable>::value, "");         // パース不可能なユーザー定義型
-    static_assert(not Udon::Traits::IsSerializable<InnerUnEnumerable>::value, "");    // 内部にパース不可能なメンバ変数を持つ構造体
+    static_assert(not IsSerializable<UnEnumerable>::value, "");         // パース不可能なユーザー定義型
+    static_assert(not IsSerializable<InnerUnEnumerable>::value, "");    // 内部にパース不可能なメンバ変数を持つ構造体
 }

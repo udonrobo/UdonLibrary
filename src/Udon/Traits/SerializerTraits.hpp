@@ -2,6 +2,7 @@
 
 #include "Typedef.hpp"
 #include "HasMemberFunction.hpp"
+#include <utility>
 
 namespace Udon
 {
@@ -87,18 +88,6 @@ namespace Udon
         template <typename T>
         struct IsSerializable
             : std::integral_constant<bool, Impl::IsSerializableImpl{}(RemoveReferenceT<T>{})>
-        {
-        };
-
-        // 参照型は不可
-        template <typename T>
-        struct IsSerializable<T&> : std::false_type
-        {
-        };
-
-        // ポインタ型は不可
-        template <typename T>
-        struct IsSerializable<T*> : std::false_type
         {
         };
 
