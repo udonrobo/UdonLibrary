@@ -12,18 +12,16 @@
 
 > 各メタ関数は `Udon::Traits` 名前空間に属します。
 
-| 名前                          | 説明                                        | ヘッダーファイル                                                                                 |
-| ----------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `IsWriter<T>`                 | T が送信クラス要件を満たすか調べる          | [Udon/Traits/IsWriter.hpp](./../../src/Udon/Traits/IsWriter.hpp)                                 |
-| `IsReader<T>`                 | T が受信クラス要件を満たすか調べる          | [Udon/Traits/IsReader.hpp](./../../src/Udon/Traits/IsReader.hpp)                                 |
-| `SerializedSizable<T>`        | T のシリアライズ後サイズを取得可能か調べる  | [Udon/Traits/SerializedSizable.hpp](./../../src/Udon/Traits/SerializedSizable.hpp)               |
-| `Accessible<T>`               | T のメンバ変数を列挙可能か調べる            | [Udon/Traits/Accessible.hpp](./../../src/Udon/Traits/Accessible.hpp)                             |
-| `Parsable<T>`                 | T が解析可能であるか調べる                  | [Udon/Traits/Parsable.hpp](./../../src/Udon/Traits/Parsable.hpp)                                 |
-| `AlwaysFalse<T>`              | 常に `std::false_type` から派生する         | [Udon/Traits/AlwaysFalse.hpp](./../../src/Udon/Traits/AlwaysFalse.hpp)                           |
-| `HasMemberFunctionBegin<T>`   | T に `begin` メンバ関数が存在するか調べる   | [Udon/Traits/HasMemberFunctionBegin.hpp](./../../src/Udon/Traits/HasMemberFunctionBegin.hpp)     |
-| `HasMemberFunctionUpdate<T>`  | T に `update` メンバ関数が存在するか調べる  | [Udon/Traits/HasMemberFunctionUpdate.hpp](./../../src/Udon/Traits/HasMemberFunctionUpdate.hpp)   |
-| `HasMemberFunctionShow<T>`    | T に `show` メンバ関数が存在するか調べる    | [Udon/Traits/HasMemberFunctionShow.hpp](./../../src/Udon/Traits/HasMemberFunctionShow.hpp)       |
-| `HasMemberFunctionShowRaw<T>` | T に `showRaw` メンバ関数が存在するか調べる | [Udon/Traits/HasMemberFunctionShowRaw.hpp](./../../src/Udon/Traits/HasMemberFunctionShowRaw.hpp) |
+| 名前                          | 説明                                                    | ヘッダーファイル                                                                         |
+| ----------------------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `IsWriter<T>`                 | T が送信クラス要件を満たすか調べる                      | [Udon/Traits/ReaderWriterTraits.hpp](./../../src/Udon/Traits/IsWriter.hpp)               |
+| `IsReader<T>`                 | T が受信クラス要件を満たすか調べる                      | [Udon/Traits/ReaderWriterTraits.hpp](./../../src/Udon/Traits/IsReader.hpp)               |
+| `IsSerializable<T>`           | T がシリアライズ可能か調べる                            | [Udon/Serializer/SerializerTraits.hpp](./../../src/Udon/Serializer/SerializerTraits.hpp) |
+| `AlwaysFalse<T>`              | 常に `std::false_type` から派生する(遅延 static_assert) | [Udon/Traits/AlwaysFalse.hpp](./../../src/Udon/Traits/AlwaysFalse.hpp)                   |
+| `HasMemberFunctionBegin<T>`   | T に `begin` メンバ関数が存在するか調べる               | [Udon/Traits/HasMemberFunction.hpp](./../../src/Udon/Traits/HasMemberFunction.hpp)       |
+| `HasMemberFunctionUpdate<T>`  | T に `update` メンバ関数が存在するか調べる              | [Udon/Traits/HasMemberFunction.hpp](./../../src/Udon/Traits/HasMemberFunction.hpp)       |
+| `HasMemberFunctionShow<T>`    | T に `show` メンバ関数が存在するか調べる                | [Udon/Traits/HasMemberFunction.hpp](./../../src/Udon/Traits/HasMemberFunction.hpp)       |
+| `HasMemberFunctionShowRaw<T>` | T に `showRaw` メンバ関数が存在するか調べる             | [Udon/Traits/HasMemberFunction.hpp](./../../src/Udon/Traits/HasMemberFunction.hpp)       |
 
 ### 送信クラス要件
 
@@ -84,24 +82,24 @@ int main()
 ### オーバーロード解決の優先順位制御
 
 ```cpp
-struct Parsable
+struct Serializable
 {
     int a;
     double b;
     UDON_ENUMERABLE(a, b);
 }
 
-// T が解析可能である場合この関数が実体化される
-template <typename T, typename std::enable_if<Udon::Traits::Parsable<T>::value, std::nullptr_t>::type = nullptr>
+// T がシリアライズ可能である場合この関数が実体化される
+template <typename T, typename std::enable_if<Udon::Traits::IsSerializable<T>::value, std::nullptr_t>::type = nullptr>
 void f(const T& rhs)
 {
-    std::cout << "parsable" << std::endl;
+    std::cout << "serializable" << std::endl;
 }
 
 int main()
 {
-    Parsable parsable{};
-    f(parsable);
+    Serializable serializable{};
+    f(serializable);
 }
 ```
 
@@ -212,49 +210,5 @@ int main()
 
     Sensor<ReaderB> sensorB;
     sensorB.update();  //>
-}
-```
-
-## コンセプト
-
-C++20 で導入されたコンセプトのように型制約を記述できるマクロを提供します。
-
-> [Udon/Traits/Concept.hpp](./../../src/Udon/Traits/Concept.hpp) に定義されています。
-
-| マクロ名                       | コンセプト名             | 説明                                   |
-| ------------------------------ | ------------------------ | -------------------------------------- |
-| UDON_CONCEPT_BOOL              | Bool                     | bool 型                                |
-| UDON_CONCEPT_INTEGRAL          | Integral                 | 整数型                                 |
-| UDON_CONCEPT_INTEGRAL_NOT_BOOL | IntegralNotBool          | 整数型かつ bool 型でない               |
-| UDON_CONCEPT_FLOATING_POINT    | FloatingPoint            | 浮動小数点型                           |
-| UDON_CONCEPT_ATOMIC            | Atomic                   | アトミック型                           |
-| UDON_CONCEPT_SCALAR            | Scalar                   | スカラ型                               |
-| UDON_CONCEPT_ARRAY             | Array                    | 配列型                                 |
-| UDON_CONCEPT_ACCESSIBLE        | Accessible               | メンバ変数を列挙可能な型               |
-| UDON_CONCEPT_CAPACITABLE       | SerializedSizable        | シリアライズ後サイズを取得可能な型     |
-| UDON_CONCEPT_BEGINNABLE        | HasMemberFunctionBegin   | `begin` メンバ関数を呼び出し可能な型   |
-| UDON_CONCEPT_UPDATABLE         | HasMemberFunctionUpdate  | `update` メンバ関数を呼び出し可能な型  |
-| UDON_CONCEPT_SHOWABLE          | HasMemberFunctionShow    | `show` メンバ関数を呼び出し可能な型    |
-| UDON_CONCEPT_SHOW_RAWABLE      | HasMemberFunctionShowRaw | `showRaw` メンバ関数を呼び出し可能な型 |
-
-### オーバーロード解決の優先順位制御
-
-```cpp
-UDON_CONCEPT_INTEGRAL
-void f(const Integral& rhs)
-{
-    std::cout << "integer" << std::endl;
-}
-
-UDON_CONCEPT_FLOATING_POINT
-void f(const FloatingPoint& rhs)
-{
-    std::cout << "floating point" << std::endl;
-}
-
-int main()
-{
-    f(10);   //> integer
-    f(1.0);  //> floating point
 }
 ```
