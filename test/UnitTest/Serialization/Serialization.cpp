@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 struct Vec2
 {

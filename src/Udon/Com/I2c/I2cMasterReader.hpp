@@ -14,7 +14,7 @@
 
 #include "I2cBus.hpp"
 
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
 #include <Udon/Com/Common/ParsableArray.hpp>
 #include <Udon/Com/Common/ArrayElementReader.hpp>

@@ -114,16 +114,4 @@ namespace Udon
             };
         };
     }    // namespace Impl
-
-    /// @brief Tをシリアライズした際のバイト列の要素数を取得する
-    /// @tparam T シリアライズ対象の型
-    /// @details シリアライズ後のサイズは、チェックサムのサイズを含む
-    template <typename T>
-    constexpr size_t SerializedSize() noexcept
-    {
-        static_assert(Traits::IsSerializable<T>::value, "T is not packed sizable");    // T は "シリアライズ後のサイズを取得可能な型" である必要がある
-
-        return Udon::Ceil(Impl::SerializedBitSizeImpl{}(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
-    }
-
 }    // namespace Udon

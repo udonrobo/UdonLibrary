@@ -10,7 +10,7 @@
 #include "ICanBus.hpp"
 #include "CanNode.hpp"
 
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
 #include <Udon/Traits/SerializerTraits.hpp>
 #include <Udon/Common/Printf.hpp>

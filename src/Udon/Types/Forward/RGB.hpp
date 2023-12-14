@@ -16,7 +16,7 @@
 #pragma once
 
 #include <Udon/Traits/EnumerableMacro.hpp>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Traits/Typedef.hpp>
 
 namespace Udon

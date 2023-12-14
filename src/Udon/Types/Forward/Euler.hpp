@@ -18,7 +18,7 @@
 
 #include <Udon/Algorithm/Math.hpp>    // Udon::Normalized
 #include <Udon/Traits/EnumerableMacro.hpp>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 namespace Udon
 {

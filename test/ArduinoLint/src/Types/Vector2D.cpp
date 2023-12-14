@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
 #include <Udon/Types/Vector2D.hpp>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 inline void test()
 {

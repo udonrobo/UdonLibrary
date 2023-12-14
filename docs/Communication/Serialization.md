@@ -17,7 +17,7 @@
 ## 個別インクルード
 
 ```cpp
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 ```
 
 ## シリアライズ可能な型
@@ -175,7 +175,7 @@ void FailableSerialize(ArrayView<uint8_t> buffer);
 
 ```cpp
 #include <iostream>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 int main()
 {
@@ -200,7 +200,7 @@ int main()
 
 ```cpp
 #include <iostream>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 enum class Language : uint8_t
 {
@@ -241,7 +241,7 @@ C++
 
 ```cpp
 #include <iostream>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 struct Vec2
 {
@@ -277,7 +277,7 @@ int main()
 
 ```cpp
 #include <iostream>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 struct Array
 {
@@ -317,7 +317,7 @@ int main()
 
 ```cpp
 #include <iostream>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 struct Vec2
 {
@@ -360,7 +360,7 @@ int main()
 
 ```cpp
 #include <iostream>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 int main()
 {

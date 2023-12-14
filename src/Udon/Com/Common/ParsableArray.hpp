@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 namespace Udon
 {

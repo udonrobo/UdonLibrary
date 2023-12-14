@@ -69,9 +69,6 @@
 // LoRa
 #include "Udon/Com/Lora.hpp"
 
-// シリアライズ
-#include "Udon/Com/Serialization.hpp"
-
 // 通信用構造体群
 #include "Udon/Com/Message.hpp"
 
@@ -96,6 +93,12 @@
 
 // SDカード
 #include "Udon/Filesystem/Sd/Parameter.hpp"
+
+//
+//    シリアライザー / serializer
+//
+
+#include "Udon/Serializer/Serializer.hpp"
 
 //
 //    デバイスドライバー
