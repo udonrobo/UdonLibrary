@@ -1,27 +1,25 @@
 # トレイト
 
-- [メタ関数](#%E3%83%A1%E3%82%BF%E9%96%A2%E6%95%B0)
-- [曖昧なメンバ関数呼び出し](#%E6%9B%96%E6%98%A7%E3%81%AA%E3%83%A1%E3%83%B3%E3%83%90%E9%96%A2%E6%95%B0%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97)
-- [コンセプト](#%E3%82%B3%E3%83%B3%E3%82%BB%E3%83%97%E3%83%88)
-
 ## メタ関数
 
 コンパイル時に型情報を取得する関数(クラス)。
 
 `static_assert` と組み合わせることでユーザーに分かりやすいエラーを出したり、コンパイル時処理に利用できます。
 
+`std::true_type`、`std::false_type` のいずれかを継承するため、`value` メンバ変数を使用して、判定結果をコンパイル時に取得できます。
+
 > 各メタ関数は `Udon::Traits` 名前空間に属します。
 
-| 名前                          | 説明                                                    | ヘッダーファイル                                                                         |
-| ----------------------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `IsWriter<T>`                 | T が送信クラス要件を満たすか調べる                      | [Udon/Traits/ReaderWriterTraits.hpp](./../../src/Udon/Traits/IsWriter.hpp)               |
-| `IsReader<T>`                 | T が受信クラス要件を満たすか調べる                      | [Udon/Traits/ReaderWriterTraits.hpp](./../../src/Udon/Traits/IsReader.hpp)               |
-| `IsSerializable<T>`           | T がシリアライズ可能か調べる                            | [Udon/Serializer/SerializerTraits.hpp](./../../src/Udon/Serializer/SerializerTraits.hpp) |
-| `AlwaysFalse<T>`              | 常に `std::false_type` から派生する(遅延 static_assert) | [Udon/Traits/AlwaysFalse.hpp](./../../src/Udon/Traits/AlwaysFalse.hpp)                   |
-| `HasMemberFunctionBegin<T>`   | T に `begin` メンバ関数が存在するか調べる               | [Udon/Traits/HasMemberFunction.hpp](./../../src/Udon/Traits/HasMemberFunction.hpp)       |
-| `HasMemberFunctionUpdate<T>`  | T に `update` メンバ関数が存在するか調べる              | [Udon/Traits/HasMemberFunction.hpp](./../../src/Udon/Traits/HasMemberFunction.hpp)       |
-| `HasMemberFunctionShow<T>`    | T に `show` メンバ関数が存在するか調べる                | [Udon/Traits/HasMemberFunction.hpp](./../../src/Udon/Traits/HasMemberFunction.hpp)       |
-| `HasMemberFunctionShowRaw<T>` | T に `showRaw` メンバ関数が存在するか調べる             | [Udon/Traits/HasMemberFunction.hpp](./../../src/Udon/Traits/HasMemberFunction.hpp)       |
+| 名前                          | 説明                                                                                             | ヘッダーファイル                                                                         |
+| ----------------------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| `IsWriter<T>`                 | T が送信クラス要件を満たす場合 `std::true_type` 、それ以外は `std::false_type` を継承。          | [Udon/Traits/ReaderWriterTraits.hpp](./../../src/Udon/Traits/IsWriter.hpp)               |
+| `IsReader<T>`                 | T が受信クラス要件を満たす場合 `std::true_type` 、それ以外は `std::false_type` を継承。          | [Udon/Traits/ReaderWriterTraits.hpp](./../../src/Udon/Traits/IsReader.hpp)               |
+| `IsSerializable<T>`           | T がシリアライズ可能な場合 `std::true_type` 、それ以外は `std::false_type` を継承。              | [Udon/Serializer/SerializerTraits.hpp](./../../src/Udon/Serializer/SerializerTraits.hpp) |
+| `AlwaysFalse<T>`              | 常に `std::false_type` を継承。(遅延 static_assert)                                              | [Udon/Traits/AlwaysFalse.hpp](./../../src/Udon/Traits/AlwaysFalse.hpp)                   |
+| `HasMemberFunctionBegin<T>`   | T に `begin` メンバ関数が存在する場合 `std::true_type` 、それ以外は `std::false_type` を継承。   | [Udon/Traits/HasMemberFunction.hpp](./../../src/Udon/Traits/HasMemberFunction.hpp)       |
+| `HasMemberFunctionUpdate<T>`  | T に `update` メンバ関数が存在する場合 `std::true_type` 、それ以外は `std::false_type` を継承。  | [Udon/Traits/HasMemberFunction.hpp](./../../src/Udon/Traits/HasMemberFunction.hpp)       |
+| `HasMemberFunctionShow<T>`    | T に `show` メンバ関数が存在する場合 `std::true_type` 、それ以外は `std::false_type` を継承。    | [Udon/Traits/HasMemberFunction.hpp](./../../src/Udon/Traits/HasMemberFunction.hpp)       |
+| `HasMemberFunctionShowRaw<T>` | T に `showRaw` メンバ関数が存在する場合 `std::true_type` 、それ以外は `std::false_type` を継承。 | [Udon/Traits/HasMemberFunction.hpp](./../../src/Udon/Traits/HasMemberFunction.hpp)       |
 
 ### 送信クラス要件
 
