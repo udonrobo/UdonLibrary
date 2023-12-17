@@ -74,9 +74,7 @@ namespace Udon
     }
 
     /// @brief 必ずチェックサムエラーとなるシリアライズ
-    /// @tparam T シリアル化する型(自動推論)
     /// @param buffer シリアル化先のバッファ
-    /// @return シリアル化に成功したかどうか
     inline void FailableSerialize(ArrayView<uint8_t> buffer)
     {
         buffer.back() = CRC8(buffer.removeBackView(Udon::CRC8_SIZE)) ^ 0xff;

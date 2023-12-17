@@ -12,13 +12,12 @@
 
 ## 使用方法
 
+<div style="display: flex;">
+<div style="flex: 50%;">
+
 ### スタート
 
 - [本ライブラリをインクルードする](./docs/Start/Include.md)
-
-### アルゴリズム
-
-- [独立ステア最適化](./docs/Algorithm/SteerOptimizer.md)
 
 ### 通信
 
@@ -28,6 +27,24 @@
 - [UART](./docs/Communication/UART.md)
 - [IM920](./docs/Communication/IM920.md)
 - [コントローラ](./docs/Communication/Pad.md)
+
+### ドライバー
+
+- [モーター](./docs/Driver/Motor.md)
+- [ロータリーエンコーダー](./docs/Driver/Encoder.md)
+
+### その他
+
+- [シリアライザ](./docs/Other/Serialization.md)
+- [トレイト](./docs/Other/Traits.md)
+
+</div>
+
+<div style="flex: 50%;">
+
+### アルゴリズム
+
+- [独立ステア最適化](./docs/Algorithm/SteerOptimizer.md)
 
 ### ユーザー定義型
 
@@ -41,18 +58,12 @@
 - [コンテナ / 配列ビュー](./docs/Types/ArrayView.md)
 - [固定ビット長浮動小数点型](./docs/Types/Float.md)
 
-### ドライバー
-
-- [モーター](./docs/Driver/Motor.md)
-- [ロータリーエンコーダー](./docs/Driver/Encoder.md)
-
-### その他
-
-- [シリアライザ](./docs/Other/Serialization.md)
-- [トレイト](./docs/Other/Traits.md)
-
 ### 開発者用
 
 - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
 - [自動テスト](./docs/Developer/CI.md)
 - [謝辞](./docs/Developer/Acknowledgments.md)
+
+</div>
+
+</div>
