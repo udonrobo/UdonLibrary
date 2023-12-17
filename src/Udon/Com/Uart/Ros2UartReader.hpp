@@ -42,25 +42,21 @@ namespace Udon
             return Udon::Deserialize<Message>(buffer);
         }
 
-        void show(char gap = '\t') const
+        void show() const
         {
             if (const auto message = getMessage())
             {
-                Udon::Show(*message, gap);
+                Udon::Show(*message);
             }
             else
             {
-                Udon::Show("receive failed!", gap);
+                Udon::Show("receive failed!");
             }
         }
 
-        void showRaw(char gap = '\t') const
+        void showRaw() const
         {
-            for (int i = 0; i < buffer.size(); i++)
-            {
-                std::cout << static_cast<int>(buffer[i]) << " ";
-            }
-            std::cout << std::endl;
+            Udon::Show(buffer);
         }
     };
 }    // namespace Udon

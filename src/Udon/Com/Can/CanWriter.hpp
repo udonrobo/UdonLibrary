@@ -68,13 +68,12 @@ namespace Udon
         }
 
         /// @brief 送信内容を表示
-        /// @param gap 区切り文字 (default: '\t')
-        void show(char gap = '\t') const
+        void show() const
         {
             Udon::Printf("0x%03x ", node.id);
             if (const auto message = Udon::Deserialize<Message>({ node.data, node.length }))
             {
-                Udon::Show(*message, gap);
+                Udon::Show(*message);
             }
             else
             {
@@ -84,13 +83,12 @@ namespace Udon
         }
 
         /// @brief 送信バッファを表示
-        /// @param gap 区切り文字 (default: ' ')
-        void showRaw(char gap = ' ') const
+        void showRaw() const
         {
             Udon::Printf("0x%03x ", node.id);
             for (size_t i = 0; i < node.length; ++i)
             {
-                Udon::Show(node.data[i], gap);
+                Udon::Show(node.data[i]);
             }
         }
 

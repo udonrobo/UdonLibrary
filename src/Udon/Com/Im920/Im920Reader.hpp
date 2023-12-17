@@ -64,28 +64,22 @@ namespace Udon
         }
 
         /// @brief 送信内容を表示
-        /// @param gap 区切り文字 (default: '\t')
-        void show(char gap = '\t') const
+        void show() const
         {
             if (const auto message = getMessage())
             {
-                Udon::Show(*message, gap);
+                Udon::Show(*message);
             }
             else
             {
-                Serial.print(F("receive failed!"));
+                Udon::Show(F("receive failed!"));
             }
         }
 
         /// @brief 送信バッファを表示
-        /// @param gap 区切り文字 (default: ' ')
-        void showRaw(char gap = ' ') const
+        void showRaw() const
         {
-            for (auto&& it : buffer)
-            {
-                Serial.print(it);
-                Serial.print(gap);
-            }
+            Udon::Show(buffer);
         }
     };
 }    // namespace Udon

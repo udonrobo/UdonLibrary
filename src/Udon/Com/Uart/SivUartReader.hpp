@@ -69,22 +69,21 @@ namespace Udon
             return Udon::Deserialize<Message>(buffer);
         }
 
-        void show(char gap = '\t') const
+        void show() const
         {
             if (const auto message = getMessage())
             {
-                Udon::Show(*message, gap);
-                s3d::Print.writeln();
+                Udon::Show(*message);
             }
             else
             {
-                s3d::Print << U"receive failed!";
+                Udon::Show("receive failed!");
             }
         }
 
         void showRaw() const
         {
-            s3d::Print << buffer;
+            Udon::Show(buffer);
         }
     };
 }    // namespace Udon
