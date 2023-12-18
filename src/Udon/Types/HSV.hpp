@@ -1,23 +1,14 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    HSV色空間
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    HSV色空間
-//
-//-------------------------------------------------------------------
-
 
 #pragma once
 
-#include "Forward/HSVFwd.hpp"
-#include "Forward/RGBFwd.hpp"
+#include "Forward/HSV.hpp"
+#include "Forward/RGB.hpp"
 
 #ifdef _MSC_VER
 #    pragma warning(push)

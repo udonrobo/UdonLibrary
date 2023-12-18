@@ -1,24 +1,15 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    通信用メッセージ
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    通信用メッセージ
-//
-//-------------------------------------------------------------------
-
 
 #pragma once
 
 #include <stdarg.h>
 #include <stdint.h>
-#include <Udon/Traits/ParsableMacro.hpp>
+#include <Udon/Traits/EnumerableMacro.hpp>
 
 namespace Udon
 {
@@ -52,7 +43,7 @@ namespace Udon
             }
 #endif
 
-            UDON_PARSABLE(text);
+            UDON_ENUMERABLE(text);
         };
 
         using Lcd1602 = Lcd<16, 2>;

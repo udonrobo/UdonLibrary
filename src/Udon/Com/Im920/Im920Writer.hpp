@@ -1,26 +1,20 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    IM920 送信クラス
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    IM920 送信クラス
+
 //
 //    Sender --[UART]--> IM920 ~~[920MHz]~~> IM920 --[UART]--> Receiver
 //    ^^^^^^
 //
-//-------------------------------------------------------------------
 
 #pragma once
 
 #include "IIm920.hpp"
 
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
 
 namespace Udon
@@ -30,7 +24,7 @@ namespace Udon
     class Im920Writer
     {
     public:
-        static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
+        static constexpr size_t Size = Udon::SerializedSize<Message>();
 
         using MessageType = Message;
 
@@ -59,14 +53,14 @@ namespace Udon
 
         void setMessage(const Message& message)
         {
-            Udon::Pack(message, buffer);
+            Udon::Serialize(message, buffer);
         }
 
         /// @brief 送信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
-            if (const auto message = Udon::Unpack<Message>(buffer))
+            if (const auto message = Udon::Deserialize<Message>(buffer))
             {
                 Udon::Show(*message, gap);
             }

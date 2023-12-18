@@ -1,17 +1,9 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    CAN通信 Raspberry Pi Pico用バスクラス (SPI経由)
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    CAN通信 Raspberry Pi Pico用バスクラス (SPI経由)
-//
-//-------------------------------------------------------------------
 
 #pragma once
 
@@ -21,7 +13,7 @@
 #include "CanNode.hpp"
 #include "CanUtility.hpp"
 
-#include <Udon/Algorithm/StaticVector.hpp>
+#include <Udon/Types/StaticVector.hpp>
 #include <Udon/Thirdparty/pico_mcp2515/mcp2515.h>
 
 namespace Udon

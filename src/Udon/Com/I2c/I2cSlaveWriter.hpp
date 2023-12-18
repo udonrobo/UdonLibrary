@@ -1,26 +1,20 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    I2c スレーブ側送信クラス
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    I2c スレーブ側送信クラス
+
 //
 //    master <--[I2C]-- slave
 //                      ^^^^^
 //
-//-------------------------------------------------------------------
 
 #pragma once
 
 #include "I2cBus.hpp"
 
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
 #include <Udon/Com/Common/ParsableArray.hpp>
 #include <Udon/Com/Common/ArrayElementWriter.hpp>
@@ -36,7 +30,7 @@ namespace Udon
         using MessageType = Message;
 
         /// @brief 受信バッファサイズ
-        static constexpr size_t Size = Udon::CapacityWithChecksum<MessageType>();
+        static constexpr size_t Size = Udon::SerializedSize<MessageType>();
 
         /// @brief コンストラクタ
         /// @param bus I2cバス
@@ -70,21 +64,20 @@ namespace Udon
         /// @param message 送信するメッセージ
         void setMessage(const MessageType& message)
         {
-            Udon::Pack(message, buffer);
+            Udon::Serialize(message, buffer);
         }
 
         /// @brief 送信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show(char gap = '\t') const
         {
-            if (const auto message = Udon::Unpack<MessageType>(buffer))
+            if (const auto message = Udon::Deserialize<MessageType>(buffer))
             {
                 Udon::Show(*message, gap);
             }
             else
             {
-                Udon::Show(F("unpack failed!"));
-                // ここへ到達する: setMessage()で値を設定していない
+                Udon::Show(F("unpack failed!"));    // ここへ到達する: setMessage()で値を設定していない
             }
         }
 
@@ -101,8 +94,6 @@ namespace Udon
         uint8_t buffer[Size];
 
         static I2cSlaveWriter* self;
-
-    public:
     };
 
     template <typename Message>

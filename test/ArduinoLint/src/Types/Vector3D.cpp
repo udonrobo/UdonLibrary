@@ -1,6 +1,7 @@
 #include <Arduino.h>
 
 #include <Udon/Types/Vector3D.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 inline void test()
 {
@@ -74,8 +75,8 @@ inline void test()
     // シリアライズ
     {
         Udon::Vec3 a;
-        static_assert(Udon::CapacityWithChecksum<Udon::Vec3>() == 12 + 1, "");
-        const auto b = Udon::Pack(a);
-        (void)Udon::Unpack<Udon::Vec3>(b);
+        static_assert(Udon::SerializedSize<Udon::Vec3>() == 12 + 1, "");
+        const auto b = Udon::Serialize(a);
+        (void)Udon::Deserialize<Udon::Vec3>(b);
     }
 }

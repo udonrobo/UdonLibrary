@@ -1,27 +1,20 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    通信転送クラス
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    通信転送クラス
+
 //
 //    Sender --[CAN ect.]--> Forwarding --[UART etc.]--> Receiver
 //                           ^^^^^^^^^^
 //
-//-------------------------------------------------------------------
 
 #pragma once
 
 #include <Udon/Common/Show.hpp>
 #include <Udon/Traits/HasMemberFunction.hpp>
-#include <Udon/Traits/IsReader.hpp>
-#include <Udon/Traits/IsWriter.hpp>
+#include <Udon/Traits/ReaderWriterTraits.hpp>
 
 namespace Udon
 {
@@ -39,7 +32,7 @@ namespace Udon
 
         static_assert(Udon::Traits::IsReader<Reader>::value, "Reader must be reader.");
         static_assert(Udon::Traits::IsWriter<Writer>::value, "Writer must be writer.");
-        
+
         /// @brief 受信クラスの型
         using reader_type = Reader<Message>;
 

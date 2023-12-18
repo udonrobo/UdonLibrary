@@ -1,6 +1,10 @@
-## clang format
-
-## key reference: https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+#
+#    clang format
+#
+#    Copyright (c) 2022-2023 udonrobo
+#
+#    key reference: https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+#
 
 UseTab: Never
 IndentWidth: 4

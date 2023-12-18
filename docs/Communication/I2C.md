@@ -1,8 +1,4 @@
-# I2C 通信
-
-```cpp
-#include <Udon/Com/I2c.hpp>
-```
+# I2C
 
 I2C 通信クラスは、通信バスクラス、マスター側送受信クラス、スレーブ側送受信クラスから構成されています。
 
@@ -39,6 +35,12 @@ flowchart LR
 ```
 
 </details>
+
+## 個別インクルード
+
+```cpp
+#include <Udon/Com/I2c.hpp>
+```
 
 ## バスクラス
 

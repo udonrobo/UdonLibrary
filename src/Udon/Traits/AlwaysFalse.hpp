@@ -8,23 +8,28 @@ namespace Udon
     namespace Traits
     {
 
-        /// @brief 常に std::false_type を継承する
-        /// @remark static_assert の失敗を遅延させるために使用する
+        /// @brief static_assert 失敗遅延用の型
+        /// @remark C++20 までは static_assert に false を渡すとテンプレートの実体化する前にエラーになるため、
+        ///         この型を用いて実体化時点で static_assert が失敗するようにする。
+        ///
         ///         例:
+        ///         
         ///         template <typename T, typename std::enable_if<std::is_integral<T>::value>::type* = nullptr>
         ///         void f()  // <- Tが整数であるとき、f() は実体化されてはいけないとする
         ///         {
         ///             static_assert(Udon::Traits::AlwaysFalse<T>::value, "T is integral.");
         ///         }
+        ///
         ///         template <typename T, typename std::enable_if<std::is_floating_point<T>::value>::type* = nullptr>
         ///         void f()  // <- 実体化されるべき関数
         ///         {
         ///         }
-        ///         f<int>();    // <- NG 実体化された時点で static_assert が失敗する
-        ///         f<float>();  // <- OK int型で実体化されていないので static_assert は失敗しない
-        template <class T>
-        struct AlwaysFalse
-            : std::false_type
+        ///         
+        ///         f<int>();    // <- 実体化された時点で static_assert が失敗する
+        ///         f<float>();  // <- int型で実体化されていないので static_assert は失敗しない
+        ///         
+        template <typename T>
+        struct AlwaysFalse : std::false_type
         {
         };
 

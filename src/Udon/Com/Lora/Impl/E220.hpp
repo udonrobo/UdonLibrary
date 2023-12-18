@@ -1,11 +1,9 @@
 //
-//    UdonLibrary
+//    E220 Loraモジュール ドライバクラス実装部
 //
 //	  Copyright (c) 2022-2023 Fujimoto Ryo
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 Udonrobo
-//
-//    E220 Loraモジュール ドライバクラス実装部
 //
 
 #pragma once
@@ -207,7 +205,6 @@ namespace Udon
         digitalWrite(M0Pin, LOW);
         digitalWrite(M1Pin, LOW);
 
-        waitUntilCommandAccept();
         uart.end();
         uart.begin(115200);    // 通常通信モードのレートに変更する
         uart.setTimeout(10);
@@ -308,15 +305,6 @@ namespace Udon
             return false;
         }
 
-        // while (uart.peek() >> 7 != 1)
-        // {
-        //     uart.read();
-        //     if (uart.available() < FrameSize)
-        //     {
-        //         return false;
-        //     }
-        // }
-
         // データ読み込み
         if (Udon::BitUnpack(rxNode->data, rxNode->data + rxNode->size, [this]() -> uint8_t
                             { return uart.read(); }))
@@ -358,13 +346,13 @@ namespace Udon
     {
         if (AUXPin)
         {
-            lastWaitUntilCommandAcceptMs = millis();
+            const auto lastWaitMs = millis();
 
             while (!digitalRead(*AUXPin))    // AUXPinがLOWの間はコマンドを受け付けない
             {
                 delayMicroseconds(10);    // チャタリング防止
 
-                if (millis() - lastWaitUntilCommandAcceptMs > 200)
+                if (millis() - lastWaitMs > 200)
                 {
                     break;    // タイムアウトした場合は強制的にコマンドを受け付ける
                 }

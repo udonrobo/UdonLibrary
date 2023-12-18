@@ -1,17 +1,9 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    IM920 インターフェース
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    IM920 インターフェース
-//
-//-------------------------------------------------------------------
 
 #pragma once
 
@@ -19,7 +11,7 @@
 #include <vector>
 #include <stdint.h>
 
-#include <Udon/Algorithm/ArrayView.hpp>
+#include <Udon/Types/ArrayView.hpp>
 
 namespace Udon
 {

@@ -1,20 +1,11 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    CAN 通信
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    CAN 通信
-//
-//-------------------------------------------------------------------
 
 #pragma once
-
 
 //
 //    Raspberry Pi Pico 用バスクラス
@@ -30,7 +21,9 @@
 #    include "Can/CanBusTeensy.hpp"
 #endif
 
-// 仮想ノードクラス
+//
+//    送受信ノード
+//
 #include "Can/CanReader.hpp"
 #include "Can/CanWriter.hpp"
 

@@ -1,25 +1,16 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    UART 送信クラス
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    UART 送信クラス
-//
 //    Sender --[UART]--> Receiver
 //    ^^^^^^
 //
-//-------------------------------------------------------------------
-
 
 #pragma once
 
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
 
 namespace Udon
@@ -44,7 +35,7 @@ namespace Udon
         /// @brief 更新
         void update()
         {
-            for (auto&& it : Udon::Pack(message))
+            for (auto&& it : Udon::Serialize(message))
             {
                 uart.write(it);
             }
@@ -68,7 +59,7 @@ namespace Udon
         /// @param gap 区切り文字 (default: ' ')
         void showRaw(char gap = ' ') const
         {
-            for (auto&& it : Udon::Pack(message))
+            for (auto&& it : Udon::Serialize(message))
             {
                 Serial.print(it);
                 Serial.print(gap);

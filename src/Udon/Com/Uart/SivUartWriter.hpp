@@ -19,7 +19,7 @@
 #pragma once
 
 #include <Siv3D/Serial.hpp>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
 
 namespace Udon
@@ -27,7 +27,7 @@ namespace Udon
     template <typename Message>
     class SivUartWriter
     {
-        static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
+        static constexpr size_t Size = Udon::SerializedSize<Message>();
 
         s3d::Serial& serial;
 
@@ -41,7 +41,8 @@ namespace Udon
         {
             if (serial.isOpen())
             {
-                serial.write(Udon::Pack(message).data(), Size);
+                const auto packed = Udon::Serialize(message);
+                serial.write(packed.data(), packed.size());
             }
         }
     };

@@ -1,17 +1,9 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    通信経由ロータリーエンコーダー
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    通信経由ロータリーエンコーダー
-//
-//-------------------------------------------------------------------
 
 #pragma once
 
@@ -22,7 +14,7 @@
 #include <Udon/Com/Message/Encoder.hpp>
 #include <Udon/Traits/HasMemberFunction.hpp>
 
-#include <Udon/Traits/IsReader.hpp>
+#include <Udon/Traits/ReaderWriterTraits.hpp>
 #include <Udon/Common/Printf.hpp>
 
 namespace Udon
@@ -106,7 +98,6 @@ namespace Udon
             Serial.print('\t');
         }
 #endif
-
     };
 
 }    // namespace Udon

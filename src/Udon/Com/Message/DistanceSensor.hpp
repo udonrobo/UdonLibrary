@@ -1,9 +1,14 @@
-
+//
+//    通信用メッセージ
+//
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
+//
 
 #pragma once
 
 #include <stdint.h>
-#include <Udon/Traits/ParsableMacro.hpp>
+#include <Udon/Traits/EnumerableMacro.hpp>
 namespace Udon
 {
 
@@ -24,7 +29,7 @@ namespace Udon
             }
 #endif
 
-            UDON_PARSABLE(distance);
+            UDON_ENUMERABLE(distance);
         };
 
     }    // namespace Message

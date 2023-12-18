@@ -1,9 +1,15 @@
+//
+//    Lora 受信クラス
+//
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
+//
 
 #pragma once
 
 #include "ILora.hpp"
 
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
 
 namespace Udon
@@ -13,7 +19,7 @@ namespace Udon
     class LoraReader
     {
     public:
-        static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
+        static constexpr size_t Size = Udon::SerializedSize<Message>();
 
         using MessageType = Message;
 
@@ -48,7 +54,7 @@ namespace Udon
             }
             else
             {
-                return Udon::Unpack<Message>(buffer);
+                return Udon::Deserialize<Message>(buffer);
             }
         }
 

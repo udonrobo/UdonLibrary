@@ -1,21 +1,13 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    通信用メッセージ
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    通信用メッセージ
-//
-//-------------------------------------------------------------------
 
 #pragma once
 
-#include <Udon/Traits/ParsableMacro.hpp>
+#include <Udon/Traits/EnumerableMacro.hpp>
 
 #include <stdint.h>
 
@@ -111,7 +103,7 @@ namespace Udon
             }
 #endif
 
-            UDON_PARSABLE(
+            UDON_ENUMERABLE(
                 isConnected,
                 triangle, circle, cross, square,
                 up, right, down, left,

@@ -1,16 +1,8 @@
-#-------------------------------------------------------------------
-#
-#    UdonLibrary
-#
-#    Copyright (c) 2022-2023 udonrobo
-#
-#    Licensed under the MIT License.
-#
-#-------------------------------------------------------------------
 #
 #    UnitTest Pearent CMakeLists.txt
 #
-#-------------------------------------------------------------------
+#    Copyright (c) 2022-2023 udonrobo
+#
 
 cmake_minimum_required(VERSION 3.14)
 project(UnitTest)

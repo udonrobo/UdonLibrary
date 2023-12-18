@@ -1,24 +1,11 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    I2c バス
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    I2c バス
-//
-//    master <--[I2C]--> slave
-//    ^^^^^^             ^^^^^
-//
-//-------------------------------------------------------------------
 
 #pragma once
-
-#include <Udon/Algorithm/Delegate.hpp>
 
 #ifdef UDON_TEENSY_I2C_SLAVE_MODE
 #    include <i2c_driver.h>
@@ -91,6 +78,8 @@ namespace Udon
         : public II2cBus
     {
 
+        static I2cBusImpl* self;
+
         TwoWire& wire;
 
         const uint32_t timeoutMs;
@@ -99,11 +88,7 @@ namespace Udon
 
         uint32_t restartCount;
 
-        /// @brief C言語スタイルのコールバック関数に メンバ関数を登録するためのデリゲート
-        Udon::Delegate<I2cBusImpl, void(int)>  onReceiveDelegate;
-        Udon::Delegate<I2cBusImpl, void(void)> onRequestDelegate;
-
-        /// @brief C言語スタイルのコールバック関数
+        /// @brief コールバック関数
         void (*userOnReceive)(int);
         void (*userOnRequest)();
 
@@ -137,11 +122,10 @@ namespace Udon
             , timeoutMs(timeoutMs)
             , transmitMs()
             , restartCount()
-            , onReceiveDelegate(this, &I2cBusImpl::invokeOnReceive)
-            , onRequestDelegate(this, &I2cBusImpl::invokeOnRequest)
             , userOnReceive()
             , userOnRequest()
         {
+            self = this;
         }
 
         I2cBusImpl(const I2cBusImpl& rhs)
@@ -149,11 +133,10 @@ namespace Udon
             , timeoutMs(rhs.timeoutMs)
             , transmitMs(rhs.transmitMs)
             , restartCount(rhs.restartCount)
-            , onReceiveDelegate(this, &I2cBusImpl::invokeOnReceive)
-            , onRequestDelegate(this, &I2cBusImpl::invokeOnRequest)
             , userOnReceive()
             , userOnRequest()
         {
+            self = this;
         }
 
         /// @brief I2cバスの有効性を取得
@@ -162,8 +145,7 @@ namespace Udon
             return millis() - transmitMs < timeoutMs;
         }
 
-
-#if defined(__MK64FX512__)  // Teensy 3.5 ではバスの再起動が適切に行えなかった。
+#if defined(__MK64FX512__)    // Teensy 3.5 ではバスの再起動が適切に行えなかった。
 
         /// @brief 更新
         bool update() override
@@ -224,7 +206,7 @@ namespace Udon
             wire.begin(address);
         }
 
-#    ifdef ARDUINO_ARCH_RP2040
+#ifdef ARDUINO_ARCH_RP2040
 
         inline void setSDA(uint8_t pin)
         {
@@ -236,7 +218,7 @@ namespace Udon
             wire.setSCL(pin);
         }
 
-#    endif
+#endif
 
         inline void end() override
         {
@@ -328,18 +310,23 @@ namespace Udon
         inline void onReceive(void (*function)(int)) override
         {
             userOnReceive = function;
-            wire.onReceive(onReceiveDelegate);
+            wire.onReceive([](int n)
+                           { self->invokeOnReceive(n); });
         }
 
         inline void onRequest(void (*function)()) override
         {
             userOnRequest = function;
-            wire.onRequest(onRequestDelegate);
+            wire.onRequest([]()
+                           { self->invokeOnRequest(); });
         }
     };
+
+    template <int Counter>
+    I2cBusImpl<Counter>* I2cBusImpl<Counter>::self;
 
 }    // namespace Udon
 
 /// @brief I2C バスのラッパークラス
-#    define I2cBus \
-        I2cBusImpl<__COUNTER__>
+#define I2cBus \
+    I2cBusImpl<__COUNTER__>

@@ -1,8 +1,7 @@
 #include <Arduino.h>
 #include <Udon/Com/I2c.hpp>
 
-#include <Udon/Traits/IsReader.hpp>
-#include <Udon/Traits/IsWriter.hpp>
+#include <Udon/Traits/ReaderWriterTraits.hpp>
 
 inline void testBus()
 {
@@ -49,7 +48,6 @@ inline void testMaster()
     reader.showRaw();
 
     Udon::I2cMasterWriter<int> writer{ bus, 0x00 };
-    writer.update();
     writer.setMessage(0);
     writer.show();
     writer.showRaw();

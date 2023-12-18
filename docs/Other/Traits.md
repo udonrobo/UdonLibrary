@@ -1,8 +1,4 @@
-# 型トレイト
-
-* [メタ関数](#%E3%83%A1%E3%82%BF%E9%96%A2%E6%95%B0)
-* [曖昧なメンバ関数呼び出し](#%E6%9B%96%E6%98%A7%E3%81%AA%E3%83%A1%E3%83%B3%E3%83%90%E9%96%A2%E6%95%B0%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97)
-* [コンセプト](#%E3%82%B3%E3%83%B3%E3%82%BB%E3%83%97%E3%83%88)
+# トレイト
 
 ## メタ関数
 
@@ -10,27 +6,27 @@
 
 `static_assert` と組み合わせることでユーザーに分かりやすいエラーを出したり、コンパイル時処理に利用できます。
 
+`std::true_type`、`std::false_type` のいずれかを継承するため、`value` メンバ変数を使用して、判定結果をコンパイル時に取得できます。
+
 > 各メタ関数は `Udon::Traits` 名前空間に属します。
 
-| 名前 | 説明 | ヘッダーファイル |
-| --- | --- | -------- |
-| `IsWriter<T>` | T が送信クラス要件を満たすか調べる | [Udon/Traits/IsWriter.hpp](./../../src/Udon/Traits/IsWriter.hpp) |
-| `IsReader<T>` | T が受信クラス要件を満たすか調べる | [Udon/Traits/IsReader.hpp](./../../src/Udon/Traits/IsReader.hpp) |
-| `Capacitable<T>` | T のシリアライズ後サイズを取得可能か調べる | [Udon/Traits/Capacitable.hpp](./../../src/Udon/Traits/Capacitable.hpp) |
-| `Accessible<T>` | T のメンバ変数を列挙可能か調べる | [Udon/Traits/Accessible.hpp](./../../src/Udon/Traits/Accessible.hpp) |
-| `Parsable<T>` | T が解析可能であるか調べる | [Udon/Traits/Parsable.hpp](./../../src/Udon/Traits/Parsable.hpp) |
-| `AlwaysFalse<T>` | 常に `std::false_type` から派生する | [Udon/Traits/AlwaysFalse.hpp](./../../src/Udon/Traits/AlwaysFalse.hpp) |
-| `HasMemberFunctionBegin<T>` | T に `begin` メンバ関数が存在するか調べる | [Udon/Traits/HasMemberFunctionBegin.hpp](./../../src/Udon/Traits/HasMemberFunctionBegin.hpp) |
-| `HasMemberFunctionUpdate<T>` | T に `update` メンバ関数が存在するか調べる | [Udon/Traits/HasMemberFunctionUpdate.hpp](./../../src/Udon/Traits/HasMemberFunctionUpdate.hpp) |
-| `HasMemberFunctionShow<T>` | T に `show` メンバ関数が存在するか調べる | [Udon/Traits/HasMemberFunctionShow.hpp](./../../src/Udon/Traits/HasMemberFunctionShow.hpp) |
-| `HasMemberFunctionShowRaw<T>` | T に `showRaw` メンバ関数が存在するか調べる | [Udon/Traits/HasMemberFunctionShowRaw.hpp](./../../src/Udon/Traits/HasMemberFunctionShowRaw.hpp) |
+| 名前                          | 説明                                                                                             | ヘッダーファイル                                                                         |
+| ----------------------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| `IsWriter<T>`                 | T が送信クラス要件を満たす場合 `std::true_type` 、それ以外は `std::false_type` を継承。          | [Udon/Traits/ReaderWriterTraits.hpp](./../../src/Udon/Traits/IsWriter.hpp)               |
+| `IsReader<T>`                 | T が受信クラス要件を満たす場合 `std::true_type` 、それ以外は `std::false_type` を継承。          | [Udon/Traits/ReaderWriterTraits.hpp](./../../src/Udon/Traits/IsReader.hpp)               |
+| `IsSerializable<T>`           | T がシリアライズ可能な場合 `std::true_type` 、それ以外は `std::false_type` を継承。              | [Udon/Serializer/SerializerTraits.hpp](./../../src/Udon/Serializer/SerializerTraits.hpp) |
+| `AlwaysFalse<T>`              | 常に `std::false_type` を継承。(遅延 static_assert)                                              | [Udon/Traits/AlwaysFalse.hpp](./../../src/Udon/Traits/AlwaysFalse.hpp)                   |
+| `HasMemberFunctionBegin<T>`   | T に `begin` メンバ関数が存在する場合 `std::true_type` 、それ以外は `std::false_type` を継承。   | [Udon/Traits/HasMemberFunction.hpp](./../../src/Udon/Traits/HasMemberFunction.hpp)       |
+| `HasMemberFunctionUpdate<T>`  | T に `update` メンバ関数が存在する場合 `std::true_type` 、それ以外は `std::false_type` を継承。  | [Udon/Traits/HasMemberFunction.hpp](./../../src/Udon/Traits/HasMemberFunction.hpp)       |
+| `HasMemberFunctionShow<T>`    | T に `show` メンバ関数が存在する場合 `std::true_type` 、それ以外は `std::false_type` を継承。    | [Udon/Traits/HasMemberFunction.hpp](./../../src/Udon/Traits/HasMemberFunction.hpp)       |
+| `HasMemberFunctionShowRaw<T>` | T に `showRaw` メンバ関数が存在する場合 `std::true_type` 、それ以外は `std::false_type` を継承。 | [Udon/Traits/HasMemberFunction.hpp](./../../src/Udon/Traits/HasMemberFunction.hpp)       |
 
 ### 送信クラス要件
 
-* `MessageType` というメンバ型名を持つ
-* `setMessage()` メンバ関数を持ち、戻り値が `void`、引数型が `const MessageType&` である
+- `MessageType` というメンバ型名を持つ
+- `setMessage()` メンバ関数を持ち、戻り値が `void`、引数型が `const MessageType&` である
 
-``` cpp
+```cpp
 // 送信クラス要件を満たすクラス
 template <typename Message>
 class Writer
@@ -55,10 +51,10 @@ int main()
 
 ### 受信クラス要件
 
-* `MessageType` というメンバ型名を持つ
-* `getMessage() const` メンバ関数を持ち、戻り値が `Udon::Optional<MessageType>`、引数が存在しない
+- `MessageType` というメンバ型名を持つ
+- `getMessage() const` メンバ関数を持ち、戻り値が `Udon::Optional<MessageType>`、引数が存在しない
 
-``` cpp
+```cpp
 // 受信クラス要件を満たすクラス
 template <typename Message>
 class Reader
@@ -83,25 +79,25 @@ int main()
 
 ### オーバーロード解決の優先順位制御
 
-``` cpp
-struct Parsable
+```cpp
+struct Serializable
 {
     int a;
     double b;
-    UDON_PARSABLE(a, b);
+    UDON_ENUMERABLE(a, b);
 }
 
-// T が解析可能である場合この関数が実体化される
-template <typename T, typename std::enable_if<Udon::Traits::Parsable<T>::value, std::nullptr_t>::type = nullptr>
+// T がシリアライズ可能である場合この関数が実体化される
+template <typename T, typename std::enable_if<Udon::Traits::IsSerializable<T>::value, std::nullptr_t>::type = nullptr>
 void f(const T& rhs)
 {
-    std::cout << "parsable" << std::endl;
+    std::cout << "serializable" << std::endl;
 }
 
 int main()
 {
-    Parsable parsable{};
-    f(parsable);
+    Serializable serializable{};
+    f(serializable);
 }
 ```
 
@@ -109,9 +105,9 @@ int main()
 
 `AlwaysFalse<T>` を使用することで、テンプレート関数、クラスが実体化されたときに限り `static_assert` を失敗させることができる。
 
-> static\_assert(false, "") は常に失敗してしまうので、失敗を実体化まで遅延させる。
+> static_assert(false, "") は常に失敗してしまうので、失敗を実体化まで遅延させる。
 
-``` cpp
+```cpp
 template <typename T, typename std::enable_if<std::is_integral<T>::value, std::nullptr_t>::type = nullptr>
 void f(const T& rhs)
 {
@@ -136,19 +132,19 @@ int main()
 特定のメンバ関数が存在する場合呼び出し、存在しない場合何もしない関数です。この関数を使用することで、特定のメンバ関数の有無に関係なく一様な記述が可能になります。
 
 > 各関数は `Udon::Traits` 名前空間に属します。
-> 
+>
 > メタ関数 `HasMemberFunction~~` が定義されているヘッダーファイルに定義されています。
 
-| 名前 | 説明 | 戻り値型 | 引数型 |
-| --- | --- | ---- | --- |
-| `MaybeInvokeBegin(rhs)` | `rhs.begin()` を呼び出せる場合呼び出す | 不定 | void |
-| `MaybeInvokeUpdate(rhs)` | `rhs.update()` を呼び出せる場合呼び出す | 不定 | void |
-| `MaybeInvokeShow(rhs)` | `rhs.show() const` を呼び出せる場合呼び出す | 不定 | void |
-| `MaybeInvokeShowRaw(rhs)` | `rhs.showRaw() const` を呼び出せる場合呼び出す | 不定 | void |
+| 名前                      | 説明                                           | 戻り値型 | 引数型 |
+| ------------------------- | ---------------------------------------------- | -------- | ------ |
+| `MaybeInvokeBegin(rhs)`   | `rhs.begin()` を呼び出せる場合呼び出す         | 不定     | void   |
+| `MaybeInvokeUpdate(rhs)`  | `rhs.update()` を呼び出せる場合呼び出す        | 不定     | void   |
+| `MaybeInvokeShow(rhs)`    | `rhs.show() const` を呼び出せる場合呼び出す    | 不定     | void   |
+| `MaybeInvokeShowRaw(rhs)` | `rhs.showRaw() const` を呼び出せる場合呼び出す | 不定     | void   |
 
 ### 基本
 
-``` cpp
+```cpp
 class Updatable
 {
 public:
@@ -172,7 +168,7 @@ int main()
 
 ### 実用例
 
-``` cpp
+```cpp
 // updateを持つ受信クラス
 template <typename Message>
 class ReaderA
@@ -212,49 +208,5 @@ int main()
 
     Sensor<ReaderB> sensorB;
     sensorB.update();  //>
-}
-```
-
-## コンセプト
-
-C++20 で導入されたコンセプトのように型制約を記述できるマクロを提供します。
-
-> [Udon/Traits/Concept.hpp](./../../src/Udon/Traits/Concept.hpp) に定義されています。
-
-| マクロ名 | コンセプト名 | 説明 |
-| ---- | ------ | --- |
-| UDON\_CONCEPT\_BOOL | Bool | bool 型 |
-| UDON\_CONCEPT\_INTEGRAL | Integral | 整数型 |
-| UDON\_CONCEPT\_INTEGRAL\_NOT\_BOOL | IntegralNotBool | 整数型かつ bool 型でない |
-| UDON\_CONCEPT\_FLOATING\_POINT | FloatingPoint | 浮動小数点型 |
-| UDON\_CONCEPT\_ATOMIC | Atomic | アトミック型 |
-| UDON\_CONCEPT\_SCALAR | Scalar | スカラ型 |
-| UDON\_CONCEPT\_ARRAY | Array | 配列型 |
-| UDON\_CONCEPT\_ACCESSIBLE | Accessible | メンバ変数を列挙可能な型 |
-| UDON\_CONCEPT\_CAPACITABLE | Capacitable | シリアライズ後サイズを取得可能な型 |
-| UDON\_CONCEPT\_BEGINNABLE | HasMemberFunctionBegin | `begin` メンバ関数を呼び出し可能な型 |
-| UDON\_CONCEPT\_UPDATABLE | HasMemberFunctionUpdate | `update` メンバ関数を呼び出し可能な型 |
-| UDON\_CONCEPT\_SHOWABLE | HasMemberFunctionShow | `show` メンバ関数を呼び出し可能な型 |
-| UDON\_CONCEPT\_SHOW\_RAWABLE | HasMemberFunctionShowRaw | `showRaw` メンバ関数を呼び出し可能な型 |
-
-### オーバーロード解決の優先順位制御
-
-``` cpp
-UDON_CONCEPT_INTEGRAL
-void f(const Integral& rhs)
-{
-    std::cout << "integer" << std::endl;
-}
-
-UDON_CONCEPT_FLOATING_POINT
-void f(const FloatingPoint& rhs)
-{
-    std::cout << "floating point" << std::endl;
-}
-
-int main()
-{
-    f(10);   //> integer
-    f(1.0);  //> floating point
 }
 ```

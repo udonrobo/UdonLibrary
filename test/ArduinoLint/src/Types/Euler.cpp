@@ -77,8 +77,8 @@ inline void test()
     // シリアライズ
     {
         Udon::Euler a;
-        static_assert(Udon::CapacityWithChecksum<Udon::Euler>() == 12 + 1, "");
-        const auto b = Udon::Pack(a);
-        (void)Udon::Unpack<Udon::Euler>(b);
+        static_assert(Udon::SerializedSize<Udon::Euler>() == 12 + 1, "");
+        const auto b = Udon::Serialize(a);
+        (void)Udon::Deserialize<Udon::Euler>(b);
     }
 }

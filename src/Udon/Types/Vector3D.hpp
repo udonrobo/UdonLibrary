@@ -1,24 +1,15 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    三次元ベクトル
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    三次元ベクトル
-//
-//-------------------------------------------------------------------
-
 
 #pragma once
 
-#include "Forward/Vector2DFwd.hpp"
-#include "Forward/Vector3DFwd.hpp"
-#include "Forward/Vector4DFwd.hpp"
+#include "Forward/Vector2D.hpp"
+#include "Forward/Vector3D.hpp"
+#include "Forward/Vector4D.hpp"
 
 inline Udon::Vector2D Udon::Vector3D::xy() const noexcept
 {

@@ -1,8 +1,4 @@
-# CAN 通信
-
-```cpp
-#include <Udon/Com/Can.hpp>
-```
+# CAN
 
 CAN 通信クラスは、通信バスクラス、送受信ノードクラスから構成されています。
 
@@ -55,6 +51,12 @@ flowchart LR
 ```
 
 </details>
+
+## 個別インクルード
+
+```cpp
+#include <Udon/Com/Can.hpp>
+```
 
 ## 通信バスクラス
 

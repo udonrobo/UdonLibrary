@@ -1,26 +1,18 @@
-####################################################################
-#
-#    UdonLibrary
-#
-#    Copyright (c) 2022-2023 udonrobo
-#
-#    Licensed under the MIT License.
-#
-####################################################################
 #
 #    Unit Tests
 #
-####################################################################
+#    Copyright (c) 2022-2023 udonrobo
+#
 
 name: Unit Tests
 
 on:
   push:
     paths-ignore:
-      - '**.md'
+      - "**.md"
   pull_request:
     paths-ignore:
-      - '**.md'
+      - "**.md"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

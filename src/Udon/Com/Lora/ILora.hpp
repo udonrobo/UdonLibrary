@@ -1,10 +1,17 @@
+//
+//    LoRa インターフェース
+//
+//    Copyright (c) 2022-2023 Okawa Yusuke
+//    Copyright (c) 2022-2023 udonrobo
+//
+
 #pragma once
 
 #include <Udon/Stl/EnableSTL.hpp>
 #include <vector>
 #include <stdint.h>
 
-#include <Udon/Algorithm/ArrayView.hpp>
+#include <Udon/Types/ArrayView.hpp>
 
 namespace Udon
 {

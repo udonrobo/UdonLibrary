@@ -1,25 +1,16 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    UART 受信クラス
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    UART 受信クラス
-//
 //    Sender --[UART]--> Receiver
 //                       ^^^^^^^^
 //
-//-------------------------------------------------------------------
-
 
 #pragma once
 
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
 
 namespace Udon
@@ -28,7 +19,7 @@ namespace Udon
     template <typename Message>
     class UartReader
     {
-        static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
+        static constexpr size_t Size = Udon::SerializedSize<Message>();
 
         Stream& uart;
 
@@ -84,7 +75,7 @@ namespace Udon
         {
             if (operator bool())
             {
-                return Udon::Unpack<Message>(buffer);
+                return Udon::Deserialize<Message>(buffer);
             }
             else
             {

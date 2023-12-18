@@ -1,22 +1,14 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    RGB色空間
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    RGB色空間
-//
-//-------------------------------------------------------------------
 
 #pragma once
 
-#include "Forward/RGBFwd.hpp"
-#include "Forward/HSVFwd.hpp"
+#include "Forward/RGB.hpp"
+#include "Forward/HSV.hpp"
 
 #ifdef _MSC_VER
 #    pragma warning(push)
@@ -40,9 +32,9 @@ inline Udon::HSV Udon::RGB::toHSV() const noexcept
 {
     const ValueType max = std::max({ r, g, b });
     const ValueType min = std::min({ r, g, b });
-    const ValueType d = max - min;
-    const ValueType s = max == 0 ? 0 : d * 255 / max;
-    const ValueType v = max;
+    const ValueType d   = max - min;
+    const ValueType s   = max == 0 ? 0 : d * 255 / max;
+    const ValueType v   = max;
     if (d == 0)
     {
         return { 0, 0, v };

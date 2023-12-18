@@ -1,6 +1,7 @@
 #include <Arduino.h>
 
 #include <Udon/Types/Vector2D.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 inline void test()
 {
@@ -85,8 +86,8 @@ inline void test()
     // シリアライズ
     {
         Udon::Vec2 a;
-        static_assert(Udon::CapacityWithChecksum<Udon::Vec2>() == 8 + 1, "");
-        const auto b = Udon::Pack(a);
-        (void)Udon::Unpack<Udon::Vec2>(b);
+        static_assert(Udon::SerializedSize<Udon::Vec2>() == 8 + 1, "");
+        const auto b = Udon::Serialize(a);
+        (void)Udon::Deserialize<Udon::Vec2>(b);
     }
 }

@@ -1,17 +1,9 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    移動平均クラス
 //
 //    Copyright (c) 2016-2023 谷川 豊章
 //    Copyright (c) 2016-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    移動平均クラス
-//
-//-------------------------------------------------------------------
 
 #ifndef DEF_MovingAverage_H
 #define DEF_MovingAverage_H
@@ -61,6 +53,12 @@ namespace Udon
         double getValue() const noexcept
         {
             return static_cast<double>(sum) / DataSize;
+        }
+
+        double operator()(double value) noexcept
+        {
+            update(value);
+            return getValue();
         }
     };
 

@@ -1,17 +1,9 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    Optional
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    Optional
-//
-//-------------------------------------------------------------------
 
 #pragma once
 
@@ -68,6 +60,40 @@ namespace Udon
             : m_value(std::move(other.m_value))
             , m_hasValue(other.m_hasValue)
         {
+        }
+
+        /// @brief Optional<T> から Optional<OtherT> へのキャスト(左辺値)
+        template <typename OtherT>
+        constexpr operator Optional<OtherT>() const&
+        {
+            return m_hasValue ? Optional<OtherT>{ static_cast<OtherT>(m_value) }
+                              : nullopt;
+        }
+
+        /// @brief Optional<T> から Optional<OtherT> へのキャスト(右辺値)
+        template <typename OtherT>
+        constexpr operator Optional<OtherT>() const&&
+        {
+            return m_hasValue ? Optional<OtherT>{ std::move(static_cast<OtherT>(m_value)) }
+                              : nullopt;
+        }
+
+        /// @brief Optional<OtherT> を Optional<T> に代入(左辺値)
+        template <typename OtherT>
+        Optional& operator=(const Optional<OtherT>& other)
+        {
+            m_value    = static_cast<T>(other.m_value);
+            m_hasValue = other.m_hasValue;
+            return *this;
+        }
+
+        /// @brief Optional<OtherT> を Optional<T> に代入(右辺値)
+        template <typename OtherT>
+        Optional& operator=(Optional<OtherT>&& other) noexcept
+        {
+            m_value    = std::move(static_cast<T>(other.m_value));
+            m_hasValue = other.m_hasValue;
+            return *this;
         }
 
         Optional& operator=(Nullopt_t)
@@ -154,7 +180,6 @@ namespace Udon
                 Udon::Show("nullopt");
             }
         }
-
     };
 
 }    // namespace Udon

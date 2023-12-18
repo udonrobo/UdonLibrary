@@ -1,11 +1,9 @@
 //
-//    UdonLibrary
+//    E220 Loraモジュール ドライバクラス
 //
 //	  Copyright (c) 2022-2023 Fujimoto Ryo
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 Udonrobo
-//
-//    E220 Loraモジュール ドライバクラス
 //
 //    公式サイト　: https://dragon-torch.tech/cat-components/rf-modules/e220-900t22s-jp/
 //    データシート: https://dragon-torch.tech/wp-content/uploads/2023/05/data_sheet_Rev1.4.pdf
@@ -30,8 +28,8 @@ namespace Udon
     public:
         /// @brief コンストラクタ
         /// @param uart モジュールと接続しているUARTインスタンス
-        /// @param M0Pin 
-        /// @param M1Pin 
+        /// @param M0Pin
+        /// @param M1Pin
         E220(HardwareSerial& uart, uint8_t M0Pin, uint8_t M1Pin);
 
         E220(HardwareSerial& uart, uint8_t M0Pin, uint8_t M1Pin, uint8_t AUXPin);

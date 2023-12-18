@@ -1,26 +1,20 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    I2c スレーブ側受信クラス
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    I2c スレーブ側受信クラス
+
 //
 //    master --[I2C]--> slave
 //                      ^^^^^
 //
-//-------------------------------------------------------------------
 
 #pragma once
 
 #include "I2cBus.hpp"
 
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
 #include <Udon/Com/Common/ParsableArray.hpp>
 #include <Udon/Com/Common/ArrayElementReader.hpp>
@@ -36,7 +30,7 @@ namespace Udon
         using MessageType = Message;
 
         /// @brief 受信バッファサイズ
-        static constexpr size_t Size = Udon::CapacityWithChecksum<MessageType>();
+        static constexpr size_t Size = Udon::SerializedSize<MessageType>();
 
         /// @brief コンストラクタ
         /// @param bus I2cバス
@@ -75,7 +69,7 @@ namespace Udon
         {
             if (bus)
             {
-                return Udon::Unpack<MessageType>(buffer);
+                return Udon::Deserialize<MessageType>(buffer);
             }
             else
             {

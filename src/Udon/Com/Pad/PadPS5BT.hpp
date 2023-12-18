@@ -1,17 +1,10 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    Bluetooth経由PS5コントローラークラス
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    Bluetooth経由PS5コントローラークラス
-//
-//    Controller --[Bluetooth]--> USBHost --[SPI]--> Sender --> 
+//    Controller --[Bluetooth]--> USBHost --[SPI]--> Sender -->
 //                                                   ^^^^^^
 //
 //    ペアリング手順:
@@ -20,7 +13,6 @@
 //        3. コントローラーのLEDが点滅し始める
 //        4. ペアリングが完了するとLEDが点灯する
 //
-//-------------------------------------------------------------------
 
 #pragma once
 
@@ -43,7 +35,6 @@ namespace Udon
         Message::PadPS5 buttons;
 
     public:
-
         /// @brief コンストラクタ
         /// @param pair ペアリングするかどうか
         /// @details ペアリングする場合は PAIR を渡す

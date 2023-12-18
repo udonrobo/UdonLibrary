@@ -1,26 +1,18 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    CAN通信 送信クラス
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    CAN通信 送信クラス
-//
-//-------------------------------------------------------------------
 
 #pragma once
 
 #include "ICanBus.hpp"
 #include "CanNode.hpp"
 
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
-#include <Udon/Traits/Parsable.hpp>
+#include <Udon/Serializer/SerializerTraits.hpp>
 #include <Udon/Common/Printf.hpp>
 
 namespace Udon
@@ -30,14 +22,14 @@ namespace Udon
     class CanWriter
     {
 
-        static_assert(Udon::Traits::Parsable<Message>::value, "Message must be parsable.");
+        static_assert(Udon::Traits::IsSerializable<Message>::value, "Message must be parsable.");
 
     public:
         /// @brief 受信メッセージ型
         using MessageType = Message;
 
         /// @brief 受信バッファサイズ
-        static constexpr size_t Size = Udon::CapacityWithChecksum<MessageType>();
+        static constexpr size_t Size = Udon::SerializedSize<MessageType>();
 
         /// @brief コンストラクタ
         /// @param bus CANバス
@@ -67,12 +59,12 @@ namespace Udon
         /// @brief メッセージ構造体をセット
         void setMessage(const Message& message) noexcept
         {
-            Udon::Pack(message, node.data, node.length);
+            Udon::Serialize(message, { node.data, node.length });
         }
 
         void setErrorMessage() noexcept
         {
-            Udon::FailablePack({ node.data, node.length });
+            Udon::FailableSerialize({ node.data, node.length });
         }
 
         /// @brief 送信内容を表示
@@ -80,7 +72,7 @@ namespace Udon
         void show(char gap = '\t') const
         {
             Udon::Printf("0x%03x ", node.id);
-            if (const auto message = Udon::Unpack<Message>(node.data, node.length))
+            if (const auto message = Udon::Deserialize<Message>({ node.data, node.length }))
             {
                 Udon::Show(*message, gap);
             }

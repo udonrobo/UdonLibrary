@@ -1,25 +1,17 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    OpenSiv3D用 UART 受信クラス
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    OpenSiv3D用 UART 受信クラス
-//
 //    Sender --[UART]--> Receiver
 //                       ^^^^^^^^
 //
-//-------------------------------------------------------------------
 
 #pragma once
 
 #include <Siv3D/Serial.hpp>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
 
 namespace Udon
@@ -27,7 +19,7 @@ namespace Udon
     template <typename Message>
     class SivUartReader
     {
-        static constexpr size_t Size = Udon::CapacityWithChecksum<Message>();
+        static constexpr size_t Size = Udon::SerializedSize<Message>();
 
         s3d::Serial& serial;
 
@@ -39,7 +31,7 @@ namespace Udon
 
     public:
         using MessageType = Message;
-        
+
         SivUartReader(s3d::Serial& bus)
             : serial(bus)
             , buffer(Size)
@@ -74,7 +66,7 @@ namespace Udon
 
         Udon::Optional<Message> getMessage() const
         {
-            return Udon::Unpack<Message>(buffer);
+            return Udon::Deserialize<Message>(buffer);
         }
 
         void show(char gap = '\t') const

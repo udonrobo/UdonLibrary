@@ -1,17 +1,9 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    通信経由モーター制御クラス
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    通信経由モーター制御クラス
-//
-//-------------------------------------------------------------------
 
 #pragma once
 
@@ -21,7 +13,7 @@
 #include <Udon/Com/Message/Motor.hpp>
 #include <Udon/Traits/HasMemberFunction.hpp>
 #include <Udon/Common/Show.hpp>
-#include <Udon/Traits/IsWriter.hpp>
+#include <Udon/Traits/ReaderWriterTraits.hpp>
 
 namespace Udon
 {

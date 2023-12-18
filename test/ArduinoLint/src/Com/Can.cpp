@@ -1,8 +1,7 @@
 #include <Arduino.h>
 #include <Udon/Com/Can.hpp>
 
-#include <Udon/Traits/IsReader.hpp>
-#include <Udon/Traits/IsWriter.hpp>
+#include <Udon/Traits/ReaderWriterTraits.hpp>
 
 #if defined(TEENSYDUINO)
 

@@ -1,17 +1,9 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    ロボットの位置 (座標、旋回角) を表す型
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    ロボットの位置
-//
-//-------------------------------------------------------------------
 
 #pragma once
 
@@ -23,8 +15,8 @@
 #include "Vector2D.hpp"
 
 #include <Udon/Algorithm/Math.hpp>
-#include <Udon/Traits/ParsableMacro.hpp>
-#include <Udon/Com/Serialization.hpp>
+#include <Udon/Traits/EnumerableMacro.hpp>
+#include <Udon/Serializer/Serializer.hpp>
 
 namespace Udon
 {
@@ -135,7 +127,7 @@ namespace Udon
         {
             return { vector, t };
         }
-        
+
         // template <size_t WheelCount>
         // std::array<double, WheelCount> toOmni() const
         //{
@@ -239,10 +231,12 @@ namespace Udon
         }
 #endif
 
-        UDON_PARSABLE(vector, turn);
+        UDON_ENUMERABLE(vector, turn);
     };
 
     using Pos   = Position;
+    using Stick = Pos;
+
     using Stick = Pos;
 
 }    // namespace Udon
