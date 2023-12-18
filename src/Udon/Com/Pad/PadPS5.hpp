@@ -1,28 +1,20 @@
-//-------------------------------------------------------------------
 //
-//    UdonLibrary
+//    PS5コントローラー受信クラス
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
-//
-//    PS5コントローラー受信クラス
-//
 //    Controller --> Sender --> Master
 //                              ^^^^^^
 //
-//-------------------------------------------------------------------
 
 #pragma once
 
-#include <Udon/Algorithm/Input.hpp>
-#include <Udon/Com/Message/PadPS5.hpp>
 #include <Udon/Types/Position.hpp>
+#include <Udon/Algorithm/Input.hpp>
 #include <Udon/Com/Message.hpp>
-#include <Udon/Traits/IsReader.hpp>
+#include <Udon/Com/Message/PadPS5.hpp>
+#include <Udon/Traits/ReaderWriterTraits.hpp>
 
 namespace Udon
 {
@@ -46,134 +38,135 @@ namespace Udon
         using ReaderType::ReaderType;
 
         /// @brief コントローラーが接続されているか
-        explicit operator bool() const { return m_isConnected; }
+        explicit operator bool() const noexcept { return isConnected; }
 
         /// @brief ▵ボタン
-        Input getTriangle() const { return m_triangle; }
+        Input getTriangle() const noexcept { return triangle; }
 
         /// @brief ○ボタン
-        Input getCircle() const { return m_circle; }
+        Input getCircle() const noexcept { return circle; }
 
         /// @brief ×ボタン
-        Input getCross() const { return m_cross; }
+        Input getCross() const noexcept { return cross; }
 
         /// @brief □ボタン
-        Input getSquare() const { return m_square; }
+        Input getSquare() const noexcept { return square; }
 
         /// @brief 十字キー上
-        Input getUp() const { return m_up; }
+        Input getUp() const noexcept { return up; }
 
         /// @brief 十字キー右
-        Input getRight() const { return m_right; }
+        Input getRight() const noexcept { return right; }
 
         /// @brief 十字キー下
-        Input getDown() const { return m_down; }
+        Input getDown() const noexcept { return down; }
 
         /// @brief 十字キー左
-        Input getLeft() const { return m_left; }
+        Input getLeft() const noexcept { return left; }
 
         /// @brief L1ボタン
-        Input getL1() const { return m_l1; }
+        Input getL1() const noexcept { return l1; }
 
         /// @brief R1ボタン
-        Input getR1() const { return m_r1; }
+        Input getR1() const noexcept { return r1; }
 
         /// @brief L2ボタン
-        Input getL2() const { return m_l2; }
+        Input getL2() const noexcept { return l2; }
 
         /// @brief R2ボタン
-        Input getR2() const { return m_r2; }
+        Input getR2() const noexcept { return r2; }
 
         /// @brief 左スティック押し込み
-        Input getL3() const { return m_l3; }
+        Input getL3() const noexcept { return l3; }
 
         /// @brief 右スティック押し込み
-        Input getR3() const { return m_r3; }
+        Input getR3() const noexcept { return r3; }
 
         /// @brief クリエイトボタン(左上ボタン)
-        Input getCreate() const { return m_create; }
+        Input getCreate() const noexcept { return create; }
 
         /// @brief オプションボタン(右上ボタン)
-        Input getOption() const { return m_option; }
+        Input getOption() const noexcept { return option; }
 
         /// @brief タッチパッドボタン
-        Input getTouch() const { return m_touch; }
+        Input getTouch() const noexcept { return touch; }
 
         /// @brief マイクボタン
-        Input getMic() const { return m_mic; }
+        Input getMic() const noexcept { return mic; }
 
         /// @brief PSボタン
-        Input getPs() const { return m_ps; }
+        Input getPs() const noexcept { return ps; }
 
         /// @brief 左スティック [x,y: -255~255]
-        Vec2 getLeftStick() const { return m_leftStick; }
+        Vec2 getLeftStick() const noexcept { return leftStick; }
 
         /// @brief 右スティック [x,y: -255~255]
-        Vec2 getRightStick() const { return m_rightStick; }
+        Vec2 getRightStick() const noexcept { return rightStick; }
 
-        /// @brief ロボットの移動に必要なスティックの情報 Udon::Position オブジェクト {{x,y},turn} を取得
+        /// @brief ロボットの移動に必要なスティックの情報 Udon::Stick オブジェクト {{x,y},turn} を取得
         /// @remark 左スティックから移動成分、右スティックX軸から旋回成分を取得
-        Pos getMoveInfo() const { return { m_leftStick, m_rightStick.x }; }
+        Stick getMoveInfo() const noexcept { return { leftStick, rightStick.x }; }
+
         /// @brief 更新
-        void update()
+        void update() noexcept
         {
             Traits::MaybeInvokeUpdate(*this);
 
             if (const auto message = ReaderType::getMessage())
             {
-                m_isConnected = false;
+                isConnected = false;
 
-                m_triangle.update(false);
-                m_circle.update(false);
-                m_cross.update(false);
-                m_square.update(false);
+                triangle.update(false);
+                circle.update(false);
+                cross.update(false);
+                square.update(false);
 
-                m_up.update(false);
-                m_right.update(false);
-                m_down.update(false);
-                m_left.update(false);
+                up.update(false);
+                right.update(false);
+                down.update(false);
+                left.update(false);
 
-                m_l1.update(false);
-                m_r1.update(false);
-                m_l2.update(false);
-                m_r2.update(false);
-                m_l3.update(false);
-                m_r3.update(false);
+                l1.update(false);
+                r1.update(false);
+                l2.update(false);
+                r2.update(false);
+                l3.update(false);
+                r3.update(false);
 
-                m_create.update(false);
-                m_option.update(false);
-                m_touch.update(false);
-                m_mic.update(false);
+                create.update(false);
+                option.update(false);
+                touch.update(false);
+                mic.update(false);
 
-                m_leftStick.clear();
-                m_rightStick.clear();
+                leftStick.clear();
+                rightStick.clear();
             }
             else
             {
-                m_isConnected = true;
+                isConnected = true;
 
-                m_triangle.update(message->triangle);
-                m_circle.update(message->circle);
-                m_cross.update(message->cross);
-                m_square.update(message->square);
+                triangle.update(message->triangle);
+                circle.update(message->circle);
+                cross.update(message->cross);
+                square.update(message->square);
 
-                m_up.update(message->up);
-                m_right.update(message->right);
-                m_down.update(message->down);
-                m_left.update(message->left);
+                up.update(message->up);
+                right.update(message->right);
+                down.update(message->down);
+                left.update(message->left);
 
-                m_l1.update(message->l1);
-                m_r1.update(message->r1);
-                m_l2.update(message->l2);
-                m_r2.update(message->r2);
-                m_l3.update(message->l3);
-                m_r3.update(message->r3);
+                l1.update(message->l1);
+                r1.update(message->r1);
+                l2.update(message->l2);
+                r2.update(message->r2);
+                l3.update(message->l3);
+                r3.update(message->r3);
 
-                m_create.update(message->create);
-                m_option.update(message->option);
-                m_touch.update(message->touch);
-                m_mic.update(message->mic);
-                m_ps.update(message->ps);
+                create.update(message->create);
+                option.update(message->option);
+                touch.update(message->touch);
+                mic.update(message->mic);
+                ps.update(message->ps);
 
                 // -128 ~ 127(int8_t) -> -255 ~ 255(int16_t)
                 const auto decodeStick = [](int8_t raw) -> int16_t
@@ -181,11 +174,11 @@ namespace Udon
                     return raw * 2 + 1;    // (raw + 128) * 2 - 255
                 };
 
-                m_leftStick = {
+                leftStick = {
                     CutDeadZone(decodeStick(message->analogLeftX), 20),
                     CutDeadZone(decodeStick(message->analogLeftY), 20),
                 };
-                m_rightStick = {
+                rightStick = {
                     CutDeadZone(decodeStick(message->analogRightX), 20),
                     CutDeadZone(decodeStick(message->analogRightY), 20),
                 };
@@ -196,68 +189,68 @@ namespace Udon
         MessageType toMessage() const
         {
             return {
-                m_isConnected,
-                m_triangle.press,
-                m_circle.press,
-                m_cross.press,
-                m_square.press,
+                isConnected,
+                triangle.press,
+                circle.press,
+                cross.press,
+                square.press,
 
-                m_up.press,
-                m_right.press,
-                m_down.press,
-                m_left.press,
+                up.press,
+                right.press,
+                down.press,
+                left.press,
 
-                m_l1.press,
-                m_r1.press,
-                m_l2.press,
-                m_r2.press,
-                m_l3.press,
-                m_r3.press,
+                l1.press,
+                r1.press,
+                l2.press,
+                r2.press,
+                l3.press,
+                r3.press,
 
-                m_create.press,
-                m_option.press,
-                m_touch.press,
-                m_mic.press,
-                m_ps.press,
+                create.press,
+                option.press,
+                touch.press,
+                mic.press,
+                ps.press,
 
-                static_cast<int8_t>(m_rightStick.x / 2),
-                static_cast<int8_t>(m_rightStick.y / 2),
-                static_cast<int8_t>(m_leftStick.x / 2),
-                static_cast<int8_t>(m_leftStick.y / 2),
+                static_cast<int8_t>(rightStick.x / 2),
+                static_cast<int8_t>(rightStick.y / 2),
+                static_cast<int8_t>(leftStick.x / 2),
+                static_cast<int8_t>(leftStick.y / 2),
             };
         }
 
     private:
         // 接続状態
-        bool m_isConnected = false;
+        bool isConnected = false;
 
         // ボタン
-        Input m_triangle;
-        Input m_circle;
-        Input m_cross;
-        Input m_square;
-        Input m_up;
-        Input m_right;
-        Input m_down;
-        Input m_left;
-        Input m_l1;
-        Input m_r1;
-        Input m_l2;
-        Input m_r2;
-        Input m_l3;
-        Input m_r3;
-        Input m_create;
-        Input m_option;
-        Input m_touch;
-        Input m_mic;
-        Input m_ps;
+        Input triangle;
+        Input circle;
+        Input cross;
+        Input square;
+        Input up;
+        Input right;
+        Input down;
+        Input left;
+        Input l1;
+        Input r1;
+        Input l2;
+        Input r2;
+        Input l3;
+        Input r3;
+        Input create;
+        Input option;
+        Input touch;
+        Input mic;
+        Input ps;
 
         // アナログスティック [-255~255]
-        Vec2 m_rightStick;
-        Vec2 m_leftStick;
+        Vec2 rightStick;
+        Vec2 leftStick;
 
         /// @brief デッドゾーンをカットする
-        static double CutDeadZone(double value, double deadZone)
+        static double CutDeadZone(double value, uint8_t deadZone)
         {
             if (value > deadZone)
                 return 255 * (value - deadZone) / (255 - deadZone);
