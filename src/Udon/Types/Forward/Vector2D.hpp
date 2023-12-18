@@ -130,6 +130,18 @@ namespace Udon
             *this = Zero();
         }
 
+        Vector2D& replaceX(ValueType newValue) noexcept
+        {
+            x = newValue;
+            return *this;
+        }
+
+        Vector2D& replaceY(ValueType newValue) noexcept
+        {
+            y = newValue;
+            return *this;
+        }
+
         template <typename Visitor>
         Vector2D& replaceX(Visitor&& visitor) noexcept
         {
