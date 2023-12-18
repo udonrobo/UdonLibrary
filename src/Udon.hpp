@@ -54,13 +54,13 @@
 //    通信 / com
 //
 
-// CAN通信
+// CAN
 #include <Udon/Com/Can.hpp>
 
-// UART通信
+// UART
 #include <Udon/Com/Uart.hpp>
 
-// I2c通信
+// I2c
 #include <Udon/Com/I2c.hpp>
 
 // IM920
@@ -68,6 +68,9 @@
 
 // LoRa
 #include <Udon/Com/Lora.hpp>
+
+// コントローラー
+#include <Udon/Com/Pad.hpp>
 
 // 通信用構造体群
 #include <Udon/Com/Message.hpp>
@@ -101,7 +104,7 @@
 #include <Udon/Serializer/Serializer.hpp>
 
 //
-//    デバイスドライバー
+//    デバイスドライバー / driver
 //
 
 // モーター(基板用)

@@ -33,8 +33,10 @@ namespace Udon
         /// @brief 要素の型
         using ValueType = double;
 
-        /// @brief 成分
+        /// @brief X成分
         ValueType x;
+
+        /// @brief Y成分
         ValueType y;
 
         /// @brief 次元数
@@ -126,6 +128,32 @@ namespace Udon
         void clear() noexcept
         {
             *this = Zero();
+        }
+
+        Vector2D& replaceX(ValueType newValue) noexcept
+        {
+            x = newValue;
+            return *this;
+        }
+
+        Vector2D& replaceY(ValueType newValue) noexcept
+        {
+            y = newValue;
+            return *this;
+        }
+
+        template <typename Visitor>
+        Vector2D& replaceX(Visitor&& visitor) noexcept
+        {
+            x = visitor(x);
+            return *this;
+        }
+
+        template <typename Visitor>
+        Vector2D& replaceY(Visitor&& visitor) noexcept
+        {
+            y = visitor(y);
+            return *this;
         }
 
         /// @brief 指定された点を中心に時計回りに回転したベクトルを返す
