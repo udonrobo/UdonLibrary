@@ -7,61 +7,79 @@
 
 #pragma once
 
-#include "Button.hpp"
-
 namespace Udon
 {
 
-    class Input
+    /// @brief 入力値
+    struct Input
     {
+        //                     │
+        //   [input:true ]     │            ┌─────────────┐             ┌─────────────┐             ┌──
+        //                     │            │             │             │             │             │
+        //   [input:false]     ┼────────────┘             └─────────────┘             └─────────────┘
+        //                     │
+        //         ↓           │
+        //                     │
+        //   [press:true ]     │            ┌─────────────┐             ┌─────────────┐             ┌──
+        //                     │            │             │             │             │             │
+        //   [press:false]     ┼────────────┘             └─────────────┘             └─────────────┘
+        //                     │
+        //   [unpress:true ]   ┼────────────┐             ┌─────────────┐             ┌─────────────┐
+        //                     │            │             │             │             │             │
+        //   [unpress:false]   │            └─────────────┘             └─────────────┘             └──
+        //                     │
+        //   [click:true ]     │            ┌┐                          ┌┐                          ┌┐
+        //                     │            ││                          ││                          ││
+        //   [click:false]     ┼────────────┘└──────────────────────────┘└──────────────────────────┘└─
+        //                     │
+        //   [release:true ]   │                          ┌┐                          ┌┐
+        //                     │                          ││                          ││
+        //   [release:false]   ┼──────────────────────────┘└──────────────────────────┘└───────────────
+        //                     │
+        //   [toggle:true ]    │            ┌───────────────────────────┐                           ┌──
+        //                     │            │                           │                           │
+        //   [toggle:false]    ┼────────────┘                           └───────────────────────────┘
+        //                     │
 
+        /// @brief 押されているか
+        bool press = false;
+
+        /// @brief 押されていないか
+        bool unpress = true;
+
+        /// @brief 押された瞬間か
+        bool click = false;
+
+        /// @brief 離された瞬間か
+        bool release = false;
+
+        /// @brief トグル値
+        bool toggle = false;
+
+        /// @brief 表示
+        void show() const noexcept
+        {
+            Udon::ShowRaw(press);
+        }
+
+        /// @brief 更新 
+        /// @remark Input オブジェクト取得後は更新しないこと
+        /// @param input 新規入力値 (true:押されている, false:押されていない)
+        void update(bool input) noexcept
+        {
+            press = input;
+
+            unpress = not input;
+
+            click = not previous and input;
+
+            release = previous and not input;
+
+            toggle ^= click;
+        }
+
+    private:
         /// @brief 過去値
-        bool prev;
-
-        /// @brief 現在値
-        bool curr;
-
-    public:
-        /// @brief デフォルトコンストラクタ
-        Input()
-            : prev()
-            , curr()
-        {
-        }
-
-        /// @brief 入力値を更新する
-        /// @param value 新規入力値
-        void update(bool value)
-        {
-            prev = curr;
-            curr = value;
-        }
-
-        /// @brief 入力値が trueであり続けているかを返す
-        /// @return
-        inline bool press() const
-        {
-            return curr;
-        }
-
-        /// @brief 入力値が true になった瞬間かどうかを返す
-        /// @return
-        inline bool clicked() const
-        {
-            return not prev && curr;
-        }
-
-        /// @brief 入力値が false になった瞬間かどうかを返す
-        inline bool released() const
-        {
-            return prev && not curr;
-        }
-
-        /// @brief ボタンクラスへ変換
-        operator Button() const
-        {
-            return { press(), clicked(), released() };
-        }
+        bool previous = false;
     };
-
 }    // namespace Udon

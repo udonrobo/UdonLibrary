@@ -327,18 +327,21 @@ namespace Udon
         }
     }    // namespace Impl
 
+    /// @brief 区切り文字ありで出力する
     template <typename... Args>
     void Show(Args&&... args)
     {
         Impl::ShowImpl(true, false, std::forward<Args>(args)...);
     }
 
+    /// @brief 改行、区切り文字ありで出力する
     template <typename... Args>
     void Showln(Args&&... args)
     {
         Impl::ShowImpl(true, true, std::forward<Args>(args)...);
     }
 
+    /// @brief 改行、区切り文字なしで出力する
     template <typename... Args>
     void ShowRaw(Args... args)
     {
