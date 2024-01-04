@@ -269,7 +269,7 @@ vector.clamp(130, 180);
 
 ## ベクトルをリマッピングする
 
-### `maped(double fromMin, double fromMax, double toMin, double toMax) -> Vec2`
+### `mapped(double fromMin, double fromMax, double toMin, double toMax) -> Vec2`
 
 各要素をある範囲から別の範囲に再マップしたベクトルを返します。
 
@@ -279,8 +279,8 @@ vector.clamp(130, 180);
 
 ```cpp
 const Udon::Vec2 vector{ 100.0, 200.0 };
-const Udon::Vec2 maped = vector.maped(0, 200, 0, 400);
-// maped = { 200.0, 400.0 }
+const Udon::Vec2 mapped = vector.mapped(0, 200, 0, 400);
+// mapped = { 200.0, 400.0 }
 ```
 
 ### `map(double fromMin, double fromMax, double toMin, double toMax) -> Vec2&`

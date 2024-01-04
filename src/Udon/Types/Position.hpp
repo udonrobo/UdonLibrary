@@ -110,10 +110,10 @@ namespace Udon
             *this = {};
         }
 
-        Position maped(double inMin, double inMax, double outMin, double outMax) const noexcept
+        Position mapped(double inMin, double inMax, double outMin, double outMax) const noexcept
         {
             return {
-                vector.maped(inMin, inMax, outMin, outMax),
+                vector.mapped(inMin, inMax, outMin, outMax),
                 Map(turn, inMin, inMax, outMin, outMax),
             };
         }
@@ -140,13 +140,13 @@ namespace Udon
         //{
         //     uint8_t    powerLimit     = 255;
         //             uint8_t turnPowerLimit = 255;
-        //     const auto mapedTurn = Udon::Map(turn, -255, 255, -turnPowerLimit, turnPowerLimit);
+        //     const auto mappedTurn = Udon::Map(turn, -255, 255, -turnPowerLimit, turnPowerLimit);
 
         //    std::array<double, 4> powers{ {
-        //        +vector.x + -vector.y + mapedTurn,
-        //        -vector.x + -vector.y + mapedTurn,
-        //        -vector.x + +vector.y + mapedTurn,
-        //        +vector.x + +vector.y + mapedTurn,
+        //        +vector.x + -vector.y + mappedTurn,
+        //        -vector.x + -vector.y + mappedTurn,
+        //        -vector.x + +vector.y + mappedTurn,
+        //        +vector.x + +vector.y + mappedTurn,
         //    } };
 
         //    // 上で算出した出力値は {powerLimit} を超える場合があります。
@@ -235,8 +235,6 @@ namespace Udon
     };
 
     using Pos   = Position;
-    using Stick = Pos;
-
     using Stick = Pos;
 
 }    // namespace Udon
