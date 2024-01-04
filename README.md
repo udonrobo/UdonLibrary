@@ -53,6 +53,7 @@
 
 ### 開発者用
 
+- [スタイルガイド](./docs/Developer/StyleGuide.md)
 - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
 - [自動テスト](./docs/Developer/CI.md)
 - [謝辞](./docs/Developer/Acknowledgments.md)
