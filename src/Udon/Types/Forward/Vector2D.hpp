@@ -262,7 +262,7 @@ namespace Udon
         /// @param toMin   再マップ後の値の下限
         /// @param toMax   再マップ後の値の上限
         /// @return
-        constexpr Vector2D maped(ValueType fromMin, ValueType fromMax, ValueType toMin, ValueType toMax) const noexcept
+        constexpr Vector2D mapped(ValueType fromMin, ValueType fromMax, ValueType toMin, ValueType toMax) const noexcept
         {
             return {
                 Map(x, fromMin, fromMax, toMin, toMax),
@@ -278,7 +278,7 @@ namespace Udon
         /// @return
         Vector2D& map(ValueType fromMin, ValueType fromMax, ValueType toMin, ValueType toMax) noexcept
         {
-            return *this = maped(fromMin, fromMax, toMin, toMax);
+            return *this = mapped(fromMin, fromMax, toMin, toMax);
         }
 
         /// @brief 正規化したベクトルを返す
