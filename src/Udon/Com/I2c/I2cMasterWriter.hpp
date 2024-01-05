@@ -115,7 +115,6 @@ namespace Udon
         void update()
         {
             Writer::setMessage(array);
-            Writer::update();
         }
     };
 
