@@ -26,14 +26,14 @@ namespace Udon
     /// @remark SPI通信も開始します。
     inline void CanBusSpi::begin()
     {
-        SPIClassRP2040 spi{
+        SPIClassRP2040{
             /* spi_inst_t *spi */ spiConfig.channel,
             /* pin_size_t rx   */ spiConfig.miso,
             /* pin_size_t cs   */ spiConfig.cs,
             /* pin_size_t sck  */ spiConfig.sck,
             /* pin_size_t tx   */ spiConfig.mosi
-        };
-        spi.begin();
+        }
+            .begin();
         beginCanOnly(spiConfig.interrupt, canConfig);
     }
 
@@ -86,10 +86,7 @@ namespace Udon
 
         bus.setBitrate(canConfig.baudrate, canConfig.mcpClock);
 
-        if (rxNodes && not txNodes)
-            bus.setListenOnlyMode();    // 受信のみの場合は受信モードに設定 (送受信モードのマイコンが再起動したとき、全ノードが停止したため。)
-        else
-            bus.setNormalMode();
+        bus.setNormalMode();
     }
 
     /// @brief 通信終了
