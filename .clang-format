@@ -1,35 +1,180 @@
 #
-#    clang format
+#    Clang-Format configuration file
 #
-#    Copyright (c) 2022-2023 udonrobo
+#    Copyright (c) 2022-2023 Okawa Yusuke
 #
-#    key reference: https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+#    Style options reference: https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+#
+
+#
+#    インデントにタブを使用しない
 #
 
 UseTab: Never
+
+#
+#    インデント幅
+#
+
 IndentWidth: 4
-ConstructorInitializerIndentWidth: 4
+
+#
+#    コンティニュエーションインデント幅
+#
+
 ContinuationIndentWidth: 4
-TabWidth: 4
+
+#
+#    行コメントの前のスペースの数
+#
+
 SpacesBeforeTrailingComments: 4
+
+#
+#    引数が複数行にまたがる場合のスタイル
+#
+
 BinPackParameters: true
+
+#
+#    複数行で連続する `=` の位置を揃える
+#
+
 AlignConsecutiveAssignments: true
+
+#
+#    複数行で連続する宣言の位置を揃える
+#
+
 AlignConsecutiveDeclarations: true
-AlignEscapedNewlinesLeft: true
+
+#
+#    エスケープされた改行を可能な限り左に配置
+#
+
+AlignEscapedNewlinesLeft: false
+
+#
+#    中括弧の前で改行する
+#
+
 BreakBeforeBraces: Allman
+
+#
+#    関数の引数のインデント
+#
+
 AllowShortIfStatementsOnASingleLine: false
-IndentCaseLabels: false
+
+#
+#    最大行幅 (0: 無制限)
+#
+
 ColumnLimit: 0
-AccessModifierOffset: -4
+
+#
+#    最大数空白行数
+#
+
+MaxEmptyLinesToKeep: 2
+
+#
+#    名前空間のインデント
+#
+
 NamespaceIndentation: All
+
+#
+#    名前空間の終わりに名前空間名をコメントで付ける
+#
+
 FixNamespaceComments: true
+
+#
+#    引数にラムダ式を渡す場合に1行にする
+#
+
 AllowShortLambdasOnASingleLine: Inline
+
+#
+#    アクセス修飾子のインデント
+#
+
+AccessModifierOffset: -4
+
+#
+#    継承時、基底クラス名のインデントスタイル
+#
+#    class DerivedClass
+#        : public BaseClass
+#        , public Interface
+#
+
 BreakInheritanceList: BeforeComma
-Cpp11BracedListStyle: false
-AllowShortCaseLabelsOnASingleLine: true
-SortIncludes: false
-PPIndentWidth: 4
+
+#
+#    コンストラクタの初期化リストのインデントスタイル
+#
+#    Constructor()
+#        : initializer1()
+#        , initializer2()
+#
+
 BreakConstructorInitializers: BeforeComma
+
+#
+#    コンストラクタの初期化リストのインデント幅
+#
+
+ConstructorInitializerIndentWidth: 4
+
+#
+#    中括弧のスタイル
+#
+#    true :  int array[] = { 1, 2, 3, 4, 5 };
+#    false:  int array[] = {1, 2, 3, 4, 5};
+#
+
+Cpp11BracedListStyle: false
+
+#
+#    Switch 文の case のインデントをなくす
+#
+
+IndentCaseLabels: false
+
+#
+#    Switch 文の case 内が単数行の場合に1行にする
+#
+
+AllowShortCaseLabelsOnASingleLine: true
+
+#
+#    インクルードファイルのソート
+#
+
+SortIncludes: false
+
+#
+#    ポインタの `*` の位置
+#
+
 PointerAlignment: Left
+
+#
+#    参照型の `&` の位置
+#
+
 ReferenceAlignment: Left
+
+#
+#    プリプロセッサディレクティブのインデント
+#
+
+PPIndentWidth: 4
+
+#
+#    ネストされたプリプロセッサディレクティブのインデント
+#
+
 IndentPPDirectives: AfterHash
