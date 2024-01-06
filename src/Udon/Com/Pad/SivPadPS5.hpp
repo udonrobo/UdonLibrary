@@ -8,34 +8,34 @@
 //                   ^^^^^^^^
 //
 
-#pragma once
+#include "PadPS5.hpp"
 
-#include "IPadPS5.hpp"
+#pragma once
 
 namespace Udon
 {
 
-    class SivPadPS5
-        : public IPadPS5
+    template <typename DummyMessage>
+    class SivPadPS5Reader
     {
         size_t index;
 
     public:
-        SivPadPS5()
+        SivPadPS5Reader() noexcept
             : index()
         {
         }
 
-        SivPadPS5(size_t index)
+        SivPadPS5Reader(size_t index) noexcept
             : index(index)
         {
         }
 
-        void update()
+        Message::PadPS5 toMessage() const noexcept
         {
             if (auto&& gamePad = s3d::Gamepad(index))
             {
-                IPadPS5::updateFromRawData(
+                return {
                     /* bool   isConnected  */ gamePad.isConnected(),
                     /* bool   triangle     */ gamePad.buttons.at(3).pressed(),
                     /* bool   circle       */ gamePad.buttons.at(2).pressed(),
@@ -56,15 +56,18 @@ namespace Udon
                     /* bool   touch        */ gamePad.buttons.at(13).pressed(),
                     /* bool   mic          */ gamePad.buttons.at(14).pressed(),
                     /* bool   ps           */ false,    // TODO: 未実装
-                    /* double analogLeftX  */ +gamePad.axes.at(0) * 255,
-                    /* double analogLeftY  */ -gamePad.axes.at(1) * 255,
-                    /* double analogRightX */ +gamePad.axes.at(2) * 255,
-                    /* double analogRightY */ -gamePad.axes.at(5) * 255);
+                    /* double analogLeftX  */ Map(+gamePad.axes.at(0), -1, 1, -128, 127),
+                    /* double analogLeftY  */ Map(-gamePad.axes.at(1), -1, 1, -128, 127),
+                    /* double analogRightX */ Map(+gamePad.axes.at(2), -1, 1, -128, 127),
+                    /* double analogRightY */ Map(-gamePad.axes.at(5), -1, 1, -128, 127),
+                };
             }
             else
             {
-                IPadPS5::clear();
+                return {};
             }
         }
     };
+
+    using SivPadPS5 = PadPS5<SivPadPS5Reader>;
 }    // namespace Udon
