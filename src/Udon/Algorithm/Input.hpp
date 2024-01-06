@@ -76,6 +76,8 @@ namespace Udon
             release = previous and not input;
 
             toggle ^= click;
+
+            previous = input;
         }
 
     private:
