@@ -15,8 +15,7 @@ namespace Udon
     inline CanBusSpi::CanBusSpi(const SpiConfig& spiConfig, const CanConfig& canConfig = {})
         : spiConfig(spiConfig)
         , canConfig(canConfig)
-        , bus(
-              /* spi_inst_t* CHANNEL    */ spiConfig.channel,
+        , bus(/* spi_inst_t* CHANNEL    */ spiConfig.channel,
               /* uint8_t     CS_PIN     */ spiConfig.cs,
               /* uint32_t    _SPI_CLOCK */ spiConfig.clock)
     {
@@ -45,8 +44,8 @@ namespace Udon
         gpio_init(spiConfig.cs);
         gpio_set_dir(spiConfig.cs, true);
         gpio_put(spiConfig.cs, true);
-        
-    
+
+
         beginCanOnly(spiConfig.interrupt, canConfig);
     }
 
