@@ -26,14 +26,27 @@ namespace Udon
     /// @remark SPI通信も開始します。
     inline void CanBusSpi::begin()
     {
-        SPIClassRP2040{
-            /* spi_inst_t *spi */ spiConfig.channel,
-            /* pin_size_t rx   */ spiConfig.miso,
-            /* pin_size_t cs   */ spiConfig.cs,
-            /* pin_size_t sck  */ spiConfig.sck,
-            /* pin_size_t tx   */ spiConfig.mosi
-        }
-            .begin();
+        (void)spi_init(/* spi_inst_t* spi      */ spiConfig.channel,
+                       /* uint        baudrate */ spiConfig.clock);
+
+        spi_set_format(/* spi_inst_t* spi       */ spiConfig.channel,
+                       /* uint        data_bits */ 8,
+                       /* spi_cpol_t  cpol      */ SPI_CPOL_0,
+                       /* spi_cpha_t  cpha      */ SPI_CPHA_0,
+                       /* spi_order_t order     */ SPI_MSB_FIRST);
+
+        spi_set_slave(/* spi_inst_t* spi   */ spiConfig.channel,
+                      /* bool        slave */ false);
+
+        gpio_set_function(spiConfig.mosi, GPIO_FUNC_SPI);
+        gpio_set_function(spiConfig.miso, GPIO_FUNC_SPI);
+        gpio_set_function(spiConfig.sck, GPIO_FUNC_SPI);
+
+        gpio_init(spiConfig.cs);
+        gpio_set_dir(spiConfig.cs, true);
+        gpio_put(spiConfig.cs, true);
+        
+    
         beginCanOnly(spiConfig.interrupt, canConfig);
     }
 

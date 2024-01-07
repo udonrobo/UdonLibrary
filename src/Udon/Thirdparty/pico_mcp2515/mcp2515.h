@@ -530,18 +530,10 @@ public:
 };
 
 inline MCP2515::MCP2515(spi_inst_t* CHANNEL, uint8_t CS_PIN, uint32_t SPI_CLOCK)
+    : SPI_CHANNEL(CHANNEL)
+    , SPI_CS_PIN(CS_PIN)
+    , SPI_CLOCK(SPI_CLOCK)
 {
-    this->SPI_CHANNEL = CHANNEL;
-    this->SPI_CLOCK   = SPI_CLOCK;
-    spi_init(this->SPI_CHANNEL, SPI_CLOCK);
-
-    spi_set_format(this->SPI_CHANNEL, 8, SPI_CPOL_0, SPI_CPHA_0, SPI_MSB_FIRST);
-
-    this->SPI_CS_PIN = CS_PIN;
-    gpio_init(this->SPI_CS_PIN);
-    gpio_set_dir(this->SPI_CS_PIN, GPIO_OUT);
-
-    endSPI();
 }
 
 inline void MCP2515::startSPI()
