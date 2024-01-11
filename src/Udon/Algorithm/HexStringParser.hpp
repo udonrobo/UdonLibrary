@@ -28,7 +28,7 @@ namespace Udon
         case 'D': case 'd': return 0xd;
         case 'E': case 'e': return 0xe;
         case 'F': case 'f': return 0xf;
-        default: return 0xff;
+        default :           return 0xff;
         }
         // clang-format on
     }
@@ -60,6 +60,22 @@ namespace Udon
         }
     }
 
+    /// @brief バイト列を16進数文字列に変換した際の、16進数文字列のサイズを取得する
+    /// @param byteStringSize 変換元のバイトサイズ
+    /// @return 変換後の16進数文字列のサイズ
+    size_t ConvertedByteStringSize(size_t byteStringSize) noexcept
+    {
+        return byteStringSize * 2;
+    }
+
+    /// @brief  16進数文字列をバイト列に変換した際の、バイト列のサイズを取得する
+    /// @param  hexStringSize 変換元の16進数文字サイズ
+    /// @return 変換後のバイト列のサイズ
+    size_t ConvertedHexStringSize(size_t hexStringSize) noexcept
+    {
+        return hexStringSize / 2;
+    }
+
     /// @brief  バイト列を16進数文字列に変換する
     /// @param  byteString 変換元のバイト列
     /// @param  distHexString 変換した16進数文字列の格納先
@@ -68,10 +84,10 @@ namespace Udon
     /// @return 変換に成功した場合はtrue, 失敗した場合はfalse
     bool ByteStringToHexString(
         Udon::ArrayView<const uint8_t> byteString,
-        Udon::ArrayView<uint8_t>       distHexString) noexcept
+        Udon::ArrayView<char>          distHexString) noexcept
     {
 
-        if (distHexString.size() < byteString.size() * 2)
+        if (distHexString.size() < ConvertedByteStringSize(byteString.size()))
         {
             return false;
         }
@@ -93,15 +109,15 @@ namespace Udon
     /// @note   変換に失敗した場合はdistByteStringには何も書き込まれない
     /// @return 変換に成功した場合はtrue, 失敗した場合はfalse
     bool HexStringToByteString(
-        Udon::ArrayView<const uint8_t> hexString,
-        Udon::ArrayView<uint8_t>       distByteString) noexcept
+        Udon::ArrayView<const char> hexString,
+        Udon::ArrayView<uint8_t>    distByteString) noexcept
     {
         if (hexString.size() % 2)
         {
             return false;
         }
 
-        if (distByteString.size() < hexString.size() / 2)
+        if (distByteString.size() < ConvertedHexStringSize(hexString.size()))
         {
             return false;
         }

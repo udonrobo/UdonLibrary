@@ -8,6 +8,8 @@
 
 #pragma once
 
+#include <Udon/Algorithm/HexStringParser.hpp>
+
 namespace Udon
 {
     inline E220::E220(HardwareSerial& uart, uint8_t M0Pin, uint8_t M1Pin)
@@ -276,15 +278,36 @@ namespace Udon
     inline bool E220::sendUpdate()
     {
         // 送信休止時間分間隔をあける
-        if (millis() - txNode->transmitMs > 50)
+        if (millis() - txNode->transmitMs > 20)
         {
-            uart.write((targetAddress >> 8) & 0xFF);    // 上位アドレス
-            uart.write((targetAddress >> 0) & 0xFF);    // 下位アドレス
-            uart.write(channel);
-            Udon::BitPack(txNode->data, txNode->data + txNode->size, [this](uint8_t data)
-                          { uart.write(data); });
-            txNode->transmitMs = millis();
-            Serial.println("send");
+            // ヘッダー送信
+            {
+                const uint8_t highAddress = (targetAddress >> 8) & 0xFF;
+                const uint8_t lowAddress  = (targetAddress >> 0) & 0xFF;
+                uart.write(highAddress);
+                uart.write(lowAddress);
+                uart.write(channel);
+            }
+
+            // データ送信
+            {
+                std::vector<char> hexString;
+                hexString.resize(Udon::ConvertedByteStringSize(txNode->size));
+
+                const auto byteStringView = Udon::ArrayView<const uint8_t>{ txNode->data, txNode->size };
+                const auto hexStringView  = Udon::ArrayView<char>{ hexString.data(), hexString.size() };
+
+                if (Udon::ByteStringToHexString(byteStringView, hexStringView))
+                {
+                    for (const auto& hex : hexStringView)
+                    {
+                        uart.write(hex);
+                    }
+                    uart.write('\n');
+
+                    txNode->transmitMs = millis();
+                }
+            }
         }
         else
         {
@@ -296,29 +319,39 @@ namespace Udon
 
     inline bool E220::receiveUpdate()
     {
-        // FrameSize = data
-        const int FrameSize = Udon::BitPackedSize(rxNode->size);
+
+        // 16進数文字列が送られてくるので、そのサイズを求める
+        const int FrameSize = Udon::ConvertedByteStringSize(rxNode->size);
 
         // 受信バッファにデータがない場合は何もしない
         if (uart.available() < FrameSize)
         {
+            // Serial.println ("uart.available() < FrameSize");
+            return false;
+        }
+        // Serial.println ("uart.available() >= FrameSize");
+
+        // データ読み込み
+        const auto hexString = uart.readStringUntil('\n');
+
+        // Serial.println(hexString);
+        if (hexString.length() == 0)
+        {
             return false;
         }
 
-        // データ読み込み
-        if (Udon::BitUnpack(rxNode->data, rxNode->data + rxNode->size, [this]() -> uint8_t
-                            { return uart.read(); }))
+        // 16進数文字列をバイト列に変換する
+        ArrayView<const char> hexStringView{ hexString.c_str(), hexString.length() };
+        ArrayView<uint8_t>    byteStringView{ rxNode->data, rxNode->size };
+        if (Udon::HexStringToByteString(hexStringView, byteStringView))
         {
             rxNode->transmitMs = millis();
-            return true;
         }
         else
         {
-            // 先頭バイトの  MSB が 1 でない場合はデータが壊れているので読み捨て
-            while (uart.available())
-                uart.read();
             return false;
         }
+        return true;
     }
 
     inline void E220::twoWayUpdate()
