@@ -10,6 +10,7 @@
 #include <Udon/Common/Platform.hpp>
 #include <Udon/Traits/Typedef.hpp>
 #include <Udon/Traits/HasMemberFunction.hpp>
+#include <Udon/Traits/AlwaysFalse.hpp>
 #include <utility>
 
 #ifndef F
@@ -60,17 +61,17 @@ namespace Udon
             {
                 static constexpr bool test(...)
                 {
-                    // static_assert(AlwaysFalse<T>::value, "Udon::Print: T is not printable." __FUNCTION__);
+                     //static_assert(AlwaysFalse<T>::value, "Udon::Print: T is not printable." __FUNCTION__);
                     return false;
                 }
             };
 
             // 列挙型は基底型が出力可能であるとき出力可能
             template <typename Enum>
-            struct Test<Enum, typename IsEnum<Enum>::type>
+            struct Test<Enum, EnableIfVoidT<IsEnum<Enum>::value>>
             {
-                static constexpr bool test(...) { return true; }
-            };
+				static constexpr bool test(...) { return true; }
+			};
 
             // 配列型(文字配列除く)は要素が出力可能であるとき出力可能
             template <typename Array>
