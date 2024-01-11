@@ -7,7 +7,7 @@ namespace Udon
     /// @brief  16進数文字をバイト値に変換する
     /// @param  hex 変換元の16進数文字
     /// @return 変換後のバイト値 (変換に失敗した場合は0xff)
-    uint8_t HexCharToByteValue(char hex) noexcept
+    inline uint8_t HexCharToByteValue(char hex) noexcept
     {
         // clang-format off
         switch (hex)
@@ -36,7 +36,7 @@ namespace Udon
     /// @brief  バイト値を16進数文字に変換する
     /// @param  byte 変換元のバイト値
     /// @return 変換後の16進数文字 (変換に失敗した場合は' ')
-    char ByteValueToHexChar(uint8_t byte) noexcept
+    inline char ByteValueToHexChar(uint8_t byte) noexcept
     {
         switch (byte)
         {
@@ -63,7 +63,7 @@ namespace Udon
     /// @brief バイト列を16進数文字列に変換した際の、16進数文字列のサイズを取得する
     /// @param byteStringSize 変換元のバイトサイズ
     /// @return 変換後の16進数文字列のサイズ
-    size_t ConvertedByteStringSize(size_t byteStringSize) noexcept
+    inline size_t ConvertedByteStringSize(size_t byteStringSize) noexcept
     {
         return byteStringSize * 2;
     }
@@ -71,7 +71,7 @@ namespace Udon
     /// @brief  16進数文字列をバイト列に変換した際の、バイト列のサイズを取得する
     /// @param  hexStringSize 変換元の16進数文字サイズ
     /// @return 変換後のバイト列のサイズ
-    size_t ConvertedHexStringSize(size_t hexStringSize) noexcept
+    inline size_t ConvertedHexStringSize(size_t hexStringSize) noexcept
     {
         return hexStringSize / 2;
     }
@@ -82,7 +82,7 @@ namespace Udon
     /// @note   byteStringのサイズを基に16進数文字列を構築する (distHexStringのサイズはbyteStringのサイズの2倍以上である必要がある)
     /// @note   変換に失敗した場合はdistHexStringには何も書き込まれない
     /// @return 変換に成功した場合はtrue, 失敗した場合はfalse
-    bool ByteStringToHexString(
+    inline bool ByteStringToHexString(
         Udon::ArrayView<const uint8_t> byteString,
         Udon::ArrayView<char>          distHexString) noexcept
     {
@@ -108,7 +108,7 @@ namespace Udon
     /// @note   hexStringのサイズを基にバイト列を構築する (distByteStringのサイズはhexStringのサイズの1/2以上である必要がある)
     /// @note   変換に失敗した場合はdistByteStringには何も書き込まれない
     /// @return 変換に成功した場合はtrue, 失敗した場合はfalse
-    bool HexStringToByteString(
+    inline bool HexStringToByteString(
         Udon::ArrayView<const char> hexString,
         Udon::ArrayView<uint8_t>    distByteString) noexcept
     {
