@@ -67,7 +67,7 @@
 #include <Udon/Com/Im920.hpp>
 
 // LoRa
-#include <Udon/Com/Lora.hpp>
+#include <Udon/Com/LoRa.hpp>
 
 // コントローラー
 #include <Udon/Com/Pad.hpp>

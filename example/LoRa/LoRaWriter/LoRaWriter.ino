@@ -1,5 +1,6 @@
 //
 //    LoRa (E220) 送信用ファームウエア
+//    Copyright (c) 2022-2023 Okawa Yusuke
 //
 
 #include <Udon.hpp>
@@ -7,7 +8,7 @@
 Udon::E220 lora{ Serial1,      10,      11,       2 };
 //               ^--UARTPort   ^--M0Pin ^--M1Pin ^--AUXPin
 
-Udon::LoraWriter<int> writer{ lora };
+Udon::LoRaWriter<int> writer{ lora };
 //               ^--Message   ^--LoRa
 
 void setup() 

@@ -1,4 +1,4 @@
-# Lora
+# LoRa
 
 ## TLM922S
 
