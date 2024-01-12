@@ -59,7 +59,11 @@ namespace Udon
             {
                 static constexpr ResultType value(...) noexcept
                 {
-                    static_assert(AlwaysFalse<T>::value, "T is not sizable!");    // サイズを取得できないオブジェクトが渡された場合、コンパイルエラーを発生させる
+#ifdef __FUNCTION__
+                    static_assert(AlwaysFalse<T>::value, "T is not sizable!" __FUNCTION__);    // サイズを取得できないオブジェクトが渡された場合、コンパイルエラーになる
+#else
+                    static_assert(AlwaysFalse<T>::value, "T is not sizable!");    // サイズを取得できないオブジェクトが渡された場合、コンパイルエラーになる
+#endif
                     return 0;
                 }
             };
@@ -75,9 +79,7 @@ namespace Udon
             template <typename Integral>
             struct Sizeof<Integral, EnableIfVoidT<IsIntegralNotBool<RemoveCVT<Integral>>::value>>
             {
-                static constexpr ResultType value(...) noexcept { 
-                    static_assert(AlwaysFalse<Integral>::value, __FUNCTION__);
-                    return sizeof(Integral) * CHAR_BIT; }
+                static constexpr ResultType value(...) noexcept { return sizeof(Integral) * CHAR_BIT; }
             };
 
             /// @brief T が浮動小数点型の場合の特殊化
