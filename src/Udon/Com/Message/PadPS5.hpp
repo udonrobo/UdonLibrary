@@ -99,7 +99,7 @@ namespace Udon
                 Serial.print(analogRightX), Serial.print('\t');
                 Serial.print(analogRightY), Serial.print('\t');
                 Serial.print(analogLeftX), Serial.print('\t');
-                Serial.print(analogLeftY), Serial.print('\t');
+                Serial.print(analogLeftY);
             }
 #endif
 

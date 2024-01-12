@@ -109,7 +109,8 @@ namespace Udon
             return Udon::nullopt;
         }
 
-        T                  retval;
+        T retval{};
+
         Impl::Deserializer deserializer(buffer.removeBackView(Udon::CRC8_SIZE));
         deserializer(retval);
 

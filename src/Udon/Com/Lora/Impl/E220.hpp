@@ -284,7 +284,7 @@ namespace Udon
             Udon::BitPack(txNode->data, txNode->data + txNode->size, [this](uint8_t data)
                           { uart.write(data); });
             txNode->transmitMs = millis();
-            Serial.println("send");
+            // Serial.println("send");
         }
         else
         {
