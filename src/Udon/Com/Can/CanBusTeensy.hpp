@@ -77,12 +77,26 @@ namespace Udon
 
         void joinRx(CanNode& node, void (*onReceive)(void*), void* p) override;
 
+        CanNode* findTx(uint32_t id, size_t length = 0) override
+        {
+            if (length == 0)
+            {
+                auto it = std::find_if(txNodes.begin(), txNodes.end(), [id](const auto& node) { return node->id == id; });
+                return it == txNodes.end() ? nullptr : *it;
+            }
+            else
+            {
+                auto it = std::find_if(txNodes.begin(), txNodes.end(), [id, length](const auto& node) { return node->id == id && node->length == length; });
+                return it == txNodes.end() ? nullptr : *it;
+            }
+        }
+
         void leaveTx(const CanNode& node) override;
 
         void leaveRx(const CanNode& node) override;
 
     private:
-        static CanBusTeensy* self;    // コールバック関数から自身のインスタンスを参照するためのポインタ (クラステンプレートによってインスタンスごとに別のstatic変数が生成される)
+        static CanBusTeensy* self;    // コールバック関数から自身のインスタンスを参照するためのポインタ (本クラスはテンプレート引数を持つクラスであるため、引数が異なる実体化されたクラスは別のstatic変数をもつことになる)
 
         CanConfig config;
 
