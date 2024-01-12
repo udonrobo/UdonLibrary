@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include "ILora.hpp"
+#include "ILoRa.hpp"
 #include <Udon/Com/Common/AsyncStreamReader.hpp>
 
 namespace Udon
@@ -18,7 +18,7 @@ namespace Udon
     /// @brief TLM922S デバイスクラス (プライベートLoRa)
     /// @remark 現在送受信非対応
     class TLM922S
-        : public ILora
+        : public ILoRa
     {
     public:
         /// @brief 設定項目
@@ -47,10 +47,10 @@ namespace Udon
         void update();
 
         /// @brief 送信ノードを登録
-        void joinTx(LoraNode& node) override { txNode = &node; }
+        void joinTx(LoRaNode& node) override { txNode = &node; }
 
         /// @brief 受信ノードを登録
-        void joinRx(LoraNode& node) override { rxNode = &node; }
+        void joinRx(LoRaNode& node) override { rxNode = &node; }
 
     private:
         std::vector<uint8_t> HexStringToBinString(ArrayView<const char> view);
@@ -59,8 +59,8 @@ namespace Udon
 
         AsyncStreamReader reader;
 
-        LoraNode* txNode = nullptr;
-        LoraNode* rxNode = nullptr;
+        LoRaNode* txNode = nullptr;
+        LoRaNode* rxNode = nullptr;
     };
 
 }    // namespace Udon

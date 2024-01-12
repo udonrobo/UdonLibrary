@@ -1,5 +1,5 @@
 //
-//    E220 Loraモジュール ドライバクラス
+//    E220 LoRaモジュール ドライバクラス
 //
 //	  Copyright (c) 2022-2023 Fujimoto Ryo
 //    Copyright (c) 2022-2023 Okawa Yusuke
@@ -11,7 +11,7 @@
 
 #pragma once
 
-#include "ILora.hpp"
+#include "ILoRa.hpp"
 
 #include <Udon/Algorithm/BitPack.hpp>
 #include <Udon/Stl/Optional.hpp>
@@ -20,10 +20,10 @@
 namespace Udon
 {
     //
-    //   E220 Loraモジュール
+    //   E220 LoRaモジュール
     //
     class E220
-        : public ILora
+        : public ILoRa
     {
     public:
         /// @brief コンストラクタ
@@ -56,10 +56,10 @@ namespace Udon
         static int ClampChannel(int channel) { return constrain(channel, 0, 30); }
 
         /// @brief 送信ノードを登録
-        void joinTx(LoraNode& node) override { txNode = &node; }
+        void joinTx(LoRaNode& node) override { txNode = &node; }
 
         /// @brief 受信ノードを登録
-        void joinRx(LoraNode& node) override { rxNode = &node; }
+        void joinRx(LoRaNode& node) override { rxNode = &node; }
 
     private:
         HardwareSerial& uart;
@@ -71,8 +71,8 @@ namespace Udon
         uint8_t                 M1Pin;
         Udon::Optional<uint8_t> AUXPin;
 
-        LoraNode* txNode = nullptr;
-        LoraNode* rxNode = nullptr;
+        LoRaNode* txNode = nullptr;
+        LoRaNode* rxNode = nullptr;
 
         uint32_t lastWaitUntilCommandAcceptMs = 0;
 

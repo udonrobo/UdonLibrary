@@ -8,8 +8,8 @@
 #pragma once
 
 #ifdef ARDUINO
-#    include "Lora/LoraReader.hpp"
-#    include "Lora/LoraWriter.hpp"
-#    include "Lora/E220.hpp"
-#    include "Lora/TLM922S.hpp"
+#    include "LoRa/LoRaReader.hpp"
+#    include "LoRa/LoRaWriter.hpp"
+#    include "LoRa/E220.hpp"
+#    include "LoRa/TLM922S.hpp"
 #endif

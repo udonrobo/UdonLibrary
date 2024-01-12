@@ -1,5 +1,5 @@
 //
-//    Lora 送信クラス
+//    LoRa 受信クラス
 //
 //    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "ILora.hpp"
+#include "ILoRa.hpp"
 
 #include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
@@ -16,7 +16,7 @@ namespace Udon
 {
 
     template <typename Message>
-    class LoraWriter
+    class LoRaReader
     {
     public:
         static constexpr size_t Size = Udon::SerializedSize<Message>();
@@ -24,54 +24,55 @@ namespace Udon
         using MessageType = Message;
 
     private:
-        ILora& lora;
+        ILoRa& lora;
 
         uint8_t buffer[Size];
 
-        LoraNode node;
+        LoRaNode node;
 
     public:
-        LoraWriter(ILora& lora)
+        LoRaReader(ILoRa& lora)
             : lora(lora)
             , buffer()
             , node{ buffer, Size, 0 }
         {
-            lora.joinTx(node);
+            lora.joinRx(node);
         }
-        LoraWriter(const LoraWriter& other)
+        LoRaReader(const LoRaReader& other)
             : lora(other.lora)
             , buffer()
             , node{ buffer, Size, 0 }
         {
-            lora.joinTx(node);
+            lora.joinRx(node);
         }
 
-        void setMessage(const Message& message)
+        Udon::Optional<Message> getMessage(uint32_t timeOut = 700) const
         {
-            Udon::Serialize(message, buffer);
-        }
-
-        void setErrorMessage() noexcept
-        {
-            Udon::FailableSerialize({ buffer });
-        }
-
-        /// @brief 送信内容を表示
-        /// @param gap 区切り文字 (default: '\t')
-        void show() const
-        {
-            if (const auto message = Udon::Deserialize<Message>(buffer))
+            if (millis() - node.transmitMs > timeOut)
             {
-                Udon::ShowRaw(*message);
+                return Udon::nullopt;
             }
             else
             {
-                Serial.print(F("unpack failed!"));
-                // ここへ到達する: setMessage()で値を設定していない
+                return Udon::Deserialize<Message>(buffer);
             }
         }
 
-        /// @brief 送信バッファを表示
+        /// @brief 受信内容を表示
+        /// @param gap 区切り文字 (default: '\t')
+        void show(char gap = '\t') const
+        {
+            if (const auto message = getMessage())
+            {
+                Udon::Show(*message, gap);
+            }
+            else
+            {
+                Serial.print(F("receive failed!"));
+            }
+        }
+
+        /// @brief 受信バッファを表示
         /// @param gap 区切り文字 (default: ' ')
         void showRaw(char gap = ' ') const
         {
