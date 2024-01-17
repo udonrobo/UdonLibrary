@@ -52,7 +52,7 @@ Test   <-- ソリューションディレクトリ
 
 ### Arduino ライブラリディレクトリ使用時
 
-新しい項目に `$(HOMEPATH)\Documents\Arduino\UdonLibrary\src\` を追加します。
+新しい項目に `$(HOMEPATH)\Documents\Arduino\libraries\UdonLibrary\src\` を追加します。
 
 `$(HOMEPATH)` はホームディレクトリ `~/` を表すマクロです。
 
