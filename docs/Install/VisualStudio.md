@@ -66,6 +66,12 @@ Test   <-- ソリューションディレクトリ
 
    ![image](https://github.com/udonrobo/UdonLibrary/assets/91818705/5aff2346-83d3-45ef-a8cc-89e1224a28d5)
 
+4. 追加確認
+
+    追加が成功している場合、写真の様にUdon.hpp のインクルードができるようになっています。
+
+    ![image](https://github.com/udonrobo/UdonLibrary/assets/91818705/bf559aad-c13f-4a28-a360-e886483e3dbd)
+
 ## 更新
 
 ```sh
