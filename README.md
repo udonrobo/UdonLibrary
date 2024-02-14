@@ -10,7 +10,7 @@
 - [Platform IO](./docs/Install/PlatformIO.md)
 - [Visual Studio](./docs/Install/VisualStudio.md)
 - [Visual Studio (submodule)](./docs/Install/VisualStudioSubmodule.md)
-- [Raspberry Pi Pico 使用時事前セットアップ](./docs/install/RaspberryPiPico.md)
+- [Raspberry Pi Pico 使用時事前セットアップ](./docs/Install/RaspberryPiPico.md)
 
 ## 使用方法
 
