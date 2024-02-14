@@ -112,7 +112,7 @@ namespace Udon
 
         // TwoWire::onReceive 割り込み発火
         // ↓
-        // デリゲートによって I2cBusImpl::invokeOnReceive 呼び出し
+        // I2cBusImpl::invokeOnReceive 呼び出し
         // ↓
         // userOnReceive(I2cBusImpl::onReceiveで登録したコールバック関数) 呼び出し
 

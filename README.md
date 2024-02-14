@@ -9,6 +9,8 @@
 - [Arduino IDE](./docs/Install/ArduinoIDE.md)
 - [Platform IO](./docs/Install/PlatformIO.md)
 - [Visual Studio](./docs/Install/VisualStudio.md)
+- [Visual Studio (submodule)](./docs/Install/VisualStudioSubmodule.md.md)
+- [Raspberry Pi Pico 使用時事前セットアップ](./docs/install/RaspberryPiPico.md)
 
 ## 使用方法
 
