@@ -203,6 +203,9 @@ int main()
 この時、バッファーのサイズと、シリアライズ後のサイズ(`Udon::SerializedSize<T>()`)が異なる場合 `Udon::Serialize` は失敗し false を返します。
 
 ```cpp
+#include <iostream>
+#include <Udon/Serializer/Serializer.hpp>
+
 int main()
 {
 	uint8_t buffer[Udon::SerializedSize<int>()];
