@@ -5,7 +5,7 @@
 ## 追加
 
 ```sh
-# VisualStudioのソリューションディレクトリで実行c
+# VisualStudioのソリューションディレクトリで実行
 git submodule add https://github.com/udonrobo/UdonLibrary.git
 git commit -m "add UdonLibrary"   # 追加先のレポジトリに対するコミット
 ```
