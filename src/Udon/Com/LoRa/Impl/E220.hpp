@@ -278,7 +278,7 @@ namespace Udon
     inline bool E220::sendUpdate()
     {
         // 送信休止時間分間隔をあける
-        if (millis() - txNode->transmitMs > 20)
+        if (millis() - txNode->transmitMs > 50)
         {
             // ヘッダー送信
             {
