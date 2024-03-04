@@ -267,7 +267,7 @@ namespace Udon
                                     [this, &msg](size_t)
                                     {
                                         bus.write(msg);
-                                        delayMicroseconds(8000);
+                                        delayMicroseconds(200);
                                     });
 
             node->transmitMs = ms;
