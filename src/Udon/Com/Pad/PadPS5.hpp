@@ -110,38 +110,9 @@ namespace Udon
         /// @brief 更新
         void update() noexcept
         {
-            Traits::MaybeInvokeUpdate(*this);
+            // Traits::MaybeInvokeUpdate(*this);
 
             if (const auto message = ReaderType::getMessage())
-            {
-                isConnected = false;
-
-                triangle.update(false);
-                circle.update(false);
-                cross.update(false);
-                square.update(false);
-
-                up.update(false);
-                right.update(false);
-                down.update(false);
-                left.update(false);
-
-                l1.update(false);
-                r1.update(false);
-                l2.update(false);
-                r2.update(false);
-                l3.update(false);
-                r3.update(false);
-
-                create.update(false);
-                option.update(false);
-                touch.update(false);
-                mic.update(false);
-
-                leftStick.clear();
-                rightStick.clear();
-            }
-            else
             {
                 isConnected = true;
 
@@ -182,6 +153,35 @@ namespace Udon
                     CutDeadZone(decodeStick(message->analogRightX), 20),
                     CutDeadZone(decodeStick(message->analogRightY), 20),
                 };
+            }
+            else
+            {
+                isConnected = false;
+
+                triangle.update(false);
+                circle.update(false);
+                cross.update(false);
+                square.update(false);
+
+                up.update(false);
+                right.update(false);
+                down.update(false);
+                left.update(false);
+
+                l1.update(false);
+                r1.update(false);
+                l2.update(false);
+                r2.update(false);
+                l3.update(false);
+                r3.update(false);
+
+                create.update(false);
+                option.update(false);
+                touch.update(false);
+                mic.update(false);
+
+                leftStick.clear();
+                rightStick.clear();
             }
         }
 
