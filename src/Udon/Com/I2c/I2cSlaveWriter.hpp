@@ -16,8 +16,6 @@
 
 #include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
-#include <Udon/Com/Common/ParsableArray.hpp>
-#include <Udon/Com/Common/ArrayElementWriter.hpp>
 
 namespace Udon
 {
@@ -98,42 +96,5 @@ namespace Udon
 
     template <typename Message>
     I2cSlaveWriter<Message>* I2cSlaveWriter<Message>::self;
-
-    /// @brief メッセージ配列受信クラス
-    /// @details
-    ///     メッセージ配列を受信するためのクラスです。
-    ///     I2cSlaveWriter<Udon::Vec2[5]> reader(bus, address); のように使用します。
-    ///     at メソッドで各要素を Reader として取得できます。
-    ///     Udon::Encoder<Udon::ArrayElementReader> encoder(reader.at(index)); のように使用します。
-    ///     通常の I2cSlaveWriter を継承しているため、I2cSlaveWriter 内のメソッドをそのまま使用できます。
-    /// @tparam Message メッセージ型
-    /// @tparam N 配列要素数
-    template <typename Message, size_t N>
-    class I2cSlaveWriter<Message[N]>
-        : public I2cSlaveWriter<Udon::ParsableArray<Message, N>>
-    {
-
-        using Writer = I2cSlaveWriter<Udon::ParsableArray<Message, N>>;
-
-        using ArrayType = typename Writer::MessageType;
-
-        ArrayType array;
-
-    public:
-        /// @brief コンストラクタ
-        using Writer::Writer;
-
-        /// @brief 配列要素を Reader として取得
-        Udon::ArrayElementWriter<Message> at(size_t index)
-        {
-            return { array.at(index) };
-        }
-
-        /// @brief 更新
-        void update()
-        {
-            Writer::setMessage(array);
-        }
-    };
 
 }    // namespace Udon
