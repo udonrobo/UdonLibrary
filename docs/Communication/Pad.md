@@ -36,24 +36,24 @@
   ボタンの状態を取得する
 
   ```cpp
-  Udon::Button getTriangle();
-  Udon::Button getCircle();
-  Udon::Button getCross();
-  Udon::Button getSquare();
-  Udon::Button getUp();
-  Udon::Button getRight();
-  Udon::Button getDown();
-  Udon::Button getLeft();
-  Udon::Button getL1();
-  Udon::Button getR1();
-  Udon::Button getL2();
-  Udon::Button getR2();
-  Udon::Button getL3();      // 左スティック押し込み
-  Udon::Button getR3();      // 右スティック押し込み
-  Udon::Button getCreate();  // クリエイトボタン(左上ボタン)
-  Udon::Button getOption();  // オプションボタン(右上ボタン)
-  Udon::Button getTouch();
-  Udon::Button getPs();
+  Udon::Input getTriangle();
+  Udon::Input getCircle();
+  Udon::Input getCross();
+  Udon::Input getSquare();
+  Udon::Input getUp();
+  Udon::Input getRight();
+  Udon::Input getDown();
+  Udon::Input getLeft();
+  Udon::Input getL1();
+  Udon::Input getR1();
+  Udon::Input getL2();
+  Udon::Input getR2();
+  Udon::Input getL3();      // 左スティック押し込み
+  Udon::Input getR3();      // 右スティック押し込み
+  Udon::Input getCreate();  // クリエイトボタン(左上ボタン)
+  Udon::Input getOption();  // オプションボタン(右上ボタン)
+  Udon::Input getTouch();
+  Udon::Input getPs();
   ```
 
   ```cpp
@@ -76,14 +76,15 @@
 
 ## Detail
 
-ボタンを取得する関数からは、ボタンの状態を格納する構造体である `Udon::Button` オブジェクトが取得できます。
+ボタンを取得する関数からは、ボタンの状態を格納する構造体である `Udon::Input` オブジェクトが取得できます。
 
 ```cpp
-struct Button
+struct Input
 {
     bool press;    // 押されているか
     bool click;    // 押された瞬間か
     bool release;  // 離された瞬間か
+    bool toggle;   // 押すごとに入れ替わる
 };
 ```
 
