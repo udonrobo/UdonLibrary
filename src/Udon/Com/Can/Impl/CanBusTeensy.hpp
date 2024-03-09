@@ -221,7 +221,7 @@ namespace Udon
             }
 
             // 分割されたフレームを結合(マルチフレームの場合)
-            Udon::Detail::Unpacketize(
+            Udon::Impl::Unpacketize(
                 { msg.buf },
                 { rxNode->node->data, rxNode->node->length },
                 SingleFrameSize);
@@ -263,7 +263,7 @@ namespace Udon
             msg.len = SingleFrameSize;
 
             // 一度に8バイトしか送れないため、分割し送信
-            Udon::Detail::Packetize({ node->data, node->length }, { msg.buf }, SingleFrameSize,
+            Udon::Impl::Packetize({ node->data, node->length }, { msg.buf }, SingleFrameSize,
                                     [this, &msg](size_t)
                                     {
                                         bus.write(msg);

@@ -230,7 +230,7 @@ namespace Udon
             }
 
             // 分割されたフレームを結合(マルチフレームの場合)
-            Udon::Detail::Unpacketize({ msg.data }, { rxNode->node->data, rxNode->node->length }, SingleFrameSize);
+            Udon::Impl::Unpacketize({ msg.data }, { rxNode->node->data, rxNode->node->length }, SingleFrameSize);
 
             // 登録されている受信クラスのコールバック関数を呼ぶ
             // 最終フレームの到達時にコールバックを呼ぶため、受信中(完全に受信しきっていないとき)にデシリアライズすることを防いでいる。
@@ -263,7 +263,7 @@ namespace Udon
             msg.can_dlc = SingleFrameSize;
 
             // 一度に8バイトしか送れないため、分割し送信
-            Udon::Detail::Packetize({ node->data, node->length }, { msg.data }, SingleFrameSize,
+            Udon::Impl::Packetize({ node->data, node->length }, { msg.data }, SingleFrameSize,
                                     [this, &msg](size_t)
                                     {
                                         bus.sendMessage(&msg);

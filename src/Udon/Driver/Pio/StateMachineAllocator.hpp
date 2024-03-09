@@ -11,7 +11,7 @@ namespace Udon
     namespace Pio
     {
 
-        namespace Detail
+        namespace Impl
         {
             /// @brief PIOの命令メモリを取得する
             /// @return PIOの命令メモリ
@@ -21,7 +21,7 @@ namespace Udon
                 return memory;
             }
 
-        }    // namespace Detail
+        }    // namespace Impl
 
         /// @brief ステートマシンを表す構造体
         /// @details PIOはpio0とpio1の2つがあり、それぞれ4つのステートマシンを持つ
@@ -50,7 +50,7 @@ namespace Udon
         inline Udon::Optional<StateMachine> AllocateStateMachine(const pio_program& program)
         {
             PIO  pios[] = { pio0, pio1 };
-            auto memory = Detail::GetPioInstructionMemory();
+            auto memory = Impl::GetPioInstructionMemory();
 
             // 既にプログラムメモリに同じプログラムがロードされている場合はそれを使用
             for (int i = 0; i < 2; i++)

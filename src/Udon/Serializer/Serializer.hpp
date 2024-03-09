@@ -56,6 +56,7 @@ namespace Udon
 
         return true;
     }
+    
 
     /// @brief シリアル化する
     /// @tparam T シリアル化する型(自動推論)
