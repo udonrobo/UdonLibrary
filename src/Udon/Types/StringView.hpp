@@ -100,6 +100,20 @@ namespace Udon
         {
         }
 
+        
+#ifdef ARDUINO
+
+        /// @brief Arduino の String からの変換
+        /// @note T が char の場合のみ有効
+        /// @param str
+        template <typename T = CharType, typename = typename std::enable_if<std::is_same<T, char>::value>::type>
+        BasicStringView(const String& str)
+            : m_data(str.c_str())
+            , m_size(str.length())
+        {
+        }
+#endif
+
         /// @brief デフォルトコピーコンストラクタ
         BasicStringView(const BasicStringView&) = default;
 
@@ -332,6 +346,26 @@ namespace Udon
             return os.write(string.m_data, string.m_size);
         }
 
+#endif
+
+#ifdef ARDUINO
+        void show() const
+        {
+            Serial.print("[");
+            for (size_type i = 0; i < m_size; ++i)
+            {
+                Serial.print(m_data[i]);
+                if (i < m_size - 1)
+                {
+                    Serial.print(", ");
+                }
+            }
+            Serial.print("]");
+        }
+        void showString() const
+        {
+            Serial.write(m_data, m_size);
+        }
 #endif
 
         // iterator 要件

@@ -76,10 +76,10 @@ namespace Udon
 
         template <typename Container, typename = decltype(std::declval<Container>().data(), std::declval<Container>().size())>
         ArrayView(Container&& container)
-			: m_data(container.data())
-			, m_size(container.size())
-		{
-		}
+            : m_data(container.data())
+            , m_size(container.size())
+        {
+        }
 
         explicit operator bool() const noexcept
         {
@@ -191,7 +191,7 @@ namespace Udon
         {
             return {
                 std::next(cbegin(), beginIndex),
-                m_size
+                std::min(m_size - beginIndex, m_size)
             };
         }
 
@@ -328,7 +328,7 @@ namespace Udon
                     Serial.print(", ");
                 }
             }
-            Serial.println("]");
+            Serial.print("]");
         }
 #endif
     };
