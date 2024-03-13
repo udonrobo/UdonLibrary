@@ -130,42 +130,42 @@ namespace Udon
 
         // template <size_t WheelCount>
         // std::array<double, WheelCount> toOmni() const
-        //{
+        // {
         //     static_assert(WheelCount >= 3, "WheelCount must be greater than or equal to 3.");
         //     static_assert(WheelCount == 4, "Not supported over 4 wheels now.");
         // }
 
-        // template <>
-        // std::array<double, 4> toOmni<4>() const
-        //{
-        //     uint8_t    powerLimit     = 255;
-        //             uint8_t turnPowerLimit = 255;
-        //     const auto mappedTurn = Udon::Map(turn, -255, 255, -turnPowerLimit, turnPowerLimit);
+        template <size_t N>
+        std::array<double, N> toOmni() const
+        {
+            uint8_t    powerLimit     = 255;
+                    uint8_t turnPowerLimit = 255;
+            const auto mappedTurn = Udon::Map(turn, -255, 255, -turnPowerLimit, turnPowerLimit);
 
-        //    std::array<double, 4> powers{ {
-        //        +vector.x + -vector.y + mappedTurn,
-        //        -vector.x + -vector.y + mappedTurn,
-        //        -vector.x + +vector.y + mappedTurn,
-        //        +vector.x + +vector.y + mappedTurn,
-        //    } };
+           std::array<double, 4> powers{ {
+               +vector.x + -vector.y + mappedTurn,
+               -vector.x + -vector.y + mappedTurn,
+               -vector.x + +vector.y + mappedTurn,
+               +vector.x + +vector.y + mappedTurn,
+           } };
 
-        //    // 上で算出した出力値は {powerLimit} を超える場合があります。
-        //    // 超えた場合、最大出力のモジュールの出力を {powerLimit} として他のモジュールの出力を圧縮します。
-        //    auto&& max = abs(*std::max_element(powers.begin(), powers.end(), [](double lhs, double rhs)
-        //                                       { return abs(lhs.r) < abs(rhs.r); }));
+           // 上で算出した出力値は {powerLimit} を超える場合があります。
+           // 超えた場合、最大出力のモジュールの出力を {powerLimit} として他のモジュールの出力を圧縮します。
+           auto&& max = abs(*std::max_element(powers.begin(), powers.end(), [](double lhs, double rhs)
+                                              { return abs(lhs) < abs(rhs); }));
 
-        //    if (max > powerLimit)
-        //    {
-        //        const auto ratio = powerLimit / max;
+           if (max > powerLimit)
+           {
+               const auto ratio = powerLimit / max;
 
-        //        std::transform(powers.begin(), powers.end(), powers.begin(),
-        //                       [ratio](double power)
-        //                       { return power * ratio; });
-        //    }
+               std::transform(powers.begin(), powers.end(), powers.begin(),
+                              [ratio](double power)
+                              { return power * ratio; });
+           }
 
-        //    // todo
-        //    return powers;
-        //}
+           // todo
+           return powers;
+        }
 
         /// @brief 独立ステアリング機構のタイヤ出力値、旋回角を取得する
         /// @tparam WheelCount タイヤの数
