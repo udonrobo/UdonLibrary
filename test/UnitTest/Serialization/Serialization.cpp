@@ -43,7 +43,7 @@ TEST(Serialization, Deserialize)
 
 TEST(Serialization, DeserializeError)
 {
-    Udon::Vec2 v{ 1.0, 2.0 };
+    Udon::Vec2 v{ 123456.7890, 987654.3210 };
 
     auto serialized = Udon::Serialize(v);
 
