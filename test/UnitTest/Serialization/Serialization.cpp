@@ -16,9 +16,9 @@ TEST(Serialization, SerializedSize)
 
     EXPECT_TRUE(Udon::SerializedSize<float>() == sizeof(float) + Udon::CRC8_SIZE);
 
-    EXPECT_TRUE(Udon::SerializedSize<double>() == sizeof(double) + Udon::CRC8_SIZE);
+    EXPECT_TRUE(Udon::SerializedSize<double>() == sizeof(Udon::float32_t) + Udon::CRC8_SIZE);
 
-    EXPECT_TRUE(Udon::SerializedSize<Udon::Vec2>() == sizeof(Udon::Vec2::ValueType) * Udon::Vec2::Dimension + Udon::CRC8_SIZE);
+    EXPECT_TRUE(Udon::SerializedSize<Udon::Vec2>() == sizeof(Udon::float32_t) * Udon::Vec2::Dimension + Udon::CRC8_SIZE);
 }
 
 TEST(Serialization, Serialize)
