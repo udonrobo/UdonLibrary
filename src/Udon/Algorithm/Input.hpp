@@ -18,7 +18,7 @@ namespace Udon
         //                     │            │             │             │             │             │
         //   [input:false]     ┼────────────┘             └─────────────┘             └─────────────┘
         //                     │
-        //         ↓           │
+        //         ↓
         //                     │
         //   [press:true ]     │            ┌─────────────┐             ┌─────────────┐             ┌──
         //                     │            │             │             │             │             │
@@ -62,7 +62,7 @@ namespace Udon
             Udon::ShowRaw(press);
         }
 
-        /// @brief 更新 
+        /// @brief 更新
         /// @remark Input オブジェクト取得後は更新しないこと
         /// @param input 新規入力値 (true:押されている, false:押されていない)
         void update(bool input) noexcept
