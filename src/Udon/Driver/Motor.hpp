@@ -24,7 +24,7 @@ namespace Udon
         Udon::MovingAverage<SmoothLevel> movingAverage;
 
     public:
-        Motor2(const uint8_t pinA, const uint8_t pinP)
+        SmoothlyMotor2(const uint8_t pinA, const uint8_t pinP)
             : pinA(pinA)
             , pinP(pinP)
             , movingAverage{}

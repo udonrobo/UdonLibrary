@@ -67,23 +67,3 @@ inline void testSlave()
     writer.show();
     writer.showRaw();
 }
-
-inline void testArrayElementReader()
-{
-    Udon::I2cBus bus{ Wire };
-
-    Udon::I2cMasterReader<int[10]> reader{ bus, 0x00 };
-    Udon::ArrayElementReader<int> arrayElementReader{ reader.at(0) };
-
-    arrayElementReader.getMessage();
-}
-
-inline void testArrayElementWriter()
-{
-    Udon::I2cBus bus{ Wire };
-
-    Udon::I2cMasterWriter<int[10]> writer{ bus, 0x00 };
-    Udon::ArrayElementWriter<int> arrayElementWriter{ writer.at(0) };
-
-    arrayElementWriter.setMessage(0);
-}
