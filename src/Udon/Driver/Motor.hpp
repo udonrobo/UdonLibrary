@@ -103,6 +103,8 @@ namespace Udon
     using Motor2 = SmoothlyMotor2<50>;
     using Motor3 = SmoothlyMotor3<50>;
 
+#ifdef __AVR_ATmega328P__
+
     /// @brief pwm周期変更 (atmega328p)
     inline void ArduinoNanoPwmPeriodChange()
     {
@@ -111,6 +113,8 @@ namespace Udon
         TCCR2B &= B11111000;
         TCCR2B |= B00000001;
     }
+
+#endif
 
 }    // namespace Udon
 
