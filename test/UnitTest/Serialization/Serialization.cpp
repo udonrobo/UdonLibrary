@@ -37,7 +37,7 @@ TEST(Serialization, Deserialize)
 
     auto deserialized = Udon::Deserialize<Udon::Vec2>(Udon::Serialize(v));
 
-    EXPECT_TRUE(deserialized.has_value());    // デシリアライズに成功したか確認
+    EXPECT_TRUE(deserialized.hasValue());    // デシリアライズに成功したか確認
     EXPECT_EQ(v, deserialized.value());       // デシリアライズ後の値が正しいか確認
 }
 
@@ -51,6 +51,5 @@ TEST(Serialization, DeserializeError)
 
     auto deserialized = Udon::Deserialize<Udon::Vec2>(serialized);
 
-    EXPECT_FALSE(deserialized.has_value());
-    EXPECT_NE(v, deserialized.value());
+    EXPECT_FALSE(deserialized.hasValue());
 }

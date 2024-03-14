@@ -11,7 +11,7 @@
 #include <sstream>
 
 
-TEST(StringView, Constructor)
+TEST(StringView, Construct)
 {
     const auto cstring = "test string";
 
@@ -65,7 +65,7 @@ TEST(StringView, Constructor)
 }
 
 
-TEST(StringView, Compare)
+TEST(StringView, CompareOperator)
 {
     Udon::StringView sv = "test string";
 

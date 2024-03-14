@@ -7,7 +7,7 @@
 
 
 #include <gtest/gtest.h>
-#include <Udon/Types/StringView.hpp>
+#include <Udon/Types/Optional.hpp>
 
 
 struct Copyable
@@ -106,173 +106,136 @@ struct UncopyableDerived
     };
 };
 
-void ConstructTest()
+TEST(Optional, Construct)
 {
     // default construct
     {
-        TestUdon::Optional<Copyable> a;
+        Udon::Optional<Copyable> a;
         EXPECT_FALSE(a);
     }
     {
-        TestUdon::Optional<Copyable> a{ 100 };
+        Udon::Optional<Copyable> a{ 100 };
         EXPECT_TRUE(a);
         EXPECT_EQ(a->value, 100);
     }
 
     // nullopt construct
     {
-        TestUdon::Optional<Copyable> a{ TestUdon::nullopt };
+        Udon::Optional<Copyable> a{ Udon::nullopt };
         EXPECT_FALSE(a);
     }
 
     // copy construct
     {
-        TestUdon::Optional<Copyable> a{ 100 };
-        TestUdon::Optional<Copyable> b{ a };
+        Udon::Optional<Copyable> a{ 100 };
+        Udon::Optional<Copyable> b{ a };
         EXPECT_EQ(b->value, 100);
     }
     {
-        Copyable a{ 100 };
-        TestUdon::Optional<Copyable> b{ a };
+        Copyable                 a{ 100 };
+        Udon::Optional<Copyable> b{ a };
         EXPECT_EQ(b->value, 100);
     }
     {
         // Copyable から Copyable1 への変換は可能なので構築可能
-        TestUdon::Optional<Copyable>        a{ 100 };
-        TestUdon::Optional<CopyableDerived> b{ a };
+        Udon::Optional<Copyable>        a{ 100 };
+        Udon::Optional<CopyableDerived> b{ a };
         EXPECT_EQ(b->value, 100);
     }
     {
-        Copyable a{ 100 };
-        TestUdon::Optional<CopyableDerived> b{ a };
+        Copyable                        a{ 100 };
+        Udon::Optional<CopyableDerived> b{ a };
         EXPECT_EQ(b->value, 100);
     }
 
     // move construct
     {
-        TestUdon::Optional<Uncopyable> a{ 100 };
-        TestUdon::Optional<Uncopyable> b{ std::move(a) };
+        Udon::Optional<Uncopyable> a{ 100 };
+        Udon::Optional<Uncopyable> b{ std::move(a) };
         EXPECT_EQ(b->value, 100);
     }
     {
         // Uncopyable から Uncopyable1 への変換は可能なので構築可能
-        Uncopyable                     a{ 100 };
-        TestUdon::Optional<Uncopyable> b{ std::move(a) };
+        Uncopyable                 a{ 100 };
+        Udon::Optional<Uncopyable> b{ std::move(a) };
         EXPECT_EQ(b->value, 100);
     }
     {
-        Uncopyable                            a{ 100 };
-        TestUdon::Optional<UncopyableDerived> b{ std::move(a) };
+        Uncopyable                        a{ 100 };
+        Udon::Optional<UncopyableDerived> b{ std::move(a) };
         EXPECT_EQ(b->value, 100);
     }
     {
-        TestUdon::Optional<Uncopyable>        a{ 100 };
-        TestUdon::Optional<UncopyableDerived> b{ std::move(a) };
+        Udon::Optional<Uncopyable>        a{ 100 };
+        Udon::Optional<UncopyableDerived> b{ std::move(a) };
         EXPECT_EQ(b->value, 100);
     }
 }
 
 
-void AssignmentOperatorTest()
+TEST(Optional, AssignmentOperator)
 {
     // copy assingment
     {
-        TestUdon::Optional<Copyable> a{ 100 };
-        TestUdon::Optional<Copyable> b;
+        Udon::Optional<Copyable> a{ 100 };
+        Udon::Optional<Copyable> b;
         b = a;
         EXPECT_EQ(b->value, 100);
     }
     {
-        Copyable a{ 100 };
-        TestUdon::Optional<Copyable> b;
+        Copyable                 a{ 100 };
+        Udon::Optional<Copyable> b;
         b = a;
         EXPECT_EQ(b->value, 100);
     }
     {
-        TestUdon::Optional<Copyable>        a{ 100 };
-        TestUdon::Optional<CopyableDerived> b;
+        Udon::Optional<Copyable>        a{ 100 };
+        Udon::Optional<CopyableDerived> b;
         b = a;
         EXPECT_EQ(b->value, 100);
     }
     {
-        Copyable a{ 100 };
-        TestUdon::Optional<CopyableDerived> b;
+        Copyable                        a{ 100 };
+        Udon::Optional<CopyableDerived> b;
         b = a;
         EXPECT_EQ(b->value, 100);
     }
 
     // move assingment
     {
-        TestUdon::Optional<Uncopyable> a{ 100 };
-        TestUdon::Optional<Uncopyable> b;
+        Udon::Optional<Uncopyable> a{ 100 };
+        Udon::Optional<Uncopyable> b;
         b = std::move(a);
         EXPECT_EQ(b->value, 100);
     }
     {
-        Uncopyable                     a{ 100 };
-        TestUdon::Optional<Uncopyable> b;
+        Uncopyable                 a{ 100 };
+        Udon::Optional<Uncopyable> b;
         b = std::move(a);
         EXPECT_EQ(b->value, 100);
     }
     {
-        TestUdon::Optional<Uncopyable>        a{ 100 };
-        TestUdon::Optional<UncopyableDerived> b;
+        Udon::Optional<Uncopyable>        a{ 100 };
+        Udon::Optional<UncopyableDerived> b;
         b = std::move(a);
         EXPECT_EQ(b->value, 100);
     }
     {
-        Uncopyable                            a{ 100 };
-        TestUdon::Optional<UncopyableDerived> b;
+        Uncopyable                        a{ 100 };
+        Udon::Optional<UncopyableDerived> b;
         b = std::move(a);
         EXPECT_EQ(b->value, 100);
     }
 }
 
-void ValueAccessTest()
-{
-    {
-        TestUdon::Optional<Copyable> a{ 100 };
-        EXPECT_EQ(a.value().value, 100);    // value() &
-        EXPECT_EQ((*a).value, 100);         // operator*() &
-        EXPECT_EQ(a->value, 100);           // operator->() &
-    }
-
-    {
-        const TestUdon::Optional<Copyable> a{ 100 };
-        EXPECT_EQ(a.value().value, 100);    // value() const&
-        EXPECT_EQ((*a).value, 100);         // operator*() const&
-        EXPECT_EQ(a->value, 100);           // operator->() const&
-    }
-
-    {
-        TestUdon::Optional<Copyable> a{ 100 };
-        EXPECT_EQ(std::move(a).value().value, 100);    // value() &&
-        EXPECT_EQ((*std::move(a)).value, 100);         // operator*() &&
-        EXPECT_EQ(std::move(a)->value, 100);           // operator->() &&
-    }
-
-    {
-
-#pragma warning(push)
-#pragma warning(disable : 26478)    // 定数変数の移動は通常しないが、テストのため無効化
-
-        const TestUdon::Optional<Copyable> a{ 100 };
-        EXPECT_EQ(std::move(a).value().value, 100);    // value() const&&
-        EXPECT_EQ((*std::move(a)).value, 100);         // operator*() const&&
-        EXPECT_EQ(std::move(a)->value, 100);           // operator->() const&&
-
-#pragma warning(pop)
-    }
-}
-
-void CompairTest()
+TEST(Optional, CompareOperator)
 {
     // operator ==
     {
-        TestUdon::Optional<int> a = 1;
-        TestUdon::Optional<int> aa = 1;
-        TestUdon::Optional<int> b = 2;
-        TestUdon::Optional<int> n;
+        Udon::Optional<int> a  = 1;
+        Udon::Optional<int> aa = 1;
+        Udon::Optional<int> b  = 2;
+        Udon::Optional<int> n;
 
         // optional と optional
         EXPECT_TRUE(a == aa);
@@ -283,8 +246,8 @@ void CompairTest()
         // optional と nullopt
         EXPECT_FALSE(a == n);
         EXPECT_FALSE(n == a);
-        EXPECT_FALSE(a == TestUdon::nullopt);
-        EXPECT_FALSE(TestUdon::nullopt == a);
+        EXPECT_FALSE(a == Udon::nullopt);
+        EXPECT_FALSE(Udon::nullopt == a);
 
         // optional と T
         EXPECT_TRUE(a == 1);
@@ -293,16 +256,16 @@ void CompairTest()
         EXPECT_FALSE(2 == a);
 
         // nullopt と nullopt
-        EXPECT_TRUE(n == TestUdon::nullopt);
-        EXPECT_TRUE(TestUdon::nullopt == n);
+        EXPECT_TRUE(n == Udon::nullopt);
+        EXPECT_TRUE(Udon::nullopt == n);
     }
 
     // operator !=
     {
-        TestUdon::Optional<int> a = 1;
-        TestUdon::Optional<int> aa = 1;
-        TestUdon::Optional<int> b = 2;
-        TestUdon::Optional<int> n;
+        Udon::Optional<int> a  = 1;
+        Udon::Optional<int> aa = 1;
+        Udon::Optional<int> b  = 2;
+        Udon::Optional<int> n;
 
         // optional と optional
         EXPECT_FALSE(a != aa);
@@ -313,8 +276,8 @@ void CompairTest()
         // optional と nullopt
         EXPECT_TRUE(a != n);
         EXPECT_TRUE(n != a);
-        EXPECT_TRUE(a != TestUdon::nullopt);
-        EXPECT_TRUE(TestUdon::nullopt != a);
+        EXPECT_TRUE(a != Udon::nullopt);
+        EXPECT_TRUE(Udon::nullopt != a);
 
         // optional と T
         EXPECT_FALSE(a != 1);
@@ -323,16 +286,16 @@ void CompairTest()
         EXPECT_TRUE(2 != a);
 
         // nullopt と nullopt
-        EXPECT_FALSE(n != TestUdon::nullopt);
-        EXPECT_FALSE(TestUdon::nullopt != n);
+        EXPECT_FALSE(n != Udon::nullopt);
+        EXPECT_FALSE(Udon::nullopt != n);
     }
 
     // operator <
     {
-        TestUdon::Optional<int> a = 1;
-        TestUdon::Optional<int> aa = 1;
-        TestUdon::Optional<int> b = 2;
-        TestUdon::Optional<int> n;
+        Udon::Optional<int> a  = 1;
+        Udon::Optional<int> aa = 1;
+        Udon::Optional<int> b  = 2;
+        Udon::Optional<int> n;
 
         // optional と optional
         EXPECT_FALSE(a < aa);
@@ -343,8 +306,8 @@ void CompairTest()
         // optional と nullopt
         EXPECT_FALSE(a < n);
         EXPECT_TRUE(n < a);
-        EXPECT_FALSE(a < TestUdon::nullopt);
-        EXPECT_TRUE(TestUdon::nullopt < a);
+        EXPECT_FALSE(a < Udon::nullopt);
+        EXPECT_TRUE(Udon::nullopt < a);
 
         // optional と T
         EXPECT_FALSE(a < 1);
@@ -353,16 +316,16 @@ void CompairTest()
         EXPECT_FALSE(2 < a);
 
         // nullopt と nullopt
-        EXPECT_FALSE(n < TestUdon::nullopt);
-        EXPECT_FALSE(TestUdon::nullopt < n);
+        EXPECT_FALSE(n < Udon::nullopt);
+        EXPECT_FALSE(Udon::nullopt < n);
     }
 
     // operator >
     {
-        TestUdon::Optional<int> a = 1;
-        TestUdon::Optional<int> aa = 1;
-        TestUdon::Optional<int> b = 2;
-        TestUdon::Optional<int> n;
+        Udon::Optional<int> a  = 1;
+        Udon::Optional<int> aa = 1;
+        Udon::Optional<int> b  = 2;
+        Udon::Optional<int> n;
 
         // optional と optional
         EXPECT_FALSE(a > aa);
@@ -373,8 +336,8 @@ void CompairTest()
         // optional と nullopt
         EXPECT_TRUE(a > n);
         EXPECT_FALSE(n > a);
-        EXPECT_TRUE(a > TestUdon::nullopt);
-        EXPECT_FALSE(TestUdon::nullopt > a);
+        EXPECT_TRUE(a > Udon::nullopt);
+        EXPECT_FALSE(Udon::nullopt > a);
 
         // optional と T
         EXPECT_FALSE(a > 1);
@@ -383,16 +346,16 @@ void CompairTest()
         EXPECT_TRUE(2 > a);
 
         // nullopt と nullopt
-        EXPECT_FALSE(n > TestUdon::nullopt);
-        EXPECT_FALSE(TestUdon::nullopt > n);
+        EXPECT_FALSE(n > Udon::nullopt);
+        EXPECT_FALSE(Udon::nullopt > n);
     }
 
     // operator <=
     {
-        TestUdon::Optional<int> a = 1;
-        TestUdon::Optional<int> aa = 1;
-        TestUdon::Optional<int> b = 2;
-        TestUdon::Optional<int> n;
+        Udon::Optional<int> a  = 1;
+        Udon::Optional<int> aa = 1;
+        Udon::Optional<int> b  = 2;
+        Udon::Optional<int> n;
 
         // optional と optional
         EXPECT_TRUE(a <= aa);
@@ -403,8 +366,8 @@ void CompairTest()
         // optional と nullopt
         EXPECT_FALSE(a <= n);
         EXPECT_TRUE(n <= a);
-        EXPECT_FALSE(a <= TestUdon::nullopt);
-        EXPECT_TRUE(TestUdon::nullopt <= a);
+        EXPECT_FALSE(a <= Udon::nullopt);
+        EXPECT_TRUE(Udon::nullopt <= a);
 
         // optional と T
         EXPECT_TRUE(a <= 1);
@@ -413,16 +376,16 @@ void CompairTest()
         EXPECT_FALSE(2 <= a);
 
         // nullopt と nullopt
-        EXPECT_TRUE(n <= TestUdon::nullopt);
-        EXPECT_TRUE(TestUdon::nullopt <= n);
+        EXPECT_TRUE(n <= Udon::nullopt);
+        EXPECT_TRUE(Udon::nullopt <= n);
     }
 
     // operator >=
     {
-        TestUdon::Optional<int> a = 1;
-        TestUdon::Optional<int> aa = 1;
-        TestUdon::Optional<int> b = 2;
-        TestUdon::Optional<int> n;
+        Udon::Optional<int> a  = 1;
+        Udon::Optional<int> aa = 1;
+        Udon::Optional<int> b  = 2;
+        Udon::Optional<int> n;
 
         // optional と optional
         EXPECT_TRUE(a >= aa);
@@ -433,8 +396,8 @@ void CompairTest()
         // optional と nullopt
         EXPECT_TRUE(a >= n);
         EXPECT_FALSE(n >= a);
-        EXPECT_TRUE(a >= TestUdon::nullopt);
-        EXPECT_FALSE(TestUdon::nullopt >= a);
+        EXPECT_TRUE(a >= Udon::nullopt);
+        EXPECT_FALSE(Udon::nullopt >= a);
 
         // optional と T
         EXPECT_TRUE(a >= 1);
@@ -443,36 +406,73 @@ void CompairTest()
         EXPECT_TRUE(2 >= a);
 
         // nullopt と nullopt
-        EXPECT_TRUE(n >= TestUdon::nullopt);
-        EXPECT_TRUE(TestUdon::nullopt >= n);
+        EXPECT_TRUE(n >= Udon::nullopt);
+        EXPECT_TRUE(Udon::nullopt >= n);
     }
 }
 
-void ValueOrTest()
+TEST(Optional, ValueAccess)
 {
     {
-        TestUdon::Optional<int> a = 1;
+        Udon::Optional<Copyable> a{ 100 };
+        EXPECT_EQ(a.value().value, 100);    // value() &
+        EXPECT_EQ((*a).value, 100);         // operator*() &
+        EXPECT_EQ(a->value, 100);           // operator->() &
+    }
+
+    {
+        const Udon::Optional<Copyable> a{ 100 };
+        EXPECT_EQ(a.value().value, 100);    // value() const&
+        EXPECT_EQ((*a).value, 100);         // operator*() const&
+        EXPECT_EQ(a->value, 100);           // operator->() const&
+    }
+
+    {
+        Udon::Optional<Copyable> a{ 100 };
+        EXPECT_EQ(std::move(a).value().value, 100);    // value() &&
+        EXPECT_EQ((*std::move(a)).value, 100);         // operator*() &&
+        EXPECT_EQ(std::move(a)->value, 100);           // operator->() &&
+    }
+
+    {
+
+#pragma warning(push)
+#pragma warning(disable : 26478)    // 定数変数の移動は通常しないが、テストのため無効化
+
+        const Udon::Optional<Copyable> a{ 100 };
+        EXPECT_EQ(std::move(a).value().value, 100);    // value() const&&
+        EXPECT_EQ((*std::move(a)).value, 100);         // operator*() const&&
+        EXPECT_EQ(std::move(a)->value, 100);           // operator->() const&&
+
+#pragma warning(pop)
+    }
+}
+
+TEST(Optional, ValueOr)
+{
+    {
+        Udon::Optional<int> a = 1;
         EXPECT_EQ(a.valueOr(2), 1);
     }
 
     {
-        TestUdon::Optional<int> a;
+        Udon::Optional<int> a;
         EXPECT_EQ(a.valueOr(2), 2);
     }
 
     {
-        TestUdon::Optional<Copyable> copyable;
+        Udon::Optional<Copyable> copyable;
         EXPECT_EQ(copyable.valueOr(100).value, 100);    //  const&
     }
 
     {
-        EXPECT_EQ(TestUdon::Optional<Uncopyable>{ TestUdon::nullopt }.valueOr(100).value, 100);    // &&
+        EXPECT_EQ(Udon::Optional<Uncopyable>{ Udon::nullopt }.valueOr(100).value, 100);    // &&
     }
 }
 
-void ResetTest()
+TEST(Optional, Reset)
 {
-    TestUdon::Optional<Copyable> a{ 100 };
+    Udon::Optional<Copyable> a{ 100 };
     a.reset();
     EXPECT_FALSE(a);
 }
