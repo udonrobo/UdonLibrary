@@ -40,8 +40,17 @@ namespace Udon
     {
     };
 
+    /**
+     * @brief 無効値
+    */
     constexpr NulloptT nullopt{};
 
+
+    /**
+     * @brief オプショナル型
+     * @note C++17のstd::optionalの模倣
+     * @tparam T 保持する値の型
+     */
     template <typename T>
     class Optional
     {
@@ -81,8 +90,6 @@ namespace Udon
          * @param value
          */
         template <typename U, typename std::enable_if<std::is_constructible<ValueType, U>::value, std::nullptr_t>::type = nullptr>
-        // constexpr
-        // explicit(not std::is_convertible<U&&, ValueType>::value)
         Optional(U&& value) noexcept(std::is_nothrow_constructible<ValueType>::value)
             : mStorage()
             , mHasValue(true)
@@ -96,7 +103,6 @@ namespace Udon
          * @param other
          */
         template <typename U, typename std::enable_if<std::is_constructible<ValueType, const U&>::value, std::nullptr_t>::type = nullptr>
-        // explicit(not std::is_convertible<const U&, ValueType>::value)
         Optional(const Optional<U>& other) noexcept(std::is_nothrow_constructible<ValueType, U>::value)
             : mStorage()
             , mHasValue(other.hasValue())
@@ -113,7 +119,6 @@ namespace Udon
          * @param other
          */
         template <typename U, typename std::enable_if<std::is_constructible<ValueType, U&&>::value, std::nullptr_t>::type = nullptr>
-        // explicit(not std::is_convertible<U&&, ValueType>::value)
         Optional(Optional<U>&& other) noexcept(std::is_nothrow_constructible<ValueType, U>::value)
             : mStorage()
             , mHasValue(other.hasValue())
@@ -454,6 +459,9 @@ namespace Udon
             }
         }
 
+        /**
+         * @brief 値を表示
+         */
         void show() const noexcept
         {
             if (mHasValue)
