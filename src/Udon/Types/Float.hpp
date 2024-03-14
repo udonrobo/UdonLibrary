@@ -97,7 +97,7 @@ namespace Udon
 
     //  定義されている可能性のある型は以下の通りです(処理系によって異なります)
     //  Udon::float16_t
-    //  Udon::float32_t
+    //  Udon::Float32
     //  Udon::float64_t
     //  Udon::float128_t
 
