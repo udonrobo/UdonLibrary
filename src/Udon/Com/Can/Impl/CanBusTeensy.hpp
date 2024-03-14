@@ -186,7 +186,7 @@ namespace Udon
     }
 
     /// @brief 送信ノードをバスから離脱させる
-    /// @remark 送信ノードのインスタンスポインタを基に削除します。
+    /// @note 送信ノードのインスタンスポインタを基に削除します。
     /// @param node 送信ノード
     template <CAN_DEV_TABLE Bus>
     void CanBusTeensy<Bus>::leaveTx(const CanNode& node)
@@ -195,7 +195,7 @@ namespace Udon
     }
 
     /// @brief 受信ノードをバスから離脱させる
-    /// @remark 受信ノードのインスタンスポインタを基に削除します。
+    /// @note 受信ノードのインスタンスポインタを基に削除します。
     /// @param node 受信ノード
     template <CAN_DEV_TABLE Bus>
     void CanBusTeensy<Bus>::leaveRx(const CanNode& node)

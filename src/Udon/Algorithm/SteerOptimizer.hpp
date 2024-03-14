@@ -17,7 +17,7 @@ namespace Udon
 {
 
     /// @brief 独立ステアリング機構の各モジュール最適化クラス
-    /// @remark 1モジュールの最適化を行う(モジュールごとをオブジェクトで管理する場合はこっちがオヌヌメ)
+    /// @note 1モジュールの最適化を行う(モジュールごとをオブジェクトで管理する場合はこっちがオヌヌメ)
     class SteerModuleOptimizer
     {
 
@@ -36,7 +36,7 @@ namespace Udon
         }
 
         /// @brief 最適化値を消去する
-        /// @remark 旋回角のゼロ点をリセットするとき等に使う
+        /// @note 旋回角のゼロ点をリセットするとき等に使う
         void clear()
         {
             offset    = 0;
@@ -138,7 +138,7 @@ namespace Udon
         SteerOptimizer() = default;
 
         /// @brief 最適化値を消去する
-        /// @remark 旋回角のゼロ点をリセットするとき等に使う
+        /// @note 旋回角のゼロ点をリセットするとき等に使う
         void clear()
         {
             for (auto&& module : modules)

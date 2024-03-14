@@ -22,7 +22,7 @@ namespace Udon
     }
 
     /// @brief 通信開始
-    /// @remark SPI通信も開始します。
+    /// @note SPI通信も開始します。
     inline void CanBusSpi::begin()
     {
         (void)spi_init(/* spi_inst_t* spi      */ spiConfig.channel,
@@ -50,7 +50,7 @@ namespace Udon
     }
 
     /// @brief CAN通信のみ開始する
-    /// @remark SPI通信は別途開始する必要がある
+    /// @note SPI通信は別途開始する必要がある
     ///         SPIバスがCANコントローラーとの通信のみに使用される場合は、この関数を呼び出す必要はない
     /// @param interrupt 割り込みピン
     /// @param canConfig CAN 設定情報
@@ -201,7 +201,7 @@ namespace Udon
     }
 
     /// @brief 送信ノードをバスから離脱させる
-    /// @remark 送信ノードのインスタンスポインタを基に削除します。
+    /// @note 送信ノードのインスタンスポインタを基に削除します。
     /// @param node 送信ノード
     inline void CanBusSpi::leaveTx(const CanNode& node)
     {
@@ -209,7 +209,7 @@ namespace Udon
     }
 
     /// @brief 受信ノードをバスから離脱させる
-    /// @remark 受信ノードのインスタンスポインタを基に削除します。
+    /// @note 受信ノードのインスタンスポインタを基に削除します。
     /// @param node 受信ノード
     inline void CanBusSpi::leaveRx(const CanNode& node)
     {

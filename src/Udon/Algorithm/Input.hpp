@@ -63,7 +63,7 @@ namespace Udon
         }
 
         /// @brief 更新
-        /// @remark Input オブジェクト取得後は更新しないこと
+        /// @note Input オブジェクト取得後は更新しないこと
         /// @param input 新規入力値 (true:押されている, false:押されていない)
         void update(bool input) noexcept
         {

@@ -63,7 +63,7 @@ namespace Udon
         }
 
         /// @brief 文字列の先頭を指すポインタをもとにビューを構築
-        /// @remark null終端文字が必須です
+        /// @note null終端文字が必須です
         /// @param string
         BasicStringView(const_pointer string)
             : m_data(string)
@@ -92,7 +92,7 @@ namespace Udon
         }
 
         /// @brief std::string からの変換
-        /// @remark 一時オブジェクトからの変換は禁止(ダングリングポインタになる)
+        /// @note 一時オブジェクトからの変換は禁止(ダングリングポインタになる)
         /// @param string
         BasicStringView(const std::basic_string<CharType>& string)
             : m_data(string.data())
@@ -212,7 +212,7 @@ namespace Udon
 
         /// @brief 指定された終端文字までのビューを作成する
         /// @param terminate 終端文字(ビューに含まれない)
-        /// @remark 開始位置は現在のビューの開始位置
+        /// @note 開始位置は現在のビューの開始位置
         /// @return 作成されたビュー
         BasicStringView substringUntil(const char_type terminate) const
         {
@@ -305,7 +305,7 @@ namespace Udon
         }
 
         /// @brief STL の文字列に変換する
-        /// @remark メモリアロケーションが発生します。
+        /// @note メモリアロケーションが発生します。
         /// @return 文字列
         std::basic_string<char_type> toString() const
         {

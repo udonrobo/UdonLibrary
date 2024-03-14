@@ -120,7 +120,7 @@ namespace Udon
     }
 
     /// @brief 値を正規化する
-    /// @remark -∞~+∞ の範囲を min~max の範囲に変換する (剰余算に最小値が設定できるようになったイメージ)
+    /// @note -∞~+∞ の範囲を min~max の範囲に変換する (剰余算に最小値が設定できるようになったイメージ)
     /// @param value 正規化したい値
     /// @param min   最小値
     /// @param max   最大値

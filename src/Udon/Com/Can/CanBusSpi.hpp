@@ -43,7 +43,7 @@
 //         /// @brief constructor
 //         /// @param {spi} SPIインスタンス
 //         /// @param {spiClock} SPI動作クロック
-//         /// @remark 動作クロックは CPUクロック/2 が最大値
+//         /// @note 動作クロックは CPUクロック/2 が最大値
 //         CanBusSpi(SPIClass& spi, uint32_t spiClock = 10000000)
 //             : bus(CS, spiClock, &spi)
 //             , tx()

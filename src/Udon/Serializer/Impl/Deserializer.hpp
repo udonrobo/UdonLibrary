@@ -48,7 +48,7 @@ namespace Udon
 
             /// @brief デシリアライズ
             /// @param args デシリアライズ後のオブジェクトの代入先(一時オブジェクト不可)
-            /// @remark const は外されます
+            /// @note const は外されます
             template <typename... Args>
             void operator()(const Args&... args) const
             {

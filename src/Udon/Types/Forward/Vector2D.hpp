@@ -65,42 +65,42 @@ namespace Udon
         Vector2D& operator=(const Vector2D&) = default;
 
         /// @brief 算術演算子
-        /// @remark vector [operator] vector
+        /// @note vector [operator] vector
         friend constexpr Vector2D operator+(const Vector2D& lhs, const Vector2D& rhs) noexcept { return { lhs.x + rhs.x, lhs.y + rhs.y }; }
         friend constexpr Vector2D operator-(const Vector2D& lhs, const Vector2D& rhs) noexcept { return { lhs.x - rhs.x, lhs.y - rhs.y }; }
         friend constexpr Vector2D operator*(const Vector2D& lhs, const Vector2D& rhs) noexcept { return { lhs.x * rhs.x, lhs.y * rhs.y }; }
         friend constexpr Vector2D operator/(const Vector2D& lhs, const Vector2D& rhs) noexcept { return { lhs.x / rhs.x, lhs.y / rhs.y }; }
 
         /// @brief 算術演算子
-        /// @remark vector [operator] scalar
+        /// @note vector [operator] scalar
         friend constexpr Vector2D operator+(const Vector2D& lhs, ValueType rhs) noexcept { return { lhs.x + rhs, lhs.y + rhs }; }
         friend constexpr Vector2D operator-(const Vector2D& lhs, ValueType rhs) noexcept { return { lhs.x - rhs, lhs.y - rhs }; }
         friend constexpr Vector2D operator*(const Vector2D& lhs, ValueType rhs) noexcept { return { lhs.x * rhs, lhs.y * rhs }; }
         friend constexpr Vector2D operator/(const Vector2D& lhs, ValueType rhs) noexcept { return { lhs.x / rhs, lhs.y / rhs }; }
 
         /// @brief 算術演算子
-        /// @remark scalar [operator] vector
+        /// @note scalar [operator] vector
         friend constexpr Vector2D operator+(ValueType lhs, const Vector2D& rhs) noexcept { return { lhs + rhs.x, lhs + rhs.x }; }
         friend constexpr Vector2D operator-(ValueType lhs, const Vector2D& rhs) noexcept { return { lhs - rhs.x, lhs - rhs.x }; }
         friend constexpr Vector2D operator*(ValueType lhs, const Vector2D& rhs) noexcept { return { lhs * rhs.x, lhs * rhs.x }; }
         friend constexpr Vector2D operator/(ValueType lhs, const Vector2D& rhs) noexcept { return { lhs / rhs.x, lhs / rhs.x }; }
 
         /// @brief 複合代入演算子
-        /// @remark vector = vector [operator] vector
+        /// @note vector = vector [operator] vector
         Vector2D& operator+=(const Vector2D& rhs) noexcept { return *this = *this + rhs; };
         Vector2D& operator-=(const Vector2D& rhs) noexcept { return *this = *this - rhs; };
         Vector2D& operator*=(const Vector2D& rhs) noexcept { return *this = *this * rhs; };
         Vector2D& operator/=(const Vector2D& rhs) noexcept { return *this = *this / rhs; };
 
         /// @brief 複合代入演算子
-        /// @remark vector = vector [operator] scalar
+        /// @note vector = vector [operator] scalar
         Vector2D& operator+=(ValueType rhs) noexcept { return *this = *this + rhs; };
         Vector2D& operator-=(ValueType rhs) noexcept { return *this = *this - rhs; };
         Vector2D& operator*=(ValueType rhs) noexcept { return *this = *this * rhs; };
         Vector2D& operator/=(ValueType rhs) noexcept { return *this = *this / rhs; };
 
         /// @brief 比較演算子
-        /// @remark vector [operator] vector
+        /// @note vector [operator] vector
         friend constexpr bool operator==(const Vector2D& lhs, const Vector2D& rhs) noexcept { return lhs.x == rhs.x and lhs.y == rhs.y; };
         friend constexpr bool operator!=(const Vector2D& lhs, const Vector2D& rhs) noexcept { return not(lhs == rhs); };
 
@@ -194,7 +194,7 @@ namespace Udon
         }
 
         /// @brief 指定された点からの角度を求める
-        /// @remark y軸の正が 0rad
+        /// @note y軸の正が 0rad
         /// @param rhs 指定された点
         /// @return
         ValueType angleAt(const Vector2D& rhs) const noexcept
@@ -211,7 +211,7 @@ namespace Udon
         }
 
         /// @brief 原点からの時計回りの角度を求める
-        /// @remark y軸の正が 0rad
+        /// @note y軸の正が 0rad
         /// @return
         ValueType angle() const noexcept
         {
@@ -249,7 +249,7 @@ namespace Udon
         }
 
         /// @brief ベクトルの長さを指定された値にする
-        /// @remark 長さを0にするとゼロベクトルになるので、長さの変更ができなくなる
+        /// @note 長さを0にするとゼロベクトルになるので、長さの変更ができなくなる
         /// @param length 指定された長さ
         Vector2D& scaleLength(ValueType length) noexcept
         {

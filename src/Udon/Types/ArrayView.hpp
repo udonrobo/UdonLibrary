@@ -184,7 +184,7 @@ namespace Udon
         }
 
         /// @brief 指定された範囲からビューを作成する。
-        /// @remark 終端は現在のビューの終端
+        /// @note 終端は現在のビューの終端
         /// @param beginIndex 開始位置
         /// @return
         ArrayView subView(size_type beginIndex) const
@@ -207,7 +207,7 @@ namespace Udon
         }
 
         /// @brief 自身が指定のビューから始まるかどうか
-        /// @remark
+        /// @note
         ///      [0, 1, 2, 3, 4].startsWith([0, 1, 2]) == true
         ///      [4, 3, 2, 1, 0].startsWith([0, 1, 2]) == false
         /// @param rhs

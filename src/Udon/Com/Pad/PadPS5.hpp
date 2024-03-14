@@ -104,7 +104,7 @@ namespace Udon
         Vec2 getRightStick() const noexcept { return rightStick; }
 
         /// @brief ロボットの移動に必要なスティックの情報 Udon::Stick オブジェクト {{x,y},turn} を取得
-        /// @remark 左スティックから移動成分、右スティックX軸から旋回成分を取得
+        /// @note 左スティックから移動成分、右スティックX軸から旋回成分を取得
         Stick getMoveInfo() const noexcept { return { leftStick, rightStick.x }; }
 
         /// @brief 更新

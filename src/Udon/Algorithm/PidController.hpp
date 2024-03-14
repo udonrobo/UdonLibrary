@@ -101,7 +101,7 @@ namespace Udon
         }
 
         /// @brief 操作量のクリア
-        /// @remark 内部の量をすべて0にする。
+        /// @note 内部の量をすべて0にする。
         void clearPower() noexcept
         {
             power     = {};

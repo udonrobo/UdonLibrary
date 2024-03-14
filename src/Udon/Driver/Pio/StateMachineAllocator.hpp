@@ -45,7 +45,7 @@ namespace Udon
 
         /// @brief 使用可能なステートマシンを検索し割り当てる
         /// @param program ステートマシンにロードするプログラム
-        /// @remark プログラムのロード(pio_add_program)も行います
+        /// @note プログラムのロード(pio_add_program)も行います
         /// @return ステートマシンの割り当てに成功した場合はステートマシンの情報を返す それ以外はnulloptを返す
         inline Udon::Optional<StateMachine> AllocateStateMachine(const pio_program& program)
         {
