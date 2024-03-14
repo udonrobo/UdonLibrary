@@ -344,7 +344,7 @@ namespace Udon
 
     /// @brief 改行、区切り文字なしで出力する
     template <typename... Args>
-    void ShowRaw(Args... args)
+    void ShowRaw(Args&&... args)
     {
         Impl::ShowImpl(false, false, std::forward<Args>(args)...);
     }

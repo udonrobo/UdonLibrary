@@ -17,7 +17,7 @@ namespace Udon
     /// @param begin
     /// @param end
     /// @param callback
-    /// @remark
+    /// @note
     ///		コールバック関数を用いることで、新たにバッファを確保する必要がない
     ///		イテレーターから受け取ったデータは次のように変換されコールバック関数に渡される
     ///		[data(8bit)], [data(8bit)], ... -> [data(7bit)]*7, [各dataのMSB(7bit)], [data(7bit)]*7, [各dataのMSB(7bit)], ...
@@ -67,7 +67,7 @@ namespace Udon
     /// @param begin
     /// @param end
     /// @param callback
-    /// @remark
+    /// @note
     ///     アンパックが失敗する場合、
     ///     7bit分割されたデータは次のように変換されコールバック関数に渡される
     ///     [data(7bit)]*7, [各dataのMSB(7bit)], [data(7bit)]*7, [各dataのMSB(7bit)], ... -> [data(8bit)], [data(8bit)], ...

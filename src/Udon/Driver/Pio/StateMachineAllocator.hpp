@@ -3,7 +3,7 @@
 #if defined(ARDUINO_ARCH_RP2040)
 
 #    include <hardware/pio.h>
-#    include <Udon/Stl/Optional.hpp>
+#    include <Udon/Types/Optional.hpp>
 #    include <map>
 
 namespace Udon
@@ -11,7 +11,7 @@ namespace Udon
     namespace Pio
     {
 
-        namespace Detail
+        namespace Impl
         {
             /// @brief PIOの命令メモリを取得する
             /// @return PIOの命令メモリ
@@ -21,7 +21,7 @@ namespace Udon
                 return memory;
             }
 
-        }    // namespace Detail
+        }    // namespace Impl
 
         /// @brief ステートマシンを表す構造体
         /// @details PIOはpio0とpio1の2つがあり、それぞれ4つのステートマシンを持つ
@@ -45,12 +45,12 @@ namespace Udon
 
         /// @brief 使用可能なステートマシンを検索し割り当てる
         /// @param program ステートマシンにロードするプログラム
-        /// @remark プログラムのロード(pio_add_program)も行います
+        /// @note プログラムのロード(pio_add_program)も行います
         /// @return ステートマシンの割り当てに成功した場合はステートマシンの情報を返す それ以外はnulloptを返す
         inline Udon::Optional<StateMachine> AllocateStateMachine(const pio_program& program)
         {
             PIO  pios[] = { pio0, pio1 };
-            auto memory = Detail::GetPioInstructionMemory();
+            auto memory = Impl::GetPioInstructionMemory();
 
             // 既にプログラムメモリに同じプログラムがロードされている場合はそれを使用
             for (int i = 0; i < 2; i++)

@@ -9,7 +9,7 @@ namespace Udon
     {
 
         /// @brief static_assert 失敗遅延用の型
-        /// @remark C++20 までは static_assert に false を渡すとテンプレートの実体化する前にエラーになるため、
+        /// @note C++20 までは static_assert に false を渡すとテンプレートの実体化する前にエラーになるため、
         ///         この型を用いて実体化時点で static_assert が失敗するようにする。
         ///
         ///         例:

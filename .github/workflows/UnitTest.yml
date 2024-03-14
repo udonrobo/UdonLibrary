@@ -35,4 +35,4 @@ jobs:
 
       - name: Run tests
         working-directory: test/UnitTest/Build
-        run: ctest
+        run: ctest --output-on-failure

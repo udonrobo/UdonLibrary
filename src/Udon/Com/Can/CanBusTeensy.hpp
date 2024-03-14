@@ -20,7 +20,7 @@ namespace Udon
 
     /// @brief FlexCan_T4ライブラリを用いたCANバスクラス
     /// @tparam Bus バス種類
-    /// @remark 使用するTeensyの種類によってCANバスの種類が異なるので注意(対応していないバスを指定するとstatic_assertが発生します)
+    /// @note 使用するTeensyの種類によってCANバスの種類が異なるので注意(対応していないバスを指定するとstatic_assertが発生します)
     /// - Teensy 3.2: CAN0
     /// - Teensy 3.5: CAN0
     /// - Teensy 3.6: CAN0 & CAN1
@@ -49,19 +49,19 @@ namespace Udon
         ~CanBusTeensy();
 
         /// @brief 通信開始
-        /// @remark 呼び出し必須
+        /// @note 呼び出し必須
         void begin();
 
         /// @brief 通信終了
         void end();
 
         /// @brief バス更新
-        /// @remark 呼び出し必須
+        /// @note 呼び出し必須
         void update();
 
         /// @brief バスが有効かどうか
-        /// @remark 受信タイムアウトもしくは送信タイムアウトが発生した場合はfalseを返す
-        /// @remark 全ての受信ノード送信ノードが有効であるかは考慮しない
+        /// @note 受信タイムアウトもしくは送信タイムアウトが発生した場合はfalseを返す
+        /// @note 全ての受信ノード送信ノードが有効であるかは考慮しない
         explicit operator bool() const override;
 
         /// @brief 送信タイムアウト

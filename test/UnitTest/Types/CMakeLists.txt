@@ -10,6 +10,7 @@ cmake_minimum_required(VERSION 3.14)
 add_executable(TypesTest
     Vector2D.cpp
     StringView.cpp
+    Optional.cpp
 )
 
 # Add include directory

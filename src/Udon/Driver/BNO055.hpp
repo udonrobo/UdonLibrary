@@ -41,7 +41,7 @@ namespace Udon
         }
 
         /// @brief 通信開始
-        /// @remark Wire.begin() が Adafruit_BNO055ライブラリから呼び出されます
+        /// @note Wire.begin() が Adafruit_BNO055ライブラリから呼び出されます
         /// @return 正常に開始できたかどうか
         bool begin()
         {

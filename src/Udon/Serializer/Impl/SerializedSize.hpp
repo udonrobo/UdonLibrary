@@ -53,7 +53,7 @@ namespace Udon
 
         private:
             /// @brief T のビット数を取得する
-            /// @remark サイズを取得できないオブジェクトが渡された場合を検出し、コンパイルエラーを発生させるために部分特殊化を用いる
+            /// @note サイズを取得できないオブジェクトが渡された場合を検出し、コンパイルエラーを発生させるために部分特殊化を用いる
             template <typename T, typename = void>
             struct Sizeof
             {

@@ -34,6 +34,7 @@
 #    define UDON_PLATFORM_HAS_SERIAL_PRINTF 0
 #    define UDON_PLATFORM_OUTPUT_STREAM UDON_PLATFORM_OUTPUT_SERIAL
 #    define UDON_PLATFORM_ENDIANNESS UDON_PLATFORM_LITTLE_ENDIAN
+#    define UDON_PLATFORM_ENABLE_EXCEPTION 0
 
 //-------------------------------------------------------------------
 //
@@ -47,6 +48,7 @@
 #    define UDON_PLATFORM_HAS_SERIAL_PRINTF 1
 #    define UDON_PLATFORM_OUTPUT_STREAM UDON_PLATFORM_OUTPUT_SERIAL
 #    define UDON_PLATFORM_ENDIANNESS UDON_PLATFORM_LITTLE_ENDIAN
+#    define UDON_PLATFORM_ENABLE_EXCEPTION 0
 
 //-------------------------------------------------------------------
 //
@@ -60,6 +62,7 @@
 #    define UDON_PLATFORM_HAS_SERIAL_PRINTF 1
 #    define UDON_PLATFORM_OUTPUT_STREAM UDON_PLATFORM_OUTPUT_SERIAL
 #    define UDON_PLATFORM_ENDIANNESS UDON_PLATFORM_LITTLE_ENDIAN
+#    define UDON_PLATFORM_ENABLE_EXCEPTION 0
 
 //-------------------------------------------------------------------
 //
@@ -71,6 +74,7 @@
 
 #    pragma warning(disable : 4819)
 #    define UDON_PLATFORM_OUTPUT_STREAM UDON_PLATFORM_OUTPUT_CONSOLE
+#    define UDON_PLATFORM_ENABLE_EXCEPTION 1
 
 //-------------------------------------------------------------------
 //
@@ -79,7 +83,9 @@
 //-------------------------------------------------------------------
 
 #elif defined(__GNUC__)
+
 #    define UDON_PLATFORM_OUTPUT_STREAM UDON_PLATFORM_OUTPUT_CONSOLE
+#    define UDON_PLATFORM_ENABLE_EXCEPTION 1
 
 //-------------------------------------------------------------------
 //
@@ -144,4 +150,8 @@
 
 #ifndef UDON_PLATFORM_ENDIANNESS
 #    error "UDON_PLATFORM_ENDIANNESS is not defined!"
+#endif
+
+#ifndef UDON_PLATFORM_ENABLE_EXCEPTION
+#    error "UDON_PLATFORM_ENABLE_EXCEPTION is not defined!"
 #endif

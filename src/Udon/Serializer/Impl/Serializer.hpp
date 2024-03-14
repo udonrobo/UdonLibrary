@@ -59,8 +59,8 @@ namespace Udon
             void argsUnpack(Head&& head, Tails&&... tails) const
             {
                 const_cast<Serializer&>(*this).serialize(std::forward<Head>(head));
-                // 関数を constexpr にするため、enumerate の引数は "const Serializer& enumerator" になっている (一時オブジェクトを受けれるように)
-                // enumerator (const *this) から serialize を呼び出すため、const_cast で const を外している
+                // enumerate 関数は引数に一時オブジェクトを受けられる、かつconstexprである必要があるため "const Serializer& enumerator" になっている
+                // その関係で、operator()、本関数はconstな関数となり、thisポインタはconstなポインタになる。そのため const を外す。
 
                 argsUnpack(std::forward<Tails>(tails)...);
             }

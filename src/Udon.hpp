@@ -84,12 +84,6 @@
 // フォワーディング / メッセージ転送
 #include <Udon/Com/Common/Forwarding.hpp>
 
-// 配列受信
-#include <Udon/Com/Common/ArrayElementReader.hpp>
-
-// 配列送信
-#include <Udon/Com/Common/ArrayElementWriter.hpp>
-
 //
 //    ファイルシステム / filesystem
 //

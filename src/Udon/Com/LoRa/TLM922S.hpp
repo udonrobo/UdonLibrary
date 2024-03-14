@@ -16,7 +16,7 @@ namespace Udon
 {
 
     /// @brief TLM922S デバイスクラス (プライベートLoRa)
-    /// @remark 現在送受信非対応
+    /// @note 現在送受信非対応
     class TLM922S
         : public ILoRa
     {

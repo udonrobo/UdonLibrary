@@ -15,15 +15,16 @@
 namespace Udon
 {
 
-    class Motor2
+    template <size_t SmoothLevel>
+    class SmoothlyMotor2
     {
         const uint8_t pinA;
         const uint8_t pinP;
 
-        Udon::MovingAverage<50> movingAverage;
+        Udon::MovingAverage<SmoothLevel> movingAverage;
 
     public:
-        Motor2(const uint8_t pinA, const uint8_t pinP)
+        SmoothlyMotor2(const uint8_t pinA, const uint8_t pinP)
             : pinA(pinA)
             , pinP(pinP)
             , movingAverage{}
@@ -54,16 +55,17 @@ namespace Udon
         }
     };
 
-    class Motor3
+    template <size_t SmoothLevel>
+    class SmoothlyMotor3
     {
         const uint8_t pinA;
         const uint8_t pinB;
         const uint8_t pinP;
 
-        Udon::MovingAverage<50> movingAverage;
+        Udon::MovingAverage<SmoothLevel> movingAverage;
 
     public:
-        Motor3(const uint8_t pinA, const uint8_t pinB, const uint8_t pinP)
+        SmoothlyMotor3(const uint8_t pinA, const uint8_t pinB, const uint8_t pinP)
             : pinA(pinA)
             , pinB(pinB)
             , pinP(pinP)
@@ -98,12 +100,22 @@ namespace Udon
         }
     };
 
-}    // namespace Udon
+    using Motor2 = SmoothlyMotor2<50>;
+    using Motor3 = SmoothlyMotor3<50>;
 
-// pwm周期変更 (arduino nano用)
-// TCCR1B &= B11111000;
-// TCCR1B |= B00000001;
-// TCCR2B &= B11111000;
-// TCCR2B |= B00000001;
+#ifdef __AVR_ATmega328P__
+
+    /// @brief pwm周期変更 (atmega328p)
+    inline void ArduinoNanoPwmPeriodChange()
+    {
+        TCCR1B &= B11111000;
+        TCCR1B |= B00000001;
+        TCCR2B &= B11111000;
+        TCCR2B |= B00000001;
+    }
+
+#endif
+
+}    // namespace Udon
 
 #endif
