@@ -1,18 +1,8 @@
-//-------------------------------------------------------------------
-//
-//    UdonLibrary
-//
-//    Copyright (c) 2022-2023 Okawa Yusuke
-//    Copyright (c) 2022-2023 udonrobo
-//
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
 //
 //    直交座標系 前方定義
 //
-//-------------------------------------------------------------------
-
+//    Copyright (c) 2022-2023 udonrobo
+//
 
 #pragma once
 
@@ -21,7 +11,7 @@
 
 namespace Udon
 {
-    struct Vector2D;
+    struct Vec2;
 
     struct Polar
     {
@@ -94,7 +84,7 @@ namespace Udon
 
         /// @brief ベクトルに変換する
         /// @return 
-        Vector2D toVector() const noexcept;
+        Vec2 toVector() const noexcept;
 
         UDON_ENUMERABLE(r, theta);
     };

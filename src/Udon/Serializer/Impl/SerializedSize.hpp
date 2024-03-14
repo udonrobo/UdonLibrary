@@ -1,7 +1,6 @@
 //
 //    シリアライズ後のサイズを取得する
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 
@@ -86,7 +85,7 @@ namespace Udon
             template <typename Float>
             struct Sizeof<Float, EnableIfVoidT<IsFloatingPoint<RemoveCVT<Float>>::value>>
             {
-                static constexpr ResultType value(...) noexcept { return sizeof(Udon::float32_t) * CHAR_BIT; }
+                static constexpr ResultType value(...) noexcept { return sizeof(Udon::Float32) * CHAR_BIT; }
             };
 
             /// @brief T が列挙型の場合の特殊化

@@ -1,7 +1,6 @@
 //
 //    CAN通信 Teensy用バスクラス
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 

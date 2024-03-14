@@ -1,15 +1,15 @@
 ﻿//
 //    プラットフォーム定義
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 //    次のマクロが定義されます。新たにプラットフォームを追加する場合は、これらのマクロを適切に定義してください。
 //
-//    UDON_PLATFORM_HAS_STL            (0 or 1)
-//    UDON_PLATFORM_HAS_SERIAL_PRINTF  (0 or 1)
-//    UDON_PLATFORM_OUTPUT_STREAM      (UDON_PLATFORM_OUTPUT_SERIAL or UDON_PLATFORM_OUTPUT_CONSOLE)
-//    UDON_PLATFORM_ENDIANNESS         (UDON_PLATFORM_LITTLE_ENDIAN or UDON_PLATFORM_BIG_ENDIAN)
+//    UDON_PLATFORM_HAS_STL            (0 or 1) C++標準ライブラリを使用できるか 
+//    UDON_PLATFORM_HAS_SERIAL_PRINTF  (0 or 1) Serial.printf(...) を使用できるか 
+//    UDON_PLATFORM_OUTPUT_STREAM      (UDON_PLATFORM_OUTPUT_SERIAL or UDON_PLATFORM_OUTPUT_CONSOLE) 標準出力先
+//    UDON_PLATFORM_ENDIANNESS         (UDON_PLATFORM_LITTLE_ENDIAN or UDON_PLATFORM_BIG_ENDIAN) エンディアン
+//    UDON_PLATFORM_ENABLE_EXCEPTION   (0 or 1) 例外を使用できるか
 //
 
 #pragma once

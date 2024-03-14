@@ -2,7 +2,6 @@
 //    E220 LoRaモジュール ドライバクラス
 //
 //	  Copyright (c) 2022-2023 Fujimoto Ryo
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 Udonrobo
 //
 //    公式サイト　: https://dragon-torch.tech/cat-components/rf-modules/e220-900t22s-jp/

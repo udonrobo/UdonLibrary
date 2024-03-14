@@ -135,9 +135,6 @@
 // 3次元ベクトル
 #include <Udon/Types/Vector3D.hpp>
 
-// 4次元ベクトル
-#include <Udon/Types/Vector4D.hpp>
-
 // 極座標系
 #include <Udon/Types/Polar.hpp>
 

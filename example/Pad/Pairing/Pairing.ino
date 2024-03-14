@@ -7,7 +7,6 @@
 //        3. コントローラーのLEDが点滅し始める
 //        4. ペアリングが完了するとLEDが点灯する
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 

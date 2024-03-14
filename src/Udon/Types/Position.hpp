@@ -1,7 +1,6 @@
 //
 //    ロボットの位置 (座標、旋回角) を表す型
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 
@@ -22,75 +21,75 @@ namespace Udon
 {
 
     /// @brief ロボットの位置
-    struct Position
+    struct Pos
     {
 
         /// @brief 要素の型
         using ValueType = double;
 
         /// @brief 座標
-        Udon::Vector2D vector;
+        Udon::Vec2 vector;
 
         /// @brief 旋回角 [rad]
         ValueType turn;
 
         /// @brief デフォルトコンストラクタ
-        constexpr Position() noexcept
+        constexpr Pos() noexcept
             : vector()
             , turn()
         {
         }
 
         /// @brief デフォルトコピーコンストラクタ
-        constexpr Position(const Position& rhs) noexcept
+        constexpr Pos(const Pos& rhs) noexcept
             : vector(rhs.vector)
             , turn(rhs.turn)
         {
         }
 
         /// @brief コンストラクタ
-        constexpr Position(const Udon::Vector2D& vector, ValueType turn) noexcept
+        constexpr Pos(const Udon::Vec2& vector, ValueType turn) noexcept
             : vector(vector)
             , turn(turn)
         {
         }
 
         /// @brief デフォルトコピー代入演算子
-        Position& operator=(const Position&) = default;
+        Pos& operator=(const Pos&) = default;
 
         /// @brief 算術演算子
         /// @param rhs 被演算子
         /// @return
-        constexpr Position operator+(const Position& rhs) const noexcept { return { vector + rhs.vector, turn + rhs.turn }; }
-        constexpr Position operator-(const Position& rhs) const noexcept { return { vector - rhs.vector, turn - rhs.turn }; }
-        constexpr Position operator*(const Position& rhs) const noexcept { return { vector * rhs.vector, turn * rhs.turn }; }
-        constexpr Position operator/(const Position& rhs) const noexcept { return { vector / rhs.vector, turn / rhs.turn }; }
-        constexpr Position operator+(ValueType rhs) const noexcept { return { vector + rhs, turn + rhs }; }
-        constexpr Position operator-(ValueType rhs) const noexcept { return { vector - rhs, turn - rhs }; }
-        constexpr Position operator*(ValueType rhs) const noexcept { return { vector * rhs, turn * rhs }; }
-        constexpr Position operator/(ValueType rhs) const noexcept { return { vector / rhs, turn / rhs }; }
+        constexpr Pos operator+(const Pos& rhs) const noexcept { return { vector + rhs.vector, turn + rhs.turn }; }
+        constexpr Pos operator-(const Pos& rhs) const noexcept { return { vector - rhs.vector, turn - rhs.turn }; }
+        constexpr Pos operator*(const Pos& rhs) const noexcept { return { vector * rhs.vector, turn * rhs.turn }; }
+        constexpr Pos operator/(const Pos& rhs) const noexcept { return { vector / rhs.vector, turn / rhs.turn }; }
+        constexpr Pos operator+(ValueType rhs) const noexcept { return { vector + rhs, turn + rhs }; }
+        constexpr Pos operator-(ValueType rhs) const noexcept { return { vector - rhs, turn - rhs }; }
+        constexpr Pos operator*(ValueType rhs) const noexcept { return { vector * rhs, turn * rhs }; }
+        constexpr Pos operator/(ValueType rhs) const noexcept { return { vector / rhs, turn / rhs }; }
 
         /// @brief 複合代入演算子
         /// @param rhs 被演算子
         /// @return
-        Position operator+=(const Position& rhs) noexcept { return *this = *this + rhs; }
-        Position operator-=(const Position& rhs) noexcept { return *this = *this - rhs; }
-        Position operator*=(const Position& rhs) noexcept { return *this = *this * rhs; }
-        Position operator/=(const Position& rhs) noexcept { return *this = *this / rhs; }
-        Position operator+=(ValueType rhs) noexcept { return *this = *this + rhs; }
-        Position operator-=(ValueType rhs) noexcept { return *this = *this - rhs; }
-        Position operator*=(ValueType rhs) noexcept { return *this = *this * rhs; }
-        Position operator/=(ValueType rhs) noexcept { return *this = *this / rhs; }
+        Pos operator+=(const Pos& rhs) noexcept { return *this = *this + rhs; }
+        Pos operator-=(const Pos& rhs) noexcept { return *this = *this - rhs; }
+        Pos operator*=(const Pos& rhs) noexcept { return *this = *this * rhs; }
+        Pos operator/=(const Pos& rhs) noexcept { return *this = *this / rhs; }
+        Pos operator+=(ValueType rhs) noexcept { return *this = *this + rhs; }
+        Pos operator-=(ValueType rhs) noexcept { return *this = *this - rhs; }
+        Pos operator*=(ValueType rhs) noexcept { return *this = *this * rhs; }
+        Pos operator/=(ValueType rhs) noexcept { return *this = *this / rhs; }
 
         /// @brief 比較演算子
         /// @param rhs 被演算子
         /// @return
-        constexpr bool operator==(const Position& rhs) const noexcept { return vector == rhs.vector && turn == rhs.turn; }
+        constexpr bool operator==(const Pos& rhs) const noexcept { return vector == rhs.vector && turn == rhs.turn; }
 
         /// @brief 比較演算子
         /// @param rhs 被演算子
         /// @return
-        constexpr bool operator!=(const Position& rhs) const noexcept { return !(*this == rhs); }
+        constexpr bool operator!=(const Pos& rhs) const noexcept { return !(*this == rhs); }
 
         /// @brief 要素のいずれかに0以外の値があるかどうかを返す
         constexpr explicit operator bool() const noexcept
@@ -101,7 +100,7 @@ namespace Udon
         /// @brief 要素がすべて0であるかを変えす
         constexpr bool isZero() const noexcept
         {
-            return !Position::operator bool();
+            return !Pos::operator bool();
         }
 
         /// @brief 値クリア
@@ -110,7 +109,7 @@ namespace Udon
             *this = {};
         }
 
-        Position mapped(double inMin, double inMax, double outMin, double outMax) const noexcept
+        Pos mapped(double inMin, double inMax, double outMin, double outMax) const noexcept
         {
             return {
                 vector.mapped(inMin, inMax, outMin, outMax),
@@ -118,12 +117,12 @@ namespace Udon
             };
         }
 
-        Position updateVector(const Udon::Vector2D& v) const noexcept
+        Pos updateVector(const Udon::Vec2& v) const noexcept
         {
             return { v, turn };
         }
 
-        Position updateTurn(double t) const noexcept
+        Pos updateTurn(double t) const noexcept
         {
             return { vector, t };
         }
@@ -234,7 +233,6 @@ namespace Udon
         UDON_ENUMERABLE(vector, turn);
     };
 
-    using Pos   = Position;
     using Stick = Pos;
 
 }    // namespace Udon
