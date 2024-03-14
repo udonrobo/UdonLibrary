@@ -15,7 +15,7 @@
 
 #include <Udon/Algorithm/CRC.hpp>
 #include <Udon/Algorithm/Bit.hpp>
-#include <Udon/Stl/Optional.hpp>
+#include <Udon/Types/Optional.hpp>
 #include <Udon/Types/Float.hpp>
 #include <Udon/Traits/Typedef.hpp>
 #include <Udon/Serializer/SerializerTraits.hpp>
