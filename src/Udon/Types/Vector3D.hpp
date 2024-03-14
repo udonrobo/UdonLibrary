@@ -9,7 +9,7 @@
 #include "Forward/Vector2D.hpp"
 #include "Forward/Vector3D.hpp"
 
-inline Udon::Vector2D Udon::Vector3D::xy() const noexcept
+inline Udon::Vec2 Udon::Vec3::xy() const noexcept
 {
     return { x, y };
 }
@@ -17,5 +17,5 @@ inline Udon::Vector2D Udon::Vector3D::xy() const noexcept
 
 namespace Udon
 {
-    using Vec3 = Vector3D;
+    using Vec3 = Vec3;
 }

@@ -9,7 +9,7 @@
 #include "Forward/Polar.hpp"
 #include "Forward/Vector2D.hpp"
 
-inline Udon::Vector2D Udon::Polar::toVector() const noexcept
+inline Udon::Vec2 Udon::Polar::toVector() const noexcept
 {
     return { x(), y() };
 }

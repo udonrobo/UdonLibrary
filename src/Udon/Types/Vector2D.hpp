@@ -10,17 +10,12 @@
 #include "Forward/Vector2D.hpp"
 #include "Forward/Vector3D.hpp"
 
-inline Udon::Vector3D Udon::Vector2D::xy0() const noexcept
+inline Udon::Vec3 Udon::Vec2::xy0() const noexcept
 {
     return { x, y, 0 };
 }
 
-inline Udon::Polar Udon::Vector2D::toPolar() const noexcept
+inline Udon::Polar Udon::Vec2::toPolar() const noexcept
 {
     return { length(), angle() };
-}
-
-namespace Udon
-{
-    using Vec2 = Vector2D;
 }

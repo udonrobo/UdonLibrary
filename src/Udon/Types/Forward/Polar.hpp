@@ -11,7 +11,7 @@
 
 namespace Udon
 {
-    struct Vector2D;
+    struct Vec2;
 
     struct Polar
     {
@@ -84,7 +84,7 @@ namespace Udon
 
         /// @brief ベクトルに変換する
         /// @return 
-        Vector2D toVector() const noexcept;
+        Vec2 toVector() const noexcept;
 
         UDON_ENUMERABLE(r, theta);
     };
