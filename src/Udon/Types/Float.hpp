@@ -96,17 +96,10 @@ namespace Udon
 {
 
     //  定義されている可能性のある型は以下の通りです(処理系によって異なります)
-<<<<<<< HEAD
     //  Udon::Float16
     //  Udon::Float32
     //  Udon::Float64
     //  Udon::Float128
-=======
-    //  Udon::float16_t
-    //  Udon::Float32
-    //  Udon::float64_t
-    //  Udon::float128_t
->>>>>>> 9bda00301f3da098521f0825f34f72a273fc0b42
 
 #if BOOST_CSTDFLOAT_HAS_FLOAT16_NATIVE_TYPE
     using Float16 = BOOST_CSTDFLOAT_FLOAT16_NATIVE_TYPE;
