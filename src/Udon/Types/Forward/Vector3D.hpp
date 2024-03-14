@@ -1,16 +1,8 @@
-//-------------------------------------------------------------------
-//
-//    UdonLibrary
-//
-//    Copyright (c) 2022-2023 udonrobo
-//
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
 //
 //    三次元ベクトル 前方定義
 //
-//-------------------------------------------------------------------
+//    Copyright (c) 2022-2023 udonrobo
+//
 
 #pragma once
 
@@ -21,8 +13,6 @@ namespace Udon
 {
 
     struct Vector2D;
-
-    struct Vector4D;
 
     struct Vector3D
     {
@@ -122,8 +112,6 @@ namespace Udon
         }
 
         Udon::Vector2D xy() const noexcept;
-
-        Udon::Vector4D xyz0() const noexcept;
 
 #ifdef SIV3D_INCLUDED    /// OpenSiv3D との連携
 

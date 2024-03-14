@@ -9,16 +9,10 @@
 #include "Forward/Polar.hpp"
 #include "Forward/Vector2D.hpp"
 #include "Forward/Vector3D.hpp"
-#include "Forward/Vector4D.hpp"
 
 inline Udon::Vector3D Udon::Vector2D::xy0() const noexcept
 {
     return { x, y, 0 };
-}
-
-inline Udon::Vector4D Udon::Vector2D::xy00() const noexcept
-{
-    return { x, y, 0, 0 };
 }
 
 inline Udon::Polar Udon::Vector2D::toPolar() const noexcept

@@ -1,16 +1,8 @@
-//-------------------------------------------------------------------
-//
-//    UdonLibrary
-//
-//    Copyright (c) 2022-2023 udonrobo
-//
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
 //
 //    二次元ベクトル 前方定義
 //
-//-------------------------------------------------------------------
+//    Copyright (c) 2022-2023 udonrobo
+//
 
 #pragma once
 
@@ -23,8 +15,6 @@ namespace Udon
     struct Polar;
 
     struct Vector3D;
-
-    struct Vector4D;
 
     struct Vector2D
     {
@@ -320,8 +310,6 @@ namespace Udon
         }
 
         Udon::Vector3D xy0() const noexcept;
-
-        Udon::Vector4D xy00() const noexcept;
 
         Udon::Polar toPolar() const noexcept;
 
