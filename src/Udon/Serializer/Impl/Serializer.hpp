@@ -85,7 +85,7 @@ namespace Udon
             template <typename FloatingPoint, EnableIfNullptrT<IsFloatingPoint<RemoveReferenceT<FloatingPoint>>::value> = nullptr>
             void serialize(FloatingPoint rhs)
             {
-                pushArithmetic(static_cast<Udon::float32_t>(rhs));
+                pushArithmetic(static_cast<Udon::Float32>(rhs));
             }
 
             /// @brief 列挙型

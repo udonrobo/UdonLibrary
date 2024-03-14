@@ -87,7 +87,7 @@ namespace Udon
             template <typename FloatingPoint, EnableIfNullptrT<IsFloatingPoint<RemoveReferenceT<FloatingPoint>>::value> = nullptr>
             void deserialize(FloatingPoint& rhs)
             {
-                rhs = popArithmetic<Udon::float32_t>();
+                rhs = popArithmetic<Udon::Float32>();
             }
 
             /// @brief 列挙型

@@ -2,7 +2,7 @@
 
 #include <Udon/Types/Vector2D.hpp>
 
-TEST(Vector2D, Constructor)
+TEST(Vec2, Constructor)
 {
     Udon::Vec2 v1;
     EXPECT_EQ(v1.x, 0.0);
@@ -13,7 +13,7 @@ TEST(Vector2D, Constructor)
     EXPECT_EQ(v2.y, 2.0);
 }
 
-TEST(Vector2D, Operator)
+TEST(Vec2, Operator)
 {
     Udon::Vec2 v1(1.0, 2.0);
     Udon::Vec2 v2(3.0, 4.0);
@@ -57,7 +57,7 @@ TEST(Vector2D, Operator)
 
 #include <cmath>
 
-TEST (Vector2D, Method)
+TEST (Vec2, Method)
 {
     Udon::Vec2 v1(1.0, 2.0);
     Udon::Vec2 v2(3.0, 4.0);
