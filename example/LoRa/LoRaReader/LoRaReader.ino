@@ -1,6 +1,5 @@
 //
 //    LoRa (E220) 送信用ファームウエア
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //
 
 #include <Udon.hpp>

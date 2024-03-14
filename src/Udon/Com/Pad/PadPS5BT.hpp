@@ -1,7 +1,6 @@
 //
 //    Bluetooth経由PS5コントローラークラス
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 //    Controller --[Bluetooth]--> USBHost --[SPI]--> Sender -->

@@ -1,7 +1,6 @@
 //
 //    疑似可変長配列コンテナ
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 

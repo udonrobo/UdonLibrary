@@ -1,7 +1,6 @@
 //
 //    TLM922S LoRaモジュール デバイスドライバー
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 Udonrobo
 //
 //    データシート: https://usermanual.wiki/Kiwi-Technology/TLM922S/pdf

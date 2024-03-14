@@ -1,7 +1,6 @@
 //
 //    エンコーダーのカウント値を取得する例 (Raspberry Pi Pico)
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 
