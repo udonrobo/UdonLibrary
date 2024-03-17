@@ -12,8 +12,8 @@
 
 | 名前                          | 説明                                                                                             | ヘッダーファイル                                                                         |
 | ----------------------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| `IsWriter<T>`                 | T が送信クラス要件を満たす場合 `std::true_type` 、それ以外は `std::false_type` を継承。          | [Udon/Traits/ReaderWriterTraits.hpp](./../../src/Udon/Traits/IsWriter.hpp)               |
-| `IsReader<T>`                 | T が受信クラス要件を満たす場合 `std::true_type` 、それ以外は `std::false_type` を継承。          | [Udon/Traits/ReaderWriterTraits.hpp](./../../src/Udon/Traits/IsReader.hpp)               |
+| `IsWriter<T>`                 | T が送信クラス要件を満たす場合 `std::true_type` 、それ以外は `std::false_type` を継承。          | [Udon/Traits/ReaderWriterTraits.hpp](./../../src/Udon/Traits/ReaderWriterTraits.hpp)     |
+| `IsReader<T>`                 | T が受信クラス要件を満たす場合 `std::true_type` 、それ以外は `std::false_type` を継承。          | [Udon/Traits/ReaderWriterTraits.hpp](./../../src/Udon/Traits/ReaderWriterTraits.hpp)     |
 | `IsSerializable<T>`           | T がシリアライズ可能な場合 `std::true_type` 、それ以外は `std::false_type` を継承。              | [Udon/Serializer/SerializerTraits.hpp](./../../src/Udon/Serializer/SerializerTraits.hpp) |
 | `AlwaysFalse<T>`              | 常に `std::false_type` を継承。(遅延 static_assert)                                              | [Udon/Traits/AlwaysFalse.hpp](./../../src/Udon/Traits/AlwaysFalse.hpp)                   |
 | `HasMemberFunctionBegin<T>`   | T に `begin` メンバ関数が存在する場合 `std::true_type` 、それ以外は `std::false_type` を継承。   | [Udon/Traits/HasMemberFunction.hpp](./../../src/Udon/Traits/HasMemberFunction.hpp)       |
