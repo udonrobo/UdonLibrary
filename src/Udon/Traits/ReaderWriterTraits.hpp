@@ -9,7 +9,7 @@ namespace Udon
     namespace Traits
     {
 
-        /// @brief 送信クラスであるか判定するトレイト
+        /// @brief 送信クラスであるか判定
         /// @details 送信クラスの要件を満たすには、以下の条件を満たす必要がある。
         /// - `MessageType` というメンバ型名を持つ
         /// - `setMessage()` メンバ関数を持ち、戻り値が `void`、引数型が `const MessageType&` である
@@ -26,7 +26,7 @@ namespace Udon
         {
         };
 
-        /// @brief 送信クラスであるか判定するトレイト
+        /// @brief 送信クラスであるか判定
         /// @details 送信クラスの要件を満たすには、以下の条件を満たす必要がある。
         /// - `MessageType` というメンバ型名を持つ
         /// - `getMessage() const` メンバ関数を持ち、戻り値が `Udon::Optional<MessageType>`、引数が存在しない

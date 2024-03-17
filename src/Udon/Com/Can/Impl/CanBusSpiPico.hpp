@@ -1,7 +1,6 @@
 //
 //    CAN通信 Raspberry Pi Pico用バスクラス 実装部
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 
@@ -20,7 +19,7 @@ namespace Udon
     }
 
     /// @brief 通信開始
-    /// @remark SPI通信も開始します。
+    /// @note SPI通信も開始します。
     inline void CanBusSpi::begin()
     {
         (void)spi_init(/* spi_inst_t* spi      */ config.channel,
@@ -48,7 +47,7 @@ namespace Udon
     }
 
     /// @brief CAN通信のみ開始する
-    /// @remark SPI通信は別途開始する必要がある
+    /// @note SPI通信は別途開始する必要がある
     ///         SPIバスがCANコントローラーとの通信のみに使用される場合は、この関数を呼び出す必要はない
     inline void CanBusSpi::beginCanOnly()
     {
@@ -197,7 +196,7 @@ namespace Udon
     }
 
     /// @brief 送信ノードをバスから離脱させる
-    /// @remark 送信ノードのインスタンスポインタを基に削除します。
+    /// @note 送信ノードのインスタンスポインタを基に削除します。
     /// @param node 送信ノード
     inline void CanBusSpi::leaveTx(const CanNode& node)
     {
@@ -205,7 +204,7 @@ namespace Udon
     }
 
     /// @brief 受信ノードをバスから離脱させる
-    /// @remark 受信ノードのインスタンスポインタを基に削除します。
+    /// @note 受信ノードのインスタンスポインタを基に削除します。
     /// @param node 受信ノード
     inline void CanBusSpi::leaveRx(const CanNode& node)
     {
@@ -226,7 +225,7 @@ namespace Udon
             }
 
             // 分割されたフレームを結合(マルチフレームの場合)
-            Udon::Detail::Unpacketize({ msg.data }, { rxNode->node->data, rxNode->node->length }, SingleFrameSize);
+            Udon::Impl::Unpacketize({ msg.data }, { rxNode->node->data, rxNode->node->length }, SingleFrameSize);
 
             // 登録されている受信クラスのコールバック関数を呼ぶ
             // 最終フレームの到達時にコールバックを呼ぶため、受信中(完全に受信しきっていないとき)にデシリアライズすることを防いでいる。
@@ -259,7 +258,7 @@ namespace Udon
             msg.can_dlc = SingleFrameSize;
 
             // 一度に8バイトしか送れないため、分割し送信
-            Udon::Detail::Packetize({ node->data, node->length }, { msg.data }, SingleFrameSize,
+            Udon::Impl::Packetize({ node->data, node->length }, { msg.data }, SingleFrameSize,
                                     [this, &msg](size_t)
                                     {
                                         bus.sendMessage(&msg);

@@ -2,7 +2,6 @@
 //    E220 LoRaモジュール ドライバクラス実装部
 //
 //	  Copyright (c) 2022-2023 Fujimoto Ryo
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 Udonrobo
 //
 
@@ -278,7 +277,7 @@ namespace Udon
     inline bool E220::sendUpdate()
     {
         // 送信休止時間分間隔をあける
-        if (millis() - txNode->transmitMs > 20)
+        if (millis() - txNode->transmitMs > 50)
         {
             // ヘッダー送信
             {

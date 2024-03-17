@@ -1,18 +1,8 @@
-//-------------------------------------------------------------------
-//
-//    UdonLibrary
-//
-//    Copyright (c) 2022-2023 Okawa Yusuke
-//    Copyright (c) 2022-2023 udonrobo
-//
-//    Licensed under the MIT License.
-//
-//-------------------------------------------------------------------
 //
 //    直交座標系 前方定義
 //
-//-------------------------------------------------------------------
-
+//    Copyright (c) 2022-2023 udonrobo
+//
 
 #pragma once
 
@@ -21,7 +11,7 @@
 
 namespace Udon
 {
-    struct Vector2D;
+    struct Vec2;
 
     struct Polar
     {
@@ -71,21 +61,21 @@ namespace Udon
         }
 
         /// @brief 算術演算子
-        /// @remark polar [operator] polar
+        /// @note polar [operator] polar
         friend constexpr Polar operator+(const Polar& lhs, const Polar& rhs) noexcept { return { lhs.r + rhs.r, lhs.theta + rhs.theta }; }
         friend constexpr Polar operator-(const Polar& lhs, const Polar& rhs) noexcept { return { lhs.r - rhs.r, lhs.theta - rhs.theta }; }
         friend constexpr Polar operator*(const Polar& lhs, const Polar& rhs) noexcept { return { lhs.r * rhs.r, lhs.theta * rhs.theta }; }
         friend constexpr Polar operator/(const Polar& lhs, const Polar& rhs) noexcept { return { lhs.r / rhs.r, lhs.theta / rhs.theta }; }
 
         /// @brief 複合代入演算子
-        /// @remark polar = polar [operator] polar
+        /// @note polar = polar [operator] polar
         Polar& operator+=(const Polar& rhs) noexcept { return *this = *this + rhs; }
         Polar& operator-=(const Polar& rhs) noexcept { return *this = *this - rhs; }
         Polar& operator*=(const Polar& rhs) noexcept { return *this = *this * rhs; }
         Polar& operator/=(const Polar& rhs) noexcept { return *this = *this / rhs; }
 
         /// @brief 比較演算子
-        /// @remark polar [operator] polar
+        /// @note polar [operator] polar
         friend constexpr bool operator==(const Polar& lhs, const Polar& rhs) noexcept { return lhs.r == rhs.r && lhs.theta == rhs.theta; }
         friend constexpr bool operator!=(const Polar& lhs, const Polar& rhs) noexcept { return not(lhs == rhs); }
 
@@ -94,7 +84,7 @@ namespace Udon
 
         /// @brief ベクトルに変換する
         /// @return 
-        Vector2D toVector() const noexcept;
+        Vec2 toVector() const noexcept;
 
         UDON_ENUMERABLE(r, theta);
     };

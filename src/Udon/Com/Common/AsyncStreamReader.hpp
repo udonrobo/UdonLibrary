@@ -1,13 +1,12 @@
 //
 //    非同期ストリーム読み取り
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 Udonrobo
 //
 
 #pragma once
 
-#include <Udon/Types/ArrayView.hpp>
+#include <Udon/Types/StringView.hpp>
 
 namespace Udon
 {
@@ -28,7 +27,7 @@ namespace Udon
         {
         }
 
-        Udon::ArrayView<const char> readStringUntil(char tarminate)
+        Udon::StringView readStringUntil(char terminate)
         {
             while (istream.available())
             {
@@ -44,7 +43,7 @@ namespace Udon
                     break;
                 }
 
-                if (read == tarminate)
+                if (read == terminate)
                 {
                     const auto end = iterator;
                     iterator       = buffer;
@@ -55,7 +54,7 @@ namespace Udon
                 ++iterator;
             }
 
-            return { buffer, 0 };
+            return { buffer, (size_t)0 };
         }
     };
 

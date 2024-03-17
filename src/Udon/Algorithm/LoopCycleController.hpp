@@ -76,7 +76,7 @@ namespace Udon
         */
         explicit operator bool() const noexcept
         {
-            return isError;
+            return not isError;
         }
 
         /**     ループ周期出力

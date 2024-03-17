@@ -187,13 +187,47 @@ int main()
 	}
 	else
 	{
-		std::cout << "unpack failed" << std::endl;
+		std::cout << "deserialize failed" << std::endl;
 	}
 }
 ```
 
 ```
 100
+```
+
+### ヒープ領域を使用しないシリアライズ
+
+`Udon::Serialize(T) -> std::vector<uint8_t>` は `std::vector` を用いており、バイト列をヒープ領域に割り当てて返します。パフォーマンスを気にする場合、ヒープ領域の使用はなるべく控えるべきです。`Udon::Serialize(T, Udon::ArrayView<uint8_t>)`を用いることで、スタック領域(静的配列)をバッファーとしてシリアライズできます。
+
+この時、バッファーのサイズと、シリアライズ後のサイズ(`Udon::SerializedSize<T>()`)が異なる場合 `Udon::Serialize` は失敗し false を返します。
+
+```cpp
+#include <iostream>
+#include <Udon/Serializer/Serializer.hpp>
+
+int main()
+{
+	uint8_t buffer[Udon::SerializedSize<int>()];
+
+	if (not Udon::Serialize(1000, buffer))
+	{
+		std::cout << "serialize failed" << std::endl;
+	}
+
+	if (const auto unpacked = Udon::Deserialize<int>(buffer))
+	{
+		std::cout << *unpacked << std::endl;
+	}
+	else
+	{
+		std::cout << "deserialize failed" << std::endl;
+	}
+}
+```
+
+```
+1000
 ```
 
 ### 列挙型シリアライズ
@@ -228,7 +262,7 @@ int main()
 	}
 	else
 	{
-		std::cout << "unpack failed" << std::endl;
+		std::cout << "deserialize failed" << std::endl;
 	}
 }
 ```
@@ -264,7 +298,7 @@ int main()
 	}
 	else
 	{
-		std::cout << "unpack failed" << std::endl;
+		std::cout << "deserialize failed" << std::endl;
 	}
 }
 ```
@@ -300,7 +334,7 @@ int main()
 	}
 	else
 	{
-		std::cout << "unpack failed" << std::endl;
+		std::cout << "deserialize failed" << std::endl;
 	}
 }
 ```
@@ -347,7 +381,7 @@ int main()
 	}
 	else
 	{
-		std::cout << "unpack failed" << std::endl;
+		std::cout << "deserialize failed" << std::endl;
 	}
 }
 ```
@@ -374,11 +408,11 @@ int main()
 	}
 	else
 	{
-		std::cout << "unpack failed" << std::endl;
+		std::cout << "deserialize failed" << std::endl;
 	}
 }
 ```
 
 ```
-unpack failed
+deserialize failed
 ```

@@ -9,7 +9,7 @@
 #define DEF_PidController_H
 
 #include "Math.hpp"
-#include <Udon/Stl/Optional.hpp>
+#include <Udon/Types/Optional.hpp>
 
 namespace Udon
 {
@@ -101,7 +101,7 @@ namespace Udon
         }
 
         /// @brief 操作量のクリア
-        /// @remark 内部の量をすべて0にする。
+        /// @note 内部の量をすべて0にする。
         void clearPower() noexcept
         {
             power     = {};
@@ -110,15 +110,45 @@ namespace Udon
 
         /// @brief 一周期のみ適用する比例係数の設定
         /// @param value 係数
-        void requestParamPro(double value) noexcept { requestConstant = Parameter{ value, constant.i, constant.d }; }
+        void requestParamPro(double value) noexcept
+        {
+            if (requestConstant)
+            {
+                requestConstant->p = value;
+            }
+            else
+            {
+                requestConstant = Parameter{ value, constant.i, constant.d };
+            }
+        }
 
         /// @brief 一周期のみ適用する積分係数の設定
         /// @param value 係数
-        void requestParamInt(double value) noexcept { requestConstant = Parameter{ constant.p, value, constant.d }; }
+        void requestParamInt(double value) noexcept
+        {
+            if (requestConstant)
+            {
+                requestConstant->i = value;
+            }
+            else
+            {
+                requestConstant = Parameter{ constant.p, value, constant.d };
+            }
+        }
 
         /// @brief 一周期のみ適用する微分係数の設定
         /// @param value 係数
-        void requestParamDif(double value) noexcept { requestConstant = Parameter{ constant.p, constant.i, value }; }
+        void requestParamDif(double value) noexcept
+        {
+            if (requestConstant)
+            {
+                requestConstant->d = value;
+            }
+            else
+            {
+                requestConstant = Parameter{ constant.p, constant.i, value };
+            }
+        }
 
         /// @brief 一周期のみ適用する係数の設定
         /// @param value 係数

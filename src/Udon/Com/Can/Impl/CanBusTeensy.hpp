@@ -1,7 +1,6 @@
 //
 //    CAN通信 Teensy用バスクラス 実装部
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 
@@ -185,7 +184,7 @@ namespace Udon
     }
 
     /// @brief 送信ノードをバスから離脱させる
-    /// @remark 送信ノードのインスタンスポインタを基に削除します。
+    /// @note 送信ノードのインスタンスポインタを基に削除します。
     /// @param node 送信ノード
     template <CAN_DEV_TABLE Bus>
     void CanBusTeensy<Bus>::leaveTx(const CanNode& node)
@@ -194,7 +193,7 @@ namespace Udon
     }
 
     /// @brief 受信ノードをバスから離脱させる
-    /// @remark 受信ノードのインスタンスポインタを基に削除します。
+    /// @note 受信ノードのインスタンスポインタを基に削除します。
     /// @param node 受信ノード
     template <CAN_DEV_TABLE Bus>
     void CanBusTeensy<Bus>::leaveRx(const CanNode& node)
@@ -220,7 +219,7 @@ namespace Udon
             }
 
             // 分割されたフレームを結合(マルチフレームの場合)
-            Udon::Detail::Unpacketize(
+            Udon::Impl::Unpacketize(
                 { msg.buf },
                 { rxNode->node->data, rxNode->node->length },
                 SingleFrameSize);
@@ -262,7 +261,7 @@ namespace Udon
             msg.len = SingleFrameSize;
 
             // 一度に8バイトしか送れないため、分割し送信
-            Udon::Detail::Packetize({ node->data, node->length }, { msg.buf }, SingleFrameSize,
+            Udon::Impl::Packetize({ node->data, node->length }, { msg.buf }, SingleFrameSize,
                                     [this, &msg](size_t)
                                     {
                                         bus.write(msg);

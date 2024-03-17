@@ -1,7 +1,6 @@
 //
 //    Raspberry Pi Pico 用エンコーダークラス
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 
@@ -52,7 +51,7 @@ namespace Udon
 
         /// @brief 開始
         /// @param alwaysUseInterrupt 常に割り込みを使用する
-        /// @remark alwaysUseInterrupt が false の場合、PIOの使用を試みる
+        /// @note alwaysUseInterrupt が false の場合、PIOの使用を試みる
         ///         A相とB相のピン番号が隣り合っている場合、PIOを使用可能
         ///         各PIOに別のプログラムをロードしている場合、PIOを使用できない
         ///         PIOを使用できない場合は割り込みを使用する

@@ -182,7 +182,7 @@ TEST(FactorialTest, HandlesPositiveInput)
 cmake -S . -B Build
 cmake --build Build
 cd Build
-ctest
+ctest --output-on-failure
 cd ..
 ```
 

@@ -1,7 +1,6 @@
 //
 //    CAN通信 Raspberry Pi Pico用バスクラス (SPI経由)
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 

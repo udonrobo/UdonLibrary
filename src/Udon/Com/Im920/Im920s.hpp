@@ -17,7 +17,7 @@
 #include "IIm920.hpp"
 
 #include <Udon/Algorithm/BitPack.hpp>
-#include <Udon/Stl/Optional.hpp>
+#include <Udon/Types/Optional.hpp>
 #include <Udon/Common/Printf.hpp>
 
 namespace Udon
@@ -64,7 +64,7 @@ namespace Udon
 
         /// @brief 受信者用コンストラクタ
         /// @param uart IM920と接続されたシリアルポート
-        /// @remark このコンストラクタを呼び出すのは受信者のみ存在する場合です。送信者が存在する場合は送信先のノード番号を指定する必要があります。
+        /// @note このコンストラクタを呼び出すのは受信者のみ存在する場合です。送信者が存在する場合は送信先のノード番号を指定する必要があります。
         Im920s(HardwareSerial& uart)
             : uart(uart)
             , txNode()
@@ -107,7 +107,7 @@ namespace Udon
         }
 
         /// @brief 自身のノード番号を表示
-        /// @remark 相手方のIM920クラスコンストラクタの引数に渡すときに使うと便利です。
+        /// @note 相手方のIM920クラスコンストラクタの引数に渡すときに使うと便利です。
         void showNodeNumber()
         {
             waitUntilCommandAccept();

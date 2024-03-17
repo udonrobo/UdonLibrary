@@ -1,7 +1,6 @@
 //
 //    LoRa 送信クラス
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 
@@ -58,11 +57,11 @@ namespace Udon
 
         /// @brief 送信内容を表示
         /// @param gap 区切り文字 (default: '\t')
-        void show(char gap = '\t') const
+        void show() const
         {
             if (const auto message = Udon::Deserialize<Message>(buffer))
             {
-                Udon::Show(*message, gap);
+                Udon::ShowRaw(*message);
             }
             else
             {

@@ -1,7 +1,6 @@
 //
 //    I2C マスター側受信スケッチ例
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 

@@ -4,7 +4,6 @@
 //    Copyright (c) 2014 Christopher Korman
 //    Copyright (c) 2014 John Maddock
 //    Copyright (c) 2014 Paul Bristow
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 
@@ -23,7 +22,7 @@
 #    error The compiler does not support any radix-2 floating-point types required for <boost/cstdfloat.hpp>.
 #endif
 
-// Check if built-in float is equivalent to float16_t, float32_t, float64_t, float80_t, or float128_t.
+// Check if built-in float is equivalent to Float16, Float32, Float64, float80_t, or Float128.
 #if (defined(FLT_MANT_DIG) && defined(FLT_MAX_EXP))
 #    if ((FLT_MANT_DIG == 11) && (FLT_MAX_EXP == 16) && (BOOST_CSTDFLOAT_HAS_FLOAT16_NATIVE_TYPE == 0))
 #        define BOOST_CSTDFLOAT_FLOAT16_NATIVE_TYPE float
@@ -44,7 +43,7 @@
 #    endif
 #endif
 
-// Check if built-in double is equivalent to float16_t, float32_t, float64_t, float80_t, or float128_t.
+// Check if built-in double is equivalent to Float16, Float32, Float64, float80_t, or Float128.
 #if (defined(DBL_MANT_DIG) && defined(DBL_MAX_EXP))
 #    if ((DBL_MANT_DIG == 11) && (DBL_MAX_EXP == 16) && (BOOST_CSTDFLOAT_HAS_FLOAT16_NATIVE_TYPE == 0))
 #        define BOOST_CSTDFLOAT_FLOAT16_NATIVE_TYPE double
@@ -71,7 +70,7 @@
 // Disable check long double capability even if supported by compiler since some math runtime
 // implementations are broken for long double.
 #ifndef BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS
-// Check if built-in long double is equivalent to float16_t, float32_t, float64_t, float80_t, or float128_t.
+// Check if built-in long double is equivalent to Float16, Float32, Float64, float80_t, or Float128.
 #    if (defined(LDBL_MANT_DIG) && defined(LDBL_MAX_EXP))
 #        if ((LDBL_MANT_DIG == 11) && (LDBL_MAX_EXP == 16) && (BOOST_CSTDFLOAT_HAS_FLOAT16_NATIVE_TYPE == 0))
 #            define BOOST_CSTDFLOAT_FLOAT16_NATIVE_TYPE long double
@@ -97,35 +96,35 @@ namespace Udon
 {
 
     //  定義されている可能性のある型は以下の通りです(処理系によって異なります)
-    //  Udon::float16_t
-    //  Udon::float32_t
-    //  Udon::float64_t
-    //  Udon::float128_t
+    //  Udon::Float16
+    //  Udon::Float32
+    //  Udon::Float64
+    //  Udon::Float128
 
 #if BOOST_CSTDFLOAT_HAS_FLOAT16_NATIVE_TYPE
-    using float16_t = BOOST_CSTDFLOAT_FLOAT16_NATIVE_TYPE;
-    static_assert(sizeof(float16_t) == 2, "Sorry, it is a typedef bug. I would appreciate it if you could report the error to Issue");
+    using Float16 = BOOST_CSTDFLOAT_FLOAT16_NATIVE_TYPE;
+    static_assert(sizeof(Float16) == 2, "Sorry, it is a typedef bug. I would appreciate it if you could report the error to Issue");
 #    undef BOOST_CSTDFLOAT_FLOAT16_NATIVE_TYPE
 #    define UDON_HAS_FLOAT16
 #endif
 
 #if BOOST_CSTDFLOAT_HAS_FLOAT32_NATIVE_TYPE
-    using float32_t = BOOST_CSTDFLOAT_FLOAT32_NATIVE_TYPE;
-    static_assert(sizeof(float32_t) == 4, "Sorry, it is a typedef bug. I would appreciate it if you could report the error to Issue");
+    using Float32 = BOOST_CSTDFLOAT_FLOAT32_NATIVE_TYPE;
+    static_assert(sizeof(Float32) == 4, "Sorry, it is a typedef bug. I would appreciate it if you could report the error to Issue");
 #    undef BOOST_CSTDFLOAT_FLOAT32_NATIVE_TYPE
 #    define UDON_HAS_FLOAT32
 #endif
 
 #if BOOST_CSTDFLOAT_HAS_FLOAT64_NATIVE_TYPE
-    using float64_t = BOOST_CSTDFLOAT_FLOAT64_NATIVE_TYPE;
-    static_assert(sizeof(float64_t) == 8, "Sorry, it is a typedef bug. I would appreciate it if you could report the error to Issue");
+    using Float64 = BOOST_CSTDFLOAT_FLOAT64_NATIVE_TYPE;
+    static_assert(sizeof(Float64) == 8, "Sorry, it is a typedef bug. I would appreciate it if you could report the error to Issue");
 #    undef BOOST_CSTDFLOAT_FLOAT64_NATIVE_TYPE
 #    define UDON_HAS_FLOAT64
 #endif
 
 #if BOOST_CSTDFLOAT_HAS_FLOAT128_NATIVE_TYPE
-    using float128_t = BOOST_CSTDFLOAT_FLOAT128_NATIVE_TYPE;
-    static_assert(sizeof(float128_t) == 16, "Sorry, it is a typedef bug. I would appreciate it if you could report the error to Issue");
+    using Float128 = BOOST_CSTDFLOAT_FLOAT128_NATIVE_TYPE;
+    static_assert(sizeof(Float128) == 16, "Sorry, it is a typedef bug. I would appreciate it if you could report the error to Issue");
 #    undef BOOST_CSTDFLOAT_FLOAT128_NATIVE_TYPE
 #    define UDON_HAS_FLOAT128
 #endif

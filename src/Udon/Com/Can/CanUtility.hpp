@@ -7,7 +7,7 @@
 
 namespace Udon
 {
-    namespace Detail
+    namespace Impl
     {
 
         /// @brief バイト列を複数のパケット、単一のパケットにパケット化する
@@ -135,6 +135,6 @@ namespace Udon
                 }
             }
         }
-    }    // namespace Detail
+    }    // namespace Impl
 
 }    // namespace Udon

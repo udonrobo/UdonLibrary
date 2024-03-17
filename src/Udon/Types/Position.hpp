@@ -1,7 +1,6 @@
 //
 //    ロボットの位置 (座標、旋回角) を表す型
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 
@@ -22,75 +21,75 @@ namespace Udon
 {
 
     /// @brief ロボットの位置
-    struct Position
+    struct Pos
     {
 
         /// @brief 要素の型
         using ValueType = double;
 
         /// @brief 座標
-        Udon::Vector2D vector;
+        Udon::Vec2 vector;
 
         /// @brief 旋回角 [rad]
         ValueType turn;
 
         /// @brief デフォルトコンストラクタ
-        constexpr Position() noexcept
+        constexpr Pos() noexcept
             : vector()
             , turn()
         {
         }
 
         /// @brief デフォルトコピーコンストラクタ
-        constexpr Position(const Position& rhs) noexcept
+        constexpr Pos(const Pos& rhs) noexcept
             : vector(rhs.vector)
             , turn(rhs.turn)
         {
         }
 
         /// @brief コンストラクタ
-        constexpr Position(const Udon::Vector2D& vector, ValueType turn) noexcept
+        constexpr Pos(const Udon::Vec2& vector, ValueType turn) noexcept
             : vector(vector)
             , turn(turn)
         {
         }
 
         /// @brief デフォルトコピー代入演算子
-        Position& operator=(const Position&) = default;
+        Pos& operator=(const Pos&) = default;
 
         /// @brief 算術演算子
         /// @param rhs 被演算子
         /// @return
-        constexpr Position operator+(const Position& rhs) const noexcept { return { vector + rhs.vector, turn + rhs.turn }; }
-        constexpr Position operator-(const Position& rhs) const noexcept { return { vector - rhs.vector, turn - rhs.turn }; }
-        constexpr Position operator*(const Position& rhs) const noexcept { return { vector * rhs.vector, turn * rhs.turn }; }
-        constexpr Position operator/(const Position& rhs) const noexcept { return { vector / rhs.vector, turn / rhs.turn }; }
-        constexpr Position operator+(ValueType rhs) const noexcept { return { vector + rhs, turn + rhs }; }
-        constexpr Position operator-(ValueType rhs) const noexcept { return { vector - rhs, turn - rhs }; }
-        constexpr Position operator*(ValueType rhs) const noexcept { return { vector * rhs, turn * rhs }; }
-        constexpr Position operator/(ValueType rhs) const noexcept { return { vector / rhs, turn / rhs }; }
+        constexpr Pos operator+(const Pos& rhs) const noexcept { return { vector + rhs.vector, turn + rhs.turn }; }
+        constexpr Pos operator-(const Pos& rhs) const noexcept { return { vector - rhs.vector, turn - rhs.turn }; }
+        constexpr Pos operator*(const Pos& rhs) const noexcept { return { vector * rhs.vector, turn * rhs.turn }; }
+        constexpr Pos operator/(const Pos& rhs) const noexcept { return { vector / rhs.vector, turn / rhs.turn }; }
+        constexpr Pos operator+(ValueType rhs) const noexcept { return { vector + rhs, turn + rhs }; }
+        constexpr Pos operator-(ValueType rhs) const noexcept { return { vector - rhs, turn - rhs }; }
+        constexpr Pos operator*(ValueType rhs) const noexcept { return { vector * rhs, turn * rhs }; }
+        constexpr Pos operator/(ValueType rhs) const noexcept { return { vector / rhs, turn / rhs }; }
 
         /// @brief 複合代入演算子
         /// @param rhs 被演算子
         /// @return
-        Position operator+=(const Position& rhs) noexcept { return *this = *this + rhs; }
-        Position operator-=(const Position& rhs) noexcept { return *this = *this - rhs; }
-        Position operator*=(const Position& rhs) noexcept { return *this = *this * rhs; }
-        Position operator/=(const Position& rhs) noexcept { return *this = *this / rhs; }
-        Position operator+=(ValueType rhs) noexcept { return *this = *this + rhs; }
-        Position operator-=(ValueType rhs) noexcept { return *this = *this - rhs; }
-        Position operator*=(ValueType rhs) noexcept { return *this = *this * rhs; }
-        Position operator/=(ValueType rhs) noexcept { return *this = *this / rhs; }
+        Pos operator+=(const Pos& rhs) noexcept { return *this = *this + rhs; }
+        Pos operator-=(const Pos& rhs) noexcept { return *this = *this - rhs; }
+        Pos operator*=(const Pos& rhs) noexcept { return *this = *this * rhs; }
+        Pos operator/=(const Pos& rhs) noexcept { return *this = *this / rhs; }
+        Pos operator+=(ValueType rhs) noexcept { return *this = *this + rhs; }
+        Pos operator-=(ValueType rhs) noexcept { return *this = *this - rhs; }
+        Pos operator*=(ValueType rhs) noexcept { return *this = *this * rhs; }
+        Pos operator/=(ValueType rhs) noexcept { return *this = *this / rhs; }
 
         /// @brief 比較演算子
         /// @param rhs 被演算子
         /// @return
-        constexpr bool operator==(const Position& rhs) const noexcept { return vector == rhs.vector && turn == rhs.turn; }
+        constexpr bool operator==(const Pos& rhs) const noexcept { return vector == rhs.vector && turn == rhs.turn; }
 
         /// @brief 比較演算子
         /// @param rhs 被演算子
         /// @return
-        constexpr bool operator!=(const Position& rhs) const noexcept { return !(*this == rhs); }
+        constexpr bool operator!=(const Pos& rhs) const noexcept { return !(*this == rhs); }
 
         /// @brief 要素のいずれかに0以外の値があるかどうかを返す
         constexpr explicit operator bool() const noexcept
@@ -101,7 +100,7 @@ namespace Udon
         /// @brief 要素がすべて0であるかを変えす
         constexpr bool isZero() const noexcept
         {
-            return !Position::operator bool();
+            return !Pos::operator bool();
         }
 
         /// @brief 値クリア
@@ -110,7 +109,7 @@ namespace Udon
             *this = {};
         }
 
-        Position mapped(double inMin, double inMax, double outMin, double outMax) const noexcept
+        Pos mapped(double inMin, double inMax, double outMin, double outMax) const noexcept
         {
             return {
                 vector.mapped(inMin, inMax, outMin, outMax),
@@ -118,54 +117,54 @@ namespace Udon
             };
         }
 
-        Position updateVector(const Udon::Vector2D& v) const noexcept
+        Pos updateVector(const Udon::Vec2& v) const noexcept
         {
             return { v, turn };
         }
 
-        Position updateTurn(double t) const noexcept
+        Pos updateTurn(double t) const noexcept
         {
             return { vector, t };
         }
 
         // template <size_t WheelCount>
         // std::array<double, WheelCount> toOmni() const
-        //{
+        // {
         //     static_assert(WheelCount >= 3, "WheelCount must be greater than or equal to 3.");
         //     static_assert(WheelCount == 4, "Not supported over 4 wheels now.");
         // }
 
-        // template <>
-        // std::array<double, 4> toOmni<4>() const
-        //{
-        //     uint8_t    powerLimit     = 255;
-        //             uint8_t turnPowerLimit = 255;
-        //     const auto mappedTurn = Udon::Map(turn, -255, 255, -turnPowerLimit, turnPowerLimit);
+        template <size_t N>
+        std::array<double, N> toOmni() const
+        {
+            uint8_t    powerLimit     = 255;
+                    uint8_t turnPowerLimit = 255;
+            const auto mappedTurn = Udon::Map(turn, -255, 255, -turnPowerLimit, turnPowerLimit);
 
-        //    std::array<double, 4> powers{ {
-        //        +vector.x + -vector.y + mappedTurn,
-        //        -vector.x + -vector.y + mappedTurn,
-        //        -vector.x + +vector.y + mappedTurn,
-        //        +vector.x + +vector.y + mappedTurn,
-        //    } };
+           std::array<double, 4> powers{ {
+               +vector.x + -vector.y + mappedTurn,
+               -vector.x + -vector.y + mappedTurn,
+               -vector.x + +vector.y + mappedTurn,
+               +vector.x + +vector.y + mappedTurn,
+           } };
 
-        //    // 上で算出した出力値は {powerLimit} を超える場合があります。
-        //    // 超えた場合、最大出力のモジュールの出力を {powerLimit} として他のモジュールの出力を圧縮します。
-        //    auto&& max = abs(*std::max_element(powers.begin(), powers.end(), [](double lhs, double rhs)
-        //                                       { return abs(lhs.r) < abs(rhs.r); }));
+           // 上で算出した出力値は {powerLimit} を超える場合があります。
+           // 超えた場合、最大出力のモジュールの出力を {powerLimit} として他のモジュールの出力を圧縮します。
+           auto&& max = abs(*std::max_element(powers.begin(), powers.end(), [](double lhs, double rhs)
+                                              { return abs(lhs) < abs(rhs); }));
 
-        //    if (max > powerLimit)
-        //    {
-        //        const auto ratio = powerLimit / max;
+           if (max > powerLimit)
+           {
+               const auto ratio = powerLimit / max;
 
-        //        std::transform(powers.begin(), powers.end(), powers.begin(),
-        //                       [ratio](double power)
-        //                       { return power * ratio; });
-        //    }
+               std::transform(powers.begin(), powers.end(), powers.begin(),
+                              [ratio](double power)
+                              { return power * ratio; });
+           }
 
-        //    // todo
-        //    return powers;
-        //}
+           // todo
+           return powers;
+        }
 
         /// @brief 独立ステアリング機構のタイヤ出力値、旋回角を取得する
         /// @tparam WheelCount タイヤの数
@@ -234,7 +233,6 @@ namespace Udon
         UDON_ENUMERABLE(vector, turn);
     };
 
-    using Pos   = Position;
     using Stick = Pos;
 
 }    // namespace Udon

@@ -1,7 +1,6 @@
 //
 //    シリアライズ後のサイズを取得する
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 
@@ -53,48 +52,52 @@ namespace Udon
 
         private:
             /// @brief T のビット数を取得する
-            /// @remark サイズを取得できないオブジェクトが渡された場合を検出し、コンパイルエラーを発生させるために部分特殊化を用いる
+            /// @note サイズを取得できないオブジェクトが渡された場合を検出し、コンパイルエラーを発生させるために部分特殊化を用いる
             template <typename T, typename = void>
             struct Sizeof
             {
                 static constexpr ResultType value(...) noexcept
                 {
-                    static_assert(AlwaysFalse<T>::value, "T is not sizable!");    // サイズを取得できないオブジェクトが渡された場合、コンパイルエラーを発生させる
+#ifdef __FUNCTION__
+                    static_assert(AlwaysFalse<T>::value, "T is not sizable!" __FUNCTION__);    // サイズを取得できないオブジェクトが渡された場合、コンパイルエラーになる
+#else
+                    static_assert(AlwaysFalse<T>::value, "T is not sizable!");    // サイズを取得できないオブジェクトが渡された場合、コンパイルエラーになる
+#endif
                     return 0;
                 }
             };
 
             /// @brief T が bool 型の場合の特殊化
             template <typename Bool>
-            struct Sizeof<Bool, EnableIfVoidT<IsBool<RemoveReferenceT<Bool>>::value>>
+            struct Sizeof<Bool, EnableIfVoidT<IsBool<RemoveCVT<Bool>>::value>>
             {
                 static constexpr ResultType value(...) noexcept { return 1; }
             };
 
             /// @brief T が算術型の場合の特殊化
             template <typename Integral>
-            struct Sizeof<Integral, EnableIfVoidT<IsIntegralNotBool<RemoveReferenceT<Integral>>::value>>
+            struct Sizeof<Integral, EnableIfVoidT<IsIntegralNotBool<RemoveCVT<Integral>>::value>>
             {
                 static constexpr ResultType value(...) noexcept { return sizeof(Integral) * CHAR_BIT; }
             };
 
             /// @brief T が浮動小数点型の場合の特殊化
             template <typename Float>
-            struct Sizeof<Float, EnableIfVoidT<IsFloatingPoint<RemoveReferenceT<Float>>::value>>
+            struct Sizeof<Float, EnableIfVoidT<IsFloatingPoint<RemoveCVT<Float>>::value>>
             {
-                static constexpr ResultType value(...) noexcept { return sizeof(Udon::float32_t) * CHAR_BIT; }
+                static constexpr ResultType value(...) noexcept { return sizeof(Udon::Float32) * CHAR_BIT; }
             };
 
             /// @brief T が列挙型の場合の特殊化
             template <typename Enum>
-            struct Sizeof<Enum, EnableIfVoidT<IsEnum<RemoveReferenceT<Enum>>::value>>
+            struct Sizeof<Enum, EnableIfVoidT<IsEnum<RemoveCVT<Enum>>::value>>
             {
                 static constexpr ResultType value(...) noexcept { return sizeof(Enum) * CHAR_BIT; }
             };
 
             /// @brief T が配列型の場合の特殊化
             template <typename Array>
-            struct Sizeof<Array, EnableIfVoidT<IsArray<RemoveReferenceT<Array>>::value>>
+            struct Sizeof<Array, EnableIfVoidT<IsArray<RemoveCVT<Array>>::value>>
             {
                 static constexpr ResultType value(const SerializedBitSizeImpl& self, Array&& array) noexcept
                 {

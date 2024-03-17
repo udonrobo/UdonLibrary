@@ -1,7 +1,6 @@
 //
 //    シリアライザ
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 
@@ -56,6 +55,7 @@ namespace Udon
 
         return true;
     }
+    
 
     /// @brief シリアル化する
     /// @tparam T シリアル化する型(自動推論)
@@ -109,7 +109,8 @@ namespace Udon
             return Udon::nullopt;
         }
 
-        T                  retval;
+        T retval{};
+
         Impl::Deserializer deserializer(buffer.removeBackView(Udon::CRC8_SIZE));
         deserializer(retval);
 

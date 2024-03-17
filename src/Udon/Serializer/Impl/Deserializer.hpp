@@ -1,7 +1,6 @@
 //
 //    デシリアライザ実装部
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 //    Licensed under the MIT License.
@@ -15,7 +14,7 @@
 
 #include <Udon/Algorithm/CRC.hpp>
 #include <Udon/Algorithm/Bit.hpp>
-#include <Udon/Stl/Optional.hpp>
+#include <Udon/Types/Optional.hpp>
 #include <Udon/Types/Float.hpp>
 #include <Udon/Traits/Typedef.hpp>
 #include <Udon/Serializer/SerializerTraits.hpp>
@@ -48,7 +47,7 @@ namespace Udon
 
             /// @brief デシリアライズ
             /// @param args デシリアライズ後のオブジェクトの代入先(一時オブジェクト不可)
-            /// @remark const は外されます
+            /// @note const は外されます
             template <typename... Args>
             void operator()(const Args&... args) const
             {
@@ -61,8 +60,8 @@ namespace Udon
             void argsDeserialize(const Head& head, const Tails&... tails) const
             {
                 const_cast<Deserializer&>(*this).deserialize(const_cast<Head&>(head));
-                // 関数を constexpr にするため、enumerate の引数は "const Deserializer& enumerator" になっている (一時オブジェクトを受けれるように)
-                // enumerator (const *this) から deserialize を呼び出すため、const_cast で const を外している
+                // enumerate 関数は引数に一時オブジェクトを受けられる、かつconstexprである必要があるため "const Serializer& enumerator" になっている
+                // その関係で、operator()、本関数はconstな関数となり、thisポインタはconstなポインタになる。そのため const を外す。
 
                 argsDeserialize(tails...);
             }
@@ -88,7 +87,7 @@ namespace Udon
             template <typename FloatingPoint, EnableIfNullptrT<IsFloatingPoint<RemoveReferenceT<FloatingPoint>>::value> = nullptr>
             void deserialize(FloatingPoint& rhs)
             {
-                rhs = popArithmetic<Udon::float32_t>();
+                rhs = popArithmetic<Udon::Float32>();
             }
 
             /// @brief 列挙型

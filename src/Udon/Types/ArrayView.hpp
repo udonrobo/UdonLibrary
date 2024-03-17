@@ -1,7 +1,6 @@
 //
 //    配列参照クラス
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 
@@ -76,10 +75,10 @@ namespace Udon
 
         template <typename Container, typename = decltype(std::declval<Container>().data(), std::declval<Container>().size())>
         ArrayView(Container&& container)
-			: m_data(container.data())
-			, m_size(container.size())
-		{
-		}
+            : m_data(container.data())
+            , m_size(container.size())
+        {
+        }
 
         explicit operator bool() const noexcept
         {
@@ -184,14 +183,14 @@ namespace Udon
         }
 
         /// @brief 指定された範囲からビューを作成する。
-        /// @remark 終端は現在のビューの終端
+        /// @note 終端は現在のビューの終端
         /// @param beginIndex 開始位置
         /// @return
         ArrayView subView(size_type beginIndex) const
         {
             return {
                 std::next(cbegin(), beginIndex),
-                m_size
+                std::min(m_size - beginIndex, m_size)
             };
         }
 
@@ -207,7 +206,7 @@ namespace Udon
         }
 
         /// @brief 自身が指定のビューから始まるかどうか
-        /// @remark
+        /// @note
         ///      [0, 1, 2, 3, 4].startsWith([0, 1, 2]) == true
         ///      [4, 3, 2, 1, 0].startsWith([0, 1, 2]) == false
         /// @param rhs
@@ -328,7 +327,7 @@ namespace Udon
                     Serial.print(", ");
                 }
             }
-            Serial.println("]");
+            Serial.print("]");
         }
 #endif
     };

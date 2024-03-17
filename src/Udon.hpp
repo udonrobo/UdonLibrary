@@ -84,12 +84,6 @@
 // フォワーディング / メッセージ転送
 #include <Udon/Com/Common/Forwarding.hpp>
 
-// 配列受信
-#include <Udon/Com/Common/ArrayElementReader.hpp>
-
-// 配列送信
-#include <Udon/Com/Common/ArrayElementWriter.hpp>
-
 //
 //    ファイルシステム / filesystem
 //
@@ -140,9 +134,6 @@
 
 // 3次元ベクトル
 #include <Udon/Types/Vector3D.hpp>
-
-// 4次元ベクトル
-#include <Udon/Types/Vector4D.hpp>
 
 // 極座標系
 #include <Udon/Types/Polar.hpp>

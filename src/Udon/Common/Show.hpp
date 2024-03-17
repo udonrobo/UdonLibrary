@@ -1,7 +1,6 @@
 //
 //    汎用表示関数
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 
@@ -344,7 +343,7 @@ namespace Udon
 
     /// @brief 改行、区切り文字なしで出力する
     template <typename... Args>
-    void ShowRaw(Args... args)
+    void ShowRaw(Args&&... args)
     {
         Impl::ShowImpl(false, false, std::forward<Args>(args)...);
     }

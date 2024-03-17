@@ -20,6 +20,9 @@ namespace Udon
         using RemoveReferenceT = typename std::remove_reference<T>::type;
 
         template <typename T>
+        using RemoveCVT = RemoveConstT<RemoveReferenceT<T>>;
+
+        template <typename T>
         using IsBool = std::is_same<T, bool>;
 
         template <typename T>

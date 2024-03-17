@@ -1,7 +1,6 @@
 //
 //    文字列参照クラス (std::string_view代替)
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 Udonrobo
 //
 
@@ -48,6 +47,8 @@ namespace Udon
         using const_iterator         = const char_type*;
         using const_receive_iterator = std::reverse_iterator<const_iterator>;
 
+        static constexpr size_type npos = static_cast<size_type>(-1);
+
     private:
         const_pointer m_data;    // ビューの先頭を指すポインタ
         size_type     m_size;    // ビューの要素数
@@ -61,7 +62,7 @@ namespace Udon
         }
 
         /// @brief 文字列の先頭を指すポインタをもとにビューを構築
-        /// @remark null終端文字が必須です
+        /// @note null終端文字が必須です
         /// @param string
         BasicStringView(const_pointer string)
             : m_data(string)
@@ -90,13 +91,27 @@ namespace Udon
         }
 
         /// @brief std::string からの変換
-        /// @remark 一時オブジェクトからの変換は禁止(ダングリングポインタになる)
+        /// @note 一時オブジェクトからの変換は禁止(ダングリングポインタになる)
         /// @param string
         BasicStringView(const std::basic_string<CharType>& string)
             : m_data(string.data())
             , m_size(string.size())
         {
         }
+
+        
+#ifdef ARDUINO
+
+        /// @brief Arduino の String からの変換
+        /// @note T が char の場合のみ有効
+        /// @param str
+        template <typename T = CharType, typename = typename std::enable_if<std::is_same<T, char>::value>::type>
+        BasicStringView(const String& str)
+            : m_data(str.c_str())
+            , m_size(str.length())
+        {
+        }
+#endif
 
         /// @brief デフォルトコピーコンストラクタ
         BasicStringView(const BasicStringView&) = default;
@@ -124,8 +139,8 @@ namespace Udon
             return m_size;
         }
 
-        // ヌル終端文字は含まれないので、c_str() は提供しない
-        // const_pointer c_str() const noexcept;
+        /// @brief ビュー終端にヌル終端文字を含むことは保証されないので c_str() は提供しない
+        // const_pointer c_str() const noexcept = delete;
 
         /// @brief ビューのサイズが0か判定
         /// @return
@@ -171,26 +186,32 @@ namespace Udon
         /// @param beginIndex 開始位置
         /// @param endIndex 終端位置(ビューに含まれない)
         /// @return 作成されたビュー
-        BasicStringView substring(const size_type beginIndex, const size_type endIndex) const
+        BasicStringView substring(const size_type beginIndex, const size_type endIndex = npos) const
         {
+            if (beginIndex >= m_size)
+            {
+                return {};
+            }
+            if (endIndex == npos)
+            {
+                return {
+                    std::next(cbegin(), beginIndex),
+                    m_size - beginIndex
+                };
+            }
+            if (endIndex <= beginIndex)
+            {
+                return {};
+            }
             return {
                 std::next(cbegin(), beginIndex),
                 std::next(cbegin(), std::min(endIndex, m_size)),
             };
         }
 
-        /// @brief 指定された要素のインデックスから始まるビューを作成する
-        /// @param beginIndex 開始位置
-        /// @remark 終端位置は現在のビューの終端位置
-        /// @return 作成されたビュー
-        BasicStringView substring(const size_type beginIndex) const
-        {
-            return substring(beginIndex, m_size);
-        }
-
         /// @brief 指定された終端文字までのビューを作成する
         /// @param terminate 終端文字(ビューに含まれない)
-        /// @remark 開始位置は現在のビューの開始位置
+        /// @note 開始位置は現在のビューの開始位置
         /// @return 作成されたビュー
         BasicStringView substringUntil(const char_type terminate) const
         {
@@ -200,14 +221,33 @@ namespace Udon
             };
         }
 
-        /// @brief 指定された開始文字からのビューを作成する
-        /// @param start 開始文字
+        /// @brief 先頭のN文字を削除したビューを作成する
+        /// @param n 削除する文字数
         /// @return 作成されたビュー
-        BasicStringView substringFrom(const char_type start) const
+        BasicStringView removePrefix(const size_type n) const
         {
+            if (n >= m_size)
+            {
+                return {};
+            }
             return {
-                std::next(std::find(cbegin(), cend(), start)),    // find()はstartを指しているので、次の文字から
-                cend()
+                std::next(cbegin(), n),
+                m_size - n
+            };
+        }
+
+        /// @brief 末尾のN文字を削除したビューを作成する
+        /// @param n 削除する文字数
+        /// @return 作成されたビュー
+        BasicStringView removeSuffix(const size_type n) const
+        {
+            if (n >= m_size)
+            {
+                return {};
+            }
+            return {
+                cbegin(),
+                m_size - n
             };
         }
 
@@ -216,8 +256,7 @@ namespace Udon
         /// @return true: 始まっている false: 始まっていない
         bool startsWith(const BasicStringView& string) const noexcept
         {
-            return m_size >= string.m_size and
-                   std::equal(string.cbegin(), string.cend(), cbegin());
+            return m_size >= string.m_size and traits_type::compare(m_data, string.m_data, string.m_size) == 0;
         }
 
         /// @brief ビューが指定したビューで終わっているか判定する
@@ -225,8 +264,7 @@ namespace Udon
         /// @return
         bool endsWith(const BasicStringView& string) const noexcept
         {
-            return m_size >= string.m_size and
-                   std::equal(string.crbegin(), string.crend(), crbegin());
+            return m_size >= string.m_size and traits_type::compare(m_data + m_size - string.m_size, string.m_data, string.m_size) == 0;
         }
 
         /// @brief 指定された区切り文字で区切り、ビューのリストを作成する
@@ -266,7 +304,7 @@ namespace Udon
         }
 
         /// @brief STL の文字列に変換する
-        /// @remark メモリアロケーションが発生します。
+        /// @note メモリアロケーションが発生します。
         /// @return 文字列
         std::basic_string<char_type> toString() const
         {
@@ -287,8 +325,7 @@ namespace Udon
         /// @return 一致するかどうか
         friend bool operator==(const BasicStringView& lhs, const BasicStringView& rhs) noexcept
         {
-            return lhs.m_size == rhs.m_size and
-                   std::equal(lhs.cbegin(), lhs.cend(), rhs.cbegin());
+            return lhs.m_size == rhs.m_size and traits_type::compare(lhs.m_data, rhs.m_data, lhs.m_size) == 0;
         }
 
         /// @brief ビューが不一致であるか比較する
@@ -310,6 +347,26 @@ namespace Udon
 
 #endif
 
+#ifdef ARDUINO
+        void show() const
+        {
+            Serial.print("[");
+            for (size_type i = 0; i < m_size; ++i)
+            {
+                Serial.print(m_data[i]);
+                if (i < m_size - 1)
+                {
+                    Serial.print(", ");
+                }
+            }
+            Serial.print("]");
+        }
+        void showString() const
+        {
+            Serial.write(m_data, m_size);
+        }
+#endif
+
         // iterator 要件
         const_iterator begin() const noexcept { return m_data; }
         const_iterator end() const noexcept { return m_data + m_size; }
@@ -322,40 +379,6 @@ namespace Udon
 
         const_receive_iterator crbegin() const noexcept { return const_receive_iterator(cend()); }
         const_receive_iterator crend() const noexcept { return const_receive_iterator(cbegin()); }
-
-        // char traits 要件 (https://cpprefjp.github.io/reference/string/char_traits.html)
-        static constexpr void assign(const_pointer dest, const size_type size, const char_type& ch)
-        {
-            traits_type::assign(dest, size, ch);
-        }
-        static constexpr bool eq(const char_type& lhs, const char_type& rhs)
-        {
-            return traits_type::eq(lhs, rhs);
-        }
-        static constexpr bool lt(const char_type& lhs, const char_type& rhs)
-        {
-            return traits_type::lt(lhs, rhs);
-        }
-        static constexpr int compare(const_pointer lhs, const_pointer rhs, const size_type size)
-        {
-            return traits_type::compare(lhs, rhs, size);
-        }
-        static constexpr size_type length(const_pointer string)
-        {
-            return traits_type::length(string);
-        }
-        static constexpr const_pointer find(const_pointer string, const size_type size, const char_type& ch)
-        {
-            return traits_type::find(string, size, ch);
-        }
-        static constexpr const_pointer move(const_pointer dest, const_pointer src, const size_type size)
-        {
-            return traits_type::move(dest, src, size);
-        }
-        static constexpr const_pointer copy(const_pointer dest, const_pointer src, const size_type size)
-        {
-            return traits_type::copy(dest, src, size);
-        }
     };
 
 }    // namespace Udon

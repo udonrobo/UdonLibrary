@@ -1,7 +1,6 @@
 //
 //    I2c スレーブ側受信クラス
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 
@@ -16,8 +15,6 @@
 
 #include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
-#include <Udon/Com/Common/ParsableArray.hpp>
-#include <Udon/Com/Common/ArrayElementReader.hpp>
 
 namespace Udon
 {
@@ -108,49 +105,5 @@ namespace Udon
 
     template <typename Message>
     I2cSlaveReader<Message>* I2cSlaveReader<Message>::self;
-
-    /// @brief メッセージ配列受信クラス
-    /// @details
-    ///     メッセージ配列を受信するためのクラスです。
-    ///     I2cSlaveReader<Udon::Vec2[5]> reader(bus, address); のように使用します。
-    ///     at メソッドで各要素を Reader として取得できます。
-    ///     Udon::Encoder<Udon::ArrayElementReader> encoder(reader.at(index)); のように使用します。
-    ///     通常の I2cSlaveReader を継承しているため、I2cSlaveReader 内のメソッドをそのまま使用できます。
-    /// @tparam Message メッセージ型
-    /// @tparam N 配列要素数
-    template <typename Message, size_t N>
-    class I2cSlaveReader<Message[N]>
-        : public I2cSlaveReader<Udon::ParsableArray<Message, N>>
-    {
-
-        using BaseType = I2cSlaveReader<Udon::ParsableArray<Message, N>>;
-
-        using ArrayType = typename BaseType::MessageType;
-
-        ArrayType array;
-
-        bool hasValue;
-
-    public:
-        using BaseType::BaseType;
-        
-        Udon::ArrayElementReader<Message> at(size_t index)
-        {
-            return { array.at(index), hasValue };
-        }
-
-        void update()
-        {
-            if (const auto message = BaseType::getMessage())
-            {
-                array    = *message;
-                hasValue = true;
-            }
-            else
-            {
-                hasValue = false;
-            }
-        }
-    };
 
 }    // namespace Udon

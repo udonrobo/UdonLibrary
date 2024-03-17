@@ -1,7 +1,6 @@
 //
 //    通信用メッセージ
 //
-//    Copyright (c) 2022-2023 Okawa Yusuke
 //    Copyright (c) 2022-2023 udonrobo
 //
 
@@ -99,7 +98,7 @@ namespace Udon
                 Serial.print(analogRightX), Serial.print('\t');
                 Serial.print(analogRightY), Serial.print('\t');
                 Serial.print(analogLeftX), Serial.print('\t');
-                Serial.print(analogLeftY), Serial.print('\t');
+                Serial.print(analogLeftY);
             }
 #endif
 
