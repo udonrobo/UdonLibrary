@@ -46,7 +46,7 @@ namespace Udon
 
         explicit operator bool() const
         {
-            return millis() - rx.transmitMs < 100;
+            return Millis() - rx.transmitMs < 100;
         }
 
         /// @brief モーターの電流を設定
