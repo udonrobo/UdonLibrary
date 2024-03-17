@@ -23,35 +23,28 @@ namespace Udon
         : public ICanBus
     {
     public:
-        /// @brief SPI 設定情報
-        struct SpiConfig
+        /// @brief 設定
+        struct Config
         {
-            spi_inst_t* channel = spi_default;    // SPI チャンネル (spi0, spi1)
+            spi_inst_t* channel = spi_default;                 // SPI チャンネル (spi0, spi1)
+            uint8_t     cs      = PICO_DEFAULT_SPI_CSN_PIN;    // チップセレクトピン
+            uint8_t     interrupt;                             // 受信割り込みピン
+            uint8_t     mosi = PICO_DEFAULT_SPI_TX_PIN;        // MOSIピン (TX)
+            uint8_t     miso = PICO_DEFAULT_SPI_RX_PIN;        // MISOピン (RX)
+            uint8_t     sck  = PICO_DEFAULT_SPI_SCK_PIN;       // クロックピン
 
-            uint8_t cs   = PICO_DEFAULT_SPI_CSN_PIN;    // チップセレクトピン
+            uint32_t spiClock = 1'000'000;    // SPIクロック周波数 [Hz]
 
-            uint8_t interrupt;    // 受信割り込みピン
-            uint8_t mosi = PICO_DEFAULT_SPI_TX_PIN;     // MOSIピン (TX)
-            uint8_t miso = PICO_DEFAULT_SPI_RX_PIN;     // MISOピン (RX)
-            uint8_t sck  = PICO_DEFAULT_SPI_SCK_PIN;    // クロックピン
-
-            uint32_t clock = 1'000'000;    // SPIクロック周波数 [Hz]
-        };
-
-        /// @brief CAN 設定情報
-        struct CanConfig
-        {
             uint32_t  transmitInterval = 5;               // 送信間隔 [ms]
             uint32_t  transmitTimeout  = 100;             // 送信タイムアウト時間 [ms]
             uint32_t  receiveTimeout   = 100;             // 受信タイムアウト時間 [ms]
-            CAN_SPEED baudrate         = CAN_1000KBPS;    // CAN通信速度
+            CAN_SPEED canBaudrate      = CAN_1000KBPS;    // CAN通信速度
             CAN_CLOCK mcpClock         = MCP_16MHZ;       // トランシーバー動作クロック周波数 [Hz]
         };
 
         /// @brief コンストラクタ
-        /// @param spiConfig SPI 設定情報
-        /// @param canConfig CAN 設定情報 [optional]
-        CanBusSpi(const SpiConfig& spiConfig, const CanConfig& canConfig);
+        /// @param config 設定
+        CanBusSpi(const Config& config);
 
         /// @brief 通信開始
         /// @remark 呼び出し必須
@@ -61,9 +54,7 @@ namespace Udon
         /// @brief CAN通信のみ開始する
         /// @remark SPI通信は別途開始する必要がある
         ///         SPIバスがCANコントローラーとの通信のみに使用される場合は、この関数を呼び出す必要はない
-        /// @param interrupt 割り込みピン
-        /// @param canConfig CAN 設定情報
-        void beginCanOnly(uint8_t interrupt, const CanConfig& canConfig);
+        void beginCanOnly();
 
         /// @brief バス更新
         /// @remark 呼び出し必須
@@ -88,13 +79,28 @@ namespace Udon
 
         void joinRx(CanNode& node, void (*onReceive)(void*), void* p) override;
 
+        CanNode* findTx(uint32_t id, size_t length = 0) override
+        {
+            if (length == 0)
+            {
+                auto it = std::find_if(txNodes.begin(), txNodes.end(), [id](const auto& node)
+                                       { return node->id == id; });
+                return it == txNodes.end() ? nullptr : *it;
+            }
+            else
+            {
+                auto it = std::find_if(txNodes.begin(), txNodes.end(), [id, length](const auto& node)
+                                       { return node->id == id && node->length == length; });
+                return it == txNodes.end() ? nullptr : *it;
+            }
+        }
+
         void leaveTx(const CanNode& node) override;
 
         void leaveRx(const CanNode& node) override;
 
     private:
-        SpiConfig spiConfig;
-        CanConfig canConfig;
+        Config config;
 
         MCP2515 bus;
 

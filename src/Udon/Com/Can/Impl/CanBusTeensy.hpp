@@ -9,7 +9,7 @@ namespace Udon
 {
 
     template <CAN_DEV_TABLE Bus>
-    CanBusTeensy<Bus>::CanBusTeensy(const CanConfig& config)
+    CanBusTeensy<Bus>::CanBusTeensy(const Config& config)
         : config(config)
     {
         self = this;
@@ -34,13 +34,12 @@ namespace Udon
     }
 
     /// @brief 通信開始
-    /// @param baudrate 通信レート
     template <CAN_DEV_TABLE Bus>
     void CanBusTeensy<Bus>::begin()
     {
         // バス初期化
         bus.begin();
-        bus.setBaudRate(config.baudrate);
+        bus.setBaudRate(config.canBaudrate);
 
         // 受信開始
         if (rxNodes)
