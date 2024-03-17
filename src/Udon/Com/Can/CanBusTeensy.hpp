@@ -29,17 +29,17 @@ namespace Udon
         : public ICanBus
     {
     public:
-        struct CanConfig
+        struct Config
         {
             uint32_t transmitInterval = 5;            // 送信間隔 [ms]
             uint32_t transmitTimeout  = 100;          // 送信タイムアウト時間 [ms]
             uint32_t receiveTimeout   = 100;          // 受信タイムアウト時間 [ms]
-            uint32_t baudrate         = 1'000'000;    // CAN通信速度 [bps]
+            uint32_t canBaudrate      = 1'000'000;    // CAN通信速度 [bps]
         };
 
         /// @brief コンストラクタ
         /// @param config CAN設定情報 [optional]
-        explicit CanBusTeensy(const CanConfig& config = {});
+        explicit CanBusTeensy(const Config& config = {});
 
         /// @brief コピーコンストラクタ
         CanBusTeensy(const CanBusTeensy&);
@@ -76,14 +76,30 @@ namespace Udon
 
         void joinRx(CanNode& node, void (*onReceive)(void*), void* p) override;
 
+        CanNode* findTx(uint32_t id, size_t length = 0) override
+        {
+            if (length == 0)
+            {
+                auto it = std::find_if(txNodes.begin(), txNodes.end(), [id](const auto& node)
+                                       { return node->id == id; });
+                return it == txNodes.end() ? nullptr : *it;
+            }
+            else
+            {
+                auto it = std::find_if(txNodes.begin(), txNodes.end(), [id, length](const auto& node)
+                                       { return node->id == id && node->length == length; });
+                return it == txNodes.end() ? nullptr : *it;
+            }
+        }
+
         void leaveTx(const CanNode& node) override;
 
         void leaveRx(const CanNode& node) override;
 
     private:
-        static CanBusTeensy* self;    // コールバック関数から自身のインスタンスを参照するためのポインタ (クラステンプレートによってインスタンスごとに別のstatic変数が生成される)
+        static CanBusTeensy* self;    // コールバック関数から自身のインスタンスを参照するためのポインタ (本クラスはテンプレート引数を持つクラスであるため、引数が異なる実体化されたクラスは別のstatic変数をもつことになる)
 
-        CanConfig config;
+        Config config;
 
         FlexCAN_T4<Bus, RX_SIZE_256, TX_SIZE_256> bus;
 

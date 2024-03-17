@@ -13,7 +13,7 @@ inline void testBus()
             .transmitInterval = 5,
             .transmitTimeout  = 100,
             .receiveTimeout   = 100,
-            .baudrate         = 1'000'000,
+            .canBaudrate      = 1'000'000,
         }
     };
 
@@ -37,19 +37,17 @@ inline void testBus()
 {
     Udon::CanBusSpi{
         {
-            .channel   = spi0,
-            .cs        = 1,
-            .interrupt = 2,
-            .mosi      = 3,
-            .miso      = 4,
-            .sck       = 5,
-            .clock     = 1'000'000,
-        },
-        {
+            .channel          = spi0,
+            .cs               = 1,
+            .interrupt        = 2,
+            .mosi             = 3,
+            .miso             = 4,
+            .sck              = 5,
+            .spiClock         = 1'000'000,
             .transmitInterval = 5,
             .transmitTimeout  = 100,
             .receiveTimeout   = 100,
-            .baudrate         = CAN_1000KBPS,
+            .canBaudrate      = CAN_1000KBPS,
             .mcpClock         = MCP_16MHZ,
         }
     };
@@ -88,10 +86,11 @@ struct DummyBus
     : Udon::ICanBus
 {
     explicit operator bool() const override { return true; }
-    void joinTx(Udon::CanNode&) override {}
-    void joinRx(Udon::CanNode&, void (*)(void*), void*) override {}
-    void leaveTx(const Udon::CanNode&) override {}
-    void leaveRx(const Udon::CanNode&) override {}
+    void           joinTx(Udon::CanNode&) override {}
+    void           joinRx(Udon::CanNode&, void (*)(void*), void*) override {}
+    Udon::CanNode* findTx(uint32_t /*id*/, size_t /*length*/ = 0) override { return nullptr; }
+    void           leaveTx(const Udon::CanNode&) override {}
+    void           leaveRx(const Udon::CanNode&) override {}
 };
 
 inline void testReader()

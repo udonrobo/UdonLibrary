@@ -29,6 +29,13 @@ namespace Udon
         /// @param p コールバック関数の引数に渡すポインタ (thisなどを渡す)
         virtual void joinRx(CanNode& node, void (*onReceive)(void*), void* p) = 0;
 
+        /// @brief 送信ノードを検索
+        /// @note 検索後にノードが削除されるとバッファのポインタが無効になるので注意
+        /// @param id メッセージID
+        /// @param length データ長 (0の場合は長さを無視して検索)
+        /// @return 見つかった場合はCanNode*、見つからなかった場合はnullptr
+        virtual CanNode* findTx(uint32_t id, size_t length = 0) = 0;
+
         /// @brief 送信ノードを登録解除
         virtual void leaveTx(const CanNode& node) = 0;
 

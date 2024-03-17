@@ -9,14 +9,12 @@
 namespace Udon
 {
     /// @brief コンストラクタ
-    /// @param spiConfig SPI 設定情報
-    /// @param canConfig CAN 設定情報
-    inline CanBusSpi::CanBusSpi(const SpiConfig& spiConfig, const CanConfig& canConfig = {})
-        : spiConfig(spiConfig)
-        , canConfig(canConfig)
-        , bus(/* spi_inst_t* CHANNEL    */ spiConfig.channel,
-              /* uint8_t     CS_PIN     */ spiConfig.cs,
-              /* uint32_t    _SPI_CLOCK */ spiConfig.clock)
+    /// @param config 設定
+    inline CanBusSpi::CanBusSpi(const Config& config)
+        : config(config)
+        , bus(/* spi_inst_t* CHANNEL    */ config.channel,
+              /* uint8_t     CS_PIN     */ config.cs,
+              /* uint32_t    _SPI_CLOCK */ config.spiClock)
     {
     }
 
@@ -24,36 +22,34 @@ namespace Udon
     /// @note SPI通信も開始します。
     inline void CanBusSpi::begin()
     {
-        (void)spi_init(/* spi_inst_t* spi      */ spiConfig.channel,
-                       /* uint        baudrate */ spiConfig.clock);
+        (void)spi_init(/* spi_inst_t* spi      */ config.channel,
+                       /* uint        baudrate */ config.spiClock);
 
-        spi_set_format(/* spi_inst_t* spi       */ spiConfig.channel,
+        spi_set_format(/* spi_inst_t* spi       */ config.channel,
                        /* uint        data_bits */ 8,
                        /* spi_cpol_t  cpol      */ SPI_CPOL_0,
                        /* spi_cpha_t  cpha      */ SPI_CPHA_0,
                        /* spi_order_t order     */ SPI_MSB_FIRST);
 
-        spi_set_slave(/* spi_inst_t* spi   */ spiConfig.channel,
+        spi_set_slave(/* spi_inst_t* spi   */ config.channel,
                       /* bool        slave */ false);
 
-        gpio_set_function(spiConfig.mosi, GPIO_FUNC_SPI);
-        gpio_set_function(spiConfig.miso, GPIO_FUNC_SPI);
-        gpio_set_function(spiConfig.sck, GPIO_FUNC_SPI);
+        gpio_set_function(config.mosi, GPIO_FUNC_SPI);
+        gpio_set_function(config.miso, GPIO_FUNC_SPI);
+        gpio_set_function(config.sck, GPIO_FUNC_SPI);
 
-        gpio_init(spiConfig.cs);
-        gpio_set_dir(spiConfig.cs, true);
-        gpio_put(spiConfig.cs, true);
+        gpio_init(config.cs);
+        gpio_set_dir(config.cs, true);
+        gpio_put(config.cs, true);
 
 
-        beginCanOnly(spiConfig.interrupt, canConfig);
+        beginCanOnly();
     }
 
     /// @brief CAN通信のみ開始する
     /// @note SPI通信は別途開始する必要がある
     ///         SPIバスがCANコントローラーとの通信のみに使用される場合は、この関数を呼び出す必要はない
-    /// @param interrupt 割り込みピン
-    /// @param canConfig CAN 設定情報
-    inline void CanBusSpi::beginCanOnly(uint8_t interrupt, const CanConfig& canConfig)
+    inline void CanBusSpi::beginCanOnly()
     {
         bus.reset();
 
@@ -61,9 +57,9 @@ namespace Udon
         if (const auto rxSize = rxNodes.size())
         {
             // 割り込み設定
-            pinMode(interrupt, INPUT_PULLDOWN);
+            pinMode(config.interrupt, INPUT_PULLDOWN);
             attachInterruptParam(
-                digitalPinToInterrupt(interrupt),
+                digitalPinToInterrupt(config.interrupt),
                 [](void* p)
                 {
                     auto      self = static_cast<CanBusSpi*>(p);
@@ -95,7 +91,7 @@ namespace Udon
             }
         }
 
-        bus.setBitrate(canConfig.baudrate, canConfig.mcpClock);
+        bus.setBitrate(config.canBaudrate, config.mcpClock);
 
         bus.setNormalMode();
     }
@@ -115,7 +111,7 @@ namespace Udon
     inline bool CanBusSpi::txTimeout() const
     {
         if (txNodes)
-            return millis() - transmitMs >= canConfig.transmitTimeout;
+            return millis() - transmitMs >= config.transmitTimeout;
         else
             return false;
     }
@@ -123,7 +119,7 @@ namespace Udon
     inline bool CanBusSpi::rxTimeout() const
     {
         if (rxNodes)
-            return millis() - receiveMs >= canConfig.receiveTimeout;
+            return millis() - receiveMs >= config.receiveTimeout;
         else
             return false;
     }
@@ -132,7 +128,7 @@ namespace Udon
     inline void CanBusSpi::update()
     {
         onReceive();
-        if (txNodes and millis() - transmitMs >= canConfig.transmitInterval)
+        if (txNodes and millis() - transmitMs >= config.transmitInterval)
         {
             onTransmit();
             transmitMs = millis();
