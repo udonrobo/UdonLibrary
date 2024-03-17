@@ -1,5 +1,4 @@
 #include <Udon.hpp>
-#include <Udon/Driver/RoboMasterC620.hpp>
 
 // CAN通信バス
 Udon::CanBusTeensy<CAN2> bus;
