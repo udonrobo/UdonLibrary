@@ -9,9 +9,14 @@ namespace Udon
     class RoboMasterC620
     {
     public:
-        RoboMasterC620(Udon::ICanBus& bus, uint8_t motorId)
+
+        /// @brief コンストラクタ
+        /// @param bus CAN通信バス
+        /// @param motorId モーターID (1~8)
+        RoboMasterC620(Udon::ICanBus& bus, uint8_t motorId, bool direction = true)
             : bus{ bus }
             , motorId{ motorId }
+            , direction{ direction }
             , rx{ static_cast<uint32_t>(0x200 + Constrain(motorId, 1, 8)), rxBuffer, sizeof rxBuffer, 0 }
         {
             if (bus.findTx(shared.node.id, shared.node.length) == nullptr)
@@ -21,27 +26,31 @@ namespace Udon
                 useSharedBuffer = true;
             }
 
-            const auto onReceive = [](void* p)
-            {
-                auto self = static_cast<RoboMasterC620*>(p);
-
-                // 変化角を計算
-                const auto currentAngle = self->rxBuffer[0] << 8 | self->rxBuffer[1];
-                const auto dTheta       = self->angle - currentAngle;
-                self->angle             = currentAngle;
-
-                // 変化量がいきなり半周を超えた -> 計算値が-π~π間を通過 -> 一周分オフセットを加減算
-                if (dTheta > ppr / 2)
-                {
-                    self->offsetAngle += ppr;
-                }
-                else if (dTheta < -ppr / 2)
-                {
-                    self->offsetAngle -= ppr;
-                }
-            };
-
             bus.joinRx(rx, onReceive, this);
+        }
+
+        RoboMasterC620(const RoboMasterC620& other)
+            : bus{ other.bus }
+            , motorId{ other.motorId }
+            , direction{ other.direction }
+            , rx{ static_cast<uint32_t>(0x200 + motorId), rxBuffer, sizeof rxBuffer, 0 }
+        {
+            if (bus.findTx(shared.node.id, shared.node.length) == nullptr)
+            {
+                // 送信バッファが見つからない場合は新規作成
+                bus.joinTx(shared.node);
+                useSharedBuffer = true;
+            }
+            bus.joinRx(rx, onReceive, this);
+        }
+
+        ~RoboMasterC620()
+        {
+            if (useSharedBuffer)
+            {
+                bus.leaveTx(shared.node);   // ※1 ここで参照が切れる
+            }
+            bus.leaveRx(rx);
         }
 
         explicit operator bool() const
@@ -53,7 +62,7 @@ namespace Udon
         /// @param current 電流値 [-20000, 20000] (単位: mA)
         void setCurrent(int16_t current)
         {
-            current = Constrain(current, -20000, 20000);
+            current = Constrain(current, -20000, 20000) * directionSign();
 
             const auto transmitCurrent = static_cast<int16_t>(current * 16384 / 20000);    // 16bit符号なし整数に変換
             const auto motorIndex      = (motorId - 1) * 2;
@@ -64,9 +73,9 @@ namespace Udon
             }
             else
             {
-                auto reference                  = bus.findTx(shared.node.id, shared.node.length);
-                reference->data[motorIndex + 0] = transmitCurrent >> 8 & 0xff;    // high byte
-                reference->data[motorIndex + 1] = transmitCurrent >> 0 & 0xff;    // low byte
+                auto reference                  = bus.findTx(shared.node.id, shared.node.length);    // コピーによって参照が切れるのを防ぐため、毎回検索を行う (※1)
+                reference->data[motorIndex + 0] = transmitCurrent >> 8 & 0xff;                       // high byte
+                reference->data[motorIndex + 1] = transmitCurrent >> 0 & 0xff;                       // low byte
             }
         }
 
@@ -76,7 +85,7 @@ namespace Udon
         /// @return 角度 [rad]
         double getAngle() const
         {
-            return (angle + offsetAngle) * 2 * Udon::Pi / ppr;
+            return (angle + offsetAngle) * 2 * Udon::Pi / ppr * directionSign();
         }
 
 
@@ -84,7 +93,7 @@ namespace Udon
         /// @return 速度 [rpm]
         uint16_t getVelocity() const
         {
-            return rxBuffer[2] << 8 | rxBuffer[3];
+            return (rxBuffer[2] << 8 | rxBuffer[3]) * directionSign();
         }
 
 
@@ -93,7 +102,7 @@ namespace Udon
         int16_t getTorqueCurrent() const
         {
             const int current = rxBuffer[4] << 8 | rxBuffer[5];
-            return current;
+            return current * directionSign();
         }
 
 
@@ -111,6 +120,10 @@ namespace Udon
 
         /// @brief モーターID
         uint8_t motorId;
+
+
+        /// @brief 回転方向
+        bool direction;
 
 
         /// @brief 送信バッファ
@@ -134,5 +147,30 @@ namespace Udon
 
         /// @brief エンコーダー分解能
         static constexpr int32_t ppr = 8192;
+
+        static void onReceive(void* p)
+        {
+            auto self = static_cast<RoboMasterC620*>(p);
+
+            // 変化角を計算
+            const auto currentAngle = self->rxBuffer[0] << 8 | self->rxBuffer[1];
+            const auto dTheta       = self->angle - currentAngle;
+            self->angle             = currentAngle;
+
+            // 変化量がいきなり半周を超えた -> 計算値が-π~π間を通過 -> 一周分オフセットを加減算
+            if (dTheta > ppr / 2)
+            {
+                self->offsetAngle += ppr;
+            }
+            else if (dTheta < -ppr / 2)
+            {
+                self->offsetAngle -= ppr;
+            }
+        }
+
+        int directionSign() const
+        {
+            return direction ? 1 : -1;
+        }
     };
 }    // namespace Udon
