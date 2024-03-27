@@ -4,39 +4,24 @@
 
 #include <Udon.hpp>
 
-Udon::E220 lora{ Serial1,      2,       3,       4 };
-//               ^--UARTPort   ^--M0Pin ^--M1Pin ^--AUXPin
+Udon::E220Reader<uint64_t> lora({
+    .serial = Serial1,
+    .m0 = 2,
+    .m1 = 3, 
+    .aux = 4,
+    .channel = 0
+});
 
-Udon::LoRaReader<int> reader{ lora };
-//               ^--Message   ^--LoRa
-
-void setup() 
+void setup()
 {
-    // 送信を行うには、同じ周波数帯(チャンネル)で、かつ送信先のアドレスを指定している必要がある
-    constexpr uint8_t channel = 0x0a;
-    constexpr uint16_t myAddress = 0x0002;
-    constexpr uint16_t tarAddress = 0x0001;
-    lora.begin(channel, myAddress, tarAddress);
+    lora.begin();
 }
 
 void loop()
 {
-    // LoRaデバイスを更新(受信処理を行う)
+    if (const auto message = lora.getMessage())
     {
-        lora.update();
-    }
-
-    // 受信データを出力
-    if (const auto message = reader.getMessage())
-    {
-        // 受信成功
         Serial.println(*message);
     }
-    else
-    {
-        // 受信失敗
-        Serial.println("receive error!");
-    }
-    
-    delay(10);
+    delay(1);
 }
