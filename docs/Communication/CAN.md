@@ -60,19 +60,17 @@ flowchart LR
 
 ## 通信バスクラス
 
-送受信処理、通信が行えているかどうかのチェックを行います。使用するマイコンや CAN コントローラーによって使用するクラスが異なります。
+送受信処理、通信が行えているかどうかのチェックを行います。使用するマイコンや CAN コントローラーによってバスクラスは異なります。
 
-> CAN の通信プロトコルは `CAN2.0A` を使用します。よって ID は `0x000` ~ `0x7FF` の範囲で使用できます。
+> CAN の通信プロトコルは `CAN2.0B` を使用します。よって ID は `0x000` ~ `0x7FF` の範囲で使用できます。
 >
-> CAN2.0A プロトコルは一度に 8byte までしかデータを送ることができないので、8byte より多いデータは分割し送受信します。この時、1byte 目にはインデックスの番号が付与されます。
+> CAN2.0B は 一度に 8byte のデータしか送信できません。よって 8byte より多いデータは分割し送受信します。この時、1byte 目にはインデックス番号が付与されます。
 >
-> 8byte 以下のデータはそのまま送受信するため、互換性があります。
+> 8byte 以下のデータはインデックスを付与せず送受信するため、他の CAN デバイスとの通信にも使用できます。
 
 ### Teensy
 
-Teensy 内臓 CAN コントローラーを使用し CAN 通信を行います。
-
-受信ノードが 8 個以内の場合、受信フィルタの設定を行います。
+内臓 CAN コントローラーを使用し CAN 通信を行います。受信ノードが 8 個以内の場合、受信フィルタの設定を行います。
 
 ```mermaid
 flowchart LR
@@ -86,23 +84,37 @@ CANトランシーバー --CAN H/L--> CANバス
 
 ```cpp
 static Udon::CanBusTeensy<CAN1> bus;
-
-void setup()
-{
-    bus.begin();
-    // bus.begin(baudrate);
-}
-void loop()
-{
-    bus.update();
-}
 ```
+
+<details>
+<summary> 詳細な設定について </summary>
+
+`Udon::CanBusTeensy::Config` 構造体を用いて詳細な設定が可能です。構造体は次のように定義されています。
+
+```cpp
+struct Config
+{
+    uint32_t transmitInterval = 5;            // 送信間隔 [ms]
+    uint32_t transmitTimeout  = 100;          // 送信タイムアウト時間 [ms]
+    uint32_t receiveTimeout   = 100;          // 受信タイムアウト時間 [ms]
+    uint32_t canBaudrate      = 1'000'000;    // CAN通信速度 [bps]
+};
+```
+
+```cpp
+static Udon::CanBusTeensy<CAN1> bus({
+    .transmitInterval = 5,
+    .transmitTimeout  = 100,
+    .receiveTimeout   = 100,
+    .canBaudrate      = 1'000'000,
+});
+```
+
+</details>
 
 ### Raspberry Pi Pico
 
-外部 CAN コントローラーを使用し CAN 通信を行います。コントローラーとは SPI で通信します。
-
-受信ノードが 6 個以内の場合、受信フィルタの設定を行います。
+外部 CAN コントローラーを使用し CAN 通信を行います。コントローラーとは SPI で通信します。受信ノードが 6 個以内の場合、受信フィルタの設定を行います。
 
 ```mermaid
 flowchart LR
@@ -115,81 +127,57 @@ flowchart LR
 ```
 
 ```cpp
-// バスクラスインスタンス化 (設定項目最小)
-static Udon::CanBusSpi bus{{
-    .channel   = spi0,
-    .cs        = csPin,
-    .interrupt = intPin
-}};
-
-void setup()
-{
-    // Udon::PioClockBegin(21, 16000000);  CANコントローラー用クロック
-    bus.begin();
-}
-void loop()
-{
-    bus.update();
-}
+static Udon::CanBusSpi bus({
+    .interrupt = 2
+});
 ```
 
-> ピン設定等は設定値を格納するための構造体 `Udon::CanBusSpi::SpiConfig` `Udon::CanBusSpi::CanConfig` を用いて設定します。これらの構造体は次のように定義されています。
->
-> ```cpp
-> struct SpiConfig
-> {
->     spi_inst_t* channel;    // SPI チャンネル (spi0, spi1)
->     uint8_t cs;                                 // チップセレクトピン
->     uint8_t interrupt;                          // 受信割り込みピン
->     uint8_t mosi = PICO_DEFAULT_SPI_TX_PIN;     // MOSIピン (TX)
->     uint8_t miso = PICO_DEFAULT_SPI_RX_PIN;     // MISOピン (RX)
->     uint8_t sck  = PICO_DEFAULT_SPI_SCK_PIN;    // クロックピン
->     uint32_t clock = 1'000'000;    // SPIクロック周波数 [Hz]
-> };
->
-> struct CanConfig
-> {
->     uint32_t  transmitInterval = 5;               // 送信間隔 [ms]
->     uint32_t  transmitTimeout  = 100;             // 送信タイムアウト時間 [ms]
->     uint32_t  receiveTimeout   = 100;             // 受信タイムアウト時間 [ms]
->     CAN_SPEED baudrate         = CAN_1000KBPS;    // CAN通信速度
->     CAN_CLOCK mcpClock         = MCP_16MHZ;       // トランシーバー動作クロック周波数 [Hz]
-> };
-> ```
->
-> 構造体の初期化時に構造体のメンバ変数名を指定して初期化することができます。メンバ変数を指定することで、インスタンス化部分を見たときに、引数の値が何の意味を持つかすぐわかるように記述できます。
->
-> ```cpp
-> static Udon::CanBusSpi bus{ spi0, 0, 1, 2, 3, 4 };  // 各値の意味がコンストラクタの実装を見ないと分からない
-> ↓
-> static Udon::CanBusSpi bus{{
->     .channel   = spi0,
->     .cs        = 0,
->     .interrupt = 1,
->     .mosi      = 2,
->     .miso      = 3,
->     .sck       = 4
-> }};
-> ```
+<details>
+<summary> 詳細な設定について </summary>
 
-> 通信を開始する関数は `begin()` と `beginCanOnly()` の二つあります。`begin()` は SPI 通信の開始処理も同時に> 行います。
->
-> `beginCanOnly()` を使用する場合、呼ぶ前に SPI 通信ができる状態にしておく必要があります。他のセンサー等と SPI バス を共用する場合、SPI 通信開始処理を CAN バスが行うべきでないので、この関数を呼び出します。
->
-> ```cpp
-> void setup()
-> {
->     SPI.begin();
->
->     otherSensor.begin();
->
->     bus.beginCanOnly(intPin, canConfig);
-> }
-> ```
+ピン設定等は設定値を格納するための構造体 `Udon::CanBusSpi::Config` を用いて設定します。これらの構造体は次のように定義されています。
+
+```cpp
+struct Config
+{
+    // SPI 関連
+    spi_inst_t* channel = spi_default;                 // SPI チャンネル (spi0, spi1)
+    uint8_t     cs      = PICO_DEFAULT_SPI_CSN_PIN;    // チップセレクトピン
+    uint8_t     interrupt;                             // 受信割り込みピン
+    uint8_t     mosi = PICO_DEFAULT_SPI_TX_PIN;        // MOSIピン (TX)
+    uint8_t     miso = PICO_DEFAULT_SPI_RX_PIN;        // MISOピン (RX)
+    uint8_t     sck  = PICO_DEFAULT_SPI_SCK_PIN;       // クロックピン
+    uint32_t    spiClock = 1'000'000;    // SPIクロック周波数 [Hz]
+
+    // CAN 関連
+    uint32_t  transmitInterval = 5;               // 送信間隔 [ms]
+    uint32_t  transmitTimeout  = 100;             // 送信タイムアウト時間 [ms]
+    uint32_t  receiveTimeout   = 100;             // 受信タイムアウト時間 [ms]
+    CAN_SPEED canBaudrate      = CAN_1000KBPS;    // CAN通信速度
+    CAN_CLOCK mcpClock         = MCP_16MHZ;       // トランシーバー動作クロック周波数 [Hz]
+};
+```
+
+C99 対応コンパイラでは、構造体の初期化時に、メンバ変数名を指定することができます。メンバ変数を指定することで、インスタンス化部分を見たときに、引数の値が何の意味を持つかパット見で分かります。
+
+```cpp
+static Udon::CanBusSpi bus{ spi0, 0, 1, 2, 3, 4 };  // 各値の意味がコンストラクタの実装を見ないと分からない
+↓
+static Udon::CanBusSpi bus({
+    .channel   = spi0,
+    .cs        = 0,
+    .interrupt = 1,
+    .mosi      = 2,
+    .miso      = 3,
+    .sck       = 4
+});
+```
+
+</details>
 
 ### インターフェース
 
-すべてのバスクラスを一様に扱えるようにするためのインターフェースクラス `Udon::ICanBus` クラスがあります。送受信クラスのコンストラクタの引数はこのインターフェースクラスになっており、どのバスでも使用できます。
+すべてのバスクラスを一様に扱えるようにするためのインターフェースクラス `Udon::ICanBus` クラスがあります。送受信クラスのコンストラクタの引数はこのインターフェースクラスになっており、どの CAN バスを受け取ることができます。
 
 ## 送信クラス
 
@@ -235,7 +223,7 @@ void loop()
 {
     bus.update();
 
-    if (const auto/*Udon::Optional<Udon::Vec2>*/ vector = reader.getMessage())  // データ取得
+    if (const Udon::Optional<Udon::Vec2> vector = reader.getMessage())  // データ取得
     {
         // 受信成功
         vector->show();
@@ -252,7 +240,7 @@ void loop()
 ```
 
 > `getMessage` は正常にオブジェクトが受信できたかどうか判定できるように `Udon::Optional<T>` を返します。通信エラー時は `Udon::nullopt` が返されます。
-> `Udon::Optional` は `operator bool` を持っているため if 文で正常に受信できたかどうかで分岐できます。
+> `Udon::Optional` は `operator bool` を持っており、Optional が値を保持するとき true を返します。よって if 文で正常に受信できたかどうかで分岐できます。
 >
 > `Udon::Optional<T>::operator->` で保持しているオブジェクトのメンバへアクセスでき、`Udon::Optional<T>::operator*` で optional が持っているオブジェクトの参照を取得できます。
 
@@ -301,7 +289,7 @@ static Udon::CanBusTeensy<CAN1> bus1;
 static Udon::CanWriter<Udon::Vec2> writer1{ bus1, 0x011 };
 static Udon::CanReader<Udon::Vec2> reader1{ bus1, 0x013 };
 
-static Udon::CanBusSpi bus2{ SPI };
+static Udon::CanBusSpi bus2({ ... });
 static Udon::CanWriter<Udon::Vec2> writer2{ bus2, 0x012 };
 static Udon::CanReader<Udon::Vec2> reader2{ bus2, 0x014 };
 ```

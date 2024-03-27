@@ -118,7 +118,7 @@ namespace Udon
         /// @brief s3d::Vec2からの変換コンストラクタ
         /// @param v s3d::Vec2
         template <typename T>
-        constexpr Vec3(const s3d::Vec3<T>& v) noexcept
+        constexpr Vec3(const s3d::Vector3D<T>& v) noexcept
             : x(static_cast<double>(v.x))
             , y(static_cast<double>(v.y))
             , y(static_cast<double>(v.z))
@@ -127,7 +127,7 @@ namespace Udon
 
         /// @brief Siv3Dのベクトルに変換する
         template <typename T>
-        [[nodiscard]] s3d::Vec3<T> asSivVec3() const noexcept
+        [[nodiscard]] s3d::Vector3D<T> asSivVec3() const noexcept
         {
             return {
                 static_cast<T>(x),
@@ -139,7 +139,7 @@ namespace Udon
         /// @brief Siv3Dのベクトルに変換する
         template <typename T>
         [[nodiscard]]
-        operator s3d::Vec3<T>() const noexcept
+        operator s3d::Vector3D<T>() const noexcept
         {
             return asSivVec3<T>();
         }

@@ -315,10 +315,10 @@ namespace Udon
 
 #ifdef SIV3D_INCLUDED    /// OpenSiv3D との連携
 
-        /// @brief s3d::Vec2からの変換コンストラクタ
-        /// @param v s3d::Vec2
+        /// @brief s3d::Vector2Dからの変換コンストラクタ
+        /// @param v s3d::Vector2D
         template <typename T>
-        constexpr Vec2(const s3d::Vec2<T>& v) noexcept
+        constexpr Vec2(const s3d::Vector2D<T>& v) noexcept
             : x(static_cast<ValueType>(v.x))
             , y(static_cast<ValueType>(v.y))
         {
@@ -326,7 +326,7 @@ namespace Udon
 
         /// @brief Siv3Dのベクトルに変換する
         template <typename T>
-        [[nodiscard]] s3d::Vec2<T> asSivVec2() const noexcept
+        [[nodiscard]] s3d::Vector2D<T> asSivVec2() const noexcept
         {
             return {
                 static_cast<T>(x),
@@ -337,7 +337,7 @@ namespace Udon
         /// @brief Siv3Dのベクトルに変換する
         template <typename T>
         [[nodiscard]]
-        operator s3d::Vec2<T>() const noexcept
+        operator s3d::Vector2D<T>() const noexcept
         {
             return asSivVec2<T>();
         }
