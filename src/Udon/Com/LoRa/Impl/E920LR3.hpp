@@ -36,7 +36,7 @@ namespace Udon
         // configMode パラメータセットモード
 
         delay(50);
-        uart.write(2);
+        uart.write(2);    // 1:ターミナルモード 2:プロセッサーモード
         uart.write("\r\n");
         waitResponse();
 
@@ -176,19 +176,8 @@ namespace Udon
 
     inline bool E920LR3::sendUpdate()
     {
-        // 送信休止時間分間隔をあける
-        if (millis() - txNode->transmitMs > 50)
+        if (millis() - txNode->transmitMs > 20)
         {
-            // ヘッダー送信
-            {
-                const uint8_t highAddress = (targetAddress >> 8) & 0xFF;
-                const uint8_t lowAddress  = (targetAddress >> 0) & 0xFF;
-                uart.write(highAddress);
-                uart.write(lowAddress);
-                uart.write(channel);
-            }
-
-            // データ送信
             {
                 std::vector<char> hexString;
                 hexString.resize(Udon::ConvertedByteStringSize(txNode->size));
@@ -202,8 +191,7 @@ namespace Udon
                     {
                         uart.write(hex);
                     }
-                    uart.write('\n');
-
+                    uart.write("\r\n");
                     txNode->transmitMs = millis();
                 }
             }
@@ -218,7 +206,6 @@ namespace Udon
 
     inline bool E920LR3::receiveUpdate()
     {
-
         // 16進数文字列が送られてくるので、そのサイズを求める
         const int FrameSize = Udon::ConvertedByteStringSize(rxNode->size);
 
@@ -231,7 +218,8 @@ namespace Udon
         // Serial.println ("uart.available() >= FrameSize");
 
         // データ読み込み
-        const auto hexString = uart.readStringUntil('\n');
+        const auto hexString = uart.readStringUntil('\r');
+        uart.read();    // \nを読み飛ばす
 
         // Serial.println(hexString);
         if (hexString.length() == 0)
