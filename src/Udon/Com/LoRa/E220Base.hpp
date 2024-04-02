@@ -65,8 +65,8 @@ namespace Udon
                 [0x04] = config.channel,                               // 周波数チャンネル (920.8 MHz + CH×200kHz)
                 [0x05] = 0b0'0'000'011,                                // [7]RSSI バイト / [6]送信方法 / [5-3]未使用(予約) / [2-0]WOR サイクル
             };
-            config.serial.write(0xc0);
-            config.serial.write(0x00);
+            config.serial.write(static_cast<uint8_t>(0xc0));
+            config.serial.write(static_cast<uint8_t>(0x00));
             config.serial.write(static_cast<uint8_t>(sizeof registerMap));
             config.serial.write(registerMap, sizeof registerMap);
 
