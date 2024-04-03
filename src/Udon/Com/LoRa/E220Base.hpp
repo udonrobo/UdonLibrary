@@ -8,7 +8,7 @@ namespace Udon
         /// @brief 設定
         struct Config
         {
-            HardwareSerial& serial;    // シリアルポート
+            HardwareSerial& serial = Serial;    // シリアルポート
 
             uint8_t m0;     // M0 ピン
             uint8_t m1;     // M1 ピン
