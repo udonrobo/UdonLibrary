@@ -8,7 +8,7 @@ namespace Udon
         /// @brief 設定
         struct Config
         {
-            HardwareSerial& serial = Serial;    // シリアルポート
+            HardwareSerial& serial;    // シリアルポート
 
             uint8_t m0;     // M0 ピン
             uint8_t m1;     // M1 ピン
@@ -23,6 +23,8 @@ namespace Udon
             /// @note 0x0000-0xFFFD
             /// @note 相手と合わせる
             uint16_t address = 0x0000;
+
+            // Config() = default;
         };
 
         /// @brief 現在の設定を取得

@@ -26,11 +26,15 @@ void setup()
 
 void loop()
 {
-    if (const auto message = lora.getMessage())
+    if (const Udon::Optional<uint64_t> message = lora.getMessage())
     {
         Serial.println(*message);
     }
-    delay(1);
+    else
+    {
+        Serial.println("receive timeout!");
+    }
+    delay(10);
 }
 ```
 
@@ -59,9 +63,9 @@ void loop()
 }
 ```
 
-### 詳細
+### 設定値の変更
 
-`Udon::E220Reader`、`Udon::E220Writer` のテンプレート引数で通信するメッセージの型、コンストラクタでピン設定等を行います。設定用構造体は以下のように定義されています。
+設定用構造体は以下のように定義されています。
 
 ```cpp
 struct Config
@@ -84,12 +88,6 @@ struct Config
 };
 ```
 
-チャンネルを変更することで周波数帯の調整ができます。チャンネルから周波数は以下式で求められます。
-
-$$
-周波数 = 920.8MHz + チャンネル番号×200kHz
-$$
-
 コンストラクタで設定した値は `getConfigReference()` メンバ関数を使用して変更可能です。変更は `begin()` メンバ関数を呼び出す前に行う必要があります。
 
 ```cpp
@@ -99,3 +97,11 @@ void setup()
     lora.begin();
 }
 ```
+
+### 周波数
+
+チャンネルを変更することで周波数帯の調整ができます。チャンネルから周波数は以下式で求められます。
+
+$$
+周波数 = 920.8MHz + チャンネル番号×200kHz
+$$

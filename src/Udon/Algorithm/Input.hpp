@@ -6,6 +6,8 @@
 
 #pragma once
 
+#include <Udon/Common/Show.hpp>
+
 namespace Udon
 {
 
