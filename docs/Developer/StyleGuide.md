@@ -1,6 +1,6 @@
 # スタイルガイド
 
-本ライブラリへの機能追加、改良を行う際のガイドです。ライブラリ機能のスタイルが統一されていると、今後変更していただいても大丈夫です。
+本ライブラリへの機能追加、改良を行う際のガイドです。今後変更していただいても大丈夫です。
 
 ## 言語
 
@@ -10,9 +10,13 @@
 
 - 言語バージョン
 
-  `C++11` を使用します。`C++14` 以上の機能は現時点で使用していません。
+  共通部は `C++11` を使用します。`C++14` 以上の機能は現時点で使用していません。各マイコンに合わせた機能の場合は例外です。
 
-  > 理由: Arduino Nano のコンパイラのバージョンが C++11 であるためです。Arduino Nano への対応を終了する場合、 `C++14` へのバージョンアップをしてもいいと思います。 (Teensy: C++14, RaspberryPiPico: C++14)
+  > 理由: Arduino Nano のコンパイラのバージョンが C++11 であり、低いバージョンに合わせているためです。Arduino Nano への対応を終了する場合、 `C++14` へのバージョンアップをしてもいいと思います。 (Teensy: C++14, RaspberryPiPico: C++14)
+
+- 依存ライブラリ
+
+  基本的に C 言語標準ライブラリもしくは C++ 標準ライブラリ STL(C+11) を使用します。
 
 ## 書式
 
@@ -31,156 +35,145 @@
 > 例外的に `UdonLibrary/` 下のディレクトリ名には `ローワーキャメルケース` を使用しています。なぜなら、Arduino のライブラリディレクトリ名は `src/` である必要があり、これに合わせているためです。
 
 ```
-├─ FooDir/
-│  └─BarDir/
-│    └─BaaSample.hpp
+UdonLibrary/
+├─ src/
+│  └─Driver/
+│    └─Motor.hpp
 ```
 
-### 変数名
+### 変数 定数
 
-`ローワーキャメルケース` を使用します。
+- 通常変数 (ローカル、グローバル変数)
 
-```cpp
-// OK
-auto value = 100;
-auto nodeId = 0x1100;
+  `ローワーキャメルケース` を使用します。
 
-// NG
-auto Value = 100;
-auto node_id = 0x1100;
-```
+  ```cpp
+  // OK
+  auto value = 100;
+  auto nodeId = 0x1100;
 
-### グローバル関数名
+  // NG
+  auto Value = 100;
+  auto node_id = 0x1100;
+  ```
+
+- メンバ変数
+
+  通常の変数名と同じ。
+
+- 実行時定数
+
+  通常の変数名と同じ。
+
+  ```cpp
+  const auto value = F();
+  ```
+
+- コンパイル時定数
+
+  `アッパーキャメルケース` を使用します。
+
+  ```cpp
+  constexpr auto Constant = 3 * 2;
+  ```
+
+### 関数
+
+- グローバル関数
+
+  `アッパーキャメルケース` を使用します。
+
+  ```cpp
+  // OK
+  void BarFunc();
+
+  // NG
+  void barFunc();
+  ```
+
+- メンバ関数
+
+  `ローワーキャメルケース` を使用します。
+
+  ```cpp
+  class FooClass
+  {
+      // OK
+      void barFunc();
+
+      // NG
+      void bar_func();
+  };
+  ```
+
+### 型名
+
+- クラス 構造体
+
+  `アッパーキャメルケース` を使用します。
+
+  ```cpp
+  //OK
+  class FooClass{};
+
+  // NG
+  class fooClass{};
+  ```
+
+- インターフェースクラス
+
+  クラス名の先頭に `I` を加えます。
+
+  ```cpp
+  class IFooClass{};
+  ```
+
+- メンバ型
+
+  `アッパーキャメルケース` を使用します。
+
+  ```cpp
+  class FooClass
+  {
+      using TypeAlias = int;
+  };
+  ```
+
+- 列挙型
+
+  型名、メンバ名ともに `アッパーキャメルケース` を使用します。
+
+  ```cpp
+  enum class FooEnum
+  {
+      FooBar,
+      HogeHoge,
+  };
+  ```
+
+- 共用体
+
+  `アッパーキャメルケース` を使用します。メンバはクラスのメンバと同じ命名規則を使用します。
+
+  ```cpp
+  union FooUnion
+  {
+      int a;
+      double b;
+  };
+  ```
+
+### 名前空間
 
 `アッパーキャメルケース` を使用します。
 
 ```cpp
 // OK
-void BarFunc();
+namespace FooSpace {}
 
 // NG
-void barFunc();
+namespace fooSpace {}
 ```
-
-### 名前空間名
-
-`アッパーキャメルケース` を使用します。
-
-```cpp
-// OK
-namespace FooSpace
-{
-}
-
-// NG
-namespace fooSpace
-{
-}
-```
-
-### クラス名
-
-`アッパーキャメルケース` を使用します。
-
-```cpp
-//OK
-class FooClass{};
-
-// NG
-class fooClass{};
-```
-
-### インターフェースクラス名
-
-クラス名の先頭に `I` を加えます。
-
-```cpp
-class IFooClass{};
-```
-
-### メンバ変数名
-
-通常の変数名と同じ。
-
-### メンバ関数名
-
-`ローワーキャメルケース` を使用します。
-
-```cpp
-class FooClass
-{
-    // OK
-    void barFunc();
-
-    // NG
-    void bar_func();
-};
-```
-
-### メンバ型名
-
-`アッパーキャメルケース` を使用します。
-
-標準ライブラリ側から使用される型名は例外的に `スネークケース` を使用しています (`value_type` 等)。
-
-```cpp
-class FooClass
-{
-    // OK
-    using TypeAlias = int;
-
-    // NG
-    using type_alias = int;
-};
-```
-
-### 列挙型
-
-型名、メンバ名ともに `アッパーキャメルケース` を使用します。
-
-```cpp
-// OK
-enum class FooEnum
-{
-    FooBar,
-    HogeHoge,
-};
-
-// NG
-enum class fooEnum
-{
-    FOO_BAR,
-    hogeHoge,
-};
-```
-
-### コンパイル時に定数になる定数
-
-`大文字のスネークケース` を使用します。
-
-```cpp
-// OK
-constexpr auto CONSTANT = 3 * 2;
-
-// NG
-constexpr auto constant = 3 * 2;
-```
-
-### 実行時に定数になる定数
-
-通常の変数名と同じ。
-
-```cpp
-int main()
-{
-    // OK
-    const value = f();
-
-    // NG
-    const VALUE = f();
-}
-```
-
 ### マクロ
 
 `大文字のスネークケース` を使用します。
@@ -195,25 +188,32 @@ int main()
 
 ### テンプレート
 
-- テンプレート引数名
+- テンプレート引数
 
   `アッパーキャメルケース` を使用します。短い名前が好ましいです。
 
   ```cpp
   template <typename T>
-  void f(const T& value)
+  void Sample(const T& value)
+  {
+  }
+  ```
+
+  ```cpp
+  template <typename T>
+  class Sample
   {
   }
   ```
 
   ```cpp
   template <int N>
-  void f(uint8_t (&array)[N])
+  void Sample(uint8_t (&array)[N])
   {
   }
   ```
 
-- メタ関数名
+- メタ関数
 
   `アッパーキャメルケース` を使用します。型の特性を取得するものなので、`Is~` や `~able` を使用すると良いです。
 

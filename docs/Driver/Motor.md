@@ -30,7 +30,7 @@ void setup()
 
 void loop()
 {
-    uint16_t power = -135;
+w    int16_t power = -135;
 
     motor.move(power);
 
@@ -56,7 +56,7 @@ void setup()
 
 void loop()
 {
-    uint16_t power = -135;
+    int16_t power = -135;
 
     motor.move(power);
 
@@ -77,4 +77,14 @@ Serial.println();
 
 ## その他
 
-`Motor2` `Motor3` クラスは、出力値の急激な変化によるモータードライバへの負荷を防止するために、移動平均クラスを使用しています。
+`Motorx` クラスは、出力値の急激な変化によるモータードライバへの負荷を防止するために、移動平均クラスを使用しています。デフォルトのサンプリング回数は 50 です。これは目標となる出力値に 50 ループ目で到達することを意味します。
+
+`Motorx` クラスは以下の様に `SmoothlyMotorx` のエイリアスとなっています。そのため `SmoothlyMotorx` を直接使用することで移動平均のサンプリング回数の調整ができます。
+
+```cpp
+using Motor2 = SmoothlyMotor2<50>;
+```
+
+```cpp
+SmoothlyMotor2<100> motor{ 2, 3 };
+```
