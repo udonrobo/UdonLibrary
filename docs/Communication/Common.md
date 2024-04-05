@@ -45,7 +45,7 @@ void loop()
 {
     bus.update();
 
-    if (const auto message = reader.getMessage())  // バスからデータを受信
+    if (const Optional<int> message = reader.getMessage())  // バスからデータを受信
     {
         Serial.println(*message);  // 受信成功 > 1000
     }
