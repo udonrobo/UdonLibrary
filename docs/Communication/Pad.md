@@ -50,6 +50,7 @@ flowchart LR
   end
 ```
 
+- [ペアリング](#bluetooth-ドングルとのペアリング)
 - [受信側マイコン](#bluetooth-使用時の受信側マイコン用クラス)
 - [メインマイコン](#メインマイコン用クラス)
 
@@ -225,6 +226,36 @@ Udon::Stick stick = pad.getMoveInfo();
 > const std::array<double, 4> omni = pad.getMoveInfo().toOmni();
 > ```
 
+### 最終的なスケッチ例
+
+```cpp
+// CAN バスからコントローラの情報を取得する例
+
+#include <Udon.hpp>
+
+static Udon::CanBusTeensy<CAN1> bus;
+static Udon::CanPadPS5 pad{ bus, 0x006 };
+
+void setup()
+{
+    bus.begin();
+}
+
+void loop()
+{
+    bus.update();
+    pad.update();
+
+    if (pad.getCircle().click)
+    {
+        Serial.println("circle clicked");
+    }
+
+    delay(1);
+}
+
+```
+
 ## 送信側マイコン用クラス
 
 送信側マイコンは USB ホストシールドからコントローラの情報を受け取り、無線モジュールへの転送を行います。
@@ -261,8 +292,9 @@ void loop()
 
     const Udon::Message::PadPS5 message = pad.getButtons();
     lora.setMessage(message);
-
     // 省略形: lora.setMessage(pad.getButtons());
+
+    delay(1);
 }
 ```
 
@@ -305,7 +337,7 @@ void loop()
 {
     bus.update();
 
-    // LoRaからCANに転送
+    // LoRa から CAN に転送
     if (const auto message = lora.getMessage())
     {
         writer.setMessage(*message);
@@ -314,35 +346,19 @@ void loop()
     {
         writer.setMessage({});
     }
+
+    delay(1);
 }
 ```
 
 ## Bluetooth 使用時の受信側マイコン用クラス
 
+あらかじめコントローラと Bluetooth ドングルがペアリングされている必要があります。[ペアリング方法](#bluetooth-ドングルとのペアリング)
+
 `PadPS5BT.hpp` を個別にインクルードする必要があります。使い方は `PadPS5USB` クラスと同じです。
 
-あらかじめコントローラと Bluetooth ドングルがペアリングされている必要があります。コンストラクタに `PAIR` を
-渡すことでペアリングモードで起動されます。
-
 ```cpp
-#include <UdonFwd.hpp>
-#include <Udon/Com/Pad/PadPS5BT.hpp>
-
-static Udon::PadPS5BT pad(PAIR);
-
-void setup()
-{
-    pad.begin();
-}
-
-void loop()
-{
-    pad.update();
-}
-```
-
-```cpp
-// コントローラの情報をCANバスへ転送する例
+// コントローラの情報を CAN バスへ転送する例
 
 #include <Udon.hpp>
 #include <Udon/Com/Pad/PadPS5BT.hpp>
@@ -374,4 +390,33 @@ pad.setLightBar({ 0x38b48b });   // タッチパネルサイドLED (色指定可
 pad.setMicLed(true);             // マイクLED
 pad.setPlayerLamp();             // タッチパネル下部LED (5つ)
 pad.vibrate(100, 100);           // 左右バイブレーションモーター
+```
+
+## Bluetooth ドングルとのペアリング
+
+Bluetooth を使用してコントローラのデータを取得する場合、USB ドングルとのペアリングが必要です。一度ペアリングすると以降はペアリングする必要ありません。
+
+コンストラクタに `PAIR` を渡すことで USB ホストシールドがペアリングモードで起動します。
+
+クリエイトボタン、PS ボタンをライトバーが点滅するまで長押しすることで、コントローラ側もペアリングモードになります。ペアリングは通常数秒で終わります。マイコンのリセットペアリングが成功するとライトバーが点灯します。
+
+> ペアリングに時間がかかる場合、マイコンをリセットすることで大抵つながります。またホストシールドは電源電圧に敏感であるため、電圧値が正常か確認してください。
+
+```cpp
+// ペアリング用スケッチ
+
+#include <UdonFwd.hpp>
+#include <Udon/Com/Pad/PadPS5BT.hpp>
+
+static Udon::PadPS5BT pad{ PAIR };
+
+void setup()
+{
+    pad.begin();
+}
+
+void loop()
+{
+    pad.update();
+}
 ```
