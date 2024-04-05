@@ -20,7 +20,7 @@ inline void ReaderTest()
 
     static_assert(std::is_same<decltype(message), Udon::Optional<uint64_t>>::value, "Invalid type");
 
-    (void)lora.getRSSI();
+    (void)lora.getRssi();
 }
 
 inline void WriterTest()
