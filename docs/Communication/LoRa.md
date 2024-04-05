@@ -4,7 +4,7 @@
 
 ## E220
 
-<img width=300px src="../Assets/LoRaE220.jpg">
+<img src="../Assets/LoRaE220.jpg" width="250px" align="right"/>
 
 ### 特徴
 
