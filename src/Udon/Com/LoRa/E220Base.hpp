@@ -22,7 +22,7 @@ namespace Udon
             /// @brief アドレス
             /// @note 0x0000-0xFFFD
             /// @note 相手と合わせる
-            uint16_t address = 0x0000;
+            uint16_t address = 0x0102;
 
             // Config() = default;
         };

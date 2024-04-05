@@ -50,7 +50,15 @@ namespace Udon
         int getRssi() const noexcept
         {
             ScopedInterruptLocker locker;
-            return rssi;
+            if (rawRssi == 0)
+            {
+                // アンテナ同士が近すぎると 0 になる
+                return 0;
+            }
+            else
+            {
+                return -(256 - rawRssi);
+            }
         }
 
         /// @brief メッセージを受信
@@ -83,15 +91,14 @@ namespace Udon
         // 排他制御必須 (割り込み関数内で使用)
         bool received = false;
         uint8_t buffer[Size];
-        int rssi;
+        uint8_t rawRssi;
 
         void OnRisingEdge()
         {
             if (config.serial.available() == Size + 1 /*RSSIバイト*/)
             {
                 config.serial.readBytes(buffer, sizeof buffer);
-                const auto rawRssi = config.serial.read();
-                rssi = -(256 - rawRssi);
+                rawRssi = config.serial.read();
                 received = true;
             }
             else
