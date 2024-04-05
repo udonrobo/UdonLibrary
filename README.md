@@ -28,6 +28,7 @@
 - [CAN](./docs/Communication/CAN.md)
 - [I2C](./docs/Communication/I2C.md)
 - [UART](./docs/Communication/UART.md)
+- [LoRa](./docs/Communication/LoRa.md)
 - [IM920](./docs/Communication/IM920.md)
 - [コントローラ](./docs/Communication/Pad.md)
 

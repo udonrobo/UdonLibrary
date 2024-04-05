@@ -109,5 +109,3 @@ struct Pos
 const auto steering = pad.getMoveInfo().toSteer();
 const auto omni     = pad.getMoveInfo().toOmni();
 ```
-
-また、全コントローラクラスは `IPad~~` クラスを継承しており、ボタンのデータを取得する関数などはここから提供されます。
