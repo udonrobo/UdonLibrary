@@ -1,10 +1,24 @@
 # LoRa
 
-- [E220](#e220)
+920MHz 帯無線モジュール
 
 ## E220
 
 <img width=300px src="../Assets/LoRaE220.jpg">
+
+### 特徴
+
+👍
+
+- 安い(秋月で 2000 円)！！
+- UART で通信楽々！！
+- SMA 端子が付いていて接触不良が起きにくい！
+- 受信完了を AUX ピンから確認できるので、UART でよくあるバイト列のズレが起きない！
+- バイト列を直接送信できる(文字列にする必要がない)！
+
+👊
+
+- 受信間隔長め (8byte で 80ms 程度)
 
 ### スケッチ例 / 受信側
 
@@ -67,6 +81,8 @@ void loop()
 
 設定用構造体は以下のように定義されています。
 
+デフォルトはユニキャスト通信(1 対 1)です。送信側のアドレスを `0xffff` にすることでブロードキャスト通信(1 対多)になります。この時受信側アドレスは無視されます。
+
 ```cpp
 struct Config
 {
@@ -82,9 +98,9 @@ struct Config
     uint8_t channel = 0;
 
     /// @brief アドレス
-    /// @note 0x0000-0xFFFD
+    /// @note 0x0000-0xFFFF
     /// @note 相手と合わせる
-    uint16_t address = 0x0000;
+    uint16_t address = 0x0102;
 };
 ```
 
@@ -97,6 +113,30 @@ void setup()
     lora.begin();
 }
 ```
+
+### 受信強度
+
+`getRssi()` メンバ関数を使用して電波強度を示す RSSI 値を取得できます。0 に近いほど電波強度が高いことを示します。値は通信できている場合のみ有効です。
+
+```cpp
+void loop()
+{
+    if (const auto m = lora.getMessage())
+    {
+        const int rssi = lora.getRssi();
+    }
+}
+```
+
+[metageek 社による指標](https://www.metageek.com/training/resources/understanding-rssi/) では RSSI 値と品質の対応は次のようになっています。
+
+| RSSI [dBm] | 品質       |
+| ---------- | ---------- |
+| -30        | 非常に強い |
+| -67        | とても強い |
+| -70        | 強い       |
+| -80        | 弱い       |
+| -90        | 使えない   |
 
 ### 周波数
 

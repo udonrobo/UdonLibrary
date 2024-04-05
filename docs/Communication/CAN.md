@@ -144,10 +144,10 @@ struct Config
     spi_inst_t* channel = spi_default;                 // SPI チャンネル (spi0, spi1)
     uint8_t     cs      = PICO_DEFAULT_SPI_CSN_PIN;    // チップセレクトピン
     uint8_t     interrupt;                             // 受信割り込みピン
-    uint8_t     mosi = PICO_DEFAULT_SPI_TX_PIN;        // MOSIピン (TX)
-    uint8_t     miso = PICO_DEFAULT_SPI_RX_PIN;        // MISOピン (RX)
-    uint8_t     sck  = PICO_DEFAULT_SPI_SCK_PIN;       // クロックピン
-    uint32_t    spiClock = 1'000'000;    // SPIクロック周波数 [Hz]
+    uint8_t     mosi     = PICO_DEFAULT_SPI_TX_PIN;    // MOSIピン (TX)
+    uint8_t     miso     = PICO_DEFAULT_SPI_RX_PIN;    // MISOピン (RX)
+    uint8_t     sck      = PICO_DEFAULT_SPI_SCK_PIN;   // クロックピン
+    uint32_t    spiClock = 1'000'000;                  // SPIクロック周波数 [Hz]
 
     // CAN 関連
     uint32_t  transmitInterval = 5;               // 送信間隔 [ms]
