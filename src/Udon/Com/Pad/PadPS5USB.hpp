@@ -40,11 +40,6 @@ namespace Udon
         {
         }
 
-        explicit operator bool() const
-        {
-            return const_cast<PadPS5USB*>(this)->pad.connected();
-        }
-
         /// @brief コントローラーと通信開始
         /// @return
         bool begin()

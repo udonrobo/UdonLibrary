@@ -1,6 +1,8 @@
 # コントローラ
 
-コントローラのデータは会場の WiFi や Bluetooth との干渉を防ぐために 920MHz 帯の周波数に変換しロボットへ送信します。
+### 920MHz 経由
+
+コントローラのデータはロボコン会場の WiFi や Bluetooth との干渉を防ぐために 920MHz 帯の周波数に変換しロボットへ送信します。
 
 ```mermaid
 flowchart LR
@@ -21,13 +23,15 @@ flowchart LR
   end
 ```
 
-上の図が示す通り、コントローラの情報を取得するには 3 つのマイコンのファームウエアを書く必要があります 🥶
+上の図に示す通り、コントローラの情報を取得するには 3 つのマイコンのファームウエアを書く必要があります 🥶
 
-- [送信側マイコン](#)
-- 受信側マイコン
+- [送信側マイコン](#送信側マイコン用クラス)
+- [受信側マイコン](#受信側マイコン用クラス)
 - [メインマイコン](#メインマイコン用クラス)
 
-Bluetooth を使用すると少し簡単になります。受信マイコンを経由させることで、メインマイコンのファームウエアは同じものを使用できます。
+### Bluetooth 接続
+
+Bluetooth を使用すると少し簡単になります。メインマイコンのファームウエアは同じものを使用できます。
 
 ```mermaid
 flowchart LR
@@ -46,9 +50,12 @@ flowchart LR
   end
 ```
 
+- [受信側マイコン](#bluetooth-使用時の受信側マイコン用クラス)
+- [メインマイコン](#メインマイコン用クラス)
+
 ## メインマイコン用クラス
 
-メインマイコンではロボット側の受信側マイコンから送信されたデータの解析、ボタンなどの情報への変換を行います。
+メインマイコンは受信したデータを扱いやすい形に変換し、機構の制御に使用します。
 
 ### 個別インクルード
 
@@ -63,12 +70,14 @@ flowchart LR
 I2C 通信経由
 
 ```cpp
+static Udon::I2cBus bus{ Wire };
 static Udon::I2cPadPS5 pad{ bus, address };
 ```
 
 CAN 通信経由
 
 ```cpp
+static Udon::CanBusTeensy<CAN1> bus;
 static Udon::CanPadPS5 pad{ bus, id };
 ```
 
@@ -82,8 +91,7 @@ OpenSiv3D 使用時 (OpenSiv3D 使用時は通信を経由させる必要はあ�
 
 ```cpp
 static SivPadPS5 pad;
-// 複数コントローラを使用する場合
-static SivPadPS5 pad{ index };
+static SivPadPS5 pad{ index };  // 複数コントローラを使用する場合
 ```
 
 ### 更新
@@ -91,7 +99,7 @@ static SivPadPS5 pad{ index };
 ループ内で `update` メンバ関数を呼ぶ必要があります。
 
 ```cpp
-xxxPadPS5 pad{ ... };
+static xxxPadPS5 pad{ ... };
 
 void setup()
 {
@@ -104,7 +112,7 @@ void loop()
 
 ### コントローラの状態取得
 
-コントローラが接続されているかを `operator bool` によって取得できます。
+コントローラが接続されているかを `operator bool` によって取得できます。未接続時には非常停止を行う等の処理が想定されます。
 
 ```cpp
 void loop()
@@ -117,6 +125,7 @@ void loop()
     else
     {
         // 未接続時
+        // arm.stop();
     }
 }
 ```
@@ -180,7 +189,7 @@ void loop()
 }
 ```
 
-> `Vec2` オブジェクトは以下の様に定義されており、各スティックの x, y 軸の値を取得できます。
+> `Vec2` オブジェクトは以下の様に定義されており、各スティックの X, Y 軸の傾きを取得できます。スティックの上方向が X 軸の正、右方向が Y 軸の正です。
 >
 > ```cpp
 > struct Vec2
@@ -220,44 +229,149 @@ Udon::Stick stick = pad.getMoveInfo();
 
 送信側マイコンは USB ホストシールドからコントローラの情報を受け取り、無線モジュールへの転送を行います。
 
-### USB ホストシールドとの通信
+`PadPS5USB.hpp` を個別にインクルードする必要があります。このファイルは USB_Host_Shield_2.0 ライブラリに依存しており、サイズが大きいため Udon.hpp からインクルードされていません。
 
-まず `PadPS5USB.hpp` をインクルードします。このファイルは USB_Host_Shield_2.0 ライブラリに依存しており、サイズが大きいため Udon.hpp からインクルードされていません。
-
-```cpp
-#include <Udon/Com/Pad/PadPS5USB.hpp>
-```
+`getButtons()` から `Udon::Message::PadPS5` 型オブジェクトを取得できます。このオブジェクトを送信クラスへ渡すことでコントローラの情報の転送が行えます。
 
 ```cpp
+// コントローラの情報を LoRa へ転送する例
+
 #include <Udon.hpp>
 #include <Udon/Com/Pad/PadPS5USB.hpp>
 
-Udon::I2cBus bus{ Wire };
+static Udon::PadPS5USB pad;
 
-Udon::I2cSlaveWriter<Udon::Message::PadPS5> writer{ bus };
-
-Udon::PadPS5USB pad;
+static Udon::E220Writer<Udon::Message::PadPS5> lora({
+    .serial = Serial1,
+    .m0 = 2,
+    .m1 = 3,
+    .aux = 4,
+    .channel = 0,
+});
 
 void setup()
 {
-    Serial.begin(115200);
-    if (not pad.begin())
-    {
-        Serial.println(F("PS5USB failed to start!"));
-        for (;;)
-            ;
-    }
-    bus.begin(6);
-    writer.begin();
+    pad.begin();
+    lora.begin();
+}
+
+void loop()
+{
+    pad.update();
+
+    const Udon::Message::PadPS5 message = pad.getButtons();
+    lora.setMessage(message);
+
+    // 省略形: lora.setMessage(pad.getButtons());
+}
+```
+
+コントローラに内蔵されている LED や、バイブレーションを動作させることもできます。
+
+```cpp
+pad.setLightBar({ 0x38b48b });   // タッチパネルサイドLED (色指定可能)
+pad.setMicLed(true);             // マイクLED
+pad.setPlayerLamp();             // タッチパネル下部LED (5つ)
+pad.vibrate(100, 100);           // 左右バイブレーションモーター
+```
+
+## 受信側マイコン用クラス
+
+受信マイコンは無線モジュールから取得した `Udon::Message::PadPS5` 型オブジェクトをメインマイコンへ転送する役を担います。
+
+```cpp
+// LoRa で受信したデータを CAN バスへ送信する例
+
+#include <Udon.hpp>
+
+static Udon::E220Reader<Udon::Message::PadPS5> lora({
+    .serial = Serial1,
+    .m0 = 2,
+    .m1 = 3,
+    .aux = 4,
+    .channel = 0,
+});
+
+static Udon::CanBusTeensy<CAN1> bus;
+static Udon::CanWriter<Udon::Message::PadPS5> writer{ bus, 0x006 };
+
+void setup()
+{
+    lora.begin();
+    bus.begin();
 }
 
 void loop()
 {
     bus.update();
 
-    const Udon::Message::PadPS5 message = pad.getButtons();
-
-    pad.setLightBar({ 0x38b48b });
-    pad.setMicLed(true);
+    // LoRaからCANに転送
+    if (const auto message = lora.getMessage())
+    {
+        writer.setMessage(*message);
+    }
+    else
+    {
+        writer.setMessage({});
+    }
 }
+```
+
+## Bluetooth 使用時の受信側マイコン用クラス
+
+`PadPS5BT.hpp` を個別にインクルードする必要があります。使い方は `PadPS5USB` クラスと同じです。
+
+あらかじめコントローラと Bluetooth ドングルがペアリングされている必要があります。コンストラクタに `PAIR` を
+渡すことでペアリングモードで起動されます。
+
+```cpp
+#include <UdonFwd.hpp>
+#include <Udon/Com/Pad/PadPS5BT.hpp>
+
+static Udon::PadPS5BT pad(PAIR);
+
+void setup()
+{
+    pad.begin();
+}
+
+void loop()
+{
+    pad.update();
+}
+```
+
+```cpp
+// コントローラの情報をCANバスへ転送する例
+
+#include <Udon.hpp>
+#include <Udon/Com/Pad/PadPS5BT.hpp>
+
+static Udon::PadPS5BT pad;
+
+static Udon::CanBusTeensy<CAN1> bus;
+static Udon::CanWriter<Udon::Message::PadPS5> writer{ bus, 0x006 };
+
+void setup()
+{
+    pad.begin();
+    bus.begin();
+}
+
+void loop()
+{
+    pad.update();
+    bus.update();
+
+    writer.setMessage(pad.getButtons());
+}
+```
+
+`PadPS5USB` クラスと同じく、コントローラに内蔵されている LED や、バイブレーションを動作させることもできます。
+
+```cpp
+pad.setLightBar({ 0x38b48b });   // タッチパネルサイドLED (色指定可能)
+pad.setMicLed(true);             // マイクLED
+pad.setPlayerLamp();             // タッチパネル下部LED (5つ)
+pad.vibrate(100, 100);           // 左右バイブレーションモーター
 ```
