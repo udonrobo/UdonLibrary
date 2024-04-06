@@ -1,4 +1,4 @@
-# Arduino IDE <img src="https://github.com/CaseyNelson314/Visualizer/assets/91818705/dff786fa-ef51-4428-8cf6-6615ddd75eb4" height="100px" align="right">
+# Arduino IDE <img src="../Assets/IconArduino.png" height="100px" align="right">
 
 ## 追加
 

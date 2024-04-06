@@ -20,6 +20,9 @@
 
 ### アルゴリズム
 
+- [ループ周期制御](./docs/Algorithm/LoopCycleController.md)🌟new
+- [移動平均](./docs/Algorithm/MovingAverage.md)🌟new
+- [フィードバック制御(PID)](./docs/Algorithm/FeedbackController.md)🌟new
 - [独立ステア最適化](./docs/Algorithm/SteerOptimizer.md)
 
 ### 通信
@@ -28,9 +31,9 @@
 - [CAN](./docs/Communication/CAN.md)
 - [I2C](./docs/Communication/I2C.md)
 - [UART](./docs/Communication/UART.md)
-- [LoRa](./docs/Communication/LoRa.md)
+- [LoRa](./docs/Communication/LoRa.md)🌟new
 - [IM920](./docs/Communication/IM920.md)
-- [コントローラ](./docs/Communication/Pad.md)
+- [コントローラ](./docs/Communication/Pad.md)🌟new
 
 ### ユーザー定義型
 
@@ -47,15 +50,17 @@
 ### ドライバー
 
 - [モーター](./docs/Driver/Motor.md)
+- [ロボマスモーター](./docs/Driver/RoboMasterMotor.md)🌟new
 - [ロータリーエンコーダー](./docs/Driver/Encoder.md)
 
 ### その他
 
-- [シリアライザ](./docs/Other/Serialization.md)
-- [トレイト](./docs/Other/Traits.md)
+- [シリアライザ・デシリアライザ](./docs/Other/Serialization.md)
+- [トレイト・メタ関数](./docs/Other/Traits.md)
 
 ### 開発者用
 
+- [開発環境セットアップ](./docs/Developer/DevelopSetup.md)🌟new
 - [スタイルガイド](./docs/Developer/StyleGuide.md)
 - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
 - [自動テスト](./docs/Developer/CI.md)

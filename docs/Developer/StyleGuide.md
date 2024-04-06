@@ -26,20 +26,20 @@
 
 変数、関数などを作成する際の命名規則です。
 
-### ディレクトリ(フォルダ)、ファイル名
+### ディレクトリ(フォルダ)、ファイル
 
 `アッパーキャメルケース` を使用します。
 
 拡張子はヘッダーファイルに `*.hpp`、ソースファイルに `*.cpp` を使用します。
 
 > 例外的に `UdonLibrary/` 下のディレクトリ名には `ローワーキャメルケース` を使用しています。なぜなら、Arduino のライブラリディレクトリ名は `src/` である必要があり、これに合わせているためです。
-
-```
-UdonLibrary/
-├─ src/
-│  └─Driver/
-│    └─Motor.hpp
-```
+>
+> ```
+> UdonLibrary/
+> ├─ src/
+> │  └─Driver/
+> │    └─Motor.hpp
+> ```
 
 ### 変数 定数
 
@@ -106,7 +106,7 @@ UdonLibrary/
   };
   ```
 
-### 型名
+### 型
 
 - クラス 構造体
 
@@ -163,29 +163,6 @@ UdonLibrary/
   };
   ```
 
-### 名前空間
-
-`アッパーキャメルケース` を使用します。
-
-```cpp
-// OK
-namespace FooSpace {}
-
-// NG
-namespace fooSpace {}
-```
-### マクロ
-
-`大文字のスネークケース` を使用します。
-
-```cpp
-// OK
-#define FOO_MACRO 100
-
-// NG
-#define FooMacro 100
-```
-
 ### テンプレート
 
 - テンプレート引数
@@ -230,3 +207,27 @@ namespace fooSpace {}
   {
   };
   ```
+
+
+### 名前空間
+
+`アッパーキャメルケース` を使用します。
+
+```cpp
+// OK
+namespace FooSpace {}
+
+// NG
+namespace fooSpace {}
+```
+### マクロ
+
+`大文字のスネークケース` を使用します。
+
+```cpp
+// OK
+#define FOO_MACRO 100
+
+// NG
+#define FooMacro 100
+```
