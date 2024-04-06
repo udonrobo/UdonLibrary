@@ -91,7 +91,7 @@ namespace Udon
 
         /// @brief モーターの速度を取得
         /// @return 速度 [rpm]
-        uint16_t getVelocity() const
+        int16_t getVelocity() const
         {
             return (rxBuffer[2] << 8 | rxBuffer[3]) * directionSign();
         }

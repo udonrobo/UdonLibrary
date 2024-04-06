@@ -16,7 +16,7 @@ void loop() {
     // CAN通信を更新
     bus.update();
 
-    // 設定動作電流値を設定
+    // 動作電流値を設定
     motor.setCurrent(10000);
 
     // 回転角度を取得
