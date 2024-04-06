@@ -1,13 +1,13 @@
 # Visual Studio <img src="../Assets/IconVisualStudio.png" height="100px" align="right">
 
-## Arduino のライブラリと共用する場合
+## Arduino のライブラリと共用する (推奨)
 
 PC 内に本ライブラリ複数を置きたくない場合、Arduino のライブラリディレクトリに本ライブラリをクローンし、そこをインクルードパスとすることで、本ライブラリを一つにすることができます。
 
 1. クローン [Arduino IDE 追加](ArduinoIDE.md)
 2. [インクルードパス設定](#インクルードパス設定)
 
-## 追加
+## Arduino のライブラリと共用しない
 
 ```sh
 # VisualStudioのソリューションディレクトリで実行
@@ -68,9 +68,9 @@ Test   <-- ソリューションディレクトリ
 
 4. 追加確認
 
-    追加が成功している場合、写真の様にUdon.hpp のインクルードができるようになっています。
+   追加が成功している場合、写真の様に Udon.hpp のインクルードができるようになっています。
 
-    ![image](https://github.com/udonrobo/UdonLibrary/assets/91818705/bf559aad-c13f-4a28-a360-e886483e3dbd)
+   ![image](https://github.com/udonrobo/UdonLibrary/assets/91818705/bf559aad-c13f-4a28-a360-e886483e3dbd)
 
 ## 更新
 

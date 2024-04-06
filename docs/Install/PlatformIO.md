@@ -1,6 +1,6 @@
 # Platform IO <img src="../Assets/IconPlatformIO.png" height="100px" align="right">
 
-## Arduino のライブラリと共用する場合
+## Arduino のライブラリと共用する (推奨)
 
 PC 内に本ライブラリ複数を置きたくない場合、Arduino のライブラリディレクトリに本ライブラリをクローンし、そこをインクルードパスとすることで、本ライブラリを一つにすることができます。クローン方法 [Install: Arduino IDE](ArduinoIDE.md)
 
@@ -11,7 +11,7 @@ lib_deps =
     ~/Documents/Arduino/libraries/UdonLibrary
 ```
 
-## 追加
+## Arduino のライブラリと共用しない
 
 プロジェクトの `lib` ディレクトリへクローンすることで追加できます。
 
