@@ -24,6 +24,8 @@ namespace Udon
 
         uint8_t buffer[Size];
 
+        uint32_t transmitMs;
+
     public:
         using MessageType = Message;
 
@@ -37,7 +39,7 @@ namespace Udon
         Udon::Optional<Message> getMessage()
         {
             update();
-            if (operator bool())
+            if (millis() - transmitMs < 100)
             {
                 return Udon::Deserialize<Message>(buffer);
             }
@@ -97,6 +99,8 @@ namespace Udon
                 {
                     (void)uart.read();
                 }
+
+                transmitMs = millis();
             }
         }
     };
