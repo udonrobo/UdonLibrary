@@ -1,4 +1,4 @@
-# Visual Studio Submodule <img src="https://github.com/CaseyNelson314/Visualizer/assets/91818705/d190da8e-dc18-46fc-90a1-f4258b1df4b1" height="100px" align="right">
+# Visual Studio Submodule <img src="../Assets/IconVisualStudio.png" height="100px" align="right">
 
 追加先が git で管理されている場合、リポジトリ内にリポジトリを置くことになります。このような場合、submodule の使用が推奨されています。
 

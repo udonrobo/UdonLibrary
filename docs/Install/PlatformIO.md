@@ -1,4 +1,4 @@
-# Platform IO <img src="https://github.com/CaseyNelson314/Visualizer/assets/91818705/94ac076d-c61c-4ce2-92ea-a52a3227efd3" height="100px" align="right">
+# Platform IO <img src="../Assets/IconPlatformIO.png" height="100px" align="right">
 
 ## Arduino のライブラリと共用する場合
 
