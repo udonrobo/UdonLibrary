@@ -24,11 +24,9 @@ namespace Udon
 
         uint8_t buffer[Size];
 
-        uint32_t transmitMs;
-
     public:
         using MessageType = Message;
-        
+
         UartReader(Stream& uart)
             : uart(uart)
             , buffer()
@@ -36,11 +34,45 @@ namespace Udon
         {
         }
 
-        explicit operator bool() const
+        Udon::Optional<Message> getMessage()
         {
-            return millis() - transmitMs < 100;
+            update();
+            if (operator bool())
+            {
+                return Udon::Deserialize<Message>(buffer);
+            }
+            else
+            {
+                return Udon::nullopt;
+            }
         }
 
+        /// @brief 送信内容を表示
+        /// @param gap 区切り文字 (default: '\t')
+        void show(char gap = '\t') const
+        {
+            if (const auto message = Udon::Deserialize<Message>(buffer))
+            {
+                Udon::Show(*message, gap);
+            }
+            else
+            {
+                Serial.print(F("receive failed!"));
+            }
+        }
+
+        /// @brief 送信内容を表示
+        /// @param gap 区切り文字 (default: ' ')
+        void showRaw(char gap = ' ') const
+        {
+            for (auto&& it : buffer)
+            {
+                Serial.print(it);
+                Serial.print(gap);
+            }
+        }
+
+    private:
         void update()
         {
             if (uart.available() >= static_cast<int>(Size))
@@ -65,45 +97,6 @@ namespace Udon
                 {
                     (void)uart.read();
                 }
-
-                transmitMs = millis();
-            }
-        }
-
-        Udon::Optional<Message> getMessage() const
-        {
-            if (operator bool())
-            {
-                return Udon::Deserialize<Message>(buffer);
-            }
-            else
-            {
-                return Udon::nullopt;
-            }
-        }
-
-        /// @brief 送信内容を表示
-        /// @param gap 区切り文字 (default: '\t')
-        void show(char gap = '\t') const
-        {
-            if (const auto message = getMessage())
-            {
-                Udon::Show(*message, gap);
-            }
-            else
-            {
-                Serial.print(F("receive failed!"));
-            }
-        }
-
-        /// @brief 送信内容を表示
-        /// @param gap 区切り文字 (default: ' ')
-        void showRaw(char gap = ' ') const
-        {
-            for (auto&& it : buffer)
-            {
-                Serial.print(it);
-                Serial.print(gap);
             }
         }
     };

@@ -30,7 +30,7 @@
 - [共通](./docs/Communication/Common.md)
 - [CAN](./docs/Communication/CAN.md)
 - [I2C](./docs/Communication/I2C.md)
-<!-- - [UART](./docs/Communication/UART.md) -->
+- [UART](./docs/Communication/UART.md)
 - [LoRa](./docs/Communication/LoRa.md)🌟new
 - [IM920](./docs/Communication/IM920.md)
 - [コントローラ](./docs/Communication/Pad.md)🌟new
@@ -50,7 +50,7 @@
 ### ドライバー
 
 - [モーター](./docs/Driver/Motor.md)
-- [ロボマスモーター](./docs/Driver/RoboMasterMotor.md)
+- [ロボマスモーター](./docs/Driver/RoboMasterMotor.md)🌟new
 - [ロータリーエンコーダー](./docs/Driver/Encoder.md)
 
 ### その他
