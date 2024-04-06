@@ -30,7 +30,7 @@ void setup()
 void loop()
 {
     pid.update(現在値, 目標値);
-    double 出力値 = pid.getPower();
+    double 制御値 = pid.getPower();
 
     loopCtrl.update();
 }
@@ -41,7 +41,7 @@ void loop()
 ```cpp
 void loop()
 {
-    double 出力値 = pid(現在値, 目標値);
+    double 制御値 = pid(現在値, 目標値);
 
     loopCtrl.update();
 }
