@@ -3,7 +3,7 @@
 // CAN通信バス
 Udon::CanBusTeensy<CAN2> bus;
 
-// ロボマスモーター (C620ドライバ経由 モータID: 2)
+// ロボマスモーター (C620ドライバ経由 モーターID: 2)
 Udon::RoboMasterC620 motor{ bus, 2 };
 
 void setup() {
