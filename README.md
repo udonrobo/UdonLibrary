@@ -51,7 +51,7 @@
 
 - [モーター](./docs/Driver/Motor.md)
 - [ロボマスモーター](./docs/Driver/RoboMasterMotor.md)🌟new
-- [ロータリーエンコーダー](./docs/Driver/Encoder.md)
+- [ロータリーエンコーダー(Raspberry Pi Pico)](./docs/Driver/EncoderPico.md)🌟new
 - [ジャイロセンサー / BNO055](./docs/Driver/BNO055.md)🌟new
 - [PIO](./docs/Other/PIO.md)🌟new
 
