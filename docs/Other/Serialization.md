@@ -161,14 +161,6 @@ T 型オブジェクトシリアライズ後のバイト列のバイトサイズ
 uint8_t buffer[Udon::SerializedSize<Vec2>()];
 ```
 
-### `Udon::FailableSerialize(...)`
-
-バッファのチェックサム部分に、チェックサムエラーとなる値を書き込みます。
-
-```cpp
-void FailableSerialize(ArrayView<uint8_t> buffer);
-```
-
 ## サンプル
 
 ### 整数型シリアライズ

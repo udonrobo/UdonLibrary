@@ -73,13 +73,6 @@ namespace Udon
         return buffer;
     }
 
-    /// @brief 必ずチェックサムエラーとなるシリアライズ
-    /// @param buffer シリアル化先のバッファ
-    inline void FailableSerialize(ArrayView<uint8_t> buffer)
-    {
-        buffer.back() = CRC8(buffer.removeBackView(Udon::CRC8_SIZE)) ^ 0xff;
-    }
-
     /// @brief 逆シリアル化可能かどうかを判定します
     /// @param buffer 判定するバイト列の参照
     /// @return 逆シリアル化可能かどうか
