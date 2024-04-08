@@ -33,22 +33,22 @@ namespace Udon
         static_assert(Udon::Traits::IsWriter<Writer>::value, "Writer must be writer.");
 
         /// @brief 受信クラスの型
-        using reader_type = Reader<Message>;
+        using ReaderType = Reader<Message>;
 
         /// @brief 送信クラスの型
-        using writer_type = Writer<Message>;
+        using WriterType = Writer<Message>;
 
         /// @brief 受信クラス
-        reader_type reader;
+        ReaderType reader;
 
         /// @brief 送信クラス
-        writer_type writer;
+        WriterType writer;
 
     public:
         /// @brief コンストラクタ
         /// @param reader 受信クラス
         /// @param writer 送信クラス
-        Forwarding(reader_type&& reader, writer_type&& writer)
+        Forwarding(ReaderType&& reader, WriterType&& writer)
             : reader(std::move(reader))
             , writer(std::move(writer))
         {
@@ -73,7 +73,7 @@ namespace Udon
             }
             else
             {
-                writer.setErrorMessage();
+                writer.setMessage({});
             }
             Udon::Traits::MaybeInvokeUpdate(writer);
         }
@@ -102,14 +102,14 @@ namespace Udon
 
         /// @brief 受信クラスの参照を取得する
         /// @return 受信クラスの参照
-        reader_type& getReader()
+        ReaderType& getReader()
         {
             return reader;
         }
 
         /// @brief 送信クラスの参照を取得する
         /// @return 送信クラスの参照
-        writer_type& getWriter()
+        WriterType& getWriter()
         {
             return writer;
         }
