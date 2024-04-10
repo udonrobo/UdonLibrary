@@ -30,7 +30,18 @@ void setup()
 void loop()
 {
     pid.update(現在値, 目標値);
-    double power = pid.getPower();
+    double 制御値 = pid.getPower();
+
+    loopCtrl.update();
+}
+```
+
+`operator()()` によって以下のようにも書けます。
+
+```cpp
+void loop()
+{
+    double 制御値 = pid(現在値, 目標値);
 
     loopCtrl.update();
 }

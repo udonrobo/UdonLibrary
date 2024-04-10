@@ -20,6 +20,8 @@
 
 ### アルゴリズム
 
+- [ループ周期制御](./docs/Algorithm/LoopCycleController.md)🌟new
+- [移動平均](./docs/Algorithm/MovingAverage.md)🌟new
 - [フィードバック制御(PID)](./docs/Algorithm/FeedbackController.md)🌟new
 - [独立ステア最適化](./docs/Algorithm/SteerOptimizer.md)
 
@@ -48,12 +50,15 @@
 ### ドライバー
 
 - [モーター](./docs/Driver/Motor.md)
+- [ロボマスモーター](./docs/Driver/RoboMasterMotor.md)🌟new
 - [ロータリーエンコーダー](./docs/Driver/Encoder.md)
+- [ジャイロセンサー / BNO055](./docs/Driver/BNO055.md)🌟new
+- [PIO](./docs/Other/PIO.md)🌟new
 
 ### その他
 
-- [シリアライザ](./docs/Other/Serialization.md)
-- [トレイト](./docs/Other/Traits.md)
+- [シリアライザ・デシリアライザ](./docs/Other/Serialization.md)
+- [トレイト・メタ関数](./docs/Other/Traits.md)
 
 ### 開発者用
 

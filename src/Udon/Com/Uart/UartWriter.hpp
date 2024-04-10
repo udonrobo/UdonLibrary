@@ -31,20 +31,15 @@ namespace Udon
         {
         }
 
-        /// @brief 更新
-        void update()
-        {
-            for (auto&& it : Udon::Serialize(message))
-            {
-                uart.write(it);
-            }
-        }
-
         /// @brief 送信内容を更新
         /// @param rhs 送信内容
         void setMessage(const Message& rhs)
         {
             message = rhs;
+            for (auto&& it : Udon::Serialize(message))
+            {
+                uart.write(it);
+            }
         }
 
         /// @brief 送信内容を表示
