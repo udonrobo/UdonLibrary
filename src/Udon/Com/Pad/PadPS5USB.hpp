@@ -22,6 +22,7 @@
 #include <Udon/Com/Message/PadPS5.hpp>
 #include <Udon/Types/Optional.hpp>
 #include <Udon/Types/RGB.hpp>
+#include <Udon/Com/Pad/PadPS5.hpp>
 
 namespace Udon
 {
@@ -63,14 +64,14 @@ namespace Udon
                 buttons.isConnected = true;
 
                 buttons.triangle = pad.getButtonPress(ButtonEnum::TRIANGLE);    // ▵
-                buttons.circle   = pad.getButtonPress(ButtonEnum::CIRCLE);      // ○
-                buttons.cross    = pad.getButtonPress(ButtonEnum::CROSS);       // ×
-                buttons.square   = pad.getButtonPress(ButtonEnum::SQUARE);      // □
+                buttons.circle = pad.getButtonPress(ButtonEnum::CIRCLE);        // ○
+                buttons.cross = pad.getButtonPress(ButtonEnum::CROSS);          // ×
+                buttons.square = pad.getButtonPress(ButtonEnum::SQUARE);        // □
 
-                buttons.up    = pad.getButtonPress(ButtonEnum::UP);       // ↑
+                buttons.up = pad.getButtonPress(ButtonEnum::UP);          // ↑
                 buttons.right = pad.getButtonPress(ButtonEnum::RIGHT);    // →
-                buttons.down  = pad.getButtonPress(ButtonEnum::DOWN);     // ↓
-                buttons.left  = pad.getButtonPress(ButtonEnum::LEFT);     // ←
+                buttons.down = pad.getButtonPress(ButtonEnum::DOWN);      // ↓
+                buttons.left = pad.getButtonPress(ButtonEnum::LEFT);      // ←
 
                 buttons.l1 = pad.getButtonPress(ButtonEnum::L1);
                 buttons.r1 = pad.getButtonPress(ButtonEnum::R1);
@@ -84,9 +85,9 @@ namespace Udon
                 buttons.create = pad.getButtonPress(ButtonEnum::SHARE /*CREATE*/);    // 左上 \|/ ボタン
                 buttons.option = pad.getButtonPress(ButtonEnum::START /*OPTION*/);    // 右上  ≡  ボタン
 
-                buttons.touch = pad.getButtonPress(ButtonEnum::TOUCHPAD);      // タッチパッド
-                buttons.mic   = pad.getButtonPress(ButtonEnum::MICROPHONE);    // ミュートボタン
-                buttons.ps    = pad.getButtonPress(ButtonEnum::PS);            // PSボタン
+                buttons.touch = pad.getButtonPress(ButtonEnum::TOUCHPAD);    // タッチパッド
+                buttons.mic = pad.getButtonPress(ButtonEnum::MICROPHONE);    // ミュートボタン
+                buttons.ps = pad.getButtonPress(ButtonEnum::PS);             // PSボタン
 
                 buttons.analogRightX = +(pad.getAnalogHat(AnalogHatEnum::RightHatX) - 128);    // 0~255 -> -128~127
                 buttons.analogRightY = -(pad.getAnalogHat(AnalogHatEnum::RightHatY) - 127);    // 0~255 -> -128~127
@@ -102,7 +103,7 @@ namespace Udon
 
         /// @brief Message::PadPS5型のメッセージを取得する
         /// @return
-        Message::PadPS5 getButtons() const
+        Message::PadPS5 getMessage() const
         {
             return buttons;
         }
@@ -139,4 +140,38 @@ namespace Udon
             pad.setRumbleOn(big, small);
         }
     };
+
+
+    namespace Impl
+    {
+
+        /// @brief ホストシールドがメイン基板に搭載されてる場合のPS5コントローラークラス
+        /// @note PadPS5USBを継承しているため、PadPS5USBのメンバ関数をそのまま使用可能
+        /// @note Udon::PadPS5 のテンプレート引数には "テンプレート引数を持つReaderクラス" を指定する必要があるため、PadPS5USBとは別に定義
+        template <typename Dummy = void>
+        class PadPS5OnboardUSBReader
+            : public PadPS5USB
+        {
+        public:
+            
+            /// PadPS5USB::begin() 呼び出し必須
+
+            /// PadPS5USB::update() 呼び出し必須
+
+            /// @brief PadPS5USB のコンストラクタを継承
+            using PadPS5USB::PadPS5USB;
+
+            /// @brief 受信メッセージ型
+            using MessageType = Message::PadPS5;
+
+            /// @brief メッセージを取得する
+            Udon::Optional<MessageType> getMessage() const
+            {
+                return PadPS5USB::getMessage();
+            }
+        };
+    }    // namespace Impl
+
+    using PadPS5OnboardUSB = PadPS5<Impl::PadPS5OnboardUSBReader>;
+
 }    // namespace Udon

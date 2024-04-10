@@ -109,7 +109,7 @@ namespace Udon
         /// @brief 更新
         void update() noexcept
         {
-            // Traits::MaybeInvokeUpdate(*this);
+            Traits::MaybeInvokeUpdate<ReaderType>(*this);
 
             if (const auto message = ReaderType::getMessage())
             {
@@ -185,7 +185,7 @@ namespace Udon
         }
 
         /// @brief メッセージ構造体に変換
-        MessageType toMessage() const
+        MessageType getMessage() const
         {
             return {
                 isConnected,
