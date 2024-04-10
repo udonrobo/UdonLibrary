@@ -38,7 +38,7 @@ namespace Udon
 
         template <template <typename> typename T>
         struct IsReader<T, typename std::enable_if<std::is_same<
-                               decltype(std::declval<const T<int>>().getMessage()), Udon::Optional<typename T<int>::MessageType>>::value>::type>
+                               decltype(std::declval<T<int>>().getMessage()), Udon::Optional<typename T<int>::MessageType>>::value>::type>
             : std::true_type
         {
         };

@@ -6,13 +6,15 @@
 #    include "Can.hpp"
 #    include "I2c.hpp"
 #    include "Uart.hpp"
+#    include "LoRa.hpp"
 #    include "Pad/PadPS5.hpp"
 
 namespace Udon
 {
-    using CanPadPS5  = PadPS5<CanReader>;
-    using I2cPadPS5  = PadPS5<I2cMasterReader>;
+    using CanPadPS5 = PadPS5<CanReader>;
+    using I2cPadPS5 = PadPS5<I2cMasterReader>;
     using UartPadPS5 = PadPS5<UartReader>;
+    using E220PadPS5 = PadPS5<E220Reader>;
 }    // namespace Udon
 #endif
 

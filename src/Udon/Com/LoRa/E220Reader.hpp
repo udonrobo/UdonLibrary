@@ -3,6 +3,7 @@
 #include <Udon/Algorithm/Input.hpp>
 #include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Algorithm/ScopedInterruptLocker.hpp>
+#include <Udon/Types/Optional.hpp>
 #include "E220Base.hpp"
 
 namespace Udon
