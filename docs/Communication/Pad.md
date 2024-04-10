@@ -149,7 +149,7 @@ static Udon::E220PadPS5 pad({
 書き込み後、コントローラーの電源を入れると接続されます。
 
 ```cpp
-Udon::PadPS5OnboardBT pad;
+static Udon::PadPS5OnboardBT pad;
 ```
 
 #### ■ USB 通信経由
@@ -157,7 +157,7 @@ Udon::PadPS5OnboardBT pad;
 USB ケーブルで USB ホストシールドとコントローラーを繋ぐことで接続されます。
 
 ```cpp
-Udon::PadPS5OnboardUSB pad;
+static Udon::PadPS5OnboardUSB pad;
 ```
 
 #### ■ その他の通信経由
