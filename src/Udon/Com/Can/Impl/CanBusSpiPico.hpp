@@ -57,7 +57,8 @@ namespace Udon
         if (const auto rxSize = rxNodes.size())
         {
             // 割り込み設定
-            pinMode(config.interrupt, INPUT_PULLDOWN);
+            pinMode(config.interrupt, INPUT);
+            // attachInterruptParam(digitalPinToInterrupt(config.interrupt), [](void*) { Serial.println("call"); }, FALLING, nullptr);
             attachInterruptParam(
                 digitalPinToInterrupt(config.interrupt),
                 [](void* p)
@@ -127,6 +128,8 @@ namespace Udon
     /// @brief バス更新
     inline void CanBusSpi::update()
     {
+        bus.clearInterrupts();
+
         onReceive();
         if (txNodes and millis() - transmitMs >= config.transmitInterval)
         {
@@ -261,8 +264,8 @@ namespace Udon
             Udon::Impl::Packetize({ node->data, node->length }, { msg.data }, SingleFrameSize,
                                     [this, &msg](size_t)
                                     {
-                                        bus.sendMessage(&msg);
-                                        delayMicroseconds(200);
+                                        // bus.sendMessage(&msg);
+                                        delayMicroseconds(1000);
                                     });
 
             node->transmitMs = millis();
