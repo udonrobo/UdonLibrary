@@ -3,6 +3,7 @@
 #include <Udon/Algorithm/Input.hpp>
 #include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Algorithm/ScopedInterruptLocker.hpp>
+#include <Udon/Types/Optional.hpp>
 #include "E220Base.hpp"
 
 namespace Udon
@@ -41,6 +42,7 @@ namespace Udon
         void begin() noexcept
         {
             E220Base::begin();
+            delay(100);
             darkAttachInterrupt(config.aux);
         }
 
@@ -95,10 +97,23 @@ namespace Udon
 
         void OnRisingEdge()
         {
+<<<<<<< Updated upstream
             if (config.serial.available() == Size + 1 /*RSSIバイト*/)
             {
                 config.serial.readBytes(buffer, sizeof buffer);
                 rawRssi = config.serial.read();
+=======
+<<<<<<< Updated upstream
+            if (Size == config.serial.available())
+            {
+                config.serial.readBytes(buffer, sizeof buffer);
+=======
+            if (config.serial.available() == Size /*RSSIバイト*/)
+            {
+                config.serial.readBytes(buffer, sizeof buffer);
+                // rawRssi = config.serial.read();
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
                 received = true;
             }
             else

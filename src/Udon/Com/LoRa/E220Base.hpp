@@ -65,7 +65,7 @@ namespace Udon
                 /* [0x02] */ 0b11100010,                                   // [7-5]UART通信レート / [4-0]伝送レート
                 /* [0x03] */ 0b00000000,                                   // [7-6]サブパケット長 / [5]RSSI有効 / [4-2]未使用(予約) / [1-0]送信出力電力
                 /* [0x04] */ config.channel,                               // 周波数チャンネル (920.8 MHz + CH×200kHz)
-                /* [0x05] */ 0b10000011,                                   // [7]RSSI バイト / [6]送信方法 / [5-3]未使用(予約) / [2-0]WOR サイクル
+                /* [0x05] */ 0b01000011,                                   // [7]RSSI バイト / [6]送信方法 / [5-3]未使用(予約) / [2-0]WOR サイクル
             };
             config.serial.write(static_cast<uint8_t>(0xc0));
             config.serial.write(static_cast<uint8_t>(0x00));
