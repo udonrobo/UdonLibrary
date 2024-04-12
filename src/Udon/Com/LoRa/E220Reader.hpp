@@ -53,7 +53,7 @@ namespace Udon
         int getRssi() const noexcept
         {
             ScopedInterruptLocker locker;
-            
+
             if (rawRssi == 0)
             {
                 // アンテナ同士が近すぎると 0 になる
@@ -75,7 +75,7 @@ namespace Udon
 
             if (received)
             {
-                lastReceiveMs = millis();
+                lastReceiveMs = millis();    // 割り込み内でのmillis()は正確な値を取得できないため、このタイミングで取得
                 received = false;
             }
 
@@ -98,7 +98,7 @@ namespace Udon
 
         void OnRisingEdge()
         {
-            if (config.serial.available() == Size + 1/*RSSIバイト*/)
+            if (config.serial.available() == Size + 1 /*RSSIバイト*/)
             {
                 config.serial.readBytes(buffer, sizeof buffer);
                 rawRssi = config.serial.read();
