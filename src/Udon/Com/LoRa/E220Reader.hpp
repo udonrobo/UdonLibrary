@@ -1,6 +1,5 @@
 #pragma once
 
-#include <Udon/Algorithm/Input.hpp>
 #include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Algorithm/ScopedInterruptLocker.hpp>
 #include <Udon/Types/Optional.hpp>
@@ -96,7 +95,6 @@ namespace Udon
 
         void OnRisingEdge()
         {
-            Serial.print("OnRisingEdge\n");
             if (config.serial.available() == Size + 1/* RSSIバイト*/)
             {
                 config.serial.readBytes(buffer, sizeof buffer);
@@ -105,6 +103,7 @@ namespace Udon
             }
             else
             {
+                Serial.println("E220Reader: Message size mismatch");
                 // 受信サイズとメッセージサイズが一致しない場合はバイト列のズレが発生しているので読み捨て
                 // 受信側書き換え後、送信側を書き換えるとこのエラーが発生する
                 while (config.serial.available())
