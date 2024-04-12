@@ -27,7 +27,6 @@ namespace Udon
         E220Reader(const E220Base::Config& config)
             : E220Base(config)
         {
-            LinkPinToInstance(config.aux, this);
         }
 
         /// @brief コピーコンストラクタ
@@ -35,7 +34,6 @@ namespace Udon
         E220Reader(const E220Reader& other)
             : E220Base(other.config)
         {
-            LinkPinToInstance(config.aux, this);
         }
 
         /// @brief 受信開始
@@ -98,7 +96,8 @@ namespace Udon
 
         void OnRisingEdge()
         {
-            if (config.serial.available() == Size + 1 /*RSSIバイト*/)
+            Serial.print("OnRisingEdge\n");
+            if (config.serial.available() == Size + 1/* RSSIバイト*/)
             {
                 config.serial.readBytes(buffer, sizeof buffer);
                 rawRssi = config.serial.read();
@@ -121,17 +120,12 @@ namespace Udon
             return instanceList;
         }
 
-        static void LinkPinToInstance(uint8_t pin, E220Reader* self)
-        {
-            InstanceList()[digitalPinToInterrupt(pin)] = self;
-        }
-
         void darkAttachInterrupt(uint8_t pin)
         {
             // attachInterrupt は this ポインタの情報がないためメンバ関数を呼び出すことができない
             // そこでピン番号とthisポインタを紐づけて、無理やりメンバ関数を呼び出す
 
-            LinkPinToInstance(pin, this);
+            InstanceList()[digitalPinToInterrupt(pin)] = this;
 
             // clang-format off
             switch (pin)
