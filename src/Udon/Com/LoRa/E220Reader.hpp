@@ -47,11 +47,13 @@ namespace Udon
         }
 
         /// @brief RSSI 強度取得
+        /// @note 受信エラー時の戻り値は不定
         /// @note RSSI 強度は最後に受信したメッセージのものを返す
         /// @return RSSI 強度
         int getRssi() const noexcept
         {
             ScopedInterruptLocker locker;
+            
             if (rawRssi == 0)
             {
                 // アンテナ同士が近すぎると 0 になる
@@ -69,7 +71,6 @@ namespace Udon
         /// @note メッセージは最後に受信したものを返す (受信エラー時は前回のメッセージを返す)
         Udon::Optional<MessageType> getMessage() noexcept
         {
-            // 割り込み関数内で使用する変数にアクセスするため排他制御
             ScopedInterruptLocker locker;
 
             if (received)
@@ -97,23 +98,10 @@ namespace Udon
 
         void OnRisingEdge()
         {
-<<<<<<< Updated upstream
-            if (config.serial.available() == Size + 1 /*RSSIバイト*/)
+            if (config.serial.available() == Size + 1/*RSSIバイト*/)
             {
                 config.serial.readBytes(buffer, sizeof buffer);
                 rawRssi = config.serial.read();
-=======
-<<<<<<< Updated upstream
-            if (Size == config.serial.available())
-            {
-                config.serial.readBytes(buffer, sizeof buffer);
-=======
-            if (config.serial.available() == Size /*RSSIバイト*/)
-            {
-                config.serial.readBytes(buffer, sizeof buffer);
-                // rawRssi = config.serial.read();
->>>>>>> Stashed changes
->>>>>>> Stashed changes
                 received = true;
             }
             else

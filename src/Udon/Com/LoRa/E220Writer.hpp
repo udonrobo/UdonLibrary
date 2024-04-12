@@ -48,7 +48,7 @@ namespace Udon
                 Udon::Serialize(message, buffer);
                 config.serial.write(uint8_t(config.address >> 0));
                 config.serial.write(uint8_t(config.address >> 8));
-                config.serial.write(uint8_t(config.channel     ));
+                config.serial.write(uint8_t(config.channel));
                 config.serial.write(buffer, sizeof buffer);
                 lastTransmitMs = millis();
             }
