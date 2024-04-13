@@ -1159,20 +1159,12 @@ inline MCP2515::ERROR MCP2515::setFilter(const RXF num, const bool ext, const ui
 
 inline MCP2515::ERROR MCP2515::sendMessage(const TXBn txbn, const struct can_frame* frame)
 {
-    // 受信割り込みフラグを消さないと送信できない
-    // modifyRegister(MCP_CANINTF, RXB[0].CANINTF_RXnIF, 0);
-    // modifyRegister(MCP_CANINTF, RXB[1].CANINTF_RXnIF, 0);
-
     if (frame->can_dlc > CAN_MAX_DLEN)
     {
         return ERROR_FAILTX;
     }
 
     const struct TXBn_REGS* txbuf = &TXB[txbn];
-
-    // 前回の割り込みフラグを消す
-    // modifyRegister(MCP_CANINTF, CANINTF_TX0IF | CANINTF_TX1IF | CANINTF_TX2IF | CANINTF_MERRF, 0);
-    clearInterrupts();
 
     uint8_t data[13];
 
@@ -1186,11 +1178,16 @@ inline MCP2515::ERROR MCP2515::sendMessage(const TXBn txbn, const struct can_fra
 
     memcpy(&data[MCP_DATA], frame->data, frame->can_dlc);
 
+    noInterrupts();  // 送信処理中に受信処理が行われるとSPI通信が競合するため、送信処理中は割り込みを禁止する
+
     setRegisters(txbuf->SIDH, data, 5 + frame->can_dlc);
 
     modifyRegister(txbuf->CTRL, TXB_TXREQ, TXB_TXREQ);
 
     uint8_t ctrl = readRegister(txbuf->CTRL);
+
+    interrupts();
+
     if ((ctrl & (TXB_ABTF | TXB_MLOA | TXB_TXERR)) != 0)
     {
         return ERROR_FAILTX;
@@ -1204,17 +1201,45 @@ inline MCP2515::ERROR MCP2515::sendMessage(const struct can_frame* frame)
     {
         return ERROR_FAILTX;
     }
+    
+    const uint8_t instruction = INSTRUCTION_READ_STATUS;
 
-    TXBn txBuffers[N_TXBUFFERS] = { TXB0, TXB1, TXB2 };
+    uint8_t status{};
 
-    for (int i = 0; i < N_TXBUFFERS; i++)
     {
-        const struct TXBn_REGS* txbuf = &TXB[txBuffers[i]];
-        uint8_t ctrlval = readRegister(txbuf->CTRL);
-        if ((ctrlval & TXB_TXREQ) == 0)
-        {
-            return sendMessage(txBuffers[i], frame);
-        }
+        gpio_put(this->SPI_CS_PIN, false);
+
+        noInterrupts();  // 送信処理中に受信処理が行われるとSPI通信が競合するため、送信処理中は割り込みを禁止する
+
+        spi_write_blocking(this->SPI_CHANNEL, &instruction, sizeof instruction);
+
+        spi_read_blocking(this->SPI_CHANNEL, 0x00, &status, sizeof status);
+
+        interrupts();
+
+        gpio_put(this->SPI_CS_PIN, true);
+    }
+
+    // CANINTF_RX0IF   = (status >> 0) & 0b1,
+    // CANINTFL_RX1IF  = (status >> 1) & 0b1,
+    // TXB0CNTRL_TXREQ = (status >> 2) & 0b1,
+    // CANINTF_TX0IF   = (status >> 3) & 0b1,
+    // TXB1CNTRL_TXREQ = (status >> 4) & 0b1,
+    // CANINTF_TX1IF   = (status >> 5) & 0b1,
+    // TXB2CNTRL_TXREQ = (status >> 6) & 0b1,
+    // CANINTF_TX2IF   = (status >> 7) & 0b1,
+
+    if (((status >> 2) & 0b1) == false)
+    {
+        return sendMessage(TXB0, frame);
+    }
+    else if (((status >> 4) & 0b1) == false)
+    {
+        return sendMessage(TXB1, frame);
+    }
+    else if (((status >> 6) & 0b1) == false)
+    {
+        return sendMessage(TXB2, frame);
     }
 
     return ERROR_ALLTXBUSY;

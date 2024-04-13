@@ -63,14 +63,14 @@ namespace Udon
                 digitalPinToInterrupt(config.interrupt),
                 [](void* p)
                 {
-                    auto      self = static_cast<CanBusSpi*>(p);
+                    auto self = static_cast<CanBusSpi*>(p);
                     can_frame msg;
                     if (self->bus.readMessage(&msg) == MCP2515::ERROR_OK)
                     {
                         self->rxBuffer.push_back(msg);    // 受信データ追加
                     }
                 },
-                LOW,
+                LOW,    // 送信処理中、割り込み禁止になるため FALLING による監視はしない (変化のタイミングを逃すため)
                 this);
 
             // 受信フィルタ設定 (ノード数が6以下の場合のみ)
@@ -128,7 +128,12 @@ namespace Udon
     /// @brief バス更新
     inline void CanBusSpi::update()
     {
-        bus.clearInterrupts();
+
+        {
+            ScopedInterruptLocker block;
+            Serial.printf("TXError: %d\n", bus.errorCountTX());
+            Serial.printf("RXError: %d\n", bus.errorCountRX());
+        }
 
         onReceive();
         if (txNodes and millis() - transmitMs >= config.transmitInterval)
@@ -257,16 +262,16 @@ namespace Udon
         for (auto&& node : txNodes)
         {
             can_frame msg{};
-            msg.can_id  = node->id;
+            msg.can_id = node->id;
             msg.can_dlc = SingleFrameSize;
 
             // 一度に8バイトしか送れないため、分割し送信
             Udon::Impl::Packetize({ node->data, node->length }, { msg.data }, SingleFrameSize,
-                                    [this, &msg](size_t)
-                                    {
-                                        // bus.sendMessage(&msg);
-                                        delayMicroseconds(1000);
-                                    });
+                                  [this, &msg](size_t)
+                                  {
+                                      bus.sendMessage(&msg);
+                                      delayMicroseconds(200);
+                                  });
 
             node->transmitMs = millis();
         }
