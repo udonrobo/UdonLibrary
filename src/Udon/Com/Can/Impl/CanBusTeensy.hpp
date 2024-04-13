@@ -257,16 +257,16 @@ namespace Udon
         for (auto&& node : txNodes)
         {
             CAN_message_t msg;
-            msg.id  = node->id;
+            msg.id = node->id;
             msg.len = SingleFrameSize;
 
             // 一度に8バイトしか送れないため、分割し送信
             Udon::Impl::Packetize({ node->data, node->length }, { msg.buf }, SingleFrameSize,
-                                    [this, &msg](size_t)
-                                    {
-                                        bus.write(msg);
-                                        delayMicroseconds(200);
-                                    });
+                                  [this, &msg](size_t)
+                                  {
+                                      bus.write(msg);
+                                      delayMicroseconds(200);
+                                  });
 
             node->transmitMs = ms;
         }

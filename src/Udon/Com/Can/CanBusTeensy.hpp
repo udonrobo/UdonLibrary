@@ -13,6 +13,7 @@
 #include "CanUtility.hpp"
 
 #include <Udon/Types/StaticVector.hpp>
+#include <Udon/Algorithm/ScopedInterruptLocker.hpp>
 
 namespace Udon
 {
