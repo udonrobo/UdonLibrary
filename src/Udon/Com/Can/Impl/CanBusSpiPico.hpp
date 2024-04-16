@@ -58,7 +58,7 @@ namespace Udon
         {
             // 割り込み設定
             pinMode(config.interrupt, INPUT);
-            // attachInterruptParam(digitalPinToInterrupt(config.interrupt), [](void*) { Serial.println("call"); }, FALLING, nullptr);
+            
             attachInterruptParam(
                 digitalPinToInterrupt(config.interrupt),
                 [](void* p)
@@ -128,13 +128,6 @@ namespace Udon
     /// @brief バス更新
     inline void CanBusSpi::update()
     {
-
-        {
-            ScopedInterruptLocker block;
-            Serial.printf("TXError: %d\n", bus.errorCountTX());
-            Serial.printf("RXError: %d\n", bus.errorCountRX());
-        }
-
         onReceive();
         if (txNodes and millis() - transmitMs >= config.transmitInterval)
         {
@@ -142,7 +135,7 @@ namespace Udon
             transmitMs = millis();
         }
     }
-
+    
     /// @brief バスの状態を表示する
     inline void CanBusSpi::show() const
     {
@@ -229,7 +222,7 @@ namespace Udon
                                        { return rx.node->id == msg.can_id; });
             if (rxNode == rxNodes.end())
             {
-                return;
+                continue;
             }
 
             // 分割されたフレームを結合(マルチフレームの場合)
