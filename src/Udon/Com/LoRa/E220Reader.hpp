@@ -1,6 +1,5 @@
 #pragma once
 
-#include <Udon/Algorithm/Input.hpp>
 #include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Algorithm/ScopedInterruptLocker.hpp>
 #include <Udon/Types/Optional.hpp>
@@ -27,7 +26,6 @@ namespace Udon
         E220Reader(const E220Base::Config& config)
             : E220Base(config)
         {
-            LinkPinToInstance(config.aux, this);
         }
 
         /// @brief コピーコンストラクタ
@@ -35,22 +33,24 @@ namespace Udon
         E220Reader(const E220Reader& other)
             : E220Base(other.config)
         {
-            LinkPinToInstance(config.aux, this);
         }
 
         /// @brief 受信開始
         void begin() noexcept
         {
             E220Base::begin();
+            delay(100);
             darkAttachInterrupt(config.aux);
         }
 
         /// @brief RSSI 強度取得
+        /// @note 受信エラー時の戻り値は不定
         /// @note RSSI 強度は最後に受信したメッセージのものを返す
         /// @return RSSI 強度
         int getRssi() const noexcept
         {
             ScopedInterruptLocker locker;
+
             if (rawRssi == 0)
             {
                 // アンテナ同士が近すぎると 0 になる
@@ -68,12 +68,11 @@ namespace Udon
         /// @note メッセージは最後に受信したものを返す (受信エラー時は前回のメッセージを返す)
         Udon::Optional<MessageType> getMessage() noexcept
         {
-            // 割り込み関数内で使用する変数にアクセスするため排他制御
             ScopedInterruptLocker locker;
 
             if (received)
             {
-                lastReceiveMs = millis();
+                lastReceiveMs = millis();    // 割り込み内でのmillis()は正確な値を取得できないため、このタイミングで取得
                 received = false;
             }
 
@@ -96,7 +95,7 @@ namespace Udon
 
         void OnRisingEdge()
         {
-            if (config.serial.available() == Size + 1 /*RSSIバイト*/)
+            if (config.serial.available() == Size + 1/* RSSIバイト*/)
             {
                 config.serial.readBytes(buffer, sizeof buffer);
                 rawRssi = config.serial.read();
@@ -104,6 +103,7 @@ namespace Udon
             }
             else
             {
+                Serial.println("E220Reader: Message size mismatch");
                 // 受信サイズとメッセージサイズが一致しない場合はバイト列のズレが発生しているので読み捨て
                 // 受信側書き換え後、送信側を書き換えるとこのエラーが発生する
                 while (config.serial.available())
@@ -119,17 +119,12 @@ namespace Udon
             return instanceList;
         }
 
-        static void LinkPinToInstance(uint8_t pin, E220Reader* self)
-        {
-            InstanceList()[digitalPinToInterrupt(pin)] = self;
-        }
-
         void darkAttachInterrupt(uint8_t pin)
         {
             // attachInterrupt は this ポインタの情報がないためメンバ関数を呼び出すことができない
             // そこでピン番号とthisポインタを紐づけて、無理やりメンバ関数を呼び出す
 
-            LinkPinToInstance(pin, this);
+            InstanceList()[digitalPinToInterrupt(pin)] = this;
 
             // clang-format off
             switch (pin)
