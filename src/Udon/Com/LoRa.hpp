@@ -11,4 +11,5 @@
 #    include "LoRa/LoRaWriter.hpp"
 #    include "LoRa/E220.hpp"
 #    include "LoRa/TLM922S.hpp"
+#    include "LoRa/E920LR3.hpp"
 #endif
