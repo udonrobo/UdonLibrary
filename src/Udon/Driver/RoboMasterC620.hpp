@@ -9,7 +9,6 @@ namespace Udon
     class RoboMasterC620
     {
     public:
-
         /// @brief コンストラクタ
         /// @param bus CAN通信バス
         /// @param motorId モーターID (1~8)
@@ -17,45 +16,49 @@ namespace Udon
             : bus{ bus }
             , motorId{ motorId }
             , direction{ direction }
-            , rx{ static_cast<uint32_t>(0x200 + Constrain(motorId, 1, 8)), rxBuffer, sizeof rxBuffer, 0 }
+            , nodeTx{ bus.createTx(static_cast<uint32_t>(0x200), 8) }
         {
-            if (bus.findTx(shared.node.id, shared.node.length) == nullptr)
+            nodeRx = bus.createRx(static_cast<uint32_t>(0x200 + Constrain(motorId, 1, 8)), 8);
+            nodeRx->onReceive = [](void* p)
             {
-                // 送信バッファが見つからない場合は新規作成
-                bus.joinTx(shared.node);
-                useSharedBuffer = true;
-            }
+                auto self = static_cast<RoboMasterC620*>(p);
+                // 変化角を計算
+                const auto currentAngle = self->nodeRx->data[0] << 8 | self->nodeRx->data[1];
+                const auto dTheta = self->angle - currentAngle;
+                self->angle = currentAngle;
 
-            bus.joinRx(rx, onReceive, this);
+                // 変化量がいきなり半周を超えた -> 計算値が-π~π間を通過 -> 一周分オフセットを加減算
+                if (dTheta > ppr / 2)
+                {
+                    self->offsetAngle += ppr;
+                }
+                else if (dTheta < -ppr / 2)
+                {
+                    self->offsetAngle -= ppr;
+                }
+            };
+            nodeRx->param = this;
         }
+        // 受信idは0x201から一つのコントローラにつき一つのidを持つ
+        // 送信idは0x200にモータ4つのデータを送信する
 
         RoboMasterC620(const RoboMasterC620& other)
             : bus{ other.bus }
             , motorId{ other.motorId }
             , direction{ other.direction }
-            , rx{ static_cast<uint32_t>(0x200 + motorId), rxBuffer, sizeof rxBuffer, 0 }
+            , nodeTx{ other.nodeTx }
+            , nodeRx{ other.nodeRx }
         {
-            if (bus.findTx(shared.node.id, shared.node.length) == nullptr)
-            {
-                // 送信バッファが見つからない場合は新規作成
-                bus.joinTx(shared.node);
-                useSharedBuffer = true;
-            }
-            bus.joinRx(rx, onReceive, this);
+            nodeRx->param = this;
         }
 
         ~RoboMasterC620()
         {
-            if (useSharedBuffer)
-            {
-                bus.leaveTx(shared.node);   // ※1 ここで参照が切れる
-            }
-            bus.leaveRx(rx);
         }
 
         explicit operator bool() const
         {
-            return Millis() - rx.transmitMs < 100;
+            return Millis() - nodeRx->transmitMs < 100;
         }
 
         /// @brief モーターの電流を設定
@@ -65,18 +68,10 @@ namespace Udon
             current = Constrain(current, -20000, 20000) * directionSign();
 
             const auto transmitCurrent = static_cast<int16_t>(current * 16384 / 20000);    // 16bit符号なし整数に変換
-            const auto motorIndex      = (motorId - 1) * 2;
-            if (useSharedBuffer)
-            {
-                shared.data[motorIndex + 0] = transmitCurrent >> 8 & 0xff;    // high byte
-                shared.data[motorIndex + 1] = transmitCurrent >> 0 & 0xff;    // low byte
-            }
-            else
-            {
-                auto reference                  = bus.findTx(shared.node.id, shared.node.length);    // コピーによって参照が切れるのを防ぐため、毎回検索を行う (※1)
-                reference->data[motorIndex + 0] = transmitCurrent >> 8 & 0xff;                       // high byte
-                reference->data[motorIndex + 1] = transmitCurrent >> 0 & 0xff;                       // low byte
-            }
+            const auto motorIndex = (motorId - 1) * 2;
+
+            nodeTx->data[motorIndex + 0] = transmitCurrent >> 8 & 0xff;    // high byte
+            nodeTx->data[motorIndex + 1] = transmitCurrent >> 0 & 0xff;    // low byte
         }
 
 
@@ -93,7 +88,7 @@ namespace Udon
         /// @return 速度 [rpm]
         int16_t getVelocity() const
         {
-            return (rxBuffer[2] << 8 | rxBuffer[3]) * directionSign();
+            return (nodeRx->data[2] << 8 | nodeRx->data[3]) * directionSign();
         }
 
 
@@ -101,7 +96,7 @@ namespace Udon
         /// @return トルク電流 [mA]
         int16_t getTorqueCurrent() const
         {
-            const int current = rxBuffer[4] << 8 | rxBuffer[5];
+            const int current = nodeRx->data[4] << 8 | nodeRx->data[5];
             return current * directionSign();
         }
 
@@ -110,39 +105,29 @@ namespace Udon
         /// @return 温度 [℃]
         uint8_t getTemperature() const
         {
-            return rxBuffer[6];
+            return nodeRx->data[6];
         }
 
     private:
         /// @brief 通信バス
         Udon::ICanBus& bus;
 
-
         /// @brief モーターID
         uint8_t motorId;
-
 
         /// @brief 回転方向
         bool direction;
 
-
         /// @brief 送信バッファ
-        struct
-        {
-            uint8_t       data[8];
-            Udon::CanNode node{ 0x200, data, sizeof data, 0 };
-        } shared;    // 共有先のバッファ (送信バッファが共有されている場合のみ使用)
-        bool useSharedBuffer = false;
-
+        Udon::CanTxNode* nodeTx;
 
         /// @brief 受信バッファ
-        uint8_t       rxBuffer[8]{};
-        Udon::CanNode rx;
+        Udon::CanRxNode* nodeRx;
 
 
         /// @brief オフセット角度 (生の角度は無限の角度を扱えないので、無限の角度を扱えるようにオフセットを加減算する)
         int64_t offsetAngle = 0;
-        int64_t angle       = 0;
+        int64_t angle = 0;
 
 
         /// @brief エンコーダー分解能
@@ -150,22 +135,6 @@ namespace Udon
 
         static void onReceive(void* p)
         {
-            auto self = static_cast<RoboMasterC620*>(p);
-
-            // 変化角を計算
-            const auto currentAngle = self->rxBuffer[0] << 8 | self->rxBuffer[1];
-            const auto dTheta       = self->angle - currentAngle;
-            self->angle             = currentAngle;
-
-            // 変化量がいきなり半周を超えた -> 計算値が-π~π間を通過 -> 一周分オフセットを加減算
-            if (dTheta > ppr / 2)
-            {
-                self->offsetAngle += ppr;
-            }
-            else if (dTheta < -ppr / 2)
-            {
-                self->offsetAngle -= ppr;
-            }
         }
 
         int directionSign() const
