@@ -133,10 +133,6 @@ namespace Udon
         /// @brief エンコーダー分解能
         static constexpr int32_t ppr = 8192;
 
-        static void onReceive(void* p)
-        {
-        }
-
         int directionSign() const
         {
             return direction ? 1 : -1;
