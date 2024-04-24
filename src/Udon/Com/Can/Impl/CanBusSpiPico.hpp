@@ -77,7 +77,7 @@ namespace Udon
                 for (size_t i = 0; i < Mcp2515MaxFilterCount; ++i)
                 {
                     if (i < rxSize)
-                        bus.setFilter(filters[i], false, rxNodes[i].node.id);
+                        bus.setFilter(filters[i], false, rxNodes[i].id);
                     else
                         bus.setFilter(filters[i], false, 0x7FF);    // 未使用のフィルタは全て0x7FFに設定
                 }
@@ -167,7 +167,7 @@ namespace Udon
 
             Serial.print("[");
 
-            for (const auto&& data : rxNode.data)
+            for (const auto& data : rxNode.data)
             {
                 Serial.printf("%4d", data);
             }
@@ -185,7 +185,7 @@ namespace Udon
                                { return tx.id == id; });
         if (it == txNodes.end())
         {
-            txNodes.push_back({ id, { length } });
+            txNodes.push_back({ id, { static_cast<unsigned char>(length) } });
             return &txNodes.back();
         }
         return &(*it);
@@ -196,10 +196,8 @@ namespace Udon
     inline CanRxNode* CanBusSpi::createRx(uint32_t id, size_t length)
     {
         rxNodes.push_back({
-            {
-                id,
-                length,
-            },
+            id,
+            { static_cast<unsigned char>(length) },
             nullptr,
             nullptr,
         });
@@ -212,21 +210,21 @@ namespace Udon
         {
             // IDに対応する受信ノードを探す
             auto rxNode = std::find_if(rxNodes.begin(), rxNodes.end(), [msg](const CanRxNode& rx)
-                                       { return rx.node.id == msg.can_id; });
+                                       { return rx.id == msg.can_id; });
             if (rxNode == rxNodes.end())
             {
                 continue;
             }
 
             // 分割されたフレームを結合(マルチフレームの場合)
-            Udon::Impl::Unpacketize({ msg.data }, { rxNode->node.data, rxNode->node.length }, SingleFrameSize);
+            Udon::Impl::Unpacketize({ msg.data }, { rxNode->data }, SingleFrameSize);
 
             // 登録されている受信クラスのコールバック関数を呼ぶ
             // 最終フレームの到達時にコールバックを呼ぶため、受信中(完全に受信しきっていないとき)にデシリアライズすることを防いでいる。
-            if (rxNode->node.length > SingleFrameSize)
+            if (rxNode->data.size() > SingleFrameSize)
             {
                 // マルチフレーム
-                const auto index = std::ceil(static_cast<double>(rxNode->node.length) / (SingleFrameSize - 1 /*index*/)) - 1;
+                const auto index = std::ceil(static_cast<double>(rxNode->data.size()) / (SingleFrameSize - 1 /*index*/)) - 1;
 
                 if (msg.data[0] == index)
                 {
@@ -239,7 +237,7 @@ namespace Udon
                 rxNode->callback();
             }
 
-            receiveMs = rxNode->node.transmitMs = millis();
+            receiveMs = rxNode->transmitMs = millis();
         }
         rxBuffer.clear();
     }
@@ -252,7 +250,7 @@ namespace Udon
             msg.can_dlc = SingleFrameSize;
 
             // 一度に8バイトしか送れないため、分割し送信
-            Udon::Impl::Packetize({ node.data, node.length }, { msg.data }, SingleFrameSize,
+            Udon::Impl::Packetize({ node.data }, { msg.data }, SingleFrameSize,
                                   [this, &msg](size_t)
                                   {
                                       bus.sendMessage(&msg);

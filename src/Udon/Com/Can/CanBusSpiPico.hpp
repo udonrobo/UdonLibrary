@@ -51,11 +51,6 @@ namespace Udon
         /// @remark SPI通信も開始します。
         void begin();
 
-        // /// @brief CAN通信のみ開始する
-        // /// @remark SPI通信は別途開始する必要がある
-        // ///         SPIバスがCANコントローラーとの通信のみに使用される場合は、この関数を呼び出す必要はない
-        // void beginCanOnly();
-
         /// @brief バス更新
         /// @remark 呼び出し必須
         void update();

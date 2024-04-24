@@ -11,9 +11,9 @@ inline void testBus()
     Udon::CanBusTeensy<CAN1> bus{
         {
             .transmitInterval = 5,
-            .transmitTimeout  = 100,
-            .receiveTimeout   = 100,
-            .canBaudrate      = 1'000'000,
+            .transmitTimeout = 100,
+            .receiveTimeout = 100,
+            .canBaudrate = 1'000'000,
         }
     };
 
@@ -24,8 +24,8 @@ inline void testBus()
     bus.show();
 
     Udon::CanNode node{ 0, nullptr, 0, 0 };
-    bus.joinTx(node);
-    bus.joinRx(
+    bus.createTx(node);
+    bus.Rx(
         node, [](void*) {}, nullptr);
     bus.leaveRx(node);
     bus.leaveTx(node);
@@ -37,25 +37,25 @@ inline void testBus()
 {
     Udon::CanBusSpi{
         {
-            .channel          = spi0,
-            .cs               = 1,
-            .interrupt        = 2,
-            .mosi             = 3,
-            .miso             = 4,
-            .sck              = 5,
-            .spiClock         = 1'000'000,
+            .channel = spi0,
+            .cs = 1,
+            .interrupt = 2,
+            .mosi = 3,
+            .miso = 4,
+            .sck = 5,
+            .spiClock = 1'000'000,
             .transmitInterval = 5,
-            .transmitTimeout  = 100,
-            .receiveTimeout   = 100,
-            .canBaudrate      = CAN_1000KBPS,
-            .mcpClock         = MCP_16MHZ,
+            .transmitTimeout = 100,
+            .receiveTimeout = 100,
+            .canBaudrate = CAN_1000KBPS,
+            .mcpClock = MCP_16MHZ,
         }
     };
 
     Udon::CanBusSpi bus{
         {
-            .channel   = spi0,
-            .cs        = 1,
+            .channel = spi0,
+            .cs = 1,
             .interrupt = 2,
         },
     };
@@ -66,12 +66,10 @@ inline void testBus()
     bus.operator bool();
     bus.show();
 
-    Udon::CanNode node{ 0, nullptr, 0, 0 };
-    bus.joinTx(node);
-    bus.joinRx(
-        node, [](void*) {}, nullptr);
-    bus.leaveRx(node);
-    bus.leaveTx(node);
+    Udon::CanTxNode nodeTx{ 0, { 0 }, 0 };
+    Udon::CanRxNode nodeRx{ 0, { 0 }, nullptr, nullptr, 0 };
+    bus.createTx(0, 0);
+    bus.createRx(0, 0);
 }
 
 #endif
@@ -85,17 +83,14 @@ inline void testIsReaderWriter()
 struct DummyBus
     : Udon::ICanBus
 {
-    explicit operator bool() const override { return true; }
-    void           joinTx(Udon::CanNode&) override {}
-    void           joinRx(Udon::CanNode&, void (*)(void*), void*) override {}
-    Udon::CanNode* findTx(uint32_t /*id*/, size_t /*length*/ = 0) override { return nullptr; }
-    void           leaveTx(const Udon::CanNode&) override {}
-    void           leaveRx(const Udon::CanNode&) override {}
+    explicit operator bool() const { return true; }
+    Udon::CanTxNode* createTx(uint32_t, size_t) override {return nullptr;}
+    Udon::CanRxNode* createRx(uint32_t, size_t) override {return nullptr;}
 };
 
 inline void testReader()
 {
-    DummyBus             bus;
+    DummyBus bus;
     Udon::CanReader<int> reader{ bus, 0x00 };
     reader.getMessage();
     reader.show();
@@ -104,7 +99,7 @@ inline void testReader()
 
 inline void testWriter()
 {
-    DummyBus             bus;
+    DummyBus bus;
     Udon::CanWriter<int> writer{ bus, 0x00 };
     writer.setMessage(0);
     writer.show();

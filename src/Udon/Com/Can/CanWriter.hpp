@@ -35,29 +35,29 @@ namespace Udon
         /// @param id  自身のノードID
         CanWriter(ICanBus& bus, const uint32_t id)
             : bus{ bus }
-            , p{ bus.createTx(id, Size) }
+            , node{ bus.createTx(id, Size) }
         {
         }
 
         /// @brief コピーコンストラクタ
         CanWriter(const CanWriter& other)
             : bus{ other.bus }
-            , p {other.p}
+            , node{ other.node }
         {
         }
 
         /// @brief メッセージ構造体をセット
         void setMessage(const Message& message) noexcept
         {
-            Udon::Serialize(message, { p->data, p->length });
+            Udon::Serialize(message, { node->data });
         }
 
         /// @brief 送信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show() const
         {
-            Udon::Printf("0x%03x ", node.id);
-            if (const auto message = Udon::Deserialize<Message>({ p->data, p->length }))
+            Udon::Printf("0x%03x ", node->id);
+            if (const auto message = Udon::Deserialize<Message>({ node->data }))
             {
                 Udon::Show(*message);
             }
@@ -71,17 +71,17 @@ namespace Udon
         /// @brief 送信バッファを表示
         void showRaw() const
         {
-            Udon::Printf("0x%03x ", p->id);
-            for (size_t i = 0; i < p->length; ++i)
+            Udon::Printf("0x%03x ", node->id);
+            for (const auto& n : node->data)
             {
-                Udon::Show(p->data[i]);
+                Udon::Show(n);
             }
         }
 
     private:
         ICanBus& bus;
 
-        CanNode* p;
+        CanTxNode* node;
     };
 
 }    // namespace Udon

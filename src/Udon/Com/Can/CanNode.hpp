@@ -13,20 +13,19 @@ namespace Udon
 {
     struct CanTxNode
     {
-        uint32_t id;            // メッセージID
+        uint32_t id;    // メッセージID
         std::vector<uint8_t> data;
         uint32_t transmitMs;    // 最終通信時刻
     };
     struct CanRxNode
     {
-        uint32_t id;            // メッセージID
-        uint32_t transmitMs;    // 最終通信時刻
-
+        uint32_t id;    // メッセージID
         std::vector<uint8_t> data;
 
         void (*onReceive)(void*);
-
         void* param;
+
+        uint32_t transmitMs;    // 最終通信時刻
 
         void callback()
         {

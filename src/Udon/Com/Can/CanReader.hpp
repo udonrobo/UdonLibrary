@@ -37,11 +37,11 @@ namespace Udon
         CanReader(ICanBus& bus, const uint32_t id)
             : bus{ bus }
         {
-            node = bus.createRx(id,Size);
+            node = bus.createRx(id, Size);
             node->onReceive = [](void* p)
             {
                 auto self = static_cast<CanReader*>(p);
-                self->message = Udon::Deserialize<Message>({ self->node->data, self->node->length });
+                self->message = Udon::Deserialize<Message>({ self->node->data });
             };
             node->param = this;
         }
@@ -49,7 +49,7 @@ namespace Udon
         /// @brief コピーコンストラクタ
         CanReader(const CanReader& other)
             : bus{ other.bus }
-            , node{other.node}
+            , node{ other.node }
         {
             node->param = this;
         }
@@ -63,7 +63,7 @@ namespace Udon
         /// @return 受信していればtrue
         explicit operator bool() const
         {
-            return Millis() - node.transmitMs < 100;
+            return Millis() - node->transmitMs < 100;
         }
 
         /// @brief メッセージ構造体を取得
@@ -98,9 +98,9 @@ namespace Udon
         void showRaw() const
         {
             Udon::Printf("0x%03x ", node->id);
-            for (size_t i = 0; i < node->length; ++i)
+            for (const auto n : node->data)
             {
-                Udon::Show(node->data[i]);
+                Udon::Show(n);
             }
         }
 
