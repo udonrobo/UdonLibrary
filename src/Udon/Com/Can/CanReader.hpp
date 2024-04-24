@@ -32,29 +32,31 @@ namespace Udon
         static constexpr size_t Size = Udon::SerializedSize<Message>();
 
         /// @brief コンストラクタ
-        /// @param bus I2cバス
+        /// @param bus CANバス
         /// @param id 送信者のノードID
         CanReader(ICanBus& bus, const uint32_t id)
             : bus{ bus }
-            , buffer{}
-            , node{ id, buffer, Size, 0 }
         {
-            joinBus();
+            node = bus.createRx(id,Size);
+            node->onReceive = [](void* p)
+            {
+                auto self = static_cast<CanReader*>(p);
+                self->message = Udon::Deserialize<Message>({ self->node->data, self->node->length });
+            };
+            node->param = this;
         }
 
         /// @brief コピーコンストラクタ
         CanReader(const CanReader& other)
             : bus{ other.bus }
-            , buffer{}
-            , node{ other.node.id, buffer, Size, 0 }
+            , node{other.node}
         {
-            joinBus();
+            node->param = this;
         }
 
         /// @brief デストラクタ
         ~CanReader()
         {
-            bus.leaveRx(node);
         }
 
         /// @brief 受信しているか
@@ -81,7 +83,7 @@ namespace Udon
         /// @brief 受信内容を表示
         void show() const
         {
-            Udon::Printf("0x%03x ", node.id);
+            Udon::Printf("0x%03x ", node->id);
             if (const auto m = getMessage())
             {
                 Udon::Show(*m);
@@ -95,31 +97,17 @@ namespace Udon
         /// @brief 受信バッファを表示
         void showRaw() const
         {
-            Udon::Printf("0x%03x ", node.id);
-            for (size_t i = 0; i < node.length; ++i)
+            Udon::Printf("0x%03x ", node->id);
+            for (size_t i = 0; i < node->length; ++i)
             {
-                Udon::Show(node.data[i]);
+                Udon::Show(node->data[i]);
             }
         }
 
     private:
-        void joinBus()
-        {
-            bus.joinRx(
-                node,
-                [](void* p)
-                {
-                    auto self     = static_cast<CanReader*>(p);
-                    self->message = Udon::Deserialize<MessageType>({ self->node.data, self->node.length });
-                },
-                this);
-        }
-
         ICanBus& bus;
 
-        uint8_t buffer[Size];
-
-        CanNode node;
+        CanRxNode* node;
 
         Udon::Optional<MessageType> message;
     };
