@@ -185,7 +185,7 @@ namespace Udon
                                { return tx.id == id; });
         if (it == txNodes.end())
         {
-            txNodes.push_back({ id, { static_cast<unsigned char>(length) } });
+            txNodes.push_back({ id, { static_cast<unsigned char>(length) }, 0 });
             return &txNodes.back();
         }
         return &(*it);
@@ -200,6 +200,7 @@ namespace Udon
             { static_cast<unsigned char>(length) },
             nullptr,
             nullptr,
+            0,
         });
         return &rxNodes.back();
     }
