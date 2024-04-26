@@ -20,11 +20,11 @@
 
 ### アルゴリズム
 
-- [ループ周期制御](./docs/Algorithm/LoopCycleController.md)🌟new
-- [移動平均](./docs/Algorithm/MovingAverage.md)🌟new
-- [フィードバック制御(PID)](./docs/Algorithm/FeedbackController.md)🌟new
+- [ループ周期制御](./docs/Algorithm/LoopCycleController.md)
+- [移動平均](./docs/Algorithm/MovingAverage.md)
+- [フィードバック制御(PID)](./docs/Algorithm/FeedbackController.md)
 - [独立ステア最適化](./docs/Algorithm/SteerOptimizer.md)
-- [割り込み禁止制御](./docs/Algorithm/Interrupt.md)
+- [割り込み禁止制御](./docs/Algorithm/Interrupt.md)🌟new
 
 ### 通信
 
@@ -32,9 +32,9 @@
 - [CAN](./docs/Communication/CAN.md)
 - [I2C](./docs/Communication/I2C.md)
 - [UART](./docs/Communication/UART.md)
-- [LoRa](./docs/Communication/LoRa.md)🌟new
+- [LoRa](./docs/Communication/LoRa.md)
 - [IM920](./docs/Communication/IM920.md)
-- [コントローラ](./docs/Communication/Pad.md)🌟new
+- [コントローラ](./docs/Communication/Pad.md)
 - [CRC によるエラーチェック](./docs/Communication/CRC.md)🌟new
 
 ### ユーザー定義型
@@ -52,10 +52,10 @@
 ### ドライバー
 
 - [モーター](./docs/Driver/Motor.md)
-- [ロボマスモーター](./docs/Driver/RoboMasterMotor.md)🌟new
-- [ロータリーエンコーダー(Raspberry Pi Pico)](./docs/Driver/EncoderPico.md)🌟new
-- [ジャイロセンサー / BNO055](./docs/Driver/BNO055.md)🌟new
-- [PIO](./docs/Other/PIO.md)🌟new
+- [ロボマスモーター](./docs/Driver/RoboMasterMotor.md)
+- [ロータリーエンコーダー(Raspberry Pi Pico)](./docs/Driver/EncoderPico.md)
+- [ジャイロセンサー / BNO055](./docs/Driver/BNO055.md)
+- [PIO](./docs/Other/PIO.md)
 
 ### その他
 
@@ -64,7 +64,7 @@
 
 ### 開発者用
 
-- [開発環境セットアップ](./docs/Developer/DevelopSetup.md)🌟new
+- [開発環境セットアップ](./docs/Developer/DevelopSetup.md)
 - [スタイルガイド](./docs/Developer/StyleGuide.md)
 - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
 - [自動テスト](./docs/Developer/CI.md)
