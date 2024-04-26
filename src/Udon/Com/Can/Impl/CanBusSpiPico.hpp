@@ -178,7 +178,9 @@ namespace Udon
     }
 
     /// @brief 送信ノードをバスに参加させる / 送信バッファの作成
-    /// @param node 送信ノード
+    /// @param id ノードのID
+    /// @param length バッファ長
+    /// @return ノードのポインタ
     inline CanTxNode* CanBusSpi::createTx(uint32_t id, size_t length)
     {
         auto it = std::find_if(txNodes.begin(), txNodes.end(), [id](const CanTxNode& tx)
@@ -192,7 +194,9 @@ namespace Udon
     }
 
     /// @brief 受信ノードをバスに参加させる　/ 受信バッファの作成
-    /// @param node 受信ノード
+    /// @param id ノードのID
+    /// @param length バッファ長
+    /// @return ノードのポインタ
     inline CanRxNode* CanBusSpi::createRx(uint32_t id, size_t length)
     {
         rxNodes.push_back({
