@@ -24,6 +24,7 @@
 - [移動平均](./docs/Algorithm/MovingAverage.md)🌟new
 - [フィードバック制御(PID)](./docs/Algorithm/FeedbackController.md)🌟new
 - [独立ステア最適化](./docs/Algorithm/SteerOptimizer.md)
+- [割り込み禁止制御](./docs/Algorithm/Interrupt.md)
 
 ### 通信
 
@@ -34,6 +35,7 @@
 - [LoRa](./docs/Communication/LoRa.md)🌟new
 - [IM920](./docs/Communication/IM920.md)
 - [コントローラ](./docs/Communication/Pad.md)🌟new
+- [CRC によるエラーチェック](./docs/Communication/CRC.md)🌟new
 
 ### ユーザー定義型
 
