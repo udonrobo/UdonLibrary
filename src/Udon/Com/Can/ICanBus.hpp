@@ -15,16 +15,20 @@ namespace Udon
     public:
         virtual ~ICanBus() {}
 
-        /// @brief 送信ノードを登録
-        /// @param node
-        virtual CanTxNode* createTx(uint32_t id , size_t length ) = 0;
 
-        /// @brief 受信ノードを登録
-        /// @param node
-        /// @param onReceive 最終フレーム到達時に呼び出されるコールバック関数
-        /// @param p コールバック関数の引数に渡すポインタ (thisなどを渡す)
+        /// @brief 送信ノードを作成
+        /// @note 既に同じIDのノードが存在する場合はそのノードを返す
+        /// @param id メッセージID
+        /// @param length データ長
+        /// @return 送信ノードを指すポインタ
+        virtual CanTxNode* createTx(uint32_t id, size_t length) = 0;
+
+
+        /// @brief 受信ノードを作成
+        /// @note 既に同じIDのノードが存在する場合はそのノードを返す (このときコールバック関数を登録した場合、上書きされる)
+        /// @param id メッセージID
+        /// @param length データ長
+        /// @return 受信ノードを指すポインタ
         virtual CanRxNode* createRx(uint32_t id, size_t length) = 0;
-
-
     };
 }    // namespace Udon

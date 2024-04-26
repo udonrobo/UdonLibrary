@@ -17,8 +17,8 @@ namespace Udon
             , motorId{ motorId }
             , direction{ direction }
             , nodeTx{ bus.createTx(static_cast<uint32_t>(0x200), 8) }
+            , nodeRx{ bus.createRx(static_cast<uint32_t>(0x200 + Constrain(motorId, 1, 8)), 8) }
         {
-            nodeRx = bus.createRx(static_cast<uint32_t>(0x200 + Constrain(motorId, 1, 8)), 8);
             nodeRx->onReceive = [](void* p)
             {
                 auto self = static_cast<RoboMasterC620*>(p);

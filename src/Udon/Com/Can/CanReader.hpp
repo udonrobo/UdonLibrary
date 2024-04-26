@@ -36,8 +36,8 @@ namespace Udon
         /// @param id 送信者のノードID
         CanReader(ICanBus& bus, const uint32_t id)
             : bus{ bus }
+            , node{ bus.createRx(id, Size) }
         {
-            node = bus.createRx(id, Size);
             node->onReceive = [](void* p)
             {
                 auto self = static_cast<CanReader*>(p);

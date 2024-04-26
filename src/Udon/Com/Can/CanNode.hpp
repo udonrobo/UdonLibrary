@@ -11,19 +11,27 @@
 
 namespace Udon
 {
+
+    /// @brief CAN送信ノード
     struct CanTxNode
     {
         uint32_t id;    // メッセージID
-        std::vector<uint8_t> data;
+
+        std::vector<uint8_t> data;    // 送信データ
+
         uint32_t transmitMs;    // 最終通信時刻
     };
+
+
+    /// @brief CAN受信ノード
     struct CanRxNode
     {
         uint32_t id;    // メッセージID
-        std::vector<uint8_t> data;
 
-        void (*onReceive)(void*);
-        void* param;
+        std::vector<uint8_t> data;    // 受信データ
+
+        void (*onReceive)(void*);    // 受信時コールバック
+        void* param;                 // コールバックパラメータ
 
         uint32_t transmitMs;    // 最終通信時刻
 
