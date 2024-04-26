@@ -185,7 +185,7 @@ namespace Udon
                                { return tx.id == id; });
         if (it == txNodes.end())
         {
-            txNodes.push_back({ id, { static_cast<unsigned char>(length) }, 0 });
+            txNodes.push_back({ id, std::vector<uint8_t>(length), 0 });
             return &txNodes.back();
         }
         return &(*it);
@@ -211,7 +211,7 @@ namespace Udon
         {
             // IDに対応する受信ノードを探す
             auto it = std::find_if(rxNodes.begin(), rxNodes.end(), [msg](const CanRxNode& rx)
-                                       { return rx.id == msg.can_id; });
+                                   { return rx.id == msg.can_id; });
             if (it == rxNodes.end())
             {
                 continue;
@@ -258,7 +258,7 @@ namespace Udon
                                       bus.sendMessage(&msg);
                                       delayMicroseconds(200);
                                   });
-
+            // ここには来てる
             node.transmitMs = millis();
         }
     }
