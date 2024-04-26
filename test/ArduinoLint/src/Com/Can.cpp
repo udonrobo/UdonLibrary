@@ -23,12 +23,11 @@ inline void testBus()
     bus.operator bool();
     bus.show();
 
-    Udon::CanNode node{ 0, nullptr, 0, 0 };
-    bus.createTx(node);
-    bus.Rx(
-        node, [](void*) {}, nullptr);
-    bus.leaveRx(node);
-    bus.leaveTx(node);
+    Udon::CanTxNode nodeTx{ 0, { 0 }, 0 };
+    Udon::CanRxNode nodeRx{ 0, { 0 }, nullptr, nullptr, 0 };
+
+    bus.createTx(0, 0);
+    bus.createRx(0, 0);
 }
 
 #elif defined(ARDUINO_ARCH_RP2040)
@@ -84,8 +83,8 @@ struct DummyBus
     : Udon::ICanBus
 {
     explicit operator bool() const { return true; }
-    Udon::CanTxNode* createTx(uint32_t, size_t) override {return nullptr;}
-    Udon::CanRxNode* createRx(uint32_t, size_t) override {return nullptr;}
+    Udon::CanTxNode* createTx(uint32_t, size_t) override { return nullptr; }
+    Udon::CanRxNode* createRx(uint32_t, size_t) override { return nullptr; }
 };
 
 inline void testReader()

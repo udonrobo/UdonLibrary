@@ -197,7 +197,7 @@ namespace Udon
     {
         rxNodes.push_back({
             id,
-            { static_cast<unsigned char>(length) },
+            std::vector<uint8_t>(length),
             nullptr,
             nullptr,
             0,
@@ -210,38 +210,39 @@ namespace Udon
         for (auto&& msg : rxBuffer)
         {
             // IDに対応する受信ノードを探す
-            auto rxNode = std::find_if(rxNodes.begin(), rxNodes.end(), [msg](const CanRxNode& rx)
+            auto it = std::find_if(rxNodes.begin(), rxNodes.end(), [msg](const CanRxNode& rx)
                                        { return rx.id == msg.can_id; });
-            if (rxNode == rxNodes.end())
+            if (it == rxNodes.end())
             {
                 continue;
             }
 
             // 分割されたフレームを結合(マルチフレームの場合)
-            Udon::Impl::Unpacketize({ msg.data }, { rxNode->data }, SingleFrameSize);
+            Udon::Impl::Unpacketize({ msg.data }, { it->data }, SingleFrameSize);
 
             // 登録されている受信クラスのコールバック関数を呼ぶ
             // 最終フレームの到達時にコールバックを呼ぶため、受信中(完全に受信しきっていないとき)にデシリアライズすることを防いでいる。
-            if (rxNode->data.size() > SingleFrameSize)
+            if (it->data.size() > SingleFrameSize)
             {
                 // マルチフレーム
-                const auto index = std::ceil(static_cast<double>(rxNode->data.size()) / (SingleFrameSize - 1 /*index*/)) - 1;
+                const auto index = std::ceil(static_cast<double>(it->data.size()) / (SingleFrameSize - 1 /*index*/)) - 1;
 
                 if (msg.data[0] == index)
                 {
-                    rxNode->callback();
+                    it->callback();
                 }
             }
             else
             {
                 // シングルフレーム
-                rxNode->callback();
+                it->callback();
             }
 
-            receiveMs = rxNode->transmitMs = millis();
+            receiveMs = it->transmitMs = millis();
         }
         rxBuffer.clear();
     }
+
     inline void CanBusSpi::onTransmit()
     {
         for (auto&& node : txNodes)

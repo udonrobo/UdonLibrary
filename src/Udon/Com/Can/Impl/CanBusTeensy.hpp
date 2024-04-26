@@ -3,7 +3,7 @@
 //
 //    Copyright (c) 2022-2023 udonrobo
 //
-
+#include <vector>
 namespace Udon
 {
 
@@ -41,7 +41,7 @@ namespace Udon
         bus.setBaudRate(config.canBaudrate);
 
         // 受信開始
-        if (rxNodes)
+        if (rxNodes.size())
         {
             // 受信フィルタ設定 (ノード数が8以下の場合のみ)
             if (rxNodes.size() <= 8)
@@ -89,7 +89,7 @@ namespace Udon
     void CanBusTeensy<Bus>::update()
     {
         onReceive();
-        if (txNodes && millis() - transmitMs >= config.transmitInterval)
+        if (txNodes.size() && millis() - transmitMs >= config.transmitInterval)
         {
             onTransmit();
             transmitMs = millis();
@@ -100,6 +100,24 @@ namespace Udon
     CanBusTeensy<Bus>::operator bool() const
     {
         return not(txTimeout() or rxTimeout());
+    }
+
+    template <CAN_DEV_TABLE Bus>
+    bool CanBusTeensy<Bus>::txTimeout() const
+    {
+        if (txNodes.size())
+            return millis() - transmitMs >= config.transmitTimeout;
+        else
+            return false;
+    }
+
+    template <CAN_DEV_TABLE Bus>
+    bool CanBusTeensy<Bus>::rxTimeout() const
+    {
+        if (rxNodes.size())
+            return millis() - receiveMs >= config.receiveTimeout;
+        else
+            return false;
     }
 
     /// @brief バス情報を表示する
@@ -136,13 +154,13 @@ namespace Udon
 
             Serial.printf("0x%03x ", static_cast<int>(rxNode.id));
 
-            Serial.printf("%2zu byte ", rxNode.data.size();
+            Serial.printf("%2zu byte ", rxNode.data.size());
 
             Serial.print(rxNode.data.size() > SingleFrameSize ? "(multi  frame) " : "(single frame) ");
 
             Serial.print("[");
 
-            for(const auto& data : rxNode.data)
+            for (const auto& data : rxNode.data)
             {
                 Serial.printf("%4d", data);
             }
@@ -175,7 +193,7 @@ namespace Udon
     {
         rxNodes.push_back({
             id,
-            { static_cast<unsigned char>(length) },
+            std::vector<uint8_t>(length),
             nullptr,
             nullptr,
             0,
@@ -202,16 +220,16 @@ namespace Udon
             // 分割されたフレームを結合(マルチフレームの場合)
             Udon::Impl::Unpacketize(
                 { msg.buf },
-                { rxNode.data },
+                { rxNode->data },
                 SingleFrameSize);
 
             // 登録されている受信クラスのコールバック関数を呼ぶ
             // 最終フレームの到達時にコールバックを呼ぶため、受信中(完全に受信しきっていないとき)にデシリアライズすることを防いでいる。
 
-            if (rxNode.data.size() > SingleFrameSize)
+            if (rxNode->data.size() > SingleFrameSize)
             {
                 // マルチフレーム
-                const auto frameCount = std::ceil(static_cast<double>(rxNode.data.size()) / SingleFrameSize - 1 /*index*/) - 1;
+                const auto frameCount = std::ceil(static_cast<double>(rxNode->data.size()) / SingleFrameSize - 1 /*index*/) - 1;
 
                 if (msg.buf[0] == frameCount)
                 {
@@ -224,7 +242,7 @@ namespace Udon
                 rxNode->callback();
             }
 
-            receiveMs = rxNode->node->transmitMs = ms;
+            receiveMs = rxNode->transmitMs = ms;
         }
         rxBuffer.clear();
     }
@@ -238,18 +256,18 @@ namespace Udon
         for (auto&& node : txNodes)
         {
             CAN_message_t msg;
-            msg.id = node->id;
+            msg.id = node.id;
             msg.len = SingleFrameSize;
 
             // 一度に8バイトしか送れないため、分割し送信
-            Udon::Impl::Packetize({ node->data, node->length }, { msg.buf }, SingleFrameSize,
+            Udon::Impl::Packetize({ node.data }, { msg.buf }, SingleFrameSize,
                                   [this, &msg](size_t)
                                   {
                                       bus.write(msg);
                                       delayMicroseconds(200);
                                   });
 
-            node->transmitMs = ms;
+            node.transmitMs = ms;
         }
     }
 

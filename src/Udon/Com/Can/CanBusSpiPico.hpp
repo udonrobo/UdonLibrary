@@ -16,6 +16,8 @@
 #include <Udon/Thirdparty/pico_mcp2515/mcp2515.h>
 #include <Udon/Algorithm/ScopedInterruptLocker.hpp>
 #include <deque>
+#include <vector>
+
 namespace Udon
 {
     /// @brief Raspberry Pi Pico用バスクラス
@@ -85,6 +87,7 @@ namespace Udon
         uint32_t receiveMs = 0;
 
         void onReceive();
+
         void onTransmit();
 
         /// @brief 送信タイムアウト
