@@ -30,7 +30,7 @@ void setup()
 
 void loop()
 {
-w    int16_t power = -135;
+    int16_t power = -135;
 
     motor.move(power);
 

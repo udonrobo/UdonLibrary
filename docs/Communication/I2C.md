@@ -1,40 +1,10 @@
-# I2C
+# I2C 通信
+
+I2C 通信は主に基板内で使用されるシリアル通信の一種で、一対多の通信方式です。バス型方式をとっているため容易に配線が可能です。I2C 通信用が端子はマイコンに標準で搭載されている場合が多く、導入コストが低いです。一方で配線長が長くなると規格以上の配線容量となってしまい通信エラーが発生しやすくなります。
+
+通信タイミングの管理を行うマイコンはマスターと呼ばれます。マスターと通信するマイコンはスレーブと呼ばれます。
 
 I2C 通信クラスは、通信バスクラス、マスター側送受信クラス、スレーブ側送受信クラスから構成されています。
-
-<details>
-<summary> I2C 通信について </summary>
-
-複数のデバイス間で通信を行う際の通信方式
-
-### 用語
-
-`バス` 通信線
-
-`マスター` 通信を制御するデバイス (1 つのバスに通常 1 つ)
-
-`スレーブ` マスターに従って通信を行うデバイス (1 つのバスに複数)
-
-`アドレス` スレーブに割り当てる固有値
-
-### 特徴
-
-`同期通信`
-
-`バス型通信` 複数のデバイスが同じバスを共有して通信
-
-`マスタースレーブ方式` マスターがデータのやり取りを管理 スレーブ同士で通信することはできません。
-
-### 通信イメージ
-
-```mermaid
-flowchart LR
-    マスターマイコン --I2C--> 1[モータースレーブ]
-    マスターマイコン --I2C--> 2[モータースレーブ]
-    マスターマイコン <--I2C--> コントローラースレーブ
-```
-
-</details>
 
 ## 個別インクルード
 
@@ -50,9 +20,9 @@ Arduino の `TwoWire` クラスへ通信タイムアウト時にバスの再起�
 
 通信開始時、マスターモードの場合 `begin(void)`、スレーブモードの場合 `begin(address)` を呼び出す点に注意してください。
 
-## マスター側
+## マスターからスレーブへ送信
 
-### 送信クラス
+### マスター送信クラス
 
 `Udon::I2cMasterWriter<T>`
 
@@ -61,8 +31,8 @@ Arduino の `TwoWire` クラスへ通信タイムアウト時にバスの再起�
 ```cpp
 #include <Udon.hpp>
 
-Udon::I2cBus bus{ Wire };
-Udon::I2cMasterWriter<Udon::Vec2> writer{ bus, 6 };
+static Udon::I2cBus bus{ Wire };
+static Udon::I2cMasterWriter<Udon::Vec2> writer{ bus, 6 };   // スレーブアドレス 6 へ送信
 
 void setup()
 {
@@ -80,29 +50,30 @@ void loop()
 }
 ```
 
-### 受信クラス
+### スレーブ受信クラス
 
-`Udon::I2cMasterReader<T>`
+`Udon::I2cSlaveReader<T>`
 
-`T` に指定された型のオブジェクトをスレーブから受信します。スレーブの数に応じて複数インスタンス化可能です。
+`T` に指定された型のオブジェクトをマスターから受信します。複数インスタンス化できません。
 
 ```cpp
 #include <Udon.hpp>
 
 Udon::I2cBus bus{ Wire };
-Udon::I2cMasterReader<Udon::Vec2> reader{ bus, 6 };
+Udon::I2cSlaveReader<Udon::Vec2> reader{ bus };
 
 void setup()
 {
     Serial.begin(115200);
-    bus.begin();
+
+    bus.begin(6);  // 自身のアドレス
+    reader.begin();
 }
 
 void loop()
 {
     bus.update();
 
-    reader.update();
     if (const auto message = reader.getMessage())
     {
         message->show();
@@ -117,9 +88,9 @@ void loop()
 }
 ```
 
-## スレーブ側
+## スレーブからマスターへ送信
 
-### 送信クラス
+### スレーブ送信クラス
 
 `Udon::I2cSlaveWriter<T>`
 
@@ -147,30 +118,29 @@ void loop()
 }
 ```
 
-### 受信クラス
+### マスター受信クラス
 
-`Udon::I2cSlaveReader<T>`
+`Udon::I2cMasterReader<T>`
 
-`T` に指定された型のオブジェクトをマスターから受信します。複数インスタンス化できません。
+`T` に指定された型のオブジェクトをスレーブから受信します。スレーブの数に応じて複数インスタンス化可能です。
 
 ```cpp
 #include <Udon.hpp>
 
-Udon::I2cBus bus{ Wire };
-Udon::I2cSlaveReader<Udon::Vec2> reader{ bus };
+static static Udon::I2cBus bus{ Wire };
+static static Udon::I2cMasterReader<Udon::Vec2> reader{ bus, 6 };  // スレーブアドレス 6 から受信
 
 void setup()
 {
     Serial.begin(115200);
-
-    bus.begin(6);  // 自身のアドレス
-    reader.begin();
+    bus.begin();
 }
 
 void loop()
 {
     bus.update();
 
+    reader.update();
     if (const auto message = reader.getMessage())
     {
         message->show();
