@@ -180,7 +180,7 @@ namespace Udon
                                { return tx.id == id; });
         if (it == txNodes.end())
         {
-            txNodes.push_back({ id, { static_cast<unsigned char>(length) }, 0 });
+            txNodes.push_back({ id, std::vector<uint8_t>(length), 0 });
             return &txNodes.back();
         }
         return &(*it);
@@ -229,7 +229,7 @@ namespace Udon
             if (rxNode->data.size() > SingleFrameSize)
             {
                 // マルチフレーム
-                const auto frameCount = std::ceil(static_cast<double>(rxNode->data.size()) / SingleFrameSize - 1 /*index*/) - 1;
+                const auto frameCount = std::ceil(static_cast<double>(rxNode->data.size()) /( SingleFrameSize - 1 /*index*/) )- 1;
 
                 if (msg.buf[0] == frameCount)
                 {
