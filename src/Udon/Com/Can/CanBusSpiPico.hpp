@@ -16,6 +16,7 @@
 #include <Udon/Thirdparty/pico_mcp2515/mcp2515.h>
 #include <Udon/Algorithm/ScopedInterruptLocker.hpp>
 #include <deque>
+
 namespace Udon
 {
     /// @brief Raspberry Pi Pico用バスクラス
@@ -64,8 +65,16 @@ namespace Udon
         /// @brief バスの状態を表示する
         void show() const;
 
+        /// @brief バスに送信ノードを追加
+        /// @param id ノードのID
+        /// @param length バッファ長
+        /// @return ノードのポインタ
         CanTxNode* createTx(uint32_t id, size_t length) override;
 
+        /// @brief バスに受信ノードを参加させる
+        /// @param id ノードのID
+        /// @param length バッファ長
+        /// @return ノードのポインタ
         CanRxNode* createRx(uint32_t id, size_t length) override;
 
 
@@ -85,6 +94,7 @@ namespace Udon
         uint32_t receiveMs = 0;
 
         void onReceive();
+
         void onTransmit();
 
         /// @brief 送信タイムアウト

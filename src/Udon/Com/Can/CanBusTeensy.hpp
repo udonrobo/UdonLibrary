@@ -62,7 +62,7 @@ namespace Udon
         /// @brief バスが有効かどうか
         /// @note 受信タイムアウトもしくは送信タイムアウトが発生した場合はfalseを返す
         /// @note 全ての受信ノード送信ノードが有効であるかは考慮しない
-        explicit operator bool() const override;
+        explicit operator bool() const;
 
         /// @brief バス情報を表示する
         void show() const;
@@ -93,6 +93,12 @@ namespace Udon
 
         /// @brief 送信処理
         void onTransmit();
+
+        /// @brief 送信タイムアウト
+        bool txTimeout() const;
+
+        /// @brief 受信タイムアウト
+        bool rxTimeout() const;
     };
 
 }    // namespace Udon
