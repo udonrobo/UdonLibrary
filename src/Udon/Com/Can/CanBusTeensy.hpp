@@ -9,7 +9,6 @@
 #include <FlexCAN_T4.h>    // https://github.com/tonton81/FlexCan_T4.git
 
 #include "ICanBus.hpp"
-#include "CanNode.hpp"
 #include "CanUtility.hpp"
 
 #include <Udon/Types/StaticVector.hpp>

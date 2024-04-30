@@ -9,7 +9,6 @@
 #include <SPI.h>
 
 #include "ICanBus.hpp"
-#include "CanNode.hpp"
 #include "CanUtility.hpp"
 
 #include <Udon/Types/StaticVector.hpp>

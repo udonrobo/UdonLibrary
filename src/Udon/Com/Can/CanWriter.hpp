@@ -7,7 +7,6 @@
 #pragma once
 
 #include "ICanBus.hpp"
-#include "CanNode.hpp"
 
 #include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>

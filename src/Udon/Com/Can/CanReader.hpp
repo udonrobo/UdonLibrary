@@ -7,7 +7,6 @@
 #pragma once
 
 #include "ICanBus.hpp"
-#include "CanNode.hpp"
 
 #include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Serializer/SerializerTraits.hpp>
@@ -52,11 +51,6 @@ namespace Udon
             , node{ other.node }
         {
             node->param = this;
-        }
-
-        /// @brief デストラクタ
-        ~CanReader()
-        {
         }
 
         /// @brief 受信しているか

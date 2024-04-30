@@ -19,29 +19,12 @@ namespace Udon
             , nodeTx{ bus.createTx(static_cast<uint32_t>(0x200), 8) }
             , nodeRx{ bus.createRx(static_cast<uint32_t>(0x200 + Constrain(motorId, 1, 8)), 8) }
         {
-            nodeRx->onReceive = [](void* p)
-            {
-                auto self = static_cast<RoboMasterC620*>(p);
-                // 変化角を計算
-                const auto currentAngle = self->nodeRx->data[0] << 8 | self->nodeRx->data[1];
-                const auto dTheta = self->angle - currentAngle;
-                self->angle = currentAngle;
-
-                // 変化量がいきなり半周を超えた -> 計算値が-π~π間を通過 -> 一周分オフセットを加減算
-                if (dTheta > ppr / 2)
-                {
-                    self->offsetAngle += ppr;
-                }
-                else if (dTheta < -ppr / 2)
-                {
-                    self->offsetAngle -= ppr;
-                }
-            };
+            nodeRx->onReceive = onReceive;
             nodeRx->param = this;
         }
-        // 受信idは0x201から一つのコントローラにつき一つのidを持つ
-        // 送信idは0x200にモータ4つのデータを送信する
 
+        /// @brief 受信idは0x201から一つのコントローラにつき一つのidを持つ
+        /// @param 送信idは0x200にモータ4つのデータを送信する
         RoboMasterC620(const RoboMasterC620& other)
             : bus{ other.bus }
             , motorId{ other.motorId }
@@ -50,15 +33,6 @@ namespace Udon
             , nodeRx{ other.nodeRx }
         {
             nodeRx->param = this;
-        }
-
-        ~RoboMasterC620()
-        {
-        }
-
-        explicit operator bool() const
-        {
-            return Millis() - nodeRx->transmitMs < 100;
         }
 
         /// @brief モーターの電流を設定
@@ -136,6 +110,26 @@ namespace Udon
         int directionSign() const
         {
             return direction ? 1 : -1;
+        }
+
+        static void onReceive(void* p)
+        {
+            auto self = static_cast<RoboMasterC620*>(p);
+
+            // 変化角を計算
+            const auto currentAngle = self->nodeRx->data[0] << 8 | self->nodeRx->data[1];
+            const auto dTheta = self->angle - currentAngle;
+            self->angle = currentAngle;
+
+            // 変化量がいきなり半周を超えた -> 計算値が-π~π間を通過 -> 一周分オフセットを加減算
+            if (dTheta > ppr / 2)
+            {
+                self->offsetAngle += ppr;
+            }
+            else if (dTheta < -ppr / 2)
+            {
+                self->offsetAngle -= ppr;
+            }
         }
     };
 }    // namespace Udon
