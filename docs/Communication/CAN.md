@@ -9,7 +9,6 @@ CAN 通信クラスは、通信バスクラス、送受信ノードクラスか�
 - [通信バスクラス](#通信バスクラス)
   - [Teensy](#teensy)
   - [Raspberry Pi Pico](#raspberry-pi-pico)
-  - [インターフェース](#インターフェース)
 - [送信クラス](#送信クラス)
 - [受信クラス](#受信クラス)
 - [デバッグ](#デバッグ)
@@ -37,12 +36,10 @@ CAN 通信クラスは、通信バスクラス、送受信ノードクラスか�
 
 ```mermaid
 flowchart LR
-
   subgraph 基板
     Teensy --CAN TX/RX--> CANトランシーバー
   end
-
-CANトランシーバー --CAN H/L--> CANバス
+  CANトランシーバー --CAN H/L--> CANバス
 ```
 
 ```cpp
@@ -81,11 +78,9 @@ static Udon::CanBusTeensy<CAN1> bus({
 
 ```mermaid
 flowchart LR
-
   subgraph 基板
-  RaspberryPiPico --SPI--> CANコントローラー/MCP2515 --CAN TX/RX--> CANトランシーバー
+    RaspberryPiPico --SPI--> CANコントローラー/MCP2515 --CAN TX/RX--> CANトランシーバー
   end
-
   CANトランシーバー --CAN H/L--> CANバス
 ```
 
@@ -137,10 +132,6 @@ static Udon::CanBusSpi bus({
 ```
 
 </details>
-
-### インターフェース
-
-すべてのバスクラスを一様に扱えるようにするためのインターフェースクラス `Udon::ICanBus` クラスがあります。送受信クラスのコンストラクタの引数はこのインターフェースクラスになっており、どの CAN バスを受け取ることができます。
 
 ## 送信クラス
 
@@ -206,6 +197,105 @@ void loop()
 > `Udon::Optional` は値と値が有効であるかを持つクラスで、 `operator bool` によって値を保持するか取得できます。if 文で正常に受信できたかどうかで分岐できます。
 >
 > `Udon::Optional<T>::operator->` で保持しているオブジェクトのメンバへアクセスでき、`Udon::Optional<T>::operator*` で optional が持っているオブジェクトの参照を取得できます。
+
+## バイト列を直接送受信
+
+ロボマスモーター等の CAN 通信を用いる市販のモーターをドライブするには、バイト列で直接やり取りする必要があります。この場合、チェックサムを付与する `CanReader` `CanWriter` クラスは使用できません。バイト列を直接やり取りするには送受信ノードを `createTx` `createRx` 関数を用いて作成し、作成したノードに対しデータの書き込み、読み出しを行います。
+
+### 送信ノード
+
+```cpp
+struct CanTxNode
+{
+    uint32_t id;                  // メッセージ ID (バスが書き込み、ユーザーが読み取り)
+
+    std::vector<uint8_t> data;    // 送信データ (ユーザーが書き込み、バスが読み取り)
+
+    uint32_t transmitMs;          // 最終通信時刻 (バスが書き込み、ユーザーが読み取り)
+};
+```
+
+```cpp
+static Udon::CanBusxxxx bus;
+
+static Udon::CanTxNode* txNode = bus.createTx(0x000 /*id*/, 8 /*length*/);
+
+void setup()
+{
+    bus.begin();
+}
+
+void loop()
+{
+    txNode->data[0] = 0x11;  // データを登録
+    txNode->data[1] = 0x22;
+    txNode->data[2] = 0x11;
+    txNode->data[3] = 0x22;
+    txNode->data[4] = 0x11;
+    txNode->data[5] = 0x22;
+    txNode->data[6] = 0x11;
+    txNode->data[7] = 0x22;
+    bus.update();
+}
+```
+
+### 受信ノード
+
+受信ノードには、受信時に呼び出すコールバック関数を登録することができます。8 バイトより長いバイト列は複数のフレームに分割されて送信されます。この時、コールバック関数が呼び出されるのは最終フレーム受信時です。
+
+コールバック関数には `param` メンバを通じて任意の void ポインタを渡すことができます。this ポインタを渡すことでメンバ関数の呼び出しが可能です。`CanReader` クラスもこの機能を用いてメンバ関数のコールバックを行っています。以下の例ではCanRxNodeポインタを渡しています。
+
+```cpp
+struct CanRxNode
+{
+    uint32_t id;                 // メッセージID (バスが書き込み、ユーザーが読み取り)
+
+    std::vector<uint8_t> data;   // 受信データ (バスが書き込み、ユーザーが読み取り)
+
+    void (*onReceive)(void*);    // 受信時コールバック (ユーザーが書き込み)
+    void* param;                 // コールバックパラメータ (ユーザーが書き込み)
+
+    uint32_t transmitMs;         // 最終通信時刻 (バスが書き込み、ユーザーが読み取り)
+};
+```
+
+```cpp
+static Udon::CanBusxxxx bus;
+
+static Udon::CanRxNode* rxNode = bus.createRx(0x000 /*id*/, 8 /*length*/);
+
+// コールバック関数
+void onReceive(void* param)
+{
+    auto node = static_cast<Udon::CanRxNode*>(param);   // 受信ノードを void ポインタから復元
+
+    Serial.print(node->id); Serial.print('\t');
+
+    Serial.print(node->data[0]); Serial.print('\t');
+    Serial.print(node->data[1]); Serial.print('\t');
+    Serial.print(node->data[2]); Serial.print('\t');
+    Serial.print(node->data[3]); Serial.print('\t');
+    Serial.print(node->data[4]); Serial.print('\t');
+    Serial.print(node->data[5]); Serial.print('\t');
+    Serial.print(node->data[6]); Serial.print('\t');
+    Serial.print(node->data[7]); Serial.print('\t');
+
+    Serial.println();
+}
+
+void setup()
+{
+    bus.begin();
+
+    rxNode->onReceive = onReceive;   // 受信時コールバック関数を登録
+    rxNode->param     = rxNode;      // コールバック関数の引数へ受信ノードを渡すよう指定
+}
+
+void loop()
+{
+    bus.update();
+}
+```
 
 ## デバッグ
 

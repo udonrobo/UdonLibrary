@@ -52,10 +52,9 @@ namespace Udon
 
         // チェックサム挿入
         buffer.back() = Udon::CRC8(dataView);
-
         return true;
     }
-    
+
 
     /// @brief シリアル化する
     /// @tparam T シリアル化する型(自動推論)

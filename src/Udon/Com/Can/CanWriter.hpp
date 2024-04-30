@@ -7,7 +7,6 @@
 #pragma once
 
 #include "ICanBus.hpp"
-#include "CanNode.hpp"
 
 #include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Common/Show.hpp>
@@ -35,38 +34,29 @@ namespace Udon
         /// @param id  自身のノードID
         CanWriter(ICanBus& bus, const uint32_t id)
             : bus{ bus }
-            , node{ id, buffer, sizeof buffer, 0 }
+            , node{ bus.createTx(id, Size) }
         {
-            bus.joinTx(node);
         }
 
         /// @brief コピーコンストラクタ
         CanWriter(const CanWriter& other)
             : bus{ other.bus }
-            , buffer{}
-            , node{ other.node.id, buffer, Size, 0 }
+            , node{ other.node }
         {
-            bus.joinTx(node);
-        }
-
-        /// @brief デストラクタ
-        ~CanWriter()
-        {
-            bus.leaveTx(node);
         }
 
         /// @brief メッセージ構造体をセット
         void setMessage(const Message& message) noexcept
         {
-            Udon::Serialize(message, { node.data, node.length });
+            Udon::Serialize(message, { node->data });
         }
 
         /// @brief 送信内容を表示
         /// @param gap 区切り文字 (default: '\t')
         void show() const
         {
-            Udon::Printf("0x%03x ", node.id);
-            if (const auto message = Udon::Deserialize<Message>({ node.data, node.length }))
+            Udon::Printf("0x%03x ", node->id);
+            if (const auto message = Udon::Deserialize<Message>({ node->data }))
             {
                 Udon::Show(*message);
             }
@@ -80,19 +70,17 @@ namespace Udon
         /// @brief 送信バッファを表示
         void showRaw() const
         {
-            Udon::Printf("0x%03x ", node.id);
-            for (size_t i = 0; i < node.length; ++i)
+            Udon::Printf("0x%03x ", node->id);
+            for (const auto& n : node->data)
             {
-                Udon::Show(node.data[i]);
+                Udon::Show(n);
             }
         }
 
     private:
         ICanBus& bus;
 
-        uint8_t buffer[Size];
-
-        CanNode node;
+        CanTxNode* node;
     };
 
 }    // namespace Udon
