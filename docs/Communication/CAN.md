@@ -79,7 +79,7 @@ static Udon::CanBusTeensy<CAN1> bus({
 ```mermaid
 flowchart LR
   subgraph 基板
-    RaspberryPiPico --SPI--> CANコントローラー/MCP2515 --CAN TX/RX--> CANトランシーバー
+    RaspberryPiPico --SPI--> CANコントローラー --CAN TX/RX--> CANトランシーバー
   end
   CANトランシーバー --CAN H/L--> CANバス
 ```
@@ -263,9 +263,7 @@ void onReceive(void* param)
     Serial.print(node->data[4]); Serial.print('\t');
     Serial.print(node->data[5]); Serial.print('\t');
     Serial.print(node->data[6]); Serial.print('\t');
-    Serial.print(node->data[7]); Serial.print('\t');
-
-    Serial.println();
+    Serial.print(node->data[7]); Serial.print('\n');
 }
 
 void setup()
