@@ -6,6 +6,9 @@
 
 #pragma once
 
+#include <Udon/Stl/EnableSTL.hpp>
+#include <vector>
+
 namespace Udon
 {
 
