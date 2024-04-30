@@ -30,7 +30,7 @@ CAN 通信クラスは、通信バスクラス、送受信ノードクラスか�
 >
 > 8byte 以下のデータはインデックスを付与せず送受信するため、他の CAN デバイス (市販モーター等) との通信にも使用できます。
 
-### Teensy
+### ■ Teensy
 
 内臓 CAN コントローラーを使用し CAN 通信を行います。受信ノードが 8 個以内の場合、受信フィルタの設定を行います。
 
@@ -47,7 +47,7 @@ static Udon::CanBusTeensy<CAN1> bus;
 ```
 
 <details>
-<summary> 詳細な設定について </summary>
+<summary> 詳細な設定 </summary>
 
 `Udon::CanBusTeensy::Config` 構造体を用いて詳細な設定が可能です。構造体は次のように定義されています。
 
@@ -72,7 +72,7 @@ static Udon::CanBusTeensy<CAN1> bus({
 
 </details>
 
-### Raspberry Pi Pico
+### ■ Raspberry Pi Pico
 
 外部 CAN コントローラーを使用し CAN 通信を行います。コントローラーとは SPI で通信します。受信ノードが 6 個以内の場合、受信フィルタの設定を行います。受信フィルタが有効の場合、指定していない ID からの受信を関知しないため、不要な処理の削減につながります。
 
@@ -91,7 +91,7 @@ static Udon::CanBusSpi bus({
 ```
 
 <details>
-<summary> 詳細な設定について </summary>
+<summary> 詳細な設定 </summary>
 
 ピン設定等は設定値を格納するための構造体 `Udon::CanBusSpi::Config` を用いて設定します。これらの構造体は次のように定義されています。
 
@@ -116,24 +116,9 @@ struct Config
 };
 ```
 
-C99 対応コンパイラでは、構造体の初期化時に、メンバ変数名を指定することができます。メンバ変数を指定することで、インスタンス化部分を見たときに、引数の値が何の意味を持つかパット見で分かります。
-
-```cpp
-static Udon::CanBusSpi bus{ spi0, 0, 1, 2, 3, 4 };  // 各値の意味がコンストラクタの実装を見ないと分からない
-↓
-static Udon::CanBusSpi bus({
-    .channel   = spi0,
-    .cs        = 0,
-    .interrupt = 1,
-    .mosi      = 2,
-    .miso      = 3,
-    .sck       = 4
-});
-```
-
 </details>
 
-## 送信クラス
+## 送信ノードクラス
 
 `Udon::CanWriter<T>`
 
@@ -159,11 +144,11 @@ void loop()
 }
 ```
 
-## 受信クラス
+## 受信ノードクラス
 
 `Udon::CanReader<T>`
 
-`T` に指定された型のオブジェクトをバスから取得します。送信クラスの `T` と同じ型である必要があります。
+`T` に指定された型のオブジェクトをバスから取得します。送信ノードの `T` と同じ型である必要があります。
 
 ```cpp
 static Udon::CanBusTeensy<CAN1> bus;
@@ -181,7 +166,7 @@ void loop()
     {
         // 受信成功
         Serial.print(vector->x); Serial.print('\t');
-        Serial.println(vector->y);
+        Serial.print(vector->y); Serial.print('\n');
     }
     else
     {
@@ -202,12 +187,12 @@ void loop()
 
 ロボマスモーター等の CAN 通信を用いる市販のモーターをドライブするには、バイト列で直接やり取りする必要があります。この場合、チェックサムを付与する `CanReader` `CanWriter` クラスは使用できません。バイト列を直接やり取りするには送受信ノードを `createTx` `createRx` 関数を用いて作成し、作成したノードに対しデータの書き込み、読み出しを行います。
 
-### 送信ノード
+### ■ 送信ノード
 
 ```cpp
 struct CanTxNode
 {
-    uint32_t id;                  // メッセージ ID (バスが書き込み、ユーザーが読み取り)
+    const uint32_t id;            // メッセージ ID (バスが書き込み、ユーザーが読み取り)
 
     std::vector<uint8_t> data;    // 送信データ (ユーザーが書き込み、バスが読み取り)
 
@@ -239,16 +224,16 @@ void loop()
 }
 ```
 
-### 受信ノード
+### ■ 受信ノード
 
 受信ノードには、受信時に呼び出すコールバック関数を登録することができます。8 バイトより長いバイト列は複数のフレームに分割されて送信されます。この時、コールバック関数が呼び出されるのは最終フレーム受信時です。
 
-コールバック関数には `param` メンバを通じて任意の void ポインタを渡すことができます。this ポインタを渡すことでメンバ関数の呼び出しが可能です。`CanReader` クラスもこの機能を用いてメンバ関数のコールバックを行っています。以下の例ではCanRxNodeポインタを渡しています。
+コールバック関数には `param` メンバを通じて任意の void ポインタを渡すことができます。this ポインタを渡すことでメンバ関数の呼び出しが可能です。`CanReader` クラスもこの機能を用いてメンバ関数のコールバックを行っています。以下の例では CanRxNode ポインタを渡しています。
 
 ```cpp
 struct CanRxNode
 {
-    uint32_t id;                 // メッセージID (バスが書き込み、ユーザーが読み取り)
+    const uint32_t id;           // メッセージID (バスが書き込み、ユーザーが読み取り)
 
     std::vector<uint8_t> data;   // 受信データ (バスが書き込み、ユーザーが読み取り)
 
