@@ -36,6 +36,7 @@ namespace Udon
             : bus{ bus }
             , node{ bus.createTx(id, Size) }
         {
+            node->param = this;
         }
 
         /// @brief コピーコンストラクタ
@@ -43,6 +44,7 @@ namespace Udon
             : bus{ other.bus }
             , node{ other.node }
         {
+            node->param = this;
         }
 
         /// @brief メッセージ構造体をセット
