@@ -6,13 +6,15 @@
 namespace Udon
 {
 
-    class RoboMasterC620
+    /// @brief RoboMaster 基底クラス
+    /// @note モータードライバの仕様の違いによって派生クラスを作成する
+    class RoboMasterBase
     {
     public:
         /// @brief コンストラクタ
         /// @param bus CAN通信バス
         /// @param motorId モーターID (1~8)
-        RoboMasterC620(Udon::ICanBus& bus, uint8_t motorId, bool direction = true)
+        RoboMasterBase(Udon::ICanBus& bus, uint8_t motorId, bool direction = true)
             : bus{ bus }
             , motorId{ motorId }
             , direction{ direction }
@@ -25,7 +27,7 @@ namespace Udon
 
         /// @brief 受信idは0x201から一つのコントローラにつき一つのidを持つ
         /// @param 送信idは0x200にモータ4つのデータを送信する
-        RoboMasterC620(const RoboMasterC620& other)
+        RoboMasterBase(const RoboMasterBase& other)
             : bus{ other.bus }
             , motorId{ other.motorId }
             , direction{ other.direction }
@@ -33,19 +35,6 @@ namespace Udon
             , nodeRx{ other.nodeRx }
         {
             nodeRx->param = this;
-        }
-
-        /// @brief モーターの電流を設定
-        /// @param current 電流値 [-20000, 20000] (単位: mA)
-        void setCurrent(int16_t current)
-        {
-            current = Constrain(current, -20000, 20000) * directionSign();
-
-            const auto transmitCurrent = static_cast<int16_t>(current * 16384 / 20000);    // 16bit符号なし整数に変換
-            const auto motorIndex = (motorId - 1) * 2;
-
-            nodeTx->data[motorIndex + 0] = transmitCurrent >> 8 & 0xff;    // high byte
-            nodeTx->data[motorIndex + 1] = transmitCurrent >> 0 & 0xff;    // low byte
         }
 
 
@@ -82,6 +71,20 @@ namespace Udon
             return nodeRx->data[6];
         }
 
+    protected:
+        /// @brief モーターの電流を設定
+        /// @param current 電流値
+        void setCurrent(int16_t current)
+        {
+            current = current * directionSign();
+
+            const auto transmitCurrent = static_cast<int16_t>(current * 16384 / 20000);    // 16bit符号なし整数に変換
+            const auto motorIndex = (motorId - 1) * 2;
+
+            nodeTx->data[motorIndex + 0] = transmitCurrent >> 8 & 0xff;    // high byte
+            nodeTx->data[motorIndex + 1] = transmitCurrent >> 0 & 0xff;    // low byte
+        }
+
     private:
         /// @brief 通信バス
         Udon::ICanBus& bus;
@@ -114,7 +117,7 @@ namespace Udon
 
         static void onReceive(void* p)
         {
-            auto self = static_cast<RoboMasterC620*>(p);
+            auto self = static_cast<RoboMasterBase*>(p);
 
             // 変化角を計算
             const auto currentAngle = self->nodeRx->data[0] << 8 | self->nodeRx->data[1];
@@ -130,6 +133,46 @@ namespace Udon
             {
                 self->offsetAngle -= ppr;
             }
+        }
+    };
+
+
+    /// @brief RoboMasterC610クラス
+    /// @note C610 ドライバを用いてモーターを制御する
+    class RoboMasterC610
+        : public RoboMasterBase
+    {
+    public:
+        /// @brief コンストラクタ
+        /// @param bus CAN通信バス
+        /// @param motorId モーターID (1~8)
+        using RoboMasterBase::RoboMasterBase;
+
+        /// @brief モーターの電流を設定
+        /// @param current 電流値 [-10000, 10000] (単位: mA)
+        void setCurrent(int16_t current)
+        {
+            RoboMasterBase::setCurrent(Constrain(current, -10000, 10000));
+        }
+    };
+
+
+    /// @brief RoboMasterC620クラス
+    /// @note C620 ドライバを用いてモーターを制御する
+    class RoboMasterC620
+        : public RoboMasterBase
+    {
+    public:
+        /// @brief コンストラクタ
+        /// @param bus CAN通信バス
+        /// @param motorId モーターID (1~8)
+        using RoboMasterBase::RoboMasterBase;
+
+        /// @brief モーターの電流を設定
+        /// @param current 電流値 [-20000, 20000] (単位: mA)
+        void setCurrent(int16_t current)
+        {
+            RoboMasterBase::setCurrent(Constrain(current, -20000, 20000));
         }
     };
 }    // namespace Udon

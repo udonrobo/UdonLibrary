@@ -1,28 +1,36 @@
 # ロボマスモーター
 
+ロボマスモーターは CAN 通信経由で制御できるモーターです。電流値を指定することで動作し、またエンコーダーを搭載しているため、回転数や回転角の取得を取得できます。
+
 ## 個別インクルード
 
 ```cpp
-#include <Udon/Driver/RoboMasterC620.hpp>
+#include <Udon/Driver/RoboMaster.hpp>
 ```
 
 ## 概要
 
-ロボマスモーターを C620 ドライバを使用してドライブする場合、`RoboMasterC620` クラスを使用します。
-
-C610 ドライバ用クラスは今はありませんが、`RoboMasterC620` クラスでドライブできます。C610 ドライバは設定可能電流値が -10000~10000 [mA] である点に注意してください。
+以下の表に示すように、使用するドライバによってクラスが異なります。また指定できる電流範囲も異なります。
 
 使用される CAN ID は `0x200`, `0x1FF`, `0x200+モーターID` です。ドライバは 1ms 間隔で CAN フレームを送信するため、ドライバが接続されている CAN バスには、他の CAN デバイスを接続しないことをお勧めします。
 
-ドライバとは CAN で通信します。そのため CAN 通信クラスと組み合わせて使用します。`setCurrent` で電流値を指定することで動作します。
+|               |                    C610 ドライバ                     |                    C620 ドライバ                     |
+| :-----------: | :--------------------------------------------------: | :--------------------------------------------------: |
+|   イメージ    | <img width=400px src="../Assets/RoboMasterC610.png"> | <img width=400px src="../Assets/RoboMasterC620.png"> |
+|    クラス     |                   `RoboMasterC610`                   |                   `RoboMasterC620`                   |
+| 電流範囲 (mA) |                   10,000 ~ -10,000                   |                   20,000 ~ -20,000                   |
+
+## 電流値の指定
+
+`setCurrent` で電流値を指定することで動作します。電流範囲は先ほどの表のとおりです。
 
 ```cpp
 #include <Udon.hpp>
 
-Udon::CanBusTeensy<CAN1> bus;
+static Udon::CanBusTeensy<CAN1> bus;
 
-// ロボマスモーター (C620ドライバ経由 モーターID: 1)
-Udon::RoboMasterC620 motor{ bus, 1 };
+// ロボマスモーター (モーターID: 1)
+static Udon::RoboMasterXXXX motor{ bus, 1 };
 
 void setup()
 {
@@ -33,16 +41,16 @@ void loop()
 {
     bus.update();
 
-    // 動作電流値を設定 -20000~20000 (単位: mA)
+    // 動作電流値を設定 (mA)
     motor.setCurrent(10000);
 }
 ```
 
 ## センサー値取得
 
-ロボマスモーターはエンコーダーや電流センサ等が内蔵されているため、それらの値も取得できます。位置制御や速度制御をする場合、フィードバック制御と組み合わせて使用してください。
+回転角度、回転速度、トルク電流、モーター温度を取得可能です。位置制御や速度制御をする場合、フィードバック制御と組み合わせて使用してください。
 
-モータードライバは駆動電源で動作するため、非常停止ボタンを押すとドライバに保存されているエンコーダー角が消去される点に注意してください。
+ドライバは駆動電源で動作するため、駆動電源が切れるとドライバに保存されているエンコーダー角が消去される点に注意してください。
 
 ```cpp
 void loop()
@@ -63,15 +71,15 @@ void loop()
 
 ## 複数モーター
 
-モーター ID ごとに `RoboMasterC620` オブジェクトを生成することで、1 つの CAN バスに対して最大 8 つまでモーターを接続可能です。
+モーター ID ごとに `RoboMasterXXXX` オブジェクトを生成することで、1 つの CAN バスに対して最大 8 つまでモーターを接続可能です。
 
 モーター ID はドライバについている SET ボタンを押した後、加えて ID 番号回ボタンを押すことで設定できます。モーター ID は緑に点滅する LED の点滅回数で確認できます。
 
 ```cpp
 #include <Udon.hpp>
 
-Udon::CanBusTeensy<CAN1> bus;
+static Udon::CanBusTeensy<CAN1> bus;
 
-Udon::RoboMasterC620 motor1{ bus, 1 };
-Udon::RoboMasterC620 motor2{ bus, 2 };
+static Udon::RoboMasterXXXX motor1{ bus, 1 };
+static Udon::RoboMasterXXXX motor2{ bus, 2 };
 ```
