@@ -104,8 +104,8 @@
 // モーター(基板用)
 #include <Udon/Driver/Motor.hpp>
 
-// ロボマスモーター (C620ドライバ経由)
-#include <Udon/Driver/RoboMasterC620.hpp>
+// ロボマスモーター
+#include <Udon/Driver/RoboMaster.hpp>
 
 // BNO055(IMU)
 #include <Udon/Driver/BNO055.hpp>
