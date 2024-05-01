@@ -35,7 +35,7 @@
 - [LoRa](./docs/Communication/LoRa.md)
 - [IM920](./docs/Communication/IM920.md)
 - [コントローラ](./docs/Communication/Pad.md)
-- [CRC によるエラーチェック](./docs/Communication/CRC.md)🌟new
+- [CRC エラーチェック](./docs/Communication/CRC.md)🌟new
 
 ### ユーザー定義型
 
@@ -44,23 +44,23 @@
 - [三次元ベクトル](./docs/Types/Vector3D.md)
 - [オイラー角](./docs/Types/Eular.md)
 - [クオータニオン](./docs/Types/Quaternion.md)
+- [固定ビット長浮動小数点型](./docs/Types/Float.md)
 - [コンテナ / 静的可変長配列](./docs/Types/StaticVector.md)
 - [コンテナ / 静的可変長リングバッファ](./docs/Types/RingBuffer.md)
 - [コンテナ / 配列ビュー](./docs/Types/ArrayView.md)
-- [固定ビット長浮動小数点型](./docs/Types/Float.md)
 
 ### ドライバー
 
 - [モーター](./docs/Driver/Motor.md)
-- [ロボマスモーター](./docs/Driver/RoboMasterMotor.md)
-- [ロータリーエンコーダー(Raspberry Pi Pico)](./docs/Driver/EncoderPico.md)
-- [ジャイロセンサー / BNO055](./docs/Driver/BNO055.md)
-- [PIO](./docs/Other/PIO.md)
+- [ロボマスモーター](./docs/Driver/RoboMasterMotor.md)🌟new
+- [BNO055](./docs/Driver/BNO055.md)
+- [Raspberry Pi Pico ロータリーエンコーダー](./docs/Driver/EncoderPico.md)
+- [Raspberry Pi Pico PIO](./docs/Other/PIO.md)
 
 ### その他
 
 - [シリアライザ・デシリアライザ](./docs/Other/Serialization.md)
-- [トレイト・メタ関数](./docs/Other/Traits.md)
+- [メタ関数](./docs/Other/Traits.md)
 
 ### 開発者用
 
