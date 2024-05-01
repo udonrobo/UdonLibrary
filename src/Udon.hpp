@@ -105,7 +105,7 @@
 #include <Udon/Driver/Motor.hpp>
 
 // ロボマスモーター
-#include <Udon/Driver/RoboMaster.hpp>
+#include <Udon/Driver/RoboMasterMotor.hpp>
 
 // BNO055(IMU)
 #include <Udon/Driver/BNO055.hpp>

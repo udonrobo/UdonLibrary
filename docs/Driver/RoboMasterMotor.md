@@ -5,7 +5,7 @@
 ## 個別インクルード
 
 ```cpp
-#include <Udon/Driver/RoboMaster.hpp>
+#include <Udon/Driver/RoboMasterMotor.hpp>
 ```
 
 ## 概要
@@ -29,8 +29,7 @@
 
 static Udon::CanBusTeensy<CAN1> bus;
 
-// ロボマスモーター (モーターID: 1)
-static Udon::RoboMasterXXXX motor{ bus, 1 };
+static Udon::RoboMasterXXXX motor{ bus, 1 };   // ロボマスモーター (モーターID: 1)
 
 void setup()
 {
@@ -71,7 +70,7 @@ void loop()
 
 ## 複数モーター
 
-モーター ID ごとに `RoboMasterXXXX` オブジェクトを生成することで、1 つの CAN バスに対して最大 8 つまでモーターを接続可能です。
+モーター ID ごとにオブジェクトを生成することで、1 つの CAN バスに対して最大 8 つまでモーターを接続可能です。
 
 モーター ID はドライバについている SET ボタンを押した後、加えて ID 番号回ボタンを押すことで設定できます。モーター ID は緑に点滅する LED の点滅回数で確認できます。
 
@@ -80,6 +79,8 @@ void loop()
 
 static Udon::CanBusTeensy<CAN1> bus;
 
-static Udon::RoboMasterXXXX motor1{ bus, 1 };
-static Udon::RoboMasterXXXX motor2{ bus, 2 };
+static Udon::RoboMasterC620 motor1{ bus, 1 };
+static Udon::RoboMasterC620 motor2{ bus, 2 };
+static Udon::RoboMasterC610 motor3{ bus, 3 };
+static Udon::RoboMasterC610 motor4{ bus, 4 };
 ```
