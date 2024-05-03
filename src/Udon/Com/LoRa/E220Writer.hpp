@@ -10,7 +10,7 @@ namespace Udon
     /// @tparam T 送信するメッセージ型
     template <typename T>
     class E220Writer
-        : public E220Base
+        : public Impl::E220Base
     {
     public:
         /// @brief メッセージサイズ
@@ -41,6 +41,7 @@ namespace Udon
         }
 
         /// @brief メッセージを送信
+        /// @param message メッセージ
         void setMessage(const MessageType& message)
         {
             if (digitalRead(config.aux) == HIGH)

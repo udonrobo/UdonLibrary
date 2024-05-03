@@ -12,7 +12,7 @@ namespace Udon
     /// @tparam T 受信するメッセージ型
     template <typename T>
     class E220Reader
-        : public E220Base
+        : public Impl::E220Base
     {
     public:
         /// @brief メッセージサイズ
@@ -25,13 +25,6 @@ namespace Udon
         /// @param config 設定
         E220Reader(const E220Base::Config& config)
             : E220Base(config)
-        {
-        }
-
-        /// @brief コピーコンストラクタ
-        /// @param other
-        E220Reader(const E220Reader& other)
-            : E220Base(other.config)
         {
         }
 
@@ -95,7 +88,7 @@ namespace Udon
 
         void OnRisingEdge()
         {
-            if (config.serial.available() == Size + 1/* RSSIバイト*/)
+            if (config.serial.available() == Size + 1 /* RSSIバイト*/)
             {
                 config.serial.readBytes(buffer, sizeof buffer);
                 rawRssi = config.serial.read();
