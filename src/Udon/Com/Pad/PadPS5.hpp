@@ -39,6 +39,29 @@ namespace Udon
         /// @brief コントローラーが接続されているか
         explicit operator bool() const noexcept { return isConnected; }
 
+        /// @brief 非常停止を行うべきかを取得
+        /// @note クロスボタンで非常停止/非常解除を切り替え
+        /// @note コントローラーが接続されていない場合は非常停止、起動時は非常停止
+        /// @return
+        bool isEmergencyStop() const noexcept
+        {
+            // パッドが接続されていない場合は非常停止
+            if (not *this)
+            {
+                return false;
+            }
+
+            if (getCross().toggle)
+            {
+                // 起動時は非常停止
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         /// @brief ▵ボタン
         Input getTriangle() const noexcept { return triangle; }
 
