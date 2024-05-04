@@ -93,11 +93,13 @@ namespace Udon
         /// @brief 更新、操作量の取得
         /// @param controlValue 制御量
         /// @param targetValue 目標値
+        /// @param min 操作量の最小値
+        /// @param max 操作量の最大値
         /// @return 操作量
-        double operator()(double controlValue, double targetValue) noexcept
+        double operator()(double controlValue, double targetValue, double min = -250, double max = 250) noexcept
         {
             update(controlValue, targetValue);
-            return getPower();
+            return getPower(min, max);
         }
 
         /// @brief 操作量のクリア
