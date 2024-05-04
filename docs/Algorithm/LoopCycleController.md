@@ -36,5 +36,5 @@ void loop()
 `cycleUs()` でコンストラクタで指定したループ周期を取得できます。
 
 ```cpp
-const auto cycleUs = loopCtrl.loopCtrl();
+const auto cycleUs = loopCtrl.cycleUs();
 ```
