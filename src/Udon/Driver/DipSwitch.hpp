@@ -15,6 +15,10 @@
 namespace Udon
 {
 
+    /// @brief DIPスイッチから得られる二進数値を十進数値に変換します
+    /// @param pins ピン番号のリスト(下位ビットから順に)
+    /// @note DecodeDipSwitch({ 2, 3, 4, 5 }) のように使用します
+    /// @return 十進数値
     inline int DecodeDipSwitch(std::initializer_list<uint8_t> pins)
     {
         for (auto&& pin : pins)
@@ -28,7 +32,7 @@ namespace Udon
         for (auto&& pin : pins)
         {
             bitWrite(dec, i++, not digitalRead(pin));
-            delayMicroseconds(1);  // チャタリング対策
+            delayMicroseconds(5);  // チャタリング対策
         }
 
         return dec;
