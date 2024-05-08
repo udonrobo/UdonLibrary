@@ -22,47 +22,31 @@ namespace Udon
     {
         static_assert(Traits::IsWriter<Writer>::value, "Writer is not writer");
 
-        using writer_type = Writer<Message::Motor>;
-        writer_type writer;
+        using WriterType = Writer<Message::Motor>;
+        WriterType writer;
 
         int16_t power;    // 出力値 -255 ~ 255
 
         bool direction;    // 回転方向 true: forward, false: backward
 
     public:
-        MotorBy(writer_type&& writer, bool direction)
+        MotorBy(WriterType&& writer, bool direction)
             : writer(std::move(writer))
             , power()
             , direction(direction)
         {
         }
 
-        void setPower(int16_t power)
+        void move(int16_t p)
         {
-            this->power = power;
-        }
-
-        void setStop()
-        {
-            setPower(0);
-        }
-
-        int16_t getPower() const
-        {
-            return power;
-        }
-
-        void update()
-        {
-            const auto sendPower = power * (direction ? 1 : -1);
-            writer.setMessage({ static_cast<int16_t>(sendPower) });
+            power = Constrain(p, -255, 255);
+            writer.setMessage({ static_cast<int16_t>(power * (direction ? 1 : -1)) });
             Udon::Traits::MaybeInvokeUpdate(writer);
         }
 
-        void stopUpdate()
+        void stop()
         {
-            writer.setMessage({ 0 });
-            Udon::Traits::MaybeInvokeUpdate(writer);
+            move(0);
         }
 
         void show() const

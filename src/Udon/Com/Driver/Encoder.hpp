@@ -24,30 +24,27 @@ namespace Udon
     {
         static_assert(Traits::IsReader<Reader>::value, "Reader is not reader");
 
-        using reader_type = Reader<Message::Encoder>;
+        using ReaderType = Reader<Message::Encoder>;
 
-        reader_type reader;
+        ReaderType reader;
 
         Udon::DeltaTime deltaTime;
 
         bool direction;
 
-        int32_t count;
-        int32_t offsetCount;
-
-        double speed;
+        int32_t count{};
+        int32_t deltaCount{};
+        int32_t offsetCount{};
+        double speed{};
 
     public:
         /// @brief コンストラクタ
         /// @param reader 受信クラスオブジェクト
         /// @param direction 回転方向
-        EncoderBy(reader_type&& reader, bool direction)
+        EncoderBy(ReaderType&& reader, bool direction)
             : reader(std::move(reader))
             , deltaTime()
             , direction(direction)
-            , count()
-            , offsetCount()
-            , speed()
         {
         }
 
@@ -65,7 +62,9 @@ namespace Udon
 
             const auto curr = getCount();
 
-            speed = (curr - prev) / deltaTime.update().getDeltaTimeS();
+            deltaCount = curr - prev;
+
+            speed = deltaCount / deltaTime.update().getDeltaTimeS();
         }
 
         /// @brief カウント値オフセット
@@ -75,18 +74,25 @@ namespace Udon
             offsetCount = count - value;
         }
 
-        /// @brief 速度を取得
-        /// @return 速度[ppr/s]
-        double getSpeed() const
-        {
-            return speed;
-        }
-
         /// @brief カウント値を取得
         /// @return カウント値
         int32_t getCount() const
         {
             return count - offsetCount;
+        }
+
+        /// @brief カウント値の差分を取得
+        /// @return カウント値の差分
+        int32_t getDeltaCount() const
+        {
+            return deltaCount;
+        }
+
+        /// @brief 速度を取得
+        /// @return 速度[ppr/s]
+        double getSpeed() const
+        {
+            return speed;
         }
 
 #ifdef ARDUINO
