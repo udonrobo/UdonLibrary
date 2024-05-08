@@ -33,7 +33,7 @@ namespace Udon
 
 namespace Udon
 {
-    using SivPadPS5 = PadPS5<SivPadPS5Reader>;
+    using SivPadPS5 = PadPS5<Impl::SivPadPS5Reader>;
 }    // namespace Udon
 
 #endif

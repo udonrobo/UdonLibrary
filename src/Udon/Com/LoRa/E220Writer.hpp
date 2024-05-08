@@ -31,7 +31,7 @@ namespace Udon
         /// @return 送信中ならtrue
         bool isTransmitting(uint32_t timeoutMs = 200) const
         {
-            return millis() - lastTransmitMs < timeoutMs;
+            return millis() - lastTransmitUs / 1000. < timeoutMs;
         }
 
         /// @brief 送信開始
@@ -44,7 +44,7 @@ namespace Udon
         /// @param message メッセージ
         void setMessage(const MessageType& message)
         {
-            if (digitalRead(config.aux) == HIGH)
+            if (micros() - lastTransmitUs > 100 and digitalRead(config.aux) == HIGH)
             {
                 uint8_t buffer[Size];
                 Udon::Serialize(message, buffer);
@@ -52,12 +52,12 @@ namespace Udon
                 config.serial.write(uint8_t(config.address >> 0));
                 config.serial.write(uint8_t(config.channel));
                 config.serial.write(buffer, sizeof buffer);
-                lastTransmitMs = millis();
+                lastTransmitUs = micros();
             }
         }
 
     private:
-        uint32_t lastTransmitMs = 0;
+        uint32_t lastTransmitUs = 0;
     };
 
 }    // namespace Udon
