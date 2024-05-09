@@ -168,7 +168,7 @@ namespace Udon
 
     inline bool E920LR3::sendUpdate()
     {
-        if (millis() - txNode->transmitMs > 0)
+        if (millis() - txNode->transmitMs > 10)
         {
             {
                 std::vector<char> hexString;
