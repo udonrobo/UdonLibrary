@@ -19,7 +19,7 @@ namespace Udon
         {
 
             /// @brief 角度
-            uint8_t angle;
+            uint16_t angle;
 
 #ifdef ARDUINO
             /// @brief デバッグ出力
