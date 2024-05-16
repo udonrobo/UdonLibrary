@@ -10,7 +10,7 @@ namespace Udon
 {
     /// @brief コンストラクタ
     /// @param config 設定
-    inline CanBusSpi::CanBusSpi(const Config& config)
+    inline CanBusSpi::CanBusSpi(const Config& config = {})
         : config(config)
         , bus(/* spi_inst_t* CHANNEL    */ config.channel,
               /* uint8_t     CS_PIN     */ config.cs,

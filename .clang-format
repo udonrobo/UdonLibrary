@@ -38,7 +38,7 @@ BinPackParameters: true
 #    複数行で連続する `=` の位置を揃える
 #
 
-# AlignConsecutiveAssignments: false
+# AlignConsecutiveAssignments: true
 
 #
 #    複数行で連続する宣言の位置を揃える

@@ -44,10 +44,10 @@ inline void testBus()
         {
             .channel = spi0,
             .cs = 1,
-            .interrupt = 2,
             .mosi = 3,
             .miso = 4,
             .sck = 5,
+            .interrupt = 2,
             .spiClock = 1'000'000,
             .transmitInterval = 5,
             .transmitTimeout = 100,
@@ -57,13 +57,7 @@ inline void testBus()
         }
     };
 
-    Udon::CanBusSpi bus{
-        {
-            .channel = spi0,
-            .cs = 1,
-            .interrupt = 2,
-        },
-    };
+    Udon::CanBusSpi bus;
 
     bus.begin();
     bus.end();
