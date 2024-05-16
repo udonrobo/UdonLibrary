@@ -1,7 +1,7 @@
 //
 //    文字列参照クラス (std::string_view代替)
 //
-//    Copyright (c) 2022-2023 Udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #pragma once

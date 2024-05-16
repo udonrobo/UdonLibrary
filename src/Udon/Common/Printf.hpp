@@ -1,3 +1,9 @@
+//
+//    全プラットフォームで使用可能なPrintf
+//
+//    Copyright (c) 2022-2024 udonrobo
+//
+
 #pragma once
 
 #include <stdlib.h>

@@ -1,7 +1,7 @@
 //
 //    OpenSiv3D用 UART 受信クラス
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 //    Sender --[UART]--> Receiver
 //                       ^^^^^^^^

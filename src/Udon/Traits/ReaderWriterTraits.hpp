@@ -1,3 +1,9 @@
+//
+//    送受信者要件を満たすか判定する
+//
+//    Copyright (c) 2022-2024 udonrobo
+//
+
 #pragma once
 
 #include <Udon/Stl/EnableSTL.hpp>

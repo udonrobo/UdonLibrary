@@ -1,13 +1,7 @@
 //
-//    CRC checksum
+//    CRC
 //
-//    Copyright (c) 2022-2023 udonrobo
-//
-
-//
-//    About CRC:
-//    https://www.sunshine2k.de/coding/javascript/crc/crc_js.html
-//    https://www.sunshine2k.de/articles/coding/crc/understanding_crc.html
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #pragma once
@@ -18,8 +12,8 @@ namespace Udon
 {
     constexpr size_t CRC8_SIZE = 1;
 
-    /// @brief CRC-8 checksum
-    /// @param buffer チェックサムを計算するバッファ
+    /// @brief CRC-8
+    /// @param buffer CRCの計算対象となるバッファ
     inline uint8_t CRC8(ArrayView<const uint8_t> buffer)
     {
         uint8_t crc = 0xFF;    // initial value

@@ -1,9 +1,9 @@
 //
 //    CAN通信 Teensy用バスクラス 実装部
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
-#include <vector>
+
 namespace Udon
 {
 

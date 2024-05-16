@@ -1,7 +1,7 @@
 //
 //    独立ステアリング機構最適化クラス
 //
-//    Copyright (c) 2022-2023 Udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #pragma once

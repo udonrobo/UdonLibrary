@@ -1,8 +1,7 @@
 //
 //    Raspberry Pi Pico用PWMサーボドライバ
 //
-//    Copyright (c) 2022-2023 Maeda Tomoki
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #pragma once

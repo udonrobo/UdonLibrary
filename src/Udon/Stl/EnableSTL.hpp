@@ -1,9 +1,7 @@
 //
-//    C++ STL
+//    STL を使用できない環境で STL を使用できるようにする
 //
-//    Copyright (c) 2022-2023 udonrobo
-//
-//    C++ STL を使用できるようにします
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #pragma once

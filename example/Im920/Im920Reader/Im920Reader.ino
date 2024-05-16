@@ -1,7 +1,7 @@
 //
 //    IM920 にデータを受信するサンプル
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 //    Sender --[UART]--> IM920 ~~[920MHz]~~> IM920 --[UART]--> Receiver
 //                                                             ^^^^^^^^

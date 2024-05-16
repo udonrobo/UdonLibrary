@@ -1,3 +1,9 @@
+//
+//    ステートマシン割り当て
+//
+//    Copyright (c) 2022-2024 udonrobo
+//
+
 #pragma once
 
 #if defined(ARDUINO_ARCH_RP2040)

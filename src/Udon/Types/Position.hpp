@@ -1,7 +1,7 @@
 //
 //    ロボットの位置 (座標、旋回角) を表す型
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #pragma once

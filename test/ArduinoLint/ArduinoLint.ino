@@ -1,7 +1,7 @@
 //
 //    CI用スケッチ
 // 
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 //    ArduinoIDEでコンパイルできるかのみ検証します。./src/ にあるソースファイルは再帰的にビルドされます。
 //

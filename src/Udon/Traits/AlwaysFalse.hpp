@@ -1,3 +1,9 @@
+//
+//    実体化されたときに static_assert が失敗する型
+//
+//    Copyright (c) 2022-2024 udonrobo
+//
+
 #pragma once
 
 #include <Udon/Stl/EnableSTL.hpp>

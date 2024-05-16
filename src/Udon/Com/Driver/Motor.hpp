@@ -1,7 +1,7 @@
 //
 //    通信経由モーター制御クラス
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #pragma once

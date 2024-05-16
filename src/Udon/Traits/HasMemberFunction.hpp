@@ -1,3 +1,9 @@
+//
+//    メンバ関数の有無を判定し、存在する場合は呼び出す関数
+//
+//    Copyright (c) 2022-2024 udonrobo
+//
+
 #pragma once
 
 #include <Udon/Stl/EnableSTL.hpp>

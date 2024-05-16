@@ -17,7 +17,7 @@ UseTab: Never
 IndentWidth: 4
 
 #
-#    コンティニュエーションインデント幅
+#    連続する行のインデント幅
 #
 
 ContinuationIndentWidth: 4

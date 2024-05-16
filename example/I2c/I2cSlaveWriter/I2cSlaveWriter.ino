@@ -1,7 +1,7 @@
 //
 //    I2C スレーブ側送信スケッチ例
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #include <Udon.hpp>

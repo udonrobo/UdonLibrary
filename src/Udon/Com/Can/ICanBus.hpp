@@ -1,7 +1,7 @@
 //
 //    CANバス管理クラス インターフェース
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #pragma once

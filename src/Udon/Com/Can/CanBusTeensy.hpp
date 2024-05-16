@@ -1,7 +1,7 @@
 //
 //    CAN通信 Teensy用バスクラス
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #pragma once
@@ -14,6 +14,7 @@
 #include <Udon/Types/StaticVector.hpp>
 #include <Udon/Algorithm/ScopedInterruptLocker.hpp>
 #include <deque>
+
 namespace Udon
 {
 

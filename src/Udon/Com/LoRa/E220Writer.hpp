@@ -1,3 +1,9 @@
+//
+//    E220 無線モジュール送信クラス
+//
+//    Copyright (c) 2022-2024 udonrobo
+//
+
 #pragma once
 
 #include <Udon/Serializer/Serializer.hpp>

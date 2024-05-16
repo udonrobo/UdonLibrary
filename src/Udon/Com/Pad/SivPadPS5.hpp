@@ -1,7 +1,7 @@
 //
 //    OpenSiv3D用 PS5コントローラー
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 //    Controller --> Siv3DApp
 //                   ^^^^^^^^
