@@ -35,7 +35,7 @@ void loop()
     pad.update();
 
     //   pad --[i2c<Message::PadPS5>]--> master
-    writer.setMessage(pad.getButtons());
+    writer.setMessage(pad.getMessage());
 
     pad.setLightBar({ 0x38b48b });
     pad.setMicLed(true);
