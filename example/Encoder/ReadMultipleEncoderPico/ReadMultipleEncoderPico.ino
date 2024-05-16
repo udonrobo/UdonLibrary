@@ -6,7 +6,7 @@
 
 #include <Udon.hpp>
 
-Udon::EncoderPico encoders[]{
+static Udon::EncoderPico encoders[]{
     { 0, 1 },
     { 2, 3 },
     { 4, 5 },

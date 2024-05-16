@@ -9,9 +9,9 @@
 
 #include <Udon.hpp>
 
-Udon::CanBusTeensy<CAN1> bus;
+static Udon::CanBusTeensy<CAN1> bus;
 
-Udon::CanPadPS5 pad{ bus, 6 };
+static Udon::CanPadPS5 pad{ bus, 6 };
 
 void setup()
 {

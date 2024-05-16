@@ -9,12 +9,10 @@
 
 #include <Udon.hpp>
 
-using Udon::Parameter;
-
 const int   dataSize = 10;
 const char* fileName = "parameter.csv";
 
-Parameter myParameter(dataSize, fileName);
+static Udon::Parameter myParameter(dataSize, fileName);
 
 void setup()
 {

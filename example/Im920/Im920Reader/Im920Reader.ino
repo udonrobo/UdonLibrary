@@ -9,9 +9,9 @@
 
 #include <Udon.hpp>
 
-Udon::Im920 im920{ Serial1 };
+static Udon::Im920 im920{ Serial1 };
 
-Udon::Im920Reader<Udon::Vec2> reader{ im920 };
+static Udon::Im920Reader<Udon::Vec2> reader{ im920 };
 
 void setup()
 {

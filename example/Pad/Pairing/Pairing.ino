@@ -13,7 +13,7 @@
 #include <UdonFwd.hpp>
 #include <Udon/Com/Pad/PadPS5BT.hpp>
 
-Udon::PadPS5BT pad(PAIR);  // <- ここを PAIR に！
+static Udon::PadPS5BT pad(PAIR);  // <- ここを PAIR に！
 
 void setup()
 {

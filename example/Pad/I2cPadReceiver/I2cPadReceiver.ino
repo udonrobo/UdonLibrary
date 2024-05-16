@@ -10,9 +10,9 @@
 #include <UdonFwd.hpp>
 #include <Udon/Com/I2c.hpp>
 
-Udon::I2cBus bus{ Wire };
+static Udon::I2cBus bus{ Wire };
 
-Udon::I2cPadPS5 pad{ bus, 6 };
+static Udon::I2cPadPS5 pad{ bus, 6 };
 
 void setup()
 {

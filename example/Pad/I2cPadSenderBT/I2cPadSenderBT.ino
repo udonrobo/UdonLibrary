@@ -10,11 +10,11 @@
 #include <Udon.hpp>
 #include <Udon/Com/Pad/PadPS5BT.hpp>
 
-Udon::I2cBus bus{ Wire };
+static Udon::I2cBus bus{ Wire };
 
-Udon::I2cSlaveWriter<Udon::Message::PadPS5> writer{ bus };
+static Udon::I2cSlaveWriter<Udon::Message::PadPS5> writer{ bus };
 
-Udon::PadPS5BT pad;
+static Udon::PadPS5BT pad;
 
 void setup()
 {

@@ -6,9 +6,9 @@
 
 #include <Udon.hpp>
 
-Udon::I2cBus bus{ Wire };
+static Udon::I2cBus bus{ Wire };
 
-Udon::I2cSlaveReader<Udon::Vec2> reader{ bus };
+static Udon::I2cSlaveReader<Udon::Vec2> reader{ bus };
 
 void setup()
 {
