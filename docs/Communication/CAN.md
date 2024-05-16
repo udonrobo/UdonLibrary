@@ -83,9 +83,7 @@ flowchart LR
 ```
 
 ```cpp
-static Udon::CanBusSpi bus({
-    .interrupt = 2
-});
+static Udon::CanBusSpi bus;
 ```
 
 <details>
