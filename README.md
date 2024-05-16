@@ -69,3 +69,7 @@
 - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
 - [自動テスト](./docs/Developer/CI.md)
 - [謝辞](./docs/Developer/Acknowledgments.md)
+
+## ライセンス
+
+本ライブラリは GPL-2.0 ライセンスの下で公開されています。将来的に MIT ライセンスに移行予定です。
