@@ -1,0 +1,224 @@
+<!-- HTML header for doxygen 1.10.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="$langISO">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>UdonLibrary: src/Udon/Com/LoRa/E220Base.hpp ソースファイル</title>
+<!--BEGIN PROJECT_ICON-->
+<link rel="icon" href="$projecticon" type="image/x-icon" />
+<!--END PROJECT_ICON-->
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--BEGIN COPY_CLIPBOARD-->
+<script type="text/javascript" src="clipboard.js"></script>
+<!--END COPY_CLIPBOARD-->
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+$darkmode
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+  DoxygenAwesomeDarkModeToggle.init()
+  DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeInteractiveToc.hideMobileMenu = false
+</script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">機械システム研究部 C++ ライブラリ</div>
+  </td>
+ </tr>
+   <!--BEGIN FULL_SIDEBAR-->
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td></tr>
+   <!--END FULL_SIDEBAR-->
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('E220Base_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">E220Base.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span>Udon</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keyword">namespace </span>Impl</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classUdon_1_1Impl_1_1E220Base.html">    9</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classUdon_1_1Impl_1_1E220Base.html">E220Base</a></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structUdon_1_1Impl_1_1E220Base_1_1Config.html">   13</a></span>&#160;            <span class="keyword">struct </span><a class="code" href="structUdon_1_1Impl_1_1E220Base_1_1Config.html">Config</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                HardwareSerial&amp; serial;    <span class="comment">// シリアルポート</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                uint8_t m0;     <span class="comment">// M0 ピン</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                uint8_t m1;     <span class="comment">// M1 ピン</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                uint8_t aux;    <span class="comment">// AUX ピン</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structUdon_1_1Impl_1_1E220Base_1_1Config.html#ae8be237506946fc19503f8b995426bf3">   24</a></span>&#160;                uint8_t <a class="code" href="structUdon_1_1Impl_1_1E220Base_1_1Config.html#ae8be237506946fc19503f8b995426bf3">channel</a> = 0;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structUdon_1_1Impl_1_1E220Base_1_1Config.html#a31110573673b2e7e94f7c0c19edc8779">   29</a></span>&#160;                uint16_t <a class="code" href="structUdon_1_1Impl_1_1E220Base_1_1Config.html#a31110573673b2e7e94f7c0c19edc8779">address</a> = 0x0102;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            };</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classUdon_1_1Impl_1_1E220Base.html#a57a2a85ac25c012aebdcc2baa11b216f">   35</a></span>&#160;            <a class="code" href="structUdon_1_1Impl_1_1E220Base_1_1Config.html">Config</a>&amp; <a class="code" href="classUdon_1_1Impl_1_1E220Base.html#a57a2a85ac25c012aebdcc2baa11b216f">getConfigReference</a>()</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <span class="keywordflow">return</span> config;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            Config config;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <a class="code" href="classUdon_1_1Impl_1_1E220Base.html">E220Base</a>(<span class="keyword">const</span> Config&amp; config)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                : config(config)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordtype">void</span> begin()</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                pinMode(config.m0, OUTPUT);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                pinMode(config.m1, OUTPUT);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                pinMode(config.aux, INPUT);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <span class="comment">// E220 はデフォルトボーレートが9600なのでそちらに合わせる</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                config.serial.begin(9600);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                <span class="comment">// 設定モードに移行</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                digitalWrite(config.m0, HIGH);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                digitalWrite(config.m1, HIGH);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                delay(100);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <span class="comment">// レジスタを書き換え</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="keyword">const</span> uint8_t registerMap[]{</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                    <span class="comment">/* [0x00] */</span> <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(config.address &gt;&gt; 8),    <span class="comment">// アドレス上位バイト</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                    <span class="comment">/* [0x01] */</span> <span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(config.address &gt;&gt; 0),    <span class="comment">// アドレス下位バイト</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                    <span class="comment">/* [0x02] */</span> 0b11100001,                                   <span class="comment">// [7-5]UART通信レート / [4-0]伝送レート</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                    <span class="comment">/* [0x03] */</span> 0b00000001,                                   <span class="comment">// [7-6]サブパケット長 / [5]RSSI有効 / [4-2]未使用(予約) / [1-0]送信出力電力</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                    <span class="comment">/* [0x04] */</span> config.channel,                               <span class="comment">// 周波数チャンネル (920.8 MHz + CH×200kHz)</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    <span class="comment">/* [0x05] */</span> 0b11000011,                                   <span class="comment">// [7]RSSI バイト / [6]送信方法 / [5-3]未使用(予約) / [2-0]WOR サイクル</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                };</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                config.serial.write(<span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(0xc0));</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                config.serial.write(<span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(0x00));</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                config.serial.write(<span class="keyword">static_cast&lt;</span>uint8_t<span class="keyword">&gt;</span>(<span class="keyword">sizeof</span> registerMap));</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                config.serial.write(registerMap, <span class="keyword">sizeof</span> registerMap);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                delay(100);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="comment">// レスポンスを破棄</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="keywordflow">while</span> (config.serial.available())</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    (void)config.serial.read();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="comment">// 通常モードに移行</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                digitalWrite(config.m0, LOW);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                digitalWrite(config.m1, LOW);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                delay(100);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                config.serial.end();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                config.serial.begin(115200);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        };</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }    <span class="comment">// namespace Impl</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}    <span class="comment">// namespace Udon</span></div>
+<div class="ttc" id="aclassUdon_1_1Impl_1_1E220Base_html"><div class="ttname"><a href="classUdon_1_1Impl_1_1E220Base.html">Udon::Impl::E220Base</a></div><div class="ttdef"><b>Definition:</b> E220Base.hpp:10</div></div>
+<div class="ttc" id="aclassUdon_1_1Impl_1_1E220Base_html_a57a2a85ac25c012aebdcc2baa11b216f"><div class="ttname"><a href="classUdon_1_1Impl_1_1E220Base.html#a57a2a85ac25c012aebdcc2baa11b216f">Udon::Impl::E220Base::getConfigReference</a></div><div class="ttdeci">Config &amp; getConfigReference()</div><div class="ttdoc">現在の設定を取得</div><div class="ttdef"><b>Definition:</b> E220Base.hpp:35</div></div>
+<div class="ttc" id="astructUdon_1_1Impl_1_1E220Base_1_1Config_html"><div class="ttname"><a href="structUdon_1_1Impl_1_1E220Base_1_1Config.html">Udon::Impl::E220Base::Config</a></div><div class="ttdoc">設定</div><div class="ttdef"><b>Definition:</b> E220Base.hpp:14</div></div>
+<div class="ttc" id="astructUdon_1_1Impl_1_1E220Base_1_1Config_html_a31110573673b2e7e94f7c0c19edc8779"><div class="ttname"><a href="structUdon_1_1Impl_1_1E220Base_1_1Config.html#a31110573673b2e7e94f7c0c19edc8779">Udon::Impl::E220Base::Config::address</a></div><div class="ttdeci">uint16_t address</div><div class="ttdoc">アドレス</div><div class="ttdef"><b>Definition:</b> E220Base.hpp:29</div></div>
+<div class="ttc" id="astructUdon_1_1Impl_1_1E220Base_1_1Config_html_ae8be237506946fc19503f8b995426bf3"><div class="ttname"><a href="structUdon_1_1Impl_1_1E220Base_1_1Config.html#ae8be237506946fc19503f8b995426bf3">Udon::Impl::E220Base::Config::channel</a></div><div class="ttdeci">uint8_t channel</div><div class="ttdoc">チャンネル</div><div class="ttdef"><b>Definition:</b> E220Base.hpp:24</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_e21713259ba8923ecd13681a32accaa1.html">Com</a></li><li class="navelem"><a class="el" href="dir_ecc8c5dde3a96c5809b35c4a7206729c.html">LoRa</a></li><li class="navelem"><b>E220Base.hpp</b></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>
