@@ -110,18 +110,18 @@ $(document).ready(function(){initNavTree('md_docs_Install_PlatformIO.html',''); 
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p ><img src="../Assets/IconPlatformIO.png" alt="" height="100px" align="right" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md153"></a>
+<h1><a class="anchor" id="autotoc_md156"></a>
 Arduino のライブラリと共用する (推奨)</h1>
 <p >PC 内に本ライブラリ複数を置きたくない場合、Arduino のライブラリディレクトリに本ライブラリをクローンし、そこをインクルードパスとすることで、本ライブラリを一つにすることができます。クローン方法 <a class="el" href="md_docs_Install_ArduinoIDE.html">Install: Arduino IDE</a></p>
 <p ><code>platformio.ini</code> ファイルにライブラリのパスを設定します。</p>
 <div class="fragment"><div class="line">lib_deps =</div>
 <div class="line">    ~/Documents/Arduino/libraries/UdonLibrary</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md154"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md157"></a>
 Arduino のライブラリと共用しない</h1>
 <p >プロジェクトの <code>lib</code> ディレクトリへクローンすることで追加できます。</p>
 <div class="fragment"><div class="line">git clone --recursive https://github.com/udonrobo/UdonLibrary.git</div>
 <div class="line">./UdonLibrary/setup.sh</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md155"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md158"></a>
 更新</h1>
 <p >追加した <code>UdonLibrary</code> ディレクトリでプルします。</p>
 <div class="fragment"><div class="line">git pull</div>

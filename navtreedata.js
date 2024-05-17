@@ -204,27 +204,27 @@ var NAVTREE =
       [ "追加", "md_docs_Install_ArduinoIDE.html#autotoc_md150", null ],
       [ "更新", "md_docs_Install_ArduinoIDE.html#autotoc_md151", null ]
     ] ],
+    [ "PIO", "md_docs_Install_PIO.html", [
+      [ "PioClockBegin", "md_docs_Install_PIO.html#autotoc_md153", null ],
+      [ "AllocateStateMachine", "md_docs_Install_PIO.html#autotoc_md154", null ]
+    ] ],
     [ "Platform IO", "md_docs_Install_PlatformIO.html", [
-      [ "Arduino のライブラリと共用する (推奨)", "md_docs_Install_PlatformIO.html#autotoc_md153", null ],
-      [ "Arduino のライブラリと共用しない", "md_docs_Install_PlatformIO.html#autotoc_md154", null ],
-      [ "更新", "md_docs_Install_PlatformIO.html#autotoc_md155", null ]
+      [ "Arduino のライブラリと共用する (推奨)", "md_docs_Install_PlatformIO.html#autotoc_md156", null ],
+      [ "Arduino のライブラリと共用しない", "md_docs_Install_PlatformIO.html#autotoc_md157", null ],
+      [ "更新", "md_docs_Install_PlatformIO.html#autotoc_md158", null ]
     ] ],
     [ "Raspberry Pi Pico 用セットアップ", "md_docs_Install_RaspberryPiPico.html", null ],
     [ "Visual Studio", "md_docs_Install_VisualStudio.html", [
-      [ "Arduino のライブラリと共用する (推奨)", "md_docs_Install_VisualStudio.html#autotoc_md158", null ],
-      [ "Arduino のライブラリと共用しない", "md_docs_Install_VisualStudio.html#autotoc_md159", null ],
-      [ "インクルードパス設定", "md_docs_Install_VisualStudio.html#autotoc_md160", null ],
-      [ "更新", "md_docs_Install_VisualStudio.html#autotoc_md161", null ]
+      [ "Arduino のライブラリと共用する (推奨)", "md_docs_Install_VisualStudio.html#autotoc_md161", null ],
+      [ "Arduino のライブラリと共用しない", "md_docs_Install_VisualStudio.html#autotoc_md162", null ],
+      [ "インクルードパス設定", "md_docs_Install_VisualStudio.html#autotoc_md163", null ],
+      [ "更新", "md_docs_Install_VisualStudio.html#autotoc_md164", null ]
     ] ],
     [ "Visual Studio Submodule", "md_docs_Install_VisualStudioSubmodule.html", [
-      [ "追加", "md_docs_Install_VisualStudioSubmodule.html#autotoc_md163", null ],
-      [ "インクルードパス設定", "md_docs_Install_VisualStudioSubmodule.html#autotoc_md164", null ],
-      [ "更新", "md_docs_Install_VisualStudioSubmodule.html#autotoc_md165", null ],
-      [ "submodule 使用時の注意点", "md_docs_Install_VisualStudioSubmodule.html#autotoc_md166", null ]
-    ] ],
-    [ "PIO", "md_docs_Other_PIO.html", [
-      [ "PioClockBegin", "md_docs_Other_PIO.html#autotoc_md168", null ],
-      [ "AllocateStateMachine", "md_docs_Other_PIO.html#autotoc_md169", null ]
+      [ "追加", "md_docs_Install_VisualStudioSubmodule.html#autotoc_md166", null ],
+      [ "インクルードパス設定", "md_docs_Install_VisualStudioSubmodule.html#autotoc_md167", null ],
+      [ "更新", "md_docs_Install_VisualStudioSubmodule.html#autotoc_md168", null ],
+      [ "submodule 使用時の注意点", "md_docs_Install_VisualStudioSubmodule.html#autotoc_md169", null ]
     ] ],
     [ "シリアライザ", "md_docs_Other_Serialization.html", [
       [ "個別インクルード", "md_docs_Other_Serialization.html#autotoc_md171", null ],
