@@ -23,8 +23,9 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          submodules: 'recursive'
+
+      - name: Clone submodules
+        run: git submodule update --init --recursive
 
       - name: Install Doxygen
         run: sudo apt-get install doxygen
