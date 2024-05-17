@@ -86,7 +86,7 @@ PROJECT_ICON           =
 # left blank the current directory will be used.
 
 # udonrobo
-OUTPUT_DIRECTORY       = dist
+OUTPUT_DIRECTORY       = docs/DoxygenDist
 
 # If the CREATE_SUBDIRS tag is set to YES then doxygen will create up to 4096
 # sub-directories (in 2 levels) under the output directory of each output format

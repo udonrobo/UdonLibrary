@@ -9,7 +9,7 @@ Build/
 
 # Doxygen
 doxygen-awesome-css/
-dist/
+docs/DoxygenDist/
 
 # User-specific files
 *.rsuser

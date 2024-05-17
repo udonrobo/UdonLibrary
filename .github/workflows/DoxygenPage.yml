@@ -1,0 +1,37 @@
+#
+#    Doxygen Page
+#
+#    Copyright (c) 2022-2024 udonrobo
+#
+
+name: Doxygen Page
+
+on: [push]
+#   push:
+#     branches:
+#       - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Doxygen
+        run: sudo apt-get install doxygen graphviz -y
+        
+      - name: Run Doxygen
+        run: doxygen Doxyfile
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/master' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/DoxygenDist
