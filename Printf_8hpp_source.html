@@ -108,7 +108,7 @@ $(document).ready(function(){initNavTree('Printf_8hpp_source.html',''); initResi
   <div class="headertitle"><div class="title">Printf.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
+<a href="Printf_8hpp.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//    全プラットフォームで使用可能なPrintf</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">//    Copyright (c) 2022-2024 udonrobo</span></div>
@@ -120,16 +120,16 @@ $(document).ready(function(){initNavTree('Printf_8hpp_source.html',''); initResi
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;stdarg.h&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;Udon/Common/Platform.hpp&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;<a class="code" href="Platform_8hpp.html">Udon/Common/Platform.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span>Udon</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#if UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_SERIAL</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#    if UDON_PLATFORM_HAS_SERIAL_PRINTF</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> Printf(Stream&amp; stream, <span class="keyword">const</span> <span class="keywordtype">char</span>* format, Args&amp;&amp;... args)</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceUdon.html#a734d9854aba65224a95e6c61c63e9edc">Printf</a>(Stream&amp; stream, <span class="keyword">const</span> <span class="keywordtype">char</span>* format, Args&amp;&amp;... args)</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    {</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        stream.printf(format, args...);</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    }</div>
@@ -137,7 +137,7 @@ $(document).ready(function(){initNavTree('Printf_8hpp_source.html',''); initResi
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#    elif defined(ARDUINO)</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> Printf(Stream&amp; stream, <span class="keyword">const</span> <span class="keywordtype">char</span>* format, Args&amp;&amp;... args)</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceUdon.html#a734d9854aba65224a95e6c61c63e9edc">Printf</a>(Stream&amp; stream, <span class="keyword">const</span> <span class="keywordtype">char</span>* format, Args&amp;&amp;... args)</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    {</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">char</span> buf[256];</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        snprintf(buf, <span class="keyword">sizeof</span> buf, format, args...);</div>
@@ -151,15 +151,15 @@ $(document).ready(function(){initNavTree('Printf_8hpp_source.html',''); initResi
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#    endif</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> Printf(<span class="keyword">const</span> <span class="keywordtype">char</span>* format, Args... args)</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="namespaceUdon.html#a734d9854aba65224a95e6c61c63e9edc">   44</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceUdon.html#a734d9854aba65224a95e6c61c63e9edc">Printf</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* format, Args... args)</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        Printf(Serial, format, args...);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <a class="code hl_function" href="namespaceUdon.html#a734d9854aba65224a95e6c61c63e9edc">Printf</a>(Serial, format, args...);</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    }</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#elif UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> Printf(<span class="keyword">const</span> <span class="keywordtype">char</span>* format, Args... args)</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceUdon.html#a734d9854aba65224a95e6c61c63e9edc">Printf</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* format, Args... args)</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    {</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        printf(format, args...);</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
@@ -167,12 +167,15 @@ $(document).ready(function(){initNavTree('Printf_8hpp_source.html',''); initResi
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}    <span class="comment">// namespace Udon</span></div>
+<div class="ttc" id="aPlatform_8hpp_html"><div class="ttname"><a href="Platform_8hpp.html">Platform.hpp</a></div></div>
+<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition:</b> Bit.hpp:12</div></div>
+<div class="ttc" id="anamespaceUdon_html_a734d9854aba65224a95e6c61c63e9edc"><div class="ttname"><a href="namespaceUdon.html#a734d9854aba65224a95e6c61c63e9edc">Udon::Printf</a></div><div class="ttdeci">void Printf(const char *format, Args... args)</div><div class="ttdef"><b>Definition:</b> Printf.hpp:44</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_91107bbab4c42f4c920360a854b613b9.html">Common</a></li><li class="navelem"><b>Printf.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_91107bbab4c42f4c920360a854b613b9.html">Common</a></li><li class="navelem"><a class="el" href="Printf_8hpp.html">Printf.hpp</a></li>
     <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

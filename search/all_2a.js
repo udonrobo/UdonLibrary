@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['色空間_0',['色空間',['../md_docs_Types_Color.html',1,'']]]
+  ['移動平均_0',['移動平均',['../md_docs_Algorithm_MovingAverage.html',1,'']]]
 ];

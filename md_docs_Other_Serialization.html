@@ -121,7 +121,8 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 </div><!-- fragment --> </blockquote>
 <h1><a class="anchor" id="autotoc_md171"></a>
 個別インクルード</h1>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Udon/Serializer/Serializer.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Serializer_8hpp.html">Udon/Serializer/Serializer.hpp</a>&gt;</span></div>
+<div class="ttc" id="aSerializer_8hpp_html"><div class="ttname"><a href="Serializer_8hpp.html">Serializer.hpp</a></div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md172"></a>
 シリアライズ可能な型</h1>
 <p >整数型 ( <code>int</code>, <code>uint8_t</code>, <code>uint16_t</code> ... )</p>
@@ -137,7 +138,7 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">double</span> x;</div>
 <div class="line">    <span class="keywordtype">double</span> y;</div>
-<div class="line">    UDON_ENUMERABLE(x, y);</div>
+<div class="line">    <a class="code hl_define" href="EnumerableMacro_8hpp.html#a6e99cc65e2a105775034579f13c59b8d">UDON_ENUMERABLE</a>(x, y);</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup() {}</div>
@@ -145,11 +146,13 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 <div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    Vec2 v{ 2.5, 3.4 };</div>
-<div class="line">    <span class="keyword">const</span> std::vector&lt;uint8_t&gt; packed = Udon::Serialize(v);</div>
+<div class="line">    <span class="keyword">const</span> std::vector&lt;uint8_t&gt; packed = <a class="code hl_function" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a>(v);</div>
 <div class="line">}</div>
+<div class="ttc" id="aEnumerableMacro_8hpp_html_a6e99cc65e2a105775034579f13c59b8d"><div class="ttname"><a href="EnumerableMacro_8hpp.html#a6e99cc65e2a105775034579f13c59b8d">UDON_ENUMERABLE</a></div><div class="ttdeci">#define UDON_ENUMERABLE(...)</div><div class="ttdoc">メンバ変数の列挙を可能にする</div><div class="ttdef"><b>Definition:</b> EnumerableMacro.hpp:11</div></div>
+<div class="ttc" id="anamespaceUdon_html_a20184b6461ea6113bbbede25c81a6425"><div class="ttname"><a href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a></div><div class="ttdeci">bool Serialize(const T &amp;object, ArrayView&lt; uint8_t &gt; buffer)</div><div class="ttdoc">バッファにシリアル化する</div><div class="ttdef"><b>Definition:</b> Serializer.hpp:35</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md174"></a>
 デシリアライズ</h1>
-<p >バイト列をオブジェクトに復元するには <code>Udon::Deserialize&lt;T&gt;(...)</code> を使用します。 <code>Udon::Deserialize</code> はデシリアライズされたオブジェクトを <code><a class="el" href="classUdon_1_1Optional.html" title="オプショナル型">Udon::Optional</a></code> でラップして返します。</p>
+<p >バイト列をオブジェクトに復元するには <code><a class="el" href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef" title="バイト列からオブジェクトに逆シリアル化します">Udon::Deserialize</a>&lt;T&gt;(...)</code> を使用します。 <code><a class="el" href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef" title="バイト列からオブジェクトに逆シリアル化します">Udon::Deserialize</a></code> はデシリアライズされたオブジェクトを <code><a class="el" href="classUdon_1_1Optional.html" title="オプショナル型">Udon::Optional</a></code> でラップして返します。</p>
 <p ><code>Optional</code> 型とは値とエラー値を持つ型で、<code>Optional::operator bool()</code> を呼び出すことで次のように if 文でエラー判定可能です。</p>
 <blockquote class="doxtable">
 <p >&zwj;バイト列末端バイトに挿入されているチェックサムと、バイト列から求めたチェックサムが異なる場合、デシリアライズが失敗します。 チェックサムの整合が取れない場合、データが破損しています。 </p>
@@ -204,11 +207,11 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 <h2><a class="anchor" id="autotoc_md180"></a>
 整数型シリアライズ</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;Udon/Serializer/Serializer.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Serializer_8hpp.html">Udon/Serializer/Serializer.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
-<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> packed = Udon::Serialize(1000);</div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> packed = <a class="code hl_function" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a>(1000);</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = Udon::Deserialize&lt;int&gt;(packed))</div>
 <div class="line">    {</div>
@@ -222,16 +225,16 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 </div><!-- fragment --><div class="fragment"><div class="line">100</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md181"></a>
 ヒープ領域を使用しないシリアライズ</h2>
-<p ><code>Udon::Serialize(T) -&gt; std::vector&lt;uint8_t&gt;</code> は <code>std::vector</code> を用いており、バイト列をヒープ領域に割り当てて返します。パフォーマンスを気にする場合、ヒープ領域の使用はなるべく控えるべきです。<code>Udon::Serialize(T, <a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt;uint8_t&gt;)</code>を用いることで、スタック領域(静的配列)をバッファーとしてシリアライズできます。</p>
-<p >この時、バッファーのサイズと、シリアライズ後のサイズ(<code>Udon::SerializedSize&lt;T&gt;()</code>)が異なる場合 <code>Udon::Serialize</code> は失敗し false を返します。</p>
+<p ><code>Udon::Serialize(T) -&gt; std::vector&lt;uint8_t&gt;</code> は <code>std::vector</code> を用いており、バイト列をヒープ領域に割り当てて返します。パフォーマンスを気にする場合、ヒープ領域の使用はなるべく控えるべきです。<code><a class="el" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425" title="バッファにシリアル化する">Udon::Serialize</a>(T, <a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt;uint8_t&gt;)</code>を用いることで、スタック領域(静的配列)をバッファーとしてシリアライズできます。</p>
+<p >この時、バッファーのサイズと、シリアライズ後のサイズ(<code><a class="el" href="namespaceUdon.html#a92fa64e26dcad6be1aa4e0f4908fdee6" title="Tをシリアライズした際のバイト列の要素数を取得する">Udon::SerializedSize</a>&lt;T&gt;()</code>)が異なる場合 <code><a class="el" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425" title="バッファにシリアル化する">Udon::Serialize</a></code> は失敗し false を返します。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;Udon/Serializer/Serializer.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Serializer_8hpp.html">Udon/Serializer/Serializer.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
 <div class="line">    uint8_t buffer[Udon::SerializedSize&lt;int&gt;()];</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span> (not Udon::Serialize(1000, buffer))</div>
+<div class="line">    <span class="keywordflow">if</span> (not <a class="code hl_function" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a>(1000, buffer))</div>
 <div class="line">    {</div>
 <div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;serialize failed&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    }</div>
@@ -249,7 +252,7 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md182"></a>
 列挙型シリアライズ</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;Udon/Serializer/Serializer.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Serializer_8hpp.html">Udon/Serializer/Serializer.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">enum class</span> Language : uint8_t</div>
 <div class="line">{</div>
@@ -263,7 +266,7 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 <div class="line">{</div>
 <div class="line">    <span class="keyword">const</span> Language lang = Language::Cpp;</div>
 <div class="line"> </div>
-<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> packed = Udon::Serialize(lang);</div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> packed = <a class="code hl_function" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a>(lang);</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = Udon::Deserialize&lt;Language&gt;(packed))</div>
 <div class="line">    {</div>
@@ -284,20 +287,20 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md183"></a>
 ユーザー定義型シリアライズ</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;Udon/Serializer/Serializer.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Serializer_8hpp.html">Udon/Serializer/Serializer.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">struct </span>Vec2</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">double</span> x;</div>
 <div class="line">    <span class="keywordtype">double</span> y;</div>
-<div class="line">    UDON_ENUMERABLE(x, y);</div>
+<div class="line">    <a class="code hl_define" href="EnumerableMacro_8hpp.html#a6e99cc65e2a105775034579f13c59b8d">UDON_ENUMERABLE</a>(x, y);</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
 <div class="line">    <span class="keyword">const</span> Vec2 vector{ 1.0, 2.0 };</div>
 <div class="line"> </div>
-<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> packed = Udon::Serialize(vector);</div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> packed = <a class="code hl_function" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a>(vector);</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = Udon::Deserialize&lt;Vec2&gt;(packed))</div>
 <div class="line">    {</div>
@@ -314,19 +317,19 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md184"></a>
 メンバに配列を持つユーザー定義型</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;Udon/Serializer/Serializer.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Serializer_8hpp.html">Udon/Serializer/Serializer.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">struct </span>Array</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">int</span> array[5];</div>
-<div class="line">    UDON_ENUMERABLE(array);</div>
+<div class="line">    <a class="code hl_define" href="EnumerableMacro_8hpp.html#a6e99cc65e2a105775034579f13c59b8d">UDON_ENUMERABLE</a>(array);</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
 <div class="line">    Array array{ { 1, 2, 3, 4, 5 } };</div>
 <div class="line"> </div>
-<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> packed = Udon::Serialize(array);</div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> packed = <a class="code hl_function" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a>(array);</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = Udon::Deserialize&lt;Array&gt;(packed))</div>
 <div class="line">    {</div>
@@ -348,27 +351,27 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md185"></a>
 ユーザー定義型のネスト</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;Udon/Serializer/Serializer.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Serializer_8hpp.html">Udon/Serializer/Serializer.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">struct </span>Vec2</div>
 <div class="line">{</div>
 <div class="line">    <span class="keyword">struct </span>Double</div>
 <div class="line">    {</div>
 <div class="line">        <span class="keywordtype">double</span> value;</div>
-<div class="line">        UDON_ENUMERABLE(value);</div>
+<div class="line">        <a class="code hl_define" href="EnumerableMacro_8hpp.html#a6e99cc65e2a105775034579f13c59b8d">UDON_ENUMERABLE</a>(value);</div>
 <div class="line">    };</div>
 <div class="line"> </div>
 <div class="line">    Double x;</div>
 <div class="line">    Double y;</div>
 <div class="line"> </div>
-<div class="line">    UDON_ENUMERABLE(x, y);</div>
+<div class="line">    <a class="code hl_define" href="EnumerableMacro_8hpp.html#a6e99cc65e2a105775034579f13c59b8d">UDON_ENUMERABLE</a>(x, y);</div>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
 <div class="line">    <span class="keyword">const</span> Vec2 vector{ { 1.0 }, { 2.0 } };</div>
 <div class="line"> </div>
-<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> packed = Udon::Serialize(vector);</div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> packed = <a class="code hl_function" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a>(vector);</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = Udon::Deserialize&lt;Vec2&gt;(packed))</div>
 <div class="line">    {</div>
@@ -385,11 +388,11 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md186"></a>
 デシリアライズ失敗</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;Udon/Serializer/Serializer.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Serializer_8hpp.html">Udon/Serializer/Serializer.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
-<div class="line">    <span class="keyword">auto</span> packed = Udon::Serialize(1000);</div>
+<div class="line">    <span class="keyword">auto</span> packed = <a class="code hl_function" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a>(1000);</div>
 <div class="line"> </div>
 <div class="line">    packed.at(1) = 0x00;  <span class="comment">// データ破損</span></div>
 <div class="line"> </div>

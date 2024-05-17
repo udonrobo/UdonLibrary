@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('md_docs_Driver_BNO055.html',''); initR
 <p >BNO055 は 9 軸ジャイロセンサーです。6 軸センサと異なり、地磁気センサーを搭載しているため積算誤差による角度のズレが起こりません。</p>
 <p >下にジャイロセンサのヨー角を取得する例を示します。ロボットにセンサーを水平に設置した場合、ヨー角がロボットの旋回角となります。</p>
 <p >コンストラクタには、センサーと接続されている I2C 端子と対応する TwoWire オブジェクトを指定します。</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Udon.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> Udon::BNO055 gyro{ Wire };</div>
 <div class="line"> </div>
@@ -127,6 +127,7 @@ $(document).ready(function(){initNavTree('md_docs_Driver_BNO055.html',''); initR
 <div class="line"> </div>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> yaw = gyro.getQuaternion().toYaw();</div>
 <div class="line">}</div>
+<div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
 </div><!-- fragment --><blockquote class="doxtable">
 <p >&zwj;オイラー角からヨー角を取得することもできますが、ヨー角のみを取得する場合、クオータニオンからヨー角を求める方がパフォーマンス的に良いです。(内部的にクオータニオンを用いており、オイラー角に変換する段階で不要なピッチ、ロール角まで求めてしまうため)</p>
 <div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keywordtype">double</span> yaw = gyro.getEuler().yaw;</div>

@@ -108,13 +108,13 @@ $(document).ready(function(){initNavTree('Impl_2CanBusTeensy_8hpp_source.html','
   <div class="headertitle"><div class="title">CanBusTeensy.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
+<a href="Impl_2CanBusTeensy_8hpp.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//    CAN通信 Teensy用バスクラス 実装部</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">//    Copyright (c) 2022-2024 udonrobo</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">//</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span>Udon</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keyword">template</span> &lt;CAN_DEV_TABLE Bus&gt;</div>
@@ -317,7 +317,7 @@ $(document).ready(function(){initNavTree('Impl_2CanBusTeensy_8hpp_source.html','
 <div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>            }</div>
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>            <span class="comment">// 分割されたフレームを結合(マルチフレームの場合)</span></div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>            Udon::Impl::Unpacketize(</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>            <a class="code hl_function" href="namespaceUdon_1_1Impl.html#a69feae7a9942248eb185691b6320a155">Udon::Impl::Unpacketize</a>(</div>
 <div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>                { msg.buf },</div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>                { rxNode-&gt;data },</div>
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>                SingleFrameSize);</div>
@@ -358,7 +358,7 @@ $(document).ready(function(){initNavTree('Impl_2CanBusTeensy_8hpp_source.html','
 <div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>            msg.len = SingleFrameSize;</div>
 <div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
 <div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>            <span class="comment">// 一度に8バイトしか送れないため、分割し送信</span></div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>            Udon::Impl::Packetize({ node.data }, { msg.buf }, SingleFrameSize,</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>            <a class="code hl_function" href="namespaceUdon_1_1Impl.html#a37feaf5e28e8c9c948948a0c67ba41f3">Udon::Impl::Packetize</a>({ node.data }, { msg.buf }, SingleFrameSize,</div>
 <div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>                                  [<span class="keyword">this</span>, &amp;msg](size_t)</div>
 <div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>                                  {</div>
 <div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>                                      bus.write(msg);</div>
@@ -382,6 +382,9 @@ $(document).ready(function(){initNavTree('Impl_2CanBusTeensy_8hpp_source.html','
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_a71a2d8fe25af24188080d70128c2c030"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#a71a2d8fe25af24188080d70128c2c030">Udon::CanBusTeensy::CanBusTeensy</a></div><div class="ttdeci">CanBusTeensy(const Config &amp;config={})</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition:</b> CanBusTeensy.hpp:11</div></div>
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_aab80fefafd09b8b634b3b91063ef0e50"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#aab80fefafd09b8b634b3b91063ef0e50">Udon::CanBusTeensy::end</a></div><div class="ttdeci">void end()</div><div class="ttdoc">通信終了</div><div class="ttdef"><b>Definition:</b> CanBusTeensy.hpp:81</div></div>
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_ae8ad7a59df742c856ecadd34d9837cdd"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#ae8ad7a59df742c856ecadd34d9837cdd">Udon::CanBusTeensy::~CanBusTeensy</a></div><div class="ttdeci">~CanBusTeensy()</div><div class="ttdoc">デストラクタ</div><div class="ttdef"><b>Definition:</b> CanBusTeensy.hpp:30</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Impl_html_a37feaf5e28e8c9c948948a0c67ba41f3"><div class="ttname"><a href="namespaceUdon_1_1Impl.html#a37feaf5e28e8c9c948948a0c67ba41f3">Udon::Impl::Packetize</a></div><div class="ttdeci">void Packetize(Udon::ArrayView&lt; const uint8_t &gt; &amp;&amp;input, Udon::ArrayView&lt; uint8_t &gt; &amp;&amp;output, size_t singlePacketSize, Function func)</div><div class="ttdoc">バイト列を複数のパケット、単一のパケットにパケット化する</div><div class="ttdef"><b>Definition:</b> CanUtility.hpp:24</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Impl_html_a69feae7a9942248eb185691b6320a155"><div class="ttname"><a href="namespaceUdon_1_1Impl.html#a69feae7a9942248eb185691b6320a155">Udon::Impl::Unpacketize</a></div><div class="ttdeci">void Unpacketize(Udon::ArrayView&lt; const uint8_t &gt; &amp;&amp;input, Udon::ArrayView&lt; uint8_t &gt; &amp;&amp;output, size_t singlePacketSize)</div><div class="ttdoc">複数のパケット、単一のパケットからバイト列にアンパケット化する</div><div class="ttdef"><b>Definition:</b> CanUtility.hpp:83</div></div>
+<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition:</b> Bit.hpp:12</div></div>
 <div class="ttc" id="astructUdon_1_1CanBusTeensy_1_1Config_html"><div class="ttname"><a href="structUdon_1_1CanBusTeensy_1_1Config.html">Udon::CanBusTeensy::Config</a></div><div class="ttdef"><b>Definition:</b> CanBusTeensy.hpp:34</div></div>
 <div class="ttc" id="astructUdon_1_1CanRxNode_html"><div class="ttname"><a href="structUdon_1_1CanRxNode.html">Udon::CanRxNode</a></div><div class="ttdoc">CAN受信ノード</div><div class="ttdef"><b>Definition:</b> ICanBus.hpp:28</div></div>
 <div class="ttc" id="astructUdon_1_1CanTxNode_html"><div class="ttname"><a href="structUdon_1_1CanTxNode.html">Udon::CanTxNode</a></div><div class="ttdoc">CAN送信ノード</div><div class="ttdef"><b>Definition:</b> ICanBus.hpp:17</div></div>
@@ -390,7 +393,7 @@ $(document).ready(function(){initNavTree('Impl_2CanBusTeensy_8hpp_source.html','
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_e21713259ba8923ecd13681a32accaa1.html">Com</a></li><li class="navelem"><a class="el" href="dir_daca1019e6623a4a9a8f5d0963b7bf6e.html">Can</a></li><li class="navelem"><a class="el" href="dir_02092643bac9ea04da45061f77cb318d.html">Impl</a></li><li class="navelem"><b>CanBusTeensy.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_e21713259ba8923ecd13681a32accaa1.html">Com</a></li><li class="navelem"><a class="el" href="dir_daca1019e6623a4a9a8f5d0963b7bf6e.html">Can</a></li><li class="navelem"><a class="el" href="dir_02092643bac9ea04da45061f77cb318d.html">Impl</a></li><li class="navelem"><a class="el" href="Impl_2CanBusTeensy_8hpp.html">CanBusTeensy.hpp</a></li>
     <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

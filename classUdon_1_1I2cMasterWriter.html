@@ -113,12 +113,13 @@ $(document).ready(function(){initNavTree('classUdon_1_1I2cMasterWriter.html','')
   <div class="headertitle"><div class="title">Udon::I2cMasterWriter&lt; Message &gt; クラステンプレート</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="I2cMasterWriter_8hpp_source.html">Udon/Com/I2c/I2cMasterWriter.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 公開型</h2></td></tr>
-<tr class="memitem:a2ce3d91c81b494f5be40d7fcc14e4f57"><td class="memItemLeft" align="right" valign="top"><a id="a2ce3d91c81b494f5be40d7fcc14e4f57" name="a2ce3d91c81b494f5be40d7fcc14e4f57"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>MessageType</b> = Message</td></tr>
-<tr class="memdesc:a2ce3d91c81b494f5be40d7fcc14e4f57"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信メッセージ型 <br /></td></tr>
+<tr class="memitem:a2ce3d91c81b494f5be40d7fcc14e4f57"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cMasterWriter.html#a2ce3d91c81b494f5be40d7fcc14e4f57">MessageType</a> = Message</td></tr>
+<tr class="memdesc:a2ce3d91c81b494f5be40d7fcc14e4f57"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信メッセージ型  <a href="classUdon_1_1I2cMasterWriter.html#a2ce3d91c81b494f5be40d7fcc14e4f57">[詳解]</a><br /></td></tr>
 <tr class="separator:a2ce3d91c81b494f5be40d7fcc14e4f57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -138,11 +139,29 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>MessageType</b> = Me
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 静的公開変数類</h2></td></tr>
-<tr class="memitem:a8b126ebba9f26554e950179fbe549169"><td class="memItemLeft" align="right" valign="top"><a id="a8b126ebba9f26554e950179fbe549169" name="a8b126ebba9f26554e950179fbe549169"></a>
-static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>Size</b> = Udon::SerializedSize&lt;<a class="el" href="classUdon_1_1I2cMasterWriter.html#a2ce3d91c81b494f5be40d7fcc14e4f57">MessageType</a>&gt;()</td></tr>
-<tr class="memdesc:a8b126ebba9f26554e950179fbe549169"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信バッファサイズ <br /></td></tr>
+<tr class="memitem:a8b126ebba9f26554e950179fbe549169"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cMasterWriter.html#a8b126ebba9f26554e950179fbe549169">Size</a> = <a class="el" href="namespaceUdon.html#a92fa64e26dcad6be1aa4e0f4908fdee6">Udon::SerializedSize</a>&lt;<a class="el" href="classUdon_1_1I2cMasterWriter.html#a2ce3d91c81b494f5be40d7fcc14e4f57">MessageType</a>&gt;()</td></tr>
+<tr class="memdesc:a8b126ebba9f26554e950179fbe549169"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信バッファサイズ  <a href="classUdon_1_1I2cMasterWriter.html#a8b126ebba9f26554e950179fbe549169">[詳解]</a><br /></td></tr>
 <tr class="separator:a8b126ebba9f26554e950179fbe549169"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">型定義メンバ詳解</h2>
+<a id="a2ce3d91c81b494f5be40d7fcc14e4f57" name="a2ce3d91c81b494f5be40d7fcc14e4f57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ce3d91c81b494f5be40d7fcc14e4f57">&#9670;&#160;</a></span>MessageType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Message &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classUdon_1_1I2cMasterWriter.html">Udon::I2cMasterWriter</a>&lt; Message &gt;::MessageType =  Message</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>受信メッセージ型 </p>
+
+</div>
+</div>
 <h2 class="groupheader">構築子と解体子</h2>
 <a id="a1dd698b772aaba2161ae01717b526b6a" name="a1dd698b772aaba2161ae01717b526b6a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1dd698b772aaba2161ae01717b526b6a">&#9670;&#160;</a></span>I2cMasterWriter()</h2>
@@ -300,6 +319,33 @@ template&lt;typename Message &gt; </div>
 
 </div>
 </div>
+<h2 class="groupheader">メンバ詳解</h2>
+<a id="a8b126ebba9f26554e950179fbe549169" name="a8b126ebba9f26554e950179fbe549169"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b126ebba9f26554e950179fbe549169">&#9670;&#160;</a></span>Size</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Message &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr size_t <a class="el" href="classUdon_1_1I2cMasterWriter.html">Udon::I2cMasterWriter</a>&lt; Message &gt;::Size = <a class="el" href="namespaceUdon.html#a92fa64e26dcad6be1aa4e0f4908fdee6">Udon::SerializedSize</a>&lt;<a class="el" href="classUdon_1_1I2cMasterWriter.html#a2ce3d91c81b494f5be40d7fcc14e4f57">MessageType</a>&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>受信バッファサイズ </p>
+
+</div>
+</div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
 <li>src/Udon/Com/I2c/<a class="el" href="I2cMasterWriter_8hpp_source.html">I2cMasterWriter.hpp</a></li>
 </ul>
@@ -308,7 +354,7 @@ template&lt;typename Message &gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>Udon</b></li><li class="navelem"><a class="el" href="classUdon_1_1I2cMasterWriter.html">I2cMasterWriter</a></li>
+    <li class="navelem"><a class="el" href="namespaceUdon.html">Udon</a></li><li class="navelem"><a class="el" href="classUdon_1_1I2cMasterWriter.html">I2cMasterWriter</a></li>
     <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

@@ -1,5 +1,6 @@
 var classUdon_1_1Optional =
 [
+    [ "ValueType", "classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63", null ],
     [ "Optional", "classUdon_1_1Optional.html#aac4bcd11a86a7bf228428b610d95cb83", null ],
     [ "Optional", "classUdon_1_1Optional.html#a713a39c57a00dfc3660e320257f4489f", null ],
     [ "Optional", "classUdon_1_1Optional.html#a23e95189c22121147fda02c6b616509e", null ],
@@ -12,6 +13,8 @@ var classUdon_1_1Optional =
     [ "operator*", "classUdon_1_1Optional.html#a260e272a43c4a8c945dc2afa4441c8e6", null ],
     [ "operator*", "classUdon_1_1Optional.html#a2995dd469f5810884a3fd6b63b965fa8", null ],
     [ "operator*", "classUdon_1_1Optional.html#a5911eca57249b5c4d9763728481ecee7", null ],
+    [ "operator->", "classUdon_1_1Optional.html#af05f2a17e6d9cbd501389beb1807f11b", null ],
+    [ "operator->", "classUdon_1_1Optional.html#acea8017ffa838edef48c8ecedf66c28b", null ],
     [ "operator=", "classUdon_1_1Optional.html#a073122aeeb5c5892952387398d115d5c", null ],
     [ "operator=", "classUdon_1_1Optional.html#a49dff458a4e6a993c791a69501382218", null ],
     [ "operator=", "classUdon_1_1Optional.html#af16d5b6a1583ae197a31eb8f3ed7a40a", null ],

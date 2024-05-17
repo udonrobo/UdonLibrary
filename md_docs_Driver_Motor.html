@@ -111,14 +111,15 @@ $(document).ready(function(){initNavTree('md_docs_Driver_Motor.html',''); initRe
 <div class="textblock"><p >モータードライバ制御クラス。 <code>Motor2</code> <code>Motor3</code> クラスが含まれます。</p>
 <h1><a class="anchor" id="autotoc_md138"></a>
 個別インクルード</h1>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Udon/Driver/Motor.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Driver_2Motor_8hpp.html">Udon/Driver/Motor.hpp</a>&gt;</span></div>
+<div class="ttc" id="aDriver_2Motor_8hpp_html"><div class="ttname"><a href="Driver_2Motor_8hpp.html">Motor.hpp</a></div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md139"></a>
 Motor2 クラス</h1>
 <p >信号線が 2 線 (dir + pwm) タイプのモータードライバの制御に使用します。</p>
 <p >コンストラクタにモータードライバと接続しているピン番号を指定します。</p>
 <p ><code>setup</code> 関数内で <code>begin</code> メンバ関数を呼び出し、<code>move</code> 関数の引数に出力値を与えることでモーターを駆動できます。</p>
 <p ><code>move</code> 関数の引数に与える出力値は <code>-255 ~ 255</code> の範囲である必要があります。</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Udon.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> Udon::Motor2 motor(dirPin, pwmPin);</div>
 <div class="line"> </div>
@@ -135,11 +136,12 @@ Motor2 クラス</h1>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// motor.stop();  // motor.move(0) と同じ意味</span></div>
 <div class="line">}</div>
+<div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md140"></a>
 Motor3 クラス</h1>
 <p >信号線が 3 線 (dirA + dirB + pwm) タイプのモータードライバの制御に使用します。</p>
 <p >コンストラクタにモータードライバと接続しているピン番号を指定します。コンストラクタ以外の仕様 <code>Motor2</code> クラスと同じです。</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Udon.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> Udon::Motor3 motor(dirPinA, dirPinB, pwmPin);</div>
 <div class="line"> </div>

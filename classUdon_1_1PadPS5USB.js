@@ -1,5 +1,6 @@
 var classUdon_1_1PadPS5USB =
 [
+    [ "PadPS5USB", "classUdon_1_1PadPS5USB.html#a99d73e0d10a97d982d06fad2ad5ff92c", null ],
     [ "begin", "classUdon_1_1PadPS5USB.html#a6ad7186dde8c05984bc26dee2ab6694f", null ],
     [ "getMessage", "classUdon_1_1PadPS5USB.html#a88fb8fda7c42c4a19b7d1d7f12b855be", null ],
     [ "setLightBar", "classUdon_1_1PadPS5USB.html#a5787122fc897bbefaa9500c1f2149621", null ],

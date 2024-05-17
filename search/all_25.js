@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['割り込み禁止制御_0',['割り込み禁止制御',['../md_docs_Algorithm_Interrupt.html',1,'']]]
+  ['ループ周期制御_0',['ループ周期制御',['../md_docs_Algorithm_LoopCycleController.html',1,'']]]
 ];

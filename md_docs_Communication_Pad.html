@@ -206,7 +206,8 @@ $(document).ready(function(){initNavTree('md_docs_Communication_Pad.html',''); i
 <p >メインマイコンにはボタンやスティックの情報を取得する関数群がまとめられています。</p>
 <h2><a class="anchor" id="autotoc_md78"></a>
 個別インクルード</h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Udon/Com/Pad.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Pad_8hpp.html">Udon/Com/Pad.hpp</a>&gt;</span></div>
+<div class="ttc" id="aPad_8hpp_html"><div class="ttname"><a href="Pad_8hpp.html">Pad.hpp</a></div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md79"></a>
 インスタンス化</h2>
 <p >受信側マイコンとの通信方式によって使用するコントローラクラスが異なります。インスタンス化以外の機能は統一されています。</p>
@@ -366,13 +367,14 @@ $(document).ready(function(){initNavTree('md_docs_Communication_Pad.html',''); i
 <div class="line">    <span class="keywordtype">double</span> turn;  <span class="comment">// 旋回成分 (右スティックのX成分)</span></div>
 <div class="line">};</div>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// スティックからオムニの出力値を求める</span></div>
-<div class="line"><span class="keyword">const</span> std::array&lt;double, 4&gt; omni = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">getMoveInfo</a>().toOmni();</div>
+<div class="line"><span class="keyword">const</span> std::array&lt;double, 4&gt; omni = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">getMoveInfo</a>().<a class="code hl_function" href="structUdon_1_1Pos.html#a187d13f2aa77ee29502c343e0666cc56">toOmni</a>();</div>
+<div class="ttc" id="astructUdon_1_1Pos_html_a187d13f2aa77ee29502c343e0666cc56"><div class="ttname"><a href="structUdon_1_1Pos.html#a187d13f2aa77ee29502c343e0666cc56">Udon::Pos::toOmni</a></div><div class="ttdeci">std::array&lt; double, N &gt; toOmni() const</div><div class="ttdef"><b>Definition:</b> Position.hpp:150</div></div>
 </div><!-- fragment --> </blockquote>
 <h2><a class="anchor" id="autotoc_md91"></a>
 最終的なスケッチ例</h2>
 <div class="fragment"><div class="line"><span class="comment">// CAN バスからコントローラの情報を取得する例</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &lt;Udon.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1CanBusTeensy.html">Udon::CanBusTeensy&lt;CAN1&gt;</a> bus;</div>
 <div class="line"><span class="keyword">static</span> Udon::CanPadPS5 pad{ bus, 0x006 };</div>
@@ -394,6 +396,7 @@ $(document).ready(function(){initNavTree('md_docs_Communication_Pad.html',''); i
 <div class="line"> </div>
 <div class="line">    delay(1);</div>
 <div class="line">}</div>
+<div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_a5e0b712fc58d18f440fd3e70b2ac0100"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#a5e0b712fc58d18f440fd3e70b2ac0100">Udon::CanBusTeensy::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">バス更新</div><div class="ttdef"><b>Definition:</b> CanBusTeensy.hpp:89</div></div>
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_a634246d48d846fee09ab4c3259f18b26"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#a634246d48d846fee09ab4c3259f18b26">Udon::CanBusTeensy::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">通信開始</div><div class="ttdef"><b>Definition:</b> CanBusTeensy.hpp:37</div></div>
 <div class="ttc" id="astructUdon_1_1Input_html_aa4c9c021a02823dde03ead4e3a68626e"><div class="ttname"><a href="structUdon_1_1Input.html#aa4c9c021a02823dde03ead4e3a68626e">Udon::Input::click</a></div><div class="ttdeci">bool click</div><div class="ttdoc">押された瞬間か</div><div class="ttdef"><b>Definition:</b> Input.hpp:52</div></div>
@@ -401,12 +404,12 @@ $(document).ready(function(){initNavTree('md_docs_Communication_Pad.html',''); i
 送信側マイコン用クラス</h1>
 <p >送信側マイコンは USB ホストシールドからコントローラの情報を受け取り、無線モジュールへの転送を行います。</p>
 <p >USB ケーブルで USB ホストシールドとコントローラーを繋ぐことで接続されます。</p>
-<p ><code><a class="el" href="PadPS5USB_8hpp_source.html">PadPS5USB.hpp</a></code> を個別にインクルードする必要があります。このファイルは USB_Host_Shield_2.0 ライブラリに依存しており、サイズが大きいため <a class="el" href="Udon_8hpp_source.html">Udon.hpp</a> からインクルードされていません。</p>
+<p ><code><a class="el" href="PadPS5USB_8hpp.html">PadPS5USB.hpp</a></code> を個別にインクルードする必要があります。このファイルは USB_Host_Shield_2.0 ライブラリに依存しており、サイズが大きいため <a class="el" href="Udon_8hpp.html">Udon.hpp</a> からインクルードされていません。</p>
 <p ><code>getMessage()</code> から <code><a class="el" href="structUdon_1_1Message_1_1PadPS5.html" title="PS5コントローラーのボタン情報">Udon::Message::PadPS5</a></code> 型オブジェクトを取得できます。このオブジェクトを送信クラスへ渡すことでコントローラの情報の転送が行えます。</p>
 <div class="fragment"><div class="line"><span class="comment">// コントローラの情報を LoRa へ転送する例</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &lt;Udon.hpp&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;Udon/Com/Pad/PadPS5USB.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="PadPS5USB_8hpp.html">Udon/Com/Pad/PadPS5USB.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1PadPS5USB.html">Udon::PadPS5USB</a> pad;</div>
 <div class="line"> </div>
@@ -434,6 +437,7 @@ $(document).ready(function(){initNavTree('md_docs_Communication_Pad.html',''); i
 <div class="line"> </div>
 <div class="line">    delay(1);</div>
 <div class="line">}</div>
+<div class="ttc" id="aPadPS5USB_8hpp_html"><div class="ttname"><a href="PadPS5USB_8hpp.html">PadPS5USB.hpp</a></div></div>
 <div class="ttc" id="aclassUdon_1_1E220Writer_html"><div class="ttname"><a href="classUdon_1_1E220Writer.html">Udon::E220Writer</a></div><div class="ttdoc">E220 送信クラス</div><div class="ttdef"><b>Definition:</b> E220Writer.hpp:20</div></div>
 <div class="ttc" id="aclassUdon_1_1PadPS5USB_html"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html">Udon::PadPS5USB</a></div><div class="ttdef"><b>Definition:</b> PadPS5USB.hpp:30</div></div>
 <div class="ttc" id="aclassUdon_1_1PadPS5USB_html_a6ad7186dde8c05984bc26dee2ab6694f"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html#a6ad7186dde8c05984bc26dee2ab6694f">Udon::PadPS5USB::begin</a></div><div class="ttdeci">bool begin()</div><div class="ttdoc">コントローラーと通信開始</div><div class="ttdef"><b>Definition:</b> PadPS5USB.hpp:46</div></div>
@@ -454,7 +458,7 @@ $(document).ready(function(){initNavTree('md_docs_Communication_Pad.html',''); i
 <p >受信マイコンは無線モジュールから取得した <code><a class="el" href="structUdon_1_1Message_1_1PadPS5.html" title="PS5コントローラーのボタン情報">Udon::Message::PadPS5</a></code> 型オブジェクトをメインマイコンへ転送する役を担います。</p>
 <div class="fragment"><div class="line"><span class="comment">// LoRa で受信したデータを CAN バスへ送信する例</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &lt;Udon.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1E220Reader.html">Udon::E220Reader&lt;Udon::Message::PadPS5&gt;</a> lora({</div>
 <div class="line">    .serial = Serial1,</div>
@@ -495,11 +499,11 @@ $(document).ready(function(){initNavTree('md_docs_Communication_Pad.html',''); i
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md94"></a>
 Bluetooth 使用時の受信側マイコン用クラス</h1>
 <p >あらかじめコントローラと Bluetooth ドングルがペアリングされている必要があります。ペアリング方法</p>
-<p ><code><a class="el" href="PadPS5BT_8hpp_source.html">PadPS5BT.hpp</a></code> を個別にインクルードする必要があります。使い方は <code>PadPS5USB</code> クラスと同じです。</p>
+<p ><code><a class="el" href="PadPS5BT_8hpp.html">PadPS5BT.hpp</a></code> を個別にインクルードする必要があります。使い方は <code>PadPS5USB</code> クラスと同じです。</p>
 <div class="fragment"><div class="line"><span class="comment">// コントローラの情報を CAN バスへ転送する例</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &lt;Udon.hpp&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;Udon/Com/Pad/PadPS5BT.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="PadPS5BT_8hpp.html">Udon/Com/Pad/PadPS5BT.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1PadPS5BT.html">Udon::PadPS5BT</a> pad;</div>
 <div class="line"> </div>
@@ -519,6 +523,7 @@ Bluetooth 使用時の受信側マイコン用クラス</h1>
 <div class="line"> </div>
 <div class="line">    writer.setMessage(pad.<a class="code hl_function" href="classUdon_1_1PadPS5BT.html#ad31384673399f809c4d0ecae98c19162">getMessage</a>());</div>
 <div class="line">}</div>
+<div class="ttc" id="aPadPS5BT_8hpp_html"><div class="ttname"><a href="PadPS5BT_8hpp.html">PadPS5BT.hpp</a></div></div>
 <div class="ttc" id="aclassUdon_1_1PadPS5BT_html"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html">Udon::PadPS5BT</a></div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:29</div></div>
 <div class="ttc" id="aclassUdon_1_1PadPS5BT_html_a2af753f449fc60da7922b31cab218614"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#a2af753f449fc60da7922b31cab218614">Udon::PadPS5BT::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">更新</div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:64</div></div>
 <div class="ttc" id="aclassUdon_1_1PadPS5BT_html_ad31384673399f809c4d0ecae98c19162"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#ad31384673399f809c4d0ecae98c19162">Udon::PadPS5BT::getMessage</a></div><div class="ttdeci">Message::PadPS5 getMessage() const</div><div class="ttdoc">Message::PadPS5型のメッセージを取得する</div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:116</div></div>
@@ -538,8 +543,8 @@ Bluetooth ドングルとのペアリング</h1>
 <p ><code>PadPS5BT</code> のコンストラクタに <code>PAIR</code> を指定し書き込むことで USB ドングルがペアリングモードで起動します。</p>
 <div class="fragment"><div class="line"><span class="comment">// ペアリング用スケッチ</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &lt;UdonFwd.hpp&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;Udon/Com/Pad/PadPS5BT.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="UdonFwd_8hpp.html">UdonFwd.hpp</a>&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="PadPS5BT_8hpp.html">Udon/Com/Pad/PadPS5BT.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1PadPS5BT.html">Udon::PadPS5BT</a> pad{ PAIR };</div>
 <div class="line"> </div>
@@ -552,6 +557,7 @@ Bluetooth ドングルとのペアリング</h1>
 <div class="line">{</div>
 <div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5BT.html#a2af753f449fc60da7922b31cab218614">update</a>();</div>
 <div class="line">}</div>
+<div class="ttc" id="aUdonFwd_8hpp_html"><div class="ttname"><a href="UdonFwd_8hpp.html">UdonFwd.hpp</a></div></div>
 </div><!-- fragment --><p >クリエイトボタン、PS ボタンをライトバーが点滅するまで長押しすることで、コントローラ側もペアリングモードになります。ペアリングは通常数秒で終わります。ペアリングが成功するとライトバーが点灯します。</p>
 <p ><img src="../Assets/デュアルセンスペアリングボタン.png" alt="" width="300px" class="inline"/></p>
 <blockquote class="doxtable">

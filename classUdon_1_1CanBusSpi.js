@@ -1,6 +1,6 @@
 var classUdon_1_1CanBusSpi =
 [
-    [ "Config", "structUdon_1_1CanBusSpi_1_1Config.html", null ],
+    [ "Config", "structUdon_1_1CanBusSpi_1_1Config.html", "structUdon_1_1CanBusSpi_1_1Config" ],
     [ "CanBusSpi", "classUdon_1_1CanBusSpi.html#aafe94579bb9f1bbfa86eba653092d341", null ],
     [ "begin", "classUdon_1_1CanBusSpi.html#a1aee3bf9ee2381059bd94b1ebb1a6b48", null ],
     [ "createRx", "classUdon_1_1CanBusSpi.html#ab3fa486716bfd79ab475a9b91417f104", null ],

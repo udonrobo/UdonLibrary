@@ -116,7 +116,7 @@ PidController</h1>
 <p >PID 制御を行うには <code>PidController</code> クラスを用います。このクラスはループ周期が一定である前提で作成されています。よって <code>LoopCycleController</code> クラスも必要です。</p>
 <p >PID 制御には 3 つのパラメータ (P ゲイン, I ゲイン, D ゲイン) があり、コンストラクタで設定します。このパラメータがフィードバック制御の性能を決定するため、頑張って調整する必要があります。</p>
 <p ><code>PidController::update()</code> に現在の値、目標の値を渡すことで <code>PidController::getPower()</code> から制御値が得られます。この制御値用いてモータを動かすことで位置制御などが可能です。現在値にはエンコーダーなどのセンサから得られる値を設定します。</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Udon.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> Udon::LoopCycleController loopCtrl{ 10000 };  <span class="comment">// ループ周期 10000マイクロ秒</span></div>
 <div class="line"> </div>
@@ -135,6 +135,7 @@ PidController</h1>
 <div class="line"> </div>
 <div class="line">    loopCtrl.update();</div>
 <div class="line">}</div>
+<div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
 <div class="ttc" id="aclassUdon_1_1PidController_html"><div class="ttname"><a href="classUdon_1_1PidController.html">Udon::PidController</a></div><div class="ttdoc">PID制御器</div><div class="ttdef"><b>Definition:</b> PidController.hpp:19</div></div>
 <div class="ttc" id="aclassUdon_1_1PidController_html_a64f66fda55e64b4cba8645095b6622b8"><div class="ttname"><a href="classUdon_1_1PidController.html#a64f66fda55e64b4cba8645095b6622b8">Udon::PidController::update</a></div><div class="ttdeci">void update(double controlValue, double targetValue) noexcept</div><div class="ttdoc">データ更新</div><div class="ttdef"><b>Definition:</b> PidController.hpp:61</div></div>
 </div><!-- fragment --><p ><code>operator()()</code> によって以下のようにも書けます。</p>

@@ -128,6 +128,8 @@ Udon::II2cBus の継承関係図</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
+<tr class="memitem:adc44adc604b94bc6024ad9b0cea0fa91"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#adc44adc604b94bc6024ad9b0cea0fa91">~II2cBus</a> ()=default</td></tr>
+<tr class="separator:adc44adc604b94bc6024ad9b0cea0fa91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a800048a0917d9838468bd462213490c4"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a800048a0917d9838468bd462213490c4">operator bool</a> () const =0</td></tr>
 <tr class="memdesc:a800048a0917d9838468bd462213490c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">バスの有効性を取得  <a href="classUdon_1_1II2cBus.html#a800048a0917d9838468bd462213490c4">[詳解]</a><br /></td></tr>
 <tr class="separator:a800048a0917d9838468bd462213490c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,63 +141,99 @@ Udon::II2cBus の継承関係図</div>
 <tr class="separator:a76f8269412162f41020e72ec05949d9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cc5302fd04f7f452c513eeadff6e7f7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a9cc5302fd04f7f452c513eeadff6e7f7">begin</a> ()=0</td></tr>
 <tr class="separator:a9cc5302fd04f7f452c513eeadff6e7f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98088e5d4a360f79a47cdec66a59bb26"><td class="memItemLeft" align="right" valign="top"><a id="a98088e5d4a360f79a47cdec66a59bb26" name="a98088e5d4a360f79a47cdec66a59bb26"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> (uint8_t address)=0</td></tr>
+<tr class="memitem:a98088e5d4a360f79a47cdec66a59bb26"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a98088e5d4a360f79a47cdec66a59bb26">begin</a> (uint8_t address)=0</td></tr>
 <tr class="separator:a98088e5d4a360f79a47cdec66a59bb26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0ac9a68dd574f77174b7e0d0f661d13"><td class="memItemLeft" align="right" valign="top"><a id="ab0ac9a68dd574f77174b7e0d0f661d13" name="ab0ac9a68dd574f77174b7e0d0f661d13"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> ()=0</td></tr>
+<tr class="memitem:ab0ac9a68dd574f77174b7e0d0f661d13"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#ab0ac9a68dd574f77174b7e0d0f661d13">end</a> ()=0</td></tr>
 <tr class="separator:ab0ac9a68dd574f77174b7e0d0f661d13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a9871dae4e291f085dbf563c150a902"><td class="memItemLeft" align="right" valign="top"><a id="a5a9871dae4e291f085dbf563c150a902" name="a5a9871dae4e291f085dbf563c150a902"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>restart</b> ()=0</td></tr>
+<tr class="memitem:a5a9871dae4e291f085dbf563c150a902"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a5a9871dae4e291f085dbf563c150a902">restart</a> ()=0</td></tr>
 <tr class="separator:a5a9871dae4e291f085dbf563c150a902"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae430537e69f2dfb73f202a9cf1cffa59"><td class="memItemLeft" align="right" valign="top"><a id="ae430537e69f2dfb73f202a9cf1cffa59" name="ae430537e69f2dfb73f202a9cf1cffa59"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setClock</b> (uint32_t clock)=0</td></tr>
+<tr class="memitem:ae430537e69f2dfb73f202a9cf1cffa59"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#ae430537e69f2dfb73f202a9cf1cffa59">setClock</a> (uint32_t clock)=0</td></tr>
 <tr class="separator:ae430537e69f2dfb73f202a9cf1cffa59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad157ca7e6893536bc80aec16dc4e7f58"><td class="memItemLeft" align="right" valign="top"><a id="ad157ca7e6893536bc80aec16dc4e7f58" name="ad157ca7e6893536bc80aec16dc4e7f58"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>beginTransmission</b> (uint8_t address)=0</td></tr>
+<tr class="memitem:ad157ca7e6893536bc80aec16dc4e7f58"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#ad157ca7e6893536bc80aec16dc4e7f58">beginTransmission</a> (uint8_t address)=0</td></tr>
 <tr class="separator:ad157ca7e6893536bc80aec16dc4e7f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09c0d0877f53b09810a97b7c813a1130"><td class="memItemLeft" align="right" valign="top"><a id="a09c0d0877f53b09810a97b7c813a1130" name="a09c0d0877f53b09810a97b7c813a1130"></a>
-virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>endTransmission</b> ()=0</td></tr>
+<tr class="memitem:a09c0d0877f53b09810a97b7c813a1130"><td class="memItemLeft" align="right" valign="top">virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a09c0d0877f53b09810a97b7c813a1130">endTransmission</a> ()=0</td></tr>
 <tr class="separator:a09c0d0877f53b09810a97b7c813a1130"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae50b12532edfcddd35078db7f073a0f"><td class="memItemLeft" align="right" valign="top"><a id="aae50b12532edfcddd35078db7f073a0f" name="aae50b12532edfcddd35078db7f073a0f"></a>
-virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>endTransmission</b> (uint8_t sendStop)=0</td></tr>
+<tr class="memitem:aae50b12532edfcddd35078db7f073a0f"><td class="memItemLeft" align="right" valign="top">virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#aae50b12532edfcddd35078db7f073a0f">endTransmission</a> (uint8_t sendStop)=0</td></tr>
 <tr class="separator:aae50b12532edfcddd35078db7f073a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab06a8478d079ad54fb046c22c7e31611"><td class="memItemLeft" align="right" valign="top"><a id="ab06a8478d079ad54fb046c22c7e31611" name="ab06a8478d079ad54fb046c22c7e31611"></a>
-virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>requestFrom</b> (uint8_t address, uint8_t quantity)=0</td></tr>
+<tr class="memitem:ab06a8478d079ad54fb046c22c7e31611"><td class="memItemLeft" align="right" valign="top">virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#ab06a8478d079ad54fb046c22c7e31611">requestFrom</a> (uint8_t address, uint8_t quantity)=0</td></tr>
 <tr class="separator:ab06a8478d079ad54fb046c22c7e31611"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a315bb6e4e939742b12a1a11fb3bd726b"><td class="memItemLeft" align="right" valign="top"><a id="a315bb6e4e939742b12a1a11fb3bd726b" name="a315bb6e4e939742b12a1a11fb3bd726b"></a>
-virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>requestFrom</b> (uint8_t address, uint8_t quantity, uint8_t sendStop)=0</td></tr>
+<tr class="memitem:a315bb6e4e939742b12a1a11fb3bd726b"><td class="memItemLeft" align="right" valign="top">virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a315bb6e4e939742b12a1a11fb3bd726b">requestFrom</a> (uint8_t address, uint8_t quantity, uint8_t sendStop)=0</td></tr>
 <tr class="separator:a315bb6e4e939742b12a1a11fb3bd726b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a843e809a7eca51fe29581017faccf937"><td class="memItemLeft" align="right" valign="top"><a id="a843e809a7eca51fe29581017faccf937" name="a843e809a7eca51fe29581017faccf937"></a>
-virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> (uint8_t data)=0</td></tr>
+<tr class="memitem:a843e809a7eca51fe29581017faccf937"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a843e809a7eca51fe29581017faccf937">write</a> (uint8_t data)=0</td></tr>
 <tr class="separator:a843e809a7eca51fe29581017faccf937"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2070f8cbeabafff5f7fc3703e7836004"><td class="memItemLeft" align="right" valign="top"><a id="a2070f8cbeabafff5f7fc3703e7836004" name="a2070f8cbeabafff5f7fc3703e7836004"></a>
-virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> (const uint8_t *data, size_t quantity)=0</td></tr>
+<tr class="memitem:a2070f8cbeabafff5f7fc3703e7836004"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a2070f8cbeabafff5f7fc3703e7836004">write</a> (const uint8_t *data, size_t quantity)=0</td></tr>
 <tr class="separator:a2070f8cbeabafff5f7fc3703e7836004"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53fe9a045dae04c7d869a5aadd8546e7"><td class="memItemLeft" align="right" valign="top"><a id="a53fe9a045dae04c7d869a5aadd8546e7" name="a53fe9a045dae04c7d869a5aadd8546e7"></a>
-virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>available</b> ()=0</td></tr>
+<tr class="memitem:a53fe9a045dae04c7d869a5aadd8546e7"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a53fe9a045dae04c7d869a5aadd8546e7">available</a> ()=0</td></tr>
 <tr class="separator:a53fe9a045dae04c7d869a5aadd8546e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b1cad2c6592e35cc6699269b8d9f100"><td class="memItemLeft" align="right" valign="top"><a id="a5b1cad2c6592e35cc6699269b8d9f100" name="a5b1cad2c6592e35cc6699269b8d9f100"></a>
-virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> ()=0</td></tr>
+<tr class="memitem:a5b1cad2c6592e35cc6699269b8d9f100"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a5b1cad2c6592e35cc6699269b8d9f100">read</a> ()=0</td></tr>
 <tr class="separator:a5b1cad2c6592e35cc6699269b8d9f100"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1ffb22f494ead17b3541e9c15fd37f5"><td class="memItemLeft" align="right" valign="top"><a id="ae1ffb22f494ead17b3541e9c15fd37f5" name="ae1ffb22f494ead17b3541e9c15fd37f5"></a>
-virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>peek</b> ()=0</td></tr>
+<tr class="memitem:ae1ffb22f494ead17b3541e9c15fd37f5"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#ae1ffb22f494ead17b3541e9c15fd37f5">peek</a> ()=0</td></tr>
 <tr class="separator:ae1ffb22f494ead17b3541e9c15fd37f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0c91faa85d7beca36dff6330ed5124a"><td class="memItemLeft" align="right" valign="top"><a id="ac0c91faa85d7beca36dff6330ed5124a" name="ac0c91faa85d7beca36dff6330ed5124a"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>flush</b> ()=0</td></tr>
+<tr class="memitem:ac0c91faa85d7beca36dff6330ed5124a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#ac0c91faa85d7beca36dff6330ed5124a">flush</a> ()=0</td></tr>
 <tr class="separator:ac0c91faa85d7beca36dff6330ed5124a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a173df7b7b2ddf3c44cab2330076efe11"><td class="memItemLeft" align="right" valign="top"><a id="a173df7b7b2ddf3c44cab2330076efe11" name="a173df7b7b2ddf3c44cab2330076efe11"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onReceive</b> (void(*function)(int))=0</td></tr>
+<tr class="memitem:a173df7b7b2ddf3c44cab2330076efe11"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a173df7b7b2ddf3c44cab2330076efe11">onReceive</a> (void(*function)(int))=0</td></tr>
 <tr class="separator:a173df7b7b2ddf3c44cab2330076efe11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afeafe0e7519f5b2c0e693d82a2044666"><td class="memItemLeft" align="right" valign="top"><a id="afeafe0e7519f5b2c0e693d82a2044666" name="afeafe0e7519f5b2c0e693d82a2044666"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onRequest</b> (void(*function)())=0</td></tr>
+<tr class="memitem:afeafe0e7519f5b2c0e693d82a2044666"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#afeafe0e7519f5b2c0e693d82a2044666">onRequest</a> (void(*function)())=0</td></tr>
 <tr class="separator:afeafe0e7519f5b2c0e693d82a2044666"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p >I2cBus クラスのインターフェース </p>
-</div><h2 class="groupheader">関数詳解</h2>
+</div><h2 class="groupheader">構築子と解体子</h2>
+<a id="adc44adc604b94bc6024ad9b0cea0fa91" name="adc44adc604b94bc6024ad9b0cea0fa91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc44adc604b94bc6024ad9b0cea0fa91">&#9670;&#160;</a></span>~II2cBus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Udon::II2cBus::~II2cBus </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a53fe9a045dae04c7d869a5aadd8546e7" name="a53fe9a045dae04c7d869a5aadd8546e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53fe9a045dae04c7d869a5aadd8546e7">&#9670;&#160;</a></span>available()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int Udon::II2cBus::available </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classUdon_1_1I2cBusImpl.html#ab3c247dbb75b800fc26fefa5751d4c13">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
+
+</div>
+</div>
 <a id="a9cc5302fd04f7f452c513eeadff6e7f7" name="a9cc5302fd04f7f452c513eeadff6e7f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9cc5302fd04f7f452c513eeadff6e7f7">&#9670;&#160;</a></span>begin()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cc5302fd04f7f452c513eeadff6e7f7">&#9670;&#160;</a></span>begin() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -218,6 +256,227 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onRequest</b>
 </div><div class="memdoc">
 
 <p><a class="el" href="classUdon_1_1I2cBusImpl.html#aad5aba01423c0d665744d447efd87db4">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="a98088e5d4a360f79a47cdec66a59bb26" name="a98088e5d4a360f79a47cdec66a59bb26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98088e5d4a360f79a47cdec66a59bb26">&#9670;&#160;</a></span>begin() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Udon::II2cBus::begin </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>address</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classUdon_1_1I2cBusImpl.html#a61effab8092e166bd713d1cdbbe78f05">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="ad157ca7e6893536bc80aec16dc4e7f58" name="ad157ca7e6893536bc80aec16dc4e7f58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad157ca7e6893536bc80aec16dc4e7f58">&#9670;&#160;</a></span>beginTransmission()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Udon::II2cBus::beginTransmission </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>address</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classUdon_1_1I2cBusImpl.html#aa88e88dcc35ea00a532a76796f4396be">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="ab0ac9a68dd574f77174b7e0d0f661d13" name="ab0ac9a68dd574f77174b7e0d0f661d13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0ac9a68dd574f77174b7e0d0f661d13">&#9670;&#160;</a></span>end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Udon::II2cBus::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classUdon_1_1I2cBusImpl.html#ab05b0c0fe13c0ba819ff98c4225edd9b">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="a09c0d0877f53b09810a97b7c813a1130" name="a09c0d0877f53b09810a97b7c813a1130"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09c0d0877f53b09810a97b7c813a1130">&#9670;&#160;</a></span>endTransmission() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual uint8_t Udon::II2cBus::endTransmission </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classUdon_1_1I2cBusImpl.html#a04b00f9c68277dae5b5bef1fd7071668">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="aae50b12532edfcddd35078db7f073a0f" name="aae50b12532edfcddd35078db7f073a0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae50b12532edfcddd35078db7f073a0f">&#9670;&#160;</a></span>endTransmission() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual uint8_t Udon::II2cBus::endTransmission </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sendStop</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classUdon_1_1I2cBusImpl.html#ab2bb28bc702659950f26f21111977932">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="ac0c91faa85d7beca36dff6330ed5124a" name="ac0c91faa85d7beca36dff6330ed5124a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0c91faa85d7beca36dff6330ed5124a">&#9670;&#160;</a></span>flush()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Udon::II2cBus::flush </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classUdon_1_1I2cBusImpl.html#a9a05e0fc6e188f0e836204fd82a86f4b">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="a173df7b7b2ddf3c44cab2330076efe11" name="a173df7b7b2ddf3c44cab2330076efe11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a173df7b7b2ddf3c44cab2330076efe11">&#9670;&#160;</a></span>onReceive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Udon::II2cBus::onReceive </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(int)&#160;</td>
+          <td class="paramname"><em>function</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classUdon_1_1I2cBusImpl.html#a590636aa2eb6c336d3c6a77d4ca1e953">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="afeafe0e7519f5b2c0e693d82a2044666" name="afeafe0e7519f5b2c0e693d82a2044666"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afeafe0e7519f5b2c0e693d82a2044666">&#9670;&#160;</a></span>onRequest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Udon::II2cBus::onRequest </td>
+          <td>(</td>
+          <td class="paramtype">void(*)()&#160;</td>
+          <td class="paramname"><em>function</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classUdon_1_1I2cBusImpl.html#a7745ad0f6650cb752ddd28f14a72fadd">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
 
 </div>
 </div>
@@ -247,6 +506,197 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onRequest</b>
 <p>バスの有効性を取得 </p>
 
 <p><a class="el" href="classUdon_1_1I2cBusImpl.html#a01ad569300369a553166c32f1af09675">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="ae1ffb22f494ead17b3541e9c15fd37f5" name="ae1ffb22f494ead17b3541e9c15fd37f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1ffb22f494ead17b3541e9c15fd37f5">&#9670;&#160;</a></span>peek()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int Udon::II2cBus::peek </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classUdon_1_1I2cBusImpl.html#a91972adcc697bd12afb459de032ac364">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="a5b1cad2c6592e35cc6699269b8d9f100" name="a5b1cad2c6592e35cc6699269b8d9f100"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b1cad2c6592e35cc6699269b8d9f100">&#9670;&#160;</a></span>read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int Udon::II2cBus::read </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classUdon_1_1I2cBusImpl.html#a2551d77b5648ddd44044669eb3588694">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="ab06a8478d079ad54fb046c22c7e31611" name="ab06a8478d079ad54fb046c22c7e31611"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab06a8478d079ad54fb046c22c7e31611">&#9670;&#160;</a></span>requestFrom() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual uint8_t Udon::II2cBus::requestFrom </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>quantity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classUdon_1_1I2cBusImpl.html#a9ee93d9c7213b739d4fec804e340ba16">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="a315bb6e4e939742b12a1a11fb3bd726b" name="a315bb6e4e939742b12a1a11fb3bd726b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a315bb6e4e939742b12a1a11fb3bd726b">&#9670;&#160;</a></span>requestFrom() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual uint8_t Udon::II2cBus::requestFrom </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>quantity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sendStop</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classUdon_1_1I2cBusImpl.html#a695d5d2e2ffe0896af154ab477d3c74b">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="a5a9871dae4e291f085dbf563c150a902" name="a5a9871dae4e291f085dbf563c150a902"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a9871dae4e291f085dbf563c150a902">&#9670;&#160;</a></span>restart()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Udon::II2cBus::restart </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classUdon_1_1I2cBusImpl.html#abdb1002c12adb42bf455f808224d982d">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="ae430537e69f2dfb73f202a9cf1cffa59" name="ae430537e69f2dfb73f202a9cf1cffa59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae430537e69f2dfb73f202a9cf1cffa59">&#9670;&#160;</a></span>setClock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Udon::II2cBus::setClock </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>clock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classUdon_1_1I2cBusImpl.html#a3ddff46f93773bf6de7ab97ccca7db42">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
 
 </div>
 </div>
@@ -308,6 +758,72 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onRequest</b>
 
 </div>
 </div>
+<a id="a2070f8cbeabafff5f7fc3703e7836004" name="a2070f8cbeabafff5f7fc3703e7836004"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2070f8cbeabafff5f7fc3703e7836004">&#9670;&#160;</a></span>write() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual size_t Udon::II2cBus::write </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>quantity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classUdon_1_1I2cBusImpl.html#a293eda5ce9904ca7b56fa031184c3dc1">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="a843e809a7eca51fe29581017faccf937" name="a843e809a7eca51fe29581017faccf937"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a843e809a7eca51fe29581017faccf937">&#9670;&#160;</a></span>write() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual size_t Udon::II2cBus::write </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classUdon_1_1I2cBusImpl.html#a9330f1e0efbc6fe33e160228c07e8b56">Udon::I2cBusImpl&lt; Counter &gt;</a>で実装されています。</p>
+
+</div>
+</div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
 <li>src/Udon/Com/I2c/<a class="el" href="I2cBus_8hpp_source.html">I2cBus.hpp</a></li>
 </ul>
@@ -316,7 +832,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onRequest</b>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>Udon</b></li><li class="navelem"><a class="el" href="classUdon_1_1II2cBus.html">II2cBus</a></li>
+    <li class="navelem"><a class="el" href="namespaceUdon.html">Udon</a></li><li class="navelem"><a class="el" href="classUdon_1_1II2cBus.html">II2cBus</a></li>
     <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

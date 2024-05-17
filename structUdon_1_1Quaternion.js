@@ -9,11 +9,17 @@ var structUdon_1_1Quaternion =
     [ "inverse", "structUdon_1_1Quaternion.html#a035275dbdbc8bb54c01dae5a9d72afd2", null ],
     [ "isZero", "structUdon_1_1Quaternion.html#aa162ac18b0e736e31450b825c879f3dd", null ],
     [ "operator bool", "structUdon_1_1Quaternion.html#a2906c1846eacc64d8dcd893b163c22f7", null ],
+    [ "operator!=", "structUdon_1_1Quaternion.html#ad7c8066a210ff50d6a2c7adba8e81883", null ],
     [ "operator*", "structUdon_1_1Quaternion.html#a2768b000ed9c9e81b2d8979c9ed54103", null ],
     [ "operator*=", "structUdon_1_1Quaternion.html#a66f6ab515a96a9c1e8677c18ed424982", null ],
     [ "operator=", "structUdon_1_1Quaternion.html#aa09322bb2a6e10f3917271b909337a8f", null ],
     [ "operator==", "structUdon_1_1Quaternion.html#a2266fec30f50e46e295411c3ecac99cc", null ],
+    [ "toEuler", "structUdon_1_1Quaternion.html#ab4c46b19ac9093c895a7d11c625a3613", null ],
     [ "toPitch", "structUdon_1_1Quaternion.html#a2d148db54012a1e098302e6e702c8e52", null ],
     [ "toRoll", "structUdon_1_1Quaternion.html#afb1e0c055850d920a9735ec907be785c", null ],
-    [ "toYaw", "structUdon_1_1Quaternion.html#a5cc89bf11b1c7e6c0e6dbf46ab0775ed", null ]
+    [ "toYaw", "structUdon_1_1Quaternion.html#a5cc89bf11b1c7e6c0e6dbf46ab0775ed", null ],
+    [ "w", "structUdon_1_1Quaternion.html#adeffb665edbd5eb5171f7a6093403a0e", null ],
+    [ "x", "structUdon_1_1Quaternion.html#a222ac701ef894065424419046d2a8888", null ],
+    [ "y", "structUdon_1_1Quaternion.html#aeabf5bf27829661b01fe16194833f685", null ],
+    [ "z", "structUdon_1_1Quaternion.html#a34cd4fc4331efbd59fd2ac8c50f5ddc0", null ]
 ];

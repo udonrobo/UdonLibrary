@@ -120,7 +120,8 @@ $(document).ready(function(){initNavTree('md_docs_Communication_CAN.html',''); i
 </ul>
 <h1><a class="anchor" id="autotoc_md21"></a>
 個別インクルード</h1>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Udon/Com/Can.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Can_8hpp.html">Udon/Com/Can.hpp</a>&gt;</span></div>
+<div class="ttc" id="aCan_8hpp_html"><div class="ttname"><a href="Can_8hpp.html">Can.hpp</a></div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md22"></a>
 通信バスクラス</h1>
 <p >送受信処理、通信が行えているかどうかのチェックを行います。使用するマイコンや CAN コントローラーによって適切なバスクラスを選択します。</p>
@@ -249,7 +250,7 @@ $(document).ready(function(){initNavTree('md_docs_Communication_CAN.html',''); i
 <div class="ttc" id="aclassUdon_1_1CanReader_html"><div class="ttname"><a href="classUdon_1_1CanReader.html">Udon::CanReader</a></div><div class="ttdef"><b>Definition:</b> CanReader.hpp:22</div></div>
 <div class="ttc" id="aclassUdon_1_1Optional_html"><div class="ttname"><a href="classUdon_1_1Optional.html">Udon::Optional</a></div><div class="ttdoc">オプショナル型</div><div class="ttdef"><b>Definition:</b> Optional.hpp:55</div></div>
 </div><!-- fragment --><blockquote class="doxtable">
-<p >&zwj;<code>getMessage</code> は正常にオブジェクトが受信できたかどうか判定できるように <code><a class="el" href="classUdon_1_1Optional.html" title="オプショナル型">Udon::Optional</a>&lt;T&gt;</code> を返します。通信エラー時は <code>Udon::nullopt</code> が返されます。 <code><a class="el" href="classUdon_1_1Optional.html" title="オプショナル型">Udon::Optional</a></code> は値と値が有効であるかを持つクラスで、 <code>operator bool</code> によって値を保持するか取得できます。if 文で正常に受信できたかどうかで分岐できます。</p>
+<p >&zwj;<code>getMessage</code> は正常にオブジェクトが受信できたかどうか判定できるように <code><a class="el" href="classUdon_1_1Optional.html" title="オプショナル型">Udon::Optional</a>&lt;T&gt;</code> を返します。通信エラー時は <code><a class="el" href="namespaceUdon.html#ae102f6540b6e88b1b484ddbed3ff972f" title="無効値">Udon::nullopt</a></code> が返されます。 <code><a class="el" href="classUdon_1_1Optional.html" title="オプショナル型">Udon::Optional</a></code> は値と値が有効であるかを持つクラスで、 <code>operator bool</code> によって値を保持するか取得できます。if 文で正常に受信できたかどうかで分岐できます。</p>
 <p ><code><a class="el" href="classUdon_1_1Optional.html" title="オプショナル型">Udon::Optional</a>&lt;T&gt;::operator-&gt;</code> で保持しているオブジェクトのメンバへアクセスでき、<code><a class="el" href="classUdon_1_1Optional.html" title="オプショナル型">Udon::Optional</a>&lt;T&gt;::operator*</code> で optional が持っているオブジェクトの参照を取得できます。 </p>
 </blockquote>
 <h1><a class="anchor" id="autotoc_md27"></a>
@@ -276,17 +277,18 @@ $(document).ready(function(){initNavTree('md_docs_Communication_CAN.html',''); i
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
-<div class="line">    txNode-&gt;data[0] = 0x11;  <span class="comment">// データを登録</span></div>
-<div class="line">    txNode-&gt;data[1] = 0x22;</div>
-<div class="line">    txNode-&gt;data[2] = 0x11;</div>
-<div class="line">    txNode-&gt;data[3] = 0x22;</div>
-<div class="line">    txNode-&gt;data[4] = 0x11;</div>
-<div class="line">    txNode-&gt;data[5] = 0x22;</div>
-<div class="line">    txNode-&gt;data[6] = 0x11;</div>
-<div class="line">    txNode-&gt;data[7] = 0x22;</div>
+<div class="line">    txNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanTxNode.html#a542aa0315bef4509a4691ac026805ed4">data</a>[0] = 0x11;  <span class="comment">// データを登録</span></div>
+<div class="line">    txNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanTxNode.html#a542aa0315bef4509a4691ac026805ed4">data</a>[1] = 0x22;</div>
+<div class="line">    txNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanTxNode.html#a542aa0315bef4509a4691ac026805ed4">data</a>[2] = 0x11;</div>
+<div class="line">    txNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanTxNode.html#a542aa0315bef4509a4691ac026805ed4">data</a>[3] = 0x22;</div>
+<div class="line">    txNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanTxNode.html#a542aa0315bef4509a4691ac026805ed4">data</a>[4] = 0x11;</div>
+<div class="line">    txNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanTxNode.html#a542aa0315bef4509a4691ac026805ed4">data</a>[5] = 0x22;</div>
+<div class="line">    txNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanTxNode.html#a542aa0315bef4509a4691ac026805ed4">data</a>[6] = 0x11;</div>
+<div class="line">    txNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanTxNode.html#a542aa0315bef4509a4691ac026805ed4">data</a>[7] = 0x22;</div>
 <div class="line">    bus.update();</div>
 <div class="line">}</div>
 <div class="ttc" id="astructUdon_1_1CanTxNode_html"><div class="ttname"><a href="structUdon_1_1CanTxNode.html">Udon::CanTxNode</a></div><div class="ttdoc">CAN送信ノード</div><div class="ttdef"><b>Definition:</b> ICanBus.hpp:17</div></div>
+<div class="ttc" id="astructUdon_1_1CanTxNode_html_a542aa0315bef4509a4691ac026805ed4"><div class="ttname"><a href="structUdon_1_1CanTxNode.html#a542aa0315bef4509a4691ac026805ed4">Udon::CanTxNode::data</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; data</div><div class="ttdef"><b>Definition:</b> ICanBus.hpp:20</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md29"></a>
 ■ 受信ノード</h2>
 <p >受信ノードには、受信時に呼び出すコールバック関数を登録することができます。8 バイトより長いバイト列は複数のフレームに分割されて送信されます。この時、コールバック関数が呼び出されるのは最終フレーム受信時です。</p>
@@ -327,8 +329,8 @@ $(document).ready(function(){initNavTree('md_docs_Communication_CAN.html',''); i
 <div class="line">{</div>
 <div class="line">    bus.begin();</div>
 <div class="line"> </div>
-<div class="line">    rxNode-&gt;onReceive = onReceive;   <span class="comment">// 受信時コールバック関数を登録</span></div>
-<div class="line">    rxNode-&gt;param     = rxNode;      <span class="comment">// コールバック関数の引数へ受信ノードを渡すよう指定</span></div>
+<div class="line">    rxNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanRxNode.html#ad757ec7aab002688b0b8f93dce438034">onReceive</a> = onReceive;   <span class="comment">// 受信時コールバック関数を登録</span></div>
+<div class="line">    rxNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanRxNode.html#aa31b79595dd283ec684db5aea4158aba">param</a>     = rxNode;      <span class="comment">// コールバック関数の引数へ受信ノードを渡すよう指定</span></div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> loop()</div>
@@ -336,6 +338,8 @@ $(document).ready(function(){initNavTree('md_docs_Communication_CAN.html',''); i
 <div class="line">    bus.update();</div>
 <div class="line">}</div>
 <div class="ttc" id="astructUdon_1_1CanRxNode_html"><div class="ttname"><a href="structUdon_1_1CanRxNode.html">Udon::CanRxNode</a></div><div class="ttdoc">CAN受信ノード</div><div class="ttdef"><b>Definition:</b> ICanBus.hpp:28</div></div>
+<div class="ttc" id="astructUdon_1_1CanRxNode_html_aa31b79595dd283ec684db5aea4158aba"><div class="ttname"><a href="structUdon_1_1CanRxNode.html#aa31b79595dd283ec684db5aea4158aba">Udon::CanRxNode::param</a></div><div class="ttdeci">void * param</div><div class="ttdef"><b>Definition:</b> ICanBus.hpp:34</div></div>
+<div class="ttc" id="astructUdon_1_1CanRxNode_html_ad757ec7aab002688b0b8f93dce438034"><div class="ttname"><a href="structUdon_1_1CanRxNode.html#ad757ec7aab002688b0b8f93dce438034">Udon::CanRxNode::onReceive</a></div><div class="ttdeci">void(* onReceive)(void *)</div><div class="ttdef"><b>Definition:</b> ICanBus.hpp:33</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md30"></a>
 デバッグ</h1>
 <p >全 CAN 通信クラスは <code>show()</code> メンバ関数を持っており、通信の状態をシリアルモニターへ送信します。</p>

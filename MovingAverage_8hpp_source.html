@@ -108,7 +108,7 @@ $(document).ready(function(){initNavTree('MovingAverage_8hpp_source.html',''); i
   <div class="headertitle"><div class="title">MovingAverage.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
+<a href="MovingAverage_8hpp.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//    移動平均クラス</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">//    Copyright (c) 2016-2023 谷川 豊章</span></div>
@@ -118,7 +118,7 @@ $(document).ready(function(){initNavTree('MovingAverage_8hpp_source.html',''); i
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef DEF_MovingAverage_H</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define DEF_MovingAverage_H</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span>Udon</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> DataSize&gt;</div>
@@ -154,7 +154,7 @@ $(document).ready(function(){initNavTree('MovingAverage_8hpp_source.html',''); i
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">double</span><span class="keyword">&gt;</span>(sum) / DataSize;</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordtype">double</span> operator()(<span class="keywordtype">double</span> value) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classUdon_1_1MovingAverage.html#a3f06aa01a65f06d5c99bced5e82f72ba">   58</a></span>        <span class="keywordtype">double</span> <a class="code hl_function" href="classUdon_1_1MovingAverage.html#a3f06aa01a65f06d5c99bced5e82f72ba">operator()</a>(<span class="keywordtype">double</span> value) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        {</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <a class="code hl_function" href="classUdon_1_1MovingAverage.html#ac87bc602f106d7886109fead7206bafa">update</a>(value);</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classUdon_1_1MovingAverage.html#a22b06e2be0e4fb72d5346ad940433467">getValue</a>();</div>
@@ -166,14 +166,16 @@ $(document).ready(function(){initNavTree('MovingAverage_8hpp_source.html',''); i
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassUdon_1_1MovingAverage_html"><div class="ttname"><a href="classUdon_1_1MovingAverage.html">Udon::MovingAverage</a></div><div class="ttdef"><b>Definition:</b> MovingAverage.hpp:18</div></div>
 <div class="ttc" id="aclassUdon_1_1MovingAverage_html_a22b06e2be0e4fb72d5346ad940433467"><div class="ttname"><a href="classUdon_1_1MovingAverage.html#a22b06e2be0e4fb72d5346ad940433467">Udon::MovingAverage::getValue</a></div><div class="ttdeci">double getValue() const noexcept</div><div class="ttdef"><b>Definition:</b> MovingAverage.hpp:53</div></div>
+<div class="ttc" id="aclassUdon_1_1MovingAverage_html_a3f06aa01a65f06d5c99bced5e82f72ba"><div class="ttname"><a href="classUdon_1_1MovingAverage.html#a3f06aa01a65f06d5c99bced5e82f72ba">Udon::MovingAverage::operator()</a></div><div class="ttdeci">double operator()(double value) noexcept</div><div class="ttdef"><b>Definition:</b> MovingAverage.hpp:58</div></div>
 <div class="ttc" id="aclassUdon_1_1MovingAverage_html_ac87bc602f106d7886109fead7206bafa"><div class="ttname"><a href="classUdon_1_1MovingAverage.html#ac87bc602f106d7886109fead7206bafa">Udon::MovingAverage::update</a></div><div class="ttdeci">void update(int value) noexcept</div><div class="ttdef"><b>Definition:</b> MovingAverage.hpp:40</div></div>
 <div class="ttc" id="aclassUdon_1_1MovingAverage_html_acca886114c511e7bc763d5f1a74c6a84"><div class="ttname"><a href="classUdon_1_1MovingAverage.html#acca886114c511e7bc763d5f1a74c6a84">Udon::MovingAverage::MovingAverage</a></div><div class="ttdeci">MovingAverage()</div><div class="ttdoc">dataに保存されているデータの合計値</div><div class="ttdef"><b>Definition:</b> MovingAverage.hpp:30</div></div>
+<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition:</b> Bit.hpp:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_22ece226a4582674b632f5609e87d46e.html">Algorithm</a></li><li class="navelem"><b>MovingAverage.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_22ece226a4582674b632f5609e87d46e.html">Algorithm</a></li><li class="navelem"><a class="el" href="MovingAverage_8hpp.html">MovingAverage.hpp</a></li>
     <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

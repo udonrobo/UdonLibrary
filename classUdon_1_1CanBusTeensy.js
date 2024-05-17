@@ -1,6 +1,6 @@
 var classUdon_1_1CanBusTeensy =
 [
-    [ "Config", "structUdon_1_1CanBusTeensy_1_1Config.html", null ],
+    [ "Config", "structUdon_1_1CanBusTeensy_1_1Config.html", "structUdon_1_1CanBusTeensy_1_1Config" ],
     [ "CanBusTeensy", "classUdon_1_1CanBusTeensy.html#a71a2d8fe25af24188080d70128c2c030", null ],
     [ "CanBusTeensy", "classUdon_1_1CanBusTeensy.html#a058b6ccfcb87869d5bef55c5e7b66d4d", null ],
     [ "~CanBusTeensy", "classUdon_1_1CanBusTeensy.html#ae8ad7a59df742c856ecadd34d9837cdd", null ],

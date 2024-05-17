@@ -108,7 +108,7 @@ $(document).ready(function(){initNavTree('Im920s_8hpp_source.html',''); initResi
   <div class="headertitle"><div class="title">Im920s.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
+<a href="Im920s_8hpp.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//    IM920s</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">//    Copyright (c) 2022-2024 udonrobo</span></div>
@@ -121,13 +121,13 @@ $(document).ready(function(){initNavTree('Im920s_8hpp_source.html',''); initResi
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;IIm920.hpp&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="IIm920_8hpp.html">IIm920.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;Udon/Algorithm/BitPack.hpp&gt;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;Udon/Types/Optional.hpp&gt;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;Udon/Common/Printf.hpp&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;<a class="code" href="BitPack_8hpp.html">Udon/Algorithm/BitPack.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;<a class="code" href="Optional_8hpp.html">Udon/Types/Optional.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;<a class="code" href="Printf_8hpp.html">Udon/Common/Printf.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">namespace </span>Udon</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classUdon_1_1Im920s.html">   22</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classUdon_1_1Im920s.html">Im920s</a></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        : <span class="keyword">public</span> <a class="code hl_class" href="classUdon_1_1IIm920.html">IIm920</a></div>
@@ -252,20 +252,20 @@ $(document).ready(function(){initNavTree('Im920s_8hpp_source.html',''); initResi
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>            }</div>
 <div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> sendTimeMs = 4.56 + txNode-&gt;size * 0.08 + 1.00;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> sendTimeMs = 4.56 + txNode-&gt;<a class="code hl_variable" href="structUdon_1_1Im920Node.html#ae71f5351b35af54349a8fc1ed645eb96">size</a> * 0.08 + 1.00;</div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>            <span class="comment">// 連続で送信する場合、52ms送信休止時間が必要 (説明書 ７－３（２）送信休止時間 参照)</span></div>
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>            <span class="keywordflow">if</span> (millis() - txNode-&gt;transmitMs &lt; (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>)sendTimeMs)</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>            <span class="keywordflow">if</span> (millis() - txNode-&gt;<a class="code hl_variable" href="structUdon_1_1Im920Node.html#a84a838c76eff4131775861f1d1827883">transmitMs</a> &lt; (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>)sendTimeMs)</div>
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>            {</div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            }</div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>            <span class="comment">// データ送信</span></div>
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>            {</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                Udon::Printf(uart, <span class="stringliteral">&quot;TXDU %04d &quot;</span>, *nodeNum);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                <a class="code hl_function" href="namespaceUdon.html#a734d9854aba65224a95e6c61c63e9edc">Udon::Printf</a>(uart, <span class="stringliteral">&quot;TXDU %04d &quot;</span>, *nodeNum);</div>
 <div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>                <span class="comment">// Udon::Printf(uart, &quot;TXDA &quot;);</span></div>
 <div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                Udon::BitPack(txNode-&gt;data, txNode-&gt;data + txNode-&gt;size, [<span class="keyword">this</span>](uint8_t data)</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                <a class="code hl_function" href="namespaceUdon.html#a3b7c88f64cfd50e3f3cbc7d36795b65e">Udon::BitPack</a>(txNode-&gt;<a class="code hl_variable" href="structUdon_1_1Im920Node.html#ab4022e30c4aa6059c9d428dc3443529b">data</a>, txNode-&gt;<a class="code hl_variable" href="structUdon_1_1Im920Node.html#ab4022e30c4aa6059c9d428dc3443529b">data</a> + txNode-&gt;<a class="code hl_variable" href="structUdon_1_1Im920Node.html#ae71f5351b35af54349a8fc1ed645eb96">size</a>, [<span class="keyword">this</span>](uint8_t data)</div>
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                              { uart.write(data); });</div>
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>                uart.print(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
@@ -273,7 +273,7 @@ $(document).ready(function(){initNavTree('Im920s_8hpp_source.html',''); initResi
 <div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>            <span class="keywordflow">if</span> (uart.readStringUntil(<span class="charliteral">&#39;\n&#39;</span>) == <span class="stringliteral">&quot;OK\r&quot;</span>)</div>
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>            {</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                txNode-&gt;transmitMs = millis();</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                txNode-&gt;<a class="code hl_variable" href="structUdon_1_1Im920Node.html#a84a838c76eff4131775861f1d1827883">transmitMs</a> = millis();</div>
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>            }</div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -288,7 +288,7 @@ $(document).ready(function(){initNavTree('Im920s_8hpp_source.html',''); initResi
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>            <span class="keyword">constexpr</span> <span class="keywordtype">int</span> FooterSize = 1 + 1;</div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
 <div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>            <span class="comment">// FrameSize = header + data + footer</span></div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> FrameSize = HeaderSize + Udon::BitPackedSize(rxNode-&gt;size) + FooterSize;</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> FrameSize = HeaderSize + <a class="code hl_function" href="namespaceUdon.html#acee95dc0924717eba2f60d86ece2c273">Udon::BitPackedSize</a>(rxNode-&gt;<a class="code hl_variable" href="structUdon_1_1Im920Node.html#ae71f5351b35af54349a8fc1ed645eb96">size</a>) + FooterSize;</div>
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>            <span class="comment">// 受信バッファにデータがない場合は何もしない</span></div>
 <div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>            <span class="keywordflow">if</span> (uart.available() &lt; FrameSize)</div>
@@ -303,7 +303,7 @@ $(document).ready(function(){initNavTree('Im920s_8hpp_source.html',''); initResi
 <div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>            }</div>
 <div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
 <div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>            <span class="comment">// データ読み込み</span></div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>            <span class="keywordflow">if</span> (not Udon::BitUnpack(rxNode-&gt;data, rxNode-&gt;data + rxNode-&gt;size, [<span class="keyword">this</span>]() -&gt; uint8_t</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>            <span class="keywordflow">if</span> (not <a class="code hl_function" href="namespaceUdon.html#ab587295af93b30000c3471ad0d6eea72">Udon::BitUnpack</a>(rxNode-&gt;<a class="code hl_variable" href="structUdon_1_1Im920Node.html#ab4022e30c4aa6059c9d428dc3443529b">data</a>, rxNode-&gt;<a class="code hl_variable" href="structUdon_1_1Im920Node.html#ab4022e30c4aa6059c9d428dc3443529b">data</a> + rxNode-&gt;<a class="code hl_variable" href="structUdon_1_1Im920Node.html#ae71f5351b35af54349a8fc1ed645eb96">size</a>, [<span class="keyword">this</span>]() -&gt; uint8_t</div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>                                    { return uart.read(); }))</div>
 <div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>            {</div>
 <div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>                <span class="comment">// 先頭バイトの  MSB が 1 でない場合はデータが壊れているので読み捨て</span></div>
@@ -326,7 +326,7 @@ $(document).ready(function(){initNavTree('Im920s_8hpp_source.html',''); initResi
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>                uart.read();</div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>            }</div>
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span> </div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            rxNode-&gt;transmitMs = millis();</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            rxNode-&gt;<a class="code hl_variable" href="structUdon_1_1Im920Node.html#a84a838c76eff4131775861f1d1827883">transmitMs</a> = millis();</div>
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        }</div>
@@ -360,11 +360,11 @@ $(document).ready(function(){initNavTree('Im920s_8hpp_source.html',''); initResi
 <div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>            <span class="keywordflow">switch</span> (getTransmitMode())</div>
 <div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>            {</div>
 <div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>            <span class="keywordflow">case</span> TransmitMode::Send:</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>                <span class="keywordflow">return</span> millis() - txNode-&gt;transmitMs &gt; timeoutMs;</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>                <span class="keywordflow">return</span> millis() - txNode-&gt;<a class="code hl_variable" href="structUdon_1_1Im920Node.html#a84a838c76eff4131775861f1d1827883">transmitMs</a> &gt; timeoutMs;</div>
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>            <span class="keywordflow">case</span> TransmitMode::Receive:</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>                <span class="keywordflow">return</span> millis() - rxNode-&gt;transmitMs &gt; timeoutMs;</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>                <span class="keywordflow">return</span> millis() - rxNode-&gt;<a class="code hl_variable" href="structUdon_1_1Im920Node.html#a84a838c76eff4131775861f1d1827883">transmitMs</a> &gt; timeoutMs;</div>
 <div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>            <span class="keywordflow">case</span> TransmitMode::TwoWay:</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>                <span class="keywordflow">return</span> millis() - txNode-&gt;transmitMs &gt; timeoutMs || millis() - rxNode-&gt;transmitMs &gt; timeoutMs;</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>                <span class="keywordflow">return</span> millis() - txNode-&gt;<a class="code hl_variable" href="structUdon_1_1Im920Node.html#a84a838c76eff4131775861f1d1827883">transmitMs</a> &gt; timeoutMs || millis() - rxNode-&gt;<a class="code hl_variable" href="structUdon_1_1Im920Node.html#a84a838c76eff4131775861f1d1827883">transmitMs</a> &gt; timeoutMs;</div>
 <div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>            <span class="keywordflow">case</span> TransmitMode::Empty:</div>
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>            <span class="keywordflow">default</span>:</div>
@@ -507,7 +507,7 @@ $(document).ready(function(){initNavTree('Im920s_8hpp_source.html',''); initResi
 <div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>        <span class="keywordflow">if</span> (defaultChannel != channel)</div>
 <div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span>        {</div>
 <div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>            waitUntilCommandAccept();</div>
-<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>            Udon::Printf(uart, <span class="stringliteral">&quot;STCH %02d\r\n&quot;</span>, channel);</div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>            <a class="code hl_function" href="namespaceUdon.html#a734d9854aba65224a95e6c61c63e9edc">Udon::Printf</a>(uart, <span class="stringliteral">&quot;STCH %02d\r\n&quot;</span>, channel);</div>
 <div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>            <span class="keywordflow">if</span> (uart.readStringUntil(<span class="charliteral">&#39;\n&#39;</span>) != <span class="stringliteral">&quot;OK\r&quot;</span>)</div>
 <div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>            {</div>
 <div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
@@ -517,7 +517,7 @@ $(document).ready(function(){initNavTree('Im920s_8hpp_source.html',''); initResi
 <div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>        <span class="keywordflow">if</span> (defaultPower != 2)</div>
 <div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>        {</div>
 <div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>            waitUntilCommandAccept();</div>
-<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>            Udon::Printf(uart, <span class="stringliteral">&quot;STPO %d\r\n&quot;</span>, 2);</div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>            <a class="code hl_function" href="namespaceUdon.html#a734d9854aba65224a95e6c61c63e9edc">Udon::Printf</a>(uart, <span class="stringliteral">&quot;STPO %d\r\n&quot;</span>, 2);</div>
 <div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>            <span class="keywordflow">if</span> (uart.readStringUntil(<span class="charliteral">&#39;\n&#39;</span>) != <span class="stringliteral">&quot;OK\r&quot;</span>)</div>
 <div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>            {</div>
 <div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
@@ -577,6 +577,10 @@ $(document).ready(function(){initNavTree('Im920s_8hpp_source.html',''); initResi
 <div class="line"><a id="l00491" name="l00491"></a><span class="lineno">  491</span>    }</div>
 <div class="line"><a id="l00492" name="l00492"></a><span class="lineno">  492</span> </div>
 <div class="line"><a id="l00493" name="l00493"></a><span class="lineno">  493</span>}    <span class="comment">// namespace Udon</span></div>
+<div class="ttc" id="aBitPack_8hpp_html"><div class="ttname"><a href="BitPack_8hpp.html">BitPack.hpp</a></div></div>
+<div class="ttc" id="aIIm920_8hpp_html"><div class="ttname"><a href="IIm920_8hpp.html">IIm920.hpp</a></div></div>
+<div class="ttc" id="aOptional_8hpp_html"><div class="ttname"><a href="Optional_8hpp.html">Optional.hpp</a></div></div>
+<div class="ttc" id="aPrintf_8hpp_html"><div class="ttname"><a href="Printf_8hpp.html">Printf.hpp</a></div></div>
 <div class="ttc" id="aclassUdon_1_1IIm920_html"><div class="ttname"><a href="classUdon_1_1IIm920.html">Udon::IIm920</a></div><div class="ttdoc">IM920のインターフェース</div><div class="ttdef"><b>Definition:</b> IIm920.hpp:30</div></div>
 <div class="ttc" id="aclassUdon_1_1Im920s_html"><div class="ttname"><a href="classUdon_1_1Im920s.html">Udon::Im920s</a></div><div class="ttdef"><b>Definition:</b> Im920s.hpp:24</div></div>
 <div class="ttc" id="aclassUdon_1_1Im920s_html_a05d3f5faaf44b41beb0fb49e403e7f6b"><div class="ttname"><a href="classUdon_1_1Im920s.html#a05d3f5faaf44b41beb0fb49e403e7f6b">Udon::Im920s::showNodeNumber</a></div><div class="ttdeci">void showNodeNumber()</div><div class="ttdoc">自身のノード番号を表示</div><div class="ttdef"><b>Definition:</b> Im920s.hpp:108</div></div>
@@ -590,13 +594,21 @@ $(document).ready(function(){initNavTree('Im920s_8hpp_source.html',''); initResi
 <div class="ttc" id="aclassUdon_1_1Im920s_html_af9bb14e45f4417ab16601bd637ae024a"><div class="ttname"><a href="classUdon_1_1Im920s.html#af9bb14e45f4417ab16601bd637ae024a">Udon::Im920s::begin</a></div><div class="ttdeci">bool begin(uint8_t channel)</div><div class="ttdoc">通信開始</div><div class="ttdef"><b>Definition:</b> Im920s.hpp:338</div></div>
 <div class="ttc" id="aclassUdon_1_1Im920s_html_afef031d6930b55d09b3c36efd7b1404f"><div class="ttname"><a href="classUdon_1_1Im920s.html#afef031d6930b55d09b3c36efd7b1404f">Udon::Im920s::joinTx</a></div><div class="ttdeci">void joinTx(Im920Node &amp;node) override</div><div class="ttdoc">送信ノードを登録</div><div class="ttdef"><b>Definition:</b> Im920s.hpp:117</div></div>
 <div class="ttc" id="aclassUdon_1_1Optional_html"><div class="ttname"><a href="classUdon_1_1Optional.html">Udon::Optional</a></div><div class="ttdoc">オプショナル型</div><div class="ttdef"><b>Definition:</b> Optional.hpp:55</div></div>
+<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition:</b> Bit.hpp:12</div></div>
+<div class="ttc" id="anamespaceUdon_html_a3b7c88f64cfd50e3f3cbc7d36795b65e"><div class="ttname"><a href="namespaceUdon.html#a3b7c88f64cfd50e3f3cbc7d36795b65e">Udon::BitPack</a></div><div class="ttdeci">void BitPack(const InputIterator begin, const InputIterator end, Functor callback)</div><div class="ttdoc">バイト列のMSB(最上位ビット)から順に7bitずつ分割してコールバック関数に渡す</div><div class="ttdef"><b>Definition:</b> BitPack.hpp:26</div></div>
+<div class="ttc" id="anamespaceUdon_html_a734d9854aba65224a95e6c61c63e9edc"><div class="ttname"><a href="namespaceUdon.html#a734d9854aba65224a95e6c61c63e9edc">Udon::Printf</a></div><div class="ttdeci">void Printf(const char *format, Args... args)</div><div class="ttdef"><b>Definition:</b> Printf.hpp:44</div></div>
+<div class="ttc" id="anamespaceUdon_html_ab587295af93b30000c3471ad0d6eea72"><div class="ttname"><a href="namespaceUdon.html#ab587295af93b30000c3471ad0d6eea72">Udon::BitUnpack</a></div><div class="ttdeci">bool BitUnpack(OutputIterator begin, OutputIterator end, Functor callback)</div><div class="ttdoc">7bit分割されたデータを結合する</div><div class="ttdef"><b>Definition:</b> BitPack.hpp:76</div></div>
+<div class="ttc" id="anamespaceUdon_html_acee95dc0924717eba2f60d86ece2c273"><div class="ttname"><a href="namespaceUdon.html#acee95dc0924717eba2f60d86ece2c273">Udon::BitPackedSize</a></div><div class="ttdeci">constexpr size_t BitPackedSize(size_t size)</div><div class="ttdoc">ビットパックされたデータのサイズを取得する</div><div class="ttdef"><b>Definition:</b> BitPack.hpp:138</div></div>
 <div class="ttc" id="astructUdon_1_1Im920Node_html"><div class="ttname"><a href="structUdon_1_1Im920Node.html">Udon::Im920Node</a></div><div class="ttdef"><b>Definition:</b> IIm920.hpp:19</div></div>
+<div class="ttc" id="astructUdon_1_1Im920Node_html_a84a838c76eff4131775861f1d1827883"><div class="ttname"><a href="structUdon_1_1Im920Node.html#a84a838c76eff4131775861f1d1827883">Udon::Im920Node::transmitMs</a></div><div class="ttdeci">uint32_t transmitMs</div><div class="ttdef"><b>Definition:</b> IIm920.hpp:22</div></div>
+<div class="ttc" id="astructUdon_1_1Im920Node_html_ab4022e30c4aa6059c9d428dc3443529b"><div class="ttname"><a href="structUdon_1_1Im920Node.html#ab4022e30c4aa6059c9d428dc3443529b">Udon::Im920Node::data</a></div><div class="ttdeci">uint8_t * data</div><div class="ttdef"><b>Definition:</b> IIm920.hpp:20</div></div>
+<div class="ttc" id="astructUdon_1_1Im920Node_html_ae71f5351b35af54349a8fc1ed645eb96"><div class="ttname"><a href="structUdon_1_1Im920Node.html#ae71f5351b35af54349a8fc1ed645eb96">Udon::Im920Node::size</a></div><div class="ttdeci">uint8_t size</div><div class="ttdef"><b>Definition:</b> IIm920.hpp:21</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_e21713259ba8923ecd13681a32accaa1.html">Com</a></li><li class="navelem"><a class="el" href="dir_3a75e04abe334dc0a696b6bb1afb732e.html">Im920</a></li><li class="navelem"><b>Im920s.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_e21713259ba8923ecd13681a32accaa1.html">Com</a></li><li class="navelem"><a class="el" href="dir_3a75e04abe334dc0a696b6bb1afb732e.html">Im920</a></li><li class="navelem"><a class="el" href="Im920s_8hpp.html">Im920s.hpp</a></li>
     <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

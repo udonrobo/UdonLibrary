@@ -108,7 +108,7 @@ $(document).ready(function(){initNavTree('I2cBus_8hpp_source.html',''); initResi
   <div class="headertitle"><div class="title">I2cBus.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
+<a href="I2cBus_8hpp.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//    I2c バス</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">//    Copyright (c) 2022-2024 udonrobo</span></div>
@@ -123,13 +123,13 @@ $(document).ready(function(){initNavTree('I2cBus_8hpp_source.html',''); initResi
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#    include &lt;Wire.h&gt;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span>Udon</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html">   20</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classUdon_1_1II2cBus.html">II2cBus</a></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    {</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keyword">virtual</span> <a class="code hl_class" href="classUdon_1_1II2cBus.html">~II2cBus</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#adc44adc604b94bc6024ad9b0cea0fa91">   23</a></span>        <span class="keyword">virtual</span> <a class="code hl_function" href="classUdon_1_1II2cBus.html#adc44adc604b94bc6024ad9b0cea0fa91">~II2cBus</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#a800048a0917d9838468bd462213490c4">   26</a></span>        <span class="keyword">virtual</span> <span class="keyword">explicit</span> <span class="keyword">operator</span> bool() <span class="keyword">const</span> = 0;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
@@ -139,41 +139,41 @@ $(document).ready(function(){initNavTree('I2cBus_8hpp_source.html',''); initResi
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="comment">// 以下メンバは Arduino TwoWire クラスと同等</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> begin() = 0;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#a9cc5302fd04f7f452c513eeadff6e7f7">   36</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1II2cBus.html#a9cc5302fd04f7f452c513eeadff6e7f7">begin</a>() = 0;</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> begin(uint8_t address) = 0;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#a98088e5d4a360f79a47cdec66a59bb26">   38</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1II2cBus.html#a98088e5d4a360f79a47cdec66a59bb26">begin</a>(uint8_t address) = 0;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> end() = 0;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#ab0ac9a68dd574f77174b7e0d0f661d13">   40</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1II2cBus.html#ab0ac9a68dd574f77174b7e0d0f661d13">end</a>() = 0;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> restart() = 0;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#a5a9871dae4e291f085dbf563c150a902">   42</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1II2cBus.html#a5a9871dae4e291f085dbf563c150a902">restart</a>() = 0;</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> setClock(uint32_t clock) = 0;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#ae430537e69f2dfb73f202a9cf1cffa59">   44</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1II2cBus.html#ae430537e69f2dfb73f202a9cf1cffa59">setClock</a>(uint32_t clock) = 0;</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> beginTransmission(uint8_t address) = 0;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#ad157ca7e6893536bc80aec16dc4e7f58">   46</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1II2cBus.html#ad157ca7e6893536bc80aec16dc4e7f58">beginTransmission</a>(uint8_t address) = 0;</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keyword">virtual</span> uint8_t endTransmission() = 0;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#a09c0d0877f53b09810a97b7c813a1130">   48</a></span>        <span class="keyword">virtual</span> uint8_t <a class="code hl_function" href="classUdon_1_1II2cBus.html#a09c0d0877f53b09810a97b7c813a1130">endTransmission</a>() = 0;</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keyword">virtual</span> uint8_t endTransmission(uint8_t sendStop) = 0;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#aae50b12532edfcddd35078db7f073a0f">   50</a></span>        <span class="keyword">virtual</span> uint8_t <a class="code hl_function" href="classUdon_1_1II2cBus.html#aae50b12532edfcddd35078db7f073a0f">endTransmission</a>(uint8_t sendStop) = 0;</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keyword">virtual</span> uint8_t requestFrom(uint8_t address, uint8_t quantity) = 0;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#ab06a8478d079ad54fb046c22c7e31611">   52</a></span>        <span class="keyword">virtual</span> uint8_t <a class="code hl_function" href="classUdon_1_1II2cBus.html#ab06a8478d079ad54fb046c22c7e31611">requestFrom</a>(uint8_t address, uint8_t quantity) = 0;</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keyword">virtual</span> uint8_t requestFrom(uint8_t address, uint8_t quantity, uint8_t sendStop) = 0;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#a315bb6e4e939742b12a1a11fb3bd726b">   54</a></span>        <span class="keyword">virtual</span> uint8_t <a class="code hl_function" href="classUdon_1_1II2cBus.html#a315bb6e4e939742b12a1a11fb3bd726b">requestFrom</a>(uint8_t address, uint8_t quantity, uint8_t sendStop) = 0;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(uint8_t data) = 0;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#a843e809a7eca51fe29581017faccf937">   56</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="classUdon_1_1II2cBus.html#a843e809a7eca51fe29581017faccf937">write</a>(uint8_t data) = 0;</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t* data, <span class="keywordtype">size_t</span> quantity) = 0;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#a2070f8cbeabafff5f7fc3703e7836004">   58</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="classUdon_1_1II2cBus.html#a2070f8cbeabafff5f7fc3703e7836004">write</a>(<span class="keyword">const</span> uint8_t* data, <span class="keywordtype">size_t</span> quantity) = 0;</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keyword">virtual</span> <span class="keywordtype">int</span> available() = 0;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#a53fe9a045dae04c7d869a5aadd8546e7">   60</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classUdon_1_1II2cBus.html#a53fe9a045dae04c7d869a5aadd8546e7">available</a>() = 0;</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keyword">virtual</span> <span class="keywordtype">int</span> read() = 0;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#a5b1cad2c6592e35cc6699269b8d9f100">   62</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classUdon_1_1II2cBus.html#a5b1cad2c6592e35cc6699269b8d9f100">read</a>() = 0;</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">virtual</span> <span class="keywordtype">int</span> peek() = 0;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#ae1ffb22f494ead17b3541e9c15fd37f5">   64</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classUdon_1_1II2cBus.html#ae1ffb22f494ead17b3541e9c15fd37f5">peek</a>() = 0;</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> flush() = 0;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#ac0c91faa85d7beca36dff6330ed5124a">   66</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1II2cBus.html#ac0c91faa85d7beca36dff6330ed5124a">flush</a>() = 0;</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> onReceive(<span class="keywordtype">void</span> (*function)(<span class="keywordtype">int</span>)) = 0;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#a173df7b7b2ddf3c44cab2330076efe11">   68</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1II2cBus.html#a173df7b7b2ddf3c44cab2330076efe11">onReceive</a>(<span class="keywordtype">void</span> (*function)(<span class="keywordtype">int</span>)) = 0;</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> onRequest(<span class="keywordtype">void</span> (*function)()) = 0;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classUdon_1_1II2cBus.html#afeafe0e7519f5b2c0e693d82a2044666">   70</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1II2cBus.html#afeafe0e7519f5b2c0e693d82a2044666">onRequest</a>(<span class="keywordtype">void</span> (*function)()) = 0;</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    };</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> Counter&gt;</div>
@@ -218,7 +218,7 @@ $(document).ready(function(){initNavTree('I2cBus_8hpp_source.html',''); initResi
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="comment">// userOnReceive(I2cBusImpl::onReceiveで登録したコールバック関数) 呼び出し</span></div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <a class="code hl_class" href="classUdon_1_1I2cBusImpl.html">I2cBusImpl</a>(TwoWire&amp; wire, uint32_t timeoutMs = 100)</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#a58b258773f4aeedb7f461e99f8b07a77">  119</a></span>        <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#a58b258773f4aeedb7f461e99f8b07a77">I2cBusImpl</a>(TwoWire&amp; wire, uint32_t timeoutMs = 100)</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            : wire(wire)</div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>            , timeoutMs(timeoutMs)</div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>            , transmitMs()</div>
@@ -229,7 +229,7 @@ $(document).ready(function(){initNavTree('I2cBus_8hpp_source.html',''); initResi
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            self = <span class="keyword">this</span>;</div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        }</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <a class="code hl_class" href="classUdon_1_1I2cBusImpl.html">I2cBusImpl</a>(<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1I2cBusImpl.html">I2cBusImpl</a>&amp; rhs)</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#aaa3199242d834daf7a6fd16ae4d81d10">  130</a></span>        <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#aaa3199242d834daf7a6fd16ae4d81d10">I2cBusImpl</a>(<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1I2cBusImpl.html">I2cBusImpl</a>&amp; rhs)</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            : wire(rhs.wire)</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            , timeoutMs(rhs.timeoutMs)</div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            , transmitMs(rhs.transmitMs)</div>
@@ -249,7 +249,7 @@ $(document).ready(function(){initNavTree('I2cBus_8hpp_source.html',''); initResi
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#a9e30480b30a03d03cd617304384d86e0">update</a>()<span class="keyword"> override</span></div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            Serial.print(F(<span class="stringliteral">&quot;This board does not support I2C bus restart.\n&quot;</span>));</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            Serial.print(<a class="code hl_define" href="Show_8hpp.html#a203d5b93e4077aa273c7013964a31f9e">F</a>(<span class="stringliteral">&quot;This board does not support I2C bus restart.\n&quot;</span>));</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        }</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
@@ -263,7 +263,7 @@ $(document).ready(function(){initNavTree('I2cBus_8hpp_source.html',''); initResi
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>            }</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>            <span class="keywordflow">else</span></div>
 <div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>            {</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>                restart();</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>                <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#abdb1002c12adb42bf455f808224d982d">restart</a>();</div>
 <div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>            }</div>
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        }</div>
@@ -274,13 +274,13 @@ $(document).ready(function(){initNavTree('I2cBus_8hpp_source.html',''); initResi
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>            <span class="keywordflow">if</span> (<span class="keyword">operator</span> <span class="keywordtype">bool</span>())</div>
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>            {</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                Serial.print(F(<span class="stringliteral">&quot;I2C: OK &quot;</span>));</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                Serial.print(<a class="code hl_define" href="Show_8hpp.html#a203d5b93e4077aa273c7013964a31f9e">F</a>(<span class="stringliteral">&quot;I2C: OK &quot;</span>));</div>
 <div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>            }</div>
 <div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>            <span class="keywordflow">else</span></div>
 <div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>            {</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                Serial.print(F(<span class="stringliteral">&quot;I2C: NG &quot;</span>));</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                Serial.print(<a class="code hl_define" href="Show_8hpp.html#a203d5b93e4077aa273c7013964a31f9e">F</a>(<span class="stringliteral">&quot;I2C: NG &quot;</span>));</div>
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>            }</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>            Serial.print(F(<span class="stringliteral">&quot;restart[n]: &quot;</span>));</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>            Serial.print(<a class="code hl_define" href="Show_8hpp.html#a203d5b93e4077aa273c7013964a31f9e">F</a>(<span class="stringliteral">&quot;restart[n]: &quot;</span>));</div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
 <div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="preprocessor">#if defined(__MK64FX512__)</span></div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>            Serial.print(<span class="charliteral">&#39;-&#39;</span>);</div>
@@ -288,7 +288,7 @@ $(document).ready(function(){initNavTree('I2cBus_8hpp_source.html',''); initResi
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>            Serial.print(restartCount);</div>
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            Serial.print(F(<span class="stringliteral">&quot;\t transmit[ms]: &quot;</span>));</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            Serial.print(<a class="code hl_define" href="Show_8hpp.html#a203d5b93e4077aa273c7013964a31f9e">F</a>(<span class="stringliteral">&quot;\t transmit[ms]: &quot;</span>));</div>
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>            Serial.print(transmitMs);</div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>            Serial.print(<span class="charliteral">&#39;\t&#39;</span>);</div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        }</div>
@@ -298,7 +298,7 @@ $(document).ready(function(){initNavTree('I2cBus_8hpp_source.html',''); initResi
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>            wire.begin();</div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        }</div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#aad5aba01423c0d665744d447efd87db4">begin</a>(uint8_t address)<span class="keyword"> override</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#a61effab8092e166bd713d1cdbbe78f05">  203</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#a61effab8092e166bd713d1cdbbe78f05">begin</a>(uint8_t address)<span class="keyword"> override</span></div>
 <div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>            wire.begin(address);</div>
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        }</div>
@@ -317,34 +317,34 @@ $(document).ready(function(){initNavTree('I2cBus_8hpp_source.html',''); initResi
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> end()<span class="keyword"> override</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#ab05b0c0fe13c0ba819ff98c4225edd9b">  222</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#ab05b0c0fe13c0ba819ff98c4225edd9b">end</a>()<span class="keyword"> override</span></div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>            wire.end();</div>
 <div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        }</div>
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> restart()<span class="keyword"> override</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#abdb1002c12adb42bf455f808224d982d">  227</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#abdb1002c12adb42bf455f808224d982d">restart</a>()<span class="keyword"> override</span></div>
 <div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>            ++restartCount;</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>            end();</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>            <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#ab05b0c0fe13c0ba819ff98c4225edd9b">end</a>();</div>
 <div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>            <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#aad5aba01423c0d665744d447efd87db4">begin</a>();</div>
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        }</div>
 <div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> setClock(uint32_t clock)<span class="keyword"> override</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#a3ddff46f93773bf6de7ab97ccca7db42">  234</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#a3ddff46f93773bf6de7ab97ccca7db42">setClock</a>(uint32_t clock)<span class="keyword"> override</span></div>
 <div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>            wire.setClock(clock);</div>
 <div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        }</div>
 <div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> beginTransmission(uint8_t address)<span class="keyword"> override</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#aa88e88dcc35ea00a532a76796f4396be">  239</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#aa88e88dcc35ea00a532a76796f4396be">beginTransmission</a>(uint8_t address)<span class="keyword"> override</span></div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>            wire.beginTransmission(address);</div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        }</div>
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        <span class="keyword">inline</span> uint8_t endTransmission()<span class="keyword"> override</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#a04b00f9c68277dae5b5bef1fd7071668">  244</a></span>        <span class="keyword">inline</span> uint8_t <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#a04b00f9c68277dae5b5bef1fd7071668">endTransmission</a>()<span class="keyword"> override</span></div>
 <div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>            <span class="keywordflow">return</span> endTransmission(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#a04b00f9c68277dae5b5bef1fd7071668">endTransmission</a>(<span class="keyword">true</span>);</div>
 <div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        }</div>
 <div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <span class="keyword">inline</span> uint8_t endTransmission(uint8_t sendStop)<span class="keyword"> override</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#ab2bb28bc702659950f26f21111977932">  249</a></span>        <span class="keyword">inline</span> uint8_t <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#ab2bb28bc702659950f26f21111977932">endTransmission</a>(uint8_t sendStop)<span class="keyword"> override</span></div>
 <div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>            <span class="keyword">const</span> <span class="keyword">auto</span> ret = wire.endTransmission(sendStop);</div>
 <div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>            <span class="keywordflow">if</span> (ret == 0)    <span class="comment">// 送信成功</span></div>
@@ -354,7 +354,7 @@ $(document).ready(function(){initNavTree('I2cBus_8hpp_source.html',''); initResi
 <div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>            <span class="keywordflow">return</span> ret;</div>
 <div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        }</div>
 <div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>        <span class="keyword">inline</span> uint8_t requestFrom(uint8_t address, uint8_t quantity)<span class="keyword"> override</span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#a9ee93d9c7213b739d4fec804e340ba16">  259</a></span>        <span class="keyword">inline</span> uint8_t <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#a9ee93d9c7213b739d4fec804e340ba16">requestFrom</a>(uint8_t address, uint8_t quantity)<span class="keyword"> override</span></div>
 <div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>            <span class="keyword">const</span> <span class="keyword">auto</span> ret = wire.requestFrom(address, quantity);</div>
 <div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>            <span class="keywordflow">if</span> (ret == quantity)    <span class="comment">// 送信成功</span></div>
@@ -364,7 +364,7 @@ $(document).ready(function(){initNavTree('I2cBus_8hpp_source.html',''); initResi
 <div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>            <span class="keywordflow">return</span> ret;</div>
 <div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        }</div>
 <div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        <span class="keyword">inline</span> uint8_t requestFrom(uint8_t address, uint8_t quantity, uint8_t sendStop)<span class="keyword"> override</span></div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#a695d5d2e2ffe0896af154ab477d3c74b">  269</a></span>        <span class="keyword">inline</span> uint8_t <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#a695d5d2e2ffe0896af154ab477d3c74b">requestFrom</a>(uint8_t address, uint8_t quantity, uint8_t sendStop)<span class="keyword"> override</span></div>
 <div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>            <span class="keyword">const</span> <span class="keyword">auto</span> ret = wire.requestFrom(address, quantity, sendStop);</div>
 <div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>            <span class="keywordflow">if</span> (ret == quantity)    <span class="comment">// 送信成功</span></div>
@@ -374,44 +374,44 @@ $(document).ready(function(){initNavTree('I2cBus_8hpp_source.html',''); initResi
 <div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>            <span class="keywordflow">return</span> ret;</div>
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        }</div>
 <div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        <span class="keyword">inline</span> <span class="keywordtype">size_t</span> write(uint8_t data)<span class="keyword"> override</span></div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#a9330f1e0efbc6fe33e160228c07e8b56">  279</a></span>        <span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#a9330f1e0efbc6fe33e160228c07e8b56">write</a>(uint8_t data)<span class="keyword"> override</span></div>
 <div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>            <span class="keywordflow">return</span> wire.write(data);</div>
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        }</div>
 <div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        <span class="keyword">inline</span> <span class="keywordtype">size_t</span> write(<span class="keyword">const</span> uint8_t* data, <span class="keywordtype">size_t</span> quantity)<span class="keyword"> override</span></div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#a293eda5ce9904ca7b56fa031184c3dc1">  284</a></span>        <span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#a293eda5ce9904ca7b56fa031184c3dc1">write</a>(<span class="keyword">const</span> uint8_t* data, <span class="keywordtype">size_t</span> quantity)<span class="keyword"> override</span></div>
 <div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>            <span class="keywordflow">return</span> wire.write(data, quantity);</div>
 <div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        }</div>
 <div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        <span class="keyword">inline</span> <span class="keywordtype">int</span> available()<span class="keyword"> override</span></div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#ab3c247dbb75b800fc26fefa5751d4c13">  289</a></span>        <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#ab3c247dbb75b800fc26fefa5751d4c13">available</a>()<span class="keyword"> override</span></div>
 <div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>            <span class="keywordflow">return</span> wire.available();</div>
 <div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>        }</div>
 <div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span> </div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        <span class="keyword">inline</span> <span class="keywordtype">int</span> read()<span class="keyword"> override</span></div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#a2551d77b5648ddd44044669eb3588694">  294</a></span>        <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#a2551d77b5648ddd44044669eb3588694">read</a>()<span class="keyword"> override</span></div>
 <div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>            <span class="keywordflow">return</span> wire.read();</div>
 <div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        }</div>
 <div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span> </div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        <span class="keyword">inline</span> <span class="keywordtype">int</span> peek()<span class="keyword"> override</span></div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#a91972adcc697bd12afb459de032ac364">  299</a></span>        <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#a91972adcc697bd12afb459de032ac364">peek</a>()<span class="keyword"> override</span></div>
 <div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>            <span class="keywordflow">return</span> wire.peek();</div>
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>        }</div>
 <div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> flush()<span class="keyword"> override</span></div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#a9a05e0fc6e188f0e836204fd82a86f4b">  304</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#a9a05e0fc6e188f0e836204fd82a86f4b">flush</a>()<span class="keyword"> override</span></div>
 <div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>            wire.flush();</div>
 <div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>        }</div>
 <div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span> </div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> onReceive(<span class="keywordtype">void</span> (*function)(<span class="keywordtype">int</span>))<span class="keyword"> override</span></div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#a590636aa2eb6c336d3c6a77d4ca1e953">  309</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#a590636aa2eb6c336d3c6a77d4ca1e953">onReceive</a>(<span class="keywordtype">void</span> (*function)(<span class="keywordtype">int</span>))<span class="keyword"> override</span></div>
 <div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>            userOnReceive = function;</div>
 <div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>            wire.onReceive([](<span class="keywordtype">int</span> n)</div>
 <div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>                           { self-&gt;invokeOnReceive(n); });</div>
 <div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>        }</div>
 <div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span> </div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> onRequest(<span class="keywordtype">void</span> (*function)())<span class="keyword"> override</span></div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cBusImpl.html#a7745ad0f6650cb752ddd28f14a72fadd">  316</a></span>        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1I2cBusImpl.html#a7745ad0f6650cb752ddd28f14a72fadd">onRequest</a>(<span class="keywordtype">void</span> (*function)())<span class="keyword"> override</span></div>
 <div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>            userOnRequest = function;</div>
 <div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>            wire.onRequest([]()</div>
@@ -424,21 +424,61 @@ $(document).ready(function(){initNavTree('I2cBus_8hpp_source.html',''); initResi
 <div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span> </div>
 <div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>}    <span class="comment">// namespace Udon</span></div>
 <div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span> </div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span><span class="preprocessor">#define I2cBus \</span></div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno"><a class="line" href="I2cBus_8hpp.html#accdf8f15cc1bf40a3cc74b4ea4217315">  330</a></span><span class="preprocessor">#define I2cBus \</span></div>
 <div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span><span class="preprocessor">    I2cBusImpl&lt;__COUNTER__&gt;</span></div>
+<div class="ttc" id="aShow_8hpp_html_a203d5b93e4077aa273c7013964a31f9e"><div class="ttname"><a href="Show_8hpp.html#a203d5b93e4077aa273c7013964a31f9e">F</a></div><div class="ttdeci">#define F(x)</div><div class="ttdef"><b>Definition:</b> Show.hpp:16</div></div>
 <div class="ttc" id="aclassUdon_1_1I2cBusImpl_html"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a></div><div class="ttdoc">I2cBus クラス実装部</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:78</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_a04b00f9c68277dae5b5bef1fd7071668"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#a04b00f9c68277dae5b5bef1fd7071668">Udon::I2cBusImpl::endTransmission</a></div><div class="ttdeci">uint8_t endTransmission() override</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:244</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_a2551d77b5648ddd44044669eb3588694"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#a2551d77b5648ddd44044669eb3588694">Udon::I2cBusImpl::read</a></div><div class="ttdeci">int read() override</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:294</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_a293eda5ce9904ca7b56fa031184c3dc1"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#a293eda5ce9904ca7b56fa031184c3dc1">Udon::I2cBusImpl::write</a></div><div class="ttdeci">size_t write(const uint8_t *data, size_t quantity) override</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:284</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_a3ddff46f93773bf6de7ab97ccca7db42"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#a3ddff46f93773bf6de7ab97ccca7db42">Udon::I2cBusImpl::setClock</a></div><div class="ttdeci">void setClock(uint32_t clock) override</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:234</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_a58b258773f4aeedb7f461e99f8b07a77"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#a58b258773f4aeedb7f461e99f8b07a77">Udon::I2cBusImpl::I2cBusImpl</a></div><div class="ttdeci">I2cBusImpl(TwoWire &amp;wire, uint32_t timeoutMs=100)</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:119</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_a590636aa2eb6c336d3c6a77d4ca1e953"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#a590636aa2eb6c336d3c6a77d4ca1e953">Udon::I2cBusImpl::onReceive</a></div><div class="ttdeci">void onReceive(void(*function)(int)) override</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:309</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_a61effab8092e166bd713d1cdbbe78f05"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#a61effab8092e166bd713d1cdbbe78f05">Udon::I2cBusImpl::begin</a></div><div class="ttdeci">void begin(uint8_t address) override</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:203</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_a695d5d2e2ffe0896af154ab477d3c74b"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#a695d5d2e2ffe0896af154ab477d3c74b">Udon::I2cBusImpl::requestFrom</a></div><div class="ttdeci">uint8_t requestFrom(uint8_t address, uint8_t quantity, uint8_t sendStop) override</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:269</div></div>
 <div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_a75428bb509303336b67f22d9f35dfe2b"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#a75428bb509303336b67f22d9f35dfe2b">Udon::I2cBusImpl::show</a></div><div class="ttdeci">void show() const override</div><div class="ttdoc">バスの状態を表示</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:174</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_a7745ad0f6650cb752ddd28f14a72fadd"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#a7745ad0f6650cb752ddd28f14a72fadd">Udon::I2cBusImpl::onRequest</a></div><div class="ttdeci">void onRequest(void(*function)()) override</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:316</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_a91972adcc697bd12afb459de032ac364"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#a91972adcc697bd12afb459de032ac364">Udon::I2cBusImpl::peek</a></div><div class="ttdeci">int peek() override</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:299</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_a9330f1e0efbc6fe33e160228c07e8b56"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#a9330f1e0efbc6fe33e160228c07e8b56">Udon::I2cBusImpl::write</a></div><div class="ttdeci">size_t write(uint8_t data) override</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:279</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_a9a05e0fc6e188f0e836204fd82a86f4b"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#a9a05e0fc6e188f0e836204fd82a86f4b">Udon::I2cBusImpl::flush</a></div><div class="ttdeci">void flush() override</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:304</div></div>
 <div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_a9e30480b30a03d03cd617304384d86e0"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#a9e30480b30a03d03cd617304384d86e0">Udon::I2cBusImpl::update</a></div><div class="ttdeci">bool update() override</div><div class="ttdoc">更新</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:159</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_a9ee93d9c7213b739d4fec804e340ba16"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#a9ee93d9c7213b739d4fec804e340ba16">Udon::I2cBusImpl::requestFrom</a></div><div class="ttdeci">uint8_t requestFrom(uint8_t address, uint8_t quantity) override</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:259</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_aa88e88dcc35ea00a532a76796f4396be"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#aa88e88dcc35ea00a532a76796f4396be">Udon::I2cBusImpl::beginTransmission</a></div><div class="ttdeci">void beginTransmission(uint8_t address) override</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:239</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_aaa3199242d834daf7a6fd16ae4d81d10"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#aaa3199242d834daf7a6fd16ae4d81d10">Udon::I2cBusImpl::I2cBusImpl</a></div><div class="ttdeci">I2cBusImpl(const I2cBusImpl &amp;rhs)</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:130</div></div>
 <div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_aad5aba01423c0d665744d447efd87db4"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#aad5aba01423c0d665744d447efd87db4">Udon::I2cBusImpl::begin</a></div><div class="ttdeci">void begin() override</div><div class="ttdoc">以下メンバは TwoWire クラスと同等のメンバ</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:198</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_ab05b0c0fe13c0ba819ff98c4225edd9b"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#ab05b0c0fe13c0ba819ff98c4225edd9b">Udon::I2cBusImpl::end</a></div><div class="ttdeci">void end() override</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:222</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_ab2bb28bc702659950f26f21111977932"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#ab2bb28bc702659950f26f21111977932">Udon::I2cBusImpl::endTransmission</a></div><div class="ttdeci">uint8_t endTransmission(uint8_t sendStop) override</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:249</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_ab3c247dbb75b800fc26fefa5751d4c13"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#ab3c247dbb75b800fc26fefa5751d4c13">Udon::I2cBusImpl::available</a></div><div class="ttdeci">int available() override</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:289</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cBusImpl_html_abdb1002c12adb42bf455f808224d982d"><div class="ttname"><a href="classUdon_1_1I2cBusImpl.html#abdb1002c12adb42bf455f808224d982d">Udon::I2cBusImpl::restart</a></div><div class="ttdeci">void restart() override</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:227</div></div>
 <div class="ttc" id="aclassUdon_1_1II2cBus_html"><div class="ttname"><a href="classUdon_1_1II2cBus.html">Udon::II2cBus</a></div><div class="ttdoc">I2cBus クラスのインターフェース</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:21</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_a09c0d0877f53b09810a97b7c813a1130"><div class="ttname"><a href="classUdon_1_1II2cBus.html#a09c0d0877f53b09810a97b7c813a1130">Udon::II2cBus::endTransmission</a></div><div class="ttdeci">virtual uint8_t endTransmission()=0</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_a173df7b7b2ddf3c44cab2330076efe11"><div class="ttname"><a href="classUdon_1_1II2cBus.html#a173df7b7b2ddf3c44cab2330076efe11">Udon::II2cBus::onReceive</a></div><div class="ttdeci">virtual void onReceive(void(*function)(int))=0</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_a2070f8cbeabafff5f7fc3703e7836004"><div class="ttname"><a href="classUdon_1_1II2cBus.html#a2070f8cbeabafff5f7fc3703e7836004">Udon::II2cBus::write</a></div><div class="ttdeci">virtual size_t write(const uint8_t *data, size_t quantity)=0</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_a315bb6e4e939742b12a1a11fb3bd726b"><div class="ttname"><a href="classUdon_1_1II2cBus.html#a315bb6e4e939742b12a1a11fb3bd726b">Udon::II2cBus::requestFrom</a></div><div class="ttdeci">virtual uint8_t requestFrom(uint8_t address, uint8_t quantity, uint8_t sendStop)=0</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_a53fe9a045dae04c7d869a5aadd8546e7"><div class="ttname"><a href="classUdon_1_1II2cBus.html#a53fe9a045dae04c7d869a5aadd8546e7">Udon::II2cBus::available</a></div><div class="ttdeci">virtual int available()=0</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_a5a9871dae4e291f085dbf563c150a902"><div class="ttname"><a href="classUdon_1_1II2cBus.html#a5a9871dae4e291f085dbf563c150a902">Udon::II2cBus::restart</a></div><div class="ttdeci">virtual void restart()=0</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_a5b1cad2c6592e35cc6699269b8d9f100"><div class="ttname"><a href="classUdon_1_1II2cBus.html#a5b1cad2c6592e35cc6699269b8d9f100">Udon::II2cBus::read</a></div><div class="ttdeci">virtual int read()=0</div></div>
 <div class="ttc" id="aclassUdon_1_1II2cBus_html_a5cc90ca0c6371cc69879f9a7cee96b5a"><div class="ttname"><a href="classUdon_1_1II2cBus.html#a5cc90ca0c6371cc69879f9a7cee96b5a">Udon::II2cBus::update</a></div><div class="ttdeci">virtual bool update()=0</div><div class="ttdoc">更新</div></div>
 <div class="ttc" id="aclassUdon_1_1II2cBus_html_a76f8269412162f41020e72ec05949d9c"><div class="ttname"><a href="classUdon_1_1II2cBus.html#a76f8269412162f41020e72ec05949d9c">Udon::II2cBus::show</a></div><div class="ttdeci">virtual void show() const =0</div><div class="ttdoc">バスの状態を表示</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_a843e809a7eca51fe29581017faccf937"><div class="ttname"><a href="classUdon_1_1II2cBus.html#a843e809a7eca51fe29581017faccf937">Udon::II2cBus::write</a></div><div class="ttdeci">virtual size_t write(uint8_t data)=0</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_a98088e5d4a360f79a47cdec66a59bb26"><div class="ttname"><a href="classUdon_1_1II2cBus.html#a98088e5d4a360f79a47cdec66a59bb26">Udon::II2cBus::begin</a></div><div class="ttdeci">virtual void begin(uint8_t address)=0</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_a9cc5302fd04f7f452c513eeadff6e7f7"><div class="ttname"><a href="classUdon_1_1II2cBus.html#a9cc5302fd04f7f452c513eeadff6e7f7">Udon::II2cBus::begin</a></div><div class="ttdeci">virtual void begin()=0</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_aae50b12532edfcddd35078db7f073a0f"><div class="ttname"><a href="classUdon_1_1II2cBus.html#aae50b12532edfcddd35078db7f073a0f">Udon::II2cBus::endTransmission</a></div><div class="ttdeci">virtual uint8_t endTransmission(uint8_t sendStop)=0</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_ab06a8478d079ad54fb046c22c7e31611"><div class="ttname"><a href="classUdon_1_1II2cBus.html#ab06a8478d079ad54fb046c22c7e31611">Udon::II2cBus::requestFrom</a></div><div class="ttdeci">virtual uint8_t requestFrom(uint8_t address, uint8_t quantity)=0</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_ab0ac9a68dd574f77174b7e0d0f661d13"><div class="ttname"><a href="classUdon_1_1II2cBus.html#ab0ac9a68dd574f77174b7e0d0f661d13">Udon::II2cBus::end</a></div><div class="ttdeci">virtual void end()=0</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_ac0c91faa85d7beca36dff6330ed5124a"><div class="ttname"><a href="classUdon_1_1II2cBus.html#ac0c91faa85d7beca36dff6330ed5124a">Udon::II2cBus::flush</a></div><div class="ttdeci">virtual void flush()=0</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_ad157ca7e6893536bc80aec16dc4e7f58"><div class="ttname"><a href="classUdon_1_1II2cBus.html#ad157ca7e6893536bc80aec16dc4e7f58">Udon::II2cBus::beginTransmission</a></div><div class="ttdeci">virtual void beginTransmission(uint8_t address)=0</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_adc44adc604b94bc6024ad9b0cea0fa91"><div class="ttname"><a href="classUdon_1_1II2cBus.html#adc44adc604b94bc6024ad9b0cea0fa91">Udon::II2cBus::~II2cBus</a></div><div class="ttdeci">virtual ~II2cBus()=default</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_ae1ffb22f494ead17b3541e9c15fd37f5"><div class="ttname"><a href="classUdon_1_1II2cBus.html#ae1ffb22f494ead17b3541e9c15fd37f5">Udon::II2cBus::peek</a></div><div class="ttdeci">virtual int peek()=0</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_ae430537e69f2dfb73f202a9cf1cffa59"><div class="ttname"><a href="classUdon_1_1II2cBus.html#ae430537e69f2dfb73f202a9cf1cffa59">Udon::II2cBus::setClock</a></div><div class="ttdeci">virtual void setClock(uint32_t clock)=0</div></div>
+<div class="ttc" id="aclassUdon_1_1II2cBus_html_afeafe0e7519f5b2c0e693d82a2044666"><div class="ttname"><a href="classUdon_1_1II2cBus.html#afeafe0e7519f5b2c0e693d82a2044666">Udon::II2cBus::onRequest</a></div><div class="ttdeci">virtual void onRequest(void(*function)())=0</div></div>
+<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition:</b> Bit.hpp:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_e21713259ba8923ecd13681a32accaa1.html">Com</a></li><li class="navelem"><a class="el" href="dir_f188a0655497cf748ba2dce6cd88364e.html">I2c</a></li><li class="navelem"><b>I2cBus.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_e21713259ba8923ecd13681a32accaa1.html">Com</a></li><li class="navelem"><a class="el" href="dir_f188a0655497cf748ba2dce6cd88364e.html">I2c</a></li><li class="navelem"><a class="el" href="I2cBus_8hpp.html">I2cBus.hpp</a></li>
     <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

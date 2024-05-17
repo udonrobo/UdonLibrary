@@ -108,7 +108,7 @@ $(document).ready(function(){initNavTree('Euler_8hpp_source.html',''); initResiz
   <div class="headertitle"><div class="title">Euler.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
+<a href="Euler_8hpp.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//    オイラー角</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">//    Copyright (c) 2022-2024 udonrobo</span></div>
@@ -116,10 +116,10 @@ $(document).ready(function(){initNavTree('Euler_8hpp_source.html',''); initResiz
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;Forward/Euler.hpp&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Forward/Quaternion.hpp&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="Forward_2Euler_8hpp.html">Forward/Euler.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="Forward_2Quaternion_8hpp.html">Forward/Quaternion.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">inline</span> <a class="code hl_struct" href="structUdon_1_1Quaternion.html">Udon::Quaternion</a> Udon::Euler::toQuaternion() const noexcept</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structUdon_1_1Euler.html#aa0b5cd1bcba9d4b948c16d5c6ad2fd35">   12</a></span><span class="keyword">inline</span> <a class="code hl_struct" href="structUdon_1_1Quaternion.html">Udon::Quaternion</a> <a class="code hl_function" href="structUdon_1_1Euler.html#aa0b5cd1bcba9d4b948c16d5c6ad2fd35">Udon::Euler::toQuaternion</a>() const noexcept</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">const</span> <span class="keyword">auto</span> cr = cos(<a class="code hl_variable" href="structUdon_1_1Euler.html#a24aca9acfc245a3a2ef9ea8950901bd5">roll</a> * 0.5);</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">const</span> <span class="keyword">auto</span> cp = cos(<a class="code hl_variable" href="structUdon_1_1Euler.html#af9acb4cddb9618187ae96bf16bde03d5">pitch</a> * 0.5);</div>
@@ -134,8 +134,11 @@ $(document).ready(function(){initNavTree('Euler_8hpp_source.html',''); initResiz
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        cy * cp * cr + sy * sp * sr, <span class="comment">/*w*/</span></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    };</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
+<div class="ttc" id="aForward_2Euler_8hpp_html"><div class="ttname"><a href="Forward_2Euler_8hpp.html">Euler.hpp</a></div></div>
+<div class="ttc" id="aForward_2Quaternion_8hpp_html"><div class="ttname"><a href="Forward_2Quaternion_8hpp.html">Quaternion.hpp</a></div></div>
 <div class="ttc" id="astructUdon_1_1Euler_html_a040d4bc4fbfd84eb30d20e50f6fed78f"><div class="ttname"><a href="structUdon_1_1Euler.html#a040d4bc4fbfd84eb30d20e50f6fed78f">Udon::Euler::yaw</a></div><div class="ttdeci">ValueType yaw</div><div class="ttdoc">ヨー角</div><div class="ttdef"><b>Definition:</b> Euler.hpp:39</div></div>
 <div class="ttc" id="astructUdon_1_1Euler_html_a24aca9acfc245a3a2ef9ea8950901bd5"><div class="ttname"><a href="structUdon_1_1Euler.html#a24aca9acfc245a3a2ef9ea8950901bd5">Udon::Euler::roll</a></div><div class="ttdeci">ValueType roll</div><div class="ttdoc">ロール角</div><div class="ttdef"><b>Definition:</b> Euler.hpp:33</div></div>
+<div class="ttc" id="astructUdon_1_1Euler_html_aa0b5cd1bcba9d4b948c16d5c6ad2fd35"><div class="ttname"><a href="structUdon_1_1Euler.html#aa0b5cd1bcba9d4b948c16d5c6ad2fd35">Udon::Euler::toQuaternion</a></div><div class="ttdeci">Quaternion toQuaternion() const noexcept</div><div class="ttdef"><b>Definition:</b> Euler.hpp:12</div></div>
 <div class="ttc" id="astructUdon_1_1Euler_html_af9acb4cddb9618187ae96bf16bde03d5"><div class="ttname"><a href="structUdon_1_1Euler.html#af9acb4cddb9618187ae96bf16bde03d5">Udon::Euler::pitch</a></div><div class="ttdeci">ValueType pitch</div><div class="ttdoc">ピッチ角</div><div class="ttdef"><b>Definition:</b> Euler.hpp:36</div></div>
 <div class="ttc" id="astructUdon_1_1Quaternion_html"><div class="ttname"><a href="structUdon_1_1Quaternion.html">Udon::Quaternion</a></div><div class="ttdoc">クオータニオン</div><div class="ttdef"><b>Definition:</b> Quaternion.hpp:28</div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -143,7 +146,7 @@ $(document).ready(function(){initNavTree('Euler_8hpp_source.html',''); initResiz
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_8c816338dbfb611667fc26d3483e845e.html">Types</a></li><li class="navelem"><b>Euler.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_8c816338dbfb611667fc26d3483e845e.html">Types</a></li><li class="navelem"><a class="el" href="Euler_8hpp.html">Euler.hpp</a></li>
     <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

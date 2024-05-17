@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['pitch_0',['pitch',['../structUdon_1_1Euler.html#af9acb4cddb9618187ae96bf16bde03d5',1,'Udon::Euler']]],
-  ['position_1',['position',['../structUdon_1_1Message_1_1Stepping.html#a00043d790a2c3cd8b5b23bef5729256b',1,'Udon::Message::Stepping']]],
-  ['power_2',['power',['../structUdon_1_1Message_1_1BrushLess.html#aa317790bf312c4267c63b945e659bb89',1,'Udon::Message::BrushLess::power()'],['../structUdon_1_1Message_1_1Motor.html#a3acb5183c14f2f3f5742430c59548d08',1,'Udon::Message::Motor::power()']]],
-  ['press_3',['press',['../structUdon_1_1Input.html#a3dfb3b489c37ac7f1159978bb1957aed',1,'Udon::Input::press()'],['../structUdon_1_1Message_1_1Switch.html#a6b9453e3f7d4950e791b1c0b9e8b072b',1,'Udon::Message::Switch::press()']]],
-  ['push_4',['push',['../structUdon_1_1Message_1_1AirCylinder.html#a51a284b3f0987bb9af9291b90f5e1241',1,'Udon::Message::AirCylinder::push()'],['../structUdon_1_1Message_1_1Solenoid.html#acce37d2d3ce32006ff4ff92ff00fa54d',1,'Udon::Message::Solenoid::push()']]]
+  ['l1_0',['l1',['../structUdon_1_1Message_1_1PadPS5.html#aa93e2cc278a7f103f1a0e165ff800cbd',1,'Udon::Message::PadPS5']]],
+  ['l2_1',['l2',['../structUdon_1_1Message_1_1PadPS5.html#a46f4f60cb2c934ecb9072f09a30523be',1,'Udon::Message::PadPS5']]],
+  ['l3_2',['l3',['../structUdon_1_1Message_1_1PadPS5.html#ac1324920d5931414826759c4b5a33be4',1,'Udon::Message::PadPS5']]],
+  ['left_3',['left',['../structUdon_1_1Message_1_1PadPS5.html#aae031a4cf2e9c6827ce4eca41e9f5a7f',1,'Udon::Message::PadPS5']]],
+  ['light_4',['light',['../structUdon_1_1Message_1_1PhotoSensor.html#aea15c0c0d4ba778042d5de5996368087',1,'Udon::Message::PhotoSensor']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ロボマスモーター_0',['ロボマスモーター',['../md_docs_Driver_RoboMasterMotor.html',1,'']]]
+  ['モーター_0',['モーター',['../md_docs_Driver_Motor.html',1,'']]]
 ];

@@ -114,7 +114,7 @@ $(document).ready(function(){initNavTree('md_docs_Other_Traits.html',''); initRe
 <p ><code>static_assert</code> と組み合わせることでユーザーに分かりやすいエラーを出したり、コンパイル時処理に利用できます。</p>
 <p ><code>std::true_type</code>、<code>std::false_type</code> のいずれかを継承するため、<code>value</code> メンバ変数を使用して、判定結果をコンパイル時に取得できます。</p>
 <blockquote class="doxtable">
-<p >&zwj;各メタ関数は <code>Udon::Traits</code> 名前空間に属します。 </p>
+<p >&zwj;各メタ関数は <code><a class="el" href="namespaceUdon_1_1Traits.html">Udon::Traits</a></code> 名前空間に属します。 </p>
 </blockquote>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -197,7 +197,7 @@ $(document).ready(function(){initNavTree('md_docs_Other_Traits.html',''); initRe
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">int</span> a;</div>
 <div class="line">    <span class="keywordtype">double</span> b;</div>
-<div class="line">    UDON_ENUMERABLE(a, b);</div>
+<div class="line">    <a class="code hl_define" href="EnumerableMacro_8hpp.html#a6e99cc65e2a105775034579f13c59b8d">UDON_ENUMERABLE</a>(a, b);</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// T がシリアライズ可能である場合この関数が実体化される</span></div>
@@ -212,6 +212,7 @@ $(document).ready(function(){initNavTree('md_docs_Other_Traits.html',''); initRe
 <div class="line">    Serializable serializable{};</div>
 <div class="line">    f(serializable);</div>
 <div class="line">}</div>
+<div class="ttc" id="aEnumerableMacro_8hpp_html_a6e99cc65e2a105775034579f13c59b8d"><div class="ttname"><a href="EnumerableMacro_8hpp.html#a6e99cc65e2a105775034579f13c59b8d">UDON_ENUMERABLE</a></div><div class="ttdeci">#define UDON_ENUMERABLE(...)</div><div class="ttdoc">メンバ変数の列挙を可能にする</div><div class="ttdef"><b>Definition:</b> EnumerableMacro.hpp:11</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md192"></a>
 &lt;tt&gt;AlwaysFalse&lt;T&gt;&lt;/tt&gt;</h2>
 <p ><code>AlwaysFalse&lt;T&gt;</code> を使用することで、テンプレート関数、クラスが実体化されたときに限り <code>static_assert</code> を失敗させることができる。</p>
@@ -240,7 +241,7 @@ $(document).ready(function(){initNavTree('md_docs_Other_Traits.html',''); initRe
 曖昧なメンバ関数呼び出し</h1>
 <p >特定のメンバ関数が存在する場合呼び出し、存在しない場合何もしない関数です。この関数を使用することで、特定のメンバ関数の有無に関係なく一様な記述が可能になります。</p>
 <blockquote class="doxtable">
-<p >&zwj;各関数は <code>Udon::Traits</code> 名前空間に属します。</p>
+<p >&zwj;各関数は <code><a class="el" href="namespaceUdon_1_1Traits.html">Udon::Traits</a></code> 名前空間に属します。</p>
 <p >メタ関数 <code>HasMemberFunction~~</code> が定義されているヘッダーファイルに定義されています。 </p>
 </blockquote>
 <table class="markdownTable">
@@ -271,11 +272,12 @@ $(document).ready(function(){initNavTree('md_docs_Other_Traits.html',''); initRe
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
 <div class="line">    Updatable updatable;</div>
-<div class="line">    Udon::Traits::MaybeInvokeUpdate(updatable);  <span class="comment">//&gt; Updatable::update()</span></div>
+<div class="line">    <a class="code hl_function" href="namespaceUdon_1_1Traits.html#ad2f56402d66969c0fb3735b2d7c3eaa4">Udon::Traits::MaybeInvokeUpdate</a>(updatable);  <span class="comment">//&gt; Updatable::update()</span></div>
 <div class="line"> </div>
 <div class="line">    Unupdatable unupdatable;</div>
-<div class="line">    Udon::Traits::MaybeInvokeUpdate(unupdatable);  <span class="comment">//&gt;</span></div>
+<div class="line">    <a class="code hl_function" href="namespaceUdon_1_1Traits.html#ad2f56402d66969c0fb3735b2d7c3eaa4">Udon::Traits::MaybeInvokeUpdate</a>(unupdatable);  <span class="comment">//&gt;</span></div>
 <div class="line">}</div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_ad2f56402d66969c0fb3735b2d7c3eaa4"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#ad2f56402d66969c0fb3735b2d7c3eaa4">Udon::Traits::MaybeInvokeUpdate</a></div><div class="ttdeci">void MaybeInvokeUpdate(HasMemberFunctionUpdate &amp;rhs)</div><div class="ttdoc">T に T::update() 関数が存在する場合、呼び出す。それ以外の場合、何もしない。</div><div class="ttdef"><b>Definition:</b> HasMemberFunction.hpp:111</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md195"></a>
 実用例</h2>
 <div class="fragment"><div class="line"><span class="comment">// updateを持つ受信クラス</span></div>
@@ -305,7 +307,7 @@ $(document).ready(function(){initNavTree('md_docs_Other_Traits.html',''); initRe
 <div class="line"><span class="keyword">public</span>:</div>
 <div class="line">    <span class="keywordtype">void</span> update()</div>
 <div class="line">    {</div>
-<div class="line">        Udon::Traits::MaybeInvokeUpdate(reader);</div>
+<div class="line">        <a class="code hl_function" href="namespaceUdon_1_1Traits.html#ad2f56402d66969c0fb3735b2d7c3eaa4">Udon::Traits::MaybeInvokeUpdate</a>(reader);</div>
 <div class="line">        <span class="comment">// ...</span></div>
 <div class="line">    }</div>
 <div class="line">};</div>

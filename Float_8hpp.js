@@ -1,0 +1,8 @@
+var Float_8hpp =
+[
+    [ "BOOST_CSTDFLOAT_HAS_FLOAT128_NATIVE_TYPE", "Float_8hpp.html#ac5d62589b46e2f5d8aadd623f4117164", null ],
+    [ "BOOST_CSTDFLOAT_HAS_FLOAT16_NATIVE_TYPE", "Float_8hpp.html#afb190c425ede6a3b5f351c4111a2c908", null ],
+    [ "BOOST_CSTDFLOAT_HAS_FLOAT32_NATIVE_TYPE", "Float_8hpp.html#a88c704e645dcf98814c9defa27d7f9cb", null ],
+    [ "BOOST_CSTDFLOAT_HAS_FLOAT64_NATIVE_TYPE", "Float_8hpp.html#a921369403db260ac6c506c6d588f5d41", null ],
+    [ "BOOST_CSTDFLOAT_MAXIMUM_AVAILABLE_WIDTH", "Float_8hpp.html#ae4c284d2685d4d26e2bad26c130e9b76", null ]
+];

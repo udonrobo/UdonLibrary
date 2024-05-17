@@ -136,7 +136,8 @@ $(document).ready(function(){initNavTree('md_docs_Communication_IM920.html','');
 <p ><a href="https://www.interplan.co.jp/solution/wireless/im920/">IM920</a> <a href="https://www.interplan.co.jp/solution/wireless/im920s/">IM920s</a> <a href="https://www.interplan.co.jp/solution/wireless/im920sl/">IM920sL</a></p>
 <h1><a class="anchor" id="autotoc_md57"></a>
 個別インクルード</h1>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Udon/Com/Im920.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Im920_8hpp.html">Udon/Com/Im920.hpp</a>&gt;</span></div>
+<div class="ttc" id="aIm920_8hpp_html"><div class="ttname"><a href="Im920_8hpp.html">Im920.hpp</a></div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md58"></a>
 Usage</h1>
 <p >通信するモジュール同士はあらかじめペアリングされている必要があります。ペアリング方法はインタープラン社の公式ページを参照ください。</p>
@@ -151,7 +152,7 @@ Im920 クラス</h1>
 送信クラス</h1>
 <p ><code><a class="el" href="classUdon_1_1Im920Writer.html">Udon::Im920Writer</a>&lt;T&gt;</code></p>
 <p ><code>T</code> に指定された型のオブジェクトを Im920 へ送信します。</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Udon.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="classUdon_1_1Im920.html">Udon::Im920</a> im920{ Serial1 };</div>
 <div class="line"><a class="code hl_class" href="classUdon_1_1Im920Writer.html">Udon::Im920Writer&lt;Udon::Vec2&gt;</a> writer{ im920 };</div>
@@ -165,17 +166,19 @@ Im920 クラス</h1>
 <div class="line">{</div>
 <div class="line">    im920.update();</div>
 <div class="line"> </div>
-<div class="line">    writer.setMessage({ (double)millis(), (double)micros() });</div>
+<div class="line">    writer.<a class="code hl_function" href="classUdon_1_1Im920Writer.html#afb84180be75dd0dc07854c288254fc22">setMessage</a>({ (double)millis(), (double)micros() });</div>
 <div class="line"> </div>
 <div class="line">    delay(10);</div>
 <div class="line">}</div>
+<div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
 <div class="ttc" id="aclassUdon_1_1Im920Writer_html"><div class="ttname"><a href="classUdon_1_1Im920Writer.html">Udon::Im920Writer</a></div><div class="ttdef"><b>Definition:</b> Im920Writer.hpp:24</div></div>
+<div class="ttc" id="aclassUdon_1_1Im920Writer_html_afb84180be75dd0dc07854c288254fc22"><div class="ttname"><a href="classUdon_1_1Im920Writer.html#afb84180be75dd0dc07854c288254fc22">Udon::Im920Writer::setMessage</a></div><div class="ttdeci">void setMessage(const Message &amp;message)</div><div class="ttdef"><b>Definition:</b> Im920Writer.hpp:53</div></div>
 <div class="ttc" id="aclassUdon_1_1Im920_html"><div class="ttname"><a href="classUdon_1_1Im920.html">Udon::Im920</a></div><div class="ttdef"><b>Definition:</b> Im920Normal.hpp:25</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md61"></a>
 受信クラス</h1>
 <p ><code><a class="el" href="classUdon_1_1Im920Reader.html">Udon::Im920Reader</a>&lt;T&gt;</code></p>
 <p ><code>T</code> に指定された型のオブジェクトを Im920 から受信します。</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Udon.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="classUdon_1_1Im920.html">Udon::Im920</a> im920{ Serial1 };  <span class="comment">// Im920と通信するシリアルクラスのインスタンスを指定</span></div>
 <div class="line"><a class="code hl_class" href="classUdon_1_1Im920Reader.html">Udon::Im920Reader&lt;Udon::Vec2&gt;</a> reader{ im920 };</div>

@@ -111,7 +111,7 @@ $(document).ready(function(){initNavTree('md_docs_Algorithm_MovingAverage.html',
 <div class="textblock"><p >モーターの出力値を急激に変化させると、大電流が流れ、モーターやモータードライバーに負荷がかかります。この出力値の急激な変化を抑えるのに移動平均を利用します。</p>
 <p >移動平均とは時系列データを平滑化する手法です。サンプル数が多いほど滑らかになりますが、応答性が悪くなります。</p>
 <p ><code>MovingAverage</code> クラスは内部に過去の入力値を保持する配列を持っており、配列の平均値を出力値としています。</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Udon.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> Udon::LoopCycleController loopCtrl{ 10000 };</div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1MovingAverage.html">Udon::MovingAverage&lt;50&gt;</a> movingAverage;  <span class="comment">// サンプル数 50</span></div>
@@ -127,6 +127,7 @@ $(document).ready(function(){initNavTree('md_docs_Algorithm_MovingAverage.html',
 <div class="line"> </div>
 <div class="line">    loopCtrl.update();</div>
 <div class="line">}</div>
+<div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
 <div class="ttc" id="aclassUdon_1_1MovingAverage_html"><div class="ttname"><a href="classUdon_1_1MovingAverage.html">Udon::MovingAverage</a></div><div class="ttdef"><b>Definition:</b> MovingAverage.hpp:18</div></div>
 <div class="ttc" id="aclassUdon_1_1MovingAverage_html_a22b06e2be0e4fb72d5346ad940433467"><div class="ttname"><a href="classUdon_1_1MovingAverage.html#a22b06e2be0e4fb72d5346ad940433467">Udon::MovingAverage::getValue</a></div><div class="ttdeci">double getValue() const noexcept</div><div class="ttdef"><b>Definition:</b> MovingAverage.hpp:53</div></div>
 <div class="ttc" id="aclassUdon_1_1MovingAverage_html_ac87bc602f106d7886109fead7206bafa"><div class="ttname"><a href="classUdon_1_1MovingAverage.html#ac87bc602f106d7886109fead7206bafa">Udon::MovingAverage::update</a></div><div class="ttdeci">void update(int value) noexcept</div><div class="ttdef"><b>Definition:</b> MovingAverage.hpp:40</div></div>

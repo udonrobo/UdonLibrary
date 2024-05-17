@@ -113,12 +113,13 @@ $(document).ready(function(){initNavTree('classUdon_1_1I2cMasterReader.html','')
   <div class="headertitle"><div class="title">Udon::I2cMasterReader&lt; Message &gt; クラステンプレート</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="I2cMasterReader_8hpp_source.html">Udon/Com/I2c/I2cMasterReader.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 公開型</h2></td></tr>
-<tr class="memitem:a495942d93635c1773c1965dbf5586f57"><td class="memItemLeft" align="right" valign="top"><a id="a495942d93635c1773c1965dbf5586f57" name="a495942d93635c1773c1965dbf5586f57"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>MessageType</b> = Message</td></tr>
-<tr class="memdesc:a495942d93635c1773c1965dbf5586f57"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信メッセージ型 <br /></td></tr>
+<tr class="memitem:a495942d93635c1773c1965dbf5586f57"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cMasterReader.html#a495942d93635c1773c1965dbf5586f57">MessageType</a> = Message</td></tr>
+<tr class="memdesc:a495942d93635c1773c1965dbf5586f57"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信メッセージ型  <a href="classUdon_1_1I2cMasterReader.html#a495942d93635c1773c1965dbf5586f57">[詳解]</a><br /></td></tr>
 <tr class="separator:a495942d93635c1773c1965dbf5586f57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -126,9 +127,8 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>MessageType</b> = Me
 <tr class="memitem:ae100aae6e59773530dd74f311d36795f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cMasterReader.html#ae100aae6e59773530dd74f311d36795f">I2cMasterReader</a> (<a class="el" href="classUdon_1_1II2cBus.html">Udon::II2cBus</a> &amp;bus, uint8_t address)</td></tr>
 <tr class="memdesc:ae100aae6e59773530dd74f311d36795f"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="classUdon_1_1I2cMasterReader.html#ae100aae6e59773530dd74f311d36795f">[詳解]</a><br /></td></tr>
 <tr class="separator:ae100aae6e59773530dd74f311d36795f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d394f9559aaa4865edde2d54a852a33"><td class="memItemLeft" align="right" valign="top"><a id="a2d394f9559aaa4865edde2d54a852a33" name="a2d394f9559aaa4865edde2d54a852a33"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></tr>
-<tr class="memdesc:a2d394f9559aaa4865edde2d54a852a33"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新 <br /></td></tr>
+<tr class="memitem:a2d394f9559aaa4865edde2d54a852a33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cMasterReader.html#a2d394f9559aaa4865edde2d54a852a33">update</a> ()</td></tr>
+<tr class="memdesc:a2d394f9559aaa4865edde2d54a852a33"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新  <a href="classUdon_1_1I2cMasterReader.html#a2d394f9559aaa4865edde2d54a852a33">[詳解]</a><br /></td></tr>
 <tr class="separator:a2d394f9559aaa4865edde2d54a852a33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a546adf84d6aff0cad1e557874359c43a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; Message &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cMasterReader.html#a546adf84d6aff0cad1e557874359c43a">getMessage</a> () const</td></tr>
 <tr class="memdesc:a546adf84d6aff0cad1e557874359c43a"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信したメッセージを取得  <a href="classUdon_1_1I2cMasterReader.html#a546adf84d6aff0cad1e557874359c43a">[詳解]</a><br /></td></tr>
@@ -142,11 +142,29 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></t
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 静的公開変数類</h2></td></tr>
-<tr class="memitem:a831a8c677e5ea5a1897ce34059a9e8d0"><td class="memItemLeft" align="right" valign="top"><a id="a831a8c677e5ea5a1897ce34059a9e8d0" name="a831a8c677e5ea5a1897ce34059a9e8d0"></a>
-static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>Size</b> = Udon::SerializedSize&lt;Message&gt;()</td></tr>
-<tr class="memdesc:a831a8c677e5ea5a1897ce34059a9e8d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信バッファサイズ <br /></td></tr>
+<tr class="memitem:a831a8c677e5ea5a1897ce34059a9e8d0"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cMasterReader.html#a831a8c677e5ea5a1897ce34059a9e8d0">Size</a> = <a class="el" href="namespaceUdon.html#a92fa64e26dcad6be1aa4e0f4908fdee6">Udon::SerializedSize</a>&lt;Message&gt;()</td></tr>
+<tr class="memdesc:a831a8c677e5ea5a1897ce34059a9e8d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信バッファサイズ  <a href="classUdon_1_1I2cMasterReader.html#a831a8c677e5ea5a1897ce34059a9e8d0">[詳解]</a><br /></td></tr>
 <tr class="separator:a831a8c677e5ea5a1897ce34059a9e8d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">型定義メンバ詳解</h2>
+<a id="a495942d93635c1773c1965dbf5586f57" name="a495942d93635c1773c1965dbf5586f57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a495942d93635c1773c1965dbf5586f57">&#9670;&#160;</a></span>MessageType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Message &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classUdon_1_1I2cMasterReader.html">Udon::I2cMasterReader</a>&lt; Message &gt;::MessageType =  Message</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>受信メッセージ型 </p>
+
+</div>
+</div>
 <h2 class="groupheader">構築子と解体子</h2>
 <a id="ae100aae6e59773530dd74f311d36795f" name="ae100aae6e59773530dd74f311d36795f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae100aae6e59773530dd74f311d36795f">&#9670;&#160;</a></span>I2cMasterReader()</h2>
@@ -298,6 +316,62 @@ template&lt;typename Message &gt; </div>
 
 </div>
 </div>
+<a id="a2d394f9559aaa4865edde2d54a852a33" name="a2d394f9559aaa4865edde2d54a852a33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d394f9559aaa4865edde2d54a852a33">&#9670;&#160;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Message &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classUdon_1_1I2cMasterReader.html">Udon::I2cMasterReader</a>&lt; Message &gt;::update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>更新 </p>
+
+</div>
+</div>
+<h2 class="groupheader">メンバ詳解</h2>
+<a id="a831a8c677e5ea5a1897ce34059a9e8d0" name="a831a8c677e5ea5a1897ce34059a9e8d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a831a8c677e5ea5a1897ce34059a9e8d0">&#9670;&#160;</a></span>Size</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Message &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr size_t <a class="el" href="classUdon_1_1I2cMasterReader.html">Udon::I2cMasterReader</a>&lt; Message &gt;::Size = <a class="el" href="namespaceUdon.html#a92fa64e26dcad6be1aa4e0f4908fdee6">Udon::SerializedSize</a>&lt;Message&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>受信バッファサイズ </p>
+
+</div>
+</div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
 <li>src/Udon/Com/I2c/<a class="el" href="I2cMasterReader_8hpp_source.html">I2cMasterReader.hpp</a></li>
 </ul>
@@ -306,7 +380,7 @@ template&lt;typename Message &gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>Udon</b></li><li class="navelem"><a class="el" href="classUdon_1_1I2cMasterReader.html">I2cMasterReader</a></li>
+    <li class="navelem"><a class="el" href="namespaceUdon.html">Udon</a></li><li class="navelem"><a class="el" href="classUdon_1_1I2cMasterReader.html">I2cMasterReader</a></li>
     <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>

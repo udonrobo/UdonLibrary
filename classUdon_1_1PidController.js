@@ -1,6 +1,6 @@
 var classUdon_1_1PidController =
 [
-    [ "Parameter", "structUdon_1_1PidController_1_1Parameter.html", null ],
+    [ "Parameter", "structUdon_1_1PidController_1_1Parameter.html", "structUdon_1_1PidController_1_1Parameter" ],
     [ "PidController", "classUdon_1_1PidController.html#a24a32d5e58b57748248003d2c160f993", null ],
     [ "clearPower", "classUdon_1_1PidController.html#aacc707236296af30d8d2421d91ebce3a", null ],
     [ "getParam", "classUdon_1_1PidController.html#a3bcbdff7dc0f1e03741fd57adc7a79d7", null ],

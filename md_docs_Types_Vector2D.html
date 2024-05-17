@@ -109,7 +109,8 @@ $(document).ready(function(){initNavTree('md_docs_Types_Vector2D.html',''); init
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p >二次元ベクトルを扱うには <code><a class="el" href="structUdon_1_1Vec2.html">Udon::Vec2</a></code> クラスを使用します。</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Udon/Types/Vector2D.hpp&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Vector2D_8hpp.html">Udon/Types/Vector2D.hpp</a>&gt;</span></div>
+<div class="ttc" id="aVector2D_8hpp_html"><div class="ttname"><a href="Vector2D_8hpp.html">Vector2D.hpp</a></div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md230"></a>
 構造</h1>
 <p >二次元ベクトルを表現するためのクラスです。x 軸と y 軸の 2 つの要素からなる二次元ベクトルを格納し、ベクトル演算や座標変換などの操作を提供します。</p>
@@ -231,8 +232,9 @@ $(document).ready(function(){initNavTree('md_docs_Types_Vector2D.html',''); init
 <p >回転の中心は原点、回転方向は時計回りです。</p>
 <p >基になるベクトルは変更されません。</p>
 <div class="fragment"><div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> vector { 1.0, 0.0 };</div>
-<div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> rotated = vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#a651345a85870ef89338fe6db324aabbb">rotated</a>(Udon::ToRadians(45.0));</div>
+<div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> rotated = vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#a651345a85870ef89338fe6db324aabbb">rotated</a>(<a class="code hl_function" href="namespaceUdon.html#a2ddf377cfc3d54e1a9eaf445a39e19fd">Udon::ToRadians</a>(45.0));</div>
 <div class="line"><span class="comment">// rotated = { 0.707, 0.707 }  (45度回転したベクトル)</span></div>
+<div class="ttc" id="anamespaceUdon_html_a2ddf377cfc3d54e1a9eaf445a39e19fd"><div class="ttname"><a href="namespaceUdon.html#a2ddf377cfc3d54e1a9eaf445a39e19fd">Udon::ToRadians</a></div><div class="ttdeci">constexpr T ToRadians(const T &amp;rhs)</div><div class="ttdoc">度数法の角度を弧度法に変換する</div><div class="ttdef"><b>Definition:</b> Math.hpp:58</div></div>
 <div class="ttc" id="astructUdon_1_1Vec2_html_a651345a85870ef89338fe6db324aabbb"><div class="ttname"><a href="structUdon_1_1Vec2.html#a651345a85870ef89338fe6db324aabbb">Udon::Vec2::rotated</a></div><div class="ttdeci">Vec2 rotated(ValueType angle) const noexcept</div><div class="ttdoc">原点を中心に回転したベクトルを返す</div><div class="ttdef"><b>Definition:</b> Vector2D.hpp:172</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md247"></a>
 &lt;tt&gt;rotate(double angle) -&gt; Vec2&amp;&lt;/tt&gt;</h2>
@@ -240,7 +242,7 @@ $(document).ready(function(){initNavTree('md_docs_Types_Vector2D.html',''); init
 <p >回転の中心は原点、回転方向は時計回りです。</p>
 <p >基になるベクトルを変更します。</p>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> vector { 1.0, 0.0 };</div>
-<div class="line">vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#ad8244490c21c996801239aa89dc1f580">rotate</a>(Udon::ToRadians(45));</div>
+<div class="line">vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#ad8244490c21c996801239aa89dc1f580">rotate</a>(<a class="code hl_function" href="namespaceUdon.html#a2ddf377cfc3d54e1a9eaf445a39e19fd">Udon::ToRadians</a>(45));</div>
 <div class="line"><span class="comment">// vector = { 0.707, 0.707 }  (45度回転したベクトル)</span></div>
 <div class="ttc" id="astructUdon_1_1Vec2_html_ad8244490c21c996801239aa89dc1f580"><div class="ttname"><a href="structUdon_1_1Vec2.html#ad8244490c21c996801239aa89dc1f580">Udon::Vec2::rotate</a></div><div class="ttdeci">Vec2 &amp; rotate(ValueType angle) noexcept</div><div class="ttdoc">原点を中心に回転させる</div><div class="ttdef"><b>Definition:</b> Vector2D.hpp:180</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md248"></a>
@@ -252,7 +254,7 @@ $(document).ready(function(){initNavTree('md_docs_Types_Vector2D.html',''); init
 <p >基になるベクトルは変更されません。</p>
 <div class="fragment"><div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> vector { 2.0, 1.0 };</div>
 <div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> center { 1.0, 1.0 };</div>
-<div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> rotated = vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#ae5d9791bbe15c6063a1c567a7d78741f">rotatedAt</a>(center, Udon::ToRadians(90));  <span class="comment">// ベクトルの回転</span></div>
+<div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> rotated = vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#ae5d9791bbe15c6063a1c567a7d78741f">rotatedAt</a>(center, <a class="code hl_function" href="namespaceUdon.html#a2ddf377cfc3d54e1a9eaf445a39e19fd">Udon::ToRadians</a>(90));  <span class="comment">// ベクトルの回転</span></div>
 <div class="line"><span class="comment">// rotated = { 1.0, 0.0 }  (中心を軸にして90度回転したベクトル)</span></div>
 <div class="ttc" id="astructUdon_1_1Vec2_html_ae5d9791bbe15c6063a1c567a7d78741f"><div class="ttname"><a href="structUdon_1_1Vec2.html#ae5d9791bbe15c6063a1c567a7d78741f">Udon::Vec2::rotatedAt</a></div><div class="ttdeci">Vec2 rotatedAt(const Vec2 &amp;center, ValueType angle) const noexcept</div><div class="ttdoc">指定された点を中心に時計回りに回転したベクトルを返す</div><div class="ttdef"><b>Definition:</b> Vector2D.hpp:152</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md250"></a>
@@ -262,7 +264,7 @@ $(document).ready(function(){initNavTree('md_docs_Types_Vector2D.html',''); init
 <p >基になるベクトルを変更します。</p>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> vector { 2.0, 1.0 };</div>
 <div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> center { 1.0, 1.0 };</div>
-<div class="line">vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#a0f3de087890fec3c32c6870b9aa2f7fd">rotateAt</a>(center, Udon::ToRadians(90));  <span class="comment">// ベクトルの回転</span></div>
+<div class="line">vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#a0f3de087890fec3c32c6870b9aa2f7fd">rotateAt</a>(center, <a class="code hl_function" href="namespaceUdon.html#a2ddf377cfc3d54e1a9eaf445a39e19fd">Udon::ToRadians</a>(90));  <span class="comment">// ベクトルの回転</span></div>
 <div class="line"><span class="comment">// vector = { 1.0, 0.0 }  (中心を軸にして90度回転したベクトル)</span></div>
 <div class="ttc" id="astructUdon_1_1Vec2_html_a0f3de087890fec3c32c6870b9aa2f7fd"><div class="ttname"><a href="structUdon_1_1Vec2.html#a0f3de087890fec3c32c6870b9aa2f7fd">Udon::Vec2::rotateAt</a></div><div class="ttdeci">Vec2 &amp; rotateAt(const Vec2 &amp;center, ValueType angle) noexcept</div><div class="ttdoc">指定された点を中心に時計回りに回転させる</div><div class="ttdef"><b>Definition:</b> Vector2D.hpp:164</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md251"></a>
@@ -271,8 +273,9 @@ $(document).ready(function(){initNavTree('md_docs_Types_Vector2D.html',''); init
 &lt;tt&gt;toPolar() -&gt; Polar&lt;/tt&gt;</h2>
 <p >ベクトル(x, y)を極座標系(r, θ)に変換し返します。</p>
 <div class="fragment"><div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> vector{ 100.0, 200.0 }</div>
-<div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Polar.html">Udon::Polar</a> polar = vector.toPolar();</div>
+<div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Polar.html">Udon::Polar</a> polar = vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#ab1eca8b724c9412c9a7413f5d9b39f88">toPolar</a>();</div>
 <div class="ttc" id="astructUdon_1_1Polar_html"><div class="ttname"><a href="structUdon_1_1Polar.html">Udon::Polar</a></div><div class="ttdef"><b>Definition:</b> Polar.hpp:17</div></div>
+<div class="ttc" id="astructUdon_1_1Vec2_html_ab1eca8b724c9412c9a7413f5d9b39f88"><div class="ttname"><a href="structUdon_1_1Vec2.html#ab1eca8b724c9412c9a7413f5d9b39f88">Udon::Vec2::toPolar</a></div><div class="ttdeci">Udon::Polar toPolar() const noexcept</div><div class="ttdef"><b>Definition:</b> Vector2D.hpp:18</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md253"></a>
 ベクトルの各要素の値を一定の範囲に収める</h1>
 <h2><a class="anchor" id="autotoc_md254"></a>
