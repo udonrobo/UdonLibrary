@@ -27,10 +27,11 @@ jobs:
           submodules: 'recursive'
       
       - name: Generate Documentation
-        uses: mattnotmitt/doxygen-action@edge
-      - name: Publish generated content to GitHub Pages
-        uses: tsunematsu21/actions-publish-gh-pages@v1.0.2
+        uses: mattnotmitt/doxygen-action@v1.9.5
+        
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        if: ${{ github.ref == 'refs/heads/master' }}
         with:
-          dir: docs/DoxygenDist/html
-          branch: gh-pages
-          token: ${{ secrets.ACCESS_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/DoxygenDist/html
