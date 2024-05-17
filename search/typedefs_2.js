@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['valuetype_707',['ValueType',['../structUdon_1_1Euler.html#af258c3a0586c29b4810b9df592625a73',1,'Udon::Euler::ValueType()'],['../structUdon_1_1HSV.html#ad16b9609a85d2faced09d32a4aa64f7a',1,'Udon::HSV::ValueType()'],['../structUdon_1_1Polar.html#a39c9de6e18904ac324d057ed65f64ee9',1,'Udon::Polar::ValueType()'],['../structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151',1,'Udon::Quaternion::ValueType()'],['../structUdon_1_1RGB.html#a231f6fab17ff0c4bcc566dff17918529',1,'Udon::RGB::ValueType()'],['../structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7',1,'Udon::Vec2::ValueType()'],['../structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a',1,'Udon::Vec3::ValueType()'],['../structUdon_1_1Pos.html#a5ea3cc06960c92bf296c6f55a083ddfd',1,'Udon::Pos::ValueType()']]]
-];
