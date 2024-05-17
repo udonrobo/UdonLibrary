@@ -1,4 +1,6 @@
-# Platform IO <img src="../Assets/IconPlatformIO.png" height="100px" align="right">
+# Platform IO
+
+<img src="../Assets/IconPlatformIO.png" height="100px" align="right">
 
 ## Arduino のライブラリと共用する (推奨)
 

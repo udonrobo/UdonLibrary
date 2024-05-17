@@ -1,3 +1,9 @@
+//
+//    構文テスト
+// 
+//    Copyright (c) 2022-2024 udonrobo
+//
+
 #if __cplusplus >= 201402L
 
 #    include <Arduino.h>

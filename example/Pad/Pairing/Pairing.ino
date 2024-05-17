@@ -7,13 +7,13 @@
 //        3. コントローラーのLEDが点滅し始める
 //        4. ペアリングが完了するとLEDが点灯する
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #include <UdonFwd.hpp>
 #include <Udon/Com/Pad/PadPS5BT.hpp>
 
-Udon::PadPS5BT pad(PAIR);  // <- ここを PAIR に！
+static Udon::PadPS5BT pad(PAIR);  // <- ここを PAIR に！
 
 void setup()
 {

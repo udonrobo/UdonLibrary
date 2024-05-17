@@ -1,3 +1,9 @@
+//
+//    構文テスト
+// 
+//    Copyright (c) 2022-2024 udonrobo
+//
+
 #include <Udon/Traits/HasMemberFunction.hpp>
 
 struct TestStructure1

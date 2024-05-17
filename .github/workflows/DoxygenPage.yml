@@ -1,0 +1,37 @@
+#
+#    Doxygen Page
+#
+#    Copyright (c) 2022-2024 udonrobo
+#
+
+name: Doxygen Page
+
+on:
+  push:
+    branches:
+      - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  DoxygenPage:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+      
+      - name: Generate Documentation
+        uses: mattnotmitt/doxygen-action@v1.9.5
+        
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        if: ${{ github.ref == 'refs/heads/master' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/DoxygenDist/html

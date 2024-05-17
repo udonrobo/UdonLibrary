@@ -1,3 +1,9 @@
+//
+//    構文テスト
+// 
+//    Copyright (c) 2022-2024 udonrobo
+//
+
 #include <Udon/Filesystem/Sd/Parameter.hpp>
 
 #if defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__)

@@ -1,7 +1,6 @@
 //
 //    SDカードにパラメータを保存するクラス
 //
-//    Copyright (c) 2023-2023 Maeda Tomoki
 //    Copyright (c) 2023-2023 udonrobo
 //
 //    デフォルトではparameter.scvというファイルで保存される。読み取りと書き込みは同じファイル

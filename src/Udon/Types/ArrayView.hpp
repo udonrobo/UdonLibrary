@@ -1,7 +1,7 @@
 //
 //    配列参照クラス
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #pragma once

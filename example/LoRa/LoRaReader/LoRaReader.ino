@@ -4,7 +4,7 @@
 
 #include <Udon.hpp>
 
-Udon::E220Reader<uint64_t> lora({
+static Udon::E220Reader<uint64_t> lora({
     .serial = Serial1,
     .m0 = 2,
     .m1 = 3, 

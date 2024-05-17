@@ -1,3 +1,9 @@
+//
+//    コントローラー
+//
+//    Copyright (c) 2022-2024 udonrobo
+//
+
 #pragma once
 
 // Arduino

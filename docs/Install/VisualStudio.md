@@ -1,4 +1,6 @@
-# Visual Studio <img src="../Assets/IconVisualStudio.png" height="100px" align="right">
+# Visual Studio
+
+<img src="../Assets/IconVisualStudio.png" height="100px" align="right">
 
 ## Arduino のライブラリと共用する (推奨)
 

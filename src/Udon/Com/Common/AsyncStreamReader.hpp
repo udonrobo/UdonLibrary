@@ -1,7 +1,7 @@
 //
 //    非同期ストリーム読み取り
 //
-//    Copyright (c) 2022-2023 Udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #pragma once

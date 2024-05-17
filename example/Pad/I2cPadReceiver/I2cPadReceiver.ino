@@ -1,7 +1,7 @@
 //
 //    PS5コントローラー受信クラス スケッチ例 (I2C)
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 //    Controller --[Bluetooth]--> USBHost --[SPI]--> Sender --> Master
 //                                                              ^^^^^^
@@ -10,9 +10,9 @@
 #include <UdonFwd.hpp>
 #include <Udon/Com/I2c.hpp>
 
-Udon::I2cBus bus{ Wire };
+static Udon::I2cBus bus{ Wire };
 
-Udon::I2cPadPS5 pad{ bus, 6 };
+static Udon::I2cPadPS5 pad{ bus, 6 };
 
 void setup()
 {

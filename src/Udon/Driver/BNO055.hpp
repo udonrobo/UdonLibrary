@@ -1,7 +1,7 @@
 //
 //    BNO055 9軸センサー
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #pragma once
@@ -29,7 +29,7 @@ namespace Udon
 
     public:
         /// @brief コンストラクタ
-        /// @param Device Deviceオブジェクト
+        /// @param wire I2C ポート
         /// @param direction 回転方向
         BNO055(TwoWire& wire, const QuaternionDirection& direction = { true, true, true })
             : Adafruit_BNO055(-1, 0x28, &wire)
@@ -44,11 +44,7 @@ namespace Udon
         /// @return 正常に開始できたかどうか
         bool begin()
         {
-            const auto result = Adafruit_BNO055::begin();
-            // update();
-            // delay(500);
-            // clear();
-            return result;
+            return Adafruit_BNO055::begin();
         }
 
         /// @brief 値を消去する

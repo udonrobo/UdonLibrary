@@ -1,14 +1,14 @@
 //
 //    I2C スレーブ側送信スケッチ例
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #include <Udon.hpp>
 
-Udon::I2cBus bus{ Wire };
+static Udon::I2cBus bus{ Wire };
 
-Udon::I2cSlaveWriter<Udon::Vec2> writer{ bus };
+static Udon::I2cSlaveWriter<Udon::Vec2> writer{ bus };
 
 void setup()
 {

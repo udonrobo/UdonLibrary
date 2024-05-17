@@ -1,8 +1,10 @@
-# UdonLibrary [![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml) [![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
+# UdonLibrary
 
 <img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/53d063f8-ee25-41c9-b68b-75dcfd8ee5ad" height="300px" align="right"/>
 
 香川高専高松機械システム研究部 C++ ライブラリ
+
+[![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml) [![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
 
 ## 追加方法
 
@@ -56,7 +58,7 @@
 - [BNO055](./docs/Driver/BNO055.md)
 - [DIPスイッチ](./docs/Driver/DipSwitch.md)
 - [Raspberry Pi Pico ロータリーエンコーダー](./docs/Driver/EncoderPico.md)
-- [Raspberry Pi Pico PIO](./docs/Other/PIO.md)
+- [Raspberry Pi Pico PIO](./docs/Driver/PIO.md)
 
 ### その他
 
@@ -70,3 +72,7 @@
 - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
 - [自動テスト](./docs/Developer/CI.md)
 - [謝辞](./docs/Developer/Acknowledgments.md)
+
+## ライセンス
+
+本ライブラリは GPL-2.0 ライセンスの下で公開されています。将来的に MIT ライセンスに移行予定です。

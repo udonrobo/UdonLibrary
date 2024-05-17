@@ -1,3 +1,9 @@
+//
+//    メンバ変数の列挙を可能にするマクロ
+//
+//    Copyright (c) 2022-2024 udonrobo
+//
+
 #pragma once
 
 /// @brief メンバ変数の列挙を可能にする

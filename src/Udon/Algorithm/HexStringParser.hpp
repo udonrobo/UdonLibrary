@@ -1,3 +1,9 @@
+//
+//    16進数文字列パーサー
+//
+//    Copyright (c) 2022-2024 udonrobo
+//
+
 #pragma once
 
 #include <Udon/Types/ArrayView.hpp>

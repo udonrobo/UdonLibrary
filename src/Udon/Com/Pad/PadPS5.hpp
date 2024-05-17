@@ -1,7 +1,7 @@
 //
 //    PS5コントローラー受信クラス
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 //    Controller --> Sender --> Master
 //                              ^^^^^^
@@ -48,7 +48,7 @@ namespace Udon
             // パッドが接続されていない場合は非常停止
             if (not *this)
             {
-                return false;
+                return true;
             }
 
             if (getCross().toggle)

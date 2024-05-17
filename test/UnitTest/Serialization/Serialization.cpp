@@ -1,3 +1,9 @@
+//
+//    ユニットテスト
+// 
+//    Copyright (c) 2022-2024 udonrobo
+//
+
 #include <gtest/gtest.h>
 #include <Udon/Types/Vector2D.hpp>
 #include <Udon/Serializer/Serializer.hpp>

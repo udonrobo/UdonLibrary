@@ -1,9 +1,7 @@
 //
 //    デシリアライザ実装部
 //
-//    Copyright (c) 2022-2023 udonrobo
-//
-//    Licensed under the MIT License.
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #pragma once

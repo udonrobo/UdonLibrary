@@ -1,7 +1,7 @@
 //
 //    PS5コントローラー受信クラス スケッチ例 (CAN)
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 //    Controller --[Bluetooth]--> USBHost --[SPI]--> Sender --> Master
 //                                                              ^^^^^^
@@ -9,9 +9,9 @@
 
 #include <Udon.hpp>
 
-Udon::CanBusTeensy<CAN1> bus;
+static Udon::CanBusTeensy<CAN1> bus;
 
-Udon::CanPadPS5 pad{ bus, 6 };
+static Udon::CanPadPS5 pad{ bus, 6 };
 
 void setup()
 {

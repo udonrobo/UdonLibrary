@@ -1,14 +1,14 @@
 //
 //    I2C スレーブ側受信スケッチ例
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #include <Udon.hpp>
 
-Udon::I2cBus bus{ Wire };
+static Udon::I2cBus bus{ Wire };
 
-Udon::I2cSlaveReader<Udon::Vec2> reader{ bus };
+static Udon::I2cSlaveReader<Udon::Vec2> reader{ bus };
 
 void setup()
 {

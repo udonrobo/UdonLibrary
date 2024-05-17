@@ -1,12 +1,12 @@
 //
 //    複数のエンコーダーのカウント値を取得する例 (Raspberry Pi Pico)
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #include <Udon.hpp>
 
-Udon::EncoderPico encoders[]{
+static Udon::EncoderPico encoders[]{
     { 0, 1 },
     { 2, 3 },
     { 4, 5 },

@@ -1,7 +1,7 @@
 //
 //    モータードライバ制御クラス
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #pragma once
@@ -105,7 +105,7 @@ namespace Udon
 #ifdef __AVR_ATmega328P__
 
     /// @brief pwm周期変更 (atmega328p)
-    inline void ArduinoNanoPwmPeriodChange()
+    inline void ChangePwmPeriod()
     {
         TCCR1B &= B11111000;
         TCCR1B |= B00000001;

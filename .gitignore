@@ -1,11 +1,14 @@
 #
 #    .gitignore
 #
-#    Copyright (c) 2022-2023 udonrobo
+#    Copyright (c) 2022-2024 udonrobo
 #
 
 # CMake build output
 Build/
+
+# Doxygen
+docs/DoxygenDist/
 
 # User-specific files
 *.rsuser

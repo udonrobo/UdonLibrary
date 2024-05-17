@@ -1,3 +1,9 @@
+//
+//    全プラットフォームで使用可能な時間関数
+//
+//    Copyright (c) 2022-2024 udonrobo
+//
+
 #pragma once
 
 #include <Udon/Common/Platform.hpp>

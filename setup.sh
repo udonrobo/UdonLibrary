@@ -3,7 +3,7 @@
 #
 #    setup script for udonrobo's Arduino libraries
 #
-#    Copyright (c) 2022-2023 udonrobo
+#    Copyright (c) 2022-2024 udonrobo
 #
 
 # UdonArduinoSTL clone

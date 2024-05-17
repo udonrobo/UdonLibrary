@@ -1,3 +1,9 @@
+//
+//    構文テスト
+// 
+//    Copyright (c) 2022-2024 udonrobo
+//
+
 #include <Udon/Algorithm/ServoSpeed.hpp>
 
 inline void test()

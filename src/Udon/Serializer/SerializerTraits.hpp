@@ -1,3 +1,9 @@
+//
+//    シリアライズ可能か判定するメタ関数
+//
+//    Copyright (c) 2022-2024 udonrobo
+//
+
 #pragma once
 
 #include <Udon/Traits/Typedef.hpp>

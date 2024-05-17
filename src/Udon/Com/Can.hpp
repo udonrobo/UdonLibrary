@@ -1,7 +1,7 @@
 //
 //    CAN 通信
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 #pragma once

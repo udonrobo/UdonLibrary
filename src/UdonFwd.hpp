@@ -1,7 +1,7 @@
 //
 //    UdonLibrary
 // 
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 //
@@ -12,7 +12,7 @@
 //
 //    ex: Master.ino
 //    #include <UdonFwd.hpp>
-//    #include <Udon/Driver/Imu.hpp>
+//    #include <Udon/Algorithm/LoopCycleController.hpp>
 //
 //    ex: Steering.hpp
 //    #include <Udon/Algorithm/PidController.hpp>

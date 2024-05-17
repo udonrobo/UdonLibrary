@@ -1,7 +1,7 @@
 //
 //    IM920 にデータを受信するサンプル
 //
-//    Copyright (c) 2022-2023 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 //    Sender --[UART]--> IM920 ~~[920MHz]~~> IM920 --[UART]--> Receiver
 //                                                             ^^^^^^^^
@@ -9,9 +9,9 @@
 
 #include <Udon.hpp>
 
-Udon::Im920 im920{ Serial1 };
+static Udon::Im920 im920{ Serial1 };
 
-Udon::Im920Reader<Udon::Vec2> reader{ im920 };
+static Udon::Im920Reader<Udon::Vec2> reader{ im920 };
 
 void setup()
 {
