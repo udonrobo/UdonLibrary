@@ -8,7 +8,6 @@
 Build/
 
 # Doxygen
-doxygen-awesome-css/
 docs/DoxygenDist/
 
 # User-specific files
