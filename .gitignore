@@ -7,6 +7,9 @@
 # CMake build output
 Build/
 
+# Doxygen
+docs/DoxygenDist/
+
 # User-specific files
 *.rsuser
 *.suo

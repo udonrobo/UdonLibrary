@@ -1,4 +1,4 @@
-# SteerOptimizer
+# 独立ステア最適化
 
 ```cpp
 #include <Udon/Algorithm/SteerOptimizer.hpp>

@@ -1,4 +1,4 @@
-# EncoderPico クラス
+# エンコーダー
 
 Raspberry Pi Pico 用エンコーダー計測クラス
 
