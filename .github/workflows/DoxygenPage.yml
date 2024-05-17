@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  unit-test:
+  DoxygenPage:
     runs-on: ubuntu-latest
 
     steps:
