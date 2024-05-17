@@ -193,20 +193,20 @@ var NAVTREE =
       [ "デバッグ", "md_docs_Driver_Motor.html#autotoc_md141", null ],
       [ "その他", "md_docs_Driver_Motor.html#autotoc_md142", null ]
     ] ],
+    [ "PIO", "md_docs_Driver_PIO.html", [
+      [ "PioClockBegin", "md_docs_Driver_PIO.html#autotoc_md144", null ],
+      [ "AllocateStateMachine", "md_docs_Driver_PIO.html#autotoc_md145", null ]
+    ] ],
     [ "ロボマスモーター", "md_docs_Driver_RoboMasterMotor.html", [
-      [ "個別インクルード", "md_docs_Driver_RoboMasterMotor.html#autotoc_md144", null ],
-      [ "概要", "md_docs_Driver_RoboMasterMotor.html#autotoc_md145", null ],
-      [ "電流値の指定", "md_docs_Driver_RoboMasterMotor.html#autotoc_md146", null ],
-      [ "センサー値取得", "md_docs_Driver_RoboMasterMotor.html#autotoc_md147", null ],
-      [ "複数モーター", "md_docs_Driver_RoboMasterMotor.html#autotoc_md148", null ]
+      [ "個別インクルード", "md_docs_Driver_RoboMasterMotor.html#autotoc_md147", null ],
+      [ "概要", "md_docs_Driver_RoboMasterMotor.html#autotoc_md148", null ],
+      [ "電流値の指定", "md_docs_Driver_RoboMasterMotor.html#autotoc_md149", null ],
+      [ "センサー値取得", "md_docs_Driver_RoboMasterMotor.html#autotoc_md150", null ],
+      [ "複数モーター", "md_docs_Driver_RoboMasterMotor.html#autotoc_md151", null ]
     ] ],
     [ "Arduino IDE", "md_docs_Install_ArduinoIDE.html", [
-      [ "追加", "md_docs_Install_ArduinoIDE.html#autotoc_md150", null ],
-      [ "更新", "md_docs_Install_ArduinoIDE.html#autotoc_md151", null ]
-    ] ],
-    [ "PIO", "md_docs_Install_PIO.html", [
-      [ "PioClockBegin", "md_docs_Install_PIO.html#autotoc_md153", null ],
-      [ "AllocateStateMachine", "md_docs_Install_PIO.html#autotoc_md154", null ]
+      [ "追加", "md_docs_Install_ArduinoIDE.html#autotoc_md153", null ],
+      [ "更新", "md_docs_Install_ArduinoIDE.html#autotoc_md154", null ]
     ] ],
     [ "Platform IO", "md_docs_Install_PlatformIO.html", [
       [ "Arduino のライブラリと共用する (推奨)", "md_docs_Install_PlatformIO.html#autotoc_md156", null ],
