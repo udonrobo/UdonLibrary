@@ -1,0 +1,237 @@
+<!-- HTML header for doxygen 1.10.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="$langISO">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>UdonLibrary: src/Udon/Types/Forward/HSV.hpp ソースファイル</title>
+<!--BEGIN PROJECT_ICON-->
+<link rel="icon" href="$projecticon" type="image/x-icon" />
+<!--END PROJECT_ICON-->
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--BEGIN COPY_CLIPBOARD-->
+<script type="text/javascript" src="clipboard.js"></script>
+<!--END COPY_CLIPBOARD-->
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+$darkmode
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+  DoxygenAwesomeDarkModeToggle.init()
+  DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeInteractiveToc.hideMobileMenu = false
+</script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">機械システム研究部 C++ ライブラリ</div>
+  </td>
+ </tr>
+   <!--BEGIN FULL_SIDEBAR-->
+   <tr><td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td></tr>
+   <!--END FULL_SIDEBAR-->
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('Forward_2HSV_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">HSV.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//    HSV色空間 前方定義</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//    Copyright (c) 2022-2024 udonrobo</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;Udon/Traits/EnumerableMacro.hpp&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;Udon/Serializer/Serializer.hpp&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>Udon</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">struct </span>RGB;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structUdon_1_1HSV.html">   16</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structUdon_1_1HSV.html">HSV</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structUdon_1_1HSV.html#ad16b9609a85d2faced09d32a4aa64f7a">   20</a></span>&#160;        <span class="keyword">using</span> <a class="code" href="structUdon_1_1HSV.html#ad16b9609a85d2faced09d32a4aa64f7a">ValueType</a> = uint8_t;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structUdon_1_1HSV.html#a58d24125d8fdbadcb5897b4885cfa2bd">   23</a></span>&#160;        <a class="code" href="structUdon_1_1HSV.html#ad16b9609a85d2faced09d32a4aa64f7a">ValueType</a> <a class="code" href="structUdon_1_1HSV.html#a58d24125d8fdbadcb5897b4885cfa2bd">h</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structUdon_1_1HSV.html#aaf06fb45c5865d125c3f48d97e75ffe1">   26</a></span>&#160;        <a class="code" href="structUdon_1_1HSV.html#ad16b9609a85d2faced09d32a4aa64f7a">ValueType</a> <a class="code" href="structUdon_1_1HSV.html#aaf06fb45c5865d125c3f48d97e75ffe1">s</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structUdon_1_1HSV.html#ab2ca747970122ea26a0cba5035c54bb0">   29</a></span>&#160;        <a class="code" href="structUdon_1_1HSV.html#ad16b9609a85d2faced09d32a4aa64f7a">ValueType</a> <a class="code" href="structUdon_1_1HSV.html#ab2ca747970122ea26a0cba5035c54bb0">v</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structUdon_1_1HSV.html#adebbb5f39dd484c72ce252b3dcb2d76e">   32</a></span>&#160;        constexpr <a class="code" href="structUdon_1_1HSV.html#adebbb5f39dd484c72ce252b3dcb2d76e">HSV</a>() noexcept</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            : <a class="code" href="structUdon_1_1HSV.html#a58d24125d8fdbadcb5897b4885cfa2bd">h</a>()</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            , <a class="code" href="structUdon_1_1HSV.html#aaf06fb45c5865d125c3f48d97e75ffe1">s</a>()</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            , <a class="code" href="structUdon_1_1HSV.html#ab2ca747970122ea26a0cba5035c54bb0">v</a>()</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structUdon_1_1HSV.html#a3e9f836ccc2272d6ebf53f2132a21256">   43</a></span>&#160;        constexpr <a class="code" href="structUdon_1_1HSV.html#a3e9f836ccc2272d6ebf53f2132a21256">HSV</a>(<a class="code" href="structUdon_1_1HSV.html#ad16b9609a85d2faced09d32a4aa64f7a">ValueType</a> <a class="code" href="structUdon_1_1HSV.html#a58d24125d8fdbadcb5897b4885cfa2bd">h</a>, <a class="code" href="structUdon_1_1HSV.html#ad16b9609a85d2faced09d32a4aa64f7a">ValueType</a> <a class="code" href="structUdon_1_1HSV.html#aaf06fb45c5865d125c3f48d97e75ffe1">s</a>, <a class="code" href="structUdon_1_1HSV.html#ad16b9609a85d2faced09d32a4aa64f7a">ValueType</a> <a class="code" href="structUdon_1_1HSV.html#ab2ca747970122ea26a0cba5035c54bb0">v</a>) noexcept</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            : <a class="code" href="structUdon_1_1HSV.html#a58d24125d8fdbadcb5897b4885cfa2bd">h</a>(<a class="code" href="structUdon_1_1HSV.html#a58d24125d8fdbadcb5897b4885cfa2bd">h</a>)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            , <a class="code" href="structUdon_1_1HSV.html#aaf06fb45c5865d125c3f48d97e75ffe1">s</a>(<a class="code" href="structUdon_1_1HSV.html#aaf06fb45c5865d125c3f48d97e75ffe1">s</a>)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            , <a class="code" href="structUdon_1_1HSV.html#ab2ca747970122ea26a0cba5035c54bb0">v</a>(<a class="code" href="structUdon_1_1HSV.html#ab2ca747970122ea26a0cba5035c54bb0">v</a>)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structUdon_1_1HSV.html#a181d97be507eae67e92d208517d64a2d">   52</a></span>&#160;        <a class="code" href="structUdon_1_1HSV.html#a181d97be507eae67e92d208517d64a2d">HSV</a>(uint32_t hsv) noexcept</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            : <a class="code" href="structUdon_1_1HSV.html#a58d24125d8fdbadcb5897b4885cfa2bd">h</a>(<span class="keyword">static_cast&lt;</span><a class="code" href="structUdon_1_1HSV.html#ad16b9609a85d2faced09d32a4aa64f7a">ValueType</a><span class="keyword">&gt;</span>(hsv &gt;&gt; 16))</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            , <a class="code" href="structUdon_1_1HSV.html#aaf06fb45c5865d125c3f48d97e75ffe1">s</a>(<span class="keyword">static_cast&lt;</span><a class="code" href="structUdon_1_1HSV.html#ad16b9609a85d2faced09d32a4aa64f7a">ValueType</a><span class="keyword">&gt;</span>(hsv &gt;&gt;  8))</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            , <a class="code" href="structUdon_1_1HSV.html#ab2ca747970122ea26a0cba5035c54bb0">v</a>(<span class="keyword">static_cast&lt;</span><a class="code" href="structUdon_1_1HSV.html#ad16b9609a85d2faced09d32a4aa64f7a">ValueType</a><span class="keyword">&gt;</span>(hsv &gt;&gt;  0))</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <a class="code" href="structUdon_1_1HSV.html#adebbb5f39dd484c72ce252b3dcb2d76e">HSV</a>(<span class="keyword">const</span> <a class="code" href="structUdon_1_1RGB.html">RGB</a>&amp; rgb) noexcept;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="structUdon_1_1HSV.html#acd73bc630d80347291b1733d8e675012">   64</a></span>&#160;        <a class="code" href="structUdon_1_1HSV.html#acd73bc630d80347291b1733d8e675012">HSV</a>(<span class="keyword">const</span> <a class="code" href="structUdon_1_1HSV.html">HSV</a>&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structUdon_1_1HSV.html#af05064643ea32f1fd11a608507625078">   67</a></span>&#160;        <a class="code" href="structUdon_1_1HSV.html">HSV</a>&amp; <a class="code" href="structUdon_1_1HSV.html#af05064643ea32f1fd11a608507625078">operator=</a>(<span class="keyword">const</span> <a class="code" href="structUdon_1_1HSV.html">HSV</a>&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="structUdon_1_1HSV.html#adeda8be5ebeb4b017a01f2893093406c">   70</a></span>&#160;        <span class="keyword">friend</span> constexpr <span class="keywordtype">bool</span> <a class="code" href="structUdon_1_1HSV.html#adeda8be5ebeb4b017a01f2893093406c">operator==</a>(<span class="keyword">const</span> <a class="code" href="structUdon_1_1HSV.html">HSV</a>&amp; lhs, <span class="keyword">const</span> <a class="code" href="structUdon_1_1HSV.html">HSV</a>&amp; rhs) noexcept</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">return</span> lhs.h == rhs.h &amp;&amp; lhs.s == rhs.s &amp;&amp; lhs.v == rhs.v;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="structUdon_1_1HSV.html#a1d79fd259173d2393c633f7cd0220dda">   76</a></span>&#160;        <span class="keyword">friend</span> constexpr <span class="keywordtype">bool</span> <a class="code" href="structUdon_1_1HSV.html#a1d79fd259173d2393c633f7cd0220dda">operator!=</a>(<span class="keyword">const</span> <a class="code" href="structUdon_1_1HSV.html">HSV</a>&amp; lhs, <span class="keyword">const</span> <a class="code" href="structUdon_1_1HSV.html">HSV</a>&amp; rhs) noexcept</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">return</span> not(lhs == rhs);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keyword">explicit</span> constexpr <span class="keyword">operator</span> bool() const noexcept</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="structUdon_1_1HSV.html#a58d24125d8fdbadcb5897b4885cfa2bd">h</a> or <a class="code" href="structUdon_1_1HSV.html#aaf06fb45c5865d125c3f48d97e75ffe1">s</a> or <a class="code" href="structUdon_1_1HSV.html#ab2ca747970122ea26a0cba5035c54bb0">v</a>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="structUdon_1_1HSV.html#acc9673e4c99d3255042e77f9dca9caa6">   88</a></span>&#160;        uint32_t <a class="code" href="structUdon_1_1HSV.html#acc9673e4c99d3255042e77f9dca9caa6">to24bit</a>() const noexcept</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(<a class="code" href="structUdon_1_1HSV.html#a58d24125d8fdbadcb5897b4885cfa2bd">h</a>) &lt;&lt; 16 | <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(<a class="code" href="structUdon_1_1HSV.html#aaf06fb45c5865d125c3f48d97e75ffe1">s</a>) &lt;&lt; 8 | <span class="keyword">static_cast&lt;</span>uint32_t<span class="keyword">&gt;</span>(<a class="code" href="structUdon_1_1HSV.html#ab2ca747970122ea26a0cba5035c54bb0">v</a>) &lt;&lt; 0;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="structUdon_1_1RGB.html">RGB</a> <a class="code" href="structUdon_1_1HSV.html#ab8b1c8e2ec06118cd3b2fda1d12d3e6e">toRGB</a>() const noexcept;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#ifdef ARDUINO</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordtype">void</span> show()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            Serial.print(F(<span class="stringliteral">&quot;h: &quot;</span>)), Serial.print(<a class="code" href="structUdon_1_1HSV.html#a58d24125d8fdbadcb5897b4885cfa2bd">h</a>), Serial.print(<span class="charliteral">&#39;\t&#39;</span>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            Serial.print(F(<span class="stringliteral">&quot;s: &quot;</span>)), Serial.print(<a class="code" href="structUdon_1_1HSV.html#aaf06fb45c5865d125c3f48d97e75ffe1">s</a>), Serial.print(<span class="charliteral">&#39;\t&#39;</span>);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            Serial.print(F(<span class="stringliteral">&quot;v: &quot;</span>)), Serial.print(<a class="code" href="structUdon_1_1HSV.html#ab2ca747970122ea26a0cba5035c54bb0">v</a>), Serial.print(<span class="charliteral">&#39;\t&#39;</span>);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        UDON_ENUMERABLE(<a class="code" href="structUdon_1_1HSV.html#a58d24125d8fdbadcb5897b4885cfa2bd">h</a>, <a class="code" href="structUdon_1_1HSV.html#aaf06fb45c5865d125c3f48d97e75ffe1">s</a>, <a class="code" href="structUdon_1_1HSV.html#ab2ca747970122ea26a0cba5035c54bb0">v</a>);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    };</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;} <span class="comment">// namespace Udon</span></div>
+<div class="ttc" id="astructUdon_1_1HSV_html"><div class="ttname"><a href="structUdon_1_1HSV.html">Udon::HSV</a></div><div class="ttdef"><b>Definition:</b> HSV.hpp:17</div></div>
+<div class="ttc" id="astructUdon_1_1HSV_html_a181d97be507eae67e92d208517d64a2d"><div class="ttname"><a href="structUdon_1_1HSV.html#a181d97be507eae67e92d208517d64a2d">Udon::HSV::HSV</a></div><div class="ttdeci">HSV(uint32_t hsv) noexcept</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition:</b> HSV.hpp:52</div></div>
+<div class="ttc" id="astructUdon_1_1HSV_html_a1d79fd259173d2393c633f7cd0220dda"><div class="ttname"><a href="structUdon_1_1HSV.html#a1d79fd259173d2393c633f7cd0220dda">Udon::HSV::operator!=</a></div><div class="ttdeci">constexpr friend bool operator!=(const HSV &amp;lhs, const HSV &amp;rhs) noexcept</div><div class="ttdoc">比較演算子</div><div class="ttdef"><b>Definition:</b> HSV.hpp:76</div></div>
+<div class="ttc" id="astructUdon_1_1HSV_html_a3e9f836ccc2272d6ebf53f2132a21256"><div class="ttname"><a href="structUdon_1_1HSV.html#a3e9f836ccc2272d6ebf53f2132a21256">Udon::HSV::HSV</a></div><div class="ttdeci">constexpr HSV(ValueType h, ValueType s, ValueType v) noexcept</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition:</b> HSV.hpp:43</div></div>
+<div class="ttc" id="astructUdon_1_1HSV_html_a58d24125d8fdbadcb5897b4885cfa2bd"><div class="ttname"><a href="structUdon_1_1HSV.html#a58d24125d8fdbadcb5897b4885cfa2bd">Udon::HSV::h</a></div><div class="ttdeci">ValueType h</div><div class="ttdoc">色相</div><div class="ttdef"><b>Definition:</b> HSV.hpp:23</div></div>
+<div class="ttc" id="astructUdon_1_1HSV_html_aaf06fb45c5865d125c3f48d97e75ffe1"><div class="ttname"><a href="structUdon_1_1HSV.html#aaf06fb45c5865d125c3f48d97e75ffe1">Udon::HSV::s</a></div><div class="ttdeci">ValueType s</div><div class="ttdoc">彩度</div><div class="ttdef"><b>Definition:</b> HSV.hpp:26</div></div>
+<div class="ttc" id="astructUdon_1_1HSV_html_ab2ca747970122ea26a0cba5035c54bb0"><div class="ttname"><a href="structUdon_1_1HSV.html#ab2ca747970122ea26a0cba5035c54bb0">Udon::HSV::v</a></div><div class="ttdeci">ValueType v</div><div class="ttdoc">明度</div><div class="ttdef"><b>Definition:</b> HSV.hpp:29</div></div>
+<div class="ttc" id="astructUdon_1_1HSV_html_ab8b1c8e2ec06118cd3b2fda1d12d3e6e"><div class="ttname"><a href="structUdon_1_1HSV.html#ab8b1c8e2ec06118cd3b2fda1d12d3e6e">Udon::HSV::toRGB</a></div><div class="ttdeci">RGB toRGB() const noexcept</div><div class="ttdoc">RGB色空間に変換</div><div class="ttdef"><b>Definition:</b> HSV.hpp:30</div></div>
+<div class="ttc" id="astructUdon_1_1HSV_html_acc9673e4c99d3255042e77f9dca9caa6"><div class="ttname"><a href="structUdon_1_1HSV.html#acc9673e4c99d3255042e77f9dca9caa6">Udon::HSV::to24bit</a></div><div class="ttdeci">uint32_t to24bit() const noexcept</div><div class="ttdoc">24bit値へ変換</div><div class="ttdef"><b>Definition:</b> HSV.hpp:88</div></div>
+<div class="ttc" id="astructUdon_1_1HSV_html_acd73bc630d80347291b1733d8e675012"><div class="ttname"><a href="structUdon_1_1HSV.html#acd73bc630d80347291b1733d8e675012">Udon::HSV::HSV</a></div><div class="ttdeci">HSV(const HSV &amp;)=default</div><div class="ttdoc">コピーコンストラクタ</div></div>
+<div class="ttc" id="astructUdon_1_1HSV_html_ad16b9609a85d2faced09d32a4aa64f7a"><div class="ttname"><a href="structUdon_1_1HSV.html#ad16b9609a85d2faced09d32a4aa64f7a">Udon::HSV::ValueType</a></div><div class="ttdeci">uint8_t ValueType</div><div class="ttdoc">要素の型</div><div class="ttdef"><b>Definition:</b> HSV.hpp:20</div></div>
+<div class="ttc" id="astructUdon_1_1HSV_html_adebbb5f39dd484c72ce252b3dcb2d76e"><div class="ttname"><a href="structUdon_1_1HSV.html#adebbb5f39dd484c72ce252b3dcb2d76e">Udon::HSV::HSV</a></div><div class="ttdeci">constexpr HSV() noexcept</div><div class="ttdoc">デフォルトコンストラクタ</div><div class="ttdef"><b>Definition:</b> HSV.hpp:32</div></div>
+<div class="ttc" id="astructUdon_1_1HSV_html_adeda8be5ebeb4b017a01f2893093406c"><div class="ttname"><a href="structUdon_1_1HSV.html#adeda8be5ebeb4b017a01f2893093406c">Udon::HSV::operator==</a></div><div class="ttdeci">constexpr friend bool operator==(const HSV &amp;lhs, const HSV &amp;rhs) noexcept</div><div class="ttdoc">比較演算子</div><div class="ttdef"><b>Definition:</b> HSV.hpp:70</div></div>
+<div class="ttc" id="astructUdon_1_1HSV_html_af05064643ea32f1fd11a608507625078"><div class="ttname"><a href="structUdon_1_1HSV.html#af05064643ea32f1fd11a608507625078">Udon::HSV::operator=</a></div><div class="ttdeci">HSV &amp; operator=(const HSV &amp;)=default</div><div class="ttdoc">コピー代入演算子</div></div>
+<div class="ttc" id="astructUdon_1_1RGB_html"><div class="ttname"><a href="structUdon_1_1RGB.html">Udon::RGB</a></div><div class="ttdef"><b>Definition:</b> RGB.hpp:19</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_8c816338dbfb611667fc26d3483e845e.html">Types</a></li><li class="navelem"><a class="el" href="dir_4a714e85abb1d8d0a85766748e9f2153.html">Forward</a></li><li class="navelem"><b>HSV.hpp</b></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>
