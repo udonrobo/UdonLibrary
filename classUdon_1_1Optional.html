@@ -1,0 +1,1333 @@
+<!-- HTML header for doxygen 1.10.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>UdonLibrary: Udon::Optional&lt; T &gt; クラステンプレート</title>
+<!--BEGIN PROJECT_ICON-->
+<link rel="icon" href="$projecticon" type="image/x-icon" />
+<!--END PROJECT_ICON-->
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--BEGIN COPY_CLIPBOARD-->
+<script type="text/javascript" src="clipboard.js"></script>
+<!--END COPY_CLIPBOARD-->
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+  DoxygenAwesomeDarkModeToggle.init()
+  DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeInteractiveToc.hideMobileMenu = false
+</script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">機械システム研究部 C++ ライブラリ</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classUdon_1_1Optional.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#pub-types">公開型</a> &#124;
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#friends">フレンド</a> &#124;
+<a href="classUdon_1_1Optional-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle"><div class="title">Udon::Optional&lt; T &gt; クラステンプレート</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>オプショナル型  
+ <a href="classUdon_1_1Optional.html#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="Optional_8hpp_source.html">Udon/Types/Optional.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+公開型</h2></td></tr>
+<tr class="memitem:a391fd72d8fee0ae6b91c81c335ed2c63"><td class="memItemLeft" align="right" valign="top"><a id="a391fd72d8fee0ae6b91c81c335ed2c63" name="a391fd72d8fee0ae6b91c81c335ed2c63"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>ValueType</b> = T</td></tr>
+<tr class="separator:a391fd72d8fee0ae6b91c81c335ed2c63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:aac4bcd11a86a7bf228428b610d95cb83"><td class="memItemLeft" align="right" valign="top"><a id="aac4bcd11a86a7bf228428b610d95cb83" name="aac4bcd11a86a7bf228428b610d95cb83"></a>
+constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>Optional</b> () noexcept</td></tr>
+<tr class="memdesc:aac4bcd11a86a7bf228428b610d95cb83"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコンストラクタ <br /></td></tr>
+<tr class="separator:aac4bcd11a86a7bf228428b610d95cb83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a713a39c57a00dfc3660e320257f4489f"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#a713a39c57a00dfc3660e320257f4489f">Optional</a> (<a class="el" href="structUdon_1_1NulloptT.html">NulloptT</a>)</td></tr>
+<tr class="memdesc:a713a39c57a00dfc3660e320257f4489f"><td class="mdescLeft">&#160;</td><td class="mdescRight">無効値として構築  <a href="classUdon_1_1Optional.html#a713a39c57a00dfc3660e320257f4489f">[詳解]</a><br /></td></tr>
+<tr class="separator:a713a39c57a00dfc3660e320257f4489f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23e95189c22121147fda02c6b616509e"><td class="memTemplParams" colspan="2">template&lt;typename U , typename std::enable_if&lt; std::is_constructible&lt; ValueType, U &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type  = nullptr&gt; </td></tr>
+<tr class="memitem:a23e95189c22121147fda02c6b616509e"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#a23e95189c22121147fda02c6b616509e">Optional</a> (U &amp;&amp;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">value</a>) noexcept(std::is_nothrow_constructible&lt; ValueType &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
+<tr class="memdesc:a23e95189c22121147fda02c6b616509e"><td class="mdescLeft">&#160;</td><td class="mdescRight">値から構築  <a href="classUdon_1_1Optional.html#a23e95189c22121147fda02c6b616509e">[詳解]</a><br /></td></tr>
+<tr class="separator:a23e95189c22121147fda02c6b616509e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5cab81cf80326ceb1b1e8298c88b885"><td class="memTemplParams" colspan="2">template&lt;typename U , typename std::enable_if&lt; std::is_constructible&lt; ValueType, const U &amp; &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type  = nullptr&gt; </td></tr>
+<tr class="memitem:ae5cab81cf80326ceb1b1e8298c88b885"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#ae5cab81cf80326ceb1b1e8298c88b885">Optional</a> (const <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; U &gt; &amp;other) noexcept(std::is_nothrow_constructible&lt; ValueType, U &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
+<tr class="memdesc:ae5cab81cf80326ceb1b1e8298c88b885"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <a href="classUdon_1_1Optional.html#ae5cab81cf80326ceb1b1e8298c88b885">[詳解]</a><br /></td></tr>
+<tr class="separator:ae5cab81cf80326ceb1b1e8298c88b885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa19c82bac78fceb547d5485bf6af2b2a"><td class="memTemplParams" colspan="2">template&lt;typename U , typename std::enable_if&lt; std::is_constructible&lt; ValueType, U &amp;&amp; &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type  = nullptr&gt; </td></tr>
+<tr class="memitem:aa19c82bac78fceb547d5485bf6af2b2a"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#aa19c82bac78fceb547d5485bf6af2b2a">Optional</a> (<a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; U &gt; &amp;&amp;other) noexcept(std::is_nothrow_constructible&lt; ValueType, U &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
+<tr class="memdesc:aa19c82bac78fceb547d5485bf6af2b2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">ムーブコンストラクタ  <a href="classUdon_1_1Optional.html#aa19c82bac78fceb547d5485bf6af2b2a">[詳解]</a><br /></td></tr>
+<tr class="separator:aa19c82bac78fceb547d5485bf6af2b2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac864de5bc5c6c02d1287d25906e60469"><td class="memItemLeft" align="right" valign="top"><a id="ac864de5bc5c6c02d1287d25906e60469" name="ac864de5bc5c6c02d1287d25906e60469"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~Optional</b> () noexcept</td></tr>
+<tr class="memdesc:ac864de5bc5c6c02d1287d25906e60469"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ <br /></td></tr>
+<tr class="separator:ac864de5bc5c6c02d1287d25906e60469"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49dff458a4e6a993c791a69501382218"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#a49dff458a4e6a993c791a69501382218">operator=</a> (<a class="el" href="structUdon_1_1NulloptT.html">NulloptT</a>) noexcept</td></tr>
+<tr class="memdesc:a49dff458a4e6a993c791a69501382218"><td class="mdescLeft">&#160;</td><td class="mdescRight">無効値代入演算子  <a href="classUdon_1_1Optional.html#a49dff458a4e6a993c791a69501382218">[詳解]</a><br /></td></tr>
+<tr class="separator:a49dff458a4e6a993c791a69501382218"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61a0dd9cd12178c524399f5eb5d1eee8"><td class="memTemplParams" colspan="2">template&lt;typename U , typename std::enable_if&lt; std::is_constructible&lt; ValueType, U &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a> and std::is_assignable&lt; ValueType, U &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type  = nullptr&gt; </td></tr>
+<tr class="memitem:a61a0dd9cd12178c524399f5eb5d1eee8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#a61a0dd9cd12178c524399f5eb5d1eee8">operator=</a> (U &amp;&amp;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">value</a>) noexcept(std::is_nothrow_constructible&lt; ValueType, U &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a> and std::is_nothrow_assignable&lt; ValueType, U &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
+<tr class="memdesc:a61a0dd9cd12178c524399f5eb5d1eee8"><td class="mdescLeft">&#160;</td><td class="mdescRight">値代入演算子  <a href="classUdon_1_1Optional.html#a61a0dd9cd12178c524399f5eb5d1eee8">[詳解]</a><br /></td></tr>
+<tr class="separator:a61a0dd9cd12178c524399f5eb5d1eee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a073122aeeb5c5892952387398d115d5c"><td class="memTemplParams" colspan="2">template&lt;typename U , typename std::enable_if&lt; std::is_constructible&lt; ValueType, const U &amp; &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a> and std::is_assignable&lt; ValueType, const U &amp; &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type  = nullptr&gt; </td></tr>
+<tr class="memitem:a073122aeeb5c5892952387398d115d5c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#a073122aeeb5c5892952387398d115d5c">operator=</a> (const <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; U &gt; &amp;other) noexcept(std::is_nothrow_constructible&lt; ValueType, U &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a> and std::is_nothrow_assignable&lt; ValueType, U &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
+<tr class="memdesc:a073122aeeb5c5892952387398d115d5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピー代入演算子  <a href="classUdon_1_1Optional.html#a073122aeeb5c5892952387398d115d5c">[詳解]</a><br /></td></tr>
+<tr class="separator:a073122aeeb5c5892952387398d115d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af16d5b6a1583ae197a31eb8f3ed7a40a"><td class="memTemplParams" colspan="2">template&lt;typename U , typename std::enable_if&lt; std::is_constructible&lt; ValueType, U &amp;&amp; &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a> and std::is_assignable&lt; ValueType, U &amp;&amp; &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type  = nullptr&gt; </td></tr>
+<tr class="memitem:af16d5b6a1583ae197a31eb8f3ed7a40a"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#af16d5b6a1583ae197a31eb8f3ed7a40a">operator=</a> (<a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; U &gt; &amp;&amp;other) noexcept(std::is_nothrow_constructible&lt; ValueType, U &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a> and std::is_nothrow_assignable&lt; ValueType, U &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
+<tr class="memdesc:af16d5b6a1583ae197a31eb8f3ed7a40a"><td class="mdescLeft">&#160;</td><td class="mdescRight">ムーブ代入演算子  <a href="classUdon_1_1Optional.html#af16d5b6a1583ae197a31eb8f3ed7a40a">[詳解]</a><br /></td></tr>
+<tr class="separator:af16d5b6a1583ae197a31eb8f3ed7a40a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea99eb0dbc861b2d45e5108d51ebf4f4"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#aea99eb0dbc861b2d45e5108d51ebf4f4">operator bool</a> () const noexcept</td></tr>
+<tr class="memdesc:aea99eb0dbc861b2d45e5108d51ebf4f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">値が有効か  <a href="classUdon_1_1Optional.html#aea99eb0dbc861b2d45e5108d51ebf4f4">[詳解]</a><br /></td></tr>
+<tr class="separator:aea99eb0dbc861b2d45e5108d51ebf4f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56ba985a8bb1665b162f593f23f502f7"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#a56ba985a8bb1665b162f593f23f502f7">hasValue</a> () const noexcept</td></tr>
+<tr class="memdesc:a56ba985a8bb1665b162f593f23f502f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">値が有効か  <a href="classUdon_1_1Optional.html#a56ba985a8bb1665b162f593f23f502f7">[詳解]</a><br /></td></tr>
+<tr class="separator:a56ba985a8bb1665b162f593f23f502f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a902544e5d958130ac7b0368c1e140d30"><td class="memItemLeft" align="right" valign="top">ValueType &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">value</a> () &amp;</td></tr>
+<tr class="memdesc:a902544e5d958130ac7b0368c1e140d30"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を取得  <a href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">[詳解]</a><br /></td></tr>
+<tr class="separator:a902544e5d958130ac7b0368c1e140d30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadeaba2d4888705b16d74b85415e6dbf"><td class="memItemLeft" align="right" valign="top">const ValueType &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#aadeaba2d4888705b16d74b85415e6dbf">value</a> () const &amp;</td></tr>
+<tr class="memdesc:aadeaba2d4888705b16d74b85415e6dbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を取得  <a href="classUdon_1_1Optional.html#aadeaba2d4888705b16d74b85415e6dbf">[詳解]</a><br /></td></tr>
+<tr class="separator:aadeaba2d4888705b16d74b85415e6dbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab95bd32a5ad2aada52a2b440eec3da59"><td class="memItemLeft" align="right" valign="top">ValueType &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#ab95bd32a5ad2aada52a2b440eec3da59">value</a> () &amp;&amp;</td></tr>
+<tr class="memdesc:ab95bd32a5ad2aada52a2b440eec3da59"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を取得  <a href="classUdon_1_1Optional.html#ab95bd32a5ad2aada52a2b440eec3da59">[詳解]</a><br /></td></tr>
+<tr class="separator:ab95bd32a5ad2aada52a2b440eec3da59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8871f400920c070f203439682c61cbf"><td class="memItemLeft" align="right" valign="top">const ValueType &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#af8871f400920c070f203439682c61cbf">value</a> () const &amp;&amp;</td></tr>
+<tr class="memdesc:af8871f400920c070f203439682c61cbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を取得  <a href="classUdon_1_1Optional.html#af8871f400920c070f203439682c61cbf">[詳解]</a><br /></td></tr>
+<tr class="separator:af8871f400920c070f203439682c61cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fed576c1a3bc956b2bb856279c2d3a0"><td class="memItemLeft" align="right" valign="top">ValueType &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#a9fed576c1a3bc956b2bb856279c2d3a0">operator*</a> () &amp;</td></tr>
+<tr class="memdesc:a9fed576c1a3bc956b2bb856279c2d3a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を取得  <a href="classUdon_1_1Optional.html#a9fed576c1a3bc956b2bb856279c2d3a0">[詳解]</a><br /></td></tr>
+<tr class="separator:a9fed576c1a3bc956b2bb856279c2d3a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2995dd469f5810884a3fd6b63b965fa8"><td class="memItemLeft" align="right" valign="top">const ValueType &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#a2995dd469f5810884a3fd6b63b965fa8">operator*</a> () const &amp;</td></tr>
+<tr class="memdesc:a2995dd469f5810884a3fd6b63b965fa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を取得  <a href="classUdon_1_1Optional.html#a2995dd469f5810884a3fd6b63b965fa8">[詳解]</a><br /></td></tr>
+<tr class="separator:a2995dd469f5810884a3fd6b63b965fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a260e272a43c4a8c945dc2afa4441c8e6"><td class="memItemLeft" align="right" valign="top">ValueType &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#a260e272a43c4a8c945dc2afa4441c8e6">operator*</a> () &amp;&amp;</td></tr>
+<tr class="memdesc:a260e272a43c4a8c945dc2afa4441c8e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を取得  <a href="classUdon_1_1Optional.html#a260e272a43c4a8c945dc2afa4441c8e6">[詳解]</a><br /></td></tr>
+<tr class="separator:a260e272a43c4a8c945dc2afa4441c8e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5911eca57249b5c4d9763728481ecee7"><td class="memItemLeft" align="right" valign="top">const ValueType &amp;&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#a5911eca57249b5c4d9763728481ecee7">operator*</a> () const &amp;&amp;</td></tr>
+<tr class="memdesc:a5911eca57249b5c4d9763728481ecee7"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を取得  <a href="classUdon_1_1Optional.html#a5911eca57249b5c4d9763728481ecee7">[詳解]</a><br /></td></tr>
+<tr class="separator:a5911eca57249b5c4d9763728481ecee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af05f2a17e6d9cbd501389beb1807f11b"><td class="memItemLeft" align="right" valign="top"><a id="af05f2a17e6d9cbd501389beb1807f11b" name="af05f2a17e6d9cbd501389beb1807f11b"></a>
+ValueType *&#160;</td><td class="memItemRight" valign="bottom"><b>operator-&gt;</b> ()</td></tr>
+<tr class="separator:af05f2a17e6d9cbd501389beb1807f11b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acea8017ffa838edef48c8ecedf66c28b"><td class="memItemLeft" align="right" valign="top"><a id="acea8017ffa838edef48c8ecedf66c28b" name="acea8017ffa838edef48c8ecedf66c28b"></a>
+const ValueType *&#160;</td><td class="memItemRight" valign="bottom"><b>operator-&gt;</b> () const</td></tr>
+<tr class="separator:acea8017ffa838edef48c8ecedf66c28b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62afa79333847677ff4d364664b2658d"><td class="memTemplParams" colspan="2">template&lt;typename U &gt; </td></tr>
+<tr class="memitem:a62afa79333847677ff4d364664b2658d"><td class="memTemplItemLeft" align="right" valign="top">constexpr ValueType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#a62afa79333847677ff4d364664b2658d">valueOr</a> (U &amp;&amp;defaultValue) const &amp;</td></tr>
+<tr class="memdesc:a62afa79333847677ff4d364664b2658d"><td class="mdescLeft">&#160;</td><td class="mdescRight">有効であれば自身を、無効であればデフォルト値を取得する  <a href="classUdon_1_1Optional.html#a62afa79333847677ff4d364664b2658d">[詳解]</a><br /></td></tr>
+<tr class="separator:a62afa79333847677ff4d364664b2658d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a244e68210665e4f8b2aba42fca055681"><td class="memTemplParams" colspan="2">template&lt;typename U &gt; </td></tr>
+<tr class="memitem:a244e68210665e4f8b2aba42fca055681"><td class="memTemplItemLeft" align="right" valign="top">constexpr ValueType&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#a244e68210665e4f8b2aba42fca055681">valueOr</a> (U &amp;&amp;defaultValue) &amp;&amp;</td></tr>
+<tr class="memdesc:a244e68210665e4f8b2aba42fca055681"><td class="mdescLeft">&#160;</td><td class="mdescRight">有効であれば自身を、無効であればデフォルト値を取得する  <a href="classUdon_1_1Optional.html#a244e68210665e4f8b2aba42fca055681">[詳解]</a><br /></td></tr>
+<tr class="separator:a244e68210665e4f8b2aba42fca055681"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76b8be66294a8a11750da65d1a69a704"><td class="memItemLeft" align="right" valign="top"><a id="a76b8be66294a8a11750da65d1a69a704" name="a76b8be66294a8a11750da65d1a69a704"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;other) noexcept(/*std::is_nothrow_swappable&lt; ValueType &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a> and */std::is_nothrow_move_assignable&lt; ValueType &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
+<tr class="memdesc:a76b8be66294a8a11750da65d1a69a704"><td class="mdescLeft">&#160;</td><td class="mdescRight">他のOptionalと値を交換する <br /></td></tr>
+<tr class="separator:a76b8be66294a8a11750da65d1a69a704"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0adcd9eb9cf98b349394a0d18e31ea1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#af0adcd9eb9cf98b349394a0d18e31ea1">reset</a> () noexcept(std::is_nothrow_destructible&lt; ValueType &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
+<tr class="memdesc:af0adcd9eb9cf98b349394a0d18e31ea1"><td class="mdescLeft">&#160;</td><td class="mdescRight">無効状態にする  <a href="classUdon_1_1Optional.html#af0adcd9eb9cf98b349394a0d18e31ea1">[詳解]</a><br /></td></tr>
+<tr class="separator:af0adcd9eb9cf98b349394a0d18e31ea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0da144378519ca521048e90957a76d36"><td class="memItemLeft" align="right" valign="top"><a id="a0da144378519ca521048e90957a76d36" name="a0da144378519ca521048e90957a76d36"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>show</b> () const noexcept</td></tr>
+<tr class="memdesc:a0da144378519ca521048e90957a76d36"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を表示 <br /></td></tr>
+<tr class="separator:a0da144378519ca521048e90957a76d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+フレンド</h2></td></tr>
+<tr class="memitem:a1dd0104afb6a47904cf4bb4eb877c436"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#a1dd0104afb6a47904cf4bb4eb877c436">operator==</a> (const <a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;lhs, const <a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;rhs) noexcept</td></tr>
+<tr class="memdesc:a1dd0104afb6a47904cf4bb4eb877c436"><td class="mdescLeft">&#160;</td><td class="mdescRight">等価演算子  <a href="classUdon_1_1Optional.html#a1dd0104afb6a47904cf4bb4eb877c436">[詳解]</a><br /></td></tr>
+<tr class="separator:a1dd0104afb6a47904cf4bb4eb877c436"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8164a46a70587f301c5042dd4f28f5e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#aa8164a46a70587f301c5042dd4f28f5e">operator!=</a> (const <a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;lhs, const <a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;rhs) noexcept</td></tr>
+<tr class="memdesc:aa8164a46a70587f301c5042dd4f28f5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">非等価演算子  <a href="classUdon_1_1Optional.html#aa8164a46a70587f301c5042dd4f28f5e">[詳解]</a><br /></td></tr>
+<tr class="separator:aa8164a46a70587f301c5042dd4f28f5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13ac19fcf5d2da0760dbc473691bab51"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#a13ac19fcf5d2da0760dbc473691bab51">operator&lt;</a> (const <a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;lhs, const <a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;rhs) noexcept</td></tr>
+<tr class="memdesc:a13ac19fcf5d2da0760dbc473691bab51"><td class="mdescLeft">&#160;</td><td class="mdescRight">比較演算子  <a href="classUdon_1_1Optional.html#a13ac19fcf5d2da0760dbc473691bab51">[詳解]</a><br /></td></tr>
+<tr class="separator:a13ac19fcf5d2da0760dbc473691bab51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bc488c790af543a62feaa9c4460e402"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#a1bc488c790af543a62feaa9c4460e402">operator&gt;</a> (const <a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;lhs, const <a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;rhs) noexcept</td></tr>
+<tr class="memdesc:a1bc488c790af543a62feaa9c4460e402"><td class="mdescLeft">&#160;</td><td class="mdescRight">比較演算子  <a href="classUdon_1_1Optional.html#a1bc488c790af543a62feaa9c4460e402">[詳解]</a><br /></td></tr>
+<tr class="separator:a1bc488c790af543a62feaa9c4460e402"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe3ba1d7150fc2f72713ed56ae80e479"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#abe3ba1d7150fc2f72713ed56ae80e479">operator&gt;=</a> (const <a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;lhs, const <a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;rhs) noexcept</td></tr>
+<tr class="memdesc:abe3ba1d7150fc2f72713ed56ae80e479"><td class="mdescLeft">&#160;</td><td class="mdescRight">比較演算子  <a href="classUdon_1_1Optional.html#abe3ba1d7150fc2f72713ed56ae80e479">[詳解]</a><br /></td></tr>
+<tr class="separator:abe3ba1d7150fc2f72713ed56ae80e479"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf30085cf3c426d7cc2b7fbdadc2031c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#aaf30085cf3c426d7cc2b7fbdadc2031c">operator&lt;=</a> (const <a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;lhs, const <a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;rhs) noexcept</td></tr>
+<tr class="memdesc:aaf30085cf3c426d7cc2b7fbdadc2031c"><td class="mdescLeft">&#160;</td><td class="mdescRight">比較演算子  <a href="classUdon_1_1Optional.html#aaf30085cf3c426d7cc2b7fbdadc2031c">[詳解]</a><br /></td></tr>
+<tr class="separator:aaf30085cf3c426d7cc2b7fbdadc2031c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1acb01716269aea2b7beec356f9d21e"><td class="memTemplParams" colspan="2">template&lt;typename CharType &gt; </td></tr>
+<tr class="memitem:af1acb01716269aea2b7beec356f9d21e"><td class="memTemplItemLeft" align="right" valign="top">std::basic_ostream&lt; CharType &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classUdon_1_1Optional.html#af1acb01716269aea2b7beec356f9d21e">operator&lt;&lt;</a> (std::basic_ostream&lt; CharType &gt; &amp;os, const <a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;opt)</td></tr>
+<tr class="memdesc:af1acb01716269aea2b7beec356f9d21e"><td class="mdescLeft">&#160;</td><td class="mdescRight">std::basic_ostream への出力  <a href="classUdon_1_1Optional.html#af1acb01716269aea2b7beec356f9d21e">[詳解]</a><br /></td></tr>
+<tr class="separator:af1acb01716269aea2b7beec356f9d21e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
+class Udon::Optional&lt; T &gt;</div><p >オプショナル型 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>C++17のstd::optionalの模倣 </dd></dl>
+<dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>保持する値の型 </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">構築子と解体子</h2>
+<a id="a713a39c57a00dfc3660e320257f4489f" name="a713a39c57a00dfc3660e320257f4489f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a713a39c57a00dfc3660e320257f4489f">&#9670;&#160;</a></span>Optional() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::Optional </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1NulloptT.html">NulloptT</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>無効値として構築 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a23e95189c22121147fda02c6b616509e" name="a23e95189c22121147fda02c6b616509e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23e95189c22121147fda02c6b616509e">&#9670;&#160;</a></span>Optional() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename U , typename std::enable_if&lt; std::is_constructible&lt; ValueType, U &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type  = nullptr&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::Optional </td>
+          <td>(</td>
+          <td class="paramtype">U &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>値から構築 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae5cab81cf80326ceb1b1e8298c88b885" name="ae5cab81cf80326ceb1b1e8298c88b885"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5cab81cf80326ceb1b1e8298c88b885">&#9670;&#160;</a></span>Optional() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename U , typename std::enable_if&lt; std::is_constructible&lt; ValueType, const U &amp; &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type  = nullptr&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::Optional </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; U &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>コピーコンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa19c82bac78fceb547d5485bf6af2b2a" name="aa19c82bac78fceb547d5485bf6af2b2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa19c82bac78fceb547d5485bf6af2b2a">&#9670;&#160;</a></span>Optional() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename U , typename std::enable_if&lt; std::is_constructible&lt; ValueType, U &amp;&amp; &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type  = nullptr&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::Optional </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; U &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ムーブコンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a56ba985a8bb1665b162f593f23f502f7" name="a56ba985a8bb1665b162f593f23f502f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56ba985a8bb1665b162f593f23f502f7">&#9670;&#160;</a></span>hasValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::hasValue </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>値が有効か </p>
+<dl class="section return"><dt>戻り値</dt><dd>有効ならtrue </dd></dl>
+
+</div>
+</div>
+<a id="aea99eb0dbc861b2d45e5108d51ebf4f4" name="aea99eb0dbc861b2d45e5108d51ebf4f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea99eb0dbc861b2d45e5108d51ebf4f4">&#9670;&#160;</a></span>operator bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::operator bool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>値が有効か </p>
+<dl class="section return"><dt>戻り値</dt><dd>有効ならtrue </dd></dl>
+
+</div>
+</div>
+<a id="a9fed576c1a3bc956b2bb856279c2d3a0" name="a9fed576c1a3bc956b2bb856279c2d3a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fed576c1a3bc956b2bb856279c2d3a0">&#9670;&#160;</a></span>operator*() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ValueType &amp; <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::operator* </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> &amp;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>値を取得 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>値が無効な場合は例外を投げる </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>値 </dd></dl>
+
+</div>
+</div>
+<a id="a260e272a43c4a8c945dc2afa4441c8e6" name="a260e272a43c4a8c945dc2afa4441c8e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a260e272a43c4a8c945dc2afa4441c8e6">&#9670;&#160;</a></span>operator*() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ValueType &amp;&amp; <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::operator* </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> &amp;&amp;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>値を取得 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>値が無効な場合は例外を投げる </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>値 </dd></dl>
+
+</div>
+</div>
+<a id="a2995dd469f5810884a3fd6b63b965fa8" name="a2995dd469f5810884a3fd6b63b965fa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2995dd469f5810884a3fd6b63b965fa8">&#9670;&#160;</a></span>operator*() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const ValueType &amp; <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::operator* </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const &amp;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>値を取得 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>値が無効な場合は例外を投げる </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>値 </dd></dl>
+
+</div>
+</div>
+<a id="a5911eca57249b5c4d9763728481ecee7" name="a5911eca57249b5c4d9763728481ecee7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5911eca57249b5c4d9763728481ecee7">&#9670;&#160;</a></span>operator*() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const ValueType &amp;&amp; <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::operator* </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const &amp;&amp;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>値を取得 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>値が無効な場合は例外を投げる </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>値 </dd></dl>
+
+</div>
+</div>
+<a id="a073122aeeb5c5892952387398d115d5c" name="a073122aeeb5c5892952387398d115d5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a073122aeeb5c5892952387398d115d5c">&#9670;&#160;</a></span>operator=() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename U , typename std::enable_if&lt; std::is_constructible&lt; ValueType, const U &amp; &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a> and std::is_assignable&lt; ValueType, const U &amp; &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type  = nullptr&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp; <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; U &gt; &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>コピー代入演算子 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a49dff458a4e6a993c791a69501382218" name="a49dff458a4e6a993c791a69501382218"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49dff458a4e6a993c791a69501382218">&#9670;&#160;</a></span>operator=() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp; <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1NulloptT.html">NulloptT</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>無効値代入演算子 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<p>return </p>
+
+</div>
+</div>
+<a id="af16d5b6a1583ae197a31eb8f3ed7a40a" name="af16d5b6a1583ae197a31eb8f3ed7a40a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af16d5b6a1583ae197a31eb8f3ed7a40a">&#9670;&#160;</a></span>operator=() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename U , typename std::enable_if&lt; std::is_constructible&lt; ValueType, U &amp;&amp; &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a> and std::is_assignable&lt; ValueType, U &amp;&amp; &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type  = nullptr&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp; <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; U &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ムーブ代入演算子 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a61a0dd9cd12178c524399f5eb5d1eee8" name="a61a0dd9cd12178c524399f5eb5d1eee8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61a0dd9cd12178c524399f5eb5d1eee8">&#9670;&#160;</a></span>operator=() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename U , typename std::enable_if&lt; std::is_constructible&lt; ValueType, U &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a> and std::is_assignable&lt; ValueType, U &gt;<a class="el" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type  = nullptr&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp; <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">U &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>値代入演算子 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>*this </dd></dl>
+
+</div>
+</div>
+<a id="af0adcd9eb9cf98b349394a0d18e31ea1" name="af0adcd9eb9cf98b349394a0d18e31ea1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0adcd9eb9cf98b349394a0d18e31ea1">&#9670;&#160;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>無効状態にする </p>
+<dl class="section note"><dt>覚え書き</dt><dd>Tが非トリビアルな型で、値が有効な場合はデストラクタを呼ぶ </dd></dl>
+
+</div>
+</div>
+<a id="a902544e5d958130ac7b0368c1e140d30" name="a902544e5d958130ac7b0368c1e140d30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a902544e5d958130ac7b0368c1e140d30">&#9670;&#160;</a></span>value() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ValueType &amp; <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> &amp;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>値を取得 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>値が無効な場合は例外を投げる </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>値 </dd></dl>
+
+</div>
+</div>
+<a id="ab95bd32a5ad2aada52a2b440eec3da59" name="ab95bd32a5ad2aada52a2b440eec3da59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab95bd32a5ad2aada52a2b440eec3da59">&#9670;&#160;</a></span>value() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ValueType &amp;&amp; <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> &amp;&amp;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>値を取得 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>値が無効な場合は例外を投げる </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>値 </dd></dl>
+
+</div>
+</div>
+<a id="aadeaba2d4888705b16d74b85415e6dbf" name="aadeaba2d4888705b16d74b85415e6dbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadeaba2d4888705b16d74b85415e6dbf">&#9670;&#160;</a></span>value() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const ValueType &amp; <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const &amp;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>値を取得 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>値が無効な場合は例外を投げる </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>値 </dd></dl>
+
+</div>
+</div>
+<a id="af8871f400920c070f203439682c61cbf" name="af8871f400920c070f203439682c61cbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8871f400920c070f203439682c61cbf">&#9670;&#160;</a></span>value() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const ValueType &amp;&amp; <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::value </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const &amp;&amp;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>値を取得 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>値が無効な場合は例外を投げる </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>値 </dd></dl>
+
+</div>
+</div>
+<a id="a244e68210665e4f8b2aba42fca055681" name="a244e68210665e4f8b2aba42fca055681"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a244e68210665e4f8b2aba42fca055681">&#9670;&#160;</a></span>valueOr() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename U &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr ValueType <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::valueOr </td>
+          <td>(</td>
+          <td class="paramtype">U &amp;&amp;&#160;</td>
+          <td class="paramname"><em>defaultValue</em></td><td>)</td>
+          <td> &amp;&amp;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>有効であれば自身を、無効であればデフォルト値を取得する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">defaultValue</td><td>デフォルト値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a62afa79333847677ff4d364664b2658d" name="a62afa79333847677ff4d364664b2658d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62afa79333847677ff4d364664b2658d">&#9670;&#160;</a></span>valueOr() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename U &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr ValueType <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::valueOr </td>
+          <td>(</td>
+          <td class="paramtype">U &amp;&amp;&#160;</td>
+          <td class="paramname"><em>defaultValue</em></td><td>)</td>
+          <td> const &amp;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>有効であれば自身を、無効であればデフォルト値を取得する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">defaultValue</td><td>デフォルト値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">フレンドと関連関数の詳解</h2>
+<a id="aa8164a46a70587f301c5042dd4f28f5e" name="aa8164a46a70587f301c5042dd4f28f5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8164a46a70587f301c5042dd4f28f5e">&#9670;&#160;</a></span>operator!=</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>非等価演算子 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td></td></tr>
+    <tr><td class="paramname">rhs</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a13ac19fcf5d2da0760dbc473691bab51" name="a13ac19fcf5d2da0760dbc473691bab51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13ac19fcf5d2da0760dbc473691bab51">&#9670;&#160;</a></span>operator&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool operator&lt; </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>比較演算子 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td></td></tr>
+    <tr><td class="paramname">rhs</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af1acb01716269aea2b7beec356f9d21e" name="af1acb01716269aea2b7beec356f9d21e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1acb01716269aea2b7beec356f9d21e">&#9670;&#160;</a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename CharType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::basic_ostream&lt; CharType &gt; &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::basic_ostream&lt; CharType &gt; &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>opt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>std::basic_ostream への出力 </p>
+<dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">CharType</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td></td></tr>
+    <tr><td class="paramname">opt</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="aaf30085cf3c426d7cc2b7fbdadc2031c" name="aaf30085cf3c426d7cc2b7fbdadc2031c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf30085cf3c426d7cc2b7fbdadc2031c">&#9670;&#160;</a></span>operator&lt;=</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool operator&lt;= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>比較演算子 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td></td></tr>
+    <tr><td class="paramname">rhs</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1dd0104afb6a47904cf4bb4eb877c436" name="a1dd0104afb6a47904cf4bb4eb877c436"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dd0104afb6a47904cf4bb4eb877c436">&#9670;&#160;</a></span>operator==</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>等価演算子 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td></td></tr>
+    <tr><td class="paramname">rhs</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1bc488c790af543a62feaa9c4460e402" name="a1bc488c790af543a62feaa9c4460e402"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bc488c790af543a62feaa9c4460e402">&#9670;&#160;</a></span>operator&gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool operator&gt; </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>比較演算子 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td></td></tr>
+    <tr><td class="paramname">rhs</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abe3ba1d7150fc2f72713ed56ae80e479" name="abe3ba1d7150fc2f72713ed56ae80e479"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe3ba1d7150fc2f72713ed56ae80e479">&#9670;&#160;</a></span>operator&gt;=</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool operator&gt;= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>比較演算子 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td></td></tr>
+    <tr><td class="paramname">rhs</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>src/Udon/Types/<a class="el" href="Optional_8hpp_source.html">Optional.hpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Udon</b></li><li class="navelem"><a class="el" href="classUdon_1_1Optional.html">Optional</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+  </ul>
+</div>
+</body>
+</html>

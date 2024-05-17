@@ -1,0 +1,1312 @@
+<!-- HTML header for doxygen 1.10.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>UdonLibrary: Udon::Vec2 構造体</title>
+<!--BEGIN PROJECT_ICON-->
+<link rel="icon" href="$projecticon" type="image/x-icon" />
+<!--END PROJECT_ICON-->
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--BEGIN COPY_CLIPBOARD-->
+<script type="text/javascript" src="clipboard.js"></script>
+<!--END COPY_CLIPBOARD-->
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+  DoxygenAwesomeDarkModeToggle.init()
+  DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeInteractiveToc.hideMobileMenu = false
+</script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">機械システム研究部 C++ ライブラリ</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('structUdon_1_1Vec2.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">公開型</a> &#124;
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pub-static-methods">静的公開メンバ関数</a> &#124;
+<a href="#pub-attribs">公開変数類</a> &#124;
+<a href="#pub-static-attribs">静的公開変数類</a> &#124;
+<a href="#friends">フレンド</a> &#124;
+<a href="structUdon_1_1Vec2-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle"><div class="title">Udon::Vec2 構造体</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+公開型</h2></td></tr>
+<tr class="memitem:ab00e88ac2fc86620cecb2f516a74adc7"><td class="memItemLeft" align="right" valign="top"><a id="ab00e88ac2fc86620cecb2f516a74adc7" name="ab00e88ac2fc86620cecb2f516a74adc7"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>ValueType</b> = double</td></tr>
+<tr class="memdesc:ab00e88ac2fc86620cecb2f516a74adc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">要素の型 <br /></td></tr>
+<tr class="separator:ab00e88ac2fc86620cecb2f516a74adc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a2f54877269048fbacb33e02d2f7b1d54"><td class="memItemLeft" align="right" valign="top"><a id="a2f54877269048fbacb33e02d2f7b1d54" name="a2f54877269048fbacb33e02d2f7b1d54"></a>
+constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>Vec2</b> () noexcept</td></tr>
+<tr class="memdesc:a2f54877269048fbacb33e02d2f7b1d54"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコンストラクタ <br /></td></tr>
+<tr class="separator:a2f54877269048fbacb33e02d2f7b1d54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8789b2696614eaad575515363741edff"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#a8789b2696614eaad575515363741edff">Vec2</a> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> <a class="el" href="structUdon_1_1Vec2.html#aa41b9596dd6fd8353630210413608eb4">x</a>, <a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> <a class="el" href="structUdon_1_1Vec2.html#a286f89924b06a62878f3fe1af341031d">y</a>) noexcept</td></tr>
+<tr class="memdesc:a8789b2696614eaad575515363741edff"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="structUdon_1_1Vec2.html#a8789b2696614eaad575515363741edff">[詳解]</a><br /></td></tr>
+<tr class="separator:a8789b2696614eaad575515363741edff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24ffad6c4572a0586c9c3e97633ad812"><td class="memItemLeft" align="right" valign="top"><a id="a24ffad6c4572a0586c9c3e97633ad812" name="a24ffad6c4572a0586c9c3e97633ad812"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Vec2</b> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;)=default</td></tr>
+<tr class="memdesc:a24ffad6c4572a0586c9c3e97633ad812"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコピーコンストラクタ <br /></td></tr>
+<tr class="separator:a24ffad6c4572a0586c9c3e97633ad812"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa89aa7ae8595f78e8fef08f84a7ba531"><td class="memItemLeft" align="right" valign="top"><a id="aa89aa7ae8595f78e8fef08f84a7ba531" name="aa89aa7ae8595f78e8fef08f84a7ba531"></a>
+<a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;)=default</td></tr>
+<tr class="memdesc:aa89aa7ae8595f78e8fef08f84a7ba531"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコピー代入演算子 <br /></td></tr>
+<tr class="separator:aa89aa7ae8595f78e8fef08f84a7ba531"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39b2f52d53d0ec86687bca1431e819f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#a39b2f52d53d0ec86687bca1431e819f4">operator+=</a> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;rhs) noexcept</td></tr>
+<tr class="memdesc:a39b2f52d53d0ec86687bca1431e819f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">複合代入演算子  <a href="structUdon_1_1Vec2.html#a39b2f52d53d0ec86687bca1431e819f4">[詳解]</a><br /></td></tr>
+<tr class="separator:a39b2f52d53d0ec86687bca1431e819f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef8b924bb37a28882530d26feeea19df"><td class="memItemLeft" align="right" valign="top"><a id="aef8b924bb37a28882530d26feeea19df" name="aef8b924bb37a28882530d26feeea19df"></a>
+<a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator-=</b> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;rhs) noexcept</td></tr>
+<tr class="separator:aef8b924bb37a28882530d26feeea19df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afea16f432910547257249332ae476f39"><td class="memItemLeft" align="right" valign="top"><a id="afea16f432910547257249332ae476f39" name="afea16f432910547257249332ae476f39"></a>
+<a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*=</b> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;rhs) noexcept</td></tr>
+<tr class="separator:afea16f432910547257249332ae476f39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ecd65ea034f79442f044809c83888af"><td class="memItemLeft" align="right" valign="top"><a id="a2ecd65ea034f79442f044809c83888af" name="a2ecd65ea034f79442f044809c83888af"></a>
+<a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator/=</b> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;rhs) noexcept</td></tr>
+<tr class="separator:a2ecd65ea034f79442f044809c83888af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a695bb57e4dce8218a4dbf8ea3c3da98a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#a695bb57e4dce8218a4dbf8ea3c3da98a">operator+=</a> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> rhs) noexcept</td></tr>
+<tr class="memdesc:a695bb57e4dce8218a4dbf8ea3c3da98a"><td class="mdescLeft">&#160;</td><td class="mdescRight">複合代入演算子  <a href="structUdon_1_1Vec2.html#a695bb57e4dce8218a4dbf8ea3c3da98a">[詳解]</a><br /></td></tr>
+<tr class="separator:a695bb57e4dce8218a4dbf8ea3c3da98a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dfdaf4ad87e46f1634864ea736daf96"><td class="memItemLeft" align="right" valign="top"><a id="a2dfdaf4ad87e46f1634864ea736daf96" name="a2dfdaf4ad87e46f1634864ea736daf96"></a>
+<a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator-=</b> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> rhs) noexcept</td></tr>
+<tr class="separator:a2dfdaf4ad87e46f1634864ea736daf96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68f9d011d204394cb6e57f610c56419b"><td class="memItemLeft" align="right" valign="top"><a id="a68f9d011d204394cb6e57f610c56419b" name="a68f9d011d204394cb6e57f610c56419b"></a>
+<a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*=</b> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> rhs) noexcept</td></tr>
+<tr class="separator:a68f9d011d204394cb6e57f610c56419b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a02bafbc72cc637caf7462f36393e4e"><td class="memItemLeft" align="right" valign="top"><a id="a1a02bafbc72cc637caf7462f36393e4e" name="a1a02bafbc72cc637caf7462f36393e4e"></a>
+<a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator/=</b> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> rhs) noexcept</td></tr>
+<tr class="separator:a1a02bafbc72cc637caf7462f36393e4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c1bbb3c9730260ffd413435411392fc"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#a1c1bbb3c9730260ffd413435411392fc">operator bool</a> () const noexcept</td></tr>
+<tr class="memdesc:a1c1bbb3c9730260ffd413435411392fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">要素のいずれかに0以外の値があるかどうかを返す  <a href="structUdon_1_1Vec2.html#a1c1bbb3c9730260ffd413435411392fc">[詳解]</a><br /></td></tr>
+<tr class="separator:a1c1bbb3c9730260ffd413435411392fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a40aba51ac3f9a17cc1b742fa8b3474"><td class="memItemLeft" align="right" valign="top"><a id="a5a40aba51ac3f9a17cc1b742fa8b3474" name="a5a40aba51ac3f9a17cc1b742fa8b3474"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>isZero</b> () const noexcept</td></tr>
+<tr class="memdesc:a5a40aba51ac3f9a17cc1b742fa8b3474"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゼロベクトルであるかを返す <br /></td></tr>
+<tr class="separator:a5a40aba51ac3f9a17cc1b742fa8b3474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea5772258323fa3830681b68d93def1a"><td class="memItemLeft" align="right" valign="top"><a id="aea5772258323fa3830681b68d93def1a" name="aea5772258323fa3830681b68d93def1a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept</td></tr>
+<tr class="memdesc:aea5772258323fa3830681b68d93def1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">値クリア <br /></td></tr>
+<tr class="separator:aea5772258323fa3830681b68d93def1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2cb87c869e4def8c205b5bf98d465d7"><td class="memItemLeft" align="right" valign="top"><a id="ad2cb87c869e4def8c205b5bf98d465d7" name="ad2cb87c869e4def8c205b5bf98d465d7"></a>
+<a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>replaceX</b> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> newValue) noexcept</td></tr>
+<tr class="separator:ad2cb87c869e4def8c205b5bf98d465d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ab5678214264a0986ebb8ae93e8422c"><td class="memItemLeft" align="right" valign="top"><a id="a3ab5678214264a0986ebb8ae93e8422c" name="a3ab5678214264a0986ebb8ae93e8422c"></a>
+<a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>replaceY</b> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> newValue) noexcept</td></tr>
+<tr class="separator:a3ab5678214264a0986ebb8ae93e8422c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a620b0ceecfe347a6de1e1c60799f8eca"><td class="memTemplParams" colspan="2"><a id="a620b0ceecfe347a6de1e1c60799f8eca" name="a620b0ceecfe347a6de1e1c60799f8eca"></a>
+template&lt;typename Visitor &gt; </td></tr>
+<tr class="memitem:a620b0ceecfe347a6de1e1c60799f8eca"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>replaceX</b> (Visitor &amp;&amp;visitor) noexcept</td></tr>
+<tr class="separator:a620b0ceecfe347a6de1e1c60799f8eca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac57b172a6bb4d034594a9e00918815d6"><td class="memTemplParams" colspan="2"><a id="ac57b172a6bb4d034594a9e00918815d6" name="ac57b172a6bb4d034594a9e00918815d6"></a>
+template&lt;typename Visitor &gt; </td></tr>
+<tr class="memitem:ac57b172a6bb4d034594a9e00918815d6"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>replaceY</b> (Visitor &amp;&amp;visitor) noexcept</td></tr>
+<tr class="separator:ac57b172a6bb4d034594a9e00918815d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5d9791bbe15c6063a1c567a7d78741f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#ae5d9791bbe15c6063a1c567a7d78741f">rotatedAt</a> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;center, <a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> <a class="el" href="structUdon_1_1Vec2.html#a6f91343bf4606f50dac05e5d46cdcc99">angle</a>) const noexcept</td></tr>
+<tr class="memdesc:ae5d9791bbe15c6063a1c567a7d78741f"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定された点を中心に時計回りに回転したベクトルを返す  <a href="structUdon_1_1Vec2.html#ae5d9791bbe15c6063a1c567a7d78741f">[詳解]</a><br /></td></tr>
+<tr class="separator:ae5d9791bbe15c6063a1c567a7d78741f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f3de087890fec3c32c6870b9aa2f7fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#a0f3de087890fec3c32c6870b9aa2f7fd">rotateAt</a> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;center, <a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> <a class="el" href="structUdon_1_1Vec2.html#a6f91343bf4606f50dac05e5d46cdcc99">angle</a>) noexcept</td></tr>
+<tr class="memdesc:a0f3de087890fec3c32c6870b9aa2f7fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定された点を中心に時計回りに回転させる  <a href="structUdon_1_1Vec2.html#a0f3de087890fec3c32c6870b9aa2f7fd">[詳解]</a><br /></td></tr>
+<tr class="separator:a0f3de087890fec3c32c6870b9aa2f7fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a651345a85870ef89338fe6db324aabbb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#a651345a85870ef89338fe6db324aabbb">rotated</a> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> <a class="el" href="structUdon_1_1Vec2.html#a6f91343bf4606f50dac05e5d46cdcc99">angle</a>) const noexcept</td></tr>
+<tr class="memdesc:a651345a85870ef89338fe6db324aabbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">原点を中心に回転したベクトルを返す  <a href="structUdon_1_1Vec2.html#a651345a85870ef89338fe6db324aabbb">[詳解]</a><br /></td></tr>
+<tr class="separator:a651345a85870ef89338fe6db324aabbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8244490c21c996801239aa89dc1f580"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#ad8244490c21c996801239aa89dc1f580">rotate</a> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> <a class="el" href="structUdon_1_1Vec2.html#a6f91343bf4606f50dac05e5d46cdcc99">angle</a>) noexcept</td></tr>
+<tr class="memdesc:ad8244490c21c996801239aa89dc1f580"><td class="mdescLeft">&#160;</td><td class="mdescRight">原点を中心に回転させる  <a href="structUdon_1_1Vec2.html#ad8244490c21c996801239aa89dc1f580">[詳解]</a><br /></td></tr>
+<tr class="separator:ad8244490c21c996801239aa89dc1f580"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27d0aaa30865d251f094aced56783e89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#a27d0aaa30865d251f094aced56783e89">angleAt</a> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;rhs) const noexcept</td></tr>
+<tr class="memdesc:a27d0aaa30865d251f094aced56783e89"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定された点からの角度を求める  <a href="structUdon_1_1Vec2.html#a27d0aaa30865d251f094aced56783e89">[詳解]</a><br /></td></tr>
+<tr class="separator:a27d0aaa30865d251f094aced56783e89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f91343bf4606f50dac05e5d46cdcc99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#a6f91343bf4606f50dac05e5d46cdcc99">angle</a> () const noexcept</td></tr>
+<tr class="memdesc:a6f91343bf4606f50dac05e5d46cdcc99"><td class="mdescLeft">&#160;</td><td class="mdescRight">原点からの時計回りの角度を求める  <a href="structUdon_1_1Vec2.html#a6f91343bf4606f50dac05e5d46cdcc99">[詳解]</a><br /></td></tr>
+<tr class="separator:a6f91343bf4606f50dac05e5d46cdcc99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac663e69dc69695397b7ce4075e7e77e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#ac663e69dc69695397b7ce4075e7e77e9">distanceFrom</a> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;rhs) const noexcept</td></tr>
+<tr class="memdesc:ac663e69dc69695397b7ce4075e7e77e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定された点からの距離を求める  <a href="structUdon_1_1Vec2.html#ac663e69dc69695397b7ce4075e7e77e9">[詳解]</a><br /></td></tr>
+<tr class="separator:ac663e69dc69695397b7ce4075e7e77e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f2bca871c66abddcc0281e69a511fe9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#a3f2bca871c66abddcc0281e69a511fe9">length</a> () const noexcept</td></tr>
+<tr class="memdesc:a3f2bca871c66abddcc0281e69a511fe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">原点からの距離を求める  <a href="structUdon_1_1Vec2.html#a3f2bca871c66abddcc0281e69a511fe9">[詳解]</a><br /></td></tr>
+<tr class="separator:a3f2bca871c66abddcc0281e69a511fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79800b213ce8afc954dda9de9d72ddf4"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#a79800b213ce8afc954dda9de9d72ddf4">lengthSq</a> () const noexcept</td></tr>
+<tr class="memdesc:a79800b213ce8afc954dda9de9d72ddf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">原点からの距離の二乗を求める  <a href="structUdon_1_1Vec2.html#a79800b213ce8afc954dda9de9d72ddf4">[詳解]</a><br /></td></tr>
+<tr class="separator:a79800b213ce8afc954dda9de9d72ddf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2391386d50fa2bfc20b1b5c125e387fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#a2391386d50fa2bfc20b1b5c125e387fc">scaledLength</a> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> <a class="el" href="structUdon_1_1Vec2.html#a3f2bca871c66abddcc0281e69a511fe9">length</a>) const noexcept</td></tr>
+<tr class="memdesc:a2391386d50fa2bfc20b1b5c125e387fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">長さを変更したベクトルを返す  <a href="structUdon_1_1Vec2.html#a2391386d50fa2bfc20b1b5c125e387fc">[詳解]</a><br /></td></tr>
+<tr class="separator:a2391386d50fa2bfc20b1b5c125e387fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45886ef121bc89660f29e20cd6519149"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#a45886ef121bc89660f29e20cd6519149">scaleLength</a> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> <a class="el" href="structUdon_1_1Vec2.html#a3f2bca871c66abddcc0281e69a511fe9">length</a>) noexcept</td></tr>
+<tr class="memdesc:a45886ef121bc89660f29e20cd6519149"><td class="mdescLeft">&#160;</td><td class="mdescRight">ベクトルの長さを指定された値にする  <a href="structUdon_1_1Vec2.html#a45886ef121bc89660f29e20cd6519149">[詳解]</a><br /></td></tr>
+<tr class="separator:a45886ef121bc89660f29e20cd6519149"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c6248222369fdacf211f040a5b67f8f"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#a5c6248222369fdacf211f040a5b67f8f">mapped</a> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> fromMin, <a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> fromMax, <a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> toMin, <a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> toMax) const noexcept</td></tr>
+<tr class="memdesc:a5c6248222369fdacf211f040a5b67f8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">各要素をある範囲から別の範囲に再マップしたベクトルを返す  <a href="structUdon_1_1Vec2.html#a5c6248222369fdacf211f040a5b67f8f">[詳解]</a><br /></td></tr>
+<tr class="separator:a5c6248222369fdacf211f040a5b67f8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a688f1e2761ce5aeaa30590060aa62e32"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#a688f1e2761ce5aeaa30590060aa62e32">map</a> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> fromMin, <a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> fromMax, <a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> toMin, <a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> toMax) noexcept</td></tr>
+<tr class="memdesc:a688f1e2761ce5aeaa30590060aa62e32"><td class="mdescLeft">&#160;</td><td class="mdescRight">各要素をある範囲から別の範囲に再マップする  <a href="structUdon_1_1Vec2.html#a688f1e2761ce5aeaa30590060aa62e32">[詳解]</a><br /></td></tr>
+<tr class="separator:a688f1e2761ce5aeaa30590060aa62e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae38d2ffc893e636f284a487e1ec221f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#aae38d2ffc893e636f284a487e1ec221f">normalized</a> () const noexcept</td></tr>
+<tr class="memdesc:aae38d2ffc893e636f284a487e1ec221f"><td class="mdescLeft">&#160;</td><td class="mdescRight">正規化したベクトルを返す  <a href="structUdon_1_1Vec2.html#aae38d2ffc893e636f284a487e1ec221f">[詳解]</a><br /></td></tr>
+<tr class="separator:aae38d2ffc893e636f284a487e1ec221f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8c4099ecb078141ece495ca6feb110a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#ad8c4099ecb078141ece495ca6feb110a">normalize</a> () noexcept</td></tr>
+<tr class="memdesc:ad8c4099ecb078141ece495ca6feb110a"><td class="mdescLeft">&#160;</td><td class="mdescRight">ベクトルを正規化する  <a href="structUdon_1_1Vec2.html#ad8c4099ecb078141ece495ca6feb110a">[詳解]</a><br /></td></tr>
+<tr class="separator:ad8c4099ecb078141ece495ca6feb110a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b7019cd6d7374a7bd43262415844b45"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#a9b7019cd6d7374a7bd43262415844b45">clamped</a> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> min, <a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> max) const noexcept</td></tr>
+<tr class="memdesc:a9b7019cd6d7374a7bd43262415844b45"><td class="mdescLeft">&#160;</td><td class="mdescRight">各要素に制限をかけたベクトルを返す  <a href="structUdon_1_1Vec2.html#a9b7019cd6d7374a7bd43262415844b45">[詳解]</a><br /></td></tr>
+<tr class="separator:a9b7019cd6d7374a7bd43262415844b45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82b41b3d801e5ece0ac11d0f14b5e61a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#a82b41b3d801e5ece0ac11d0f14b5e61a">clamp</a> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> min, <a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> max) noexcept</td></tr>
+<tr class="memdesc:a82b41b3d801e5ece0ac11d0f14b5e61a"><td class="mdescLeft">&#160;</td><td class="mdescRight">各要素に制限をかける  <a href="structUdon_1_1Vec2.html#a82b41b3d801e5ece0ac11d0f14b5e61a">[詳解]</a><br /></td></tr>
+<tr class="separator:a82b41b3d801e5ece0ac11d0f14b5e61a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34af991251622cea3dd3d8b99aefcf22"><td class="memItemLeft" align="right" valign="top"><a id="a34af991251622cea3dd3d8b99aefcf22" name="a34af991251622cea3dd3d8b99aefcf22"></a>
+<a class="el" href="structUdon_1_1Vec3.html">Udon::Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><b>xy0</b> () const noexcept</td></tr>
+<tr class="separator:a34af991251622cea3dd3d8b99aefcf22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1eca8b724c9412c9a7413f5d9b39f88"><td class="memItemLeft" align="right" valign="top"><a id="ab1eca8b724c9412c9a7413f5d9b39f88" name="ab1eca8b724c9412c9a7413f5d9b39f88"></a>
+<a class="el" href="structUdon_1_1Polar.html">Udon::Polar</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toPolar</b> () const noexcept</td></tr>
+<tr class="separator:ab1eca8b724c9412c9a7413f5d9b39f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addaa664efc2d0d44c29bba81fb3d882b"><td class="memItemLeft" align="right" valign="top"><a id="addaa664efc2d0d44c29bba81fb3d882b" name="addaa664efc2d0d44c29bba81fb3d882b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>UDON_ENUMERABLE</b> (<a class="el" href="structUdon_1_1Vec2.html#aa41b9596dd6fd8353630210413608eb4">x</a>, <a class="el" href="structUdon_1_1Vec2.html#a286f89924b06a62878f3fe1af341031d">y</a>)</td></tr>
+<tr class="memdesc:addaa664efc2d0d44c29bba81fb3d882b"><td class="mdescLeft">&#160;</td><td class="mdescRight">OpenSiv3D との連携 <br /></td></tr>
+<tr class="separator:addaa664efc2d0d44c29bba81fb3d882b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静的公開メンバ関数</h2></td></tr>
+<tr class="memitem:ae59a6869feaa6a0de714ab17eecc8022"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#ae59a6869feaa6a0de714ab17eecc8022">Zero</a> () noexcept</td></tr>
+<tr class="memdesc:ae59a6869feaa6a0de714ab17eecc8022"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゼロベクトルを返す  <a href="structUdon_1_1Vec2.html#ae59a6869feaa6a0de714ab17eecc8022">[詳解]</a><br /></td></tr>
+<tr class="separator:ae59a6869feaa6a0de714ab17eecc8022"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+公開変数類</h2></td></tr>
+<tr class="memitem:aa41b9596dd6fd8353630210413608eb4"><td class="memItemLeft" align="right" valign="top"><a id="aa41b9596dd6fd8353630210413608eb4" name="aa41b9596dd6fd8353630210413608eb4"></a>
+<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>x</b></td></tr>
+<tr class="memdesc:aa41b9596dd6fd8353630210413608eb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">X成分 <br /></td></tr>
+<tr class="separator:aa41b9596dd6fd8353630210413608eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a286f89924b06a62878f3fe1af341031d"><td class="memItemLeft" align="right" valign="top"><a id="a286f89924b06a62878f3fe1af341031d" name="a286f89924b06a62878f3fe1af341031d"></a>
+<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>y</b></td></tr>
+<tr class="memdesc:a286f89924b06a62878f3fe1af341031d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Y成分 <br /></td></tr>
+<tr class="separator:a286f89924b06a62878f3fe1af341031d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+静的公開変数類</h2></td></tr>
+<tr class="memitem:ad1f99a08b6cf45bfcb9c5db8f3a6f3d5"><td class="memItemLeft" align="right" valign="top"><a id="ad1f99a08b6cf45bfcb9c5db8f3a6f3d5" name="ad1f99a08b6cf45bfcb9c5db8f3a6f3d5"></a>
+static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>Dimension</b> = 2</td></tr>
+<tr class="memdesc:ad1f99a08b6cf45bfcb9c5db8f3a6f3d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">次元数 <br /></td></tr>
+<tr class="separator:ad1f99a08b6cf45bfcb9c5db8f3a6f3d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+フレンド</h2></td></tr>
+<tr class="memitem:a909f2c4710aa650ce080dfc3bfdffbc6"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#a909f2c4710aa650ce080dfc3bfdffbc6">operator+</a> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;lhs, const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;rhs) noexcept</td></tr>
+<tr class="memdesc:a909f2c4710aa650ce080dfc3bfdffbc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">算術演算子  <a href="structUdon_1_1Vec2.html#a909f2c4710aa650ce080dfc3bfdffbc6">[詳解]</a><br /></td></tr>
+<tr class="separator:a909f2c4710aa650ce080dfc3bfdffbc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50e4426327246b5503b07584fc316f92"><td class="memItemLeft" align="right" valign="top"><a id="a50e4426327246b5503b07584fc316f92" name="a50e4426327246b5503b07584fc316f92"></a>
+constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;lhs, const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;rhs) noexcept</td></tr>
+<tr class="separator:a50e4426327246b5503b07584fc316f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2132dbb0ca769098b64d4292f7156795"><td class="memItemLeft" align="right" valign="top"><a id="a2132dbb0ca769098b64d4292f7156795" name="a2132dbb0ca769098b64d4292f7156795"></a>
+constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;lhs, const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;rhs) noexcept</td></tr>
+<tr class="separator:a2132dbb0ca769098b64d4292f7156795"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d1a204109393b6644b15dd35228c6a9"><td class="memItemLeft" align="right" valign="top"><a id="a6d1a204109393b6644b15dd35228c6a9" name="a6d1a204109393b6644b15dd35228c6a9"></a>
+constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator/</b> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;lhs, const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;rhs) noexcept</td></tr>
+<tr class="separator:a6d1a204109393b6644b15dd35228c6a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3cd5396d3e4e26b85ae7d5ac3d529d1"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#ae3cd5396d3e4e26b85ae7d5ac3d529d1">operator+</a> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;lhs, <a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> rhs) noexcept</td></tr>
+<tr class="memdesc:ae3cd5396d3e4e26b85ae7d5ac3d529d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">算術演算子  <a href="structUdon_1_1Vec2.html#ae3cd5396d3e4e26b85ae7d5ac3d529d1">[詳解]</a><br /></td></tr>
+<tr class="separator:ae3cd5396d3e4e26b85ae7d5ac3d529d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a632064a50b10968d6a6160b7cf95f4e5"><td class="memItemLeft" align="right" valign="top"><a id="a632064a50b10968d6a6160b7cf95f4e5" name="a632064a50b10968d6a6160b7cf95f4e5"></a>
+constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;lhs, <a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> rhs) noexcept</td></tr>
+<tr class="separator:a632064a50b10968d6a6160b7cf95f4e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbff40a3b709667f6f6610a8a7899bb7"><td class="memItemLeft" align="right" valign="top"><a id="adbff40a3b709667f6f6610a8a7899bb7" name="adbff40a3b709667f6f6610a8a7899bb7"></a>
+constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;lhs, <a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> rhs) noexcept</td></tr>
+<tr class="separator:adbff40a3b709667f6f6610a8a7899bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9c3f5a16c328ddccd1a5908830da626"><td class="memItemLeft" align="right" valign="top"><a id="ac9c3f5a16c328ddccd1a5908830da626" name="ac9c3f5a16c328ddccd1a5908830da626"></a>
+constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator/</b> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;lhs, <a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> rhs) noexcept</td></tr>
+<tr class="separator:ac9c3f5a16c328ddccd1a5908830da626"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa95fe914fb388173143476e390fc154c"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#aa95fe914fb388173143476e390fc154c">operator+</a> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> lhs, const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;rhs) noexcept</td></tr>
+<tr class="memdesc:aa95fe914fb388173143476e390fc154c"><td class="mdescLeft">&#160;</td><td class="mdescRight">算術演算子  <a href="structUdon_1_1Vec2.html#aa95fe914fb388173143476e390fc154c">[詳解]</a><br /></td></tr>
+<tr class="separator:aa95fe914fb388173143476e390fc154c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a423723434981f2ddb688c0d6ad1b619d"><td class="memItemLeft" align="right" valign="top"><a id="a423723434981f2ddb688c0d6ad1b619d" name="a423723434981f2ddb688c0d6ad1b619d"></a>
+constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> lhs, const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;rhs) noexcept</td></tr>
+<tr class="separator:a423723434981f2ddb688c0d6ad1b619d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8164d0a6cd94135ef508a07c805a6d6"><td class="memItemLeft" align="right" valign="top"><a id="ad8164d0a6cd94135ef508a07c805a6d6" name="ad8164d0a6cd94135ef508a07c805a6d6"></a>
+constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> lhs, const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;rhs) noexcept</td></tr>
+<tr class="separator:ad8164d0a6cd94135ef508a07c805a6d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb567bc395846775b9499ffdec497162"><td class="memItemLeft" align="right" valign="top"><a id="abb567bc395846775b9499ffdec497162" name="abb567bc395846775b9499ffdec497162"></a>
+constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator/</b> (<a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> lhs, const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;rhs) noexcept</td></tr>
+<tr class="separator:abb567bc395846775b9499ffdec497162"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1896ddbdec2e3042be6c11fe4cd3f7c4"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html#a1896ddbdec2e3042be6c11fe4cd3f7c4">operator==</a> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;lhs, const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;rhs) noexcept</td></tr>
+<tr class="memdesc:a1896ddbdec2e3042be6c11fe4cd3f7c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">比較演算子  <a href="structUdon_1_1Vec2.html#a1896ddbdec2e3042be6c11fe4cd3f7c4">[詳解]</a><br /></td></tr>
+<tr class="separator:a1896ddbdec2e3042be6c11fe4cd3f7c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac57ac10d7f1d364e2f82368043075c5a"><td class="memItemLeft" align="right" valign="top"><a id="ac57ac10d7f1d364e2f82368043075c5a" name="ac57ac10d7f1d364e2f82368043075c5a"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;lhs, const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;rhs) noexcept</td></tr>
+<tr class="separator:ac57ac10d7f1d364e2f82368043075c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">構築子と解体子</h2>
+<a id="a8789b2696614eaad575515363741edff" name="a8789b2696614eaad575515363741edff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8789b2696614eaad575515363741edff">&#9670;&#160;</a></span>Vec2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr Udon::Vec2::Vec2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>x成分 </td></tr>
+    <tr><td class="paramname">y</td><td>y成分 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a6f91343bf4606f50dac05e5d46cdcc99" name="a6f91343bf4606f50dac05e5d46cdcc99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f91343bf4606f50dac05e5d46cdcc99">&#9670;&#160;</a></span>angle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> Udon::Vec2::angle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>原点からの時計回りの角度を求める </p>
+<dl class="section note"><dt>覚え書き</dt><dd>y軸の正が 0rad </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a27d0aaa30865d251f094aced56783e89" name="a27d0aaa30865d251f094aced56783e89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27d0aaa30865d251f094aced56783e89">&#9670;&#160;</a></span>angleAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> Udon::Vec2::angleAt </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>指定された点からの角度を求める </p>
+<dl class="section note"><dt>覚え書き</dt><dd>y軸の正が 0rad </dd></dl>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>指定された点 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a82b41b3d801e5ece0ac11d0f14b5e61a" name="a82b41b3d801e5ece0ac11d0f14b5e61a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82b41b3d801e5ece0ac11d0f14b5e61a">&#9670;&#160;</a></span>clamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp; Udon::Vec2::clamp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>各要素に制限をかける </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">min</td><td>最小値 </td></tr>
+    <tr><td class="paramname">max</td><td>最大値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a9b7019cd6d7374a7bd43262415844b45" name="a9b7019cd6d7374a7bd43262415844b45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b7019cd6d7374a7bd43262415844b45">&#9670;&#160;</a></span>clamped()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> Udon::Vec2::clamped </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>各要素に制限をかけたベクトルを返す </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">min</td><td>最小値 </td></tr>
+    <tr><td class="paramname">max</td><td>最大値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="ac663e69dc69695397b7ce4075e7e77e9" name="ac663e69dc69695397b7ce4075e7e77e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac663e69dc69695397b7ce4075e7e77e9">&#9670;&#160;</a></span>distanceFrom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> Udon::Vec2::distanceFrom </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>指定された点からの距離を求める </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>指定された点 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>指定された点からの距離 </dd></dl>
+
+</div>
+</div>
+<a id="a3f2bca871c66abddcc0281e69a511fe9" name="a3f2bca871c66abddcc0281e69a511fe9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f2bca871c66abddcc0281e69a511fe9">&#9670;&#160;</a></span>length()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> Udon::Vec2::length </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>原点からの距離を求める </p>
+<dl class="section return"><dt>戻り値</dt><dd>原点からの距離 </dd></dl>
+
+</div>
+</div>
+<a id="a79800b213ce8afc954dda9de9d72ddf4" name="a79800b213ce8afc954dda9de9d72ddf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79800b213ce8afc954dda9de9d72ddf4">&#9670;&#160;</a></span>lengthSq()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> Udon::Vec2::lengthSq </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>原点からの距離の二乗を求める </p>
+<dl class="section return"><dt>戻り値</dt><dd>原点からの距離の二乗 </dd></dl>
+
+</div>
+</div>
+<a id="a688f1e2761ce5aeaa30590060aa62e32" name="a688f1e2761ce5aeaa30590060aa62e32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a688f1e2761ce5aeaa30590060aa62e32">&#9670;&#160;</a></span>map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp; Udon::Vec2::map </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>fromMin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>fromMax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>toMin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>toMax</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>各要素をある範囲から別の範囲に再マップする </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fromMin</td><td>元の値の下限 </td></tr>
+    <tr><td class="paramname">fromMax</td><td>元の値の上限 </td></tr>
+    <tr><td class="paramname">toMin</td><td>再マップ後の値の下限 </td></tr>
+    <tr><td class="paramname">toMax</td><td>再マップ後の値の上限 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a5c6248222369fdacf211f040a5b67f8f" name="a5c6248222369fdacf211f040a5b67f8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c6248222369fdacf211f040a5b67f8f">&#9670;&#160;</a></span>mapped()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> Udon::Vec2::mapped </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>fromMin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>fromMax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>toMin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>toMax</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>各要素をある範囲から別の範囲に再マップしたベクトルを返す </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fromMin</td><td>元の値の下限 </td></tr>
+    <tr><td class="paramname">fromMax</td><td>元の値の上限 </td></tr>
+    <tr><td class="paramname">toMin</td><td>再マップ後の値の下限 </td></tr>
+    <tr><td class="paramname">toMax</td><td>再マップ後の値の上限 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="ad8c4099ecb078141ece495ca6feb110a" name="ad8c4099ecb078141ece495ca6feb110a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8c4099ecb078141ece495ca6feb110a">&#9670;&#160;</a></span>normalize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp; Udon::Vec2::normalize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ベクトルを正規化する </p>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="aae38d2ffc893e636f284a487e1ec221f" name="aae38d2ffc893e636f284a487e1ec221f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae38d2ffc893e636f284a487e1ec221f">&#9670;&#160;</a></span>normalized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> Udon::Vec2::normalized </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>正規化したベクトルを返す </p>
+<dl class="section return"><dt>戻り値</dt><dd>正規化したベクトル </dd></dl>
+
+</div>
+</div>
+<a id="a1c1bbb3c9730260ffd413435411392fc" name="a1c1bbb3c9730260ffd413435411392fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c1bbb3c9730260ffd413435411392fc">&#9670;&#160;</a></span>operator bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr Udon::Vec2::operator bool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>要素のいずれかに0以外の値があるかどうかを返す </p>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a39b2f52d53d0ec86687bca1431e819f4" name="a39b2f52d53d0ec86687bca1431e819f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39b2f52d53d0ec86687bca1431e819f4">&#9670;&#160;</a></span>operator+=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp; Udon::Vec2::operator+= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>複合代入演算子 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>vector = vector [operator] vector </dd></dl>
+
+</div>
+</div>
+<a id="a695bb57e4dce8218a4dbf8ea3c3da98a" name="a695bb57e4dce8218a4dbf8ea3c3da98a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a695bb57e4dce8218a4dbf8ea3c3da98a">&#9670;&#160;</a></span>operator+=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp; Udon::Vec2::operator+= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>複合代入演算子 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>vector = vector [operator] scalar </dd></dl>
+
+</div>
+</div>
+<a id="ad8244490c21c996801239aa89dc1f580" name="ad8244490c21c996801239aa89dc1f580"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8244490c21c996801239aa89dc1f580">&#9670;&#160;</a></span>rotate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp; Udon::Vec2::rotate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>原点を中心に回転させる </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>回転する角度 [rad] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>回転後の座標 </dd></dl>
+
+</div>
+</div>
+<a id="a0f3de087890fec3c32c6870b9aa2f7fd" name="a0f3de087890fec3c32c6870b9aa2f7fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f3de087890fec3c32c6870b9aa2f7fd">&#9670;&#160;</a></span>rotateAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp; Udon::Vec2::rotateAt </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td>
+          <td class="paramname"><em>center</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>angle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>指定された点を中心に時計回りに回転させる </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">center</td><td>回転の中心 </td></tr>
+    <tr><td class="paramname">angle</td><td>回転する角度 [rad] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>回転後の座標 </dd></dl>
+
+</div>
+</div>
+<a id="a651345a85870ef89338fe6db324aabbb" name="a651345a85870ef89338fe6db324aabbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a651345a85870ef89338fe6db324aabbb">&#9670;&#160;</a></span>rotated()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> Udon::Vec2::rotated </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>原点を中心に回転したベクトルを返す </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>回転する角度 [rad] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>回転後の座標 </dd></dl>
+
+</div>
+</div>
+<a id="ae5d9791bbe15c6063a1c567a7d78741f" name="ae5d9791bbe15c6063a1c567a7d78741f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5d9791bbe15c6063a1c567a7d78741f">&#9670;&#160;</a></span>rotatedAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> Udon::Vec2::rotatedAt </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td>
+          <td class="paramname"><em>center</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>angle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>指定された点を中心に時計回りに回転したベクトルを返す </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">center</td><td>回転の中心 </td></tr>
+    <tr><td class="paramname">angle</td><td>回転する角度 [rad] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>回転後の座標 </dd></dl>
+
+</div>
+</div>
+<a id="a2391386d50fa2bfc20b1b5c125e387fc" name="a2391386d50fa2bfc20b1b5c125e387fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2391386d50fa2bfc20b1b5c125e387fc">&#9670;&#160;</a></span>scaledLength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> Udon::Vec2::scaledLength </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>length</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>長さを変更したベクトルを返す </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">length</td><td>指定された長さ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a45886ef121bc89660f29e20cd6519149" name="a45886ef121bc89660f29e20cd6519149"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45886ef121bc89660f29e20cd6519149">&#9670;&#160;</a></span>scaleLength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp; Udon::Vec2::scaleLength </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>length</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ベクトルの長さを指定された値にする </p>
+<dl class="section note"><dt>覚え書き</dt><dd>長さを0にするとゼロベクトルになるので、長さの変更ができなくなる </dd></dl>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">length</td><td>指定された長さ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae59a6869feaa6a0de714ab17eecc8022" name="ae59a6869feaa6a0de714ab17eecc8022"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae59a6869feaa6a0de714ab17eecc8022">&#9670;&#160;</a></span>Zero()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> Udon::Vec2::Zero </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ゼロベクトルを返す </p>
+<dl class="section return"><dt>戻り値</dt><dd>ゼロベクトル </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">フレンドと関連関数の詳解</h2>
+<a id="a909f2c4710aa650ce080dfc3bfdffbc6" name="a909f2c4710aa650ce080dfc3bfdffbc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a909f2c4710aa650ce080dfc3bfdffbc6">&#9670;&#160;</a></span>operator+ <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> operator+ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>算術演算子 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>vector [operator] vector </dd></dl>
+
+</div>
+</div>
+<a id="ae3cd5396d3e4e26b85ae7d5ac3d529d1" name="ae3cd5396d3e4e26b85ae7d5ac3d529d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3cd5396d3e4e26b85ae7d5ac3d529d1">&#9670;&#160;</a></span>operator+ <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> operator+ </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>算術演算子 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>vector [operator] scalar </dd></dl>
+
+</div>
+</div>
+<a id="aa95fe914fb388173143476e390fc154c" name="aa95fe914fb388173143476e390fc154c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa95fe914fb388173143476e390fc154c">&#9670;&#160;</a></span>operator+ <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> operator+ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Vec2.html#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>算術演算子 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>scalar [operator] vector </dd></dl>
+
+</div>
+</div>
+<a id="a1896ddbdec2e3042be6c11fe4cd3f7c4" name="a1896ddbdec2e3042be6c11fe4cd3f7c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1896ddbdec2e3042be6c11fe4cd3f7c4">&#9670;&#160;</a></span>operator==</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec2.html">Vec2</a> &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>比較演算子 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>vector [operator] vector </dd></dl>
+
+</div>
+</div>
+<hr/>この構造体詳解は次のファイルから抽出されました:<ul>
+<li>src/Udon/Types/Forward/<a class="el" href="Forward_2Vector2D_8hpp_source.html">Vector2D.hpp</a></li>
+<li>src/Udon/Types/<a class="el" href="Vector2D_8hpp_source.html">Vector2D.hpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Udon</b></li><li class="navelem"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+  </ul>
+</div>
+</body>
+</html>

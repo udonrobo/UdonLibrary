@@ -1,0 +1,629 @@
+<!-- HTML header for doxygen 1.10.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>UdonLibrary: Udon::Quaternion 構造体</title>
+<!--BEGIN PROJECT_ICON-->
+<link rel="icon" href="$projecticon" type="image/x-icon" />
+<!--END PROJECT_ICON-->
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<!--BEGIN COPY_CLIPBOARD-->
+<script type="text/javascript" src="clipboard.js"></script>
+<!--END COPY_CLIPBOARD-->
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+  DoxygenAwesomeDarkModeToggle.init()
+  DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeInteractiveToc.hideMobileMenu = false
+</script>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">機械システム研究部 C++ ライブラリ</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.5 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('structUdon_1_1Quaternion.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">公開型</a> &#124;
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pub-static-methods">静的公開メンバ関数</a> &#124;
+<a href="#pub-attribs">公開変数類</a> &#124;
+<a href="structUdon_1_1Quaternion-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle"><div class="title">Udon::Quaternion 構造体</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>クオータニオン  
+ <a href="structUdon_1_1Quaternion.html#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="Forward_2Quaternion_8hpp_source.html">Udon/Types/Forward/Quaternion.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+公開型</h2></td></tr>
+<tr class="memitem:a32df59db82d9c4e7e7aef2ad984cf151"><td class="memItemLeft" align="right" valign="top"><a id="a32df59db82d9c4e7e7aef2ad984cf151" name="a32df59db82d9c4e7e7aef2ad984cf151"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>ValueType</b> = double</td></tr>
+<tr class="memdesc:a32df59db82d9c4e7e7aef2ad984cf151"><td class="mdescLeft">&#160;</td><td class="mdescRight">要素の型 <br /></td></tr>
+<tr class="separator:a32df59db82d9c4e7e7aef2ad984cf151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a11a1f2d44e87fd79570f69d6a115abe3"><td class="memItemLeft" align="right" valign="top"><a id="a11a1f2d44e87fd79570f69d6a115abe3" name="a11a1f2d44e87fd79570f69d6a115abe3"></a>
+constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>Quaternion</b> () noexcept</td></tr>
+<tr class="memdesc:a11a1f2d44e87fd79570f69d6a115abe3"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコンストラクタ <br /></td></tr>
+<tr class="separator:a11a1f2d44e87fd79570f69d6a115abe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9c931b8b3b32464d7712925d9123a60"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Quaternion.html#aa9c931b8b3b32464d7712925d9123a60">Quaternion</a> (<a class="el" href="structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151">ValueType</a> x, <a class="el" href="structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151">ValueType</a> y, <a class="el" href="structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151">ValueType</a> z, <a class="el" href="structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151">ValueType</a> w) noexcept</td></tr>
+<tr class="memdesc:aa9c931b8b3b32464d7712925d9123a60"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="structUdon_1_1Quaternion.html#aa9c931b8b3b32464d7712925d9123a60">[詳解]</a><br /></td></tr>
+<tr class="separator:aa9c931b8b3b32464d7712925d9123a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff64fcaa9fc239a8aa402f95ddfea9c0"><td class="memItemLeft" align="right" valign="top"><a id="aff64fcaa9fc239a8aa402f95ddfea9c0" name="aff64fcaa9fc239a8aa402f95ddfea9c0"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Quaternion</b> (const <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> &amp;)=default</td></tr>
+<tr class="memdesc:aff64fcaa9fc239a8aa402f95ddfea9c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコピーコンストラクタ <br /></td></tr>
+<tr class="separator:aff64fcaa9fc239a8aa402f95ddfea9c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa09322bb2a6e10f3917271b909337a8f"><td class="memItemLeft" align="right" valign="top"><a id="aa09322bb2a6e10f3917271b909337a8f" name="aa09322bb2a6e10f3917271b909337a8f"></a>
+<a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> &amp;)=default</td></tr>
+<tr class="memdesc:aa09322bb2a6e10f3917271b909337a8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコピー代入演算子 <br /></td></tr>
+<tr class="separator:aa09322bb2a6e10f3917271b909337a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2768b000ed9c9e81b2d8979c9ed54103"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Quaternion.html#a2768b000ed9c9e81b2d8979c9ed54103">operator*</a> (const <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> &amp;rhs) const noexcept</td></tr>
+<tr class="memdesc:a2768b000ed9c9e81b2d8979c9ed54103"><td class="mdescLeft">&#160;</td><td class="mdescRight">内積  <a href="structUdon_1_1Quaternion.html#a2768b000ed9c9e81b2d8979c9ed54103">[詳解]</a><br /></td></tr>
+<tr class="separator:a2768b000ed9c9e81b2d8979c9ed54103"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66f6ab515a96a9c1e8677c18ed424982"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Quaternion.html#a66f6ab515a96a9c1e8677c18ed424982">operator*=</a> (const <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> &amp;rhs) noexcept</td></tr>
+<tr class="memdesc:a66f6ab515a96a9c1e8677c18ed424982"><td class="mdescLeft">&#160;</td><td class="mdescRight">複合代入演算子  <a href="structUdon_1_1Quaternion.html#a66f6ab515a96a9c1e8677c18ed424982">[詳解]</a><br /></td></tr>
+<tr class="separator:a66f6ab515a96a9c1e8677c18ed424982"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2266fec30f50e46e295411c3ecac99cc"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Quaternion.html#a2266fec30f50e46e295411c3ecac99cc">operator==</a> (const <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> &amp;rhs) const noexcept</td></tr>
+<tr class="memdesc:a2266fec30f50e46e295411c3ecac99cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">比較演算子  <a href="structUdon_1_1Quaternion.html#a2266fec30f50e46e295411c3ecac99cc">[詳解]</a><br /></td></tr>
+<tr class="separator:a2266fec30f50e46e295411c3ecac99cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7c8066a210ff50d6a2c7adba8e81883"><td class="memItemLeft" align="right" valign="top"><a id="ad7c8066a210ff50d6a2c7adba8e81883" name="ad7c8066a210ff50d6a2c7adba8e81883"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> &amp;rhs) const noexcept</td></tr>
+<tr class="separator:ad7c8066a210ff50d6a2c7adba8e81883"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2906c1846eacc64d8dcd893b163c22f7"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Quaternion.html#a2906c1846eacc64d8dcd893b163c22f7">operator bool</a> () const noexcept</td></tr>
+<tr class="memdesc:a2906c1846eacc64d8dcd893b163c22f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">要素のいずれかに0以外の値があるかどうかを返す  <a href="structUdon_1_1Quaternion.html#a2906c1846eacc64d8dcd893b163c22f7">[詳解]</a><br /></td></tr>
+<tr class="separator:a2906c1846eacc64d8dcd893b163c22f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a035275dbdbc8bb54c01dae5a9d72afd2"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Quaternion.html#a035275dbdbc8bb54c01dae5a9d72afd2">inverse</a> () const noexcept</td></tr>
+<tr class="memdesc:a035275dbdbc8bb54c01dae5a9d72afd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">逆クオータニオン  <a href="structUdon_1_1Quaternion.html#a035275dbdbc8bb54c01dae5a9d72afd2">[詳解]</a><br /></td></tr>
+<tr class="separator:a035275dbdbc8bb54c01dae5a9d72afd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21ed0ccb68832276b6d4516bc6660d47"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Quaternion.html#a21ed0ccb68832276b6d4516bc6660d47">directionRevision</a> (const <a class="el" href="structUdon_1_1QuaternionDirection.html">QuaternionDirection</a> &amp;direction) const noexcept</td></tr>
+<tr class="memdesc:a21ed0ccb68832276b6d4516bc6660d47"><td class="mdescLeft">&#160;</td><td class="mdescRight">回転方向を修正したクオータニオンを取得する  <a href="structUdon_1_1Quaternion.html#a21ed0ccb68832276b6d4516bc6660d47">[詳解]</a><br /></td></tr>
+<tr class="separator:a21ed0ccb68832276b6d4516bc6660d47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa162ac18b0e736e31450b825c879f3dd"><td class="memItemLeft" align="right" valign="top"><a id="aa162ac18b0e736e31450b825c879f3dd" name="aa162ac18b0e736e31450b825c879f3dd"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>isZero</b> () const noexcept</td></tr>
+<tr class="memdesc:aa162ac18b0e736e31450b825c879f3dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">要素がゼロであるか <br /></td></tr>
+<tr class="separator:aa162ac18b0e736e31450b825c879f3dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a693f6b989eb55df9177720c74fecfb82"><td class="memItemLeft" align="right" valign="top"><a id="a693f6b989eb55df9177720c74fecfb82" name="a693f6b989eb55df9177720c74fecfb82"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept</td></tr>
+<tr class="memdesc:a693f6b989eb55df9177720c74fecfb82"><td class="mdescLeft">&#160;</td><td class="mdescRight">値クリア <br /></td></tr>
+<tr class="separator:a693f6b989eb55df9177720c74fecfb82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4c46b19ac9093c895a7d11c625a3613"><td class="memItemLeft" align="right" valign="top"><a id="ab4c46b19ac9093c895a7d11c625a3613" name="ab4c46b19ac9093c895a7d11c625a3613"></a>
+<a class="el" href="structUdon_1_1Euler.html">Euler</a>&#160;</td><td class="memItemRight" valign="bottom"><b>toEuler</b> () const noexcept</td></tr>
+<tr class="separator:ab4c46b19ac9093c895a7d11c625a3613"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cc89bf11b1c7e6c0e6dbf46ab0775ed"><td class="memItemLeft" align="right" valign="top"><a id="a5cc89bf11b1c7e6c0e6dbf46ab0775ed" name="a5cc89bf11b1c7e6c0e6dbf46ab0775ed"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>toYaw</b> () const noexcept</td></tr>
+<tr class="memdesc:a5cc89bf11b1c7e6c0e6dbf46ab0775ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">ヨー角を取得 <br /></td></tr>
+<tr class="separator:a5cc89bf11b1c7e6c0e6dbf46ab0775ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d148db54012a1e098302e6e702c8e52"><td class="memItemLeft" align="right" valign="top"><a id="a2d148db54012a1e098302e6e702c8e52" name="a2d148db54012a1e098302e6e702c8e52"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>toPitch</b> () const noexcept</td></tr>
+<tr class="memdesc:a2d148db54012a1e098302e6e702c8e52"><td class="mdescLeft">&#160;</td><td class="mdescRight">ピッチ角を取得 <br /></td></tr>
+<tr class="separator:a2d148db54012a1e098302e6e702c8e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb1e0c055850d920a9735ec907be785c"><td class="memItemLeft" align="right" valign="top"><a id="afb1e0c055850d920a9735ec907be785c" name="afb1e0c055850d920a9735ec907be785c"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>toRoll</b> () const noexcept</td></tr>
+<tr class="memdesc:afb1e0c055850d920a9735ec907be785c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ロール角を取得 <br /></td></tr>
+<tr class="separator:afb1e0c055850d920a9735ec907be785c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静的公開メンバ関数</h2></td></tr>
+<tr class="memitem:af1eafde6c55e0350f55d4995de71bb14"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Quaternion.html#af1eafde6c55e0350f55d4995de71bb14">Identity</a> () noexcept</td></tr>
+<tr class="memdesc:af1eafde6c55e0350f55d4995de71bb14"><td class="mdescLeft">&#160;</td><td class="mdescRight">単位クオータニオン  <a href="structUdon_1_1Quaternion.html#af1eafde6c55e0350f55d4995de71bb14">[詳解]</a><br /></td></tr>
+<tr class="separator:af1eafde6c55e0350f55d4995de71bb14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dc6b359eeecc3ec6f40bf44f07ec724"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Quaternion.html#a8dc6b359eeecc3ec6f40bf44f07ec724">RotateX</a> (<a class="el" href="structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151">ValueType</a> angle) noexcept</td></tr>
+<tr class="memdesc:a8dc6b359eeecc3ec6f40bf44f07ec724"><td class="mdescLeft">&#160;</td><td class="mdescRight">X軸回転クオータニオン  <a href="structUdon_1_1Quaternion.html#a8dc6b359eeecc3ec6f40bf44f07ec724">[詳解]</a><br /></td></tr>
+<tr class="separator:a8dc6b359eeecc3ec6f40bf44f07ec724"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e0fe768a9b4b7ee530a119077e2de17"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Quaternion.html#a1e0fe768a9b4b7ee530a119077e2de17">RotateY</a> (<a class="el" href="structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151">ValueType</a> angle) noexcept</td></tr>
+<tr class="memdesc:a1e0fe768a9b4b7ee530a119077e2de17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Y軸回転クオータニオン  <a href="structUdon_1_1Quaternion.html#a1e0fe768a9b4b7ee530a119077e2de17">[詳解]</a><br /></td></tr>
+<tr class="separator:a1e0fe768a9b4b7ee530a119077e2de17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5bed059f29528e5ed29ee75e129fd04"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Quaternion.html#ad5bed059f29528e5ed29ee75e129fd04">RotateZ</a> (<a class="el" href="structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151">ValueType</a> angle) noexcept</td></tr>
+<tr class="memdesc:ad5bed059f29528e5ed29ee75e129fd04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Z軸回転クオータニオン  <a href="structUdon_1_1Quaternion.html#ad5bed059f29528e5ed29ee75e129fd04">[詳解]</a><br /></td></tr>
+<tr class="separator:ad5bed059f29528e5ed29ee75e129fd04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+公開変数類</h2></td></tr>
+<tr class="memitem:a222ac701ef894065424419046d2a8888"><td class="memItemLeft" align="right" valign="top"><a id="a222ac701ef894065424419046d2a8888" name="a222ac701ef894065424419046d2a8888"></a>
+<a class="el" href="structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151">ValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>x</b></td></tr>
+<tr class="separator:a222ac701ef894065424419046d2a8888"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeabf5bf27829661b01fe16194833f685"><td class="memItemLeft" align="right" valign="top"><a id="aeabf5bf27829661b01fe16194833f685" name="aeabf5bf27829661b01fe16194833f685"></a>
+<a class="el" href="structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151">ValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>y</b></td></tr>
+<tr class="separator:aeabf5bf27829661b01fe16194833f685"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34cd4fc4331efbd59fd2ac8c50f5ddc0"><td class="memItemLeft" align="right" valign="top"><a id="a34cd4fc4331efbd59fd2ac8c50f5ddc0" name="a34cd4fc4331efbd59fd2ac8c50f5ddc0"></a>
+<a class="el" href="structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151">ValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>z</b></td></tr>
+<tr class="separator:a34cd4fc4331efbd59fd2ac8c50f5ddc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeffb665edbd5eb5171f7a6093403a0e"><td class="memItemLeft" align="right" valign="top"><a id="adeffb665edbd5eb5171f7a6093403a0e" name="adeffb665edbd5eb5171f7a6093403a0e"></a>
+<a class="el" href="structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151">ValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>w</b></td></tr>
+<tr class="separator:adeffb665edbd5eb5171f7a6093403a0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p >クオータニオン </p>
+</div><h2 class="groupheader">構築子と解体子</h2>
+<a id="aa9c931b8b3b32464d7712925d9123a60" name="aa9c931b8b3b32464d7712925d9123a60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9c931b8b3b32464d7712925d9123a60">&#9670;&#160;</a></span>Quaternion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr Udon::Quaternion::Quaternion </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151">ValueType</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151">ValueType</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151">ValueType</a>&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151">ValueType</a>&#160;</td>
+          <td class="paramname"><em>w</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>x成分 </td></tr>
+    <tr><td class="paramname">y</td><td>y成分 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a21ed0ccb68832276b6d4516bc6660d47" name="a21ed0ccb68832276b6d4516bc6660d47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21ed0ccb68832276b6d4516bc6660d47">&#9670;&#160;</a></span>directionRevision()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> Udon::Quaternion::directionRevision </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1QuaternionDirection.html">QuaternionDirection</a> &amp;&#160;</td>
+          <td class="paramname"><em>direction</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>回転方向を修正したクオータニオンを取得する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">direction</td><td>回転方向 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>修正後のクオータニオン </dd></dl>
+
+</div>
+</div>
+<a id="af1eafde6c55e0350f55d4995de71bb14" name="af1eafde6c55e0350f55d4995de71bb14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1eafde6c55e0350f55d4995de71bb14">&#9670;&#160;</a></span>Identity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> Udon::Quaternion::Identity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>単位クオータニオン </p>
+<dl class="section return"><dt>戻り値</dt><dd><br  />
+ </dd></dl>
+
+</div>
+</div>
+<a id="a035275dbdbc8bb54c01dae5a9d72afd2" name="a035275dbdbc8bb54c01dae5a9d72afd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a035275dbdbc8bb54c01dae5a9d72afd2">&#9670;&#160;</a></span>inverse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> Udon::Quaternion::inverse </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>逆クオータニオン </p>
+<dl class="section return"><dt>戻り値</dt><dd><br  />
+ </dd></dl>
+
+</div>
+</div>
+<a id="a2906c1846eacc64d8dcd893b163c22f7" name="a2906c1846eacc64d8dcd893b163c22f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2906c1846eacc64d8dcd893b163c22f7">&#9670;&#160;</a></span>operator bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr Udon::Quaternion::operator bool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>要素のいずれかに0以外の値があるかどうかを返す </p>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a2768b000ed9c9e81b2d8979c9ed54103" name="a2768b000ed9c9e81b2d8979c9ed54103"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2768b000ed9c9e81b2d8979c9ed54103">&#9670;&#160;</a></span>operator*()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> Udon::Quaternion::operator* </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>内積 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>被演算子 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a66f6ab515a96a9c1e8677c18ed424982" name="a66f6ab515a96a9c1e8677c18ed424982"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66f6ab515a96a9c1e8677c18ed424982">&#9670;&#160;</a></span>operator*=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> &amp; Udon::Quaternion::operator*= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>複合代入演算子 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>被演算子 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a2266fec30f50e46e295411c3ecac99cc" name="a2266fec30f50e46e295411c3ecac99cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2266fec30f50e46e295411c3ecac99cc">&#9670;&#160;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool Udon::Quaternion::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>比較演算子 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>被演算子 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a8dc6b359eeecc3ec6f40bf44f07ec724" name="a8dc6b359eeecc3ec6f40bf44f07ec724"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dc6b359eeecc3ec6f40bf44f07ec724">&#9670;&#160;</a></span>RotateX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> Udon::Quaternion::RotateX </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151">ValueType</a>&#160;</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>X軸回転クオータニオン </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>回転角度 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a1e0fe768a9b4b7ee530a119077e2de17" name="a1e0fe768a9b4b7ee530a119077e2de17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e0fe768a9b4b7ee530a119077e2de17">&#9670;&#160;</a></span>RotateY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> Udon::Quaternion::RotateY </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151">ValueType</a>&#160;</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Y軸回転クオータニオン </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>回転角度 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="ad5bed059f29528e5ed29ee75e129fd04" name="ad5bed059f29528e5ed29ee75e129fd04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5bed059f29528e5ed29ee75e129fd04">&#9670;&#160;</a></span>RotateZ()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a> Udon::Quaternion::RotateZ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151">ValueType</a>&#160;</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Z軸回転クオータニオン </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>回転角度 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<hr/>この構造体詳解は次のファイルから抽出されました:<ul>
+<li>src/Udon/Types/Forward/<a class="el" href="Forward_2Quaternion_8hpp_source.html">Quaternion.hpp</a></li>
+<li>src/Udon/Types/<a class="el" href="Quaternion_8hpp_source.html">Quaternion.hpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>Udon</b></li><li class="navelem"><a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+  </ul>
+</div>
+</body>
+</html>
