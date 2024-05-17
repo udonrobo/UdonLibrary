@@ -6,10 +6,10 @@
 
 name: Doxygen Page
 
-on: [push]
-#   push:
-#     branches:
-#       - main
+on:
+  push:
+    branches:
+      - master
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
