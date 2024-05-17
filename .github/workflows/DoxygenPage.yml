@@ -27,7 +27,7 @@ jobs:
           submodules: 'recursive'
 
       - name: Install Doxygen
-        run: sudo apt-get install doxygen graphviz -y
+        run: sudo apt-get install doxygen
         
       - name: Run Doxygen
         run: doxygen Doxyfile
