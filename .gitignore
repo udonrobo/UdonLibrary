@@ -7,6 +7,10 @@
 # CMake build output
 Build/
 
+# Doxygen
+doxygen-awesome-css/
+dist/
+
 # User-specific files
 *.rsuser
 *.suo
