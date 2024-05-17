@@ -23,19 +23,14 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Clone submodules
-        run: git submodule update --init --recursive
-
-      - name: Install Doxygen
-        run: sudo apt-get install doxygen
-        
-      - name: Run Doxygen
-        run: doxygen Doxyfile
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
-        if: ${{ github.ref == 'refs/heads/master' }}
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/DoxygenDist/html
+          submodules: 'recursive'
+      
+      - name: Generate Documentation
+        uses: mattnotmitt/doxygen-action@edge
+      - name: Publish generated content to GitHub Pages
+        uses: tsunematsu21/actions-publish-gh-pages@v1.0.2
+        with:
+          dir: docs/DoxygenDist/html
+          branch: gh-pages
+          token: ${{ secrets.ACCESS_TOKEN }}
