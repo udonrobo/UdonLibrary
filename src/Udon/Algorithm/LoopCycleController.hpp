@@ -15,9 +15,7 @@
 namespace Udon
 {
 
-    /**     LoopCycleControllerクラス
-            ループ周期をコントロールするクラス
-    */
+    /// @brief ループ周期制御クラス
     class LoopCycleController
     {
         const unsigned long CYCLE_US;    ///< 周期(unit:us)
@@ -27,9 +25,8 @@ namespace Udon
         bool isError;    ///< 指定された周期を超過しているときtrue
 
     public:
-        /**     コンストラクタ
-                @param  cycle_us    [in]目標のループ周期
-        */
+        /// @brief コンストラクタ
+        /// @param  cycle_us    [in]目標のループ周期
         LoopCycleController(unsigned long cycle_us) noexcept
             : CYCLE_US(cycle_us)
             , lastTime()
@@ -37,9 +34,8 @@ namespace Udon
         {
         }
 
-        /**     更新
-                ループ周期が一定になるように待つ
-        */
+        /// @brief 更新
+        /// @note ループ周期が一定になるように待つ
         void update() noexcept
         {
             if (micros() - lastTime > CYCLE_US)
@@ -62,26 +58,23 @@ namespace Udon
             }
         }
 
-        /**     ループ周期の読み出し
-                @return ループ周期
-        */
+        /// @brief ループ周期の読み出し
+        /// @return コンストラクタで指定したループ周期
         unsigned long cycleUs() const noexcept
         {
             return CYCLE_US;
         }
 
-        /**     エラー検出
-                @retval false   ループ周期は一定
-                @retval true    ループ周期は一定でない
-        */
+        /// @brief エラー検出
+        /// @retval false   ループ周期は一定
+        /// @retval true    ループ周期は一定でない
         explicit operator bool() const noexcept
         {
             return not isError;
         }
 
-        /**     ループ周期出力
-                @return   実際のループ周期
-        */
+        /// @brief ループ周期出力
+        /// @return 実際のループ周期
         long getCycle() noexcept
         {
             unsigned long Time_ = micros() - Time;

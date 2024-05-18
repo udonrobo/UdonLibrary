@@ -26,6 +26,8 @@
 
 namespace Udon
 {
+
+    /// @brief 有線USB経由PS5コントローラークラス
     class PadPS5USB
     {
         USB usb;
@@ -153,7 +155,6 @@ namespace Udon
             : public PadPS5USB
         {
         public:
-            
             /// PadPS5USB::begin() 呼び出し必須
 
             /// PadPS5USB::update() 呼び出し必須

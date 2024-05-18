@@ -19,6 +19,8 @@
 namespace Udon
 {
 
+    /// @brief 通信経由ロータリーエンコーダー
+    /// @tparam Reader 受信クラス
     template <template <typename> typename Reader>
     class EncoderBy
     {

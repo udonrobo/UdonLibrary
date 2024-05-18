@@ -15,6 +15,8 @@
 namespace Udon
 {
 
+    /// @brief UART 送信クラス
+    /// @tparam Message メッセージ型
     template <typename Message>
     class UartWriter
     {
@@ -43,20 +45,18 @@ namespace Udon
         }
 
         /// @brief 送信内容を表示
-        /// @param gap 区切り文字 (default: '\t')
-        void show(char gap = '\t') const
+        void show() const
         {
-            Udon::Show(message, gap);
+            Udon::Show(message);
         }
 
         /// @brief 生の送信内容を表示
-        /// @param gap 区切り文字 (default: ' ')
-        void showRaw(char gap = ' ') const
+        void showRaw() const
         {
             for (auto&& it : Udon::Serialize(message))
             {
                 Serial.print(it);
-                Serial.print(gap);
+                Serial.print(' ');
             }
         }
     };

@@ -12,7 +12,7 @@ namespace Udon
 {
     constexpr size_t CRC8_SIZE = 1;
 
-    /// @brief CRC-8
+    /// @brief バイト列から CRC-8 値を計算する
     /// @param buffer CRCの計算対象となるバッファ
     inline uint8_t CRC8(ArrayView<const uint8_t> buffer)
     {

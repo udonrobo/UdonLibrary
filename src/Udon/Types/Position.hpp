@@ -21,6 +21,7 @@ namespace Udon
 {
 
     /// @brief ロボットの位置
+    /// @note 位置は座標と旋回角で表現される
     struct Pos
     {
 

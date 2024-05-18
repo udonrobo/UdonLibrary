@@ -17,6 +17,8 @@
 namespace Udon
 {
 
+    /// @brief CAN通信 受信クラス
+    /// @tparam Message 受信メッセージ型
     template <typename Message>
     class CanReader
     {

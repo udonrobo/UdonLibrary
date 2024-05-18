@@ -15,6 +15,9 @@
 
 namespace Udon
 {
+
+    /// @brief OpenSiv3D用 UART 送信クラス
+    /// @tparam Message メッセージ型
     template <typename Message>
     class SivUartWriter
     {
@@ -23,11 +26,16 @@ namespace Udon
         s3d::Serial& serial;
 
     public:
+
+        /// @brief コンストラクタ
+        /// @param bus UARTバス
         SivUartWriter(s3d::Serial& bus)
             : serial(bus)
         {
         }
 
+        /// @brief メッセージの送信
+        /// @param message 送信メッセージ
         void setMessage(const Message& message)
         {
             if (serial.isOpen())

@@ -17,6 +17,7 @@
 namespace Udon
 {
 
+    /// @brief SDカードにパラメータを保存するクラス
     class Parameter
     {
         SdFs        sd;
@@ -28,6 +29,10 @@ namespace Udon
         bool        Card_Insertion;
 
     public:
+        
+        /// @brief コンストラクタ
+        /// @param dataSize パラメータの数
+        /// @param fileName ファイル名
         Parameter(int dataSize, const char* fileName = "parameter.csv")
             : size(dataSize)
             , name(fileName)
@@ -36,11 +41,16 @@ namespace Udon
             , Card_Insertion(sd.begin(SdioConfig(FIFO_SDIO)))
         {
         }
-        // 書き込み
+
+        /// @brief パラメータ書き込み値の設定
+        /// @param dataNum パラメータの位置
+        /// @param data パラメータの値
         void setParameter(int dataNum, double data)
         {
             writeData[dataNum - 1] = data;
         }
+
+        /// @brief パラメータ書き込み
         void writeParameter()
         {
             if (Card_Insertion)
@@ -56,7 +66,8 @@ namespace Udon
                 dataFile.close();
             }
         }
-        // 読み取り
+
+        /// @brief パラメータ読み取り
         void readParameter()
         {
             if (Card_Insertion)
@@ -91,10 +102,15 @@ namespace Udon
                     readData[i] = 0.0;
             }
         }
+
+        /// @brief パラメータ読み取り値の取得
+        /// @param dataNum パラメータの位置
         double getParameter(int dataNum) const
         {
             return readData[dataNum - 1];
         }
+
+        /// @brief パラメータ読み取り値のシリアル出力
         void readShow(char end = {}) const
         {
             for (int i = 0; i < size; i++)
@@ -104,6 +120,8 @@ namespace Udon
             }
             Serial.print(end);
         }
+
+        /// @brief パラメータ書き込み値のシリアル出力
         void writeShow(char end = {}) const
         {
             for (int i = 0; i < size; i++)

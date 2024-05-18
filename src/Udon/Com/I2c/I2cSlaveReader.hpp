@@ -19,6 +19,8 @@
 namespace Udon
 {
 
+    /// @brief I2c スレーブ側受信クラス
+    /// @tparam Message 受信メッセージ型
     template <typename Message>
     class I2cSlaveReader
     {

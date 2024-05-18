@@ -6,6 +6,8 @@
 
 namespace Udon
 {
+
+    /// @brief ROS2からUART通信を受信するクラス
     template <typename Message>
     class Ros2UartReader
     {
@@ -16,12 +18,15 @@ namespace Udon
         std::vector<uint8_t> buffer;
 
     public:
+        /// @brief コンストラクタ
+        /// @param bus UARTバス
         Ros2UartReader(serial::Serial& bus)
             : serial(bus)
             , buffer(Size)
         {
         }
 
+        /// @brief 更新
         void update()
         {
             if (not serial.isOpen())
@@ -37,24 +42,27 @@ namespace Udon
             }
         }
 
+        /// @brief メッセージの取得
         Udon::Optional<Message> getMessage() const
         {
             return Udon::Deserialize<Message>(buffer);
         }
 
-        void show(char gap = '\t') const
+        /// @brief メッセージの表示
+        void show() const
         {
             if (const auto message = getMessage())
             {
-                Udon::Show(*message, gap);
+                Udon::Show(*message);
             }
             else
             {
-                Udon::Show("receive failed!", gap);
+                Udon::Show("receive failed!");
             }
         }
 
-        void showRaw(char gap = '\t') const
+        /// @brief 受信バッファを表示
+        void showRaw() const
         {
             for (int i = 0; i < buffer.size(); i++)
             {

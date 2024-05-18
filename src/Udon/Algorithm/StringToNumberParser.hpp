@@ -14,6 +14,7 @@
 
 namespace Udon
 {
+
     namespace StringToNumberParser
     {
 

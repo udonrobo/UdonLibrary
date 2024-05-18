@@ -11,10 +11,19 @@
 namespace Udon
 {
 
+    /// @brief π
     constexpr double Pi       = 3.1415926535897932384626433832795;      // std::numbers::pi_v<double>       (C++20)
+
+    /// @brief π/2
     constexpr double HalfPi   = 1.5707963267948966192313216916398;      // std::numbers::pi_v<double> / 2   (C++20)
+
+    /// @brief π*2
     constexpr double TwoPi    = 6.283185307179586476925286766559;       // std::numbers::pi_v<double> * 2   (C++20)
+
+    /// @brief 度数法から弧度法に変換する係数
     constexpr double DegToRad = 0.017453292519943295769236907684886;    // std::numbers::pi_v<double> / 180 (C++20)
+
+    /// @brief 弧度法から度数法に変換する係数
     constexpr double RadToDeg = 57.295779513082320876798154814105;      // 180 / std::numbers::pi_v<double> (C++20)
 
 };    // namespace Udon

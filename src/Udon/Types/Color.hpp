@@ -12,9 +12,14 @@
 namespace Udon
 {
 #ifdef ARDUINO
-    inline RGB Rainbow() noexcept
+
+    /// @brief 時間に応じて虹色に変化する色を取得する
+    /// @param cycleMs 周期[ms]
+    /// @return 虹色
+    inline RGB Rainbow(uint32_t cycleMs) noexcept
     {
-        return HSV{ static_cast<uint8_t>(millis() / 10.), 255, 255 }.toRGB();
+        const uint32_t hue = Millis() % cycleMs * 255 / cycleMs;
+        return HSV{ hue, 255, 255 };
     }
 #endif
 }    // namespace Udon
