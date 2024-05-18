@@ -38,4 +38,4 @@ void loop()
 
 サンプル数 20 の場合、入出力の関係は以下の様になります。
 
-<img width="600px" src="../Assets/MovingAverage.png"/>
+<img width="600px" src="https://github.com/udonrobo/UdonLibrary/assets/91818705/7ecee0be-40ea-42df-9706-72bfa54a2713"/>

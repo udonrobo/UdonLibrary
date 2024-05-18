@@ -4,7 +4,7 @@
 
 ## E220
 
-<img src="../Assets/LoRaE220.jpg" width="250px" align="right"/>
+<img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/8336c610-8d65-4c18-a0bf-d64c82b55e08" width="250px" align="right"/>
 
 - ペアリングが必要ありません。
 - 秋月電子で購入できる安価かつ優秀な無線モジュール(2000 円程度)。

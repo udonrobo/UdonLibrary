@@ -1,6 +1,6 @@
 # Visual Studio
 
-<img src="../Assets/IconVisualStudio.png" height="100px" align="right">
+<img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/e7fa4cda-bdec-4d2f-b520-6cedb13b3f20" height="100px" align="right">
 
 ## Arduino のライブラリと共用する (推奨)
 
