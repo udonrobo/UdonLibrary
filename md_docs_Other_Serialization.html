@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -118,18 +117,18 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 <div class="line">    a[バイト列] --&gt; バイト列 --デシリアライズ--&gt; ぱそこんおぶ[オブジェクト]</div>
 <div class="line">    end</div>
 </div><!-- fragment --> </blockquote>
-<h1><a class="anchor" id="autotoc_md171"></a>
+<h1><a class="anchor" id="autotoc_md172"></a>
 個別インクルード</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Serializer_8hpp.html">Udon/Serializer/Serializer.hpp</a>&gt;</span></div>
 <div class="ttc" id="aSerializer_8hpp_html"><div class="ttname"><a href="Serializer_8hpp.html">Serializer.hpp</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md172"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md173"></a>
 シリアライズ可能な型</h1>
 <p >整数型 ( <code>int</code>, <code>uint8_t</code>, <code>uint16_t</code> ... )</p>
 <p >浮動小数点型 ( <code>double</code>, <code>float</code> ... )</p>
 <p >列挙型 ( <code>enum</code>, <code>enum class</code> )</p>
 <p >シリアライズ可能な型の配列 (メンバ変数のみ)</p>
-<p >パース可能なユーザー定義型</p>
-<h1><a class="anchor" id="autotoc_md173"></a>
+<p >列挙可能なユーザー定義型</p>
+<h1><a class="anchor" id="autotoc_md174"></a>
 シリアライズ</h1>
 <p >シリアライズしたいオブジェクトのデータ構造を構造体、クラスを用いて定義します。<code>UDON_ENUMERABLE</code> マクロにメンバ変数を登録することで、メンバ変数を走査できるようになり、シリアライズできるようになります。</p>
 <p ><code>Udon::Serialize(object)</code> の引数にオブジェクトを渡すことでバイト列 <code>std::vector&lt;uint8_t&gt;</code> が返されます。</p>
@@ -149,7 +148,7 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 <div class="line">}</div>
 <div class="ttc" id="aEnumerableMacro_8hpp_html_a6e99cc65e2a105775034579f13c59b8d"><div class="ttname"><a href="EnumerableMacro_8hpp.html#a6e99cc65e2a105775034579f13c59b8d">UDON_ENUMERABLE</a></div><div class="ttdeci">#define UDON_ENUMERABLE(...)</div><div class="ttdoc">メンバ変数の列挙を可能にする</div><div class="ttdef"><b>Definition:</b> EnumerableMacro.hpp:11</div></div>
 <div class="ttc" id="anamespaceUdon_html_a20184b6461ea6113bbbede25c81a6425"><div class="ttname"><a href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a></div><div class="ttdeci">bool Serialize(const T &amp;object, ArrayView&lt; uint8_t &gt; buffer)</div><div class="ttdoc">バッファにシリアル化する</div><div class="ttdef"><b>Definition:</b> Serializer.hpp:35</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md174"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md175"></a>
 デシリアライズ</h1>
 <p >バイト列をオブジェクトに復元するには <code><a class="el" href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef" title="バイト列からオブジェクトに逆シリアル化します">Udon::Deserialize</a>&lt;T&gt;(...)</code> を使用します。 <code><a class="el" href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef" title="バイト列からオブジェクトに逆シリアル化します">Udon::Deserialize</a></code> はデシリアライズされたオブジェクトを <code><a class="el" href="classUdon_1_1Optional.html" title="オプショナル型">Udon::Optional</a></code> でラップして返します。</p>
 <p ><code>Optional</code> 型とは値とエラー値を持つ型で、<code>Optional::operator bool()</code> を呼び出すことで次のように if 文でエラー判定可能です。</p>
@@ -170,7 +169,7 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1Optional_html"><div class="ttname"><a href="classUdon_1_1Optional.html">Udon::Optional</a></div><div class="ttdoc">オプショナル型</div><div class="ttdef"><b>Definition:</b> Optional.hpp:55</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md175"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md176"></a>
 既に定義されている型のシリアライズ、デシリアライズ</h1>
 <blockquote class="doxtable">
 <p >&zwj;作成中 </p>
@@ -187,23 +186,23 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 <p >Serialize 関数は次のオーバーロードが定義されています。`buffer` を引数にとる関数はヒープ領域を使用しません。</p>
 <p >```cpp std::vector&lt;uint8_t&gt; Serialize(const T&amp; object);</p>
 <p >bool Serialize(const T&amp; object, ArrayView&lt;uint8_t&gt; buffer); </p>
-<h2><a class="anchor" id="autotoc_md176"></a>
+<h2><a class="anchor" id="autotoc_md177"></a>
 &lt;tt&gt;Udon::Deserialize&lt;T&gt;(...)&lt;/tt&gt;</h2>
 <p >バイト列をオブジェクトにデシリアライズします</p>
 <div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;T&gt;</a> Deserialize(ArrayView&lt;const uint8_t&gt; buffer);</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md177"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md178"></a>
 &lt;tt&gt;Udon::CanDeserialize(...)&lt;/tt&gt;</h2>
 <p >デシリアライズできるかを確認します。(チェックサム確認)</p>
 <div class="fragment"><div class="line"><span class="keywordtype">bool</span> CanDeserialize(ArrayView&lt;const uint8_t&gt; buffer);</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md178"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md179"></a>
 &lt;tt&gt;Udon::SerializedSize&lt;T&gt;()&lt;/tt&gt;</h2>
 <p >T 型オブジェクトシリアライズ後のバイト列のバイトサイズを取得します。</p>
 <p >コンパイル時にサイズを取得可能なため、バッファの大きさを静的に指定するときなどにも使えます。</p>
 <div class="fragment"><div class="line">uint8_t buffer[Udon::SerializedSize&lt;Vec2&gt;()];</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md179"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md180"></a>
 サンプル</h1>
-<h2><a class="anchor" id="autotoc_md180"></a>
+<h2><a class="anchor" id="autotoc_md181"></a>
 整数型シリアライズ</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Serializer_8hpp.html">Udon/Serializer/Serializer.hpp</a>&gt;</span></div>
@@ -222,9 +221,9 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 <div class="line">    }</div>
 <div class="line">}</div>
 </div><!-- fragment --><div class="fragment"><div class="line">100</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md181"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md182"></a>
 ヒープ領域を使用しないシリアライズ</h2>
-<p ><code>Udon::Serialize(T) -&gt; std::vector&lt;uint8_t&gt;</code> は <code>std::vector</code> を用いており、バイト列をヒープ領域に割り当てて返します。パフォーマンスを気にする場合、ヒープ領域の使用はなるべく控えるべきです。<code><a class="el" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425" title="バッファにシリアル化する">Udon::Serialize</a>(T, <a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt;uint8_t&gt;)</code>を用いることで、スタック領域(静的配列)をバッファーとしてシリアライズできます。</p>
+<p ><code>Udon::Serialize(T) -&gt; std::vector&lt;uint8_t&gt;</code> は <code>std::vector</code> を用いており、バイト列をヒープ領域に割り当てて返します。パフォーマンスを気にする場合、ヒープ領域の使用はなるべく控えるべきです。<code><a class="el" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425" title="バッファにシリアル化する">Udon::Serialize</a>(T, <a class="el" href="classUdon_1_1ArrayView.html" title="配列参照クラス">Udon::ArrayView</a>&lt;uint8_t&gt;)</code>を用いることで、スタック領域(静的配列)をバッファーとしてシリアライズできます。</p>
 <p >この時、バッファーのサイズと、シリアライズ後のサイズ(<code><a class="el" href="namespaceUdon.html#a92fa64e26dcad6be1aa4e0f4908fdee6" title="Tをシリアライズした際のバイト列の要素数を取得する">Udon::SerializedSize</a>&lt;T&gt;()</code>)が異なる場合 <code><a class="el" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425" title="バッファにシリアル化する">Udon::Serialize</a></code> は失敗し false を返します。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Serializer_8hpp.html">Udon/Serializer/Serializer.hpp</a>&gt;</span></div>
@@ -248,7 +247,7 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 <div class="line">    }</div>
 <div class="line">}</div>
 </div><!-- fragment --><div class="fragment"><div class="line">1000</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md182"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md183"></a>
 列挙型シリアライズ</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Serializer_8hpp.html">Udon/Serializer/Serializer.hpp</a>&gt;</span></div>
@@ -283,7 +282,7 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 <div class="line">    }</div>
 <div class="line">}</div>
 </div><!-- fragment --><div class="fragment"><div class="line">C++</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md183"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md184"></a>
 ユーザー定義型シリアライズ</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Serializer_8hpp.html">Udon/Serializer/Serializer.hpp</a>&gt;</span></div>
@@ -313,7 +312,7 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 <div class="line">    }</div>
 <div class="line">}</div>
 </div><!-- fragment --><div class="fragment"><div class="line">1, 2</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md184"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md185"></a>
 メンバに配列を持つユーザー定義型</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Serializer_8hpp.html">Udon/Serializer/Serializer.hpp</a>&gt;</span></div>
@@ -347,7 +346,7 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 <div class="line">3</div>
 <div class="line">4</div>
 <div class="line">5</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md185"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md186"></a>
 ユーザー定義型のネスト</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Serializer_8hpp.html">Udon/Serializer/Serializer.hpp</a>&gt;</span></div>
@@ -384,7 +383,7 @@ $(document).ready(function(){initNavTree('md_docs_Other_Serialization.html','');
 <div class="line">    }</div>
 <div class="line">}</div>
 </div><!-- fragment --><div class="fragment"><div class="line">1, 2</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md186"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md187"></a>
 デシリアライズ失敗</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Serializer_8hpp.html">Udon/Serializer/Serializer.hpp</a>&gt;</span></div>

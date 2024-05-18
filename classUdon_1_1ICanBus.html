@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -111,6 +110,9 @@ $(document).ready(function(){initNavTree('classUdon_1_1ICanBus.html',''); initRe
 </div><!--header-->
 <div class="contents">
 
+<p>CANバス管理クラス インターフェース  
+ <a href="classUdon_1_1ICanBus.html#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="ICanBus_8hpp_source.html">Udon/Com/Can/ICanBus.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Udon::ICanBus の継承関係図</div>
@@ -119,7 +121,7 @@ Udon::ICanBus の継承関係図</div>
   <img src="classUdon_1_1ICanBus.png" usemap="#Udon::ICanBus_map" alt=""/>
   <map id="Udon::ICanBus_map" name="Udon::ICanBus_map">
 <area href="classUdon_1_1CanBusSpi.html" title="Raspberry Pi Pico用バスクラス" alt="Udon::CanBusSpi" shape="rect" coords="0,56,177,80"/>
-<area href="classUdon_1_1CanBusTeensy.html" title="FlexCan_T4ライブラリを用いたCANバスクラス" alt="Udon::CanBusTeensy&lt; Bus &gt;" shape="rect" coords="187,56,364,80"/>
+<area href="classUdon_1_1CanBusTeensy.html" title="Teensy用 CANバスクラス" alt="Udon::CanBusTeensy&lt; Bus &gt;" shape="rect" coords="187,56,364,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -134,7 +136,10 @@ Udon::ICanBus の継承関係図</div>
 <tr class="memdesc:a3a2c8cb9ed5bd16c0c7129be239e2522"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信ノードを作成  <a href="classUdon_1_1ICanBus.html#a3a2c8cb9ed5bd16c0c7129be239e2522">[詳解]</a><br /></td></tr>
 <tr class="separator:a3a2c8cb9ed5bd16c0c7129be239e2522"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">構築子と解体子</h2>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p >CANバス管理クラス インターフェース </p>
+<dl class="section note"><dt>覚え書き</dt><dd>デバイスの差を吸収するためにインターフェース化 </dd></dl>
+</div><h2 class="groupheader">構築子と解体子</h2>
 <a id="af32909333d37542996496c3c536c859c" name="af32909333d37542996496c3c536c859c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af32909333d37542996496c3c536c859c">&#9670;&#160;</a></span>~ICanBus()</h2>
 

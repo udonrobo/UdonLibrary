@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -133,6 +132,7 @@ $(document).ready(function(){initNavTree('namespaceUdon.html',''); initResizable
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 クラス</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1ArrayView.html">ArrayView</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">配列参照クラス  <a href="classUdon_1_1ArrayView.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1AsyncStreamReader.html">AsyncStreamReader</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">非同期ストリーム読み取り  <a href="classUdon_1_1AsyncStreamReader.html#details">[詳解]</a><br /></td></tr>
@@ -144,9 +144,10 @@ $(document).ready(function(){initNavTree('namespaceUdon.html',''); initResizable
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raspberry Pi Pico用バスクラス  <a href="classUdon_1_1CanBusSpi.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1CanBusTeensy.html">CanBusTeensy</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">FlexCan_T4ライブラリを用いたCANバスクラス  <a href="classUdon_1_1CanBusTeensy.html#details">[詳解]</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teensy用 CANバスクラス  <a href="classUdon_1_1CanBusTeensy.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1CanReader.html">CanReader</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN通信 受信クラス  <a href="classUdon_1_1CanReader.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1CanRxNode.html">CanRxNode</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN受信ノード  <a href="structUdon_1_1CanRxNode.html#details">[詳解]</a><br /></td></tr>
@@ -155,8 +156,10 @@ $(document).ready(function(){initNavTree('namespaceUdon.html',''); initResizable
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN送信ノード  <a href="structUdon_1_1CanTxNode.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1CanWriter.html">CanWriter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN通信 送信クラス  <a href="classUdon_1_1CanWriter.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1DeltaTime.html">DeltaTime</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">変化時間計測クラス  <a href="classUdon_1_1DeltaTime.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1E220Reader.html">E220Reader</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">E220 受信クラス  <a href="classUdon_1_1E220Reader.html#details">[詳解]</a><br /></td></tr>
@@ -165,28 +168,37 @@ $(document).ready(function(){initNavTree('namespaceUdon.html',''); initResizable
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">E220 送信クラス  <a href="classUdon_1_1E220Writer.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1EncoderBy.html">EncoderBy</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">通信経由ロータリーエンコーダー  <a href="classUdon_1_1EncoderBy.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Euler.html">Euler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">オイラー角  <a href="structUdon_1_1Euler.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1EulerDirection.html">EulerDirection</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">オイラー角の回転方向  <a href="structUdon_1_1EulerDirection.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Forwarding.html">Forwarding</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">異なる通信間にメッセージを転送するクラス  <a href="classUdon_1_1Forwarding.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1HSV.html">HSV</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">HSV色空間  <a href="structUdon_1_1HSV.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html">I2cBusImpl</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2cBus クラス実装部  <a href="classUdon_1_1I2cBusImpl.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cMasterReader.html">I2cMasterReader</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2c マスター側受信クラス  <a href="classUdon_1_1I2cMasterReader.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cMasterWriter.html">I2cMasterWriter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2c マスター側送信クラス  <a href="classUdon_1_1I2cMasterWriter.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cSlaveReader.html">I2cSlaveReader</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2c スレーブ側受信クラス  <a href="classUdon_1_1I2cSlaveReader.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cSlaveWriter.html">I2cSlaveWriter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2c スレーブ側送信クラス  <a href="classUdon_1_1I2cSlaveWriter.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1ICanBus.html">ICanBus</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">CANバス管理クラス インターフェース  <a href="classUdon_1_1ICanBus.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html">II2cBus</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2cBus クラスのインターフェース  <a href="classUdon_1_1II2cBus.html#details">[詳解]</a><br /></td></tr>
@@ -210,8 +222,10 @@ $(document).ready(function(){initNavTree('namespaceUdon.html',''); initResizable
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">入力値  <a href="structUdon_1_1Input.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1MotorBy.html">MotorBy</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">通信経由モーター制御クラス  <a href="classUdon_1_1MotorBy.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1MovingAverage.html">MovingAverage</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">移動平均クラス  <a href="classUdon_1_1MovingAverage.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1NulloptT.html">NulloptT</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -219,16 +233,19 @@ $(document).ready(function(){initNavTree('namespaceUdon.html',''); initResizable
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">オプショナル型  <a href="classUdon_1_1Optional.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1PadPS5.html">PadPS5</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">PS5コントローラー  <a href="classUdon_1_1PadPS5.html#details">[詳解]</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">通信経由PS5コントローラークラス  <a href="classUdon_1_1PadPS5.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1PadPS5BT.html">PadPS5BT</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bluetooth経由PS5コントローラークラス  <a href="classUdon_1_1PadPS5BT.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1PadPS5USB.html">PadPS5USB</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">有線USB経由PS5コントローラークラス  <a href="classUdon_1_1PadPS5USB.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1PidController.html">PidController</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">PID制御器  <a href="classUdon_1_1PidController.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Polar.html">Polar</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">極座標系  <a href="structUdon_1_1Polar.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Pos.html">Pos</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ロボットの位置  <a href="structUdon_1_1Pos.html#details">[詳解]</a><br /></td></tr>
@@ -251,19 +268,25 @@ $(document).ready(function(){initNavTree('namespaceUdon.html',''); initResizable
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RoboMasterC620クラス  <a href="classUdon_1_1RoboMasterC620.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Ros2UartReader.html">Ros2UartReader</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ROS2からUART通信を受信するクラス  <a href="classUdon_1_1Ros2UartReader.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Ros2UartWriter.html">Ros2UartWriter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ROS2からUART通信を送信するクラス  <a href="classUdon_1_1Ros2UartWriter.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1ScopedInterruptLocker.html">ScopedInterruptLocker</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">割り込みロック、アンロックをスコープの範囲で制御するクラス  <a href="classUdon_1_1ScopedInterruptLocker.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1ServoSpeed.html">ServoSpeed</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">サーボ角度制御クラス  <a href="classUdon_1_1ServoSpeed.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1SivUartReader.html">SivUartReader</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">OpenSiv3D用 UART 受信クラス  <a href="classUdon_1_1SivUartReader.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1SivUartWriter.html">SivUartWriter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">OpenSiv3D用 UART 送信クラス  <a href="classUdon_1_1SivUartWriter.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1StaticVector.html">StaticVector</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">疑似可変長配列コンテナ  <a href="classUdon_1_1StaticVector.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1SteerModuleOptimizer.html">SteerModuleOptimizer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">独立ステアリング機構の各モジュール最適化クラス  <a href="classUdon_1_1SteerModuleOptimizer.html#details">[詳解]</a><br /></td></tr>
@@ -272,12 +295,16 @@ $(document).ready(function(){initNavTree('namespaceUdon.html',''); initResizable
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">独立ステアリング機構最適化クラス  <a href="classUdon_1_1SteerOptimizer.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1UartReader.html">UartReader</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">UART 受信クラス  <a href="classUdon_1_1UartReader.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1UartWriter.html">UartWriter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">UART 送信クラス  <a href="classUdon_1_1UartWriter.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">二次元ベクトル  <a href="structUdon_1_1Vec2.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">三次元ベクトル  <a href="structUdon_1_1Vec3.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -287,6 +314,7 @@ $(document).ready(function(){initNavTree('namespaceUdon.html',''); initResizable
 <tr class="memitem:aaa58d975954a51a38e070c46d447d0d1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#aaa58d975954a51a38e070c46d447d0d1">PadPS5OnboardUSB</a> = <a class="el" href="classUdon_1_1PadPS5.html">PadPS5</a>&lt; <a class="el" href="classUdon_1_1Impl_1_1PadPS5OnboardUSBReader.html">Impl::PadPS5OnboardUSBReader</a> &gt;</td></tr>
 <tr class="separator:aaa58d975954a51a38e070c46d447d0d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6520eebf8e5fc1d7ea50f87f779cb4e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#ab6520eebf8e5fc1d7ea50f87f779cb4e">SivPadPS5</a> = <a class="el" href="classUdon_1_1PadPS5.html">PadPS5</a>&lt; <a class="el" href="classUdon_1_1Impl_1_1SivPadPS5Reader.html">Impl::SivPadPS5Reader</a> &gt;</td></tr>
+<tr class="memdesc:ab6520eebf8e5fc1d7ea50f87f779cb4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">OpenSiv3D用 PS5コントローラー  <a href="namespaceUdon.html#ab6520eebf8e5fc1d7ea50f87f779cb4e">[詳解]</a><br /></td></tr>
 <tr class="separator:ab6520eebf8e5fc1d7ea50f87f779cb4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6bc985695ba40c75edfe7e6ee6fd2aa"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#af6bc985695ba40c75edfe7e6ee6fd2aa">Stick</a> = <a class="el" href="structUdon_1_1Pos.html">Pos</a></td></tr>
 <tr class="separator:af6bc985695ba40c75edfe7e6ee6fd2aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -303,28 +331,34 @@ $(document).ready(function(){initNavTree('namespaceUdon.html',''); initResizable
 , <a class="el" href="namespaceUdon.html#ac0b885a506a78d6d59510f0ab9d401f7a37199c5c529e096d186b28304946810d">_30kg</a>
 , <a class="el" href="namespaceUdon.html#ac0b885a506a78d6d59510f0ab9d401f7a77dce049af8daab41ecc67d77a30e103">_60kg</a>
  }</td></tr>
+<tr class="memdesc:ac0b885a506a78d6d59510f0ab9d401f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">サーボの種類選択  <a href="namespaceUdon.html#ac0b885a506a78d6d59510f0ab9d401f7">[詳解]</a><br /></td></tr>
 <tr class="separator:ac0b885a506a78d6d59510f0ab9d401f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 関数</h2></td></tr>
 <tr class="memitem:afb14606e20360820a0d20beb9b8cb56e"><td class="memTemplParams" colspan="2">template&lt;typename Ty &gt; </td></tr>
 <tr class="memitem:afb14606e20360820a0d20beb9b8cb56e"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#afb14606e20360820a0d20beb9b8cb56e">BitRead</a> (const Ty &amp;rhs, uint8_t bit)</td></tr>
+<tr class="memdesc:afb14606e20360820a0d20beb9b8cb56e"><td class="mdescLeft">&#160;</td><td class="mdescRight">特定のビットを読み取る  <a href="namespaceUdon.html#afb14606e20360820a0d20beb9b8cb56e">[詳解]</a><br /></td></tr>
 <tr class="separator:afb14606e20360820a0d20beb9b8cb56e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af664cdd08e689e21cf79d290eb36d651"><td class="memTemplParams" colspan="2">template&lt;typename Ty &gt; </td></tr>
 <tr class="memitem:af664cdd08e689e21cf79d290eb36d651"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#af664cdd08e689e21cf79d290eb36d651">BitSet</a> (Ty &amp;rhs, uint8_t bit)</td></tr>
+<tr class="memdesc:af664cdd08e689e21cf79d290eb36d651"><td class="mdescLeft">&#160;</td><td class="mdescRight">特定のビットを 1 にする  <a href="namespaceUdon.html#af664cdd08e689e21cf79d290eb36d651">[詳解]</a><br /></td></tr>
 <tr class="separator:af664cdd08e689e21cf79d290eb36d651"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a854c366e7b7302b851230102fd99b462"><td class="memTemplParams" colspan="2">template&lt;typename Ty &gt; </td></tr>
 <tr class="memitem:a854c366e7b7302b851230102fd99b462"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a854c366e7b7302b851230102fd99b462">BitClear</a> (Ty &amp;rhs, uint8_t bit)</td></tr>
+<tr class="memdesc:a854c366e7b7302b851230102fd99b462"><td class="mdescLeft">&#160;</td><td class="mdescRight">特定のビットを 0 にする  <a href="namespaceUdon.html#a854c366e7b7302b851230102fd99b462">[詳解]</a><br /></td></tr>
 <tr class="separator:a854c366e7b7302b851230102fd99b462"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24bec7ddf3de784a782ba707913fea27"><td class="memTemplParams" colspan="2">template&lt;typename Ty &gt; </td></tr>
 <tr class="memitem:a24bec7ddf3de784a782ba707913fea27"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a24bec7ddf3de784a782ba707913fea27">BitToggle</a> (Ty &amp;rhs, uint8_t bit)</td></tr>
+<tr class="memdesc:a24bec7ddf3de784a782ba707913fea27"><td class="mdescLeft">&#160;</td><td class="mdescRight">特定のビットを反転する  <a href="namespaceUdon.html#a24bec7ddf3de784a782ba707913fea27">[詳解]</a><br /></td></tr>
 <tr class="separator:a24bec7ddf3de784a782ba707913fea27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ade14769cabfdd2d62522ba2b3599d7"><td class="memTemplParams" colspan="2">template&lt;typename Ty &gt; </td></tr>
 <tr class="memitem:a2ade14769cabfdd2d62522ba2b3599d7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a2ade14769cabfdd2d62522ba2b3599d7">BitWrite</a> (Ty &amp;rhs, uint8_t bit, bool value)</td></tr>
+<tr class="memdesc:a2ade14769cabfdd2d62522ba2b3599d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">特定のビットに値を書き込む  <a href="namespaceUdon.html#a2ade14769cabfdd2d62522ba2b3599d7">[詳解]</a><br /></td></tr>
 <tr class="separator:a2ade14769cabfdd2d62522ba2b3599d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b7c88f64cfd50e3f3cbc7d36795b65e"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator , typename Functor &gt; </td></tr>
 <tr class="memitem:a3b7c88f64cfd50e3f3cbc7d36795b65e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a3b7c88f64cfd50e3f3cbc7d36795b65e">BitPack</a> (const InputIterator begin, const InputIterator end, Functor callback)</td></tr>
-<tr class="memdesc:a3b7c88f64cfd50e3f3cbc7d36795b65e"><td class="mdescLeft">&#160;</td><td class="mdescRight">バイト列のMSB(最上位ビット)から順に7bitずつ分割してコールバック関数に渡す  <a href="namespaceUdon.html#a3b7c88f64cfd50e3f3cbc7d36795b65e">[詳解]</a><br /></td></tr>
+<tr class="memdesc:a3b7c88f64cfd50e3f3cbc7d36795b65e"><td class="mdescLeft">&#160;</td><td class="mdescRight">バイト列のMSB(最上位ビット)を抽出し、7bitごとに分割してコールバック関数に渡す  <a href="namespaceUdon.html#a3b7c88f64cfd50e3f3cbc7d36795b65e">[詳解]</a><br /></td></tr>
 <tr class="separator:a3b7c88f64cfd50e3f3cbc7d36795b65e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab587295af93b30000c3471ad0d6eea72"><td class="memTemplParams" colspan="2">template&lt;typename OutputIterator , typename Functor &gt; </td></tr>
 <tr class="memitem:ab587295af93b30000c3471ad0d6eea72"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#ab587295af93b30000c3471ad0d6eea72">BitUnpack</a> (OutputIterator begin, OutputIterator end, Functor callback)</td></tr>
@@ -342,7 +376,7 @@ $(document).ready(function(){initNavTree('namespaceUdon.html',''); initResizable
 <tr class="memitem:a93fe19a0251383cd2da6becbd4530a4b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a93fe19a0251383cd2da6becbd4530a4b">BitUnpack</a> (const std::vector&lt; uint8_t &gt; &amp;data)</td></tr>
 <tr class="separator:a93fe19a0251383cd2da6becbd4530a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a504b82d933419dccd907460936078550"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a504b82d933419dccd907460936078550">CRC8</a> (<a class="el" href="classUdon_1_1ArrayView.html">ArrayView</a>&lt; const uint8_t &gt; buffer)</td></tr>
-<tr class="memdesc:a504b82d933419dccd907460936078550"><td class="mdescLeft">&#160;</td><td class="mdescRight">CRC-8  <a href="namespaceUdon.html#a504b82d933419dccd907460936078550">[詳解]</a><br /></td></tr>
+<tr class="memdesc:a504b82d933419dccd907460936078550"><td class="mdescLeft">&#160;</td><td class="mdescRight">バイト列から CRC-8 値を計算する  <a href="namespaceUdon.html#a504b82d933419dccd907460936078550">[詳解]</a><br /></td></tr>
 <tr class="separator:a504b82d933419dccd907460936078550"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22305f7db09abde0adfe00cb9a8dd0af"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a22305f7db09abde0adfe00cb9a8dd0af">HexCharToByteValue</a> (char hex) noexcept</td></tr>
 <tr class="memdesc:a22305f7db09abde0adfe00cb9a8dd0af"><td class="mdescLeft">&#160;</td><td class="mdescRight">16進数文字をバイト値に変換する  <a href="namespaceUdon.html#a22305f7db09abde0adfe00cb9a8dd0af">[詳解]</a><br /></td></tr>
@@ -450,14 +484,19 @@ $(document).ready(function(){initNavTree('namespaceUdon.html',''); initResizable
 <tr class="memitem:a163e827776b911f4d521dfe7237fca05"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a163e827776b911f4d521dfe7237fca05">CRC8_SIZE</a> = 1</td></tr>
 <tr class="separator:a163e827776b911f4d521dfe7237fca05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a476b68ca44c62d59a013ec8ea2b21030"><td class="memItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a476b68ca44c62d59a013ec8ea2b21030">Pi</a> = 3.1415926535897932384626433832795</td></tr>
+<tr class="memdesc:a476b68ca44c62d59a013ec8ea2b21030"><td class="mdescLeft">&#160;</td><td class="mdescRight">π  <a href="namespaceUdon.html#a476b68ca44c62d59a013ec8ea2b21030">[詳解]</a><br /></td></tr>
 <tr class="separator:a476b68ca44c62d59a013ec8ea2b21030"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad066ec9f8cd4a23313a732c47f94e8b1"><td class="memItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#ad066ec9f8cd4a23313a732c47f94e8b1">HalfPi</a> = 1.5707963267948966192313216916398</td></tr>
+<tr class="memdesc:ad066ec9f8cd4a23313a732c47f94e8b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">π/2  <a href="namespaceUdon.html#ad066ec9f8cd4a23313a732c47f94e8b1">[詳解]</a><br /></td></tr>
 <tr class="separator:ad066ec9f8cd4a23313a732c47f94e8b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad25e28fa7e678acd526f057be2446b39"><td class="memItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#ad25e28fa7e678acd526f057be2446b39">TwoPi</a> = 6.283185307179586476925286766559</td></tr>
+<tr class="memdesc:ad25e28fa7e678acd526f057be2446b39"><td class="mdescLeft">&#160;</td><td class="mdescRight">π*2  <a href="namespaceUdon.html#ad25e28fa7e678acd526f057be2446b39">[詳解]</a><br /></td></tr>
 <tr class="separator:ad25e28fa7e678acd526f057be2446b39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a575448228d6bb50494a7502aaeaf86b4"><td class="memItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a575448228d6bb50494a7502aaeaf86b4">DegToRad</a> = 0.017453292519943295769236907684886</td></tr>
+<tr class="memdesc:a575448228d6bb50494a7502aaeaf86b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">度数法から弧度法に変換する係数  <a href="namespaceUdon.html#a575448228d6bb50494a7502aaeaf86b4">[詳解]</a><br /></td></tr>
 <tr class="separator:a575448228d6bb50494a7502aaeaf86b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6082062cd72559c99e5a957081355920"><td class="memItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a6082062cd72559c99e5a957081355920">RadToDeg</a> = 57.295779513082320876798154814105</td></tr>
+<tr class="memdesc:a6082062cd72559c99e5a957081355920"><td class="mdescLeft">&#160;</td><td class="mdescRight">弧度法から度数法に変換する係数  <a href="namespaceUdon.html#a6082062cd72559c99e5a957081355920">[詳解]</a><br /></td></tr>
 <tr class="separator:a6082062cd72559c99e5a957081355920"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae102f6540b6e88b1b484ddbed3ff972f"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1NulloptT.html">NulloptT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#ae102f6540b6e88b1b484ddbed3ff972f">nullopt</a> {}</td></tr>
 <tr class="memdesc:ae102f6540b6e88b1b484ddbed3ff972f"><td class="mdescLeft">&#160;</td><td class="mdescRight">無効値  <a href="namespaceUdon.html#ae102f6540b6e88b1b484ddbed3ff972f">[詳解]</a><br /></td></tr>
@@ -503,6 +542,8 @@ $(document).ready(function(){initNavTree('namespaceUdon.html',''); initResizable
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>OpenSiv3D用 PS5コントローラー </p>
 
 </div>
 </div>
@@ -582,6 +623,8 @@ $(document).ready(function(){initNavTree('namespaceUdon.html',''); initResizable
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>サーボの種類選択 </p>
 <table class="fieldtable">
 <tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="ac0b885a506a78d6d59510f0ab9d401f7a9cd928c8f5dbc2f60894e99f5a0a67ae" name="ac0b885a506a78d6d59510f0ab9d401f7a9cd928c8f5dbc2f60894e99f5a0a67ae"></a>_20kg&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ac0b885a506a78d6d59510f0ab9d401f7a37199c5c529e096d186b28304946810d" name="ac0b885a506a78d6d59510f0ab9d401f7a37199c5c529e096d186b28304946810d"></a>_30kg&#160;</td><td class="fielddoc"></td></tr>
@@ -664,6 +707,15 @@ template&lt;typename Ty &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>特定のビットを 0 にする </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>書き込み対象 </td></tr>
+    <tr><td class="paramname">bit</td><td>ビット位置 </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a3b7c88f64cfd50e3f3cbc7d36795b65e" name="a3b7c88f64cfd50e3f3cbc7d36795b65e"></a>
@@ -700,23 +752,16 @@ template&lt;typename InputIterator , typename Functor &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>バイト列のMSB(最上位ビット)から順に7bitずつ分割してコールバック関数に渡す </p>
-<dl class="tparams"><dt>テンプレート引数</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Functor</td><td></td></tr>
-    <tr><td class="paramname">InputIterator</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
+<p>バイト列のMSB(最上位ビット)を抽出し、7bitごとに分割してコールバック関数に渡す </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">begin</td><td></td></tr>
-    <tr><td class="paramname">end</td><td></td></tr>
-    <tr><td class="paramname">callback</td><td></td></tr>
+    <tr><td class="paramname">begin</td><td>入力イテレータ先頭 </td></tr>
+    <tr><td class="paramname">end</td><td>入力イテレータ末尾 </td></tr>
+    <tr><td class="paramname">callback</td><td>コールバック関数 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>覚え書き</dt><dd>コールバック関数を用いることで、新たにバッファを確保する必要がない イテレーターから受け取ったデータは次のように変換されコールバック関数に渡される [data(8bit)], [data(8bit)], ... -&gt; [data(7bit)]*7, [各dataのMSB(7bit)], [data(7bit)]*7, [各dataのMSB(7bit)], ... </dd></dl>
+<dl class="section note"><dt>覚え書き</dt><dd>コールバック関数を用いることで、新たにバッファを確保する必要がない イテレーターから受け取ったデータは次のように変換されコールバック関数に渡される </dd></dl>
 <dl class="section return"><dt>戻り値</dt><dd></dd></dl>
 
 </div>
@@ -827,6 +872,16 @@ template&lt;typename Ty &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>特定のビットを読み取る </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>読み取り対象 </td></tr>
+    <tr><td class="paramname">bit</td><td>ビット位置 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ビット値 </dd></dl>
+
 </div>
 </div>
 <a id="af664cdd08e689e21cf79d290eb36d651" name="af664cdd08e689e21cf79d290eb36d651"></a>
@@ -865,6 +920,15 @@ template&lt;typename Ty &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>特定のビットを 1 にする </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>書き込み対象 </td></tr>
+    <tr><td class="paramname">bit</td><td>ビット位置 </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a24bec7ddf3de784a782ba707913fea27" name="a24bec7ddf3de784a782ba707913fea27"></a>
@@ -902,6 +966,15 @@ template&lt;typename Ty &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>特定のビットを反転する </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>書き込み対象 </td></tr>
+    <tr><td class="paramname">bit</td><td>ビット位置 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -966,22 +1039,15 @@ template&lt;typename OutputIterator , typename Functor &gt; </div>
 </div><div class="memdoc">
 
 <p>7bit分割されたデータを結合する </p>
-<dl class="tparams"><dt>テンプレート引数</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Functor</td><td></td></tr>
-    <tr><td class="paramname">OutputIterator</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">begin</td><td></td></tr>
-    <tr><td class="paramname">end</td><td></td></tr>
-    <tr><td class="paramname">callback</td><td></td></tr>
+    <tr><td class="paramname">begin</td><td>出力イテレータ先頭 </td></tr>
+    <tr><td class="paramname">end</td><td>出力イテレータ末尾 </td></tr>
+    <tr><td class="paramname">callback</td><td>コールバック関数 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>覚え書き</dt><dd>アンパックが失敗する場合、 7bit分割されたデータは次のように変換されコールバック関数に渡される [data(7bit)]*7, [各dataのMSB(7bit)], [data(7bit)]*7, [各dataのMSB(7bit)], ... -&gt; [data(8bit)], [data(8bit)], ... </dd></dl>
+<dl class="section note"><dt>覚え書き</dt><dd>アンパックが失敗する場合、 7bit分割されたデータは次のように変換されコールバック関数に渡される </dd></dl>
 <dl class="section return"><dt>戻り値</dt><dd></dd></dl>
 
 </div>
@@ -1062,6 +1128,16 @@ template&lt;typename Ty &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>特定のビットに値を書き込む </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>書き込み対象 </td></tr>
+    <tr><td class="paramname">bit</td><td>ビット位置 </td></tr>
+    <tr><td class="paramname">value</td><td>書き込む値 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1361,7 +1437,7 @@ template&lt;typename A , typename B , typename C &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>CRC-8 </p>
+<p>バイト列から CRC-8 値を計算する </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramname">buffer</td><td>CRCの計算対象となるバッファ </td></tr>
@@ -2179,6 +2255,8 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>度数法から弧度法に変換する係数 </p>
+
 </div>
 </div>
 <a id="ad066ec9f8cd4a23313a732c47f94e8b1" name="ad066ec9f8cd4a23313a732c47f94e8b1"></a>
@@ -2200,6 +2278,8 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>π/2 </p>
 
 </div>
 </div>
@@ -2247,6 +2327,8 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>π </p>
+
 </div>
 </div>
 <a id="a6082062cd72559c99e5a957081355920" name="a6082062cd72559c99e5a957081355920"></a>
@@ -2269,6 +2351,8 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>弧度法から度数法に変換する係数 </p>
+
 </div>
 </div>
 <a id="ad25e28fa7e678acd526f057be2446b39" name="ad25e28fa7e678acd526f057be2446b39"></a>
@@ -2290,6 +2374,8 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>π*2 </p>
 
 </div>
 </div>

@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -111,16 +110,24 @@ $(document).ready(function(){initNavTree('classUdon_1_1Ros2UartWriter.html','');
 </div><!--header-->
 <div class="contents">
 
+<p>ROS2からUART通信を送信するクラス  
+ <a href="classUdon_1_1Ros2UartWriter.html#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="Ros2UartWriter_8hpp_source.html">Udon/Com/Uart/Ros2UartWriter.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
 <tr class="memitem:a8914d4c76d472cb31b0a85db1cd6b62f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Ros2UartWriter.html#a8914d4c76d472cb31b0a85db1cd6b62f">Ros2UartWriter</a> (serial::Serial &amp;bus)</td></tr>
+<tr class="memdesc:a8914d4c76d472cb31b0a85db1cd6b62f"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="classUdon_1_1Ros2UartWriter.html#a8914d4c76d472cb31b0a85db1cd6b62f">[詳解]</a><br /></td></tr>
 <tr class="separator:a8914d4c76d472cb31b0a85db1cd6b62f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedfeb1215b2b7ddd9b9af09c482741b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Ros2UartWriter.html#aedfeb1215b2b7ddd9b9af09c482741b4">setMessage</a> (const Message &amp;message)</td></tr>
+<tr class="memdesc:aedfeb1215b2b7ddd9b9af09c482741b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">メッセージの送信  <a href="classUdon_1_1Ros2UartWriter.html#aedfeb1215b2b7ddd9b9af09c482741b4">[詳解]</a><br /></td></tr>
 <tr class="separator:aedfeb1215b2b7ddd9b9af09c482741b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">構築子と解体子</h2>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename Message&gt;<br />
+class Udon::Ros2UartWriter&lt; Message &gt;</div><p >ROS2からUART通信を送信するクラス </p>
+</div><h2 class="groupheader">構築子と解体子</h2>
 <a id="a8914d4c76d472cb31b0a85db1cd6b62f" name="a8914d4c76d472cb31b0a85db1cd6b62f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8914d4c76d472cb31b0a85db1cd6b62f">&#9670;&#160;</a></span>Ros2UartWriter()</h2>
 
@@ -146,6 +153,14 @@ template&lt;typename Message &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bus</td><td>UARTバス </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -175,6 +190,14 @@ template&lt;typename Message &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>メッセージの送信 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>送信メッセージ </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

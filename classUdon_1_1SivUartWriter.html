@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -111,16 +110,30 @@ $(document).ready(function(){initNavTree('classUdon_1_1SivUartWriter.html',''); 
 </div><!--header-->
 <div class="contents">
 
+<p>OpenSiv3D用 UART 送信クラス  
+ <a href="classUdon_1_1SivUartWriter.html#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="SivUartWriter_8hpp_source.html">Udon/Com/Uart/SivUartWriter.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
 <tr class="memitem:a25a23ea5bfb95537808c63860ef283e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1SivUartWriter.html#a25a23ea5bfb95537808c63860ef283e9">SivUartWriter</a> (s3d::Serial &amp;bus)</td></tr>
+<tr class="memdesc:a25a23ea5bfb95537808c63860ef283e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="classUdon_1_1SivUartWriter.html#a25a23ea5bfb95537808c63860ef283e9">[詳解]</a><br /></td></tr>
 <tr class="separator:a25a23ea5bfb95537808c63860ef283e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21c76c5d322c716de7fa52fcdf4666af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1SivUartWriter.html#a21c76c5d322c716de7fa52fcdf4666af">setMessage</a> (const Message &amp;message)</td></tr>
+<tr class="memdesc:a21c76c5d322c716de7fa52fcdf4666af"><td class="mdescLeft">&#160;</td><td class="mdescRight">メッセージの送信  <a href="classUdon_1_1SivUartWriter.html#a21c76c5d322c716de7fa52fcdf4666af">[詳解]</a><br /></td></tr>
 <tr class="separator:a21c76c5d322c716de7fa52fcdf4666af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">構築子と解体子</h2>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename Message&gt;<br />
+class Udon::SivUartWriter&lt; Message &gt;</div><p >OpenSiv3D用 UART 送信クラス </p>
+<dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname"><a class="el" href="namespaceUdon_1_1Message.html">Message</a></td><td>メッセージ型 </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">構築子と解体子</h2>
 <a id="a25a23ea5bfb95537808c63860ef283e9" name="a25a23ea5bfb95537808c63860ef283e9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a25a23ea5bfb95537808c63860ef283e9">&#9670;&#160;</a></span>SivUartWriter()</h2>
 
@@ -146,6 +159,14 @@ template&lt;typename Message &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bus</td><td>UARTバス </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -175,6 +196,14 @@ template&lt;typename Message &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>メッセージの送信 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>送信メッセージ </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

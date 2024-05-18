@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -122,32 +121,33 @@ $(document).ready(function(){initNavTree('PioClock_8hpp_source.html',''); initRe
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">inline</span> <span class="keywordtype">bool</span> PioClockBegin(uint8_t pin, uint32_t clockSpeed)</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keyword">auto</span> sm = Pio::AllocateStateMachine(Udon::Pio::Sqwave::squarewave_program);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordflow">if</span> (not sm)</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        }</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; count_of(Pio::Sqwave::squarewave_program_instructions); i++)</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            sm-&gt;pio-&gt;instr_mem[i] = Pio::Sqwave::squarewave_program_instructions[i];</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        sm-&gt;pio-&gt;sm[sm-&gt;index].clkdiv = (uint32_t)(F_CPU * 0.25f * (1 &lt;&lt; 16) / clockSpeed);    <span class="comment">// 周波数設定(周波数低めのほうが誤差が少ない)</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">inline</span> <span class="keywordtype">bool</span> PioClockBegin(uint8_t pin, uint32_t clockSpeed)</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keyword">auto</span> sm = Pio::AllocateStateMachine(Udon::Pio::Sqwave::squarewave_program);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordflow">if</span> (not sm)</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        }</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        sm-&gt;pio-&gt;sm[sm-&gt;index].pinctrl = (1 &lt;&lt; PIO_SM0_PINCTRL_SET_COUNT_LSB) | (pin &lt;&lt; PIO_SM0_PINCTRL_SET_BASE_LSB);    <span class="comment">// PIOがIOピンにアクセスできるようにする</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        gpio_set_function(pin, sm-&gt;pio == pio0 ? GPIO_FUNC_PIO0 : GPIO_FUNC_PIO1);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="comment">// pio_sm_init(pio, sm, offset, &amp;c);</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        pio_sm_set_enabled(sm-&gt;pio, sm-&gt;index, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; count_of(Pio::Sqwave::squarewave_program_instructions); i++)</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            sm-&gt;pio-&gt;instr_mem[i] = Pio::Sqwave::squarewave_program_instructions[i];</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        sm-&gt;pio-&gt;sm[sm-&gt;index].clkdiv = (uint32_t)(F_CPU * 0.25f * (1 &lt;&lt; 16) / clockSpeed);    <span class="comment">// 周波数設定(周波数低めのほうが誤差が少ない)</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        sm-&gt;pio-&gt;sm[sm-&gt;index].pinctrl = (1 &lt;&lt; PIO_SM0_PINCTRL_SET_COUNT_LSB) | (pin &lt;&lt; PIO_SM0_PINCTRL_SET_BASE_LSB);    <span class="comment">// PIOがIOピンにアクセスできるようにする</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    }</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}    <span class="comment">// namespace Udon</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        gpio_set_function(pin, sm-&gt;pio == pio0 ? GPIO_FUNC_PIO0 : GPIO_FUNC_PIO1);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="comment">// pio_sm_init(pio, sm, offset, &amp;c);</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        pio_sm_set_enabled(sm-&gt;pio, sm-&gt;index, <span class="keyword">true</span>);</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}    <span class="comment">// namespace Udon</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aSquareWave_8pio_8hpp_html"><div class="ttname"><a href="SquareWave_8pio_8hpp.html">SquareWave.pio.hpp</a></div></div>
 <div class="ttc" id="aStateMachineAllocator_8hpp_html"><div class="ttname"><a href="StateMachineAllocator_8hpp.html">StateMachineAllocator.hpp</a></div></div>
 <div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition:</b> Bit.hpp:12</div></div>

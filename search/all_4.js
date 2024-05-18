@@ -1,7 +1,7 @@
 var searchData=
 [
   ['d_0',['d',['../structUdon_1_1PidController_1_1Parameter.html#ab86074cfd18fa98b1dc3f2c6141405b0',1,'Udon::PidController::Parameter']]],
-  ['data_1',['data',['../classUdon_1_1BasicStringView.html#a04fb86f2eccbe15ac0bd8acfc6446875',1,'Udon::BasicStringView::data()'],['../classUdon_1_1ArrayView.html#a3941603c25584535e570601774a82e84',1,'Udon::ArrayView::data() const'],['../classUdon_1_1ArrayView.html#af779b3b56579496fdeb6196aef2a30ed',1,'Udon::ArrayView::data()'],['../structUdon_1_1CanTxNode.html#a542aa0315bef4509a4691ac026805ed4',1,'Udon::CanTxNode::data()'],['../structUdon_1_1CanRxNode.html#a52fa3e5e2528ebcf65c95d0f0f1e02f9',1,'Udon::CanRxNode::data()'],['../structUdon_1_1Im920Node.html#ab4022e30c4aa6059c9d428dc3443529b',1,'Udon::Im920Node::data()']]],
+  ['data_1',['data',['../classUdon_1_1BasicStringView.html#a04fb86f2eccbe15ac0bd8acfc6446875',1,'Udon::BasicStringView::data()'],['../classUdon_1_1ArrayView.html#a3941603c25584535e570601774a82e84',1,'Udon::ArrayView::data() const'],['../classUdon_1_1ArrayView.html#af779b3b56579496fdeb6196aef2a30ed',1,'Udon::ArrayView::data()'],['../structUdon_1_1Im920Node.html#ab4022e30c4aa6059c9d428dc3443529b',1,'Udon::Im920Node::data()'],['../structUdon_1_1CanTxNode.html#a542aa0315bef4509a4691ac026805ed4',1,'Udon::CanTxNode::data()'],['../structUdon_1_1CanRxNode.html#a52fa3e5e2528ebcf65c95d0f0f1e02f9',1,'Udon::CanRxNode::data()']]],
   ['decayt_2',['DecayT',['../namespaceUdon_1_1Traits.html#a8cf92d7d6a8a2dd9e34cde6772651f17',1,'Udon::Traits']]],
   ['degtorad_3',['DegToRad',['../namespaceUdon.html#a575448228d6bb50494a7502aaeaf86b4',1,'Udon']]],
   ['deltatime_4',['DeltaTime',['../classUdon_1_1DeltaTime.html#a657dec6e660350cf38e1bb4d494cb6ce',1,'Udon::DeltaTime::DeltaTime()'],['../classUdon_1_1DeltaTime.html',1,'Udon::DeltaTime']]],
@@ -13,16 +13,17 @@ var searchData=
   ['difference_5ftype_10',['difference_type',['../structUdon_1_1RingBuffer_1_1const__iterator.html#aafec1ab526fd68bff03d12a72e51332f',1,'Udon::RingBuffer::const_iterator::difference_type()'],['../structUdon_1_1RingBuffer_1_1iterator.html#a9daccb5d35712a0bcf942b0f80387545',1,'Udon::RingBuffer::iterator::difference_type()']]],
   ['dimension_11',['Dimension',['../structUdon_1_1Vec2.html#ad1f99a08b6cf45bfcb9c5db8f3a6f3d5',1,'Udon::Vec2::Dimension()'],['../structUdon_1_1Vec3.html#ab9b80ebd512ab9ba383c2b832698906d',1,'Udon::Vec3::Dimension()']]],
   ['dipswitch_2ehpp_12',['DipSwitch.hpp',['../DipSwitch_8hpp.html',1,'']]],
-  ['directionrevision_13',['directionRevision',['../structUdon_1_1Quaternion.html#a21ed0ccb68832276b6d4516bc6660d47',1,'Udon::Quaternion::directionRevision()'],['../structUdon_1_1Euler.html#a83f31b979e227730360c7cfa0fbdb1f0',1,'Udon::Euler::directionRevision()']]],
-  ['directorystructure_2emd_14',['DirectoryStructure.md',['../DirectoryStructure_8md.html',1,'']]],
-  ['disableifnullptrt_15',['DisableIfNullptrT',['../namespaceUdon_1_1Traits.html#afddf6052e99a4e5123b7b04940382d77',1,'Udon::Traits']]],
-  ['disableift_16',['DisableIfT',['../namespaceUdon_1_1Traits.html#a7018a695bccfb3fe39348f377d9b1ae8',1,'Udon::Traits']]],
-  ['disableifvoidt_17',['DisableIfVoidT',['../namespaceUdon_1_1Traits.html#acfd2f9eaa134acf42833deb94a4b53c2',1,'Udon::Traits']]],
-  ['distance_18',['distance',['../structUdon_1_1Message_1_1DistanceSensor.html#a62befbaee003228cd66743505a6d9605',1,'Udon::Message::DistanceSensor']]],
-  ['distancefrom_19',['distanceFrom',['../structUdon_1_1Vec2.html#ac663e69dc69695397b7ce4075e7e77e9',1,'Udon::Vec2']]],
-  ['distancesensor_20',['DistanceSensor',['../structUdon_1_1Message_1_1DistanceSensor.html',1,'Udon::Message']]],
-  ['distancesensor_2ehpp_21',['DistanceSensor.hpp',['../DistanceSensor_8hpp.html',1,'']]],
-  ['down_22',['down',['../structUdon_1_1Message_1_1PadPS5.html#a59bf63cdc954011881144c8f967a9752',1,'Udon::Message::PadPS5']]],
-  ['dummy_23',['Dummy',['../structUdon_1_1Optional_1_1Storage_1_1Dummy.html#a038238a933749c2b9aea6a1922e876f7',1,'Udon::Optional::Storage::Dummy::Dummy()'],['../structUdon_1_1Optional_1_1Storage_1_1Dummy.html',1,'Udon::Optional&lt; T &gt;::Storage::Dummy']]],
-  ['dummyenumerator_24',['DummyEnumerator',['../structUdon_1_1Traits_1_1DummyEnumerator.html',1,'Udon::Traits']]]
+  ['dipswitch_2emd_13',['DipSwitch.md',['../DipSwitch_8md.html',1,'']]],
+  ['directionrevision_14',['directionRevision',['../structUdon_1_1Quaternion.html#a21ed0ccb68832276b6d4516bc6660d47',1,'Udon::Quaternion::directionRevision()'],['../structUdon_1_1Euler.html#a83f31b979e227730360c7cfa0fbdb1f0',1,'Udon::Euler::directionRevision()']]],
+  ['directorystructure_2emd_15',['DirectoryStructure.md',['../DirectoryStructure_8md.html',1,'']]],
+  ['disableifnullptrt_16',['DisableIfNullptrT',['../namespaceUdon_1_1Traits.html#afddf6052e99a4e5123b7b04940382d77',1,'Udon::Traits']]],
+  ['disableift_17',['DisableIfT',['../namespaceUdon_1_1Traits.html#a7018a695bccfb3fe39348f377d9b1ae8',1,'Udon::Traits']]],
+  ['disableifvoidt_18',['DisableIfVoidT',['../namespaceUdon_1_1Traits.html#acfd2f9eaa134acf42833deb94a4b53c2',1,'Udon::Traits']]],
+  ['distance_19',['distance',['../structUdon_1_1Message_1_1DistanceSensor.html#a62befbaee003228cd66743505a6d9605',1,'Udon::Message::DistanceSensor']]],
+  ['distancefrom_20',['distanceFrom',['../structUdon_1_1Vec2.html#ac663e69dc69695397b7ce4075e7e77e9',1,'Udon::Vec2']]],
+  ['distancesensor_21',['DistanceSensor',['../structUdon_1_1Message_1_1DistanceSensor.html',1,'Udon::Message']]],
+  ['distancesensor_2ehpp_22',['DistanceSensor.hpp',['../DistanceSensor_8hpp.html',1,'']]],
+  ['down_23',['down',['../structUdon_1_1Message_1_1PadPS5.html#a59bf63cdc954011881144c8f967a9752',1,'Udon::Message::PadPS5']]],
+  ['dummy_24',['Dummy',['../structUdon_1_1Optional_1_1Storage_1_1Dummy.html#a038238a933749c2b9aea6a1922e876f7',1,'Udon::Optional::Storage::Dummy::Dummy()'],['../structUdon_1_1Optional_1_1Storage_1_1Dummy.html',1,'Udon::Optional&lt; T &gt;::Storage::Dummy']]],
+  ['dummyenumerator_25',['DummyEnumerator',['../structUdon_1_1Traits_1_1DummyEnumerator.html',1,'Udon::Traits']]]
 ];

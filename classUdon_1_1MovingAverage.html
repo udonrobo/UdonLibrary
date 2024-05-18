@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -111,6 +110,9 @@ $(document).ready(function(){initNavTree('classUdon_1_1MovingAverage.html',''); 
 </div><!--header-->
 <div class="contents">
 
+<p>移動平均クラス  
+ <a href="classUdon_1_1MovingAverage.html#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="MovingAverage_8hpp_source.html">Udon/Algorithm/MovingAverage.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -119,10 +121,13 @@ $(document).ready(function(){initNavTree('classUdon_1_1MovingAverage.html',''); 
 <tr class="memdesc:acca886114c511e7bc763d5f1a74c6a84"><td class="mdescLeft">&#160;</td><td class="mdescRight">dataに保存されているデータの合計値  <a href="classUdon_1_1MovingAverage.html#acca886114c511e7bc763d5f1a74c6a84">[詳解]</a><br /></td></tr>
 <tr class="separator:acca886114c511e7bc763d5f1a74c6a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac87bc602f106d7886109fead7206bafa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1MovingAverage.html#ac87bc602f106d7886109fead7206bafa">update</a> (int value) noexcept</td></tr>
+<tr class="memdesc:ac87bc602f106d7886109fead7206bafa"><td class="mdescLeft">&#160;</td><td class="mdescRight">値の更新  <a href="classUdon_1_1MovingAverage.html#ac87bc602f106d7886109fead7206bafa">[詳解]</a><br /></td></tr>
 <tr class="separator:ac87bc602f106d7886109fead7206bafa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22b06e2be0e4fb72d5346ad940433467"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1MovingAverage.html#a22b06e2be0e4fb72d5346ad940433467">getValue</a> () const noexcept</td></tr>
+<tr class="memdesc:a22b06e2be0e4fb72d5346ad940433467"><td class="mdescLeft">&#160;</td><td class="mdescRight">平均値の取得  <a href="classUdon_1_1MovingAverage.html#a22b06e2be0e4fb72d5346ad940433467">[詳解]</a><br /></td></tr>
 <tr class="separator:a22b06e2be0e4fb72d5346ad940433467"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f06aa01a65f06d5c99bced5e82f72ba"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1MovingAverage.html#a3f06aa01a65f06d5c99bced5e82f72ba">operator()</a> (double value) noexcept</td></tr>
+<tr class="memdesc:a3f06aa01a65f06d5c99bced5e82f72ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">値の更新と平均値の取得  <a href="classUdon_1_1MovingAverage.html#a3f06aa01a65f06d5c99bced5e82f72ba">[詳解]</a><br /></td></tr>
 <tr class="separator:a3f06aa01a65f06d5c99bced5e82f72ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
@@ -189,7 +194,9 @@ template&lt;size_t DataSize&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >平均値の取得 </p><dl class="section return"><dt>戻り値</dt><dd>平均値 </dd></dl>
+
+<p>平均値の取得 </p>
+<dl class="section return"><dt>戻り値</dt><dd>平均値 </dd></dl>
 
 </div>
 </div>
@@ -219,6 +226,15 @@ template&lt;size_t DataSize&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>値の更新と平均値の取得 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>[in]移動平均するデータ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>平均値 </dd></dl>
+
 </div>
 </div>
 <a id="ac87bc602f106d7886109fead7206bafa" name="ac87bc602f106d7886109fead7206bafa"></a>
@@ -246,7 +262,9 @@ template&lt;size_t DataSize&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p >値の更新 </p><dl class="params"><dt>引数</dt><dd>
+
+<p>値の更新 </p>
+<dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramname">value</td><td>[in]移動平均するデータ </td></tr>
   </table>

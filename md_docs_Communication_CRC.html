@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -164,7 +163,7 @@ $(document).ready(function(){initNavTree('md_docs_Communication_CRC.html',''); i
 </div><!-- fragment --><p >通常の配列は ArrayView コンストラクタによる暗黙の型変換によって、そのまま引数に渡せます。</p>
 <div class="fragment"><div class="line">uint8_t data[100];</div>
 <div class="line">uint8_t checksum = <a class="code hl_function" href="namespaceUdon.html#a504b82d933419dccd907460936078550">Udon::CRC8</a>(data);</div>
-<div class="ttc" id="anamespaceUdon_html_a504b82d933419dccd907460936078550"><div class="ttname"><a href="namespaceUdon.html#a504b82d933419dccd907460936078550">Udon::CRC8</a></div><div class="ttdeci">uint8_t CRC8(ArrayView&lt; const uint8_t &gt; buffer)</div><div class="ttdoc">CRC-8</div><div class="ttdef"><b>Definition:</b> CRC.hpp:17</div></div>
+<div class="ttc" id="anamespaceUdon_html_a504b82d933419dccd907460936078550"><div class="ttname"><a href="namespaceUdon.html#a504b82d933419dccd907460936078550">Udon::CRC8</a></div><div class="ttdeci">uint8_t CRC8(ArrayView&lt; const uint8_t &gt; buffer)</div><div class="ttdoc">バイト列から CRC-8 値を計算する</div><div class="ttdef"><b>Definition:</b> CRC.hpp:17</div></div>
 </div><!-- fragment --><p >ポインタからの場合 ArrayView コンストラクタを明示的に呼び出す必要があります。</p>
 <div class="fragment"><div class="line">uint8_t* data = <span class="keyword">new</span> uint8_t[100];</div>
 <div class="line">uint8_t checksum = <a class="code hl_function" href="namespaceUdon.html#a504b82d933419dccd907460936078550">Udon::CRC8</a>({ data, 100 });</div>

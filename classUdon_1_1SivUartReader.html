@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -112,6 +111,9 @@ $(document).ready(function(){initNavTree('classUdon_1_1SivUartReader.html',''); 
 </div><!--header-->
 <div class="contents">
 
+<p>OpenSiv3D用 UART 受信クラス  
+ <a href="classUdon_1_1SivUartReader.html#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="SivUartReader_8hpp_source.html">Udon/Com/Uart/SivUartReader.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -122,17 +124,30 @@ $(document).ready(function(){initNavTree('classUdon_1_1SivUartReader.html',''); 
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
 <tr class="memitem:aaba27925cc10c16cb388314260cea10a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1SivUartReader.html#aaba27925cc10c16cb388314260cea10a">SivUartReader</a> (s3d::Serial &amp;bus)</td></tr>
+<tr class="memdesc:aaba27925cc10c16cb388314260cea10a"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="classUdon_1_1SivUartReader.html#aaba27925cc10c16cb388314260cea10a">[詳解]</a><br /></td></tr>
 <tr class="separator:aaba27925cc10c16cb388314260cea10a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaac820d632abae77f82db5ecbbe5c7d3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1SivUartReader.html#aaac820d632abae77f82db5ecbbe5c7d3">~SivUartReader</a> ()</td></tr>
+<tr class="memdesc:aaac820d632abae77f82db5ecbbe5c7d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ  <a href="classUdon_1_1SivUartReader.html#aaac820d632abae77f82db5ecbbe5c7d3">[詳解]</a><br /></td></tr>
 <tr class="separator:aaac820d632abae77f82db5ecbbe5c7d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaba712cc5469583f60510e952b3f3830"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; Message &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1SivUartReader.html#aaba712cc5469583f60510e952b3f3830">getMessage</a> () const</td></tr>
+<tr class="memdesc:aaba712cc5469583f60510e952b3f3830"><td class="mdescLeft">&#160;</td><td class="mdescRight">メッセージの取得  <a href="classUdon_1_1SivUartReader.html#aaba712cc5469583f60510e952b3f3830">[詳解]</a><br /></td></tr>
 <tr class="separator:aaba712cc5469583f60510e952b3f3830"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fdbc9c58588ee815633177fcc327608"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1SivUartReader.html#a6fdbc9c58588ee815633177fcc327608">show</a> (char gap='\t') const</td></tr>
-<tr class="separator:a6fdbc9c58588ee815633177fcc327608"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac12061ecd7d0cad9c3dd4e7a65ea582"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1SivUartReader.html#aac12061ecd7d0cad9c3dd4e7a65ea582">show</a> () const</td></tr>
+<tr class="memdesc:aac12061ecd7d0cad9c3dd4e7a65ea582"><td class="mdescLeft">&#160;</td><td class="mdescRight">メッセージの表示  <a href="classUdon_1_1SivUartReader.html#aac12061ecd7d0cad9c3dd4e7a65ea582">[詳解]</a><br /></td></tr>
+<tr class="separator:aac12061ecd7d0cad9c3dd4e7a65ea582"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c5fcee6e9c7cb3162033d832907b280"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1SivUartReader.html#a9c5fcee6e9c7cb3162033d832907b280">showRaw</a> () const</td></tr>
 <tr class="separator:a9c5fcee6e9c7cb3162033d832907b280"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">型定義メンバ詳解</h2>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename Message&gt;<br />
+class Udon::SivUartReader&lt; Message &gt;</div><p >OpenSiv3D用 UART 受信クラス </p>
+<dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname"><a class="el" href="namespaceUdon_1_1Message.html">Message</a></td><td>メッセージ型 </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">型定義メンバ詳解</h2>
 <a id="a248695ca8811cfc89bf2236942d36195" name="a248695ca8811cfc89bf2236942d36195"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a248695ca8811cfc89bf2236942d36195">&#9670;&#160;</a></span>MessageType</h2>
 
@@ -176,6 +191,14 @@ template&lt;typename Message &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>コンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bus</td><td>UARTバス </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="aaac820d632abae77f82db5ecbbe5c7d3" name="aaac820d632abae77f82db5ecbbe5c7d3"></a>
@@ -202,6 +225,8 @@ template&lt;typename Message &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>デストラクタ </p>
 
 </div>
 </div>
@@ -231,10 +256,13 @@ template&lt;typename Message &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>メッセージの取得 </p>
+<dl class="section return"><dt>戻り値</dt><dd>メッセージ(Optional) </dd></dl>
+
 </div>
 </div>
-<a id="a6fdbc9c58588ee815633177fcc327608" name="a6fdbc9c58588ee815633177fcc327608"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6fdbc9c58588ee815633177fcc327608">&#9670;&#160;</a></span>show()</h2>
+<a id="aac12061ecd7d0cad9c3dd4e7a65ea582" name="aac12061ecd7d0cad9c3dd4e7a65ea582"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac12061ecd7d0cad9c3dd4e7a65ea582">&#9670;&#160;</a></span>show()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -247,8 +275,7 @@ template&lt;typename Message &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1SivUartReader.html">Udon::SivUartReader</a>&lt; Message &gt;::show </td>
           <td>(</td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>gap</em> = <code>'\t'</code></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -258,6 +285,8 @@ template&lt;typename Message &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>メッセージの表示 </p>
 
 </div>
 </div>

@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -111,6 +110,9 @@ $(document).ready(function(){initNavTree('classUdon_1_1UartWriter.html',''); ini
 </div><!--header-->
 <div class="contents">
 
+<p>UART 送信クラス  
+ <a href="classUdon_1_1UartWriter.html#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="UartWriter_8hpp_source.html">Udon/Com/Uart/UartWriter.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -121,14 +123,23 @@ $(document).ready(function(){initNavTree('classUdon_1_1UartWriter.html',''); ini
 <tr class="memitem:a0e61a354de6c8e96b729f3589390f343"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1UartWriter.html#a0e61a354de6c8e96b729f3589390f343">setMessage</a> (const Message &amp;rhs)</td></tr>
 <tr class="memdesc:a0e61a354de6c8e96b729f3589390f343"><td class="mdescLeft">&#160;</td><td class="mdescRight">送信内容を更新  <a href="classUdon_1_1UartWriter.html#a0e61a354de6c8e96b729f3589390f343">[詳解]</a><br /></td></tr>
 <tr class="separator:a0e61a354de6c8e96b729f3589390f343"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afde274bcf407f5e1ea75a7210243fd8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1UartWriter.html#afde274bcf407f5e1ea75a7210243fd8b">show</a> (char gap='\t') const</td></tr>
-<tr class="memdesc:afde274bcf407f5e1ea75a7210243fd8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">送信内容を表示  <a href="classUdon_1_1UartWriter.html#afde274bcf407f5e1ea75a7210243fd8b">[詳解]</a><br /></td></tr>
-<tr class="separator:afde274bcf407f5e1ea75a7210243fd8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed58f5aeada4bc3cf339c3de3af0bdd6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1UartWriter.html#aed58f5aeada4bc3cf339c3de3af0bdd6">showRaw</a> (char gap=' ') const</td></tr>
-<tr class="memdesc:aed58f5aeada4bc3cf339c3de3af0bdd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">生の送信内容を表示  <a href="classUdon_1_1UartWriter.html#aed58f5aeada4bc3cf339c3de3af0bdd6">[詳解]</a><br /></td></tr>
-<tr class="separator:aed58f5aeada4bc3cf339c3de3af0bdd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2b528f635a222a75533ee8ffb81f12d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1UartWriter.html#af2b528f635a222a75533ee8ffb81f12d">show</a> () const</td></tr>
+<tr class="memdesc:af2b528f635a222a75533ee8ffb81f12d"><td class="mdescLeft">&#160;</td><td class="mdescRight">送信内容を表示  <a href="classUdon_1_1UartWriter.html#af2b528f635a222a75533ee8ffb81f12d">[詳解]</a><br /></td></tr>
+<tr class="separator:af2b528f635a222a75533ee8ffb81f12d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad21ca015602cf49bfea674db6bbe6d0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1UartWriter.html#ad21ca015602cf49bfea674db6bbe6d0e">showRaw</a> () const</td></tr>
+<tr class="memdesc:ad21ca015602cf49bfea674db6bbe6d0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">生の送信内容を表示  <a href="classUdon_1_1UartWriter.html#ad21ca015602cf49bfea674db6bbe6d0e">[詳解]</a><br /></td></tr>
+<tr class="separator:ad21ca015602cf49bfea674db6bbe6d0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">構築子と解体子</h2>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename Message&gt;<br />
+class Udon::UartWriter&lt; Message &gt;</div><p >UART 送信クラス </p>
+<dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname"><a class="el" href="namespaceUdon_1_1Message.html">Message</a></td><td>メッセージ型 </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">構築子と解体子</h2>
 <a id="a292cc503fa8ef3eaaab07ee0875b43bf" name="a292cc503fa8ef3eaaab07ee0875b43bf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a292cc503fa8ef3eaaab07ee0875b43bf">&#9670;&#160;</a></span>UartWriter()</h2>
 
@@ -196,8 +207,8 @@ template&lt;typename Message &gt; </div>
 
 </div>
 </div>
-<a id="afde274bcf407f5e1ea75a7210243fd8b" name="afde274bcf407f5e1ea75a7210243fd8b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afde274bcf407f5e1ea75a7210243fd8b">&#9670;&#160;</a></span>show()</h2>
+<a id="af2b528f635a222a75533ee8ffb81f12d" name="af2b528f635a222a75533ee8ffb81f12d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2b528f635a222a75533ee8ffb81f12d">&#9670;&#160;</a></span>show()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -210,8 +221,7 @@ template&lt;typename Message &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1UartWriter.html">Udon::UartWriter</a>&lt; Message &gt;::show </td>
           <td>(</td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>gap</em> = <code>'\t'</code></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -223,17 +233,11 @@ template&lt;typename Message &gt; </div>
 </div><div class="memdoc">
 
 <p>送信内容を表示 </p>
-<dl class="params"><dt>引数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">gap</td><td>区切り文字 (default: '\t') </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
-<a id="aed58f5aeada4bc3cf339c3de3af0bdd6" name="aed58f5aeada4bc3cf339c3de3af0bdd6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed58f5aeada4bc3cf339c3de3af0bdd6">&#9670;&#160;</a></span>showRaw()</h2>
+<a id="ad21ca015602cf49bfea674db6bbe6d0e" name="ad21ca015602cf49bfea674db6bbe6d0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad21ca015602cf49bfea674db6bbe6d0e">&#9670;&#160;</a></span>showRaw()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -246,8 +250,7 @@ template&lt;typename Message &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1UartWriter.html">Udon::UartWriter</a>&lt; Message &gt;::showRaw </td>
           <td>(</td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>gap</em> = <code>'&#160;'</code></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -259,12 +262,6 @@ template&lt;typename Message &gt; </div>
 </div><div class="memdoc">
 
 <p>生の送信内容を表示 </p>
-<dl class="params"><dt>引数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">gap</td><td>区切り文字 (default: ' ') </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>

@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -112,11 +111,15 @@ $(document).ready(function(){initNavTree('structUdon_1_1Message_1_1Lcd.html','')
 </div><!--header-->
 <div class="contents">
 
+<p>LCD  
+ <a href="structUdon_1_1Message_1_1Lcd.html#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="Lcd_8hpp_source.html">Udon/Com/Message/Lcd.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
 <tr class="memitem:a3939bff99bb0553ad0f5e9fedd8a4de8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Message_1_1Lcd.html#a3939bff99bb0553ad0f5e9fedd8a4de8">printf</a> (size_t index, const char *format,...)</td></tr>
+<tr class="memdesc:a3939bff99bb0553ad0f5e9fedd8a4de8"><td class="mdescLeft">&#160;</td><td class="mdescRight">LCDに文字列を設定  <a href="structUdon_1_1Message_1_1Lcd.html#a3939bff99bb0553ad0f5e9fedd8a4de8">[詳解]</a><br /></td></tr>
 <tr class="separator:a3939bff99bb0553ad0f5e9fedd8a4de8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d8c41558765df22967fd032e2234b16"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Message_1_1Lcd.html#a0d8c41558765df22967fd032e2234b16">UDON_ENUMERABLE</a> (<a class="el" href="structUdon_1_1Message_1_1Lcd.html#a6206d46d5eee820e77d2ce12b0e7b64d">text</a>)</td></tr>
 <tr class="separator:a0d8c41558765df22967fd032e2234b16"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,7 +130,17 @@ $(document).ready(function(){initNavTree('structUdon_1_1Message_1_1Lcd.html','')
 <tr class="memdesc:a6206d46d5eee820e77d2ce12b0e7b64d"><td class="mdescLeft">&#160;</td><td class="mdescRight">LCDのテキスト  <a href="structUdon_1_1Message_1_1Lcd.html#a6206d46d5eee820e77d2ce12b0e7b64d">[詳解]</a><br /></td></tr>
 <tr class="separator:a6206d46d5eee820e77d2ce12b0e7b64d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">関数詳解</h2>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;size_t Column, size_t Row&gt;<br />
+struct Udon::Message::Lcd&lt; Column, Row &gt;</div><p >LCD </p>
+<dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Column</td><td>列数 </td></tr>
+    <tr><td class="paramname">Row</td><td>行数 </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">関数詳解</h2>
 <a id="a3939bff99bb0553ad0f5e9fedd8a4de8" name="a3939bff99bb0553ad0f5e9fedd8a4de8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3939bff99bb0553ad0f5e9fedd8a4de8">&#9670;&#160;</a></span>printf()</h2>
 
@@ -169,6 +182,15 @@ template&lt;size_t Column, size_t Row&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>LCDに文字列を設定 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>行 </td></tr>
+    <tr><td class="paramname">format</td><td>書式 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

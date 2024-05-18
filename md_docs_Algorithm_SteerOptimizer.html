@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -159,7 +158,7 @@ $(document).ready(function(){initNavTree('md_docs_Algorithm_SteerOptimizer.html'
 <div class="line"> </div>
 <div class="line"><a class="code hl_struct" href="structUdon_1_1Polar.html">Udon::Polar</a> optimized = optimizer(raw);</div>
 <div class="ttc" id="aclassUdon_1_1SteerModuleOptimizer_html"><div class="ttname"><a href="classUdon_1_1SteerModuleOptimizer.html">Udon::SteerModuleOptimizer</a></div><div class="ttdoc">独立ステアリング機構の各モジュール最適化クラス</div><div class="ttdef"><b>Definition:</b> SteerOptimizer.hpp:21</div></div>
-<div class="ttc" id="astructUdon_1_1Polar_html"><div class="ttname"><a href="structUdon_1_1Polar.html">Udon::Polar</a></div><div class="ttdef"><b>Definition:</b> Polar.hpp:17</div></div>
+<div class="ttc" id="astructUdon_1_1Polar_html"><div class="ttname"><a href="structUdon_1_1Polar.html">Udon::Polar</a></div><div class="ttdoc">極座標系</div><div class="ttdef"><b>Definition:</b> Polar.hpp:21</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md19"></a>
 Sample</h1>
 <p >CAN 通信経由のコントローラーの値からステアモジュールの値を得る例を次の示します。</p>
@@ -232,12 +231,12 @@ Sample</h1>
 <div class="line"> </div>
 <div class="line">    }</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassUdon_1_1PadPS5_html"><div class="ttname"><a href="classUdon_1_1PadPS5.html">Udon::PadPS5</a></div><div class="ttdoc">PS5コントローラー</div><div class="ttdef"><b>Definition:</b> PadPS5.hpp:26</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5_html"><div class="ttname"><a href="classUdon_1_1PadPS5.html">Udon::PadPS5</a></div><div class="ttdoc">通信経由PS5コントローラークラス</div><div class="ttdef"><b>Definition:</b> PadPS5.hpp:26</div></div>
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_a2bd58cd4e1cf75085f1a2daf3305b566"><div class="ttname"><a href="classUdon_1_1PadPS5.html#a2bd58cd4e1cf75085f1a2daf3305b566">Udon::PadPS5::update</a></div><div class="ttdeci">void update() noexcept</div><div class="ttdoc">更新</div><div class="ttdef"><b>Definition:</b> PadPS5.hpp:133</div></div>
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_a2fe0419f3bc5b65f01549ea916435f95"><div class="ttname"><a href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">Udon::PadPS5::getMoveInfo</a></div><div class="ttdeci">Stick getMoveInfo() const noexcept</div><div class="ttdoc">ロボットの移動に必要なスティックの情報 Udon::Stick オブジェクト {{x,y},turn} を取得</div><div class="ttdef"><b>Definition:</b> PadPS5.hpp:130</div></div>
-<div class="ttc" id="astructUdon_1_1Polar_html_a34a7ea630fbc1c6fe81a24e4251b13ad"><div class="ttname"><a href="structUdon_1_1Polar.html#a34a7ea630fbc1c6fe81a24e4251b13ad">Udon::Polar::theta</a></div><div class="ttdeci">ValueType theta</div><div class="ttdoc">角度</div><div class="ttdef"><b>Definition:</b> Polar.hpp:25</div></div>
-<div class="ttc" id="astructUdon_1_1Polar_html_a4bb3d4daa152b14e5650fae445895e01"><div class="ttname"><a href="structUdon_1_1Polar.html#a4bb3d4daa152b14e5650fae445895e01">Udon::Polar::r</a></div><div class="ttdeci">ValueType r</div><div class="ttdoc">中心からの距離</div><div class="ttdef"><b>Definition:</b> Polar.hpp:22</div></div>
-<div class="ttc" id="astructUdon_1_1Pos_html_af1a9145af99bed2ee65f1a0b5a0c1bbf"><div class="ttname"><a href="structUdon_1_1Pos.html#af1a9145af99bed2ee65f1a0b5a0c1bbf">Udon::Pos::toSteer</a></div><div class="ttdeci">std::array&lt; Udon::Polar, WheelCount &gt; toSteer(uint8_t powerLimit=255, uint8_t turnPowerLimit=255) const</div><div class="ttdoc">独立ステアリング機構のタイヤ出力値、旋回角を取得する</div><div class="ttdef"><b>Definition:</b> Position.hpp:193</div></div>
+<div class="ttc" id="astructUdon_1_1Polar_html_a34a7ea630fbc1c6fe81a24e4251b13ad"><div class="ttname"><a href="structUdon_1_1Polar.html#a34a7ea630fbc1c6fe81a24e4251b13ad">Udon::Polar::theta</a></div><div class="ttdeci">ValueType theta</div><div class="ttdoc">角度</div><div class="ttdef"><b>Definition:</b> Polar.hpp:29</div></div>
+<div class="ttc" id="astructUdon_1_1Polar_html_a4bb3d4daa152b14e5650fae445895e01"><div class="ttname"><a href="structUdon_1_1Polar.html#a4bb3d4daa152b14e5650fae445895e01">Udon::Polar::r</a></div><div class="ttdeci">ValueType r</div><div class="ttdoc">中心からの距離</div><div class="ttdef"><b>Definition:</b> Polar.hpp:26</div></div>
+<div class="ttc" id="astructUdon_1_1Pos_html_af1a9145af99bed2ee65f1a0b5a0c1bbf"><div class="ttname"><a href="structUdon_1_1Pos.html#af1a9145af99bed2ee65f1a0b5a0c1bbf">Udon::Pos::toSteer</a></div><div class="ttdeci">std::array&lt; Udon::Polar, WheelCount &gt; toSteer(uint8_t powerLimit=255, uint8_t turnPowerLimit=255) const</div><div class="ttdoc">独立ステアリング機構のタイヤ出力値、旋回角を取得する</div><div class="ttdef"><b>Definition:</b> Position.hpp:194</div></div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

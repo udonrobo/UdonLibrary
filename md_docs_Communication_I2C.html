@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -123,7 +122,7 @@ $(document).ready(function(){initNavTree('md_docs_Communication_I2C.html',''); i
 マスターからスレーブへ送信</h1>
 <h2><a class="anchor" id="autotoc_md48"></a>
 マスター送信クラス</h2>
-<p ><code><a class="el" href="classUdon_1_1I2cMasterWriter.html">Udon::I2cMasterWriter</a>&lt;T&gt;</code></p>
+<p ><code><a class="el" href="classUdon_1_1I2cMasterWriter.html" title="I2c マスター側送信クラス">Udon::I2cMasterWriter</a>&lt;T&gt;</code></p>
 <p ><code>T</code> に指定された型のオブジェクトをスレーブへ送信します。スレーブの数に応じて複数インスタンス化可能です。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
@@ -145,11 +144,11 @@ $(document).ready(function(){initNavTree('md_docs_Communication_I2C.html',''); i
 <div class="line">    delay(10);</div>
 <div class="line">}</div>
 <div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
-<div class="ttc" id="aclassUdon_1_1I2cMasterWriter_html"><div class="ttname"><a href="classUdon_1_1I2cMasterWriter.html">Udon::I2cMasterWriter</a></div><div class="ttdef"><b>Definition:</b> I2cMasterWriter.hpp:24</div></div>
-<div class="ttc" id="aclassUdon_1_1I2cMasterWriter_html_acc4ba22420f58c11bd6e4ac2ac06887a"><div class="ttname"><a href="classUdon_1_1I2cMasterWriter.html#acc4ba22420f58c11bd6e4ac2ac06887a">Udon::I2cMasterWriter::setMessage</a></div><div class="ttdeci">void setMessage(const MessageType &amp;message)</div><div class="ttdoc">送信するメッセージを設定、送信</div><div class="ttdef"><b>Definition:</b> I2cMasterWriter.hpp:44</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cMasterWriter_html"><div class="ttname"><a href="classUdon_1_1I2cMasterWriter.html">Udon::I2cMasterWriter</a></div><div class="ttdoc">I2c マスター側送信クラス</div><div class="ttdef"><b>Definition:</b> I2cMasterWriter.hpp:26</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cMasterWriter_html_acc4ba22420f58c11bd6e4ac2ac06887a"><div class="ttname"><a href="classUdon_1_1I2cMasterWriter.html#acc4ba22420f58c11bd6e4ac2ac06887a">Udon::I2cMasterWriter::setMessage</a></div><div class="ttdeci">void setMessage(const MessageType &amp;message)</div><div class="ttdoc">送信するメッセージを設定、送信</div><div class="ttdef"><b>Definition:</b> I2cMasterWriter.hpp:46</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md49"></a>
 スレーブ受信クラス</h2>
-<p ><code><a class="el" href="classUdon_1_1I2cSlaveReader.html">Udon::I2cSlaveReader</a>&lt;T&gt;</code></p>
+<p ><code><a class="el" href="classUdon_1_1I2cSlaveReader.html" title="I2c スレーブ側受信クラス">Udon::I2cSlaveReader</a>&lt;T&gt;</code></p>
 <p ><code>T</code> に指定された型のオブジェクトをマスターから受信します。複数インスタンス化できません。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
@@ -180,13 +179,13 @@ $(document).ready(function(){initNavTree('md_docs_Communication_I2C.html',''); i
 <div class="line"> </div>
 <div class="line">    delay(10);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassUdon_1_1I2cSlaveReader_html"><div class="ttname"><a href="classUdon_1_1I2cSlaveReader.html">Udon::I2cSlaveReader</a></div><div class="ttdef"><b>Definition:</b> I2cSlaveReader.hpp:24</div></div>
-<div class="ttc" id="aclassUdon_1_1I2cSlaveReader_html_a98971803ac6013eda42928de0c14e539"><div class="ttname"><a href="classUdon_1_1I2cSlaveReader.html#a98971803ac6013eda42928de0c14e539">Udon::I2cSlaveReader::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">受信開始</div><div class="ttdef"><b>Definition:</b> I2cSlaveReader.hpp:51</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cSlaveReader_html"><div class="ttname"><a href="classUdon_1_1I2cSlaveReader.html">Udon::I2cSlaveReader</a></div><div class="ttdoc">I2c スレーブ側受信クラス</div><div class="ttdef"><b>Definition:</b> I2cSlaveReader.hpp:26</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cSlaveReader_html_a98971803ac6013eda42928de0c14e539"><div class="ttname"><a href="classUdon_1_1I2cSlaveReader.html#a98971803ac6013eda42928de0c14e539">Udon::I2cSlaveReader::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">受信開始</div><div class="ttdef"><b>Definition:</b> I2cSlaveReader.hpp:53</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md50"></a>
 スレーブからマスターへ送信</h1>
 <h2><a class="anchor" id="autotoc_md51"></a>
 スレーブ送信クラス</h2>
-<p ><code><a class="el" href="classUdon_1_1I2cSlaveWriter.html">Udon::I2cSlaveWriter</a>&lt;T&gt;</code></p>
+<p ><code><a class="el" href="classUdon_1_1I2cSlaveWriter.html" title="I2c スレーブ側送信クラス">Udon::I2cSlaveWriter</a>&lt;T&gt;</code></p>
 <p ><code>T</code> に指定された型のオブジェクトをマスターへ送信します。複数インスタンス化できません。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
@@ -207,11 +206,11 @@ $(document).ready(function(){initNavTree('md_docs_Communication_I2C.html',''); i
 <div class="line"> </div>
 <div class="line">    delay(10);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassUdon_1_1I2cSlaveWriter_html"><div class="ttname"><a href="classUdon_1_1I2cSlaveWriter.html">Udon::I2cSlaveWriter</a></div><div class="ttdef"><b>Definition:</b> I2cSlaveWriter.hpp:24</div></div>
-<div class="ttc" id="aclassUdon_1_1I2cSlaveWriter_html_aef09d367f078d956116658df05d30342"><div class="ttname"><a href="classUdon_1_1I2cSlaveWriter.html#aef09d367f078d956116658df05d30342">Udon::I2cSlaveWriter::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">送信開始</div><div class="ttdef"><b>Definition:</b> I2cSlaveWriter.hpp:51</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cSlaveWriter_html"><div class="ttname"><a href="classUdon_1_1I2cSlaveWriter.html">Udon::I2cSlaveWriter</a></div><div class="ttdoc">I2c スレーブ側送信クラス</div><div class="ttdef"><b>Definition:</b> I2cSlaveWriter.hpp:26</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cSlaveWriter_html_aef09d367f078d956116658df05d30342"><div class="ttname"><a href="classUdon_1_1I2cSlaveWriter.html#aef09d367f078d956116658df05d30342">Udon::I2cSlaveWriter::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">送信開始</div><div class="ttdef"><b>Definition:</b> I2cSlaveWriter.hpp:53</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md52"></a>
 マスター受信クラス</h2>
-<p ><code><a class="el" href="classUdon_1_1I2cMasterReader.html">Udon::I2cMasterReader</a>&lt;T&gt;</code></p>
+<p ><code><a class="el" href="classUdon_1_1I2cMasterReader.html" title="I2c マスター側受信クラス">Udon::I2cMasterReader</a>&lt;T&gt;</code></p>
 <p ><code>T</code> に指定された型のオブジェクトをスレーブから受信します。スレーブの数に応じて複数インスタンス化可能です。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
@@ -241,8 +240,8 @@ $(document).ready(function(){initNavTree('md_docs_Communication_I2C.html',''); i
 <div class="line"> </div>
 <div class="line">    delay(10);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html">Udon::I2cMasterReader</a></div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:24</div></div>
-<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html_a2d394f9559aaa4865edde2d54a852a33"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html#a2d394f9559aaa4865edde2d54a852a33">Udon::I2cMasterReader::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">更新</div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:43</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html">Udon::I2cMasterReader</a></div><div class="ttdoc">I2c マスター側受信クラス</div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:26</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html_a2d394f9559aaa4865edde2d54a852a33"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html#a2d394f9559aaa4865edde2d54a852a33">Udon::I2cMasterReader::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">更新</div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:45</div></div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

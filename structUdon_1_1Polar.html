@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -114,6 +113,9 @@ $(document).ready(function(){initNavTree('structUdon_1_1Polar.html',''); initRes
 </div><!--header-->
 <div class="contents">
 
+<p>極座標系  
+ <a href="structUdon_1_1Polar.html#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="Forward_2Polar_8hpp_source.html">Udon/Types/Forward/Polar.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
@@ -143,7 +145,6 @@ $(document).ready(function(){initNavTree('structUdon_1_1Polar.html',''); initRes
 <tr class="memdesc:a25543cda484c36e082ffe5b1cb28d93f"><td class="mdescLeft">&#160;</td><td class="mdescRight">y 座標を取得する  <a href="structUdon_1_1Polar.html#a25543cda484c36e082ffe5b1cb28d93f">[詳解]</a><br /></td></tr>
 <tr class="separator:a25543cda484c36e082ffe5b1cb28d93f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94fe23336cc8f7a4ce4bb53dd71448d8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Polar.html">Polar</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Polar.html#a94fe23336cc8f7a4ce4bb53dd71448d8">operator+=</a> (const <a class="el" href="structUdon_1_1Polar.html">Polar</a> &amp;rhs) noexcept</td></tr>
-<tr class="memdesc:a94fe23336cc8f7a4ce4bb53dd71448d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">複合代入演算子  <a href="structUdon_1_1Polar.html#a94fe23336cc8f7a4ce4bb53dd71448d8">[詳解]</a><br /></td></tr>
 <tr class="separator:a94fe23336cc8f7a4ce4bb53dd71448d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac5ee67f5bf2a5040237e483fcefb4f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Polar.html">Polar</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Polar.html#aac5ee67f5bf2a5040237e483fcefb4f5">operator-=</a> (const <a class="el" href="structUdon_1_1Polar.html">Polar</a> &amp;rhs) noexcept</td></tr>
 <tr class="separator:aac5ee67f5bf2a5040237e483fcefb4f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -172,7 +173,6 @@ $(document).ready(function(){initNavTree('structUdon_1_1Polar.html',''); initRes
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 フレンド</h2></td></tr>
 <tr class="memitem:aa476e1b3d597d0f7eae1e200127f5ac6"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Polar.html">Polar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Polar.html#aa476e1b3d597d0f7eae1e200127f5ac6">operator+</a> (const <a class="el" href="structUdon_1_1Polar.html">Polar</a> &amp;lhs, const <a class="el" href="structUdon_1_1Polar.html">Polar</a> &amp;rhs) noexcept</td></tr>
-<tr class="memdesc:aa476e1b3d597d0f7eae1e200127f5ac6"><td class="mdescLeft">&#160;</td><td class="mdescRight">算術演算子  <a href="structUdon_1_1Polar.html#aa476e1b3d597d0f7eae1e200127f5ac6">[詳解]</a><br /></td></tr>
 <tr class="separator:aa476e1b3d597d0f7eae1e200127f5ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3bbff321ce5cfb75e2b2bee6a289fb2e"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Polar.html">Polar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Polar.html#a3bbff321ce5cfb75e2b2bee6a289fb2e">operator-</a> (const <a class="el" href="structUdon_1_1Polar.html">Polar</a> &amp;lhs, const <a class="el" href="structUdon_1_1Polar.html">Polar</a> &amp;rhs) noexcept</td></tr>
 <tr class="separator:a3bbff321ce5cfb75e2b2bee6a289fb2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -181,12 +181,13 @@ $(document).ready(function(){initNavTree('structUdon_1_1Polar.html',''); initRes
 <tr class="memitem:a1a90045a8fc15845d1fda110d49e142e"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Polar.html">Polar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Polar.html#a1a90045a8fc15845d1fda110d49e142e">operator/</a> (const <a class="el" href="structUdon_1_1Polar.html">Polar</a> &amp;lhs, const <a class="el" href="structUdon_1_1Polar.html">Polar</a> &amp;rhs) noexcept</td></tr>
 <tr class="separator:a1a90045a8fc15845d1fda110d49e142e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a603b50ee91ba6e640beac92118954741"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Polar.html#a603b50ee91ba6e640beac92118954741">operator==</a> (const <a class="el" href="structUdon_1_1Polar.html">Polar</a> &amp;lhs, const <a class="el" href="structUdon_1_1Polar.html">Polar</a> &amp;rhs) noexcept</td></tr>
-<tr class="memdesc:a603b50ee91ba6e640beac92118954741"><td class="mdescLeft">&#160;</td><td class="mdescRight">比較演算子  <a href="structUdon_1_1Polar.html#a603b50ee91ba6e640beac92118954741">[詳解]</a><br /></td></tr>
 <tr class="separator:a603b50ee91ba6e640beac92118954741"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fc1e62301584587e761132cc8d33e28"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Polar.html#a7fc1e62301584587e761132cc8d33e28">operator!=</a> (const <a class="el" href="structUdon_1_1Polar.html">Polar</a> &amp;lhs, const <a class="el" href="structUdon_1_1Polar.html">Polar</a> &amp;rhs) noexcept</td></tr>
 <tr class="separator:a7fc1e62301584587e761132cc8d33e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">型定義メンバ詳解</h2>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p >極座標系 </p>
+</div><h2 class="groupheader">型定義メンバ詳解</h2>
 <a id="a39c9de6e18904ac324d057ed65f64ee9" name="a39c9de6e18904ac324d057ed65f64ee9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a39c9de6e18904ac324d057ed65f64ee9">&#9670;&#160;</a></span>ValueType</h2>
 
@@ -382,9 +383,6 @@ $(document).ready(function(){initNavTree('structUdon_1_1Polar.html',''); initRes
 </table>
 </div><div class="memdoc">
 
-<p>複合代入演算子 </p>
-<dl class="section note"><dt>覚え書き</dt><dd>polar = polar [operator] polar </dd></dl>
-
 </div>
 </div>
 <a id="aac5ee67f5bf2a5040237e483fcefb4f5" name="aac5ee67f5bf2a5040237e483fcefb4f5"></a>
@@ -491,8 +489,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Polar.html',''); initRes
 </div><div class="memdoc">
 
 <p>ベクトルに変換する </p>
-<dl class="section return"><dt>戻り値</dt><dd><br  />
- </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -548,8 +545,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Polar.html',''); initRes
 </div><div class="memdoc">
 
 <p>x 座標を取得する </p>
-<dl class="section return"><dt>戻り値</dt><dd><br  />
- </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -577,8 +573,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Polar.html',''); initRes
 </div><div class="memdoc">
 
 <p>y 座標を取得する </p>
-<dl class="section return"><dt>戻り値</dt><dd><br  />
- </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -689,9 +684,6 @@ $(document).ready(function(){initNavTree('structUdon_1_1Polar.html',''); initRes
 </table>
 </div><div class="memdoc">
 
-<p>算術演算子 </p>
-<dl class="section note"><dt>覚え書き</dt><dd>polar [operator] polar </dd></dl>
-
 </div>
 </div>
 <a id="a3bbff321ce5cfb75e2b2bee6a289fb2e" name="a3bbff321ce5cfb75e2b2bee6a289fb2e"></a>
@@ -799,9 +791,6 @@ $(document).ready(function(){initNavTree('structUdon_1_1Polar.html',''); initRes
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>比較演算子 </p>
-<dl class="section note"><dt>覚え書き</dt><dd>polar [operator] polar </dd></dl>
 
 </div>
 </div>

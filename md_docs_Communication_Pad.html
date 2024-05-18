@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -218,7 +217,7 @@ $(document).ready(function(){initNavTree('md_docs_Communication_Pad.html',''); i
 ■ CAN 通信経由</h3>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1CanBusTeensy.html">Udon::CanBusTeensy&lt;CAN1&gt;</a> bus;</div>
 <div class="line"><span class="keyword">static</span> Udon::CanPadPS5 pad{ bus, <span class="keywordtype">id</span> };</div>
-<div class="ttc" id="aclassUdon_1_1CanBusTeensy_html"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html">Udon::CanBusTeensy</a></div><div class="ttdoc">FlexCan_T4ライブラリを用いたCANバスクラス</div><div class="ttdef"><b>Definition:</b> CanBusTeensy.hpp:31</div></div>
+<div class="ttc" id="aclassUdon_1_1CanBusTeensy_html"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html">Udon::CanBusTeensy</a></div><div class="ttdoc">Teensy用 CANバスクラス</div><div class="ttdef"><b>Definition:</b> CanBusTeensy.hpp:31</div></div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md82"></a>
 ■ メイン基板に無線モジュールがある場合</h3>
 <div class="fragment"><div class="line"><span class="keyword">static</span> Udon::E220PadPS5 pad({</div>
@@ -232,7 +231,7 @@ $(document).ready(function(){initNavTree('md_docs_Communication_Pad.html',''); i
 ■ メイン基板に USB ホストシールドがある場合</h3>
 <p >書き込み後、コントローラーの電源を入れると接続されます。</p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1PadPS5.html">Udon::PadPS5OnboardBT</a> pad;</div>
-<div class="ttc" id="aclassUdon_1_1PadPS5_html"><div class="ttname"><a href="classUdon_1_1PadPS5.html">Udon::PadPS5</a></div><div class="ttdoc">PS5コントローラー</div><div class="ttdef"><b>Definition:</b> PadPS5.hpp:26</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5_html"><div class="ttname"><a href="classUdon_1_1PadPS5.html">Udon::PadPS5</a></div><div class="ttdoc">通信経由PS5コントローラークラス</div><div class="ttdef"><b>Definition:</b> PadPS5.hpp:26</div></div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md84"></a>
 ■ USB 通信経由</h3>
 <p >USB ケーブルで USB ホストシールドとコントローラーを繋ぐことで接続されます。</p>
@@ -342,7 +341,7 @@ $(document).ready(function(){initNavTree('md_docs_Communication_Pad.html',''); i
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_a4d45234bb4dbd3b74422fb0128b65db1"><div class="ttname"><a href="classUdon_1_1PadPS5.html#a4d45234bb4dbd3b74422fb0128b65db1">Udon::PadPS5::getRightStick</a></div><div class="ttdeci">Vec2 getRightStick() const noexcept</div><div class="ttdoc">右スティック [x,y: -255~255]</div><div class="ttdef"><b>Definition:</b> PadPS5.hpp:126</div></div>
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_a6b6d64c6f7998d90565b68710efb7d18"><div class="ttname"><a href="classUdon_1_1PadPS5.html#a6b6d64c6f7998d90565b68710efb7d18">Udon::PadPS5::getLeftStick</a></div><div class="ttdeci">Vec2 getLeftStick() const noexcept</div><div class="ttdoc">左スティック [x,y: -255~255]</div><div class="ttdef"><b>Definition:</b> PadPS5.hpp:123</div></div>
-<div class="ttc" id="astructUdon_1_1Vec2_html"><div class="ttname"><a href="structUdon_1_1Vec2.html">Udon::Vec2</a></div><div class="ttdef"><b>Definition:</b> Vector2D.hpp:20</div></div>
+<div class="ttc" id="astructUdon_1_1Vec2_html"><div class="ttname"><a href="structUdon_1_1Vec2.html">Udon::Vec2</a></div><div class="ttdoc">二次元ベクトル</div><div class="ttdef"><b>Definition:</b> Vector2D.hpp:22</div></div>
 </div><!-- fragment --><blockquote class="doxtable">
 <p >&zwj;<code>Vec2</code> オブジェクトは以下の様に定義されており、各スティックの X, Y 軸の傾きを取得できます。スティックの上方向が X 軸の正、右方向が Y 軸の正です。</p>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>Vec2</div>
@@ -352,12 +351,12 @@ $(document).ready(function(){initNavTree('md_docs_Communication_Pad.html',''); i
 <div class="line">};</div>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// 左スティックのx軸の傾き</span></div>
 <div class="line"><span class="keyword">const</span> <span class="keywordtype">double</span> leftX = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a6b6d64c6f7998d90565b68710efb7d18">getLeftStick</a>().<a class="code hl_variable" href="structUdon_1_1Vec2.html#aa41b9596dd6fd8353630210413608eb4">x</a>;</div>
-<div class="ttc" id="astructUdon_1_1Vec2_html_aa41b9596dd6fd8353630210413608eb4"><div class="ttname"><a href="structUdon_1_1Vec2.html#aa41b9596dd6fd8353630210413608eb4">Udon::Vec2::x</a></div><div class="ttdeci">ValueType x</div><div class="ttdoc">X成分</div><div class="ttdef"><b>Definition:</b> Vector2D.hpp:26</div></div>
+<div class="ttc" id="astructUdon_1_1Vec2_html_aa41b9596dd6fd8353630210413608eb4"><div class="ttname"><a href="structUdon_1_1Vec2.html#aa41b9596dd6fd8353630210413608eb4">Udon::Vec2::x</a></div><div class="ttdeci">ValueType x</div><div class="ttdoc">X成分</div><div class="ttdef"><b>Definition:</b> Vector2D.hpp:28</div></div>
 </div><!-- fragment --> </blockquote>
 <p>また、<code>Stick</code> オブジェクトを取得できる関数もあります。<code>Stick</code> オブジェクトとはロボットの移動に必要な入力成分 (移動: 左 X,Y、旋回: 右 X) をまとめたオブジェクトで、このオブジェクトを用いてオムニホイールの出力値を求めたりすることもできます。</p>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1Pos.html">Udon::Stick</a> stick = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">getMoveInfo</a>();</div>
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_a2fe0419f3bc5b65f01549ea916435f95"><div class="ttname"><a href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">Udon::PadPS5::getMoveInfo</a></div><div class="ttdeci">Stick getMoveInfo() const noexcept</div><div class="ttdoc">ロボットの移動に必要なスティックの情報 Udon::Stick オブジェクト {{x,y},turn} を取得</div><div class="ttdef"><b>Definition:</b> PadPS5.hpp:130</div></div>
-<div class="ttc" id="astructUdon_1_1Pos_html"><div class="ttname"><a href="structUdon_1_1Pos.html">Udon::Pos</a></div><div class="ttdoc">ロボットの位置</div><div class="ttdef"><b>Definition:</b> Position.hpp:25</div></div>
+<div class="ttc" id="astructUdon_1_1Pos_html"><div class="ttname"><a href="structUdon_1_1Pos.html">Udon::Pos</a></div><div class="ttdoc">ロボットの位置</div><div class="ttdef"><b>Definition:</b> Position.hpp:26</div></div>
 </div><!-- fragment --><blockquote class="doxtable">
 <p >&zwj;<code>Stick</code> オブジェクトは以下の様に定義されています。</p>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>Stick</div>
@@ -367,7 +366,7 @@ $(document).ready(function(){initNavTree('md_docs_Communication_Pad.html',''); i
 <div class="line">};</div>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// スティックからオムニの出力値を求める</span></div>
 <div class="line"><span class="keyword">const</span> std::array&lt;double, 4&gt; omni = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">getMoveInfo</a>().<a class="code hl_function" href="structUdon_1_1Pos.html#a187d13f2aa77ee29502c343e0666cc56">toOmni</a>();</div>
-<div class="ttc" id="astructUdon_1_1Pos_html_a187d13f2aa77ee29502c343e0666cc56"><div class="ttname"><a href="structUdon_1_1Pos.html#a187d13f2aa77ee29502c343e0666cc56">Udon::Pos::toOmni</a></div><div class="ttdeci">std::array&lt; double, N &gt; toOmni() const</div><div class="ttdef"><b>Definition:</b> Position.hpp:150</div></div>
+<div class="ttc" id="astructUdon_1_1Pos_html_a187d13f2aa77ee29502c343e0666cc56"><div class="ttname"><a href="structUdon_1_1Pos.html#a187d13f2aa77ee29502c343e0666cc56">Udon::Pos::toOmni</a></div><div class="ttdeci">std::array&lt; double, N &gt; toOmni() const</div><div class="ttdef"><b>Definition:</b> Position.hpp:151</div></div>
 </div><!-- fragment --> </blockquote>
 <h2><a class="anchor" id="autotoc_md91"></a>
 最終的なスケッチ例</h2>
@@ -438,20 +437,20 @@ $(document).ready(function(){initNavTree('md_docs_Communication_Pad.html',''); i
 <div class="line">}</div>
 <div class="ttc" id="aPadPS5USB_8hpp_html"><div class="ttname"><a href="PadPS5USB_8hpp.html">PadPS5USB.hpp</a></div></div>
 <div class="ttc" id="aclassUdon_1_1E220Writer_html"><div class="ttname"><a href="classUdon_1_1E220Writer.html">Udon::E220Writer</a></div><div class="ttdoc">E220 送信クラス</div><div class="ttdef"><b>Definition:</b> E220Writer.hpp:20</div></div>
-<div class="ttc" id="aclassUdon_1_1PadPS5USB_html"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html">Udon::PadPS5USB</a></div><div class="ttdef"><b>Definition:</b> PadPS5USB.hpp:30</div></div>
-<div class="ttc" id="aclassUdon_1_1PadPS5USB_html_a6ad7186dde8c05984bc26dee2ab6694f"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html#a6ad7186dde8c05984bc26dee2ab6694f">Udon::PadPS5USB::begin</a></div><div class="ttdeci">bool begin()</div><div class="ttdoc">コントローラーと通信開始</div><div class="ttdef"><b>Definition:</b> PadPS5USB.hpp:46</div></div>
-<div class="ttc" id="aclassUdon_1_1PadPS5USB_html_a88fb8fda7c42c4a19b7d1d7f12b855be"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html#a88fb8fda7c42c4a19b7d1d7f12b855be">Udon::PadPS5USB::getMessage</a></div><div class="ttdeci">Message::PadPS5 getMessage() const</div><div class="ttdoc">Message::PadPS5型のメッセージを取得する</div><div class="ttdef"><b>Definition:</b> PadPS5USB.hpp:106</div></div>
-<div class="ttc" id="aclassUdon_1_1PadPS5USB_html_a90f680e27a7b9efa2cfb8fbff2b5fee6"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html#a90f680e27a7b9efa2cfb8fbff2b5fee6">Udon::PadPS5USB::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">更新</div><div class="ttdef"><b>Definition:</b> PadPS5USB.hpp:59</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5USB_html"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html">Udon::PadPS5USB</a></div><div class="ttdoc">有線USB経由PS5コントローラークラス</div><div class="ttdef"><b>Definition:</b> PadPS5USB.hpp:32</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5USB_html_a6ad7186dde8c05984bc26dee2ab6694f"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html#a6ad7186dde8c05984bc26dee2ab6694f">Udon::PadPS5USB::begin</a></div><div class="ttdeci">bool begin()</div><div class="ttdoc">コントローラーと通信開始</div><div class="ttdef"><b>Definition:</b> PadPS5USB.hpp:48</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5USB_html_a88fb8fda7c42c4a19b7d1d7f12b855be"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html#a88fb8fda7c42c4a19b7d1d7f12b855be">Udon::PadPS5USB::getMessage</a></div><div class="ttdeci">Message::PadPS5 getMessage() const</div><div class="ttdoc">Message::PadPS5型のメッセージを取得する</div><div class="ttdef"><b>Definition:</b> PadPS5USB.hpp:108</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5USB_html_a90f680e27a7b9efa2cfb8fbff2b5fee6"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html#a90f680e27a7b9efa2cfb8fbff2b5fee6">Udon::PadPS5USB::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">更新</div><div class="ttdef"><b>Definition:</b> PadPS5USB.hpp:61</div></div>
 <div class="ttc" id="astructUdon_1_1Message_1_1PadPS5_html"><div class="ttname"><a href="structUdon_1_1Message_1_1PadPS5.html">Udon::Message::PadPS5</a></div><div class="ttdoc">PS5コントローラーのボタン情報</div><div class="ttdef"><b>Definition:</b> PadPS5.hpp:21</div></div>
 </div><!-- fragment --><p >コントローラに内蔵されている LED や、バイブレーションを動作させることもできます。</p>
 <div class="fragment"><div class="line">pad.<a class="code hl_function" href="classUdon_1_1PadPS5USB.html#a5787122fc897bbefaa9500c1f2149621">setLightBar</a>({ 0x38b48b });   <span class="comment">// タッチパネルサイドLED (色指定可能)</span></div>
 <div class="line">pad.<a class="code hl_function" href="classUdon_1_1PadPS5USB.html#ae7f775174a204f6ecd4bf5667c51bb6d">setMicLed</a>(<span class="keyword">true</span>);             <span class="comment">// マイクLED</span></div>
 <div class="line">pad.<a class="code hl_function" href="classUdon_1_1PadPS5USB.html#acb5a8a69ef227a59356efc2c3995cccf">setPlayerLamp</a>();             <span class="comment">// タッチパネル下部LED (5つ)</span></div>
 <div class="line">pad.<a class="code hl_function" href="classUdon_1_1PadPS5USB.html#ada0379f5c5ca971ca4ef2c998b0637e8">vibrate</a>(100, 100);           <span class="comment">// 左右バイブレーションモーター</span></div>
-<div class="ttc" id="aclassUdon_1_1PadPS5USB_html_a5787122fc897bbefaa9500c1f2149621"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html#a5787122fc897bbefaa9500c1f2149621">Udon::PadPS5USB::setLightBar</a></div><div class="ttdeci">void setLightBar(const Udon::RGB &amp;color)</div><div class="ttdoc">ライトバーの色を設定する</div><div class="ttdef"><b>Definition:</b> PadPS5USB.hpp:113</div></div>
-<div class="ttc" id="aclassUdon_1_1PadPS5USB_html_acb5a8a69ef227a59356efc2c3995cccf"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html#acb5a8a69ef227a59356efc2c3995cccf">Udon::PadPS5USB::setPlayerLamp</a></div><div class="ttdeci">void setPlayerLamp(uint8_t mask=0b011)</div><div class="ttdoc">5つのプレイヤーのランプの点灯を設定する</div><div class="ttdef"><b>Definition:</b> PadPS5USB.hpp:123</div></div>
-<div class="ttc" id="aclassUdon_1_1PadPS5USB_html_ada0379f5c5ca971ca4ef2c998b0637e8"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html#ada0379f5c5ca971ca4ef2c998b0637e8">Udon::PadPS5USB::vibrate</a></div><div class="ttdeci">void vibrate(uint8_t big=100, uint8_t small=100)</div><div class="ttdoc">バイブレーション</div><div class="ttdef"><b>Definition:</b> PadPS5USB.hpp:138</div></div>
-<div class="ttc" id="aclassUdon_1_1PadPS5USB_html_ae7f775174a204f6ecd4bf5667c51bb6d"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html#ae7f775174a204f6ecd4bf5667c51bb6d">Udon::PadPS5USB::setMicLed</a></div><div class="ttdeci">void setMicLed(bool on=true)</div><div class="ttdoc">マイクのLEDの点灯を設定する</div><div class="ttdef"><b>Definition:</b> PadPS5USB.hpp:130</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5USB_html_a5787122fc897bbefaa9500c1f2149621"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html#a5787122fc897bbefaa9500c1f2149621">Udon::PadPS5USB::setLightBar</a></div><div class="ttdeci">void setLightBar(const Udon::RGB &amp;color)</div><div class="ttdoc">ライトバーの色を設定する</div><div class="ttdef"><b>Definition:</b> PadPS5USB.hpp:115</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5USB_html_acb5a8a69ef227a59356efc2c3995cccf"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html#acb5a8a69ef227a59356efc2c3995cccf">Udon::PadPS5USB::setPlayerLamp</a></div><div class="ttdeci">void setPlayerLamp(uint8_t mask=0b011)</div><div class="ttdoc">5つのプレイヤーのランプの点灯を設定する</div><div class="ttdef"><b>Definition:</b> PadPS5USB.hpp:125</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5USB_html_ada0379f5c5ca971ca4ef2c998b0637e8"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html#ada0379f5c5ca971ca4ef2c998b0637e8">Udon::PadPS5USB::vibrate</a></div><div class="ttdeci">void vibrate(uint8_t big=100, uint8_t small=100)</div><div class="ttdoc">バイブレーション</div><div class="ttdef"><b>Definition:</b> PadPS5USB.hpp:140</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5USB_html_ae7f775174a204f6ecd4bf5667c51bb6d"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html#ae7f775174a204f6ecd4bf5667c51bb6d">Udon::PadPS5USB::setMicLed</a></div><div class="ttdeci">void setMicLed(bool on=true)</div><div class="ttdoc">マイクのLEDの点灯を設定する</div><div class="ttdef"><b>Definition:</b> PadPS5USB.hpp:132</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md93"></a>
 受信側マイコン用クラス</h1>
 <p >受信マイコンは無線モジュールから取得した <code><a class="el" href="structUdon_1_1Message_1_1PadPS5.html" title="PS5コントローラーのボタン情報">Udon::Message::PadPS5</a></code> 型オブジェクトをメインマイコンへ転送する役を担います。</p>
@@ -492,7 +491,7 @@ $(document).ready(function(){initNavTree('md_docs_Communication_Pad.html',''); i
 <div class="line"> </div>
 <div class="line">    delay(1);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassUdon_1_1CanWriter_html"><div class="ttname"><a href="classUdon_1_1CanWriter.html">Udon::CanWriter</a></div><div class="ttdef"><b>Definition:</b> CanWriter.hpp:21</div></div>
+<div class="ttc" id="aclassUdon_1_1CanWriter_html"><div class="ttname"><a href="classUdon_1_1CanWriter.html">Udon::CanWriter</a></div><div class="ttdoc">CAN通信 送信クラス</div><div class="ttdef"><b>Definition:</b> CanWriter.hpp:23</div></div>
 <div class="ttc" id="aclassUdon_1_1E220Reader_html"><div class="ttname"><a href="classUdon_1_1E220Reader.html">Udon::E220Reader</a></div><div class="ttdoc">E220 受信クラス</div><div class="ttdef"><b>Definition:</b> E220Reader.hpp:22</div></div>
 <div class="ttc" id="aclassUdon_1_1E220Reader_html_a71f3992dff607d0f11b90fd2decdb2fe"><div class="ttname"><a href="classUdon_1_1E220Reader.html#a71f3992dff607d0f11b90fd2decdb2fe">Udon::E220Reader::begin</a></div><div class="ttdeci">void begin() noexcept</div><div class="ttdoc">受信開始</div><div class="ttdef"><b>Definition:</b> E220Reader.hpp:38</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md94"></a>
@@ -523,19 +522,19 @@ Bluetooth 使用時の受信側マイコン用クラス</h1>
 <div class="line">    writer.setMessage(pad.<a class="code hl_function" href="classUdon_1_1PadPS5BT.html#ad31384673399f809c4d0ecae98c19162">getMessage</a>());</div>
 <div class="line">}</div>
 <div class="ttc" id="aPadPS5BT_8hpp_html"><div class="ttname"><a href="PadPS5BT_8hpp.html">PadPS5BT.hpp</a></div></div>
-<div class="ttc" id="aclassUdon_1_1PadPS5BT_html"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html">Udon::PadPS5BT</a></div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:29</div></div>
-<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_a2af753f449fc60da7922b31cab218614"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#a2af753f449fc60da7922b31cab218614">Udon::PadPS5BT::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">更新</div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:64</div></div>
-<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_ad31384673399f809c4d0ecae98c19162"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#ad31384673399f809c4d0ecae98c19162">Udon::PadPS5BT::getMessage</a></div><div class="ttdeci">Message::PadPS5 getMessage() const</div><div class="ttdoc">Message::PadPS5型のメッセージを取得する</div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:116</div></div>
-<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_ad338ca40274ce971b92063d480a0e512"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#ad338ca40274ce971b92063d480a0e512">Udon::PadPS5BT::begin</a></div><div class="ttdeci">bool begin()</div><div class="ttdoc">コントローラーと通信開始</div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:51</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5BT_html"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html">Udon::PadPS5BT</a></div><div class="ttdoc">Bluetooth経由PS5コントローラークラス</div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:31</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_a2af753f449fc60da7922b31cab218614"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#a2af753f449fc60da7922b31cab218614">Udon::PadPS5BT::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">更新</div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:66</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_ad31384673399f809c4d0ecae98c19162"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#ad31384673399f809c4d0ecae98c19162">Udon::PadPS5BT::getMessage</a></div><div class="ttdeci">Message::PadPS5 getMessage() const</div><div class="ttdoc">Message::PadPS5型のメッセージを取得する</div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:118</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_ad338ca40274ce971b92063d480a0e512"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#ad338ca40274ce971b92063d480a0e512">Udon::PadPS5BT::begin</a></div><div class="ttdeci">bool begin()</div><div class="ttdoc">コントローラーと通信開始</div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:53</div></div>
 </div><!-- fragment --><p ><code>PadPS5USB</code> クラスと同じく、コントローラに内蔵されている LED や、バイブレーションを動作させることもできます。</p>
 <div class="fragment"><div class="line">pad.<a class="code hl_function" href="classUdon_1_1PadPS5BT.html#a6a51b8144b41d6269556ba7324db2784">setLightBar</a>({ 0x38b48b });   <span class="comment">// タッチパネルサイドLED (色指定可能)</span></div>
 <div class="line">pad.<a class="code hl_function" href="classUdon_1_1PadPS5BT.html#a72e5bbdad9c856e7c29d66c5c2cb6756">setMicLed</a>(<span class="keyword">true</span>);             <span class="comment">// マイクLED</span></div>
 <div class="line">pad.<a class="code hl_function" href="classUdon_1_1PadPS5BT.html#a1506d58d8f2fa00ebc6b560e5420acce">setPlayerLamp</a>();             <span class="comment">// タッチパネル下部LED (5つ)</span></div>
 <div class="line">pad.<a class="code hl_function" href="classUdon_1_1PadPS5BT.html#a1b68d42d860eb3fa3c2fbade55434e60">vibrate</a>(100, 100);           <span class="comment">// 左右バイブレーションモーター</span></div>
-<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_a1506d58d8f2fa00ebc6b560e5420acce"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#a1506d58d8f2fa00ebc6b560e5420acce">Udon::PadPS5BT::setPlayerLamp</a></div><div class="ttdeci">void setPlayerLamp(uint8_t mask=0b011)</div><div class="ttdoc">5つのプレイヤーのランプの点灯を設定する</div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:133</div></div>
-<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_a1b68d42d860eb3fa3c2fbade55434e60"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#a1b68d42d860eb3fa3c2fbade55434e60">Udon::PadPS5BT::vibrate</a></div><div class="ttdeci">void vibrate(uint8_t big=100, uint8_t small=100)</div><div class="ttdoc">バイブレーション</div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:148</div></div>
-<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_a6a51b8144b41d6269556ba7324db2784"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#a6a51b8144b41d6269556ba7324db2784">Udon::PadPS5BT::setLightBar</a></div><div class="ttdeci">void setLightBar(const Udon::RGB &amp;color)</div><div class="ttdoc">ライトバーの色を設定する</div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:123</div></div>
-<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_a72e5bbdad9c856e7c29d66c5c2cb6756"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#a72e5bbdad9c856e7c29d66c5c2cb6756">Udon::PadPS5BT::setMicLed</a></div><div class="ttdeci">void setMicLed(bool on=true)</div><div class="ttdoc">マイクのLEDの点灯を設定する</div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:140</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_a1506d58d8f2fa00ebc6b560e5420acce"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#a1506d58d8f2fa00ebc6b560e5420acce">Udon::PadPS5BT::setPlayerLamp</a></div><div class="ttdeci">void setPlayerLamp(uint8_t mask=0b011)</div><div class="ttdoc">5つのプレイヤーのランプの点灯を設定する</div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:135</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_a1b68d42d860eb3fa3c2fbade55434e60"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#a1b68d42d860eb3fa3c2fbade55434e60">Udon::PadPS5BT::vibrate</a></div><div class="ttdeci">void vibrate(uint8_t big=100, uint8_t small=100)</div><div class="ttdoc">バイブレーション</div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:150</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_a6a51b8144b41d6269556ba7324db2784"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#a6a51b8144b41d6269556ba7324db2784">Udon::PadPS5BT::setLightBar</a></div><div class="ttdeci">void setLightBar(const Udon::RGB &amp;color)</div><div class="ttdoc">ライトバーの色を設定する</div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:125</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_a72e5bbdad9c856e7c29d66c5c2cb6756"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#a72e5bbdad9c856e7c29d66c5c2cb6756">Udon::PadPS5BT::setMicLed</a></div><div class="ttdeci">void setMicLed(bool on=true)</div><div class="ttdoc">マイクのLEDの点灯を設定する</div><div class="ttdef"><b>Definition:</b> PadPS5BT.hpp:142</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md95"></a>
 Bluetooth ドングルとのペアリング</h1>
 <p >Bluetooth を使用してコントローラのデータを取得する場合、USB ドングルとのペアリングが必要です。一度ペアリングすると以降はペアリングする必要ありません。</p>
@@ -558,7 +557,7 @@ Bluetooth ドングルとのペアリング</h1>
 <div class="line">}</div>
 <div class="ttc" id="aUdonFwd_8hpp_html"><div class="ttname"><a href="UdonFwd_8hpp.html">UdonFwd.hpp</a></div></div>
 </div><!-- fragment --><p >クリエイトボタン、PS ボタンをライトバーが点滅するまで長押しすることで、コントローラ側もペアリングモードになります。ペアリングは通常数秒で終わります。ペアリングが成功するとライトバーが点灯します。</p>
-<p ><img src="../Assets/デュアルセンスペアリングボタン.png" alt="" width="300px" class="inline"/></p>
+<p ><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/1c66a52d-3255-4be2-87d4-8f1db863b142" alt="" width="300px" class="inline"/></p>
 <blockquote class="doxtable">
 <p >&zwj;ペアリングに時間がかかる場合、マイコンをリセットすることで大抵つながります。またホストシールドは電源電圧に敏感であるため、電圧値が正常か確認してください。 </p>
 </blockquote>

@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -116,11 +115,11 @@ $(document).ready(function(){initNavTree('md_docs_Types_ArrayView.html',''); ini
 <div class="line">    T* m_begin;</div>
 <div class="line">    <span class="keywordtype">size_t</span> size;</div>
 <div class="line">};</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md197"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md198"></a>
 構築</h1>
 <p >テンプレート引数に要素の型を指定します。</p>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1ArrayView.html">Udon::ArrayView&lt;int&gt;</a> view;</div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html"><div class="ttname"><a href="classUdon_1_1ArrayView.html">Udon::ArrayView</a></div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:25</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html"><div class="ttname"><a href="classUdon_1_1ArrayView.html">Udon::ArrayView</a></div><div class="ttdoc">配列参照クラス</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:27</div></div>
 </div><!-- fragment --><p >配列の参照から</p>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> array[100];</div>
 <div class="line"><a class="code hl_class" href="classUdon_1_1ArrayView.html">Udon::ArrayView&lt;int&gt;</a> view{ array };</div>
@@ -131,10 +130,10 @@ $(document).ready(function(){initNavTree('md_docs_Types_ArrayView.html',''); ini
 </div><!-- fragment --><p ><code>std::vector&lt;T&gt;</code> から (上と同じくポインタ、要素数から構築)</p>
 <div class="fragment"><div class="line">std::vector&lt;int&gt; vector{ 0, 1, 2, 3, 4, 5 };</div>
 <div class="line"><a class="code hl_class" href="classUdon_1_1ArrayView.html">Udon::ArrayView&lt;int&gt;</a> view{ vector.<a class="code hl_function" href="classUdon_1_1ArrayView.html#af779b3b56579496fdeb6196aef2a30ed">data</a>(), vector.size() };</div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_af779b3b56579496fdeb6196aef2a30ed"><div class="ttname"><a href="classUdon_1_1ArrayView.html#af779b3b56579496fdeb6196aef2a30ed">Udon::ArrayView::data</a></div><div class="ttdeci">pointer data()</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:93</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md198"></a>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_af779b3b56579496fdeb6196aef2a30ed"><div class="ttname"><a href="classUdon_1_1ArrayView.html#af779b3b56579496fdeb6196aef2a30ed">Udon::ArrayView::data</a></div><div class="ttdeci">pointer data()</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:95</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md199"></a>
 ビューから新しいビューを生成する</h1>
-<h1><a class="anchor" id="autotoc_md199"></a>
+<h1><a class="anchor" id="autotoc_md200"></a>
 イテレーション</h1>
 <div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; it : view)</div>
 <div class="line">{</div>

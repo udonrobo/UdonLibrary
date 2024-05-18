@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -111,22 +110,33 @@ $(document).ready(function(){initNavTree('classUdon_1_1Ros2UartReader.html','');
 </div><!--header-->
 <div class="contents">
 
+<p>ROS2からUART通信を受信するクラス  
+ <a href="classUdon_1_1Ros2UartReader.html#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="Ros2UartReader_8hpp_source.html">Udon/Com/Uart/Ros2UartReader.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
 <tr class="memitem:a240843af2d2fabac8b671d67ce52fa2e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Ros2UartReader.html#a240843af2d2fabac8b671d67ce52fa2e">Ros2UartReader</a> (serial::Serial &amp;bus)</td></tr>
+<tr class="memdesc:a240843af2d2fabac8b671d67ce52fa2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="classUdon_1_1Ros2UartReader.html#a240843af2d2fabac8b671d67ce52fa2e">[詳解]</a><br /></td></tr>
 <tr class="separator:a240843af2d2fabac8b671d67ce52fa2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86c54a6a21b05f0c875217e130a9db53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Ros2UartReader.html#a86c54a6a21b05f0c875217e130a9db53">update</a> ()</td></tr>
+<tr class="memdesc:a86c54a6a21b05f0c875217e130a9db53"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新  <a href="classUdon_1_1Ros2UartReader.html#a86c54a6a21b05f0c875217e130a9db53">[詳解]</a><br /></td></tr>
 <tr class="separator:a86c54a6a21b05f0c875217e130a9db53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac319a83380b1f3f9073a4cb74416ff66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; Message &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Ros2UartReader.html#ac319a83380b1f3f9073a4cb74416ff66">getMessage</a> () const</td></tr>
+<tr class="memdesc:ac319a83380b1f3f9073a4cb74416ff66"><td class="mdescLeft">&#160;</td><td class="mdescRight">メッセージの取得  <a href="classUdon_1_1Ros2UartReader.html#ac319a83380b1f3f9073a4cb74416ff66">[詳解]</a><br /></td></tr>
 <tr class="separator:ac319a83380b1f3f9073a4cb74416ff66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab951d6d5078b89bc17adff44eae194ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Ros2UartReader.html#ab951d6d5078b89bc17adff44eae194ed">show</a> (char gap='\t') const</td></tr>
-<tr class="separator:ab951d6d5078b89bc17adff44eae194ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96b9316181ef735445311f8357ccf6b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Ros2UartReader.html#a96b9316181ef735445311f8357ccf6b2">showRaw</a> (char gap='\t') const</td></tr>
-<tr class="separator:a96b9316181ef735445311f8357ccf6b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14b293c93d15ffe242b634e6fa4f3308"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Ros2UartReader.html#a14b293c93d15ffe242b634e6fa4f3308">show</a> () const</td></tr>
+<tr class="memdesc:a14b293c93d15ffe242b634e6fa4f3308"><td class="mdescLeft">&#160;</td><td class="mdescRight">メッセージの表示  <a href="classUdon_1_1Ros2UartReader.html#a14b293c93d15ffe242b634e6fa4f3308">[詳解]</a><br /></td></tr>
+<tr class="separator:a14b293c93d15ffe242b634e6fa4f3308"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88ddaec063f968beca26efbe95716a99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Ros2UartReader.html#a88ddaec063f968beca26efbe95716a99">showRaw</a> () const</td></tr>
+<tr class="memdesc:a88ddaec063f968beca26efbe95716a99"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信バッファを表示  <a href="classUdon_1_1Ros2UartReader.html#a88ddaec063f968beca26efbe95716a99">[詳解]</a><br /></td></tr>
+<tr class="separator:a88ddaec063f968beca26efbe95716a99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">構築子と解体子</h2>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename Message&gt;<br />
+class Udon::Ros2UartReader&lt; Message &gt;</div><p >ROS2からUART通信を受信するクラス </p>
+</div><h2 class="groupheader">構築子と解体子</h2>
 <a id="a240843af2d2fabac8b671d67ce52fa2e" name="a240843af2d2fabac8b671d67ce52fa2e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a240843af2d2fabac8b671d67ce52fa2e">&#9670;&#160;</a></span>Ros2UartReader()</h2>
 
@@ -152,6 +162,14 @@ template&lt;typename Message &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bus</td><td>UARTバス </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -181,10 +199,12 @@ template&lt;typename Message &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>メッセージの取得 </p>
+
 </div>
 </div>
-<a id="ab951d6d5078b89bc17adff44eae194ed" name="ab951d6d5078b89bc17adff44eae194ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab951d6d5078b89bc17adff44eae194ed">&#9670;&#160;</a></span>show()</h2>
+<a id="a14b293c93d15ffe242b634e6fa4f3308" name="a14b293c93d15ffe242b634e6fa4f3308"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14b293c93d15ffe242b634e6fa4f3308">&#9670;&#160;</a></span>show()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -197,8 +217,7 @@ template&lt;typename Message &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1Ros2UartReader.html">Udon::Ros2UartReader</a>&lt; Message &gt;::show </td>
           <td>(</td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>gap</em> = <code>'\t'</code></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -209,10 +228,12 @@ template&lt;typename Message &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>メッセージの表示 </p>
+
 </div>
 </div>
-<a id="a96b9316181ef735445311f8357ccf6b2" name="a96b9316181ef735445311f8357ccf6b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96b9316181ef735445311f8357ccf6b2">&#9670;&#160;</a></span>showRaw()</h2>
+<a id="a88ddaec063f968beca26efbe95716a99" name="a88ddaec063f968beca26efbe95716a99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88ddaec063f968beca26efbe95716a99">&#9670;&#160;</a></span>showRaw()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -225,8 +246,7 @@ template&lt;typename Message &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1Ros2UartReader.html">Udon::Ros2UartReader</a>&lt; Message &gt;::showRaw </td>
           <td>(</td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>gap</em> = <code>'\t'</code></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -236,6 +256,8 @@ template&lt;typename Message &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>受信バッファを表示 </p>
 
 </div>
 </div>
@@ -263,6 +285,8 @@ template&lt;typename Message &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>更新 </p>
 
 </div>
 </div>

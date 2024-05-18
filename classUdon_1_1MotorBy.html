@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -111,20 +110,30 @@ $(document).ready(function(){initNavTree('classUdon_1_1MotorBy.html',''); initRe
 </div><!--header-->
 <div class="contents">
 
+<p>通信経由モーター制御クラス  
+ <a href="classUdon_1_1MotorBy.html#details">[詳解]</a></p>
+
 <p><code>#include &lt;<a class="el" href="Com_2Driver_2Motor_8hpp_source.html">Udon/Com/Driver/Motor.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
 <tr class="memitem:a619ad4f1edcd516b6d1abe332e77066d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1MotorBy.html#a619ad4f1edcd516b6d1abe332e77066d">MotorBy</a> (WriterType &amp;&amp;writer, bool direction)</td></tr>
+<tr class="memdesc:a619ad4f1edcd516b6d1abe332e77066d"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="classUdon_1_1MotorBy.html#a619ad4f1edcd516b6d1abe332e77066d">[詳解]</a><br /></td></tr>
 <tr class="separator:a619ad4f1edcd516b6d1abe332e77066d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c0d4ee4f950ebd3a1bd55056975aae0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1MotorBy.html#a9c0d4ee4f950ebd3a1bd55056975aae0">move</a> (int16_t p)</td></tr>
+<tr class="memdesc:a9c0d4ee4f950ebd3a1bd55056975aae0"><td class="mdescLeft">&#160;</td><td class="mdescRight">出力値を取得  <a href="classUdon_1_1MotorBy.html#a9c0d4ee4f950ebd3a1bd55056975aae0">[詳解]</a><br /></td></tr>
 <tr class="separator:a9c0d4ee4f950ebd3a1bd55056975aae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8797bb9d415576c2a2529f6aa797d0b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1MotorBy.html#a8797bb9d415576c2a2529f6aa797d0b8">stop</a> ()</td></tr>
+<tr class="memdesc:a8797bb9d415576c2a2529f6aa797d0b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">停止  <a href="classUdon_1_1MotorBy.html#a8797bb9d415576c2a2529f6aa797d0b8">[詳解]</a><br /></td></tr>
 <tr class="separator:a8797bb9d415576c2a2529f6aa797d0b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ae6bbed1024437641f2bb1dd004a602"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1MotorBy.html#a1ae6bbed1024437641f2bb1dd004a602">show</a> () const</td></tr>
+<tr class="memdesc:a1ae6bbed1024437641f2bb1dd004a602"><td class="mdescLeft">&#160;</td><td class="mdescRight">出力値をシリアル出力  <a href="classUdon_1_1MotorBy.html#a1ae6bbed1024437641f2bb1dd004a602">[詳解]</a><br /></td></tr>
 <tr class="separator:a1ae6bbed1024437641f2bb1dd004a602"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">構築子と解体子</h2>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;template&lt; typename &gt; typename Writer&gt;<br />
+class Udon::MotorBy&lt; Writer &gt;</div><p >通信経由モーター制御クラス </p>
+</div><h2 class="groupheader">構築子と解体子</h2>
 <a id="a619ad4f1edcd516b6d1abe332e77066d" name="a619ad4f1edcd516b6d1abe332e77066d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a619ad4f1edcd516b6d1abe332e77066d">&#9670;&#160;</a></span>MotorBy()</h2>
 
@@ -161,6 +170,15 @@ template&lt;template&lt; typename &gt; typename Writer&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>コンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">writer</td><td>送信クラスオブジェクト </td></tr>
+    <tr><td class="paramname">direction</td><td>回転方向 </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">関数詳解</h2>
@@ -190,6 +208,14 @@ template&lt;template&lt; typename &gt; typename Writer&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>出力値を取得 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>出力値 </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a1ae6bbed1024437641f2bb1dd004a602" name="a1ae6bbed1024437641f2bb1dd004a602"></a>
@@ -217,6 +243,8 @@ template&lt;template&lt; typename &gt; typename Writer&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>出力値をシリアル出力 </p>
+
 </div>
 </div>
 <a id="a8797bb9d415576c2a2529f6aa797d0b8" name="a8797bb9d415576c2a2529f6aa797d0b8"></a>
@@ -243,6 +271,8 @@ template&lt;template&lt; typename &gt; typename Writer&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>停止 </p>
 
 </div>
 </div>

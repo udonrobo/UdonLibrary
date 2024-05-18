@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -124,41 +123,41 @@ $(document).ready(function(){initNavTree('UartWriter_8hpp_source.html',''); init
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Message&gt;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classUdon_1_1UartWriter.html">   19</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classUdon_1_1UartWriter.html">UartWriter</a></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        Stream&amp; uart;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Message&gt;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classUdon_1_1UartWriter.html">   21</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classUdon_1_1UartWriter.html">UartWriter</a></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    {</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        Message message;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        Stream&amp; uart;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classUdon_1_1UartWriter.html#a292cc503fa8ef3eaaab07ee0875b43bf">   28</a></span>        <a class="code hl_function" href="classUdon_1_1UartWriter.html#a292cc503fa8ef3eaaab07ee0875b43bf">UartWriter</a>(Stream&amp; uart) noexcept</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            : uart(uart)</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            , message()</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        }</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classUdon_1_1UartWriter.html#a0e61a354de6c8e96b729f3589390f343">   36</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1UartWriter.html#a0e61a354de6c8e96b729f3589390f343">setMessage</a>(<span class="keyword">const</span> Message&amp; rhs)</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        {</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            message = rhs;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; it : <a class="code hl_function" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a>(message))</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                uart.write(it);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            }</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        }</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classUdon_1_1UartWriter.html#afde274bcf407f5e1ea75a7210243fd8b">   47</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1UartWriter.html#afde274bcf407f5e1ea75a7210243fd8b">show</a>(<span class="keywordtype">char</span> gap = <span class="charliteral">&#39;\t&#39;</span>)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <a class="code hl_function" href="namespaceUdon.html#a392678ab11e3dea1c2202a7b255a2e1a">Udon::Show</a>(message, gap);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        }</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classUdon_1_1UartWriter.html#aed58f5aeada4bc3cf339c3de3af0bdd6">   54</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1UartWriter.html#aed58f5aeada4bc3cf339c3de3af0bdd6">showRaw</a>(<span class="keywordtype">char</span> gap = <span class="charliteral">&#39; &#39;</span>)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        Message message;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classUdon_1_1UartWriter.html#a292cc503fa8ef3eaaab07ee0875b43bf">   30</a></span>        <a class="code hl_function" href="classUdon_1_1UartWriter.html#a292cc503fa8ef3eaaab07ee0875b43bf">UartWriter</a>(Stream&amp; uart) noexcept</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            : uart(uart)</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            , message()</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        }</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classUdon_1_1UartWriter.html#a0e61a354de6c8e96b729f3589390f343">   38</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1UartWriter.html#a0e61a354de6c8e96b729f3589390f343">setMessage</a>(<span class="keyword">const</span> Message&amp; rhs)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            message = rhs;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; it : <a class="code hl_function" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a>(message))</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                uart.write(it);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            }</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classUdon_1_1UartWriter.html#af2b528f635a222a75533ee8ffb81f12d">   48</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1UartWriter.html#af2b528f635a222a75533ee8ffb81f12d">show</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <a class="code hl_function" href="namespaceUdon.html#a392678ab11e3dea1c2202a7b255a2e1a">Udon::Show</a>(message);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classUdon_1_1UartWriter.html#ad21ca015602cf49bfea674db6bbe6d0e">   54</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1UartWriter.html#ad21ca015602cf49bfea674db6bbe6d0e">showRaw</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; it : <a class="code hl_function" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a>(message))</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            {</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                Serial.print(it);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                Serial.print(gap);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                Serial.print(<span class="charliteral">&#39; &#39;</span>);</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            }</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        }</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    };</div>
@@ -166,11 +165,11 @@ $(document).ready(function(){initNavTree('UartWriter_8hpp_source.html',''); init
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}    <span class="comment">// namespace Udon</span></div>
 <div class="ttc" id="aSerializer_8hpp_html"><div class="ttname"><a href="Serializer_8hpp.html">Serializer.hpp</a></div></div>
 <div class="ttc" id="aShow_8hpp_html"><div class="ttname"><a href="Show_8hpp.html">Show.hpp</a></div></div>
-<div class="ttc" id="aclassUdon_1_1UartWriter_html"><div class="ttname"><a href="classUdon_1_1UartWriter.html">Udon::UartWriter</a></div><div class="ttdef"><b>Definition:</b> UartWriter.hpp:20</div></div>
-<div class="ttc" id="aclassUdon_1_1UartWriter_html_a0e61a354de6c8e96b729f3589390f343"><div class="ttname"><a href="classUdon_1_1UartWriter.html#a0e61a354de6c8e96b729f3589390f343">Udon::UartWriter::setMessage</a></div><div class="ttdeci">void setMessage(const Message &amp;rhs)</div><div class="ttdoc">送信内容を更新</div><div class="ttdef"><b>Definition:</b> UartWriter.hpp:36</div></div>
-<div class="ttc" id="aclassUdon_1_1UartWriter_html_a292cc503fa8ef3eaaab07ee0875b43bf"><div class="ttname"><a href="classUdon_1_1UartWriter.html#a292cc503fa8ef3eaaab07ee0875b43bf">Udon::UartWriter::UartWriter</a></div><div class="ttdeci">UartWriter(Stream &amp;uart) noexcept</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition:</b> UartWriter.hpp:28</div></div>
-<div class="ttc" id="aclassUdon_1_1UartWriter_html_aed58f5aeada4bc3cf339c3de3af0bdd6"><div class="ttname"><a href="classUdon_1_1UartWriter.html#aed58f5aeada4bc3cf339c3de3af0bdd6">Udon::UartWriter::showRaw</a></div><div class="ttdeci">void showRaw(char gap=' ') const</div><div class="ttdoc">生の送信内容を表示</div><div class="ttdef"><b>Definition:</b> UartWriter.hpp:54</div></div>
-<div class="ttc" id="aclassUdon_1_1UartWriter_html_afde274bcf407f5e1ea75a7210243fd8b"><div class="ttname"><a href="classUdon_1_1UartWriter.html#afde274bcf407f5e1ea75a7210243fd8b">Udon::UartWriter::show</a></div><div class="ttdeci">void show(char gap='\t') const</div><div class="ttdoc">送信内容を表示</div><div class="ttdef"><b>Definition:</b> UartWriter.hpp:47</div></div>
+<div class="ttc" id="aclassUdon_1_1UartWriter_html"><div class="ttname"><a href="classUdon_1_1UartWriter.html">Udon::UartWriter</a></div><div class="ttdoc">UART 送信クラス</div><div class="ttdef"><b>Definition:</b> UartWriter.hpp:22</div></div>
+<div class="ttc" id="aclassUdon_1_1UartWriter_html_a0e61a354de6c8e96b729f3589390f343"><div class="ttname"><a href="classUdon_1_1UartWriter.html#a0e61a354de6c8e96b729f3589390f343">Udon::UartWriter::setMessage</a></div><div class="ttdeci">void setMessage(const Message &amp;rhs)</div><div class="ttdoc">送信内容を更新</div><div class="ttdef"><b>Definition:</b> UartWriter.hpp:38</div></div>
+<div class="ttc" id="aclassUdon_1_1UartWriter_html_a292cc503fa8ef3eaaab07ee0875b43bf"><div class="ttname"><a href="classUdon_1_1UartWriter.html#a292cc503fa8ef3eaaab07ee0875b43bf">Udon::UartWriter::UartWriter</a></div><div class="ttdeci">UartWriter(Stream &amp;uart) noexcept</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition:</b> UartWriter.hpp:30</div></div>
+<div class="ttc" id="aclassUdon_1_1UartWriter_html_ad21ca015602cf49bfea674db6bbe6d0e"><div class="ttname"><a href="classUdon_1_1UartWriter.html#ad21ca015602cf49bfea674db6bbe6d0e">Udon::UartWriter::showRaw</a></div><div class="ttdeci">void showRaw() const</div><div class="ttdoc">生の送信内容を表示</div><div class="ttdef"><b>Definition:</b> UartWriter.hpp:54</div></div>
+<div class="ttc" id="aclassUdon_1_1UartWriter_html_af2b528f635a222a75533ee8ffb81f12d"><div class="ttname"><a href="classUdon_1_1UartWriter.html#af2b528f635a222a75533ee8ffb81f12d">Udon::UartWriter::show</a></div><div class="ttdeci">void show() const</div><div class="ttdoc">送信内容を表示</div><div class="ttdef"><b>Definition:</b> UartWriter.hpp:48</div></div>
 <div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition:</b> Bit.hpp:12</div></div>
 <div class="ttc" id="anamespaceUdon_html_a20184b6461ea6113bbbede25c81a6425"><div class="ttname"><a href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a></div><div class="ttdeci">bool Serialize(const T &amp;object, ArrayView&lt; uint8_t &gt; buffer)</div><div class="ttdoc">バッファにシリアル化する</div><div class="ttdef"><b>Definition:</b> Serializer.hpp:35</div></div>
 <div class="ttc" id="anamespaceUdon_html_a392678ab11e3dea1c2202a7b255a2e1a"><div class="ttname"><a href="namespaceUdon.html#a392678ab11e3dea1c2202a7b255a2e1a">Udon::Show</a></div><div class="ttdeci">void Show(Args &amp;&amp;... args)</div><div class="ttdoc">区切り文字ありで出力する</div><div class="ttdef"><b>Definition:</b> Show.hpp:332</div></div>

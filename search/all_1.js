@@ -11,7 +11,7 @@ var searchData=
   ['analoglefty_8',['analogLeftY',['../structUdon_1_1Message_1_1PadPS5.html#a6a7744e138c40582e8e3bbfe15ef7446',1,'Udon::Message::PadPS5']]],
   ['analogrightx_9',['analogRightX',['../structUdon_1_1Message_1_1PadPS5.html#a07a692826720b00ea5c8482a63668155',1,'Udon::Message::PadPS5']]],
   ['analogrighty_10',['analogRightY',['../structUdon_1_1Message_1_1PadPS5.html#af69f20d21c74cb64a733c01a7d456282',1,'Udon::Message::PadPS5']]],
-  ['angle_11',['angle',['../structUdon_1_1Vec2.html#a6f91343bf4606f50dac05e5d46cdcc99',1,'Udon::Vec2::angle()'],['../structUdon_1_1Message_1_1Servo.html#afb178d7799367adadbbc28a765893f8f',1,'Udon::Message::Servo::angle()']]],
+  ['angle_11',['angle',['../structUdon_1_1Vec2.html#a6f91343bf4606f50dac05e5d46cdcc99',1,'Udon::Vec2::angle()'],['../structUdon_1_1Message_1_1Servo.html#acd0226d7e0ccd77bd00b42e01e35550d',1,'Udon::Message::Servo::angle()']]],
   ['angleat_12',['angleAt',['../structUdon_1_1Vec2.html#a27d0aaa30865d251f094aced56783e89',1,'Udon::Vec2']]],
   ['arduino_20ide_13',['Arduino IDE',['../md_docs_Install_ArduinoIDE.html',1,'']]],
   ['arduinoide_2emd_14',['ArduinoIDE.md',['../ArduinoIDE_8md.html',1,'']]],

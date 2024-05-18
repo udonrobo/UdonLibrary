@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -116,7 +115,7 @@ $(document).ready(function(){initNavTree('md_docs_Types_StaticVector.html',''); 
 <div class="line">    T m_buffer[Capacity];</div>
 <div class="line">    <span class="keywordtype">size_t</span> size;</div>
 <div class="line">};</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md223"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md224"></a>
 構築</h1>
 <p >テンプレート引数に要素の型、最大要素数を指定します。</p>
 <p >最大要素数と、サイズは意味が異なるので注意してください</p>
@@ -127,8 +126,8 @@ $(document).ready(function(){initNavTree('md_docs_Types_StaticVector.html',''); 
 <div class="line"><a class="code hl_class" href="classUdon_1_1StaticVector.html">Udon::StaticVector&lt;int, 256&gt;</a> vector(10);            <span class="comment">// サイズから構築</span></div>
 <div class="line"><a class="code hl_class" href="classUdon_1_1StaticVector.html">Udon::StaticVector&lt;int, 256&gt;</a> vector(10, 7);         <span class="comment">// サイズ、初期値から構築</span></div>
 <div class="line"><a class="code hl_class" href="classUdon_1_1StaticVector.html">Udon::StaticVector&lt;int, 256&gt;</a> vector{ 1, 2, 3, 4 };  <span class="comment">// initializer_list から構築</span></div>
-<div class="ttc" id="aclassUdon_1_1StaticVector_html"><div class="ttname"><a href="classUdon_1_1StaticVector.html">Udon::StaticVector</a></div><div class="ttdef"><b>Definition:</b> StaticVector.hpp:18</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md224"></a>
+<div class="ttc" id="aclassUdon_1_1StaticVector_html"><div class="ttname"><a href="classUdon_1_1StaticVector.html">Udon::StaticVector</a></div><div class="ttdoc">疑似可変長配列コンテナ</div><div class="ttdef"><b>Definition:</b> StaticVector.hpp:22</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md225"></a>
 要素の追加、削除</h1>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1StaticVector.html">Udon::StaticVector&lt;int, 256&gt;</a> vector{ 1, 2, 3, 4 };</div>
 <div class="line"> </div>
@@ -143,9 +142,9 @@ $(document).ready(function(){initNavTree('md_docs_Types_StaticVector.html',''); 
 <div class="line"> </div>
 <div class="line">vector.<a class="code hl_function" href="classUdon_1_1StaticVector.html#ad8338b2d4b0656defcc5aa6a0d0d0abb">pop_back</a>();</div>
 <div class="line"><span class="comment">// vector: { 1, 2, 3, 4       }</span></div>
-<div class="ttc" id="aclassUdon_1_1StaticVector_html_a882b8b20c49cc6ec3a8edc288dcecc6d"><div class="ttname"><a href="classUdon_1_1StaticVector.html#a882b8b20c49cc6ec3a8edc288dcecc6d">Udon::StaticVector::push_back</a></div><div class="ttdeci">void push_back(const value_type &amp;value)</div><div class="ttdef"><b>Definition:</b> StaticVector.hpp:106</div></div>
-<div class="ttc" id="aclassUdon_1_1StaticVector_html_ad8338b2d4b0656defcc5aa6a0d0d0abb"><div class="ttname"><a href="classUdon_1_1StaticVector.html#ad8338b2d4b0656defcc5aa6a0d0d0abb">Udon::StaticVector::pop_back</a></div><div class="ttdeci">void pop_back()</div><div class="ttdef"><b>Definition:</b> StaticVector.hpp:122</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md225"></a>
+<div class="ttc" id="aclassUdon_1_1StaticVector_html_a882b8b20c49cc6ec3a8edc288dcecc6d"><div class="ttname"><a href="classUdon_1_1StaticVector.html#a882b8b20c49cc6ec3a8edc288dcecc6d">Udon::StaticVector::push_back</a></div><div class="ttdeci">void push_back(const value_type &amp;value)</div><div class="ttdef"><b>Definition:</b> StaticVector.hpp:110</div></div>
+<div class="ttc" id="aclassUdon_1_1StaticVector_html_ad8338b2d4b0656defcc5aa6a0d0d0abb"><div class="ttname"><a href="classUdon_1_1StaticVector.html#ad8338b2d4b0656defcc5aa6a0d0d0abb">Udon::StaticVector::pop_back</a></div><div class="ttdeci">void pop_back()</div><div class="ttdef"><b>Definition:</b> StaticVector.hpp:126</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md226"></a>
 イテレーション</h1>
 <div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; it : vector)</div>
 <div class="line">{</div>

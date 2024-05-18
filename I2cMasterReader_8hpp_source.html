@@ -37,7 +37,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr id="projectrow">
-  <td id="projectlogo"><img alt="Logo" src="Udon.png"$logosize/></td>
   <td id="projectalign">
    <div id="projectname">UdonLibrary<span id="projectnumber">&#160;1.0.0</span>
    </div>
@@ -128,83 +127,83 @@ $(document).ready(function(){initNavTree('I2cMasterReader_8hpp_source.html','');
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Message&gt;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cMasterReader.html">   23</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classUdon_1_1I2cMasterReader.html">I2cMasterReader</a></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cMasterReader.html#a495942d93635c1773c1965dbf5586f57">   27</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="classUdon_1_1I2cMasterReader.html#a495942d93635c1773c1965dbf5586f57">MessageType</a> = Message;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cMasterReader.html#a831a8c677e5ea5a1897ce34059a9e8d0">   30</a></span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="classUdon_1_1I2cMasterReader.html#a831a8c677e5ea5a1897ce34059a9e8d0">Size</a> = Udon::SerializedSize&lt;Message&gt;();</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cMasterReader.html#ae100aae6e59773530dd74f311d36795f">   35</a></span>        <a class="code hl_function" href="classUdon_1_1I2cMasterReader.html#ae100aae6e59773530dd74f311d36795f">I2cMasterReader</a>(<a class="code hl_class" href="classUdon_1_1II2cBus.html">Udon::II2cBus</a>&amp; bus, uint8_t address)</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            : bus(bus)</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            , address(address)</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            , buffer()</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        }</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cMasterReader.html#a2d394f9559aaa4865edde2d54a852a33">   43</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1I2cMasterReader.html#a2d394f9559aaa4865edde2d54a852a33">update</a>()</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            bus.<a class="code hl_function" href="classUdon_1_1II2cBus.html#ab06a8478d079ad54fb046c22c7e31611">requestFrom</a>(address, <a class="code hl_variable" href="classUdon_1_1I2cMasterReader.html#a831a8c677e5ea5a1897ce34059a9e8d0">Size</a>);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keywordflow">while</span> (bus.<a class="code hl_function" href="classUdon_1_1II2cBus.html#a53fe9a045dae04c7d869a5aadd8546e7">available</a>())</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; it : buffer)</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                    it = bus.<a class="code hl_function" href="classUdon_1_1II2cBus.html#a5b1cad2c6592e35cc6699269b8d9f100">read</a>();</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                }</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            }</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        }</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cMasterReader.html#a546adf84d6aff0cad1e557874359c43a">   57</a></span>        <a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;Message&gt;</a> <a class="code hl_function" href="classUdon_1_1I2cMasterReader.html#a546adf84d6aff0cad1e557874359c43a">getMessage</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keywordflow">if</span> (bus)</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                <span class="keywordflow">return</span> Udon::Deserialize&lt;Message&gt;(buffer);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            }</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            {</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceUdon.html#ae102f6540b6e88b1b484ddbed3ff972f">Udon::nullopt</a>;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            }</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        }</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cMasterReader.html#aee16ee2460f65fe2c7ef0024438a6757">   71</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1I2cMasterReader.html#aee16ee2460f65fe2c7ef0024438a6757">show</a>(<span class="keywordtype">char</span> gap = <span class="charliteral">&#39;\t&#39;</span>)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> message = <a class="code hl_function" href="classUdon_1_1I2cMasterReader.html#a546adf84d6aff0cad1e557874359c43a">getMessage</a>())</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            {</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                <a class="code hl_function" href="namespaceUdon.html#a392678ab11e3dea1c2202a7b255a2e1a">Udon::Show</a>(*message, gap);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            }</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            {</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                <a class="code hl_function" href="namespaceUdon.html#a392678ab11e3dea1c2202a7b255a2e1a">Udon::Show</a>(<a class="code hl_define" href="Show_8hpp.html#a203d5b93e4077aa273c7013964a31f9e">F</a>(<span class="stringliteral">&quot;receive failed!&quot;</span>));</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            }</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        }</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cMasterReader.html#a206341ba8d4161a4d348013008f734e8">   85</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1I2cMasterReader.html#a206341ba8d4161a4d348013008f734e8">showRaw</a>(<span class="keywordtype">char</span> gap = <span class="charliteral">&#39; &#39;</span>)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            <a class="code hl_function" href="namespaceUdon.html#a392678ab11e3dea1c2202a7b255a2e1a">Udon::Show</a>(buffer, gap);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        }</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <a class="code hl_class" href="classUdon_1_1II2cBus.html">Udon::II2cBus</a>&amp; bus;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        uint8_t address;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Message&gt;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cMasterReader.html">   25</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classUdon_1_1I2cMasterReader.html">I2cMasterReader</a></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cMasterReader.html#a495942d93635c1773c1965dbf5586f57">   29</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="classUdon_1_1I2cMasterReader.html#a495942d93635c1773c1965dbf5586f57">MessageType</a> = Message;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cMasterReader.html#a831a8c677e5ea5a1897ce34059a9e8d0">   32</a></span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="classUdon_1_1I2cMasterReader.html#a831a8c677e5ea5a1897ce34059a9e8d0">Size</a> = Udon::SerializedSize&lt;Message&gt;();</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cMasterReader.html#ae100aae6e59773530dd74f311d36795f">   37</a></span>        <a class="code hl_function" href="classUdon_1_1I2cMasterReader.html#ae100aae6e59773530dd74f311d36795f">I2cMasterReader</a>(<a class="code hl_class" href="classUdon_1_1II2cBus.html">Udon::II2cBus</a>&amp; bus, uint8_t address)</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            : bus(bus)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            , address(address)</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            , buffer()</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cMasterReader.html#a2d394f9559aaa4865edde2d54a852a33">   45</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1I2cMasterReader.html#a2d394f9559aaa4865edde2d54a852a33">update</a>()</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            bus.<a class="code hl_function" href="classUdon_1_1II2cBus.html#ab06a8478d079ad54fb046c22c7e31611">requestFrom</a>(address, <a class="code hl_variable" href="classUdon_1_1I2cMasterReader.html#a831a8c677e5ea5a1897ce34059a9e8d0">Size</a>);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <span class="keywordflow">while</span> (bus.<a class="code hl_function" href="classUdon_1_1II2cBus.html#a53fe9a045dae04c7d869a5aadd8546e7">available</a>())</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; it : buffer)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                    it = bus.<a class="code hl_function" href="classUdon_1_1II2cBus.html#a5b1cad2c6592e35cc6699269b8d9f100">read</a>();</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cMasterReader.html#a546adf84d6aff0cad1e557874359c43a">   59</a></span>        <a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;Message&gt;</a> <a class="code hl_function" href="classUdon_1_1I2cMasterReader.html#a546adf84d6aff0cad1e557874359c43a">getMessage</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <span class="keywordflow">if</span> (bus)</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                <span class="keywordflow">return</span> Udon::Deserialize&lt;Message&gt;(buffer);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceUdon.html#ae102f6540b6e88b1b484ddbed3ff972f">Udon::nullopt</a>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cMasterReader.html#aee16ee2460f65fe2c7ef0024438a6757">   73</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1I2cMasterReader.html#aee16ee2460f65fe2c7ef0024438a6757">show</a>(<span class="keywordtype">char</span> gap = <span class="charliteral">&#39;\t&#39;</span>)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> message = <a class="code hl_function" href="classUdon_1_1I2cMasterReader.html#a546adf84d6aff0cad1e557874359c43a">getMessage</a>())</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                <a class="code hl_function" href="namespaceUdon.html#a392678ab11e3dea1c2202a7b255a2e1a">Udon::Show</a>(*message, gap);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            }</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                <a class="code hl_function" href="namespaceUdon.html#a392678ab11e3dea1c2202a7b255a2e1a">Udon::Show</a>(<a class="code hl_define" href="Show_8hpp.html#a203d5b93e4077aa273c7013964a31f9e">F</a>(<span class="stringliteral">&quot;receive failed!&quot;</span>));</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        }</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classUdon_1_1I2cMasterReader.html#a206341ba8d4161a4d348013008f734e8">   87</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1I2cMasterReader.html#a206341ba8d4161a4d348013008f734e8">showRaw</a>(<span class="keywordtype">char</span> gap = <span class="charliteral">&#39; &#39;</span>)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <a class="code hl_function" href="namespaceUdon.html#a392678ab11e3dea1c2202a7b255a2e1a">Udon::Show</a>(buffer, gap);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <a class="code hl_class" href="classUdon_1_1II2cBus.html">Udon::II2cBus</a>&amp; bus;</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        uint8_t buffer[<a class="code hl_variable" href="classUdon_1_1I2cMasterReader.html#a831a8c677e5ea5a1897ce34059a9e8d0">Size</a>];</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    };</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>}    <span class="comment">// namespace Udon</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        uint8_t address;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        uint8_t buffer[<a class="code hl_variable" href="classUdon_1_1I2cMasterReader.html#a831a8c677e5ea5a1897ce34059a9e8d0">Size</a>];</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    };</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>}    <span class="comment">// namespace Udon</span></div>
 <div class="ttc" id="aI2cBus_8hpp_html"><div class="ttname"><a href="I2cBus_8hpp.html">I2cBus.hpp</a></div></div>
 <div class="ttc" id="aSerializer_8hpp_html"><div class="ttname"><a href="Serializer_8hpp.html">Serializer.hpp</a></div></div>
 <div class="ttc" id="aShow_8hpp_html"><div class="ttname"><a href="Show_8hpp.html">Show.hpp</a></div></div>
 <div class="ttc" id="aShow_8hpp_html_a203d5b93e4077aa273c7013964a31f9e"><div class="ttname"><a href="Show_8hpp.html#a203d5b93e4077aa273c7013964a31f9e">F</a></div><div class="ttdeci">#define F(x)</div><div class="ttdef"><b>Definition:</b> Show.hpp:16</div></div>
-<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html">Udon::I2cMasterReader</a></div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:24</div></div>
-<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html_a206341ba8d4161a4d348013008f734e8"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html#a206341ba8d4161a4d348013008f734e8">Udon::I2cMasterReader::showRaw</a></div><div class="ttdeci">void showRaw(char gap=' ') const</div><div class="ttdoc">受信バッファを表示</div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:85</div></div>
-<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html_a2d394f9559aaa4865edde2d54a852a33"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html#a2d394f9559aaa4865edde2d54a852a33">Udon::I2cMasterReader::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">更新</div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:43</div></div>
-<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html_a495942d93635c1773c1965dbf5586f57"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html#a495942d93635c1773c1965dbf5586f57">Udon::I2cMasterReader::MessageType</a></div><div class="ttdeci">Message MessageType</div><div class="ttdoc">受信メッセージ型</div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:27</div></div>
-<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html_a546adf84d6aff0cad1e557874359c43a"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html#a546adf84d6aff0cad1e557874359c43a">Udon::I2cMasterReader::getMessage</a></div><div class="ttdeci">Udon::Optional&lt; Message &gt; getMessage() const</div><div class="ttdoc">受信したメッセージを取得</div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:57</div></div>
-<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html_a831a8c677e5ea5a1897ce34059a9e8d0"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html#a831a8c677e5ea5a1897ce34059a9e8d0">Udon::I2cMasterReader::Size</a></div><div class="ttdeci">static constexpr size_t Size</div><div class="ttdoc">受信バッファサイズ</div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:30</div></div>
-<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html_ae100aae6e59773530dd74f311d36795f"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html#ae100aae6e59773530dd74f311d36795f">Udon::I2cMasterReader::I2cMasterReader</a></div><div class="ttdeci">I2cMasterReader(Udon::II2cBus &amp;bus, uint8_t address)</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:35</div></div>
-<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html_aee16ee2460f65fe2c7ef0024438a6757"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html#aee16ee2460f65fe2c7ef0024438a6757">Udon::I2cMasterReader::show</a></div><div class="ttdeci">void show(char gap='\t') const</div><div class="ttdoc">受信内容を表示</div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:71</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html">Udon::I2cMasterReader</a></div><div class="ttdoc">I2c マスター側受信クラス</div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:26</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html_a206341ba8d4161a4d348013008f734e8"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html#a206341ba8d4161a4d348013008f734e8">Udon::I2cMasterReader::showRaw</a></div><div class="ttdeci">void showRaw(char gap=' ') const</div><div class="ttdoc">受信バッファを表示</div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:87</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html_a2d394f9559aaa4865edde2d54a852a33"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html#a2d394f9559aaa4865edde2d54a852a33">Udon::I2cMasterReader::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">更新</div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:45</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html_a495942d93635c1773c1965dbf5586f57"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html#a495942d93635c1773c1965dbf5586f57">Udon::I2cMasterReader::MessageType</a></div><div class="ttdeci">Message MessageType</div><div class="ttdoc">受信メッセージ型</div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:29</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html_a546adf84d6aff0cad1e557874359c43a"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html#a546adf84d6aff0cad1e557874359c43a">Udon::I2cMasterReader::getMessage</a></div><div class="ttdeci">Udon::Optional&lt; Message &gt; getMessage() const</div><div class="ttdoc">受信したメッセージを取得</div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:59</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html_a831a8c677e5ea5a1897ce34059a9e8d0"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html#a831a8c677e5ea5a1897ce34059a9e8d0">Udon::I2cMasterReader::Size</a></div><div class="ttdeci">static constexpr size_t Size</div><div class="ttdoc">受信バッファサイズ</div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:32</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html_ae100aae6e59773530dd74f311d36795f"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html#ae100aae6e59773530dd74f311d36795f">Udon::I2cMasterReader::I2cMasterReader</a></div><div class="ttdeci">I2cMasterReader(Udon::II2cBus &amp;bus, uint8_t address)</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:37</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html_aee16ee2460f65fe2c7ef0024438a6757"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html#aee16ee2460f65fe2c7ef0024438a6757">Udon::I2cMasterReader::show</a></div><div class="ttdeci">void show(char gap='\t') const</div><div class="ttdoc">受信内容を表示</div><div class="ttdef"><b>Definition:</b> I2cMasterReader.hpp:73</div></div>
 <div class="ttc" id="aclassUdon_1_1II2cBus_html"><div class="ttname"><a href="classUdon_1_1II2cBus.html">Udon::II2cBus</a></div><div class="ttdoc">I2cBus クラスのインターフェース</div><div class="ttdef"><b>Definition:</b> I2cBus.hpp:21</div></div>
 <div class="ttc" id="aclassUdon_1_1II2cBus_html_a53fe9a045dae04c7d869a5aadd8546e7"><div class="ttname"><a href="classUdon_1_1II2cBus.html#a53fe9a045dae04c7d869a5aadd8546e7">Udon::II2cBus::available</a></div><div class="ttdeci">virtual int available()=0</div></div>
 <div class="ttc" id="aclassUdon_1_1II2cBus_html_a5b1cad2c6592e35cc6699269b8d9f100"><div class="ttname"><a href="classUdon_1_1II2cBus.html#a5b1cad2c6592e35cc6699269b8d9f100">Udon::II2cBus::read</a></div><div class="ttdeci">virtual int read()=0</div></div>
