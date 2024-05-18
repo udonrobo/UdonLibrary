@@ -15,6 +15,7 @@
 namespace Udon
 {
 
+    /// @brief IM920ノード
     struct Im920Node
     {
         uint8_t* data;          // バッファを指すポインタ
