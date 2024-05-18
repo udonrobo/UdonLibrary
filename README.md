@@ -71,6 +71,7 @@
 - [スタイルガイド](./docs/Developer/StyleGuide.md)
 - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
 - [自動テスト](./docs/Developer/CI.md)
+- [ドキュメント自動生成](./docs/Developer/DoxygenPage.md)
 - [謝辞](./docs/Developer/Acknowledgments.md)
 
 ## ライセンス
