@@ -59,6 +59,7 @@ PROJECT_NAME           = UdonLibrary
 # could be handy for archiving the generated documentation or if some version
 # control system is used.
 
+# udonrobo
 PROJECT_NUMBER         = 1.0.0
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
@@ -1446,9 +1447,7 @@ HTML_EXTRA_STYLESHEET  = docs/DoxygenConfig/doxygen-awesome-css/doxygen-awesome.
 # udonrobo
 HTML_EXTRA_FILES       = docs/DoxygenConfig/doxygen-awesome-css/doxygen-awesome-darkmode-toggle.js \
                          docs/DoxygenConfig/doxygen-awesome-css/doxygen-awesome-fragment-copy-button.js \
-                         doxygen-awesome-interactive-toc.js
-
-HTML_FAVICON          = docs/DoxygenConfig/Udon.png   
+                         docs/DoxygenConfig/doxygen-awesome-css/doxygen-awesome-interactive-toc.js
 
 # The HTML_COLORSTYLE tag can be used to specify if the generated HTML output
 # should be rendered with a dark or light theme.
