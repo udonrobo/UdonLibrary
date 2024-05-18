@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['色空間_0',['色空間',['../md_docs_2Types_2Color.html',1,'']]]
+  ['独立ステア最適化_0',['独立ステア最適化',['../md_docs_2Algorithm_2SteerOptimizer.html',1,'']]]
 ];

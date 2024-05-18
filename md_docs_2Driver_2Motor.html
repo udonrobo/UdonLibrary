@@ -106,12 +106,12 @@ $(function(){initNavTree('md_docs_2Driver_2Motor.html',''); initResizable(); });
   <div class="headertitle"><div class="title">モーター</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md138"></a> モータードライバ制御クラス。 <code>Motor2</code> <code>Motor3</code> クラスが含まれます。</p>
-<h1><a class="anchor" id="autotoc_md139"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md139"></a> モータードライバ制御クラス。 <code>Motor2</code> <code>Motor3</code> クラスが含まれます。</p>
+<h1><a class="anchor" id="autotoc_md140"></a>
 個別インクルード</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Driver_2Motor_8hpp.html">Udon/Driver/Motor.hpp</a>&gt;</span></div>
 <div class="ttc" id="aDriver_2Motor_8hpp_html"><div class="ttname"><a href="Driver_2Motor_8hpp.html">Motor.hpp</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md140"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md141"></a>
 Motor2 クラス</h1>
 <p>信号線が 2 線 (dir + pwm) タイプのモータードライバの制御に使用します。</p>
 <p>コンストラクタにモータードライバと接続しているピン番号を指定します。</p>
@@ -135,7 +135,7 @@ Motor2 クラス</h1>
 <div class="line">    <span class="comment">// motor.stop();  // motor.move(0) と同じ意味</span></div>
 <div class="line">}</div>
 <div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md141"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md142"></a>
 Motor3 クラス</h1>
 <p>信号線が 3 線 (dirA + dirB + pwm) タイプのモータードライバの制御に使用します。</p>
 <p>コンストラクタにモータードライバと接続しているピン番号を指定します。コンストラクタ以外の仕様 <code>Motor2</code> クラスと同じです。</p>
@@ -156,14 +156,14 @@ Motor3 クラス</h1>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// motor.stop();  // motor.move(0) と同じ意味</span></div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md142"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md143"></a>
 デバッグ</h1>
 <p><code>show</code> メンバ関数を使用することで、現在の出力値をシリアルモニターで確認できます。</p>
 <div class="fragment"><div class="line">motor.show();</div>
 <div class="line">Serial.println();</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Udon::Showln(motor);</span></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md143"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md144"></a>
 その他</h1>
 <p><code>Motorx</code> クラスは、出力値の急激な変化によるモーター、モータードライバへの負荷を防止するために、移動平均クラスを使用しています。デフォルトのサンプリング回数は 50 です。これは目標となる出力値に 50 ループ目で到達することを意味します。</p>
 <p><code>Motorx</code> クラスは以下の様に <code>SmoothlyMotorx</code> のエイリアスとなっています。そのため <code>SmoothlyMotorx</code> を直接使用することで移動平均のサンプリング回数の調整ができます。</p>

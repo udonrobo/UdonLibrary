@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['整数型シリアライズ_0',['整数型シリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md184',1,'']]]
+  ['推奨_0',['推奨',['../md_docs_2Communication_2Pad.html#autotoc_md71',1,'■ 920MHz 経由 / 無線モジュールがメイン基板にある場合 (推奨)'],['../md_docs_2Communication_2Pad.html#autotoc_md72',1,'■ 920MHz 経由 / 無線モジュールとメイン基板が別々の場合 (推奨)'],['../md_docs_2Install_2PlatformIO.html#autotoc_md158',1,'Arduino のライブラリと共用する (推奨)'],['../md_docs_2Install_2VisualStudio.html#autotoc_md163',1,'Arduino のライブラリと共用する (推奨)']]]
 ];

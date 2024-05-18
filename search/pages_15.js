@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ループ周期制御_0',['ループ周期制御',['../md_docs_2Algorithm_2LoopCycleController.html',1,'']]]
+  ['フィードバック制御_0',['フィードバック制御',['../md_docs_2Algorithm_2FeedbackController.html',1,'']]]
 ];

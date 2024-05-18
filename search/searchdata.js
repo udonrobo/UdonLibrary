@@ -1,6 +1,6 @@
 var indexSectionsWithContent =
 {
-  0: "29_abcdefghijlmnopqrstuvwxyz~■、そとにのアイエオカクコサシスセソチテデトドバヒビフベペホボマメモユラルロ他使個値全公共列割原受名周命固型基変定実導拡指推整既曖更書最検極概構無特独用移経自色複要言設詳謝車追送通開関電",
+  0: "29_abcdefghijlmnopqrstuvwxyz~■、そとのアイエオカクコサシスセソチテデトドバヒビフベペホボマメモユラルロ三二他使個値全公共列割原受名周命固型基変定実導拡指推整既曖更書最検極概構無特独移経自色複要言設詳謝車追送通開関電",
   1: "abcdefhilmnopqrstuvy",
   2: "su",
   3: "abcdefhilmopqrstuv",
@@ -11,7 +11,7 @@ var indexSectionsWithContent =
   8: "_",
   9: "o",
   10: "bfiqsu",
-  11: "abcilprsuvにエオクコシスデトフモルロ割固独用移自色謝通開"
+  11: "abcdilprsuvエオクコシスセデトドフモルロ三二割固独移自色謝通開"
 };
 
 var indexSectionNames =

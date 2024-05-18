@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['原点を中心にベクトルを指定角度回転させる_0',['原点を中心にベクトルを指定角度回転させる',['../md_docs_2Types_2Vector2D.html#autotoc_md249',1,'']]]
+  ['割り込み禁止制御_0',['割り込み禁止制御',['../md_docs_2Algorithm_2Interrupt.html',1,'']]]
 ];
