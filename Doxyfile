@@ -1444,7 +1444,8 @@ HTML_EXTRA_STYLESHEET  = docs/DoxygenConfig/doxygen-awesome-css/doxygen-awesome.
 
 # udonrobo
 HTML_EXTRA_FILES       = docs/DoxygenConfig/doxygen-awesome-css/doxygen-awesome-darkmode-toggle.js \
-                         docs/DoxygenConfig/doxygen-awesome-css/doxygen-awesome-fragment-copy-button.js
+                         docs/DoxygenConfig/doxygen-awesome-css/doxygen-awesome-fragment-copy-button.js \
+                         HTML_EXTRA_FILES       
 
 # The HTML_COLORSTYLE tag can be used to specify if the generated HTML output
 # should be rendered with a dark or light theme.
