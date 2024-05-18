@@ -6,6 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: 色空間</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -26,12 +27,13 @@
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
 </head>
 <body>
+    <div id="toc"><!-- do not remove this div, it is closed by doxygen! -->
     <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
       <div id="titlearea">
         <table cellspacing="0" cellpadding="0">
           <tbody>
             <tr id="projectrow">
-              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
+              <td id="projectlogo"><a href="https://github.com/udonrobo/UdonLibrary"><img alt="Logo" src="Udon.png"  /></a></td>
               <td id="projectalign">
                 <div id="projectname">UdonLibrary<span
                     id="projectnumber">&#160;1.0.0</span>
@@ -101,7 +103,7 @@ $(function(){initNavTree('md_docs_2Types_2Color.html',''); initResizable(); });
   <div class="headertitle"><div class="title">色空間</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md206"></a> 色空間を表現するには <code><a class="el" href="structUdon_1_1RGB.html">Udon::RGB</a></code>、<code><a class="el" href="structUdon_1_1HSV.html" title="HSV色空間">Udon::HSV</a></code> クラスを使用します。</p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md206"></a> 色空間を表現するには <code><a class="el" href="structUdon_1_1RGB.html" title="RGB色空間">Udon::RGB</a></code>、<code><a class="el" href="structUdon_1_1HSV.html" title="HSV色空間">Udon::HSV</a></code> クラスを使用します。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Color_8hpp.html">Udon/Types/Color.hpp</a>&gt;</span></div>
 <div class="ttc" id="aColor_8hpp_html"><div class="ttname"><a href="Color_8hpp.html">Color.hpp</a></div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md207"></a>
@@ -118,12 +120,12 @@ RGB 色空間</h1>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rgb;</div>
 <div class="line"><a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rgb{ 0, 100, 255 };</div>
 <div class="line"><a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rgb{ 0xff00ff };  <span class="comment">// カラーコードから</span></div>
-<div class="ttc" id="astructUdon_1_1RGB_html"><div class="ttname"><a href="structUdon_1_1RGB.html">Udon::RGB</a></div><div class="ttdef"><b>Definition</b> RGB.hpp:19</div></div>
+<div class="ttc" id="astructUdon_1_1RGB_html"><div class="ttname"><a href="structUdon_1_1RGB.html">Udon::RGB</a></div><div class="ttdoc">RGB色空間</div><div class="ttdef"><b>Definition</b> RGB.hpp:21</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md209"></a>
 カラーコードへの変換</h2>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rgb{ 0, 100, 255 };</div>
 <div class="line"><span class="keyword">const</span> uint32_t color = rgb.<a class="code hl_function" href="structUdon_1_1RGB.html#ac4fc1f627819efeb82adeec28f50a6b2">to24bit</a>();</div>
-<div class="ttc" id="astructUdon_1_1RGB_html_ac4fc1f627819efeb82adeec28f50a6b2"><div class="ttname"><a href="structUdon_1_1RGB.html#ac4fc1f627819efeb82adeec28f50a6b2">Udon::RGB::to24bit</a></div><div class="ttdeci">uint32_t to24bit() const noexcept</div><div class="ttdoc">24bit値への変換</div><div class="ttdef"><b>Definition</b> RGB.hpp:108</div></div>
+<div class="ttc" id="astructUdon_1_1RGB_html_ac4fc1f627819efeb82adeec28f50a6b2"><div class="ttname"><a href="structUdon_1_1RGB.html#ac4fc1f627819efeb82adeec28f50a6b2">Udon::RGB::to24bit</a></div><div class="ttdeci">uint32_t to24bit() const noexcept</div><div class="ttdoc">24bit値への変換</div><div class="ttdef"><b>Definition</b> RGB.hpp:110</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md210"></a>
 他の色空間へ変換</h2>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rgb{ 0, 100, 255 };</div>
