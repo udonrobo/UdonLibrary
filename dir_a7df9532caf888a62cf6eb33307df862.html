@@ -21,12 +21,9 @@
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
-<script type="text/javascript">
-  DoxygenAwesomeDarkModeToggle.init()
-  DoxygenAwesomeFragmentCopyButton.init()
-</script>
 </head>
 <body>
     <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -107,5 +104,18 @@ $(function(){initNavTree('dir_a7df9532caf888a62cf6eb33307df862.html',''); initRe
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! --></div>
+<script type="text/javascript">
+  DoxygenAwesomeDarkModeToggle.init()
+  DoxygenAwesomeFragmentCopyButton.init()
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base', 
+    themeVariables: {
+      primaryColor: '#f4f4ff',
+      secondaryColor: 'rgba(244,244,255,0.9)',
+      tertiaryColor: '#F9FAFC',
+    },
+  });
+</script>
 </body>
 </html>
