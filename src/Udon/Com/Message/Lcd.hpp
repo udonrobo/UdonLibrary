@@ -16,12 +16,18 @@ namespace Udon
     namespace Message
     {
 
+        /// @brief LCD
+        /// @tparam Column 列数
+        /// @tparam Row 行数
         template <size_t Column, size_t Row>
         struct Lcd
         {
             /// @brief LCDのテキスト
             char text[Row][Column];
 
+            /// @brief LCDに文字列を設定
+            /// @param index 行
+            /// @param format 書式
             void printf(size_t index, const char* format, ...)
             {
                 va_list args;
@@ -45,7 +51,10 @@ namespace Udon
             UDON_ENUMERABLE(text);
         };
 
+        /// @brief LCD 16x2
         using Lcd1602 = Lcd<16, 2>;
+
+        /// @brief LCD 20x4
         using Lcd2004 = Lcd<20, 4>;
 
     }    // namespace Message

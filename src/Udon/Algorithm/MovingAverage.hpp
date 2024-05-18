@@ -11,8 +11,7 @@
 namespace Udon
 {
 
-    /**     移動平均クラス
-     */
+    /// @brief 移動平均クラス
     template <size_t DataSize>
     class MovingAverage
     {
@@ -24,9 +23,8 @@ namespace Udon
         long sum;    /// dataに保存されているデータの合計値
 
     public:
-        /**     コンストラクタ
-                @param  DataSize    [in]移動平均するデータの個数
-        */
+        /// @brief コンストラクタ
+        /// @param DataSize [in]移動平均するデータの個数
         MovingAverage()
             : data()
             , writeIndex()
@@ -34,9 +32,8 @@ namespace Udon
         {
         }
 
-        /**     値の更新
-                @param  value   [in]移動平均するデータ
-        */
+        /// @brief 値の更新
+        /// @param value [in]移動平均するデータ
         void update(int value) noexcept
         {
             sum -= data[writeIndex];       // 取り除くデータの値分だけ合計から取り除く
@@ -47,14 +44,16 @@ namespace Udon
                 writeIndex = 0;
         }
 
-        /**     平均値の取得
-                @return     平均値
-        */
+        /// @brief 平均値の取得
+        /// @return 平均値
         double getValue() const noexcept
         {
             return static_cast<double>(sum) / DataSize;
         }
 
+        /// @brief 値の更新と平均値の取得
+        /// @param value [in]移動平均するデータ
+        /// @return 平均値
         double operator()(double value) noexcept
         {
             update(value);

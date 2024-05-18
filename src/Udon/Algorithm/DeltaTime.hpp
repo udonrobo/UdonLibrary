@@ -10,6 +10,8 @@
 
 namespace Udon
 {
+
+    /// @brief 変化時間計測クラス
     class DeltaTime
     {
         /// @brief 前回の時間

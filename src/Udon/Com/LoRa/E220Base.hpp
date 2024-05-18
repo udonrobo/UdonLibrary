@@ -6,6 +6,8 @@ namespace Udon
     namespace Impl
     {
 
+        /// @brief E220 ベースクラス
+        /// @note 送受信者とも初期化内容が同じであったため共通化
         class E220Base
         {
         public:
@@ -40,11 +42,14 @@ namespace Udon
         protected:
             Config config;
 
+            /// @brief コンストラクタ
+            /// @param config 設定
             E220Base(const Config& config)
                 : config(config)
             {
             }
 
+            /// @brief 通信開始
             void begin()
             {
                 pinMode(config.m0, OUTPUT);

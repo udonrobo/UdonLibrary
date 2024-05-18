@@ -74,14 +74,14 @@ PROJECT_BRIEF          = "機械システム研究部 C++ ライブラリ"
 # the logo to the output directory.
 
 # udonrobo
-PROJECT_LOGO           = docs/Assets/Udon.png
+PROJECT_LOGO           = https://github.com/udonrobo/UdonLibrary/assets/91818705/3f1c74fa-9875-42b4-9a12-1aed97ca0572
 
 # With the PROJECT_ICON tag one can specify an icon that is included in the tabs
 # when the HTML document is shown. Doxygen will copy the logo to the output
 # directory.
 
 # udonrobo
-PROJECT_ICON           = docs/Assets/Udon.png
+PROJECT_ICON           = https://github.com/udonrobo/UdonLibrary/assets/91818705/3f1c74fa-9875-42b4-9a12-1aed97ca0572
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
 # into which the generated documentation will be written. If a relative path is

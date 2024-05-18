@@ -18,7 +18,7 @@
 namespace Udon
 {
 
-    /// @brief PS5コントローラー
+    /// @brief 通信経由PS5コントローラークラス
     /// @tparam Reader 受信クラス
     template <template <typename> typename Reader>
     class PadPS5

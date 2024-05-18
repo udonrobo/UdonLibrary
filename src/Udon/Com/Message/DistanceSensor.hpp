@@ -14,6 +14,7 @@ namespace Udon
     namespace Message
     {
 
+        /// @brief 距離センサー
         struct DistanceSensor
         {
 

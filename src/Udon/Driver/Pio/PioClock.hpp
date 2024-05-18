@@ -13,6 +13,11 @@
 
 namespace Udon
 {
+
+    /// @brief PID を用いてピンにクロック信号を出力する
+    /// @param pin 出力ピン
+    /// @param clockSpeed クロック周波数
+    /// @return 出力に成功した場合は true
     inline bool PioClockBegin(uint8_t pin, uint32_t clockSpeed)
     {
         auto sm = Pio::AllocateStateMachine(Udon::Pio::Sqwave::squarewave_program);

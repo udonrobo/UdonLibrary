@@ -14,6 +14,7 @@ namespace Udon
     namespace Message
     {
 
+        /// @brief フォトセンサー
         struct PhotoSensor
         {
 

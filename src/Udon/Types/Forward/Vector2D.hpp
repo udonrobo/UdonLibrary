@@ -16,6 +16,8 @@ namespace Udon
 
     struct Vec3;
 
+
+    /// @brief 二次元ベクトル
     struct Vec2
     {
 
@@ -53,43 +55,31 @@ namespace Udon
         /// @brief デフォルトコピー代入演算子
         Vec2& operator=(const Vec2&) = default;
 
-        /// @brief 算術演算子
-        /// @note vector [operator] vector
         friend constexpr Vec2 operator+(const Vec2& lhs, const Vec2& rhs) noexcept { return { lhs.x + rhs.x, lhs.y + rhs.y }; }
         friend constexpr Vec2 operator-(const Vec2& lhs, const Vec2& rhs) noexcept { return { lhs.x - rhs.x, lhs.y - rhs.y }; }
         friend constexpr Vec2 operator*(const Vec2& lhs, const Vec2& rhs) noexcept { return { lhs.x * rhs.x, lhs.y * rhs.y }; }
         friend constexpr Vec2 operator/(const Vec2& lhs, const Vec2& rhs) noexcept { return { lhs.x / rhs.x, lhs.y / rhs.y }; }
 
-        /// @brief 算術演算子
-        /// @note vector [operator] scalar
         friend constexpr Vec2 operator+(const Vec2& lhs, ValueType rhs) noexcept { return { lhs.x + rhs, lhs.y + rhs }; }
         friend constexpr Vec2 operator-(const Vec2& lhs, ValueType rhs) noexcept { return { lhs.x - rhs, lhs.y - rhs }; }
         friend constexpr Vec2 operator*(const Vec2& lhs, ValueType rhs) noexcept { return { lhs.x * rhs, lhs.y * rhs }; }
         friend constexpr Vec2 operator/(const Vec2& lhs, ValueType rhs) noexcept { return { lhs.x / rhs, lhs.y / rhs }; }
 
-        /// @brief 算術演算子
-        /// @note scalar [operator] vector
         friend constexpr Vec2 operator+(ValueType lhs, const Vec2& rhs) noexcept { return { lhs + rhs.x, lhs + rhs.x }; }
         friend constexpr Vec2 operator-(ValueType lhs, const Vec2& rhs) noexcept { return { lhs - rhs.x, lhs - rhs.x }; }
         friend constexpr Vec2 operator*(ValueType lhs, const Vec2& rhs) noexcept { return { lhs * rhs.x, lhs * rhs.x }; }
         friend constexpr Vec2 operator/(ValueType lhs, const Vec2& rhs) noexcept { return { lhs / rhs.x, lhs / rhs.x }; }
 
-        /// @brief 複合代入演算子
-        /// @note vector = vector [operator] vector
         Vec2& operator+=(const Vec2& rhs) noexcept { return *this = *this + rhs; };
         Vec2& operator-=(const Vec2& rhs) noexcept { return *this = *this - rhs; };
         Vec2& operator*=(const Vec2& rhs) noexcept { return *this = *this * rhs; };
         Vec2& operator/=(const Vec2& rhs) noexcept { return *this = *this / rhs; };
 
-        /// @brief 複合代入演算子
-        /// @note vector = vector [operator] scalar
         Vec2& operator+=(ValueType rhs) noexcept { return *this = *this + rhs; };
         Vec2& operator-=(ValueType rhs) noexcept { return *this = *this - rhs; };
         Vec2& operator*=(ValueType rhs) noexcept { return *this = *this * rhs; };
         Vec2& operator/=(ValueType rhs) noexcept { return *this = *this / rhs; };
 
-        /// @brief 比較演算子
-        /// @note vector [operator] vector
         friend constexpr bool operator==(const Vec2& lhs, const Vec2& rhs) noexcept { return lhs.x == rhs.x and lhs.y == rhs.y; };
         friend constexpr bool operator!=(const Vec2& lhs, const Vec2& rhs) noexcept { return not(lhs == rhs); };
 

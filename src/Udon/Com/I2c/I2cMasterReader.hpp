@@ -19,6 +19,8 @@
 namespace Udon
 {
 
+    /// @brief I2c マスター側受信クラス
+    /// @tparam Message 受信メッセージ型
     template <typename Message>
     class I2cMasterReader
     {

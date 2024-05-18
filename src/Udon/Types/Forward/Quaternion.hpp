@@ -15,6 +15,7 @@ namespace Udon
 
     struct Euler;
 
+
     /// @brief クオータニオンの各成分の正負を表す構造体
     struct QuaternionDirection
     {
@@ -22,6 +23,7 @@ namespace Udon
         bool y;
         bool z;
     };
+
 
     /// @brief クオータニオン
     struct Quaternion
@@ -66,8 +68,7 @@ namespace Udon
         /// @return
         constexpr Quaternion operator*(const Quaternion& rhs) const noexcept
         {
-            return 
-            {
+            return {
                 w * rhs.x + x * rhs.w + y * rhs.z - z * rhs.y,
                 w * rhs.y - x * rhs.z + y * rhs.w + z * rhs.x,
                 w * rhs.z + x * rhs.y - y * rhs.x + z * rhs.w,
@@ -103,7 +104,7 @@ namespace Udon
         }
 
         /// @brief 逆クオータニオン
-        /// @return 
+        /// @return
         constexpr Quaternion inverse() const noexcept
         {
             return { -x, -y, -z, w };
@@ -123,7 +124,7 @@ namespace Udon
         }
 
         /// @brief 単位クオータニオン
-        /// @return 
+        /// @return
         static Quaternion Identity() noexcept
         {
             return { 0, 0, 0, 1 };
@@ -165,6 +166,8 @@ namespace Udon
             *this = {};
         }
 
+        /// @brief オイラー角に変換
+        /// @return オイラー角
         Euler toEuler() const noexcept;
 
         /// @brief ヨー角を取得

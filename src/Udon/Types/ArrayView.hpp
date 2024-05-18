@@ -20,6 +20,8 @@
 namespace Udon
 {
 
+    
+    /// @brief 配列参照クラス
     template <typename T>
     class ArrayView
     {

@@ -16,6 +16,8 @@ namespace Udon
 
     struct Quaternion;
 
+
+    /// @brief オイラー角の回転方向
     struct EulerDirection
     {
         bool roll;
@@ -23,6 +25,8 @@ namespace Udon
         bool yaw;
     };
 
+
+    /// @brief オイラー角
     struct Euler
     {
 
@@ -63,9 +67,6 @@ namespace Udon
         /// @brief デフォルトコピー代入演算子
         Euler& operator=(const Euler&) = default;
 
-        /// @brief 算術演算子
-        /// @param rhs 被演算子
-        /// @return
         constexpr Euler operator+(const Euler& rhs) const noexcept { return { roll + rhs.roll, pitch + rhs.pitch, yaw + rhs.yaw }; }
         constexpr Euler operator-(const Euler& rhs) const noexcept { return { roll - rhs.roll, pitch - rhs.pitch, yaw - rhs.yaw }; }
         constexpr Euler operator*(const Euler& rhs) const noexcept { return { roll * rhs.roll, pitch * rhs.pitch, yaw * rhs.yaw }; }
@@ -75,9 +76,6 @@ namespace Udon
         constexpr Euler operator*(ValueType rhs) const noexcept { return { roll * rhs, pitch * rhs, yaw * rhs }; }
         constexpr Euler operator/(ValueType rhs) const noexcept { return { roll / rhs, pitch / rhs, yaw / rhs }; }
 
-        /// @brief 複合代入演算子
-        /// @param rhs 被演算子
-        /// @return
         Euler& operator+=(const Euler& rhs) noexcept { return *this = *this + rhs; };
         Euler& operator-=(const Euler& rhs) noexcept { return *this = *this - rhs; };
         Euler& operator*=(const Euler& rhs) noexcept { return *this = *this * rhs; };
@@ -87,9 +85,6 @@ namespace Udon
         Euler& operator*=(ValueType rhs) noexcept { return *this = *this * rhs; };
         Euler& operator/=(ValueType rhs) noexcept { return *this = *this / rhs; };
 
-        /// @brief 比較演算子
-        /// @param rhs 被演算子
-        /// @return
         constexpr bool operator==(const Euler& rhs) const noexcept
         {
             return roll == rhs.roll &&
@@ -133,12 +128,14 @@ namespace Udon
         constexpr Euler directionRevision(const EulerDirection& direction) const noexcept
         {
             return {
-                roll  * (direction.roll  ? 1 : -1),
+                roll * (direction.roll ? 1 : -1),
                 pitch * (direction.pitch ? 1 : -1),
-                yaw   * (direction.yaw   ? 1 : -1),
+                yaw * (direction.yaw ? 1 : -1),
             };
         }
 
+        /// @brief クォータニオンに変換する
+        /// @return クォータニオン
         Quaternion toQuaternion() const noexcept;
 
         /// @brief 値クリア
