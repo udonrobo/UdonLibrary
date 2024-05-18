@@ -123,8 +123,8 @@ namespace Udon
 
         /// @brief メンバ変数を列挙しストリームへ出力する
         /// @tparam Printer 出力先
-        /// @details 出力先は operator<<(T&&) のオーバーロードを実装している必要がある
-        /// @details operator<<(T&&) のオーバーロードを実装するとき T が算術型、文字列、のいずれかである必要がある
+        /// @note 出力先は operator<<(T&&) のオーバーロードを実装している必要がある
+        /// @note operator<<(T&&) のオーバーロードを実装するとき T が算術型、文字列、のいずれかである必要がある
         template <typename OutputStream>
         class Printer
         {
@@ -159,7 +159,7 @@ namespace Udon
             }
 
             /// @brief 可変長引数展開 (終端)
-            /// @details 終端に到達したときは区切り文字を出力しない
+            /// @note 終端に到達したときは区切り文字を出力しない
             template <typename Head>
             ResultType argsUnpack(Head&& head)
             {
@@ -178,7 +178,7 @@ namespace Udon
             }
 
             /// @brief 組み込み配列
-            /// @details C言語スタイル文字列は配列として扱わない
+            /// @note C言語スタイル文字列は配列として扱わない
             template <typename Array, EnableIfNullptrT<
                                           IsArray<RemoveReferenceT<Array>>::value                                     // 配列である
                                           and not IsCString<RemoveReferenceT<Array>>::value                           // C言語スタイル文字列は配列として扱わない
@@ -242,7 +242,7 @@ namespace Udon
         /// @brief オブジェクトが全て出力可能か判定する
         /// @tparam Args 出力可能なオブジェクトの型
         /// @param args テストするオブジェクト
-        /// @details 以下の条件を満たすとき、出力可能と判定される
+        /// @note 以下の条件を満たすとき、出力可能と判定される
         /// - T が列挙可能である
         /// - T が配列である
         /// - T に show() が定義されている

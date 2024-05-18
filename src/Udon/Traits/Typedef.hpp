@@ -72,14 +72,14 @@ namespace Udon
         using DisableIfVoidT = DisableIfT<Test, void>;
 
         /// @brief
-        /// @details Test == true  の場合 type が std::nullptr_t に実体化
-        /// @details Test == false の場合 type は実体化されない
+        /// @note Test == true  の場合 type が std::nullptr_t に実体化
+        /// @note Test == false の場合 type は実体化されない
         template <bool Test>
         using EnableIfNullptrT = EnableIfT<Test, std::nullptr_t>;
 
         /// @brief
-        /// @details Test == true  の場合 type は実体化されない
-        /// @details Test == false の場合 type が std::nullptr_t に実体化
+        /// @note Test == true  の場合 type は実体化されない
+        /// @note Test == false の場合 type が std::nullptr_t に実体化
         template <bool Test>
         using DisableIfNullptrT = DisableIfT<not Test, std::nullptr_t>;
 

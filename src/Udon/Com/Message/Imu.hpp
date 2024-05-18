@@ -15,7 +15,7 @@ namespace Udon
     namespace Message
     {
         /// @brief IMUの姿勢角(yaw角)
-        /// @details 3軸の姿勢角を格納する場合はUdon::Eulerを使用してください。
+        /// @note 3軸の姿勢角を格納する場合はUdon::Eulerを使用してください。
         struct Yaw
         {
 

@@ -184,7 +184,7 @@ namespace Udon
         /// @param powerLimit ホイール出力値の最大値
         /// @param turnPowerLimit 旋回の最大値
         /// @return ステアの値 (極座標[r:-255~255,theta:[-π~π])の配列)
-        /// @details index順 (頂点から時計回りに 0,1,2...)
+        /// @note index順 (頂点から時計回りに 0,1,2...)
         ///   ↑      ↑
         ///  |３|    |０|
         ///

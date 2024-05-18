@@ -40,7 +40,7 @@ namespace Udon
     public:
         /// @brief コンストラクタ
         /// @param pair ペアリングするかどうか
-        /// @details ペアリングする場合は PAIR を渡す
+        /// @note ペアリングする場合は PAIR を渡す
         PadPS5BT(bool pair = false)
             : usb()
             , btd(&usb)

@@ -17,7 +17,7 @@ namespace Udon
 {
 
     /// @brief 7セグメントLEDを制御するクラス
-    /// @details
+    /// @note
     ///     ダイナミック制御により、複数の7セグメントLEDを制御します。
     ///     ループ毎に1桁ずつ表示します。
     class SegmentsLed
