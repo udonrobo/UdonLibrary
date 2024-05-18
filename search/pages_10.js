@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['スタイルガイド_0',['スタイルガイド',['../md_docs_2Developer_2StyleGuide.html',1,'']]]
+  ['セットアップ_0',['Raspberry Pi Pico セットアップ',['../md_docs_2Install_2RaspberryPiPico.html',1,'']]]
 ];

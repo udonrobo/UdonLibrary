@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>UdonLibrary: Doxygen ドキュメント自動生成</title>
+<title>UdonLibrary: ドキュメント自動生成</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -103,10 +103,41 @@ $(function(){initNavTree('md_docs_2Developer_2DoxygenPage.html',''); initResizab
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Doxygen ドキュメント自動生成</div></div>
+  <div class="headertitle"><div class="title">ドキュメント自動生成</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md122"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md122"></a> Doxygen を用いてソースコード、マークダウンからドキュメントを自動生成しています。マスターブランチにプッシュがあった場合 GitHub Actions を通じてページが更新されます。ワークフローは <code>.github/workflows/DoxygenPage.yml</code> に定義されており、以下の流れで更新を行います。</p>
+<div class="fragment"><div class="line">flowchart TB</div>
+<div class="line"> </div>
+<div class="line">    onpush{{プッシュがあった時}} --&gt; DoxygenPageフロー</div>
+<div class="line"> </div>
+<div class="line">    subgraph DoxygenPageフロー</div>
+<div class="line">        direction TB</div>
+<div class="line">        DoxygenがHTMLページを生成 --&gt; 生成物をgh_pagesブランチにプッシュ</div>
+<div class="line">    end</div>
+<div class="line"> </div>
+<div class="line">    DoxygenPageフロー --&gt; デプロイフロー</div>
+<div class="line"> </div>
+<div class="line">    subgraph デプロイフロー</div>
+<div class="line">        gh_pagesブランチのHTMLページを公開</div>
+<div class="line">    end</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md123"></a>
+ローカル環境で実行</h1>
+<ol type="1">
+<li><p class="startli">Doxygen をインストール</p>
+<p class="startli"><a href="https://www.doxygen.nl/download.html#latestsrc">https://www.doxygen.nl/download.html#latestsrc</a></p>
+<p class="startli">Doxygen コマンドが使用できるようパスを通す必要があります。</p>
+</li>
+<li><p class="startli">UdonLibrary ディレクトリで Doxygen を実行</p>
+<div class="fragment"><div class="line">doxygen Doxyfile</div>
+</div><!-- fragment --></li>
+<li><p class="startli">ページ が ./docs/DoxygenDist/html に生成されるのでブラウザで開く</p>
+<div class="fragment"><div class="line">start ./docs/DoxygenDist/html/index.html</div>
+</div><!-- fragment --></li>
+</ol>
+<blockquote class="doxtable">
+<p>&zwj;生成物は git に追跡されません。 </p>
+</blockquote>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

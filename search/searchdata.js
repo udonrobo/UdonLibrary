@@ -11,7 +11,7 @@ var indexSectionsWithContent =
   8: "_",
   9: "o",
   10: "bfiqsu",
-  11: "abcdilprsuvエオクコシスセデトドフモルロ三二割固独移自色謝通開"
+  11: "abcilprsuvエオクコシスセデトドフモルロ三二割固独移自色謝通開"
 };
 
 var indexSectionNames =

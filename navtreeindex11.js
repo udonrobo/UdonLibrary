@@ -1,5 +1,6 @@
 var NAVTREEINDEX11 =
 {
+"structUdon_1_1Traits_1_1IsOutputStreamable.html":[47,0,0,2,12],
 "structUdon_1_1Traits_1_1IsOutputStreamable_3_01OutputStream_00_01T_00_01std_1_1void__t_3_01decltdeef1286ebbe867a1fa837ff072fac7c.html":[47,0,0,2,13],
 "structUdon_1_1Traits_1_1IsOutputStreamable_3_01OutputStream_00_01T_00_01std_1_1void__t_3_01decltdeef1286ebbe867a1fa837ff072fac7c.html":[46,0,1,5,13],
 "structUdon_1_1Traits_1_1IsPrintable.html":[47,0,0,2,14],

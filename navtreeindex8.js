@@ -1,5 +1,6 @@
 var NAVTREEINDEX8 =
 {
+"namespaceUdon_1_1Message.html#aae78d31a4c46bdab46f95e2cdfb0f813":[46,0,1,2,15],
 "namespaceUdon_1_1Pio.html":[46,0,1,3],
 "namespaceUdon_1_1Pio_1_1Encoder.html":[46,0,1,3,0],
 "namespaceUdon_1_1Pio_1_1Sqwave.html":[46,0,1,3,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX8 =
 "structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Enumeratable_00_01EnableIfVoidT_3_01HasMemberF41adc80fa5065aa9a6c90ee461b205c5.html":[46,0,1,0,2,3],
 "structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Printable_00_01EnableIfVoidT_3_01HasMemberFunc15b5ba4bf8715386217ee42bd1ba7f8b.html":[46,0,1,0,2,4],
 "structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Printable_00_01EnableIfVoidT_3_01HasMemberFunc15b5ba4bf8715386217ee42bd1ba7f8b.html":[47,0,0,0,2,4],
-"structUdon_1_1Impl_1_1IsSerializableImpl.html":[47,0,0,0,3],
-"structUdon_1_1Impl_1_1IsSerializableImpl.html":[46,0,1,0,3]
+"structUdon_1_1Impl_1_1IsSerializableImpl.html":[47,0,0,0,3]
 };

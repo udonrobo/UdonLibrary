@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['raspberry_20pi_20pico_20セットアップ_0',['Raspberry Pi Pico セットアップ',['../md_docs_2Install_2RaspberryPiPico.html',1,'']]],
-  ['ringbuffer_1',['RingBuffer',['../md_docs_2Types_2RingBuffer.html',1,'']]]
+  ['staticvector_0',['StaticVector',['../md_docs_2Types_2StaticVector.html',1,'']]],
+  ['stringview_1',['StringView',['../md_docs_2Types_2StringView.html',1,'']]],
+  ['studio_2',['Visual Studio',['../md_docs_2Install_2VisualStudio.html',1,'']]],
+  ['studio_20submodule_3',['Visual Studio Submodule',['../md_docs_2Install_2VisualStudioSubmodule.html',1,'']]],
+  ['submodule_4',['Visual Studio Submodule',['../md_docs_2Install_2VisualStudioSubmodule.html',1,'']]]
 ];
