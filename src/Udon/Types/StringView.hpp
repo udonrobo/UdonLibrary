@@ -22,7 +22,7 @@ namespace Udon
 {
 
     /// @brief 文字列参照クラス
-    /// @details メモリ所有権を持たないのでヒープへのメモリアロケーションが発生しません
+    /// @note メモリ所有権を持たないのでヒープへのメモリアロケーションが発生しません
     /// @tparam CharType 文字列の各要素の型
     /// @tparam Traits
     template <typename CharType, typename Traits = std::char_traits<CharType>>

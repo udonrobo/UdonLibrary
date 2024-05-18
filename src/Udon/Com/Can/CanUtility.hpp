@@ -11,7 +11,7 @@ namespace Udon
     {
 
         /// @brief バイト列を複数のパケット、単一のパケットにパケット化する
-        /// @details
+        /// @note
         ///        入力バッファ(input)のサイズによってアンパケット方法が変わります。
         ///        0 < input.size <= singlePacketSize:  シングルパケットとしてアンパケット化(コピー)
         ///        singlePacketSize < input.size     :  マルチパケット  としてアンパケット化(先頭バイトをパケットインデックスとしてコピー)
@@ -73,7 +73,7 @@ namespace Udon
         }
 
         /// @brief 複数のパケット、単一のパケットからバイト列にアンパケット化する
-        /// @details
+        /// @note
         ///        出力バッファ(output)のサイズによってアンパケット方法が変わります。
         ///        0 < output.size <= singlePacketSize:  シングルパケットとしてアンパケット化(コピー)
         ///        singlePacketSize < output.size     :  マルチパケット  としてアンパケット化(先頭バイトをパケットインデックスとしてコピー)

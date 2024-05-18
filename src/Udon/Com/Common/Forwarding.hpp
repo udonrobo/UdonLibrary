@@ -55,7 +55,7 @@ namespace Udon
         }
 
         /// @brief 開始
-        /// @details 受信クラス、または送信クラスに begin メンバ関数がある場合、呼び出す
+        /// @note 受信クラス、または送信クラスに begin メンバ関数がある場合、呼び出す
         void begin()
         {
             Udon::Traits::MaybeInvokeBegin(reader);
@@ -63,7 +63,7 @@ namespace Udon
         }
 
         /// @brief 更新
-        /// @details 受信クラス、または送信クラスに update メンバ関数がある場合、呼び出す
+        /// @note 受信クラス、または送信クラスに update メンバ関数がある場合、呼び出す
         void update()
         {
             Udon::Traits::MaybeInvokeUpdate(reader);
@@ -79,7 +79,7 @@ namespace Udon
         }
 
         /// @brief 通信状態を表示する
-        /// @details 受信クラス、または送信クラスに show メンバ関数がある場合、呼び出す
+        /// @note 受信クラス、または送信クラスに show メンバ関数がある場合、呼び出す
         void show()
         {
             Udon::Show(F("read: "));
@@ -90,7 +90,7 @@ namespace Udon
         }
 
         /// @brief 通信状態を表示する
-        /// @details 受信クラス、または送信クラスに showRaw メンバ関数がある場合、呼び出す
+        /// @note 受信クラス、または送信クラスに showRaw メンバ関数がある場合、呼び出す
         void showRaw()
         {
             Udon::Show(F("read: "));

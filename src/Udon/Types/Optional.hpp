@@ -35,13 +35,16 @@ namespace Udon
     }
 #endif
 
+    /**
+     * @brief 無効値型
+     */
     struct NulloptT
     {
     };
 
     /**
      * @brief 無効値
-    */
+     */
     constexpr NulloptT nullopt{};
 
 

@@ -30,7 +30,7 @@ namespace Udon
         }    // namespace Impl
 
         /// @brief ステートマシンを表す構造体
-        /// @details PIOはpio0とpio1の2つがあり、それぞれ4つのステートマシンを持つ
+        /// @note PIOはpio0とpio1の2つがあり、それぞれ4つのステートマシンを持つ
         ///         それぞれのステートマシンは各PIOの命令メモリ(Instruction Memory)に保存されている命令を実行する
         ///         ステートマシンとメインプログラムとは独立して動作し、32bit FIFOバッファを介してデータのやり取りを行う
         ///

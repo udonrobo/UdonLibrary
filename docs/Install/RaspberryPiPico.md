@@ -1,4 +1,4 @@
-# Raspberry Pi Pico 用セットアップ
+# Raspberry Pi Pico セットアップ
 
 本ライブラリを Raspberry Pi Pico で使用する際、 [arduino-pico](https://github.com/earlephilhower/arduino-pico/) (RP2040 ボード) のインストールが必要です。
 
