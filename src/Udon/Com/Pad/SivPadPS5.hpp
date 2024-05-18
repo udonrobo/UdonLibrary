@@ -17,6 +17,7 @@ namespace Udon
     namespace Impl
     {
 
+        /// @brief OpenSiv3D用 PS5コントローラー 受信クラス
         template <typename DummyMessage>
         class SivPadPS5Reader
         {
@@ -73,6 +74,7 @@ namespace Udon
 
     }    // namespace Impl
 
+    /// @brief OpenSiv3D用 PS5コントローラー
     using SivPadPS5 = PadPS5<Impl::SivPadPS5Reader>;
 
 }    // namespace Udon

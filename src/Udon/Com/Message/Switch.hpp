@@ -14,6 +14,7 @@ namespace Udon
     namespace Message
     {
 
+        /// @brief スイッチ
         struct Switch
         {
 

@@ -15,6 +15,7 @@ namespace Udon
     namespace Message
     {
 
+        /// @brief ブラシレスモーター
         struct BrushLess
         {
 

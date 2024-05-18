@@ -15,10 +15,11 @@ namespace Udon
     namespace Message
     {
 
+        /// @brief エアシリンダー
         struct AirCylinder
         {
 
-            /// @brief シリンダーの位置
+            /// @brief 伸びているか
             bool push;
 
 #ifdef ARDUINO

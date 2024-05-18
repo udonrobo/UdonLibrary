@@ -14,6 +14,8 @@
 namespace Udon
 {
 
+    /// @brief スムーズにモーターを制御するクラス
+    /// @tparam SmoothLevel 平滑化レベル (移動平均のサンプル数)
     template <size_t SmoothLevel>
     class SmoothlyMotor2
     {
@@ -23,6 +25,10 @@ namespace Udon
         Udon::MovingAverage<SmoothLevel> movingAverage;
 
     public:
+
+        /// @brief コンストラクタ
+        /// @param pinA 方向ピン
+        /// @param pinP PWM ピン
         SmoothlyMotor2(const uint8_t pinA, const uint8_t pinP)
             : pinA(pinA)
             , pinP(pinP)
@@ -30,11 +36,14 @@ namespace Udon
         {
         }
 
+        /// @brief 出力開始
         void begin()
         {
             pinMode(pinA, OUTPUT);
         }
 
+        /// @brief モーターを動かす
+        /// @param power パワー (-250 ～ 250)
         void move(const int16_t power)
         {
             const int16_t p = movingAverage(constrain(power, -250, 250));
@@ -42,11 +51,13 @@ namespace Udon
             analogWrite(pinP, abs(p));
         }
 
+        /// @brief モーターを停止
         void stop()
         {
             move(0);
         }
 
+        /// @brief パワーをシリアル出力
         void show() const
         {
             Serial.print(movingAverage.getValue());
@@ -54,6 +65,8 @@ namespace Udon
         }
     };
 
+    /// @brief スムーズにモーターを制御するクラス
+    /// @tparam SmoothLevel 平滑化レベル (移動平均のサンプル数)
     template <size_t SmoothLevel>
     class SmoothlyMotor3
     {
@@ -64,6 +77,11 @@ namespace Udon
         Udon::MovingAverage<SmoothLevel> movingAverage;
 
     public:
+
+        /// @brief コンストラクタ
+        /// @param pinA 方向ピン
+        /// @param pinB 方向ピン
+        /// @param pinP PWM ピン
         SmoothlyMotor3(const uint8_t pinA, const uint8_t pinB, const uint8_t pinP)
             : pinA(pinA)
             , pinB(pinB)
@@ -72,12 +90,15 @@ namespace Udon
         {
         }
 
+        /// @brief 出力開始
         void begin()
         {
             pinMode(pinA, OUTPUT);
             pinMode(pinB, OUTPUT);
         }
 
+        /// @brief モーターを動かす
+        /// @param power パワー (-250 ～ 250)
         void move(const int16_t power)
         {
             movingAverage.update(constrain(power, -250, 250));
@@ -87,11 +108,13 @@ namespace Udon
             analogWrite(pinP, abs(p));
         }
 
+        /// @brief モーターを停止
         void stop()
         {
             move(0);
         }
 
+        /// @brief パワーをシリアル出力
         void show() const
         {
             Serial.print(movingAverage.getValue());

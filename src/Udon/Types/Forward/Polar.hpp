@@ -11,8 +11,12 @@
 
 namespace Udon
 {
+
+
     struct Vec2;
 
+
+    /// @brief 極座標系
     struct Polar
     {
         /// @brief 要素の型
@@ -47,43 +51,37 @@ namespace Udon
         Polar& operator=(const Polar&) = default;
 
         /// @brief x 座標を取得する
-        /// @return 
+        /// @return
         ValueType x() const noexcept
         {
             return r * cos(theta);
         }
 
         /// @brief y 座標を取得する
-        /// @return 
+        /// @return
         ValueType y() const noexcept
         {
             return r * sin(theta);
         }
 
-        /// @brief 算術演算子
-        /// @note polar [operator] polar
         friend constexpr Polar operator+(const Polar& lhs, const Polar& rhs) noexcept { return { lhs.r + rhs.r, lhs.theta + rhs.theta }; }
         friend constexpr Polar operator-(const Polar& lhs, const Polar& rhs) noexcept { return { lhs.r - rhs.r, lhs.theta - rhs.theta }; }
         friend constexpr Polar operator*(const Polar& lhs, const Polar& rhs) noexcept { return { lhs.r * rhs.r, lhs.theta * rhs.theta }; }
         friend constexpr Polar operator/(const Polar& lhs, const Polar& rhs) noexcept { return { lhs.r / rhs.r, lhs.theta / rhs.theta }; }
 
-        /// @brief 複合代入演算子
-        /// @note polar = polar [operator] polar
         Polar& operator+=(const Polar& rhs) noexcept { return *this = *this + rhs; }
         Polar& operator-=(const Polar& rhs) noexcept { return *this = *this - rhs; }
         Polar& operator*=(const Polar& rhs) noexcept { return *this = *this * rhs; }
         Polar& operator/=(const Polar& rhs) noexcept { return *this = *this / rhs; }
 
-        /// @brief 比較演算子
-        /// @note polar [operator] polar
         friend constexpr bool operator==(const Polar& lhs, const Polar& rhs) noexcept { return lhs.r == rhs.r && lhs.theta == rhs.theta; }
         friend constexpr bool operator!=(const Polar& lhs, const Polar& rhs) noexcept { return not(lhs == rhs); }
 
-        /// @brief 要素のいずれかに0以外の値があるかどうかを返す 
+        /// @brief 要素のいずれかに0以外の値があるかどうかを返す
         constexpr explicit operator bool() const noexcept { return r or theta; }
 
         /// @brief ベクトルに変換する
-        /// @return 
+        /// @return
         Vec2 toVector() const noexcept;
 
         UDON_ENUMERABLE(r, theta);

@@ -11,16 +11,13 @@
 namespace Udon
 {
 
-    /// @brief バイト列のMSB(最上位ビット)から順に7bitずつ分割してコールバック関数に渡す
-    /// @tparam Functor
-    /// @tparam InputIterator
-    /// @param begin
-    /// @param end
-    /// @param callback
+    /// @brief バイト列のMSB(最上位ビット)を抽出し、7bitごとに分割してコールバック関数に渡す
+    /// @param begin 入力イテレータ先頭
+    /// @param end 入力イテレータ末尾
+    /// @param callback コールバック関数
     /// @note
     ///		コールバック関数を用いることで、新たにバッファを確保する必要がない
     ///		イテレーターから受け取ったデータは次のように変換されコールバック関数に渡される
-    ///		[data(8bit)], [data(8bit)], ... -> [data(7bit)]*7, [各dataのMSB(7bit)], [data(7bit)]*7, [各dataのMSB(7bit)], ...
     /// @return
     template <typename InputIterator, typename Functor>
     void BitPack(const InputIterator begin, const InputIterator end, Functor callback)
@@ -62,15 +59,12 @@ namespace Udon
     }
 
     /// @brief  7bit分割されたデータを結合する
-    /// @tparam Functor
-    /// @tparam OutputIterator
-    /// @param begin
-    /// @param end
-    /// @param callback
+    /// @param begin 出力イテレータ先頭
+    /// @param end 出力イテレータ末尾
+    /// @param callback コールバック関数
     /// @note
     ///     アンパックが失敗する場合、
     ///     7bit分割されたデータは次のように変換されコールバック関数に渡される
-    ///     [data(7bit)]*7, [各dataのMSB(7bit)], [data(7bit)]*7, [各dataのMSB(7bit)], ... -> [data(8bit)], [data(8bit)], ...
     /// @return
     template <typename OutputIterator, typename Functor>
     bool BitUnpack(OutputIterator begin, OutputIterator end, Functor callback)

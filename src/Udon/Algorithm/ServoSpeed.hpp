@@ -17,6 +17,8 @@
 
 namespace Udon
 {
+
+    /// @brief サーボの種類選択
     enum class ServoChoose : uint8_t
     {
         _20kg,
@@ -24,9 +26,10 @@ namespace Udon
         _60kg,
     };
 
+    /// @brief サーボ角度制御クラス
+    /// @note サーボの角度をプログラムが管理することで、非常停止時に瞬時に止めることができる
     class ServoSpeed
     {
-    private:
         bool         status = true;
         unsigned int loopCycle, servo_preset = 0, target_angle = 0;
         float        move_angle = 0, next_angle = 0, value = 0, speed = 0, last_angle;
@@ -57,6 +60,7 @@ namespace Udon
                 break;
             }
         }
+
         /// @brief サーボの状態を更新する関数 毎周期実行する
         void update()
         {

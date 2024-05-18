@@ -15,11 +15,12 @@ namespace Udon
     namespace Message
     {
 
+        /// @brief サーボ
         struct Servo
         {
 
             /// @brief 角度
-            uint8_t angle;
+            uint16_t angle;
 
 #ifdef ARDUINO
             /// @brief デバッグ出力

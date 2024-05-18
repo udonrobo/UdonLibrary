@@ -25,6 +25,8 @@
 
 namespace Udon
 {
+
+    /// @brief Bluetooth経由PS5コントローラークラス
     class PadPS5BT
     {
         USB usb;

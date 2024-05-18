@@ -11,8 +11,11 @@
 
 namespace Udon
 {
+
     struct RGB;
 
+
+    /// @brief HSV色空間
     struct HSV
     {
 
@@ -51,8 +54,8 @@ namespace Udon
         /// @param hsv HSV色空間
         HSV(uint32_t hsv) noexcept
             : h(static_cast<ValueType>(hsv >> 16))
-            , s(static_cast<ValueType>(hsv >>  8))
-            , v(static_cast<ValueType>(hsv >>  0))
+            , s(static_cast<ValueType>(hsv >> 8))
+            , v(static_cast<ValueType>(hsv >> 0))
         {
         }
 
@@ -84,7 +87,7 @@ namespace Udon
         }
 
         /// @brief 24bit値へ変換
-        /// @return 
+        /// @return
         uint32_t to24bit() const noexcept
         {
             return static_cast<uint32_t>(h) << 16 | static_cast<uint32_t>(s) << 8 | static_cast<uint32_t>(v) << 0;
@@ -105,7 +108,6 @@ namespace Udon
 #endif
 
         UDON_ENUMERABLE(h, s, v);
-
     };
-    
-} // namespace Udon
+
+}    // namespace Udon

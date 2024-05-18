@@ -15,6 +15,9 @@
 
 namespace Udon
 {
+
+    /// @brief OpenSiv3D用 UART 受信クラス
+    /// @tparam Message メッセージ型
     template <typename Message>
     class SivUartReader
     {
@@ -31,6 +34,8 @@ namespace Udon
     public:
         using MessageType = Message;
 
+        /// @brief コンストラクタ
+        /// @param bus UARTバス
         SivUartReader(s3d::Serial& bus)
             : serial(bus)
             , buffer(Size)
@@ -57,22 +62,26 @@ namespace Udon
         {
         }
 
+        /// @brief デストラクタ
         ~SivUartReader()
         {
             isRunning = false;
             thread.join();
         }
 
+        /// @brief メッセージの取得
+        /// @return メッセージ(Optional)
         Udon::Optional<Message> getMessage() const
         {
             return Udon::Deserialize<Message>(buffer);
         }
 
-        void show(char gap = '\t') const
+        /// @brief メッセージの表示
+        void show() const
         {
             if (const auto message = getMessage())
             {
-                Udon::Show(*message, gap);
+                Udon::Show(*message);
                 s3d::Print.writeln();
             }
             else

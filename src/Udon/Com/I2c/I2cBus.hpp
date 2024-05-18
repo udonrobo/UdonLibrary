@@ -72,6 +72,7 @@ namespace Udon
 
     /// @brief I2cBus クラス実装部
     /// @tparam Counter オブジェクト生成ごとにユニークな値を指定する(複数の I2C バスを使用する場合に必要)
+    /// @note uniqueな値が設定されることによって、複数の I2C バスを使用する場合に、それぞれの受信割り込み用thisポインタを保持することができる
     template <int Counter>
     class I2cBusImpl
         : public II2cBus
@@ -116,6 +117,10 @@ namespace Udon
         // userOnReceive(I2cBusImpl::onReceiveで登録したコールバック関数) 呼び出し
 
     public:
+
+        /// @brief コンストラクタ
+        /// @param wire I2Cバス
+        /// @param timeoutMs バスのタイムアウト時間
         I2cBusImpl(TwoWire& wire, uint32_t timeoutMs = 100)
             : wire(wire)
             , timeoutMs(timeoutMs)
@@ -127,6 +132,7 @@ namespace Udon
             self = this;
         }
 
+        /// @brief コピーコンストラクタ
         I2cBusImpl(const I2cBusImpl& rhs)
             : wire(rhs.wire)
             , timeoutMs(rhs.timeoutMs)
@@ -171,6 +177,7 @@ namespace Udon
 
 #endif
 
+        /// @brief バスの状態を表示
         void show() const override
         {
             if (operator bool())
@@ -194,12 +201,13 @@ namespace Udon
             Serial.print('\t');
         }
 
-        /// @brief 以下メンバは TwoWire クラスと同等のメンバ
+        /// @brief TwoWire::begin() と同等
         inline void begin() override
         {
             wire.begin();
         }
 
+        /// @brief TwoWire::begin(address) と同等
         inline void begin(uint8_t address) override
         {
             wire.begin(address);
@@ -207,11 +215,15 @@ namespace Udon
 
 #ifdef ARDUINO_ARCH_RP2040
 
+        /// @brief TwoWire::setSDA(pin) と同等
+        /// @param pin SDAピン
         inline void setSDA(uint8_t pin)
         {
             wire.setSDA(pin);
         }
 
+        /// @brief TwoWire::setSCL(pin) と同等
+        /// @param pin SCLピン
         inline void setSCL(uint8_t pin)
         {
             wire.setSCL(pin);
@@ -219,11 +231,13 @@ namespace Udon
 
 #endif
 
+        /// @brief TwoWire::end() と同等
         inline void end() override
         {
             wire.end();
         }
 
+        /// @brief バス再起動
         inline void restart() override
         {
             ++restartCount;
@@ -231,21 +245,25 @@ namespace Udon
             begin();
         }
 
+        /// @brief TwoWire::setClock(clock) と同等
         inline void setClock(uint32_t clock) override
         {
             wire.setClock(clock);
         }
 
+        /// @brief TwoWire::beginTransmission(address) と同等
         inline void beginTransmission(uint8_t address) override
         {
             wire.beginTransmission(address);
         }
 
+        /// @brief TwoWire::endTransmission() と同等
         inline uint8_t endTransmission() override
         {
             return endTransmission(true);
         }
 
+        /// @brief TwoWire::endTransmission(sendStop) と同等
         inline uint8_t endTransmission(uint8_t sendStop) override
         {
             const auto ret = wire.endTransmission(sendStop);
@@ -256,6 +274,7 @@ namespace Udon
             return ret;
         }
 
+        /// @brief TwoWire::requestFrom(address, quantity) と同等
         inline uint8_t requestFrom(uint8_t address, uint8_t quantity) override
         {
             const auto ret = wire.requestFrom(address, quantity);
@@ -266,6 +285,7 @@ namespace Udon
             return ret;
         }
 
+        /// @brief TwoWire::requestFrom(address, quantity, sendStop) と同等
         inline uint8_t requestFrom(uint8_t address, uint8_t quantity, uint8_t sendStop) override
         {
             const auto ret = wire.requestFrom(address, quantity, sendStop);
@@ -276,36 +296,43 @@ namespace Udon
             return ret;
         }
 
+        /// @brief TwoWire::write(data) と同等
         inline size_t write(uint8_t data) override
         {
             return wire.write(data);
         }
 
+        /// @brief TwoWire::write(data, quantity) と同等
         inline size_t write(const uint8_t* data, size_t quantity) override
         {
             return wire.write(data, quantity);
         }
 
+        /// @brief TwoWire::available() と同等
         inline int available() override
         {
             return wire.available();
         }
 
+        /// @brief TwoWire::read() と同等
         inline int read() override
         {
             return wire.read();
         }
 
+        /// @brief TwoWire::peek() と同等
         inline int peek() override
         {
             return wire.peek();
         }
 
+        /// @brief TwoWire::flush() と同等
         inline void flush() override
         {
             wire.flush();
         }
 
+        /// @brief TwoWire::onReceive(function) と同等
         inline void onReceive(void (*function)(int)) override
         {
             userOnReceive = function;
@@ -313,6 +340,7 @@ namespace Udon
                            { self->invokeOnReceive(n); });
         }
 
+        /// @brief TwoWire::onRequest(function) と同等
         inline void onRequest(void (*function)()) override
         {
             userOnRequest = function;
@@ -326,6 +354,6 @@ namespace Udon
 
 }    // namespace Udon
 
-/// @brief I2C バスのラッパークラス
+/// @brief I2C バス
 #define I2cBus \
     I2cBusImpl<__COUNTER__>

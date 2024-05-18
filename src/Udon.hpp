@@ -6,7 +6,7 @@
 
 #pragma once
 
-// UdonLibrary が含まれているかどうかを判定するマクロ
+/// @brief UdonLibrary が含まれているかどうかを判定するマクロ
 #define UDON_INCLUDED
 
 //

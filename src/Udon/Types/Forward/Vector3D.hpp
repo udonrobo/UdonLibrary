@@ -14,15 +14,21 @@ namespace Udon
 
     struct Vec2;
 
+
+    /// @brief 三次元ベクトル
     struct Vec3
     {
 
         /// @brief 要素の型
         using ValueType = double;
 
-        /// @brief 要素
+        /// @brief X成分
         ValueType x;
+
+        /// @brief Y成分
         ValueType y;
+
+        /// @brief Z成分
         ValueType z;
 
         /// @brief 次元数
@@ -52,36 +58,26 @@ namespace Udon
         /// @brief デフォルトコピー代入演算子
         Vec3& operator=(const Vec3&) = default;
 
-        /// @brief 算術演算子
-        /// @note vector * vector
         friend constexpr Vec3 operator+(const Vec3& lhs, const Vec3& rhs) noexcept { return { lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z }; }
         friend constexpr Vec3 operator-(const Vec3& lhs, const Vec3& rhs) noexcept { return { lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z }; }
         friend constexpr Vec3 operator*(const Vec3& lhs, const Vec3& rhs) noexcept { return { lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z }; }
         friend constexpr Vec3 operator/(const Vec3& lhs, const Vec3& rhs) noexcept { return { lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z }; }
 
-        /// @brief 算術演算子
-        /// @note vector * scalar
         friend constexpr Vec3 operator+(const Vec3& lhs, ValueType rhs) noexcept { return { lhs.x + rhs, lhs.y + rhs, lhs.z + rhs }; }
         friend constexpr Vec3 operator-(const Vec3& lhs, ValueType rhs) noexcept { return { lhs.x - rhs, lhs.y - rhs, lhs.z - rhs }; }
         friend constexpr Vec3 operator*(const Vec3& lhs, ValueType rhs) noexcept { return { lhs.x * rhs, lhs.y * rhs, lhs.z * rhs }; }
         friend constexpr Vec3 operator/(const Vec3& lhs, ValueType rhs) noexcept { return { lhs.x / rhs, lhs.y / rhs, lhs.z / rhs }; }
 
-        /// @brief 算術演算子
-        /// @note scalar [operator] vector
         friend constexpr Vec3 operator+(ValueType lhs, const Vec3& rhs) noexcept { return { lhs + rhs.x, lhs + rhs.y, lhs + rhs.z }; }
         friend constexpr Vec3 operator-(ValueType lhs, const Vec3& rhs) noexcept { return { lhs - rhs.x, lhs - rhs.y, lhs - rhs.z }; }
         friend constexpr Vec3 operator*(ValueType lhs, const Vec3& rhs) noexcept { return { lhs * rhs.x, lhs * rhs.y, lhs * rhs.z }; }
         friend constexpr Vec3 operator/(ValueType lhs, const Vec3& rhs) noexcept { return { lhs / rhs.x, lhs / rhs.y, lhs / rhs.z }; }
 
-        /// @brief 複合代入演算子
-        /// @note vector = vector [operator] vector
         Vec3& operator+=(const Vec3& rhs) noexcept { return *this = *this + rhs; };
         Vec3& operator-=(const Vec3& rhs) noexcept { return *this = *this - rhs; };
         Vec3& operator*=(const Vec3& rhs) noexcept { return *this = *this * rhs; };
         Vec3& operator/=(const Vec3& rhs) noexcept { return *this = *this / rhs; };
 
-        /// @brief 複合代入演算子
-        /// @note vector = vector [operator] scalar
         Vec3& operator+=(ValueType rhs) noexcept { return *this = *this + rhs; };
         Vec3& operator-=(ValueType rhs) noexcept { return *this = *this - rhs; };
         Vec3& operator*=(ValueType rhs) noexcept { return *this = *this * rhs; };

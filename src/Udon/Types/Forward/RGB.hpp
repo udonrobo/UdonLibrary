@@ -88,13 +88,11 @@ namespace Udon
             };
         }
 
-        /// @brief 比較演算子
         constexpr bool operator==(const RGB& rhs) const noexcept
         {
             return r == rhs.r && g == rhs.g && b == rhs.b;
         }
 
-        /// @brief 比較演算子
         constexpr bool operator!=(const RGB& rhs) const noexcept
         {
             return !(*this == rhs);

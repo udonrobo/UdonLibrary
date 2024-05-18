@@ -17,6 +17,7 @@
 namespace Udon
 {
 
+    /// @brief 通信経由モーター制御クラス
     template <template <typename> typename Writer>
     class MotorBy
     {
@@ -30,6 +31,10 @@ namespace Udon
         bool direction;    // 回転方向 true: forward, false: backward
 
     public:
+
+        /// @brief コンストラクタ
+        /// @param writer 送信クラスオブジェクト
+        /// @param direction 回転方向
         MotorBy(WriterType&& writer, bool direction)
             : writer(std::move(writer))
             , power()
@@ -37,6 +42,8 @@ namespace Udon
         {
         }
 
+        /// @brief 出力値を取得
+        /// @param p 出力値
         void move(int16_t p)
         {
             power = Constrain(p, -255, 255);
@@ -44,11 +51,13 @@ namespace Udon
             Udon::Traits::MaybeInvokeUpdate(writer);
         }
 
+        /// @brief 停止
         void stop()
         {
             move(0);
         }
 
+        /// @brief 出力値をシリアル出力
         void show() const
         {
             Udon::Show(power);

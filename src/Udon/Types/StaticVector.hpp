@@ -13,6 +13,10 @@
 
 namespace Udon
 {
+
+    /// @brief 疑似可変長配列コンテナ
+    /// @tparam T 要素の型
+    /// @tparam Capacity 最大要素数
     template <typename T, size_t Capacity = 128>
     class StaticVector
     {

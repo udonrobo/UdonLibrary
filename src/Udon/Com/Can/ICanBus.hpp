@@ -43,6 +43,8 @@ namespace Udon
     };
 
 
+    /// @brief CANバス管理クラス インターフェース
+    /// @note デバイスの差を吸収するためにインターフェース化
     class ICanBus
     {
     public:
