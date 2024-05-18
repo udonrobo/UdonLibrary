@@ -4,22 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>UdonLibrary: Udon::I2cBusImpl&lt; Counter &gt; クラステンプレート</title>
-<!--BEGIN PROJECT_ICON-->
-<link rel="icon" href="$projecticon" type="image/x-icon" />
-<!--END PROJECT_ICON-->
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<!--BEGIN COPY_CLIPBOARD-->
 <script type="text/javascript" src="clipboard.js"></script>
-<!--END COPY_CLIPBOARD-->
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,9 +23,11 @@
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
 <script type="text/javascript">
   DoxygenAwesomeDarkModeToggle.init()
   DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
 </script>
 </head>
 <body>
@@ -38,7 +36,7 @@
         <table cellspacing="0" cellpadding="0">
           <tbody>
             <tr id="projectrow">
-              <td id="projectlogo"><img alt="Logo" src="Udon.png" $logosize /></td>
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
               <td id="projectalign">
                 <div id="projectname">UdonLibrary<span
                     id="projectnumber">&#160;1.0.0</span>
@@ -49,7 +47,7 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.9.5 -->
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -61,7 +59,7 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索');
-  $(document).ready(function() { init_search(); });
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -79,7 +77,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classUdon_1_1I2cBusImpl.html',''); initResizable(); });
+$(function(){initNavTree('classUdon_1_1I2cBusImpl.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -113,7 +111,7 @@ $(document).ready(function(){initNavTree('classUdon_1_1I2cBusImpl.html',''); ini
 <div class="contents">
 
 <p>I2cBus クラス実装部  
- <a href="classUdon_1_1I2cBusImpl.html#details">[詳解]</a></p>
+ <a href="#details">[詳解]</a></p>
 
 <p><code>#include &lt;<a class="el" href="I2cBus_8hpp_source.html">Udon/Com/I2c/I2cBus.hpp</a>&gt;</code></p>
 <div class="dynheader">
@@ -128,127 +126,82 @@ Udon::I2cBusImpl&lt; Counter &gt; の継承関係図</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
-<tr class="memitem:a58b258773f4aeedb7f461e99f8b07a77"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#a58b258773f4aeedb7f461e99f8b07a77">I2cBusImpl</a> (TwoWire &amp;wire, uint32_t timeoutMs=100)</td></tr>
-<tr class="memdesc:a58b258773f4aeedb7f461e99f8b07a77"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="classUdon_1_1I2cBusImpl.html#a58b258773f4aeedb7f461e99f8b07a77">[詳解]</a><br /></td></tr>
+<tr class="memitem:a58b258773f4aeedb7f461e99f8b07a77" id="r_a58b258773f4aeedb7f461e99f8b07a77"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58b258773f4aeedb7f461e99f8b07a77">I2cBusImpl</a> (TwoWire &amp;wire, uint32_t timeoutMs=100)</td></tr>
+<tr class="memdesc:a58b258773f4aeedb7f461e99f8b07a77"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <br /></td></tr>
 <tr class="separator:a58b258773f4aeedb7f461e99f8b07a77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa3199242d834daf7a6fd16ae4d81d10"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#aaa3199242d834daf7a6fd16ae4d81d10">I2cBusImpl</a> (const <a class="el" href="classUdon_1_1I2cBusImpl.html">I2cBusImpl</a> &amp;rhs)</td></tr>
-<tr class="memdesc:aaa3199242d834daf7a6fd16ae4d81d10"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <a href="classUdon_1_1I2cBusImpl.html#aaa3199242d834daf7a6fd16ae4d81d10">[詳解]</a><br /></td></tr>
+<tr class="memitem:aaa3199242d834daf7a6fd16ae4d81d10" id="r_aaa3199242d834daf7a6fd16ae4d81d10"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa3199242d834daf7a6fd16ae4d81d10">I2cBusImpl</a> (const <a class="el" href="classUdon_1_1I2cBusImpl.html">I2cBusImpl</a> &amp;rhs)</td></tr>
+<tr class="memdesc:aaa3199242d834daf7a6fd16ae4d81d10"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <br /></td></tr>
 <tr class="separator:aaa3199242d834daf7a6fd16ae4d81d10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01ad569300369a553166c32f1af09675"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#a01ad569300369a553166c32f1af09675">operator bool</a> () const override</td></tr>
-<tr class="memdesc:a01ad569300369a553166c32f1af09675"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2cバスの有効性を取得  <a href="classUdon_1_1I2cBusImpl.html#a01ad569300369a553166c32f1af09675">[詳解]</a><br /></td></tr>
+<tr class="memitem:a01ad569300369a553166c32f1af09675" id="r_a01ad569300369a553166c32f1af09675"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01ad569300369a553166c32f1af09675">operator bool</a> () const override</td></tr>
+<tr class="memdesc:a01ad569300369a553166c32f1af09675"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2cバスの有効性を取得  <br /></td></tr>
 <tr class="separator:a01ad569300369a553166c32f1af09675"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e30480b30a03d03cd617304384d86e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#a9e30480b30a03d03cd617304384d86e0">update</a> () override</td></tr>
-<tr class="memdesc:a9e30480b30a03d03cd617304384d86e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新  <a href="classUdon_1_1I2cBusImpl.html#a9e30480b30a03d03cd617304384d86e0">[詳解]</a><br /></td></tr>
+<tr class="memitem:a9e30480b30a03d03cd617304384d86e0" id="r_a9e30480b30a03d03cd617304384d86e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e30480b30a03d03cd617304384d86e0">update</a> () override</td></tr>
+<tr class="memdesc:a9e30480b30a03d03cd617304384d86e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新  <br /></td></tr>
 <tr class="separator:a9e30480b30a03d03cd617304384d86e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75428bb509303336b67f22d9f35dfe2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#a75428bb509303336b67f22d9f35dfe2b">show</a> () const override</td></tr>
-<tr class="memdesc:a75428bb509303336b67f22d9f35dfe2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">バスの状態を表示  <a href="classUdon_1_1I2cBusImpl.html#a75428bb509303336b67f22d9f35dfe2b">[詳解]</a><br /></td></tr>
+<tr class="memitem:a75428bb509303336b67f22d9f35dfe2b" id="r_a75428bb509303336b67f22d9f35dfe2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75428bb509303336b67f22d9f35dfe2b">show</a> () const override</td></tr>
+<tr class="memdesc:a75428bb509303336b67f22d9f35dfe2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">バスの状態を表示  <br /></td></tr>
 <tr class="separator:a75428bb509303336b67f22d9f35dfe2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad5aba01423c0d665744d447efd87db4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#aad5aba01423c0d665744d447efd87db4">begin</a> () override</td></tr>
-<tr class="memdesc:aad5aba01423c0d665744d447efd87db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::begin() と同等  <a href="classUdon_1_1I2cBusImpl.html#aad5aba01423c0d665744d447efd87db4">[詳解]</a><br /></td></tr>
+<tr class="memitem:aad5aba01423c0d665744d447efd87db4" id="r_aad5aba01423c0d665744d447efd87db4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad5aba01423c0d665744d447efd87db4">begin</a> () override</td></tr>
+<tr class="memdesc:aad5aba01423c0d665744d447efd87db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::begin() と同等  <br /></td></tr>
 <tr class="separator:aad5aba01423c0d665744d447efd87db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61effab8092e166bd713d1cdbbe78f05"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#a61effab8092e166bd713d1cdbbe78f05">begin</a> (uint8_t address) override</td></tr>
-<tr class="memdesc:a61effab8092e166bd713d1cdbbe78f05"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::begin(address) と同等  <a href="classUdon_1_1I2cBusImpl.html#a61effab8092e166bd713d1cdbbe78f05">[詳解]</a><br /></td></tr>
+<tr class="memitem:a61effab8092e166bd713d1cdbbe78f05" id="r_a61effab8092e166bd713d1cdbbe78f05"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61effab8092e166bd713d1cdbbe78f05">begin</a> (uint8_t address) override</td></tr>
+<tr class="memdesc:a61effab8092e166bd713d1cdbbe78f05"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::begin(address) と同等  <br /></td></tr>
 <tr class="separator:a61effab8092e166bd713d1cdbbe78f05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab05b0c0fe13c0ba819ff98c4225edd9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#ab05b0c0fe13c0ba819ff98c4225edd9b">end</a> () override</td></tr>
-<tr class="memdesc:ab05b0c0fe13c0ba819ff98c4225edd9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::end() と同等  <a href="classUdon_1_1I2cBusImpl.html#ab05b0c0fe13c0ba819ff98c4225edd9b">[詳解]</a><br /></td></tr>
+<tr class="memitem:ab05b0c0fe13c0ba819ff98c4225edd9b" id="r_ab05b0c0fe13c0ba819ff98c4225edd9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab05b0c0fe13c0ba819ff98c4225edd9b">end</a> () override</td></tr>
+<tr class="memdesc:ab05b0c0fe13c0ba819ff98c4225edd9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::end() と同等  <br /></td></tr>
 <tr class="separator:ab05b0c0fe13c0ba819ff98c4225edd9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdb1002c12adb42bf455f808224d982d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#abdb1002c12adb42bf455f808224d982d">restart</a> () override</td></tr>
-<tr class="memdesc:abdb1002c12adb42bf455f808224d982d"><td class="mdescLeft">&#160;</td><td class="mdescRight">バス再起動  <a href="classUdon_1_1I2cBusImpl.html#abdb1002c12adb42bf455f808224d982d">[詳解]</a><br /></td></tr>
+<tr class="memitem:abdb1002c12adb42bf455f808224d982d" id="r_abdb1002c12adb42bf455f808224d982d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdb1002c12adb42bf455f808224d982d">restart</a> () override</td></tr>
+<tr class="memdesc:abdb1002c12adb42bf455f808224d982d"><td class="mdescLeft">&#160;</td><td class="mdescRight">バス再起動  <br /></td></tr>
 <tr class="separator:abdb1002c12adb42bf455f808224d982d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ddff46f93773bf6de7ab97ccca7db42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#a3ddff46f93773bf6de7ab97ccca7db42">setClock</a> (uint32_t clock) override</td></tr>
-<tr class="memdesc:a3ddff46f93773bf6de7ab97ccca7db42"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::setClock(clock) と同等  <a href="classUdon_1_1I2cBusImpl.html#a3ddff46f93773bf6de7ab97ccca7db42">[詳解]</a><br /></td></tr>
+<tr class="memitem:a3ddff46f93773bf6de7ab97ccca7db42" id="r_a3ddff46f93773bf6de7ab97ccca7db42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ddff46f93773bf6de7ab97ccca7db42">setClock</a> (uint32_t clock) override</td></tr>
+<tr class="memdesc:a3ddff46f93773bf6de7ab97ccca7db42"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::setClock(clock) と同等  <br /></td></tr>
 <tr class="separator:a3ddff46f93773bf6de7ab97ccca7db42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa88e88dcc35ea00a532a76796f4396be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#aa88e88dcc35ea00a532a76796f4396be">beginTransmission</a> (uint8_t address) override</td></tr>
-<tr class="memdesc:aa88e88dcc35ea00a532a76796f4396be"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::beginTransmission(address) と同等  <a href="classUdon_1_1I2cBusImpl.html#aa88e88dcc35ea00a532a76796f4396be">[詳解]</a><br /></td></tr>
+<tr class="memitem:aa88e88dcc35ea00a532a76796f4396be" id="r_aa88e88dcc35ea00a532a76796f4396be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa88e88dcc35ea00a532a76796f4396be">beginTransmission</a> (uint8_t address) override</td></tr>
+<tr class="memdesc:aa88e88dcc35ea00a532a76796f4396be"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::beginTransmission(address) と同等  <br /></td></tr>
 <tr class="separator:aa88e88dcc35ea00a532a76796f4396be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04b00f9c68277dae5b5bef1fd7071668"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#a04b00f9c68277dae5b5bef1fd7071668">endTransmission</a> () override</td></tr>
-<tr class="memdesc:a04b00f9c68277dae5b5bef1fd7071668"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::endTransmission() と同等  <a href="classUdon_1_1I2cBusImpl.html#a04b00f9c68277dae5b5bef1fd7071668">[詳解]</a><br /></td></tr>
+<tr class="memitem:a04b00f9c68277dae5b5bef1fd7071668" id="r_a04b00f9c68277dae5b5bef1fd7071668"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04b00f9c68277dae5b5bef1fd7071668">endTransmission</a> () override</td></tr>
+<tr class="memdesc:a04b00f9c68277dae5b5bef1fd7071668"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::endTransmission() と同等  <br /></td></tr>
 <tr class="separator:a04b00f9c68277dae5b5bef1fd7071668"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2bb28bc702659950f26f21111977932"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#ab2bb28bc702659950f26f21111977932">endTransmission</a> (uint8_t sendStop) override</td></tr>
-<tr class="memdesc:ab2bb28bc702659950f26f21111977932"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::endTransmission(sendStop) と同等  <a href="classUdon_1_1I2cBusImpl.html#ab2bb28bc702659950f26f21111977932">[詳解]</a><br /></td></tr>
+<tr class="memitem:ab2bb28bc702659950f26f21111977932" id="r_ab2bb28bc702659950f26f21111977932"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2bb28bc702659950f26f21111977932">endTransmission</a> (uint8_t sendStop) override</td></tr>
+<tr class="memdesc:ab2bb28bc702659950f26f21111977932"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::endTransmission(sendStop) と同等  <br /></td></tr>
 <tr class="separator:ab2bb28bc702659950f26f21111977932"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ee93d9c7213b739d4fec804e340ba16"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#a9ee93d9c7213b739d4fec804e340ba16">requestFrom</a> (uint8_t address, uint8_t quantity) override</td></tr>
-<tr class="memdesc:a9ee93d9c7213b739d4fec804e340ba16"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::requestFrom(address, quantity) と同等  <a href="classUdon_1_1I2cBusImpl.html#a9ee93d9c7213b739d4fec804e340ba16">[詳解]</a><br /></td></tr>
+<tr class="memitem:a9ee93d9c7213b739d4fec804e340ba16" id="r_a9ee93d9c7213b739d4fec804e340ba16"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ee93d9c7213b739d4fec804e340ba16">requestFrom</a> (uint8_t address, uint8_t quantity) override</td></tr>
+<tr class="memdesc:a9ee93d9c7213b739d4fec804e340ba16"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::requestFrom(address, quantity) と同等  <br /></td></tr>
 <tr class="separator:a9ee93d9c7213b739d4fec804e340ba16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a695d5d2e2ffe0896af154ab477d3c74b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#a695d5d2e2ffe0896af154ab477d3c74b">requestFrom</a> (uint8_t address, uint8_t quantity, uint8_t sendStop) override</td></tr>
-<tr class="memdesc:a695d5d2e2ffe0896af154ab477d3c74b"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::requestFrom(address, quantity, sendStop) と同等  <a href="classUdon_1_1I2cBusImpl.html#a695d5d2e2ffe0896af154ab477d3c74b">[詳解]</a><br /></td></tr>
+<tr class="memitem:a695d5d2e2ffe0896af154ab477d3c74b" id="r_a695d5d2e2ffe0896af154ab477d3c74b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a695d5d2e2ffe0896af154ab477d3c74b">requestFrom</a> (uint8_t address, uint8_t quantity, uint8_t sendStop) override</td></tr>
+<tr class="memdesc:a695d5d2e2ffe0896af154ab477d3c74b"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::requestFrom(address, quantity, sendStop) と同等  <br /></td></tr>
 <tr class="separator:a695d5d2e2ffe0896af154ab477d3c74b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9330f1e0efbc6fe33e160228c07e8b56"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#a9330f1e0efbc6fe33e160228c07e8b56">write</a> (uint8_t data) override</td></tr>
-<tr class="memdesc:a9330f1e0efbc6fe33e160228c07e8b56"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::write(data) と同等  <a href="classUdon_1_1I2cBusImpl.html#a9330f1e0efbc6fe33e160228c07e8b56">[詳解]</a><br /></td></tr>
+<tr class="memitem:a9330f1e0efbc6fe33e160228c07e8b56" id="r_a9330f1e0efbc6fe33e160228c07e8b56"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9330f1e0efbc6fe33e160228c07e8b56">write</a> (uint8_t data) override</td></tr>
+<tr class="memdesc:a9330f1e0efbc6fe33e160228c07e8b56"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::write(data) と同等  <br /></td></tr>
 <tr class="separator:a9330f1e0efbc6fe33e160228c07e8b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a293eda5ce9904ca7b56fa031184c3dc1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#a293eda5ce9904ca7b56fa031184c3dc1">write</a> (const uint8_t *data, size_t quantity) override</td></tr>
-<tr class="memdesc:a293eda5ce9904ca7b56fa031184c3dc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::write(data, quantity) と同等  <a href="classUdon_1_1I2cBusImpl.html#a293eda5ce9904ca7b56fa031184c3dc1">[詳解]</a><br /></td></tr>
+<tr class="memitem:a293eda5ce9904ca7b56fa031184c3dc1" id="r_a293eda5ce9904ca7b56fa031184c3dc1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a293eda5ce9904ca7b56fa031184c3dc1">write</a> (const uint8_t *data, size_t quantity) override</td></tr>
+<tr class="memdesc:a293eda5ce9904ca7b56fa031184c3dc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::write(data, quantity) と同等  <br /></td></tr>
 <tr class="separator:a293eda5ce9904ca7b56fa031184c3dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3c247dbb75b800fc26fefa5751d4c13"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#ab3c247dbb75b800fc26fefa5751d4c13">available</a> () override</td></tr>
-<tr class="memdesc:ab3c247dbb75b800fc26fefa5751d4c13"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::available() と同等  <a href="classUdon_1_1I2cBusImpl.html#ab3c247dbb75b800fc26fefa5751d4c13">[詳解]</a><br /></td></tr>
+<tr class="memitem:ab3c247dbb75b800fc26fefa5751d4c13" id="r_ab3c247dbb75b800fc26fefa5751d4c13"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3c247dbb75b800fc26fefa5751d4c13">available</a> () override</td></tr>
+<tr class="memdesc:ab3c247dbb75b800fc26fefa5751d4c13"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::available() と同等  <br /></td></tr>
 <tr class="separator:ab3c247dbb75b800fc26fefa5751d4c13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2551d77b5648ddd44044669eb3588694"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#a2551d77b5648ddd44044669eb3588694">read</a> () override</td></tr>
-<tr class="memdesc:a2551d77b5648ddd44044669eb3588694"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::read() と同等  <a href="classUdon_1_1I2cBusImpl.html#a2551d77b5648ddd44044669eb3588694">[詳解]</a><br /></td></tr>
+<tr class="memitem:a2551d77b5648ddd44044669eb3588694" id="r_a2551d77b5648ddd44044669eb3588694"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2551d77b5648ddd44044669eb3588694">read</a> () override</td></tr>
+<tr class="memdesc:a2551d77b5648ddd44044669eb3588694"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::read() と同等  <br /></td></tr>
 <tr class="separator:a2551d77b5648ddd44044669eb3588694"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91972adcc697bd12afb459de032ac364"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#a91972adcc697bd12afb459de032ac364">peek</a> () override</td></tr>
-<tr class="memdesc:a91972adcc697bd12afb459de032ac364"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::peek() と同等  <a href="classUdon_1_1I2cBusImpl.html#a91972adcc697bd12afb459de032ac364">[詳解]</a><br /></td></tr>
+<tr class="memitem:a91972adcc697bd12afb459de032ac364" id="r_a91972adcc697bd12afb459de032ac364"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91972adcc697bd12afb459de032ac364">peek</a> () override</td></tr>
+<tr class="memdesc:a91972adcc697bd12afb459de032ac364"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::peek() と同等  <br /></td></tr>
 <tr class="separator:a91972adcc697bd12afb459de032ac364"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a05e0fc6e188f0e836204fd82a86f4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#a9a05e0fc6e188f0e836204fd82a86f4b">flush</a> () override</td></tr>
-<tr class="memdesc:a9a05e0fc6e188f0e836204fd82a86f4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::flush() と同等  <a href="classUdon_1_1I2cBusImpl.html#a9a05e0fc6e188f0e836204fd82a86f4b">[詳解]</a><br /></td></tr>
+<tr class="memitem:a9a05e0fc6e188f0e836204fd82a86f4b" id="r_a9a05e0fc6e188f0e836204fd82a86f4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a05e0fc6e188f0e836204fd82a86f4b">flush</a> () override</td></tr>
+<tr class="memdesc:a9a05e0fc6e188f0e836204fd82a86f4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::flush() と同等  <br /></td></tr>
 <tr class="separator:a9a05e0fc6e188f0e836204fd82a86f4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a590636aa2eb6c336d3c6a77d4ca1e953"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#a590636aa2eb6c336d3c6a77d4ca1e953">onReceive</a> (void(*function)(int)) override</td></tr>
-<tr class="memdesc:a590636aa2eb6c336d3c6a77d4ca1e953"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::onReceive(function) と同等  <a href="classUdon_1_1I2cBusImpl.html#a590636aa2eb6c336d3c6a77d4ca1e953">[詳解]</a><br /></td></tr>
+<tr class="memitem:a590636aa2eb6c336d3c6a77d4ca1e953" id="r_a590636aa2eb6c336d3c6a77d4ca1e953"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a590636aa2eb6c336d3c6a77d4ca1e953">onReceive</a> (void(*function)(int)) override</td></tr>
+<tr class="memdesc:a590636aa2eb6c336d3c6a77d4ca1e953"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::onReceive(function) と同等  <br /></td></tr>
 <tr class="separator:a590636aa2eb6c336d3c6a77d4ca1e953"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7745ad0f6650cb752ddd28f14a72fadd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1I2cBusImpl.html#a7745ad0f6650cb752ddd28f14a72fadd">onRequest</a> (void(*function)()) override</td></tr>
-<tr class="memdesc:a7745ad0f6650cb752ddd28f14a72fadd"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::onRequest(function) と同等  <a href="classUdon_1_1I2cBusImpl.html#a7745ad0f6650cb752ddd28f14a72fadd">[詳解]</a><br /></td></tr>
+<tr class="memitem:a7745ad0f6650cb752ddd28f14a72fadd" id="r_a7745ad0f6650cb752ddd28f14a72fadd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7745ad0f6650cb752ddd28f14a72fadd">onRequest</a> (void(*function)()) override</td></tr>
+<tr class="memdesc:a7745ad0f6650cb752ddd28f14a72fadd"><td class="mdescLeft">&#160;</td><td class="mdescRight">TwoWire::onRequest(function) と同等  <br /></td></tr>
 <tr class="separator:a7745ad0f6650cb752ddd28f14a72fadd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classUdon_1_1II2cBus"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classUdon_1_1II2cBus')"><img src="closed.png" alt="-"/>&#160;基底クラス <a class="el" href="classUdon_1_1II2cBus.html">Udon::II2cBus</a> に属する継承公開メンバ関数</td></tr>
-<tr class="memitem:adc44adc604b94bc6024ad9b0cea0fa91 inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#adc44adc604b94bc6024ad9b0cea0fa91">~II2cBus</a> ()=default</td></tr>
+<tr class="inherit_header pub_methods_classUdon_1_1II2cBus"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classUdon_1_1II2cBus')"><img src="closed.png" alt="-"/>&#160;基底クラス <a class="el" href="classUdon_1_1II2cBus.html">Udon::II2cBus</a> に属する継承公開メンバ関数</td></tr>
+<tr class="memitem:adc44adc604b94bc6024ad9b0cea0fa91 inherit pub_methods_classUdon_1_1II2cBus" id="r_adc44adc604b94bc6024ad9b0cea0fa91"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#adc44adc604b94bc6024ad9b0cea0fa91">~II2cBus</a> ()=default</td></tr>
 <tr class="separator:adc44adc604b94bc6024ad9b0cea0fa91 inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a800048a0917d9838468bd462213490c4 inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a800048a0917d9838468bd462213490c4">operator bool</a> () const =0</td></tr>
-<tr class="memdesc:a800048a0917d9838468bd462213490c4 inherit pub_methods_classUdon_1_1II2cBus"><td class="mdescLeft">&#160;</td><td class="mdescRight">バスの有効性を取得  <a href="classUdon_1_1II2cBus.html#a800048a0917d9838468bd462213490c4">[詳解]</a><br /></td></tr>
-<tr class="separator:a800048a0917d9838468bd462213490c4 inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cc90ca0c6371cc69879f9a7cee96b5a inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a5cc90ca0c6371cc69879f9a7cee96b5a">update</a> ()=0</td></tr>
-<tr class="memdesc:a5cc90ca0c6371cc69879f9a7cee96b5a inherit pub_methods_classUdon_1_1II2cBus"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新  <a href="classUdon_1_1II2cBus.html#a5cc90ca0c6371cc69879f9a7cee96b5a">[詳解]</a><br /></td></tr>
-<tr class="separator:a5cc90ca0c6371cc69879f9a7cee96b5a inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76f8269412162f41020e72ec05949d9c inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a76f8269412162f41020e72ec05949d9c">show</a> () const =0</td></tr>
-<tr class="memdesc:a76f8269412162f41020e72ec05949d9c inherit pub_methods_classUdon_1_1II2cBus"><td class="mdescLeft">&#160;</td><td class="mdescRight">バスの状態を表示  <a href="classUdon_1_1II2cBus.html#a76f8269412162f41020e72ec05949d9c">[詳解]</a><br /></td></tr>
-<tr class="separator:a76f8269412162f41020e72ec05949d9c inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cc5302fd04f7f452c513eeadff6e7f7 inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a9cc5302fd04f7f452c513eeadff6e7f7">begin</a> ()=0</td></tr>
-<tr class="separator:a9cc5302fd04f7f452c513eeadff6e7f7 inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98088e5d4a360f79a47cdec66a59bb26 inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a98088e5d4a360f79a47cdec66a59bb26">begin</a> (uint8_t address)=0</td></tr>
-<tr class="separator:a98088e5d4a360f79a47cdec66a59bb26 inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0ac9a68dd574f77174b7e0d0f661d13 inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#ab0ac9a68dd574f77174b7e0d0f661d13">end</a> ()=0</td></tr>
-<tr class="separator:ab0ac9a68dd574f77174b7e0d0f661d13 inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a9871dae4e291f085dbf563c150a902 inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a5a9871dae4e291f085dbf563c150a902">restart</a> ()=0</td></tr>
-<tr class="separator:a5a9871dae4e291f085dbf563c150a902 inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae430537e69f2dfb73f202a9cf1cffa59 inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#ae430537e69f2dfb73f202a9cf1cffa59">setClock</a> (uint32_t clock)=0</td></tr>
-<tr class="separator:ae430537e69f2dfb73f202a9cf1cffa59 inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad157ca7e6893536bc80aec16dc4e7f58 inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#ad157ca7e6893536bc80aec16dc4e7f58">beginTransmission</a> (uint8_t address)=0</td></tr>
-<tr class="separator:ad157ca7e6893536bc80aec16dc4e7f58 inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09c0d0877f53b09810a97b7c813a1130 inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a09c0d0877f53b09810a97b7c813a1130">endTransmission</a> ()=0</td></tr>
-<tr class="separator:a09c0d0877f53b09810a97b7c813a1130 inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae50b12532edfcddd35078db7f073a0f inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#aae50b12532edfcddd35078db7f073a0f">endTransmission</a> (uint8_t sendStop)=0</td></tr>
-<tr class="separator:aae50b12532edfcddd35078db7f073a0f inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab06a8478d079ad54fb046c22c7e31611 inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#ab06a8478d079ad54fb046c22c7e31611">requestFrom</a> (uint8_t address, uint8_t quantity)=0</td></tr>
-<tr class="separator:ab06a8478d079ad54fb046c22c7e31611 inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a315bb6e4e939742b12a1a11fb3bd726b inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a315bb6e4e939742b12a1a11fb3bd726b">requestFrom</a> (uint8_t address, uint8_t quantity, uint8_t sendStop)=0</td></tr>
-<tr class="separator:a315bb6e4e939742b12a1a11fb3bd726b inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a843e809a7eca51fe29581017faccf937 inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a843e809a7eca51fe29581017faccf937">write</a> (uint8_t data)=0</td></tr>
-<tr class="separator:a843e809a7eca51fe29581017faccf937 inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2070f8cbeabafff5f7fc3703e7836004 inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a2070f8cbeabafff5f7fc3703e7836004">write</a> (const uint8_t *data, size_t quantity)=0</td></tr>
-<tr class="separator:a2070f8cbeabafff5f7fc3703e7836004 inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53fe9a045dae04c7d869a5aadd8546e7 inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a53fe9a045dae04c7d869a5aadd8546e7">available</a> ()=0</td></tr>
-<tr class="separator:a53fe9a045dae04c7d869a5aadd8546e7 inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b1cad2c6592e35cc6699269b8d9f100 inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a5b1cad2c6592e35cc6699269b8d9f100">read</a> ()=0</td></tr>
-<tr class="separator:a5b1cad2c6592e35cc6699269b8d9f100 inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1ffb22f494ead17b3541e9c15fd37f5 inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#ae1ffb22f494ead17b3541e9c15fd37f5">peek</a> ()=0</td></tr>
-<tr class="separator:ae1ffb22f494ead17b3541e9c15fd37f5 inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0c91faa85d7beca36dff6330ed5124a inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#ac0c91faa85d7beca36dff6330ed5124a">flush</a> ()=0</td></tr>
-<tr class="separator:ac0c91faa85d7beca36dff6330ed5124a inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a173df7b7b2ddf3c44cab2330076efe11 inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#a173df7b7b2ddf3c44cab2330076efe11">onReceive</a> (void(*function)(int))=0</td></tr>
-<tr class="separator:a173df7b7b2ddf3c44cab2330076efe11 inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afeafe0e7519f5b2c0e693d82a2044666 inherit pub_methods_classUdon_1_1II2cBus"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1II2cBus.html#afeafe0e7519f5b2c0e693d82a2044666">onRequest</a> (void(*function)())=0</td></tr>
-<tr class="separator:afeafe0e7519f5b2c0e693d82a2044666 inherit pub_methods_classUdon_1_1II2cBus"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;int Counter&gt;<br />
-class Udon::I2cBusImpl&lt; Counter &gt;</div><p >I2cBus クラス実装部 </p>
+class Udon::I2cBusImpl&lt; Counter &gt;</div><p>I2cBus クラス実装部 </p>
 <dl class="tparams"><dt>テンプレート引数</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Counter</td><td>オブジェクト生成ごとにユニークな値を指定する(複数の I2C バスを使用する場合に必要) </td></tr>
@@ -271,19 +224,12 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::I2cBusImpl </td>
           <td>(</td>
-          <td class="paramtype">TwoWire &amp;&#160;</td>
-          <td class="paramname"><em>wire</em>, </td>
+          <td class="paramtype">TwoWire &amp;</td>          <td class="paramname"><span class="paramname"><em>wire</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>timeoutMs</em> = <code>100</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>timeoutMs</em><span class="paramdefsep"> = </span><span class="paramdefval">100</span></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -318,8 +264,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::I2cBusImpl </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classUdon_1_1I2cBusImpl.html">I2cBusImpl</a>&lt; Counter &gt; &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1I2cBusImpl.html">I2cBusImpl</a>&lt; Counter &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -349,7 +294,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">int <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::available </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -380,7 +325,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::begin </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -411,8 +356,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::begin </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>address</em></td><td>)</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -443,8 +387,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::beginTransmission </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>address</em></td><td>)</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>address</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -475,7 +418,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::end </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -506,7 +449,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">uint8_t <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::endTransmission </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -537,8 +480,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">uint8_t <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::endTransmission </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>sendStop</em></td><td>)</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>sendStop</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -569,7 +511,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::flush </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -600,8 +542,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::onReceive </td>
           <td>(</td>
-          <td class="paramtype">void(*)(int)&#160;</td>
-          <td class="paramname"><em>function</em></td><td>)</td>
+          <td class="paramtype">void(*)(int)</td>          <td class="paramname"><span class="paramname"><em>function</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -632,8 +573,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::onRequest </td>
           <td>(</td>
-          <td class="paramtype">void(*)()&#160;</td>
-          <td class="paramname"><em>function</em></td><td>)</td>
+          <td class="paramtype">void(*)()</td>          <td class="paramname"><span class="paramname"><em>function</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -664,7 +604,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::operator bool </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -695,7 +635,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">int <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::peek </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -726,7 +666,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">int <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::read </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -757,19 +697,12 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">uint8_t <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::requestFrom </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>address</em>, </td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>address</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>quantity</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>quantity</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -799,25 +732,17 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">uint8_t <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::requestFrom </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>address</em>, </td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>address</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>quantity</em>, </td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>quantity</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>sendStop</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>sendStop</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -847,7 +772,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::restart </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -878,8 +803,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::setClock </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>clock</em></td><td>)</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>clock</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -910,7 +834,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::show </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -941,7 +865,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">bool <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::update </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -972,19 +896,12 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">size_t <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::write </td>
           <td>(</td>
-          <td class="paramtype">const uint8_t *&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>quantity</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>quantity</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1014,8 +931,7 @@ template&lt;int Counter&gt; </div>
         <tr>
           <td class="memname">size_t <a class="el" href="classUdon_1_1I2cBusImpl.html">Udon::I2cBusImpl</a>&lt; Counter &gt;::write </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>data</em></td><td>)</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>data</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1041,7 +957,7 @@ template&lt;int Counter&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceUdon.html">Udon</a></li><li class="navelem"><a class="el" href="classUdon_1_1I2cBusImpl.html">I2cBusImpl</a></li>
-    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>

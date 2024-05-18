@@ -4,22 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>UdonLibrary: src/Udon/Traits/Typedef.hpp ソースファイル</title>
-<!--BEGIN PROJECT_ICON-->
-<link rel="icon" href="$projecticon" type="image/x-icon" />
-<!--END PROJECT_ICON-->
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<!--BEGIN COPY_CLIPBOARD-->
 <script type="text/javascript" src="clipboard.js"></script>
-<!--END COPY_CLIPBOARD-->
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,9 +23,11 @@
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
 <script type="text/javascript">
   DoxygenAwesomeDarkModeToggle.init()
   DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
 </script>
 </head>
 <body>
@@ -38,7 +36,7 @@
         <table cellspacing="0" cellpadding="0">
           <tbody>
             <tr id="projectrow">
-              <td id="projectlogo"><img alt="Logo" src="Udon.png" $logosize /></td>
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
               <td id="projectalign">
                 <div id="projectname">UdonLibrary<span
                     id="projectnumber">&#160;1.0.0</span>
@@ -49,7 +47,7 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.9.5 -->
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -61,11 +59,16 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索');
-  $(document).ready(function() { init_search(); });
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -79,7 +82,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('Typedef_8hpp_source.html',''); initResizable(); });
+$(function(){initNavTree('Typedef_8hpp_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -126,43 +129,43 @@ $(document).ready(function(){initNavTree('Typedef_8hpp_source.html',''); initRes
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    {</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a8cf92d7d6a8a2dd9e34cde6772651f17">   19</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a8cf92d7d6a8a2dd9e34cde6772651f17">DecayT</a> = <span class="keyword">typename</span> std::decay&lt;T&gt;::type;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a80211d53f3196fbcc6aef3e2de4741f5">   19</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a80211d53f3196fbcc6aef3e2de4741f5">DecayT</a> = <span class="keyword">typename</span> std::decay&lt;T&gt;::type;</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a2fc63f360e271c8579b0561f2b41040f">   22</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a2fc63f360e271c8579b0561f2b41040f">RemoveConstT</a> = <span class="keyword">typename</span> std::remove_const&lt;T&gt;::type;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#aee67f1a7e11520ca09ba771818d1bf94">   22</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#aee67f1a7e11520ca09ba771818d1bf94">RemoveConstT</a> = <span class="keyword">typename</span> std::remove_const&lt;T&gt;::type;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a6fc8fe476dd5dc7395b7ca232e6ff37f">   25</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a6fc8fe476dd5dc7395b7ca232e6ff37f">RemoveReferenceT</a> = <span class="keyword">typename</span> std::remove_reference&lt;T&gt;::type;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#ab84ae38e5b536b0be517b57922ab00db">   25</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#ab84ae38e5b536b0be517b57922ab00db">RemoveReferenceT</a> = <span class="keyword">typename</span> std::remove_reference&lt;T&gt;::type;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a51ffa8891394b2040b509c55cf46e51b">   28</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a51ffa8891394b2040b509c55cf46e51b">RemoveCVT</a> = <a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a2fc63f360e271c8579b0561f2b41040f">RemoveConstT&lt;RemoveReferenceT&lt;T&gt;</a>&gt;;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#afd2284cc1e09227ee1d297efa3fb62d7">   28</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#afd2284cc1e09227ee1d297efa3fb62d7">RemoveCVT</a> = <a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#aee67f1a7e11520ca09ba771818d1bf94">RemoveConstT&lt;RemoveReferenceT&lt;T&gt;</a>&gt;;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a12f36e4f7a93fa1aaaad3a337c562b91">   31</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a12f36e4f7a93fa1aaaad3a337c562b91">IsBool</a> = std::is_same&lt;T, bool&gt;;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#aea37d4d7a8053bc6ac9021182efeffce">   31</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#aea37d4d7a8053bc6ac9021182efeffce">IsBool</a> = std::is_same&lt;T, bool&gt;;</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a2bfab518d7feaa89fc5189e3e57ba2f0">   34</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a2bfab518d7feaa89fc5189e3e57ba2f0">IsIntegral</a> = std::is_integral&lt;T&gt;;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a81d986e3393a5493e14fd31796ffbaa2">   34</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a81d986e3393a5493e14fd31796ffbaa2">IsIntegral</a> = std::is_integral&lt;T&gt;;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a0b7f622f3e1729f26f6501bd611ff90e">   37</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a0b7f622f3e1729f26f6501bd611ff90e">IsIntegralNotBool</a> = std::integral_constant&lt;bool, IsIntegral&lt;T&gt;::value and not <a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a12f36e4f7a93fa1aaaad3a337c562b91">IsBool&lt;T&gt;::value</a>&gt;;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#acee956e83236c2b7344ef5690de18c76">   37</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#acee956e83236c2b7344ef5690de18c76">IsIntegralNotBool</a> = std::integral_constant&lt;bool, IsIntegral&lt;T&gt;::value and not <a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#aea37d4d7a8053bc6ac9021182efeffce">IsBool&lt;T&gt;::value</a>&gt;;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#ae340cff87e6b8623871eef8709cf2c0a">   40</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#ae340cff87e6b8623871eef8709cf2c0a">IsFloatingPoint</a> = std::is_floating_point&lt;T&gt;;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a83f60c1b41d3eb636d1d3a3205a35f5f">   40</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a83f60c1b41d3eb636d1d3a3205a35f5f">IsFloatingPoint</a> = std::is_floating_point&lt;T&gt;;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a9223327ef74ed0100caeb157fac410a4">   43</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a9223327ef74ed0100caeb157fac410a4">IsArithmetic</a> = std::is_arithmetic&lt;T&gt;;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a6af36ac445d5bcdb9ca8b43f9b6b5667">   43</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a6af36ac445d5bcdb9ca8b43f9b6b5667">IsArithmetic</a> = std::is_arithmetic&lt;T&gt;;</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#aa2e71df3c896335a1d5f397cd68d4969">   46</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#aa2e71df3c896335a1d5f397cd68d4969">IsScalar</a> = std::is_scalar&lt;T&gt;;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a5f7b12465987e6c79819038fa4c34c80">   46</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a5f7b12465987e6c79819038fa4c34c80">IsScalar</a> = std::is_scalar&lt;T&gt;;</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a292a30a6379765954be27a68a59ea9cc">   49</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a292a30a6379765954be27a68a59ea9cc">IsEnum</a> = std::is_enum&lt;T&gt;;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a434199133c575112473ec34f81ff22f9">   49</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a434199133c575112473ec34f81ff22f9">IsEnum</a> = std::is_enum&lt;T&gt;;</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#af57b23b43cab7a24e636599ba637b7ef">   52</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#af57b23b43cab7a24e636599ba637b7ef">IsArray</a> = std::is_array&lt;T&gt;;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#aef9a7ba24f9d9b39a3918d0db7ea27d2">   52</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#aef9a7ba24f9d9b39a3918d0db7ea27d2">IsArray</a> = std::is_array&lt;T&gt;;</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a45540e4a1431bdada850035b35978f3c">   55</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a45540e4a1431bdada850035b35978f3c">IsCString</a> = std::is_same&lt;DecayT&lt;T&gt;, <span class="keyword">const</span> <span class="keywordtype">char</span>*&gt;;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#aa3ae9f99baa1784f17627de66c6bde39">   55</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#aa3ae9f99baa1784f17627de66c6bde39">IsCString</a> = std::is_same&lt;DecayT&lt;T&gt;, <span class="keyword">const</span> <span class="keywordtype">char</span>*&gt;;</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    }    <span class="comment">// namespace Traits</span></div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
@@ -170,63 +173,65 @@ $(document).ready(function(){initNavTree('Typedef_8hpp_source.html',''); initRes
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    {</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keyword">template</span> &lt;<span class="keywordtype">bool</span> Test, <span class="keyword">typename</span> T = <span class="keywordtype">void</span>&gt;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a2182840c22d1f9562672bc66e1eee00d">   63</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a2182840c22d1f9562672bc66e1eee00d">EnableIfT</a> = <span class="keyword">typename</span> std::enable_if&lt;Test, T&gt;::type;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a659804df29fc987ded2bd6f5b0f0a58d">   63</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a659804df29fc987ded2bd6f5b0f0a58d">EnableIfT</a> = <span class="keyword">typename</span> std::enable_if&lt;Test, T&gt;::type;</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keyword">template</span> &lt;<span class="keywordtype">bool</span> Test&gt;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a3edd448c0655a6e18d7b22b67dcfc442">   66</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a3edd448c0655a6e18d7b22b67dcfc442">EnableIfVoidT</a> = <a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a2182840c22d1f9562672bc66e1eee00d">EnableIfT&lt;Test, void&gt;</a>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#aa2b480aa2dca8f8f4b1dda41e376289f">   66</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#aa2b480aa2dca8f8f4b1dda41e376289f">EnableIfVoidT</a> = <a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a659804df29fc987ded2bd6f5b0f0a58d">EnableIfT&lt;Test, void&gt;</a>;</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keyword">template</span> &lt;<span class="keywordtype">bool</span> Test, <span class="keyword">typename</span> T = <span class="keywordtype">void</span>&gt;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a7018a695bccfb3fe39348f377d9b1ae8">   69</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a7018a695bccfb3fe39348f377d9b1ae8">DisableIfT</a> = <span class="keyword">typename</span> std::enable_if&lt;not Test, T&gt;::type;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a66843ac4dcde1ff3aac36e067ad8bced">   69</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a66843ac4dcde1ff3aac36e067ad8bced">DisableIfT</a> = <span class="keyword">typename</span> std::enable_if&lt;not Test, T&gt;::type;</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keyword">template</span> &lt;<span class="keywordtype">bool</span> Test&gt;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#acfd2f9eaa134acf42833deb94a4b53c2">   72</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#acfd2f9eaa134acf42833deb94a4b53c2">DisableIfVoidT</a> = <a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a7018a695bccfb3fe39348f377d9b1ae8">DisableIfT&lt;Test, void&gt;</a>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a75e203ed25660882de250179da78e949">   72</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a75e203ed25660882de250179da78e949">DisableIfVoidT</a> = <a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a66843ac4dcde1ff3aac36e067ad8bced">DisableIfT&lt;Test, void&gt;</a>;</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keyword">template</span> &lt;<span class="keywordtype">bool</span> Test&gt;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#adc41e557973540679f37cc821cd81ee9">   78</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#adc41e557973540679f37cc821cd81ee9">EnableIfNullptrT</a> = <a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a2182840c22d1f9562672bc66e1eee00d">EnableIfT&lt;Test, std::nullptr_t&gt;</a>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a841623b3c351135dae7c1cb2315589f8">   78</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a841623b3c351135dae7c1cb2315589f8">EnableIfNullptrT</a> = <a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a659804df29fc987ded2bd6f5b0f0a58d">EnableIfT&lt;Test, std::nullptr_t&gt;</a>;</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keyword">template</span> &lt;<span class="keywordtype">bool</span> Test&gt;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#afddf6052e99a4e5123b7b04940382d77">   84</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#afddf6052e99a4e5123b7b04940382d77">DisableIfNullptrT</a> = <a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a7018a695bccfb3fe39348f377d9b1ae8">DisableIfT&lt;not Test, std::nullptr_t&gt;</a>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html#a18102c8d252fd80332e22d7e6c03eefd">   84</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a18102c8d252fd80332e22d7e6c03eefd">DisableIfNullptrT</a> = <a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a66843ac4dcde1ff3aac36e067ad8bced">DisableIfT&lt;not Test, std::nullptr_t&gt;</a>;</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    }    <span class="comment">// namespace Traits</span></div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>}    <span class="comment">// namespace Udon</span></div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#ifndef __cpp_lib_void_t</span></div>
+<div class="foldopen" id="foldopen00090" data-start="{" data-end="}">
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="namespacestd.html">   90</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacestd.html">std</a></div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>{</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span>...&gt;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="namespacestd.html#a22cbeb48987e9b7ee87a626eb5f1d6dc">   93</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespacestd.html#a22cbeb48987e9b7ee87a626eb5f1d6dc">void_t</a> = void;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="namespacestd.html#a0f7a4f244193b2b15df30bbb0234808d">   93</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespacestd.html#a0f7a4f244193b2b15df30bbb0234808d">void_t</a> = void;</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>}</div>
+</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aEnableSTL_8hpp_html"><div class="ttname"><a href="EnableSTL_8hpp.html">EnableSTL.hpp</a></div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_a0b7f622f3e1729f26f6501bd611ff90e"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a0b7f622f3e1729f26f6501bd611ff90e">Udon::Traits::IsIntegralNotBool</a></div><div class="ttdeci">std::integral_constant&lt; bool, IsIntegral&lt; T &gt;::value and not IsBool&lt; T &gt;::value &gt; IsIntegralNotBool</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:37</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_a12f36e4f7a93fa1aaaad3a337c562b91"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a12f36e4f7a93fa1aaaad3a337c562b91">Udon::Traits::IsBool</a></div><div class="ttdeci">std::is_same&lt; T, bool &gt; IsBool</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:31</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_a2182840c22d1f9562672bc66e1eee00d"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a2182840c22d1f9562672bc66e1eee00d">Udon::Traits::EnableIfT</a></div><div class="ttdeci">typename std::enable_if&lt; Test, T &gt;::type EnableIfT</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:63</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_a292a30a6379765954be27a68a59ea9cc"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a292a30a6379765954be27a68a59ea9cc">Udon::Traits::IsEnum</a></div><div class="ttdeci">std::is_enum&lt; T &gt; IsEnum</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:49</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_a2bfab518d7feaa89fc5189e3e57ba2f0"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a2bfab518d7feaa89fc5189e3e57ba2f0">Udon::Traits::IsIntegral</a></div><div class="ttdeci">std::is_integral&lt; T &gt; IsIntegral</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:34</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_a2fc63f360e271c8579b0561f2b41040f"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a2fc63f360e271c8579b0561f2b41040f">Udon::Traits::RemoveConstT</a></div><div class="ttdeci">typename std::remove_const&lt; T &gt;::type RemoveConstT</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:22</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_a3edd448c0655a6e18d7b22b67dcfc442"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a3edd448c0655a6e18d7b22b67dcfc442">Udon::Traits::EnableIfVoidT</a></div><div class="ttdeci">EnableIfT&lt; Test, void &gt; EnableIfVoidT</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:66</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_a45540e4a1431bdada850035b35978f3c"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a45540e4a1431bdada850035b35978f3c">Udon::Traits::IsCString</a></div><div class="ttdeci">std::is_same&lt; DecayT&lt; T &gt;, const char * &gt; IsCString</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:55</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_a51ffa8891394b2040b509c55cf46e51b"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a51ffa8891394b2040b509c55cf46e51b">Udon::Traits::RemoveCVT</a></div><div class="ttdeci">RemoveConstT&lt; RemoveReferenceT&lt; T &gt; &gt; RemoveCVT</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:28</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_a6fc8fe476dd5dc7395b7ca232e6ff37f"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a6fc8fe476dd5dc7395b7ca232e6ff37f">Udon::Traits::RemoveReferenceT</a></div><div class="ttdeci">typename std::remove_reference&lt; T &gt;::type RemoveReferenceT</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:25</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_a7018a695bccfb3fe39348f377d9b1ae8"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a7018a695bccfb3fe39348f377d9b1ae8">Udon::Traits::DisableIfT</a></div><div class="ttdeci">typename std::enable_if&lt; not Test, T &gt;::type DisableIfT</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:69</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_a8cf92d7d6a8a2dd9e34cde6772651f17"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a8cf92d7d6a8a2dd9e34cde6772651f17">Udon::Traits::DecayT</a></div><div class="ttdeci">typename std::decay&lt; T &gt;::type DecayT</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:19</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_a9223327ef74ed0100caeb157fac410a4"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a9223327ef74ed0100caeb157fac410a4">Udon::Traits::IsArithmetic</a></div><div class="ttdeci">std::is_arithmetic&lt; T &gt; IsArithmetic</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:43</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_aa2e71df3c896335a1d5f397cd68d4969"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#aa2e71df3c896335a1d5f397cd68d4969">Udon::Traits::IsScalar</a></div><div class="ttdeci">std::is_scalar&lt; T &gt; IsScalar</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:46</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_acfd2f9eaa134acf42833deb94a4b53c2"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#acfd2f9eaa134acf42833deb94a4b53c2">Udon::Traits::DisableIfVoidT</a></div><div class="ttdeci">DisableIfT&lt; Test, void &gt; DisableIfVoidT</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:72</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_adc41e557973540679f37cc821cd81ee9"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#adc41e557973540679f37cc821cd81ee9">Udon::Traits::EnableIfNullptrT</a></div><div class="ttdeci">EnableIfT&lt; Test, std::nullptr_t &gt; EnableIfNullptrT</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:78</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_ae340cff87e6b8623871eef8709cf2c0a"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#ae340cff87e6b8623871eef8709cf2c0a">Udon::Traits::IsFloatingPoint</a></div><div class="ttdeci">std::is_floating_point&lt; T &gt; IsFloatingPoint</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:40</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_af57b23b43cab7a24e636599ba637b7ef"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#af57b23b43cab7a24e636599ba637b7ef">Udon::Traits::IsArray</a></div><div class="ttdeci">std::is_array&lt; T &gt; IsArray</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:52</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html_afddf6052e99a4e5123b7b04940382d77"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#afddf6052e99a4e5123b7b04940382d77">Udon::Traits::DisableIfNullptrT</a></div><div class="ttdeci">DisableIfT&lt; not Test, std::nullptr_t &gt; DisableIfNullptrT</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:84</div></div>
-<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition:</b> Bit.hpp:12</div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition:</b> Typedef.hpp:91</div></div>
-<div class="ttc" id="anamespacestd_html_a22cbeb48987e9b7ee87a626eb5f1d6dc"><div class="ttname"><a href="namespacestd.html#a22cbeb48987e9b7ee87a626eb5f1d6dc">std::void_t</a></div><div class="ttdeci">void void_t</div><div class="ttdef"><b>Definition:</b> Typedef.hpp:93</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_a18102c8d252fd80332e22d7e6c03eefd"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a18102c8d252fd80332e22d7e6c03eefd">Udon::Traits::DisableIfNullptrT</a></div><div class="ttdeci">DisableIfT&lt; not Test, std::nullptr_t &gt; DisableIfNullptrT</div><div class="ttdef"><b>Definition</b> Typedef.hpp:84</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_a434199133c575112473ec34f81ff22f9"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a434199133c575112473ec34f81ff22f9">Udon::Traits::IsEnum</a></div><div class="ttdeci">std::is_enum&lt; T &gt; IsEnum</div><div class="ttdef"><b>Definition</b> Typedef.hpp:49</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_a5f7b12465987e6c79819038fa4c34c80"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a5f7b12465987e6c79819038fa4c34c80">Udon::Traits::IsScalar</a></div><div class="ttdeci">std::is_scalar&lt; T &gt; IsScalar</div><div class="ttdef"><b>Definition</b> Typedef.hpp:46</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_a659804df29fc987ded2bd6f5b0f0a58d"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a659804df29fc987ded2bd6f5b0f0a58d">Udon::Traits::EnableIfT</a></div><div class="ttdeci">typename std::enable_if&lt; Test, T &gt;::type EnableIfT</div><div class="ttdef"><b>Definition</b> Typedef.hpp:63</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_a66843ac4dcde1ff3aac36e067ad8bced"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a66843ac4dcde1ff3aac36e067ad8bced">Udon::Traits::DisableIfT</a></div><div class="ttdeci">typename std::enable_if&lt; not Test, T &gt;::type DisableIfT</div><div class="ttdef"><b>Definition</b> Typedef.hpp:69</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_a6af36ac445d5bcdb9ca8b43f9b6b5667"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a6af36ac445d5bcdb9ca8b43f9b6b5667">Udon::Traits::IsArithmetic</a></div><div class="ttdeci">std::is_arithmetic&lt; T &gt; IsArithmetic</div><div class="ttdef"><b>Definition</b> Typedef.hpp:43</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_a75e203ed25660882de250179da78e949"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a75e203ed25660882de250179da78e949">Udon::Traits::DisableIfVoidT</a></div><div class="ttdeci">DisableIfT&lt; Test, void &gt; DisableIfVoidT</div><div class="ttdef"><b>Definition</b> Typedef.hpp:72</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_a80211d53f3196fbcc6aef3e2de4741f5"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a80211d53f3196fbcc6aef3e2de4741f5">Udon::Traits::DecayT</a></div><div class="ttdeci">typename std::decay&lt; T &gt;::type DecayT</div><div class="ttdef"><b>Definition</b> Typedef.hpp:19</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_a81d986e3393a5493e14fd31796ffbaa2"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a81d986e3393a5493e14fd31796ffbaa2">Udon::Traits::IsIntegral</a></div><div class="ttdeci">std::is_integral&lt; T &gt; IsIntegral</div><div class="ttdef"><b>Definition</b> Typedef.hpp:34</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_a83f60c1b41d3eb636d1d3a3205a35f5f"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a83f60c1b41d3eb636d1d3a3205a35f5f">Udon::Traits::IsFloatingPoint</a></div><div class="ttdeci">std::is_floating_point&lt; T &gt; IsFloatingPoint</div><div class="ttdef"><b>Definition</b> Typedef.hpp:40</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_a841623b3c351135dae7c1cb2315589f8"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a841623b3c351135dae7c1cb2315589f8">Udon::Traits::EnableIfNullptrT</a></div><div class="ttdeci">EnableIfT&lt; Test, std::nullptr_t &gt; EnableIfNullptrT</div><div class="ttdef"><b>Definition</b> Typedef.hpp:78</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_aa2b480aa2dca8f8f4b1dda41e376289f"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#aa2b480aa2dca8f8f4b1dda41e376289f">Udon::Traits::EnableIfVoidT</a></div><div class="ttdeci">EnableIfT&lt; Test, void &gt; EnableIfVoidT</div><div class="ttdef"><b>Definition</b> Typedef.hpp:66</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_aa3ae9f99baa1784f17627de66c6bde39"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#aa3ae9f99baa1784f17627de66c6bde39">Udon::Traits::IsCString</a></div><div class="ttdeci">std::is_same&lt; DecayT&lt; T &gt;, const char * &gt; IsCString</div><div class="ttdef"><b>Definition</b> Typedef.hpp:55</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_ab84ae38e5b536b0be517b57922ab00db"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#ab84ae38e5b536b0be517b57922ab00db">Udon::Traits::RemoveReferenceT</a></div><div class="ttdeci">typename std::remove_reference&lt; T &gt;::type RemoveReferenceT</div><div class="ttdef"><b>Definition</b> Typedef.hpp:25</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_acee956e83236c2b7344ef5690de18c76"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#acee956e83236c2b7344ef5690de18c76">Udon::Traits::IsIntegralNotBool</a></div><div class="ttdeci">std::integral_constant&lt; bool, IsIntegral&lt; T &gt;::value and not IsBool&lt; T &gt;::value &gt; IsIntegralNotBool</div><div class="ttdef"><b>Definition</b> Typedef.hpp:37</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_aea37d4d7a8053bc6ac9021182efeffce"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#aea37d4d7a8053bc6ac9021182efeffce">Udon::Traits::IsBool</a></div><div class="ttdeci">std::is_same&lt; T, bool &gt; IsBool</div><div class="ttdef"><b>Definition</b> Typedef.hpp:31</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_aee67f1a7e11520ca09ba771818d1bf94"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#aee67f1a7e11520ca09ba771818d1bf94">Udon::Traits::RemoveConstT</a></div><div class="ttdeci">typename std::remove_const&lt; T &gt;::type RemoveConstT</div><div class="ttdef"><b>Definition</b> Typedef.hpp:22</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_aef9a7ba24f9d9b39a3918d0db7ea27d2"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#aef9a7ba24f9d9b39a3918d0db7ea27d2">Udon::Traits::IsArray</a></div><div class="ttdeci">std::is_array&lt; T &gt; IsArray</div><div class="ttdef"><b>Definition</b> Typedef.hpp:52</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html_afd2284cc1e09227ee1d297efa3fb62d7"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#afd2284cc1e09227ee1d297efa3fb62d7">Udon::Traits::RemoveCVT</a></div><div class="ttdeci">RemoveConstT&lt; RemoveReferenceT&lt; T &gt; &gt; RemoveCVT</div><div class="ttdef"><b>Definition</b> Typedef.hpp:28</div></div>
+<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
+<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition</b> Typedef.hpp:91</div></div>
+<div class="ttc" id="anamespacestd_html_a0f7a4f244193b2b15df30bbb0234808d"><div class="ttname"><a href="namespacestd.html#a0f7a4f244193b2b15df30bbb0234808d">std::void_t</a></div><div class="ttdeci">void void_t</div><div class="ttdef"><b>Definition</b> Typedef.hpp:93</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_8268b3e438090276e2ed45c283dc7ee8.html">Traits</a></li><li class="navelem"><a class="el" href="Typedef_8hpp.html">Typedef.hpp</a></li>
-    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>

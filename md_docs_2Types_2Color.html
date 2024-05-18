@@ -1,0 +1,181 @@
+<!-- HTML header for doxygen 1.10.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>UdonLibrary: 色空間</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+  DoxygenAwesomeDarkModeToggle.init()
+  DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
+</script>
+</head>
+<body>
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
+              <td id="projectalign">
+                <div id="projectname">UdonLibrary<span
+                    id="projectnumber">&#160;1.0.0</span>
+                </div>
+                <div id="projectbrief">機械システム研究部 C++ ライブラリ</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('md_docs_2Types_2Color.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">色空間</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md204"></a> 色空間を表現するには <code><a class="el" href="structUdon_1_1RGB.html">Udon::RGB</a></code>、<code><a class="el" href="structUdon_1_1HSV.html" title="HSV色空間">Udon::HSV</a></code> クラスを使用します。</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Color_8hpp.html">Udon/Types/Color.hpp</a>&gt;</span></div>
+<div class="ttc" id="aColor_8hpp_html"><div class="ttname"><a href="Color_8hpp.html">Color.hpp</a></div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md205"></a>
+RGB 色空間</h1>
+<p>赤緑青 の光の三原色で表現される色空間のことで、次のように定義されています。各要素には 0~255 の数値が入ります。</p>
+<div class="fragment"><div class="line"><span class="keyword">struct </span>RGB</div>
+<div class="line">{</div>
+<div class="line">    uint8_t r;</div>
+<div class="line">    uint8_t g;</div>
+<div class="line">    uint8_t b;</div>
+<div class="line">};</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md206"></a>
+構築</h2>
+<div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rgb;</div>
+<div class="line"><a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rgb{ 0, 100, 255 };</div>
+<div class="line"><a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rgb{ 0xff00ff };  <span class="comment">// カラーコードから</span></div>
+<div class="ttc" id="astructUdon_1_1RGB_html"><div class="ttname"><a href="structUdon_1_1RGB.html">Udon::RGB</a></div><div class="ttdef"><b>Definition</b> RGB.hpp:19</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md207"></a>
+カラーコードへの変換</h2>
+<div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rgb{ 0, 100, 255 };</div>
+<div class="line"><span class="keyword">const</span> uint32_t color = rgb.<a class="code hl_function" href="structUdon_1_1RGB.html#ac4fc1f627819efeb82adeec28f50a6b2">to24bit</a>();</div>
+<div class="ttc" id="astructUdon_1_1RGB_html_ac4fc1f627819efeb82adeec28f50a6b2"><div class="ttname"><a href="structUdon_1_1RGB.html#ac4fc1f627819efeb82adeec28f50a6b2">Udon::RGB::to24bit</a></div><div class="ttdeci">uint32_t to24bit() const noexcept</div><div class="ttdoc">24bit値への変換</div><div class="ttdef"><b>Definition</b> RGB.hpp:108</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md208"></a>
+他の色空間へ変換</h2>
+<div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rgb{ 0, 100, 255 };</div>
+<div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1HSV.html">Udon::HSV</a> hsv = rgb.<a class="code hl_function" href="structUdon_1_1RGB.html#a5fa355eecf463e4f5d5909ee18fc0c55">toHSV</a>();</div>
+<div class="ttc" id="astructUdon_1_1HSV_html"><div class="ttname"><a href="structUdon_1_1HSV.html">Udon::HSV</a></div><div class="ttdoc">HSV色空間</div><div class="ttdef"><b>Definition</b> HSV.hpp:20</div></div>
+<div class="ttc" id="astructUdon_1_1RGB_html_a5fa355eecf463e4f5d5909ee18fc0c55"><div class="ttname"><a href="structUdon_1_1RGB.html#a5fa355eecf463e4f5d5909ee18fc0c55">Udon::RGB::toHSV</a></div><div class="ttdeci">HSV toHSV() const noexcept</div><div class="ttdoc">HSV色空間に変換</div><div class="ttdef"><b>Definition</b> RGB.hpp:30</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md209"></a>
+HSV 色空間</h1>
+<h2><a class="anchor" id="autotoc_md210"></a>
+概要</h2>
+<p>色相 (Hue) 彩度(Saturation) 明度(Value) で表現される色空間のことで、次のように定義されています。各要素には 0~255 の数値が入ります。</p>
+<p>色相の値を増やすだけで色が虹色に変化するので便利です。</p>
+<div class="fragment"><div class="line"><span class="keyword">struct </span>HSV</div>
+<div class="line">{</div>
+<div class="line">    uint8_t h;</div>
+<div class="line">    uint8_t s;</div>
+<div class="line">    uint8_t v;</div>
+<div class="line">};</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md211"></a>
+構築</h2>
+<div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1HSV.html">Udon::HSV</a> hsv;</div>
+<div class="line"><a class="code hl_struct" href="structUdon_1_1HSV.html">Udon::HSV</a> hsv{ 0, 100, 255 };</div>
+<div class="line"><a class="code hl_struct" href="structUdon_1_1HSV.html">Udon::HSV</a> hsv{ 0xff00ff };  <span class="comment">// 24bit値から</span></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md212"></a>
+他の色空間へ変換</h2>
+<div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1HSV.html">Udon::HSV</a> hsv{ 0, 100, 255 };</div>
+<div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rgb = hsv.<a class="code hl_function" href="structUdon_1_1HSV.html#ab8b1c8e2ec06118cd3b2fda1d12d3e6e">toRGB</a>();</div>
+<div class="ttc" id="astructUdon_1_1HSV_html_ab8b1c8e2ec06118cd3b2fda1d12d3e6e"><div class="ttname"><a href="structUdon_1_1HSV.html#ab8b1c8e2ec06118cd3b2fda1d12d3e6e">Udon::HSV::toRGB</a></div><div class="ttdeci">RGB toRGB() const noexcept</div><div class="ttdoc">RGB色空間に変換</div><div class="ttdef"><b>Definition</b> HSV.hpp:30</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md213"></a>
+24bit 値への変換</h2>
+<div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1HSV.html">Udon::HSV</a> hsv{ 0, 100, 255 };</div>
+<div class="line"><span class="keyword">const</span> uint32_t bits = hsv.<a class="code hl_function" href="structUdon_1_1HSV.html#acc9673e4c99d3255042e77f9dca9caa6">to24bit</a>();</div>
+<div class="ttc" id="astructUdon_1_1HSV_html_acc9673e4c99d3255042e77f9dca9caa6"><div class="ttname"><a href="structUdon_1_1HSV.html#acc9673e4c99d3255042e77f9dca9caa6">Udon::HSV::to24bit</a></div><div class="ttdeci">uint32_t to24bit() const noexcept</div><div class="ttdoc">24bit値へ変換</div><div class="ttdef"><b>Definition</b> HSV.hpp:91</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md214"></a>
+その他関数</h1>
+<h2><a class="anchor" id="autotoc_md215"></a>
+<code>Rainbow()</code></h2>
+<p>時間を基に虹色に変化する RGB オブジェクトを取得できます。</p>
+<div class="fragment"><div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rainbow = Udon::Rainbow();</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lora_0',['LoRa',['../md_docs_Communication_LoRa.html',1,'']]]
+  ['lora_0',['LoRa',['../md_docs_2Communication_2LoRa.html',1,'']]]
 ];

@@ -1,0 +1,250 @@
+<!-- HTML header for doxygen 1.10.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>UdonLibrary: 独立ステア最適化</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+  DoxygenAwesomeDarkModeToggle.init()
+  DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
+</script>
+</head>
+<body>
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
+              <td id="projectalign">
+                <div id="projectname">UdonLibrary<span
+                    id="projectnumber">&#160;1.0.0</span>
+                </div>
+                <div id="projectbrief">機械システム研究部 C++ ライブラリ</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('md_docs_2Algorithm_2SteerOptimizer.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">独立ステア最適化</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md16"></a> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="SteerOptimizer_8hpp.html">Udon/Algorithm/SteerOptimizer.hpp</a>&gt;</span></div>
+<div class="ttc" id="aSteerOptimizer_8hpp_html"><div class="ttname"><a href="SteerOptimizer_8hpp.html">SteerOptimizer.hpp</a></div></div>
+</div><!-- fragment --><p>独立ステアモジュールの旋回角度と回転方向を最適化するためのクラス。</p>
+<p>独立ステアの計算結果をそのまま使用すると、操縦性能が低下してしまう場合があります。このクラスを使用することで、操縦性能を向上させることができます。</p>
+<blockquote class="doxtable">
+<p>&zwj;このクラスには以下の最適化処理が含まれています:</p>
+<ul>
+<li>車輪が動作中でない場合に旋回角度を維持する</li>
+<li>車輪の旋回範囲を無限にする</li>
+<li><p class="startli">車輪の回転方向の最適化</p>
+<p class="startli">90 度以上の旋回が必要な場合、目標旋回角度を 180 度回転させ、車輪の回転方向を逆転させます。これにより、旋回と逆旋回の切り替え時に、車輪を旋回させずに正確な動作が可能となります。 </p>
+</li>
+</ul>
+</blockquote>
+<h1><a class="anchor" id="autotoc_md17"></a>
+全車輪最適化</h1>
+<p><code>SteerOptimizer</code> クラスには車輪の個数を指定するためのテンプレート引数があります。車輪が 4 輪の場合は次のようにインスタンス化します。</p>
+<div class="fragment"><div class="line"><span class="comment">// グローバル領域内など</span></div>
+<div class="line"><a class="code hl_class" href="classUdon_1_1SteerOptimizer.html">Udon::SteerOptimizer&lt;4&gt;</a> optimizer;</div>
+<div class="ttc" id="aclassUdon_1_1SteerOptimizer_html"><div class="ttname"><a href="classUdon_1_1SteerOptimizer.html">Udon::SteerOptimizer</a></div><div class="ttdoc">独立ステアリング機構最適化クラス</div><div class="ttdef"><b>Definition</b> SteerOptimizer.hpp:130</div></div>
+</div><!-- fragment --><p><code>operator()</code> を通すことで最適値を得られます。</p>
+<blockquote class="doxtable">
+<p>&zwj;各モジュールの値を極座標で扱います。ホイールの出力値は r、モジュールの旋回角度は theta として表現されます。そのため、引数と戻り値は極座標（Udon::Polar）の配列を使用して、全てのモジュールの値を扱います。 </p>
+</blockquote>
+<blockquote class="doxtable">
+<p>&zwj;注意点として、本クラスは最適化のみを行います。事前に最適化前の値を求めておく必要があります。</p>
+<p>最適化前の値要件:</p>
+<ul>
+<li><code>r</code> [ -π ~ π ] ラジアン値</li>
+<li><code>theta</code> [ 自由 ]</li>
+</ul>
+<p>最適化後の値:</p>
+<ul>
+<li><code>r</code> [ -∞ ~ ∞ ] ラジアン値</li>
+<li><code>theta</code> [ ± 最適化前 <code>theta</code> ] </li>
+</ul>
+</blockquote>
+<div class="fragment"><div class="line"><span class="comment">// ループ内</span></div>
+<div class="line"><span class="comment">// 最適化前の値を格納する配列</span></div>
+<div class="line"><span class="keyword">const</span> std::array&lt;Udon::Polar, 4&gt; raw = {...};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// 最適化後</span></div>
+<div class="line"><span class="keyword">const</span> std::array&lt;Udon::Polar, 4&gt; optimized = optimizer(raw);  <span class="comment">// 最適化後の値を取得</span></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md18"></a>
+車輪ごとに最適化</h1>
+<p><code>SteerModuleOptimizer</code> クラスを使用することで、各車輪ごとに最適化を行えます。車輪ごとをクラスで管理している場合、こちらを使用すると便利です。</p>
+<div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1SteerModuleOptimizer.html">Udon::SteerModuleOptimizer</a> optimizer;</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_struct" href="structUdon_1_1Polar.html">Udon::Polar</a> raw = {...};</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_struct" href="structUdon_1_1Polar.html">Udon::Polar</a> optimized = optimizer(raw);</div>
+<div class="ttc" id="aclassUdon_1_1SteerModuleOptimizer_html"><div class="ttname"><a href="classUdon_1_1SteerModuleOptimizer.html">Udon::SteerModuleOptimizer</a></div><div class="ttdoc">独立ステアリング機構の各モジュール最適化クラス</div><div class="ttdef"><b>Definition</b> SteerOptimizer.hpp:21</div></div>
+<div class="ttc" id="astructUdon_1_1Polar_html"><div class="ttname"><a href="structUdon_1_1Polar.html">Udon::Polar</a></div><div class="ttdoc">極座標系</div><div class="ttdef"><b>Definition</b> Polar.hpp:21</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md19"></a>
+Sample</h1>
+<p>CAN 通信経由のコントローラーの値からステアモジュールの値を得る例を次の示します。</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// CAN バスインスタンス化</span></div>
+<div class="line">Udon::CanBus~~~ bus;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// コントローラーインスタンス化</span></div>
+<div class="line">Udon::CanPadPS5 pad { bus, 10 <span class="comment">/*node id*/</span> };</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// 最適化器インスタンス</span></div>
+<div class="line"><a class="code hl_class" href="classUdon_1_1SteerOptimizer.html">Udon::SteerOptimizer&lt;4&gt;</a> optimizer;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup()</div>
+<div class="line">{</div>
+<div class="line">    bus.begin();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> loop()</div>
+<div class="line">{</div>
+<div class="line">    bus.update();</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// 1. コントローラから Udon::Pos {{x, y}, turn} を得る `getMoveInfo()`</span></div>
+<div class="line">    <span class="comment">// 2. Udon::Pos からステアの最適化前の値を得る `toSteer()`</span></div>
+<div class="line">    <span class="comment">// 3. 最適化後の値を得る optimizer()</span></div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> optimized = optimizer(pad.getMoveInfo().toSteer());</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">//... // 車輪 Node に送信するなど</span></div>
+<div class="line">}</div>
+<div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
+</div><!-- fragment --><p>OpenSiv3D でシミュレートする</p>
+<blockquote class="doxtable">
+<p>&zwj;Visual Studio への UdonLibrary の追加方法は <a class="el" href="index.html#md_README">ダウンロード: Visual Studio</a> を参照してください。 </p>
+</blockquote>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Siv3D.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> Main()</div>
+<div class="line">{</div>
+<div class="line">    <a class="code hl_class" href="classUdon_1_1PadPS5.html">Udon::SivPadPS5</a> pad;</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_class" href="classUdon_1_1SteerOptimizer.html">Udon::SteerOptimizer&lt;4&gt;</a> optimizer;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">while</span> (System::Update())</div>
+<div class="line">    {</div>
+<div class="line">        pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a2bd58cd4e1cf75085f1a2daf3305b566">update</a>();</div>
+<div class="line"> </div>
+<div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> optimized = optimizer(pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">getMoveInfo</a>().<a class="code hl_function" href="structUdon_1_1Pos.html#af1a9145af99bed2ee65f1a0b5a0c1bbf">toSteer</a>());</div>
+<div class="line"> </div>
+<div class="line">        <span class="keyword">const</span> RectF frame { Arg::center = Scene::CenterF(), 300, 300 };</div>
+<div class="line">        frame.drawFrame();</div>
+<div class="line"> </div>
+<div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> stretchedFrame = frame.stretched(-50);</div>
+<div class="line"> </div>
+<div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> lines = Array{</div>
+<div class="line">            Line{ stretchedFrame.point(1), Arg::angle = optimized.at(0).<a class="code hl_variable" href="structUdon_1_1Polar.html#a34a7ea630fbc1c6fe81a24e4251b13ad">theta</a>, optimized.at(0).<a class="code hl_variable" href="structUdon_1_1Polar.html#a4bb3d4daa152b14e5650fae445895e01">r</a> + 0.000000001 },</div>
+<div class="line">            Line{ stretchedFrame.point(2), Arg::angle = optimized.at(1).<a class="code hl_variable" href="structUdon_1_1Polar.html#a34a7ea630fbc1c6fe81a24e4251b13ad">theta</a>, optimized.at(1).<a class="code hl_variable" href="structUdon_1_1Polar.html#a4bb3d4daa152b14e5650fae445895e01">r</a> + 0.000000001 },</div>
+<div class="line">            Line{ stretchedFrame.point(3), Arg::angle = optimized.at(2).<a class="code hl_variable" href="structUdon_1_1Polar.html#a34a7ea630fbc1c6fe81a24e4251b13ad">theta</a>, optimized.at(2).<a class="code hl_variable" href="structUdon_1_1Polar.html#a4bb3d4daa152b14e5650fae445895e01">r</a> + 0.000000001 },</div>
+<div class="line">            Line{ stretchedFrame.point(0), Arg::angle = optimized.at(3).<a class="code hl_variable" href="structUdon_1_1Polar.html#a34a7ea630fbc1c6fe81a24e4251b13ad">theta</a>, optimized.at(3).<a class="code hl_variable" href="structUdon_1_1Polar.html#a4bb3d4daa152b14e5650fae445895e01">r</a> + 0.000000001 }</div>
+<div class="line">        };</div>
+<div class="line"> </div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; line : lines)</div>
+<div class="line">        {</div>
+<div class="line">            RectF{ Arg::center = line.begin, 30, 60 }</div>
+<div class="line">                .rotated(line.vector().getAngle())</div>
+<div class="line">                .drawFrame();</div>
+<div class="line">            line.drawArrow();</div>
+<div class="line">        }</div>
+<div class="line"> </div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassUdon_1_1PadPS5_html"><div class="ttname"><a href="classUdon_1_1PadPS5.html">Udon::PadPS5</a></div><div class="ttdoc">通信経由PS5コントローラークラス</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:26</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5_html_a2bd58cd4e1cf75085f1a2daf3305b566"><div class="ttname"><a href="classUdon_1_1PadPS5.html#a2bd58cd4e1cf75085f1a2daf3305b566">Udon::PadPS5::update</a></div><div class="ttdeci">void update() noexcept</div><div class="ttdoc">更新</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:133</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5_html_a2fe0419f3bc5b65f01549ea916435f95"><div class="ttname"><a href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">Udon::PadPS5::getMoveInfo</a></div><div class="ttdeci">Stick getMoveInfo() const noexcept</div><div class="ttdoc">ロボットの移動に必要なスティックの情報 Udon::Stick オブジェクト {{x,y},turn} を取得</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:130</div></div>
+<div class="ttc" id="astructUdon_1_1Polar_html_a34a7ea630fbc1c6fe81a24e4251b13ad"><div class="ttname"><a href="structUdon_1_1Polar.html#a34a7ea630fbc1c6fe81a24e4251b13ad">Udon::Polar::theta</a></div><div class="ttdeci">ValueType theta</div><div class="ttdoc">角度</div><div class="ttdef"><b>Definition</b> Polar.hpp:29</div></div>
+<div class="ttc" id="astructUdon_1_1Polar_html_a4bb3d4daa152b14e5650fae445895e01"><div class="ttname"><a href="structUdon_1_1Polar.html#a4bb3d4daa152b14e5650fae445895e01">Udon::Polar::r</a></div><div class="ttdeci">ValueType r</div><div class="ttdoc">中心からの距離</div><div class="ttdef"><b>Definition</b> Polar.hpp:26</div></div>
+<div class="ttc" id="astructUdon_1_1Pos_html_af1a9145af99bed2ee65f1a0b5a0c1bbf"><div class="ttname"><a href="structUdon_1_1Pos.html#af1a9145af99bed2ee65f1a0b5a0c1bbf">Udon::Pos::toSteer</a></div><div class="ttdeci">std::array&lt; Udon::Polar, WheelCount &gt; toSteer(uint8_t powerLimit=255, uint8_t turnPowerLimit=255) const</div><div class="ttdoc">独立ステアリング機構のタイヤ出力値、旋回角を取得する</div><div class="ttdef"><b>Definition</b> Position.hpp:194</div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>

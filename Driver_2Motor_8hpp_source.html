@@ -4,22 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>UdonLibrary: src/Udon/Driver/Motor.hpp ソースファイル</title>
-<!--BEGIN PROJECT_ICON-->
-<link rel="icon" href="$projecticon" type="image/x-icon" />
-<!--END PROJECT_ICON-->
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<!--BEGIN COPY_CLIPBOARD-->
 <script type="text/javascript" src="clipboard.js"></script>
-<!--END COPY_CLIPBOARD-->
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,9 +23,11 @@
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
 <script type="text/javascript">
   DoxygenAwesomeDarkModeToggle.init()
   DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
 </script>
 </head>
 <body>
@@ -38,7 +36,7 @@
         <table cellspacing="0" cellpadding="0">
           <tbody>
             <tr id="projectrow">
-              <td id="projectlogo"><img alt="Logo" src="Udon.png" $logosize /></td>
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
               <td id="projectalign">
                 <div id="projectname">UdonLibrary<span
                     id="projectnumber">&#160;1.0.0</span>
@@ -49,7 +47,7 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.9.5 -->
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -61,11 +59,16 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索');
-  $(document).ready(function() { init_search(); });
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -79,7 +82,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('Driver_2Motor_8hpp_source.html',''); initResizable(); });
+$(function(){initNavTree('Driver_2Motor_8hpp_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -230,17 +233,17 @@ $(document).ready(function(){initNavTree('Driver_2Motor_8hpp_source.html',''); i
 <div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aMovingAverage_8hpp_html"><div class="ttname"><a href="MovingAverage_8hpp.html">MovingAverage.hpp</a></div></div>
-<div class="ttc" id="aclassUdon_1_1MovingAverage_html"><div class="ttname"><a href="classUdon_1_1MovingAverage.html">Udon::MovingAverage</a></div><div class="ttdoc">移動平均クラス</div><div class="ttdef"><b>Definition:</b> MovingAverage.hpp:17</div></div>
-<div class="ttc" id="aclassUdon_1_1MovingAverage_html_a22b06e2be0e4fb72d5346ad940433467"><div class="ttname"><a href="classUdon_1_1MovingAverage.html#a22b06e2be0e4fb72d5346ad940433467">Udon::MovingAverage::getValue</a></div><div class="ttdeci">double getValue() const noexcept</div><div class="ttdoc">平均値の取得</div><div class="ttdef"><b>Definition:</b> MovingAverage.hpp:49</div></div>
-<div class="ttc" id="aclassUdon_1_1MovingAverage_html_ac87bc602f106d7886109fead7206bafa"><div class="ttname"><a href="classUdon_1_1MovingAverage.html#ac87bc602f106d7886109fead7206bafa">Udon::MovingAverage::update</a></div><div class="ttdeci">void update(int value) noexcept</div><div class="ttdoc">値の更新</div><div class="ttdef"><b>Definition:</b> MovingAverage.hpp:37</div></div>
-<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition:</b> Bit.hpp:12</div></div>
+<div class="ttc" id="aclassUdon_1_1MovingAverage_html"><div class="ttname"><a href="classUdon_1_1MovingAverage.html">Udon::MovingAverage</a></div><div class="ttdoc">移動平均クラス</div><div class="ttdef"><b>Definition</b> MovingAverage.hpp:17</div></div>
+<div class="ttc" id="aclassUdon_1_1MovingAverage_html_a22b06e2be0e4fb72d5346ad940433467"><div class="ttname"><a href="classUdon_1_1MovingAverage.html#a22b06e2be0e4fb72d5346ad940433467">Udon::MovingAverage::getValue</a></div><div class="ttdeci">double getValue() const noexcept</div><div class="ttdoc">平均値の取得</div><div class="ttdef"><b>Definition</b> MovingAverage.hpp:49</div></div>
+<div class="ttc" id="aclassUdon_1_1MovingAverage_html_ac87bc602f106d7886109fead7206bafa"><div class="ttname"><a href="classUdon_1_1MovingAverage.html#ac87bc602f106d7886109fead7206bafa">Udon::MovingAverage::update</a></div><div class="ttdeci">void update(int value) noexcept</div><div class="ttdoc">値の更新</div><div class="ttdef"><b>Definition</b> MovingAverage.hpp:37</div></div>
+<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_412c40c7acf830c6c273c3674ceeb433.html">Driver</a></li><li class="navelem"><a class="el" href="Driver_2Motor_8hpp.html">Motor.hpp</a></li>
-    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>

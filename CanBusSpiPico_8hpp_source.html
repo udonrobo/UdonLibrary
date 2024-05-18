@@ -4,22 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>UdonLibrary: src/Udon/Com/Can/CanBusSpiPico.hpp ソースファイル</title>
-<!--BEGIN PROJECT_ICON-->
-<link rel="icon" href="$projecticon" type="image/x-icon" />
-<!--END PROJECT_ICON-->
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<!--BEGIN COPY_CLIPBOARD-->
 <script type="text/javascript" src="clipboard.js"></script>
-<!--END COPY_CLIPBOARD-->
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,9 +23,11 @@
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
 <script type="text/javascript">
   DoxygenAwesomeDarkModeToggle.init()
   DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
 </script>
 </head>
 <body>
@@ -38,7 +36,7 @@
         <table cellspacing="0" cellpadding="0">
           <tbody>
             <tr id="projectrow">
-              <td id="projectlogo"><img alt="Logo" src="Udon.png" $logosize /></td>
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
               <td id="projectalign">
                 <div id="projectname">UdonLibrary<span
                     id="projectnumber">&#160;1.0.0</span>
@@ -49,7 +47,7 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.9.5 -->
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -61,11 +59,16 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索');
-  $(document).ready(function() { init_search(); });
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -79,7 +82,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('CanBusSpiPico_8hpp_source.html',''); initResizable(); });
+$(function(){initNavTree('CanBusSpiPico_8hpp_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -128,10 +131,12 @@ $(document).ready(function(){initNavTree('CanBusSpiPico_8hpp_source.html',''); i
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classUdon_1_1CanBusSpi.html">   22</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classUdon_1_1CanBusSpi.html">CanBusSpi</a></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        : <span class="keyword">public</span> <a class="code hl_class" href="classUdon_1_1ICanBus.html">ICanBus</a></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    {</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structUdon_1_1CanBusSpi_1_1Config.html">   27</a></span>        <span class="keyword">struct </span><a class="code hl_struct" href="structUdon_1_1CanBusSpi_1_1Config.html">Config</a></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        {</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structUdon_1_1CanBusSpi_1_1Config.html#aba7f0d4b0bb77350d527d770b62de102">   29</a></span>            spi_inst_t* <a class="code hl_variable" href="structUdon_1_1CanBusSpi_1_1Config.html#aba7f0d4b0bb77350d527d770b62de102">channel</a> = spi_default;         <span class="comment">// SPI チャンネル (spi0, spi1)</span></div>
@@ -149,8 +154,9 @@ $(document).ready(function(){initNavTree('CanBusSpiPico_8hpp_source.html',''); i
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="structUdon_1_1CanBusSpi_1_1Config.html#a19dd1b96a5a5fe86e39b52750f367b70">   41</a></span>            CAN_SPEED <a class="code hl_variable" href="structUdon_1_1CanBusSpi_1_1Config.html#a19dd1b96a5a5fe86e39b52750f367b70">canBaudrate</a> = CAN_1000KBPS;    <span class="comment">// CAN通信速度</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structUdon_1_1CanBusSpi_1_1Config.html#a97418487e651b70ebc888e7aceafbd98">   42</a></span>            CAN_CLOCK <a class="code hl_variable" href="structUdon_1_1CanBusSpi_1_1Config.html#a97418487e651b70ebc888e7aceafbd98">mcpClock</a> = MCP_16MHZ;          <span class="comment">// トランシーバー動作クロック周波数 [Hz]</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        };</div>
+</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <a class="code hl_class" href="classUdon_1_1CanBusSpi.html">CanBusSpi</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1CanBusSpi_1_1Config.html">Config</a>&amp; config);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <a class="code hl_function" href="classUdon_1_1CanBusSpi.html#aafe94579bb9f1bbfa86eba653092d341">CanBusSpi</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1CanBusSpi_1_1Config.html">Config</a>&amp; config);</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1CanBusSpi.html#a1aee3bf9ee2381059bd94b1ebb1a6b48">begin</a>();</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
@@ -190,6 +196,7 @@ $(document).ready(function(){initNavTree('CanBusSpiPico_8hpp_source.html',''); i
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keywordtype">bool</span> rxTimeout() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    };</div>
+</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>}    <span class="comment">// namespace Udon</span></div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="preprocessor">#include &quot;<a class="code" href="Impl_2CanBusSpiPico_8hpp.html">Impl/CanBusSpiPico.hpp</a>&quot;</span></div>
@@ -198,38 +205,39 @@ $(document).ready(function(){initNavTree('CanBusSpiPico_8hpp_source.html',''); i
 <div class="ttc" id="aImpl_2CanBusSpiPico_8hpp_html"><div class="ttname"><a href="Impl_2CanBusSpiPico_8hpp.html">CanBusSpiPico.hpp</a></div></div>
 <div class="ttc" id="aScopedInterruptLocker_8hpp_html"><div class="ttname"><a href="ScopedInterruptLocker_8hpp.html">ScopedInterruptLocker.hpp</a></div></div>
 <div class="ttc" id="aStaticVector_8hpp_html"><div class="ttname"><a href="StaticVector_8hpp.html">StaticVector.hpp</a></div></div>
-<div class="ttc" id="aclassUdon_1_1CanBusSpi_html"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html">Udon::CanBusSpi</a></div><div class="ttdoc">Raspberry Pi Pico用バスクラス</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:24</div></div>
-<div class="ttc" id="aclassUdon_1_1CanBusSpi_html_a10dd3c879bd9bd9c0e47c109453458cd"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html#a10dd3c879bd9bd9c0e47c109453458cd">Udon::CanBusSpi::createTx</a></div><div class="ttdeci">CanTxNode * createTx(uint32_t id, size_t length) override</div><div class="ttdoc">バスに送信ノードを追加</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:184</div></div>
-<div class="ttc" id="aclassUdon_1_1CanBusSpi_html_a1aee3bf9ee2381059bd94b1ebb1a6b48"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html#a1aee3bf9ee2381059bd94b1ebb1a6b48">Udon::CanBusSpi::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">通信開始</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:23</div></div>
-<div class="ttc" id="aclassUdon_1_1CanBusSpi_html_a44d5704d51ecb315b59dd41518c7be10"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html#a44d5704d51ecb315b59dd41518c7be10">Udon::CanBusSpi::show</a></div><div class="ttdeci">void show() const</div><div class="ttdoc">バスの状態を表示する</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:132</div></div>
-<div class="ttc" id="aclassUdon_1_1CanBusSpi_html_a4cf39da779fc32776e4c898af4306cb4"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html#a4cf39da779fc32776e4c898af4306cb4">Udon::CanBusSpi::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">バス更新</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:121</div></div>
-<div class="ttc" id="aclassUdon_1_1CanBusSpi_html_ab3fa486716bfd79ab475a9b91417f104"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html#ab3fa486716bfd79ab475a9b91417f104">Udon::CanBusSpi::createRx</a></div><div class="ttdeci">CanRxNode * createRx(uint32_t id, size_t length) override</div><div class="ttdoc">バスに受信ノードを参加させる</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:200</div></div>
-<div class="ttc" id="aclassUdon_1_1CanBusSpi_html_adf7e964aa897f6de318d945dfebaf6b6"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html#adf7e964aa897f6de318d945dfebaf6b6">Udon::CanBusSpi::end</a></div><div class="ttdeci">void end()</div><div class="ttdoc">通信終了</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:93</div></div>
-<div class="ttc" id="aclassUdon_1_1ICanBus_html"><div class="ttname"><a href="classUdon_1_1ICanBus.html">Udon::ICanBus</a></div><div class="ttdoc">CANバス管理クラス インターフェース</div><div class="ttdef"><b>Definition:</b> ICanBus.hpp:49</div></div>
-<div class="ttc" id="aclassUdon_1_1StaticVector_html"><div class="ttname"><a href="classUdon_1_1StaticVector.html">Udon::StaticVector</a></div><div class="ttdoc">疑似可変長配列コンテナ</div><div class="ttdef"><b>Definition:</b> StaticVector.hpp:22</div></div>
-<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition:</b> Bit.hpp:12</div></div>
-<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html">Udon::CanBusSpi::Config</a></div><div class="ttdoc">設定</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:28</div></div>
-<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_a0237be10625d0111ebbaa89367801f32"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#a0237be10625d0111ebbaa89367801f32">Udon::CanBusSpi::Config::spiClock</a></div><div class="ttdeci">uint32_t spiClock</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:36</div></div>
-<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_a06907c04daa468a503ce0e86de2207c8"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#a06907c04daa468a503ce0e86de2207c8">Udon::CanBusSpi::Config::transmitInterval</a></div><div class="ttdeci">uint32_t transmitInterval</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:38</div></div>
-<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_a144a943135d515d7eb91037d5b3aa8fd"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#a144a943135d515d7eb91037d5b3aa8fd">Udon::CanBusSpi::Config::miso</a></div><div class="ttdeci">uint8_t miso</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:32</div></div>
-<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_a19dd1b96a5a5fe86e39b52750f367b70"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#a19dd1b96a5a5fe86e39b52750f367b70">Udon::CanBusSpi::Config::canBaudrate</a></div><div class="ttdeci">CAN_SPEED canBaudrate</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:41</div></div>
-<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_a1f14dc5a4568197b68242daf799ce4eb"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#a1f14dc5a4568197b68242daf799ce4eb">Udon::CanBusSpi::Config::sck</a></div><div class="ttdeci">uint8_t sck</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:33</div></div>
-<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_a701614c2c3cfabb04d079b6730e32e20"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#a701614c2c3cfabb04d079b6730e32e20">Udon::CanBusSpi::Config::receiveTimeout</a></div><div class="ttdeci">uint32_t receiveTimeout</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:40</div></div>
-<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_a97418487e651b70ebc888e7aceafbd98"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#a97418487e651b70ebc888e7aceafbd98">Udon::CanBusSpi::Config::mcpClock</a></div><div class="ttdeci">CAN_CLOCK mcpClock</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:42</div></div>
-<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_aba7f0d4b0bb77350d527d770b62de102"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#aba7f0d4b0bb77350d527d770b62de102">Udon::CanBusSpi::Config::channel</a></div><div class="ttdeci">spi_inst_t * channel</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:29</div></div>
-<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_aed93589af74679e98b12f58ec1f61a27"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#aed93589af74679e98b12f58ec1f61a27">Udon::CanBusSpi::Config::mosi</a></div><div class="ttdeci">uint8_t mosi</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:31</div></div>
-<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_aef84ac07f1bfa3dba5b657c77aced261"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#aef84ac07f1bfa3dba5b657c77aced261">Udon::CanBusSpi::Config::cs</a></div><div class="ttdeci">uint8_t cs</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:30</div></div>
-<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_afc1426cbe0708e62bed231f8a3728bce"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#afc1426cbe0708e62bed231f8a3728bce">Udon::CanBusSpi::Config::transmitTimeout</a></div><div class="ttdeci">uint32_t transmitTimeout</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:39</div></div>
-<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_afc419b8cf627407eb4995b5b8ceb222f"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#afc419b8cf627407eb4995b5b8ceb222f">Udon::CanBusSpi::Config::interrupt</a></div><div class="ttdeci">uint8_t interrupt</div><div class="ttdef"><b>Definition:</b> CanBusSpiPico.hpp:34</div></div>
-<div class="ttc" id="astructUdon_1_1CanRxNode_html"><div class="ttname"><a href="structUdon_1_1CanRxNode.html">Udon::CanRxNode</a></div><div class="ttdoc">CAN受信ノード</div><div class="ttdef"><b>Definition:</b> ICanBus.hpp:28</div></div>
-<div class="ttc" id="astructUdon_1_1CanTxNode_html"><div class="ttname"><a href="structUdon_1_1CanTxNode.html">Udon::CanTxNode</a></div><div class="ttdoc">CAN送信ノード</div><div class="ttdef"><b>Definition:</b> ICanBus.hpp:17</div></div>
+<div class="ttc" id="aclassUdon_1_1CanBusSpi_html"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html">Udon::CanBusSpi</a></div><div class="ttdoc">Raspberry Pi Pico用バスクラス</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:24</div></div>
+<div class="ttc" id="aclassUdon_1_1CanBusSpi_html_a10dd3c879bd9bd9c0e47c109453458cd"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html#a10dd3c879bd9bd9c0e47c109453458cd">Udon::CanBusSpi::createTx</a></div><div class="ttdeci">CanTxNode * createTx(uint32_t id, size_t length) override</div><div class="ttdoc">バスに送信ノードを追加</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:184</div></div>
+<div class="ttc" id="aclassUdon_1_1CanBusSpi_html_a1aee3bf9ee2381059bd94b1ebb1a6b48"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html#a1aee3bf9ee2381059bd94b1ebb1a6b48">Udon::CanBusSpi::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">通信開始</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:23</div></div>
+<div class="ttc" id="aclassUdon_1_1CanBusSpi_html_a44d5704d51ecb315b59dd41518c7be10"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html#a44d5704d51ecb315b59dd41518c7be10">Udon::CanBusSpi::show</a></div><div class="ttdeci">void show() const</div><div class="ttdoc">バスの状態を表示する</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:132</div></div>
+<div class="ttc" id="aclassUdon_1_1CanBusSpi_html_a4cf39da779fc32776e4c898af4306cb4"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html#a4cf39da779fc32776e4c898af4306cb4">Udon::CanBusSpi::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">バス更新</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:121</div></div>
+<div class="ttc" id="aclassUdon_1_1CanBusSpi_html_aafe94579bb9f1bbfa86eba653092d341"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html#aafe94579bb9f1bbfa86eba653092d341">Udon::CanBusSpi::CanBusSpi</a></div><div class="ttdeci">CanBusSpi(const Config &amp;config)</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:13</div></div>
+<div class="ttc" id="aclassUdon_1_1CanBusSpi_html_ab3fa486716bfd79ab475a9b91417f104"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html#ab3fa486716bfd79ab475a9b91417f104">Udon::CanBusSpi::createRx</a></div><div class="ttdeci">CanRxNode * createRx(uint32_t id, size_t length) override</div><div class="ttdoc">バスに受信ノードを参加させる</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:200</div></div>
+<div class="ttc" id="aclassUdon_1_1CanBusSpi_html_adf7e964aa897f6de318d945dfebaf6b6"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html#adf7e964aa897f6de318d945dfebaf6b6">Udon::CanBusSpi::end</a></div><div class="ttdeci">void end()</div><div class="ttdoc">通信終了</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:93</div></div>
+<div class="ttc" id="aclassUdon_1_1ICanBus_html"><div class="ttname"><a href="classUdon_1_1ICanBus.html">Udon::ICanBus</a></div><div class="ttdoc">CANバス管理クラス インターフェース</div><div class="ttdef"><b>Definition</b> ICanBus.hpp:49</div></div>
+<div class="ttc" id="aclassUdon_1_1StaticVector_html"><div class="ttname"><a href="classUdon_1_1StaticVector.html">Udon::StaticVector</a></div><div class="ttdoc">疑似可変長配列コンテナ</div><div class="ttdef"><b>Definition</b> StaticVector.hpp:22</div></div>
+<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
+<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html">Udon::CanBusSpi::Config</a></div><div class="ttdoc">設定</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:28</div></div>
+<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_a0237be10625d0111ebbaa89367801f32"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#a0237be10625d0111ebbaa89367801f32">Udon::CanBusSpi::Config::spiClock</a></div><div class="ttdeci">uint32_t spiClock</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:36</div></div>
+<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_a06907c04daa468a503ce0e86de2207c8"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#a06907c04daa468a503ce0e86de2207c8">Udon::CanBusSpi::Config::transmitInterval</a></div><div class="ttdeci">uint32_t transmitInterval</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:38</div></div>
+<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_a144a943135d515d7eb91037d5b3aa8fd"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#a144a943135d515d7eb91037d5b3aa8fd">Udon::CanBusSpi::Config::miso</a></div><div class="ttdeci">uint8_t miso</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:32</div></div>
+<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_a19dd1b96a5a5fe86e39b52750f367b70"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#a19dd1b96a5a5fe86e39b52750f367b70">Udon::CanBusSpi::Config::canBaudrate</a></div><div class="ttdeci">CAN_SPEED canBaudrate</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:41</div></div>
+<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_a1f14dc5a4568197b68242daf799ce4eb"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#a1f14dc5a4568197b68242daf799ce4eb">Udon::CanBusSpi::Config::sck</a></div><div class="ttdeci">uint8_t sck</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:33</div></div>
+<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_a701614c2c3cfabb04d079b6730e32e20"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#a701614c2c3cfabb04d079b6730e32e20">Udon::CanBusSpi::Config::receiveTimeout</a></div><div class="ttdeci">uint32_t receiveTimeout</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:40</div></div>
+<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_a97418487e651b70ebc888e7aceafbd98"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#a97418487e651b70ebc888e7aceafbd98">Udon::CanBusSpi::Config::mcpClock</a></div><div class="ttdeci">CAN_CLOCK mcpClock</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:42</div></div>
+<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_aba7f0d4b0bb77350d527d770b62de102"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#aba7f0d4b0bb77350d527d770b62de102">Udon::CanBusSpi::Config::channel</a></div><div class="ttdeci">spi_inst_t * channel</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:29</div></div>
+<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_aed93589af74679e98b12f58ec1f61a27"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#aed93589af74679e98b12f58ec1f61a27">Udon::CanBusSpi::Config::mosi</a></div><div class="ttdeci">uint8_t mosi</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:31</div></div>
+<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_aef84ac07f1bfa3dba5b657c77aced261"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#aef84ac07f1bfa3dba5b657c77aced261">Udon::CanBusSpi::Config::cs</a></div><div class="ttdeci">uint8_t cs</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:30</div></div>
+<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_afc1426cbe0708e62bed231f8a3728bce"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#afc1426cbe0708e62bed231f8a3728bce">Udon::CanBusSpi::Config::transmitTimeout</a></div><div class="ttdeci">uint32_t transmitTimeout</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:39</div></div>
+<div class="ttc" id="astructUdon_1_1CanBusSpi_1_1Config_html_afc419b8cf627407eb4995b5b8ceb222f"><div class="ttname"><a href="structUdon_1_1CanBusSpi_1_1Config.html#afc419b8cf627407eb4995b5b8ceb222f">Udon::CanBusSpi::Config::interrupt</a></div><div class="ttdeci">uint8_t interrupt</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:34</div></div>
+<div class="ttc" id="astructUdon_1_1CanRxNode_html"><div class="ttname"><a href="structUdon_1_1CanRxNode.html">Udon::CanRxNode</a></div><div class="ttdoc">CAN受信ノード</div><div class="ttdef"><b>Definition</b> ICanBus.hpp:28</div></div>
+<div class="ttc" id="astructUdon_1_1CanTxNode_html"><div class="ttname"><a href="structUdon_1_1CanTxNode.html">Udon::CanTxNode</a></div><div class="ttdoc">CAN送信ノード</div><div class="ttdef"><b>Definition</b> ICanBus.hpp:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_e21713259ba8923ecd13681a32accaa1.html">Com</a></li><li class="navelem"><a class="el" href="dir_daca1019e6623a4a9a8f5d0963b7bf6e.html">Can</a></li><li class="navelem"><a class="el" href="CanBusSpiPico_8hpp.html">CanBusSpiPico.hpp</a></li>
-    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>

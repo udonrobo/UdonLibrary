@@ -4,22 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>UdonLibrary: src/Udon/Types/ArrayView.hpp ソースファイル</title>
-<!--BEGIN PROJECT_ICON-->
-<link rel="icon" href="$projecticon" type="image/x-icon" />
-<!--END PROJECT_ICON-->
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<!--BEGIN COPY_CLIPBOARD-->
 <script type="text/javascript" src="clipboard.js"></script>
-<!--END COPY_CLIPBOARD-->
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,9 +23,11 @@
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
 <script type="text/javascript">
   DoxygenAwesomeDarkModeToggle.init()
   DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
 </script>
 </head>
 <body>
@@ -38,7 +36,7 @@
         <table cellspacing="0" cellpadding="0">
           <tbody>
             <tr id="projectrow">
-              <td id="projectlogo"><img alt="Logo" src="Udon.png" $logosize /></td>
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
               <td id="projectalign">
                 <div id="projectname">UdonLibrary<span
                     id="projectnumber">&#160;1.0.0</span>
@@ -49,7 +47,7 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.9.5 -->
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -61,11 +59,16 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索');
-  $(document).ready(function() { init_search(); });
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -79,7 +82,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('ArrayView_8hpp_source.html',''); initResizable(); });
+$(function(){initNavTree('ArrayView_8hpp_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -132,6 +135,7 @@ $(document).ready(function(){initNavTree('ArrayView_8hpp_source.html',''); initR
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html">   26</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classUdon_1_1ArrayView.html">ArrayView</a></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    {</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">public</span>:</div>
@@ -151,111 +155,152 @@ $(document).ready(function(){initNavTree('ArrayView_8hpp_source.html',''); initR
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#aefcbd888a8e68e57cf135da28b616aba">size_type</a> m_size;</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a26cfc7941a8c4f8abcf6eac570050d1d">   45</a></span>        <a class="code hl_function" href="classUdon_1_1ArrayView.html#a26cfc7941a8c4f8abcf6eac570050d1d">ArrayView</a>()</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            : m_data()</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            , m_size()</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        {</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        }</div>
+</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> N&gt;</div>
+<div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a4c11c2bae176d8903c97215b27370124">   52</a></span>        <a class="code hl_function" href="classUdon_1_1ArrayView.html#a4c11c2bae176d8903c97215b27370124">ArrayView</a>(<a class="code hl_typedef" href="classUdon_1_1ArrayView.html#ade4971648be35e171afed76ef30e0e18">value_type</a> (&amp;array)[N])</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            : m_data(array)</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            , m_size(N)</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        {</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }</div>
+</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="foldopen" id="foldopen00058" data-start="{" data-end="}">
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a4a6d521185ede67271f36241dcab2022">   58</a></span>        <a class="code hl_function" href="classUdon_1_1ArrayView.html#a4a6d521185ede67271f36241dcab2022">ArrayView</a>(<a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a23b99fe728d654132898dca9c8150c47">pointer</a> m_data, <span class="keyword">const</span> <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#aefcbd888a8e68e57cf135da28b616aba">size_type</a> count)</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            : m_data(m_data)</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            , m_size(count)</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        {</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        }</div>
+</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        template &lt;typename InputIterator, typename = typename std::enable_if&lt;std::is_convertible&lt;typename std::iterator_traits&lt;InputIterator&gt;::iterator_category, std::input_iterator_tag&gt;::value&gt;::type&gt;</div>
+<div class="foldopen" id="foldopen00065" data-start="{" data-end="}">
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#ab33578cafb9617d6aced52f52437a2e6">   65</a></span>        <a class="code hl_function" href="classUdon_1_1ArrayView.html#ab33578cafb9617d6aced52f52437a2e6">ArrayView</a>(InputIterator first, InputIterator last)</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            : m_data(first)</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            , m_size(<a class="code hl_namespace" href="namespacestd.html">std</a>::distance(first, last))</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        {</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        }</div>
+</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Other&gt;</div>
+<div class="foldopen" id="foldopen00072" data-start="{" data-end="}">
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a3e8ed320f2de9cc0a57b954eac35fc5e">   72</a></span>        <a class="code hl_function" href="classUdon_1_1ArrayView.html#a3e8ed320f2de9cc0a57b954eac35fc5e">ArrayView</a>(<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1ArrayView.html">ArrayView&lt;Other&gt;</a>&amp; other)</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            : m_data(other.<a class="code hl_function" href="classUdon_1_1ArrayView.html#af779b3b56579496fdeb6196aef2a30ed">data</a>())</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            , m_size(other.<a class="code hl_function" href="classUdon_1_1ArrayView.html#adbe636884a683d914dcf412c79afe452">size</a>())</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        {</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        }</div>
+</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        template &lt;typename Container, typename = decltype(std::declval&lt;Container&gt;().data(), std::declval&lt;Container&gt;().size())&gt;</div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a18fce9dfd016c1f0c57aea86e4615f56">   79</a></span>        <a class="code hl_function" href="classUdon_1_1ArrayView.html#a18fce9dfd016c1f0c57aea86e4615f56">ArrayView</a>(Container&amp;&amp; container)</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            : m_data(container.data())</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            , m_size(container.size())</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        {</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        }</div>
+</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="foldopen" id="foldopen00085" data-start="{" data-end="}">
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#af7a0d622569cda1d631f96d580acb5f0">   85</a></span>        <span class="keyword">explicit</span> <span class="keyword">operator</span> bool() const noexcept</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        {</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            <span class="keywordflow">return</span> m_size;</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        }</div>
+</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="foldopen" id="foldopen00090" data-start="{" data-end="}">
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#adbe636884a683d914dcf412c79afe452">   90</a></span>        <span class="keyword">constexpr</span> <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#aefcbd888a8e68e57cf135da28b616aba">size_type</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#adbe636884a683d914dcf412c79afe452">size</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            <span class="keywordflow">return</span> m_size;</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        }</div>
+</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="foldopen" id="foldopen00095" data-start="{" data-end="}">
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#af779b3b56579496fdeb6196aef2a30ed">   95</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a23b99fe728d654132898dca9c8150c47">pointer</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#af779b3b56579496fdeb6196aef2a30ed">data</a>()</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        {</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            <span class="keywordflow">return</span> m_data;</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        }</div>
+</div>
+<div class="foldopen" id="foldopen00099" data-start="{" data-end="}">
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a3941603c25584535e570601774a82e84">   99</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#aa6486d972ee1c153fb74158567c4d799">const_pointer</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a3941603c25584535e570601774a82e84">data</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <span class="keywordflow">return</span> m_data;</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        }</div>
+</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="foldopen" id="foldopen00104" data-start="{" data-end="}">
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a6d56820be1703300f551e36cd60cc307">  104</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a5993020bd906911e7278f5efa28db2dd">reference</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a6d56820be1703300f551e36cd60cc307">operator[]</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#aefcbd888a8e68e57cf135da28b616aba">size_type</a> index)</div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        {</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            <span class="keywordflow">return</span> m_data[index];</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        }</div>
+</div>
+<div class="foldopen" id="foldopen00108" data-start="{" data-end="}">
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a38a0b3cf9d2a074ceadb9e48db8785be">  108</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a98457e0904ab429371d08cfb12f99d65">const_reference</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a38a0b3cf9d2a074ceadb9e48db8785be">operator[]</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#aefcbd888a8e68e57cf135da28b616aba">size_type</a> index)<span class="keyword"> const</span></div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            <span class="keywordflow">return</span> m_data[index];</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        }</div>
+</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="foldopen" id="foldopen00113" data-start="{" data-end="}">
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#afec2dc57d99b0d2be7d43a410e7649db">  113</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a5993020bd906911e7278f5efa28db2dd">reference</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#afec2dc57d99b0d2be7d43a410e7649db">at</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#aefcbd888a8e68e57cf135da28b616aba">size_type</a> index)</div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        {</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            <span class="keywordflow">return</span> m_data[index];</div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        }</div>
+</div>
+<div class="foldopen" id="foldopen00117" data-start="{" data-end="}">
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#aa9528b20094080e8d160a1ee3569e262">  117</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a98457e0904ab429371d08cfb12f99d65">const_reference</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#aa9528b20094080e8d160a1ee3569e262">at</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#aefcbd888a8e68e57cf135da28b616aba">size_type</a> index)<span class="keyword"> const</span></div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            <span class="keywordflow">return</span> m_data[index];</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        }</div>
+</div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="foldopen" id="foldopen00122" data-start="{" data-end="}">
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a14981db6e4181f9a8aa8649f61a9dc94">  122</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a5993020bd906911e7278f5efa28db2dd">reference</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a14981db6e4181f9a8aa8649f61a9dc94">front</a>()</div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        {</div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            <span class="keywordflow">return</span> m_data[0];</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        }</div>
+</div>
+<div class="foldopen" id="foldopen00126" data-start="{" data-end="}">
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a4dda64e69d749176519eb836e7521863">  126</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a98457e0904ab429371d08cfb12f99d65">const_reference</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a4dda64e69d749176519eb836e7521863">front</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            <span class="keywordflow">return</span> m_data[0];</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        }</div>
+</div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="foldopen" id="foldopen00131" data-start="{" data-end="}">
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#ae34861015815d906887a7d10dbf02bd7">  131</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a5993020bd906911e7278f5efa28db2dd">reference</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#ae34861015815d906887a7d10dbf02bd7">back</a>()</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        {</div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            <span class="keywordflow">return</span> m_data[m_size - 1];</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        }</div>
+</div>
+<div class="foldopen" id="foldopen00135" data-start="{" data-end="}">
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a852c5413716f2ca3294917451d4a1a89">  135</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a98457e0904ab429371d08cfb12f99d65">const_reference</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a852c5413716f2ca3294917451d4a1a89">back</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>            <span class="keywordflow">return</span> m_data[m_size - 1];</div>
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        }</div>
+</div>
 <div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="foldopen" id="foldopen00140" data-start="{" data-end="}">
 <div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#ac4da26803fa8dddb3431240635b2bc80">  140</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classUdon_1_1ArrayView.html#ac4da26803fa8dddb3431240635b2bc80">empty</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>            <span class="keywordflow">return</span> m_size == 0;</div>
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        }</div>
+</div>
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="foldopen" id="foldopen00145" data-start="{" data-end="}">
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a492fc1cc05067a34008811dcff3566ef">  145</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a492fc1cc05067a34008811dcff3566ef">clear</a>()</div>
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        {</div>
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>            <a class="code hl_function" href="classUdon_1_1ArrayView.html#a32b92cd7754032b9393f2a7a5180db48">fill</a>(<a class="code hl_typedef" href="classUdon_1_1ArrayView.html#ade4971648be35e171afed76ef30e0e18">value_type</a>());</div>
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        }</div>
+</div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="foldopen" id="foldopen00150" data-start="{" data-end="}">
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a32b92cd7754032b9393f2a7a5180db48">  150</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a32b92cd7754032b9393f2a7a5180db48">fill</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#ade4971648be35e171afed76ef30e0e18">value_type</a>&amp; value)</div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        {</div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; v : *<span class="keyword">this</span>)</div>
@@ -263,7 +308,9 @@ $(document).ready(function(){initNavTree('ArrayView_8hpp_source.html',''); initR
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                v = value;</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            }</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        }</div>
+</div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="foldopen" id="foldopen00161" data-start="{" data-end="}">
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a1d6c6b67f447907c51c370186d45b453">  161</a></span>        <a class="code hl_class" href="classUdon_1_1ArrayView.html">ArrayView</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a1d6c6b67f447907c51c370186d45b453">removeFrontView</a>(<a class="code hl_typedef" href="classUdon_1_1ArrayView.html#aefcbd888a8e68e57cf135da28b616aba">size_type</a> count)<span class="keyword"> const</span></div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>            <span class="keywordflow">return</span> {</div>
@@ -271,10 +318,12 @@ $(document).ready(function(){initNavTree('ArrayView_8hpp_source.html',''); initR
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                m_size - count</div>
 <div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>            };</div>
 <div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        }</div>
+</div>
 <div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a96907962428623c362a5ccbca6128cc7">  172</a></span>        <a class="code hl_class" href="classUdon_1_1ArrayView.html">ArrayView</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a96907962428623c362a5ccbca6128cc7">removeBackView</a>(<a class="code hl_typedef" href="classUdon_1_1ArrayView.html#aefcbd888a8e68e57cf135da28b616aba">size_type</a> count) { <span class="keywordflow">return</span> { <a class="code hl_function" href="classUdon_1_1ArrayView.html#ae6027e5918a3eca5585ff2d6f248b25c">begin</a>(), m_size - count }; }</div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a182b1696ef3be5f8a0734eab635043ad">  173</a></span>        <a class="code hl_class" href="classUdon_1_1ArrayView.html">ArrayView</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a182b1696ef3be5f8a0734eab635043ad">removeBackView</a>(<a class="code hl_typedef" href="classUdon_1_1ArrayView.html#aefcbd888a8e68e57cf135da28b616aba">size_type</a> count)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> { <a class="code hl_function" href="classUdon_1_1ArrayView.html#ae6027e5918a3eca5585ff2d6f248b25c">begin</a>(), m_size - count }; }</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="foldopen" id="foldopen00179" data-start="{" data-end="}">
 <div class="line"><a id="l00179" name="l00179"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a6ed8ddc2154fd369484a8247b78ea7b7">  179</a></span>        <a class="code hl_class" href="classUdon_1_1ArrayView.html">ArrayView</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a6ed8ddc2154fd369484a8247b78ea7b7">subView</a>(<a class="code hl_typedef" href="classUdon_1_1ArrayView.html#aefcbd888a8e68e57cf135da28b616aba">size_type</a> beginIndex, <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#aefcbd888a8e68e57cf135da28b616aba">size_type</a> endIndex)<span class="keyword"> const</span></div>
 <div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>            <span class="keywordflow">return</span> {</div>
@@ -282,7 +331,9 @@ $(document).ready(function(){initNavTree('ArrayView_8hpp_source.html',''); initR
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                std::min(endIndex - beginIndex, m_size)</div>
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>            };</div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        }</div>
+</div>
 <div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="foldopen" id="foldopen00191" data-start="{" data-end="}">
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a74383fda4c8c2e79fdde0c6ebbeca144">  191</a></span>        <a class="code hl_class" href="classUdon_1_1ArrayView.html">ArrayView</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a74383fda4c8c2e79fdde0c6ebbeca144">subView</a>(<a class="code hl_typedef" href="classUdon_1_1ArrayView.html#aefcbd888a8e68e57cf135da28b616aba">size_type</a> beginIndex)<span class="keyword"> const</span></div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>            <span class="keywordflow">return</span> {</div>
@@ -290,7 +341,9 @@ $(document).ready(function(){initNavTree('ArrayView_8hpp_source.html',''); initR
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                std::min(m_size - beginIndex, m_size)</div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>            };</div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        }</div>
+</div>
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="foldopen" id="foldopen00202" data-start="{" data-end="}">
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#afb604b80ac37fff9c74614c7714e66ab">  202</a></span>        <a class="code hl_class" href="classUdon_1_1ArrayView.html">ArrayView</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#afb604b80ac37fff9c74614c7714e66ab">subViewUntil</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#ade4971648be35e171afed76ef30e0e18">value_type</a>&amp; terminate)<span class="keyword"> const</span></div>
 <div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>            <span class="keywordflow">return</span> {</div>
@@ -298,7 +351,9 @@ $(document).ready(function(){initNavTree('ArrayView_8hpp_source.html',''); initR
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>                std::find(<a class="code hl_function" href="classUdon_1_1ArrayView.html#a25cf8c052ff0ba5e0a0681eac9ef9695">cbegin</a>(), <a class="code hl_function" href="classUdon_1_1ArrayView.html#a5646ef917e5b79d0cd46a024fe901e7a">cend</a>(), terminate)</div>
 <div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>            };</div>
 <div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        }</div>
+</div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
+<div class="foldopen" id="foldopen00216" data-start="{" data-end="}">
 <div class="line"><a id="l00216" name="l00216"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a64a1e41d2d3558b4e3a8851bf482fce6">  216</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a64a1e41d2d3558b4e3a8851bf482fce6">startsWith</a>(<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1ArrayView.html">ArrayView</a>&amp; rhs)<span class="keyword"> const</span></div>
 <div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classUdon_1_1ArrayView.html#adbe636884a683d914dcf412c79afe452">size</a>() &gt;= rhs.<a class="code hl_function" href="classUdon_1_1ArrayView.html#adbe636884a683d914dcf412c79afe452">size</a>())</div>
@@ -310,7 +365,9 @@ $(document).ready(function(){initNavTree('ArrayView_8hpp_source.html',''); initR
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>            }</div>
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        }</div>
+</div>
 <div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="foldopen" id="foldopen00228" data-start="{" data-end="};">
 <div class="line"><a id="l00228" name="l00228"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#af89600313913853cdb574783daec3942">  228</a></span>        <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="classUdon_1_1ArrayView.html#af89600313913853cdb574783daec3942">operator==</a>(<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1ArrayView.html">ArrayView</a>&amp; lhs, <span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1ArrayView.html">ArrayView</a>&amp; rhs)</div>
 <div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        {</div>
 <div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>            <span class="keywordflow">if</span> (lhs.<a class="code hl_function" href="classUdon_1_1ArrayView.html#adbe636884a683d914dcf412c79afe452">size</a>() == rhs.<a class="code hl_function" href="classUdon_1_1ArrayView.html#adbe636884a683d914dcf412c79afe452">size</a>())</div>
@@ -322,68 +379,96 @@ $(document).ready(function(){initNavTree('ArrayView_8hpp_source.html',''); initR
 <div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            }</div>
 <div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        }</div>
+</div>
+<div class="foldopen" id="foldopen00239" data-start="{" data-end="};">
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a52227b2d2829120eed730927d79e1219">  239</a></span>        <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="classUdon_1_1ArrayView.html#a52227b2d2829120eed730927d79e1219">operator!=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1ArrayView.html">ArrayView</a>&amp; lhs, <span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1ArrayView.html">ArrayView</a>&amp; rhs)</div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        {</div>
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>            <span class="keywordflow">return</span> not(lhs == rhs);</div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        }</div>
+</div>
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
+<div class="foldopen" id="foldopen00244" data-start="{" data-end="}">
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#ae6027e5918a3eca5585ff2d6f248b25c">  244</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a0cdac2e4d003ca1bc9d0fe051fa0b4f5">iterator</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#ae6027e5918a3eca5585ff2d6f248b25c">begin</a>()</div>
 <div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        {</div>
 <div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>            <span class="keywordflow">return</span> { m_data };</div>
 <div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        }</div>
+</div>
+<div class="foldopen" id="foldopen00248" data-start="{" data-end="}">
 <div class="line"><a id="l00248" name="l00248"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#aadc764e6cf46ff552d9c3932c02af736">  248</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#ac6a346a41206e865df0bdcde47cc8922">const_iterator</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#aadc764e6cf46ff552d9c3932c02af736">begin</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>            <span class="keywordflow">return</span> { m_data };</div>
 <div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        }</div>
+</div>
 <div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span> </div>
+<div class="foldopen" id="foldopen00253" data-start="{" data-end="}">
 <div class="line"><a id="l00253" name="l00253"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a5b4785111ee3a5e890f85ed6ed54281b">  253</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a0cdac2e4d003ca1bc9d0fe051fa0b4f5">iterator</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a5b4785111ee3a5e890f85ed6ed54281b">end</a>()</div>
 <div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        {</div>
 <div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>            <span class="keywordflow">return</span> { m_data + m_size };</div>
 <div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        }</div>
+</div>
+<div class="foldopen" id="foldopen00257" data-start="{" data-end="}">
 <div class="line"><a id="l00257" name="l00257"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a35dcbacc8e960cadd20b3caf1ce84dce">  257</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#ac6a346a41206e865df0bdcde47cc8922">const_iterator</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a35dcbacc8e960cadd20b3caf1ce84dce">end</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>            <span class="keywordflow">return</span> { m_data + m_size };</div>
 <div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        }</div>
+</div>
 <div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
+<div class="foldopen" id="foldopen00262" data-start="{" data-end="}">
 <div class="line"><a id="l00262" name="l00262"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a25cf8c052ff0ba5e0a0681eac9ef9695">  262</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#ac6a346a41206e865df0bdcde47cc8922">const_iterator</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a25cf8c052ff0ba5e0a0681eac9ef9695">cbegin</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>            <span class="keywordflow">return</span> { m_data };</div>
 <div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        }</div>
+</div>
 <div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
+<div class="foldopen" id="foldopen00267" data-start="{" data-end="}">
 <div class="line"><a id="l00267" name="l00267"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a5646ef917e5b79d0cd46a024fe901e7a">  267</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#ac6a346a41206e865df0bdcde47cc8922">const_iterator</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a5646ef917e5b79d0cd46a024fe901e7a">cend</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>            <span class="keywordflow">return</span> { m_data + m_size };</div>
 <div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        }</div>
+</div>
 <div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
+<div class="foldopen" id="foldopen00272" data-start="{" data-end="}">
 <div class="line"><a id="l00272" name="l00272"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a7e0be9733e368883cd41cd94f2839a2c">  272</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a5cc393a9967356ff7c0114d4d2f9d71f">const_reverse_iterator</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a7e0be9733e368883cd41cd94f2839a2c">rbegin</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>            <span class="keywordflow">return</span> <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a5cc393a9967356ff7c0114d4d2f9d71f">const_reverse_iterator</a>{ <a class="code hl_function" href="classUdon_1_1ArrayView.html#a5b4785111ee3a5e890f85ed6ed54281b">end</a>() };</div>
 <div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        }</div>
+</div>
+<div class="foldopen" id="foldopen00276" data-start="{" data-end="}">
 <div class="line"><a id="l00276" name="l00276"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a67e90ccf337afe6623ec2d9f2b16bc2d">  276</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#aaf0a77375cb2d5fcc06ebd8675278a13">reverse_iterator</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a67e90ccf337afe6623ec2d9f2b16bc2d">rbegin</a>()</div>
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        {</div>
 <div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>            <span class="keywordflow">return</span> <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#aaf0a77375cb2d5fcc06ebd8675278a13">reverse_iterator</a>{ <a class="code hl_function" href="classUdon_1_1ArrayView.html#a5b4785111ee3a5e890f85ed6ed54281b">end</a>() };</div>
 <div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        }</div>
+</div>
 <div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
+<div class="foldopen" id="foldopen00281" data-start="{" data-end="}">
 <div class="line"><a id="l00281" name="l00281"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a0c4146adb77079449bc59b2db2589082">  281</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a5cc393a9967356ff7c0114d4d2f9d71f">const_reverse_iterator</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a0c4146adb77079449bc59b2db2589082">rend</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>            <span class="keywordflow">return</span> <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a5cc393a9967356ff7c0114d4d2f9d71f">const_reverse_iterator</a>{ <a class="code hl_function" href="classUdon_1_1ArrayView.html#ae6027e5918a3eca5585ff2d6f248b25c">begin</a>() };</div>
 <div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        }</div>
+</div>
+<div class="foldopen" id="foldopen00285" data-start="{" data-end="}">
 <div class="line"><a id="l00285" name="l00285"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#aaad861e18b62c23be7497e1a76b54d8b">  285</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#aaf0a77375cb2d5fcc06ebd8675278a13">reverse_iterator</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#aaad861e18b62c23be7497e1a76b54d8b">rend</a>()</div>
 <div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        {</div>
 <div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>            <span class="keywordflow">return</span> <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#aaf0a77375cb2d5fcc06ebd8675278a13">reverse_iterator</a>{ <a class="code hl_function" href="classUdon_1_1ArrayView.html#ae6027e5918a3eca5585ff2d6f248b25c">begin</a>() };</div>
 <div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        }</div>
+</div>
 <div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
+<div class="foldopen" id="foldopen00290" data-start="{" data-end="}">
 <div class="line"><a id="l00290" name="l00290"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a50ba31e1880f4d1f91fcc225e210dd20">  290</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a5cc393a9967356ff7c0114d4d2f9d71f">const_reverse_iterator</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#a50ba31e1880f4d1f91fcc225e210dd20">crbegin</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>            <span class="keywordflow">return</span> <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a5cc393a9967356ff7c0114d4d2f9d71f">const_reverse_iterator</a>{ <a class="code hl_function" href="classUdon_1_1ArrayView.html#a5646ef917e5b79d0cd46a024fe901e7a">cend</a>() };</div>
 <div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>        }</div>
+</div>
 <div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span> </div>
+<div class="foldopen" id="foldopen00295" data-start="{" data-end="}">
 <div class="line"><a id="l00295" name="l00295"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#aec04ae9da9478a921d615348d23115d2">  295</a></span>        <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a5cc393a9967356ff7c0114d4d2f9d71f">const_reverse_iterator</a> <a class="code hl_function" href="classUdon_1_1ArrayView.html#aec04ae9da9478a921d615348d23115d2">crend</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>            <span class="keywordflow">return</span> <a class="code hl_typedef" href="classUdon_1_1ArrayView.html#a5cc393a9967356ff7c0114d4d2f9d71f">const_reverse_iterator</a>{ <a class="code hl_function" href="classUdon_1_1ArrayView.html#a25cf8c052ff0ba5e0a0681eac9ef9695">cbegin</a>() };</div>
 <div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>        }</div>
+</div>
 <div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span> </div>
 <div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span><span class="preprocessor">#if UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE</span></div>
+<div class="foldopen" id="foldopen00301" data-start="{" data-end="};">
 <div class="line"><a id="l00301" name="l00301"></a><span class="lineno"><a class="line" href="classUdon_1_1ArrayView.html#a1c1ad2b1880f1b63fa7804694cf53382">  301</a></span>        <span class="keyword">friend</span> std::ostream&amp; <a class="code hl_friend" href="classUdon_1_1ArrayView.html#a1c1ad2b1880f1b63fa7804694cf53382">operator&lt;&lt;</a>(std::ostream&amp; ostm, <span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1ArrayView.html">ArrayView</a>&amp; rhs)</div>
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>        {</div>
 <div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>            <span class="keywordtype">bool</span> isFirst = <span class="keyword">true</span>;</div>
@@ -401,6 +486,7 @@ $(document).ready(function(){initNavTree('ArrayView_8hpp_source.html',''); initR
 <div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>            }</div>
 <div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>            <span class="keywordflow">return</span> ostm;</div>
 <div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>        }</div>
+</div>
 <div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span> </div>
 <div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span><span class="preprocessor">#ifdef ARDUINO</span></div>
@@ -419,72 +505,73 @@ $(document).ready(function(){initNavTree('ArrayView_8hpp_source.html',''); initR
 <div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>        }</div>
 <div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    };</div>
+</div>
 <div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span> </div>
 <div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>}    <span class="comment">// namespace Udon</span></div>
 <div class="ttc" id="aEnableSTL_8hpp_html"><div class="ttname"><a href="EnableSTL_8hpp.html">EnableSTL.hpp</a></div></div>
 <div class="ttc" id="aPlatform_8hpp_html"><div class="ttname"><a href="Platform_8hpp.html">Platform.hpp</a></div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html"><div class="ttname"><a href="classUdon_1_1ArrayView.html">Udon::ArrayView</a></div><div class="ttdoc">配列参照クラス</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:27</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a0c4146adb77079449bc59b2db2589082"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a0c4146adb77079449bc59b2db2589082">Udon::ArrayView::rend</a></div><div class="ttdeci">const_reverse_iterator rend() const</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:281</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a0cdac2e4d003ca1bc9d0fe051fa0b4f5"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a0cdac2e4d003ca1bc9d0fe051fa0b4f5">Udon::ArrayView::iterator</a></div><div class="ttdeci">T * iterator</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:35</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a14981db6e4181f9a8aa8649f61a9dc94"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a14981db6e4181f9a8aa8649f61a9dc94">Udon::ArrayView::front</a></div><div class="ttdeci">reference front()</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:122</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a182b1696ef3be5f8a0734eab635043ad"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a182b1696ef3be5f8a0734eab635043ad">Udon::ArrayView::removeBackView</a></div><div class="ttdeci">ArrayView removeBackView(size_type count) const</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:173</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a18fce9dfd016c1f0c57aea86e4615f56"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a18fce9dfd016c1f0c57aea86e4615f56">Udon::ArrayView::ArrayView</a></div><div class="ttdeci">ArrayView(Container &amp;&amp;container)</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:79</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a1c1ad2b1880f1b63fa7804694cf53382"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a1c1ad2b1880f1b63fa7804694cf53382">Udon::ArrayView::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;ostm, const ArrayView &amp;rhs)</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:301</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a1d6c6b67f447907c51c370186d45b453"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a1d6c6b67f447907c51c370186d45b453">Udon::ArrayView::removeFrontView</a></div><div class="ttdeci">ArrayView removeFrontView(size_type count) const</div><div class="ttdoc">先頭から指定要素削除したビューを作成する。</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:161</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a23b99fe728d654132898dca9c8150c47"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a23b99fe728d654132898dca9c8150c47">Udon::ArrayView::pointer</a></div><div class="ttdeci">T * pointer</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:33</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a25cf8c052ff0ba5e0a0681eac9ef9695"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a25cf8c052ff0ba5e0a0681eac9ef9695">Udon::ArrayView::cbegin</a></div><div class="ttdeci">const_iterator cbegin() const</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:262</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a26cfc7941a8c4f8abcf6eac570050d1d"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a26cfc7941a8c4f8abcf6eac570050d1d">Udon::ArrayView::ArrayView</a></div><div class="ttdeci">ArrayView()</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:45</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a32b92cd7754032b9393f2a7a5180db48"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a32b92cd7754032b9393f2a7a5180db48">Udon::ArrayView::fill</a></div><div class="ttdeci">void fill(const value_type &amp;value)</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:150</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a35dcbacc8e960cadd20b3caf1ce84dce"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a35dcbacc8e960cadd20b3caf1ce84dce">Udon::ArrayView::end</a></div><div class="ttdeci">const_iterator end() const</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:257</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a38a0b3cf9d2a074ceadb9e48db8785be"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a38a0b3cf9d2a074ceadb9e48db8785be">Udon::ArrayView::operator[]</a></div><div class="ttdeci">const_reference operator[](const size_type index) const</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:108</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a3941603c25584535e570601774a82e84"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a3941603c25584535e570601774a82e84">Udon::ArrayView::data</a></div><div class="ttdeci">const_pointer data() const</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:99</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a3e8ed320f2de9cc0a57b954eac35fc5e"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a3e8ed320f2de9cc0a57b954eac35fc5e">Udon::ArrayView::ArrayView</a></div><div class="ttdeci">ArrayView(const ArrayView&lt; Other &gt; &amp;other)</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:72</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a492fc1cc05067a34008811dcff3566ef"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a492fc1cc05067a34008811dcff3566ef">Udon::ArrayView::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:145</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a4a6d521185ede67271f36241dcab2022"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a4a6d521185ede67271f36241dcab2022">Udon::ArrayView::ArrayView</a></div><div class="ttdeci">ArrayView(pointer m_data, const size_type count)</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:58</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a4c11c2bae176d8903c97215b27370124"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a4c11c2bae176d8903c97215b27370124">Udon::ArrayView::ArrayView</a></div><div class="ttdeci">ArrayView(value_type(&amp;array)[N])</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:52</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a4dda64e69d749176519eb836e7521863"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a4dda64e69d749176519eb836e7521863">Udon::ArrayView::front</a></div><div class="ttdeci">const_reference front() const</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:126</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a50ba31e1880f4d1f91fcc225e210dd20"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a50ba31e1880f4d1f91fcc225e210dd20">Udon::ArrayView::crbegin</a></div><div class="ttdeci">const_reverse_iterator crbegin() const</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:290</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a52227b2d2829120eed730927d79e1219"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a52227b2d2829120eed730927d79e1219">Udon::ArrayView::operator!=</a></div><div class="ttdeci">friend bool operator!=(const ArrayView &amp;lhs, const ArrayView &amp;rhs)</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:239</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a5646ef917e5b79d0cd46a024fe901e7a"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a5646ef917e5b79d0cd46a024fe901e7a">Udon::ArrayView::cend</a></div><div class="ttdeci">const_iterator cend() const</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:267</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a5993020bd906911e7278f5efa28db2dd"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a5993020bd906911e7278f5efa28db2dd">Udon::ArrayView::reference</a></div><div class="ttdeci">T &amp; reference</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:31</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a5b4785111ee3a5e890f85ed6ed54281b"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a5b4785111ee3a5e890f85ed6ed54281b">Udon::ArrayView::end</a></div><div class="ttdeci">iterator end()</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:253</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a5cc393a9967356ff7c0114d4d2f9d71f"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a5cc393a9967356ff7c0114d4d2f9d71f">Udon::ArrayView::const_reverse_iterator</a></div><div class="ttdeci">std::reverse_iterator&lt; const_iterator &gt; const_reverse_iterator</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:38</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a64a1e41d2d3558b4e3a8851bf482fce6"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a64a1e41d2d3558b4e3a8851bf482fce6">Udon::ArrayView::startsWith</a></div><div class="ttdeci">bool startsWith(const ArrayView &amp;rhs) const</div><div class="ttdoc">自身が指定のビューから始まるかどうか</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:216</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a67e90ccf337afe6623ec2d9f2b16bc2d"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a67e90ccf337afe6623ec2d9f2b16bc2d">Udon::ArrayView::rbegin</a></div><div class="ttdeci">reverse_iterator rbegin()</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:276</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a6d56820be1703300f551e36cd60cc307"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a6d56820be1703300f551e36cd60cc307">Udon::ArrayView::operator[]</a></div><div class="ttdeci">reference operator[](const size_type index)</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:104</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a6ed8ddc2154fd369484a8247b78ea7b7"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a6ed8ddc2154fd369484a8247b78ea7b7">Udon::ArrayView::subView</a></div><div class="ttdeci">ArrayView subView(size_type beginIndex, size_type endIndex) const</div><div class="ttdoc">指定された範囲からビューを作成する。</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:179</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a74383fda4c8c2e79fdde0c6ebbeca144"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a74383fda4c8c2e79fdde0c6ebbeca144">Udon::ArrayView::subView</a></div><div class="ttdeci">ArrayView subView(size_type beginIndex) const</div><div class="ttdoc">指定された範囲からビューを作成する。</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:191</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a7e0be9733e368883cd41cd94f2839a2c"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a7e0be9733e368883cd41cd94f2839a2c">Udon::ArrayView::rbegin</a></div><div class="ttdeci">const_reverse_iterator rbegin() const</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:272</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a852c5413716f2ca3294917451d4a1a89"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a852c5413716f2ca3294917451d4a1a89">Udon::ArrayView::back</a></div><div class="ttdeci">const_reference back() const</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:135</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a96907962428623c362a5ccbca6128cc7"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a96907962428623c362a5ccbca6128cc7">Udon::ArrayView::removeBackView</a></div><div class="ttdeci">ArrayView removeBackView(size_type count)</div><div class="ttdoc">末尾から指定要素削除したビューを作成する。</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:172</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_a98457e0904ab429371d08cfb12f99d65"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a98457e0904ab429371d08cfb12f99d65">Udon::ArrayView::const_reference</a></div><div class="ttdeci">const T &amp; const_reference</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:32</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_aa6486d972ee1c153fb74158567c4d799"><div class="ttname"><a href="classUdon_1_1ArrayView.html#aa6486d972ee1c153fb74158567c4d799">Udon::ArrayView::const_pointer</a></div><div class="ttdeci">const T * const_pointer</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:34</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_aa9528b20094080e8d160a1ee3569e262"><div class="ttname"><a href="classUdon_1_1ArrayView.html#aa9528b20094080e8d160a1ee3569e262">Udon::ArrayView::at</a></div><div class="ttdeci">const_reference at(const size_type index) const</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:117</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_aaad861e18b62c23be7497e1a76b54d8b"><div class="ttname"><a href="classUdon_1_1ArrayView.html#aaad861e18b62c23be7497e1a76b54d8b">Udon::ArrayView::rend</a></div><div class="ttdeci">reverse_iterator rend()</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:285</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_aadc764e6cf46ff552d9c3932c02af736"><div class="ttname"><a href="classUdon_1_1ArrayView.html#aadc764e6cf46ff552d9c3932c02af736">Udon::ArrayView::begin</a></div><div class="ttdeci">const_iterator begin() const</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:248</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_aaf0a77375cb2d5fcc06ebd8675278a13"><div class="ttname"><a href="classUdon_1_1ArrayView.html#aaf0a77375cb2d5fcc06ebd8675278a13">Udon::ArrayView::reverse_iterator</a></div><div class="ttdeci">std::reverse_iterator&lt; iterator &gt; reverse_iterator</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:37</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_ab33578cafb9617d6aced52f52437a2e6"><div class="ttname"><a href="classUdon_1_1ArrayView.html#ab33578cafb9617d6aced52f52437a2e6">Udon::ArrayView::ArrayView</a></div><div class="ttdeci">ArrayView(InputIterator first, InputIterator last)</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:65</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_ac4da26803fa8dddb3431240635b2bc80"><div class="ttname"><a href="classUdon_1_1ArrayView.html#ac4da26803fa8dddb3431240635b2bc80">Udon::ArrayView::empty</a></div><div class="ttdeci">bool empty() const</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:140</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_ac6a346a41206e865df0bdcde47cc8922"><div class="ttname"><a href="classUdon_1_1ArrayView.html#ac6a346a41206e865df0bdcde47cc8922">Udon::ArrayView::const_iterator</a></div><div class="ttdeci">const T * const_iterator</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:36</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_adbe636884a683d914dcf412c79afe452"><div class="ttname"><a href="classUdon_1_1ArrayView.html#adbe636884a683d914dcf412c79afe452">Udon::ArrayView::size</a></div><div class="ttdeci">constexpr size_type size() const</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:90</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_ade4971648be35e171afed76ef30e0e18"><div class="ttname"><a href="classUdon_1_1ArrayView.html#ade4971648be35e171afed76ef30e0e18">Udon::ArrayView::value_type</a></div><div class="ttdeci">T value_type</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:30</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_ae34861015815d906887a7d10dbf02bd7"><div class="ttname"><a href="classUdon_1_1ArrayView.html#ae34861015815d906887a7d10dbf02bd7">Udon::ArrayView::back</a></div><div class="ttdeci">reference back()</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:131</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_ae6027e5918a3eca5585ff2d6f248b25c"><div class="ttname"><a href="classUdon_1_1ArrayView.html#ae6027e5918a3eca5585ff2d6f248b25c">Udon::ArrayView::begin</a></div><div class="ttdeci">iterator begin()</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:244</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_aec04ae9da9478a921d615348d23115d2"><div class="ttname"><a href="classUdon_1_1ArrayView.html#aec04ae9da9478a921d615348d23115d2">Udon::ArrayView::crend</a></div><div class="ttdeci">const_reverse_iterator crend() const</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:295</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_aefcbd888a8e68e57cf135da28b616aba"><div class="ttname"><a href="classUdon_1_1ArrayView.html#aefcbd888a8e68e57cf135da28b616aba">Udon::ArrayView::size_type</a></div><div class="ttdeci">size_t size_type</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:29</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_af779b3b56579496fdeb6196aef2a30ed"><div class="ttname"><a href="classUdon_1_1ArrayView.html#af779b3b56579496fdeb6196aef2a30ed">Udon::ArrayView::data</a></div><div class="ttdeci">pointer data()</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:95</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_af89600313913853cdb574783daec3942"><div class="ttname"><a href="classUdon_1_1ArrayView.html#af89600313913853cdb574783daec3942">Udon::ArrayView::operator==</a></div><div class="ttdeci">friend bool operator==(const ArrayView &amp;lhs, const ArrayView &amp;rhs)</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:228</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_afb604b80ac37fff9c74614c7714e66ab"><div class="ttname"><a href="classUdon_1_1ArrayView.html#afb604b80ac37fff9c74614c7714e66ab">Udon::ArrayView::subViewUntil</a></div><div class="ttdeci">ArrayView subViewUntil(const value_type &amp;terminate) const</div><div class="ttdoc">特定の値まで検索し、そこまでの範囲の一つ手前までをビューとする。</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:202</div></div>
-<div class="ttc" id="aclassUdon_1_1ArrayView_html_afec2dc57d99b0d2be7d43a410e7649db"><div class="ttname"><a href="classUdon_1_1ArrayView.html#afec2dc57d99b0d2be7d43a410e7649db">Udon::ArrayView::at</a></div><div class="ttdeci">reference at(const size_type index)</div><div class="ttdef"><b>Definition:</b> ArrayView.hpp:113</div></div>
-<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition:</b> Bit.hpp:12</div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition:</b> Typedef.hpp:91</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html"><div class="ttname"><a href="classUdon_1_1ArrayView.html">Udon::ArrayView</a></div><div class="ttdoc">配列参照クラス</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:27</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a0c4146adb77079449bc59b2db2589082"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a0c4146adb77079449bc59b2db2589082">Udon::ArrayView::rend</a></div><div class="ttdeci">const_reverse_iterator rend() const</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:281</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a0cdac2e4d003ca1bc9d0fe051fa0b4f5"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a0cdac2e4d003ca1bc9d0fe051fa0b4f5">Udon::ArrayView::iterator</a></div><div class="ttdeci">T * iterator</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:35</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a14981db6e4181f9a8aa8649f61a9dc94"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a14981db6e4181f9a8aa8649f61a9dc94">Udon::ArrayView::front</a></div><div class="ttdeci">reference front()</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:122</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a182b1696ef3be5f8a0734eab635043ad"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a182b1696ef3be5f8a0734eab635043ad">Udon::ArrayView::removeBackView</a></div><div class="ttdeci">ArrayView removeBackView(size_type count) const</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:173</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a18fce9dfd016c1f0c57aea86e4615f56"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a18fce9dfd016c1f0c57aea86e4615f56">Udon::ArrayView::ArrayView</a></div><div class="ttdeci">ArrayView(Container &amp;&amp;container)</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:79</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a1c1ad2b1880f1b63fa7804694cf53382"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a1c1ad2b1880f1b63fa7804694cf53382">Udon::ArrayView::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;ostm, const ArrayView &amp;rhs)</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:301</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a1d6c6b67f447907c51c370186d45b453"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a1d6c6b67f447907c51c370186d45b453">Udon::ArrayView::removeFrontView</a></div><div class="ttdeci">ArrayView removeFrontView(size_type count) const</div><div class="ttdoc">先頭から指定要素削除したビューを作成する。</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:161</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a23b99fe728d654132898dca9c8150c47"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a23b99fe728d654132898dca9c8150c47">Udon::ArrayView::pointer</a></div><div class="ttdeci">T * pointer</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:33</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a25cf8c052ff0ba5e0a0681eac9ef9695"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a25cf8c052ff0ba5e0a0681eac9ef9695">Udon::ArrayView::cbegin</a></div><div class="ttdeci">const_iterator cbegin() const</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:262</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a26cfc7941a8c4f8abcf6eac570050d1d"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a26cfc7941a8c4f8abcf6eac570050d1d">Udon::ArrayView::ArrayView</a></div><div class="ttdeci">ArrayView()</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:45</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a32b92cd7754032b9393f2a7a5180db48"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a32b92cd7754032b9393f2a7a5180db48">Udon::ArrayView::fill</a></div><div class="ttdeci">void fill(const value_type &amp;value)</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:150</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a35dcbacc8e960cadd20b3caf1ce84dce"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a35dcbacc8e960cadd20b3caf1ce84dce">Udon::ArrayView::end</a></div><div class="ttdeci">const_iterator end() const</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:257</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a38a0b3cf9d2a074ceadb9e48db8785be"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a38a0b3cf9d2a074ceadb9e48db8785be">Udon::ArrayView::operator[]</a></div><div class="ttdeci">const_reference operator[](const size_type index) const</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:108</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a3941603c25584535e570601774a82e84"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a3941603c25584535e570601774a82e84">Udon::ArrayView::data</a></div><div class="ttdeci">const_pointer data() const</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:99</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a3e8ed320f2de9cc0a57b954eac35fc5e"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a3e8ed320f2de9cc0a57b954eac35fc5e">Udon::ArrayView::ArrayView</a></div><div class="ttdeci">ArrayView(const ArrayView&lt; Other &gt; &amp;other)</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:72</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a492fc1cc05067a34008811dcff3566ef"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a492fc1cc05067a34008811dcff3566ef">Udon::ArrayView::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:145</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a4a6d521185ede67271f36241dcab2022"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a4a6d521185ede67271f36241dcab2022">Udon::ArrayView::ArrayView</a></div><div class="ttdeci">ArrayView(pointer m_data, const size_type count)</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:58</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a4c11c2bae176d8903c97215b27370124"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a4c11c2bae176d8903c97215b27370124">Udon::ArrayView::ArrayView</a></div><div class="ttdeci">ArrayView(value_type(&amp;array)[N])</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:52</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a4dda64e69d749176519eb836e7521863"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a4dda64e69d749176519eb836e7521863">Udon::ArrayView::front</a></div><div class="ttdeci">const_reference front() const</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:126</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a50ba31e1880f4d1f91fcc225e210dd20"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a50ba31e1880f4d1f91fcc225e210dd20">Udon::ArrayView::crbegin</a></div><div class="ttdeci">const_reverse_iterator crbegin() const</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:290</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a52227b2d2829120eed730927d79e1219"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a52227b2d2829120eed730927d79e1219">Udon::ArrayView::operator!=</a></div><div class="ttdeci">friend bool operator!=(const ArrayView &amp;lhs, const ArrayView &amp;rhs)</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:239</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a5646ef917e5b79d0cd46a024fe901e7a"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a5646ef917e5b79d0cd46a024fe901e7a">Udon::ArrayView::cend</a></div><div class="ttdeci">const_iterator cend() const</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:267</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a5993020bd906911e7278f5efa28db2dd"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a5993020bd906911e7278f5efa28db2dd">Udon::ArrayView::reference</a></div><div class="ttdeci">T &amp; reference</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:31</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a5b4785111ee3a5e890f85ed6ed54281b"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a5b4785111ee3a5e890f85ed6ed54281b">Udon::ArrayView::end</a></div><div class="ttdeci">iterator end()</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:253</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a5cc393a9967356ff7c0114d4d2f9d71f"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a5cc393a9967356ff7c0114d4d2f9d71f">Udon::ArrayView::const_reverse_iterator</a></div><div class="ttdeci">std::reverse_iterator&lt; const_iterator &gt; const_reverse_iterator</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:38</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a64a1e41d2d3558b4e3a8851bf482fce6"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a64a1e41d2d3558b4e3a8851bf482fce6">Udon::ArrayView::startsWith</a></div><div class="ttdeci">bool startsWith(const ArrayView &amp;rhs) const</div><div class="ttdoc">自身が指定のビューから始まるかどうか</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:216</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a67e90ccf337afe6623ec2d9f2b16bc2d"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a67e90ccf337afe6623ec2d9f2b16bc2d">Udon::ArrayView::rbegin</a></div><div class="ttdeci">reverse_iterator rbegin()</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:276</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a6d56820be1703300f551e36cd60cc307"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a6d56820be1703300f551e36cd60cc307">Udon::ArrayView::operator[]</a></div><div class="ttdeci">reference operator[](const size_type index)</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:104</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a6ed8ddc2154fd369484a8247b78ea7b7"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a6ed8ddc2154fd369484a8247b78ea7b7">Udon::ArrayView::subView</a></div><div class="ttdeci">ArrayView subView(size_type beginIndex, size_type endIndex) const</div><div class="ttdoc">指定された範囲からビューを作成する。</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:179</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a74383fda4c8c2e79fdde0c6ebbeca144"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a74383fda4c8c2e79fdde0c6ebbeca144">Udon::ArrayView::subView</a></div><div class="ttdeci">ArrayView subView(size_type beginIndex) const</div><div class="ttdoc">指定された範囲からビューを作成する。</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:191</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a7e0be9733e368883cd41cd94f2839a2c"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a7e0be9733e368883cd41cd94f2839a2c">Udon::ArrayView::rbegin</a></div><div class="ttdeci">const_reverse_iterator rbegin() const</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:272</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a852c5413716f2ca3294917451d4a1a89"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a852c5413716f2ca3294917451d4a1a89">Udon::ArrayView::back</a></div><div class="ttdeci">const_reference back() const</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:135</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a96907962428623c362a5ccbca6128cc7"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a96907962428623c362a5ccbca6128cc7">Udon::ArrayView::removeBackView</a></div><div class="ttdeci">ArrayView removeBackView(size_type count)</div><div class="ttdoc">末尾から指定要素削除したビューを作成する。</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:172</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_a98457e0904ab429371d08cfb12f99d65"><div class="ttname"><a href="classUdon_1_1ArrayView.html#a98457e0904ab429371d08cfb12f99d65">Udon::ArrayView::const_reference</a></div><div class="ttdeci">const T &amp; const_reference</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:32</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_aa6486d972ee1c153fb74158567c4d799"><div class="ttname"><a href="classUdon_1_1ArrayView.html#aa6486d972ee1c153fb74158567c4d799">Udon::ArrayView::const_pointer</a></div><div class="ttdeci">const T * const_pointer</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:34</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_aa9528b20094080e8d160a1ee3569e262"><div class="ttname"><a href="classUdon_1_1ArrayView.html#aa9528b20094080e8d160a1ee3569e262">Udon::ArrayView::at</a></div><div class="ttdeci">const_reference at(const size_type index) const</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:117</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_aaad861e18b62c23be7497e1a76b54d8b"><div class="ttname"><a href="classUdon_1_1ArrayView.html#aaad861e18b62c23be7497e1a76b54d8b">Udon::ArrayView::rend</a></div><div class="ttdeci">reverse_iterator rend()</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:285</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_aadc764e6cf46ff552d9c3932c02af736"><div class="ttname"><a href="classUdon_1_1ArrayView.html#aadc764e6cf46ff552d9c3932c02af736">Udon::ArrayView::begin</a></div><div class="ttdeci">const_iterator begin() const</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:248</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_aaf0a77375cb2d5fcc06ebd8675278a13"><div class="ttname"><a href="classUdon_1_1ArrayView.html#aaf0a77375cb2d5fcc06ebd8675278a13">Udon::ArrayView::reverse_iterator</a></div><div class="ttdeci">std::reverse_iterator&lt; iterator &gt; reverse_iterator</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:37</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_ab33578cafb9617d6aced52f52437a2e6"><div class="ttname"><a href="classUdon_1_1ArrayView.html#ab33578cafb9617d6aced52f52437a2e6">Udon::ArrayView::ArrayView</a></div><div class="ttdeci">ArrayView(InputIterator first, InputIterator last)</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:65</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_ac4da26803fa8dddb3431240635b2bc80"><div class="ttname"><a href="classUdon_1_1ArrayView.html#ac4da26803fa8dddb3431240635b2bc80">Udon::ArrayView::empty</a></div><div class="ttdeci">bool empty() const</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:140</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_ac6a346a41206e865df0bdcde47cc8922"><div class="ttname"><a href="classUdon_1_1ArrayView.html#ac6a346a41206e865df0bdcde47cc8922">Udon::ArrayView::const_iterator</a></div><div class="ttdeci">const T * const_iterator</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:36</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_adbe636884a683d914dcf412c79afe452"><div class="ttname"><a href="classUdon_1_1ArrayView.html#adbe636884a683d914dcf412c79afe452">Udon::ArrayView::size</a></div><div class="ttdeci">constexpr size_type size() const</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:90</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_ade4971648be35e171afed76ef30e0e18"><div class="ttname"><a href="classUdon_1_1ArrayView.html#ade4971648be35e171afed76ef30e0e18">Udon::ArrayView::value_type</a></div><div class="ttdeci">T value_type</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:30</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_ae34861015815d906887a7d10dbf02bd7"><div class="ttname"><a href="classUdon_1_1ArrayView.html#ae34861015815d906887a7d10dbf02bd7">Udon::ArrayView::back</a></div><div class="ttdeci">reference back()</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:131</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_ae6027e5918a3eca5585ff2d6f248b25c"><div class="ttname"><a href="classUdon_1_1ArrayView.html#ae6027e5918a3eca5585ff2d6f248b25c">Udon::ArrayView::begin</a></div><div class="ttdeci">iterator begin()</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:244</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_aec04ae9da9478a921d615348d23115d2"><div class="ttname"><a href="classUdon_1_1ArrayView.html#aec04ae9da9478a921d615348d23115d2">Udon::ArrayView::crend</a></div><div class="ttdeci">const_reverse_iterator crend() const</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:295</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_aefcbd888a8e68e57cf135da28b616aba"><div class="ttname"><a href="classUdon_1_1ArrayView.html#aefcbd888a8e68e57cf135da28b616aba">Udon::ArrayView::size_type</a></div><div class="ttdeci">size_t size_type</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:29</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_af779b3b56579496fdeb6196aef2a30ed"><div class="ttname"><a href="classUdon_1_1ArrayView.html#af779b3b56579496fdeb6196aef2a30ed">Udon::ArrayView::data</a></div><div class="ttdeci">pointer data()</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:95</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_af89600313913853cdb574783daec3942"><div class="ttname"><a href="classUdon_1_1ArrayView.html#af89600313913853cdb574783daec3942">Udon::ArrayView::operator==</a></div><div class="ttdeci">friend bool operator==(const ArrayView &amp;lhs, const ArrayView &amp;rhs)</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:228</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_afb604b80ac37fff9c74614c7714e66ab"><div class="ttname"><a href="classUdon_1_1ArrayView.html#afb604b80ac37fff9c74614c7714e66ab">Udon::ArrayView::subViewUntil</a></div><div class="ttdeci">ArrayView subViewUntil(const value_type &amp;terminate) const</div><div class="ttdoc">特定の値まで検索し、そこまでの範囲の一つ手前までをビューとする。</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:202</div></div>
+<div class="ttc" id="aclassUdon_1_1ArrayView_html_afec2dc57d99b0d2be7d43a410e7649db"><div class="ttname"><a href="classUdon_1_1ArrayView.html#afec2dc57d99b0d2be7d43a410e7649db">Udon::ArrayView::at</a></div><div class="ttdeci">reference at(const size_type index)</div><div class="ttdef"><b>Definition</b> ArrayView.hpp:113</div></div>
+<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
+<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition</b> Typedef.hpp:91</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_8c816338dbfb611667fc26d3483e845e.html">Types</a></li><li class="navelem"><a class="el" href="ArrayView_8hpp.html">ArrayView.hpp</a></li>
-    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>

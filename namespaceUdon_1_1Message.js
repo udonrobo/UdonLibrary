@@ -13,7 +13,7 @@ var namespaceUdon_1_1Message =
     [ "Stepping", "structUdon_1_1Message_1_1Stepping.html", "structUdon_1_1Message_1_1Stepping" ],
     [ "Switch", "structUdon_1_1Message_1_1Switch.html", "structUdon_1_1Message_1_1Switch" ],
     [ "Yaw", "structUdon_1_1Message_1_1Yaw.html", "structUdon_1_1Message_1_1Yaw" ],
-    [ "EmergencySwitch", "namespaceUdon_1_1Message.html#abb14053721b12950b363ac7ad2cc3696", null ],
-    [ "Lcd1602", "namespaceUdon_1_1Message.html#a20974e7b2143d6e37bfd0beae9a72226", null ],
-    [ "Lcd2004", "namespaceUdon_1_1Message.html#ac4ef4b20582dc0e9d0bdd9ec6955f737", null ]
+    [ "EmergencySwitch", "namespaceUdon_1_1Message.html#a1e18f0c5ec4444c4fda80baa0265b20a", null ],
+    [ "Lcd1602", "namespaceUdon_1_1Message.html#a209787977a42a67052c5ba2a1800fc30", null ],
+    [ "Lcd2004", "namespaceUdon_1_1Message.html#aae78d31a4c46bdab46f95e2cdfb0f813", null ]
 ];

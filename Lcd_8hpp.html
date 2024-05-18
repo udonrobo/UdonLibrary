@@ -4,22 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>UdonLibrary: src/Udon/Com/Message/Lcd.hpp ファイル</title>
-<!--BEGIN PROJECT_ICON-->
-<link rel="icon" href="$projecticon" type="image/x-icon" />
-<!--END PROJECT_ICON-->
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<!--BEGIN COPY_CLIPBOARD-->
 <script type="text/javascript" src="clipboard.js"></script>
-<!--END COPY_CLIPBOARD-->
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,9 +23,11 @@
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
 <script type="text/javascript">
   DoxygenAwesomeDarkModeToggle.init()
   DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
 </script>
 </head>
 <body>
@@ -38,7 +36,7 @@
         <table cellspacing="0" cellpadding="0">
           <tbody>
             <tr id="projectrow">
-              <td id="projectlogo"><img alt="Logo" src="Udon.png" $logosize /></td>
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
               <td id="projectalign">
                 <div id="projectname">UdonLibrary<span
                     id="projectnumber">&#160;1.0.0</span>
@@ -49,7 +47,7 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.9.5 -->
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -61,7 +59,7 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索');
-  $(document).ready(function() { init_search(); });
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -79,7 +77,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('Lcd_8hpp.html',''); initResizable(); });
+$(function(){initNavTree('Lcd_8hpp.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -126,19 +124,19 @@ $(document).ready(function(){initNavTree('Lcd_8hpp.html',''); initResizable(); }
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 名前空間</h2></td></tr>
-<tr class="memitem:namespaceUdon"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html">Udon</a></td></tr>
+<tr class="memitem:namespaceUdon" id="r_namespaceUdon"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html">Udon</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespaceUdon_1_1Message"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon_1_1Message.html">Udon::Message</a></td></tr>
+<tr class="memitem:namespaceUdon_1_1Message" id="r_namespaceUdon_1_1Message"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon_1_1Message.html">Udon::Message</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 型定義</h2></td></tr>
-<tr class="memitem:a20974e7b2143d6e37bfd0beae9a72226"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon_1_1Message.html#a20974e7b2143d6e37bfd0beae9a72226">Udon::Message::Lcd1602</a> = Lcd&lt; 16, 2 &gt;</td></tr>
-<tr class="memdesc:a20974e7b2143d6e37bfd0beae9a72226"><td class="mdescLeft">&#160;</td><td class="mdescRight">LCD 16x2  <a href="namespaceUdon_1_1Message.html#a20974e7b2143d6e37bfd0beae9a72226">[詳解]</a><br /></td></tr>
-<tr class="separator:a20974e7b2143d6e37bfd0beae9a72226"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4ef4b20582dc0e9d0bdd9ec6955f737"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon_1_1Message.html#ac4ef4b20582dc0e9d0bdd9ec6955f737">Udon::Message::Lcd2004</a> = Lcd&lt; 20, 4 &gt;</td></tr>
-<tr class="memdesc:ac4ef4b20582dc0e9d0bdd9ec6955f737"><td class="mdescLeft">&#160;</td><td class="mdescRight">LCD 20x4  <a href="namespaceUdon_1_1Message.html#ac4ef4b20582dc0e9d0bdd9ec6955f737">[詳解]</a><br /></td></tr>
-<tr class="separator:ac4ef4b20582dc0e9d0bdd9ec6955f737"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a209787977a42a67052c5ba2a1800fc30" id="r_a209787977a42a67052c5ba2a1800fc30"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon_1_1Message.html#a209787977a42a67052c5ba2a1800fc30">Udon::Message::Lcd1602</a> = <a class="el" href="structUdon_1_1Message_1_1Lcd.html">Lcd</a>&lt;16, 2&gt;</td></tr>
+<tr class="memdesc:a209787977a42a67052c5ba2a1800fc30"><td class="mdescLeft">&#160;</td><td class="mdescRight">LCD 16x2  <br /></td></tr>
+<tr class="separator:a209787977a42a67052c5ba2a1800fc30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae78d31a4c46bdab46f95e2cdfb0f813" id="r_aae78d31a4c46bdab46f95e2cdfb0f813"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon_1_1Message.html#aae78d31a4c46bdab46f95e2cdfb0f813">Udon::Message::Lcd2004</a> = <a class="el" href="structUdon_1_1Message_1_1Lcd.html">Lcd</a>&lt;20, 4&gt;</td></tr>
+<tr class="memdesc:aae78d31a4c46bdab46f95e2cdfb0f813"><td class="mdescLeft">&#160;</td><td class="mdescRight">LCD 20x4  <br /></td></tr>
+<tr class="separator:aae78d31a4c46bdab46f95e2cdfb0f813"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -146,7 +144,7 @@ $(document).ready(function(){initNavTree('Lcd_8hpp.html',''); initResizable(); }
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_e21713259ba8923ecd13681a32accaa1.html">Com</a></li><li class="navelem"><a class="el" href="dir_cf406aedae3e0dc1eda43380c5cf5cd0.html">Message</a></li><li class="navelem"><a class="el" href="Lcd_8hpp.html">Lcd.hpp</a></li>
-    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>

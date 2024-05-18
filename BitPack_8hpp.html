@@ -4,22 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>UdonLibrary: src/Udon/Algorithm/BitPack.hpp ファイル</title>
-<!--BEGIN PROJECT_ICON-->
-<link rel="icon" href="$projecticon" type="image/x-icon" />
-<!--END PROJECT_ICON-->
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<!--BEGIN COPY_CLIPBOARD-->
 <script type="text/javascript" src="clipboard.js"></script>
-<!--END COPY_CLIPBOARD-->
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,9 +23,11 @@
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
 <script type="text/javascript">
   DoxygenAwesomeDarkModeToggle.init()
   DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
 </script>
 </head>
 <body>
@@ -38,7 +36,7 @@
         <table cellspacing="0" cellpadding="0">
           <tbody>
             <tr id="projectrow">
-              <td id="projectlogo"><img alt="Logo" src="Udon.png" $logosize /></td>
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
               <td id="projectalign">
                 <div id="projectname">UdonLibrary<span
                     id="projectnumber">&#160;1.0.0</span>
@@ -49,7 +47,7 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.9.5 -->
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -61,7 +59,7 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索');
-  $(document).ready(function() { init_search(); });
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -79,7 +77,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('BitPack_8hpp.html',''); initResizable(); });
+$(function(){initNavTree('BitPack_8hpp.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -122,29 +120,29 @@ $(document).ready(function(){initNavTree('BitPack_8hpp.html',''); initResizable(
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 名前空間</h2></td></tr>
-<tr class="memitem:namespaceUdon"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html">Udon</a></td></tr>
+<tr class="memitem:namespaceUdon" id="r_namespaceUdon"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html">Udon</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 関数</h2></td></tr>
-<tr class="memitem:a3b7c88f64cfd50e3f3cbc7d36795b65e"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator , typename Functor &gt; </td></tr>
+<tr class="memitem:a3b7c88f64cfd50e3f3cbc7d36795b65e" id="r_a3b7c88f64cfd50e3f3cbc7d36795b65e"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator , typename Functor &gt; </td></tr>
 <tr class="memitem:a3b7c88f64cfd50e3f3cbc7d36795b65e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a3b7c88f64cfd50e3f3cbc7d36795b65e">Udon::BitPack</a> (const InputIterator begin, const InputIterator end, Functor callback)</td></tr>
-<tr class="memdesc:a3b7c88f64cfd50e3f3cbc7d36795b65e"><td class="mdescLeft">&#160;</td><td class="mdescRight">バイト列のMSB(最上位ビット)を抽出し、7bitごとに分割してコールバック関数に渡す  <a href="namespaceUdon.html#a3b7c88f64cfd50e3f3cbc7d36795b65e">[詳解]</a><br /></td></tr>
+<tr class="memdesc:a3b7c88f64cfd50e3f3cbc7d36795b65e"><td class="mdescLeft">&#160;</td><td class="mdescRight">バイト列のMSB(最上位ビット)を抽出し、7bitごとに分割してコールバック関数に渡す  <br /></td></tr>
 <tr class="separator:a3b7c88f64cfd50e3f3cbc7d36795b65e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab587295af93b30000c3471ad0d6eea72"><td class="memTemplParams" colspan="2">template&lt;typename OutputIterator , typename Functor &gt; </td></tr>
+<tr class="memitem:ab587295af93b30000c3471ad0d6eea72" id="r_ab587295af93b30000c3471ad0d6eea72"><td class="memTemplParams" colspan="2">template&lt;typename OutputIterator , typename Functor &gt; </td></tr>
 <tr class="memitem:ab587295af93b30000c3471ad0d6eea72"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#ab587295af93b30000c3471ad0d6eea72">Udon::BitUnpack</a> (OutputIterator begin, OutputIterator end, Functor callback)</td></tr>
-<tr class="memdesc:ab587295af93b30000c3471ad0d6eea72"><td class="mdescLeft">&#160;</td><td class="mdescRight">7bit分割されたデータを結合する  <a href="namespaceUdon.html#ab587295af93b30000c3471ad0d6eea72">[詳解]</a><br /></td></tr>
+<tr class="memdesc:ab587295af93b30000c3471ad0d6eea72"><td class="mdescLeft">&#160;</td><td class="mdescRight">7bit分割されたデータを結合する  <br /></td></tr>
 <tr class="separator:ab587295af93b30000c3471ad0d6eea72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acee95dc0924717eba2f60d86ece2c273"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#acee95dc0924717eba2f60d86ece2c273">Udon::BitPackedSize</a> (size_t size)</td></tr>
-<tr class="memdesc:acee95dc0924717eba2f60d86ece2c273"><td class="mdescLeft">&#160;</td><td class="mdescRight">ビットパックされたデータのサイズを取得する  <a href="namespaceUdon.html#acee95dc0924717eba2f60d86ece2c273">[詳解]</a><br /></td></tr>
+<tr class="memitem:acee95dc0924717eba2f60d86ece2c273" id="r_acee95dc0924717eba2f60d86ece2c273"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#acee95dc0924717eba2f60d86ece2c273">Udon::BitPackedSize</a> (size_t size)</td></tr>
+<tr class="memdesc:acee95dc0924717eba2f60d86ece2c273"><td class="mdescLeft">&#160;</td><td class="mdescRight">ビットパックされたデータのサイズを取得する  <br /></td></tr>
 <tr class="separator:acee95dc0924717eba2f60d86ece2c273"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfc0977d2657162404f13944ac93f2f4"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#adfc0977d2657162404f13944ac93f2f4">Udon::BitUnpackedSize</a> (size_t size)</td></tr>
-<tr class="memdesc:adfc0977d2657162404f13944ac93f2f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">ビットアンパックされたデータのサイズを取得する  <a href="namespaceUdon.html#adfc0977d2657162404f13944ac93f2f4">[詳解]</a><br /></td></tr>
+<tr class="memitem:adfc0977d2657162404f13944ac93f2f4" id="r_adfc0977d2657162404f13944ac93f2f4"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#adfc0977d2657162404f13944ac93f2f4">Udon::BitUnpackedSize</a> (size_t size)</td></tr>
+<tr class="memdesc:adfc0977d2657162404f13944ac93f2f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">ビットアンパックされたデータのサイズを取得する  <br /></td></tr>
 <tr class="separator:adfc0977d2657162404f13944ac93f2f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affc9383d1939d580ff3025327d657a8c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#affc9383d1939d580ff3025327d657a8c">Udon::BitPack</a> (const std::vector&lt; uint8_t &gt; &amp;data)</td></tr>
-<tr class="memdesc:affc9383d1939d580ff3025327d657a8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">バイト列の  <a href="namespaceUdon.html#affc9383d1939d580ff3025327d657a8c">[詳解]</a><br /></td></tr>
+<tr class="memitem:affc9383d1939d580ff3025327d657a8c" id="r_affc9383d1939d580ff3025327d657a8c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#affc9383d1939d580ff3025327d657a8c">Udon::BitPack</a> (const std::vector&lt; uint8_t &gt; &amp;data)</td></tr>
+<tr class="memdesc:affc9383d1939d580ff3025327d657a8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">バイト列の  <br /></td></tr>
 <tr class="separator:affc9383d1939d580ff3025327d657a8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93fe19a0251383cd2da6becbd4530a4b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a93fe19a0251383cd2da6becbd4530a4b">Udon::BitUnpack</a> (const std::vector&lt; uint8_t &gt; &amp;data)</td></tr>
+<tr class="memitem:a93fe19a0251383cd2da6becbd4530a4b" id="r_a93fe19a0251383cd2da6becbd4530a4b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a93fe19a0251383cd2da6becbd4530a4b">Udon::BitUnpack</a> (const std::vector&lt; uint8_t &gt; &amp;data)</td></tr>
 <tr class="separator:a93fe19a0251383cd2da6becbd4530a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
@@ -153,7 +151,7 @@ $(document).ready(function(){initNavTree('BitPack_8hpp.html',''); initResizable(
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_22ece226a4582674b632f5609e87d46e.html">Algorithm</a></li><li class="navelem"><a class="el" href="BitPack_8hpp.html">BitPack.hpp</a></li>
-    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>

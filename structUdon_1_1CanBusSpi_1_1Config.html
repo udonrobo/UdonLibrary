@@ -4,22 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>UdonLibrary: Udon::CanBusSpi::Config 構造体</title>
-<!--BEGIN PROJECT_ICON-->
-<link rel="icon" href="$projecticon" type="image/x-icon" />
-<!--END PROJECT_ICON-->
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<!--BEGIN COPY_CLIPBOARD-->
 <script type="text/javascript" src="clipboard.js"></script>
-<!--END COPY_CLIPBOARD-->
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,9 +23,11 @@
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
 <script type="text/javascript">
   DoxygenAwesomeDarkModeToggle.init()
   DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
 </script>
 </head>
 <body>
@@ -38,7 +36,7 @@
         <table cellspacing="0" cellpadding="0">
           <tbody>
             <tr id="projectrow">
-              <td id="projectlogo"><img alt="Logo" src="Udon.png" $logosize /></td>
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
               <td id="projectalign">
                 <div id="projectname">UdonLibrary<span
                     id="projectnumber">&#160;1.0.0</span>
@@ -49,7 +47,7 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.9.5 -->
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -61,7 +59,7 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索');
-  $(document).ready(function() { init_search(); });
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -79,7 +77,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('structUdon_1_1CanBusSpi_1_1Config.html',''); initResizable(); });
+$(function(){initNavTree('structUdon_1_1CanBusSpi_1_1Config.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -113,39 +111,39 @@ $(document).ready(function(){initNavTree('structUdon_1_1CanBusSpi_1_1Config.html
 <div class="contents">
 
 <p>設定  
- <a href="structUdon_1_1CanBusSpi_1_1Config.html#details">[詳解]</a></p>
+ <a href="#details">[詳解]</a></p>
 
 <p><code>#include &lt;<a class="el" href="CanBusSpiPico_8hpp_source.html">Udon/Com/Can/CanBusSpiPico.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 公開変数類</h2></td></tr>
-<tr class="memitem:aba7f0d4b0bb77350d527d770b62de102"><td class="memItemLeft" align="right" valign="top">spi_inst_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1CanBusSpi_1_1Config.html#aba7f0d4b0bb77350d527d770b62de102">channel</a> = spi_default</td></tr>
+<tr class="memitem:aba7f0d4b0bb77350d527d770b62de102" id="r_aba7f0d4b0bb77350d527d770b62de102"><td class="memItemLeft" align="right" valign="top">spi_inst_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba7f0d4b0bb77350d527d770b62de102">channel</a> = spi_default</td></tr>
 <tr class="separator:aba7f0d4b0bb77350d527d770b62de102"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef84ac07f1bfa3dba5b657c77aced261"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1CanBusSpi_1_1Config.html#aef84ac07f1bfa3dba5b657c77aced261">cs</a> = PICO_DEFAULT_SPI_CSN_PIN</td></tr>
+<tr class="memitem:aef84ac07f1bfa3dba5b657c77aced261" id="r_aef84ac07f1bfa3dba5b657c77aced261"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef84ac07f1bfa3dba5b657c77aced261">cs</a> = PICO_DEFAULT_SPI_CSN_PIN</td></tr>
 <tr class="separator:aef84ac07f1bfa3dba5b657c77aced261"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed93589af74679e98b12f58ec1f61a27"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1CanBusSpi_1_1Config.html#aed93589af74679e98b12f58ec1f61a27">mosi</a> = PICO_DEFAULT_SPI_TX_PIN</td></tr>
+<tr class="memitem:aed93589af74679e98b12f58ec1f61a27" id="r_aed93589af74679e98b12f58ec1f61a27"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed93589af74679e98b12f58ec1f61a27">mosi</a> = PICO_DEFAULT_SPI_TX_PIN</td></tr>
 <tr class="separator:aed93589af74679e98b12f58ec1f61a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a144a943135d515d7eb91037d5b3aa8fd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1CanBusSpi_1_1Config.html#a144a943135d515d7eb91037d5b3aa8fd">miso</a> = PICO_DEFAULT_SPI_RX_PIN</td></tr>
+<tr class="memitem:a144a943135d515d7eb91037d5b3aa8fd" id="r_a144a943135d515d7eb91037d5b3aa8fd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a144a943135d515d7eb91037d5b3aa8fd">miso</a> = PICO_DEFAULT_SPI_RX_PIN</td></tr>
 <tr class="separator:a144a943135d515d7eb91037d5b3aa8fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f14dc5a4568197b68242daf799ce4eb"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1CanBusSpi_1_1Config.html#a1f14dc5a4568197b68242daf799ce4eb">sck</a> = PICO_DEFAULT_SPI_SCK_PIN</td></tr>
+<tr class="memitem:a1f14dc5a4568197b68242daf799ce4eb" id="r_a1f14dc5a4568197b68242daf799ce4eb"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f14dc5a4568197b68242daf799ce4eb">sck</a> = PICO_DEFAULT_SPI_SCK_PIN</td></tr>
 <tr class="separator:a1f14dc5a4568197b68242daf799ce4eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc419b8cf627407eb4995b5b8ceb222f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1CanBusSpi_1_1Config.html#afc419b8cf627407eb4995b5b8ceb222f">interrupt</a> = 20</td></tr>
+<tr class="memitem:afc419b8cf627407eb4995b5b8ceb222f" id="r_afc419b8cf627407eb4995b5b8ceb222f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc419b8cf627407eb4995b5b8ceb222f">interrupt</a> = 20</td></tr>
 <tr class="separator:afc419b8cf627407eb4995b5b8ceb222f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0237be10625d0111ebbaa89367801f32"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1CanBusSpi_1_1Config.html#a0237be10625d0111ebbaa89367801f32">spiClock</a> = 1'000'000</td></tr>
+<tr class="memitem:a0237be10625d0111ebbaa89367801f32" id="r_a0237be10625d0111ebbaa89367801f32"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0237be10625d0111ebbaa89367801f32">spiClock</a> = 1'000'000</td></tr>
 <tr class="separator:a0237be10625d0111ebbaa89367801f32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06907c04daa468a503ce0e86de2207c8"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1CanBusSpi_1_1Config.html#a06907c04daa468a503ce0e86de2207c8">transmitInterval</a> = 5</td></tr>
+<tr class="memitem:a06907c04daa468a503ce0e86de2207c8" id="r_a06907c04daa468a503ce0e86de2207c8"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06907c04daa468a503ce0e86de2207c8">transmitInterval</a> = 5</td></tr>
 <tr class="separator:a06907c04daa468a503ce0e86de2207c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc1426cbe0708e62bed231f8a3728bce"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1CanBusSpi_1_1Config.html#afc1426cbe0708e62bed231f8a3728bce">transmitTimeout</a> = 100</td></tr>
+<tr class="memitem:afc1426cbe0708e62bed231f8a3728bce" id="r_afc1426cbe0708e62bed231f8a3728bce"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc1426cbe0708e62bed231f8a3728bce">transmitTimeout</a> = 100</td></tr>
 <tr class="separator:afc1426cbe0708e62bed231f8a3728bce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a701614c2c3cfabb04d079b6730e32e20"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1CanBusSpi_1_1Config.html#a701614c2c3cfabb04d079b6730e32e20">receiveTimeout</a> = 100</td></tr>
+<tr class="memitem:a701614c2c3cfabb04d079b6730e32e20" id="r_a701614c2c3cfabb04d079b6730e32e20"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a701614c2c3cfabb04d079b6730e32e20">receiveTimeout</a> = 100</td></tr>
 <tr class="separator:a701614c2c3cfabb04d079b6730e32e20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19dd1b96a5a5fe86e39b52750f367b70"><td class="memItemLeft" align="right" valign="top">CAN_SPEED&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1CanBusSpi_1_1Config.html#a19dd1b96a5a5fe86e39b52750f367b70">canBaudrate</a> = CAN_1000KBPS</td></tr>
+<tr class="memitem:a19dd1b96a5a5fe86e39b52750f367b70" id="r_a19dd1b96a5a5fe86e39b52750f367b70"><td class="memItemLeft" align="right" valign="top">CAN_SPEED&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19dd1b96a5a5fe86e39b52750f367b70">canBaudrate</a> = CAN_1000KBPS</td></tr>
 <tr class="separator:a19dd1b96a5a5fe86e39b52750f367b70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97418487e651b70ebc888e7aceafbd98"><td class="memItemLeft" align="right" valign="top">CAN_CLOCK&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1CanBusSpi_1_1Config.html#a97418487e651b70ebc888e7aceafbd98">mcpClock</a> = MCP_16MHZ</td></tr>
+<tr class="memitem:a97418487e651b70ebc888e7aceafbd98" id="r_a97418487e651b70ebc888e7aceafbd98"><td class="memItemLeft" align="right" valign="top">CAN_CLOCK&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97418487e651b70ebc888e7aceafbd98">mcpClock</a> = MCP_16MHZ</td></tr>
 <tr class="separator:a97418487e651b70ebc888e7aceafbd98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock"><p >設定 </p>
+<div class="textblock"><p>設定 </p>
 </div><h2 class="groupheader">メンバ詳解</h2>
 <a id="a19dd1b96a5a5fe86e39b52750f367b70" name="a19dd1b96a5a5fe86e39b52750f367b70"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a19dd1b96a5a5fe86e39b52750f367b70">&#9670;&#160;</a></span>canBaudrate</h2>
@@ -324,7 +322,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1CanBusSpi_1_1Config.html
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceUdon.html">Udon</a></li><li class="navelem"><a class="el" href="classUdon_1_1CanBusSpi.html">CanBusSpi</a></li><li class="navelem"><a class="el" href="structUdon_1_1CanBusSpi_1_1Config.html">Config</a></li>
-    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>

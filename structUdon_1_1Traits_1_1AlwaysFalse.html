@@ -4,22 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>UdonLibrary: Udon::Traits::AlwaysFalse&lt; T &gt; 構造体テンプレート</title>
-<!--BEGIN PROJECT_ICON-->
-<link rel="icon" href="$projecticon" type="image/x-icon" />
-<!--END PROJECT_ICON-->
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<!--BEGIN COPY_CLIPBOARD-->
 <script type="text/javascript" src="clipboard.js"></script>
-<!--END COPY_CLIPBOARD-->
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,9 +23,11 @@
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
 <script type="text/javascript">
   DoxygenAwesomeDarkModeToggle.init()
   DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
 </script>
 </head>
 <body>
@@ -38,7 +36,7 @@
         <table cellspacing="0" cellpadding="0">
           <tbody>
             <tr id="projectrow">
-              <td id="projectlogo"><img alt="Logo" src="Udon.png" $logosize /></td>
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
               <td id="projectalign">
                 <div id="projectname">UdonLibrary<span
                     id="projectnumber">&#160;1.0.0</span>
@@ -49,7 +47,7 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.9.5 -->
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -61,7 +59,7 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索');
-  $(document).ready(function() { init_search(); });
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -79,7 +77,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('structUdon_1_1Traits_1_1AlwaysFalse.html',''); initResizable(); });
+$(function(){initNavTree('structUdon_1_1Traits_1_1AlwaysFalse.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -110,7 +108,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Traits_1_1AlwaysFalse.ht
 <div class="contents">
 
 <p>static_assert 失敗遅延用の型  
- <a href="structUdon_1_1Traits_1_1AlwaysFalse.html#details">[詳解]</a></p>
+ <a href="#details">[詳解]</a></p>
 
 <p><code>#include &lt;<a class="el" href="AlwaysFalse_8hpp_source.html">Udon/Traits/AlwaysFalse.hpp</a>&gt;</code></p>
 <div class="dynheader">
@@ -121,12 +119,12 @@ Udon::Traits::AlwaysFalse&lt; T &gt; の継承関係図</div>
  </div></div>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
-struct Udon::Traits::AlwaysFalse&lt; T &gt;</div><p >static_assert 失敗遅延用の型 </p>
+struct Udon::Traits::AlwaysFalse&lt; T &gt;</div><p>static_assert 失敗遅延用の型 </p>
 <dl class="section note"><dt>覚え書き</dt><dd>C++20 までは static_assert に false を渡すとテンプレートの実体化する前にエラーになるため、 この型を用いて実体化時点で static_assert が失敗するようにする。</dd></dl>
 <p>例:</p>
-<p >template &lt;typename T, typename std::enable_if&lt;std::is_integral&lt;T&gt;::value&gt;::type* = nullptr&gt; void f() // &lt;- Tが整数であるとき、f() は実体化されてはいけないとする { static_assert(Udon::Traits::AlwaysFalse&lt;T&gt;::value, "T is integral."); }</p>
-<p >template &lt;typename T, typename std::enable_if&lt;std::is_floating_point&lt;T&gt;::value&gt;::type* = nullptr&gt; void f() // &lt;- 実体化されるべき関数 { }</p>
-<p >f&lt;int&gt;(); // &lt;- 実体化された時点で static_assert が失敗する f&lt;float&gt;(); // &lt;- int型で実体化されていないので static_assert は失敗しない </p>
+<p>template &lt;typename T, typename std::enable_if&lt;std::is_integral&lt;T&gt;::value&gt;::type* = nullptr&gt; void f() // &lt;- Tが整数であるとき、f() は実体化されてはいけないとする { static_assert(Udon::Traits::AlwaysFalse&lt;T&gt;::value, "T is integral."); }</p>
+<p>template &lt;typename T, typename std::enable_if&lt;std::is_floating_point&lt;T&gt;::value&gt;::type* = nullptr&gt; void f() // &lt;- 実体化されるべき関数 { }</p>
+<p>f&lt;int&gt;(); // &lt;- 実体化された時点で static_assert が失敗する f&lt;float&gt;(); // &lt;- int型で実体化されていないので static_assert は失敗しない </p>
 </div><hr/>この構造体詳解は次のファイルから抽出されました:<ul>
 <li>src/Udon/Traits/<a class="el" href="AlwaysFalse_8hpp_source.html">AlwaysFalse.hpp</a></li>
 </ul>
@@ -136,7 +134,7 @@ struct Udon::Traits::AlwaysFalse&lt; T &gt;</div><p >static_assert 失敗遅延�
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceUdon.html">Udon</a></li><li class="navelem"><a class="el" href="namespaceUdon_1_1Traits.html">Traits</a></li><li class="navelem"><a class="el" href="structUdon_1_1Traits_1_1AlwaysFalse.html">AlwaysFalse</a></li>
-    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>

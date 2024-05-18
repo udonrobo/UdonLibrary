@@ -4,22 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>UdonLibrary: Udon::Impl::RoboMasterBase クラス</title>
-<!--BEGIN PROJECT_ICON-->
-<link rel="icon" href="$projecticon" type="image/x-icon" />
-<!--END PROJECT_ICON-->
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<!--BEGIN COPY_CLIPBOARD-->
 <script type="text/javascript" src="clipboard.js"></script>
-<!--END COPY_CLIPBOARD-->
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,9 +23,11 @@
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
 <script type="text/javascript">
   DoxygenAwesomeDarkModeToggle.init()
   DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
 </script>
 </head>
 <body>
@@ -38,7 +36,7 @@
         <table cellspacing="0" cellpadding="0">
           <tbody>
             <tr id="projectrow">
-              <td id="projectlogo"><img alt="Logo" src="Udon.png" $logosize /></td>
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
               <td id="projectalign">
                 <div id="projectname">UdonLibrary<span
                     id="projectnumber">&#160;1.0.0</span>
@@ -49,7 +47,7 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.9.5 -->
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -61,7 +59,7 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索');
-  $(document).ready(function() { init_search(); });
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -79,7 +77,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classUdon_1_1Impl_1_1RoboMasterBase.html',''); initResizable(); });
+$(function(){initNavTree('classUdon_1_1Impl_1_1RoboMasterBase.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -114,7 +112,7 @@ $(document).ready(function(){initNavTree('classUdon_1_1Impl_1_1RoboMasterBase.ht
 <div class="contents">
 
 <p>RoboMaster 基底クラス  
- <a href="classUdon_1_1Impl_1_1RoboMasterBase.html#details">[詳解]</a></p>
+ <a href="#details">[詳解]</a></p>
 
 <p><code>#include &lt;<a class="el" href="RoboMasterMotor_8hpp_source.html">Udon/Driver/RoboMasterMotor.hpp</a>&gt;</code></p>
 <div class="dynheader">
@@ -130,33 +128,33 @@ Udon::Impl::RoboMasterBase の継承関係図</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
-<tr class="memitem:a9011bb7fada8e91bd9992442eb09d00a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Impl_1_1RoboMasterBase.html#a9011bb7fada8e91bd9992442eb09d00a">RoboMasterBase</a> (<a class="el" href="classUdon_1_1ICanBus.html">Udon::ICanBus</a> &amp;bus, uint8_t motorId, bool direction=true)</td></tr>
-<tr class="memdesc:a9011bb7fada8e91bd9992442eb09d00a"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="classUdon_1_1Impl_1_1RoboMasterBase.html#a9011bb7fada8e91bd9992442eb09d00a">[詳解]</a><br /></td></tr>
+<tr class="memitem:a9011bb7fada8e91bd9992442eb09d00a" id="r_a9011bb7fada8e91bd9992442eb09d00a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9011bb7fada8e91bd9992442eb09d00a">RoboMasterBase</a> (<a class="el" href="classUdon_1_1ICanBus.html">Udon::ICanBus</a> &amp;bus, uint8_t motorId, bool direction=true)</td></tr>
+<tr class="memdesc:a9011bb7fada8e91bd9992442eb09d00a"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <br /></td></tr>
 <tr class="separator:a9011bb7fada8e91bd9992442eb09d00a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6be4e464429d15989a18f5586cef8a8d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Impl_1_1RoboMasterBase.html#a6be4e464429d15989a18f5586cef8a8d">RoboMasterBase</a> (const <a class="el" href="classUdon_1_1Impl_1_1RoboMasterBase.html">RoboMasterBase</a> &amp;other)</td></tr>
-<tr class="memdesc:a6be4e464429d15989a18f5586cef8a8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信idは0x201から一つのコントローラにつき一つのidを持つ  <a href="classUdon_1_1Impl_1_1RoboMasterBase.html#a6be4e464429d15989a18f5586cef8a8d">[詳解]</a><br /></td></tr>
+<tr class="memitem:a6be4e464429d15989a18f5586cef8a8d" id="r_a6be4e464429d15989a18f5586cef8a8d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6be4e464429d15989a18f5586cef8a8d">RoboMasterBase</a> (const <a class="el" href="classUdon_1_1Impl_1_1RoboMasterBase.html">RoboMasterBase</a> &amp;other)</td></tr>
+<tr class="memdesc:a6be4e464429d15989a18f5586cef8a8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信idは0x201から一つのコントローラにつき一つのidを持つ  <br /></td></tr>
 <tr class="separator:a6be4e464429d15989a18f5586cef8a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a160606f7e43c1789f2174b3b55135049"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Impl_1_1RoboMasterBase.html#a160606f7e43c1789f2174b3b55135049">getAngle</a> () const</td></tr>
-<tr class="memdesc:a160606f7e43c1789f2174b3b55135049"><td class="mdescLeft">&#160;</td><td class="mdescRight">モーターの角度を取得  <a href="classUdon_1_1Impl_1_1RoboMasterBase.html#a160606f7e43c1789f2174b3b55135049">[詳解]</a><br /></td></tr>
+<tr class="memitem:a160606f7e43c1789f2174b3b55135049" id="r_a160606f7e43c1789f2174b3b55135049"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a160606f7e43c1789f2174b3b55135049">getAngle</a> () const</td></tr>
+<tr class="memdesc:a160606f7e43c1789f2174b3b55135049"><td class="mdescLeft">&#160;</td><td class="mdescRight">モーターの角度を取得  <br /></td></tr>
 <tr class="separator:a160606f7e43c1789f2174b3b55135049"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a141335bf5ebe84fb970a51e730059d9b"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Impl_1_1RoboMasterBase.html#a141335bf5ebe84fb970a51e730059d9b">getVelocity</a> () const</td></tr>
-<tr class="memdesc:a141335bf5ebe84fb970a51e730059d9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">モーターの速度を取得  <a href="classUdon_1_1Impl_1_1RoboMasterBase.html#a141335bf5ebe84fb970a51e730059d9b">[詳解]</a><br /></td></tr>
+<tr class="memitem:a141335bf5ebe84fb970a51e730059d9b" id="r_a141335bf5ebe84fb970a51e730059d9b"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a141335bf5ebe84fb970a51e730059d9b">getVelocity</a> () const</td></tr>
+<tr class="memdesc:a141335bf5ebe84fb970a51e730059d9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">モーターの速度を取得  <br /></td></tr>
 <tr class="separator:a141335bf5ebe84fb970a51e730059d9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12445794f5963fcb0a08e4745c064d10"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Impl_1_1RoboMasterBase.html#a12445794f5963fcb0a08e4745c064d10">getTorqueCurrent</a> () const</td></tr>
-<tr class="memdesc:a12445794f5963fcb0a08e4745c064d10"><td class="mdescLeft">&#160;</td><td class="mdescRight">モーターのトルク電流を取得  <a href="classUdon_1_1Impl_1_1RoboMasterBase.html#a12445794f5963fcb0a08e4745c064d10">[詳解]</a><br /></td></tr>
+<tr class="memitem:a12445794f5963fcb0a08e4745c064d10" id="r_a12445794f5963fcb0a08e4745c064d10"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12445794f5963fcb0a08e4745c064d10">getTorqueCurrent</a> () const</td></tr>
+<tr class="memdesc:a12445794f5963fcb0a08e4745c064d10"><td class="mdescLeft">&#160;</td><td class="mdescRight">モーターのトルク電流を取得  <br /></td></tr>
 <tr class="separator:a12445794f5963fcb0a08e4745c064d10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd554b6f10a67311ec6a797c3ae9ce83"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Impl_1_1RoboMasterBase.html#afd554b6f10a67311ec6a797c3ae9ce83">getTemperature</a> () const</td></tr>
-<tr class="memdesc:afd554b6f10a67311ec6a797c3ae9ce83"><td class="mdescLeft">&#160;</td><td class="mdescRight">モーターの温度を取得  <a href="classUdon_1_1Impl_1_1RoboMasterBase.html#afd554b6f10a67311ec6a797c3ae9ce83">[詳解]</a><br /></td></tr>
+<tr class="memitem:afd554b6f10a67311ec6a797c3ae9ce83" id="r_afd554b6f10a67311ec6a797c3ae9ce83"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd554b6f10a67311ec6a797c3ae9ce83">getTemperature</a> () const</td></tr>
+<tr class="memdesc:afd554b6f10a67311ec6a797c3ae9ce83"><td class="mdescLeft">&#160;</td><td class="mdescRight">モーターの温度を取得  <br /></td></tr>
 <tr class="separator:afd554b6f10a67311ec6a797c3ae9ce83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 限定公開メンバ関数</h2></td></tr>
-<tr class="memitem:ae01c861c90d2872ae1c70660125df996"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Impl_1_1RoboMasterBase.html#ae01c861c90d2872ae1c70660125df996">setCurrent</a> (int16_t current)</td></tr>
-<tr class="memdesc:ae01c861c90d2872ae1c70660125df996"><td class="mdescLeft">&#160;</td><td class="mdescRight">モーターの電流を設定  <a href="classUdon_1_1Impl_1_1RoboMasterBase.html#ae01c861c90d2872ae1c70660125df996">[詳解]</a><br /></td></tr>
+<tr class="memitem:ae01c861c90d2872ae1c70660125df996" id="r_ae01c861c90d2872ae1c70660125df996"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae01c861c90d2872ae1c70660125df996">setCurrent</a> (int16_t current)</td></tr>
+<tr class="memdesc:ae01c861c90d2872ae1c70660125df996"><td class="mdescLeft">&#160;</td><td class="mdescRight">モーターの電流を設定  <br /></td></tr>
 <tr class="separator:ae01c861c90d2872ae1c70660125df996"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock"><p >RoboMaster 基底クラス </p>
+<div class="textblock"><p>RoboMaster 基底クラス </p>
 <dl class="section note"><dt>覚え書き</dt><dd>モータードライバの仕様の違いによって派生クラスを作成する </dd></dl>
 </div><h2 class="groupheader">構築子と解体子</h2>
 <a id="a9011bb7fada8e91bd9992442eb09d00a" name="a9011bb7fada8e91bd9992442eb09d00a"></a>
@@ -171,25 +169,17 @@ Udon::Impl::RoboMasterBase の継承関係図</div>
         <tr>
           <td class="memname">Udon::Impl::RoboMasterBase::RoboMasterBase </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classUdon_1_1ICanBus.html">Udon::ICanBus</a> &amp;&#160;</td>
-          <td class="paramname"><em>bus</em>, </td>
+          <td class="paramtype"><a class="el" href="classUdon_1_1ICanBus.html">Udon::ICanBus</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>bus</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>motorId</em>, </td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>motorId</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>direction</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>direction</em><span class="paramdefsep"> = </span><span class="paramdefval">true</span></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -223,8 +213,7 @@ Udon::Impl::RoboMasterBase の継承関係図</div>
         <tr>
           <td class="memname">Udon::Impl::RoboMasterBase::RoboMasterBase </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classUdon_1_1Impl_1_1RoboMasterBase.html">RoboMasterBase</a> &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1Impl_1_1RoboMasterBase.html">RoboMasterBase</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -258,7 +247,7 @@ Udon::Impl::RoboMasterBase の継承関係図</div>
         <tr>
           <td class="memname">double Udon::Impl::RoboMasterBase::getAngle </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -287,7 +276,7 @@ Udon::Impl::RoboMasterBase の継承関係図</div>
         <tr>
           <td class="memname">uint8_t Udon::Impl::RoboMasterBase::getTemperature </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -315,7 +304,7 @@ Udon::Impl::RoboMasterBase の継承関係図</div>
         <tr>
           <td class="memname">int16_t Udon::Impl::RoboMasterBase::getTorqueCurrent </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -343,7 +332,7 @@ Udon::Impl::RoboMasterBase の継承関係図</div>
         <tr>
           <td class="memname">int16_t Udon::Impl::RoboMasterBase::getVelocity </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -371,8 +360,7 @@ Udon::Impl::RoboMasterBase の継承関係図</div>
         <tr>
           <td class="memname">void Udon::Impl::RoboMasterBase::setCurrent </td>
           <td>(</td>
-          <td class="paramtype">int16_t&#160;</td>
-          <td class="paramname"><em>current</em></td><td>)</td>
+          <td class="paramtype">int16_t</td>          <td class="paramname"><span class="paramname"><em>current</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -402,7 +390,7 @@ Udon::Impl::RoboMasterBase の継承関係図</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceUdon.html">Udon</a></li><li class="navelem"><a class="el" href="namespaceUdon_1_1Impl.html">Impl</a></li><li class="navelem"><a class="el" href="classUdon_1_1Impl_1_1RoboMasterBase.html">RoboMasterBase</a></li>
-    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>

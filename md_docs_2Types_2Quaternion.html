@@ -1,0 +1,186 @@
+<!-- HTML header for doxygen 1.10.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>UdonLibrary: クオータニオン</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+  DoxygenAwesomeDarkModeToggle.init()
+  DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
+</script>
+</head>
+<body>
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
+              <td id="projectalign">
+                <div id="projectname">UdonLibrary<span
+                    id="projectnumber">&#160;1.0.0</span>
+                </div>
+                <div id="projectbrief">機械システム研究部 C++ ライブラリ</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('md_docs_2Types_2Quaternion.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">クオータニオン</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md220"></a> 3 次元空間で回転姿勢を表す場合に使用します。</p>
+<p>クオータニオンは複素平面の三次元版であり、回転を積で表すことができるため処理が軽いです。またオイラー角特有のシンバルロックが起きません。</p>
+<p><code><a class="el" href="structUdon_1_1Quaternion.html" title="クオータニオン">Udon::Quaternion</a></code> クラスは以下のメンバを持ちます。</p>
+<div class="fragment"><div class="line"><span class="keyword">struct </span>Quaternion</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">using </span>ValueType = double;</div>
+<div class="line"> </div>
+<div class="line">    ValueType x;</div>
+<div class="line">    ValueType y;</div>
+<div class="line">    ValueType z;</div>
+<div class="line">    ValueType w;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">constexpr</span> Quaternion() noexcept;</div>
+<div class="line">    constexpr Quaternion(ValueType x, ValueType y, ValueType z, ValueType w) noexcept;</div>
+<div class="line"> </div>
+<div class="line">    Quaternion(const Quaternion&amp;) = default;</div>
+<div class="line">    Quaternion&amp; operator=(const Quaternion&amp;) = default;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// 回転を組合わせる</span></div>
+<div class="line">    constexpr Quaternion operator*(const Quaternion&amp; rhs) const noexcept;</div>
+<div class="line">    Quaternion&amp; operator*=(const Quaternion&amp; rhs) noexcept;</div>
+<div class="line"> </div>
+<div class="line">    constexpr <span class="keywordtype">bool</span> operator==(const Quaternion&amp; rhs) const noexcept;</div>
+<div class="line">    constexpr <span class="keywordtype">bool</span> operator!=(const Quaternion&amp; rhs) const noexcept;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// 要素のいずれかに0以外の値があるかどうかを返す</span></div>
+<div class="line">    explicit constexpr operator <span class="keywordtype">bool</span>() const noexcept;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// 逆クオータニオン</span></div>
+<div class="line">    constexpr Quaternion inverse() const noexcept;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// 回転方向を修正したクオータニオンを取得する</span></div>
+<div class="line">    constexpr Quaternion directionRevision(QuaternionDirection direction) const noexcept</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// 単位クオータニオン</span></div>
+<div class="line">    static Quaternion Identity() noexcept;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// X軸回転クオータニオン</span></div>
+<div class="line">    static Quaternion RotateX(ValueType angle) noexcept;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Y軸回転クオータニオン</span></div>
+<div class="line">    static Quaternion RotateY(ValueType angle) noexcept;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Z軸回転クオータニオン</span></div>
+<div class="line">    static Quaternion RotateZ(ValueType angle) noexcept;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// 要素がゼロであるか</span></div>
+<div class="line">    constexpr <span class="keywordtype">bool</span> isZero() const noexcept;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// 値クリア</span></div>
+<div class="line">    <span class="keywordtype">void</span> clear() noexcept;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// オイラー角へ変換</span></div>
+<div class="line">    Euler toEuler() const noexcept;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// ヨー角を取得</span></div>
+<div class="line">    <span class="keywordtype">double</span> toYaw() const noexcept;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// ピッチ角を取得</span></div>
+<div class="line">    <span class="keywordtype">double</span> toPitch() const noexcept;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// ロール角を取得</span></div>
+<div class="line">    <span class="keywordtype">double</span> toRoll() const noexcept;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// デバッグ出力</span></div>
+<div class="line">    <span class="keywordtype">void</span> show() const;</div>
+<div class="line">};</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -4,22 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>UdonLibrary: src/Udon/Com/Message/PhotoSensor.hpp ソースファイル</title>
-<!--BEGIN PROJECT_ICON-->
-<link rel="icon" href="$projecticon" type="image/x-icon" />
-<!--END PROJECT_ICON-->
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<!--BEGIN COPY_CLIPBOARD-->
 <script type="text/javascript" src="clipboard.js"></script>
-<!--END COPY_CLIPBOARD-->
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,9 +23,11 @@
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
 <script type="text/javascript">
   DoxygenAwesomeDarkModeToggle.init()
   DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
 </script>
 </head>
 <body>
@@ -38,7 +36,7 @@
         <table cellspacing="0" cellpadding="0">
           <tbody>
             <tr id="projectrow">
-              <td id="projectlogo"><img alt="Logo" src="Udon.png" $logosize /></td>
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
               <td id="projectalign">
                 <div id="projectname">UdonLibrary<span
                     id="projectnumber">&#160;1.0.0</span>
@@ -49,7 +47,7 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.9.5 -->
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -61,11 +59,16 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索');
-  $(document).ready(function() { init_search(); });
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -79,7 +82,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('PhotoSensor_8hpp_source.html',''); initResizable(); });
+$(function(){initNavTree('PhotoSensor_8hpp_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -124,6 +127,7 @@ $(document).ready(function(){initNavTree('PhotoSensor_8hpp_source.html',''); ini
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">namespace </span>Message</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    {</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structUdon_1_1Message_1_1PhotoSensor.html">   18</a></span>        <span class="keyword">struct </span><a class="code hl_struct" href="structUdon_1_1Message_1_1PhotoSensor.html">PhotoSensor</a></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        {</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
@@ -138,22 +142,23 @@ $(document).ready(function(){initNavTree('PhotoSensor_8hpp_source.html',''); ini
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structUdon_1_1Message_1_1PhotoSensor.html#a37b78548653390eaa2373f0142200f87">   32</a></span>            <a class="code hl_function" href="structUdon_1_1Message_1_1PhotoSensor.html#a37b78548653390eaa2373f0142200f87">UDON_ENUMERABLE</a>(<a class="code hl_variable" href="structUdon_1_1Message_1_1PhotoSensor.html#aea15c0c0d4ba778042d5de5996368087">light</a>);</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        };</div>
+</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    }    <span class="comment">// namespace Message</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}    <span class="comment">// namespace Udon</span></div>
 <div class="ttc" id="aEnumerableMacro_8hpp_html"><div class="ttname"><a href="EnumerableMacro_8hpp.html">EnumerableMacro.hpp</a></div></div>
-<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition:</b> Bit.hpp:12</div></div>
-<div class="ttc" id="astructUdon_1_1Message_1_1PhotoSensor_html"><div class="ttname"><a href="structUdon_1_1Message_1_1PhotoSensor.html">Udon::Message::PhotoSensor</a></div><div class="ttdoc">フォトセンサー</div><div class="ttdef"><b>Definition:</b> PhotoSensor.hpp:19</div></div>
+<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
+<div class="ttc" id="astructUdon_1_1Message_1_1PhotoSensor_html"><div class="ttname"><a href="structUdon_1_1Message_1_1PhotoSensor.html">Udon::Message::PhotoSensor</a></div><div class="ttdoc">フォトセンサー</div><div class="ttdef"><b>Definition</b> PhotoSensor.hpp:19</div></div>
 <div class="ttc" id="astructUdon_1_1Message_1_1PhotoSensor_html_a37b78548653390eaa2373f0142200f87"><div class="ttname"><a href="structUdon_1_1Message_1_1PhotoSensor.html#a37b78548653390eaa2373f0142200f87">Udon::Message::PhotoSensor::UDON_ENUMERABLE</a></div><div class="ttdeci">UDON_ENUMERABLE(light)</div></div>
-<div class="ttc" id="astructUdon_1_1Message_1_1PhotoSensor_html_aea15c0c0d4ba778042d5de5996368087"><div class="ttname"><a href="structUdon_1_1Message_1_1PhotoSensor.html#aea15c0c0d4ba778042d5de5996368087">Udon::Message::PhotoSensor::light</a></div><div class="ttdeci">bool light</div><div class="ttdoc">入光中であるかどうか</div><div class="ttdef"><b>Definition:</b> PhotoSensor.hpp:22</div></div>
+<div class="ttc" id="astructUdon_1_1Message_1_1PhotoSensor_html_aea15c0c0d4ba778042d5de5996368087"><div class="ttname"><a href="structUdon_1_1Message_1_1PhotoSensor.html#aea15c0c0d4ba778042d5de5996368087">Udon::Message::PhotoSensor::light</a></div><div class="ttdeci">bool light</div><div class="ttdoc">入光中であるかどうか</div><div class="ttdef"><b>Definition</b> PhotoSensor.hpp:22</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_e21713259ba8923ecd13681a32accaa1.html">Com</a></li><li class="navelem"><a class="el" href="dir_cf406aedae3e0dc1eda43380c5cf5cd0.html">Message</a></li><li class="navelem"><a class="el" href="PhotoSensor_8hpp.html">PhotoSensor.hpp</a></li>
-    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>

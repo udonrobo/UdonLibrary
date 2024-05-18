@@ -4,22 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>UdonLibrary: src/Udon/Types/StringView.hpp ファイル</title>
-<!--BEGIN PROJECT_ICON-->
-<link rel="icon" href="$projecticon" type="image/x-icon" />
-<!--END PROJECT_ICON-->
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<!--BEGIN COPY_CLIPBOARD-->
 <script type="text/javascript" src="clipboard.js"></script>
-<!--END COPY_CLIPBOARD-->
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,9 +23,11 @@
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
 <script type="text/javascript">
   DoxygenAwesomeDarkModeToggle.init()
   DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
 </script>
 </head>
 <body>
@@ -38,7 +36,7 @@
         <table cellspacing="0" cellpadding="0">
           <tbody>
             <tr id="projectrow">
-              <td id="projectlogo"><img alt="Logo" src="Udon.png" $logosize /></td>
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
               <td id="projectalign">
                 <div id="projectname">UdonLibrary<span
                     id="projectnumber">&#160;1.0.0</span>
@@ -49,7 +47,7 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.9.5 -->
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -61,7 +59,7 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索');
-  $(document).ready(function() { init_search(); });
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -79,7 +77,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('StringView_8hpp.html',''); initResizable(); });
+$(function(){initNavTree('StringView_8hpp.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -132,25 +130,25 @@ $(document).ready(function(){initNavTree('StringView_8hpp.html',''); initResizab
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 名前空間</h2></td></tr>
-<tr class="memitem:namespaceUdon"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html">Udon</a></td></tr>
+<tr class="memitem:namespaceUdon" id="r_namespaceUdon"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html">Udon</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespaceUdon_1_1Literals"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon_1_1Literals.html">Udon::Literals</a></td></tr>
+<tr class="memitem:namespaceUdon_1_1Literals" id="r_namespaceUdon_1_1Literals"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon_1_1Literals.html">Udon::Literals</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 型定義</h2></td></tr>
-<tr class="memitem:ad58d5bdb1486c5fab5106c31e8a96d2a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#ad58d5bdb1486c5fab5106c31e8a96d2a">Udon::StringView</a> = BasicStringView&lt; char &gt;</td></tr>
-<tr class="separator:ad58d5bdb1486c5fab5106c31e8a96d2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60aef952453aa83fcabc796340994cc7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a60aef952453aa83fcabc796340994cc7">Udon::WStringView</a> = BasicStringView&lt; wchar_t &gt;</td></tr>
-<tr class="separator:a60aef952453aa83fcabc796340994cc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e337ae884cfbde61c416c8c2049aea6" id="r_a8e337ae884cfbde61c416c8c2049aea6"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a8e337ae884cfbde61c416c8c2049aea6">Udon::StringView</a> = <a class="el" href="classUdon_1_1BasicStringView.html">BasicStringView</a>&lt;char&gt;</td></tr>
+<tr class="separator:a8e337ae884cfbde61c416c8c2049aea6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28efef3747777d9917d8f107caa44e17" id="r_a28efef3747777d9917d8f107caa44e17"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a28efef3747777d9917d8f107caa44e17">Udon::WStringView</a> = <a class="el" href="classUdon_1_1BasicStringView.html">BasicStringView</a>&lt;wchar_t&gt;</td></tr>
+<tr class="separator:a28efef3747777d9917d8f107caa44e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 関数</h2></td></tr>
-<tr class="memitem:afc93f59a48513b6bca86fd391e22eb80"><td class="memItemLeft" align="right" valign="top">constexpr StringView&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon_1_1Literals.html#afc93f59a48513b6bca86fd391e22eb80">Udon::Literals::operator&quot;&quot;_sv</a> (const char *string, size_t length) noexcept</td></tr>
-<tr class="memdesc:afc93f59a48513b6bca86fd391e22eb80"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceUdon.html#ad58d5bdb1486c5fab5106c31e8a96d2a">Udon::StringView</a> 構築リテラル  <a href="namespaceUdon_1_1Literals.html#afc93f59a48513b6bca86fd391e22eb80">[詳解]</a><br /></td></tr>
+<tr class="memitem:afc93f59a48513b6bca86fd391e22eb80" id="r_afc93f59a48513b6bca86fd391e22eb80"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespaceUdon.html#a8e337ae884cfbde61c416c8c2049aea6">StringView</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon_1_1Literals.html#afc93f59a48513b6bca86fd391e22eb80">Udon::Literals::operator&quot;&quot;_sv</a> (const char *string, size_t length) noexcept</td></tr>
+<tr class="memdesc:afc93f59a48513b6bca86fd391e22eb80"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceUdon.html#a8e337ae884cfbde61c416c8c2049aea6">Udon::StringView</a> 構築リテラル  <br /></td></tr>
 <tr class="separator:afc93f59a48513b6bca86fd391e22eb80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0d5e9855744244b97821a0f6d53ca74"><td class="memItemLeft" align="right" valign="top">constexpr WStringView&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon_1_1Literals.html#ab0d5e9855744244b97821a0f6d53ca74">Udon::Literals::operator&quot;&quot;_sv</a> (const wchar_t *string, size_t length) noexcept</td></tr>
-<tr class="memdesc:ab0d5e9855744244b97821a0f6d53ca74"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceUdon.html#a60aef952453aa83fcabc796340994cc7">Udon::WStringView</a> 構築リテラル  <a href="namespaceUdon_1_1Literals.html#ab0d5e9855744244b97821a0f6d53ca74">[詳解]</a><br /></td></tr>
+<tr class="memitem:ab0d5e9855744244b97821a0f6d53ca74" id="r_ab0d5e9855744244b97821a0f6d53ca74"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespaceUdon.html#a28efef3747777d9917d8f107caa44e17">WStringView</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceUdon_1_1Literals.html#ab0d5e9855744244b97821a0f6d53ca74">Udon::Literals::operator&quot;&quot;_sv</a> (const wchar_t *string, size_t length) noexcept</td></tr>
+<tr class="memdesc:ab0d5e9855744244b97821a0f6d53ca74"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceUdon.html#a28efef3747777d9917d8f107caa44e17">Udon::WStringView</a> 構築リテラル  <br /></td></tr>
 <tr class="separator:ab0d5e9855744244b97821a0f6d53ca74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
@@ -159,7 +157,7 @@ $(document).ready(function(){initNavTree('StringView_8hpp.html',''); initResizab
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_8c816338dbfb611667fc26d3483e845e.html">Types</a></li><li class="navelem"><a class="el" href="StringView_8hpp.html">StringView.hpp</a></li>
-    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>

@@ -1,0 +1,356 @@
+<!-- HTML header for doxygen 1.10.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>UdonLibrary: 通信共通部</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+  DoxygenAwesomeDarkModeToggle.init()
+  DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
+</script>
+</head>
+<body>
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
+              <td id="projectalign">
+                <div id="projectname">UdonLibrary<span
+                    id="projectnumber">&#160;1.0.0</span>
+                </div>
+                <div id="projectbrief">機械システム研究部 C++ ライブラリ</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('md_docs_2Communication_2Common.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">通信共通部</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md33"></a> 通信クラスのAPIを大体統一しているため、通信方式によらず同じようなプログラムを書くことができます。</p>
+<h1><a class="anchor" id="autotoc_md34"></a>
+共通内容</h1>
+<ul>
+<li>構造体等のオブジェクトを用いて通信を行います。</li>
+<li>通信を管理するバスクラス、バスクラスとデータの受け渡しを行う送受信クラスから構成されています。</li>
+<li>送受信クラスはテンプレート引数を持っており、通信するオブジェクトの型を指定します。</li>
+<li>送信クラスの <code>setMessage(T)</code> を用いて送信し、受信クラスの <code>Optional&lt;T&gt; getMessage()</code> を用いて受信します。</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md35"></a>
+送信者イメージ</h1>
+<div class="fragment"><div class="line">バスクラス bus;</div>
+<div class="line">送信クラス&lt;int&gt; writer{ bus, 0x01 };  <span class="comment">// 送信先通信バスを登録</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup()</div>
+<div class="line">{</div>
+<div class="line">    bus.begin();  <span class="comment">// 通信開始</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> loop()</div>
+<div class="line">{</div>
+<div class="line">    bus.update();  <span class="comment">// 更新</span></div>
+<div class="line">    writer.setMessage(1000);  <span class="comment">// バスへデータを送信</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md36"></a>
+受信者イメージ</h1>
+<div class="fragment"><div class="line">バスクラス bus;</div>
+<div class="line">受信クラス&lt;int&gt; reader{ bus, 0x01 };  <span class="comment">// 受信元通信バスを登録</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup()</div>
+<div class="line">{</div>
+<div class="line">    bus.begin();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> loop()</div>
+<div class="line">{</div>
+<div class="line">    bus.update();</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> Optional&lt;int&gt; message = reader.getMessage())  <span class="comment">// バスからデータを受信</span></div>
+<div class="line">    {</div>
+<div class="line">        Serial.println(*message);  <span class="comment">// 受信成功 &gt; 1000</span></div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        Serial.println(<span class="stringliteral">&quot;receive failed&quot;</span>);　<span class="comment">// 受信エラー</span></div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md37"></a>
+複数の通信バスや送受信者が存在する場合</h1>
+<p>バスクラスと送信者クラスに分けたことで、通信クラスを柔軟に組み合わせることができます。</p>
+<p>通信によっては複数のバスや送受信者を立てることができない場合があります。</p>
+<h2><a class="anchor" id="autotoc_md38"></a>
+複数送信者</h2>
+<div class="fragment"><div class="line">flowchart LR</div>
+<div class="line">    subgraph ファームウエア</div>
+<div class="line">        subgraph writer1</div>
+<div class="line">        送信オブジェクト1[オブジェクト] --int--&gt; setMessage1[setMessage]</div>
+<div class="line">        end</div>
+<div class="line"> </div>
+<div class="line">        subgraph writer2</div>
+<div class="line">        送信オブジェクト2[オブジェクト] --int--&gt; setMessage2[setMessage]</div>
+<div class="line">        end</div>
+<div class="line"> </div>
+<div class="line">        setMessage1[setMessage] --byte string--&gt; bus</div>
+<div class="line">        setMessage2[setMessage] --byte string--&gt; bus</div>
+<div class="line">    end</div>
+<div class="line"> </div>
+<div class="line">    bus -.byte string.-&gt; 通信バス</div>
+</div><!-- fragment --><div class="fragment"><div class="line">バスクラス bus;</div>
+<div class="line">送信クラス&lt;int&gt; writer1{ bus, 0x01 };</div>
+<div class="line">送信クラス&lt;int&gt; writer2{ bus, 0x02 };</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup()</div>
+<div class="line">{</div>
+<div class="line">    bus.begin();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> loop()</div>
+<div class="line">{</div>
+<div class="line">    bus.update();</div>
+<div class="line">    writer1.setMessage(1000);</div>
+<div class="line">    writer2.setMessage(2000);</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md39"></a>
+送受信者</h2>
+<div class="fragment"><div class="line">flowchart LR</div>
+<div class="line">    subgraph ファームウエア</div>
+<div class="line">        subgraph writer1</div>
+<div class="line">        送信オブジェクト[オブジェクト] --int--&gt; setMessage</div>
+<div class="line">        end</div>
+<div class="line"> </div>
+<div class="line">        subgraph writer2</div>
+<div class="line">        getMessage --int--&gt; 受信オブジェクト[オブジェクト] </div>
+<div class="line">        end</div>
+<div class="line"> </div>
+<div class="line">        setMessage --byte string--&gt; bus</div>
+<div class="line">        </div>
+<div class="line">        direction RL</div>
+<div class="line">        bus --byte string--&gt; getMessage</div>
+<div class="line">    end</div>
+<div class="line"> </div>
+<div class="line">    bus &lt;-.byte string.-&gt; 通信バス</div>
+</div><!-- fragment --><div class="fragment"><div class="line">バスクラス bus;</div>
+<div class="line">送信クラス&lt;int&gt; writer{ bus, 0x01 };</div>
+<div class="line">受信クラス&lt;int&gt; reader{ bus, 0x02 };</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup()</div>
+<div class="line">{</div>
+<div class="line">    bus.begin();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> loop()</div>
+<div class="line">{</div>
+<div class="line">    bus.update();</div>
+<div class="line"> </div>
+<div class="line">    writer.setMessage(1000);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> message = reader.getMessage())</div>
+<div class="line">    {</div>
+<div class="line">        Serial.println(*message);</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        Serial.println(<span class="stringliteral">&quot;receive failed&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md40"></a>
+複数バス、複数送受信</h2>
+<div class="fragment"><div class="line">flowchart LR</div>
+<div class="line">    subgraph ファームウエア1</div>
+<div class="line">        subgraph writer2</div>
+<div class="line">        送信オブジェクト1[オブジェクト] --int--&gt; setMessage1[setMessage]</div>
+<div class="line">        end</div>
+<div class="line"> </div>
+<div class="line">        subgraph writer3</div>
+<div class="line">        送信オブジェクト2[オブジェクト] --int--&gt; setMessage2[setMessage]</div>
+<div class="line">        end</div>
+<div class="line"> </div>
+<div class="line">        subgraph writer1</div>
+<div class="line">        送信オブジェクト3[オブジェクト] --int--&gt; setMessage3[setMessage]</div>
+<div class="line">        end</div>
+<div class="line"> </div>
+<div class="line">        setMessage3 --byte string--&gt; ファームウエア1bus1</div>
+<div class="line">        setMessage1 --byte string--&gt; ファームウエア1bus2</div>
+<div class="line">        setMessage2 --byte string--&gt; ファームウエア1bus2</div>
+<div class="line">    end</div>
+<div class="line"> </div>
+<div class="line">    ファームウエア1bus1[bus1] -.byte string.-&gt; 通信バス1[通信バス]</div>
+<div class="line">    ファームウエア1bus2[bus2] -.byte string.-&gt; 通信バス2[通信バス]</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">    通信バス1[通信バス] -.byte string.-&gt; ファームウエア2bus1[bus1]</div>
+<div class="line">    通信バス2[通信バス] -.byte string.-&gt; ファームウエア2bus2[bus2]</div>
+<div class="line"> </div>
+<div class="line">    subgraph ファームウエア2</div>
+<div class="line">        subgraph reader1</div>
+<div class="line">        getMessage1 --int--&gt; 受信オブジェクト1[オブジェクト]</div>
+<div class="line">        end</div>
+<div class="line"> </div>
+<div class="line">        subgraph reader2</div>
+<div class="line">        getMessage2 --int--&gt; 受信オブジェクト2[オブジェクト]</div>
+<div class="line">        end</div>
+<div class="line"> </div>
+<div class="line">        subgraph reader3</div>
+<div class="line">        getMessage3 --int--&gt; 受信オブジェクト3[オブジェクト]</div>
+<div class="line">        end</div>
+<div class="line"> </div>
+<div class="line">        ファームウエア2bus1 --byte string--&gt; getMessage1</div>
+<div class="line">        ファームウエア2bus2 --byte string--&gt; getMessage2</div>
+<div class="line">        ファームウエア2bus2 --byte string--&gt; getMessage3</div>
+<div class="line">    end</div>
+</div><!-- fragment --><div class="fragment"><div class="line">バスクラス bus1;</div>
+<div class="line">バスクラス bus2;</div>
+<div class="line"> </div>
+<div class="line">送信クラス&lt;int&gt; writer1{ bus1, 0x01 };</div>
+<div class="line">送信クラス&lt;int&gt; writer2{ bus2, 0x01 };</div>
+<div class="line">送信クラス&lt;int&gt; writer3{ bus2, 0x02 };</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup()</div>
+<div class="line">{</div>
+<div class="line">    bus1.begin();</div>
+<div class="line">    bus2.begin();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> loop()</div>
+<div class="line">{</div>
+<div class="line">    bus1.update();</div>
+<div class="line">    bus2.update();</div>
+<div class="line">    writer1.setMessage(1000);</div>
+<div class="line">    writer2.setMessage(2000);</div>
+<div class="line">    writer3.setMessage(3000);</div>
+<div class="line">}</div>
+</div><!-- fragment --><div class="fragment"><div class="line">バスクラス bus1;</div>
+<div class="line">バスクラス bus2;</div>
+<div class="line"> </div>
+<div class="line">受信クラス&lt;int&gt; reader1{ bus1, 0x01 };</div>
+<div class="line">受信クラス&lt;int&gt; reader2{ bus2, 0x01 };</div>
+<div class="line">受信クラス&lt;int&gt; reader3{ bus2, 0x02 };</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup()</div>
+<div class="line">{</div>
+<div class="line">    bus1.begin();</div>
+<div class="line">    bus2.begin();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> loop()</div>
+<div class="line">{</div>
+<div class="line">    bus1.update();</div>
+<div class="line">    bus2.update();</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> message = reader1.getMessage())</div>
+<div class="line">    {</div>
+<div class="line">        Serial.println(*message);</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        Serial.println(<span class="stringliteral">&quot;receive failed&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> message = reader2.getMessage())</div>
+<div class="line">    {</div>
+<div class="line">        Serial.println(*message);</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        Serial.println(<span class="stringliteral">&quot;receive failed&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> message = reader3.getMessage())</div>
+<div class="line">    {</div>
+<div class="line">        Serial.println(*message);</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        Serial.println(<span class="stringliteral">&quot;receive failed&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>

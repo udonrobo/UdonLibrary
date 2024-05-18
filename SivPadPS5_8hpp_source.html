@@ -4,22 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>UdonLibrary: src/Udon/Com/Pad/SivPadPS5.hpp ソースファイル</title>
-<!--BEGIN PROJECT_ICON-->
-<link rel="icon" href="$projecticon" type="image/x-icon" />
-<!--END PROJECT_ICON-->
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<!--BEGIN COPY_CLIPBOARD-->
 <script type="text/javascript" src="clipboard.js"></script>
-<!--END COPY_CLIPBOARD-->
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,9 +23,11 @@
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
 <script type="text/javascript">
   DoxygenAwesomeDarkModeToggle.init()
   DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
 </script>
 </head>
 <body>
@@ -38,7 +36,7 @@
         <table cellspacing="0" cellpadding="0">
           <tbody>
             <tr id="projectrow">
-              <td id="projectlogo"><img alt="Logo" src="Udon.png" $logosize /></td>
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
               <td id="projectalign">
                 <div id="projectname">UdonLibrary<span
                     id="projectnumber">&#160;1.0.0</span>
@@ -49,7 +47,7 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.9.5 -->
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -61,11 +59,16 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索');
-  $(document).ready(function() { init_search(); });
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -79,7 +82,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('SivPadPS5_8hpp_source.html',''); initResizable(); });
+$(function(){initNavTree('SivPadPS5_8hpp_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -128,21 +131,27 @@ $(document).ready(function(){initNavTree('SivPadPS5_8hpp_source.html',''); initR
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    {</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> DummyMessage&gt;</div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classUdon_1_1Impl_1_1SivPadPS5Reader.html">   22</a></span>        <span class="keyword">class </span><a class="code hl_class" href="classUdon_1_1Impl_1_1SivPadPS5Reader.html">SivPadPS5Reader</a></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        {</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            <span class="keywordtype">size_t</span> index;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classUdon_1_1Impl_1_1SivPadPS5Reader.html#a23e8eb6d86d1b8165f8076cc2820c322">   27</a></span>            <a class="code hl_function" href="classUdon_1_1Impl_1_1SivPadPS5Reader.html#a23e8eb6d86d1b8165f8076cc2820c322">SivPadPS5Reader</a>() noexcept</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                : index()</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            {</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            }</div>
+</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="foldopen" id="foldopen00032" data-start="{" data-end="}">
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classUdon_1_1Impl_1_1SivPadPS5Reader.html#a33d0dcdf130bafc957f8d4c2b67aa568">   32</a></span>            <a class="code hl_function" href="classUdon_1_1Impl_1_1SivPadPS5Reader.html#a33d0dcdf130bafc957f8d4c2b67aa568">SivPadPS5Reader</a>(<span class="keywordtype">size_t</span> index) noexcept</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                : index(index)</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            {</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            }</div>
+</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classUdon_1_1Impl_1_1SivPadPS5Reader.html#a8b06433231ecb523be8c375d449ee2d6">   37</a></span>            <a class="code hl_struct" href="structUdon_1_1Message_1_1PadPS5.html">Message::PadPS5</a> <a class="code hl_function" href="classUdon_1_1Impl_1_1SivPadPS5Reader.html#a8b06433231ecb523be8c375d449ee2d6">toMessage</a>() const noexcept</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            {</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                <span class="keywordflow">if</span> (<span class="keyword">auto</span>&amp;&amp; gamePad = s3d::Gamepad(index))</div>
@@ -179,30 +188,32 @@ $(document).ready(function(){initNavTree('SivPadPS5_8hpp_source.html',''); initR
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                    <span class="keywordflow">return</span> {};</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                }</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            }</div>
+</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        };</div>
+</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    }    <span class="comment">// namespace Impl</span></div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="namespaceUdon.html#ab6520eebf8e5fc1d7ea50f87f779cb4e">   78</a></span>    <span class="keyword">using </span><a class="code hl_class" href="classUdon_1_1PadPS5.html">SivPadPS5</a> = <a class="code hl_class" href="classUdon_1_1PadPS5.html">PadPS5&lt;Impl::SivPadPS5Reader&gt;</a>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="namespaceUdon.html#a4b5d3b294d6e954b48868d836bd9a427">   78</a></span>    <span class="keyword">using </span><a class="code hl_class" href="classUdon_1_1PadPS5.html">SivPadPS5</a> = <a class="code hl_class" href="classUdon_1_1PadPS5.html">PadPS5&lt;Impl::SivPadPS5Reader&gt;</a>;</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>}    <span class="comment">// namespace Udon</span></div>
 <div class="ttc" id="aPad_2PadPS5_8hpp_html"><div class="ttname"><a href="Pad_2PadPS5_8hpp.html">PadPS5.hpp</a></div></div>
-<div class="ttc" id="aclassUdon_1_1Impl_1_1SivPadPS5Reader_html"><div class="ttname"><a href="classUdon_1_1Impl_1_1SivPadPS5Reader.html">Udon::Impl::SivPadPS5Reader</a></div><div class="ttdoc">OpenSiv3D用 PS5コントローラー 受信クラス</div><div class="ttdef"><b>Definition:</b> SivPadPS5.hpp:23</div></div>
-<div class="ttc" id="aclassUdon_1_1Impl_1_1SivPadPS5Reader_html_a23e8eb6d86d1b8165f8076cc2820c322"><div class="ttname"><a href="classUdon_1_1Impl_1_1SivPadPS5Reader.html#a23e8eb6d86d1b8165f8076cc2820c322">Udon::Impl::SivPadPS5Reader::SivPadPS5Reader</a></div><div class="ttdeci">SivPadPS5Reader() noexcept</div><div class="ttdef"><b>Definition:</b> SivPadPS5.hpp:27</div></div>
-<div class="ttc" id="aclassUdon_1_1Impl_1_1SivPadPS5Reader_html_a33d0dcdf130bafc957f8d4c2b67aa568"><div class="ttname"><a href="classUdon_1_1Impl_1_1SivPadPS5Reader.html#a33d0dcdf130bafc957f8d4c2b67aa568">Udon::Impl::SivPadPS5Reader::SivPadPS5Reader</a></div><div class="ttdeci">SivPadPS5Reader(size_t index) noexcept</div><div class="ttdef"><b>Definition:</b> SivPadPS5.hpp:32</div></div>
-<div class="ttc" id="aclassUdon_1_1Impl_1_1SivPadPS5Reader_html_a8b06433231ecb523be8c375d449ee2d6"><div class="ttname"><a href="classUdon_1_1Impl_1_1SivPadPS5Reader.html#a8b06433231ecb523be8c375d449ee2d6">Udon::Impl::SivPadPS5Reader::toMessage</a></div><div class="ttdeci">Message::PadPS5 toMessage() const noexcept</div><div class="ttdef"><b>Definition:</b> SivPadPS5.hpp:37</div></div>
-<div class="ttc" id="aclassUdon_1_1PadPS5_html"><div class="ttname"><a href="classUdon_1_1PadPS5.html">Udon::PadPS5</a></div><div class="ttdoc">通信経由PS5コントローラークラス</div><div class="ttdef"><b>Definition:</b> PadPS5.hpp:26</div></div>
-<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition:</b> Bit.hpp:12</div></div>
-<div class="ttc" id="anamespaceUdon_html_afc68d187236ed5a309e4630f3a434661"><div class="ttname"><a href="namespaceUdon.html#afc68d187236ed5a309e4630f3a434661">Udon::Map</a></div><div class="ttdeci">constexpr double Map(const double value, const double inputMin, const double inputMax, const double outputMin, const double outputMax)</div><div class="ttdoc">数値をある範囲から別の範囲に再マッピングする</div><div class="ttdef"><b>Definition:</b> Math.hpp:125</div></div>
-<div class="ttc" id="astructUdon_1_1Message_1_1PadPS5_html"><div class="ttname"><a href="structUdon_1_1Message_1_1PadPS5.html">Udon::Message::PadPS5</a></div><div class="ttdoc">PS5コントローラーのボタン情報</div><div class="ttdef"><b>Definition:</b> PadPS5.hpp:21</div></div>
-<div class="ttc" id="astructUdon_1_1Message_1_1PadPS5_html_a42e88cd5c9ab5508058846137d8cb976"><div class="ttname"><a href="structUdon_1_1Message_1_1PadPS5.html#a42e88cd5c9ab5508058846137d8cb976">Udon::Message::PadPS5::isConnected</a></div><div class="ttdeci">bool isConnected</div><div class="ttdef"><b>Definition:</b> PadPS5.hpp:22</div></div>
+<div class="ttc" id="aclassUdon_1_1Impl_1_1SivPadPS5Reader_html"><div class="ttname"><a href="classUdon_1_1Impl_1_1SivPadPS5Reader.html">Udon::Impl::SivPadPS5Reader</a></div><div class="ttdoc">OpenSiv3D用 PS5コントローラー 受信クラス</div><div class="ttdef"><b>Definition</b> SivPadPS5.hpp:23</div></div>
+<div class="ttc" id="aclassUdon_1_1Impl_1_1SivPadPS5Reader_html_a23e8eb6d86d1b8165f8076cc2820c322"><div class="ttname"><a href="classUdon_1_1Impl_1_1SivPadPS5Reader.html#a23e8eb6d86d1b8165f8076cc2820c322">Udon::Impl::SivPadPS5Reader::SivPadPS5Reader</a></div><div class="ttdeci">SivPadPS5Reader() noexcept</div><div class="ttdef"><b>Definition</b> SivPadPS5.hpp:27</div></div>
+<div class="ttc" id="aclassUdon_1_1Impl_1_1SivPadPS5Reader_html_a33d0dcdf130bafc957f8d4c2b67aa568"><div class="ttname"><a href="classUdon_1_1Impl_1_1SivPadPS5Reader.html#a33d0dcdf130bafc957f8d4c2b67aa568">Udon::Impl::SivPadPS5Reader::SivPadPS5Reader</a></div><div class="ttdeci">SivPadPS5Reader(size_t index) noexcept</div><div class="ttdef"><b>Definition</b> SivPadPS5.hpp:32</div></div>
+<div class="ttc" id="aclassUdon_1_1Impl_1_1SivPadPS5Reader_html_a8b06433231ecb523be8c375d449ee2d6"><div class="ttname"><a href="classUdon_1_1Impl_1_1SivPadPS5Reader.html#a8b06433231ecb523be8c375d449ee2d6">Udon::Impl::SivPadPS5Reader::toMessage</a></div><div class="ttdeci">Message::PadPS5 toMessage() const noexcept</div><div class="ttdef"><b>Definition</b> SivPadPS5.hpp:37</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5_html"><div class="ttname"><a href="classUdon_1_1PadPS5.html">Udon::PadPS5</a></div><div class="ttdoc">通信経由PS5コントローラークラス</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:26</div></div>
+<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
+<div class="ttc" id="anamespaceUdon_html_afc68d187236ed5a309e4630f3a434661"><div class="ttname"><a href="namespaceUdon.html#afc68d187236ed5a309e4630f3a434661">Udon::Map</a></div><div class="ttdeci">constexpr double Map(const double value, const double inputMin, const double inputMax, const double outputMin, const double outputMax)</div><div class="ttdoc">数値をある範囲から別の範囲に再マッピングする</div><div class="ttdef"><b>Definition</b> Math.hpp:125</div></div>
+<div class="ttc" id="astructUdon_1_1Message_1_1PadPS5_html"><div class="ttname"><a href="structUdon_1_1Message_1_1PadPS5.html">Udon::Message::PadPS5</a></div><div class="ttdoc">PS5コントローラーのボタン情報</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:21</div></div>
+<div class="ttc" id="astructUdon_1_1Message_1_1PadPS5_html_a42e88cd5c9ab5508058846137d8cb976"><div class="ttname"><a href="structUdon_1_1Message_1_1PadPS5.html#a42e88cd5c9ab5508058846137d8cb976">Udon::Message::PadPS5::isConnected</a></div><div class="ttdeci">bool isConnected</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:22</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_e21713259ba8923ecd13681a32accaa1.html">Com</a></li><li class="navelem"><a class="el" href="dir_a8db033dbdb10cf7b30db8f576d64b89.html">Pad</a></li><li class="navelem"><a class="el" href="SivPadPS5_8hpp.html">SivPadPS5.hpp</a></li>
-    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>

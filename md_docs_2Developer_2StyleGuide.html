@@ -1,0 +1,289 @@
+<!-- HTML header for doxygen 1.10.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>UdonLibrary: スタイルガイド</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+  DoxygenAwesomeDarkModeToggle.init()
+  DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
+</script>
+</head>
+<body>
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
+              <td id="projectalign">
+                <div id="projectname">UdonLibrary<span
+                    id="projectnumber">&#160;1.0.0</span>
+                </div>
+                <div id="projectbrief">機械システム研究部 C++ ライブラリ</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('md_docs_2Developer_2StyleGuide.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">スタイルガイド</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md122"></a> 本ライブラリへの機能追加、改良を行う際のガイドです。今後変更していただいても大丈夫です。</p>
+<h1><a class="anchor" id="autotoc_md123"></a>
+言語</h1>
+<ul>
+<li><p class="startli">使用言語</p>
+<p class="startli"><code>C++</code> を使用します。</p>
+</li>
+<li><p class="startli">言語バージョン</p>
+<p class="startli">共通部は <code>C++11</code> を使用します。<code>C++14</code> 以上の機能は現時点で使用していません。各マイコンに合わせた機能の場合は例外です。</p>
+</li>
+</ul>
+<blockquote class="doxtable">
+<p>&zwj;理由: Arduino Nano のコンパイラのバージョンが C++11 であり、低いバージョンに合わせているためです。Arduino Nano への対応を終了する場合、 <code>C++14</code> へのバージョンアップをしてもいいと思います。 (Teensy: C++14, RaspberryPiPico: C++14) </p>
+</blockquote>
+<ul>
+<li><p class="startli">依存ライブラリ</p>
+<p class="startli">基本的に C 言語標準ライブラリもしくは C++ 標準ライブラリ STL(C+11) を使用します。</p>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md124"></a>
+書式</h1>
+<p><a href="https://clang.llvm.org/docs/ClangFormat.html">clang-format</a> を使用してファイルを自動整形します。書式設定ファイルは <code>UdonLibrary/.clang-format</code> にあります。</p>
+<h1><a class="anchor" id="autotoc_md125"></a>
+命名規則</h1>
+<p>変数、関数などを作成する際の命名規則です。</p>
+<h2><a class="anchor" id="autotoc_md126"></a>
+ディレクトリ(フォルダ)、ファイル</h2>
+<p><code>アッパーキャメルケース</code> を使用します。</p>
+<p>拡張子はヘッダーファイルに <code>*.hpp</code>、ソースファイルに <code>*.cpp</code> を使用します。</p>
+<blockquote class="doxtable">
+<p>&zwj;例外的に <code>UdonLibrary/</code> 下のディレクトリ名には <code>ローワーキャメルケース</code> を使用しています。なぜなら、Arduino のライブラリディレクトリ名は <code>src/</code> である必要があり、これに合わせているためです。</p>
+<div class="fragment"><div class="line">UdonLibrary/</div>
+<div class="line">├─ src/</div>
+<div class="line">│  └─Driver/</div>
+<div class="line">│    └─Motor.hpp</div>
+</div><!-- fragment --> </blockquote>
+<h2><a class="anchor" id="autotoc_md127"></a>
+変数 定数</h2>
+<ul>
+<li><p class="startli">通常変数 (ローカル、グローバル変数)</p>
+<p class="startli"><code>ローワーキャメルケース</code> を使用します。</p>
+<div class="fragment"><div class="line"><span class="comment">// OK</span></div>
+<div class="line"><span class="keyword">auto</span> value = 100;</div>
+<div class="line"><span class="keyword">auto</span> nodeId = 0x1100;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// NG</span></div>
+<div class="line"><span class="keyword">auto</span> Value = 100;</div>
+<div class="line"><span class="keyword">auto</span> node_id = 0x1100;</div>
+</div><!-- fragment --></li>
+<li><p class="startli">メンバ変数</p>
+<p class="startli">通常の変数名と同じ。</p>
+</li>
+<li><p class="startli">実行時定数</p>
+<p class="startli">通常の変数名と同じ。</p>
+<div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> value = <a class="code hl_define" href="Show_8hpp.html#a203d5b93e4077aa273c7013964a31f9e">F</a>();</div>
+<div class="ttc" id="aShow_8hpp_html_a203d5b93e4077aa273c7013964a31f9e"><div class="ttname"><a href="Show_8hpp.html#a203d5b93e4077aa273c7013964a31f9e">F</a></div><div class="ttdeci">#define F(x)</div><div class="ttdef"><b>Definition</b> Show.hpp:16</div></div>
+</div><!-- fragment --></li>
+<li><p class="startli">コンパイル時定数</p>
+<p class="startli"><code>アッパーキャメルケース</code> を使用します。</p>
+<div class="fragment"><div class="line"><span class="keyword">constexpr</span> <span class="keyword">auto</span> Constant = 3 * 2;</div>
+</div><!-- fragment --></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md128"></a>
+関数</h2>
+<ul>
+<li><p class="startli">グローバル関数</p>
+<p class="startli"><code>アッパーキャメルケース</code> を使用します。</p>
+<div class="fragment"><div class="line"><span class="comment">// OK</span></div>
+<div class="line"><span class="keywordtype">void</span> BarFunc();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// NG</span></div>
+<div class="line"><span class="keywordtype">void</span> barFunc();</div>
+</div><!-- fragment --></li>
+<li><p class="startli">メンバ関数</p>
+<p class="startli"><code>ローワーキャメルケース</code> を使用します。</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span>FooClass</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">// OK</span></div>
+<div class="line">    <span class="keywordtype">void</span> barFunc();</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// NG</span></div>
+<div class="line">    <span class="keywordtype">void</span> bar_func();</div>
+<div class="line">};</div>
+</div><!-- fragment --></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md129"></a>
+型</h2>
+<ul>
+<li><p class="startli">クラス 構造体</p>
+<p class="startli"><code>アッパーキャメルケース</code> を使用します。</p>
+<div class="fragment"><div class="line"><span class="comment">//OK</span></div>
+<div class="line"><span class="keyword">class </span>FooClass{};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// NG</span></div>
+<div class="line"><span class="keyword">class </span>fooClass{};</div>
+</div><!-- fragment --></li>
+<li><p class="startli">インターフェースクラス</p>
+<p class="startli">クラス名の先頭に <code>I</code> を加えます。</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span>IFooClass{};</div>
+</div><!-- fragment --></li>
+<li><p class="startli">メンバ型</p>
+<p class="startli"><code>アッパーキャメルケース</code> を使用します。</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span>FooClass</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">using </span>TypeAlias = int;</div>
+<div class="line">};</div>
+</div><!-- fragment --></li>
+<li><p class="startli">列挙型</p>
+<p class="startli">型名、メンバ名ともに <code>アッパーキャメルケース</code> を使用します。</p>
+<div class="fragment"><div class="line"><span class="keyword">enum class</span> FooEnum</div>
+<div class="line">{</div>
+<div class="line">    FooBar,</div>
+<div class="line">    HogeHoge,</div>
+<div class="line">};</div>
+</div><!-- fragment --></li>
+<li><p class="startli">共用体</p>
+<p class="startli"><code>アッパーキャメルケース</code> を使用します。メンバはクラスのメンバと同じ命名規則を使用します。</p>
+<div class="fragment"><div class="line"><span class="keyword">union </span>FooUnion</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> a;</div>
+<div class="line">    <span class="keywordtype">double</span> b;</div>
+<div class="line">};</div>
+</div><!-- fragment --></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md130"></a>
+テンプレート</h2>
+<ul>
+<li><p class="startli">テンプレート引数</p>
+<p class="startli"><code>アッパーキャメルケース</code> を使用します。短い名前が好ましいです。</p>
+<div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><span class="keywordtype">void</span> Sample(<span class="keyword">const</span> T&amp; value)</div>
+<div class="line">{</div>
+<div class="line">}</div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><span class="keyword">class </span>Sample</div>
+<div class="line">{</div>
+<div class="line">}</div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keywordtype">int</span> N&gt;</div>
+<div class="line"><span class="keywordtype">void</span> Sample(uint8_t (&amp;array)[N])</div>
+<div class="line">{</div>
+<div class="line">}</div>
+</div><!-- fragment --></li>
+<li><p class="startli">メタ関数</p>
+<p class="startli"><code>アッパーキャメルケース</code> を使用します。型の特性を取得するものなので、<code>Is~</code> や <code>~able</code> を使用すると良いです。</p>
+<div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><span class="keyword">struct </span>IsBool : std::is_same&lt;T, bool&gt;</div>
+<div class="line">{</div>
+<div class="line">};</div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><span class="keyword">struct </span>IsSerializable : <span class="comment">//...</span></div>
+<div class="line">{</div>
+<div class="line">};</div>
+</div><!-- fragment --></li>
+</ul>
+<h2><a class="anchor" id="autotoc_md131"></a>
+名前空間</h2>
+<p><code>アッパーキャメルケース</code> を使用します。</p>
+<div class="fragment"><div class="line"><span class="comment">// OK</span></div>
+<div class="line"><span class="keyword">namespace </span>FooSpace {}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// NG</span></div>
+<div class="line"><span class="keyword">namespace </span>fooSpace {}</div>
+</div><!-- fragment --> <h2><a class="anchor" id="autotoc_md132"></a>
+マクロ</h2>
+<p><code>大文字のスネークケース</code> を使用します。</p>
+<div class="fragment"><div class="line"><span class="comment">// OK</span></div>
+<div class="line"><span class="preprocessor">#define FOO_MACRO 100</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// NG</span></div>
+<div class="line"><span class="preprocessor">#define FooMacro 100</span></div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>

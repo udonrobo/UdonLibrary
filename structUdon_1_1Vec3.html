@@ -4,22 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>UdonLibrary: Udon::Vec3 構造体</title>
-<!--BEGIN PROJECT_ICON-->
-<link rel="icon" href="$projecticon" type="image/x-icon" />
-<!--END PROJECT_ICON-->
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<!--BEGIN COPY_CLIPBOARD-->
 <script type="text/javascript" src="clipboard.js"></script>
-<!--END COPY_CLIPBOARD-->
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,9 +23,11 @@
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
 <script type="text/javascript">
   DoxygenAwesomeDarkModeToggle.init()
   DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
 </script>
 </head>
 <body>
@@ -38,7 +36,7 @@
         <table cellspacing="0" cellpadding="0">
           <tbody>
             <tr id="projectrow">
-              <td id="projectlogo"><img alt="Logo" src="Udon.png" $logosize /></td>
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
               <td id="projectalign">
                 <div id="projectname">UdonLibrary<span
                     id="projectnumber">&#160;1.0.0</span>
@@ -49,7 +47,7 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.9.5 -->
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -61,7 +59,7 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索');
-  $(document).ready(function() { init_search(); });
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -79,7 +77,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResizable(); });
+$(function(){initNavTree('structUdon_1_1Vec3.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -117,113 +115,113 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
 <div class="contents">
 
 <p>三次元ベクトル  
- <a href="structUdon_1_1Vec3.html#details">[詳解]</a></p>
+ <a href="#details">[詳解]</a></p>
 
 <p><code>#include &lt;<a class="el" href="Forward_2Vector3D_8hpp_source.html">Udon/Types/Forward/Vector3D.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 公開型</h2></td></tr>
-<tr class="memitem:a784ce21dd2476d7633e18f0a5481ec6a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> = double</td></tr>
-<tr class="memdesc:a784ce21dd2476d7633e18f0a5481ec6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">要素の型  <a href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">[詳解]</a><br /></td></tr>
+<tr class="memitem:a784ce21dd2476d7633e18f0a5481ec6a" id="r_a784ce21dd2476d7633e18f0a5481ec6a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> = double</td></tr>
+<tr class="memdesc:a784ce21dd2476d7633e18f0a5481ec6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">要素の型  <br /></td></tr>
 <tr class="separator:a784ce21dd2476d7633e18f0a5481ec6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
-<tr class="memitem:add45b9f563e627c71d0063e99f302bd3"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#add45b9f563e627c71d0063e99f302bd3">Vec3</a> () noexcept</td></tr>
-<tr class="memdesc:add45b9f563e627c71d0063e99f302bd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコンストラクタ  <a href="structUdon_1_1Vec3.html#add45b9f563e627c71d0063e99f302bd3">[詳解]</a><br /></td></tr>
+<tr class="memitem:add45b9f563e627c71d0063e99f302bd3" id="r_add45b9f563e627c71d0063e99f302bd3"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add45b9f563e627c71d0063e99f302bd3">Vec3</a> () noexcept</td></tr>
+<tr class="memdesc:add45b9f563e627c71d0063e99f302bd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコンストラクタ  <br /></td></tr>
 <tr class="separator:add45b9f563e627c71d0063e99f302bd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f0b5081592ac3bda54820ad05ed953d"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a6f0b5081592ac3bda54820ad05ed953d">Vec3</a> (<a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> <a class="el" href="structUdon_1_1Vec3.html#a0ff7bfcd42a8084175ed792bf6933908">x</a>, <a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> <a class="el" href="structUdon_1_1Vec3.html#a5efc40f12783eefb84a6044a4890b67a">y</a>, <a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> <a class="el" href="structUdon_1_1Vec3.html#a0d98434980310e4133714e1be3f0278a">z</a>) noexcept</td></tr>
-<tr class="memdesc:a6f0b5081592ac3bda54820ad05ed953d"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="structUdon_1_1Vec3.html#a6f0b5081592ac3bda54820ad05ed953d">[詳解]</a><br /></td></tr>
+<tr class="memitem:a6f0b5081592ac3bda54820ad05ed953d" id="r_a6f0b5081592ac3bda54820ad05ed953d"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f0b5081592ac3bda54820ad05ed953d">Vec3</a> (<a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> <a class="el" href="#a0ff7bfcd42a8084175ed792bf6933908">x</a>, <a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> <a class="el" href="#a5efc40f12783eefb84a6044a4890b67a">y</a>, <a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> <a class="el" href="#a0d98434980310e4133714e1be3f0278a">z</a>) noexcept</td></tr>
+<tr class="memdesc:a6f0b5081592ac3bda54820ad05ed953d"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <br /></td></tr>
 <tr class="separator:a6f0b5081592ac3bda54820ad05ed953d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aced088ded15d6baaa783993308cde6d4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#aced088ded15d6baaa783993308cde6d4">Vec3</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;)=default</td></tr>
-<tr class="memdesc:aced088ded15d6baaa783993308cde6d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコピーコンストラクタ  <a href="structUdon_1_1Vec3.html#aced088ded15d6baaa783993308cde6d4">[詳解]</a><br /></td></tr>
+<tr class="memitem:aced088ded15d6baaa783993308cde6d4" id="r_aced088ded15d6baaa783993308cde6d4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aced088ded15d6baaa783993308cde6d4">Vec3</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;)=default</td></tr>
+<tr class="memdesc:aced088ded15d6baaa783993308cde6d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコピーコンストラクタ  <br /></td></tr>
 <tr class="separator:aced088ded15d6baaa783993308cde6d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada6bfd31bed41b1fe629d1667747bd5c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#ada6bfd31bed41b1fe629d1667747bd5c">operator=</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;)=default</td></tr>
-<tr class="memdesc:ada6bfd31bed41b1fe629d1667747bd5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコピー代入演算子  <a href="structUdon_1_1Vec3.html#ada6bfd31bed41b1fe629d1667747bd5c">[詳解]</a><br /></td></tr>
+<tr class="memitem:ada6bfd31bed41b1fe629d1667747bd5c" id="r_ada6bfd31bed41b1fe629d1667747bd5c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada6bfd31bed41b1fe629d1667747bd5c">operator=</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;)=default</td></tr>
+<tr class="memdesc:ada6bfd31bed41b1fe629d1667747bd5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコピー代入演算子  <br /></td></tr>
 <tr class="separator:ada6bfd31bed41b1fe629d1667747bd5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24bac93a6f5900be4fd8c0460e704082"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a24bac93a6f5900be4fd8c0460e704082">operator+=</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
+<tr class="memitem:a24bac93a6f5900be4fd8c0460e704082" id="r_a24bac93a6f5900be4fd8c0460e704082"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24bac93a6f5900be4fd8c0460e704082">operator+=</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
 <tr class="separator:a24bac93a6f5900be4fd8c0460e704082"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5339c12ff6b3fb2db4884346c17daabf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a5339c12ff6b3fb2db4884346c17daabf">operator-=</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
+<tr class="memitem:a5339c12ff6b3fb2db4884346c17daabf" id="r_a5339c12ff6b3fb2db4884346c17daabf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5339c12ff6b3fb2db4884346c17daabf">operator-=</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
 <tr class="separator:a5339c12ff6b3fb2db4884346c17daabf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ded0700674e15c2300b9ab9d055955e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a4ded0700674e15c2300b9ab9d055955e">operator*=</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
+<tr class="memitem:a4ded0700674e15c2300b9ab9d055955e" id="r_a4ded0700674e15c2300b9ab9d055955e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ded0700674e15c2300b9ab9d055955e">operator*=</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
 <tr class="separator:a4ded0700674e15c2300b9ab9d055955e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdfcfee5f522675e90b1b3d8a0cd61dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#abdfcfee5f522675e90b1b3d8a0cd61dd">operator/=</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
+<tr class="memitem:abdfcfee5f522675e90b1b3d8a0cd61dd" id="r_abdfcfee5f522675e90b1b3d8a0cd61dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abdfcfee5f522675e90b1b3d8a0cd61dd">operator/=</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
 <tr class="separator:abdfcfee5f522675e90b1b3d8a0cd61dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab518e5fa2dce5e9a8a0564f1c4fd0ab5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#ab518e5fa2dce5e9a8a0564f1c4fd0ab5">operator+=</a> (<a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> rhs) noexcept</td></tr>
+<tr class="memitem:ab518e5fa2dce5e9a8a0564f1c4fd0ab5" id="r_ab518e5fa2dce5e9a8a0564f1c4fd0ab5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab518e5fa2dce5e9a8a0564f1c4fd0ab5">operator+=</a> (<a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> rhs) noexcept</td></tr>
 <tr class="separator:ab518e5fa2dce5e9a8a0564f1c4fd0ab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a616382f74ddfcb3772caccf5a6a74789"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a616382f74ddfcb3772caccf5a6a74789">operator-=</a> (<a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> rhs) noexcept</td></tr>
+<tr class="memitem:a616382f74ddfcb3772caccf5a6a74789" id="r_a616382f74ddfcb3772caccf5a6a74789"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a616382f74ddfcb3772caccf5a6a74789">operator-=</a> (<a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> rhs) noexcept</td></tr>
 <tr class="separator:a616382f74ddfcb3772caccf5a6a74789"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8996e3c77c843de8c45c8f3734f440c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a8996e3c77c843de8c45c8f3734f440c9">operator*=</a> (<a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> rhs) noexcept</td></tr>
+<tr class="memitem:a8996e3c77c843de8c45c8f3734f440c9" id="r_a8996e3c77c843de8c45c8f3734f440c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8996e3c77c843de8c45c8f3734f440c9">operator*=</a> (<a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> rhs) noexcept</td></tr>
 <tr class="separator:a8996e3c77c843de8c45c8f3734f440c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ac3960ce23795f1876b4cbbf248be81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a0ac3960ce23795f1876b4cbbf248be81">operator/=</a> (<a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> rhs) noexcept</td></tr>
+<tr class="memitem:a0ac3960ce23795f1876b4cbbf248be81" id="r_a0ac3960ce23795f1876b4cbbf248be81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ac3960ce23795f1876b4cbbf248be81">operator/=</a> (<a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> rhs) noexcept</td></tr>
 <tr class="separator:a0ac3960ce23795f1876b4cbbf248be81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37de3a34cbfe311c42f999ca31b0cf75"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a37de3a34cbfe311c42f999ca31b0cf75">operator bool</a> () const noexcept</td></tr>
-<tr class="memdesc:a37de3a34cbfe311c42f999ca31b0cf75"><td class="mdescLeft">&#160;</td><td class="mdescRight">要素のいずれかに0以外の値があるかどうかを返す  <a href="structUdon_1_1Vec3.html#a37de3a34cbfe311c42f999ca31b0cf75">[詳解]</a><br /></td></tr>
+<tr class="memitem:a37de3a34cbfe311c42f999ca31b0cf75" id="r_a37de3a34cbfe311c42f999ca31b0cf75"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37de3a34cbfe311c42f999ca31b0cf75">operator bool</a> () const noexcept</td></tr>
+<tr class="memdesc:a37de3a34cbfe311c42f999ca31b0cf75"><td class="mdescLeft">&#160;</td><td class="mdescRight">要素のいずれかに0以外の値があるかどうかを返す  <br /></td></tr>
 <tr class="separator:a37de3a34cbfe311c42f999ca31b0cf75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac48007de1d555e85dd436bd9422479f0"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#ac48007de1d555e85dd436bd9422479f0">isZero</a> () const noexcept</td></tr>
-<tr class="memdesc:ac48007de1d555e85dd436bd9422479f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゼロベクトルであるかを返す  <a href="structUdon_1_1Vec3.html#ac48007de1d555e85dd436bd9422479f0">[詳解]</a><br /></td></tr>
+<tr class="memitem:ac48007de1d555e85dd436bd9422479f0" id="r_ac48007de1d555e85dd436bd9422479f0"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac48007de1d555e85dd436bd9422479f0">isZero</a> () const noexcept</td></tr>
+<tr class="memdesc:ac48007de1d555e85dd436bd9422479f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">ゼロベクトルであるかを返す  <br /></td></tr>
 <tr class="separator:ac48007de1d555e85dd436bd9422479f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33f2d7bd6cb5685a20a652ed9643a11e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a33f2d7bd6cb5685a20a652ed9643a11e">clear</a> () noexcept</td></tr>
-<tr class="memdesc:a33f2d7bd6cb5685a20a652ed9643a11e"><td class="mdescLeft">&#160;</td><td class="mdescRight">値クリア  <a href="structUdon_1_1Vec3.html#a33f2d7bd6cb5685a20a652ed9643a11e">[詳解]</a><br /></td></tr>
+<tr class="memitem:a33f2d7bd6cb5685a20a652ed9643a11e" id="r_a33f2d7bd6cb5685a20a652ed9643a11e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33f2d7bd6cb5685a20a652ed9643a11e">clear</a> () noexcept</td></tr>
+<tr class="memdesc:a33f2d7bd6cb5685a20a652ed9643a11e"><td class="mdescLeft">&#160;</td><td class="mdescRight">値クリア  <br /></td></tr>
 <tr class="separator:a33f2d7bd6cb5685a20a652ed9643a11e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0a6cd34fcbfe76a40683f3436f3f1b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html">Udon::Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#af0a6cd34fcbfe76a40683f3436f3f1b4">xy</a> () const noexcept</td></tr>
+<tr class="memitem:af0a6cd34fcbfe76a40683f3436f3f1b4" id="r_af0a6cd34fcbfe76a40683f3436f3f1b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec2.html">Udon::Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0a6cd34fcbfe76a40683f3436f3f1b4">xy</a> () const noexcept</td></tr>
 <tr class="separator:af0a6cd34fcbfe76a40683f3436f3f1b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38660adeff3ff61890bfd131384fdf30"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a38660adeff3ff61890bfd131384fdf30">UDON_ENUMERABLE</a> (<a class="el" href="structUdon_1_1Vec3.html#a0ff7bfcd42a8084175ed792bf6933908">x</a>, <a class="el" href="structUdon_1_1Vec3.html#a5efc40f12783eefb84a6044a4890b67a">y</a>, <a class="el" href="structUdon_1_1Vec3.html#a0d98434980310e4133714e1be3f0278a">z</a>)</td></tr>
-<tr class="memdesc:a38660adeff3ff61890bfd131384fdf30"><td class="mdescLeft">&#160;</td><td class="mdescRight">OpenSiv3D との連携  <a href="structUdon_1_1Vec3.html#a38660adeff3ff61890bfd131384fdf30">[詳解]</a><br /></td></tr>
+<tr class="memitem:a38660adeff3ff61890bfd131384fdf30" id="r_a38660adeff3ff61890bfd131384fdf30"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38660adeff3ff61890bfd131384fdf30">UDON_ENUMERABLE</a> (<a class="el" href="#a0ff7bfcd42a8084175ed792bf6933908">x</a>, <a class="el" href="#a5efc40f12783eefb84a6044a4890b67a">y</a>, <a class="el" href="#a0d98434980310e4133714e1be3f0278a">z</a>)</td></tr>
+<tr class="memdesc:a38660adeff3ff61890bfd131384fdf30"><td class="mdescLeft">&#160;</td><td class="mdescRight">OpenSiv3D との連携  <br /></td></tr>
 <tr class="separator:a38660adeff3ff61890bfd131384fdf30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 公開変数類</h2></td></tr>
-<tr class="memitem:a0ff7bfcd42a8084175ed792bf6933908"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a0ff7bfcd42a8084175ed792bf6933908">x</a></td></tr>
-<tr class="memdesc:a0ff7bfcd42a8084175ed792bf6933908"><td class="mdescLeft">&#160;</td><td class="mdescRight">X成分  <a href="structUdon_1_1Vec3.html#a0ff7bfcd42a8084175ed792bf6933908">[詳解]</a><br /></td></tr>
+<tr class="memitem:a0ff7bfcd42a8084175ed792bf6933908" id="r_a0ff7bfcd42a8084175ed792bf6933908"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ff7bfcd42a8084175ed792bf6933908">x</a></td></tr>
+<tr class="memdesc:a0ff7bfcd42a8084175ed792bf6933908"><td class="mdescLeft">&#160;</td><td class="mdescRight">X成分  <br /></td></tr>
 <tr class="separator:a0ff7bfcd42a8084175ed792bf6933908"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5efc40f12783eefb84a6044a4890b67a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a5efc40f12783eefb84a6044a4890b67a">y</a></td></tr>
-<tr class="memdesc:a5efc40f12783eefb84a6044a4890b67a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Y成分  <a href="structUdon_1_1Vec3.html#a5efc40f12783eefb84a6044a4890b67a">[詳解]</a><br /></td></tr>
+<tr class="memitem:a5efc40f12783eefb84a6044a4890b67a" id="r_a5efc40f12783eefb84a6044a4890b67a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5efc40f12783eefb84a6044a4890b67a">y</a></td></tr>
+<tr class="memdesc:a5efc40f12783eefb84a6044a4890b67a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Y成分  <br /></td></tr>
 <tr class="separator:a5efc40f12783eefb84a6044a4890b67a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d98434980310e4133714e1be3f0278a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a0d98434980310e4133714e1be3f0278a">z</a></td></tr>
-<tr class="memdesc:a0d98434980310e4133714e1be3f0278a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Z成分  <a href="structUdon_1_1Vec3.html#a0d98434980310e4133714e1be3f0278a">[詳解]</a><br /></td></tr>
+<tr class="memitem:a0d98434980310e4133714e1be3f0278a" id="r_a0d98434980310e4133714e1be3f0278a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d98434980310e4133714e1be3f0278a">z</a></td></tr>
+<tr class="memdesc:a0d98434980310e4133714e1be3f0278a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Z成分  <br /></td></tr>
 <tr class="separator:a0d98434980310e4133714e1be3f0278a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 静的公開変数類</h2></td></tr>
-<tr class="memitem:ab9b80ebd512ab9ba383c2b832698906d"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#ab9b80ebd512ab9ba383c2b832698906d">Dimension</a> = 3</td></tr>
-<tr class="memdesc:ab9b80ebd512ab9ba383c2b832698906d"><td class="mdescLeft">&#160;</td><td class="mdescRight">次元数  <a href="structUdon_1_1Vec3.html#ab9b80ebd512ab9ba383c2b832698906d">[詳解]</a><br /></td></tr>
+<tr class="memitem:ab9b80ebd512ab9ba383c2b832698906d" id="r_ab9b80ebd512ab9ba383c2b832698906d"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9b80ebd512ab9ba383c2b832698906d">Dimension</a> = 3</td></tr>
+<tr class="memdesc:ab9b80ebd512ab9ba383c2b832698906d"><td class="mdescLeft">&#160;</td><td class="mdescRight">次元数  <br /></td></tr>
 <tr class="separator:ab9b80ebd512ab9ba383c2b832698906d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 フレンド</h2></td></tr>
-<tr class="memitem:ab6b6e995e758a413b5c48aa6a197186d"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#ab6b6e995e758a413b5c48aa6a197186d">operator+</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
+<tr class="memitem:ab6b6e995e758a413b5c48aa6a197186d" id="r_ab6b6e995e758a413b5c48aa6a197186d"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6b6e995e758a413b5c48aa6a197186d">operator+</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
 <tr class="separator:ab6b6e995e758a413b5c48aa6a197186d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf3c000d66e6b29ef5ca80a2614ca655"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#aaf3c000d66e6b29ef5ca80a2614ca655">operator-</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
+<tr class="memitem:aaf3c000d66e6b29ef5ca80a2614ca655" id="r_aaf3c000d66e6b29ef5ca80a2614ca655"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf3c000d66e6b29ef5ca80a2614ca655">operator-</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
 <tr class="separator:aaf3c000d66e6b29ef5ca80a2614ca655"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7dc92c5884c3cee12297f2f5d02a5501"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a7dc92c5884c3cee12297f2f5d02a5501">operator*</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
+<tr class="memitem:a7dc92c5884c3cee12297f2f5d02a5501" id="r_a7dc92c5884c3cee12297f2f5d02a5501"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7dc92c5884c3cee12297f2f5d02a5501">operator*</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
 <tr class="separator:a7dc92c5884c3cee12297f2f5d02a5501"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4917c8a6aabbe8eeec326b991c42ff70"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a4917c8a6aabbe8eeec326b991c42ff70">operator/</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
+<tr class="memitem:a4917c8a6aabbe8eeec326b991c42ff70" id="r_a4917c8a6aabbe8eeec326b991c42ff70"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4917c8a6aabbe8eeec326b991c42ff70">operator/</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
 <tr class="separator:a4917c8a6aabbe8eeec326b991c42ff70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44e3d8105720f9adf92c8f3b3817dd96"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a44e3d8105720f9adf92c8f3b3817dd96">operator+</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, <a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> rhs) noexcept</td></tr>
+<tr class="memitem:a44e3d8105720f9adf92c8f3b3817dd96" id="r_a44e3d8105720f9adf92c8f3b3817dd96"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44e3d8105720f9adf92c8f3b3817dd96">operator+</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, <a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> rhs) noexcept</td></tr>
 <tr class="separator:a44e3d8105720f9adf92c8f3b3817dd96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb1c6ee752fc55be2d2eb505f8f9f9fa"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#abb1c6ee752fc55be2d2eb505f8f9f9fa">operator-</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, <a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> rhs) noexcept</td></tr>
+<tr class="memitem:abb1c6ee752fc55be2d2eb505f8f9f9fa" id="r_abb1c6ee752fc55be2d2eb505f8f9f9fa"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb1c6ee752fc55be2d2eb505f8f9f9fa">operator-</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, <a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> rhs) noexcept</td></tr>
 <tr class="separator:abb1c6ee752fc55be2d2eb505f8f9f9fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42329cd45701fc5bea9493f29ff951bc"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a42329cd45701fc5bea9493f29ff951bc">operator*</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, <a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> rhs) noexcept</td></tr>
+<tr class="memitem:a42329cd45701fc5bea9493f29ff951bc" id="r_a42329cd45701fc5bea9493f29ff951bc"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42329cd45701fc5bea9493f29ff951bc">operator*</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, <a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> rhs) noexcept</td></tr>
 <tr class="separator:a42329cd45701fc5bea9493f29ff951bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1616e9b761c299ad7c6a175135a4582a"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a1616e9b761c299ad7c6a175135a4582a">operator/</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, <a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> rhs) noexcept</td></tr>
+<tr class="memitem:a1616e9b761c299ad7c6a175135a4582a" id="r_a1616e9b761c299ad7c6a175135a4582a"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1616e9b761c299ad7c6a175135a4582a">operator/</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, <a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> rhs) noexcept</td></tr>
 <tr class="separator:a1616e9b761c299ad7c6a175135a4582a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98e78fded17f1ecd51c8abe793c895be"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a98e78fded17f1ecd51c8abe793c895be">operator+</a> (<a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
+<tr class="memitem:a98e78fded17f1ecd51c8abe793c895be" id="r_a98e78fded17f1ecd51c8abe793c895be"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98e78fded17f1ecd51c8abe793c895be">operator+</a> (<a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
 <tr class="separator:a98e78fded17f1ecd51c8abe793c895be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb8cc25c6c41462622592ded37a565ea"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#adb8cc25c6c41462622592ded37a565ea">operator-</a> (<a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
+<tr class="memitem:adb8cc25c6c41462622592ded37a565ea" id="r_adb8cc25c6c41462622592ded37a565ea"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adb8cc25c6c41462622592ded37a565ea">operator-</a> (<a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
 <tr class="separator:adb8cc25c6c41462622592ded37a565ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83c22063beae2b1b9d92338547486705"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a83c22063beae2b1b9d92338547486705">operator*</a> (<a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
+<tr class="memitem:a83c22063beae2b1b9d92338547486705" id="r_a83c22063beae2b1b9d92338547486705"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83c22063beae2b1b9d92338547486705">operator*</a> (<a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
 <tr class="separator:a83c22063beae2b1b9d92338547486705"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66f5327b1e3702f6b61ede74801c25cc"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a66f5327b1e3702f6b61ede74801c25cc">operator/</a> (<a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
+<tr class="memitem:a66f5327b1e3702f6b61ede74801c25cc" id="r_a66f5327b1e3702f6b61ede74801c25cc"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66f5327b1e3702f6b61ede74801c25cc">operator/</a> (<a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
 <tr class="separator:a66f5327b1e3702f6b61ede74801c25cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88a5568dcb47cc515d38a6323ea0835f"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a88a5568dcb47cc515d38a6323ea0835f">operator==</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
-<tr class="memdesc:a88a5568dcb47cc515d38a6323ea0835f"><td class="mdescLeft">&#160;</td><td class="mdescRight">比較演算子  <a href="structUdon_1_1Vec3.html#a88a5568dcb47cc515d38a6323ea0835f">[詳解]</a><br /></td></tr>
+<tr class="memitem:a88a5568dcb47cc515d38a6323ea0835f" id="r_a88a5568dcb47cc515d38a6323ea0835f"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88a5568dcb47cc515d38a6323ea0835f">operator==</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
+<tr class="memdesc:a88a5568dcb47cc515d38a6323ea0835f"><td class="mdescLeft">&#160;</td><td class="mdescRight">比較演算子  <br /></td></tr>
 <tr class="separator:a88a5568dcb47cc515d38a6323ea0835f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3056382ce848e4ae06a40c6458689a04"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Vec3.html#a3056382ce848e4ae06a40c6458689a04">operator!=</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
+<tr class="memitem:a3056382ce848e4ae06a40c6458689a04" id="r_a3056382ce848e4ae06a40c6458689a04"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3056382ce848e4ae06a40c6458689a04">operator!=</a> (const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;lhs, const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;rhs) noexcept</td></tr>
 <tr class="separator:a3056382ce848e4ae06a40c6458689a04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock"><p >三次元ベクトル </p>
+<div class="textblock"><p>三次元ベクトル </p>
 </div><h2 class="groupheader">型定義メンバ詳解</h2>
 <a id="a784ce21dd2476d7633e18f0a5481ec6a" name="a784ce21dd2476d7633e18f0a5481ec6a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a784ce21dd2476d7633e18f0a5481ec6a">&#9670;&#160;</a></span>ValueType</h2>
@@ -232,7 +230,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">Udon::Vec3::ValueType</a> =  double</td>
+          <td class="memname">using <a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">Udon::Vec3::ValueType</a> = double</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -254,7 +252,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">constexpr Udon::Vec3::Vec3 </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -281,25 +279,17 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">constexpr Udon::Vec3::Vec3 </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
+          <td class="paramtype"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a></td>          <td class="paramname"><span class="paramname"><em>x</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
+          <td class="paramtype"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a></td>          <td class="paramname"><span class="paramname"><em>y</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td>
-          <td class="paramname"><em>z</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a></td>          <td class="paramname"><span class="paramname"><em>z</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -332,8 +322,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">Udon::Vec3::Vec3 </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -361,7 +350,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">void Udon::Vec3::clear </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -388,7 +377,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">constexpr bool Udon::Vec3::isZero </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -415,7 +404,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">constexpr Udon::Vec3::operator bool </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -443,8 +432,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp; Udon::Vec3::operator*= </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -469,8 +457,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp; Udon::Vec3::operator*= </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td>
-          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a></td>          <td class="paramname"><span class="paramname"><em>rhs</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -495,8 +482,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp; Udon::Vec3::operator+= </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -521,8 +507,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp; Udon::Vec3::operator+= </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td>
-          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a></td>          <td class="paramname"><span class="paramname"><em>rhs</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -547,8 +532,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp; Udon::Vec3::operator-= </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -573,8 +557,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp; Udon::Vec3::operator-= </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td>
-          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a></td>          <td class="paramname"><span class="paramname"><em>rhs</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -599,8 +582,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp; Udon::Vec3::operator/= </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -625,8 +607,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp; Udon::Vec3::operator/= </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td>
-          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a></td>          <td class="paramname"><span class="paramname"><em>rhs</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -651,8 +632,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp; Udon::Vec3::operator= </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -676,25 +656,17 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">Udon::Vec3::UDON_ENUMERABLE </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structUdon_1_1Vec3.html#a0ff7bfcd42a8084175ed792bf6933908">x</a>&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramtype"><a class="el" href="#a0ff7bfcd42a8084175ed792bf6933908">x</a></td>          <td class="paramname"><span class="paramname">, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structUdon_1_1Vec3.html#a5efc40f12783eefb84a6044a4890b67a">y</a>&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramtype"><a class="el" href="#a5efc40f12783eefb84a6044a4890b67a">y</a></td>          <td class="paramname"><span class="paramname">, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structUdon_1_1Vec3.html#a0d98434980310e4133714e1be3f0278a">z</a>&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="#a0d98434980310e4133714e1be3f0278a">z</a></td>          <td class="paramname"><span class="paramname"></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -715,7 +687,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname"><a class="el" href="structUdon_1_1Vec2.html">Udon::Vec2</a> Udon::Vec3::xy </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -741,19 +713,12 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">constexpr bool operator!= </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lhs</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -777,19 +742,12 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> operator* </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lhs</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -813,19 +771,12 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> operator* </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lhs</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a></td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -849,19 +800,12 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> operator* </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
+          <td class="paramtype"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a></td>          <td class="paramname"><span class="paramname"><em>lhs</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -885,19 +829,12 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> operator+ </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lhs</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -921,19 +858,12 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> operator+ </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lhs</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a></td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -957,19 +887,12 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> operator+ </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
+          <td class="paramtype"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a></td>          <td class="paramname"><span class="paramname"><em>lhs</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -993,19 +916,12 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> operator- </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lhs</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1029,19 +945,12 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> operator- </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lhs</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a></td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1065,19 +974,12 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> operator- </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
+          <td class="paramtype"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a></td>          <td class="paramname"><span class="paramname"><em>lhs</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1101,19 +1003,12 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> operator/ </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lhs</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1137,19 +1032,12 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> operator/ </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lhs</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a></td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1173,19 +1061,12 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">constexpr <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> operator/ </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a>&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
+          <td class="paramtype"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a></td>          <td class="paramname"><span class="paramname"><em>lhs</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1209,19 +1090,12 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
         <tr>
           <td class="memname">constexpr bool operator== </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>lhs</em>, </td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>lhs</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Vec3.html">Vec3</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1268,7 +1142,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> Udon::Vec3::x</td>
+          <td class="memname"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> Udon::Vec3::x</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1284,7 +1158,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> Udon::Vec3::y</td>
+          <td class="memname"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> Udon::Vec3::y</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1300,7 +1174,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structUdon_1_1Vec3.html#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> Udon::Vec3::z</td>
+          <td class="memname"><a class="el" href="#a784ce21dd2476d7633e18f0a5481ec6a">ValueType</a> Udon::Vec3::z</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1319,7 +1193,7 @@ $(document).ready(function(){initNavTree('structUdon_1_1Vec3.html',''); initResi
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceUdon.html">Udon</a></li><li class="navelem"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a></li>
-    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>

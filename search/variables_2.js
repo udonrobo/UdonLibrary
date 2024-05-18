@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['canbaudrate_0',['canBaudrate',['../structUdon_1_1CanBusSpi_1_1Config.html#a19dd1b96a5a5fe86e39b52750f367b70',1,'Udon::CanBusSpi::Config::canBaudrate()'],['../structUdon_1_1CanBusTeensy_1_1Config.html#a052c1eb6c2be4b1fadf37d0e77e20e0d',1,'Udon::CanBusTeensy::Config::canBaudrate()']]],
-  ['channel_1',['channel',['../structUdon_1_1CanBusSpi_1_1Config.html#aba7f0d4b0bb77350d527d770b62de102',1,'Udon::CanBusSpi::Config::channel()'],['../structUdon_1_1Impl_1_1E220Base_1_1Config.html#ae8be237506946fc19503f8b995426bf3',1,'Udon::Impl::E220Base::Config::channel()']]],
+  ['canbaudrate_0',['canBaudrate',['../structUdon_1_1CanBusSpi_1_1Config.html#a19dd1b96a5a5fe86e39b52750f367b70',1,'Udon::CanBusSpi::Config::canBaudrate'],['../structUdon_1_1CanBusTeensy_1_1Config.html#a052c1eb6c2be4b1fadf37d0e77e20e0d',1,'Udon::CanBusTeensy::Config::canBaudrate']]],
+  ['channel_1',['channel',['../structUdon_1_1CanBusSpi_1_1Config.html#aba7f0d4b0bb77350d527d770b62de102',1,'Udon::CanBusSpi::Config::channel'],['../structUdon_1_1Impl_1_1E220Base_1_1Config.html#ae8be237506946fc19503f8b995426bf3',1,'Udon::Impl::E220Base::Config::channel']]],
   ['circle_2',['circle',['../structUdon_1_1Message_1_1PadPS5.html#a8db77679719484aa3c799c961b6b62a1',1,'Udon::Message::PadPS5']]],
   ['click_3',['click',['../structUdon_1_1Input.html#aa4c9c021a02823dde03ead4e3a68626e',1,'Udon::Input']]],
   ['config_4',['config',['../classUdon_1_1Impl_1_1E220Base.html#ac0fc956ec044a8a3202ff0b3aa51da23',1,'Udon::Impl::E220Base']]],

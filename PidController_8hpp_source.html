@@ -4,22 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>UdonLibrary: src/Udon/Algorithm/PidController.hpp ソースファイル</title>
-<!--BEGIN PROJECT_ICON-->
-<link rel="icon" href="$projecticon" type="image/x-icon" />
-<!--END PROJECT_ICON-->
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<!--BEGIN COPY_CLIPBOARD-->
 <script type="text/javascript" src="clipboard.js"></script>
-<!--END COPY_CLIPBOARD-->
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,9 +23,11 @@
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
 <script type="text/javascript">
   DoxygenAwesomeDarkModeToggle.init()
   DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
 </script>
 </head>
 <body>
@@ -38,7 +36,7 @@
         <table cellspacing="0" cellpadding="0">
           <tbody>
             <tr id="projectrow">
-              <td id="projectlogo"><img alt="Logo" src="Udon.png" $logosize /></td>
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
               <td id="projectalign">
                 <div id="projectname">UdonLibrary<span
                     id="projectnumber">&#160;1.0.0</span>
@@ -49,7 +47,7 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.9.5 -->
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -61,11 +59,16 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索');
-  $(document).ready(function() { init_search(); });
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -79,7 +82,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('PidController_8hpp_source.html',''); initResizable(); });
+$(function(){initNavTree('PidController_8hpp_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -124,15 +127,18 @@ $(document).ready(function(){initNavTree('PidController_8hpp_source.html',''); i
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classUdon_1_1PidController.html">   18</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classUdon_1_1PidController.html">PidController</a></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    {</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structUdon_1_1PidController_1_1Parameter.html">   21</a></span>        <span class="keyword">struct </span><a class="code hl_struct" href="structUdon_1_1PidController_1_1Parameter.html">Parameter</a></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        {</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structUdon_1_1PidController_1_1Parameter.html#aca25a14e3820373f1c02949be1faabd0">   23</a></span>            <span class="keywordtype">double</span> <a class="code hl_variable" href="structUdon_1_1PidController_1_1Parameter.html#aca25a14e3820373f1c02949be1faabd0">p</a>;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structUdon_1_1PidController_1_1Parameter.html#ac4f44961fefd6749f8b613c5217b91d0">   24</a></span>            <span class="keywordtype">double</span> <a class="code hl_variable" href="structUdon_1_1PidController_1_1Parameter.html#ac4f44961fefd6749f8b613c5217b91d0">i</a>;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structUdon_1_1PidController_1_1Parameter.html#ab86074cfd18fa98b1dc3f2c6141405b0">   25</a></span>            <span class="keywordtype">double</span> <a class="code hl_variable" href="structUdon_1_1PidController_1_1Parameter.html#ab86074cfd18fa98b1dc3f2c6141405b0">d</a>;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        };</div>
+</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_struct" href="structUdon_1_1PidController_1_1Parameter.html">Parameter</a> constant;    </div>
@@ -147,6 +153,7 @@ $(document).ready(function(){initNavTree('PidController_8hpp_source.html',''); i
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keyword">const</span> <span class="keywordtype">double</span> INTERVAL_S;       </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classUdon_1_1PidController.html#a24a32d5e58b57748248003d2c160f993">   47</a></span>        <a class="code hl_function" href="classUdon_1_1PidController.html#a24a32d5e58b57748248003d2c160f993">PidController</a>(<span class="keywordtype">double</span> kPro, <span class="keywordtype">double</span> kInt, <span class="keywordtype">double</span> kDif, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> callInterval_us, <span class="keywordtype">double</span> maxIntPower = 1023.0) noexcept</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            : constant{ kPro, kInt, kDif }</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            , requestConstant{}</div>
@@ -156,7 +163,9 @@ $(document).ready(function(){initNavTree('PidController_8hpp_source.html',''); i
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            , INTERVAL_S(callInterval_us / 1000000.0)</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        {</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        }</div>
+</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="foldopen" id="foldopen00061" data-start="{" data-end="}">
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classUdon_1_1PidController.html#a64f66fda55e64b4cba8645095b6622b8">   61</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1PidController.html#a64f66fda55e64b4cba8645095b6622b8">update</a>(<span class="keywordtype">double</span> controlValue, <span class="keywordtype">double</span> targetValue) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        {</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="comment">// 係数の適用</span></div>
@@ -179,24 +188,32 @@ $(document).ready(function(){initNavTree('PidController_8hpp_source.html',''); i
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            <span class="comment">// 偏差の保存</span></div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            lastError = error;</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        }</div>
+</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="foldopen" id="foldopen00088" data-start="{" data-end="}">
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classUdon_1_1PidController.html#a60133038754ac22f497961e3598be136">   88</a></span>        <span class="keywordtype">double</span> <a class="code hl_function" href="classUdon_1_1PidController.html#a60133038754ac22f497961e3598be136">getPower</a>(<span class="keywordtype">double</span> min = -250, <span class="keywordtype">double</span> max = 250) const noexcept</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        {</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceUdon.html#ab63e723d1adcd09d8935316fd33de5d4">Udon::Constrain</a>(power.<a class="code hl_variable" href="structUdon_1_1PidController_1_1Parameter.html#aca25a14e3820373f1c02949be1faabd0">p</a> + power.<a class="code hl_variable" href="structUdon_1_1PidController_1_1Parameter.html#ac4f44961fefd6749f8b613c5217b91d0">i</a> + power.<a class="code hl_variable" href="structUdon_1_1PidController_1_1Parameter.html#ab86074cfd18fa98b1dc3f2c6141405b0">d</a>, min, max);</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        }</div>
+</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="foldopen" id="foldopen00099" data-start="{" data-end="}">
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classUdon_1_1PidController.html#a5132c4c8d8e9b75a9bc5ac60d68f1aec">   99</a></span>        <span class="keywordtype">double</span> <a class="code hl_function" href="classUdon_1_1PidController.html#a5132c4c8d8e9b75a9bc5ac60d68f1aec">operator()</a>(<span class="keywordtype">double</span> controlValue, <span class="keywordtype">double</span> targetValue, <span class="keywordtype">double</span> min = -250, <span class="keywordtype">double</span> max = 250) noexcept</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        {</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <a class="code hl_function" href="classUdon_1_1PidController.html#a64f66fda55e64b4cba8645095b6622b8">update</a>(controlValue, targetValue);</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classUdon_1_1PidController.html#a60133038754ac22f497961e3598be136">getPower</a>(min, max);</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        }</div>
+</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="foldopen" id="foldopen00107" data-start="{" data-end="}">
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="classUdon_1_1PidController.html#aacc707236296af30d8d2421d91ebce3a">  107</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1PidController.html#aacc707236296af30d8d2421d91ebce3a">clearPower</a>() noexcept</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        {</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            power     = {};</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            lastError = 0.0;</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        }</div>
+</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="foldopen" id="foldopen00115" data-start="{" data-end="}">
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="classUdon_1_1PidController.html#a730ce2fe001870643bbc8df20d9df8de">  115</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1PidController.html#a730ce2fe001870643bbc8df20d9df8de">requestParamPro</a>(<span class="keywordtype">double</span> value) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        {</div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>            <span class="keywordflow">if</span> (requestConstant)</div>
@@ -208,7 +225,9 @@ $(document).ready(function(){initNavTree('PidController_8hpp_source.html',''); i
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>                requestConstant = <a class="code hl_struct" href="structUdon_1_1PidController_1_1Parameter.html">Parameter</a>{ value, constant.<a class="code hl_variable" href="structUdon_1_1PidController_1_1Parameter.html#ac4f44961fefd6749f8b613c5217b91d0">i</a>, constant.<a class="code hl_variable" href="structUdon_1_1PidController_1_1Parameter.html#ab86074cfd18fa98b1dc3f2c6141405b0">d</a> };</div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            }</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        }</div>
+</div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="foldopen" id="foldopen00129" data-start="{" data-end="}">
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="classUdon_1_1PidController.html#ac9bf29a6bdd23f82528d45bf2284c563">  129</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1PidController.html#ac9bf29a6bdd23f82528d45bf2284c563">requestParamInt</a>(<span class="keywordtype">double</span> value) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        {</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            <span class="keywordflow">if</span> (requestConstant)</div>
@@ -220,7 +239,9 @@ $(document).ready(function(){initNavTree('PidController_8hpp_source.html',''); i
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                requestConstant = <a class="code hl_struct" href="structUdon_1_1PidController_1_1Parameter.html">Parameter</a>{ constant.<a class="code hl_variable" href="structUdon_1_1PidController_1_1Parameter.html#aca25a14e3820373f1c02949be1faabd0">p</a>, value, constant.<a class="code hl_variable" href="structUdon_1_1PidController_1_1Parameter.html#ab86074cfd18fa98b1dc3f2c6141405b0">d</a> };</div>
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            }</div>
 <div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        }</div>
+</div>
 <div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="foldopen" id="foldopen00143" data-start="{" data-end="}">
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="classUdon_1_1PidController.html#a827652efa49a4efc417682e1b9ec08c6">  143</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1PidController.html#a827652efa49a4efc417682e1b9ec08c6">requestParamDif</a>(<span class="keywordtype">double</span> value) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        {</div>
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            <span class="keywordflow">if</span> (requestConstant)</div>
@@ -232,6 +253,7 @@ $(document).ready(function(){initNavTree('PidController_8hpp_source.html',''); i
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>                requestConstant = <a class="code hl_struct" href="structUdon_1_1PidController_1_1Parameter.html">Parameter</a>{ constant.<a class="code hl_variable" href="structUdon_1_1PidController_1_1Parameter.html#aca25a14e3820373f1c02949be1faabd0">p</a>, constant.<a class="code hl_variable" href="structUdon_1_1PidController_1_1Parameter.html#ac4f44961fefd6749f8b613c5217b91d0">i</a>, value };</div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            }</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        }</div>
+</div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="classUdon_1_1PidController.html#ac246fdd91727cab4eb227583c3173390">  157</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1PidController.html#ac246fdd91727cab4eb227583c3173390">requestParam</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1PidController_1_1Parameter.html">Parameter</a>&amp; value) <span class="keyword">noexcept</span> { requestConstant = value; }</div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
@@ -257,48 +279,49 @@ $(document).ready(function(){initNavTree('PidController_8hpp_source.html',''); i
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno"><a class="line" href="classUdon_1_1PidController.html#a27cffda831fbfdb427227f1871543375">  201</a></span>        <span class="keywordtype">double</span> <a class="code hl_function" href="classUdon_1_1PidController.html#a27cffda831fbfdb427227f1871543375">getPowerDif</a>() const noexcept { <span class="keywordflow">return</span> power.<a class="code hl_variable" href="structUdon_1_1PidController_1_1Parameter.html#ab86074cfd18fa98b1dc3f2c6141405b0">d</a>; }</div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    };</div>
+</div>
 <div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
 <div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>}    <span class="comment">// namespace Udon</span></div>
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aMath_8hpp_html"><div class="ttname"><a href="Math_8hpp.html">Math.hpp</a></div></div>
 <div class="ttc" id="aOptional_8hpp_html"><div class="ttname"><a href="Optional_8hpp.html">Optional.hpp</a></div></div>
-<div class="ttc" id="aclassUdon_1_1Optional_html"><div class="ttname"><a href="classUdon_1_1Optional.html">Udon::Optional</a></div><div class="ttdoc">オプショナル型</div><div class="ttdef"><b>Definition:</b> Optional.hpp:55</div></div>
-<div class="ttc" id="aclassUdon_1_1Optional_html_af0adcd9eb9cf98b349394a0d18e31ea1"><div class="ttname"><a href="classUdon_1_1Optional.html#af0adcd9eb9cf98b349394a0d18e31ea1">Udon::Optional::reset</a></div><div class="ttdeci">void reset() noexcept(std::is_nothrow_destructible&lt; ValueType &gt;::value)</div><div class="ttdoc">無効状態にする</div><div class="ttdef"><b>Definition:</b> Optional.hpp:445</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html"><div class="ttname"><a href="classUdon_1_1PidController.html">Udon::PidController</a></div><div class="ttdoc">PID制御器</div><div class="ttdef"><b>Definition:</b> PidController.hpp:19</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_a13642f81615bdefdf2cd54e1e9282fd0"><div class="ttname"><a href="classUdon_1_1PidController.html#a13642f81615bdefdf2cd54e1e9282fd0">Udon::PidController::getPowerPro</a></div><div class="ttdeci">double getPowerPro() const noexcept</div><div class="ttdoc">比例量の取得</div><div class="ttdef"><b>Definition:</b> PidController.hpp:193</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_a24a32d5e58b57748248003d2c160f993"><div class="ttname"><a href="classUdon_1_1PidController.html#a24a32d5e58b57748248003d2c160f993">Udon::PidController::PidController</a></div><div class="ttdeci">PidController(double kPro, double kInt, double kDif, unsigned long callInterval_us, double maxIntPower=1023.0) noexcept</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition:</b> PidController.hpp:47</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_a27cffda831fbfdb427227f1871543375"><div class="ttname"><a href="classUdon_1_1PidController.html#a27cffda831fbfdb427227f1871543375">Udon::PidController::getPowerDif</a></div><div class="ttdeci">double getPowerDif() const noexcept</div><div class="ttdoc">微分量の取得</div><div class="ttdef"><b>Definition:</b> PidController.hpp:201</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_a2b4d46dccc508eab0531eed1610ffa95"><div class="ttname"><a href="classUdon_1_1PidController.html#a2b4d46dccc508eab0531eed1610ffa95">Udon::PidController::setParamInt</a></div><div class="ttdeci">void setParamInt(double value) noexcept</div><div class="ttdoc">積分係数の設定</div><div class="ttdef"><b>Definition:</b> PidController.hpp:165</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_a3601cf0496dd491334e0f5892a97e675"><div class="ttname"><a href="classUdon_1_1PidController.html#a3601cf0496dd491334e0f5892a97e675">Udon::PidController::setParamDif</a></div><div class="ttdeci">void setParamDif(double value) noexcept</div><div class="ttdoc">微分係数の設定</div><div class="ttdef"><b>Definition:</b> PidController.hpp:169</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_a3bcbdff7dc0f1e03741fd57adc7a79d7"><div class="ttname"><a href="classUdon_1_1PidController.html#a3bcbdff7dc0f1e03741fd57adc7a79d7">Udon::PidController::getParam</a></div><div class="ttdeci">const Parameter &amp; getParam() const noexcept</div><div class="ttdoc">係数の取得</div><div class="ttdef"><b>Definition:</b> PidController.hpp:189</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_a5132c4c8d8e9b75a9bc5ac60d68f1aec"><div class="ttname"><a href="classUdon_1_1PidController.html#a5132c4c8d8e9b75a9bc5ac60d68f1aec">Udon::PidController::operator()</a></div><div class="ttdeci">double operator()(double controlValue, double targetValue, double min=-250, double max=250) noexcept</div><div class="ttdoc">更新、操作量の取得</div><div class="ttdef"><b>Definition:</b> PidController.hpp:99</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_a60133038754ac22f497961e3598be136"><div class="ttname"><a href="classUdon_1_1PidController.html#a60133038754ac22f497961e3598be136">Udon::PidController::getPower</a></div><div class="ttdeci">double getPower(double min=-250, double max=250) const noexcept</div><div class="ttdoc">操作量の取得</div><div class="ttdef"><b>Definition:</b> PidController.hpp:88</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_a64f66fda55e64b4cba8645095b6622b8"><div class="ttname"><a href="classUdon_1_1PidController.html#a64f66fda55e64b4cba8645095b6622b8">Udon::PidController::update</a></div><div class="ttdeci">void update(double controlValue, double targetValue) noexcept</div><div class="ttdoc">データ更新</div><div class="ttdef"><b>Definition:</b> PidController.hpp:61</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_a65d6348b6e0016f9497dca8da249ac10"><div class="ttname"><a href="classUdon_1_1PidController.html#a65d6348b6e0016f9497dca8da249ac10">Udon::PidController::setParamPro</a></div><div class="ttdeci">void setParamPro(double value) noexcept</div><div class="ttdoc">比例係数の設定</div><div class="ttdef"><b>Definition:</b> PidController.hpp:161</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_a676aa64347c092c3027f8d779e12d780"><div class="ttname"><a href="classUdon_1_1PidController.html#a676aa64347c092c3027f8d779e12d780">Udon::PidController::getParamDif</a></div><div class="ttdeci">double getParamDif() const noexcept</div><div class="ttdoc">微分係数の取得</div><div class="ttdef"><b>Definition:</b> PidController.hpp:185</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_a6ed6015ebd0c75b4f632dc90d909a9ea"><div class="ttname"><a href="classUdon_1_1PidController.html#a6ed6015ebd0c75b4f632dc90d909a9ea">Udon::PidController::getPowerInt</a></div><div class="ttdeci">double getPowerInt() const noexcept</div><div class="ttdoc">積分量の取得</div><div class="ttdef"><b>Definition:</b> PidController.hpp:197</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_a72c165d19db8e3de9506e6e97e917393"><div class="ttname"><a href="classUdon_1_1PidController.html#a72c165d19db8e3de9506e6e97e917393">Udon::PidController::setParam</a></div><div class="ttdeci">void setParam(const Parameter &amp;value) noexcept</div><div class="ttdoc">係数の設定</div><div class="ttdef"><b>Definition:</b> PidController.hpp:173</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_a730ce2fe001870643bbc8df20d9df8de"><div class="ttname"><a href="classUdon_1_1PidController.html#a730ce2fe001870643bbc8df20d9df8de">Udon::PidController::requestParamPro</a></div><div class="ttdeci">void requestParamPro(double value) noexcept</div><div class="ttdoc">一周期のみ適用する比例係数の設定</div><div class="ttdef"><b>Definition:</b> PidController.hpp:115</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_a827652efa49a4efc417682e1b9ec08c6"><div class="ttname"><a href="classUdon_1_1PidController.html#a827652efa49a4efc417682e1b9ec08c6">Udon::PidController::requestParamDif</a></div><div class="ttdeci">void requestParamDif(double value) noexcept</div><div class="ttdoc">一周期のみ適用する微分係数の設定</div><div class="ttdef"><b>Definition:</b> PidController.hpp:143</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_aacc707236296af30d8d2421d91ebce3a"><div class="ttname"><a href="classUdon_1_1PidController.html#aacc707236296af30d8d2421d91ebce3a">Udon::PidController::clearPower</a></div><div class="ttdeci">void clearPower() noexcept</div><div class="ttdoc">操作量のクリア</div><div class="ttdef"><b>Definition:</b> PidController.hpp:107</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_ac246fdd91727cab4eb227583c3173390"><div class="ttname"><a href="classUdon_1_1PidController.html#ac246fdd91727cab4eb227583c3173390">Udon::PidController::requestParam</a></div><div class="ttdeci">void requestParam(const Parameter &amp;value) noexcept</div><div class="ttdoc">一周期のみ適用する係数の設定</div><div class="ttdef"><b>Definition:</b> PidController.hpp:157</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_ac9bf29a6bdd23f82528d45bf2284c563"><div class="ttname"><a href="classUdon_1_1PidController.html#ac9bf29a6bdd23f82528d45bf2284c563">Udon::PidController::requestParamInt</a></div><div class="ttdeci">void requestParamInt(double value) noexcept</div><div class="ttdoc">一周期のみ適用する積分係数の設定</div><div class="ttdef"><b>Definition:</b> PidController.hpp:129</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_acc0065e2ac11108241b139e36f0d33d3"><div class="ttname"><a href="classUdon_1_1PidController.html#acc0065e2ac11108241b139e36f0d33d3">Udon::PidController::getParamPro</a></div><div class="ttdeci">double getParamPro() const noexcept</div><div class="ttdoc">比例係数の取得</div><div class="ttdef"><b>Definition:</b> PidController.hpp:177</div></div>
-<div class="ttc" id="aclassUdon_1_1PidController_html_ada828f9f8f4f27727b2f768e1abbbf84"><div class="ttname"><a href="classUdon_1_1PidController.html#ada828f9f8f4f27727b2f768e1abbbf84">Udon::PidController::getParamInt</a></div><div class="ttdeci">double getParamInt() const noexcept</div><div class="ttdoc">積分係数の取得</div><div class="ttdef"><b>Definition:</b> PidController.hpp:181</div></div>
-<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition:</b> Bit.hpp:12</div></div>
-<div class="ttc" id="anamespaceUdon_html_ab63e723d1adcd09d8935316fd33de5d4"><div class="ttname"><a href="namespaceUdon.html#ab63e723d1adcd09d8935316fd33de5d4">Udon::Constrain</a></div><div class="ttdeci">constexpr A Constrain(const A &amp;amt, const B &amp;low, const C &amp;high)</div><div class="ttdoc">値を指定された範囲内に収める (std::clamp)</div><div class="ttdef"><b>Definition:</b> Math.hpp:57</div></div>
-<div class="ttc" id="astructUdon_1_1PidController_1_1Parameter_html"><div class="ttname"><a href="structUdon_1_1PidController_1_1Parameter.html">Udon::PidController::Parameter</a></div><div class="ttdef"><b>Definition:</b> PidController.hpp:22</div></div>
-<div class="ttc" id="astructUdon_1_1PidController_1_1Parameter_html_ab86074cfd18fa98b1dc3f2c6141405b0"><div class="ttname"><a href="structUdon_1_1PidController_1_1Parameter.html#ab86074cfd18fa98b1dc3f2c6141405b0">Udon::PidController::Parameter::d</a></div><div class="ttdeci">double d</div><div class="ttdef"><b>Definition:</b> PidController.hpp:25</div></div>
-<div class="ttc" id="astructUdon_1_1PidController_1_1Parameter_html_ac4f44961fefd6749f8b613c5217b91d0"><div class="ttname"><a href="structUdon_1_1PidController_1_1Parameter.html#ac4f44961fefd6749f8b613c5217b91d0">Udon::PidController::Parameter::i</a></div><div class="ttdeci">double i</div><div class="ttdef"><b>Definition:</b> PidController.hpp:24</div></div>
-<div class="ttc" id="astructUdon_1_1PidController_1_1Parameter_html_aca25a14e3820373f1c02949be1faabd0"><div class="ttname"><a href="structUdon_1_1PidController_1_1Parameter.html#aca25a14e3820373f1c02949be1faabd0">Udon::PidController::Parameter::p</a></div><div class="ttdeci">double p</div><div class="ttdef"><b>Definition:</b> PidController.hpp:23</div></div>
+<div class="ttc" id="aclassUdon_1_1Optional_html"><div class="ttname"><a href="classUdon_1_1Optional.html">Udon::Optional</a></div><div class="ttdoc">オプショナル型</div><div class="ttdef"><b>Definition</b> Optional.hpp:55</div></div>
+<div class="ttc" id="aclassUdon_1_1Optional_html_af0adcd9eb9cf98b349394a0d18e31ea1"><div class="ttname"><a href="classUdon_1_1Optional.html#af0adcd9eb9cf98b349394a0d18e31ea1">Udon::Optional::reset</a></div><div class="ttdeci">void reset() noexcept(std::is_nothrow_destructible&lt; ValueType &gt;::value)</div><div class="ttdoc">無効状態にする</div><div class="ttdef"><b>Definition</b> Optional.hpp:445</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html"><div class="ttname"><a href="classUdon_1_1PidController.html">Udon::PidController</a></div><div class="ttdoc">PID制御器</div><div class="ttdef"><b>Definition</b> PidController.hpp:19</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_a13642f81615bdefdf2cd54e1e9282fd0"><div class="ttname"><a href="classUdon_1_1PidController.html#a13642f81615bdefdf2cd54e1e9282fd0">Udon::PidController::getPowerPro</a></div><div class="ttdeci">double getPowerPro() const noexcept</div><div class="ttdoc">比例量の取得</div><div class="ttdef"><b>Definition</b> PidController.hpp:193</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_a24a32d5e58b57748248003d2c160f993"><div class="ttname"><a href="classUdon_1_1PidController.html#a24a32d5e58b57748248003d2c160f993">Udon::PidController::PidController</a></div><div class="ttdeci">PidController(double kPro, double kInt, double kDif, unsigned long callInterval_us, double maxIntPower=1023.0) noexcept</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition</b> PidController.hpp:47</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_a27cffda831fbfdb427227f1871543375"><div class="ttname"><a href="classUdon_1_1PidController.html#a27cffda831fbfdb427227f1871543375">Udon::PidController::getPowerDif</a></div><div class="ttdeci">double getPowerDif() const noexcept</div><div class="ttdoc">微分量の取得</div><div class="ttdef"><b>Definition</b> PidController.hpp:201</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_a2b4d46dccc508eab0531eed1610ffa95"><div class="ttname"><a href="classUdon_1_1PidController.html#a2b4d46dccc508eab0531eed1610ffa95">Udon::PidController::setParamInt</a></div><div class="ttdeci">void setParamInt(double value) noexcept</div><div class="ttdoc">積分係数の設定</div><div class="ttdef"><b>Definition</b> PidController.hpp:165</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_a3601cf0496dd491334e0f5892a97e675"><div class="ttname"><a href="classUdon_1_1PidController.html#a3601cf0496dd491334e0f5892a97e675">Udon::PidController::setParamDif</a></div><div class="ttdeci">void setParamDif(double value) noexcept</div><div class="ttdoc">微分係数の設定</div><div class="ttdef"><b>Definition</b> PidController.hpp:169</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_a3bcbdff7dc0f1e03741fd57adc7a79d7"><div class="ttname"><a href="classUdon_1_1PidController.html#a3bcbdff7dc0f1e03741fd57adc7a79d7">Udon::PidController::getParam</a></div><div class="ttdeci">const Parameter &amp; getParam() const noexcept</div><div class="ttdoc">係数の取得</div><div class="ttdef"><b>Definition</b> PidController.hpp:189</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_a5132c4c8d8e9b75a9bc5ac60d68f1aec"><div class="ttname"><a href="classUdon_1_1PidController.html#a5132c4c8d8e9b75a9bc5ac60d68f1aec">Udon::PidController::operator()</a></div><div class="ttdeci">double operator()(double controlValue, double targetValue, double min=-250, double max=250) noexcept</div><div class="ttdoc">更新、操作量の取得</div><div class="ttdef"><b>Definition</b> PidController.hpp:99</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_a60133038754ac22f497961e3598be136"><div class="ttname"><a href="classUdon_1_1PidController.html#a60133038754ac22f497961e3598be136">Udon::PidController::getPower</a></div><div class="ttdeci">double getPower(double min=-250, double max=250) const noexcept</div><div class="ttdoc">操作量の取得</div><div class="ttdef"><b>Definition</b> PidController.hpp:88</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_a64f66fda55e64b4cba8645095b6622b8"><div class="ttname"><a href="classUdon_1_1PidController.html#a64f66fda55e64b4cba8645095b6622b8">Udon::PidController::update</a></div><div class="ttdeci">void update(double controlValue, double targetValue) noexcept</div><div class="ttdoc">データ更新</div><div class="ttdef"><b>Definition</b> PidController.hpp:61</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_a65d6348b6e0016f9497dca8da249ac10"><div class="ttname"><a href="classUdon_1_1PidController.html#a65d6348b6e0016f9497dca8da249ac10">Udon::PidController::setParamPro</a></div><div class="ttdeci">void setParamPro(double value) noexcept</div><div class="ttdoc">比例係数の設定</div><div class="ttdef"><b>Definition</b> PidController.hpp:161</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_a676aa64347c092c3027f8d779e12d780"><div class="ttname"><a href="classUdon_1_1PidController.html#a676aa64347c092c3027f8d779e12d780">Udon::PidController::getParamDif</a></div><div class="ttdeci">double getParamDif() const noexcept</div><div class="ttdoc">微分係数の取得</div><div class="ttdef"><b>Definition</b> PidController.hpp:185</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_a6ed6015ebd0c75b4f632dc90d909a9ea"><div class="ttname"><a href="classUdon_1_1PidController.html#a6ed6015ebd0c75b4f632dc90d909a9ea">Udon::PidController::getPowerInt</a></div><div class="ttdeci">double getPowerInt() const noexcept</div><div class="ttdoc">積分量の取得</div><div class="ttdef"><b>Definition</b> PidController.hpp:197</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_a72c165d19db8e3de9506e6e97e917393"><div class="ttname"><a href="classUdon_1_1PidController.html#a72c165d19db8e3de9506e6e97e917393">Udon::PidController::setParam</a></div><div class="ttdeci">void setParam(const Parameter &amp;value) noexcept</div><div class="ttdoc">係数の設定</div><div class="ttdef"><b>Definition</b> PidController.hpp:173</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_a730ce2fe001870643bbc8df20d9df8de"><div class="ttname"><a href="classUdon_1_1PidController.html#a730ce2fe001870643bbc8df20d9df8de">Udon::PidController::requestParamPro</a></div><div class="ttdeci">void requestParamPro(double value) noexcept</div><div class="ttdoc">一周期のみ適用する比例係数の設定</div><div class="ttdef"><b>Definition</b> PidController.hpp:115</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_a827652efa49a4efc417682e1b9ec08c6"><div class="ttname"><a href="classUdon_1_1PidController.html#a827652efa49a4efc417682e1b9ec08c6">Udon::PidController::requestParamDif</a></div><div class="ttdeci">void requestParamDif(double value) noexcept</div><div class="ttdoc">一周期のみ適用する微分係数の設定</div><div class="ttdef"><b>Definition</b> PidController.hpp:143</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_aacc707236296af30d8d2421d91ebce3a"><div class="ttname"><a href="classUdon_1_1PidController.html#aacc707236296af30d8d2421d91ebce3a">Udon::PidController::clearPower</a></div><div class="ttdeci">void clearPower() noexcept</div><div class="ttdoc">操作量のクリア</div><div class="ttdef"><b>Definition</b> PidController.hpp:107</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_ac246fdd91727cab4eb227583c3173390"><div class="ttname"><a href="classUdon_1_1PidController.html#ac246fdd91727cab4eb227583c3173390">Udon::PidController::requestParam</a></div><div class="ttdeci">void requestParam(const Parameter &amp;value) noexcept</div><div class="ttdoc">一周期のみ適用する係数の設定</div><div class="ttdef"><b>Definition</b> PidController.hpp:157</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_ac9bf29a6bdd23f82528d45bf2284c563"><div class="ttname"><a href="classUdon_1_1PidController.html#ac9bf29a6bdd23f82528d45bf2284c563">Udon::PidController::requestParamInt</a></div><div class="ttdeci">void requestParamInt(double value) noexcept</div><div class="ttdoc">一周期のみ適用する積分係数の設定</div><div class="ttdef"><b>Definition</b> PidController.hpp:129</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_acc0065e2ac11108241b139e36f0d33d3"><div class="ttname"><a href="classUdon_1_1PidController.html#acc0065e2ac11108241b139e36f0d33d3">Udon::PidController::getParamPro</a></div><div class="ttdeci">double getParamPro() const noexcept</div><div class="ttdoc">比例係数の取得</div><div class="ttdef"><b>Definition</b> PidController.hpp:177</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_ada828f9f8f4f27727b2f768e1abbbf84"><div class="ttname"><a href="classUdon_1_1PidController.html#ada828f9f8f4f27727b2f768e1abbbf84">Udon::PidController::getParamInt</a></div><div class="ttdeci">double getParamInt() const noexcept</div><div class="ttdoc">積分係数の取得</div><div class="ttdef"><b>Definition</b> PidController.hpp:181</div></div>
+<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
+<div class="ttc" id="anamespaceUdon_html_ab63e723d1adcd09d8935316fd33de5d4"><div class="ttname"><a href="namespaceUdon.html#ab63e723d1adcd09d8935316fd33de5d4">Udon::Constrain</a></div><div class="ttdeci">constexpr A Constrain(const A &amp;amt, const B &amp;low, const C &amp;high)</div><div class="ttdoc">値を指定された範囲内に収める (std::clamp)</div><div class="ttdef"><b>Definition</b> Math.hpp:57</div></div>
+<div class="ttc" id="astructUdon_1_1PidController_1_1Parameter_html"><div class="ttname"><a href="structUdon_1_1PidController_1_1Parameter.html">Udon::PidController::Parameter</a></div><div class="ttdef"><b>Definition</b> PidController.hpp:22</div></div>
+<div class="ttc" id="astructUdon_1_1PidController_1_1Parameter_html_ab86074cfd18fa98b1dc3f2c6141405b0"><div class="ttname"><a href="structUdon_1_1PidController_1_1Parameter.html#ab86074cfd18fa98b1dc3f2c6141405b0">Udon::PidController::Parameter::d</a></div><div class="ttdeci">double d</div><div class="ttdef"><b>Definition</b> PidController.hpp:25</div></div>
+<div class="ttc" id="astructUdon_1_1PidController_1_1Parameter_html_ac4f44961fefd6749f8b613c5217b91d0"><div class="ttname"><a href="structUdon_1_1PidController_1_1Parameter.html#ac4f44961fefd6749f8b613c5217b91d0">Udon::PidController::Parameter::i</a></div><div class="ttdeci">double i</div><div class="ttdef"><b>Definition</b> PidController.hpp:24</div></div>
+<div class="ttc" id="astructUdon_1_1PidController_1_1Parameter_html_aca25a14e3820373f1c02949be1faabd0"><div class="ttname"><a href="structUdon_1_1PidController_1_1Parameter.html#aca25a14e3820373f1c02949be1faabd0">Udon::PidController::Parameter::p</a></div><div class="ttdeci">double p</div><div class="ttdef"><b>Definition</b> PidController.hpp:23</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_dae15e4fcc199797a25f7efa8857a9b0.html">Udon</a></li><li class="navelem"><a class="el" href="dir_22ece226a4582674b632f5609e87d46e.html">Algorithm</a></li><li class="navelem"><a class="el" href="PidController_8hpp.html">PidController.hpp</a></li>
-    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>

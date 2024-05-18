@@ -1,0 +1,220 @@
+<!-- HTML header for doxygen 1.10.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>UdonLibrary: IM920</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+  DoxygenAwesomeDarkModeToggle.init()
+  DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
+</script>
+</head>
+<body>
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
+              <td id="projectalign">
+                <div id="projectname">UdonLibrary<span
+                    id="projectnumber">&#160;1.0.0</span>
+                </div>
+                <div id="projectbrief">機械システム研究部 C++ ライブラリ</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('md_docs_2Communication_2IM920.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">IM920</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md53"></a> </p><details >
+<summary >
+IM920について </summary>
+<p></p>
+<p>920MHz 帯 インタープラン社製無線モジュール</p>
+<p></p>
+</details>
+<h2><a class="anchor" id="autotoc_md54"></a>
+特徴</h2>
+<p>無線通信</p>
+<p>UART で IM920 モジュールとデータのやり取りを行います。</p>
+<p>免許や申請手続き不要。電波法関係はモジュール内部で自動的に制御されます。</p>
+<h2><a class="anchor" id="autotoc_md55"></a>
+通信イメージ</h2>
+<div class="fragment"><div class="line">flowchart LR</div>
+<div class="line"> </div>
+<div class="line">    subgraph 送信者</div>
+<div class="line">    送信マイコン[マイコン] --UART--&gt; 送信Im920[IM920]</div>
+<div class="line">    end</div>
+<div class="line"> </div>
+<div class="line">    送信Im920[IM920] -.920MHz.-&gt;  受信Im920[IM920]</div>
+<div class="line"> </div>
+<div class="line">    subgraph 受信者</div>
+<div class="line">    受信Im920[IM920] --UART--&gt; 受信マイコン[マイコン]</div>
+<div class="line">    end</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md56"></a>
+公式ページ</h2>
+<p><a href="https://www.interplan.co.jp/solution/wireless/im920/">IM920</a> <a href="https://www.interplan.co.jp/solution/wireless/im920s/">IM920s</a> <a href="https://www.interplan.co.jp/solution/wireless/im920sl/">IM920sL</a></p>
+<h1><a class="anchor" id="autotoc_md57"></a>
+個別インクルード</h1>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Im920_8hpp.html">Udon/Com/Im920.hpp</a>&gt;</span></div>
+<div class="ttc" id="aIm920_8hpp_html"><div class="ttname"><a href="Im920_8hpp.html">Im920.hpp</a></div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md58"></a>
+Usage</h1>
+<p>通信するモジュール同士はあらかじめペアリングされている必要があります。ペアリング方法はインタープラン社の公式ページを参照ください。</p>
+<p>IM920 通信クラスは、通信モジュールクラス、送受信クラスから構成されています。</p>
+<p>一対一での通信のみ対応しています。</p>
+<h1><a class="anchor" id="autotoc_md59"></a>
+Im920 クラス</h1>
+<p>使用するモジュールの種類によって使用するクラスを切り替えます。</p>
+<p><code><a class="el" href="classUdon_1_1Im920.html">Udon::Im920</a></code> <code><a class="el" href="classUdon_1_1Im920s.html">Udon::Im920s</a></code> <code><a class="el" href="classUdon_1_1Im920sL.html">Udon::Im920sL</a></code></p>
+<p>コンストラクタの引数に Im920 と通信するシリアルクラスのインスタンスを指定します。詳細は送受信クラスのサンプルを参照してください。</p>
+<h1><a class="anchor" id="autotoc_md60"></a>
+送信クラス</h1>
+<p><code><a class="el" href="classUdon_1_1Im920Writer.html">Udon::Im920Writer</a>&lt;T&gt;</code></p>
+<p><code>T</code> に指定された型のオブジェクトを Im920 へ送信します。</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_class" href="classUdon_1_1Im920.html">Udon::Im920</a> im920{ Serial1 };</div>
+<div class="line"><a class="code hl_class" href="classUdon_1_1Im920Writer.html">Udon::Im920Writer&lt;Udon::Vec2&gt;</a> writer{ im920 };</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup()</div>
+<div class="line">{</div>
+<div class="line">    im920.begin(13);  <span class="comment">// チャンネル番号</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> loop()</div>
+<div class="line">{</div>
+<div class="line">    im920.update();</div>
+<div class="line"> </div>
+<div class="line">    writer.<a class="code hl_function" href="classUdon_1_1Im920Writer.html#afb84180be75dd0dc07854c288254fc22">setMessage</a>({ (double)millis(), (double)micros() });</div>
+<div class="line"> </div>
+<div class="line">    delay(10);</div>
+<div class="line">}</div>
+<div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
+<div class="ttc" id="aclassUdon_1_1Im920Writer_html"><div class="ttname"><a href="classUdon_1_1Im920Writer.html">Udon::Im920Writer</a></div><div class="ttdef"><b>Definition</b> Im920Writer.hpp:24</div></div>
+<div class="ttc" id="aclassUdon_1_1Im920Writer_html_afb84180be75dd0dc07854c288254fc22"><div class="ttname"><a href="classUdon_1_1Im920Writer.html#afb84180be75dd0dc07854c288254fc22">Udon::Im920Writer::setMessage</a></div><div class="ttdeci">void setMessage(const Message &amp;message)</div><div class="ttdef"><b>Definition</b> Im920Writer.hpp:53</div></div>
+<div class="ttc" id="aclassUdon_1_1Im920_html"><div class="ttname"><a href="classUdon_1_1Im920.html">Udon::Im920</a></div><div class="ttdef"><b>Definition</b> Im920Normal.hpp:25</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md61"></a>
+受信クラス</h1>
+<p><code><a class="el" href="classUdon_1_1Im920Reader.html">Udon::Im920Reader</a>&lt;T&gt;</code></p>
+<p><code>T</code> に指定された型のオブジェクトを Im920 から受信します。</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_class" href="classUdon_1_1Im920.html">Udon::Im920</a> im920{ Serial1 };  <span class="comment">// Im920と通信するシリアルクラスのインスタンスを指定</span></div>
+<div class="line"><a class="code hl_class" href="classUdon_1_1Im920Reader.html">Udon::Im920Reader&lt;Udon::Vec2&gt;</a> reader{ im920 };</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup()</div>
+<div class="line">{</div>
+<div class="line">    Serial.begin(115200);</div>
+<div class="line">    im920.begin(13);  <span class="comment">// チャンネル番号</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> loop()</div>
+<div class="line">{</div>
+<div class="line">    im920.update();</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> message = reader.getMessage())</div>
+<div class="line">    {</div>
+<div class="line">        message-&gt;<a class="code hl_function" href="classUdon_1_1Im920Reader.html#a8aba53bbc95fc9470669594d305bd952">show</a>();</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        Serial.print(<span class="stringliteral">&quot;receive failed&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line">    Serial.println();</div>
+<div class="line"> </div>
+<div class="line">    delay(10);</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassUdon_1_1Im920Reader_html"><div class="ttname"><a href="classUdon_1_1Im920Reader.html">Udon::Im920Reader</a></div><div class="ttdef"><b>Definition</b> Im920Reader.hpp:24</div></div>
+<div class="ttc" id="aclassUdon_1_1Im920Reader_html_a8aba53bbc95fc9470669594d305bd952"><div class="ttname"><a href="classUdon_1_1Im920Reader.html#a8aba53bbc95fc9470669594d305bd952">Udon::Im920Reader::show</a></div><div class="ttdeci">void show(char gap='\t') const</div><div class="ttdoc">送信内容を表示</div><div class="ttdef"><b>Definition</b> Im920Reader.hpp:67</div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>

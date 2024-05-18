@@ -1,0 +1,185 @@
+<!-- HTML header for doxygen 1.10.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>UdonLibrary: CRC によるエラーチェック</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript">
+  DoxygenAwesomeDarkModeToggle.init()
+  DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
+</script>
+</head>
+<body>
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
+              <td id="projectalign">
+                <div id="projectname">UdonLibrary<span
+                    id="projectnumber">&#160;1.0.0</span>
+                </div>
+                <div id="projectbrief">機械システム研究部 C++ ライブラリ</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('md_docs_2Communication_2CRC.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">CRC によるエラーチェック</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md41"></a> </p>
+<h1><a class="anchor" id="autotoc_md42"></a>
+チェックサムの概要</h1>
+<p>チェックサムとは誤り検出方法のひとつで、送信バイト列から求められた値と受信バイト列から求めた値を照合し一致するか確認するアルゴリズムです。簡易的なチェックサムを求める関数の例を以下に示します。例のようなデータの各要素を足す様なアルゴリズムではエラー検出率が低くなってしまいます(全要素が 0 の場合チェックサムも 0 となる。エラー時に 0 を受信することはよくあるため誤って正常と判断してしまう。)。そこで実用上は CRC値 という値を用いて照合します。</p>
+<blockquote class="doxtable">
+<p>&zwj;本ライブラリではシリアライザ内部で CRC を用いています。シリアライズされたデータには CRC 値が付与され、デシリアライズ時に CRC 値の照合が行われます。 </p>
+</blockquote>
+<div class="fragment"><div class="line">uint8_t Checksum(uint8_t* data, <span class="keywordtype">size_t</span> n)</div>
+<div class="line">{</div>
+<div class="line">    uint8_t checksum;</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; n; ++i)</div>
+<div class="line">    {</div>
+<div class="line">        checksum += data[i];</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> checksum;</div>
+<div class="line">}</div>
+</div><!-- fragment --><details >
+<summary >
+送信側使用例 </summary>
+<p></p>
+<div class="fragment"><div class="line">uint8_t data[n];</div>
+<div class="line">uint8_t checksum;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; e : data)</div>
+<div class="line">{</div>
+<div class="line">    write(e);       <span class="comment">// データを送信</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">write(Checksum(data, <span class="keyword">sizeof</span> data));    <span class="comment">// チェックサム値を送信</span></div>
+</div><!-- fragment --><p></p>
+</details>
+<details >
+<summary >
+受信側使用例 </summary>
+<p></p>
+<div class="fragment"><div class="line">uint8_t data[n];</div>
+<div class="line">uint8_t checksum;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; e : data)</div>
+<div class="line">{</div>
+<div class="line">    e = read();  <span class="comment">// データを受信</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">uint8_t receivedChecksum = read();   <span class="comment">// チェックサム値を受信</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">if</span> (receivedChecksum == Checksum(data, <span class="keyword">sizeof</span> data))   <span class="comment">// 受信したチェックサムと求めたチェックサムを比較</span></div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">// 正常</span></div>
+<div class="line">}</div>
+<div class="line"><span class="keywordflow">else</span></div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">// 受信エラー</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><p></p>
+</details>
+<h1><a class="anchor" id="autotoc_md43"></a>
+<code>Udon::CRC8</code></h1>
+<p>1 バイトの CRC 値を求める関数です。以下の様に定義され、ArrayView を引数にとるため、通常の配列や配列を指すポインタ等、様々な種類の配列から CRC 値を求められます。</p>
+<div class="fragment"><div class="line">uint8_t CRC8(ArrayView&lt;const uint8_t&gt; buffer)</div>
+</div><!-- fragment --><p>通常の配列は ArrayView コンストラクタによる暗黙の型変換によって、そのまま引数に渡せます。</p>
+<div class="fragment"><div class="line">uint8_t data[100];</div>
+<div class="line">uint8_t checksum = <a class="code hl_function" href="namespaceUdon.html#a504b82d933419dccd907460936078550">Udon::CRC8</a>(data);</div>
+<div class="ttc" id="anamespaceUdon_html_a504b82d933419dccd907460936078550"><div class="ttname"><a href="namespaceUdon.html#a504b82d933419dccd907460936078550">Udon::CRC8</a></div><div class="ttdeci">uint8_t CRC8(ArrayView&lt; const uint8_t &gt; buffer)</div><div class="ttdoc">バイト列から CRC-8 値を計算する</div><div class="ttdef"><b>Definition</b> CRC.hpp:17</div></div>
+</div><!-- fragment --><p>ポインタからの場合 ArrayView コンストラクタを明示的に呼び出す必要があります。</p>
+<div class="fragment"><div class="line">uint8_t* data = <span class="keyword">new</span> uint8_t[100];</div>
+<div class="line">uint8_t checksum = <a class="code hl_function" href="namespaceUdon.html#a504b82d933419dccd907460936078550">Udon::CRC8</a>({ data, 100 });</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['自動テスト_0',['自動テスト',['../md_docs_Developer_CI.html',1,'']]]
+  ['シリアライザ_0',['シリアライザ',['../md_docs_2Other_2Serialization.html',1,'']]],
+  ['シリアライズ可能な型_1',['シリアライズ可能な型',['../md_docs_2Other_2Serialization.html#autotoc_md173',1,'']]],
+  ['シリアライズ_2',['シリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md174',1,'シリアライズ'],['../md_docs_2Types_2Vector2D.html#autotoc_md266',1,'シリアライズ']]],
+  ['シリアルモニターに送信する_3',['シリアルモニターに送信する',['../md_docs_2Types_2Vector2D.html#autotoc_md238',1,'']]]
 ];

@@ -4,22 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.9.5"/>
+<meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>UdonLibrary: Udon::RingBuffer&lt; T, Capacity &gt; クラステンプレート</title>
-<!--BEGIN PROJECT_ICON-->
-<link rel="icon" href="$projecticon" type="image/x-icon" />
-<!--END PROJECT_ICON-->
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<!--BEGIN COPY_CLIPBOARD-->
 <script type="text/javascript" src="clipboard.js"></script>
-<!--END COPY_CLIPBOARD-->
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,9 +23,11 @@
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
 <script type="text/javascript">
   DoxygenAwesomeDarkModeToggle.init()
   DoxygenAwesomeFragmentCopyButton.init()
+  DoxygenAwesomeParagraphLink.init()
 </script>
 </head>
 <body>
@@ -38,7 +36,7 @@
         <table cellspacing="0" cellpadding="0">
           <tbody>
             <tr id="projectrow">
-              <td id="projectlogo"><img alt="Logo" src="Udon.png" $logosize /></td>
+              <td id="projectlogo"><img alt="Logo" src="Udon.png"  /></td>
               <td id="projectalign">
                 <div id="projectname">UdonLibrary<span
                     id="projectnumber">&#160;1.0.0</span>
@@ -49,7 +47,7 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.9.5 -->
+      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -61,7 +59,7 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索');
-  $(document).ready(function() { init_search(); });
+  $(function() { init_search(); });
 });
 /* @license-end */
 </script>
@@ -79,7 +77,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('classUdon_1_1RingBuffer.html',''); initResizable(); });
+$(function(){initNavTree('classUdon_1_1RingBuffer.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -115,7 +113,7 @@ $(document).ready(function(){initNavTree('classUdon_1_1RingBuffer.html',''); ini
 <div class="contents">
 
 <p>リングバッファ  
- <a href="classUdon_1_1RingBuffer.html#details">[詳解]</a></p>
+ <a href="#details">[詳解]</a></p>
 
 <p><code>#include &lt;<a class="el" href="RingBuffer_8hpp_source.html">Udon/Types/RingBuffer.hpp</a>&gt;</code></p>
 <table class="memberdecls">
@@ -128,105 +126,105 @@ $(document).ready(function(){initNavTree('classUdon_1_1RingBuffer.html',''); ini
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 公開型</h2></td></tr>
-<tr class="memitem:a9bda4e477eecf44c3385f8d14d1391ba"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a9bda4e477eecf44c3385f8d14d1391ba">value_type</a> = T</td></tr>
+<tr class="memitem:a9bda4e477eecf44c3385f8d14d1391ba" id="r_a9bda4e477eecf44c3385f8d14d1391ba"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9bda4e477eecf44c3385f8d14d1391ba">value_type</a> = T</td></tr>
 <tr class="separator:a9bda4e477eecf44c3385f8d14d1391ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a381db0fb137ded69afe5cb2965214ead"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a381db0fb137ded69afe5cb2965214ead">reference</a> = T &amp;</td></tr>
+<tr class="memitem:a381db0fb137ded69afe5cb2965214ead" id="r_a381db0fb137ded69afe5cb2965214ead"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a381db0fb137ded69afe5cb2965214ead">reference</a> = T&amp;</td></tr>
 <tr class="separator:a381db0fb137ded69afe5cb2965214ead"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef539889feedb3f63aa4ff6b0c2438c2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a> = const T &amp;</td></tr>
+<tr class="memitem:aef539889feedb3f63aa4ff6b0c2438c2" id="r_aef539889feedb3f63aa4ff6b0c2438c2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a> = const T&amp;</td></tr>
 <tr class="separator:aef539889feedb3f63aa4ff6b0c2438c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48b2c822ba7dcc05fa71d780c05759da"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a48b2c822ba7dcc05fa71d780c05759da">pointer</a> = T *</td></tr>
+<tr class="memitem:a48b2c822ba7dcc05fa71d780c05759da" id="r_a48b2c822ba7dcc05fa71d780c05759da"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48b2c822ba7dcc05fa71d780c05759da">pointer</a> = T*</td></tr>
 <tr class="separator:a48b2c822ba7dcc05fa71d780c05759da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a73ba034661c2a7d553f1aaff4d6572"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a2a73ba034661c2a7d553f1aaff4d6572">const_pointer</a> = const T *</td></tr>
+<tr class="memitem:a2a73ba034661c2a7d553f1aaff4d6572" id="r_a2a73ba034661c2a7d553f1aaff4d6572"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a73ba034661c2a7d553f1aaff4d6572">const_pointer</a> = const T*</td></tr>
 <tr class="separator:a2a73ba034661c2a7d553f1aaff4d6572"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36844af49fbdc12d27578a20582efd3e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a36844af49fbdc12d27578a20582efd3e">reverse_iterator</a> = std::reverse_iterator&lt; <a class="el" href="structUdon_1_1RingBuffer_1_1iterator.html">iterator</a> &gt;</td></tr>
+<tr class="memitem:a36844af49fbdc12d27578a20582efd3e" id="r_a36844af49fbdc12d27578a20582efd3e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36844af49fbdc12d27578a20582efd3e">reverse_iterator</a> = std::reverse_iterator&lt;<a class="el" href="structUdon_1_1RingBuffer_1_1iterator.html">iterator</a>&gt;</td></tr>
 <tr class="separator:a36844af49fbdc12d27578a20582efd3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab94912bbd2942c629caf4a259c6f4f58"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#ab94912bbd2942c629caf4a259c6f4f58">const_reverse_iterator</a> = std::reverse_iterator&lt; <a class="el" href="structUdon_1_1RingBuffer_1_1const__iterator.html">const_iterator</a> &gt;</td></tr>
+<tr class="memitem:ab94912bbd2942c629caf4a259c6f4f58" id="r_ab94912bbd2942c629caf4a259c6f4f58"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab94912bbd2942c629caf4a259c6f4f58">const_reverse_iterator</a> = std::reverse_iterator&lt;<a class="el" href="structUdon_1_1RingBuffer_1_1const__iterator.html">const_iterator</a>&gt;</td></tr>
 <tr class="separator:ab94912bbd2942c629caf4a259c6f4f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
-<tr class="memitem:ad886c6367ec3e3d7bc69e97b70df046f"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#ad886c6367ec3e3d7bc69e97b70df046f">RingBuffer</a> ()</td></tr>
-<tr class="memdesc:ad886c6367ec3e3d7bc69e97b70df046f"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="classUdon_1_1RingBuffer.html#ad886c6367ec3e3d7bc69e97b70df046f">[詳解]</a><br /></td></tr>
+<tr class="memitem:ad886c6367ec3e3d7bc69e97b70df046f" id="r_ad886c6367ec3e3d7bc69e97b70df046f"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad886c6367ec3e3d7bc69e97b70df046f">RingBuffer</a> ()</td></tr>
+<tr class="memdesc:ad886c6367ec3e3d7bc69e97b70df046f"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <br /></td></tr>
 <tr class="separator:ad886c6367ec3e3d7bc69e97b70df046f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f68333d70f06d49259ee3f20151a06a"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a9f68333d70f06d49259ee3f20151a06a">RingBuffer</a> (const <a class="el" href="classUdon_1_1RingBuffer.html">RingBuffer</a> &amp;other)</td></tr>
-<tr class="memdesc:a9f68333d70f06d49259ee3f20151a06a"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <a href="classUdon_1_1RingBuffer.html#a9f68333d70f06d49259ee3f20151a06a">[詳解]</a><br /></td></tr>
+<tr class="memitem:a9f68333d70f06d49259ee3f20151a06a" id="r_a9f68333d70f06d49259ee3f20151a06a"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f68333d70f06d49259ee3f20151a06a">RingBuffer</a> (const <a class="el" href="classUdon_1_1RingBuffer.html">RingBuffer</a> &amp;other)</td></tr>
+<tr class="memdesc:a9f68333d70f06d49259ee3f20151a06a"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <br /></td></tr>
 <tr class="separator:a9f68333d70f06d49259ee3f20151a06a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9adb2b4868b881ea9b1f8f4e854c074"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#af9adb2b4868b881ea9b1f8f4e854c074">RingBuffer</a> (size_t <a class="el" href="classUdon_1_1RingBuffer.html#ac4d4d828436470e0a2164072bfc31cfb">size</a>, <a class="el" href="classUdon_1_1RingBuffer.html#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a> value)</td></tr>
-<tr class="memdesc:af9adb2b4868b881ea9b1f8f4e854c074"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトで初期化するコンストラクタ  <a href="classUdon_1_1RingBuffer.html#af9adb2b4868b881ea9b1f8f4e854c074">[詳解]</a><br /></td></tr>
+<tr class="memitem:af9adb2b4868b881ea9b1f8f4e854c074" id="r_af9adb2b4868b881ea9b1f8f4e854c074"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9adb2b4868b881ea9b1f8f4e854c074">RingBuffer</a> (size_t <a class="el" href="#ac4d4d828436470e0a2164072bfc31cfb">size</a>, <a class="el" href="#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a> value)</td></tr>
+<tr class="memdesc:af9adb2b4868b881ea9b1f8f4e854c074"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトで初期化するコンストラクタ  <br /></td></tr>
 <tr class="separator:af9adb2b4868b881ea9b1f8f4e854c074"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae840e43f141e64c8580449dd0f799802"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#ae840e43f141e64c8580449dd0f799802">RingBuffer</a> (size_t <a class="el" href="classUdon_1_1RingBuffer.html#ac4d4d828436470e0a2164072bfc31cfb">size</a>)</td></tr>
-<tr class="memdesc:ae840e43f141e64c8580449dd0f799802"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトで初期化しないコンストラクタ  <a href="classUdon_1_1RingBuffer.html#ae840e43f141e64c8580449dd0f799802">[詳解]</a><br /></td></tr>
+<tr class="memitem:ae840e43f141e64c8580449dd0f799802" id="r_ae840e43f141e64c8580449dd0f799802"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae840e43f141e64c8580449dd0f799802">RingBuffer</a> (size_t <a class="el" href="#ac4d4d828436470e0a2164072bfc31cfb">size</a>)</td></tr>
+<tr class="memdesc:ae840e43f141e64c8580449dd0f799802"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトで初期化しないコンストラクタ  <br /></td></tr>
 <tr class="separator:ae840e43f141e64c8580449dd0f799802"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5572ed992f5f2d47d3bdce2c562adf30"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a5572ed992f5f2d47d3bdce2c562adf30">RingBuffer</a> (std::initializer_list&lt; <a class="el" href="classUdon_1_1RingBuffer.html#a9bda4e477eecf44c3385f8d14d1391ba">value_type</a> &gt; init)</td></tr>
+<tr class="memitem:a5572ed992f5f2d47d3bdce2c562adf30" id="r_a5572ed992f5f2d47d3bdce2c562adf30"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5572ed992f5f2d47d3bdce2c562adf30">RingBuffer</a> (std::initializer_list&lt; <a class="el" href="#a9bda4e477eecf44c3385f8d14d1391ba">value_type</a> &gt; init)</td></tr>
 <tr class="separator:a5572ed992f5f2d47d3bdce2c562adf30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cf20f5001f06e920058a1e2dbeeb3c1"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a2cf20f5001f06e920058a1e2dbeeb3c1">capacity</a> () const</td></tr>
-<tr class="memdesc:a2cf20f5001f06e920058a1e2dbeeb3c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">capacityを取得  <a href="classUdon_1_1RingBuffer.html#a2cf20f5001f06e920058a1e2dbeeb3c1">[詳解]</a><br /></td></tr>
+<tr class="memitem:a2cf20f5001f06e920058a1e2dbeeb3c1" id="r_a2cf20f5001f06e920058a1e2dbeeb3c1"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cf20f5001f06e920058a1e2dbeeb3c1">capacity</a> () const</td></tr>
+<tr class="memdesc:a2cf20f5001f06e920058a1e2dbeeb3c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">capacityを取得  <br /></td></tr>
 <tr class="separator:a2cf20f5001f06e920058a1e2dbeeb3c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4d4d828436470e0a2164072bfc31cfb"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#ac4d4d828436470e0a2164072bfc31cfb">size</a> () const</td></tr>
-<tr class="memdesc:ac4d4d828436470e0a2164072bfc31cfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファサイズを取得  <a href="classUdon_1_1RingBuffer.html#ac4d4d828436470e0a2164072bfc31cfb">[詳解]</a><br /></td></tr>
+<tr class="memitem:ac4d4d828436470e0a2164072bfc31cfb" id="r_ac4d4d828436470e0a2164072bfc31cfb"><td class="memItemLeft" align="right" valign="top">constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac4d4d828436470e0a2164072bfc31cfb">size</a> () const</td></tr>
+<tr class="memdesc:ac4d4d828436470e0a2164072bfc31cfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファサイズを取得  <br /></td></tr>
 <tr class="separator:ac4d4d828436470e0a2164072bfc31cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77dca2ed7893650d087c661596363a06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a77dca2ed7893650d087c661596363a06">resize</a> (size_t <a class="el" href="classUdon_1_1RingBuffer.html#ac4d4d828436470e0a2164072bfc31cfb">size</a>)</td></tr>
-<tr class="memdesc:a77dca2ed7893650d087c661596363a06"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファサイズを変更  <a href="classUdon_1_1RingBuffer.html#a77dca2ed7893650d087c661596363a06">[詳解]</a><br /></td></tr>
+<tr class="memitem:a77dca2ed7893650d087c661596363a06" id="r_a77dca2ed7893650d087c661596363a06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77dca2ed7893650d087c661596363a06">resize</a> (size_t <a class="el" href="#ac4d4d828436470e0a2164072bfc31cfb">size</a>)</td></tr>
+<tr class="memdesc:a77dca2ed7893650d087c661596363a06"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファサイズを変更  <br /></td></tr>
 <tr class="separator:a77dca2ed7893650d087c661596363a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a428e6c8725d567b09748fa0f7c2c699e"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a428e6c8725d567b09748fa0f7c2c699e">empty</a> () const</td></tr>
+<tr class="memitem:a428e6c8725d567b09748fa0f7c2c699e" id="r_a428e6c8725d567b09748fa0f7c2c699e"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a428e6c8725d567b09748fa0f7c2c699e">empty</a> () const</td></tr>
 <tr class="separator:a428e6c8725d567b09748fa0f7c2c699e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc51434643196e9544f030465dbc55fd"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#adc51434643196e9544f030465dbc55fd">full</a> () const</td></tr>
+<tr class="memitem:adc51434643196e9544f030465dbc55fd" id="r_adc51434643196e9544f030465dbc55fd"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc51434643196e9544f030465dbc55fd">full</a> () const</td></tr>
 <tr class="separator:adc51434643196e9544f030465dbc55fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a353f9fbc6faf53475f12114f542f6d42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a353f9fbc6faf53475f12114f542f6d42">push</a> (<a class="el" href="classUdon_1_1RingBuffer.html#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a> value)</td></tr>
-<tr class="memdesc:a353f9fbc6faf53475f12114f542f6d42"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファの先頭に要素を追加  <a href="classUdon_1_1RingBuffer.html#a353f9fbc6faf53475f12114f542f6d42">[詳解]</a><br /></td></tr>
+<tr class="memitem:a353f9fbc6faf53475f12114f542f6d42" id="r_a353f9fbc6faf53475f12114f542f6d42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a353f9fbc6faf53475f12114f542f6d42">push</a> (<a class="el" href="#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a> value)</td></tr>
+<tr class="memdesc:a353f9fbc6faf53475f12114f542f6d42"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファの先頭に要素を追加  <br /></td></tr>
 <tr class="separator:a353f9fbc6faf53475f12114f542f6d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93fd49272e0939845d00b1d137b6bf13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a93fd49272e0939845d00b1d137b6bf13">push</a> (<a class="el" href="classUdon_1_1RingBuffer.html#a9bda4e477eecf44c3385f8d14d1391ba">value_type</a> &amp;&amp;value)</td></tr>
-<tr class="memdesc:a93fd49272e0939845d00b1d137b6bf13"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファの先頭に要素を追加  <a href="classUdon_1_1RingBuffer.html#a93fd49272e0939845d00b1d137b6bf13">[詳解]</a><br /></td></tr>
+<tr class="memitem:a93fd49272e0939845d00b1d137b6bf13" id="r_a93fd49272e0939845d00b1d137b6bf13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93fd49272e0939845d00b1d137b6bf13">push</a> (<a class="el" href="#a9bda4e477eecf44c3385f8d14d1391ba">value_type</a> &amp;&amp;value)</td></tr>
+<tr class="memdesc:a93fd49272e0939845d00b1d137b6bf13"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファの先頭に要素を追加  <br /></td></tr>
 <tr class="separator:a93fd49272e0939845d00b1d137b6bf13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a471a29e62d0c58cdb90aa0e6cbc02d89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1RingBuffer.html#a9bda4e477eecf44c3385f8d14d1391ba">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a471a29e62d0c58cdb90aa0e6cbc02d89">pop</a> ()</td></tr>
-<tr class="memdesc:a471a29e62d0c58cdb90aa0e6cbc02d89"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファの末尾を取得し要素を削除  <a href="classUdon_1_1RingBuffer.html#a471a29e62d0c58cdb90aa0e6cbc02d89">[詳解]</a><br /></td></tr>
+<tr class="memitem:a471a29e62d0c58cdb90aa0e6cbc02d89" id="r_a471a29e62d0c58cdb90aa0e6cbc02d89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a9bda4e477eecf44c3385f8d14d1391ba">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a471a29e62d0c58cdb90aa0e6cbc02d89">pop</a> ()</td></tr>
+<tr class="memdesc:a471a29e62d0c58cdb90aa0e6cbc02d89"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファの末尾を取得し要素を削除  <br /></td></tr>
 <tr class="separator:a471a29e62d0c58cdb90aa0e6cbc02d89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45e1cefeda44dc6fa1e58bf46a75c636"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1RingBuffer.html#a381db0fb137ded69afe5cb2965214ead">reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a45e1cefeda44dc6fa1e58bf46a75c636">back</a> ()</td></tr>
+<tr class="memitem:a45e1cefeda44dc6fa1e58bf46a75c636" id="r_a45e1cefeda44dc6fa1e58bf46a75c636"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a381db0fb137ded69afe5cb2965214ead">reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45e1cefeda44dc6fa1e58bf46a75c636">back</a> ()</td></tr>
 <tr class="separator:a45e1cefeda44dc6fa1e58bf46a75c636"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac43fb85b162ae71f5c23bf6c56189822"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1RingBuffer.html#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#ac43fb85b162ae71f5c23bf6c56189822">back</a> () const</td></tr>
+<tr class="memitem:ac43fb85b162ae71f5c23bf6c56189822" id="r_ac43fb85b162ae71f5c23bf6c56189822"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac43fb85b162ae71f5c23bf6c56189822">back</a> () const</td></tr>
 <tr class="separator:ac43fb85b162ae71f5c23bf6c56189822"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac43be0e5db5d493a00973a167b36f781"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1RingBuffer.html#a381db0fb137ded69afe5cb2965214ead">reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#ac43be0e5db5d493a00973a167b36f781">front</a> ()</td></tr>
+<tr class="memitem:ac43be0e5db5d493a00973a167b36f781" id="r_ac43be0e5db5d493a00973a167b36f781"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a381db0fb137ded69afe5cb2965214ead">reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac43be0e5db5d493a00973a167b36f781">front</a> ()</td></tr>
 <tr class="separator:ac43be0e5db5d493a00973a167b36f781"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdbb8f3f5622b11cf6d1b0bfdaf517fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1RingBuffer.html#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#acdbb8f3f5622b11cf6d1b0bfdaf517fa">front</a> () const</td></tr>
+<tr class="memitem:acdbb8f3f5622b11cf6d1b0bfdaf517fa" id="r_acdbb8f3f5622b11cf6d1b0bfdaf517fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdbb8f3f5622b11cf6d1b0bfdaf517fa">front</a> () const</td></tr>
 <tr class="separator:acdbb8f3f5622b11cf6d1b0bfdaf517fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11d1191a657ce3a94a47554a0d9bfe31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1RingBuffer.html#a381db0fb137ded69afe5cb2965214ead">reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a11d1191a657ce3a94a47554a0d9bfe31">operator[]</a> (size_t index)</td></tr>
+<tr class="memitem:a11d1191a657ce3a94a47554a0d9bfe31" id="r_a11d1191a657ce3a94a47554a0d9bfe31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a381db0fb137ded69afe5cb2965214ead">reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11d1191a657ce3a94a47554a0d9bfe31">operator[]</a> (size_t index)</td></tr>
 <tr class="separator:a11d1191a657ce3a94a47554a0d9bfe31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63e542def43794f5af37d1dabaf7d31e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1RingBuffer.html#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a63e542def43794f5af37d1dabaf7d31e">operator[]</a> (size_t index) const</td></tr>
+<tr class="memitem:a63e542def43794f5af37d1dabaf7d31e" id="r_a63e542def43794f5af37d1dabaf7d31e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63e542def43794f5af37d1dabaf7d31e">operator[]</a> (size_t index) const</td></tr>
 <tr class="separator:a63e542def43794f5af37d1dabaf7d31e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9f614a27c0611b310a2e07db2ea1898"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1RingBuffer_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#aa9f614a27c0611b310a2e07db2ea1898">begin</a> ()</td></tr>
-<tr class="memdesc:aa9f614a27c0611b310a2e07db2ea1898"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファの先頭イテレーターを取得  <a href="classUdon_1_1RingBuffer.html#aa9f614a27c0611b310a2e07db2ea1898">[詳解]</a><br /></td></tr>
+<tr class="memitem:aa9f614a27c0611b310a2e07db2ea1898" id="r_aa9f614a27c0611b310a2e07db2ea1898"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1RingBuffer_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9f614a27c0611b310a2e07db2ea1898">begin</a> ()</td></tr>
+<tr class="memdesc:aa9f614a27c0611b310a2e07db2ea1898"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファの先頭イテレーターを取得  <br /></td></tr>
 <tr class="separator:aa9f614a27c0611b310a2e07db2ea1898"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a490e2fe8d5ef8b648803e0c7fd345f16"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1RingBuffer_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a490e2fe8d5ef8b648803e0c7fd345f16">end</a> ()</td></tr>
-<tr class="memdesc:a490e2fe8d5ef8b648803e0c7fd345f16"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファの末尾イテレーターを取得  <a href="classUdon_1_1RingBuffer.html#a490e2fe8d5ef8b648803e0c7fd345f16">[詳解]</a><br /></td></tr>
+<tr class="memitem:a490e2fe8d5ef8b648803e0c7fd345f16" id="r_a490e2fe8d5ef8b648803e0c7fd345f16"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1RingBuffer_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a490e2fe8d5ef8b648803e0c7fd345f16">end</a> ()</td></tr>
+<tr class="memdesc:a490e2fe8d5ef8b648803e0c7fd345f16"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファの末尾イテレーターを取得  <br /></td></tr>
 <tr class="separator:a490e2fe8d5ef8b648803e0c7fd345f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab83ba6f2a5940a3f63e449f61a2b0703"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1RingBuffer_1_1const__iterator.html">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#ab83ba6f2a5940a3f63e449f61a2b0703">begin</a> () const</td></tr>
-<tr class="memdesc:ab83ba6f2a5940a3f63e449f61a2b0703"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファの先頭イテレーターを取得  <a href="classUdon_1_1RingBuffer.html#ab83ba6f2a5940a3f63e449f61a2b0703">[詳解]</a><br /></td></tr>
+<tr class="memitem:ab83ba6f2a5940a3f63e449f61a2b0703" id="r_ab83ba6f2a5940a3f63e449f61a2b0703"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1RingBuffer_1_1const__iterator.html">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab83ba6f2a5940a3f63e449f61a2b0703">begin</a> () const</td></tr>
+<tr class="memdesc:ab83ba6f2a5940a3f63e449f61a2b0703"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファの先頭イテレーターを取得  <br /></td></tr>
 <tr class="separator:ab83ba6f2a5940a3f63e449f61a2b0703"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae381e1ae66d1bc7755bc56be94697600"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1RingBuffer_1_1const__iterator.html">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#ae381e1ae66d1bc7755bc56be94697600">end</a> () const</td></tr>
-<tr class="memdesc:ae381e1ae66d1bc7755bc56be94697600"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファの末尾イテレーターを取得  <a href="classUdon_1_1RingBuffer.html#ae381e1ae66d1bc7755bc56be94697600">[詳解]</a><br /></td></tr>
+<tr class="memitem:ae381e1ae66d1bc7755bc56be94697600" id="r_ae381e1ae66d1bc7755bc56be94697600"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1RingBuffer_1_1const__iterator.html">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae381e1ae66d1bc7755bc56be94697600">end</a> () const</td></tr>
+<tr class="memdesc:ae381e1ae66d1bc7755bc56be94697600"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファの末尾イテレーターを取得  <br /></td></tr>
 <tr class="separator:ae381e1ae66d1bc7755bc56be94697600"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa18b42ece3e3fed2fcc814e277c9cafb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1RingBuffer_1_1const__iterator.html">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#aa18b42ece3e3fed2fcc814e277c9cafb">cbegin</a> () const</td></tr>
-<tr class="memdesc:aa18b42ece3e3fed2fcc814e277c9cafb"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファの先頭イテレーターを取得  <a href="classUdon_1_1RingBuffer.html#aa18b42ece3e3fed2fcc814e277c9cafb">[詳解]</a><br /></td></tr>
+<tr class="memitem:aa18b42ece3e3fed2fcc814e277c9cafb" id="r_aa18b42ece3e3fed2fcc814e277c9cafb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1RingBuffer_1_1const__iterator.html">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa18b42ece3e3fed2fcc814e277c9cafb">cbegin</a> () const</td></tr>
+<tr class="memdesc:aa18b42ece3e3fed2fcc814e277c9cafb"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファの先頭イテレーターを取得  <br /></td></tr>
 <tr class="separator:aa18b42ece3e3fed2fcc814e277c9cafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d645f927687816537764b03b0baa12e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1RingBuffer_1_1const__iterator.html">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a4d645f927687816537764b03b0baa12e">cend</a> () const</td></tr>
-<tr class="memdesc:a4d645f927687816537764b03b0baa12e"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファの末尾イテレーターを取得  <a href="classUdon_1_1RingBuffer.html#a4d645f927687816537764b03b0baa12e">[詳解]</a><br /></td></tr>
+<tr class="memitem:a4d645f927687816537764b03b0baa12e" id="r_a4d645f927687816537764b03b0baa12e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1RingBuffer_1_1const__iterator.html">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d645f927687816537764b03b0baa12e">cend</a> () const</td></tr>
+<tr class="memdesc:a4d645f927687816537764b03b0baa12e"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファの末尾イテレーターを取得  <br /></td></tr>
 <tr class="separator:a4d645f927687816537764b03b0baa12e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8710db3de20ee76dd894bc8ae623793c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1RingBuffer.html#ab94912bbd2942c629caf4a259c6f4f58">const_reverse_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a8710db3de20ee76dd894bc8ae623793c">rbegin</a> () const</td></tr>
+<tr class="memitem:a8710db3de20ee76dd894bc8ae623793c" id="r_a8710db3de20ee76dd894bc8ae623793c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#ab94912bbd2942c629caf4a259c6f4f58">const_reverse_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8710db3de20ee76dd894bc8ae623793c">rbegin</a> () const</td></tr>
 <tr class="separator:a8710db3de20ee76dd894bc8ae623793c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e91da6fc7eea19537cabcb0ae88bb07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1RingBuffer.html#a36844af49fbdc12d27578a20582efd3e">reverse_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a4e91da6fc7eea19537cabcb0ae88bb07">rbegin</a> ()</td></tr>
+<tr class="memitem:a4e91da6fc7eea19537cabcb0ae88bb07" id="r_a4e91da6fc7eea19537cabcb0ae88bb07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a36844af49fbdc12d27578a20582efd3e">reverse_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e91da6fc7eea19537cabcb0ae88bb07">rbegin</a> ()</td></tr>
 <tr class="separator:a4e91da6fc7eea19537cabcb0ae88bb07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9dec43113054565e0243dca92b9ea83c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1RingBuffer.html#ab94912bbd2942c629caf4a259c6f4f58">const_reverse_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a9dec43113054565e0243dca92b9ea83c">rend</a> () const</td></tr>
+<tr class="memitem:a9dec43113054565e0243dca92b9ea83c" id="r_a9dec43113054565e0243dca92b9ea83c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#ab94912bbd2942c629caf4a259c6f4f58">const_reverse_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9dec43113054565e0243dca92b9ea83c">rend</a> () const</td></tr>
 <tr class="separator:a9dec43113054565e0243dca92b9ea83c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a515e373b0ae259838c36ae95a149ace7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1RingBuffer.html#a36844af49fbdc12d27578a20582efd3e">reverse_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a515e373b0ae259838c36ae95a149ace7">rend</a> ()</td></tr>
+<tr class="memitem:a515e373b0ae259838c36ae95a149ace7" id="r_a515e373b0ae259838c36ae95a149ace7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a36844af49fbdc12d27578a20582efd3e">reverse_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a515e373b0ae259838c36ae95a149ace7">rend</a> ()</td></tr>
 <tr class="separator:a515e373b0ae259838c36ae95a149ace7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84d1565c65f8e0e7f5ccb9fd2a69d304"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1RingBuffer.html#ab94912bbd2942c629caf4a259c6f4f58">const_reverse_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#a84d1565c65f8e0e7f5ccb9fd2a69d304">crbegin</a> () const</td></tr>
+<tr class="memitem:a84d1565c65f8e0e7f5ccb9fd2a69d304" id="r_a84d1565c65f8e0e7f5ccb9fd2a69d304"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#ab94912bbd2942c629caf4a259c6f4f58">const_reverse_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84d1565c65f8e0e7f5ccb9fd2a69d304">crbegin</a> () const</td></tr>
 <tr class="separator:a84d1565c65f8e0e7f5ccb9fd2a69d304"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf0489075f00bddd04654fa84551c541"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1RingBuffer.html#ab94912bbd2942c629caf4a259c6f4f58">const_reverse_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html#abf0489075f00bddd04654fa84551c541">crend</a> () const</td></tr>
+<tr class="memitem:abf0489075f00bddd04654fa84551c541" id="r_abf0489075f00bddd04654fa84551c541"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#ab94912bbd2942c629caf4a259c6f4f58">const_reverse_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf0489075f00bddd04654fa84551c541">crend</a> () const</td></tr>
 <tr class="separator:abf0489075f00bddd04654fa84551c541"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T, size_t Capacity&gt;<br />
-class Udon::RingBuffer&lt; T, Capacity &gt;</div><p >リングバッファ </p>
+class Udon::RingBuffer&lt; T, Capacity &gt;</div><p>リングバッファ </p>
 <dl class="tparams"><dt>テンプレート引数</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>要素の型 </td></tr>
@@ -244,7 +242,7 @@ class Udon::RingBuffer&lt; T, Capacity &gt;</div><p >リングバッファ </p>
 template&lt;typename T , size_t Capacity&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::const_pointer =  const T*</td>
+          <td class="memname">using <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::const_pointer = const T*</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -260,7 +258,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
 template&lt;typename T , size_t Capacity&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::const_reference =  const T&amp;</td>
+          <td class="memname">using <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::const_reference = const T&amp;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -276,7 +274,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
 template&lt;typename T , size_t Capacity&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::const_reverse_iterator =  std::reverse_iterator&lt;<a class="el" href="structUdon_1_1RingBuffer_1_1const__iterator.html">const_iterator</a>&gt;</td>
+          <td class="memname">using <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::const_reverse_iterator = std::reverse_iterator&lt;<a class="el" href="structUdon_1_1RingBuffer_1_1const__iterator.html">const_iterator</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -292,7 +290,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
 template&lt;typename T , size_t Capacity&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::pointer =  T*</td>
+          <td class="memname">using <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::pointer = T*</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -308,7 +306,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
 template&lt;typename T , size_t Capacity&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::reference =  T&amp;</td>
+          <td class="memname">using <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::reference = T&amp;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -324,7 +322,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
 template&lt;typename T , size_t Capacity&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::reverse_iterator =  std::reverse_iterator&lt;<a class="el" href="structUdon_1_1RingBuffer_1_1iterator.html">iterator</a>&gt;</td>
+          <td class="memname">using <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::reverse_iterator = std::reverse_iterator&lt;<a class="el" href="structUdon_1_1RingBuffer_1_1iterator.html">iterator</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -340,7 +338,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
 template&lt;typename T , size_t Capacity&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::value_type =  T</td>
+          <td class="memname">using <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::value_type = T</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -362,7 +360,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname">constexpr <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::RingBuffer </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -391,8 +389,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname">constexpr <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::RingBuffer </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classUdon_1_1RingBuffer.html">RingBuffer</a>&lt; T, Capacity &gt; &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1RingBuffer.html">RingBuffer</a>&lt; T, Capacity &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -427,19 +424,12 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::RingBuffer </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>size</em>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classUdon_1_1RingBuffer.html#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a>&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramtype"><a class="el" href="#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a></td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -474,8 +464,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname">constexpr <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::RingBuffer </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>size</em></td><td>)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -510,8 +499,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::RingBuffer </td>
           <td>(</td>
-          <td class="paramtype">std::initializer_list&lt; <a class="el" href="classUdon_1_1RingBuffer.html#a9bda4e477eecf44c3385f8d14d1391ba">value_type</a> &gt;&#160;</td>
-          <td class="paramname"><em>init</em></td><td>)</td>
+          <td class="paramtype">std::initializer_list&lt; <a class="el" href="#a9bda4e477eecf44c3385f8d14d1391ba">value_type</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>init</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -537,9 +525,9 @@ template&lt;typename T , size_t Capacity&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classUdon_1_1RingBuffer.html#a381db0fb137ded69afe5cb2965214ead">reference</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::back </td>
+          <td class="memname"><a class="el" href="#a381db0fb137ded69afe5cb2965214ead">reference</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::back </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -564,9 +552,9 @@ template&lt;typename T , size_t Capacity&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classUdon_1_1RingBuffer.html#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::back </td>
+          <td class="memname"><a class="el" href="#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::back </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -593,7 +581,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="structUdon_1_1RingBuffer_1_1iterator.html">iterator</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::begin </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -623,7 +611,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="structUdon_1_1RingBuffer_1_1const__iterator.html">const_iterator</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::begin </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -653,7 +641,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname">constexpr size_t <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::capacity </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -683,7 +671,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="structUdon_1_1RingBuffer_1_1const__iterator.html">const_iterator</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::cbegin </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -713,7 +701,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="structUdon_1_1RingBuffer_1_1const__iterator.html">const_iterator</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::cend </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -741,9 +729,9 @@ template&lt;typename T , size_t Capacity&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classUdon_1_1RingBuffer.html#ab94912bbd2942c629caf4a259c6f4f58">const_reverse_iterator</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::crbegin </td>
+          <td class="memname"><a class="el" href="#ab94912bbd2942c629caf4a259c6f4f58">const_reverse_iterator</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::crbegin </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -768,9 +756,9 @@ template&lt;typename T , size_t Capacity&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classUdon_1_1RingBuffer.html#ab94912bbd2942c629caf4a259c6f4f58">const_reverse_iterator</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::crend </td>
+          <td class="memname"><a class="el" href="#ab94912bbd2942c629caf4a259c6f4f58">const_reverse_iterator</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::crend </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -797,7 +785,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname">constexpr bool <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::empty </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -824,7 +812,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="structUdon_1_1RingBuffer_1_1iterator.html">iterator</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::end </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -854,7 +842,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="structUdon_1_1RingBuffer_1_1const__iterator.html">const_iterator</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::end </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -882,9 +870,9 @@ template&lt;typename T , size_t Capacity&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classUdon_1_1RingBuffer.html#a381db0fb137ded69afe5cb2965214ead">reference</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::front </td>
+          <td class="memname"><a class="el" href="#a381db0fb137ded69afe5cb2965214ead">reference</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::front </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -909,9 +897,9 @@ template&lt;typename T , size_t Capacity&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classUdon_1_1RingBuffer.html#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::front </td>
+          <td class="memname"><a class="el" href="#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::front </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -938,7 +926,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname">constexpr bool <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::full </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -963,10 +951,9 @@ template&lt;typename T , size_t Capacity&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classUdon_1_1RingBuffer.html#a381db0fb137ded69afe5cb2965214ead">reference</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::operator[] </td>
+          <td class="memname"><a class="el" href="#a381db0fb137ded69afe5cb2965214ead">reference</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::operator[] </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>index</em></td><td>)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -991,10 +978,9 @@ template&lt;typename T , size_t Capacity&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classUdon_1_1RingBuffer.html#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::operator[] </td>
+          <td class="memname"><a class="el" href="#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::operator[] </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>index</em></td><td>)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -1019,9 +1005,9 @@ template&lt;typename T , size_t Capacity&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classUdon_1_1RingBuffer.html#a9bda4e477eecf44c3385f8d14d1391ba">value_type</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::pop </td>
+          <td class="memname"><a class="el" href="#a9bda4e477eecf44c3385f8d14d1391ba">value_type</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::pop </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1051,8 +1037,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::push </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classUdon_1_1RingBuffer.html#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a>&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a></td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1087,8 +1072,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::push </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classUdon_1_1RingBuffer.html#a9bda4e477eecf44c3385f8d14d1391ba">value_type</a> &amp;&amp;&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="#a9bda4e477eecf44c3385f8d14d1391ba">value_type</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1121,9 +1105,9 @@ template&lt;typename T , size_t Capacity&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classUdon_1_1RingBuffer.html#a36844af49fbdc12d27578a20582efd3e">reverse_iterator</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::rbegin </td>
+          <td class="memname"><a class="el" href="#a36844af49fbdc12d27578a20582efd3e">reverse_iterator</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::rbegin </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1148,9 +1132,9 @@ template&lt;typename T , size_t Capacity&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classUdon_1_1RingBuffer.html#ab94912bbd2942c629caf4a259c6f4f58">const_reverse_iterator</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::rbegin </td>
+          <td class="memname"><a class="el" href="#ab94912bbd2942c629caf4a259c6f4f58">const_reverse_iterator</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::rbegin </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -1175,9 +1159,9 @@ template&lt;typename T , size_t Capacity&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classUdon_1_1RingBuffer.html#a36844af49fbdc12d27578a20582efd3e">reverse_iterator</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::rend </td>
+          <td class="memname"><a class="el" href="#a36844af49fbdc12d27578a20582efd3e">reverse_iterator</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::rend </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1202,9 +1186,9 @@ template&lt;typename T , size_t Capacity&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classUdon_1_1RingBuffer.html#ab94912bbd2942c629caf4a259c6f4f58">const_reverse_iterator</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::rend </td>
+          <td class="memname"><a class="el" href="#ab94912bbd2942c629caf4a259c6f4f58">const_reverse_iterator</a> <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::rend </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -1231,8 +1215,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::resize </td>
           <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>size</em></td><td>)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1267,7 +1250,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
         <tr>
           <td class="memname">constexpr size_t <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::size </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -1292,7 +1275,7 @@ template&lt;typename T , size_t Capacity&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceUdon.html">Udon</a></li><li class="navelem"><a class="el" href="classUdon_1_1RingBuffer.html">RingBuffer</a></li>
-    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>
 </body>
