@@ -35,5 +35,5 @@ var searchData=
   ['optional_3c_20udon_3a_3apidcontroller_3a_3aparameter_20_3e_32',['Optional&lt; Udon::PidController::Parameter &gt;',['../classUdon_1_1Optional.html',1,'Udon']]],
   ['optional_3c_20uint16_5ft_20_3e_33',['Optional&lt; uint16_t &gt;',['../classUdon_1_1Optional.html',1,'Udon']]],
   ['optional_3c_20uint8_5ft_20_3e_34',['Optional&lt; uint8_t &gt;',['../classUdon_1_1Optional.html',1,'Udon']]],
-  ['other_20double_20tt_35',['Other double tt',['../md_docs_2Types_2Vector2D.html#autotoc_md246',1,'&lt;tt&gt;angleAt(Vec2 other) -\&gt; double&lt;/tt&gt;'],['../md_docs_2Types_2Vector2D.html#autotoc_md244',1,'&lt;tt&gt;distanceFrom(Vec2 other) -\&gt; double&lt;/tt&gt;']]]
+  ['other_20double_20tt_35',['other double tt',['../md_docs_2Types_2Vector2D.html#autotoc_md246',1,'&lt;tt&gt;angleAt(Vec2 other) -\&gt; double&lt;/tt&gt;'],['../md_docs_2Types_2Vector2D.html#autotoc_md244',1,'&lt;tt&gt;distanceFrom(Vec2 other) -\&gt; double&lt;/tt&gt;']]]
 ];

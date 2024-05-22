@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: シリアライザ</title>
@@ -12,9 +12,9 @@
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -44,10 +44,16 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
+      <!-- end header part -->
+<!-- 構築: Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -55,7 +61,7 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','検索');
+  initMenu('',true,false,'search.php','検索',true);
   $(function() { init_search(); });
 });
 /* @license-end */
@@ -74,7 +80,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('md_docs_2Other_2Serialization.html',''); initResizable(); });
+$(function(){initNavTree('md_docs_2Other_2Serialization.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -155,7 +161,7 @@ $(function(){initNavTree('md_docs_2Other_2Serialization.html',''); initResizable
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    <span class="comment">// packed にはシリアライズされたバイト列が入っている</span></div>
-<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;Vec2&gt;</a> unpacked = Udon::Deserialize&lt;Vec2&gt;(packed))</div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;Vec2&gt;</a> unpacked = <a class="code hl_function" href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef">Udon::Deserialize&lt;Vec2&gt;</a>(packed))</div>
 <div class="line">    {</div>
 <div class="line">        Serial.print(unpacked-&gt;x);  Serial.print(<span class="charliteral">&#39;\t&#39;</span>);</div>
 <div class="line">        Serial.print(unpacked-&gt;y);  Serial.print(<span class="charliteral">&#39;\n&#39;</span>);</div>
@@ -166,6 +172,7 @@ $(function(){initNavTree('md_docs_2Other_2Serialization.html',''); initResizable
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1Optional_html"><div class="ttname"><a href="classUdon_1_1Optional.html">Udon::Optional</a></div><div class="ttdoc">オプショナル型</div><div class="ttdef"><b>Definition</b> Optional.hpp:58</div></div>
+<div class="ttc" id="anamespaceUdon_html_a2867c79f449f149ce0996d14271837ef"><div class="ttname"><a href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef">Udon::Deserialize</a></div><div class="ttdeci">Udon::Optional&lt; T &gt; Deserialize(ArrayView&lt; const uint8_t &gt; buffer)</div><div class="ttdoc">バイト列からオブジェクトに逆シリアル化します</div><div class="ttdef"><b>Definition</b> Serializer.hpp:87</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md178"></a>
 既に定義されている型のシリアライズ、デシリアライズ</h1>
 <blockquote class="doxtable">
@@ -200,7 +207,8 @@ API</h1>
 <code>Udon::SerializedSize&lt;T&gt;()</code></h2>
 <p>T 型オブジェクトシリアライズ後のバイト列のバイトサイズを取得します。</p>
 <p>コンパイル時にサイズを取得可能なため、バッファの大きさを静的に指定するときなどにも使えます。</p>
-<div class="fragment"><div class="line">uint8_t buffer[Udon::SerializedSize&lt;Vec2&gt;()];</div>
+<div class="fragment"><div class="line">uint8_t buffer[<a class="code hl_function" href="namespaceUdon.html#a92fa64e26dcad6be1aa4e0f4908fdee6">Udon::SerializedSize&lt;Vec2&gt;</a>()];</div>
+<div class="ttc" id="anamespaceUdon_html_a92fa64e26dcad6be1aa4e0f4908fdee6"><div class="ttname"><a href="namespaceUdon.html#a92fa64e26dcad6be1aa4e0f4908fdee6">Udon::SerializedSize</a></div><div class="ttdeci">constexpr size_t SerializedSize() noexcept</div><div class="ttdoc">Tをシリアライズした際のバイト列の要素数を取得する</div><div class="ttdef"><b>Definition</b> Serializer.hpp:22</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md185"></a>
 サンプル</h1>
 <h2><a class="anchor" id="autotoc_md186"></a>
@@ -212,7 +220,7 @@ API</h1>
 <div class="line">{</div>
 <div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> packed = <a class="code hl_function" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a>(1000);</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = Udon::Deserialize&lt;int&gt;(packed))</div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = <a class="code hl_function" href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef">Udon::Deserialize&lt;int&gt;</a>(packed))</div>
 <div class="line">    {</div>
 <div class="line">        std::cout &lt;&lt; *unpacked &lt;&lt; std::endl;</div>
 <div class="line">    }</div>
@@ -231,14 +239,14 @@ API</h1>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
-<div class="line">    uint8_t buffer[Udon::SerializedSize&lt;int&gt;()];</div>
+<div class="line">    uint8_t buffer[<a class="code hl_function" href="namespaceUdon.html#a92fa64e26dcad6be1aa4e0f4908fdee6">Udon::SerializedSize&lt;int&gt;</a>()];</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> (not <a class="code hl_function" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a>(1000, buffer))</div>
 <div class="line">    {</div>
 <div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;serialize failed&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    }</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = Udon::Deserialize&lt;int&gt;(buffer))</div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = <a class="code hl_function" href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef">Udon::Deserialize&lt;int&gt;</a>(buffer))</div>
 <div class="line">    {</div>
 <div class="line">        std::cout &lt;&lt; *unpacked &lt;&lt; std::endl;</div>
 <div class="line">    }</div>
@@ -267,7 +275,7 @@ API</h1>
 <div class="line"> </div>
 <div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> packed = <a class="code hl_function" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a>(lang);</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = Udon::Deserialize&lt;Language&gt;(packed))</div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = <a class="code hl_function" href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef">Udon::Deserialize&lt;Language&gt;</a>(packed))</div>
 <div class="line">    {</div>
 <div class="line">        <span class="keywordflow">switch</span> (*unpacked)</div>
 <div class="line">        {</div>
@@ -301,7 +309,7 @@ API</h1>
 <div class="line"> </div>
 <div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> packed = <a class="code hl_function" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a>(vector);</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = Udon::Deserialize&lt;Vec2&gt;(packed))</div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = <a class="code hl_function" href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef">Udon::Deserialize&lt;Vec2&gt;</a>(packed))</div>
 <div class="line">    {</div>
 <div class="line">        std::cout</div>
 <div class="line">            &lt;&lt; unpacked-&gt;x &lt;&lt; <span class="stringliteral">&quot;, &quot;</span></div>
@@ -330,7 +338,7 @@ API</h1>
 <div class="line"> </div>
 <div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> packed = <a class="code hl_function" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a>(array);</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = Udon::Deserialize&lt;Array&gt;(packed))</div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = <a class="code hl_function" href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef">Udon::Deserialize&lt;Array&gt;</a>(packed))</div>
 <div class="line">    {</div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; e : unpacked-&gt;array)</div>
 <div class="line">        {</div>
@@ -372,7 +380,7 @@ API</h1>
 <div class="line"> </div>
 <div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> packed = <a class="code hl_function" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a>(vector);</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = Udon::Deserialize&lt;Vec2&gt;(packed))</div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = <a class="code hl_function" href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef">Udon::Deserialize&lt;Vec2&gt;</a>(packed))</div>
 <div class="line">    {</div>
 <div class="line">        std::cout</div>
 <div class="line">            &lt;&lt; unpacked-&gt;x.value &lt;&lt; <span class="stringliteral">&quot;, &quot;</span></div>
@@ -395,7 +403,7 @@ API</h1>
 <div class="line"> </div>
 <div class="line">    packed.at(1) = 0x00;  <span class="comment">// データ破損</span></div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = Udon::Deserialize&lt;int&gt;(packed))</div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> unpacked = <a class="code hl_function" href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef">Udon::Deserialize&lt;int&gt;</a>(packed))</div>
 <div class="line">    {</div>
 <div class="line">        std::cout &lt;&lt; *unpacked &lt;&lt; std::endl;</div>
 <div class="line">    }</div>

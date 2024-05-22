@@ -15,8 +15,8 @@ var searchData=
   ['pop_5fback_12',['pop_back',['../classUdon_1_1StaticVector.html#ad8338b2d4b0656defcc5aa6a0d0d0abb',1,'Udon::StaticVector']]],
   ['pos_13',['Pos',['../structUdon_1_1Pos.html#af88def76dc368abb9844ae9fcf66ebee',1,'Udon::Pos::Pos() noexcept'],['../structUdon_1_1Pos.html#a0d58914f6774d1eb573e5c0651619e00',1,'Udon::Pos::Pos(const Pos &amp;rhs) noexcept'],['../structUdon_1_1Pos.html#aadf97bbf65d9cb4d662be385988f0a39',1,'Udon::Pos::Pos(const Udon::Vec2 &amp;vector, ValueType turn) noexcept']]],
   ['printer_14',['Printer',['../classUdon_1_1Impl_1_1Printer.html#a43d095c082438c0d5dfc792a0f519ee9',1,'Udon::Impl::Printer']]],
-  ['printf_15',['printf',['../structUdon_1_1Message_1_1Lcd.html#a3939bff99bb0553ad0f5e9fedd8a4de8',1,'Udon::Message::Lcd']]],
-  ['printf_16',['Printf',['../namespaceUdon.html#a734d9854aba65224a95e6c61c63e9edc',1,'Udon']]],
+  ['printf_15',['Printf',['../namespaceUdon.html#a734d9854aba65224a95e6c61c63e9edc',1,'Udon']]],
+  ['printf_16',['printf',['../structUdon_1_1Message_1_1Lcd.html#a3939bff99bb0553ad0f5e9fedd8a4de8',1,'Udon::Message::Lcd']]],
   ['push_17',['push',['../classUdon_1_1RingBuffer.html#a353f9fbc6faf53475f12114f542f6d42',1,'Udon::RingBuffer::push(const_reference value)'],['../classUdon_1_1RingBuffer.html#a93fd49272e0939845d00b1d137b6bf13',1,'Udon::RingBuffer::push(value_type &amp;&amp;value)']]],
   ['push_5fback_18',['push_back',['../classUdon_1_1StaticVector.html#a882b8b20c49cc6ec3a8edc288dcecc6d',1,'Udon::StaticVector::push_back(const value_type &amp;value)'],['../classUdon_1_1StaticVector.html#ae634f52ea83e5529b6b3a8886202c012',1,'Udon::StaticVector::push_back(value_type &amp;&amp;value)']]]
 ];

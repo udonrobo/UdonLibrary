@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: メンバ一覧</title>
@@ -12,9 +12,9 @@
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -44,10 +44,16 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
+      <!-- end header part -->
+<!-- 構築: Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -55,7 +61,7 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','検索');
+  initMenu('',true,false,'search.php','検索',true);
   $(function() { init_search(); });
 });
 /* @license-end */
@@ -74,7 +80,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('classUdon_1_1ArrayView.html',''); initResizable(); });
+$(function(){initNavTree('classUdon_1_1ArrayView.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -137,9 +143,9 @@ $(function(){initNavTree('classUdon_1_1ArrayView.html',''); initResizable(); });
   <tr class="even"><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html#a4dda64e69d749176519eb836e7521863">front</a>() const</td><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html#a0cdac2e4d003ca1bc9d0fe051fa0b4f5">iterator</a> typedef</td><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView&lt; T &gt;</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html#af7a0d622569cda1d631f96d580acb5f0">operator bool</a>() const noexcept</td><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">explicit</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html#a52227b2d2829120eed730927d79e1219">operator!=</a></td><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView&lt; T &gt;</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html#a1c1ad2b1880f1b63fa7804694cf53382">operator&lt;&lt;</a></td><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView&lt; T &gt;</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html#af89600313913853cdb574783daec3942">operator==</a></td><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView&lt; T &gt;</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html#a52227b2d2829120eed730927d79e1219">operator!=</a>(const ArrayView &amp;lhs, const ArrayView &amp;rhs)</td><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView&lt; T &gt;</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html#a1c1ad2b1880f1b63fa7804694cf53382">operator&lt;&lt;</a>(std::ostream &amp;ostm, const ArrayView &amp;rhs)</td><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView&lt; T &gt;</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html#af89600313913853cdb574783daec3942">operator==</a>(const ArrayView &amp;lhs, const ArrayView &amp;rhs)</td><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView&lt; T &gt;</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html#a6d56820be1703300f551e36cd60cc307">operator[]</a>(const size_type index)</td><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html#a38a0b3cf9d2a074ceadb9e48db8785be">operator[]</a>(const size_type index) const</td><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView&lt; T &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html#a23b99fe728d654132898dca9c8150c47">pointer</a> typedef</td><td class="entry"><a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView&lt; T &gt;</a></td><td class="entry"></td></tr>

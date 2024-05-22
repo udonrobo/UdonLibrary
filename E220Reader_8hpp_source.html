@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: src/Udon/Com/LoRa/E220Reader.hpp ソースファイル</title>
@@ -12,9 +12,9 @@
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -44,10 +44,16 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
+      <!-- end header part -->
+<!-- 構築: Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -55,17 +61,12 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','検索');
+  initMenu('',true,false,'search.php','検索',true);
   $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() { codefold.init(0); });
-/* @license-end */
-</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -79,7 +80,7 @@ $(function() { codefold.init(0); });
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('E220Reader_8hpp_source.html',''); initResizable(); });
+$(function(){initNavTree('E220Reader_8hpp_source.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -130,7 +131,7 @@ $(function(){initNavTree('E220Reader_8hpp_source.html',''); initResizable(); });
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        : <span class="keyword">public</span> <a class="code hl_class" href="classUdon_1_1Impl_1_1E220Base.html">Impl::E220Base</a></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    {</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classUdon_1_1E220Reader.html#a9e0dfa09058173896846daee472b6880">   25</a></span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="classUdon_1_1E220Reader.html#a9e0dfa09058173896846daee472b6880">Size</a> = Udon::SerializedSize&lt;T&gt;();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classUdon_1_1E220Reader.html#a9e0dfa09058173896846daee472b6880">   25</a></span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="classUdon_1_1E220Reader.html#a9e0dfa09058173896846daee472b6880">Size</a> = <a class="code hl_function" href="namespaceUdon.html#a92fa64e26dcad6be1aa4e0f4908fdee6">Udon::SerializedSize&lt;T&gt;</a>();</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classUdon_1_1E220Reader.html#aacc2147ad1635566e880986dc17adaf5">   28</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="classUdon_1_1E220Reader.html#aacc2147ad1635566e880986dc17adaf5">MessageType</a> = T;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
@@ -184,7 +185,7 @@ $(function(){initNavTree('E220Reader_8hpp_source.html',''); initResizable(); });
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceUdon.html#ae102f6540b6e88b1b484ddbed3ff972f">Udon::nullopt</a>;</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            }</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            <span class="keywordflow">return</span> Udon::Deserialize&lt;MessageType&gt;(buffer);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef">Udon::Deserialize&lt;MessageType&gt;</a>(buffer);</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        }</div>
 </div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
@@ -315,6 +316,8 @@ $(function(){initNavTree('E220Reader_8hpp_source.html',''); initResizable(); });
 <div class="ttc" id="aclassUdon_1_1Optional_html"><div class="ttname"><a href="classUdon_1_1Optional.html">Udon::Optional</a></div><div class="ttdoc">オプショナル型</div><div class="ttdef"><b>Definition</b> Optional.hpp:58</div></div>
 <div class="ttc" id="aclassUdon_1_1ScopedInterruptLocker_html"><div class="ttname"><a href="classUdon_1_1ScopedInterruptLocker.html">Udon::ScopedInterruptLocker</a></div><div class="ttdoc">割り込みロック、アンロックをスコープの範囲で制御するクラス</div><div class="ttdef"><b>Definition</b> ScopedInterruptLocker.hpp:11</div></div>
 <div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
+<div class="ttc" id="anamespaceUdon_html_a2867c79f449f149ce0996d14271837ef"><div class="ttname"><a href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef">Udon::Deserialize</a></div><div class="ttdeci">Udon::Optional&lt; T &gt; Deserialize(ArrayView&lt; const uint8_t &gt; buffer)</div><div class="ttdoc">バイト列からオブジェクトに逆シリアル化します</div><div class="ttdef"><b>Definition</b> Serializer.hpp:87</div></div>
+<div class="ttc" id="anamespaceUdon_html_a92fa64e26dcad6be1aa4e0f4908fdee6"><div class="ttname"><a href="namespaceUdon.html#a92fa64e26dcad6be1aa4e0f4908fdee6">Udon::SerializedSize</a></div><div class="ttdeci">constexpr size_t SerializedSize() noexcept</div><div class="ttdoc">Tをシリアライズした際のバイト列の要素数を取得する</div><div class="ttdef"><b>Definition</b> Serializer.hpp:22</div></div>
 <div class="ttc" id="anamespaceUdon_html_ae102f6540b6e88b1b484ddbed3ff972f"><div class="ttname"><a href="namespaceUdon.html#ae102f6540b6e88b1b484ddbed3ff972f">Udon::nullopt</a></div><div class="ttdeci">constexpr NulloptT nullopt</div><div class="ttdoc">無効値</div><div class="ttdef"><b>Definition</b> Optional.hpp:48</div></div>
 <div class="ttc" id="astructUdon_1_1Impl_1_1E220Base_1_1Config_html_a2d8878d9b628b6af5955c3135353ea56"><div class="ttname"><a href="structUdon_1_1Impl_1_1E220Base_1_1Config.html#a2d8878d9b628b6af5955c3135353ea56">Udon::Impl::E220Base::Config::serial</a></div><div class="ttdeci">HardwareSerial &amp; serial</div><div class="ttdef"><b>Definition</b> E220Base.hpp:17</div></div>
 <div class="ttc" id="astructUdon_1_1Impl_1_1E220Base_1_1Config_html_ac63a0ac4ce7893467b40832f2ad69b5d"><div class="ttname"><a href="structUdon_1_1Impl_1_1E220Base_1_1Config.html#ac63a0ac4ce7893467b40832f2ad69b5d">Udon::Impl::E220Base::Config::aux</a></div><div class="ttdeci">uint8_t aux</div><div class="ttdef"><b>Definition</b> E220Base.hpp:21</div></div>

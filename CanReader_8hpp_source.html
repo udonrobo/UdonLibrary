@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.10.0"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: src/Udon/Com/Can/CanReader.hpp ソースファイル</title>
@@ -12,9 +12,9 @@
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -44,10 +44,16 @@
           </tbody>
         </table>
       </div>
-      <!-- end header part --><!-- 構築: Doxygen 1.10.0 -->
+      <!-- end header part -->
+<!-- 構築: Doxygen 1.11.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
 /* @license-end */
 </script>
 <script type="text/javascript" src="menudata.js"></script>
@@ -55,17 +61,12 @@ var searchBox = new SearchBox("searchBox", "search/",'.html');
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','検索');
+  initMenu('',true,false,'search.php','検索',true);
   $(function() { init_search(); });
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() { codefold.init(0); });
-/* @license-end */
-</script>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -79,7 +80,7 @@ $(function() { codefold.init(0); });
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('CanReader_8hpp_source.html',''); initResizable(); });
+$(function(){initNavTree('CanReader_8hpp_source.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -137,7 +138,7 @@ $(function(){initNavTree('CanReader_8hpp_source.html',''); initResizable(); });
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classUdon_1_1CanReader.html#add818ad667ab49a82f84941b410a6ce3">   30</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="classUdon_1_1CanReader.html#add818ad667ab49a82f84941b410a6ce3">MessageType</a> = Message;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classUdon_1_1CanReader.html#a91eb1635c970577a80cafe98dd8bb752">   33</a></span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="classUdon_1_1CanReader.html#a91eb1635c970577a80cafe98dd8bb752">Size</a> = Udon::SerializedSize&lt;Message&gt;();</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classUdon_1_1CanReader.html#a91eb1635c970577a80cafe98dd8bb752">   33</a></span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="classUdon_1_1CanReader.html#a91eb1635c970577a80cafe98dd8bb752">Size</a> = <a class="code hl_function" href="namespaceUdon.html#a92fa64e26dcad6be1aa4e0f4908fdee6">Udon::SerializedSize&lt;Message&gt;</a>();</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classUdon_1_1CanReader.html#a1313b68d30779d632e6b648996a3cf51">   38</a></span>        <a class="code hl_function" href="classUdon_1_1CanReader.html#a1313b68d30779d632e6b648996a3cf51">CanReader</a>(<a class="code hl_class" href="classUdon_1_1ICanBus.html">ICanBus</a>&amp; bus, <span class="keyword">const</span> uint32_t <span class="keywordtype">id</span>)</div>
@@ -147,7 +148,7 @@ $(function(){initNavTree('CanReader_8hpp_source.html',''); initResizable(); });
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            node-&gt;<a class="code hl_variable" href="structUdon_1_1CanRxNode.html#ad757ec7aab002688b0b8f93dce438034">onReceive</a> = [](<span class="keywordtype">void</span>* p)</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            {</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                <span class="keyword">auto</span> self = <span class="keyword">static_cast&lt;</span><a class="code hl_class" href="classUdon_1_1CanReader.html">CanReader</a>*<span class="keyword">&gt;</span>(p);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                self-&gt;message = Udon::Deserialize&lt;Message&gt;({ self-&gt;node-&gt;data });</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                self-&gt;message = <a class="code hl_function" href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef">Udon::Deserialize&lt;Message&gt;</a>({ self-&gt;node-&gt;data });</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            };</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            node-&gt;<a class="code hl_variable" href="structUdon_1_1CanRxNode.html#aa31b79595dd283ec684db5aea4158aba">param</a> = <span class="keyword">this</span>;</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        }</div>
@@ -237,8 +238,10 @@ $(function(){initNavTree('CanReader_8hpp_source.html',''); initResizable(); });
 <div class="ttc" id="aclassUdon_1_1ICanBus_html"><div class="ttname"><a href="classUdon_1_1ICanBus.html">Udon::ICanBus</a></div><div class="ttdoc">CANバス管理クラス インターフェース</div><div class="ttdef"><b>Definition</b> ICanBus.hpp:49</div></div>
 <div class="ttc" id="aclassUdon_1_1Optional_html"><div class="ttname"><a href="classUdon_1_1Optional.html">Udon::Optional</a></div><div class="ttdoc">オプショナル型</div><div class="ttdef"><b>Definition</b> Optional.hpp:58</div></div>
 <div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
+<div class="ttc" id="anamespaceUdon_html_a2867c79f449f149ce0996d14271837ef"><div class="ttname"><a href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef">Udon::Deserialize</a></div><div class="ttdeci">Udon::Optional&lt; T &gt; Deserialize(ArrayView&lt; const uint8_t &gt; buffer)</div><div class="ttdoc">バイト列からオブジェクトに逆シリアル化します</div><div class="ttdef"><b>Definition</b> Serializer.hpp:87</div></div>
 <div class="ttc" id="anamespaceUdon_html_a392678ab11e3dea1c2202a7b255a2e1a"><div class="ttname"><a href="namespaceUdon.html#a392678ab11e3dea1c2202a7b255a2e1a">Udon::Show</a></div><div class="ttdeci">void Show(Args &amp;&amp;... args)</div><div class="ttdoc">区切り文字ありで出力する</div><div class="ttdef"><b>Definition</b> Show.hpp:332</div></div>
 <div class="ttc" id="anamespaceUdon_html_a734d9854aba65224a95e6c61c63e9edc"><div class="ttname"><a href="namespaceUdon.html#a734d9854aba65224a95e6c61c63e9edc">Udon::Printf</a></div><div class="ttdeci">void Printf(const char *format, Args... args)</div><div class="ttdef"><b>Definition</b> Printf.hpp:44</div></div>
+<div class="ttc" id="anamespaceUdon_html_a92fa64e26dcad6be1aa4e0f4908fdee6"><div class="ttname"><a href="namespaceUdon.html#a92fa64e26dcad6be1aa4e0f4908fdee6">Udon::SerializedSize</a></div><div class="ttdeci">constexpr size_t SerializedSize() noexcept</div><div class="ttdoc">Tをシリアライズした際のバイト列の要素数を取得する</div><div class="ttdef"><b>Definition</b> Serializer.hpp:22</div></div>
 <div class="ttc" id="anamespaceUdon_html_ae102f6540b6e88b1b484ddbed3ff972f"><div class="ttname"><a href="namespaceUdon.html#ae102f6540b6e88b1b484ddbed3ff972f">Udon::nullopt</a></div><div class="ttdeci">constexpr NulloptT nullopt</div><div class="ttdoc">無効値</div><div class="ttdef"><b>Definition</b> Optional.hpp:48</div></div>
 <div class="ttc" id="astructUdon_1_1CanRxNode_html"><div class="ttname"><a href="structUdon_1_1CanRxNode.html">Udon::CanRxNode</a></div><div class="ttdoc">CAN受信ノード</div><div class="ttdef"><b>Definition</b> ICanBus.hpp:28</div></div>
 <div class="ttc" id="astructUdon_1_1CanRxNode_html_a0a11bd2b3dff87253d7bec10bdce1f42"><div class="ttname"><a href="structUdon_1_1CanRxNode.html#a0a11bd2b3dff87253d7bec10bdce1f42">Udon::CanRxNode::id</a></div><div class="ttdeci">const uint32_t id</div><div class="ttdef"><b>Definition</b> ICanBus.hpp:29</div></div>
