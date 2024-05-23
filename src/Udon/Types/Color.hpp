@@ -19,7 +19,7 @@ namespace Udon
     inline RGB Rainbow(uint32_t cycleMs) noexcept
     {
         const uint32_t hue = Millis() % cycleMs * 255 / cycleMs;
-        return HSV{ hue, 255, 255 };
+        return HSV{ static_cast<uint8_t>(hue), 255, 255 };
     }
 #endif
 }    // namespace Udon

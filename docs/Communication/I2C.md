@@ -1,6 +1,6 @@
 # I2C 通信
 
-I2C 通信は主に基板内で使用されるシリアル通信の一種で、一対多の通信方式です。バス型方式をとっているため容易に配線が可能です。I2C 通信用が端子はマイコンに標準で搭載されている場合が多く、導入コストが低いです。一方で配線長が長くなると規格以上の配線容量となってしまい通信エラーが発生しやすくなります。
+I2C 通信は主に基板内で使用されるシリアル通信の一種で、一対多の通信方式です。バス型方式をとっているため容易に配線が可能です。I2C 通信用端子はマイコンに標準で搭載されている場合が多く、導入コストが低いです。一方で配線長が長くなると規格以上の配線容量となってしまい通信エラーが発生しやすくなります。
 
 通信タイミングの管理を行うマイコンはマスターと呼ばれます。マスターと通信するマイコンはスレーブと呼ばれます。
 
@@ -59,8 +59,8 @@ void loop()
 ```cpp
 #include <Udon.hpp>
 
-Udon::I2cBus bus{ Wire };
-Udon::I2cSlaveReader<Udon::Vec2> reader{ bus };
+static Udon::I2cBus bus{ Wire };
+static Udon::I2cSlaveReader<Udon::Vec2> reader{ bus };
 
 void setup()
 {
@@ -99,8 +99,8 @@ void loop()
 ```cpp
 #include <Udon.hpp>
 
-Udon::I2cBus bus{ Wire };
-Udon::I2cSlaveWriter<Udon::Vec2> writer{ bus };
+static Udon::I2cBus bus{ Wire };
+static Udon::I2cSlaveWriter<Udon::Vec2> writer{ bus };
 
 void setup()
 {
@@ -127,8 +127,8 @@ void loop()
 ```cpp
 #include <Udon.hpp>
 
-static static Udon::I2cBus bus{ Wire };
-static static Udon::I2cMasterReader<Udon::Vec2> reader{ bus, 6 };  // スレーブアドレス 6 から受信
+static Udon::I2cBus bus{ Wire };
+static Udon::I2cMasterReader<Udon::Vec2> reader{ bus, 6 };  // スレーブアドレス 6 から受信
 
 void setup()
 {
