@@ -28,7 +28,7 @@
 - [移動平均](./docs/Algorithm/MovingAverage.md)
 - [フィードバック制御(PID)](./docs/Algorithm/FeedbackController.md)
 - [独立ステア最適化](./docs/Algorithm/SteerOptimizer.md)
-- [割り込み禁止制御](./docs/Algorithm/Interrupt.md)🌟new
+- [割り込み禁止制御](./docs/Algorithm/Interrupt.md)
 
 ### 通信
 
@@ -39,7 +39,7 @@
 - [LoRa](./docs/Communication/LoRa.md)
 - [IM920](./docs/Communication/IM920.md)
 - [コントローラ](./docs/Communication/Pad.md)
-- [CRC エラーチェック](./docs/Communication/CRC.md)🌟new
+- [CRC エラーチェック](./docs/Communication/CRC.md)
 
 ### ユーザー定義型
 
@@ -56,11 +56,11 @@
 ### ドライバー
 
 - [モーター](./docs/Driver/Motor.md)
-- [ロボマスモーター](./docs/Driver/RoboMasterMotor.md)🌟new
+- [ロボマスモーター](./docs/Driver/RoboMasterMotor.md)
 - [BNO055](./docs/Driver/BNO055.md)
 - [DIPスイッチ](./docs/Driver/DipSwitch.md)
-- [Raspberry Pi Pico ロータリーエンコーダー](./docs/Driver/EncoderPico.md)
-- [Raspberry Pi Pico PIO](./docs/Driver/PIO.md)
+- [Raspberry Pi Pico / ロータリーエンコーダー](./docs/Driver/EncoderPico.md)
+- [Raspberry Pi Pico / PIO](./docs/Driver/PIO.md)
 
 ### その他
 
@@ -72,8 +72,8 @@
 - [開発環境セットアップ](./docs/Developer/DevelopSetup.md)
 - [スタイルガイド](./docs/Developer/StyleGuide.md)
 - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
-- [自動テスト](./docs/Developer/CI.md)
-- [ドキュメント自動生成](./docs/Developer/DoxygenPage.md)
+- [GitHub Actions / 自動テスト](./docs/Developer/CI.md)
+- [GitHub Actions / ドキュメント自動生成](./docs/Developer/DoxygenPage.md)
 - [謝辞](./docs/Developer/Acknowledgments.md)
 
 ## ライセンス

@@ -18,9 +18,10 @@
 
 また本ライブラリの作成において、以下のオープンソースプロジェクトを参考にしています。
 
-| プロジェクト                                    | ライセンス           | 著作権                                                                            |
-| ----------------------------------------------- | -------------------- | --------------------------------------------------------------------------------- |
-| [OpenSiv3D](https://github.com/Siv3D/OpenSiv3D) | MIT License          | Copyright (c) 2008-2023 Ryo Suzuki <br> Copyright (c) 2016-2023 OpenSiv3D Project |
-| [cereal](https://github.com/USCiLab/cereal)     | BSD-3-Clause license | Copyright (c) 2013-2022 Randolph Voorhies, Shane Grant                            |
-| [boost](https://github.com/boostorg/boost)      | BSL-1.0 license      |                                                                                   |
-| [Unity](https://unity.com/ja)                   | MIT License          | Copyright (c) 2019 Unity Technologies Copyright                                   |
+| プロジェクト                                    | 参考個所                        | ライセンス           | 著作権                                                                            |
+| ----------------------------------------------- | ------------------------------- | -------------------- | --------------------------------------------------------------------------------- |
+| [rclcpp](https://github.com/ros2/rclcpp)        | 型を用いた通信方法              | Apache-2.0 license   | Copyright (c) 2008-2023 Ryo Suzuki <br> Copyright (c) 2016-2023 OpenSiv3D Project |
+| [OpenSiv3D](https://github.com/Siv3D/OpenSiv3D) | ユーザー定義型の設計方法        | MIT License          | Copyright (c) 2008-2023 Ryo Suzuki <br> Copyright (c) 2016-2023 OpenSiv3D Project |
+| [cereal](https://github.com/USCiLab/cereal)     | メンバ変数の列挙方法            | BSD-3-Clause license | Copyright (c) 2013-2022 Randolph Voorhies, Shane Grant                            |
+| [boost](https://github.com/boostorg/boost)      | 固定 bit 長浮動小数点の定義方法 | BSL-1.0 license      |                                                                                   |
+| [Unity](https://unity.com/ja)                   | クオータニオン型メンバ          | MIT License          | Copyright (c) 2019 Unity Technologies Copyright                                   |
