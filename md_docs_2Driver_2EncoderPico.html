@@ -109,7 +109,7 @@ $(function(){initNavTree('md_docs_2Driver_2EncoderPico.html',''); initResizable(
   <div class="headertitle"><div class="title">エンコーダー</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md137"></a> Raspberry Pi Pico 用エンコーダー計測クラス</p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md139"></a> <code>Udon::EncoderPico</code> クラス (Raspberry Pi Pico 用) を用いてエンコーダーのカウント値を取得します。</p>
 <p>個別に動作するステートマシンを用いて高速ポーリングを行うため、カウント値の取りこぼしがほとんどありません。</p>
 <p>Raspberry Pi Pico にはステートマシンが 8 個内蔵されているので、最大 8 個まで計測ができます。計測するには以下の条件を満たす必要があります。</p>
 <ul>
@@ -120,15 +120,15 @@ $(function(){initNavTree('md_docs_2Driver_2EncoderPico.html',''); initResizable(
 <blockquote class="doxtable">
 <p>&zwj;計測開始できたかは begin 関数の戻り値から取得できます。 </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md138"></a>
+<h1><a class="anchor" id="autotoc_md140"></a>
 個別インクルード</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="EncoderPico_8hpp.html">Udon/Driver/EncoderPico.hpp</a>&gt;</span></div>
 <div class="ttc" id="aEncoderPico_8hpp_html"><div class="ttname"><a href="EncoderPico_8hpp.html">EncoderPico.hpp</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md139"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md141"></a>
 スケッチ例</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
-<div class="line">Udon::EncoderPico encoder{ 0, 1 };</div>
+<div class="line"><span class="keyword">static</span> Udon::EncoderPico encoder{ 0, 1 };</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup()</div>
 <div class="line">{</div>

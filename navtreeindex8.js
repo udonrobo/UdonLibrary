@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"namespaceUdon_1_1Message.html#a1e18f0c5ec4444c4fda80baa0265b20a":[46,0,1,2,13],
+"namespaceUdon_1_1Message.html#a209787977a42a67052c5ba2a1800fc30":[46,0,1,2,14],
 "namespaceUdon_1_1Message.html#aae78d31a4c46bdab46f95e2cdfb0f813":[46,0,1,2,15],
 "namespaceUdon_1_1Pio.html":[46,0,1,3],
 "namespaceUdon_1_1Pio_1_1Encoder.html":[46,0,1,3,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX8 =
 "structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Enum_00_01EnableIfVoidT_3_01IsEnum_3_01Enum_01_4_1_1value_01_4_01_4.html":[47,0,0,0,2,2],
 "structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Enumeratable_00_01EnableIfVoidT_3_01HasMemberF41adc80fa5065aa9a6c90ee461b205c5.html":[46,0,1,0,2,3],
 "structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Enumeratable_00_01EnableIfVoidT_3_01HasMemberF41adc80fa5065aa9a6c90ee461b205c5.html":[47,0,0,0,2,3],
-"structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Printable_00_01EnableIfVoidT_3_01HasMemberFunc15b5ba4bf8715386217ee42bd1ba7f8b.html":[46,0,1,0,2,4],
-"structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Printable_00_01EnableIfVoidT_3_01HasMemberFunc15b5ba4bf8715386217ee42bd1ba7f8b.html":[47,0,0,0,2,4],
-"structUdon_1_1Impl_1_1IsSerializableImpl.html":[46,0,1,0,3]
+"structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Printable_00_01EnableIfVoidT_3_01HasMemberFunc15b5ba4bf8715386217ee42bd1ba7f8b.html":[46,0,1,0,2,4]
 };

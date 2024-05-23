@@ -1,5 +1,7 @@
 var NAVTREEINDEX11 =
 {
+"structUdon_1_1Traits_1_1HasMemberFunctionUpdate_3_01T_00_01std_1_1void__t_3_01decltype_07std_1_15de3e403ae1414ee66580615516c8a49.html":[47,0,0,2,11],
+"structUdon_1_1Traits_1_1IsOutputStreamable.html":[46,0,1,5,12],
 "structUdon_1_1Traits_1_1IsOutputStreamable.html":[47,0,0,2,12],
 "structUdon_1_1Traits_1_1IsOutputStreamable_3_01OutputStream_00_01T_00_01std_1_1void__t_3_01decltdeef1286ebbe867a1fa837ff072fac7c.html":[46,0,1,5,13],
 "structUdon_1_1Traits_1_1IsOutputStreamable_3_01OutputStream_00_01T_00_01std_1_1void__t_3_01decltdeef1286ebbe867a1fa837ff072fac7c.html":[47,0,0,2,13],

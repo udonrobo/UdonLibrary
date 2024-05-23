@@ -109,7 +109,7 @@ $(function(){initNavTree('md_docs_2Communication_2I2C.html',''); initResizable(t
   <div class="headertitle"><div class="title">I2C 通信</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md44"></a> I2C 通信は主に基板内で使用されるシリアル通信の一種で、一対多の通信方式です。バス型方式をとっているため容易に配線が可能です。I2C 通信用が端子はマイコンに標準で搭載されている場合が多く、導入コストが低いです。一方で配線長が長くなると規格以上の配線容量となってしまい通信エラーが発生しやすくなります。</p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md44"></a> I2C 通信は主に基板内で使用されるシリアル通信の一種で、一対多の通信方式です。バス型方式をとっているため容易に配線が可能です。I2C 通信用端子はマイコンに標準で搭載されている場合が多く、導入コストが低いです。一方で配線長が長くなると規格以上の配線容量となってしまい通信エラーが発生しやすくなります。</p>
 <p>通信タイミングの管理を行うマイコンはマスターと呼ばれます。マスターと通信するマイコンはスレーブと呼ばれます。</p>
 <p>I2C 通信クラスは、通信バスクラス、マスター側送受信クラス、スレーブ側送受信クラスから構成されています。</p>
 <h1><a class="anchor" id="autotoc_md45"></a>
@@ -155,8 +155,8 @@ $(function(){initNavTree('md_docs_2Communication_2I2C.html',''); initResizable(t
 <p><code>T</code> に指定された型のオブジェクトをマスターから受信します。複数インスタンス化できません。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
-<div class="line">Udon::I2cBus bus{ Wire };</div>
-<div class="line"><a class="code hl_class" href="classUdon_1_1I2cSlaveReader.html">Udon::I2cSlaveReader&lt;Udon::Vec2&gt;</a> reader{ bus };</div>
+<div class="line"><span class="keyword">static</span> Udon::I2cBus bus{ Wire };</div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1I2cSlaveReader.html">Udon::I2cSlaveReader&lt;Udon::Vec2&gt;</a> reader{ bus };</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup()</div>
 <div class="line">{</div>
@@ -192,8 +192,8 @@ $(function(){initNavTree('md_docs_2Communication_2I2C.html',''); initResizable(t
 <p><code>T</code> に指定された型のオブジェクトをマスターへ送信します。複数インスタンス化できません。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
-<div class="line">Udon::I2cBus bus{ Wire };</div>
-<div class="line"><a class="code hl_class" href="classUdon_1_1I2cSlaveWriter.html">Udon::I2cSlaveWriter&lt;Udon::Vec2&gt;</a> writer{ bus };</div>
+<div class="line"><span class="keyword">static</span> Udon::I2cBus bus{ Wire };</div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1I2cSlaveWriter.html">Udon::I2cSlaveWriter&lt;Udon::Vec2&gt;</a> writer{ bus };</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup()</div>
 <div class="line">{</div>
@@ -217,8 +217,8 @@ $(function(){initNavTree('md_docs_2Communication_2I2C.html',''); initResizable(t
 <p><code>T</code> に指定された型のオブジェクトをスレーブから受信します。スレーブの数に応じて複数インスタンス化可能です。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">static</span> <span class="keyword">static</span> Udon::I2cBus bus{ Wire };</div>
-<div class="line"><span class="keyword">static</span> <span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1I2cMasterReader.html">Udon::I2cMasterReader&lt;Udon::Vec2&gt;</a> reader{ bus, 6 };  <span class="comment">// スレーブアドレス 6 から受信</span></div>
+<div class="line"><span class="keyword">static</span> Udon::I2cBus bus{ Wire };</div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1I2cMasterReader.html">Udon::I2cMasterReader&lt;Udon::Vec2&gt;</a> reader{ bus, 6 };  <span class="comment">// スレーブアドレス 6 から受信</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup()</div>
 <div class="line">{</div>
