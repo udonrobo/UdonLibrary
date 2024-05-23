@@ -19,6 +19,8 @@
 namespace Udon
 {
 
+    /// @brief IM920送信クラス
+    /// @tparam Message 送信するメッセージ型
     template <typename Message>
     class Im920Writer
     {

@@ -19,6 +19,8 @@
 
 namespace Udon
 {
+
+    /// @brief IM920sL通信クラス
     class Im920sL
         : public IIm920
     {

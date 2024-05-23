@@ -4,7 +4,9 @@
 
 香川高専高松機械システム研究部 C++ ライブラリ
 
-[![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml) [![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
+[![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml) 
+[![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
+[![Doxygen Page](https://github.com/udonrobo/UdonLibrary/actions/workflows/DoxygenPage.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/DoxygenPage.yml)
 
 ## 追加方法
 

@@ -19,6 +19,8 @@
 namespace Udon
 {
 
+    /// @brief IM920受信クラス
+    /// @tparam Message 受信するメッセージ型
     template <typename Message>
     class Im920Reader
     {

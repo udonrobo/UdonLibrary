@@ -15,6 +15,8 @@ namespace Udon
 
     struct HSV;
 
+
+    /// @brief RGB色空間
     struct RGB
     {
 
