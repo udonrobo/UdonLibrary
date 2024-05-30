@@ -299,7 +299,7 @@ vector.map(0, 200, 0, 400);
 
 ## OpenSiv3D との連携
 
-`OpenSiv3D` が持つ `s3d::Vector2D<T>` と相互変換を行うことができます。
+`OpenSiv3D` が持つ `s3d::Vector2D<T>` との相互変換を行えます。
 
 ### `s3d::Vector2D<T>` -> `Udon::Vec2`
 
