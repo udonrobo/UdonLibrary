@@ -110,10 +110,10 @@ $(function(){initNavTree('md_docs_2Developer_2CI.html',''); initResizable(true);
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md98"></a> GitHub Actions を使用して、プッシュ時、プルリクエスト作成時にライブラリのコードを自動的に検証します。</p>
-<p>この検証を行うことで、ライブラリ追加時にコンパイルエラーになったり、バグが生じることを大幅に減らすことができます。</p>
+<p>この検証を行うことで、ライブラリ追加時にコンパイルエラーになったり、バグが生じることを大幅に減らせます。</p>
 <blockquote class="doxtable">
 <p>&zwj;テストコードのビルドに失敗、もしくは終了コードが 0 以外の場合、検証が失敗します。</p>
-<p>検証の状態は <a href="https://github.com/udonrobo/UdonLibrary/actions">Action タブ</a> から見ることができます。ワークフローは <code>UdonLibrary/.github/workflows/</code> に定義されています。</p>
+<p>検証の状態は <a href="https://github.com/udonrobo/UdonLibrary/actions">Action タブ</a> から確認できます。ワークフローは <code>UdonLibrary/.github/workflows/</code> に定義されています。</p>
 <p>またのメインページの README に貼られているバッジから見ることもできます(反映に少し時間がかかります)。</p>
 <p><a href="https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml"><img src="https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg" alt="Arduino Lint" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml"><img src="https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg" alt="Unit Tests" style="pointer-events: none;" class="inline"/></a></p>
 <p>検証が成功している場合 <code>passing</code> と表示され、失敗していると <code>failing</code> と表示されます。 </p>
@@ -152,7 +152,7 @@ Arduino Lint</h1>
 </blockquote>
 <h2><a class="anchor" id="autotoc_md102"></a>
 コンパイル時に計算可能なアルゴリズムのテスト</h2>
-<p>コンパイル時に値が決定する関数、定数は <code>static_assert(定数式, 文字列リテラル)</code> を使用してコンパイル時にチェックすることができます。</p>
+<p>コンパイル時に値が決定する関数、定数は <code>static_assert(定数式, 文字列リテラル)</code> を使用してテストできます。</p>
 <blockquote class="doxtable">
 <p>&zwj;<code>static_assert</code> は定数式が <code>false</code> であるときにコンパイルエラーになります。 </p>
 </blockquote>

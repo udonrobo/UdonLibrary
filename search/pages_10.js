@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['セットアップ_0',['Raspberry Pi Pico セットアップ',['../md_docs_2Install_2RaspberryPiPico.html',1,'']]]
+  ['シリアライザ_0',['シリアライザ',['../md_docs_2Other_2Serialization.html',1,'']]]
 ];

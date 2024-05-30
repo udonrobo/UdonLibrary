@@ -126,11 +126,9 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html',''); initResizable(t
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md22"></a>
 通信バスクラス</h1>
 <p>送受信処理、通信が行えているかどうかのチェックを行います。使用するマイコンや CAN コントローラーによって適切なバスクラスを選択します。</p>
-<blockquote class="doxtable">
-<p>&zwj;CAN の通信プロトコルは CAN2.0B を使用します。ID は 0x000~0x7FF の範囲で使用できます。</p>
-<p>CAN2.0B は 一度に 8byte のデータしか送信できません。よって 8byte より多いデータは分割し送受信します。この時、1byte 目にはインデックス番号が付与されます。</p>
-<p>8byte 以下のデータはインデックスを付与せず送受信するため、他の CAN デバイス (市販モーター等) との通信にも使用できます。 </p>
-</blockquote>
+<p>CAN2.0A プロトコルで通信を行います。そのため ID は 0x000~0x7FF の範囲で使用できます。</p>
+<p>CAN2.0A は 一度に 8 バイトのデータしか送信できません。8 バイトより長いデータは分割し送受信します。この時、1 バイト目にインデックス番号が付与されます。</p>
+<p>8 バイト以下のデータはインデックスを付与せず送受信するため、他の CAN デバイス (市販モーター等) との通信にも使用できます。詳しくは バイト列を直接送受信 を参照ください。</p>
 <h2><a class="anchor" id="autotoc_md23"></a>
 ■ Teensy</h2>
 <p>内臓 CAN コントローラーを使用し CAN 通信を行います。受信ノードが 8 個以内の場合、受信フィルタの設定を行います。</p>
@@ -163,7 +161,7 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html',''); initResizable(t
 </details>
 <h2><a class="anchor" id="autotoc_md24"></a>
 ■ Raspberry Pi Pico</h2>
-<p>外部 CAN コントローラーを使用し CAN 通信を行います。コントローラーとは SPI で通信します。受信ノードが 6 個以内の場合、受信フィルタの設定を行います。受信フィルタが有効の場合、指定していない ID からの受信を関知しないため、不要な処理の削減につながります。</p>
+<p>外部 CAN コントローラー (MCP2515, MCP25625) を使用し CAN 通信を行います。コントローラーとは SPI で通信します。受信ノードが 6 個以内の場合、受信フィルタの設定を行います。受信フィルタが有効の場合、指定していない ID からの受信を関知しないため、不要な処理の削減につながります。</p>
 <div class="fragment"><div class="line">flowchart LR</div>
 <div class="line">  subgraph 基板</div>
 <div class="line">    RaspberryPiPico --SPI--&gt; CANコントローラー --CAN TX/RX--&gt; CANトランシーバー</div>
@@ -296,8 +294,8 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html',''); initResizable(t
 <div class="ttc" id="astructUdon_1_1CanTxNode_html_a542aa0315bef4509a4691ac026805ed4"><div class="ttname"><a href="structUdon_1_1CanTxNode.html#a542aa0315bef4509a4691ac026805ed4">Udon::CanTxNode::data</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; data</div><div class="ttdef"><b>Definition</b> ICanBus.hpp:20</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md29"></a>
 ■ 受信ノード</h2>
-<p>受信ノードには、受信時に呼び出すコールバック関数を登録することができます。8 バイトより長いバイト列は複数のフレームに分割されて送信されます。この時、コールバック関数が呼び出されるのは最終フレーム受信時です。</p>
-<p>コールバック関数には <code>param</code> メンバを通じて任意の void ポインタを渡すことができます。this ポインタを渡すことでメンバ関数の呼び出しが可能です。<code>CanReader</code> クラスもこの機能を用いてメンバ関数のコールバックを行っています。以下の例では CanRxNode ポインタを渡しています。</p>
+<p>受信ノードには、受信時に呼び出すコールバック関数を登録できます。8 バイトより長いバイト列は複数のフレームに分割されて送信されます。この時、コールバック関数が呼び出されるのは最終フレーム受信時です。</p>
+<p>コールバック関数には <code>param</code> メンバを通じて任意の void ポインタを渡せます。this ポインタを渡すと、メンバ関数の呼び出しが可能です。<code>CanReader</code> クラスもこの機能を用いてメンバ関数のコールバックを行っています。以下の例では CanRxNode ポインタを渡しています。</p>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>CanRxNode</div>
 <div class="line">{</div>
 <div class="line">    <span class="keyword">const</span> uint32_t id;           <span class="comment">// メッセージID (バスが書き込み、ユーザーが読み取り)</span></div>

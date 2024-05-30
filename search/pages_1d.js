@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['移動平均_0',['移動平均',['../md_docs_2Algorithm_2MovingAverage.html',1,'']]]
+  ['固定ビット長浮動小数点型_0',['固定ビット長浮動小数点型',['../md_docs_2Types_2Float.html',1,'']]]
 ];
