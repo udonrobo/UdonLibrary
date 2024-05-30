@@ -109,9 +109,9 @@ $(function(){initNavTree('md_docs_2Install_2VisualStudioSubmodule.html',''); ini
   <div class="headertitle"><div class="title">Visual Studio Submodule</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md170"></a> <img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/e7fa4cda-bdec-4d2f-b520-6cedb13b3f20" alt="" height="100px" align="right" class="inline"/></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md167"></a> <img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/e7fa4cda-bdec-4d2f-b520-6cedb13b3f20" alt="" height="100px" align="right" class="inline"/></p>
 <p>追加先が git で管理されている場合、リポジトリ内にリポジトリを置くことになります。このような場合、submodule の使用が推奨されています。</p>
-<h1><a class="anchor" id="autotoc_md171"></a>
+<h1><a class="anchor" id="autotoc_md168"></a>
 追加</h1>
 <div class="fragment"><div class="line"># VisualStudioのソリューションディレクトリで実行</div>
 <div class="line">git submodule add https://github.com/udonrobo/UdonLibrary.git</div>
@@ -134,7 +134,7 @@ $(function(){initNavTree('md_docs_2Install_2VisualStudioSubmodule.html',''); ini
 <div class="line">    │  Test.vcxproj.user</div>
 <div class="line">    │</div>
 <div class="line">        ...    ...</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md172"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md169"></a>
 インクルードパス設定</h1>
 <p>インクルードパスを設定することで <code>#include &lt;<a class="el" href="Udon_8hpp.html">Udon.hpp</a>&gt;</code> のように <code>#include &lt;&gt;</code> を使用して記述できるようになります。</p>
 <p>インクルードパスの設定画面を次の手順で開きます。</p>
@@ -159,11 +159,11 @@ $(function(){initNavTree('md_docs_2Install_2VisualStudioSubmodule.html',''); ini
 <p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/bf559aad-c13f-4a28-a360-e886483e3dbd" alt="image" class="inline"/></p>
 </li>
 </ol>
-<h1><a class="anchor" id="autotoc_md173"></a>
+<h1><a class="anchor" id="autotoc_md170"></a>
 更新</h1>
 <div class="fragment"><div class="line"># 追加先のリポジトリ内で実行</div>
 <div class="line">git submodule update --remote</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md174"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md171"></a>
 submodule 使用時の注意点</h1>
 <blockquote class="doxtable">
 <p>&zwj;追加先のプロジェクト自体のクローンを行うとき <code>--recursive</code> オプションを与えなければ、ライブラリがクローンされません(空ファイルになります)。</p>
