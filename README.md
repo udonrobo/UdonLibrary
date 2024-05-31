@@ -8,10 +8,6 @@
 [![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
 [![Doxygen Page](https://github.com/udonrobo/UdonLibrary/actions/workflows/DoxygenPage.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/DoxygenPage.yml)
 
-## 追加方法
-
-### ターゲット
-
 | 系統        | 環境                                            |
 | ----------- | ----------------------------------------------- |
 | Arduino     | Arduino Nano/Uno/UnoMini                        |
@@ -20,6 +16,8 @@
 | Vanilla C++ | Visual Studio <br> CLion                        |
 
 > バニラ C++ の環境ではヘッダーオンリーライブラリとして振舞いますので、インクルードディレクトリの指定、STL の使用が可能な環境において使用できます。
+
+## 追加方法
 
 - [Arduino IDE](./docs/Install/ArduinoIDE.md)
 - [Platform IO](./docs/Install/PlatformIO.md)
