@@ -21,7 +21,7 @@
 
    以下コマンドをターミナル上で実行することで Arduino のライブラリディレクトリへクローンされます。
 
-   ```sh
+   ```
    cd ~/Documents/Arduino/libraries
    git clone --recursive https://github.com/udonrobo/UdonLibrary.git
    ./UdonLibrary/setup.sh
@@ -41,7 +41,7 @@
 
 ライブラリのディレクトリでプルします。
 
-```sh
+```
 cd ~/Documents/Arduino/libraries/UdonLibrary
 git pull
 ```

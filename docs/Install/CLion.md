@@ -17,7 +17,7 @@
 
    - プロジェクトを git で管理していない場合
 
-     ```sh
+     ```
      git clone --recursive https://github.com/udonrobo/UdonLibrary.git
      ```
 
@@ -29,12 +29,12 @@
 
      submodule add 後、追加先のレポジトリに対して、「ライブラリを追加した」という変更が自動的にステージングされるので、コミットを作成しています。
 
-     ```sh
+     ``
      git submodule add https://github.com/udonrobo/UdonLibrary.git
      git commit -m "add UdonLibrary"
      ```
 
-      <img width=700px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/f87a5658-d291-48c3-80d5-e9ff739d6690" >
+     <img width=700px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/f87a5658-d291-48c3-80d5-e9ff739d6690" >
 
 3. CMakeLists.txt にインクルードパスを設定
 
@@ -62,7 +62,7 @@
 
      ライブラリディレクトリに移動しプルします。
 
-     ```sh
+     ```
      cd UdonLibrary
      git pull
      ```
@@ -73,7 +73,7 @@
 
      追加先のプロジェクトでサブモジュールを更新します。
 
-     ```sh
+     ```
      git submodule update --remote
      ```
 
@@ -83,12 +83,12 @@
 
 追加先のプロジェクト自体のクローンを行うとき `--recursive` オプションを与えなければ、ライブラリがクローンされません。
 
-```sh
+```
 git clone --recursive <プロジェクトURL>
 ```
 
 また submodule は追加時のコミットを参照するため、追加先のプロジェクトをクローンしても、ライブラリは submodule 追加時のコミットの内容になります。最新のライブラリを使用する場合は submodule を更新する必要があります。
 
-```sh
+```
 git submodule update --remote
 ```

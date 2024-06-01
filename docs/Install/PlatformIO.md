@@ -4,7 +4,7 @@
 
 1. `platformio.ini` を開きライブラリの URL を設定します。
 
-   ```ini
+   ```
    lib_deps =
        https://github.com/udonrobo/UdonLibrary.git
        https://github.com/adafruit/Adafruit_BusIO.git
