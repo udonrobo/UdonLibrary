@@ -13,8 +13,22 @@
 
 inline void testBus()
 {
-    Udon::CanBusTeensy<CAN1> a;
-    Udon::CanBusTeensy<CAN1> bus{
+// teensy41.build.board=TEENSY41
+// teensy40.build.board=TEENSY40
+// teensy36.build.board=TEENSY36
+// teensy35.build.board=TEENSY35
+// teensy31.build.board=TEENSY32
+// teensy30.build.board=TEENSY30
+// teensyLC.build.board=TEENSYLC
+
+#if defined(ARDUINO_TEENSY41) || defined(ARDUINO_TEENSY40) || defined(ARDUINO_TEENSY36)
+    constexpr auto BUS = CAN1;
+#elif defined(ARDUINO_TEENSY35)
+    constexpr auto BUS = CAN0;
+#endif
+
+    Udon::CanBusTeensy<BUS> a;
+    Udon::CanBusTeensy<BUS> bus{
         {
             .transmitInterval = 5,
             .transmitTimeout = 100,
