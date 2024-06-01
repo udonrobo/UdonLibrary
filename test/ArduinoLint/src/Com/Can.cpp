@@ -13,8 +13,15 @@
 
 inline void testBus()
 {
-    Udon::CanBusTeensy<CAN1> a;
-    Udon::CanBusTeensy<CAN1> bus{
+
+#if defined(ARDUINO_TEENSY41) || defined(ARDUINO_TEENSY40) || defined(ARDUINO_TEENSY36)
+    constexpr auto BUS = CAN1;
+#elif defined(ARDUINO_TEENSY35)
+    constexpr auto BUS = CAN0;
+#endif
+
+    Udon::CanBusTeensy<BUS> a;
+    Udon::CanBusTeensy<BUS> bus{
         {
             .transmitInterval = 5,
             .transmitTimeout = 100,
