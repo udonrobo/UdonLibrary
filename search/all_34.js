@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ヒープ領域を使用しないシリアライズ_0',['ヒープ領域を使用しないシリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md186',1,'']]]
+  ['ビューから新しいビューを生成する_0',['ビューから新しいビューを生成する',['../md_docs_2Types_2ArrayView.html#autotoc_md208',1,'']]]
 ];

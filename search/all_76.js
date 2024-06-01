@@ -1,11 +1,8 @@
 var searchData=
 [
-  ['送信クラス要件_0',['送信クラス要件',['../md_docs_2Other_2Traits.html#autotoc_md194',1,'']]],
-  ['送信クラス_1',['送信クラス',['../md_docs_2Communication_2IM920.html#autotoc_md60',1,'']]],
-  ['送信ノードクラス_2',['送信ノードクラス',['../md_docs_2Communication_2CAN.html#autotoc_md25',1,'']]],
-  ['送信ノード_3',['■ 送信ノード',['../md_docs_2Communication_2CAN.html#autotoc_md28',1,'']]],
-  ['送信側マイコン用クラス_4',['送信側マイコン用クラス',['../md_docs_2Communication_2Pad.html#autotoc_md92',1,'']]],
-  ['送信側_5',['スケッチ例 / 送信側',['../md_docs_2Communication_2LoRa.html#autotoc_md65',1,'']]],
-  ['送信者イメージ_6',['送信者イメージ',['../md_docs_2Communication_2Common.html#autotoc_md35',1,'']]],
-  ['送受信者_7',['送受信者',['../md_docs_2Communication_2Common.html#autotoc_md39',1,'']]]
+  ['通信イメージ_0',['通信イメージ',['../md_docs_2Communication_2IM920.html#autotoc_md55',1,'']]],
+  ['通信バスクラス_1',['通信バスクラス',['../md_docs_2Communication_2CAN.html#autotoc_md22',1,'']]],
+  ['通信共通部_2',['通信共通部',['../md_docs_2Communication_2Common.html',1,'']]],
+  ['通信経由_3',['通信経由',['../md_docs_2Communication_2Pad.html#autotoc_md81',1,'■ CAN 通信経由'],['../md_docs_2Communication_2Pad.html#autotoc_md80',1,'■ I2C 通信経由'],['../md_docs_2Communication_2Pad.html#autotoc_md84',1,'■ USB 通信経由']]],
+  ['通信_4',['通信',['../index.html#autotoc_md5',1,'通信'],['../md_docs_2Communication_2CAN.html',1,'CAN 通信'],['../md_docs_2Communication_2I2C.html',1,'I2C 通信']]]
 ];

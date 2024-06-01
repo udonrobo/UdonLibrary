@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['実用例_0',['実用例',['../md_docs_2Other_2Traits.html#autotoc_md200',1,'']]]
+  ['導入_0',['GitHub Copilot 導入',['../md_docs_2Developer_2DevelopSetup.html#autotoc_md122',1,'']]]
 ];

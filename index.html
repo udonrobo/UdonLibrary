@@ -112,15 +112,33 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 <div class="textblock"><p><a class="anchor" id="md_README"></a> <img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/53d063f8-ee25-41c9-b68b-75dcfd8ee5ad" alt="" width="40%" align="right" class="inline"/></p>
 <p>香川高専高松機械システム研究部 C++ ライブラリ</p>
 <p><a href="https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml"><img src="https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg" alt="Arduino Lint" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml"><img src="https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg" alt="Unit Tests" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/udonrobo/UdonLibrary/actions/workflows/DoxygenPage.yml"><img src="https://github.com/udonrobo/UdonLibrary/actions/workflows/DoxygenPage.yml/badge.svg" alt="Doxygen Page" style="pointer-events: none;" class="inline"/></a></p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">系統   </th><th class="markdownTableHeadNone">ターゲット環境    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Arduino   </td><td class="markdownTableBodyNone">Arduino Nano/Uno/UnoMini    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Teensy   </td><td class="markdownTableBodyNone">Teensy 3.5/3.6/4.0/4.1    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">RP2040   </td><td class="markdownTableBodyNone">Raspberry Pi Pico/Pico W <br  />
+ Seeed XIAO RP2040    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Vanilla C++   </td><td class="markdownTableBodyNone">C++11~ <br  />
+ Visual Studio <br  />
+ CLion   </td></tr>
+</table>
 <h1><a class="anchor" id="autotoc_md1"></a>
 追加方法</h1>
 <ul>
 <li><a class="el" href="md_docs_2Install_2ArduinoIDE.html">Arduino IDE</a></li>
 <li><a class="el" href="md_docs_2Install_2PlatformIO.html">Platform IO</a></li>
 <li><a class="el" href="md_docs_2Install_2VisualStudio.html">Visual Studio</a></li>
-<li><a class="el" href="md_docs_2Install_2VisualStudioSubmodule.html">Visual Studio (submodule)</a></li>
+<li><a class="el" href="md_docs_2Install_2CLion.html">CLion</a> 🌟new</li>
 <li><a class="el" href="md_docs_2Install_2RaspberryPiPico.html">Raspberry Pi Pico 使用時事前セットアップ</a></li>
 </ul>
+<blockquote class="doxtable">
+<p>&zwj;バニラ C++ の環境ではヘッダーオンリーライブラリとして振舞いますので、インクルードディレクトリの指定、STL の使用が可能な場合、そのほかのアプリケーションで使用できると思います。 </p>
+</blockquote>
 <h1><a class="anchor" id="autotoc_md2"></a>
 使用方法</h1>
 <h2><a class="anchor" id="autotoc_md3"></a>
@@ -168,7 +186,7 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 <li><a class="el" href="md_docs_2Driver_2Motor.html">モーター</a></li>
 <li><a class="el" href="md_docs_2Driver_2RoboMasterMotor.html">ロボマスモーター</a></li>
 <li><a class="el" href="md_docs_2Driver_2BNO055.html">BNO055</a></li>
-<li><a class="el" href="md_docs_2Driver_2DipSwitch.html">DIPスイッチ</a></li>
+<li><a class="el" href="md_docs_2Driver_2DipSwitch.html">DIP スイッチ</a></li>
 <li><a class="el" href="md_docs_2Driver_2EncoderPico.html">Raspberry Pi Pico / ロータリーエンコーダー</a></li>
 <li><a class="el" href="md_docs_2Driver_2PIO.html">Raspberry Pi Pico / PIO</a></li>
 </ul>

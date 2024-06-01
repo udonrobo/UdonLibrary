@@ -8,9 +8,10 @@ var searchData=
   ['canutility_2ehpp_5',['CanUtility.hpp',['../CanUtility_8hpp.html',1,'']]],
   ['canwriter_2ehpp_6',['CanWriter.hpp',['../CanWriter_8hpp.html',1,'']]],
   ['ci_2emd_7',['CI.md',['../CI_8md.html',1,'']]],
-  ['color_2ehpp_8',['Color.hpp',['../Color_8hpp.html',1,'']]],
-  ['color_2emd_9',['Color.md',['../Color_8md.html',1,'']]],
-  ['common_2emd_10',['Common.md',['../Common_8md.html',1,'']]],
-  ['crc_2ehpp_11',['CRC.hpp',['../CRC_8hpp.html',1,'']]],
-  ['crc_2emd_12',['CRC.md',['../CRC_8md.html',1,'']]]
+  ['clion_2emd_8',['CLion.md',['../CLion_8md.html',1,'']]],
+  ['color_2ehpp_9',['Color.hpp',['../Color_8hpp.html',1,'']]],
+  ['color_2emd_10',['Color.md',['../Color_8md.html',1,'']]],
+  ['common_2emd_11',['Common.md',['../Common_8md.html',1,'']]],
+  ['crc_2ehpp_12',['CRC.hpp',['../CRC_8hpp.html',1,'']]],
+  ['crc_2emd_13',['CRC.md',['../CRC_8md.html',1,'']]]
 ];

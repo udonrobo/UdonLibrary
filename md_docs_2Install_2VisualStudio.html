@@ -109,65 +109,75 @@ $(function(){initNavTree('md_docs_2Install_2VisualStudio.html',''); initResizabl
   <div class="headertitle"><div class="title">Visual Studio</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md162"></a> <img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/e7fa4cda-bdec-4d2f-b520-6cedb13b3f20" alt="" height="100px" align="right" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md163"></a>
-Arduino のライブラリと共用する (推奨)</h1>
-<p>PC 内に本ライブラリ複数を置きたくない場合、Arduino のライブラリディレクトリに本ライブラリをクローンし、そこをインクルードパスとすることで、PC 内に本ライブラリを一つにできます。クローン方法 <a class="el" href="md_docs_2Install_2ArduinoIDE.html">Install: Arduino IDE</a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md168"></a> <img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/e7fa4cda-bdec-4d2f-b520-6cedb13b3f20" alt="" height="100px" align="right" class="inline"/></p>
+<p>以下の手順の追加を行います</p>
 <ol type="1">
-<li>クローン <a class="el" href="md_docs_2Install_2ArduinoIDE.html">Arduino IDE 追加</a></li>
-<li>インクルードパス設定</li>
+<li>ライブラリのクローン</li>
+<li>インクルードパスの設定</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md164"></a>
-Arduino のライブラリと共用しない</h1>
-<div class="fragment"><div class="line"># VisualStudioのソリューションディレクトリで実行</div>
-<div class="line">git clone --recursive https://github.com/udonrobo/UdonLibrary.git</div>
-</div><!-- fragment --><p>次のようなディレクトリ構成になっていれば OK です。</p>
-<div class="fragment"><div class="line">Test   &lt;-- ソリューションディレクトリ</div>
-<div class="line">│  Test.sln</div>
-<div class="line">│</div>
-<div class="line">├─UdonLibrary   &lt;--- うどん</div>
-<div class="line">│   ├─src</div>
-<div class="line">│   │  │  Udon.hpp</div>
-<div class="line">│   │  │</div>
-<div class="line">│   │  └─Udon</div>
-<div class="line">│   │      ├─</div>
-<div class="line">│</div>
-<div class="line">└─Test   &lt;-- プロジェクトディレクトリ</div>
-<div class="line">    │  Test.cpp</div>
-<div class="line">    │  Test.vcxproj</div>
-<div class="line">    │  Test.vcxproj.filters</div>
-<div class="line">    │  Test.vcxproj.user</div>
-<div class="line">    │</div>
-<div class="line">        ...    ...</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md165"></a>
-インクルードパス設定</h1>
-<p>インクルードパスを設定することで <code>#include &lt;<a class="el" href="Udon_8hpp.html">Udon.hpp</a>&gt;</code> のように <code>#include &lt;&gt;</code> を使用して記述できるようになります。</p>
-<p>インクルードパスの設定画面を次の手順で開きます。</p>
+<h1><a class="anchor" id="autotoc_md169"></a>
+追加</h1>
 <ol type="1">
-<li><p class="startli">プロジェクトのプロパティ編集ダイアログを開く</p>
+<li><p class="startli">ターミナルをソリューションディレクトリ下で起動</p>
+<p class="startli">ソリューションエクスプローラ &gt; プロジェクトを右クリック &gt; ターミナルを開く</p>
+<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/2c7f4cd2-797d-4ea7-89a8-c898e07fd7b5" alt="" width="700px" class="inline"/></p>
+</li>
+<li>ライブラリをクローン<ul>
+<li><p class="startli">プロジェクトを git で管理していない場合</p>
+<div class="fragment"><div class="line">git clone --recursive https://github.com/udonrobo/UdonLibrary.git</div>
+</div><!-- fragment --><p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/a23bb96c-0ce2-4b64-af96-2a96abe1dd0f" alt="" width="700px" class="inline"/></p>
+</li>
+<li><p class="startli">プロジェクトを git で管理している場合</p>
+<p class="startli">リポジトリ内にリポジトリを置くことになります。この場合、submodule として追加することが推奨されています。</p>
+<p class="startli">submodule add 後、追加先のレポジトリに対して、「ライブラリを追加した」という変更が自動的にステージングされるので、コミットを作成しています。</p>
+<p class="startli"><code>sh git submodule add <a href="https://github.com/udonrobo/UdonLibrary.git">https://github.com/udonrobo/UdonLibrary.git</a> git commit -m "add UdonLibrary" </code></p>
+<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/813b64e0-e78c-434e-bfe2-f07a6c77ec30" alt="" width="700px" class="inline"/></p>
+<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/e82f717d-b56e-4e7d-8eac-a2ff4eafd7af" alt="" width="700px" class="inline"/></p>
+</li>
+</ul>
+</li>
+<li><p class="startli">プロパティダイアログを開く</p>
 <p class="startli">ソリューションエクスプローラ &gt; プロジェクトを右クリック &gt; プロパティ</p>
-<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/5eaa873d-64ac-478d-b999-d5a872aa2cd3" alt="image" class="inline"/></p>
+<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/38d4991b-33c7-47e9-abfa-da1d93cb878d" alt="" width="700px" class="inline"/></p>
 </li>
 <li><p class="startli">インクルードディレクトリ編集ダイアログを開く</p>
-<p class="startli">VC++ディレクトリ &gt; インクルードディレクトリの項目にある <code>↓</code> &gt; 編集</p>
-<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/5753824d-75e5-454d-947f-051f8fe87017" alt="image" class="inline"/></p>
-<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/99f3a95e-a2c3-4394-ba20-accc13126711" alt="image" class="inline"/></p>
+<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/0f4ce72a-0ee7-4ace-9e82-22bfd211ebf3" alt="" width="700px" class="inline"/></p>
 </li>
 <li><p class="startli">インクルードディレクトリを追加する</p>
-<p class="startli">新しい行の追加(フォルダアイコンボタン)</p>
 <p class="startli">新しい項目に <code>$(SolutionDir)\UdonLibrary\src\</code> を追加します。<code>$(SolutionDir)</code> は ソリューションディレクトリのパスを表すマクロです。</p>
-<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/10180b70-d664-435e-b366-156226863c68" alt="image" class="inline"/></p>
-<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/5aff2346-83d3-45ef-a8cc-89e1224a28d5" alt="image" class="inline"/></p>
+<p class="startli">インクルードパスを設定することで <code>#include &lt;<a class="el" href="Udon_8hpp.html">Udon.hpp</a>&gt;</code> のように記述できるようになります。</p>
+<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/eb679ec6-cff9-447b-90bd-fc15bd0d031a" alt="" width="500px" class="inline"/></p>
 </li>
 <li><p class="startli">追加確認</p>
-<p class="startli">追加が成功している場合、写真の様に <a class="el" href="Udon_8hpp.html">Udon.hpp</a> のインクルードができるようになっています。</p>
-<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/bf559aad-c13f-4a28-a360-e886483e3dbd" alt="image" class="inline"/></p>
+<p class="startli">追加が成功している場合、以下の様に <a class="el" href="Udon_8hpp.html">Udon.hpp</a> のインクルードができるようになっています。</p>
+<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/bf559aad-c13f-4a28-a360-e886483e3dbd" alt="" width="400px" class="inline"/></p>
 </li>
 </ol>
-<h1><a class="anchor" id="autotoc_md166"></a>
+<h1><a class="anchor" id="autotoc_md170"></a>
 更新</h1>
-<div class="fragment"><div class="line"># UdonLibrary内で実行</div>
+<ol type="1">
+<li><code>追加 1.</code> と同じくターミナルを起動します。</li>
+<li>更新<ul>
+<li><p class="startli">プロジェクトを git で管理していない場合</p>
+<p class="startli">ライブラリディレクトリに移動しプルします。</p>
+<div class="fragment"><div class="line">cd UdonLibrary</div>
 <div class="line">git pull</div>
+</div><!-- fragment --><p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/6524fd64-c87e-4763-8281-a643feab1aa1" alt="" width="500px" class="inline"/></p>
+</li>
+<li><p class="startli">プロジェクトを git で管理している場合</p>
+<p class="startli">追加先のプロジェクトでサブモジュールを更新します。</p>
+<p class="startli"><code>sh git submodule update --remote </code></p>
+<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/b9e90af3-2ee5-4181-b618-de5e21a7f6c2" alt="" width="500px" class="inline"/></p>
+</li>
+</ul>
+</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md171"></a>
+submodule 使用時の注意点</h1>
+<p>追加先のプロジェクト自体のクローンを行うとき <code>--recursive</code> オプションを与えなければ、ライブラリがクローンされません。</p>
+<div class="fragment"><div class="line">git clone --recursive &lt;プロジェクトURL&gt;</div>
+</div><!-- fragment --><p>また submodule は追加時のコミットを参照するため、追加先のプロジェクトをクローンしても、ライブラリは submodule 追加時のコミットの内容になります。最新のライブラリを使用する場合は submodule を更新する必要があります。</p>
+<div class="fragment"><div class="line">git submodule update --remote</div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

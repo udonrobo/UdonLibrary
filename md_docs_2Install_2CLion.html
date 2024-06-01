@@ -7,7 +7,7 @@
 <meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
-<title>UdonLibrary: Arduino IDE</title>
+<title>UdonLibrary: CLion</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -80,7 +80,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('md_docs_2Install_2ArduinoIDE.html',''); initResizable(true); });
+$(function(){initNavTree('md_docs_2Install_2CLion.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -106,49 +106,69 @@ $(function(){initNavTree('md_docs_2Install_2ArduinoIDE.html',''); initResizable(
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Arduino IDE</div></div>
+  <div class="headertitle"><div class="title">CLion</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md159"></a> <img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/e5ae01ac-75d3-40ca-a8ba-42af4cc8af9d" alt="" height="100px" align="right" class="inline"/></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md162"></a> <img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/68f91d1f-6d23-4650-b364-bcb94362e48d" alt="" height="100px" align="right" class="inline"/></p>
 <p>以下の手順の追加を行います</p>
 <ol type="1">
-<li>Arduino ライブラリディレクトリへ移動</li>
 <li>ライブラリのクローン</li>
+<li>インクルードパスの設定</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md160"></a>
+<h1><a class="anchor" id="autotoc_md163"></a>
 追加</h1>
 <ol type="1">
-<li><p class="startli">ターミナルを起動</p>
-<p class="startli">Windows の場合、Windows ボタンを押し、ターミナルと検索すると起動できます。</p>
+<li><p class="startli">ターミナルをプロジェクトディレクトリ下で起動</p>
+<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/2dfb4e37-23cc-42dc-a0ff-4e6fc3743a3e" alt="" width="700px" class="inline"/></p>
 </li>
-</ol>
-<blockquote class="doxtable">
-<p>&zwj;ターミナルがない場合 Microsoft Store でインストールできます。</p>
-<p><a href="https://www.microsoft.com/store/productId/9N0DX20HK701?ocid=pdpshare">https://www.microsoft.com/store/productId/9N0DX20HK701?ocid=pdpshare</a> </p>
-</blockquote>
-<ol type="1">
-<li><p class="startli">クローン</p>
-<p class="startli">以下コマンドをターミナル上で実行することで Arduino のライブラリディレクトリへクローンされます。</p>
-<div class="fragment"><div class="line">cd ~/Documents/Arduino/libraries</div>
-<div class="line">git clone --recursive https://github.com/udonrobo/UdonLibrary.git</div>
-<div class="line">./UdonLibrary/setup.sh</div>
-</div><!-- fragment --></li>
-</ol>
-<blockquote class="doxtable">
-<p>&zwj;ライブラリディレクトリ既定値: <code>~/Documents/Arduino/libraries</code></p>
-<p>見つからない場合: <code>ファイル &gt; 環境設定 &gt; スケッチブックの保存場所欄</code> + <code>/libraries</code> </p>
-</blockquote>
-<ol type="1">
+<li>ライブラリをクローン<ul>
+<li><p class="startli">プロジェクトを git で管理していない場合</p>
+<div class="fragment"><div class="line">git clone --recursive https://github.com/udonrobo/UdonLibrary.git</div>
+</div><!-- fragment --><p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/6c9fbe6b-3368-4a20-a1f9-97905f9e54ce" alt="" width="700px" class="inline"/></p>
+</li>
+<li><p class="startli">プロジェクトを git で管理している場合</p>
+<p class="startli">リポジトリ内にリポジトリを置くことになります。この場合、submodule として追加することが推奨されています。</p>
+<p class="startli">submodule add 後、追加先のレポジトリに対して、「ライブラリを追加した」という変更が自動的にステージングされるので、コミットを作成しています。</p>
+<p class="startli"><code>sh git submodule add <a href="https://github.com/udonrobo/UdonLibrary.git">https://github.com/udonrobo/UdonLibrary.git</a> git commit -m "add UdonLibrary" </code></p>
+<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/f87a5658-d291-48c3-80d5-e9ff739d6690" alt="" width="700px" class="inline"/></p>
+</li>
+</ul>
+</li>
+<li><p class="startli">CMakeLists.txt にインクルードパスを設定</p>
+<p class="startli">&lt;target&gt; には <code>add_executable(...)</code> によって作成されるターゲット名を指定します。</p>
+<div class="fragment"><div class="line">target_include_directories( &lt;target&gt; PUBLIC ./UdonLibrary/src)</div>
+</div><!-- fragment --><p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/6fbdd219-12b9-425e-b7ed-6bbcf02ba42b" alt="" width="700px" class="inline"/></p>
+</li>
 <li><p class="startli">追加確認</p>
 <p class="startli">追加が成功している場合、以下の様に <a class="el" href="Udon_8hpp.html">Udon.hpp</a> のインクルードができるようになっています。</p>
-<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/258f3ff9-570f-4448-b9c8-5665c2d195ef" alt="" width="400px" class="inline"/></p>
+<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/253323fd-9d80-49e0-99ed-17e0de1d3e09" alt="" width="400px" class="inline"/></p>
 </li>
 </ol>
-<h1><a class="anchor" id="autotoc_md161"></a>
+<h1><a class="anchor" id="autotoc_md164"></a>
 更新</h1>
-<p>ライブラリのディレクトリでプルします。</p>
-<div class="fragment"><div class="line">cd ~/Documents/Arduino/libraries/UdonLibrary</div>
+<ol type="1">
+<li><code>追加 1.</code> と同じくターミナルを起動</li>
+<li>更新<ul>
+<li><p class="startli">プロジェクトを git で管理していない場合</p>
+<p class="startli">ライブラリディレクトリに移動しプルします。</p>
+<div class="fragment"><div class="line">cd UdonLibrary</div>
 <div class="line">git pull</div>
+</div><!-- fragment --><p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/eeec6cb9-9d31-412a-a8ad-98bc085e70ce" alt="" width="600px" class="inline"/></p>
+</li>
+<li><p class="startli">プロジェクトを git で管理している場合</p>
+<p class="startli">追加先のプロジェクトでサブモジュールを更新します。</p>
+<p class="startli"><code>sh git submodule update --remote </code></p>
+<p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/dc1fecbb-2a66-402b-a3dc-5994663920e5" alt="" width="600px" class="inline"/></p>
+</li>
+</ul>
+</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md165"></a>
+submodule 使用時の注意点</h1>
+<p>追加先のプロジェクト自体のクローンを行うとき <code>--recursive</code> オプションを与えなければ、ライブラリがクローンされません。</p>
+<div class="fragment"><div class="line">git clone --recursive &lt;プロジェクトURL&gt;</div>
+</div><!-- fragment --><p>また submodule は追加時のコミットを参照するため、追加先のプロジェクトをクローンしても、ライブラリは submodule 追加時のコミットの内容になります。最新のライブラリを使用する場合は submodule を更新する必要があります。</p>
+<div class="fragment"><div class="line">git submodule update --remote</div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

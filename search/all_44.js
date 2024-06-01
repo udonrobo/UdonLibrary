@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['他の色空間へ変換_0',['他の色空間へ変換',['../md_docs_2Types_2Color.html#autotoc_md214',1,'他の色空間へ変換'],['../md_docs_2Types_2Color.html#autotoc_md218',1,'他の色空間へ変換']]]
+  ['使用方法_0',['使用方法',['../index.html#autotoc_md2',1,'']]],
+  ['使用時の受信側マイコン用クラス_1',['Bluetooth 使用時の受信側マイコン用クラス',['../md_docs_2Communication_2Pad.html#autotoc_md94',1,'']]],
+  ['使用時の注意点_2',['使用時の注意点',['../md_docs_2Install_2CLion.html#autotoc_md165',1,'submodule 使用時の注意点'],['../md_docs_2Install_2VisualStudio.html#autotoc_md171',1,'submodule 使用時の注意点']]],
+  ['使用時_3',['■ OpenSiv3D 使用時',['../md_docs_2Communication_2Pad.html#autotoc_md86',1,'']]]
 ];
