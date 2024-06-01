@@ -78,3 +78,17 @@
      ```
 
      <img width=600px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/dc1fecbb-2a66-402b-a3dc-5994663920e5" >
+
+## submodule 使用時の注意点
+
+追加先のプロジェクト自体のクローンを行うとき `--recursive` オプションを与えなければ、ライブラリがクローンされません。
+
+```sh
+git clone --recursive <プロジェクトURL>
+```
+
+また submodule は追加時のコミットを参照するため、追加先のプロジェクトをクローンしても、ライブラリは submodule 追加時のコミットの内容になります。最新のライブラリを使用する場合は submodule を更新する必要があります。
+
+```sh
+git submodule update --remote
+```
