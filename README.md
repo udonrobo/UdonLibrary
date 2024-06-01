@@ -11,7 +11,7 @@
 | 系統        | ターゲット環境                                  |
 | ----------- | ----------------------------------------------- |
 | Arduino     | Arduino Nano/Uno/UnoMini                        |
-| Teensy      | Teensy 3.2/3.5/3.6/4.0/4.1                      |
+| Teensy      | Teensy 3.5/3.6/4.0/4.1                          |
 | RP2040      | Raspberry Pi Pico/Pico W <br> Seeed XIAO RP2040 |
 | Vanilla C++ | C++11~ <br> Visual Studio <br> CLion            |
 
