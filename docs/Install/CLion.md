@@ -2,21 +2,41 @@
 
 <img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/68f91d1f-6d23-4650-b364-bcb94362e48d" height="100px" align="right">
 
+以下の手順の追加を行います
+
+1. ライブラリのクローン
+2. インクルードパスの設定
+
 ## 追加
 
-1. ターミナルをプロジェクトディレクトリ下で起動します。
+1. ターミナルをプロジェクトディレクトリ下で起動
 
    <img width=700px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/2dfb4e37-23cc-42dc-a0ff-4e6fc3743a3e" >
 
-2. ライブラリをクローンします。
+2. ライブラリをクローン
 
-   ```sh
-   git clone --recursive https://github.com/udonrobo/UdonLibrary.git
-   ```
+   - プロジェクトを git で管理していない場合
 
-   <img width=700px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/6c9fbe6b-3368-4a20-a1f9-97905f9e54ce" >
+     ```sh
+     git clone --recursive https://github.com/udonrobo/UdonLibrary.git
+     ```
 
-3. CMakeLists.txt にインクルードパスを設定します。
+      <img width=700px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/6c9fbe6b-3368-4a20-a1f9-97905f9e54ce" >
+
+   - プロジェクトを git で管理している場合
+
+     リポジトリ内にリポジトリを置くことになります。この場合、submodule として追加することが推奨されています。
+
+     submodule add 後、追加先のレポジトリに対して、「ライブラリを追加した」という変更が自動的にステージングされるので、コミットを作成しています。
+
+     ```sh
+     git submodule add https://github.com/udonrobo/UdonLibrary.git
+     git commit -m "add UdonLibrary"
+     ```
+
+      <img width=700px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/f87a5658-d291-48c3-80d5-e9ff739d6690" >
+
+3. CMakeLists.txt にインクルードパスを設定
 
    \<target\> には `add_executable(...)` によって作成されるターゲット名を指定します。
 
@@ -26,15 +46,35 @@
 
    <img width=700px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/6fbdd219-12b9-425e-b7ed-6bbcf02ba42b" >
 
+4. 追加確認
+
+   追加が成功している場合、以下の様に Udon.hpp のインクルードができるようになっています。
+
+   <img width=400px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/253323fd-9d80-49e0-99ed-17e0de1d3e09">
+
 ## 更新
 
-1. `追加 1.` と同じくターミナルを起動します。
+1. `追加 1.` と同じくターミナルを起動
 
-2. ライブラリディレクトリに移動しプルします。
+2. 更新
 
-   ```sh
-   cd UdonLibrary
-   git pull
-   ```
+   - プロジェクトを git で管理していない場合
 
-   <img width=600px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/eeec6cb9-9d31-412a-a8ad-98bc085e70ce" >
+     ライブラリディレクトリに移動しプルします。
+
+     ```sh
+     cd UdonLibrary
+     git pull
+     ```
+
+     <img width=600px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/eeec6cb9-9d31-412a-a8ad-98bc085e70ce" >
+
+   - プロジェクトを git で管理している場合
+
+     追加先のプロジェクトでサブモジュールを更新します。
+
+     ```sh
+     git submodule update --remote
+     ```
+
+     <img width=600px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/dc1fecbb-2a66-402b-a3dc-5994663920e5" >
