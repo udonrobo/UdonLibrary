@@ -16,19 +16,23 @@ GitHub Actions を使用して、プッシュ時、プルリクエスト作成�
 
 ## Arduino Lint
 
+### ■ 概要
+
 [arduino cli](https://github.com/arduino/arduino-cli) を使用してコンパイルできるか検証します。
 
-検証されるボードは `Arduino Nano` `Raspberry Pi Pico` `Teensy4.0` です。
+このテストでは構文のチェックを行うだけで、アルゴリズムのチェックは行いません。コンパイル時に処理可能なアルゴリズムはテストされます。
 
-### サブディレクトリ
+検証されるボードは `Arduino Nano` `Uno` `UnoMini` `Raspberry Pi Pico` `PicoW` `Teensy3.5` `3.6` `4.0` `4.1` です。
 
-Arduino の仕様で `src` ディレクトリ内のソースファイルは再帰的にコンパイルされるため、`src` ディレクトリ下に配置したファイルは全て検証されます。
+### ■ ディレクトリを追加する
 
-### テストファイル
+`UdonLibrary/test/ArduinoLint/src` 下にディレクトリを作成するだけでよいです。
 
-`UdonLibrary/test/ArduinoLint/src` に `.cpp` ファイルを作成します。
+> Arduino の仕様で `src` ディレクトリ内のソースファイルは再帰的にコンパイルされるため、`src` ディレクトリ下に配置したファイルは全て検証されます。
 
-このテストでは構文のチェックを行うだけで、アルゴリズムのチェックは行いません。
+### ■ テストファイルを追加する
+
+`UdonLibrary/test/ArduinoLint/src/Sample` に `.cpp` ファイルを作成します。
 
 ```cpp
 // UdonLibrary/src/Udon/Sample/Sample.hpp (例)
@@ -53,9 +57,9 @@ inline void test()
 }
 ```
 
-> `test` という関数は他のソースファイルにも存在しています。そのためリンクエラーを起こさないようにインライン関数にします。
+> `test` という関数は他のテストファイルにも存在しているため、リンクエラーを起こさないようにインライン関数にしています。
 
-### コンパイル時に計算可能なアルゴリズムのテスト
+### ■ コンパイル時に計算可能なアルゴリズムのテスト
 
 コンパイル時に値が決定する関数、定数は `static_assert(定数式, 文字列リテラル)` を使用してテストできます。
 
@@ -63,12 +67,11 @@ inline void test()
 
 ```cpp
 // UdonLibrary/src/Udon/Algorithm/Factorial.hpp (例)
-constexpr int Factorial(int n);
+constexpr int Factorial(int n) { ... }
 ```
 
 ```cpp
 // UdonLibrary/test/ArduinoLint/src/Algorithm/Factorial.cpp (例)
-#include <UdonFwd.hpp>
 #include <Udon/Algorithm/Factorial.hpp>
 
 inline void test()
@@ -81,9 +84,9 @@ inline void test()
 }
 ```
 
-### 検証ボード追加
+### ■ 検証ボードを追加する
 
-本テストの GitHub Actions のワークフローが `UdonLibrary/.github/workflows/ArduinoLint.yml` に定義されています。
+本テストのワークフローは `UdonLibrary/.github/workflows/ArduinoLint.yml` に定義されています。
 
 このファイルにある `matrix: bord:` に `fqbn` を調べ追加することでボードの追加ができます。
 
@@ -93,22 +96,47 @@ inline void test()
   url: https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
 ```
 
-### ローカル環境で実行
+arduino-cli のインストールがされている場合、以下コマンドで調べられます。
+
+```sh
+arduino-cli board listall
+```
+
+プラットフォームを追加するには
+
+```sh
+arduino-cli core update-index
+arduino-cli core install arduino:avr
+```
+
+URL から追加するには
+
+```sh
+arduino-cli config add board_manager.additional_urls https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+arduino-cli core update-index
+arduino-cli core install rp2040:rp2040
+```
+
+### ■ ローカル環境で実行
 
 `UdonLibrary/test/ArduinoLint/ArduinoLint.ino` を ArduinoIDE で開き、検証ボタンを押すことで、プッシュせずにテストを実行できます。
 
 ## Google Unit Test
 
+### ■ 概要
+
 [GoogleTest](https://github.com/google/googletest) を使用してアルゴリズムの検証を行います。
 
-### ディレクトリ追加
+### ■ ディレクトリを追加する
+
+`UdonLibrary/test/UnitTest` 下にディレクトリを配置します。
 
 GoogleTest は CMake を使用してビルドを行います。そのためビルドしたいファイル、ディレクトリを CMakeLists.txt に登録する必要があります。
 
 ディレクトリを追加する場合、追加した親ディレクトリ内の `CMakeLists.txt` に `add_subdirectory` を使用してディレクトリを登録します。
 
 ```cmake
-# ./test/UnitTest/CMakeLists.txt (親ディレクトリのCMakeLists.txt)
+# UdonLibrary/test/UnitTest/CMakeLists.txt (親ディレクトリのCMakeLists.txt)
 # ...
 # ...
 # ファイル末尾
@@ -116,7 +144,7 @@ GoogleTest は CMake を使用してビルドを行います。そのためビ�
 add_subdirectory(./Sample)
 ```
 
-### ソースファイル追加
+### ■ ソースファイルを追加する
 
 `UdonLibrary/test/UnitTest` にディレクトリを追加し、 `.cpp` ファイルを追加します。
 
@@ -148,13 +176,13 @@ gtest_discover_tests(SampleTest)
 
 > `${UDON_LIBRARY_DIR}` は実行マシンから見た `UdonLibrary/src` の絶対パス名で `UdonLibrary/test/UnitTest/CMakeLists.txt` 内で定義されます。
 
-### テストを書く
+### ■ テストを書く
 
-テストコードの書き方は [GoogleTest ドキュメント](https://google.github.io/googletest/reference/testing.html) を参照してください。
+追加したソースファイルにテストコードを記述します。テストコードの書き方は [GoogleTest ドキュメント](https://google.github.io/googletest/reference/testing.html) を参照してください。
 
 ```cpp
 // UdonLibrary/src/Udon/Algorithm/Factorial.hpp
-int Factorial(int n);
+int Factorial(int n) { ... }
 ```
 
 ```cpp
@@ -174,7 +202,7 @@ TEST(FactorialTest, HandlesPositiveInput)
 
 > `EXPECT_EQ(val1, val2)` は `val1 == val2` であるかを検証します。
 
-### ローカル環境で実行
+### ■ ローカル環境で実行
 
 `UdonLibrary/test/UnitTest` で以下のコマンドを実行することで、プッシュせずにローカルで実行できます。
 
@@ -183,7 +211,7 @@ cmake -S . -B Build
 cmake --build Build
 cd Build
 ctest --output-on-failure
-cd ..
+cd -
 ```
 
 > CMake のインストールをあらかじめ済ませておく必要があります。
