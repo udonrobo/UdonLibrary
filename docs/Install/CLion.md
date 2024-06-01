@@ -29,7 +29,7 @@
 
      submodule add 後、追加先のレポジトリに対して、「ライブラリを追加した」という変更が自動的にステージングされるので、コミットを作成しています。
 
-     ``
+     ```
      git submodule add https://github.com/udonrobo/UdonLibrary.git
      git commit -m "add UdonLibrary"
      ```
