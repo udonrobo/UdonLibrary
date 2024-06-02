@@ -20,9 +20,13 @@ concurrency:
 
 jobs:
   ArduinoLint:
+    name: ${{ matrix.board.fqbn }}
+
     runs-on: ubuntu-latest
+
     strategy:
-      fail-fast: false # all jobs should run
+      fail-fast: false
+
       matrix:
         board:
           - fqbn: arduino:avr:nano
