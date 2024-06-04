@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"namespaceUdon_1_1Literals.html#ab0d5e9855744244b97821a0f6d53ca74":[47,0,1,1,1],
+"namespaceUdon_1_1Literals.html#afc93f59a48513b6bca86fd391e22eb80":[47,0,1,1,0],
 "namespaceUdon_1_1Message.html":[47,0,1,2],
 "namespaceUdon_1_1Message.html#a1e18f0c5ec4444c4fda80baa0265b20a":[47,0,1,2,13],
 "namespaceUdon_1_1Message.html#a209787977a42a67052c5ba2a1800fc30":[47,0,1,2,14],
@@ -247,7 +249,5 @@ var NAVTREEINDEX8 =
 "structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Array_00_01EnableIfVoidT_3_01IsArray_3_01Array1dba93aee3b76afe860dd5ce2e8450f1.html":[47,0,1,0,2,1],
 "structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Array_00_01EnableIfVoidT_3_01IsArray_3_01Array1dba93aee3b76afe860dd5ce2e8450f1.html":[48,0,0,0,2,1],
 "structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Enum_00_01EnableIfVoidT_3_01IsEnum_3_01Enum_01_4_1_1value_01_4_01_4.html":[47,0,1,0,2,2],
-"structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Enum_00_01EnableIfVoidT_3_01IsEnum_3_01Enum_01_4_1_1value_01_4_01_4.html":[48,0,0,0,2,2],
-"structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Enumeratable_00_01EnableIfVoidT_3_01HasMemberF41adc80fa5065aa9a6c90ee461b205c5.html":[47,0,1,0,2,3],
-"structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Enumeratable_00_01EnableIfVoidT_3_01HasMemberF41adc80fa5065aa9a6c90ee461b205c5.html":[48,0,0,0,2,3]
+"structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Enum_00_01EnableIfVoidT_3_01IsEnum_3_01Enum_01_4_1_1value_01_4_01_4.html":[48,0,0,0,2,2]
 };

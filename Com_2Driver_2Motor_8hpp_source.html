@@ -155,7 +155,7 @@ $(function(){initNavTree('Com_2Driver_2Motor_8hpp_source.html',''); initResizabl
 <div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classUdon_1_1MotorBy.html#a9c0d4ee4f950ebd3a1bd55056975aae0">   47</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1MotorBy.html#a9c0d4ee4f950ebd3a1bd55056975aae0">move</a>(int16_t p)</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            power = <a class="code hl_function" href="namespaceUdon.html#ab63e723d1adcd09d8935316fd33de5d4">Constrain</a>(p, -255, 255);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            power = <a class="code hl_function" href="namespaceUdon.html#ab63e723d1adcd09d8935316fd33de5d4">Constrain</a>(p, (int16_t)-255, (int16_t)255);</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            writer.setMessage({ <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(power * (direction ? 1 : -1)) });</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <a class="code hl_function" href="namespaceUdon_1_1Traits.html#ad2f56402d66969c0fb3735b2d7c3eaa4">Udon::Traits::MaybeInvokeUpdate</a>(writer);</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        }</div>

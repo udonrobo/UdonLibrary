@@ -407,14 +407,14 @@ $(function(){initNavTree('namespaceUdon.html',''); initResizable(true); });
 <tr class="memitem:a3a9cc2d024ae1e7d93bf3cae8c7b70f6" id="r_a3a9cc2d024ae1e7d93bf3cae8c7b70f6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a9cc2d024ae1e7d93bf3cae8c7b70f6">HexStringToByteString</a> (<a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt; const char &gt; hexString, <a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt; uint8_t &gt; distByteString) noexcept</td></tr>
 <tr class="memdesc:a3a9cc2d024ae1e7d93bf3cae8c7b70f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">16進数文字列をバイト列に変換する  <br /></td></tr>
 <tr class="separator:a3a9cc2d024ae1e7d93bf3cae8c7b70f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cafa9f335b5b946770abe710a1d0c64" id="r_a9cafa9f335b5b946770abe710a1d0c64"><td class="memTemplParams" colspan="2">template&lt;typename A , typename B &gt; </td></tr>
-<tr class="memitem:a9cafa9f335b5b946770abe710a1d0c64"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a9cafa9f335b5b946770abe710a1d0c64">Min</a> (const A &amp;lhs, const B &amp;rhs) -&gt; decltype(lhs+rhs)</td></tr>
-<tr class="memdesc:a9cafa9f335b5b946770abe710a1d0c64"><td class="mdescLeft">&#160;</td><td class="mdescRight">2つの値のうち小さい方を返す (std::min)  <br /></td></tr>
-<tr class="separator:a9cafa9f335b5b946770abe710a1d0c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11e36d4e1652fe533b19c884c7709810" id="r_a11e36d4e1652fe533b19c884c7709810"><td class="memTemplParams" colspan="2">template&lt;typename A , typename B &gt; </td></tr>
-<tr class="memitem:a11e36d4e1652fe533b19c884c7709810"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a11e36d4e1652fe533b19c884c7709810">Max</a> (const A &amp;lhs, const B &amp;rhs) -&gt; decltype(lhs+rhs)</td></tr>
-<tr class="memdesc:a11e36d4e1652fe533b19c884c7709810"><td class="mdescLeft">&#160;</td><td class="mdescRight">2つの値のうち大きい方を返す (std::max)  <br /></td></tr>
-<tr class="separator:a11e36d4e1652fe533b19c884c7709810"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc77eaff05f9776d09e4b756bfb8434a" id="r_acc77eaff05f9776d09e4b756bfb8434a"><td class="memTemplParams" colspan="2">template&lt;typename A , typename B &gt; </td></tr>
+<tr class="memitem:acc77eaff05f9776d09e4b756bfb8434a"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#acc77eaff05f9776d09e4b756bfb8434a">Min</a> (const A &amp;lhs, const B &amp;rhs) -&gt; decltype(lhs, rhs)</td></tr>
+<tr class="memdesc:acc77eaff05f9776d09e4b756bfb8434a"><td class="mdescLeft">&#160;</td><td class="mdescRight">2つの値のうち小さい方を返す (std::min)  <br /></td></tr>
+<tr class="separator:acc77eaff05f9776d09e4b756bfb8434a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21404db17a346cc91e4a112534aacee5" id="r_a21404db17a346cc91e4a112534aacee5"><td class="memTemplParams" colspan="2">template&lt;typename A , typename B &gt; </td></tr>
+<tr class="memitem:a21404db17a346cc91e4a112534aacee5"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a21404db17a346cc91e4a112534aacee5">Max</a> (const A &amp;lhs, const B &amp;rhs) -&gt; decltype(lhs, rhs)</td></tr>
+<tr class="memdesc:a21404db17a346cc91e4a112534aacee5"><td class="mdescLeft">&#160;</td><td class="mdescRight">2つの値のうち大きい方を返す (std::max)  <br /></td></tr>
+<tr class="separator:a21404db17a346cc91e4a112534aacee5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab63e723d1adcd09d8935316fd33de5d4" id="r_ab63e723d1adcd09d8935316fd33de5d4"><td class="memTemplParams" colspan="2">template&lt;typename A , typename B , typename C &gt; </td></tr>
 <tr class="memitem:ab63e723d1adcd09d8935316fd33de5d4"><td class="memTemplItemLeft" align="right" valign="top">constexpr A&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab63e723d1adcd09d8935316fd33de5d4">Constrain</a> (const A &amp;amt, const B &amp;low, const C &amp;high)</td></tr>
 <tr class="memdesc:ab63e723d1adcd09d8935316fd33de5d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を指定された範囲内に収める (std::clamp)  <br /></td></tr>
@@ -1596,8 +1596,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a11e36d4e1652fe533b19c884c7709810" name="a11e36d4e1652fe533b19c884c7709810"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a11e36d4e1652fe533b19c884c7709810">&#9670;&#160;</a></span>Max()</h2>
+<a id="a21404db17a346cc91e4a112534aacee5" name="a21404db17a346cc91e4a112534aacee5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21404db17a346cc91e4a112534aacee5">&#9670;&#160;</a></span>Max()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1615,7 +1615,7 @@ template&lt;typename A , typename B &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const B &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;) -&gt; decltype(lhs + rhs)
+          <td class="paramtype">const B &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;) -&gt; decltype(lhs, rhs)
     </td>
         </tr>
       </table>
@@ -1630,8 +1630,8 @@ template&lt;typename A , typename B &gt; </div>
 
 </div>
 </div>
-<a id="a9cafa9f335b5b946770abe710a1d0c64" name="a9cafa9f335b5b946770abe710a1d0c64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9cafa9f335b5b946770abe710a1d0c64">&#9670;&#160;</a></span>Min()</h2>
+<a id="acc77eaff05f9776d09e4b756bfb8434a" name="acc77eaff05f9776d09e4b756bfb8434a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc77eaff05f9776d09e4b756bfb8434a">&#9670;&#160;</a></span>Min()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1649,7 +1649,7 @@ template&lt;typename A , typename B &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const B &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;) -&gt; decltype(lhs + rhs)
+          <td class="paramtype">const B &amp;</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>&#160;) -&gt; decltype(lhs, rhs)
     </td>
         </tr>
       </table>
