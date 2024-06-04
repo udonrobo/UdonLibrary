@@ -192,10 +192,10 @@ namespace Udon
 
         /// @brief s3d::Quaternion からの変換
         Quaternion(const s3d::Quaternion& q) noexcept
-            : x(q.x)
-            , y(q.y)
-            , z(q.z)
-            , w(q.w)
+            : x(q.getX())
+            , y(q.getY())
+            , z(q.getZ())
+            , w(q.getW())
         {
         }
 
