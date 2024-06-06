@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['設定値の変更_0',['設定値の変更',['../md_docs_2Communication_2LoRa.html#autotoc_md66',1,'']]]
+  ['色空間_0',['色空間',['../md_docs_2Types_2Color.html',1,'色空間'],['../md_docs_2Types_2Color.html#autotoc_md229',1,'HSV 色空間'],['../md_docs_2Types_2Color.html#autotoc_md225',1,'RGB 色空間']]]
 ];

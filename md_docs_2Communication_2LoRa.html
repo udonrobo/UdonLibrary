@@ -124,7 +124,7 @@ E220</h1>
 スケッチ例 / 受信側</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_class" href="classUdon_1_1E220Reader.html">Udon::E220Reader&lt;uint64_t&gt;</a> lora({</div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1E220Reader.html">Udon::E220Reader&lt;uint64_t&gt;</a> lora({</div>
 <div class="line">    .serial = Serial1,</div>
 <div class="line">    .m0 = 2,</div>
 <div class="line">    .m1 = 3,</div>
@@ -157,7 +157,7 @@ E220</h1>
 スケッチ例 / 送信側</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_class" href="classUdon_1_1E220Writer.html">Udon::E220Writer&lt;uint64_t&gt;</a> lora({</div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1E220Writer.html">Udon::E220Writer&lt;uint64_t&gt;</a> lora({</div>
 <div class="line">    .serial = Serial1,</div>
 <div class="line">    .m0 = 2,</div>
 <div class="line">    .m1 = 3,</div>
@@ -194,11 +194,23 @@ E220</h1>
 <div class="line">    uint16_t address = 0x0102;</div>
 <div class="line">};</div>
 </div><!-- fragment --><p>コンストラクタで設定した値は <code>getConfigReference()</code> メンバ関数を使用して変更可能です。変更は <code>begin()</code> メンバ関数を呼び出す前に行う必要があります。</p>
-<div class="fragment"><div class="line"><span class="keywordtype">void</span> setup()</div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1E220Writer.html">Udon::E220Writer&lt;uint64_t&gt;</a> lora({</div>
+<div class="line">    .serial = Serial1,</div>
+<div class="line">    .m0 = 2,</div>
+<div class="line">    .m1 = 3,</div>
+<div class="line">    .aux = 4,</div>
+<div class="line">    <span class="comment">// チャンネル番号を省略</span></div>
+<div class="line">});</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup()</div>
 <div class="line">{</div>
-<div class="line">    lora.getConfigReference().channel = 2;</div>
+<div class="line">    lora.<a class="code hl_function" href="classUdon_1_1Impl_1_1E220Base.html#a2690ebbd586d93f53e77e21543560334">getConfigReference</a>().<a class="code hl_variable" href="structUdon_1_1Impl_1_1E220Base_1_1Config.html#ae8be237506946fc19503f8b995426bf3">channel</a> = 2;</div>
 <div class="line">    lora.begin();</div>
 <div class="line">}</div>
+<div class="ttc" id="aclassUdon_1_1Impl_1_1E220Base_html_a2690ebbd586d93f53e77e21543560334"><div class="ttname"><a href="classUdon_1_1Impl_1_1E220Base.html#a2690ebbd586d93f53e77e21543560334">Udon::Impl::E220Base::getConfigReference</a></div><div class="ttdeci">Config &amp; getConfigReference()</div><div class="ttdoc">現在の設定を取得</div><div class="ttdef"><b>Definition</b> E220Base.hpp:37</div></div>
+<div class="ttc" id="astructUdon_1_1Impl_1_1E220Base_1_1Config_html_ae8be237506946fc19503f8b995426bf3"><div class="ttname"><a href="structUdon_1_1Impl_1_1E220Base_1_1Config.html#ae8be237506946fc19503f8b995426bf3">Udon::Impl::E220Base::Config::channel</a></div><div class="ttdeci">uint8_t channel</div><div class="ttdoc">チャンネル</div><div class="ttdef"><b>Definition</b> E220Base.hpp:26</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md67"></a>
 受信強度</h2>
 <p><code>getRssi()</code> メンバ関数を使用して電波強度を示す RSSI 値を取得できます。0 に近いほど電波強度が高いことを示します。値は通信できている場合のみ有効です。</p>

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['ライセンス_0',['ライセンス',['../index.html#autotoc_md10',1,'']]],
-  ['ライブラリを開く_1',['ライブラリを開く',['../md_docs_2Developer_2DevelopSetup.html#autotoc_md115',1,'ライブラリを開く'],['../md_docs_2Developer_2DevelopSetup.html#autotoc_md120',1,'ライブラリを開く']]]
+  ['ユーザー定義型のネスト_0',['ユーザー定義型のネスト',['../md_docs_2Other_2Serialization.html#autotoc_md204',1,'']]],
+  ['ユーザー定義型シリアライズ_1',['ユーザー定義型シリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md202',1,'']]],
+  ['ユーザー定義型_2',['ユーザー定義型',['../index.html#autotoc_md6',1,'']]]
 ];

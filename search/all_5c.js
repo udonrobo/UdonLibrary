@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['既に定義されている型のシリアライズ、デシリアライズ_0',['既に定義されている型のシリアライズ、デシリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md177',1,'']]]
+  ['指定した点を中心にベクトルを指定角度回転させる_0',['指定した点を中心にベクトルを指定角度回転させる',['../md_docs_2Types_2Vector2D.html#autotoc_md272',1,'']]]
 ];

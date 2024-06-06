@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['更新_0',['更新',['../md_docs_2Communication_2Pad.html#autotoc_md87',1,'更新'],['../md_docs_2Install_2ArduinoIDE.html#autotoc_md161',1,'更新'],['../md_docs_2Install_2CLion.html#autotoc_md164',1,'更新'],['../md_docs_2Install_2VisualStudio.html#autotoc_md170',1,'更新']]]
+  ['整数型シリアライズ_0',['整数型シリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md199',1,'']]]
 ];

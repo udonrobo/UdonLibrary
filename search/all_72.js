@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['謝辞_0',['謝辞',['../md_docs_2Developer_2Acknowledgments.html',1,'']]]
+  ['要素の追加、削除_0',['要素の追加、削除',['../md_docs_2Types_2RingBuffer.html#autotoc_md244',1,'要素の追加、削除'],['../md_docs_2Types_2StaticVector.html#autotoc_md248',1,'要素の追加、削除']]],
+  ['要素へのアクセス_1',['要素へのアクセス',['../md_docs_2Types_2Vector2D.html#autotoc_md256',1,'']]]
 ];
