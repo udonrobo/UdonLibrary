@@ -24,9 +24,7 @@ CAN 通信クラスは、通信バスクラス、送受信ノードクラスか�
 
 CAN2.0A プロトコルで通信を行います。そのため ID は 0x000~0x7FF の範囲で使用できます。
 
-CAN2.0A は 一度に 8 バイトのデータしか送信できません。8 バイトより長いデータは分割し送受信します。この時、1 バイト目にインデックス番号が付与されます。
-
-8 バイト以下のデータはインデックスを付与せず送受信するため、他の CAN デバイス (市販モーター等) との通信にも使用できます。詳しくは [バイト列を直接送受信](#バイト列を直接送受信) を参照ください。
+CAN2.0A は 一度に 8 バイトのデータしか送信できません。8 バイトより長いデータは分割して送受信します。この時、1 バイト目にインデックス番号が付与されます。8 バイト以下のデータはインデックスを付与せず送受信するため、他の CAN デバイス (市販モーター等) との通信にも使用できます。詳しくは [バイト列を直接送受信](#バイト列を直接送受信) を参照ください。
 
 ### ■ Teensy
 
@@ -95,20 +93,20 @@ static Udon::CanBusSpi bus;
 struct Config
 {
     // SPI 関連
-    spi_inst_t* channel = spi_default;         // SPI チャンネル (spi0, spi1)
-    uint8_t cs = PICO_DEFAULT_SPI_CSN_PIN;     // チップセレクトピン
-    uint8_t mosi = PICO_DEFAULT_SPI_TX_PIN;    // MOSIピン (TX)
-    uint8_t miso = PICO_DEFAULT_SPI_RX_PIN;    // MISOピン (RX)
-    uint8_t sck = PICO_DEFAULT_SPI_SCK_PIN;    // クロックピン
-    uint8_t interrupt = 20;                    // 受信割り込みピン
-    uint32_t spiClock = 1'000'000;    // SPIクロック周波数 [Hz]
+    spi_inst_t* channel     = spi_default;                // SPI チャンネル (spi0, spi1)
+    uint8_t     cs          = PICO_DEFAULT_SPI_CSN_PIN;   // チップセレクトピン
+    uint8_t     mosi        = PICO_DEFAULT_SPI_TX_PIN;    // MOSIピン (TX)
+    uint8_t     miso        = PICO_DEFAULT_SPI_RX_PIN;    // MISOピン (RX)
+    uint8_t     sck         = PICO_DEFAULT_SPI_SCK_PIN;   // クロックピン
+    uint8_t     interrupt   = 20;                         // 受信割り込みピン
+    uint32_t    spiClock    = 1'000'000;                  // SPIクロック周波数 [Hz]
 
     // CAN 関連
-    uint32_t transmitInterval = 5;           // 送信間隔 [ms]
-    uint32_t transmitTimeout = 100;          // 送信タイムアウト時間 [ms]
-    uint32_t receiveTimeout = 100;           // 受信タイムアウト時間 [ms]
-    CAN_SPEED canBaudrate = CAN_1000KBPS;    // CAN通信速度
-    CAN_CLOCK mcpClock = MCP_16MHZ;          // トランシーバー動作クロック周波数 [Hz]
+    uint32_t  transmitInterval  = 5;               // 送信間隔 [ms]
+    uint32_t  transmitTimeout   = 100;             // 送信タイムアウト時間 [ms]
+    uint32_t  receiveTimeout    = 100;             // 受信タイムアウト時間 [ms]
+    CAN_SPEED canBaudrate       = CAN_1000KBPS;    // CAN通信速度
+    CAN_CLOCK mcpClock          = MCP_16MHZ;       // トランシーバー動作クロック周波数 [Hz]
 };
 ```
 
@@ -185,6 +183,9 @@ void loop()
 
 ### ■ 送信ノード
 
+<details>
+<summary> 送信ノードの構造 </summary>
+
 ```cpp
 struct CanTxNode
 {
@@ -196,8 +197,13 @@ struct CanTxNode
 };
 ```
 
+</details>
+
+<details>
+<summary> 基本的な例 </summary>
+
 ```cpp
-static Udon::CanBusxxxx bus;
+static Udon::CanBusTeensy<CAN1> bus;
 
 static Udon::CanTxNode* txNode = bus.createTx(0x000 /*id*/, 8 /*length*/);
 
@@ -220,11 +226,53 @@ void loop()
 }
 ```
 
+</details>
+
+<details>
+<summary> ラッパークラスを作成する例 </summary>
+
+```cpp
+#include <Udon.hpp>
+
+class MyCanWriter
+{
+    Udon::CanTxNode* txNode;
+
+public:
+    MyCanWriter(Udon::ICanBus& bus, uint8_t id, size_t length)
+        : txNode(bus.createTx(id, length))
+    {
+    }
+
+    void update()
+    {
+        txNode->data[0] = 0x11;  // データを登録
+        txNode->data[1] = 0x22;
+    }
+};
+
+static Udon::CanBusTeensy<CAN1> bus;
+
+static MyCanWriter writer{ bus, 0x000, 10 };
+
+void setup()
+{
+    bus.begin();
+}
+
+void loop()
+{
+    bus.update();
+    writer.update();
+}
+```
+
+</details>
+
 ### ■ 受信ノード
 
-受信ノードには、受信時に呼び出すコールバック関数を登録できます。8 バイトより長いバイト列は複数のフレームに分割されて送信されます。この時、コールバック関数が呼び出されるのは最終フレーム受信時です。
-
-コールバック関数には `param` メンバを通じて任意の void ポインタを渡せます。this ポインタを渡すと、メンバ関数の呼び出しが可能です。`CanReader` クラスもこの機能を用いてメンバ関数のコールバックを行っています。以下の例では CanRxNode ポインタを渡しています。
+<details>
+<summary> 受信ノードの構造 </summary>
 
 ```cpp
 struct CanRxNode
@@ -240,8 +288,47 @@ struct CanRxNode
 };
 ```
 
+</details>
+
+<details>
+<summary> 基本的な例 </summary>
+
 ```cpp
-static Udon::CanBusxxxx bus;
+static Udon::CanBusTeensy<CAN1> bus;
+
+static Udon::CanRxNode* rxNode = bus.createRx(0x000 /*id*/, 8 /*length*/);
+
+void setup()
+{
+    bus.begin();
+}
+
+void loop()
+{
+    bus.update();
+
+    Serial.print(rxNode->data[0]); Serial.print('\t');
+    Serial.print(rxNode->data[1]); Serial.print('\t');
+    Serial.print(rxNode->data[2]); Serial.print('\t');
+    Serial.print(rxNode->data[3]); Serial.print('\t');
+    Serial.print(rxNode->data[4]); Serial.print('\t');
+    Serial.print(rxNode->data[5]); Serial.print('\t');
+    Serial.print(rxNode->data[6]); Serial.print('\t');
+    Serial.print(rxNode->data[7]); Serial.print('\n');
+}
+```
+
+</details>
+
+<details>
+<summary> コールバックを行う例 </summary>
+
+受信ノードには、受信時に呼び出すコールバック関数を登録できます。8 バイトより長いバイト列は複数のフレームに分割されて送信されます。この時、コールバック関数が呼び出されるのは最終フレーム受信時です。
+
+コールバック関数には `param` メンバを通じて任意の void ポインタを渡せます。以下の例では CanRxNode ポインタを渡しています。
+
+```cpp
+static Udon::CanBusTeensy<CAN1> bus;
 
 static Udon::CanRxNode* rxNode = bus.createRx(0x000 /*id*/, 8 /*length*/);
 
@@ -275,6 +362,66 @@ void loop()
     bus.update();
 }
 ```
+
+</details>
+
+<details>
+<summary> ラッパークラスを作成する例 </summary>
+
+`param` メンバを通じて this ポインタを渡すことで、メンバ関数の呼び出しが可能です。`CanReader` クラスもこの機能を用いてメンバ関数のコールバックを行っています。
+
+```cpp
+#include <Udon.hpp>
+
+class MyCanReader
+{
+    Udon::CanRxNode* rxNode;
+
+    int16_t value;
+
+public:
+    MyCanReader(Udon::ICanBus& bus, uint8_t id, size_t length)
+        : rxNode(bus.createRx(id, length))
+    {
+        rxNode->onReceive = onReceive;
+        rxNode->param = this;   // this ポインタを登録
+    }
+
+    MyCanReader(const MyCanReader& other)
+        : rxNode(other.rxNode)
+    {
+        rxNode.param = this;   // コピーされた場合、インスタンスが変わるので this ポインタを登録しなおす。
+    }
+
+    void update()
+    {
+        Serial.println(value);
+    }
+
+    static void onReceive(void* param)
+    {
+        auto self = static_cast<MyCanReader*>(param);  // this ポインタを復元
+        self->value = (self->rxNode->data[0] << 8) | self->rxNode->data[1];
+    }
+};
+
+static Udon::CanBusTeensy<CAN1> bus;
+
+static MyCanReader reader{ bus, 0x000, 10 };
+
+void setup()
+{
+    bus.begin();
+}
+
+void loop()
+{
+    bus.update();
+    reader.update();
+}
+```
+
+</details>
 
 ## デバッグ
 

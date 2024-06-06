@@ -17,7 +17,7 @@
 ```cpp
 #include <Udon.hpp>
 
-Udon::E220Reader<uint64_t> lora({
+static Udon::E220Reader<uint64_t> lora({
     .serial = Serial1,
     .m0 = 2,
     .m1 = 3,
@@ -49,7 +49,7 @@ void loop()
 ```cpp
 #include <Udon.hpp>
 
-Udon::E220Writer<uint64_t> lora({
+static Udon::E220Writer<uint64_t> lora({
     .serial = Serial1,
     .m0 = 2,
     .m1 = 3,
@@ -99,6 +99,16 @@ struct Config
 コンストラクタで設定した値は `getConfigReference()` メンバ関数を使用して変更可能です。変更は `begin()` メンバ関数を呼び出す前に行う必要があります。
 
 ```cpp
+#include <Udon.hpp>
+
+static Udon::E220Writer<uint64_t> lora({
+    .serial = Serial1,
+    .m0 = 2,
+    .m1 = 3,
+    .aux = 4,
+    // チャンネル番号を省略
+});
+
 void setup()
 {
     lora.getConfigReference().channel = 2;
