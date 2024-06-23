@@ -46,7 +46,7 @@ namespace Udon
         /// @param p 出力値
         void move(int16_t p)
         {
-            power = Constrain(p, -255, 255);
+            power = Constrain(p, (int16_t)-255, (int16_t)255);
             writer.setMessage({ static_cast<int16_t>(power * (direction ? 1 : -1)) });
             Udon::Traits::MaybeInvokeUpdate(writer);
         }

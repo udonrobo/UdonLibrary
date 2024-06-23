@@ -34,7 +34,7 @@ namespace Udon
     /// @brief 2つの値のうち小さい方を返す (std::min)
     template <typename A, typename B>
     inline constexpr auto
-    Min(const A& lhs, const B& rhs) -> decltype(lhs + rhs)
+    Min(const A& lhs, const B& rhs) -> decltype(lhs, rhs)
     {
         return lhs < rhs ? lhs : rhs;
     }
@@ -42,7 +42,7 @@ namespace Udon
     /// @brief 2つの値のうち大きい方を返す (std::max)
     template <typename A, typename B>
     inline constexpr auto
-    Max(const A& lhs, const B& rhs) -> decltype(lhs + rhs)
+    Max(const A& lhs, const B& rhs) -> decltype(lhs, rhs)
     {
         return lhs > rhs ? lhs : rhs;
     }

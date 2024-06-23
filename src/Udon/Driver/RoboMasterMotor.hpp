@@ -29,7 +29,7 @@ namespace Udon
                 , motorId{ motorId }
                 , direction{ direction }
                 , nodeTx{ bus.createTx(static_cast<uint32_t>(0x200), 8) }
-                , nodeRx{ bus.createRx(static_cast<uint32_t>(0x200 + Constrain(motorId, 1, 8)), 8) }
+                , nodeRx{ bus.createRx(static_cast<uint32_t>(0x200 + Constrain((int)motorId, 1, 8)), 8) }
             {
                 nodeRx->onReceive = onReceive;
                 nodeRx->param = this;
@@ -61,7 +61,8 @@ namespace Udon
             /// @return 速度 [rpm]
             int16_t getVelocity() const
             {
-                return (nodeRx->data[2] << 8 | nodeRx->data[3]) * directionSign();
+                const auto velocity = (nodeRx->data[2] << 8 | nodeRx->data[3]) * directionSign();
+                return static_cast<int16_t>(velocity);
             }
 
 
@@ -69,8 +70,8 @@ namespace Udon
             /// @return トルク電流 [mA]
             int16_t getTorqueCurrent() const
             {
-                const int current = nodeRx->data[4] << 8 | nodeRx->data[5];
-                return current * directionSign();
+                const int current = (nodeRx->data[4] << 8 | nodeRx->data[5]) * directionSign();
+                return static_cast<int16_t>(current);
             }
 
 
@@ -120,7 +121,7 @@ namespace Udon
             /// @brief エンコーダー分解能
             static constexpr int32_t ppr = 8192;
 
-            int directionSign() const
+            int16_t directionSign() const
             {
                 return direction ? 1 : -1;
             }
@@ -165,7 +166,7 @@ namespace Udon
         /// @param current 電流値 [-10000, 10000] (単位: mA)
         void setCurrent(int16_t current)
         {
-            RoboMasterBase::setCurrent(Constrain(current, -10000, 10000));
+            RoboMasterBase::setCurrent(Constrain(current, (int16_t)-10000, (int16_t)10000));
         }
     };
 
@@ -186,7 +187,7 @@ namespace Udon
         /// @param current 電流値 [-20000, 20000] (単位: mA)
         void setCurrent(int16_t current)
         {
-            RoboMasterBase::setCurrent(Constrain(current, -20000, 20000));
+            RoboMasterBase::setCurrent(Constrain(current, (int16_t)-20000, (int16_t)20000));
         }
     };
 }    // namespace Udon

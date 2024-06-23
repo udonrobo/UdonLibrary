@@ -189,8 +189,18 @@ namespace Udon
         }
 
 #ifdef SIV3D_INCLUDED
-        /// @brief s3d::Vec2からの変換コンストラクタ
-        /// @param v s3d::Vec2
+
+        /// @brief s3d::Quaternion からの変換
+        Quaternion(const s3d::Quaternion& q) noexcept
+            : x(q.getX())
+            , y(q.getY())
+            , z(q.getZ())
+            , w(q.getW())
+        {
+        }
+
+        /// @brief s3d::Quaternion への変換
+        /// @param v s3d::Quaternion
         operator s3d::Quaternion() const noexcept
         {
             return s3d::Quaternion(x, y, z, w);

@@ -20,17 +20,40 @@ concurrency:
 
 jobs:
   ArduinoLint:
+    name: ${{ matrix.board.fqbn }}
+
     runs-on: ubuntu-latest
+
     strategy:
-      fail-fast: false # all jobs should run
+      fail-fast: false
+
       matrix:
         board:
           - fqbn: arduino:avr:nano
             platform: arduino:avr
+          - fqbn: arduino:avr:uno
+            platform: arduino:avr
+          - fqbn: arduino:avr:unomini
+            platform: arduino:avr
+          - fqbn: teensy:avr:teensy35
+            platform: teensy:avr
+            url: https://www.pjrc.com/teensy/td_156/package_teensy_index.json
+          - fqbn: teensy:avr:teensy36
+            platform: teensy:avr
+            url: https://www.pjrc.com/teensy/td_156/package_teensy_index.json
           - fqbn: teensy:avr:teensy40
             platform: teensy:avr
             url: https://www.pjrc.com/teensy/td_156/package_teensy_index.json
+          - fqbn: teensy:avr:teensy41
+            platform: teensy:avr
+            url: https://www.pjrc.com/teensy/td_156/package_teensy_index.json
           - fqbn: rp2040:rp2040:rpipico
+            platform: rp2040:rp2040
+            url: https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+          - fqbn: rp2040:rp2040:rpipicow
+            platform: rp2040:rp2040
+            url: https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+          - fqbn: rp2040:rp2040:seeed_xiao_rp2040
             platform: rp2040:rp2040
             url: https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
 

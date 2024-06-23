@@ -4,15 +4,26 @@
 
 香川高専高松機械システム研究部 C++ ライブラリ
 
-[![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml) [![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
+[![Arduino Lint](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml)
+[![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
+[![Doxygen Page](https://github.com/udonrobo/UdonLibrary/actions/workflows/DoxygenPage.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/DoxygenPage.yml)
+
+| 系統        | ターゲット環境                                  |
+| ----------- | ----------------------------------------------- |
+| Arduino     | Arduino Nano/Uno/UnoMini                        |
+| Teensy      | Teensy 3.5/3.6/4.0/4.1                          |
+| RP2040      | Raspberry Pi Pico/Pico W <br> Seeed XIAO RP2040 |
+| Vanilla C++ | C++11~ <br> Visual Studio <br> CLion            |
 
 ## 追加方法
 
 - [Arduino IDE](./docs/Install/ArduinoIDE.md)
 - [Platform IO](./docs/Install/PlatformIO.md)
 - [Visual Studio](./docs/Install/VisualStudio.md)
-- [Visual Studio (submodule)](./docs/Install/VisualStudioSubmodule.md)
+- [CLion](./docs/Install/CLion.md) 🌟new
 - [Raspberry Pi Pico 使用時事前セットアップ](./docs/Install/RaspberryPiPico.md)
+
+> バニラ C++ の環境ではヘッダーオンリーライブラリとして振舞いますので、インクルードディレクトリの指定、STL の使用が可能な場合、そのほかのアプリケーションで使用できると思います。
 
 ## 使用方法
 
@@ -26,7 +37,7 @@
 - [移動平均](./docs/Algorithm/MovingAverage.md)
 - [フィードバック制御(PID)](./docs/Algorithm/FeedbackController.md)
 - [独立ステア最適化](./docs/Algorithm/SteerOptimizer.md)
-- [割り込み禁止制御](./docs/Algorithm/Interrupt.md)🌟new
+- [割り込み禁止制御](./docs/Algorithm/Interrupt.md)
 
 ### 通信
 
@@ -37,7 +48,7 @@
 - [LoRa](./docs/Communication/LoRa.md)
 - [IM920](./docs/Communication/IM920.md)
 - [コントローラ](./docs/Communication/Pad.md)
-- [CRC エラーチェック](./docs/Communication/CRC.md)🌟new
+- [CRC エラーチェック](./docs/Communication/CRC.md)
 
 ### ユーザー定義型
 
@@ -54,11 +65,11 @@
 ### ドライバー
 
 - [モーター](./docs/Driver/Motor.md)
-- [ロボマスモーター](./docs/Driver/RoboMasterMotor.md)🌟new
+- [ロボマスモーター](./docs/Driver/RoboMasterMotor.md)
 - [BNO055](./docs/Driver/BNO055.md)
-- [DIPスイッチ](./docs/Driver/DipSwitch.md)
-- [Raspberry Pi Pico ロータリーエンコーダー](./docs/Driver/EncoderPico.md)
-- [Raspberry Pi Pico PIO](./docs/Driver/PIO.md)
+- [DIP スイッチ](./docs/Driver/DipSwitch.md)
+- [Raspberry Pi Pico / ロータリーエンコーダー](./docs/Driver/EncoderPico.md)
+- [Raspberry Pi Pico / PIO](./docs/Driver/PIO.md)
 
 ### その他
 
@@ -70,8 +81,8 @@
 - [開発環境セットアップ](./docs/Developer/DevelopSetup.md)
 - [スタイルガイド](./docs/Developer/StyleGuide.md)
 - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
-- [自動テスト](./docs/Developer/CI.md)
-- [ドキュメント自動生成](./docs/Developer/DoxygenPage.md)
+- [GitHub Actions / 自動テスト](./docs/Developer/CI.md)
+- [GitHub Actions / ドキュメント自動生成](./docs/Developer/DoxygenPage.md)
 - [謝辞](./docs/Developer/Acknowledgments.md)
 
 ## ライセンス

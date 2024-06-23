@@ -23,7 +23,6 @@ uint8_t Checksum(uint8_t* data, size_t n)
 
 ```cpp
 uint8_t data[n];
-uint8_t checksum;
 
 for (auto&& e : data)
 {
@@ -40,7 +39,6 @@ write(Checksum(data, sizeof data));    // チェックサム値を送信
 
 ```cpp
 uint8_t data[n];
-uint8_t checksum;
 
 for (auto& e : data)
 {
