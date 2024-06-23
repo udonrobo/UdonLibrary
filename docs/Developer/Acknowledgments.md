@@ -14,7 +14,7 @@
 | [Siv3D/OpenSiv3D](https://github.com/Siv3D/OpenSiv3D)                           | MIT License                | Copyright (c) 2008-2023 Ryo Suzuki <br> Copyright (c) 2016-2023 OpenSiv3D Project                              |
 | [ros2/rclcpp](https://github.com/ros2/rclcpp)                                   | Apache-2.0 license         |                                                                                                                |
 | [google/googletest](https://github.com/google/googletest)                       | BSD-3-Clause license       | Copyright (c) 2008 Google Inc.                                                                                 |
-| [jothepro/doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css) | BSD-3-Clause license       | Copyright (c) 2008 Google Inc.                                                                                 |
+| [jothepro/doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css) | MIT License                | Copyright (c) 2021 - 2023 jothepro                                                                             |
 
 また本ライブラリの作成において、以下のオープンソースプロジェクトを参考にしています。
 
