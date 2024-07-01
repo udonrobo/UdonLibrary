@@ -125,6 +125,9 @@
 // Raspberry Pi Pico PIO クロック出力
 #include <Udon/Driver/Pio/PioClock.hpp>
 
+// Raspberry Pi Pico サーボ
+#include <Udon/Driver/Servo.hpp>
+
 //
 //    ユーザー定義型 / types
 //
