@@ -78,6 +78,7 @@ jobs:
 
       - name: Install libraries
         run: |
+          arduino-cli lib install Servo
           arduino-cli lib install --git-url https://github.com/udonrobo/UdonArduinoSTL.git
           arduino-cli lib install --git-url https://github.com/adafruit/Adafruit_BusIO.git
           arduino-cli lib install --git-url https://github.com/adafruit/Adafruit_Sensor.git
