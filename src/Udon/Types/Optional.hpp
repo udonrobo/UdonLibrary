@@ -11,6 +11,10 @@
 #include <type_traits>
 #include <new>
 
+#if __has_include(<new.h>)
+#   include <new.h>
+#endif
+
 namespace Udon
 {
 

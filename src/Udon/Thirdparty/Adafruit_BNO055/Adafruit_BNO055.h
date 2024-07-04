@@ -26,7 +26,7 @@
 
 #include "utility/imumaths.h"
 #include <Udon/Thirdparty/Adafruit_BusIO/Adafruit_I2CDevice.h>
-#include <Adafruit_Sensor.h>
+#include <Udon/Thirdparty/Adafruit_Sensor/Adafruit_Sensor.h>
 
 /** BNO055 Address A **/
 #define BNO055_ADDRESS_A (0x28)
