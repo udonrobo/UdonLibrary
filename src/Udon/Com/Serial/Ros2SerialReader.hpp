@@ -7,9 +7,9 @@
 namespace Udon
 {
 
-    /// @brief ROS2からUART通信を受信するクラス
+    /// @brief ROS2からSerial通信を受信するクラス
     template <typename Message>
-    class Ros2UartReader
+    class Ros2SerialReader
     {
         static constexpr size_t Size = Udon::SerializedSize<Message>();
 
@@ -19,8 +19,8 @@ namespace Udon
 
     public:
         /// @brief コンストラクタ
-        /// @param bus UARTバス
-        Ros2UartReader(serial::Serial& bus)
+        /// @param bus Serialバス
+        Ros2SerialReader(serial::Serial& bus)
             : serial(bus)
             , buffer(Size)
         {

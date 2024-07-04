@@ -1,9 +1,9 @@
 //
-//    OpenSiv3D用 UART 受信クラス
+//    OpenSiv3D用 Serial 受信クラス
 //
 //    Copyright (c) 2022-2024 udonrobo
 //
-//    Sender --[UART]--> Receiver
+//    Sender --[Serial]--> Receiver
 //                       ^^^^^^^^
 //
 
@@ -16,10 +16,10 @@
 namespace Udon
 {
 
-    /// @brief OpenSiv3D用 UART 受信クラス
+    /// @brief OpenSiv3D用 Serial 受信クラス
     /// @tparam Message メッセージ型
     template <typename Message>
-    class SivUartReader
+    class SivSerialReader
     {
         static constexpr size_t Size = Udon::SerializedSize<Message>();
 
@@ -35,8 +35,8 @@ namespace Udon
         using MessageType = Message;
 
         /// @brief コンストラクタ
-        /// @param bus UARTバス
-        SivUartReader(s3d::Serial& bus)
+        /// @param bus Serialバス
+        SivSerialReader(s3d::Serial& bus)
             : serial(bus)
             , buffer(Size)
             , thread(
@@ -63,7 +63,7 @@ namespace Udon
         }
 
         /// @brief デストラクタ
-        ~SivUartReader()
+        ~SivSerialReader()
         {
             isRunning = false;
             thread.join();

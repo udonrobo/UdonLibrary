@@ -57,8 +57,8 @@
 // CAN
 #include <Udon/Com/Can.hpp>
 
-// UART
-#include <Udon/Com/Uart.hpp>
+// Serial
+#include <Udon/Com/Serial.hpp>
 
 // I2c
 #include <Udon/Com/I2c.hpp>

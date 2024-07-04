@@ -44,9 +44,9 @@
 - [共通](./docs/Communication/Common.md)
 - [CAN](./docs/Communication/CAN.md)
 - [I2C](./docs/Communication/I2C.md)
-- [UART](./docs/Communication/UART.md)
 - [LoRa](./docs/Communication/LoRa.md)
 - [IM920](./docs/Communication/IM920.md)
+- [UART / USB Serial](./docs/Communication/Serial.md)
 - [コントローラ](./docs/Communication/Pad.md)
 - [CRC エラーチェック](./docs/Communication/CRC.md)
 

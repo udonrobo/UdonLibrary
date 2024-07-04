@@ -1,9 +1,9 @@
 //
-//    OpenSiv3D用 UART 送信クラス
+//    OpenSiv3D用 Serial 送信クラス
 //
 //    Copyright (c) 2022-2024 udonrobo
 //
-//    Sender --[UART]--> Receiver
+//    Sender --[Serial]--> Receiver
 //    ^^^^^^
 //
 
@@ -16,10 +16,10 @@
 namespace Udon
 {
 
-    /// @brief OpenSiv3D用 UART 送信クラス
+    /// @brief OpenSiv3D用 Serial 送信クラス
     /// @tparam Message メッセージ型
     template <typename Message>
-    class SivUartWriter
+    class SivSerialWriter
     {
         static constexpr size_t Size = Udon::SerializedSize<Message>();
 
@@ -28,8 +28,8 @@ namespace Udon
     public:
 
         /// @brief コンストラクタ
-        /// @param bus UARTバス
-        SivUartWriter(s3d::Serial& bus)
+        /// @param bus Serialバス
+        SivSerialWriter(s3d::Serial& bus)
             : serial(bus)
         {
         }
