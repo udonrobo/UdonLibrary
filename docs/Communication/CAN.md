@@ -382,7 +382,7 @@ void loop()
 <details>
 <summary> ラッパークラスを作成する例 </summary>
 
-`param` メンバを通じて this ポインタを渡すことで、メンバ関数の呼び出しが可能です。`CanReader` クラスもこの機能を用いてメンバ関数のコールバックを行っています。
+`param` メンバを通じて this ポインタを渡すことで、メンバへアクセスできます。`CanReader` クラスもこの機能を用いてメンバ関数のコールバックを行っています。
 
 ```cpp
 #include <Udon.hpp>
