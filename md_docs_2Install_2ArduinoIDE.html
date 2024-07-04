@@ -128,17 +128,18 @@ $(function(){initNavTree('md_docs_2Install_2ArduinoIDE.html',''); initResizable(
 </blockquote>
 <ol type="1">
 <li><p class="startli">クローン</p>
-<p class="startli">以下コマンドをターミナル上で実行することで Arduino のライブラリディレクトリへクローンされます。</p>
+<p class="startli">以下コマンドをターミナル上で実行します。</p>
 <div class="fragment"><div class="line">cd ~/Documents/Arduino/libraries</div>
 <div class="line">git clone --recursive https://github.com/udonrobo/UdonLibrary.git</div>
-<div class="line">./UdonLibrary/setup.sh</div>
 </div><!-- fragment --></li>
 </ol>
 <blockquote class="doxtable">
 <p>&zwj;ライブラリディレクトリ既定値: <code>~/Documents/Arduino/libraries</code></p>
 <p>見つからない場合: <code>ファイル &gt; 環境設定 &gt; スケッチブックの保存場所欄</code> + <code>/libraries</code> </p>
 </blockquote>
-<ol type="1">
+<p>本ライブラリは C++ 標準ライブラリに依存しています。標準ライブラリが使用できない環境 (Arduino Nano 等) で使用するには UdonArduinoSTL を合わせて追加してください。</p>
+<div class="fragment"><div class="line">git clone https://github.com/udonrobo/UdonArduinoSTL.git</div>
+</div><!-- fragment --><ol type="1">
 <li><p class="startli">追加確認</p>
 <p class="startli">追加が成功している場合、以下の様に <a class="el" href="Udon_8hpp.html">Udon.hpp</a> のインクルードができるようになっています。</p>
 <p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/258f3ff9-570f-4448-b9c8-5665c2d195ef" alt="" width="400px" class="inline"/></p>
