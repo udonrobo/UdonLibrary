@@ -19,17 +19,22 @@
 
 2. クローン
 
-   以下コマンドをターミナル上で実行することで Arduino のライブラリディレクトリへクローンされます。
+   以下コマンドをターミナル上で実行します。
 
    ```
    cd ~/Documents/Arduino/libraries
    git clone --recursive https://github.com/udonrobo/UdonLibrary.git
-   ./UdonLibrary/setup.sh
    ```
 
    > ライブラリディレクトリ既定値: `~/Documents/Arduino/libraries`
    >
    > 見つからない場合: `ファイル > 環境設定 > スケッチブックの保存場所欄` + `/libraries`
+
+   本ライブラリは C++ 標準ライブラリに依存しています。標準ライブラリが使用できない環境 (Arduino Nano 等) で使用するには UdonArduinoSTL を合わせて追加してください。
+   
+   ```
+   git clone https://github.com/udonrobo/UdonArduinoSTL.git
+   ```
 
 3. 追加確認
 
