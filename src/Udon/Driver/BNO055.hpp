@@ -27,6 +27,8 @@ namespace Udon
 
         Quaternion quaternion;
 
+        bool isCalledBegin;
+
     public:
         /// @brief コンストラクタ
         /// @param wire I2C ポート
@@ -36,6 +38,7 @@ namespace Udon
             , direction(direction)
             , offset(Quaternion::Identity())
             , quaternion(Quaternion::Identity())
+            , isCalledBegin(false)
         {
         }
 
@@ -44,6 +47,7 @@ namespace Udon
         /// @return 正常に開始できたかどうか
         bool begin()
         {
+            isCalledBegin = true;
             return Adafruit_BNO055::begin();
         }
 
@@ -58,6 +62,11 @@ namespace Udon
         {
             const auto q = Adafruit_BNO055::getQuat();
             quaternion   = { q.x(), q.y(), q.z(), q.w() };
+
+            if (!isCalledBegin)
+            {
+                Udon::Showln("beginが呼ばれていません");
+            }
         }
 
         /// @brief クォータニオン角を取得
