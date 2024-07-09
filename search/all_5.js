@@ -67,5 +67,7 @@ var searchData=
   ['createtx_64',['createTx',['../classUdon_1_1CanBusSpi.html#a10dd3c879bd9bd9c0e47c109453458cd',1,'Udon::CanBusSpi::createTx()'],['../classUdon_1_1CanBusTeensy.html#a6049e676efce55f7837687d09038f376',1,'Udon::CanBusTeensy::createTx()'],['../classUdon_1_1ICanBus.html#a8af35fc0494c31c4f3249551ae10c2b7',1,'Udon::ICanBus::createTx()']]],
   ['crend_65',['crend',['../classUdon_1_1ArrayView.html#aec04ae9da9478a921d615348d23115d2',1,'Udon::ArrayView::crend()'],['../classUdon_1_1RingBuffer.html#abf0489075f00bddd04654fa84551c541',1,'Udon::RingBuffer::crend()'],['../classUdon_1_1StaticVector.html#aa95281a28a417e6853dc0fe4a3d2b847',1,'Udon::StaticVector::crend()'],['../classUdon_1_1BasicStringView.html#a7858e6721a8fd84ed0e160e4b5884a9b',1,'Udon::BasicStringView::crend()']]],
   ['cross_66',['cross',['../structUdon_1_1Message_1_1PadPS5.html#a038e18cb2130c8ebd3115675ac5afe83',1,'Udon::Message::PadPS5']]],
-  ['cs_67',['cs',['../structUdon_1_1CanBusSpi_1_1Config.html#aef84ac07f1bfa3dba5b657c77aced261',1,'Udon::CanBusSpi::Config']]]
+  ['cs_67',['cs',['../structUdon_1_1CanBusSpi_1_1Config.html#aef84ac07f1bfa3dba5b657c77aced261',1,'Udon::CanBusSpi::Config']]],
+  ['currentmax_68',['CurrentMax',['../classUdon_1_1RoboMasterC610.html#a80fd62436bb68f614c1eb042f0a6eab0',1,'Udon::RoboMasterC610::CurrentMax'],['../classUdon_1_1RoboMasterC620.html#ad59deca3804e56054f90cc5c11f53547',1,'Udon::RoboMasterC620::CurrentMax']]],
+  ['currentmin_69',['CurrentMin',['../classUdon_1_1RoboMasterC610.html#a65da22059e41ea1b14c6bc13b932587d',1,'Udon::RoboMasterC610::CurrentMin'],['../classUdon_1_1RoboMasterC620.html#a4fbfb3b2251826892e8f1d6ddc7af002',1,'Udon::RoboMasterC620::CurrentMin']]]
 ];
