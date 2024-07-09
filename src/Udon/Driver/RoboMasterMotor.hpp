@@ -162,11 +162,17 @@ namespace Udon
         /// @param direction 回転方向
         using RoboMasterBase::RoboMasterBase;
 
+        /// @brief 指定可能電流最小値
+        static constexpr int16_t CurrentMin = -10000;
+
+        /// @brief 指定可能電流最大値
+        static constexpr int16_t CurrentMax = 10000;
+
         /// @brief モーターの電流を設定
         /// @param current 電流値 [-10000, 10000] (単位: mA)
         void setCurrent(int16_t current)
         {
-            RoboMasterBase::setCurrent(Constrain(current, (int16_t)-10000, (int16_t)10000));
+            RoboMasterBase::setCurrent(Constrain(current, CurrentMin, CurrentMax));
         }
     };
 
@@ -183,11 +189,17 @@ namespace Udon
         /// @param direction 回転方向
         using RoboMasterBase::RoboMasterBase;
 
+        /// @brief 指定可能電流最小値
+        static constexpr int16_t CurrentMin = -20000;
+
+        /// @brief 指定可能電流最大値
+        static constexpr int16_t CurrentMax = 20000;
+
         /// @brief モーターの電流を設定
         /// @param current 電流値 [-20000, 20000] (単位: mA)
         void setCurrent(int16_t current)
         {
-            RoboMasterBase::setCurrent(Constrain(current, (int16_t)-20000, (int16_t)20000));
+            RoboMasterBase::setCurrent(Constrain(current, CurrentMin, CurrentMax));
         }
     };
 }    // namespace Udon
