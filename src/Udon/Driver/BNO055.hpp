@@ -8,7 +8,7 @@
 
 #if defined(ARDUINO) && !defined(UDON_TEENSY_I2C_SLAVE_MODE)
 
-#    include <Adafruit_BNO055.h>
+#    include <Udon/Thirdparty/Adafruit_BNO055/Adafruit_BNO055.h>
 #    include <Udon/Types/Euler.hpp>
 #    include <Udon/Types/Quaternion.hpp>
 

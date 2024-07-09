@@ -55,6 +55,4 @@ namespace Udon
     };
 }    // namespace Udon
 
-#else
-#    include <Servo.h>
 #endif

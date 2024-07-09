@@ -54,7 +54,6 @@ namespace Udon
         }
 
         /// @brief 送信内容を表示
-        /// @param gap 区切り文字 (default: '\t')
         void show() const
         {
             Udon::Printf("0x%03x ", node->id);

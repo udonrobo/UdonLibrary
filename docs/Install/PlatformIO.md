@@ -7,9 +7,15 @@
    ```
    lib_deps =
        https://github.com/udonrobo/UdonLibrary.git
-       https://github.com/adafruit/Adafruit_BusIO.git
-       https://github.com/adafruit/Adafruit_Sensor.git
-       https://github.com/adafruit/Adafruit_BNO055.git
    ```
 
-   ![image](https://github.com/udonrobo/UdonLibrary/assets/91818705/c26bef65-82b3-482f-83cd-25e581891393)
+   本ライブラリは C++ 標準ライブラリに依存しています。標準ライブラリが使用できない環境 (Arduino Nano 等) で使用するには UdonArduinoSTL を合わせて追加してください。
+   
+   ```
+   lib_deps =
+       https://github.com/udonrobo/UdonLibrary.git
+       https://github.com/udonrobo/UdonArduinoSTL.git
+   ```
+
+   ![image](https://github.com/udonrobo/UdonLibrary/assets/91818705/532fd53b-4dbf-41cf-b4e1-5d512f409dd2)
+
