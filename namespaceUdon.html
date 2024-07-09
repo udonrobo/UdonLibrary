@@ -338,6 +338,11 @@ $(function(){initNavTree('namespaceUdon.html',''); initResizable(true); });
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 列挙型</h2></td></tr>
+<tr class="memitem:aab18b58d62367941f2e34d1d1fde4adb" id="r_aab18b58d62367941f2e34d1d1fde4adb"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab18b58d62367941f2e34d1d1fde4adb">AssertAction</a> { <a class="el" href="#aab18b58d62367941f2e34d1d1fde4adba72ef2b9b6965d078e3c7f95487a82d1c">Skip</a>
+, <a class="el" href="#aab18b58d62367941f2e34d1d1fde4adba727b63583e01fa2b3952dab580c84dc2">Abort</a>
+ }</td></tr>
+<tr class="memdesc:aab18b58d62367941f2e34d1d1fde4adb"><td class="mdescLeft">&#160;</td><td class="mdescRight">アサートが発生した場合の挙動  <a href="#aab18b58d62367941f2e34d1d1fde4adb">[詳解]</a><br /></td></tr>
+<tr class="separator:aab18b58d62367941f2e34d1d1fde4adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0b885a506a78d6d59510f0ab9d401f7" id="r_ac0b885a506a78d6d59510f0ab9d401f7"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0b885a506a78d6d59510f0ab9d401f7">ServoChoose</a> : uint8_t { <a class="el" href="#ac0b885a506a78d6d59510f0ab9d401f7a9cd928c8f5dbc2f60894e99f5a0a67ae">_20kg</a>
 , <a class="el" href="#ac0b885a506a78d6d59510f0ab9d401f7a37199c5c529e096d186b28304946810d">_30kg</a>
 , <a class="el" href="#ac0b885a506a78d6d59510f0ab9d401f7a77dce049af8daab41ecc67d77a30e103">_60kg</a>
@@ -347,6 +352,9 @@ $(function(){initNavTree('namespaceUdon.html',''); initResizable(true); });
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 関数</h2></td></tr>
+<tr class="memitem:a0ee7cea3483a4d489e3578463788e37a" id="r_a0ee7cea3483a4d489e3578463788e37a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ee7cea3483a4d489e3578463788e37a">Assert</a> (bool expression, const char *const message=&quot;&quot;, <a class="el" href="#aab18b58d62367941f2e34d1d1fde4adb">AssertAction</a> action=<a class="el" href="#aab18b58d62367941f2e34d1d1fde4adba727b63583e01fa2b3952dab580c84dc2">AssertAction::Abort</a>)</td></tr>
+<tr class="memdesc:a0ee7cea3483a4d489e3578463788e37a"><td class="mdescLeft">&#160;</td><td class="mdescRight">アサート  <br /></td></tr>
+<tr class="separator:a0ee7cea3483a4d489e3578463788e37a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb14606e20360820a0d20beb9b8cb56e" id="r_afb14606e20360820a0d20beb9b8cb56e"><td class="memTemplParams" colspan="2">template&lt;typename Ty &gt; </td></tr>
 <tr class="memitem:afb14606e20360820a0d20beb9b8cb56e"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#afb14606e20360820a0d20beb9b8cb56e">BitRead</a> (const Ty &amp;rhs, uint8_t bit)</td></tr>
 <tr class="memdesc:afb14606e20360820a0d20beb9b8cb56e"><td class="mdescLeft">&#160;</td><td class="mdescRight">特定のビットを読み取る  <br /></td></tr>
@@ -615,6 +623,34 @@ $(function(){initNavTree('namespaceUdon.html',''); initResizable(true); });
 </div>
 </div>
 <h2 class="groupheader">列挙型詳解</h2>
+<a id="aab18b58d62367941f2e34d1d1fde4adb" name="aab18b58d62367941f2e34d1d1fde4adb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab18b58d62367941f2e34d1d1fde4adb">&#9670;&#160;</a></span>AssertAction</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#aab18b58d62367941f2e34d1d1fde4adb">Udon::AssertAction</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アサートが発生した場合の挙動 </p>
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="aab18b58d62367941f2e34d1d1fde4adba72ef2b9b6965d078e3c7f95487a82d1c" name="aab18b58d62367941f2e34d1d1fde4adba72ef2b9b6965d078e3c7f95487a82d1c"></a>Skip&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aab18b58d62367941f2e34d1d1fde4adba727b63583e01fa2b3952dab580c84dc2" name="aab18b58d62367941f2e34d1d1fde4adba727b63583e01fa2b3952dab580c84dc2"></a>Abort&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <a id="ac0b885a506a78d6d59510f0ab9d401f7" name="ac0b885a506a78d6d59510f0ab9d401f7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac0b885a506a78d6d59510f0ab9d401f7">&#9670;&#160;</a></span>ServoChoose</h2>
 
@@ -678,6 +714,50 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>戻り値</dt><dd>絶対値 </dd></dl>
+
+</div>
+</div>
+<a id="a0ee7cea3483a4d489e3578463788e37a" name="a0ee7cea3483a4d489e3578463788e37a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ee7cea3483a4d489e3578463788e37a">&#9670;&#160;</a></span>Assert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Udon::Assert </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>expression</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *const</td>          <td class="paramname"><span class="paramname"><em>message</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;&quot;</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#aab18b58d62367941f2e34d1d1fde4adb">AssertAction</a></td>          <td class="paramname"><span class="paramname"><em>action</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="#aab18b58d62367941f2e34d1d1fde4adba727b63583e01fa2b3952dab580c84dc2">AssertAction::Abort</a></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>アサート </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">expression</td><td>true の場合正常と判断、false の場合以上と判断し、アサートを発生させる </td></tr>
+    <tr><td class="paramname">message</td><td>アサート発生時のメッセージ </td></tr>
+    <tr><td class="paramname">action</td><td>アサート発生時の挙動 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

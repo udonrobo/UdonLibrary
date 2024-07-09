@@ -83,12 +83,17 @@ var namespaceUdon =
     [ "StringView", "namespaceUdon.html#a8e337ae884cfbde61c416c8c2049aea6", null ],
     [ "Vec3", "namespaceUdon.html#ab94a2188974fa87eb476f1651aa1c19a", null ],
     [ "WStringView", "namespaceUdon.html#a28efef3747777d9917d8f107caa44e17", null ],
+    [ "AssertAction", "namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adb", [
+      [ "Skip", "namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adba72ef2b9b6965d078e3c7f95487a82d1c", null ],
+      [ "Abort", "namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adba727b63583e01fa2b3952dab580c84dc2", null ]
+    ] ],
     [ "ServoChoose", "namespaceUdon.html#ac0b885a506a78d6d59510f0ab9d401f7", [
       [ "_20kg", "namespaceUdon.html#ac0b885a506a78d6d59510f0ab9d401f7a9cd928c8f5dbc2f60894e99f5a0a67ae", null ],
       [ "_30kg", "namespaceUdon.html#ac0b885a506a78d6d59510f0ab9d401f7a37199c5c529e096d186b28304946810d", null ],
       [ "_60kg", "namespaceUdon.html#ac0b885a506a78d6d59510f0ab9d401f7a77dce049af8daab41ecc67d77a30e103", null ]
     ] ],
     [ "Abs", "namespaceUdon.html#a1c0f439e2d683a3ad46cbfd7bf4bd0f1", null ],
+    [ "Assert", "namespaceUdon.html#a0ee7cea3483a4d489e3578463788e37a", null ],
     [ "BitClear", "namespaceUdon.html#a854c366e7b7302b851230102fd99b462", null ],
     [ "BitPack", "namespaceUdon.html#a3b7c88f64cfd50e3f3cbc7d36795b65e", null ],
     [ "BitPack", "namespaceUdon.html#affc9383d1939d580ff3025327d657a8c", null ],
