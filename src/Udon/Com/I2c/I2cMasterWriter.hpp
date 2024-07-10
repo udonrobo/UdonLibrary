@@ -14,7 +14,7 @@
 #include "I2cBus.hpp"
 
 #include <Udon/Serializer/Serializer.hpp>
-#include <Udon/Common/Show.hpp>
+#include <Udon/Utility/Show.hpp>
 
 namespace Udon
 {
