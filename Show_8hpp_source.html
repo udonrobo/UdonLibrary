@@ -7,7 +7,7 @@
 <meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
-<title>UdonLibrary: src/Udon/Common/Show.hpp ソースファイル</title>
+<title>UdonLibrary: src/Udon/Utility/Show.hpp ソースファイル</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -117,7 +117,7 @@ $(function(){initNavTree('Show_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;<a class="code" href="Platform_8hpp.html">Udon/Common/Platform.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;<a class="code" href="Platform_8hpp.html">Udon/Utility/Platform.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;<a class="code" href="Typedef_8hpp.html">Udon/Traits/Typedef.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;<a class="code" href="HasMemberFunction_8hpp.html">Udon/Traits/HasMemberFunction.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;<a class="code" href="AlwaysFalse_8hpp.html">Udon/Traits/AlwaysFalse.hpp</a>&gt;</span></div>
@@ -359,8 +359,7 @@ $(function(){initNavTree('Show_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    }    <span class="comment">// namespace Impl</span></div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
-<div class="foldopen" id="foldopen00241" data-start="{" data-end="}">
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Traits.html">  241</a></span>    <span class="keyword">namespace </span>Traits</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    <span class="keyword">namespace </span>Traits</div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    {</div>
 <div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> OutputStream, <span class="keyword">typename</span>... Args&gt;</div>
 <div class="foldopen" id="foldopen00254" data-start="{" data-end="};">
@@ -370,7 +369,6 @@ $(function(){initNavTree('Show_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        };</div>
 </div>
 <div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    }    <span class="comment">// namespace Traits</span></div>
-</div>
 <div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
 <div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="preprocessor">#ifdef ARDUINO</span></div>
 <div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
@@ -498,13 +496,13 @@ $(function(){initNavTree('Show_8hpp_source.html',''); initResizable(true); });
 <div class="ttc" id="aclassUdon_1_1Impl_1_1Printer_html_a43d095c082438c0d5dfc792a0f519ee9"><div class="ttname"><a href="classUdon_1_1Impl_1_1Printer.html#a43d095c082438c0d5dfc792a0f519ee9">Udon::Impl::Printer::Printer</a></div><div class="ttdeci">Printer(OutputStream &amp;stream, bool delimiterEnable)</div><div class="ttdef"><b>Definition</b> Show.hpp:133</div></div>
 <div class="ttc" id="aclassUdon_1_1Impl_1_1Printer_html_aaa02aa45f3dba124edcec12fe82e581c"><div class="ttname"><a href="classUdon_1_1Impl_1_1Printer.html#aaa02aa45f3dba124edcec12fe82e581c">Udon::Impl::Printer::ResultType</a></div><div class="ttdeci">void ResultType</div><div class="ttdef"><b>Definition</b> Show.hpp:139</div></div>
 <div class="ttc" id="anamespaceUdon_1_1Impl_html_a6f0c515472bdd4ff51f46cfbb92830f6"><div class="ttname"><a href="namespaceUdon_1_1Impl.html#a6f0c515472bdd4ff51f46cfbb92830f6">Udon::Impl::ShowImpl</a></div><div class="ttdeci">void ShowImpl(const ShowConfig &amp;config, Args &amp;&amp;... args)</div><div class="ttdef"><b>Definition</b> Show.hpp:306</div></div>
-<div class="ttc" id="anamespaceUdon_1_1Traits_html"><div class="ttname"><a href="namespaceUdon_1_1Traits.html">Udon::Traits</a></div><div class="ttdef"><b>Definition</b> Show.hpp:242</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html"><div class="ttname"><a href="namespaceUdon_1_1Traits.html">Udon::Traits</a></div><div class="ttdef"><b>Definition</b> SerializerTraits.hpp:92</div></div>
 <div class="ttc" id="anamespaceUdon_1_1Traits_html_a434199133c575112473ec34f81ff22f9"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a434199133c575112473ec34f81ff22f9">Udon::Traits::IsEnum</a></div><div class="ttdeci">std::is_enum&lt; T &gt; IsEnum</div><div class="ttdef"><b>Definition</b> Typedef.hpp:49</div></div>
 <div class="ttc" id="anamespaceUdon_1_1Traits_html_a841623b3c351135dae7c1cb2315589f8"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#a841623b3c351135dae7c1cb2315589f8">Udon::Traits::EnableIfNullptrT</a></div><div class="ttdeci">EnableIfT&lt; Test, std::nullptr_t &gt; EnableIfNullptrT</div><div class="ttdef"><b>Definition</b> Typedef.hpp:78</div></div>
 <div class="ttc" id="anamespaceUdon_1_1Traits_html_aa2b480aa2dca8f8f4b1dda41e376289f"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#aa2b480aa2dca8f8f4b1dda41e376289f">Udon::Traits::EnableIfVoidT</a></div><div class="ttdeci">EnableIfT&lt; Test, void &gt; EnableIfVoidT</div><div class="ttdef"><b>Definition</b> Typedef.hpp:66</div></div>
 <div class="ttc" id="anamespaceUdon_1_1Traits_html_aa3ae9f99baa1784f17627de66c6bde39"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#aa3ae9f99baa1784f17627de66c6bde39">Udon::Traits::IsCString</a></div><div class="ttdeci">std::is_same&lt; DecayT&lt; T &gt;, const char * &gt; IsCString</div><div class="ttdef"><b>Definition</b> Typedef.hpp:55</div></div>
 <div class="ttc" id="anamespaceUdon_1_1Traits_html_aef9a7ba24f9d9b39a3918d0db7ea27d2"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#aef9a7ba24f9d9b39a3918d0db7ea27d2">Udon::Traits::IsArray</a></div><div class="ttdeci">std::is_array&lt; T &gt; IsArray</div><div class="ttdef"><b>Definition</b> Typedef.hpp:52</div></div>
-<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Assert.hpp:6</div></div>
+<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
 <div class="ttc" id="anamespaceUdon_html_a291f769778f3f8b209779b52901f3bff"><div class="ttname"><a href="namespaceUdon.html#a291f769778f3f8b209779b52901f3bff">Udon::Showln</a></div><div class="ttdeci">void Showln(Args &amp;&amp;... args)</div><div class="ttdoc">改行、区切り文字ありで出力する</div><div class="ttdef"><b>Definition</b> Show.hpp:350</div></div>
 <div class="ttc" id="anamespaceUdon_html_a392678ab11e3dea1c2202a7b255a2e1a"><div class="ttname"><a href="namespaceUdon.html#a392678ab11e3dea1c2202a7b255a2e1a">Udon::Show</a></div><div class="ttdeci">void Show(Args &amp;&amp;... args)</div><div class="ttdoc">区切り文字ありで出力する</div><div class="ttdef"><b>Definition</b> Show.hpp:339</div></div>
 <div class="ttc" id="anamespaceUdon_html_acb81b570489214c8e93be56f616b4fb6"><div class="ttname"><a href="namespaceUdon.html#acb81b570489214c8e93be56f616b4fb6">Udon::ShowRaw</a></div><div class="ttdeci">void ShowRaw(Args &amp;&amp;... args)</div><div class="ttdoc">改行、区切り文字なしで出力する</div><div class="ttdef"><b>Definition</b> Show.hpp:361</div></div>

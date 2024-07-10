@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"structUdon_1_1Im920Node.html#ab4022e30c4aa6059c9d428dc3443529b":[51,0,0,29,0],
+"structUdon_1_1Im920Node.html#ae71f5351b35af54349a8fc1ed645eb96":[50,0,1,32,1],
 "structUdon_1_1Im920Node.html#ae71f5351b35af54349a8fc1ed645eb96":[51,0,0,29,1],
 "structUdon_1_1Impl_1_1E220Base_1_1Config.html":[50,0,1,0,1,0],
 "structUdon_1_1Impl_1_1E220Base_1_1Config.html":[51,0,0,0,1,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX9 =
 "structUdon_1_1Polar.html#a7fc1e62301584587e761132cc8d33e28":[51,0,0,43,14],
 "structUdon_1_1Polar.html#a81f5a75525b32afde68537375c3e63b1":[50,0,1,46,15],
 "structUdon_1_1Polar.html#a81f5a75525b32afde68537375c3e63b1":[51,0,0,43,15],
-"structUdon_1_1Polar.html#a94fe23336cc8f7a4ce4bb53dd71448d8":[50,0,1,46,6],
-"structUdon_1_1Polar.html#a94fe23336cc8f7a4ce4bb53dd71448d8":[51,0,0,43,6],
-"structUdon_1_1Polar.html#a9b7c76bc69e6be271ebe272f011b686b":[50,0,1,46,5]
+"structUdon_1_1Polar.html#a94fe23336cc8f7a4ce4bb53dd71448d8":[50,0,1,46,6]
 };

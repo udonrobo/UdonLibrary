@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"classUdon_1_1Impl_1_1PadPS5OnboardUSBReader.html#a605321434c5c407073d44b90e635093c":[50,0,1,0,5,0],
+"classUdon_1_1Impl_1_1PadPS5OnboardUSBReader.html#a605321434c5c407073d44b90e635093c":[51,0,0,0,5,0],
 "classUdon_1_1Impl_1_1PadPS5OnboardUSBReader.html#a6a98894ae7eb12257936505c8d1dc22b":[50,0,1,0,5,1],
 "classUdon_1_1Impl_1_1PadPS5OnboardUSBReader.html#a6a98894ae7eb12257936505c8d1dc22b":[51,0,0,0,5,1],
 "classUdon_1_1Impl_1_1PadPS5OnboardUSBReader.html#a99d73e0d10a97d982d06fad2ad5ff92c":[50,0,1,0,5,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX4 =
 "classUdon_1_1PidController.html#a3bcbdff7dc0f1e03741fd57adc7a79d7":[50,0,1,45,3],
 "classUdon_1_1PidController.html#a3bcbdff7dc0f1e03741fd57adc7a79d7":[51,0,0,42,3],
 "classUdon_1_1PidController.html#a5132c4c8d8e9b75a9bc5ac60d68f1aec":[50,0,1,45,11],
-"classUdon_1_1PidController.html#a5132c4c8d8e9b75a9bc5ac60d68f1aec":[51,0,0,42,11],
-"classUdon_1_1PidController.html#a60133038754ac22f497961e3598be136":[50,0,1,45,7],
-"classUdon_1_1PidController.html#a60133038754ac22f497961e3598be136":[51,0,0,42,7]
+"classUdon_1_1PidController.html#a5132c4c8d8e9b75a9bc5ac60d68f1aec":[51,0,0,42,11]
 };

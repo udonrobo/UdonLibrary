@@ -1,6 +1,5 @@
 var dir_22ece226a4582674b632f5609e87d46e =
 [
-    [ "Assert.hpp", "Assert_8hpp.html", "Assert_8hpp" ],
     [ "Bit.hpp", "Bit_8hpp.html", "Bit_8hpp" ],
     [ "BitPack.hpp", "BitPack_8hpp.html", "BitPack_8hpp" ],
     [ "CRC.hpp", "CRC_8hpp.html", "CRC_8hpp" ],
