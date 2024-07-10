@@ -310,18 +310,18 @@ namespace Udon
 
             static_assert(Traits::IsPrintable<ArduinoStream, Args...>::value, "T is not printable");
             ArduinoStream stream;
-            Impl::Printer<ArduinoStream> printer{ stream, config.endline };
+            Impl::Printer<ArduinoStream> printer{ stream, config.delimiter };
 
 #elif defined(SIV3D_INCLUDED)
 
             static_assert(Traits::IsPrintable<Siv3DStream, Args...>::value, "T is not printable");
             Siv3DStream stream;
-            Impl::Printer<Siv3DStream> printer{ stream, config.endline };
+            Impl::Printer<Siv3DStream> printer{ stream, config.delimiter };
 
 #elif UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE
 
             static_assert(Traits::IsPrintable<std::ostream, Args...>::value, "T is not printable");
-            Impl::Printer<std::ostream> printer{ std::cout, config.endline };
+            Impl::Printer<std::ostream> printer{ std::cout, config.delimiter };
 
 #endif
 
