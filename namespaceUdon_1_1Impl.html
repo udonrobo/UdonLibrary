@@ -141,6 +141,8 @@ $(function(){initNavTree('namespaceUdon_1_1Impl.html',''); initResizable(true); 
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Impl_1_1Serializer.html">Serializer</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Impl_1_1ShowConfig.html">ShowConfig</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1Impl_1_1SivPadPS5Reader.html">SivPadPS5Reader</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">OpenSiv3D用 PS5コントローラー 受信クラス  <a href="classUdon_1_1Impl_1_1SivPadPS5Reader.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,9 +156,9 @@ $(function(){initNavTree('namespaceUdon_1_1Impl.html',''); initResizable(true); 
 <tr class="memitem:a69feae7a9942248eb185691b6320a155" id="r_a69feae7a9942248eb185691b6320a155"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69feae7a9942248eb185691b6320a155">Unpacketize</a> (<a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt; const uint8_t &gt; &amp;&amp;input, <a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt; uint8_t &gt; &amp;&amp;output, size_t singlePacketSize)</td></tr>
 <tr class="memdesc:a69feae7a9942248eb185691b6320a155"><td class="mdescLeft">&#160;</td><td class="mdescRight">複数のパケット、単一のパケットからバイト列にアンパケット化する  <br /></td></tr>
 <tr class="separator:a69feae7a9942248eb185691b6320a155"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21545ba70e231c154e78fe797bdc85d9" id="r_a21545ba70e231c154e78fe797bdc85d9"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
-<tr class="memitem:a21545ba70e231c154e78fe797bdc85d9"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a21545ba70e231c154e78fe797bdc85d9">ShowImpl</a> (bool enableDelimiter, bool enableNewline, Args &amp;&amp;... args)</td></tr>
-<tr class="separator:a21545ba70e231c154e78fe797bdc85d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f0c515472bdd4ff51f46cfbb92830f6" id="r_a6f0c515472bdd4ff51f46cfbb92830f6"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a6f0c515472bdd4ff51f46cfbb92830f6"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a6f0c515472bdd4ff51f46cfbb92830f6">ShowImpl</a> (const <a class="el" href="structUdon_1_1Impl_1_1ShowConfig.html">ShowConfig</a> &amp;config, Args &amp;&amp;... args)</td></tr>
+<tr class="separator:a6f0c515472bdd4ff51f46cfbb92830f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">関数詳解</h2>
 <a id="a37feaf5e28e8c9c948948a0c67ba41f3" name="a37feaf5e28e8c9c948948a0c67ba41f3"></a>
@@ -218,8 +220,8 @@ template&lt;typename Function &gt; </div>
 
 </div>
 </div>
-<a id="a21545ba70e231c154e78fe797bdc85d9" name="a21545ba70e231c154e78fe797bdc85d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21545ba70e231c154e78fe797bdc85d9">&#9670;&#160;</a></span>ShowImpl()</h2>
+<a id="a6f0c515472bdd4ff51f46cfbb92830f6" name="a6f0c515472bdd4ff51f46cfbb92830f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f0c515472bdd4ff51f46cfbb92830f6">&#9670;&#160;</a></span>ShowImpl()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -229,12 +231,7 @@ template&lt;typename... Args&gt; </div>
         <tr>
           <td class="memname">void Udon::Impl::ShowImpl </td>
           <td>(</td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enableDelimiter</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enableNewline</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Impl_1_1ShowConfig.html">ShowConfig</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

@@ -110,6 +110,7 @@ var hierarchy =
     [ "Udon::Impl::Serializer", "classUdon_1_1Impl_1_1Serializer.html", null ],
     [ "Udon::Message::Servo", "structUdon_1_1Message_1_1Servo.html", null ],
     [ "Udon::ServoSpeed", "classUdon_1_1ServoSpeed.html", null ],
+    [ "Udon::Impl::ShowConfig", "structUdon_1_1Impl_1_1ShowConfig.html", null ],
     [ "Udon::Impl::SivPadPS5Reader< DummyMessage >", "classUdon_1_1Impl_1_1SivPadPS5Reader.html", null ],
     [ "Udon::SivUartReader< Message >", "classUdon_1_1SivUartReader.html", null ],
     [ "Udon::SivUartWriter< Message >", "classUdon_1_1SivUartWriter.html", null ],

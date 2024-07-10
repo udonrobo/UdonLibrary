@@ -12,6 +12,7 @@ var annotated_dup =
         [ "RoboMasterBase", "classUdon_1_1Impl_1_1RoboMasterBase.html", "classUdon_1_1Impl_1_1RoboMasterBase" ],
         [ "SerializedBitSizeImpl", "structUdon_1_1Impl_1_1SerializedBitSizeImpl.html", "structUdon_1_1Impl_1_1SerializedBitSizeImpl" ],
         [ "Serializer", "classUdon_1_1Impl_1_1Serializer.html", "classUdon_1_1Impl_1_1Serializer" ],
+        [ "ShowConfig", "structUdon_1_1Impl_1_1ShowConfig.html", "structUdon_1_1Impl_1_1ShowConfig" ],
         [ "SivPadPS5Reader", "classUdon_1_1Impl_1_1SivPadPS5Reader.html", "classUdon_1_1Impl_1_1SivPadPS5Reader" ]
       ] ],
       [ "Message", "namespaceUdon_1_1Message.html", [

@@ -10,8 +10,9 @@ var namespaceUdon_1_1Impl =
     [ "RoboMasterBase", "classUdon_1_1Impl_1_1RoboMasterBase.html", "classUdon_1_1Impl_1_1RoboMasterBase" ],
     [ "SerializedBitSizeImpl", "structUdon_1_1Impl_1_1SerializedBitSizeImpl.html", "structUdon_1_1Impl_1_1SerializedBitSizeImpl" ],
     [ "Serializer", "classUdon_1_1Impl_1_1Serializer.html", "classUdon_1_1Impl_1_1Serializer" ],
+    [ "ShowConfig", "structUdon_1_1Impl_1_1ShowConfig.html", "structUdon_1_1Impl_1_1ShowConfig" ],
     [ "SivPadPS5Reader", "classUdon_1_1Impl_1_1SivPadPS5Reader.html", "classUdon_1_1Impl_1_1SivPadPS5Reader" ],
     [ "Packetize", "namespaceUdon_1_1Impl.html#a37feaf5e28e8c9c948948a0c67ba41f3", null ],
-    [ "ShowImpl", "namespaceUdon_1_1Impl.html#a21545ba70e231c154e78fe797bdc85d9", null ],
+    [ "ShowImpl", "namespaceUdon_1_1Impl.html#a6f0c515472bdd4ff51f46cfbb92830f6", null ],
     [ "Unpacketize", "namespaceUdon_1_1Impl.html#a69feae7a9942248eb185691b6320a155", null ]
 ];
