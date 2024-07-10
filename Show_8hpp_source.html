@@ -428,18 +428,18 @@ $(function(){initNavTree('Show_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span> </div>
 <div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>            <span class="keyword">static_assert</span>(<a class="code hl_struct" href="structUdon_1_1Traits_1_1IsPrintable.html">Traits::IsPrintable</a>&lt;ArduinoStream, Args...&gt;::value, <span class="stringliteral">&quot;T is not printable&quot;</span>);</div>
 <div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>            ArduinoStream stream;</div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>            <a class="code hl_class" href="classUdon_1_1Impl_1_1Printer.html">Impl::Printer&lt;ArduinoStream&gt;</a> printer{ stream, config.endline };</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>            <a class="code hl_class" href="classUdon_1_1Impl_1_1Printer.html">Impl::Printer&lt;ArduinoStream&gt;</a> printer{ stream, config.<a class="code hl_variable" href="structUdon_1_1Impl_1_1ShowConfig.html#ae91975292b6932ea4b652d4db0231427">delimiter</a> };</div>
 <div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span> </div>
 <div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span><span class="preprocessor">#elif defined(SIV3D_INCLUDED)</span></div>
 <div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span> </div>
 <div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>            <span class="keyword">static_assert</span>(<a class="code hl_struct" href="structUdon_1_1Traits_1_1IsPrintable.html">Traits::IsPrintable</a>&lt;Siv3DStream, Args...&gt;::value, <span class="stringliteral">&quot;T is not printable&quot;</span>);</div>
 <div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>            Siv3DStream stream;</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>            <a class="code hl_class" href="classUdon_1_1Impl_1_1Printer.html">Impl::Printer&lt;Siv3DStream&gt;</a> printer{ stream, config.endline };</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>            <a class="code hl_class" href="classUdon_1_1Impl_1_1Printer.html">Impl::Printer&lt;Siv3DStream&gt;</a> printer{ stream, config.<a class="code hl_variable" href="structUdon_1_1Impl_1_1ShowConfig.html#ae91975292b6932ea4b652d4db0231427">delimiter</a> };</div>
 <div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span> </div>
 <div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span><span class="preprocessor">#elif UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE</span></div>
 <div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span> </div>
 <div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>            <span class="keyword">static_assert</span>(<a class="code hl_struct" href="structUdon_1_1Traits_1_1IsPrintable.html">Traits::IsPrintable</a>&lt;std::ostream, Args...&gt;::value, <span class="stringliteral">&quot;T is not printable&quot;</span>);</div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>            <a class="code hl_class" href="classUdon_1_1Impl_1_1Printer.html">Impl::Printer&lt;std::ostream&gt;</a> printer{ std::cout, config.endline };</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>            <a class="code hl_class" href="classUdon_1_1Impl_1_1Printer.html">Impl::Printer&lt;std::ostream&gt;</a> printer{ std::cout, config.<a class="code hl_variable" href="structUdon_1_1Impl_1_1ShowConfig.html#ae91975292b6932ea4b652d4db0231427">delimiter</a> };</div>
 <div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span> </div>
 <div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span> </div>
