@@ -11,6 +11,7 @@
 #include <Udon/Traits/HasMemberFunction.hpp>
 #include <Udon/Traits/AlwaysFalse.hpp>
 #include <utility>
+#include <string>
 
 #ifndef F
 #    define F(x) (x)
@@ -60,7 +61,7 @@ namespace Udon
             {
                 static constexpr bool test(...)
                 {
-                     //static_assert(AlwaysFalse<T>::value, "Udon::Print: T is not printable." __FUNCTION__);
+                    // static_assert(AlwaysFalse<T>::value, "Udon::Print: T is not printable." __FUNCTION__);
                     return false;
                 }
             };
@@ -69,8 +70,8 @@ namespace Udon
             template <typename Enum>
             struct Test<Enum, EnableIfVoidT<IsEnum<Enum>::value>>
             {
-				static constexpr bool test(...) { return true; }
-			};
+                static constexpr bool test(...) { return true; }
+            };
 
             // 配列型(文字配列除く)は要素が出力可能であるとき出力可能
             template <typename Array>
@@ -267,6 +268,12 @@ namespace Udon
             Serial.print(std::forward<T>(rhs));
             return *this;
         }
+
+        auto operator<<(const std::string& rhs)
+        {
+            Serial.print(rhs.c_str());
+            return *this;
+        }
     };
 
 #endif
@@ -302,13 +309,13 @@ namespace Udon
 #if defined(ARDUINO)
 
             static_assert(Traits::IsPrintable<ArduinoStream, Args...>::value, "T is not printable");
-            ArduinoStream                stream;
+            ArduinoStream stream;
             Impl::Printer<ArduinoStream> printer{ stream, enableDelimiter };
 
 #elif defined(SIV3D_INCLUDED)
 
             static_assert(Traits::IsPrintable<Siv3DStream, Args...>::value, "T is not printable");
-            Siv3DStream                stream;
+            Siv3DStream stream;
             Impl::Printer<Siv3DStream> printer{ stream, enableDelimiter };
 
 #elif UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE
