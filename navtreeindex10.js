@@ -1,5 +1,6 @@
 var NAVTREEINDEX10 =
 {
+"structUdon_1_1Polar.html#a94fe23336cc8f7a4ce4bb53dd71448d8":[50,0,1,46,6],
 "structUdon_1_1Polar.html#a94fe23336cc8f7a4ce4bb53dd71448d8":[51,0,0,43,6],
 "structUdon_1_1Polar.html#a9b7c76bc69e6be271ebe272f011b686b":[50,0,1,46,5],
 "structUdon_1_1Polar.html#a9b7c76bc69e6be271ebe272f011b686b":[51,0,0,43,5],
@@ -248,6 +249,5 @@ var NAVTREEINDEX10 =
 "structUdon_1_1RingBuffer_1_1iterator.html#a668ebff5a2c8bc7968239597e676c57d":[50,0,1,51,1,7],
 "structUdon_1_1RingBuffer_1_1iterator.html#a668ebff5a2c8bc7968239597e676c57d":[51,0,0,48,1,7],
 "structUdon_1_1RingBuffer_1_1iterator.html#a7f1fdef7113318ce85cb5bbc59ec4b0e":[50,0,1,51,1,1],
-"structUdon_1_1RingBuffer_1_1iterator.html#a7f1fdef7113318ce85cb5bbc59ec4b0e":[51,0,0,48,1,1],
-"structUdon_1_1RingBuffer_1_1iterator.html#a8e34008946f21f8a91a4e01c59edda91":[50,0,1,51,1,11]
+"structUdon_1_1RingBuffer_1_1iterator.html#a7f1fdef7113318ce85cb5bbc59ec4b0e":[51,0,0,48,1,1]
 };

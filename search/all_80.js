@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['電流値の指定_0',['電流値の指定',['../md_docs_2Driver_2RoboMasterMotor.html#autotoc_md163',1,'']]]
+  ['静的変数編_0',['■ 静的変数編',['../md_docs_2Developer_2Idea.html',1,'']]],
+  ['静的関数編_1',['■ 静的関数編',['../md_docs_2Developer_2Idea.html#autotoc_md129',1,'']]]
 ];

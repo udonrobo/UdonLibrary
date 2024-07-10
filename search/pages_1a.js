@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ロボマスモーター_0',['ロボマスモーター',['../md_docs_2Driver_2RoboMasterMotor.html',1,'']]]
+  ['ループ周期制御_0',['ループ周期制御',['../md_docs_2Algorithm_2LoopCycleController.html',1,'']]]
 ];
