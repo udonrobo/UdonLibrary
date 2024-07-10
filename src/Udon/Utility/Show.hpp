@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <Udon/Common/Platform.hpp>
+#include <Udon/Utility/Platform.hpp>
 #include <Udon/Traits/Typedef.hpp>
 #include <Udon/Traits/HasMemberFunction.hpp>
 #include <Udon/Traits/AlwaysFalse.hpp>
