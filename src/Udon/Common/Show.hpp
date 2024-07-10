@@ -268,12 +268,6 @@ namespace Udon
             Serial.print(std::forward<T>(rhs));
             return *this;
         }
-
-        auto operator<<(const std::string& rhs)
-        {
-            Serial.print(rhs.c_str());
-            return *this;
-        }
     };
 
 #endif
@@ -302,32 +296,38 @@ namespace Udon
     namespace Impl
     {
 
+        struct ShowConfig
+        {
+            bool delimiter;
+            bool newline;
+        };
+
         template <typename... Args>
-        void ShowImpl(bool enableDelimiter, bool enableNewline, Args&&... args)
+        void ShowImpl(const ShowConfig& config, Args&&... args)
         {
 
 #if defined(ARDUINO)
 
             static_assert(Traits::IsPrintable<ArduinoStream, Args...>::value, "T is not printable");
             ArduinoStream stream;
-            Impl::Printer<ArduinoStream> printer{ stream, enableDelimiter };
+            Impl::Printer<ArduinoStream> printer{ stream, config.endline };
 
 #elif defined(SIV3D_INCLUDED)
 
             static_assert(Traits::IsPrintable<Siv3DStream, Args...>::value, "T is not printable");
             Siv3DStream stream;
-            Impl::Printer<Siv3DStream> printer{ stream, enableDelimiter };
+            Impl::Printer<Siv3DStream> printer{ stream, config.endline };
 
 #elif UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE
 
             static_assert(Traits::IsPrintable<std::ostream, Args...>::value, "T is not printable");
-            Impl::Printer<std::ostream> printer{ std::cout, enableDelimiter };
+            Impl::Printer<std::ostream> printer{ std::cout, config.endline };
 
 #endif
 
             printer(std::forward<Args>(args)...);
 
-            if (enableNewline)
+            if (config.newline)
             {
                 printer('\n');
             }
@@ -338,20 +338,32 @@ namespace Udon
     template <typename... Args>
     void Show(Args&&... args)
     {
-        Impl::ShowImpl(true, false, std::forward<Args>(args)...);
+        Impl::ShowImpl({
+                           .delimiter = true,
+                           .newline = false,
+                       },
+                       std::forward<Args>(args)...);
     }
 
     /// @brief 改行、区切り文字ありで出力する
     template <typename... Args>
     void Showln(Args&&... args)
     {
-        Impl::ShowImpl(true, true, std::forward<Args>(args)...);
+        Impl::ShowImpl({
+                           .delimiter = true,
+                           .newline = true,
+                       },
+                       std::forward<Args>(args)...);
     }
 
     /// @brief 改行、区切り文字なしで出力する
     template <typename... Args>
     void ShowRaw(Args&&... args)
     {
-        Impl::ShowImpl(false, false, std::forward<Args>(args)...);
+        Impl::ShowImpl({
+                           .delimiter = false,
+                           .newline = false,
+                       },
+                       std::forward<Args>(args)...);
     }
 }    // namespace Udon
