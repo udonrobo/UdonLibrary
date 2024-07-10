@@ -38,6 +38,8 @@ flowchart LR
   CANトランシーバー --CAN H/L--> CANバス
 ```
 
+クラスのテンプレートパラメーターに使用するCANポートを指定します。
+
 ```cpp
 static Udon::CanBusTeensy<CAN1> bus;
 ```

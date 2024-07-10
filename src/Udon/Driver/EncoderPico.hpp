@@ -42,7 +42,7 @@ namespace Udon
         {
             if (abs(pinA - pinB) != 1)
             {
-                return false;    // A相とB相のピン番号が隣り合っている場合はPIOを使用できない
+                return false;    // A相とB相のピン番号が隣り合っていない場合はPIOを使用できない
             }
 
             // 使用可能なPIOにプログラムをロードする
