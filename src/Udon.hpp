@@ -10,7 +10,7 @@
 #define UDON_INCLUDED
 
 //
-//    プラットフォーム定義
+//    ユーティリティ
 //
 
 // プラットフォーム定義
@@ -24,6 +24,10 @@
 
 // 汎用時間取得
 #include <Udon/Common/Time.hpp>
+
+// Raspberry Pi Pico 用ウォッチドックタイマー
+#include <Udon/Common/PicoWDT.hpp>
+
 
 //
 //    アルゴリズム / algorithm
