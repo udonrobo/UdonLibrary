@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <Udon/Common/Time.hpp>
+#include <Udon/Utility/Time.hpp>
 
 namespace Udon
 {

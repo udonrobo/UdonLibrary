@@ -14,7 +14,7 @@
 #include <Udon/Traits/HasMemberFunction.hpp>
 
 #include <Udon/Traits/ReaderWriterTraits.hpp>
-#include <Udon/Common/Printf.hpp>
+#include <Udon/Utility/Printf.hpp>
 
 namespace Udon
 {
