@@ -111,6 +111,9 @@ $(function(){initNavTree('md_docs_2Other_2Utility.html',''); initResizable(true)
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md215"></a> </p>
 <h1><a class="anchor" id="autotoc_md216"></a>
+<code>Show 関数</code></h1>
+<p>``</p>
+<h1><a class="anchor" id="autotoc_md217"></a>
 <code>Assert 関数</code></h1>
 <div class="fragment"><div class="line">Assert(<span class="keywordtype">bool</span> expression, <span class="keyword">const</span> <span class="keywordtype">char</span>* <span class="keyword">const</span> message = <span class="stringliteral">&quot;&quot;</span>, AssertAction action = AssertAction::Abort)</div>
 </div><!-- fragment --><p><code>expression</code> が false となるとき、任意のメッセージを出力しプログラムを中断する関数です。<code>action</code> に <code><a class="el" href="namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adba72ef2b9b6965d078e3c7f95487a82d1c">Udon::AssertAction::Skip</a></code> を指定することで中断しないように設定できます。</p>
@@ -126,13 +129,13 @@ $(function(){initNavTree('md_docs_2Other_2Utility.html',''); initResizable(true)
 <div class="ttc" id="aclassUdon_1_1PadPS5BT_html"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html">Udon::PadPS5BT</a></div><div class="ttdoc">Bluetooth経由PS5コントローラークラス</div><div class="ttdef"><b>Definition</b> PadPS5BT.hpp:31</div></div>
 <div class="ttc" id="aclassUdon_1_1PadPS5BT_html_ad338ca40274ce971b92063d480a0e512"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#ad338ca40274ce971b92063d480a0e512">Udon::PadPS5BT::begin</a></div><div class="ttdeci">bool begin()</div><div class="ttdoc">コントローラーと通信開始</div><div class="ttdef"><b>Definition</b> PadPS5BT.hpp:53</div></div>
 <div class="ttc" id="anamespaceUdon_html_a0ee7cea3483a4d489e3578463788e37a"><div class="ttname"><a href="namespaceUdon.html#a0ee7cea3483a4d489e3578463788e37a">Udon::Assert</a></div><div class="ttdeci">void Assert(bool expression, const char *const message=&quot;&quot;, AssertAction action=AssertAction::Abort)</div><div class="ttdoc">アサート</div><div class="ttdef"><b>Definition</b> Assert.hpp:20</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md217"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md218"></a>
 <code>Normalized 関数</code></h1>
 <div class="fragment"><div class="line"><span class="keywordtype">double</span> Normalized(<span class="keywordtype">double</span> value, <span class="keywordtype">double</span> min, <span class="keywordtype">double</span> max)</div>
 </div><!-- fragment --><p>-∞~+∞ の範囲を min~max の範囲に変換するします。最小値が設定できるようになった剰余算のイメージです。</p>
 <div class="fragment"><div class="line">Normalized(190, -180, 180) == 10</div>
 <div class="line">Normalized(-200, -180, 180) == -20</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md218"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md219"></a>
 <code>PicoWDT クラス</code></h1>
 <p>マイコン(Raspberry Pi Pico) が落ちたときに、自動的に再起動する機能です。</p>
 <p>コンストラクタに最終ループから何ミリ秒後に再起動するかを指定できます。デフォルトは 1000 ミリ秒です。</p>

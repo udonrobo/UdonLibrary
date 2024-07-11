@@ -81,9 +81,10 @@ var NAVTREEINDEX1 =
 "Time_8hpp.html":[52,0,1,0,8,5],
 "Time_8hpp_source.html":[52,0,1,0,8,5],
 "Typedef_8hpp.html":[52,0,1,0,6,4],
-"Typedef_8hpp.html#a0f7a4f244193b2b15df30bbb0234808d":[52,0,1,0,6,4,19],
+"Typedef_8hpp.html#a0f7a4f244193b2b15df30bbb0234808d":[52,0,1,0,6,4,20],
 "Typedef_8hpp.html#a18102c8d252fd80332e22d7e6c03eefd":[52,0,1,0,6,4,1],
 "Typedef_8hpp.html#a434199133c575112473ec34f81ff22f9":[52,0,1,0,6,4,11],
+"Typedef_8hpp.html#a52682e510859b64cc281c19ff60fcdec":[52,0,1,0,6,4,17],
 "Typedef_8hpp.html#a5f7b12465987e6c79819038fa4c34c80":[52,0,1,0,6,4,15],
 "Typedef_8hpp.html#a659804df29fc987ded2bd6f5b0f0a58d":[52,0,1,0,6,4,5],
 "Typedef_8hpp.html#a66843ac4dcde1ff3aac36e067ad8bced":[52,0,1,0,6,4,2],
@@ -93,6 +94,7 @@ var NAVTREEINDEX1 =
 "Typedef_8hpp.html#a81d986e3393a5493e14fd31796ffbaa2":[52,0,1,0,6,4,13],
 "Typedef_8hpp.html#a83f60c1b41d3eb636d1d3a3205a35f5f":[52,0,1,0,6,4,12],
 "Typedef_8hpp.html#a841623b3c351135dae7c1cb2315589f8":[52,0,1,0,6,4,4],
+"Typedef_8hpp.html#a86b3dc8432aa498c5e0730708321771b":[52,0,1,0,6,4,19],
 "Typedef_8hpp.html#aa2b480aa2dca8f8f4b1dda41e376289f":[52,0,1,0,6,4,6],
 "Typedef_8hpp.html#aa3ae9f99baa1784f17627de66c6bde39":[52,0,1,0,6,4,10],
 "Typedef_8hpp.html#ab84ae38e5b536b0be517b57922ab00db":[52,0,1,0,6,4,18],
@@ -100,7 +102,6 @@ var NAVTREEINDEX1 =
 "Typedef_8hpp.html#aea37d4d7a8053bc6ac9021182efeffce":[52,0,1,0,6,4,9],
 "Typedef_8hpp.html#aee67f1a7e11520ca09ba771818d1bf94":[52,0,1,0,6,4,16],
 "Typedef_8hpp.html#aef9a7ba24f9d9b39a3918d0db7ea27d2":[52,0,1,0,6,4,8],
-"Typedef_8hpp.html#afd2284cc1e09227ee1d297efa3fb62d7":[52,0,1,0,6,4,17],
 "Typedef_8hpp_source.html":[52,0,1,0,6,4],
 "UartReader_8hpp.html":[52,0,1,0,1,8,4],
 "UartReader_8hpp_source.html":[52,0,1,0,1,8,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "classUdon_1_1BasicStringView.html#a181a2b06913e918577975d09104d0462":[51,0,0,5,10],
 "classUdon_1_1BasicStringView.html#a1bdc242a240c0e36897183c52d2b4ee4":[50,0,1,8,3],
 "classUdon_1_1BasicStringView.html#a1bdc242a240c0e36897183c52d2b4ee4":[51,0,0,5,3],
-"classUdon_1_1BasicStringView.html#a1cb7b14ecfcef43359d802a53b92f62a":[50,0,1,8,36],
-"classUdon_1_1BasicStringView.html#a1cb7b14ecfcef43359d802a53b92f62a":[51,0,0,5,36]
+"classUdon_1_1BasicStringView.html#a1cb7b14ecfcef43359d802a53b92f62a":[50,0,1,8,36]
 };

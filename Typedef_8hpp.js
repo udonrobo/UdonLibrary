@@ -17,7 +17,8 @@ var Typedef_8hpp =
     [ "IsIntegralNotBool", "Typedef_8hpp.html#acee956e83236c2b7344ef5690de18c76", null ],
     [ "IsScalar", "Typedef_8hpp.html#a5f7b12465987e6c79819038fa4c34c80", null ],
     [ "RemoveConstT", "Typedef_8hpp.html#aee67f1a7e11520ca09ba771818d1bf94", null ],
-    [ "RemoveCVT", "Typedef_8hpp.html#afd2284cc1e09227ee1d297efa3fb62d7", null ],
+    [ "RemoveCVRefT", "Typedef_8hpp.html#a52682e510859b64cc281c19ff60fcdec", null ],
     [ "RemoveReferenceT", "Typedef_8hpp.html#ab84ae38e5b536b0be517b57922ab00db", null ],
+    [ "RemoveVolatileT", "Typedef_8hpp.html#a86b3dc8432aa498c5e0730708321771b", null ],
     [ "void_t", "Typedef_8hpp.html#a0f7a4f244193b2b15df30bbb0234808d", null ]
 ];

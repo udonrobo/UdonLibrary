@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"classUdon_1_1BasicStringView.html#a1cb7b14ecfcef43359d802a53b92f62a":[51,0,0,5,36],
 "classUdon_1_1BasicStringView.html#a1e35b6e479f90c2b31637e3c77188f38":[50,0,1,8,20],
 "classUdon_1_1BasicStringView.html#a1e35b6e479f90c2b31637e3c77188f38":[51,0,0,5,20],
 "classUdon_1_1BasicStringView.html#a21929ea460cf8f9fb59e156781b67670":[50,0,1,8,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "classUdon_1_1I2cBusImpl.html#a9e30480b30a03d03cd617304384d86e0":[51,0,0,20,20],
 "classUdon_1_1I2cBusImpl.html#a9ee93d9c7213b739d4fec804e340ba16":[50,0,1,23,15],
 "classUdon_1_1I2cBusImpl.html#a9ee93d9c7213b739d4fec804e340ba16":[51,0,0,20,15],
-"classUdon_1_1I2cBusImpl.html#aa88e88dcc35ea00a532a76796f4396be":[50,0,1,23,5],
-"classUdon_1_1I2cBusImpl.html#aa88e88dcc35ea00a532a76796f4396be":[51,0,0,20,5]
+"classUdon_1_1I2cBusImpl.html#aa88e88dcc35ea00a532a76796f4396be":[50,0,1,23,5]
 };

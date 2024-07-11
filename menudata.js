@@ -64,7 +64,16 @@ var menudata={children:[
 {text:"t",url:"namespacemembers_func.html#index_t"},
 {text:"u",url:"namespacemembers_func.html#index_u"}]},
 {text:"変数",url:"namespacemembers_vars.html"},
-{text:"型定義",url:"namespacemembers_type.html"},
+{text:"型定義",url:"namespacemembers_type.html",children:[
+{text:"d",url:"namespacemembers_type.html#index_d"},
+{text:"e",url:"namespacemembers_type.html#index_e"},
+{text:"i",url:"namespacemembers_type.html#index_i"},
+{text:"l",url:"namespacemembers_type.html#index_l"},
+{text:"p",url:"namespacemembers_type.html#index_p"},
+{text:"r",url:"namespacemembers_type.html#index_r"},
+{text:"s",url:"namespacemembers_type.html#index_s"},
+{text:"v",url:"namespacemembers_type.html#index_v"},
+{text:"w",url:"namespacemembers_type.html#index_w"}]},
 {text:"列挙型",url:"namespacemembers_enum.html"}]}]},
 {text:"クラス",url:"annotated.html",children:[
 {text:"クラス一覧",url:"annotated.html"},
