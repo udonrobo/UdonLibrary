@@ -68,35 +68,35 @@ namespace Udon
             void argsDeserialize() const {}
 
             /// @brief bool型
-            template <typename Bool, EnableIfNullptrT<IsBool<RemoveReferenceT<Bool>>::value> = nullptr>
+            template <typename Bool, EnableIfNullptrT<IsBool<RemoveCVRefT<Bool>>::value> = nullptr>
             void deserialize(Bool& rhs)
             {
                 rhs = popBool();
             }
 
             /// @brief 整数型
-            template <typename IntegralNotBool, EnableIfNullptrT<IsIntegralNotBool<RemoveReferenceT<IntegralNotBool>>::value> = nullptr>
+            template <typename IntegralNotBool, EnableIfNullptrT<IsIntegralNotBool<RemoveCVRefT<IntegralNotBool>>::value> = nullptr>
             void deserialize(IntegralNotBool& rhs)
             {
                 rhs = popArithmetic<IntegralNotBool>();
             }
 
             /// @brief 浮動小数点型
-            template <typename FloatingPoint, EnableIfNullptrT<IsFloatingPoint<RemoveReferenceT<FloatingPoint>>::value> = nullptr>
+            template <typename FloatingPoint, EnableIfNullptrT<IsFloatingPoint<RemoveCVRefT<FloatingPoint>>::value> = nullptr>
             void deserialize(FloatingPoint& rhs)
             {
                 rhs = popArithmetic<Udon::Float32>();
             }
 
             /// @brief 列挙型
-            template <typename Enum, EnableIfNullptrT<IsEnum<RemoveReferenceT<Enum>>::value> = nullptr>
+            template <typename Enum, EnableIfNullptrT<IsEnum<RemoveCVRefT<Enum>>::value> = nullptr>
             void deserialize(Enum& rhs)
             {
                 rhs = static_cast<Enum>(popArithmetic<typename std::underlying_type<Enum>::type>());
             }
 
             /// @brief 配列型
-            template <typename Array, EnableIfNullptrT<IsArray<RemoveReferenceT<Array>>::value> = nullptr>
+            template <typename Array, EnableIfNullptrT<IsArray<RemoveCVRefT<Array>>::value> = nullptr>
             void deserialize(Array& rhs)
             {
                 for (auto& element : rhs)
@@ -106,7 +106,7 @@ namespace Udon
             }
 
             /// @brief メンバ変数列挙用の関数が定義されている型
-            template <typename Enumerable, EnableIfNullptrT<HasMemberFunctionEnumerate<RemoveReferenceT<Enumerable>>::value> = nullptr>
+            template <typename Enumerable, EnableIfNullptrT<HasMemberFunctionEnumerate<RemoveCVRefT<Enumerable>>::value> = nullptr>
             void deserialize(Enumerable& rhs)
             {
                 rhs.enumerate(*this);

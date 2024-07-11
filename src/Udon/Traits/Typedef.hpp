@@ -16,16 +16,16 @@ namespace Udon
     {
 
         template <typename T>
-        using DecayT = typename std::decay<T>::type;
+        using RemoveConstT = typename std::remove_const<T>::type;
 
         template <typename T>
-        using RemoveConstT = typename std::remove_const<T>::type;
+        using RemoveVolatileT = typename std::remove_volatile<T>::type;
 
         template <typename T>
         using RemoveReferenceT = typename std::remove_reference<T>::type;
 
         template <typename T>
-        using RemoveCVT = RemoveConstT<RemoveReferenceT<T>>;
+        using RemoveCVRefT = RemoveConstT<RemoveVolatileT<RemoveReferenceT<T>>>;
 
         template <typename T>
         using IsBool = std::is_same<T, bool>;
@@ -50,6 +50,9 @@ namespace Udon
 
         template <typename T>
         using IsArray = std::is_array<T>;
+
+        template <typename T>
+        using DecayT = typename std::decay<T>::type;
 
         template <typename T>
         using IsCString = std::is_same<DecayT<T>, const char*>;

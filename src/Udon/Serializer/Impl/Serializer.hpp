@@ -68,35 +68,35 @@ namespace Udon
             void argsUnpack() const {}
 
             /// @brief bool型
-            template <typename Bool, EnableIfNullptrT<IsBool<RemoveReferenceT<Bool>>::value> = nullptr>
+            template <typename Bool, EnableIfNullptrT<IsBool<RemoveCVRefT<Bool>>::value> = nullptr>
             void serialize(Bool rhs)
             {
                 pushBool(rhs);
             }
 
             /// @brief 整数型 && bool型以外
-            template <typename IntegralNotBool, EnableIfNullptrT<IsIntegralNotBool<RemoveReferenceT<IntegralNotBool>>::value> = nullptr>
+            template <typename IntegralNotBool, EnableIfNullptrT<IsIntegralNotBool<RemoveCVRefT<IntegralNotBool>>::value> = nullptr>
             void serialize(IntegralNotBool rhs)
             {
                 pushArithmetic(rhs);
             }
 
             /// @brief 浮動小数点型
-            template <typename FloatingPoint, EnableIfNullptrT<IsFloatingPoint<RemoveReferenceT<FloatingPoint>>::value> = nullptr>
+            template <typename FloatingPoint, EnableIfNullptrT<IsFloatingPoint<RemoveCVRefT<FloatingPoint>>::value> = nullptr>
             void serialize(FloatingPoint rhs)
             {
                 pushArithmetic(static_cast<Udon::Float32>(rhs));
             }
 
             /// @brief 列挙型
-            template <typename Enum, EnableIfNullptrT<IsEnum<RemoveReferenceT<Enum>>::value> = nullptr>
+            template <typename Enum, EnableIfNullptrT<IsEnum<RemoveCVRefT<Enum>>::value> = nullptr>
             void serialize(Enum rhs)
             {
                 pushArithmetic(static_cast<typename std::underlying_type<Enum>::type>(rhs));
             }
 
             /// @brief 配列型
-            template <typename Array, EnableIfNullptrT<IsArray<RemoveReferenceT<Array>>::value> = nullptr>
+            template <typename Array, EnableIfNullptrT<IsArray<RemoveCVRefT<Array>>::value> = nullptr>
             void serialize(Array&& rhs)
             {
                 for (auto&& element : rhs)
@@ -106,7 +106,7 @@ namespace Udon
             }
 
             /// @brief メンバ変数列挙用の関数が定義されている型
-            template <typename Enumerable, EnableIfNullptrT<HasMemberFunctionEnumerate<RemoveReferenceT<Enumerable>>::value> = nullptr>
+            template <typename Enumerable, EnableIfNullptrT<HasMemberFunctionEnumerate<RemoveCVRefT<Enumerable>>::value> = nullptr>
             void serialize(Enumerable&& rhs)
             {
                 // static_assert(AlwaysFalse<Enumerable>::value, "Enumerable type must have a member function named 'enumerate'" __FUNCSIG__   );
