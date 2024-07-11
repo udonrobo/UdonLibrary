@@ -23,7 +23,7 @@ var searchData=
   ['getparamdif_20',['getParamDif',['../classUdon_1_1PidController.html#a676aa64347c092c3027f8d779e12d780',1,'Udon::PidController']]],
   ['getparamint_21',['getParamInt',['../classUdon_1_1PidController.html#ada828f9f8f4f27727b2f768e1abbbf84',1,'Udon::PidController']]],
   ['getparampro_22',['getParamPro',['../classUdon_1_1PidController.html#acc0065e2ac11108241b139e36f0d33d3',1,'Udon::PidController']]],
-  ['getpower_23',['getPower',['../classUdon_1_1PidController.html#a60133038754ac22f497961e3598be136',1,'Udon::PidController']]],
+  ['getpower_23',['getPower',['../classUdon_1_1PidController.html#a19755615e61b88b80d78d1b5148e224e',1,'Udon::PidController::getPower() const noexcept'],['../classUdon_1_1PidController.html#a9f2e83f8957560f295d9c45b3687795c',1,'Udon::PidController::getPower(double min, double max) const noexcept']]],
   ['getpowerdif_24',['getPowerDif',['../classUdon_1_1PidController.html#a27cffda831fbfdb427227f1871543375',1,'Udon::PidController']]],
   ['getpowerint_25',['getPowerInt',['../classUdon_1_1PidController.html#a6ed6015ebd0c75b4f632dc90d909a9ea',1,'Udon::PidController']]],
   ['getpowerpro_26',['getPowerPro',['../classUdon_1_1PidController.html#a13642f81615bdefdf2cd54e1e9282fd0',1,'Udon::PidController']]],

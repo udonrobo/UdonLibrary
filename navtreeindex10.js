@@ -1,5 +1,9 @@
 var NAVTREEINDEX10 =
 {
+"structUdon_1_1Polar.html#a7fc1e62301584587e761132cc8d33e28":[50,0,1,46,14],
+"structUdon_1_1Polar.html#a7fc1e62301584587e761132cc8d33e28":[51,0,0,43,14],
+"structUdon_1_1Polar.html#a81f5a75525b32afde68537375c3e63b1":[50,0,1,46,15],
+"structUdon_1_1Polar.html#a81f5a75525b32afde68537375c3e63b1":[51,0,0,43,15],
 "structUdon_1_1Polar.html#a94fe23336cc8f7a4ce4bb53dd71448d8":[50,0,1,46,6],
 "structUdon_1_1Polar.html#a94fe23336cc8f7a4ce4bb53dd71448d8":[51,0,0,43,6],
 "structUdon_1_1Polar.html#a9b7c76bc69e6be271ebe272f011b686b":[50,0,1,46,5],
@@ -245,9 +249,5 @@ var NAVTREEINDEX10 =
 "structUdon_1_1RingBuffer_1_1iterator.html#a568d264abda087927289b27949630834":[50,0,1,51,1,9],
 "structUdon_1_1RingBuffer_1_1iterator.html#a568d264abda087927289b27949630834":[51,0,0,48,1,9],
 "structUdon_1_1RingBuffer_1_1iterator.html#a5d3bb25b1d17614f5c9fd9681a6daedf":[50,0,1,51,1,15],
-"structUdon_1_1RingBuffer_1_1iterator.html#a5d3bb25b1d17614f5c9fd9681a6daedf":[51,0,0,48,1,15],
-"structUdon_1_1RingBuffer_1_1iterator.html#a668ebff5a2c8bc7968239597e676c57d":[50,0,1,51,1,7],
-"structUdon_1_1RingBuffer_1_1iterator.html#a668ebff5a2c8bc7968239597e676c57d":[51,0,0,48,1,7],
-"structUdon_1_1RingBuffer_1_1iterator.html#a7f1fdef7113318ce85cb5bbc59ec4b0e":[50,0,1,51,1,1],
-"structUdon_1_1RingBuffer_1_1iterator.html#a7f1fdef7113318ce85cb5bbc59ec4b0e":[51,0,0,48,1,1]
+"structUdon_1_1RingBuffer_1_1iterator.html#a5d3bb25b1d17614f5c9fd9681a6daedf":[51,0,0,48,1,15]
 };
