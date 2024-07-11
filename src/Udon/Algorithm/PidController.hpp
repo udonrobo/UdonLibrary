@@ -82,12 +82,29 @@ namespace Udon
         }
 
         /// @brief 操作量の取得
+        /// @return 操作量
+        double getPower() const noexcept
+        {
+            return power.p + power.i + power.d;
+        }
+
+        /// @brief 操作量の取得
         /// @param min 操作量の最小値
         /// @param max 操作量の最大値
         /// @return 操作量
-        double getPower(double min = -250, double max = 250) const noexcept
+        double getPower(double min, double max) const noexcept
         {
-            return Udon::Constrain(power.p + power.i + power.d, min, max);
+            return Udon::Constrain(getPower(), min, max);
+        }
+
+        /// @brief 更新、操作量の取得
+        /// @param controlValue 制御量
+        /// @param targetValue 目標値
+        /// @return 操作量
+        double operator()(double controlValue, double targetValue) noexcept
+        {
+            update(controlValue, targetValue);
+            return getPower();
         }
 
         /// @brief 更新、操作量の取得
@@ -96,7 +113,7 @@ namespace Udon
         /// @param min 操作量の最小値
         /// @param max 操作量の最大値
         /// @return 操作量
-        double operator()(double controlValue, double targetValue, double min = -250, double max = 250) noexcept
+        double operator()(double controlValue, double targetValue, double min, double max) noexcept
         {
             update(controlValue, targetValue);
             return getPower(min, max);

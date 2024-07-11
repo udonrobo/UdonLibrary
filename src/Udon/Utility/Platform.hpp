@@ -119,7 +119,7 @@
 #            define UDON_PLATFORM_ENDIANNESS UDON_PLATFORM_BIG_ENDIAN
 #        endif
 #    elif defined(_M_IX86) || defined(_M_X64) || defined(_M_IA64) || defined(_M_ARM) || defined(_M_ARM64) || defined(_M_AMD64) || defined(_M_MRX000) || defined(_M_PPC) || defined(_M_ALPHA) || defined(_M_SH)
-#        define UDON_PLATFORM_ENDIANNESS UDON_PLATFORM_BIG_ENDIAN    // UDON_PLATFORM_LITTLE_ENDIAN
+#        define UDON_PLATFORM_ENDIANNESS UDON_PLATFORM_LITTLE_ENDIAN
 #    elif defined(_MIPSEB) || defined(_POWER) || defined(__s390__)
 #        define UDON_PLATFORM_ENDIANNESS UDON_PLATFORM_BIG_ENDIAN
 #    else

@@ -13,8 +13,10 @@ inline void test()
     
     pid.update(0.0, 0.0);
     pid.getPower();
+    pid.getPower(-250, 250);
 
     (void)pid(0.0, 0.0);
+    (void)pid(0.0, 0.0, -250, 250);
 
     pid.clearPower();
 
