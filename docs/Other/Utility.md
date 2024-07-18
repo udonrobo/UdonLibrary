@@ -2,7 +2,36 @@
 
 ## `Show 関数`
 
-``
+様々なオブジェクトを出力できます。マルチプラットフォームで動作します。PC の場合標準出力、マイコンの場合 USB シリアルへ送信します。
+
+```cpp
+void setup()
+{
+    Serial.begin(115200);  // マイコンを使用する場合必要
+    Udon::Show("Hello world!");
+}
+```
+
+ユーザー定義型の出力
+
+```cpp
+struct Sample
+{
+    int i;
+    double d;
+    UDON_ENUMERABLE(i, d);
+};
+
+void setup()
+{
+    Serial.begin(115200);
+    Udon::Show(Sample{ 10, 20.0 });
+}
+```
+
+Show
+
+ShowRaw 
 
 ## `Assert 関数`
 
@@ -19,6 +48,7 @@ static Udon::PadPS5BT pad;
 
 void setup()
 {
+    Serial.begin(115200);
     Udon::Assert(pad.begin(), "PS5 BT failed to start!");
 }
 ```

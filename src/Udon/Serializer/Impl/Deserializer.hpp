@@ -49,23 +49,23 @@ namespace Udon
             template <typename... Args>
             void operator()(const Args&... args) const
             {
-                argsDeserialize(args...);
+                argsUnpack(args...);
             }
 
         private:
             /// @brief 可変長テンプレート引数
             template <typename Head, typename... Tails>
-            void argsDeserialize(const Head& head, const Tails&... tails) const
+            void argsUnpack(const Head& head, const Tails&... tails) const
             {
                 const_cast<Deserializer&>(*this).deserialize(const_cast<Head&>(head));
                 // enumerate 関数は引数に一時オブジェクトを受けられる、かつconstexprである必要があるため "const Serializer& enumerator" になっている
                 // その関係で、operator()、本関数はconstな関数となり、thisポインタはconstなポインタになる。そのため const を外す。
 
-                argsDeserialize(tails...);
+                argsUnpack(tails...);
             }
 
             /// @brief 可変長引数展開の終端
-            void argsDeserialize() const {}
+            void argsUnpack() const {}
 
             /// @brief bool型
             template <typename Bool, EnableIfNullptrT<IsBool<RemoveCVRefT<Bool>>::value> = nullptr>
