@@ -69,35 +69,35 @@ namespace Udon
 
             /// @brief T が bool 型の場合の特殊化
             template <typename Bool>
-            struct Sizeof<Bool, EnableIfVoidT<IsBool<RemoveCVT<Bool>>::value>>
+            struct Sizeof<Bool, EnableIfVoidT<IsBool<RemoveCVRefT<Bool>>::value>>
             {
                 static constexpr ResultType value(...) noexcept { return 1; }
             };
 
             /// @brief T が算術型の場合の特殊化
             template <typename Integral>
-            struct Sizeof<Integral, EnableIfVoidT<IsIntegralNotBool<RemoveCVT<Integral>>::value>>
+            struct Sizeof<Integral, EnableIfVoidT<IsIntegralNotBool<RemoveCVRefT<Integral>>::value>>
             {
                 static constexpr ResultType value(...) noexcept { return sizeof(Integral) * CHAR_BIT; }
             };
 
             /// @brief T が浮動小数点型の場合の特殊化
             template <typename Float>
-            struct Sizeof<Float, EnableIfVoidT<IsFloatingPoint<RemoveCVT<Float>>::value>>
+            struct Sizeof<Float, EnableIfVoidT<IsFloatingPoint<RemoveCVRefT<Float>>::value>>
             {
                 static constexpr ResultType value(...) noexcept { return sizeof(Udon::Float32) * CHAR_BIT; }
             };
 
             /// @brief T が列挙型の場合の特殊化
             template <typename Enum>
-            struct Sizeof<Enum, EnableIfVoidT<IsEnum<RemoveCVT<Enum>>::value>>
+            struct Sizeof<Enum, EnableIfVoidT<IsEnum<RemoveCVRefT<Enum>>::value>>
             {
                 static constexpr ResultType value(...) noexcept { return sizeof(Enum) * CHAR_BIT; }
             };
 
             /// @brief T が配列型の場合の特殊化
             template <typename Array>
-            struct Sizeof<Array, EnableIfVoidT<IsArray<RemoveCVT<Array>>::value>>
+            struct Sizeof<Array, EnableIfVoidT<IsArray<RemoveCVRefT<Array>>::value>>
             {
                 static constexpr ResultType value(const SerializedBitSizeImpl& self, Array&& array) noexcept
                 {

@@ -21,6 +21,7 @@ inline void ReaderTest()
     });
 
     lora.begin();
+    lora.begin(0x00);
 
     auto message = lora.getMessage();
 
@@ -41,6 +42,8 @@ inline void WriterTest()
     });
 
     lora.begin();
+    lora.begin(0x00);
+    
     lora.setMessage(1234567890);
 }
 

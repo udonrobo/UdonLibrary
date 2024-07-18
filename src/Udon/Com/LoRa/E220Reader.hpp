@@ -42,6 +42,14 @@ namespace Udon
             darkAttachInterrupt(config.aux);
         }
 
+        /// @brief 受信開始
+        /// @param channel
+        void begin(uint8_t channel) noexcept
+        {
+            config.channel = channel;
+            begin();
+        }
+
         /// @brief RSSI 強度取得
         /// @note 受信エラー時の戻り値は不定
         /// @note RSSI 強度は最後に受信したメッセージのものを返す

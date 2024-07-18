@@ -9,21 +9,6 @@
 /// @brief UdonLibrary が含まれているかどうかを判定するマクロ
 #define UDON_INCLUDED
 
-//
-//    プラットフォーム定義
-//
-
-// プラットフォーム定義
-#include <Udon/Common/Platform.hpp>
-
-// 汎用Printf
-#include <Udon/Common/Printf.hpp>
-
-// 汎用表示
-#include <Udon/Common/Show.hpp>
-
-// 汎用時間取得
-#include <Udon/Common/Time.hpp>
 
 //
 //    アルゴリズム / algorithm
@@ -49,6 +34,7 @@
 
 // 数学
 #include <Udon/Algorithm/Math.hpp>
+
 
 //
 //    通信 / com
@@ -84,6 +70,7 @@
 // フォワーディング / メッセージ転送
 #include <Udon/Com/Common/Forwarding.hpp>
 
+
 //
 //    ファイルシステム / filesystem
 //
@@ -91,11 +78,13 @@
 // SDカード
 #include <Udon/Filesystem/Sd/Parameter.hpp>
 
+
 //
 //    シリアライザー / serializer
 //
 
 #include <Udon/Serializer/Serializer.hpp>
+
 
 //
 //    デバイスドライバー / driver
@@ -127,6 +116,7 @@
 
 // Raspberry Pi Pico サーボ
 #include <Udon/Driver/Servo.hpp>
+
 
 //
 //    ユーザー定義型 / types
@@ -168,6 +158,7 @@
 // コンテナ / リングバッファ
 #include <Udon/Types/RingBuffer.hpp>
 
+
 //
 //    トレイト / trait
 //
@@ -184,12 +175,25 @@
 // static_assert 失敗遅延
 #include <Udon/Traits/AlwaysFalse.hpp>
 
+
 //
-//    ユーティリティ / utility
+//    ユーティリティ
 //
+
+// プラットフォーム定義
+#include <Udon/Utility/Platform.hpp>
+
+// 汎用Printf
+#include <Udon/Utility/Printf.hpp>
 
 // 汎用表示
-#include <Udon/Common/Show.hpp>
+#include <Udon/Utility/Show.hpp>
 
-// フォーマット表示
-#include <Udon/Common/Printf.hpp>
+// 汎用時間取得
+#include <Udon/Utility/Time.hpp>
+
+// Raspberry Pi Pico 用ウォッチドックタイマー
+#include <Udon/Utility/PicoWDT.hpp>
+
+// アサート
+#include <Udon/Utility/Assert.hpp>

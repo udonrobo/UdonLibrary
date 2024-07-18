@@ -127,6 +127,12 @@ namespace Udon
         return (value - inputMin) * (outputMax - outputMin) / (inputMax - inputMin) + outputMin;
     }
 
+    // inline bool
+    // FloatEq(const double l, const double r)
+    // {
+    //     return 
+    // }
+
     /// @brief 値を正規化する
     /// @note -∞~+∞ の範囲を min~max の範囲に変換する (剰余算に最小値が設定できるようになったイメージ)
     /// @param value 正規化したい値

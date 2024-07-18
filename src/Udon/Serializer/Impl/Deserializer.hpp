@@ -16,7 +16,7 @@
 #include <Udon/Types/Float.hpp>
 #include <Udon/Traits/Typedef.hpp>
 #include <Udon/Serializer/SerializerTraits.hpp>
-#include <Udon/Common/Platform.hpp>
+#include <Udon/Utility/Platform.hpp>
 #include <Udon/Types/ArrayView.hpp>
 
 namespace Udon
@@ -49,54 +49,54 @@ namespace Udon
             template <typename... Args>
             void operator()(const Args&... args) const
             {
-                argsDeserialize(args...);
+                argsUnpack(args...);
             }
 
         private:
             /// @brief 可変長テンプレート引数
             template <typename Head, typename... Tails>
-            void argsDeserialize(const Head& head, const Tails&... tails) const
+            void argsUnpack(const Head& head, const Tails&... tails) const
             {
                 const_cast<Deserializer&>(*this).deserialize(const_cast<Head&>(head));
                 // enumerate 関数は引数に一時オブジェクトを受けられる、かつconstexprである必要があるため "const Serializer& enumerator" になっている
                 // その関係で、operator()、本関数はconstな関数となり、thisポインタはconstなポインタになる。そのため const を外す。
 
-                argsDeserialize(tails...);
+                argsUnpack(tails...);
             }
 
             /// @brief 可変長引数展開の終端
-            void argsDeserialize() const {}
+            void argsUnpack() const {}
 
             /// @brief bool型
-            template <typename Bool, EnableIfNullptrT<IsBool<RemoveReferenceT<Bool>>::value> = nullptr>
+            template <typename Bool, EnableIfNullptrT<IsBool<RemoveCVRefT<Bool>>::value> = nullptr>
             void deserialize(Bool& rhs)
             {
                 rhs = popBool();
             }
 
             /// @brief 整数型
-            template <typename IntegralNotBool, EnableIfNullptrT<IsIntegralNotBool<RemoveReferenceT<IntegralNotBool>>::value> = nullptr>
+            template <typename IntegralNotBool, EnableIfNullptrT<IsIntegralNotBool<RemoveCVRefT<IntegralNotBool>>::value> = nullptr>
             void deserialize(IntegralNotBool& rhs)
             {
                 rhs = popArithmetic<IntegralNotBool>();
             }
 
             /// @brief 浮動小数点型
-            template <typename FloatingPoint, EnableIfNullptrT<IsFloatingPoint<RemoveReferenceT<FloatingPoint>>::value> = nullptr>
+            template <typename FloatingPoint, EnableIfNullptrT<IsFloatingPoint<RemoveCVRefT<FloatingPoint>>::value> = nullptr>
             void deserialize(FloatingPoint& rhs)
             {
                 rhs = popArithmetic<Udon::Float32>();
             }
 
             /// @brief 列挙型
-            template <typename Enum, EnableIfNullptrT<IsEnum<RemoveReferenceT<Enum>>::value> = nullptr>
+            template <typename Enum, EnableIfNullptrT<IsEnum<RemoveCVRefT<Enum>>::value> = nullptr>
             void deserialize(Enum& rhs)
             {
                 rhs = static_cast<Enum>(popArithmetic<typename std::underlying_type<Enum>::type>());
             }
 
             /// @brief 配列型
-            template <typename Array, EnableIfNullptrT<IsArray<RemoveReferenceT<Array>>::value> = nullptr>
+            template <typename Array, EnableIfNullptrT<IsArray<RemoveCVRefT<Array>>::value> = nullptr>
             void deserialize(Array& rhs)
             {
                 for (auto& element : rhs)
@@ -106,7 +106,7 @@ namespace Udon
             }
 
             /// @brief メンバ変数列挙用の関数が定義されている型
-            template <typename Enumerable, EnableIfNullptrT<HasMemberFunctionEnumerate<RemoveReferenceT<Enumerable>>::value> = nullptr>
+            template <typename Enumerable, EnableIfNullptrT<HasMemberFunctionEnumerate<RemoveCVRefT<Enumerable>>::value> = nullptr>
             void deserialize(Enumerable& rhs)
             {
                 rhs.enumerate(*this);

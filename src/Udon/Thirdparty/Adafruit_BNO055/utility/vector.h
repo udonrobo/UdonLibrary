@@ -24,7 +24,7 @@
 #ifndef IMUMATH_VECTOR_HPP
 #define IMUMATH_VECTOR_HPP
 
-#include <math.h>
+#include <cmath>
 #include <stdint.h>
 #include <string.h>
 
@@ -79,7 +79,7 @@ public:
 
   void normalize() {
     double mag = magnitude();
-    if (isnan(mag) || mag == 0.0)
+    if (std::isnan(mag) || mag == 0.0)
       return;
 
     for (int i = 0; i < N; i++)

@@ -9,9 +9,9 @@
 #include "ICanBus.hpp"
 
 #include <Udon/Serializer/Serializer.hpp>
-#include <Udon/Common/Show.hpp>
+#include <Udon/Utility/Show.hpp>
 #include <Udon/Serializer/SerializerTraits.hpp>
-#include <Udon/Common/Printf.hpp>
+#include <Udon/Utility/Printf.hpp>
 
 namespace Udon
 {

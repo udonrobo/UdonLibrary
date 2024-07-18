@@ -7,7 +7,7 @@
 #pragma once
 
 #include <Udon/Stl/EnableSTL.hpp>
-#include <Udon/Common/Platform.hpp>
+#include <Udon/Utility/Platform.hpp>
 #include <cstddef>    // std::ptrdiff_t
 #include <iterator>
 #include <algorithm>

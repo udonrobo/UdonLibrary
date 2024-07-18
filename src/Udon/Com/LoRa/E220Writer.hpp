@@ -46,6 +46,14 @@ namespace Udon
             E220Base::begin();
         }
 
+        /// @brief 受信開始
+        /// @param channel
+        void begin(uint8_t channel) noexcept
+        {
+            config.channel = channel;
+            begin();
+        }
+
         /// @brief メッセージを送信
         /// @param message メッセージ
         void setMessage(const MessageType& message)

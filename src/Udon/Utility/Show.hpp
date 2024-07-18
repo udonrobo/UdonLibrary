@@ -6,11 +6,12 @@
 
 #pragma once
 
-#include <Udon/Common/Platform.hpp>
+#include <Udon/Utility/Platform.hpp>
 #include <Udon/Traits/Typedef.hpp>
 #include <Udon/Traits/HasMemberFunction.hpp>
 #include <Udon/Traits/AlwaysFalse.hpp>
 #include <utility>
+#include <string>
 
 #ifndef F
 #    define F(x) (x)
@@ -46,7 +47,7 @@ namespace Udon
             constexpr ResultType argsUnpack(Head&& head, Tail&&... tail) const noexcept
             {
                 // 全メンバが出力可能か判定し、論理積を得る
-                return Test<RemoveReferenceT<Head>>::test(*this, std::forward<Head>(head)) and argsUnpack(std::forward<Tail>(tail)...);
+                return Test<RemoveCVRefT<Head>>::test(*this, std::forward<Head>(head)) and argsUnpack(std::forward<Tail>(tail)...);
             }
 
             // 可変長引数展開 (終端)
@@ -60,7 +61,7 @@ namespace Udon
             {
                 static constexpr bool test(...)
                 {
-                     //static_assert(AlwaysFalse<T>::value, "Udon::Print: T is not printable." __FUNCTION__);
+                    // static_assert(AlwaysFalse<T>::value, "Udon::Print: T is not printable." __FUNCTION__);
                     return false;
                 }
             };
@@ -69,8 +70,8 @@ namespace Udon
             template <typename Enum>
             struct Test<Enum, EnableIfVoidT<IsEnum<Enum>::value>>
             {
-				static constexpr bool test(...) { return true; }
-			};
+                static constexpr bool test(...) { return true; }
+            };
 
             // 配列型(文字配列除く)は要素が出力可能であるとき出力可能
             template <typename Array>
@@ -106,11 +107,11 @@ namespace Udon
             };
 
             // enumerate が存在すれば出力可能
-            template <typename Enumeratable>
-            struct Test<Enumeratable, EnableIfVoidT<
-                                          HasMemberFunctionEnumerate<Enumeratable>::value                  // enumerate 関数が存在する
-                                          and not HasMemberFunctionShow<Enumeratable>::value               // show 関数が存在しない
-                                          and not IsOutputStreamable<OutputStream, Enumeratable>::value    // ストリームへの出力が不可能
+            template <typename Enumerable>
+            struct Test<Enumerable, EnableIfVoidT<
+                                          HasMemberFunctionEnumerate<Enumerable>::value                  // enumerate 関数が存在する
+                                          and not HasMemberFunctionShow<Enumerable>::value               // show 関数が存在しない
+                                          and not IsOutputStreamable<OutputStream, Enumerable>::value    // ストリームへの出力が不可能
                                           >>
             {
                 template <typename T>
@@ -129,7 +130,7 @@ namespace Udon
         class Printer
         {
         public:
-            Printer(OutputStream& stream, bool delimiterEnable)
+            constexpr Printer(OutputStream& stream, bool delimiterEnable)
                 : stream(stream)
                 , delimiterEnable(delimiterEnable)
             {
@@ -171,18 +172,18 @@ namespace Udon
 
         private:
             /// @brief 列挙型
-            template <typename Enum, EnableIfNullptrT<IsEnum<RemoveReferenceT<Enum>>::value> = nullptr>
+            template <typename Enum, EnableIfNullptrT<IsEnum<RemoveCVRefT<Enum>>::value> = nullptr>
             ResultType print(Enum&& e)
             {
-                print(static_cast<typename std::underlying_type<RemoveReferenceT<Enum>>::type>(e));
+                print(static_cast<typename std::underlying_type<RemoveCVRefT<Enum>>::type>(e));
             }
 
             /// @brief 組み込み配列
             /// @note C言語スタイル文字列は配列として扱わない
             template <typename Array, EnableIfNullptrT<
-                                          IsArray<RemoveReferenceT<Array>>::value                                     // 配列である
-                                          and not IsCString<RemoveReferenceT<Array>>::value                           // C言語スタイル文字列は配列として扱わない
-                                          and not IsOutputStreamable<OutputStream, RemoveReferenceT<Array>>::value    // ストリームへの出力が不可能
+                                          IsArray<RemoveCVRefT<Array>>::value                                     // 配列である
+                                          and not IsCString<RemoveCVRefT<Array>>::value                           // C言語スタイル文字列は配列として扱わない
+                                          and not IsOutputStreamable<OutputStream, RemoveCVRefT<Array>>::value    // ストリームへの出力が不可能
                                           > = nullptr>
             ResultType print(Array&& array)
             {
@@ -205,7 +206,7 @@ namespace Udon
             // 3. enumerate()
 
             /// @brief show が存在する型
-            template <typename Printable, EnableIfNullptrT<HasMemberFunctionShow<RemoveReferenceT<Printable>>::value> = nullptr>
+            template <typename Printable, EnableIfNullptrT<HasMemberFunctionShow<RemoveCVRefT<Printable>>::value> = nullptr>
             ResultType print(Printable&& printable)
             {
                 printable.show();
@@ -213,8 +214,8 @@ namespace Udon
 
             /// @brief ストリームへ出力可能な型
             template <typename OutputStreamable, EnableIfNullptrT<
-                                                     IsOutputStreamable<OutputStream, RemoveReferenceT<OutputStreamable>>::value    // ストリームへ出力可能
-                                                     and not HasMemberFunctionShow<RemoveReferenceT<OutputStreamable>>::value       // show が存在しない
+                                                     IsOutputStreamable<OutputStream, RemoveCVRefT<OutputStreamable>>::value    // ストリームへ出力可能
+                                                     and not HasMemberFunctionShow<RemoveCVRefT<OutputStreamable>>::value       // show が存在しない
                                                      > = nullptr>
             ResultType print(OutputStreamable&& outputStreamable)
             {
@@ -222,12 +223,12 @@ namespace Udon
             }
 
             /// @brief enumerate が存在する型
-            template <typename Enumeratable, EnableIfNullptrT<
-                                                 HasMemberFunctionEnumerate<RemoveReferenceT<Enumeratable>>::value                  // enumerate が存在
-                                                 and not HasMemberFunctionShow<RemoveReferenceT<Enumeratable>>::value               // show が存在しない
-                                                 and not IsOutputStreamable<OutputStream, RemoveReferenceT<Enumeratable>>::value    // ストリームへ出力可能でない
+            template <typename Enumerable, EnableIfNullptrT<
+                                                 HasMemberFunctionEnumerate<RemoveCVRefT<Enumerable>>::value                  // enumerate が存在
+                                                 and not HasMemberFunctionShow<RemoveCVRefT<Enumerable>>::value               // show が存在しない
+                                                 and not IsOutputStreamable<OutputStream, RemoveCVRefT<Enumerable>>::value    // ストリームへ出力可能でない
                                                  > = nullptr>
-            ResultType print(Enumeratable&& enumerable)
+            ResultType print(Enumerable&& enumerable)
             {
                 stream << "{ ";
                 enumerable.enumerate(*this);
@@ -295,32 +296,38 @@ namespace Udon
     namespace Impl
     {
 
+        struct ShowConfig
+        {
+            bool delimiter;
+            bool newline;
+        };
+
         template <typename... Args>
-        void ShowImpl(bool enableDelimiter, bool enableNewline, Args&&... args)
+        void ShowImpl(const ShowConfig& config, Args&&... args)
         {
 
 #if defined(ARDUINO)
 
             static_assert(Traits::IsPrintable<ArduinoStream, Args...>::value, "T is not printable");
-            ArduinoStream                stream;
-            Impl::Printer<ArduinoStream> printer{ stream, enableDelimiter };
+            ArduinoStream stream;
+            Impl::Printer<ArduinoStream> printer{ stream, config.delimiter };
 
 #elif defined(SIV3D_INCLUDED)
 
             static_assert(Traits::IsPrintable<Siv3DStream, Args...>::value, "T is not printable");
-            Siv3DStream                stream;
-            Impl::Printer<Siv3DStream> printer{ stream, enableDelimiter };
+            Siv3DStream stream;
+            Impl::Printer<Siv3DStream> printer{ stream, config.delimiter };
 
 #elif UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE
 
             static_assert(Traits::IsPrintable<std::ostream, Args...>::value, "T is not printable");
-            Impl::Printer<std::ostream> printer{ std::cout, enableDelimiter };
+            Impl::Printer<std::ostream> printer{ std::cout, config.delimiter };
 
 #endif
 
             printer(std::forward<Args>(args)...);
 
-            if (enableNewline)
+            if (config.newline)
             {
                 printer('\n');
             }
@@ -331,20 +338,32 @@ namespace Udon
     template <typename... Args>
     void Show(Args&&... args)
     {
-        Impl::ShowImpl(true, false, std::forward<Args>(args)...);
+        Impl::ShowImpl({
+                           .delimiter = true,
+                           .newline = false,
+                       },
+                       std::forward<Args>(args)...);
     }
 
     /// @brief 改行、区切り文字ありで出力する
     template <typename... Args>
     void Showln(Args&&... args)
     {
-        Impl::ShowImpl(true, true, std::forward<Args>(args)...);
+        Impl::ShowImpl({
+                           .delimiter = true,
+                           .newline = true,
+                       },
+                       std::forward<Args>(args)...);
     }
 
     /// @brief 改行、区切り文字なしで出力する
     template <typename... Args>
     void ShowRaw(Args&&... args)
     {
-        Impl::ShowImpl(false, false, std::forward<Args>(args)...);
+        Impl::ShowImpl({
+                           .delimiter = false,
+                           .newline = false,
+                       },
+                       std::forward<Args>(args)...);
     }
 }    // namespace Udon

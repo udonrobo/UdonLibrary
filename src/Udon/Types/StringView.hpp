@@ -12,7 +12,7 @@
 #include <algorithm>
 #include <iterator>
 #include <Udon/Algorithm/StringToNumberParser.hpp>
-#include <Udon/Common/Platform.hpp>
+#include <Udon/Utility/Platform.hpp>
 
 #if UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE
 #    include <iostream>

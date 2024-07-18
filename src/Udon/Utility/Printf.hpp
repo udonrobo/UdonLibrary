@@ -10,7 +10,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-#include <Udon/Common/Platform.hpp>
+#include <Udon/Utility/Platform.hpp>
 
 namespace Udon
 {

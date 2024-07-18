@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <Udon/Common/Platform.hpp>
+#include <Udon/Utility/Platform.hpp>
 
 #ifdef ARDUINO
 

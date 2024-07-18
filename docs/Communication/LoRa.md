@@ -32,7 +32,7 @@ void setup()
 
 void loop()
 {
-    if (const Udon::Optional<uint64_t> message = lora.getMessage())
+    if (const auto message = lora.getMessage())  // message: Udon::Optional<uint64_t>
     {
         Serial.println(*message);
     }
@@ -69,7 +69,29 @@ void loop()
 }
 ```
 
-### 設定値の変更
+### チャンネルの設定
+
+コンストラクタでチャンネルを設定できますが、begin 関数の引数にチャンネルを渡すことで設定することもできます。
+
+```cpp
+#include <Udon.hpp>
+
+static Udon::E220Writer<uint64_t> lora({
+    .serial = Serial1,
+    .m0 = 2,
+    .m1 = 3,
+    .aux = 4,
+    // チャンネル番号を省略
+});
+
+void setup()
+{
+    const uint8_t channel = 10;
+    lora.begin(channel);
+}
+```
+
+### その他設定値の変更
 
 設定用構造体は以下のように定義されています。
 

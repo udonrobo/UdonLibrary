@@ -6,10 +6,14 @@
 
 #pragma once
 
-#include <Udon/Common/Platform.hpp>
-#include <Udon/Common/Show.hpp>
+#include <Udon/Utility/Platform.hpp>
+#include <Udon/Utility/Show.hpp>
 #include <type_traits>
 #include <new>
+
+#if __has_include(<new.h>)
+#   include <new.h>
+#endif
 
 namespace Udon
 {
