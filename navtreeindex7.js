@@ -25,7 +25,7 @@ var NAVTREEINDEX7 =
 "md_docs_2Communication_2Pad.html#autotoc_md94":[14,3],
 "md_docs_2Communication_2Pad.html#autotoc_md95":[14,4],
 "md_docs_2Communication_2Pad.html#autotoc_md96":[14,5],
-"md_docs_2Communication_2UART.html":[15],
+"md_docs_2Communication_2Serial.html":[15],
 "md_docs_2Developer_2Acknowledgments.html":[16],
 "md_docs_2Developer_2CI.html":[17],
 "md_docs_2Developer_2CI.html#autotoc_md100":[17,0],

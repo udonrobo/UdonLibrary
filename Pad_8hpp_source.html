@@ -122,7 +122,7 @@ $(function(){initNavTree('Pad_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#    include &quot;<a class="code" href="Can_8hpp.html">Can.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#    include &quot;<a class="code" href="I2c_8hpp.html">I2c.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#    include &quot;<a class="code" href="Uart_8hpp.html">Uart.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#    include &quot;<a class="code" href="Serial_8hpp.html">Serial.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#    include &quot;<a class="code" href="Pad_2PadPS5_8hpp.html">Pad/PadPS5.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#    include &quot;<a class="code" href="LoRa_8hpp.html">LoRa.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
@@ -131,7 +131,7 @@ $(function(){initNavTree('Pad_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">using </span>CanPadPS5 = PadPS5&lt;CanReader&gt;;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">using </span>I2cPadPS5 = PadPS5&lt;I2cMasterReader&gt;;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">using </span>UartPadPS5 = PadPS5&lt;UartReader&gt;;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">using </span>SerialPadPS5 = PadPS5&lt;SerialReader&gt;;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#    if __cplusplus &gt;= 201402L</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">// E220Reader は C++14 以上の機能を使用しているため、C++14 以上でのみ使用可能</span></div>
@@ -158,8 +158,8 @@ $(function(){initNavTree('Pad_8hpp_source.html',''); initResizable(true); });
 <div class="ttc" id="aI2c_8hpp_html"><div class="ttname"><a href="I2c_8hpp.html">I2c.hpp</a></div></div>
 <div class="ttc" id="aLoRa_8hpp_html"><div class="ttname"><a href="LoRa_8hpp.html">LoRa.hpp</a></div></div>
 <div class="ttc" id="aPad_2PadPS5_8hpp_html"><div class="ttname"><a href="Pad_2PadPS5_8hpp.html">PadPS5.hpp</a></div></div>
+<div class="ttc" id="aSerial_8hpp_html"><div class="ttname"><a href="Serial_8hpp.html">Serial.hpp</a></div></div>
 <div class="ttc" id="aSivPadPS5_8hpp_html"><div class="ttname"><a href="SivPadPS5_8hpp.html">SivPadPS5.hpp</a></div></div>
-<div class="ttc" id="aUart_8hpp_html"><div class="ttname"><a href="Uart_8hpp.html">Uart.hpp</a></div></div>
 <div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
 <div class="ttc" id="anamespaceUdon_html_a4b5d3b294d6e954b48868d836bd9a427"><div class="ttname"><a href="namespaceUdon.html#a4b5d3b294d6e954b48868d836bd9a427">Udon::SivPadPS5</a></div><div class="ttdeci">PadPS5&lt; Impl::SivPadPS5Reader &gt; SivPadPS5</div><div class="ttdoc">OpenSiv3D用 PS5コントローラー</div><div class="ttdef"><b>Definition</b> SivPadPS5.hpp:81</div></div>
 </div><!-- fragment --></div><!-- contents -->

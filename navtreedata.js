@@ -137,7 +137,7 @@ var NAVTREE =
       [ "Bluetooth 使用時の受信側マイコン用クラス", "md_docs_2Communication_2Pad.html#autotoc_md95", null ],
       [ "Bluetooth ドングルとのペアリング", "md_docs_2Communication_2Pad.html#autotoc_md96", null ]
     ] ],
-    [ "UART", "md_docs_2Communication_2UART.html", null ],
+    [ "UART / USB Serial", "md_docs_2Communication_2Serial.html", null ],
     [ "謝辞", "md_docs_2Developer_2Acknowledgments.html", null ],
     [ "自動テスト", "md_docs_2Developer_2CI.html", [
       [ "Arduino Lint", "md_docs_2Developer_2CI.html#autotoc_md100", [
@@ -425,7 +425,7 @@ var NAVTREEINDEX =
 "classUdon_1_1I2cBusImpl.html#a9e30480b30a03d03cd617304384d86e0",
 "classUdon_1_1Impl_1_1PadPS5OnboardBTReader.html#a93920f0595e7dac0be2bc88ae629f493",
 "classUdon_1_1PidController.html#a27cffda831fbfdb427227f1871543375",
-"classUdon_1_1StaticVector.html#a965442988775ae8bbcdc574fec1b13c2",
+"classUdon_1_1StaticVector.html#a5f10db9e9f2e6ba90c2ccf4039fc733f",
 "md_docs_2Communication_2Pad.html#autotoc_md72",
 "namespaceUdon.html#a6082062cd72559c99e5a957081355920",
 "structUdon_1_1HSV.html#acd73bc630d80347291b1733d8e675012",

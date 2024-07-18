@@ -9,6 +9,6 @@ var searchData=
   ['ringbuffer_2emd_6',['RingBuffer.md',['../RingBuffer_8md.html',1,'']]],
   ['robomastermotor_2ehpp_7',['RoboMasterMotor.hpp',['../RoboMasterMotor_8hpp.html',1,'']]],
   ['robomastermotor_2emd_8',['RoboMasterMotor.md',['../RoboMasterMotor_8md.html',1,'']]],
-  ['ros2uartreader_2ehpp_9',['Ros2UartReader.hpp',['../Ros2UartReader_8hpp.html',1,'']]],
-  ['ros2uartwriter_2ehpp_10',['Ros2UartWriter.hpp',['../Ros2UartWriter_8hpp.html',1,'']]]
+  ['ros2serialreader_2ehpp_9',['Ros2SerialReader.hpp',['../Ros2SerialReader_8hpp.html',1,'']]],
+  ['ros2serialwriter_2ehpp_10',['Ros2SerialWriter.hpp',['../Ros2SerialWriter_8hpp.html',1,'']]]
 ];

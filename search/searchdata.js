@@ -1,7 +1,7 @@
 var indexSectionsWithContent =
 {
   0: "29_abcdefghijlmnopqrstuvwxyz~■、そとアイエオカクコサシスセソタチテデトドバヒビフベペホボマメモユラルロ三二他使個値全公共列割原受名周命問固型基変定実導必拡指推整既曖更書最本検極概構無特独移端経自色複要解言詳謝車追送通連開関電静",
-  1: "abcdefhilmnopqrstuvy",
+  1: "abcdefhilmnopqrstvy",
   2: "su",
   3: "abcdefhilmopqrstuv",
   4: "abcdefghijlmnopqrstuvwxyz~",
