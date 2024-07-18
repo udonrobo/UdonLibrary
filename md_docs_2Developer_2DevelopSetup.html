@@ -109,8 +109,8 @@ $(function(){initNavTree('md_docs_2Developer_2DevelopSetup.html',''); initResiza
   <div class="headertitle"><div class="title">開発環境セットアップ</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md112"></a> </p>
-<h1><a class="anchor" id="autotoc_md113"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md113"></a> </p>
+<h1><a class="anchor" id="autotoc_md114"></a>
 開発環境</h1>
 <p>開発環境は自由ですが、ここでは VSCode, VisualStudio, ArduinoIDE を使用します。インストールしていない場合インストールしておいてください。</p>
 <p>本ライブラリのクローンを事前に行っておいてください。<a class="el" href="md_docs_2Install_2ArduinoIDE.html">ライブラリのクローン</a></p>
@@ -118,15 +118,15 @@ $(function(){initNavTree('md_docs_2Developer_2DevelopSetup.html',''); initResiza
 <p>&zwj;通常の開発では VSCode で記述 -&gt; ArduinoIDE でコンパイル, 書き込み を繰り返し行います。</p>
 <p>マイコンを使用しないアルゴリズム系の開発の場合、デバッグのしやすい VisualStudio が便利です。最終的に ArduinoIDE でコンパイルできるか確認します。 </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md114"></a>
+<h1><a class="anchor" id="autotoc_md115"></a>
 VSCode</h1>
-<h2><a class="anchor" id="autotoc_md115"></a>
+<h2><a class="anchor" id="autotoc_md116"></a>
 ライブラリを開く</h2>
 <p>通常 VSCode で本ライブラリを編集します。以下の写真の手順で VSCode でフォルダを開きます。</p>
 <p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/1b12fd5c-d441-49a5-a60f-40f8ec238f6e" alt="" width="600px" class="inline"/></p>
 <p>開けるとこのようになります。左に表示されるエクスプローラーからファイルを開けるので、そこから編集していきます。</p>
 <p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/38d7b8cb-eee8-491d-b913-037d7e07f507" alt="" width="600px" class="inline"/></p>
-<h2><a class="anchor" id="autotoc_md116"></a>
+<h2><a class="anchor" id="autotoc_md117"></a>
 clang-format 拡張機能インストール</h2>
 <p>clang-format とはフォーマッタの一種で、コードを自動整形してくれるツールです。 clang-format は整形の設定を詳細に行えるので、本ライブラリで採用しています。設定ファイルは <code>UdonLibrary/.clang-format</code> にあります。コンパイラ基盤 LLVM が開発しています。</p>
 <p><a href="https://marketplace.visualstudio.com/items?itemName=xaver.clang-format">Clang-Format</a></p>
@@ -142,7 +142,7 @@ clang-format 拡張機能インストール</h2>
 <div class="line">    <span class="keywordtype">int</span> a = 100;</div>
 <div class="line">    <span class="keywordtype">double</span> b = 100.0;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md117"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md118"></a>
 C/C++ 拡張機能インストール</h2>
 <p>この拡張機能はインテリセンスの機能を持ちます。定義先に移動したり、関数名などをホバーすることで記載されている doxygen コメントを表示させたりできます。</p>
 <p><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools">C/C++</a></p>
@@ -153,7 +153,7 @@ C/C++ 拡張機能インストール</h2>
 <p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/48435e12-0893-4680-86eb-84d041c3f110" alt="" width="400px" class="inline"/></p>
 <p>↓ 関数、クラス名をホバーすることで、doxygen コメントが表示されます。</p>
 <p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/cc3597a8-1716-4ffb-91ff-395eb51f8d6b" alt="" width="400px" class="inline"/></p>
-<h2><a class="anchor" id="autotoc_md118"></a>
+<h2><a class="anchor" id="autotoc_md119"></a>
 スペルチェッカー拡張機能インストール</h2>
 <p>英単語のスペルミスを検出してくれるツールです。ミスがある場合、修正の提案もしてくれます。スペルチェッカーが知らない単語は辞書に追加することで対応できます。スペルミスは恥ずかしいですから、是非入れましょう!</p>
 <p><a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">Code Spell Checker</a></p>
@@ -161,17 +161,17 @@ C/C++ 拡張機能インストール</h2>
 <p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/15563ebb-722d-4694-9666-8e4a61a2275f" alt="" width="400px" class="inline"/></p>
 <p>↓ 修正の提案</p>
 <p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/069a498d-cf93-4aba-a10e-00f068764469" alt="" width="400px" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md119"></a>
+<h1><a class="anchor" id="autotoc_md120"></a>
 Visual Studio</h1>
-<h2><a class="anchor" id="autotoc_md120"></a>
+<h2><a class="anchor" id="autotoc_md121"></a>
 ライブラリを開く</h2>
 <p>Visual Studio でライブラリを開くことはありません。VSCode で編集、Visual Studio からインクルードし、ビルドの流れで開発します。Visual Studio でライブラリ内のファイルに移動し編集をすることはあります。</p>
-<h2><a class="anchor" id="autotoc_md121"></a>
+<h2><a class="anchor" id="autotoc_md122"></a>
 clang-format</h2>
 <p>ツールタブからオプション選択しダイアログを開きます。以下の写真に示すように ClangFormat サポートの有効化にチェックを入れるだけ！</p>
 <p><code>Ctrl</code> + <code>K</code> → <code>Ctrl</code> + <code>D</code> で整形できます。</p>
 <p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/474dc5d1-5989-4c3c-bb9f-fdafbe64a810" alt="" width="600px" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md122"></a>
+<h1><a class="anchor" id="autotoc_md123"></a>
 GitHub Copilot 導入</h1>
 <p>GitHub Copilot とは AI がソースコードを提案してくれる便利な開発支援ツールです。使用方法によりますが、このツールを導入すると開発速度が数倍アップします。</p>
 <p>有料ですが、学生は申請を行うことで無料で使用できるので、申請することをお勧めします。なくても開発は可能です。GitHub Copilot は GitHub Student Developer Pack に付属している GitHub Global Campus に入ると使用できるようになります。GitHub Student Developer Pack は他にも有用な有料ツールを無料で使用できるようになる特権があるため、こちらに申請することをお勧めします。<a href="https://education.github.com/">申請ページ</a></p>

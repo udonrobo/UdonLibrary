@@ -139,7 +139,7 @@ E220</h1>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
-<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;uint64_t&gt;</a> message = lora.getMessage())</div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> message = lora.getMessage())  <span class="comment">// message: Udon::Optional&lt;uint64_t&gt;</span></div>
 <div class="line">    {</div>
 <div class="line">        Serial.println(*message);</div>
 <div class="line">    }</div>
@@ -152,7 +152,6 @@ E220</h1>
 <div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
 <div class="ttc" id="aclassUdon_1_1E220Reader_html"><div class="ttname"><a href="classUdon_1_1E220Reader.html">Udon::E220Reader</a></div><div class="ttdoc">E220 受信クラス</div><div class="ttdef"><b>Definition</b> E220Reader.hpp:22</div></div>
 <div class="ttc" id="aclassUdon_1_1E220Reader_html_a71f3992dff607d0f11b90fd2decdb2fe"><div class="ttname"><a href="classUdon_1_1E220Reader.html#a71f3992dff607d0f11b90fd2decdb2fe">Udon::E220Reader::begin</a></div><div class="ttdeci">void begin() noexcept</div><div class="ttdoc">受信開始</div><div class="ttdef"><b>Definition</b> E220Reader.hpp:38</div></div>
-<div class="ttc" id="aclassUdon_1_1Optional_html"><div class="ttname"><a href="classUdon_1_1Optional.html">Udon::Optional</a></div><div class="ttdoc">オプショナル型</div><div class="ttdef"><b>Definition</b> Optional.hpp:62</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md65"></a>
 スケッチ例 / 送信側</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
@@ -178,7 +177,25 @@ E220</h1>
 <div class="ttc" id="aclassUdon_1_1E220Writer_html"><div class="ttname"><a href="classUdon_1_1E220Writer.html">Udon::E220Writer</a></div><div class="ttdoc">E220 送信クラス</div><div class="ttdef"><b>Definition</b> E220Writer.hpp:20</div></div>
 <div class="ttc" id="aclassUdon_1_1E220Writer_html_a50599893c34ec142e1bf710153b857f9"><div class="ttname"><a href="classUdon_1_1E220Writer.html#a50599893c34ec142e1bf710153b857f9">Udon::E220Writer::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">送信開始</div><div class="ttdef"><b>Definition</b> E220Writer.hpp:44</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md66"></a>
-設定値の変更</h2>
+チャンネルの設定</h2>
+<p>コンストラクタでチャンネルを設定できますが、begin 関数の引数にチャンネルを渡すことで設定することもできます。</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1E220Writer.html">Udon::E220Writer&lt;uint64_t&gt;</a> lora({</div>
+<div class="line">    .serial = Serial1,</div>
+<div class="line">    .m0 = 2,</div>
+<div class="line">    .m1 = 3,</div>
+<div class="line">    .aux = 4,</div>
+<div class="line">    <span class="comment">// チャンネル番号を省略</span></div>
+<div class="line">});</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup()</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">const</span> uint8_t channel = 10;</div>
+<div class="line">    lora.<a class="code hl_function" href="classUdon_1_1E220Writer.html#a50599893c34ec142e1bf710153b857f9">begin</a>(channel);</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md67"></a>
+その他設定値の変更</h2>
 <p>設定用構造体は以下のように定義されています。</p>
 <p>デフォルトはユニキャスト通信(1 対 1)です。送信側のアドレスを <code>0xffff</code> にすることでブロードキャスト通信(1 対多)になります。この時受信側アドレスは無視されます。</p>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>Config</div>
@@ -211,7 +228,7 @@ E220</h1>
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1Impl_1_1E220Base_html_a2690ebbd586d93f53e77e21543560334"><div class="ttname"><a href="classUdon_1_1Impl_1_1E220Base.html#a2690ebbd586d93f53e77e21543560334">Udon::Impl::E220Base::getConfigReference</a></div><div class="ttdeci">Config &amp; getConfigReference()</div><div class="ttdoc">現在の設定を取得</div><div class="ttdef"><b>Definition</b> E220Base.hpp:37</div></div>
 <div class="ttc" id="astructUdon_1_1Impl_1_1E220Base_1_1Config_html_ae8be237506946fc19503f8b995426bf3"><div class="ttname"><a href="structUdon_1_1Impl_1_1E220Base_1_1Config.html#ae8be237506946fc19503f8b995426bf3">Udon::Impl::E220Base::Config::channel</a></div><div class="ttdeci">uint8_t channel</div><div class="ttdoc">チャンネル</div><div class="ttdef"><b>Definition</b> E220Base.hpp:26</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md67"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md68"></a>
 受信強度</h2>
 <p><code>getRssi()</code> メンバ関数を使用して電波強度を示す RSSI 値を取得できます。0 に近いほど電波強度が高いことを示します。値は通信できている場合のみ有効です。</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> loop()</div>
@@ -236,7 +253,7 @@ E220</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">-90   </td><td class="markdownTableBodyNone">使えない   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md68"></a>
+<h2><a class="anchor" id="autotoc_md69"></a>
 周波数</h2>
 <p>チャンネルを変更することで周波数帯の調整ができます。チャンネルから周波数は以下式で求められます。</p>
 <p>$$ 周波数 = 920.8MHz + チャンネル番号×200kHz $$ </p>

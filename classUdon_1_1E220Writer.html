@@ -146,6 +146,9 @@ Udon::E220Writer&lt; T &gt; の継承関係図</div>
 <tr class="memitem:a50599893c34ec142e1bf710153b857f9" id="r_a50599893c34ec142e1bf710153b857f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50599893c34ec142e1bf710153b857f9">begin</a> ()</td></tr>
 <tr class="memdesc:a50599893c34ec142e1bf710153b857f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">送信開始  <br /></td></tr>
 <tr class="separator:a50599893c34ec142e1bf710153b857f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d4c80ad091ba80e060f7abb8caaa284" id="r_a1d4c80ad091ba80e060f7abb8caaa284"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d4c80ad091ba80e060f7abb8caaa284">begin</a> (uint8_t channel) noexcept</td></tr>
+<tr class="memdesc:a1d4c80ad091ba80e060f7abb8caaa284"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信開始  <br /></td></tr>
+<tr class="separator:a1d4c80ad091ba80e060f7abb8caaa284"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f6814d05a104d44532887f90ab3f01c" id="r_a5f6814d05a104d44532887f90ab3f01c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f6814d05a104d44532887f90ab3f01c">setMessage</a> (const <a class="el" href="#a223b86736ca60651adf6e003a10afd4e">MessageType</a> &amp;message)</td></tr>
 <tr class="memdesc:a5f6814d05a104d44532887f90ab3f01c"><td class="mdescLeft">&#160;</td><td class="mdescRight">メッセージを送信  <br /></td></tr>
 <tr class="separator:a5f6814d05a104d44532887f90ab3f01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -239,7 +242,7 @@ template&lt;typename T &gt; </div>
 </div>
 <h2 class="groupheader">関数詳解</h2>
 <a id="a50599893c34ec142e1bf710153b857f9" name="a50599893c34ec142e1bf710153b857f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50599893c34ec142e1bf710153b857f9">&#9670;&#160;</a></span>begin()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a50599893c34ec142e1bf710153b857f9">&#9670;&#160;</a></span>begin() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -264,6 +267,41 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>送信開始 </p>
+
+</div>
+</div>
+<a id="a1d4c80ad091ba80e060f7abb8caaa284" name="a1d4c80ad091ba80e060f7abb8caaa284"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d4c80ad091ba80e060f7abb8caaa284">&#9670;&#160;</a></span>begin() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classUdon_1_1E220Writer.html">Udon::E220Writer</a>&lt; T &gt;::begin </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>channel</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>受信開始 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">channel</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
