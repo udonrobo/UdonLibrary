@@ -1,9 +1,9 @@
 //
-//    UART 送信クラス
+//    Serial 送信クラス
 //
 //    Copyright (c) 2022-2024 udonrobo
 //
-//    Sender --[UART]--> Receiver
+//    Sender --[Serial]--> Receiver
 //    ^^^^^^
 //
 
@@ -15,20 +15,20 @@
 namespace Udon
 {
 
-    /// @brief UART 送信クラス
+    /// @brief Serial 送信クラス
     /// @tparam Message メッセージ型
     template <typename Message>
-    class UartWriter
+    class SerialWriter
     {
 
-        Stream& uart;
+        Stream& serial;
 
         Message message;
 
     public:
         /// @brief コンストラクタ
-        UartWriter(Stream& uart) noexcept
-            : uart(uart)
+        SerialWriter(Stream& serial) noexcept
+            : serial(serial)
             , message()
         {
         }
@@ -40,7 +40,7 @@ namespace Udon
             message = rhs;
             for (auto&& it : Udon::Serialize(message))
             {
-                uart.write(it);
+                serial.write(it);
             }
         }
 

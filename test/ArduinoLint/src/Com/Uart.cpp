@@ -5,16 +5,16 @@
 //
 
 #include <Arduino.h>
-#include <Udon/Com/Uart.hpp>
+#include <Udon/Com/Serial.hpp>
 
 inline void test()
 {
-    Udon::UartReader<int> reader{ Serial };
+    Udon::SerialReader<int> reader{ Serial };
     reader.getMessage();
     reader.show();
     reader.showRaw();
 
-    Udon::UartWriter<int> writer{ Serial };
+    Udon::SerialWriter<int> writer{ Serial };
     writer.setMessage(0);
     writer.show();
     writer.showRaw();

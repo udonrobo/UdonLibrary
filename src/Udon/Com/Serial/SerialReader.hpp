@@ -1,9 +1,9 @@
 //
-//    UART 受信クラス
+//    Serial 受信クラス
 //
 //    Copyright (c) 2022-2024 udonrobo
 //
-//    Sender --[UART]--> Receiver
+//    Sender --[Serial]--> Receiver
 //                       ^^^^^^^^
 //
 
@@ -15,14 +15,14 @@
 namespace Udon
 {
 
-    /// @brief UART 受信クラス
+    /// @brief Serial 受信クラス
     /// @tparam Message メッセージ型
     template <typename Message>
-    class UartReader
+    class SerialReader
     {
         static constexpr size_t Size = Udon::SerializedSize<Message>();
 
-        Stream& uart;
+        Stream& serial;
 
         uint8_t buffer[Size];
 
@@ -34,9 +34,9 @@ namespace Udon
         using MessageType = Message;
 
         /// @brief コンストラクタ
-        /// @param uart UARTバス
-        UartReader(Stream& uart)
-            : uart(uart)
+        /// @param serial Serialバス
+        SerialReader(Stream& serial)
+            : serial(serial)
             , buffer()
             , transmitMs()
         {
@@ -83,13 +83,13 @@ namespace Udon
     private:
         void update()
         {
-            if (uart.available() >= static_cast<int>(Size))
+            if (serial.available() >= static_cast<int>(Size))
             {
 
                 // バッファにデータを格納
                 for (auto&& it : buffer)
                 {
-                    const auto d = uart.read();
+                    const auto d = serial.read();
                     if (d == -1)
                     {
                         break;
@@ -101,9 +101,9 @@ namespace Udon
                 }
 
                 // タイミングによってバッファにデータが残っている可能性があるためクリア
-                while (uart.available())
+                while (serial.available())
                 {
-                    (void)uart.read();
+                    (void)serial.read();
                 }
 
                 transmitMs = millis();
