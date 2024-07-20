@@ -21,9 +21,8 @@
 - [Platform IO](./docs/Install/PlatformIO.md)
 - [Visual Studio](./docs/Install/VisualStudio.md)
 - [CLion](./docs/Install/CLion.md) 🌟new
+- [バニラC++環境](./docs/Install/VanillaCpp.md)
 - [Raspberry Pi Pico 使用時事前セットアップ](./docs/Install/RaspberryPiPico.md)
-
-> バニラ C++ の環境ではヘッダーオンリーライブラリとして振舞いますので、インクルードディレクトリの指定、STL の使用が可能な場合、そのほかのアプリケーションで使用できると思います。
 
 ## 使用方法
 
