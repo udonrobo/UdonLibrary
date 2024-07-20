@@ -8,20 +8,20 @@
 [![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
 [![Doxygen Page](https://github.com/udonrobo/UdonLibrary/actions/workflows/DoxygenPage.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/DoxygenPage.yml)
 
-| 系統        | ターゲット環境                                  |
-| ----------- | ----------------------------------------------- |
-| Arduino     | Arduino Nano/Uno/UnoMini                        |
-| Teensy      | Teensy 3.5/3.6/4.0/4.1                          |
-| RP2040      | Raspberry Pi Pico/Pico W <br> Seeed XIAO RP2040 |
-| Vanilla C++ | C++11~ <br> Visual Studio <br> CLion            |
+| 系統        | ターゲット環境                                               |
+| ----------- | ------------------------------------------------------------ |
+| Arduino     | Arduino Nano/Uno/UnoMini                                     |
+| Teensy      | Teensy 3.5/3.6/4.0/4.1                                       |
+| RP2040      | Raspberry Pi Pico/Pico W <br> Seeed XIAO RP2040              |
+| Vanilla C++ | C++11~ <br> Visual Studio <br> CLion <br> gcc, clang, ect... |
 
 ## 追加方法
 
 - [Arduino IDE](./docs/Install/ArduinoIDE.md)
 - [Platform IO](./docs/Install/PlatformIO.md)
 - [Visual Studio](./docs/Install/VisualStudio.md)
-- [CLion](./docs/Install/CLion.md) 🌟new
-- [バニラC++環境](./docs/Install/VanillaCpp.md)
+- [CLion](./docs/Install/CLion.md)
+- [バニラ環境](./docs/Install/VanillaCpp.md)
 - [Raspberry Pi Pico 使用時事前セットアップ](./docs/Install/RaspberryPiPico.md)
 
 ## 使用方法
