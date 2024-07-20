@@ -7,7 +7,7 @@
 <meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
-<title>UdonLibrary: Udon::Traits::IsReader&lt; typename, typename &gt; 構造体テンプレート</title>
+<title>UdonLibrary: Udon::Traits::IsReader&lt; class, typename &gt; 構造体テンプレート</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -106,7 +106,7 @@ $(function(){initNavTree('structUdon_1_1Traits_1_1IsReader.html',''); initResiza
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Udon::Traits::IsReader&lt; typename, typename &gt; 構造体テンプレート</div></div>
+  <div class="headertitle"><div class="title">Udon::Traits::IsReader&lt; class, typename &gt; 構造体テンプレート</div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -115,14 +115,14 @@ $(function(){initNavTree('structUdon_1_1Traits_1_1IsReader.html',''); initResiza
 
 <p><code>#include &lt;<a class="el" href="ReaderWriterTraits_8hpp_source.html">Udon/Traits/ReaderWriterTraits.hpp</a>&gt;</code></p>
 <div class="dynheader">
-Udon::Traits::IsReader&lt; typename, typename &gt; の継承関係図</div>
+Udon::Traits::IsReader&lt; class, typename &gt; の継承関係図</div>
 <div class="dyncontent">
  <div class="center">
   <img src="structUdon_1_1Traits_1_1IsReader.png" alt=""/>
  </div></div>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;template&lt; typename &gt; typename, typename = void&gt;<br />
-struct Udon::Traits::IsReader&lt; typename, typename &gt;</div><p>送信クラスであるか判定 </p>
+<div class="textblock"><div class="compoundTemplParams">template&lt;template&lt; typename &gt; class, typename = void&gt;<br />
+struct Udon::Traits::IsReader&lt; class, typename &gt;</div><p>送信クラスであるか判定 </p>
 <dl class="section note"><dt>覚え書き</dt><dd>送信クラスの要件を満たすには、以下の条件を満たす必要がある。<ul>
 <li><code>MessageType</code> というメンバ型名を持つ</li>
 <li><code>getMessage() const</code> メンバ関数を持ち、戻り値が <code><a class="el" href="classUdon_1_1Optional.html" title="オプショナル型">Udon::Optional</a>&lt;MessageType&gt;</code>、引数が存在しない </li>

@@ -38,8 +38,8 @@ var hierarchy =
       [ "Udon::Traits::HasMemberFunctionShowRaw< typename, typename >", "structUdon_1_1Traits_1_1HasMemberFunctionShowRaw.html", null ],
       [ "Udon::Traits::HasMemberFunctionUpdate< typename, typename >", "structUdon_1_1Traits_1_1HasMemberFunctionUpdate.html", null ],
       [ "Udon::Traits::IsOutputStreamable< OutputStream, T, typename >", "structUdon_1_1Traits_1_1IsOutputStreamable.html", null ],
-      [ "Udon::Traits::IsReader< typename, typename >", "structUdon_1_1Traits_1_1IsReader.html", null ],
-      [ "Udon::Traits::IsWriter< typename, typename >", "structUdon_1_1Traits_1_1IsWriter.html", null ]
+      [ "Udon::Traits::IsReader< class, typename >", "structUdon_1_1Traits_1_1IsReader.html", null ],
+      [ "Udon::Traits::IsWriter< class, typename >", "structUdon_1_1Traits_1_1IsWriter.html", null ]
     ] ],
     [ "Udon::Forwarding< Reader, Writer, Message >", "classUdon_1_1Forwarding.html", null ],
     [ "Udon::HSV", "structUdon_1_1HSV.html", null ],
