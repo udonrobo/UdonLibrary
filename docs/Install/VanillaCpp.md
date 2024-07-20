@@ -28,8 +28,18 @@ int main()
 
 ### build run
 
-```sh
-# in Udon/ directory
-g++ -o main main.cpp -I ./lib/UdonLibrary/src
-./main
-```
+- gcc
+
+  ```sh
+  # in Udon/ directory
+  g++ -o main main.cpp -I ./lib/UdonLibrary/src
+  ./main
+  ```
+
+- clang
+
+  ```sh
+  # in Udon/ directory
+  clang++ -o main main.cpp -I ./lib/UdonLibrary/src
+  ./main
+  ```

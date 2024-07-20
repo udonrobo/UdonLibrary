@@ -18,7 +18,7 @@ namespace Udon
 {
 
     /// @brief 通信経由モーター制御クラス
-    template <template <typename> typename Writer>
+    template <template <typename> class Writer>
     class MotorBy
     {
         static_assert(Traits::IsWriter<Writer>::value, "Writer is not writer");

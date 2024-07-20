@@ -19,13 +19,13 @@ namespace Udon
         /// @note 送信クラスの要件を満たすには、以下の条件を満たす必要がある。
         /// - `MessageType` というメンバ型名を持つ
         /// - `setMessage()` メンバ関数を持ち、戻り値が `void`、引数型が `const MessageType&` である
-        template <template <typename> typename, typename = void>
+        template <template <typename> class, typename = void>
         struct IsWriter
             : std::false_type
         {
         };
 
-        template <template <typename> typename T>
+        template <template <typename> class T>
         struct IsWriter<T, typename std::enable_if<std::is_same<
                                decltype(std::declval<T<int>>().setMessage(std::declval<const typename T<int>::MessageType&>())), void>::value>::type>
             : std::true_type
@@ -36,13 +36,13 @@ namespace Udon
         /// @note 送信クラスの要件を満たすには、以下の条件を満たす必要がある。
         /// - `MessageType` というメンバ型名を持つ
         /// - `getMessage() const` メンバ関数を持ち、戻り値が `Udon::Optional<MessageType>`、引数が存在しない
-        template <template <typename> typename, typename = void>
+        template <template <typename> class, typename = void>
         struct IsReader
             : std::false_type
         {
         };
 
-        template <template <typename> typename T>
+        template <template <typename> class T>
         struct IsReader<T, typename std::enable_if<std::is_same<
                                decltype(std::declval<T<int>>().getMessage()), Udon::Optional<typename T<int>::MessageType>>::value>::type>
             : std::true_type

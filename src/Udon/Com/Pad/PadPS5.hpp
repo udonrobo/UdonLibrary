@@ -20,7 +20,7 @@ namespace Udon
 
     /// @brief 通信経由PS5コントローラークラス
     /// @tparam Reader 受信クラス
-    template <template <typename> typename Reader>
+    template <template <typename> class Reader>
     class PadPS5
         : public Reader<Message::PadPS5>
     {

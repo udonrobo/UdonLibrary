@@ -189,7 +189,7 @@ class ReaderB
 };
 
 // 受信クラス経由でセンサーの情報を取得するクラス
-template <template <typename> typename Reader>
+template <template <typename> class Reader>
 class Sensor
 {
     Reader<int> reader;

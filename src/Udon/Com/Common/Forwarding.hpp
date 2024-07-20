@@ -23,8 +23,8 @@ namespace Udon
     /// @tparam Writer 送信クラス
     /// @tparam Message メッセージ型
     template <
-        template <typename> typename Reader,
-        template <typename> typename Writer,
+        template <typename> class Reader,
+        template <typename> class Writer,
         typename Message>
     class Forwarding
     {

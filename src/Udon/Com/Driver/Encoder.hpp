@@ -21,7 +21,7 @@ namespace Udon
 
     /// @brief 通信経由ロータリーエンコーダー
     /// @tparam Reader 受信クラス
-    template <template <typename> typename Reader>
+    template <template <typename> class Reader>
     class EncoderBy
     {
         static_assert(Traits::IsReader<Reader>::value, "Reader is not reader");
