@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['列挙型シリアライズ_0',['列挙型シリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md202',1,'']]]
+  ['共通内容_0',['共通内容',['../md_docs_2Communication_2Common.html#autotoc_md34',1,'']]]
 ];

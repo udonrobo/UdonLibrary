@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['詳細_0',['詳細',['../md_docs_2Other_2Serialization.html#autotoc_md193',1,'']]]
+  ['解決_0',['解決',['../md_docs_2Developer_2Idea.html#autotoc_md129',1,'解決'],['../md_docs_2Developer_2Idea.html#autotoc_md133',1,'解決']]]
 ];
