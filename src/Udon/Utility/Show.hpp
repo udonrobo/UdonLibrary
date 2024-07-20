@@ -109,10 +109,10 @@ namespace Udon
             // enumerate が存在すれば出力可能
             template <typename Enumerable>
             struct Test<Enumerable, EnableIfVoidT<
-                                          HasMemberFunctionEnumerate<Enumerable>::value                  // enumerate 関数が存在する
-                                          and not HasMemberFunctionShow<Enumerable>::value               // show 関数が存在しない
-                                          and not IsOutputStreamable<OutputStream, Enumerable>::value    // ストリームへの出力が不可能
-                                          >>
+                                        HasMemberFunctionEnumerate<Enumerable>::value                  // enumerate 関数が存在する
+                                        and not HasMemberFunctionShow<Enumerable>::value               // show 関数が存在しない
+                                        and not IsOutputStreamable<OutputStream, Enumerable>::value    // ストリームへの出力が不可能
+                                        >>
             {
                 template <typename T>
                 static constexpr bool test(const IsPrintableImpl& tester, T&& e)
@@ -224,10 +224,10 @@ namespace Udon
 
             /// @brief enumerate が存在する型
             template <typename Enumerable, EnableIfNullptrT<
-                                                 HasMemberFunctionEnumerate<RemoveCVRefT<Enumerable>>::value                  // enumerate が存在
-                                                 and not HasMemberFunctionShow<RemoveCVRefT<Enumerable>>::value               // show が存在しない
-                                                 and not IsOutputStreamable<OutputStream, RemoveCVRefT<Enumerable>>::value    // ストリームへ出力可能でない
-                                                 > = nullptr>
+                                               HasMemberFunctionEnumerate<RemoveCVRefT<Enumerable>>::value                  // enumerate が存在
+                                               and not HasMemberFunctionShow<RemoveCVRefT<Enumerable>>::value               // show が存在しない
+                                               and not IsOutputStreamable<OutputStream, RemoveCVRefT<Enumerable>>::value    // ストリームへ出力可能でない
+                                               > = nullptr>
             ResultType print(Enumerable&& enumerable)
             {
                 stream << "{ ";
@@ -338,32 +338,33 @@ namespace Udon
     template <typename... Args>
     void Show(Args&&... args)
     {
-        Impl::ShowImpl({
-                           .delimiter = true,
-                           .newline = false,
-                       },
-                       std::forward<Args>(args)...);
+        const Impl::ShowConfig config{
+            /* .delimiter = */ true,
+            /* .newline   = */ false,
+        };
+
+        Impl::ShowImpl(config, std::forward<Args>(args)...);
     }
 
     /// @brief 改行、区切り文字ありで出力する
     template <typename... Args>
     void Showln(Args&&... args)
     {
-        Impl::ShowImpl({
-                           .delimiter = true,
-                           .newline = true,
-                       },
-                       std::forward<Args>(args)...);
+        const Impl::ShowConfig config{
+            /* .delimiter = */ true,
+            /* .newline   = */ true,
+        };
+        Impl::ShowImpl(config, std::forward<Args>(args)...);
     }
 
     /// @brief 改行、区切り文字なしで出力する
     template <typename... Args>
     void ShowRaw(Args&&... args)
     {
-        Impl::ShowImpl({
-                           .delimiter = false,
-                           .newline = false,
-                       },
-                       std::forward<Args>(args)...);
+        const Impl::ShowConfig config{
+            /* .delimiter = */ false,
+            /* .newline   = */ false,
+        };
+        Impl::ShowImpl(config, std::forward<Args>(args)...);
     }
 }    // namespace Udon
