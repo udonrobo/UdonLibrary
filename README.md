@@ -8,15 +8,16 @@
 [![Unit Tests](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml)
 [![Doxygen Page](https://github.com/udonrobo/UdonLibrary/actions/workflows/DoxygenPage.yml/badge.svg)](https://github.com/udonrobo/UdonLibrary/actions/workflows/DoxygenPage.yml)
 
-| 系統        | ターゲット環境                                               |
-| ----------- | ------------------------------------------------------------ |
-| Arduino     | Arduino Nano/Uno/UnoMini                                     |
-| Teensy      | Teensy 3.5/3.6/4.0/4.1                                       |
-| RP2040      | Raspberry Pi Pico/Pico W <br> Seeed XIAO RP2040              |
-| Vanilla C++ | C++11~ <br> Visual Studio <br> CLion <br> gcc, clang, ect... |
+| 系統             | ターゲット環境                                   |
+| ---------------- | ------------------------------------------------ |
+| Arduino          | Arduino Nano/Uno/UnoMini                         |
+| Teensy           | Teensy 3.5/3.6/4.0/4.1                           |
+| RP2040           | Raspberry Pi Pico/Pico W <br> Seeed XIAO RP2040  |
+| Vanilla C++(11~) | Visual Studio <br> CLion <br> gcc, clang, etc... |
 
 ## 追加方法
 
+- [端末/git](./docs/Install/RequiredTools.md)
 - [Arduino IDE](./docs/Install/ArduinoIDE.md)
 - [Platform IO](./docs/Install/PlatformIO.md)
 - [Visual Studio](./docs/Install/VisualStudio.md)
@@ -45,7 +46,7 @@
 - [I2C](./docs/Communication/I2C.md)
 - [LoRa](./docs/Communication/LoRa.md)
 - [IM920](./docs/Communication/IM920.md)
-- [UART / USB Serial](./docs/Communication/Serial.md)
+- [USB/UART](./docs/Communication/Serial.md)
 - [コントローラ](./docs/Communication/Pad.md)
 - [CRC エラーチェック](./docs/Communication/CRC.md)
 
