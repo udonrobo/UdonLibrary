@@ -2,9 +2,7 @@
 
 ## 開発環境
 
-開発環境は自由ですが、ここでは VSCode, VisualStudio, ArduinoIDE を使用します。インストールしていない場合インストールしておいてください。
-
-本ライブラリのクローンを事前に行っておいてください。[ライブラリのクローン](../Install/ArduinoIDE.md)
+開発環境は決まっていませんが、ここでは VSCode, VisualStudio, ArduinoIDE を使用します。インストールしていない場合インストールしておいてください。また本ライブラリのクローンを事前に行っておいてください。[ライブラリのクローン](../Install/ArduinoIDE.md)
 
 > 通常の開発では VSCode で記述 -> ArduinoIDE でコンパイル, 書き込み を繰り返し行います。
 >
@@ -24,28 +22,40 @@
 
 ### clang-format 拡張機能インストール
 
-clang-format とはフォーマッタの一種で、コードを自動整形してくれるツールです。 clang-format は整形の設定を詳細に行えるので、本ライブラリで採用しています。設定ファイルは `UdonLibrary/.clang-format` にあります。コンパイラ基盤 LLVM が開発しています。
+clang-format とはフォーマッタの一種で、コードを自動整形してくれるツールです。 clang-format は整形の設定を詳細に行えるので、本ライブラリで採用しています。設定ファイルは `UdonLibrary/.clang-format` にあります。コンパイラ基盤 LLVM に付属しています。
 
-[Clang-Format](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
+1. 以下コマンドで LLVM をインストールします。
 
-設定ができたら自動整形が機能するか、適当にファイルを作成してテストしてみましょう。デフォルトでは `Alt` + `Shift` + `F` で整形できます。
+   ```sh
+   winget install LLVM
+   ```
 
-```cpp
-// 整形前
-void loop(){
-int a = 100;
-double b = 100.0;
-}
-```
+2. 拡張機能をインストールします。[Clang-Format](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
 
-```cpp
-// 整形後
-void loop()
-{
-    int a = 100;
-    double b = 100.0;
-}
-```
+3. 拡張機能の設定を開き、実行ファイルのパスを指定します。`C:\Program Files\LLVM\bin\clang-format.exe`
+
+   <img width="600px" src="https://github.com/user-attachments/assets/fb53705f-ad82-4c46-a34c-e87c651b87a8"/>
+
+   <img width="600px" src="https://github.com/user-attachments/assets/2d635fb4-6c03-401f-aea3-9679888e409a"/>
+
+4. 設定ができたら自動整形が機能するか、適当にファイルを作成してテストしてみましょう。デフォルトでは `Alt` + `Shift` + `F` で整形できます。
+
+   ```cpp
+   // 整形前
+   void loop(){
+   int a = 100;
+   double b = 100.0;
+   }
+   ```
+
+   ```cpp
+   // 整形後
+   void loop()
+   {
+       int a = 100;
+       double b = 100.0;
+   }
+   ```
 
 ### C/C++ 拡張機能インストール
 
@@ -53,11 +63,12 @@ void loop()
 
 [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 
-定義先に移動するには、c_cpp_properties.json に本ライブラリのインクルードパスを教えてあげる必要があります。
+定義先に移動するには、c_cpp_properties.json に本ライブラリのインクルードパスを指定する必要があります。
 
 ```json
 "${workspaceFolder}/src"
 ```
+
 <img width="600px" src="https://github.com/udonrobo/UdonLibrary/assets/91818705/606eefda-83c1-4c6c-bd0a-7a2c5828fed9"/>
 
 ↓ `f12` で関数、クラス定義先へ移動できます。
@@ -70,7 +81,7 @@ void loop()
 
 ### スペルチェッカー拡張機能インストール
 
-英単語のスペルミスを検出してくれるツールです。ミスがある場合、修正の提案もしてくれます。スペルチェッカーが知らない単語は辞書に追加することで対応できます。スペルミスは恥ずかしいですから、是非入れましょう!
+英単語のスペルミスを検出してくれるツールです。ミスがある場合、修正の提案もしてくれます。スペルチェッカーが知らない単語は辞書に追加することで対応できます。
 
 [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
 
@@ -86,7 +97,7 @@ void loop()
 
 ### ライブラリを開く
 
-Visual Studio でライブラリを開くことはありません。VSCode で編集、Visual Studio からインクルードし、ビルドの流れで開発します。Visual Studio でライブラリ内のファイルに移動し編集をすることはあります。
+VSCode で編集、Visual Studio からインクルードし、ビルドするのが楽です。Visual Studio でライブラリ内のファイルに移動し編集をすることもできます。
 
 ### clang-format
 

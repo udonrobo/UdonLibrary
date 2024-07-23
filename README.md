@@ -17,7 +17,7 @@
 
 ## 追加方法
 
-- [端末/git](./docs/Install/RequiredTools.md)
+- [必要ソフトウェア](./docs/Install/RequiredTools.md)
 - [Arduino IDE](./docs/Install/ArduinoIDE.md)
 - [Platform IO](./docs/Install/PlatformIO.md)
 - [Visual Studio](./docs/Install/VisualStudio.md)
@@ -45,8 +45,8 @@
 - [CAN](./docs/Communication/CAN.md)
 - [I2C](./docs/Communication/I2C.md)
 - [LoRa](./docs/Communication/LoRa.md)
-- [IM920](./docs/Communication/IM920.md)
-- [USB/UART](./docs/Communication/Serial.md)
+<!-- - [IM920](./docs/Communication/IM920.md) -->
+<!-- - [USB/UART](./docs/Communication/Serial.md) -->
 - [コントローラ](./docs/Communication/Pad.md)
 - [CRC エラーチェック](./docs/Communication/CRC.md)
 

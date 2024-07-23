@@ -4,7 +4,7 @@
 
 <img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/560df085-6e00-425c-8e0d-90b80c0e2fc1" height="50px" align="right">
 
-コマンドを実行するのに使用します。git 等の CLI アプリを実行する際に使用します。
+git 等の CLI アプリを実行する際に使用します。
 
 - Windows
 
