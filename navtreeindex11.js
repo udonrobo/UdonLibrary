@@ -1,9 +1,5 @@
 var NAVTREEINDEX11 =
 {
-"structUdon_1_1RingBuffer_1_1iterator.html#a011c31406c905b1020daf6a373b43d44":[52,0,0,48,1,13],
-"structUdon_1_1RingBuffer_1_1iterator.html#a12089d5442e71a92d6352a550cbbe183":[51,0,1,51,1,6],
-"structUdon_1_1RingBuffer_1_1iterator.html#a12089d5442e71a92d6352a550cbbe183":[52,0,0,48,1,6],
-"structUdon_1_1RingBuffer_1_1iterator.html#a1a009d1da087ce278e4e04588f2fef37":[51,0,1,51,1,4],
 "structUdon_1_1RingBuffer_1_1iterator.html#a1a009d1da087ce278e4e04588f2fef37":[52,0,0,48,1,4],
 "structUdon_1_1RingBuffer_1_1iterator.html#a2f97d7e40318c9d040a2e31f5bae6b06":[51,0,1,51,1,5],
 "structUdon_1_1RingBuffer_1_1iterator.html#a2f97d7e40318c9d040a2e31f5bae6b06":[52,0,0,48,1,5],
@@ -249,5 +245,9 @@ var NAVTREEINDEX11 =
 "structUdon_1_1Vec3.html#abdfcfee5f522675e90b1b3d8a0cd61dd":[52,0,0,63,13],
 "structUdon_1_1Vec3.html#ac48007de1d555e85dd436bd9422479f0":[51,0,1,66,5],
 "structUdon_1_1Vec3.html#ac48007de1d555e85dd436bd9422479f0":[52,0,0,63,5],
-"structUdon_1_1Vec3.html#aced088ded15d6baaa783993308cde6d4":[51,0,1,66,3]
+"structUdon_1_1Vec3.html#aced088ded15d6baaa783993308cde6d4":[51,0,1,66,3],
+"structUdon_1_1Vec3.html#aced088ded15d6baaa783993308cde6d4":[52,0,0,63,3],
+"structUdon_1_1Vec3.html#ada6bfd31bed41b1fe629d1667747bd5c":[51,0,1,66,15],
+"structUdon_1_1Vec3.html#ada6bfd31bed41b1fe629d1667747bd5c":[52,0,0,63,15],
+"structUdon_1_1Vec3.html#adb8cc25c6c41462622592ded37a565ea":[51,0,1,66,27]
 };
