@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['割り込み禁止制御_0',['割り込み禁止制御',['../md_docs_2Algorithm_2Interrupt.html',1,'']]]
+  ['固定ビット長浮動小数点型_0',['固定ビット長浮動小数点型',['../md_docs_2Types_2Float.html',1,'']]]
 ];

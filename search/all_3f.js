@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['ライセンス_0',['ライセンス',['../index.html#autotoc_md10',1,'']]],
-  ['ライブラリを開く_1',['ライブラリを開く',['../md_docs_2Developer_2DevelopSetup.html#autotoc_md116',1,'ライブラリを開く'],['../md_docs_2Developer_2DevelopSetup.html#autotoc_md121',1,'ライブラリを開く']]]
+  ['ホストシールドがある場合_0',['■ メイン基板に USB ホストシールドがある場合',['../md_docs_2Communication_2Pad.html#autotoc_md84',1,'']]],
+  ['ホストシールドがメイン基板にある場合_1',['■ Bluetooth 経由 / USB ホストシールドがメイン基板にある場合',['../md_docs_2Communication_2Pad.html#autotoc_md74',1,'']]],
+  ['ホストシールドとメイン基板が別々の場合_2',['■ Bluetooth 経由 / USB ホストシールドとメイン基板が別々の場合',['../md_docs_2Communication_2Pad.html#autotoc_md75',1,'']]]
 ];

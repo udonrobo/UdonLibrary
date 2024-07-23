@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['問題_0',['問題',['../md_docs_2Developer_2Idea.html#autotoc_md128',1,'問題'],['../md_docs_2Developer_2Idea.html#autotoc_md132',1,'問題']]]
+  ['列挙型シリアライズ_0',['列挙型シリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md209',1,'']]]
 ];

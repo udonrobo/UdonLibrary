@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['周波数_0',['周波数',['../md_docs_2Communication_2LoRa.html#autotoc_md69',1,'']]]
+  ['公式ページ_0',['公式ページ',['../md_docs_2Communication_2IM920.html#autotoc_md56',1,'']]]
 ];

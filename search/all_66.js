@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['検証ボードを追加する_0',['■ 検証ボードを追加する',['../md_docs_2Developer_2CI.html#autotoc_md105',1,'']]]
+  ['整数型シリアライズ_0',['整数型シリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md207',1,'']]]
 ];

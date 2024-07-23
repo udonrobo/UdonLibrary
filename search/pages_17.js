@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['バニラ_20c_20環境_0',['バニラ C++ 環境',['../md_docs_2Install_2VanillaCpp.html',1,'']]]
+  ['フィードバック制御_0',['フィードバック制御',['../md_docs_2Algorithm_2FeedbackController.html',1,'']]]
 ];

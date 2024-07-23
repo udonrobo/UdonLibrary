@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['他の色空間へ変換_0',['他の色空間へ変換',['../md_docs_2Types_2Color.html#autotoc_md235',1,'他の色空間へ変換'],['../md_docs_2Types_2Color.html#autotoc_md239',1,'他の色空間へ変換']]]
+  ['ユーザー定義型のネスト_0',['ユーザー定義型のネスト',['../md_docs_2Other_2Serialization.html#autotoc_md212',1,'']]],
+  ['ユーザー定義型シリアライズ_1',['ユーザー定義型シリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md210',1,'']]],
+  ['ユーザー定義型_2',['ユーザー定義型',['../index.html#autotoc_md6',1,'']]],
+  ['ユーティリティ_3',['ユーティリティ',['../md_docs_2Other_2Utility.html',1,'']]]
 ];

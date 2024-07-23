@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['追加方法_0',['追加方法',['../index.html#autotoc_md1',1,'']]],
-  ['追加_1',['追加',['../md_docs_2Install_2ArduinoIDE.html#autotoc_md168',1,'追加'],['../md_docs_2Install_2CLion.html#autotoc_md171',1,'追加'],['../md_docs_2Install_2VisualStudio.html#autotoc_md185',1,'追加']]]
+  ['色空間_0',['色空間',['../md_docs_2Types_2Color.html',1,'色空間'],['../md_docs_2Types_2Color.html#autotoc_md242',1,'HSV 色空間'],['../md_docs_2Types_2Color.html#autotoc_md238',1,'RGB 色空間']]]
 ];

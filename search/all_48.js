@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['値への変換_0',['24bit 値への変換',['../md_docs_2Types_2Color.html#autotoc_md240',1,'']]],
-  ['値読み取り_1',['値読み取り',['../md_docs_2Driver_2DipSwitch.html#autotoc_md148',1,'']]]
+  ['一般的_0',['解決策 1 (一般的)',['../md_docs_2Developer_2Troubleshooting.html#autotoc_md142',1,'']]]
 ];

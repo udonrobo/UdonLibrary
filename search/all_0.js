@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['24bit_20値への変換_0',['24bit 値への変換',['../md_docs_2Types_2Color.html#autotoc_md240',1,'']]]
+  ['1_20一般的_0',['解決策 1 (一般的)',['../md_docs_2Developer_2Troubleshooting.html#autotoc_md142',1,'']]]
 ];

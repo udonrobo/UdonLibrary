@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['ユーザー定義型のネスト_0',['ユーザー定義型のネスト',['../md_docs_2Other_2Serialization.html#autotoc_md206',1,'']]],
-  ['ユーザー定義型シリアライズ_1',['ユーザー定義型シリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md204',1,'']]],
-  ['ユーザー定義型_2',['ユーザー定義型',['../index.html#autotoc_md6',1,'']]],
-  ['ユーティリティ_3',['ユーティリティ',['../md_docs_2Other_2Utility.html',1,'']]]
+  ['ペアリング方法_0',['■ ペアリング方法',['../md_docs_2Communication_2Pad.html#autotoc_md77',1,'']]]
 ];

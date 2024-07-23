@@ -1,11 +1,5 @@
 var searchData=
 [
-  ['newline_0',['newline',['../structUdon_1_1Impl_1_1ShowConfig.html#ac76051ab6eba835142b21c9306f13786',1,'Udon::Impl::ShowConfig']]],
-  ['normalize_1',['normalize',['../structUdon_1_1Vec2.html#ad8c4099ecb078141ece495ca6feb110a',1,'Udon::Vec2']]],
-  ['normalized_2',['Normalized',['../namespaceUdon.html#a57863758995f4ac40b0573ca3385493c',1,'Udon']]],
-  ['normalized_3',['normalized',['../structUdon_1_1Euler.html#adb930192ffd8caaad86b8f55653325f6',1,'Udon::Euler::normalized()'],['../structUdon_1_1Vec2.html#aae38d2ffc893e636f284a487e1ec221f',1,'Udon::Vec2::normalized()']]],
-  ['normalized_20関数_20tt_4',['&lt;tt&gt;Normalized 関数&lt;/tt&gt;',['../md_docs_2Other_2Utility.html#autotoc_md220',1,'']]],
-  ['npos_5',['npos',['../classUdon_1_1BasicStringView.html#a66957e5a59ffa28c0c2198360a3764d9',1,'Udon::BasicStringView']]],
-  ['nullopt_6',['nullopt',['../namespaceUdon.html#ae102f6540b6e88b1b484ddbed3ff972f',1,'Udon']]],
-  ['nulloptt_7',['NulloptT',['../structUdon_1_1NulloptT.html',1,'Udon']]]
+  ['joinrx_0',['joinRx',['../classUdon_1_1IIm920.html#aeb9be49d497ec6171ee96f78e836f227',1,'Udon::IIm920::joinRx()'],['../classUdon_1_1Im920.html#a99f5c0a126a36e3d5fa7d3a13a6105fc',1,'Udon::Im920::joinRx()'],['../classUdon_1_1Im920s.html#ae2e001118f35bfb5d609ea9610a8cf22',1,'Udon::Im920s::joinRx()'],['../classUdon_1_1Im920sL.html#aa3426581769980149be085ec8d40ab2f',1,'Udon::Im920sL::joinRx()']]],
+  ['jointx_1',['joinTx',['../classUdon_1_1IIm920.html#a2b5e0e2fcd12302974a3e5eaf9e8eee6',1,'Udon::IIm920::joinTx()'],['../classUdon_1_1Im920.html#ab92b83e42b0a1cfdb148fb91fa4749be',1,'Udon::Im920::joinTx()'],['../classUdon_1_1Im920s.html#afef031d6930b55d09b3c36efd7b1404f',1,'Udon::Im920s::joinTx()'],['../classUdon_1_1Im920sL.html#a1bcb92db480062b43beb243cc8d6bc1b',1,'Udon::Im920sL::joinTx()']]]
 ];

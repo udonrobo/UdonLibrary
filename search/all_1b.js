@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['z_0',['z',['../structUdon_1_1QuaternionDirection.html#adc331a5e835aab145980f533e449da62',1,'Udon::QuaternionDirection::z'],['../structUdon_1_1Quaternion.html#a34cd4fc4331efbd59fd2ac8c50f5ddc0',1,'Udon::Quaternion::z'],['../structUdon_1_1Vec3.html#a0d98434980310e4133714e1be3f0278a',1,'Udon::Vec3::z']]],
-  ['zero_1',['Zero',['../structUdon_1_1Vec2.html#ae59a6869feaa6a0de714ab17eecc8022',1,'Udon::Vec2']]]
+  ['w_0',['w',['../structUdon_1_1Quaternion.html#adeffb665edbd5eb5171f7a6093403a0e',1,'Udon::Quaternion']]],
+  ['write_1',['write',['../classUdon_1_1II2cBus.html#a843e809a7eca51fe29581017faccf937',1,'Udon::II2cBus::write(uint8_t data)=0'],['../classUdon_1_1II2cBus.html#a2070f8cbeabafff5f7fc3703e7836004',1,'Udon::II2cBus::write(const uint8_t *data, size_t quantity)=0'],['../classUdon_1_1I2cBusImpl.html#a9330f1e0efbc6fe33e160228c07e8b56',1,'Udon::I2cBusImpl::write(uint8_t data) override'],['../classUdon_1_1I2cBusImpl.html#a293eda5ce9904ca7b56fa031184c3dc1',1,'Udon::I2cBusImpl::write(const uint8_t *data, size_t quantity) override']]],
+  ['wstringview_2',['WStringView',['../namespaceUdon.html#a28efef3747777d9917d8f107caa44e17',1,'Udon']]]
 ];

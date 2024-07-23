@@ -112,8 +112,7 @@ $(function(){initNavTree('md_docs_2Developer_2DevelopSetup.html',''); initResiza
 <div class="textblock"><p><a class="anchor" id="autotoc_md113"></a> </p>
 <h1><a class="anchor" id="autotoc_md114"></a>
 開発環境</h1>
-<p>開発環境は自由ですが、ここでは VSCode, VisualStudio, ArduinoIDE を使用します。インストールしていない場合インストールしておいてください。</p>
-<p>本ライブラリのクローンを事前に行っておいてください。<a class="el" href="md_docs_2Install_2ArduinoIDE.html">ライブラリのクローン</a></p>
+<p>開発環境は決まっていませんが、ここでは VSCode, VisualStudio, ArduinoIDE を使用します。インストールしていない場合インストールしておいてください。また本ライブラリのクローンを事前に行っておいてください。<a class="el" href="md_docs_2Install_2ArduinoIDE.html">ライブラリのクローン</a></p>
 <blockquote class="doxtable">
 <p>&zwj;通常の開発では VSCode で記述 -&gt; ArduinoIDE でコンパイル, 書き込み を繰り返し行います。</p>
 <p>マイコンを使用しないアルゴリズム系の開発の場合、デバッグのしやすい VisualStudio が便利です。最終的に ArduinoIDE でコンパイルできるか確認します。 </p>
@@ -128,9 +127,17 @@ VSCode</h1>
 <p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/38d7b8cb-eee8-491d-b913-037d7e07f507" alt="" width="600px" class="inline"/></p>
 <h2><a class="anchor" id="autotoc_md117"></a>
 clang-format 拡張機能インストール</h2>
-<p>clang-format とはフォーマッタの一種で、コードを自動整形してくれるツールです。 clang-format は整形の設定を詳細に行えるので、本ライブラリで採用しています。設定ファイルは <code>UdonLibrary/.clang-format</code> にあります。コンパイラ基盤 LLVM が開発しています。</p>
-<p><a href="https://marketplace.visualstudio.com/items?itemName=xaver.clang-format">Clang-Format</a></p>
-<p>設定ができたら自動整形が機能するか、適当にファイルを作成してテストしてみましょう。デフォルトでは <code>Alt</code> + <code>Shift</code> + <code>F</code> で整形できます。</p>
+<p>clang-format とはフォーマッタの一種で、コードを自動整形してくれるツールです。 clang-format は整形の設定を詳細に行えるので、本ライブラリで採用しています。設定ファイルは <code>UdonLibrary/.clang-format</code> にあります。コンパイラ基盤 LLVM に付属しています。</p>
+<ol type="1">
+<li><p class="startli">以下コマンドで LLVM をインストールします。</p>
+<div class="fragment"><div class="line">winget install LLVM</div>
+</div><!-- fragment --></li>
+<li>拡張機能をインストールします。<a href="https://marketplace.visualstudio.com/items?itemName=xaver.clang-format">Clang-Format</a></li>
+<li><p class="startli">拡張機能の設定を開き、実行ファイルのパスを指定します。<code>C:\Program Files\LLVM\bin\clang-format.exe</code></p>
+<p class="startli"><img src="https://github.com/user-attachments/assets/fb53705f-ad82-4c46-a34c-e87c651b87a8" alt="" width="600px" class="inline"/></p>
+<p class="startli"><img src="https://github.com/user-attachments/assets/2d635fb4-6c03-401f-aea3-9679888e409a" alt="" width="600px" class="inline"/></p>
+</li>
+<li><p class="startli">設定ができたら自動整形が機能するか、適当にファイルを作成してテストしてみましょう。デフォルトでは <code>Alt</code> + <code>Shift</code> + <code>F</code> で整形できます。</p>
 <div class="fragment"><div class="line"><span class="comment">// 整形前</span></div>
 <div class="line"><span class="keywordtype">void</span> loop(){</div>
 <div class="line"><span class="keywordtype">int</span> a = 100;</div>
@@ -142,20 +149,22 @@ clang-format 拡張機能インストール</h2>
 <div class="line">    <span class="keywordtype">int</span> a = 100;</div>
 <div class="line">    <span class="keywordtype">double</span> b = 100.0;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md118"></a>
+</div><!-- fragment --></li>
+</ol>
+<h2><a class="anchor" id="autotoc_md118"></a>
 C/C++ 拡張機能インストール</h2>
 <p>この拡張機能はインテリセンスの機能を持ちます。定義先に移動したり、関数名などをホバーすることで記載されている doxygen コメントを表示させたりできます。</p>
 <p><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools">C/C++</a></p>
-<p>定義先に移動するには、c_cpp_properties.json に本ライブラリのインクルードパスを教えてあげる必要があります。</p>
+<p>定義先に移動するには、c_cpp_properties.json に本ライブラリのインクルードパスを指定する必要があります。</p>
 <div class="fragment"><div class="line">&quot;${workspaceFolder}/src&quot;</div>
-</div><!-- fragment --><p> <img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/606eefda-83c1-4c6c-bd0a-7a2c5828fed9" alt="" width="600px" class="inline"/></p>
+</div><!-- fragment --><p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/606eefda-83c1-4c6c-bd0a-7a2c5828fed9" alt="" width="600px" class="inline"/></p>
 <p>↓ <code>f12</code> で関数、クラス定義先へ移動できます。</p>
 <p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/48435e12-0893-4680-86eb-84d041c3f110" alt="" width="400px" class="inline"/></p>
 <p>↓ 関数、クラス名をホバーすることで、doxygen コメントが表示されます。</p>
 <p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/cc3597a8-1716-4ffb-91ff-395eb51f8d6b" alt="" width="400px" class="inline"/></p>
 <h2><a class="anchor" id="autotoc_md119"></a>
 スペルチェッカー拡張機能インストール</h2>
-<p>英単語のスペルミスを検出してくれるツールです。ミスがある場合、修正の提案もしてくれます。スペルチェッカーが知らない単語は辞書に追加することで対応できます。スペルミスは恥ずかしいですから、是非入れましょう!</p>
+<p>英単語のスペルミスを検出してくれるツールです。ミスがある場合、修正の提案もしてくれます。スペルチェッカーが知らない単語は辞書に追加することで対応できます。</p>
 <p><a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">Code Spell Checker</a></p>
 <p>↓ スペルミス検出の様子</p>
 <p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/15563ebb-722d-4694-9666-8e4a61a2275f" alt="" width="400px" class="inline"/></p>
@@ -165,7 +174,7 @@ C/C++ 拡張機能インストール</h2>
 Visual Studio</h1>
 <h2><a class="anchor" id="autotoc_md121"></a>
 ライブラリを開く</h2>
-<p>Visual Studio でライブラリを開くことはありません。VSCode で編集、Visual Studio からインクルードし、ビルドの流れで開発します。Visual Studio でライブラリ内のファイルに移動し編集をすることはあります。</p>
+<p>VSCode で編集、Visual Studio からインクルードし、ビルドするのが楽です。Visual Studio でライブラリ内のファイルに移動し編集をすることもできます。</p>
 <h2><a class="anchor" id="autotoc_md122"></a>
 clang-format</h2>
 <p>ツールタブからオプション選択しダイアログを開きます。以下の写真に示すように ClangFormat サポートの有効化にチェックを入れるだけ！</p>

@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['経由_0',['■ USB 経由',['../md_docs_2Communication_2Pad.html#autotoc_md76',1,'']]],
-  ['経由_20無線モジュールがメイン基板にある場合_20推奨_1',['■ 920MHz 経由 / 無線モジュールがメイン基板にある場合 (推奨)',['../md_docs_2Communication_2Pad.html#autotoc_md72',1,'']]],
-  ['経由_20無線モジュールとメイン基板が別々の場合_20推奨_2',['■ 920MHz 経由 / 無線モジュールとメイン基板が別々の場合 (推奨)',['../md_docs_2Communication_2Pad.html#autotoc_md73',1,'']]],
-  ['経由_20usb_20ホストシールドがメイン基板にある場合_3',['■ Bluetooth 経由 / USB ホストシールドがメイン基板にある場合',['../md_docs_2Communication_2Pad.html#autotoc_md74',1,'']]],
-  ['経由_20usb_20ホストシールドとメイン基板が別々の場合_4',['■ Bluetooth 経由 / USB ホストシールドとメイン基板が別々の場合',['../md_docs_2Communication_2Pad.html#autotoc_md75',1,'']]]
+  ['構築_0',['構築',['../md_docs_2Types_2ArrayView.html#autotoc_md234',1,'構築'],['../md_docs_2Types_2Color.html#autotoc_md239',1,'構築'],['../md_docs_2Types_2Color.html#autotoc_md244',1,'構築'],['../md_docs_2Types_2Float.html#autotoc_md252',1,'構築'],['../md_docs_2Types_2RingBuffer.html#autotoc_md255',1,'構築'],['../md_docs_2Types_2RingBuffer.html#autotoc_md256',1,'構築'],['../md_docs_2Types_2StaticVector.html#autotoc_md260',1,'構築'],['../md_docs_2Types_2Vector2D.html#autotoc_md268',1,'構築']]],
+  ['構造_1',['構造',['../md_docs_2Types_2Vector2D.html#autotoc_md267',1,'']]]
 ];

@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['_7ecanbusteensy_0',['~CanBusTeensy',['../classUdon_1_1CanBusTeensy.html#ae8ad7a59df742c856ecadd34d9837cdd',1,'Udon::CanBusTeensy']]],
-  ['_7eicanbus_1',['~ICanBus',['../classUdon_1_1ICanBus.html#af32909333d37542996496c3c536c859c',1,'Udon::ICanBus']]],
-  ['_7eii2cbus_2',['~II2cBus',['../classUdon_1_1II2cBus.html#adc44adc604b94bc6024ad9b0cea0fa91',1,'Udon::II2cBus']]],
-  ['_7eiim920_3',['~IIm920',['../classUdon_1_1IIm920.html#aa2afd30ec1f0b242666f5beda3b450ea',1,'Udon::IIm920']]],
-  ['_7eoptional_4',['~Optional',['../classUdon_1_1Optional.html#ac864de5bc5c6c02d1287d25906e60469',1,'Udon::Optional']]],
-  ['_7escopedinterruptlocker_5',['~ScopedInterruptLocker',['../classUdon_1_1ScopedInterruptLocker.html#a6c0ba8fcc657eed5c73e8f3caaa1260c',1,'Udon::ScopedInterruptLocker']]],
-  ['_7esivserialreader_6',['~SivSerialReader',['../classUdon_1_1SivSerialReader.html#a0bd623defea66238aa95a87b07f86079',1,'Udon::SivSerialReader']]]
+  ['x_0',['x',['../structUdon_1_1QuaternionDirection.html#a02f2cbcacfa729438ef80af741d87e73',1,'Udon::QuaternionDirection::x'],['../structUdon_1_1Quaternion.html#a222ac701ef894065424419046d2a8888',1,'Udon::Quaternion::x'],['../structUdon_1_1Vec2.html#aa41b9596dd6fd8353630210413608eb4',1,'Udon::Vec2::x'],['../structUdon_1_1Vec3.html#a0ff7bfcd42a8084175ed792bf6933908',1,'Udon::Vec3::x'],['../structUdon_1_1Polar.html#a24b1d2041c8363f93872d3844e3075d5',1,'Udon::Polar::x()']]],
+  ['xy_1',['xy',['../structUdon_1_1Vec3.html#af0a6cd34fcbfe76a40683f3436f3f1b4',1,'Udon::Vec3']]],
+  ['xy0_2',['xy0',['../structUdon_1_1Vec2.html#a34af991251622cea3dd3d8b99aefcf22',1,'Udon::Vec2']]]
 ];

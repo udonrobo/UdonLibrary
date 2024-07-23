@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['解決_0',['解決',['../md_docs_2Developer_2Idea.html#autotoc_md129',1,'解決'],['../md_docs_2Developer_2Idea.html#autotoc_md133',1,'解決']]]
+  ['移動平均_0',['移動平均',['../md_docs_2Algorithm_2MovingAverage.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['二次元ベクトル_0',['二次元ベクトル',['../md_docs_2Types_2Vector2D.html',1,'']]]
+  ['割り込み禁止制御_0',['割り込み禁止制御',['../md_docs_2Algorithm_2Interrupt.html',1,'']]]
 ];

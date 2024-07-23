@@ -1,0 +1,352 @@
+<!-- HTML header for doxygen 1.10.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="icon" href="Udon.png" type="image/x-icon" />
+<title>UdonLibrary: トラブルシューティング</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <div id="toc"><!-- do not remove this div, it is closed by doxygen! -->
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectlogo">
+                <a href="https://github.com/udonrobo/UdonLibrary">
+                  <img alt="Logo" src="Udon.png"  />
+                </a>
+              </td>
+              <td id="projectalign">
+                <div id="projectname">UdonLibrary<span
+                    id="projectnumber">&#160;1.0.0</span>
+                </div>
+                <div id="projectbrief">機械システム研究部 C++ ライブラリ</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part -->
+<!-- 構築: Doxygen 1.11.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('md_docs_2Developer_2Troubleshooting.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">トラブルシューティング</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md138"></a> </p>
+<h1><a class="anchor" id="autotoc_md139"></a>
+■ エラーから索引</h1>
+<ul>
+<li>リンクエラー「 &ndash; は既に &ndash; で定義されています。」<ul>
+<li>ヘッダーに変数、関数を定義している</li>
+</ul>
+</li>
+<li>リンクエラー「未解決の外部シンボル &ndash; が関数 &ndash; で参照されました」</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md140"></a>
+■ ヘッダーに変数、関数を定義している</h1>
+<div class="fragment"><div class="line"><span class="comment">// Sample.hpp</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> global;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> f() {}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md141"></a>
+原因</h2>
+<p>ヘッダーに変数の実体を定義して複数のソースファイルから使用した場合、多重定義でリンクエラーとなります。</p>
+<p>単一のソースファイルから使用している場合、エラーにならない (エラーが隠れており後々発狂案件) になるので気を付けてください。</p>
+<details >
+<summary >
+リンクエラーとなる原因の詳細 </summary>
+<p></p>
+<p>例えば、次のように関数の定義が含まれるヘッダーを、2 つのソースファイルからインクルードした場合、</p>
+<div class="fragment"><div class="line"><span class="comment">// Sample.hpp</span></div>
+<div class="line"><span class="keywordtype">void</span> f() {}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// a.cpp</span></div>
+<div class="line"><span class="preprocessor">#include &quot;Sample.hpp&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// b.cpp</span></div>
+<div class="line"><span class="preprocessor">#include &quot;Sample.hpp&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    f();</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>プリプロセッサによって以下の様に展開されます。</p>
+<div class="fragment"><div class="line"><span class="comment">// a.cpp</span></div>
+<div class="line"><span class="keywordtype">void</span> f() {}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// b.cpp</span></div>
+<div class="line"><span class="keywordtype">void</span> f() {}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
+<div class="line">    f();</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>次にコンパイラーがソースファイルを別々にコンパイルし、オブジェクトファイルを生成します。※逆アセンブル後のイメージ(不要部分を略しています)</p>
+<div class="fragment"><div class="line"><span class="comment">// a.o</span></div>
+<div class="line">f:</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// b.o</span></div>
+<div class="line">f:</div>
+<div class="line"> </div>
+<div class="line">main:</div>
+<div class="line">        callq f</div>
+</div><!-- fragment --><p>最後にリンカによって 1 つのバイナリにまとめられます。このとき関数の実体が 2 つあるため、どちらを呼べば判断できず多重定義となります。</p>
+<p></p>
+</details>
+<h2><a class="anchor" id="autotoc_md142"></a>
+解決策 1 (一般的)</h2>
+<p>ヘッダーに宣言を書き、ソースファイルに定義を書きます。</p>
+<div class="fragment"><div class="line"><span class="comment">// Sample.hpp</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">extern</span> <span class="keywordtype">int</span> global;</div>
+<div class="line"><span class="keywordtype">void</span> f();</div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// Sample.cpp</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &quot;Sample.hpp&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> global = 10;</div>
+<div class="line"><span class="keywordtype">void</span> f() {}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md143"></a>
+解決策 2</h2>
+<p>インライン化するとヘッダーオンリーで書けます。</p>
+<p>インライン関数は　インライン変数は C++17 以降で使用できます。C++17 以前の場合解決策 3 へ</p>
+<div class="fragment"><div class="line"><span class="keyword">inline</span> <span class="keywordtype">int</span> global = 10;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">inline</span> <span class="keywordtype">void</span> f() {}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md144"></a>
+解決策 3 (脳筋)</h2>
+<p>ヘッダーオンリーにしたい場合、関数の中に静的変数を用意し、参照を取り出すことでソースファイルが不要になります。</p>
+<div class="fragment"><div class="line"><span class="comment">// Sample.hpp</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">inline</span> <span class="keywordtype">int</span>&amp; ValueRef()</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">static</span> <span class="keywordtype">int</span> value;</div>
+<div class="line">    <span class="keywordflow">return</span> value;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span>&amp; global = ValueRef();</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md145"></a>
+解決策 4</h2>
+<p>constexpr 定数はヘッダーに書くことができます。</p>
+<div class="fragment"><div class="line"><span class="comment">// Sample.hpp</span></div>
+<div class="line"><span class="keyword">constexpr</span> <span class="keywordtype">int</span> global = 10;</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md146"></a>
+■ 静的メンバ変数を使おうとしたが、「未解決の外部シンボル~が関数~で参照されました」というリンクエラーとなった。</h1>
+<div class="fragment"><div class="line"><span class="comment">// Sample.hpp</span></div>
+<div class="line"><span class="keyword">class </span>Sample</div>
+<div class="line">{</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    <span class="keyword">static</span> <span class="keywordtype">int</span> si;</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// main.cpp</span></div>
+<div class="line"><span class="preprocessor">#include &quot;Sample.hpp&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">    Sample::si = 100;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// error LNK2019: 未解決の外部シンボル &quot;public: static int Sample::si&quot; (?si@Sample@@2HA) が関数 main で参照されました</span></div>
+</div><!-- fragment --><p>クラス内に書かれた静的メンバ変数は変数の宣言に過ぎないため、実体をソースファイルに定義する必要があります。</p>
+<blockquote class="doxtable">
+<p>&zwj;クラスの設計をしている段階で、静的メンバ変数を使わざる負えなくなったとき、設計ミスである可能性が高いです。 </p>
+</blockquote>
+<div class="fragment"><div class="line"><span class="comment">// Sample.hpp</span></div>
+<div class="line"><span class="keyword">class </span>Sample</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">static</span> <span class="keywordtype">int</span> si;</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Sample.cpp</span></div>
+<div class="line"><span class="preprocessor">#include &quot;Sample.hpp&quot;</span></div>
+<div class="line"><span class="keywordtype">int</span> Sample::si = 0;</div>
+</div><!-- fragment --><p>ヘッダーオンリーにしたい場合は静的メンバ関数を定義し、内部に静的変数を持たせることで、クラス外に実体を定義する必要がなくなります。</p>
+<div class="fragment"><div class="line"><span class="comment">// Sample.hpp</span></div>
+<div class="line"><span class="keyword">class </span>Sample</div>
+<div class="line">{</div>
+<div class="line">    Sample()</div>
+<div class="line">    {</div>
+<div class="line">        self() = <span class="keyword">this</span>;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">static</span> Sample* self()</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keyword">static</span> Sample* p = <span class="keyword">nullptr</span>;</div>
+<div class="line">        <span class="keywordflow">return</span> p;</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md147"></a>
+謎のリンクエラーと</h1>
+<p>// error LNK2005: "void \_\_cdecl f(void)" (f) は既に a-d87a9b.o で定義されています。</p>
+<p>通常の静的関数はリンクエラーを引き起こすため、ヘッダーに実装することが出来ません。これはインライン化によって対応しています。</p>
+<div class="fragment"><div class="line"><span class="comment">// *.hpp</span></div>
+<div class="line"><span class="keyword">inline</span> <span class="keywordtype">void</span> f() {}</div>
+</div><!-- fragment --><details >
+<summary >
+リンクエラーとなる原因 </summary>
+<p></p>
+<p>例えば、通常の静的関数が含まれるヘッダーを、2 つのソースファイルからインクルードした場合を考えます。</p>
+<div class="fragment"><div class="line"><span class="comment">// Sample.hpp</span></div>
+<div class="line"><span class="keywordtype">void</span> f() {}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// a.cpp</span></div>
+<div class="line"><span class="preprocessor">#include &quot;Sample.hpp&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// b.cpp</span></div>
+<div class="line"><span class="preprocessor">#include &quot;Sample.hpp&quot;</span></div>
+</div><!-- fragment --><p>プリプロセッサによって以下の様に展開されます。</p>
+<div class="fragment"><div class="line"><span class="comment">// a.cpp</span></div>
+<div class="line"><span class="keywordtype">void</span> f() {}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// b.cpp</span></div>
+<div class="line"><span class="keywordtype">void</span> f() {}</div>
+</div><!-- fragment --><p>次にコンパイラーがソースファイルを別々にコンパイルし、バイナリを生成します。</p>
+<div class="fragment"><div class="line"><span class="comment">// a.o</span></div>
+<div class="line"><span class="stringliteral">&quot;f&quot;</span>:</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// b.o</span></div>
+<div class="line"><span class="stringliteral">&quot;f&quot;</span>:</div>
+</div><!-- fragment --><p>最後にリンカによって 1 つのバイナリにまとめられます。このとき関数の実体が 2 つあるので、多重定義となります。</p>
+<p></p>
+</details>
+<h1><a class="anchor" id="autotoc_md148"></a>
+■ 型の相互変換編</h1>
+<h2><a class="anchor" id="autotoc_md149"></a>
+問題</h2>
+<p>相互インクルードによって、インクルードが循環しコンパイルエラーとなる。</p>
+<p>ユーザー定義型は型ごとにヘッダーに定義されます。相互変換を実現するには互いに型情報をする必要があるため、お互いをインクルードし合う状況になり、エラーとなります。</p>
+<p>↓ 色空間の相互変換を行う例</p>
+<div class="fragment"><div class="line"><span class="comment">// RGB.hpp</span></div>
+<div class="line"><span class="preprocessor">#include &quot;HSV.hpp&quot;</span>   <span class="comment">// NO!</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>RGB {</div>
+<div class="line">    HSV toHSV() {</div>
+<div class="line">        <span class="keywordflow">return</span> {};</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// HSV.hpp</span></div>
+<div class="line"><span class="preprocessor">#include &quot;RGB.hpp&quot;</span>   <span class="comment">// NO!</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>HSV {</div>
+<div class="line">    RGB toRGB() {</div>
+<div class="line">        <span class="keywordflow">return</span> {};</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md150"></a>
+解決</h2>
+<p>型の定義があるヘッダーに変換用関数の宣言、変換先の型の宣言を記述します。変換用関数は別のヘッダーに実装します。</p>
+<div class="fragment"><div class="line"><span class="comment">// RGBImpl.hpp</span></div>
+<div class="line"><span class="keyword">struct </span>HSV;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>RGB {</div>
+<div class="line">    HSV toHSV();</div>
+<div class="line">};</div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// HSVImpl.hpp</span></div>
+<div class="line"><span class="keyword">struct </span>RGB;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">struct </span>HSV {</div>
+<div class="line">    RGB toRGB();</div>
+<div class="line">};</div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// RGB.hpp</span></div>
+<div class="line"><span class="preprocessor">#include &quot;RGBImpl.hpp&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;HSVImpl.hpp&quot;</span></div>
+<div class="line"> </div>
+<div class="line">HSV RGB::toHSV() {</div>
+<div class="line">    <span class="keywordflow">return</span> {};</div>
+<div class="line">}</div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// HSV.hpp</span></div>
+<div class="line"><span class="preprocessor">#include &quot;HSVImpl.hpp&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;RGBImpl.hpp&quot;</span></div>
+<div class="line"> </div>
+<div class="line">RGB HSV::toRGB() {</div>
+<div class="line">    <span class="keywordflow">return</span> {};</div>
+<div class="line">}</div>
+</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! --></div>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript">
+  DoxygenAwesomeDarkModeToggle.init()
+  DoxygenAwesomeFragmentCopyButton.init()
+</script>
+</body>
+</html>
