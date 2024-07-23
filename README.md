@@ -21,7 +21,7 @@
 - [Platform IO](./docs/Install/PlatformIO.md)
 - [Visual Studio](./docs/Install/VisualStudio.md)
 - [CLion](./docs/Install/CLion.md)
-- [バニラ環境](./docs/Install/VanillaCpp.md)
+- [Vanilla C++](./docs/Install/VanillaCpp.md)
 - [Raspberry Pi Pico 使用時事前セットアップ](./docs/Install/RaspberryPiPico.md)
 
 ## 使用方法

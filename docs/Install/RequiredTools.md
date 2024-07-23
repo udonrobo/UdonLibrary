@@ -4,43 +4,44 @@
 
 <img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/560df085-6e00-425c-8e0d-90b80c0e2fc1" height="50px" align="right">
 
-コマンドを実行するのに使用します。
+コマンドを実行するのに使用します。git 等の CLI アプリを実行する際に使用します。
 
-### Windows
+- Windows
 
-Windows 
+  Microsoft Store からインストールできます。
 
-Microsoft Store からインストールできます。
+  <https://www.microsoft.com/store/productId/9N0DX20HK701?ocid=pdpshare>
 
-<https://www.microsoft.com/store/productId/9N0DX20HK701?ocid=pdpshare>
+- Linux Mac OS
 
+  デフォルトでインストールされています。
 
 ## git
 
 <img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/a481bfc0-14e9-4cc2-9156-752cf4709f09" height="50px" align="right">
 
-バージョン管理用のソフトウェアです。
+バージョン管理用のソフトウェアです。ライブラリをダウンロードする際にも使用します。
 
-### Windows
+- Windows
 
-winget パッケージマネージャーからインストールできます。<https://git-scm.com/download/win>
+  winget パッケージマネージャーからインストールできます。<https://git-scm.com/download/win>
 
-1. ターミナルを起動し以下のコマンドを実行します。
+  1.  ターミナルを起動し以下のコマンドを実行します。
 
-   ```sh
-   winget install --id Git.Git -e --source winget
-   ```
+      ```sh
+      winget install --id Git.Git -e --source winget
+      ```
 
-2. ターミナルを開きなおし、git コマンドが使えるか確認します。
+  2.  ターミナルを開きなおし、git コマンドが使えるか確認します。
 
-   ```sh
-   git --version
-   ```
+      ```sh
+      git --version
+      ```
 
-### Linux
+- Linux
 
-<https://git-scm.com/download/linux>
+  <https://git-scm.com/download/linux>
 
-### Mac OS
+- Mac OS
 
-<https://git-scm.com/download/mac>
+  <https://git-scm.com/download/mac>
