@@ -15,24 +15,24 @@ namespace Udon
 {
     namespace Traits
     {
-        /// @brief T に `T::begin()` 関数が存在するか
+        /// @brief T に `T::begin` 関数が存在するか
         template <typename, typename = void>
         struct HasMemberFunctionBegin : std::false_type
         {
         };
         template <typename T>
-        struct HasMemberFunctionBegin<T, std::void_t<decltype(std::declval<T>().begin())>> : std::true_type
+        struct HasMemberFunctionBegin<T, std::void_t<decltype(&T::begin)>> : std::true_type
         {
         };
 
-        /// @brief T に `T::begin()` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
+        /// @brief T に `T::begin` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
         template <typename HasMemberFunctionBegin, typename std::enable_if<Traits::HasMemberFunctionBegin<HasMemberFunctionBegin>::value, std::nullptr_t>::type = nullptr>
         void MaybeInvokeBegin(HasMemberFunctionBegin& rhs)
         {
             rhs.begin();
         }
 
-        /// @brief T に `T::begin()` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
+        /// @brief T に `T::begin` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
         template <typename HasMemberFunctionBegin, typename std::enable_if<not Traits::HasMemberFunctionBegin<HasMemberFunctionBegin>::value, std::nullptr_t>::type = nullptr>
         void MaybeInvokeBegin(HasMemberFunctionBegin&)
         {
@@ -42,24 +42,24 @@ namespace Udon
 
     namespace Traits
     {
-        /// @brief T に `T::show()` 関数が存在するか
+        /// @brief T に `T::show` 関数が存在するか
         template <typename, typename = void>
         struct HasMemberFunctionShow : std::false_type
         {
         };
         template <typename T>
-        struct HasMemberFunctionShow<T, std::void_t<decltype(std::declval<T>().show())>> : std::true_type
+        struct HasMemberFunctionShow<T, std::void_t<decltype(&T::show)>> : std::true_type
         {
         };
 
-        /// @brief T に `T::show() cosnt` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
+        /// @brief T に `T::show const` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
         template <typename HasMemberFunctionShow, typename std::enable_if<Traits::HasMemberFunctionShow<HasMemberFunctionShow>::value, std::nullptr_t>::type = nullptr>
         void MaybeInvokeShow(const HasMemberFunctionShow& rhs)
         {
             rhs.show();
         }
 
-        /// @brief T に `T::show() cosnt` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
+        /// @brief T に `T::show const` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
         template <typename HasMemberFunctionShow, typename std::enable_if<not Traits::HasMemberFunctionShow<HasMemberFunctionShow>::value, std::nullptr_t>::type = nullptr>
         void MaybeInvokeShow(const HasMemberFunctionShow&)
         {
@@ -69,24 +69,24 @@ namespace Udon
 
     namespace Traits
     {
-        /// @brief T に `T::showRaw()` 関数が存在するか
+        /// @brief T に `T::showRaw` 関数が存在するか
         template <typename, typename = void>
         struct HasMemberFunctionShowRaw : std::false_type
         {
         };
         template <typename T>
-        struct HasMemberFunctionShowRaw<T, std::void_t<decltype(std::declval<T>().showRaw())>> : std::true_type
+        struct HasMemberFunctionShowRaw<T, std::void_t<decltype(&T::showRaw)>> : std::true_type
         {
         };
 
-        /// @brief T に `T::showRaw() cosnt` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
+        /// @brief T に `T::showRaw const` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
         template <typename HasMemberFunctionShowRaw, typename std::enable_if<Traits::HasMemberFunctionShowRaw<HasMemberFunctionShowRaw>::value, std::nullptr_t>::type = nullptr>
         void MaybeInvokeShowRaw(const HasMemberFunctionShowRaw& rhs)
         {
             rhs.showRaw();
         }
 
-        /// @brief T に `T::showRaw() cosnt` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
+        /// @brief T に `T::showRaw const` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
         template <typename HasMemberFunctionShowRaw, typename std::enable_if<not Traits::HasMemberFunctionShowRaw<HasMemberFunctionShowRaw>::value, std::nullptr_t>::type = nullptr>
         void MaybeInvokeShowRaw(const HasMemberFunctionShowRaw&)
         {
@@ -96,24 +96,24 @@ namespace Udon
 
     namespace Traits
     {
-        /// @brief T に `T::update()` 関数が存在するか
+        /// @brief T に `T::update` 関数が存在するか
         template <typename, typename = void>
         struct HasMemberFunctionUpdate : std::false_type
         {
         };
         template <typename T>
-        struct HasMemberFunctionUpdate<T, std::void_t<decltype(std::declval<T>().update())>> : std::true_type
+        struct HasMemberFunctionUpdate<T, std::void_t<decltype(&T::update)>> : std::true_type
         {
         };
 
-        /// @brief T に `T::update()` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
+        /// @brief T に `T::update` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
         template <typename HasMemberFunctionUpdate, typename std::enable_if<Traits::HasMemberFunctionUpdate<HasMemberFunctionUpdate>::value, std::nullptr_t>::type = nullptr>
         void MaybeInvokeUpdate(HasMemberFunctionUpdate& rhs)
         {
             rhs.update();
         }
 
-        /// @brief T に `T::update()` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
+        /// @brief T に `T::update` 関数が存在する場合、呼び出す。それ以外の場合、何もしない。
         template <typename HasMemberFunctionUpdate, typename std::enable_if<not Traits::HasMemberFunctionUpdate<HasMemberFunctionUpdate>::value, std::nullptr_t>::type = nullptr>
         void MaybeInvokeUpdate(HasMemberFunctionUpdate&)
         {
