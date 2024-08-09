@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: src/Udon/Com/Pad/SivPadPS5.hpp ソースファイル</title>
@@ -45,7 +45,7 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.11.0 -->
+<!-- 構築: Doxygen 1.12.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -158,7 +158,7 @@ $(function(){initNavTree('SivPadPS5_8hpp_source.html',''); initResizable(true); 
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                <span class="keywordflow">if</span> (<span class="keyword">auto</span>&amp;&amp; gamePad = s3d::Gamepad(index))</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                {</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                    <span class="keywordflow">return</span> <a class="code hl_struct" href="structUdon_1_1Message_1_1PadPS5.html">Message::PadPS5</a> {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                        <span class="comment">/* bool   isConnected  */</span> gamePad.<a class="code hl_variable" href="structUdon_1_1Message_1_1PadPS5.html#a42e88cd5c9ab5508058846137d8cb976">isConnected</a>(),</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                        <span class="comment">/* bool   isConnected  */</span> gamePad.isConnected(),</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                        <span class="comment">/* bool   triangle     */</span> gamePad.buttons.at(3).pressed(),</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                        <span class="comment">/* bool   circle       */</span> gamePad.buttons.at(2).pressed(),</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                        <span class="comment">/* bool   cross        */</span> gamePad.buttons.at(1).pressed(),</div>
@@ -209,7 +209,6 @@ $(function(){initNavTree('SivPadPS5_8hpp_source.html',''); initResizable(true); 
 <div class="ttc" id="anamespaceUdon_html_ae102f6540b6e88b1b484ddbed3ff972f"><div class="ttname"><a href="namespaceUdon.html#ae102f6540b6e88b1b484ddbed3ff972f">Udon::nullopt</a></div><div class="ttdeci">constexpr NulloptT nullopt</div><div class="ttdoc">無効値</div><div class="ttdef"><b>Definition</b> Optional.hpp:52</div></div>
 <div class="ttc" id="anamespaceUdon_html_afc68d187236ed5a309e4630f3a434661"><div class="ttname"><a href="namespaceUdon.html#afc68d187236ed5a309e4630f3a434661">Udon::Map</a></div><div class="ttdeci">constexpr double Map(const double value, const double inputMin, const double inputMax, const double outputMin, const double outputMax)</div><div class="ttdoc">数値をある範囲から別の範囲に再マッピングする</div><div class="ttdef"><b>Definition</b> Math.hpp:125</div></div>
 <div class="ttc" id="astructUdon_1_1Message_1_1PadPS5_html"><div class="ttname"><a href="structUdon_1_1Message_1_1PadPS5.html">Udon::Message::PadPS5</a></div><div class="ttdoc">PS5コントローラーのボタン情報</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:21</div></div>
-<div class="ttc" id="astructUdon_1_1Message_1_1PadPS5_html_a42e88cd5c9ab5508058846137d8cb976"><div class="ttname"><a href="structUdon_1_1Message_1_1PadPS5.html#a42e88cd5c9ab5508058846137d8cb976">Udon::Message::PadPS5::isConnected</a></div><div class="ttdeci">bool isConnected</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:22</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! --></div>

@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.11.0"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: Udon::Traits::AlwaysFalse&lt; T &gt; 構造体テンプレート</title>
@@ -45,7 +45,7 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.11.0 -->
+<!-- 構築: Doxygen 1.12.0 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -125,8 +125,8 @@ Udon::Traits::AlwaysFalse&lt; T &gt; の継承関係図</div>
 struct Udon::Traits::AlwaysFalse&lt; T &gt;</div><p>static_assert 失敗遅延用の型 </p>
 <dl class="section note"><dt>覚え書き</dt><dd>C++20 までは static_assert に false を渡すとテンプレートの実体化する前にエラーになるため、 この型を用いて実体化時点で static_assert が失敗するようにする。</dd></dl>
 <p>例:</p>
-<p>template &lt;typename T, typename std::enable_if&lt;std::is_integral&lt;T&gt;::value&gt;type* = nullptr&gt; void f() // &lt;- Tが整数であるとき、f() は実体化されてはいけないとする { static_assert(Udon::Traits::AlwaysFalse&lt;T&gt;::value, "T is integral."); }</p>
-<p>template &lt;typename T, typename std::enable_if&lt;std::is_floating_point&lt;T&gt;::value&gt;type* = nullptr&gt; void f() // &lt;- 実体化されるべき関数 { }</p>
+<p>template &lt;typename T, typename std::enable_if&lt;std::is_integral&lt;T&gt;::value&gt;::type* = nullptr&gt; void f() // &lt;- Tが整数であるとき、f() は実体化されてはいけないとする { static_assert(Udon::Traits::AlwaysFalse&lt;T&gt;::value, "T is integral."); }</p>
+<p>template &lt;typename T, typename std::enable_if&lt;std::is_floating_point&lt;T&gt;::value&gt;::type* = nullptr&gt; void f() // &lt;- 実体化されるべき関数 { }</p>
 <p>f&lt;int&gt;(); // &lt;- 実体化された時点で static_assert が失敗する f&lt;float&gt;(); // &lt;- int型で実体化されていないので static_assert は失敗しない </p>
 </div><hr/>この構造体詳解は次のファイルから抽出されました:<ul>
 <li>src/Udon/Traits/<a class="el" href="AlwaysFalse_8hpp_source.html">AlwaysFalse.hpp</a></li>
