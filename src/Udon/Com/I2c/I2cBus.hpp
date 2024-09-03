@@ -117,7 +117,6 @@ namespace Udon
         // userOnReceive(I2cBusImpl::onReceiveで登録したコールバック関数) 呼び出し
 
     public:
-
         /// @brief コンストラクタ
         /// @param wire I2Cバス
         /// @param timeoutMs バスのタイムアウト時間
@@ -133,11 +132,15 @@ namespace Udon
         }
 
         /// @brief コピーコンストラクタ
-        I2cBusImpl(const I2cBusImpl& rhs)
-            : wire(rhs.wire)
-            , timeoutMs(rhs.timeoutMs)
-            , transmitMs(rhs.transmitMs)
-            , restartCount(rhs.restartCount)
+        /// @note この関数は明示的に削除されています。
+        I2cBusImpl(const I2cBusImpl&) = delete;
+
+        /// @brief ムーブコンストラクタ
+        I2cBusImpl(I2cBusImpl&& other)
+            : wire(other.wire)
+            , timeoutMs(other.timeoutMs)
+            , transmitMs(other.transmitMs)
+            , restartCount(other.restartCount)
             , userOnReceive()
             , userOnRequest()
         {

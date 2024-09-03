@@ -41,7 +41,11 @@ namespace Udon
         }
 
         /// @brief コピーコンストラクタ
-        CanWriter(const CanWriter& other)
+        /// @note この関数は明示的に削除されています。
+        CanWriter(const CanWriter& other) = delete;
+
+        /// @brief ムーブコンストラクタ
+        CanWriter(CanWriter&& other)
             : bus{ other.bus }
             , node{ other.node }
         {

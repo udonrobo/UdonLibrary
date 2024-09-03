@@ -41,9 +41,13 @@ namespace Udon
         }
 
         /// @brief コピーコンストラクタ
-        /// @param rhs
-        I2cSlaveReader(const I2cSlaveReader& rhs)
-            : bus(rhs.bus)
+        /// @note この関数は明示的に削除されています。
+        I2cSlaveReader(const I2cSlaveReader&) = delete;
+
+        
+        /// @brief ムーブコンストラクタ
+        I2cSlaveReader(I2cSlaveReader&& other)
+            : bus(other.bus)
             , buffer()
         {
             self = this;

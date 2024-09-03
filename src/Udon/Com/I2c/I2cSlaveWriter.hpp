@@ -41,9 +41,11 @@ namespace Udon
         }
 
         /// @brief コピーコンストラクタ
-        /// @param rhs
-        I2cSlaveWriter(const I2cSlaveWriter& rhs)
-            : bus(rhs.bus)
+        I2cSlaveWriter(const I2cSlaveWriter&) = delete;
+        
+        /// @brief ムーブコンストラクタ
+        I2cSlaveWriter(I2cSlaveWriter&& other)
+            : bus(other.bus)
             , buffer()
         {
             self = this;

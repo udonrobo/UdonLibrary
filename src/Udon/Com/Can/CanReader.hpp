@@ -48,11 +48,15 @@ namespace Udon
         }
 
         /// @brief コピーコンストラクタ
-        CanReader(const CanReader& other)
+        /// @note この関数は明示的に削除されています。
+        CanReader(const CanReader&) = delete;
+
+        /// @brief コピーコンストラクタ
+        CanReader(CanReader&& other)
             : bus{ other.bus }
             , node{ other.node }
         {
-            node->param = this;
+            node->param = this;    // ここでotherに登録されていたthisポインタを上書きするため、コピーすることができない
         }
 
         /// @brief 受信しているか

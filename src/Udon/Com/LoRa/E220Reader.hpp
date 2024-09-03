@@ -27,9 +27,13 @@ namespace Udon
         /// @brief メッセージ型
         using MessageType = T;
 
-        /// @brief コンストラクタ
+        /// @brief コピーコンストラクタ
+        /// @note コールバックをする際にthisを登録する必要があり、コピー元のオブジェクトが使用できなくなるため削除
+        E220Reader(const E220Base::Config& config) = delete;
+
+        /// @brief ムーブコンストラクタ
         /// @param config 設定
-        E220Reader(const E220Base::Config& config)
+        E220Reader(E220Base::Config&& config)
             : E220Base(config)
         {
         }

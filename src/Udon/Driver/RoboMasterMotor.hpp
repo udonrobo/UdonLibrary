@@ -35,16 +35,21 @@ namespace Udon
                 nodeRx->param = this;
             }
 
-            /// @brief 受信idは0x201から一つのコントローラにつき一つのidを持つ
-            /// @param 送信idは0x200にモータ4つのデータを送信する
-            RoboMasterBase(const RoboMasterBase& other)
+
+            /// @brief コピーコンストラクタ
+            /// @note この関数は明示的に削除されています。
+            RoboMasterBase(const RoboMasterBase&) = delete;
+
+
+            /// @brief ムーブコンストラクタ
+            RoboMasterBase(RoboMasterBase&& other)
                 : bus{ other.bus }
                 , motorId{ other.motorId }
                 , direction{ other.direction }
                 , nodeTx{ other.nodeTx }
                 , nodeRx{ other.nodeRx }
             {
-                nodeRx->param = this;
+                nodeRx->param = this;    // ここでotherに登録されていたthisポインタを上書きするため、コピーすることができない
             }
 
 
@@ -54,6 +59,15 @@ namespace Udon
             double getAngle() const
             {
                 return (angle + offsetAngle) * 2 * Udon::Pi / ppr * directionSign();
+            }
+
+
+            /// @brief モーターの角度を取得
+            /// @note 無限の角度を扱えない
+            /// @return 角度 [rad]
+            double getRawAngle() const
+            {
+                return angle * 2 * Udon::Pi / ppr * directionSign();
             }
 
 
