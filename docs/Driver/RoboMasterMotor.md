@@ -58,8 +58,11 @@ void loop()
 ```cpp
 void loop()
 {
-    // 回転角度 [rad]
+    // 回転角度(無限角対応) [rad]
     const double angle = motor.getAngle();
+
+    // 回転角度(無限角非対応) [rad]
+    const double rawAngle = motor.getRawAngle();
 
     // 回転速度 [rpm]
     const int16_t rpm = motor.getVelocity();
@@ -83,8 +86,11 @@ void loop()
 
 static Udon::CanBusTeensy<CAN1> bus;
 
+// C620
 static Udon::RoboMasterC620 motor1{ bus, 1 };
 static Udon::RoboMasterC620 motor2{ bus, 2 };
+
+// C610
 static Udon::RoboMasterC610 motor3{ bus, 3 };
 static Udon::RoboMasterC610 motor4{ bus, 4 };
 ```

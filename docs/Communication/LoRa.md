@@ -1,10 +1,15 @@
 # LoRa
 
+<img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/8336c610-8d65-4c18-a0bf-d64c82b55e08" width="250px" align="right"/>
+
 920MHz 帯無線モジュール
 
-## E220
+## 使用部品
 
-<img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/8336c610-8d65-4c18-a0bf-d64c82b55e08" width="250px" align="right"/>
+- [E220](https://akizukidenshi.com/catalog/g/g117616/)
+- [アンテナ](https://akizukidenshi.com/catalog/g/g117618/)
+
+## E220 LoRa モジュール
 
 - ペアリングが必要ありません。
 - 秋月電子で購入でき安価 (2000 円程度)
@@ -71,7 +76,7 @@ void loop()
 
 ### チャンネルの設定
 
-コンストラクタでチャンネルを設定できますが、begin 関数の引数にチャンネルを渡すことで設定することもできます。
+begin 関数の引数でもチェンネルを指定できます。この時コンストラクタでチャンネルを指定する必要はありません。
 
 ```cpp
 #include <Udon.hpp>

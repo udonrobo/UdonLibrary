@@ -45,8 +45,8 @@
 - [CAN](./docs/Communication/CAN.md)
 - [I2C](./docs/Communication/I2C.md)
 - [LoRa](./docs/Communication/LoRa.md)
-<!-- - [IM920](./docs/Communication/IM920.md) -->
-<!-- - [USB/UART](./docs/Communication/Serial.md) -->
+- [IM920 (現在部で使用していないため動作するか不明)](./docs/Communication/IM920.md)
+- [USB/UART](./docs/Communication/Serial.md)
 - [コントローラ](./docs/Communication/Pad.md)
 - [CRC エラーチェック](./docs/Communication/CRC.md)
 
@@ -68,11 +68,13 @@
 - [ロボマスモーター](./docs/Driver/RoboMasterMotor.md)
 - [BNO055](./docs/Driver/BNO055.md)
 - [DIP スイッチ](./docs/Driver/DipSwitch.md)
-- [Raspberry Pi Pico / ロータリーエンコーダー](./docs/Driver/EncoderPico.md)
 - [Raspberry Pi Pico / PIO](./docs/Driver/PIO.md)
+- [Raspberry Pi Pico / ロータリーエンコーダー](./docs/Driver/EncoderPico.md)
+- [Raspberry Pi Pico / ウォッチドックタイマー](./docs/Driver/PicoWDT.md)
 
 ### その他
 
+- [ユーティリティ](./docs/Other/Utility.md)
 - [シリアライザ・デシリアライザ](./docs/Other/Serialization.md)
 - [メタ関数](./docs/Other/Traits.md)
 
