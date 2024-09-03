@@ -189,7 +189,7 @@ $(function(){initNavTree('md_docs_2Types_2Vector2D.html',''); initResizable(true
 <div class="line"> </div>
 <div class="line"><span class="keyword">const</span> <span class="keywordtype">double</span> length = vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#a3f2bca871c66abddcc0281e69a511fe9">length</a>();</div>
 <div class="line"><span class="comment">// length = 5.0</span></div>
-<div class="ttc" id="astructUdon_1_1Vec2_html_a3f2bca871c66abddcc0281e69a511fe9"><div class="ttname"><a href="structUdon_1_1Vec2.html#a3f2bca871c66abddcc0281e69a511fe9">Udon::Vec2::length</a></div><div class="ttdeci">ValueType length() const noexcept</div><div class="ttdoc">原点からの距離を求める</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:211</div></div>
+<div class="ttc" id="astructUdon_1_1Vec2_html_a3f2bca871c66abddcc0281e69a511fe9"><div class="ttname"><a href="structUdon_1_1Vec2.html#a3f2bca871c66abddcc0281e69a511fe9">Udon::Vec2::length</a></div><div class="ttdeci">ValueType length() const noexcept</div><div class="ttdoc">原点からの距離を求める</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:221</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md277"></a>
 <code>distanceFrom(Vec2 other) -&gt; double</code></h2>
 <p>他のベクトルとの距離を求めます。</p>
@@ -198,7 +198,7 @@ $(function(){initNavTree('md_docs_2Types_2Vector2D.html',''); initResizable(true
 <div class="line"> </div>
 <div class="line"><span class="keyword">const</span> <span class="keywordtype">double</span> distance = vector1.<a class="code hl_function" href="structUdon_1_1Vec2.html#ac663e69dc69695397b7ce4075e7e77e9">distanceFrom</a>(vector2);  <span class="comment">// ベクトル間の距離</span></div>
 <div class="line"><span class="comment">// distance = 5.0</span></div>
-<div class="ttc" id="astructUdon_1_1Vec2_html_ac663e69dc69695397b7ce4075e7e77e9"><div class="ttname"><a href="structUdon_1_1Vec2.html#ac663e69dc69695397b7ce4075e7e77e9">Udon::Vec2::distanceFrom</a></div><div class="ttdeci">ValueType distanceFrom(const Vec2 &amp;rhs) const noexcept</div><div class="ttdoc">指定された点からの距離を求める</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:203</div></div>
+<div class="ttc" id="astructUdon_1_1Vec2_html_ac663e69dc69695397b7ce4075e7e77e9"><div class="ttname"><a href="structUdon_1_1Vec2.html#ac663e69dc69695397b7ce4075e7e77e9">Udon::Vec2::distanceFrom</a></div><div class="ttdeci">ValueType distanceFrom(const Vec2 &amp;rhs) const noexcept</div><div class="ttdoc">指定された点からの距離を求める</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:213</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md278"></a>
 ベクトルの角度を求める</h1>
 <h2><a class="anchor" id="autotoc_md279"></a>
@@ -216,7 +216,7 @@ $(function(){initNavTree('md_docs_2Types_2Vector2D.html',''); initResizable(true
 <div class="fragment"><div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> vector(3.0, 4.0);</div>
 <div class="line"><span class="keyword">const</span> <span class="keyword">auto</span> newVector = vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#a2391386d50fa2bfc20b1b5c125e387fc">scaledLength</a>(2.0);  <span class="comment">// ベクトルの長さを設定</span></div>
 <div class="line"><span class="comment">// newVector = { 1.2, 1.6 }  (大きさが2.0のベクトル)</span></div>
-<div class="ttc" id="astructUdon_1_1Vec2_html_a2391386d50fa2bfc20b1b5c125e387fc"><div class="ttname"><a href="structUdon_1_1Vec2.html#a2391386d50fa2bfc20b1b5c125e387fc">Udon::Vec2::scaledLength</a></div><div class="ttdeci">Vec2 scaledLength(ValueType length) const noexcept</div><div class="ttdoc">長さを変更したベクトルを返す</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:225</div></div>
+<div class="ttc" id="astructUdon_1_1Vec2_html_a2391386d50fa2bfc20b1b5c125e387fc"><div class="ttname"><a href="structUdon_1_1Vec2.html#a2391386d50fa2bfc20b1b5c125e387fc">Udon::Vec2::scaledLength</a></div><div class="ttdeci">Vec2 scaledLength(ValueType length) const noexcept</div><div class="ttdoc">長さを変更したベクトルを返す</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:235</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md283"></a>
 <code>scaleLength(double length) -&gt; Vec2&amp;</code></h2>
 <p>ベクトルの長さ（大きさ）を指定した値に変更します。</p>
@@ -225,7 +225,7 @@ $(function(){initNavTree('md_docs_2Types_2Vector2D.html',''); initResizable(true
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> vector(3.0, 4.0);</div>
 <div class="line">vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#a45886ef121bc89660f29e20cd6519149">scaleLength</a>(2.0);  <span class="comment">// ベクトルの長さを変更</span></div>
 <div class="line"><span class="comment">// vector = { 1.2, 1.6 }  (大きさが2.0に変更されたベクトル)</span></div>
-<div class="ttc" id="astructUdon_1_1Vec2_html_a45886ef121bc89660f29e20cd6519149"><div class="ttname"><a href="structUdon_1_1Vec2.html#a45886ef121bc89660f29e20cd6519149">Udon::Vec2::scaleLength</a></div><div class="ttdeci">Vec2 &amp; scaleLength(ValueType length) noexcept</div><div class="ttdoc">ベクトルの長さを指定された値にする</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:233</div></div>
+<div class="ttc" id="astructUdon_1_1Vec2_html_a45886ef121bc89660f29e20cd6519149"><div class="ttname"><a href="structUdon_1_1Vec2.html#a45886ef121bc89660f29e20cd6519149">Udon::Vec2::scaleLength</a></div><div class="ttdeci">Vec2 &amp; scaleLength(ValueType length) noexcept</div><div class="ttdoc">ベクトルの長さを指定された値にする</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:243</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md284"></a>
 原点を中心にベクトルを指定角度回転させる</h1>
 <h2><a class="anchor" id="autotoc_md285"></a>
@@ -237,7 +237,7 @@ $(function(){initNavTree('md_docs_2Types_2Vector2D.html',''); initResizable(true
 <div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> rotated = vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#a651345a85870ef89338fe6db324aabbb">rotated</a>(<a class="code hl_function" href="namespaceUdon.html#a2ddf377cfc3d54e1a9eaf445a39e19fd">Udon::ToRadians</a>(45.0));</div>
 <div class="line"><span class="comment">// rotated = { 0.707, 0.707 }  (45度回転したベクトル)</span></div>
 <div class="ttc" id="anamespaceUdon_html_a2ddf377cfc3d54e1a9eaf445a39e19fd"><div class="ttname"><a href="namespaceUdon.html#a2ddf377cfc3d54e1a9eaf445a39e19fd">Udon::ToRadians</a></div><div class="ttdeci">constexpr T ToRadians(const T &amp;rhs)</div><div class="ttdoc">度数法の角度を弧度法に変換する</div><div class="ttdef"><b>Definition</b> Math.hpp:67</div></div>
-<div class="ttc" id="astructUdon_1_1Vec2_html_a651345a85870ef89338fe6db324aabbb"><div class="ttname"><a href="structUdon_1_1Vec2.html#a651345a85870ef89338fe6db324aabbb">Udon::Vec2::rotated</a></div><div class="ttdeci">Vec2 rotated(ValueType angle) const noexcept</div><div class="ttdoc">原点を中心に回転したベクトルを返す</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:162</div></div>
+<div class="ttc" id="astructUdon_1_1Vec2_html_a651345a85870ef89338fe6db324aabbb"><div class="ttname"><a href="structUdon_1_1Vec2.html#a651345a85870ef89338fe6db324aabbb">Udon::Vec2::rotated</a></div><div class="ttdeci">Vec2 rotated(ValueType angle) const noexcept</div><div class="ttdoc">原点を中心に回転したベクトルを返す</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:172</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md286"></a>
 <code>rotate(double angle) -&gt; Vec2&amp;</code></h2>
 <p>回転行列を用いて、ベクトルを指定した角度回転させます。</p>
@@ -246,7 +246,7 @@ $(function(){initNavTree('md_docs_2Types_2Vector2D.html',''); initResizable(true
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> vector { 1.0, 0.0 };</div>
 <div class="line">vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#ad8244490c21c996801239aa89dc1f580">rotate</a>(<a class="code hl_function" href="namespaceUdon.html#a2ddf377cfc3d54e1a9eaf445a39e19fd">Udon::ToRadians</a>(45));</div>
 <div class="line"><span class="comment">// vector = { 0.707, 0.707 }  (45度回転したベクトル)</span></div>
-<div class="ttc" id="astructUdon_1_1Vec2_html_ad8244490c21c996801239aa89dc1f580"><div class="ttname"><a href="structUdon_1_1Vec2.html#ad8244490c21c996801239aa89dc1f580">Udon::Vec2::rotate</a></div><div class="ttdeci">Vec2 &amp; rotate(ValueType angle) noexcept</div><div class="ttdoc">原点を中心に回転させる</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:170</div></div>
+<div class="ttc" id="astructUdon_1_1Vec2_html_ad8244490c21c996801239aa89dc1f580"><div class="ttname"><a href="structUdon_1_1Vec2.html#ad8244490c21c996801239aa89dc1f580">Udon::Vec2::rotate</a></div><div class="ttdeci">Vec2 &amp; rotate(ValueType angle) noexcept</div><div class="ttdoc">原点を中心に回転させる</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:180</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md287"></a>
 指定した点を中心にベクトルを指定角度回転させる</h1>
 <h2><a class="anchor" id="autotoc_md288"></a>
@@ -258,7 +258,7 @@ $(function(){initNavTree('md_docs_2Types_2Vector2D.html',''); initResizable(true
 <div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> center { 1.0, 1.0 };</div>
 <div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> rotated = vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#ae5d9791bbe15c6063a1c567a7d78741f">rotatedAt</a>(center, <a class="code hl_function" href="namespaceUdon.html#a2ddf377cfc3d54e1a9eaf445a39e19fd">Udon::ToRadians</a>(90));  <span class="comment">// ベクトルの回転</span></div>
 <div class="line"><span class="comment">// rotated = { 1.0, 0.0 }  (中心を軸にして90度回転したベクトル)</span></div>
-<div class="ttc" id="astructUdon_1_1Vec2_html_ae5d9791bbe15c6063a1c567a7d78741f"><div class="ttname"><a href="structUdon_1_1Vec2.html#ae5d9791bbe15c6063a1c567a7d78741f">Udon::Vec2::rotatedAt</a></div><div class="ttdeci">Vec2 rotatedAt(const Vec2 &amp;center, ValueType angle) const noexcept</div><div class="ttdoc">指定された点を中心に時計回りに回転したベクトルを返す</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:142</div></div>
+<div class="ttc" id="astructUdon_1_1Vec2_html_ae5d9791bbe15c6063a1c567a7d78741f"><div class="ttname"><a href="structUdon_1_1Vec2.html#ae5d9791bbe15c6063a1c567a7d78741f">Udon::Vec2::rotatedAt</a></div><div class="ttdeci">Vec2 rotatedAt(const Vec2 &amp;center, ValueType angle) const noexcept</div><div class="ttdoc">指定された点を中心に時計回りに回転したベクトルを返す</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:152</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md289"></a>
 <code>rotateAt(Vec2 center, double angle) -&gt; Vec2&amp;</code></h2>
 <p>回転行列を用いて、指定した回転中心（中心点）を基準にベクトルを指定した角度（ラジアン）だけ回転させます。</p>
@@ -268,7 +268,7 @@ $(function(){initNavTree('md_docs_2Types_2Vector2D.html',''); initResizable(true
 <div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> center { 1.0, 1.0 };</div>
 <div class="line">vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#a0f3de087890fec3c32c6870b9aa2f7fd">rotateAt</a>(center, <a class="code hl_function" href="namespaceUdon.html#a2ddf377cfc3d54e1a9eaf445a39e19fd">Udon::ToRadians</a>(90));  <span class="comment">// ベクトルの回転</span></div>
 <div class="line"><span class="comment">// vector = { 1.0, 0.0 }  (中心を軸にして90度回転したベクトル)</span></div>
-<div class="ttc" id="astructUdon_1_1Vec2_html_a0f3de087890fec3c32c6870b9aa2f7fd"><div class="ttname"><a href="structUdon_1_1Vec2.html#a0f3de087890fec3c32c6870b9aa2f7fd">Udon::Vec2::rotateAt</a></div><div class="ttdeci">Vec2 &amp; rotateAt(const Vec2 &amp;center, ValueType angle) noexcept</div><div class="ttdoc">指定された点を中心に時計回りに回転させる</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:154</div></div>
+<div class="ttc" id="astructUdon_1_1Vec2_html_a0f3de087890fec3c32c6870b9aa2f7fd"><div class="ttname"><a href="structUdon_1_1Vec2.html#a0f3de087890fec3c32c6870b9aa2f7fd">Udon::Vec2::rotateAt</a></div><div class="ttdeci">Vec2 &amp; rotateAt(const Vec2 &amp;center, ValueType angle) noexcept</div><div class="ttdoc">指定された点を中心に時計回りに回転させる</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:164</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md290"></a>
 極座標系へ変換する</h1>
 <h2><a class="anchor" id="autotoc_md291"></a>
@@ -287,7 +287,7 @@ $(function(){initNavTree('md_docs_2Types_2Vector2D.html',''); initResizable(true
 <div class="fragment"><div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> vector{ 100.0, 200.0 };</div>
 <div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> clamped = vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#a9b7019cd6d7374a7bd43262415844b45">clamped</a>(130, 180);</div>
 <div class="line"><span class="comment">// clamped = { 130, 180 }</span></div>
-<div class="ttc" id="astructUdon_1_1Vec2_html_a9b7019cd6d7374a7bd43262415844b45"><div class="ttname"><a href="structUdon_1_1Vec2.html#a9b7019cd6d7374a7bd43262415844b45">Udon::Vec2::clamped</a></div><div class="ttdeci">constexpr Vec2 clamped(ValueType min, ValueType max) const noexcept</div><div class="ttdoc">各要素に制限をかけたベクトルを返す</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:288</div></div>
+<div class="ttc" id="astructUdon_1_1Vec2_html_a9b7019cd6d7374a7bd43262415844b45"><div class="ttname"><a href="structUdon_1_1Vec2.html#a9b7019cd6d7374a7bd43262415844b45">Udon::Vec2::clamped</a></div><div class="ttdeci">constexpr Vec2 clamped(ValueType min, ValueType max) const noexcept</div><div class="ttdoc">各要素に制限をかけたベクトルを返す</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:298</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md294"></a>
 <code>clamp(double min, double max) -&gt; Vec2&amp;</code></h2>
 <p>各要素に constrain(Arduino)、 std::clamp(STL) を適用させ代入します。</p>
@@ -295,7 +295,7 @@ $(function(){initNavTree('md_docs_2Types_2Vector2D.html',''); initResizable(true
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> vector{ 100.0, 200.0 };</div>
 <div class="line">vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#a82b41b3d801e5ece0ac11d0f14b5e61a">clamp</a>(130, 180);</div>
 <div class="line"><span class="comment">// vector = { 130, 180 }</span></div>
-<div class="ttc" id="astructUdon_1_1Vec2_html_a82b41b3d801e5ece0ac11d0f14b5e61a"><div class="ttname"><a href="structUdon_1_1Vec2.html#a82b41b3d801e5ece0ac11d0f14b5e61a">Udon::Vec2::clamp</a></div><div class="ttdeci">Vec2 &amp; clamp(ValueType min, ValueType max) noexcept</div><div class="ttdoc">各要素に制限をかける</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:297</div></div>
+<div class="ttc" id="astructUdon_1_1Vec2_html_a82b41b3d801e5ece0ac11d0f14b5e61a"><div class="ttname"><a href="structUdon_1_1Vec2.html#a82b41b3d801e5ece0ac11d0f14b5e61a">Udon::Vec2::clamp</a></div><div class="ttdeci">Vec2 &amp; clamp(ValueType min, ValueType max) noexcept</div><div class="ttdoc">各要素に制限をかける</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:307</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md295"></a>
 ベクトルをリマッピングする</h1>
 <h2><a class="anchor" id="autotoc_md296"></a>
@@ -306,7 +306,7 @@ $(function(){initNavTree('md_docs_2Types_2Vector2D.html',''); initResizable(true
 <div class="fragment"><div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> vector{ 100.0, 200.0 };</div>
 <div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> mapped = vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#a5c6248222369fdacf211f040a5b67f8f">mapped</a>(0, 200, 0, 400);</div>
 <div class="line"><span class="comment">// mapped = { 200.0, 400.0 }</span></div>
-<div class="ttc" id="astructUdon_1_1Vec2_html_a5c6248222369fdacf211f040a5b67f8f"><div class="ttname"><a href="structUdon_1_1Vec2.html#a5c6248222369fdacf211f040a5b67f8f">Udon::Vec2::mapped</a></div><div class="ttdeci">constexpr Vec2 mapped(ValueType fromMin, ValueType fromMax, ValueType toMin, ValueType toMax) const noexcept</div><div class="ttdoc">各要素をある範囲から別の範囲に再マップしたベクトルを返す</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:244</div></div>
+<div class="ttc" id="astructUdon_1_1Vec2_html_a5c6248222369fdacf211f040a5b67f8f"><div class="ttname"><a href="structUdon_1_1Vec2.html#a5c6248222369fdacf211f040a5b67f8f">Udon::Vec2::mapped</a></div><div class="ttdeci">constexpr Vec2 mapped(ValueType fromMin, ValueType fromMax, ValueType toMin, ValueType toMax) const noexcept</div><div class="ttdoc">各要素をある範囲から別の範囲に再マップしたベクトルを返す</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:254</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md297"></a>
 <code>map(double fromMin, double fromMax, double toMin, double toMax) -&gt; Vec2&amp;</code></h2>
 <p>各要素をある範囲から別の範囲に再マップします。</p>
@@ -315,7 +315,7 @@ $(function(){initNavTree('md_docs_2Types_2Vector2D.html',''); initResizable(true
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> vector{ 100.0, 200.0 };</div>
 <div class="line">vector.<a class="code hl_function" href="structUdon_1_1Vec2.html#a688f1e2761ce5aeaa30590060aa62e32">map</a>(0, 200, 0, 400);</div>
 <div class="line"><span class="comment">// vector = { 200.0, 400.0 }</span></div>
-<div class="ttc" id="astructUdon_1_1Vec2_html_a688f1e2761ce5aeaa30590060aa62e32"><div class="ttname"><a href="structUdon_1_1Vec2.html#a688f1e2761ce5aeaa30590060aa62e32">Udon::Vec2::map</a></div><div class="ttdeci">Vec2 &amp; map(ValueType fromMin, ValueType fromMax, ValueType toMin, ValueType toMax) noexcept</div><div class="ttdoc">各要素をある範囲から別の範囲に再マップする</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:258</div></div>
+<div class="ttc" id="astructUdon_1_1Vec2_html_a688f1e2761ce5aeaa30590060aa62e32"><div class="ttname"><a href="structUdon_1_1Vec2.html#a688f1e2761ce5aeaa30590060aa62e32">Udon::Vec2::map</a></div><div class="ttdeci">Vec2 &amp; map(ValueType fromMin, ValueType fromMax, ValueType toMin, ValueType toMax) noexcept</div><div class="ttdoc">各要素をある範囲から別の範囲に再マップする</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:268</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md298"></a>
 OpenSiv3D との連携</h1>
 <p><code>OpenSiv3D</code> が持つ <code>s3d::Vector2D&lt;T&gt;</code> との相互変換を行えます。</p>

@@ -4,6 +4,7 @@ var structUdon_1_1Pos =
     [ "Pos", "structUdon_1_1Pos.html#af88def76dc368abb9844ae9fcf66ebee", null ],
     [ "Pos", "structUdon_1_1Pos.html#a0d58914f6774d1eb573e5c0651619e00", null ],
     [ "Pos", "structUdon_1_1Pos.html#aadf97bbf65d9cb4d662be385988f0a39", null ],
+    [ "abs", "structUdon_1_1Pos.html#a5e645446f5cbd8c4b8a74dda9b706837", null ],
     [ "clear", "structUdon_1_1Pos.html#a52c8abfdf70349cc11252205eff608b5", null ],
     [ "isZero", "structUdon_1_1Pos.html#a69e22d403bc85f1916b2f46e7b6589ab", null ],
     [ "mapped", "structUdon_1_1Pos.html#a47c757729c9868c85d94d2f34d116b91", null ],

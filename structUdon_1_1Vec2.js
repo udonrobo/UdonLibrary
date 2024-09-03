@@ -4,6 +4,7 @@ var structUdon_1_1Vec2 =
     [ "Vec2", "structUdon_1_1Vec2.html#a2f54877269048fbacb33e02d2f7b1d54", null ],
     [ "Vec2", "structUdon_1_1Vec2.html#a8789b2696614eaad575515363741edff", null ],
     [ "Vec2", "structUdon_1_1Vec2.html#a24ffad6c4572a0586c9c3e97633ad812", null ],
+    [ "abs", "structUdon_1_1Vec2.html#aeba02a3786484171d9832660f332a0a5", null ],
     [ "angle", "structUdon_1_1Vec2.html#a6f91343bf4606f50dac05e5d46cdcc99", null ],
     [ "angleAt", "structUdon_1_1Vec2.html#a27d0aaa30865d251f094aced56783e89", null ],
     [ "clamp", "structUdon_1_1Vec2.html#a82b41b3d801e5ece0ac11d0f14b5e61a", null ],
