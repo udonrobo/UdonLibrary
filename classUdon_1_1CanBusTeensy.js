@@ -2,7 +2,8 @@ var classUdon_1_1CanBusTeensy =
 [
     [ "Config", "structUdon_1_1CanBusTeensy_1_1Config.html", "structUdon_1_1CanBusTeensy_1_1Config" ],
     [ "CanBusTeensy", "classUdon_1_1CanBusTeensy.html#a71a2d8fe25af24188080d70128c2c030", null ],
-    [ "CanBusTeensy", "classUdon_1_1CanBusTeensy.html#a058b6ccfcb87869d5bef55c5e7b66d4d", null ],
+    [ "CanBusTeensy", "classUdon_1_1CanBusTeensy.html#ab6281b304b8d51ba512f002ff8e4c0d0", null ],
+    [ "CanBusTeensy", "classUdon_1_1CanBusTeensy.html#a33cde73593f6468d8459c1e10e31f971", null ],
     [ "~CanBusTeensy", "classUdon_1_1CanBusTeensy.html#ae8ad7a59df742c856ecadd34d9837cdd", null ],
     [ "begin", "classUdon_1_1CanBusTeensy.html#a634246d48d846fee09ab4c3259f18b26", null ],
     [ "createRx", "classUdon_1_1CanBusTeensy.html#a08e2e10410241ec6ec55b119551fbf5f", null ],

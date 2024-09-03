@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"structUdon_1_1EulerDirection.html#a6a6956bc5b2b53c63e79a0923fa04008":[53,0,0,17,1],
+"structUdon_1_1HSV.html":[52,0,1,22],
 "structUdon_1_1HSV.html":[53,0,0,19],
 "structUdon_1_1HSV.html#a181d97be507eae67e92d208517d64a2d":[52,0,1,22,3],
 "structUdon_1_1HSV.html#a181d97be507eae67e92d208517d64a2d":[53,0,0,19,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX9 =
 "structUdon_1_1NulloptT.html":[53,0,0,37],
 "structUdon_1_1PidController_1_1Parameter.html":[52,0,1,45,0],
 "structUdon_1_1PidController_1_1Parameter.html":[53,0,0,42,0],
-"structUdon_1_1PidController_1_1Parameter.html#ab86074cfd18fa98b1dc3f2c6141405b0":[52,0,1,45,0,0],
-"structUdon_1_1PidController_1_1Parameter.html#ab86074cfd18fa98b1dc3f2c6141405b0":[53,0,0,42,0,0],
-"structUdon_1_1PidController_1_1Parameter.html#ac4f44961fefd6749f8b613c5217b91d0":[52,0,1,45,0,1]
+"structUdon_1_1PidController_1_1Parameter.html#ab86074cfd18fa98b1dc3f2c6141405b0":[52,0,1,45,0,0]
 };
