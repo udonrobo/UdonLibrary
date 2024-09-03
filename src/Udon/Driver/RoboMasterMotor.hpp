@@ -28,9 +28,13 @@ namespace Udon
                 : bus{ bus }
                 , motorId{ motorId }
                 , direction{ direction }
-                , nodeTx{ bus.createTx(static_cast<uint32_t>(0x200), 8) }
                 , nodeRx{ bus.createRx(static_cast<uint32_t>(0x200 + Constrain((int)motorId, 1, 8)), 8) }
             {
+                if (motorId > 4)
+                  nodeTx = bus.createTx(static_cast<uint32_t>(0x1FF), 8);
+                else
+                  nodeTx = bus.createTx(static_cast<uint32_t>(0x200), 8);
+
                 nodeRx->onReceive = onReceive;
                 nodeRx->param = this;
             }
@@ -106,8 +110,17 @@ namespace Udon
                 const auto transmitCurrent = static_cast<int16_t>(current * 16384 / 20000);    // 16bit符号なし整数に変換
                 const auto motorIndex = (motorId - 1) * 2;
 
-                nodeTx->data[motorIndex + 0] = transmitCurrent >> 8 & 0xff;    // high byte
-                nodeTx->data[motorIndex + 1] = transmitCurrent >> 0 & 0xff;    // low byte
+                if (motorId > 4)
+                {
+                    const auto motorIndex = (motorId - 4 - 1) * 2;
+                    nodeTx->data[motorIndex + 0] = transmitCurrent >> 8 & 0xff;    // high byte
+                    nodeTx->data[motorIndex + 1] = transmitCurrent >> 0 & 0xff;    // low byte
+                }
+                else
+                {
+                    nodeTx->data[motorIndex + 0] = transmitCurrent >> 8 & 0xff;    // high byte
+                    nodeTx->data[motorIndex + 1] = transmitCurrent >> 0 & 0xff;    // low byte
+                }
             }
 
         private:
@@ -122,6 +135,7 @@ namespace Udon
 
             /// @brief 送信バッファ
             Udon::CanTxNode* nodeTx;
+
 
             /// @brief 受信バッファ
             Udon::CanRxNode* nodeRx;
