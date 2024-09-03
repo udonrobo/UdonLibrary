@@ -135,6 +135,16 @@ namespace Udon
             return *this;
         }
 
+        /// @brief 絶対値を取る
+        /// @return 
+        Vec2 abs() const noexcept
+        {
+            return {
+                Udon::Abs(x),
+                Udon::Abs(y)
+            };
+        }
+
         /// @brief 指定された点を中心に時計回りに回転したベクトルを返す
         /// @param center 回転の中心
         /// @param angle 回転する角度 [rad]

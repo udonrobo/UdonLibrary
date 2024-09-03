@@ -110,6 +110,16 @@ namespace Udon
             *this = {};
         }
 
+        /// @brief 絶対値を取る
+        /// @return 
+        Pos abs()
+        {
+            return {
+                vector.abs(),
+                Udon::Abs(turn)
+            };
+        }
+
         Pos mapped(double inMin, double inMax, double outMin, double outMax) const noexcept
         {
             return {
@@ -163,8 +173,8 @@ namespace Udon
 
             // 上で算出した出力値は {powerLimit} を超える場合があります。
             // 超えた場合、最大出力のモジュールの出力を {powerLimit} として他のモジュールの出力を圧縮します。
-            auto&& max = abs(*std::max_element(powers.begin(), powers.end(), [](double lhs, double rhs)
-                                               { return abs(lhs) < abs(rhs); }));
+            auto&& max = Udon::Abs(*std::max_element(powers.begin(), powers.end(), [](double lhs, double rhs)
+                                               { return Udon::Abs(lhs) < Udon::Abs(rhs); }));
 
             if (max > powerLimit)
             {
