@@ -8,6 +8,17 @@
 
 #include <math.h>
 
+#ifdef abs
+#   undef abs
+
+template <typename T>
+inline constexpr T abs(const T& rhs)
+{
+    return rhs < 0 ? -rhs : rhs;
+}
+
+#endif
+
 namespace Udon
 {
 
