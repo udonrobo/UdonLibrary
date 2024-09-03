@@ -14,9 +14,9 @@ namespace Udon
         self = this;
     }
 
-    /// @brief コピーコンストラクタ
+    /// @brief ムーブコンストラクタ
     template <CAN_DEV_TABLE Bus>
-    CanBusTeensy<Bus>::CanBusTeensy(const CanBusTeensy& other)
+    CanBusTeensy<Bus>::CanBusTeensy(CanBusTeensy&& other)
         : config(other.config)
         , bus(other.bus)
         , txNodes(other.txNodes)

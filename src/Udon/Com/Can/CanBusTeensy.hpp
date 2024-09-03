@@ -43,7 +43,10 @@ namespace Udon
         explicit CanBusTeensy(const Config& config = {});
 
         /// @brief コピーコンストラクタ
-        CanBusTeensy(const CanBusTeensy&);
+        CanBusTeensy(const CanBusTeensy&) = delete;
+
+        /// @brief ムーブコンストラクタ
+        CanBusTeensy(CanBusTeensy&&);
 
         /// @brief デストラクタ
         ~CanBusTeensy();
