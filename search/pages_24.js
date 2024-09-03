@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['自動テスト_0',['自動テスト',['../md_docs_2Developer_2CI.html',1,'']]]
+  ['移動平均_0',['移動平均',['../md_docs_2Algorithm_2MovingAverage.html',1,'']]]
 ];

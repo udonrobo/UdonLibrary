@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['謝辞_0',['謝辞',['../md_docs_2Developer_2Acknowledgments.html',1,'']]]
+  ['色空間_0',['色空間',['../md_docs_2Types_2Color.html',1,'']]]
 ];

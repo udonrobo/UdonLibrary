@@ -137,9 +137,12 @@ Udon::E220Reader&lt; T &gt; の継承関係図</div>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
-<tr class="memitem:a805f009a4e0d47292f69a2e06ec6f31d" id="r_a805f009a4e0d47292f69a2e06ec6f31d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a805f009a4e0d47292f69a2e06ec6f31d">E220Reader</a> (const E220Base::Config &amp;<a class="el" href="classUdon_1_1Impl_1_1E220Base.html#ac0fc956ec044a8a3202ff0b3aa51da23">config</a>)</td></tr>
-<tr class="memdesc:a805f009a4e0d47292f69a2e06ec6f31d"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <br /></td></tr>
-<tr class="separator:a805f009a4e0d47292f69a2e06ec6f31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9343dd650f4e37a164b407348a2239d" id="r_ac9343dd650f4e37a164b407348a2239d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9343dd650f4e37a164b407348a2239d">E220Reader</a> (const E220Base::Config &amp;<a class="el" href="classUdon_1_1Impl_1_1E220Base.html#ac0fc956ec044a8a3202ff0b3aa51da23">config</a>)=delete</td></tr>
+<tr class="memdesc:ac9343dd650f4e37a164b407348a2239d"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <br /></td></tr>
+<tr class="separator:ac9343dd650f4e37a164b407348a2239d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeee57bd92a0d17bdf1f722934f01f7a4" id="r_aeee57bd92a0d17bdf1f722934f01f7a4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeee57bd92a0d17bdf1f722934f01f7a4">E220Reader</a> (E220Base::Config &amp;&amp;<a class="el" href="classUdon_1_1Impl_1_1E220Base.html#ac0fc956ec044a8a3202ff0b3aa51da23">config</a>)</td></tr>
+<tr class="memdesc:aeee57bd92a0d17bdf1f722934f01f7a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">ムーブコンストラクタ  <br /></td></tr>
+<tr class="separator:aeee57bd92a0d17bdf1f722934f01f7a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71f3992dff607d0f11b90fd2decdb2fe" id="r_a71f3992dff607d0f11b90fd2decdb2fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71f3992dff607d0f11b90fd2decdb2fe">begin</a> () noexcept</td></tr>
 <tr class="memdesc:a71f3992dff607d0f11b90fd2decdb2fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信開始  <br /></td></tr>
 <tr class="separator:a71f3992dff607d0f11b90fd2decdb2fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -205,8 +208,8 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">構築子と解体子</h2>
-<a id="a805f009a4e0d47292f69a2e06ec6f31d" name="a805f009a4e0d47292f69a2e06ec6f31d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a805f009a4e0d47292f69a2e06ec6f31d">&#9670;&#160;</a></span>E220Reader()</h2>
+<a id="ac9343dd650f4e37a164b407348a2239d" name="ac9343dd650f4e37a164b407348a2239d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9343dd650f4e37a164b407348a2239d">&#9670;&#160;</a></span>E220Reader() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -225,12 +228,42 @@ template&lt;typename T &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>コピーコンストラクタ </p>
+<dl class="section note"><dt>覚え書き</dt><dd>コールバックをする際にthisを登録する必要があり、コピー元のオブジェクトが使用できなくなるため削除 </dd></dl>
+
+</div>
+</div>
+<a id="aeee57bd92a0d17bdf1f722934f01f7a4" name="aeee57bd92a0d17bdf1f722934f01f7a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeee57bd92a0d17bdf1f722934f01f7a4">&#9670;&#160;</a></span>E220Reader() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classUdon_1_1E220Reader.html">Udon::E220Reader</a>&lt; T &gt;::E220Reader </td>
+          <td>(</td>
+          <td class="paramtype">E220Base::Config &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>config</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>コンストラクタ </p>
+<p>ムーブコンストラクタ </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramname">config</td><td>設定 </td></tr>

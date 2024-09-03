@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['e220_0',['E220',['../md_docs_2Communication_2LoRa.html#autotoc_md63',1,'']]],
+  ['e220_20lora_20モジュール_0',['E220 LoRa モジュール',['../md_docs_2Communication_2LoRa.html#autotoc_md64',1,'']]],
   ['e220base_1',['E220Base',['../classUdon_1_1Impl_1_1E220Base.html',1,'Udon::Impl::E220Base'],['../classUdon_1_1Impl_1_1E220Base.html#ad319b189d0c2aa3f3ece1522595b9a38',1,'Udon::Impl::E220Base::E220Base()']]],
   ['e220base_2ehpp_2',['E220Base.hpp',['../E220Base_8hpp.html',1,'']]],
-  ['e220reader_3',['E220Reader',['../classUdon_1_1E220Reader.html',1,'Udon::E220Reader&lt; T &gt;'],['../classUdon_1_1E220Reader.html#a805f009a4e0d47292f69a2e06ec6f31d',1,'Udon::E220Reader::E220Reader()']]],
+  ['e220reader_3',['E220Reader',['../classUdon_1_1E220Reader.html',1,'Udon::E220Reader&lt; T &gt;'],['../classUdon_1_1E220Reader.html#ac9343dd650f4e37a164b407348a2239d',1,'Udon::E220Reader::E220Reader(const E220Base::Config &amp;config)=delete'],['../classUdon_1_1E220Reader.html#aeee57bd92a0d17bdf1f722934f01f7a4',1,'Udon::E220Reader::E220Reader(E220Base::Config &amp;&amp;config)']]],
   ['e220reader_2ehpp_4',['E220Reader.hpp',['../E220Reader_8hpp.html',1,'']]],
   ['e220writer_5',['E220Writer',['../classUdon_1_1E220Writer.html',1,'Udon::E220Writer&lt; T &gt;'],['../classUdon_1_1E220Writer.html#a0b15265c73385eda0a922b3df60b8add',1,'Udon::E220Writer::E220Writer()']]],
   ['e220writer_2ehpp_6',['E220Writer.hpp',['../E220Writer_8hpp.html',1,'']]],

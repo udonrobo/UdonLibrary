@@ -16,10 +16,10 @@ var searchData=
   ['bitunpack_13',['BitUnpack',['../namespaceUdon.html#ab587295af93b30000c3471ad0d6eea72',1,'Udon::BitUnpack(OutputIterator begin, OutputIterator end, Functor callback)'],['../namespaceUdon.html#a93fe19a0251383cd2da6becbd4530a4b',1,'Udon::BitUnpack(const std::vector&lt; uint8_t &gt; &amp;data)']]],
   ['bitunpackedsize_14',['BitUnpackedSize',['../namespaceUdon.html#adfc0977d2657162404f13944ac93f2f4',1,'Udon']]],
   ['bitwrite_15',['BitWrite',['../namespaceUdon.html#a2ade14769cabfdd2d62522ba2b3599d7',1,'Udon']]],
-  ['bluetooth_20ドングルとのペアリング_16',['Bluetooth ドングルとのペアリング',['../md_docs_2Communication_2Pad.html#autotoc_md96',1,'']]],
-  ['bluetooth_20使用時の受信側マイコン用クラス_17',['Bluetooth 使用時の受信側マイコン用クラス',['../md_docs_2Communication_2Pad.html#autotoc_md95',1,'']]],
-  ['bluetooth_20経由_20usb_20ホストシールドがメイン基板にある場合_18',['■ Bluetooth 経由 / USB ホストシールドがメイン基板にある場合',['../md_docs_2Communication_2Pad.html#autotoc_md74',1,'']]],
-  ['bluetooth_20経由_20usb_20ホストシールドとメイン基板が別々の場合_19',['■ Bluetooth 経由 / USB ホストシールドとメイン基板が別々の場合',['../md_docs_2Communication_2Pad.html#autotoc_md75',1,'']]],
+  ['bluetooth_20ドングルとのペアリング_16',['Bluetooth ドングルとのペアリング',['../md_docs_2Communication_2Pad.html#autotoc_md97',1,'']]],
+  ['bluetooth_20使用時の受信側マイコン用クラス_17',['Bluetooth 使用時の受信側マイコン用クラス',['../md_docs_2Communication_2Pad.html#autotoc_md96',1,'']]],
+  ['bluetooth_20経由_20usb_20ホストシールドがメイン基板にある場合_18',['■ Bluetooth 経由 / USB ホストシールドがメイン基板にある場合',['../md_docs_2Communication_2Pad.html#autotoc_md75',1,'']]],
+  ['bluetooth_20経由_20usb_20ホストシールドとメイン基板が別々の場合_19',['■ Bluetooth 経由 / USB ホストシールドとメイン基板が別々の場合',['../md_docs_2Communication_2Pad.html#autotoc_md76',1,'']]],
   ['bno055_20',['BNO055',['../md_docs_2Driver_2BNO055.html',1,'']]],
   ['bno055_2ehpp_21',['BNO055.hpp',['../BNO055_8hpp.html',1,'']]],
   ['bno055_2emd_22',['BNO055.md',['../BNO055_8md.html',1,'']]],
@@ -30,7 +30,7 @@ var searchData=
   ['boost_5fcstdfloat_5fmaximum_5favailable_5fwidth_27',['BOOST_CSTDFLOAT_MAXIMUM_AVAILABLE_WIDTH',['../Float_8hpp.html#ae4c284d2685d4d26e2bad26c130e9b76',1,'Float.hpp']]],
   ['brushless_28',['BrushLess',['../structUdon_1_1Message_1_1BrushLess.html',1,'Udon::Message']]],
   ['brushless_2ehpp_29',['BrushLess.hpp',['../BrushLess_8hpp.html',1,'']]],
-  ['build_20run_30',['build run',['../md_docs_2Install_2VanillaCpp.html#autotoc_md189',1,'']]],
+  ['build_20run_30',['build run',['../md_docs_2Install_2VanillaCpp.html#autotoc_md191',1,'']]],
   ['bytestringtohexstring_31',['ByteStringToHexString',['../namespaceUdon.html#a43ffd2bce185ed7bf64dedd8824d5e96',1,'Udon']]],
   ['bytevaluetohexchar_32',['ByteValueToHexChar',['../namespaceUdon.html#a1f8ee5017a8aa69f13052e2e74f2b7b2',1,'Udon']]]
 ];

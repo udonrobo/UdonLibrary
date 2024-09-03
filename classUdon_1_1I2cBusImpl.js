@@ -1,7 +1,8 @@
 var classUdon_1_1I2cBusImpl =
 [
     [ "I2cBusImpl", "classUdon_1_1I2cBusImpl.html#a58b258773f4aeedb7f461e99f8b07a77", null ],
-    [ "I2cBusImpl", "classUdon_1_1I2cBusImpl.html#aaa3199242d834daf7a6fd16ae4d81d10", null ],
+    [ "I2cBusImpl", "classUdon_1_1I2cBusImpl.html#ad5d3712b2857a393b316f5735160a2d9", null ],
+    [ "I2cBusImpl", "classUdon_1_1I2cBusImpl.html#a7f0233e6e3d16d9177ce565bed380c90", null ],
     [ "available", "classUdon_1_1I2cBusImpl.html#ab3c247dbb75b800fc26fefa5751d4c13", null ],
     [ "begin", "classUdon_1_1I2cBusImpl.html#aad5aba01423c0d665744d447efd87db4", null ],
     [ "begin", "classUdon_1_1I2cBusImpl.html#a61effab8092e166bd713d1cdbbe78f05", null ],

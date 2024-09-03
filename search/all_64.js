@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['指定した点を中心にベクトルを指定角度回転させる_0',['指定した点を中心にベクトルを指定角度回転させる',['../md_docs_2Types_2Vector2D.html#autotoc_md285',1,'']]]
+  ['拡張機能インストール_0',['拡張機能インストール',['../md_docs_2Developer_2DevelopSetup.html#autotoc_md119',1,'C/C++ 拡張機能インストール'],['../md_docs_2Developer_2DevelopSetup.html#autotoc_md118',1,'clang-format 拡張機能インストール']]]
 ];

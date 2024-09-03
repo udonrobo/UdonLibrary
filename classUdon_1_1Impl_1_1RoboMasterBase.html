@@ -134,12 +134,18 @@ Udon::Impl::RoboMasterBase の継承関係図</div>
 <tr class="memitem:a9011bb7fada8e91bd9992442eb09d00a" id="r_a9011bb7fada8e91bd9992442eb09d00a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9011bb7fada8e91bd9992442eb09d00a">RoboMasterBase</a> (<a class="el" href="classUdon_1_1ICanBus.html">Udon::ICanBus</a> &amp;bus, uint8_t motorId, bool direction=true)</td></tr>
 <tr class="memdesc:a9011bb7fada8e91bd9992442eb09d00a"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <br /></td></tr>
 <tr class="separator:a9011bb7fada8e91bd9992442eb09d00a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6be4e464429d15989a18f5586cef8a8d" id="r_a6be4e464429d15989a18f5586cef8a8d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6be4e464429d15989a18f5586cef8a8d">RoboMasterBase</a> (const <a class="el" href="classUdon_1_1Impl_1_1RoboMasterBase.html">RoboMasterBase</a> &amp;other)</td></tr>
-<tr class="memdesc:a6be4e464429d15989a18f5586cef8a8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信idは0x201から一つのコントローラにつき一つのidを持つ  <br /></td></tr>
-<tr class="separator:a6be4e464429d15989a18f5586cef8a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a263bb694d63fe793a67abe9e9553b3eb" id="r_a263bb694d63fe793a67abe9e9553b3eb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a263bb694d63fe793a67abe9e9553b3eb">RoboMasterBase</a> (const <a class="el" href="classUdon_1_1Impl_1_1RoboMasterBase.html">RoboMasterBase</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a263bb694d63fe793a67abe9e9553b3eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <br /></td></tr>
+<tr class="separator:a263bb694d63fe793a67abe9e9553b3eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a633671819e1008866ab6e1e5e29a7486" id="r_a633671819e1008866ab6e1e5e29a7486"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a633671819e1008866ab6e1e5e29a7486">RoboMasterBase</a> (<a class="el" href="classUdon_1_1Impl_1_1RoboMasterBase.html">RoboMasterBase</a> &amp;&amp;other)</td></tr>
+<tr class="memdesc:a633671819e1008866ab6e1e5e29a7486"><td class="mdescLeft">&#160;</td><td class="mdescRight">ムーブコンストラクタ  <br /></td></tr>
+<tr class="separator:a633671819e1008866ab6e1e5e29a7486"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a160606f7e43c1789f2174b3b55135049" id="r_a160606f7e43c1789f2174b3b55135049"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a160606f7e43c1789f2174b3b55135049">getAngle</a> () const</td></tr>
 <tr class="memdesc:a160606f7e43c1789f2174b3b55135049"><td class="mdescLeft">&#160;</td><td class="mdescRight">モーターの角度を取得  <br /></td></tr>
 <tr class="separator:a160606f7e43c1789f2174b3b55135049"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89021dbd744b6970779145e95e33276f" id="r_a89021dbd744b6970779145e95e33276f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89021dbd744b6970779145e95e33276f">getRawAngle</a> () const</td></tr>
+<tr class="memdesc:a89021dbd744b6970779145e95e33276f"><td class="mdescLeft">&#160;</td><td class="mdescRight">モーターの角度を取得  <br /></td></tr>
+<tr class="separator:a89021dbd744b6970779145e95e33276f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a141335bf5ebe84fb970a51e730059d9b" id="r_a141335bf5ebe84fb970a51e730059d9b"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a141335bf5ebe84fb970a51e730059d9b">getVelocity</a> () const</td></tr>
 <tr class="memdesc:a141335bf5ebe84fb970a51e730059d9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">モーターの速度を取得  <br /></td></tr>
 <tr class="separator:a141335bf5ebe84fb970a51e730059d9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,7 +167,7 @@ Udon::Impl::RoboMasterBase の継承関係図</div>
 <dl class="section note"><dt>覚え書き</dt><dd>モータードライバの仕様の違いによって派生クラスを作成する </dd></dl>
 </div><h2 class="groupheader">構築子と解体子</h2>
 <a id="a9011bb7fada8e91bd9992442eb09d00a" name="a9011bb7fada8e91bd9992442eb09d00a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9011bb7fada8e91bd9992442eb09d00a">&#9670;&#160;</a></span>RoboMasterBase() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9011bb7fada8e91bd9992442eb09d00a">&#9670;&#160;</a></span>RoboMasterBase() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -204,8 +210,8 @@ Udon::Impl::RoboMasterBase の継承関係図</div>
 
 </div>
 </div>
-<a id="a6be4e464429d15989a18f5586cef8a8d" name="a6be4e464429d15989a18f5586cef8a8d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6be4e464429d15989a18f5586cef8a8d">&#9670;&#160;</a></span>RoboMasterBase() <span class="overload">[2/2]</span></h2>
+<a id="a263bb694d63fe793a67abe9e9553b3eb" name="a263bb694d63fe793a67abe9e9553b3eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a263bb694d63fe793a67abe9e9553b3eb">&#9670;&#160;</a></span>RoboMasterBase() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -216,7 +222,35 @@ Udon::Impl::RoboMasterBase の継承関係図</div>
         <tr>
           <td class="memname">Udon::Impl::RoboMasterBase::RoboMasterBase </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classUdon_1_1Impl_1_1RoboMasterBase.html">RoboMasterBase</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1Impl_1_1RoboMasterBase.html">RoboMasterBase</a> &amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>コピーコンストラクタ </p>
+<dl class="section note"><dt>覚え書き</dt><dd>この関数は明示的に削除されています。 </dd></dl>
+
+</div>
+</div>
+<a id="a633671819e1008866ab6e1e5e29a7486" name="a633671819e1008866ab6e1e5e29a7486"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a633671819e1008866ab6e1e5e29a7486">&#9670;&#160;</a></span>RoboMasterBase() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Udon::Impl::RoboMasterBase::RoboMasterBase </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classUdon_1_1Impl_1_1RoboMasterBase.html">RoboMasterBase</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -227,13 +261,7 @@ Udon::Impl::RoboMasterBase の継承関係図</div>
 </table>
 </div><div class="memdoc">
 
-<p>受信idは0x201から一つのコントローラにつき一つのidを持つ </p>
-<dl class="params"><dt>引数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">送信idは0x200にモータ4つのデータを送信する</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
+<p>ムーブコンストラクタ </p>
 
 </div>
 </div>
@@ -263,6 +291,35 @@ Udon::Impl::RoboMasterBase の継承関係図</div>
 
 <p>モーターの角度を取得 </p>
 <dl class="section note"><dt>覚え書き</dt><dd>無限の範囲の角度を扱える (生の角度は8192で一周) </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>角度 [rad] </dd></dl>
+
+</div>
+</div>
+<a id="a89021dbd744b6970779145e95e33276f" name="a89021dbd744b6970779145e95e33276f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89021dbd744b6970779145e95e33276f">&#9670;&#160;</a></span>getRawAngle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Udon::Impl::RoboMasterBase::getRawAngle </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>モーターの角度を取得 </p>
+<dl class="section note"><dt>覚え書き</dt><dd>無限の角度を扱えない </dd></dl>
 <dl class="section return"><dt>戻り値</dt><dd>角度 [rad] </dd></dl>
 
 </div>

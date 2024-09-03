@@ -131,9 +131,12 @@ $(function(){initNavTree('classUdon_1_1CanReader.html',''); initResizable(true);
 <tr class="memitem:a1313b68d30779d632e6b648996a3cf51" id="r_a1313b68d30779d632e6b648996a3cf51"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1313b68d30779d632e6b648996a3cf51">CanReader</a> (<a class="el" href="classUdon_1_1ICanBus.html">ICanBus</a> &amp;bus, const uint32_t id)</td></tr>
 <tr class="memdesc:a1313b68d30779d632e6b648996a3cf51"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <br /></td></tr>
 <tr class="separator:a1313b68d30779d632e6b648996a3cf51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe47a04c658b1090be2069df091aee35" id="r_abe47a04c658b1090be2069df091aee35"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe47a04c658b1090be2069df091aee35">CanReader</a> (const <a class="el" href="classUdon_1_1CanReader.html">CanReader</a> &amp;other)</td></tr>
-<tr class="memdesc:abe47a04c658b1090be2069df091aee35"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <br /></td></tr>
-<tr class="separator:abe47a04c658b1090be2069df091aee35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed9de7843ef77cd9597fd9dda07677aa" id="r_aed9de7843ef77cd9597fd9dda07677aa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed9de7843ef77cd9597fd9dda07677aa">CanReader</a> (const <a class="el" href="classUdon_1_1CanReader.html">CanReader</a> &amp;)=delete</td></tr>
+<tr class="memdesc:aed9de7843ef77cd9597fd9dda07677aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <br /></td></tr>
+<tr class="separator:aed9de7843ef77cd9597fd9dda07677aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e15fe5e745b81573789258b6652ae14" id="r_a3e15fe5e745b81573789258b6652ae14"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e15fe5e745b81573789258b6652ae14">CanReader</a> (<a class="el" href="classUdon_1_1CanReader.html">CanReader</a> &amp;&amp;other)</td></tr>
+<tr class="memdesc:a3e15fe5e745b81573789258b6652ae14"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <br /></td></tr>
+<tr class="separator:a3e15fe5e745b81573789258b6652ae14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95f7a4964ccc2fb40c582cb8d0a7ed41" id="r_a95f7a4964ccc2fb40c582cb8d0a7ed41"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95f7a4964ccc2fb40c582cb8d0a7ed41">operator bool</a> () const</td></tr>
 <tr class="memdesc:a95f7a4964ccc2fb40c582cb8d0a7ed41"><td class="mdescLeft">&#160;</td><td class="mdescRight">受信しているか  <br /></td></tr>
 <tr class="separator:a95f7a4964ccc2fb40c582cb8d0a7ed41"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,7 +186,7 @@ template&lt;typename Message &gt; </div>
 </div>
 <h2 class="groupheader">構築子と解体子</h2>
 <a id="a1313b68d30779d632e6b648996a3cf51" name="a1313b68d30779d632e6b648996a3cf51"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1313b68d30779d632e6b648996a3cf51">&#9670;&#160;</a></span>CanReader() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1313b68d30779d632e6b648996a3cf51">&#9670;&#160;</a></span>CanReader() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -222,8 +225,8 @@ template&lt;typename Message &gt; </div>
 
 </div>
 </div>
-<a id="abe47a04c658b1090be2069df091aee35" name="abe47a04c658b1090be2069df091aee35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe47a04c658b1090be2069df091aee35">&#9670;&#160;</a></span>CanReader() <span class="overload">[2/2]</span></h2>
+<a id="aed9de7843ef77cd9597fd9dda07677aa" name="aed9de7843ef77cd9597fd9dda07677aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed9de7843ef77cd9597fd9dda07677aa">&#9670;&#160;</a></span>CanReader() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -236,7 +239,37 @@ template&lt;typename Message &gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classUdon_1_1CanReader.html">Udon::CanReader</a>&lt; Message &gt;::CanReader </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classUdon_1_1CanReader.html">CanReader</a>&lt; Message &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="classUdon_1_1CanReader.html">CanReader</a>&lt; Message &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>コピーコンストラクタ </p>
+<dl class="section note"><dt>覚え書き</dt><dd>この関数は明示的に削除されています。 </dd></dl>
+
+</div>
+</div>
+<a id="a3e15fe5e745b81573789258b6652ae14" name="a3e15fe5e745b81573789258b6652ae14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e15fe5e745b81573789258b6652ae14">&#9670;&#160;</a></span>CanReader() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Message &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classUdon_1_1CanReader.html">Udon::CanReader</a>&lt; Message &gt;::CanReader </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classUdon_1_1CanReader.html">CanReader</a>&lt; Message &gt; &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>

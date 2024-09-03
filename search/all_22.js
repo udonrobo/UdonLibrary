@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['が関数_20で参照されました」というリンクエラーとなった。_0',['■ 静的メンバ変数を使おうとしたが、「未解決の外部シンボル~が関数~で参照されました」というリンクエラーとなった。',['../md_docs_2Developer_2Troubleshooting.html#autotoc_md146',1,'']]]
+  ['、ファイル_0',['ディレクトリ(フォルダ)、ファイル',['../md_docs_2Developer_2StyleGuide.html#autotoc_md132',1,'']]]
 ];

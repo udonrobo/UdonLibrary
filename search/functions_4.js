@@ -1,7 +1,7 @@
 var searchData=
 [
   ['e220base_0',['E220Base',['../classUdon_1_1Impl_1_1E220Base.html#ad319b189d0c2aa3f3ece1522595b9a38',1,'Udon::Impl::E220Base']]],
-  ['e220reader_1',['E220Reader',['../classUdon_1_1E220Reader.html#a805f009a4e0d47292f69a2e06ec6f31d',1,'Udon::E220Reader']]],
+  ['e220reader_1',['E220Reader',['../classUdon_1_1E220Reader.html#ac9343dd650f4e37a164b407348a2239d',1,'Udon::E220Reader::E220Reader(const E220Base::Config &amp;config)=delete'],['../classUdon_1_1E220Reader.html#aeee57bd92a0d17bdf1f722934f01f7a4',1,'Udon::E220Reader::E220Reader(E220Base::Config &amp;&amp;config)']]],
   ['e220writer_2',['E220Writer',['../classUdon_1_1E220Writer.html#a0b15265c73385eda0a922b3df60b8add',1,'Udon::E220Writer']]],
   ['empty_3',['empty',['../classUdon_1_1ArrayView.html#ac4da26803fa8dddb3431240635b2bc80',1,'Udon::ArrayView::empty()'],['../classUdon_1_1RingBuffer.html#a428e6c8725d567b09748fa0f7c2c699e',1,'Udon::RingBuffer::empty()'],['../classUdon_1_1StaticVector.html#ae3b25ca192f12c7d96086445499fa8fa',1,'Udon::StaticVector::empty()'],['../classUdon_1_1BasicStringView.html#af9fc3e2f9549c7b75efba5c5a80be3ac',1,'Udon::BasicStringView::empty()']]],
   ['encoderby_4',['EncoderBy',['../classUdon_1_1EncoderBy.html#a4d60647dee2b1444479982066d13dc1a',1,'Udon::EncoderBy']]],
