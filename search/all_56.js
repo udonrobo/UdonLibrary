@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['原因_0',['原因',['../md_docs_2Developer_2Troubleshooting.html#autotoc_md142',1,'']]],
-  ['原点を中心にベクトルを指定角度回転させる_1',['原点を中心にベクトルを指定角度回転させる',['../md_docs_2Types_2Vector2D.html#autotoc_md284',1,'']]]
+  ['列挙型シリアライズ_0',['列挙型シリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md218',1,'']]]
 ];

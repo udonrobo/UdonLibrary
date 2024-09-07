@@ -138,262 +138,272 @@ var NAVTREE =
       [ "Bluetooth 使用時の受信側マイコン用クラス", "md_docs_2Communication_2Pad.html#autotoc_md96", null ],
       [ "Bluetooth ドングルとのペアリング", "md_docs_2Communication_2Pad.html#autotoc_md97", null ]
     ] ],
-    [ "UART / USB Serial", "md_docs_2Communication_2Serial.html", null ],
+    [ "UART / USB Serial", "md_docs_2Communication_2Serial.html", [
+      [ "マイコンから PC", "md_docs_2Communication_2Serial.html#autotoc_md99", [
+        [ "マイコン側", "md_docs_2Communication_2Serial.html#autotoc_md100", null ],
+        [ "PC 側 (OpenSiv3D が必要)", "md_docs_2Communication_2Serial.html#autotoc_md101", null ]
+      ] ],
+      [ "PC からマイコン", "md_docs_2Communication_2Serial.html#autotoc_md102", [
+        [ "PC 側 (OpenSiv3D が必要)", "md_docs_2Communication_2Serial.html#autotoc_md103", null ],
+        [ "マイコン側", "md_docs_2Communication_2Serial.html#autotoc_md104", null ]
+      ] ],
+      [ "OpenSiv3D COMポート列挙方法", "md_docs_2Communication_2Serial.html#autotoc_md105", null ]
+    ] ],
     [ "謝辞", "md_docs_2Developer_2Acknowledgments.html", null ],
     [ "自動テスト", "md_docs_2Developer_2CI.html", [
-      [ "Arduino Lint", "md_docs_2Developer_2CI.html#autotoc_md101", [
-        [ "■ 概要", "md_docs_2Developer_2CI.html#autotoc_md102", null ],
-        [ "■ ディレクトリを追加する", "md_docs_2Developer_2CI.html#autotoc_md103", null ],
-        [ "■ テストファイルを追加する", "md_docs_2Developer_2CI.html#autotoc_md104", null ],
-        [ "■ コンパイル時に計算可能なアルゴリズムのテスト", "md_docs_2Developer_2CI.html#autotoc_md105", null ],
-        [ "■ 検証ボードを追加する", "md_docs_2Developer_2CI.html#autotoc_md106", null ],
-        [ "■ ローカル環境で実行", "md_docs_2Developer_2CI.html#autotoc_md107", null ]
-      ] ],
-      [ "Google Unit Test", "md_docs_2Developer_2CI.html#autotoc_md108", [
+      [ "Arduino Lint", "md_docs_2Developer_2CI.html#autotoc_md108", [
         [ "■ 概要", "md_docs_2Developer_2CI.html#autotoc_md109", null ],
         [ "■ ディレクトリを追加する", "md_docs_2Developer_2CI.html#autotoc_md110", null ],
-        [ "■ ソースファイルを追加する", "md_docs_2Developer_2CI.html#autotoc_md111", null ],
-        [ "■ テストを書く", "md_docs_2Developer_2CI.html#autotoc_md112", null ],
-        [ "■ ローカル環境で実行", "md_docs_2Developer_2CI.html#autotoc_md113", null ]
+        [ "■ テストファイルを追加する", "md_docs_2Developer_2CI.html#autotoc_md111", null ],
+        [ "■ コンパイル時に計算可能なアルゴリズムのテスト", "md_docs_2Developer_2CI.html#autotoc_md112", null ],
+        [ "■ 検証ボードを追加する", "md_docs_2Developer_2CI.html#autotoc_md113", null ],
+        [ "■ ローカル環境で実行", "md_docs_2Developer_2CI.html#autotoc_md114", null ]
+      ] ],
+      [ "Google Unit Test", "md_docs_2Developer_2CI.html#autotoc_md115", [
+        [ "■ 概要", "md_docs_2Developer_2CI.html#autotoc_md116", null ],
+        [ "■ ディレクトリを追加する", "md_docs_2Developer_2CI.html#autotoc_md117", null ],
+        [ "■ ソースファイルを追加する", "md_docs_2Developer_2CI.html#autotoc_md118", null ],
+        [ "■ テストを書く", "md_docs_2Developer_2CI.html#autotoc_md119", null ],
+        [ "■ ローカル環境で実行", "md_docs_2Developer_2CI.html#autotoc_md120", null ]
       ] ]
     ] ],
     [ "開発環境セットアップ", "md_docs_2Developer_2DevelopSetup.html", [
-      [ "開発環境", "md_docs_2Developer_2DevelopSetup.html#autotoc_md115", null ],
-      [ "VSCode", "md_docs_2Developer_2DevelopSetup.html#autotoc_md116", [
-        [ "ライブラリを開く", "md_docs_2Developer_2DevelopSetup.html#autotoc_md117", null ],
-        [ "clang-format 拡張機能インストール", "md_docs_2Developer_2DevelopSetup.html#autotoc_md118", null ],
-        [ "C/C++ 拡張機能インストール", "md_docs_2Developer_2DevelopSetup.html#autotoc_md119", null ],
-        [ "スペルチェッカー拡張機能インストール", "md_docs_2Developer_2DevelopSetup.html#autotoc_md120", null ]
+      [ "開発環境", "md_docs_2Developer_2DevelopSetup.html#autotoc_md122", null ],
+      [ "VSCode", "md_docs_2Developer_2DevelopSetup.html#autotoc_md123", [
+        [ "ライブラリを開く", "md_docs_2Developer_2DevelopSetup.html#autotoc_md124", null ],
+        [ "clang-format 拡張機能インストール", "md_docs_2Developer_2DevelopSetup.html#autotoc_md125", null ],
+        [ "C/C++ 拡張機能インストール", "md_docs_2Developer_2DevelopSetup.html#autotoc_md126", null ],
+        [ "スペルチェッカー拡張機能インストール", "md_docs_2Developer_2DevelopSetup.html#autotoc_md127", null ]
       ] ],
-      [ "Visual Studio", "md_docs_2Developer_2DevelopSetup.html#autotoc_md121", [
-        [ "ライブラリを開く", "md_docs_2Developer_2DevelopSetup.html#autotoc_md122", null ],
-        [ "clang-format", "md_docs_2Developer_2DevelopSetup.html#autotoc_md123", null ]
+      [ "Visual Studio", "md_docs_2Developer_2DevelopSetup.html#autotoc_md128", [
+        [ "ライブラリを開く", "md_docs_2Developer_2DevelopSetup.html#autotoc_md129", null ],
+        [ "clang-format", "md_docs_2Developer_2DevelopSetup.html#autotoc_md130", null ]
       ] ],
-      [ "GitHub Copilot 導入", "md_docs_2Developer_2DevelopSetup.html#autotoc_md124", null ]
+      [ "GitHub Copilot 導入", "md_docs_2Developer_2DevelopSetup.html#autotoc_md131", null ]
     ] ],
     [ "ディレクトリ構造", "md_docs_2Developer_2DirectoryStructure.html", null ],
     [ "ドキュメント自動生成", "md_docs_2Developer_2DoxygenPage.html", [
-      [ "ローカル環境で実行", "md_docs_2Developer_2DoxygenPage.html#autotoc_md127", null ]
+      [ "ローカル環境で実行", "md_docs_2Developer_2DoxygenPage.html#autotoc_md134", null ]
     ] ],
     [ "スタイルガイド", "md_docs_2Developer_2StyleGuide.html", [
-      [ "言語", "md_docs_2Developer_2StyleGuide.html#autotoc_md129", null ],
-      [ "書式", "md_docs_2Developer_2StyleGuide.html#autotoc_md130", null ],
-      [ "命名規則", "md_docs_2Developer_2StyleGuide.html#autotoc_md131", [
-        [ "ディレクトリ(フォルダ)、ファイル", "md_docs_2Developer_2StyleGuide.html#autotoc_md132", null ],
-        [ "変数 定数", "md_docs_2Developer_2StyleGuide.html#autotoc_md133", null ],
-        [ "関数", "md_docs_2Developer_2StyleGuide.html#autotoc_md134", null ],
-        [ "型", "md_docs_2Developer_2StyleGuide.html#autotoc_md135", null ],
-        [ "テンプレート", "md_docs_2Developer_2StyleGuide.html#autotoc_md136", null ],
-        [ "名前空間", "md_docs_2Developer_2StyleGuide.html#autotoc_md137", null ],
-        [ "マクロ", "md_docs_2Developer_2StyleGuide.html#autotoc_md138", null ]
+      [ "言語", "md_docs_2Developer_2StyleGuide.html#autotoc_md136", null ],
+      [ "書式", "md_docs_2Developer_2StyleGuide.html#autotoc_md137", null ],
+      [ "命名規則", "md_docs_2Developer_2StyleGuide.html#autotoc_md138", [
+        [ "ディレクトリ(フォルダ)、ファイル", "md_docs_2Developer_2StyleGuide.html#autotoc_md139", null ],
+        [ "変数 定数", "md_docs_2Developer_2StyleGuide.html#autotoc_md140", null ],
+        [ "関数", "md_docs_2Developer_2StyleGuide.html#autotoc_md141", null ],
+        [ "型", "md_docs_2Developer_2StyleGuide.html#autotoc_md142", null ],
+        [ "テンプレート", "md_docs_2Developer_2StyleGuide.html#autotoc_md143", null ],
+        [ "名前空間", "md_docs_2Developer_2StyleGuide.html#autotoc_md144", null ],
+        [ "マクロ", "md_docs_2Developer_2StyleGuide.html#autotoc_md145", null ]
       ] ]
     ] ],
     [ "トラブルシューティング", "md_docs_2Developer_2Troubleshooting.html", [
-      [ "■ エラーから索引", "md_docs_2Developer_2Troubleshooting.html#autotoc_md140", null ],
-      [ "■ ヘッダーに変数、関数を定義している", "md_docs_2Developer_2Troubleshooting.html#autotoc_md141", [
-        [ "原因", "md_docs_2Developer_2Troubleshooting.html#autotoc_md142", null ],
-        [ "解決策 1 (一般的)", "md_docs_2Developer_2Troubleshooting.html#autotoc_md143", null ],
-        [ "解決策 2", "md_docs_2Developer_2Troubleshooting.html#autotoc_md144", null ],
-        [ "解決策 3 (脳筋)", "md_docs_2Developer_2Troubleshooting.html#autotoc_md145", null ],
-        [ "解決策 4", "md_docs_2Developer_2Troubleshooting.html#autotoc_md146", null ]
+      [ "■ エラーから索引", "md_docs_2Developer_2Troubleshooting.html#autotoc_md147", null ],
+      [ "■ ヘッダーに変数、関数を定義している", "md_docs_2Developer_2Troubleshooting.html#autotoc_md148", [
+        [ "原因", "md_docs_2Developer_2Troubleshooting.html#autotoc_md149", null ],
+        [ "解決策 1 (一般的)", "md_docs_2Developer_2Troubleshooting.html#autotoc_md150", null ],
+        [ "解決策 2", "md_docs_2Developer_2Troubleshooting.html#autotoc_md151", null ],
+        [ "解決策 3 (脳筋)", "md_docs_2Developer_2Troubleshooting.html#autotoc_md152", null ],
+        [ "解決策 4", "md_docs_2Developer_2Troubleshooting.html#autotoc_md153", null ]
       ] ],
-      [ "■ 静的メンバ変数を使おうとしたが、「未解決の外部シンボル~が関数~で参照されました」というリンクエラーとなった。", "md_docs_2Developer_2Troubleshooting.html#autotoc_md147", null ],
-      [ "謎のリンクエラーと", "md_docs_2Developer_2Troubleshooting.html#autotoc_md148", null ],
-      [ "■ 型の相互変換編", "md_docs_2Developer_2Troubleshooting.html#autotoc_md149", [
-        [ "問題", "md_docs_2Developer_2Troubleshooting.html#autotoc_md150", null ],
-        [ "解決", "md_docs_2Developer_2Troubleshooting.html#autotoc_md151", null ]
+      [ "■ 静的メンバ変数を使おうとしたが、「未解決の外部シンボル~が関数~で参照されました」というリンクエラーとなった。", "md_docs_2Developer_2Troubleshooting.html#autotoc_md154", null ],
+      [ "謎のリンクエラーと", "md_docs_2Developer_2Troubleshooting.html#autotoc_md155", null ],
+      [ "■ 型の相互変換編", "md_docs_2Developer_2Troubleshooting.html#autotoc_md156", [
+        [ "問題", "md_docs_2Developer_2Troubleshooting.html#autotoc_md157", null ],
+        [ "解決", "md_docs_2Developer_2Troubleshooting.html#autotoc_md158", null ]
       ] ]
     ] ],
     [ "BNO055", "md_docs_2Driver_2BNO055.html", null ],
     [ "ディップスイッチ", "md_docs_2Driver_2DipSwitch.html", [
-      [ "個別インクルード", "md_docs_2Driver_2DipSwitch.html#autotoc_md154", null ],
-      [ "値読み取り", "md_docs_2Driver_2DipSwitch.html#autotoc_md155", null ]
+      [ "個別インクルード", "md_docs_2Driver_2DipSwitch.html#autotoc_md161", null ],
+      [ "値読み取り", "md_docs_2Driver_2DipSwitch.html#autotoc_md162", null ]
     ] ],
     [ "エンコーダー", "md_docs_2Driver_2EncoderPico.html", [
-      [ "個別インクルード", "md_docs_2Driver_2EncoderPico.html#autotoc_md157", null ],
-      [ "スケッチ例", "md_docs_2Driver_2EncoderPico.html#autotoc_md158", null ]
+      [ "個別インクルード", "md_docs_2Driver_2EncoderPico.html#autotoc_md164", null ],
+      [ "スケッチ例", "md_docs_2Driver_2EncoderPico.html#autotoc_md165", null ]
     ] ],
     [ "モーター", "md_docs_2Driver_2Motor.html", [
-      [ "個別インクルード", "md_docs_2Driver_2Motor.html#autotoc_md160", null ],
-      [ "Motor2 クラス", "md_docs_2Driver_2Motor.html#autotoc_md161", null ],
-      [ "Motor3 クラス", "md_docs_2Driver_2Motor.html#autotoc_md162", null ],
-      [ "デバッグ", "md_docs_2Driver_2Motor.html#autotoc_md163", null ],
-      [ "その他", "md_docs_2Driver_2Motor.html#autotoc_md164", null ]
+      [ "個別インクルード", "md_docs_2Driver_2Motor.html#autotoc_md167", null ],
+      [ "Motor2 クラス", "md_docs_2Driver_2Motor.html#autotoc_md168", null ],
+      [ "Motor3 クラス", "md_docs_2Driver_2Motor.html#autotoc_md169", null ],
+      [ "デバッグ", "md_docs_2Driver_2Motor.html#autotoc_md170", null ],
+      [ "その他", "md_docs_2Driver_2Motor.html#autotoc_md171", null ]
     ] ],
     [ "PicoWDT", "md_docs_2Driver_2PicoWDT.html", null ],
     [ "PIO", "md_docs_2Driver_2PIO.html", [
-      [ "PioClockBegin", "md_docs_2Driver_2PIO.html#autotoc_md167", null ],
-      [ "AllocateStateMachine", "md_docs_2Driver_2PIO.html#autotoc_md168", null ]
+      [ "PioClockBegin", "md_docs_2Driver_2PIO.html#autotoc_md174", null ],
+      [ "AllocateStateMachine", "md_docs_2Driver_2PIO.html#autotoc_md175", null ]
     ] ],
     [ "ロボマスモーター", "md_docs_2Driver_2RoboMasterMotor.html", [
-      [ "個別インクルード", "md_docs_2Driver_2RoboMasterMotor.html#autotoc_md170", null ],
-      [ "概要", "md_docs_2Driver_2RoboMasterMotor.html#autotoc_md171", null ],
-      [ "電流値の指定", "md_docs_2Driver_2RoboMasterMotor.html#autotoc_md172", null ],
-      [ "センサー値取得", "md_docs_2Driver_2RoboMasterMotor.html#autotoc_md173", null ],
-      [ "複数モーター", "md_docs_2Driver_2RoboMasterMotor.html#autotoc_md174", null ]
+      [ "個別インクルード", "md_docs_2Driver_2RoboMasterMotor.html#autotoc_md177", null ],
+      [ "概要", "md_docs_2Driver_2RoboMasterMotor.html#autotoc_md178", null ],
+      [ "電流値の指定", "md_docs_2Driver_2RoboMasterMotor.html#autotoc_md179", null ],
+      [ "センサー値取得", "md_docs_2Driver_2RoboMasterMotor.html#autotoc_md180", null ],
+      [ "複数モーター", "md_docs_2Driver_2RoboMasterMotor.html#autotoc_md181", null ]
     ] ],
     [ "Arduino IDE", "md_docs_2Install_2ArduinoIDE.html", [
-      [ "追加", "md_docs_2Install_2ArduinoIDE.html#autotoc_md176", null ],
-      [ "更新", "md_docs_2Install_2ArduinoIDE.html#autotoc_md177", null ]
+      [ "追加", "md_docs_2Install_2ArduinoIDE.html#autotoc_md183", null ],
+      [ "更新", "md_docs_2Install_2ArduinoIDE.html#autotoc_md184", null ]
     ] ],
     [ "CLion", "md_docs_2Install_2CLion.html", [
-      [ "追加", "md_docs_2Install_2CLion.html#autotoc_md179", null ],
-      [ "更新", "md_docs_2Install_2CLion.html#autotoc_md180", null ],
-      [ "submodule 使用時の注意点", "md_docs_2Install_2CLion.html#autotoc_md181", null ]
+      [ "追加", "md_docs_2Install_2CLion.html#autotoc_md186", null ],
+      [ "更新", "md_docs_2Install_2CLion.html#autotoc_md187", null ],
+      [ "submodule 使用時の注意点", "md_docs_2Install_2CLion.html#autotoc_md188", null ]
     ] ],
     [ "Platform IO", "md_docs_2Install_2PlatformIO.html", null ],
     [ "Raspberry Pi Pico セットアップ", "md_docs_2Install_2RaspberryPiPico.html", null ],
     [ "必要ソフトウェアのインストール", "md_docs_2Install_2RequiredTools.html", [
-      [ "ターミナル (端末)", "md_docs_2Install_2RequiredTools.html#autotoc_md185", null ],
-      [ "git", "md_docs_2Install_2RequiredTools.html#autotoc_md186", null ]
+      [ "ターミナル (端末)", "md_docs_2Install_2RequiredTools.html#autotoc_md192", null ],
+      [ "git", "md_docs_2Install_2RequiredTools.html#autotoc_md193", null ]
     ] ],
     [ "バニラ C++ 環境", "md_docs_2Install_2VanillaCpp.html", [
-      [ "例", "md_docs_2Install_2VanillaCpp.html#autotoc_md188", [
-        [ "ディレクトリ構造", "md_docs_2Install_2VanillaCpp.html#autotoc_md189", null ],
-        [ "main.cpp", "md_docs_2Install_2VanillaCpp.html#autotoc_md190", null ],
-        [ "build run", "md_docs_2Install_2VanillaCpp.html#autotoc_md191", null ]
+      [ "例", "md_docs_2Install_2VanillaCpp.html#autotoc_md195", [
+        [ "ディレクトリ構造", "md_docs_2Install_2VanillaCpp.html#autotoc_md196", null ],
+        [ "main.cpp", "md_docs_2Install_2VanillaCpp.html#autotoc_md197", null ],
+        [ "build run", "md_docs_2Install_2VanillaCpp.html#autotoc_md198", null ]
       ] ]
     ] ],
     [ "Visual Studio", "md_docs_2Install_2VisualStudio.html", [
-      [ "追加", "md_docs_2Install_2VisualStudio.html#autotoc_md193", null ],
-      [ "更新", "md_docs_2Install_2VisualStudio.html#autotoc_md194", null ],
-      [ "submodule 使用時の注意点", "md_docs_2Install_2VisualStudio.html#autotoc_md195", null ]
+      [ "追加", "md_docs_2Install_2VisualStudio.html#autotoc_md200", null ],
+      [ "更新", "md_docs_2Install_2VisualStudio.html#autotoc_md201", null ],
+      [ "submodule 使用時の注意点", "md_docs_2Install_2VisualStudio.html#autotoc_md202", null ]
     ] ],
     [ "シリアライザ", "md_docs_2Other_2Serialization.html", [
-      [ "個別インクルード", "md_docs_2Other_2Serialization.html#autotoc_md197", null ],
-      [ "シリアライズ可能な型", "md_docs_2Other_2Serialization.html#autotoc_md198", null ],
-      [ "シリアライズ", "md_docs_2Other_2Serialization.html#autotoc_md199", null ],
-      [ "デシリアライズ", "md_docs_2Other_2Serialization.html#autotoc_md200", null ],
-      [ "既に定義されている型のシリアライズ、デシリアライズ", "md_docs_2Other_2Serialization.html#autotoc_md201", null ],
-      [ "詳細", "md_docs_2Other_2Serialization.html#autotoc_md202", null ],
-      [ "API", "md_docs_2Other_2Serialization.html#autotoc_md203", [
-        [ "Udon::Serialize(...)", "md_docs_2Other_2Serialization.html#autotoc_md204", null ],
-        [ "Udon::Deserialize<T>(...)", "md_docs_2Other_2Serialization.html#autotoc_md205", null ],
-        [ "Udon::CanDeserialize(...)", "md_docs_2Other_2Serialization.html#autotoc_md206", null ],
-        [ "Udon::SerializedSize<T>()", "md_docs_2Other_2Serialization.html#autotoc_md207", null ]
+      [ "個別インクルード", "md_docs_2Other_2Serialization.html#autotoc_md204", null ],
+      [ "シリアライズ可能な型", "md_docs_2Other_2Serialization.html#autotoc_md205", null ],
+      [ "シリアライズ", "md_docs_2Other_2Serialization.html#autotoc_md206", null ],
+      [ "デシリアライズ", "md_docs_2Other_2Serialization.html#autotoc_md207", null ],
+      [ "既に定義されている型のシリアライズ、デシリアライズ", "md_docs_2Other_2Serialization.html#autotoc_md208", null ],
+      [ "詳細", "md_docs_2Other_2Serialization.html#autotoc_md209", null ],
+      [ "API", "md_docs_2Other_2Serialization.html#autotoc_md210", [
+        [ "Udon::Serialize(...)", "md_docs_2Other_2Serialization.html#autotoc_md211", null ],
+        [ "Udon::Deserialize<T>(...)", "md_docs_2Other_2Serialization.html#autotoc_md212", null ],
+        [ "Udon::CanDeserialize(...)", "md_docs_2Other_2Serialization.html#autotoc_md213", null ],
+        [ "Udon::SerializedSize<T>()", "md_docs_2Other_2Serialization.html#autotoc_md214", null ]
       ] ],
-      [ "サンプル", "md_docs_2Other_2Serialization.html#autotoc_md208", [
-        [ "整数型シリアライズ", "md_docs_2Other_2Serialization.html#autotoc_md209", null ],
-        [ "ヒープ領域を使用しないシリアライズ", "md_docs_2Other_2Serialization.html#autotoc_md210", null ],
-        [ "列挙型シリアライズ", "md_docs_2Other_2Serialization.html#autotoc_md211", null ],
-        [ "ユーザー定義型シリアライズ", "md_docs_2Other_2Serialization.html#autotoc_md212", null ],
-        [ "メンバに配列を持つユーザー定義型", "md_docs_2Other_2Serialization.html#autotoc_md213", null ],
-        [ "ユーザー定義型のネスト", "md_docs_2Other_2Serialization.html#autotoc_md214", null ],
-        [ "デシリアライズ失敗", "md_docs_2Other_2Serialization.html#autotoc_md215", null ]
+      [ "サンプル", "md_docs_2Other_2Serialization.html#autotoc_md215", [
+        [ "整数型シリアライズ", "md_docs_2Other_2Serialization.html#autotoc_md216", null ],
+        [ "ヒープ領域を使用しないシリアライズ", "md_docs_2Other_2Serialization.html#autotoc_md217", null ],
+        [ "列挙型シリアライズ", "md_docs_2Other_2Serialization.html#autotoc_md218", null ],
+        [ "ユーザー定義型シリアライズ", "md_docs_2Other_2Serialization.html#autotoc_md219", null ],
+        [ "メンバに配列を持つユーザー定義型", "md_docs_2Other_2Serialization.html#autotoc_md220", null ],
+        [ "ユーザー定義型のネスト", "md_docs_2Other_2Serialization.html#autotoc_md221", null ],
+        [ "デシリアライズ失敗", "md_docs_2Other_2Serialization.html#autotoc_md222", null ]
       ] ]
     ] ],
     [ "トレイト", "md_docs_2Other_2Traits.html", [
-      [ "メタ関数", "md_docs_2Other_2Traits.html#autotoc_md217", [
-        [ "送信クラス要件", "md_docs_2Other_2Traits.html#autotoc_md218", null ],
-        [ "受信クラス要件", "md_docs_2Other_2Traits.html#autotoc_md219", null ],
-        [ "オーバーロード解決の優先順位制御", "md_docs_2Other_2Traits.html#autotoc_md220", null ],
-        [ "AlwaysFalse<T>", "md_docs_2Other_2Traits.html#autotoc_md221", null ]
+      [ "メタ関数", "md_docs_2Other_2Traits.html#autotoc_md224", [
+        [ "送信クラス要件", "md_docs_2Other_2Traits.html#autotoc_md225", null ],
+        [ "受信クラス要件", "md_docs_2Other_2Traits.html#autotoc_md226", null ],
+        [ "オーバーロード解決の優先順位制御", "md_docs_2Other_2Traits.html#autotoc_md227", null ],
+        [ "AlwaysFalse<T>", "md_docs_2Other_2Traits.html#autotoc_md228", null ]
       ] ],
-      [ "曖昧なメンバ関数呼び出し", "md_docs_2Other_2Traits.html#autotoc_md222", [
-        [ "基本", "md_docs_2Other_2Traits.html#autotoc_md223", null ],
-        [ "実用例", "md_docs_2Other_2Traits.html#autotoc_md224", null ]
+      [ "曖昧なメンバ関数呼び出し", "md_docs_2Other_2Traits.html#autotoc_md229", [
+        [ "基本", "md_docs_2Other_2Traits.html#autotoc_md230", null ],
+        [ "実用例", "md_docs_2Other_2Traits.html#autotoc_md231", null ]
       ] ]
     ] ],
     [ "ユーティリティ", "md_docs_2Other_2Utility.html", [
-      [ "Show 関数", "md_docs_2Other_2Utility.html#autotoc_md226", [
-        [ "ユーザー定義型の出力", "md_docs_2Other_2Utility.html#autotoc_md227", null ]
+      [ "Show 関数", "md_docs_2Other_2Utility.html#autotoc_md233", [
+        [ "ユーザー定義型の出力", "md_docs_2Other_2Utility.html#autotoc_md234", null ]
       ] ],
-      [ "Assert 関数", "md_docs_2Other_2Utility.html#autotoc_md228", null ],
-      [ "Normalized 関数", "md_docs_2Other_2Utility.html#autotoc_md229", null ]
+      [ "Assert 関数", "md_docs_2Other_2Utility.html#autotoc_md235", null ],
+      [ "Normalized 関数", "md_docs_2Other_2Utility.html#autotoc_md236", null ]
     ] ],
     [ "スタート", "md_docs_2Start_2Include.html", [
-      [ "インクルード", "md_docs_2Start_2Include.html#autotoc_md231", null ],
-      [ "本ライブラリについて", "md_docs_2Start_2Include.html#autotoc_md232", null ]
+      [ "インクルード", "md_docs_2Start_2Include.html#autotoc_md238", null ],
+      [ "本ライブラリについて", "md_docs_2Start_2Include.html#autotoc_md239", null ]
     ] ],
     [ "OpenSiv3D との連携", "md_docs_2Start_2OpenSiv3D.html", [
-      [ "連携機能", "md_docs_2Start_2OpenSiv3D.html#autotoc_md234", null ]
+      [ "連携機能", "md_docs_2Start_2OpenSiv3D.html#autotoc_md241", null ]
     ] ],
     [ "ArrayView", "md_docs_2Types_2ArrayView.html", [
-      [ "構築", "md_docs_2Types_2ArrayView.html#autotoc_md236", null ],
-      [ "ビューから新しいビューを生成する", "md_docs_2Types_2ArrayView.html#autotoc_md237", null ],
-      [ "イテレーション", "md_docs_2Types_2ArrayView.html#autotoc_md238", null ]
+      [ "構築", "md_docs_2Types_2ArrayView.html#autotoc_md243", null ],
+      [ "ビューから新しいビューを生成する", "md_docs_2Types_2ArrayView.html#autotoc_md244", null ],
+      [ "イテレーション", "md_docs_2Types_2ArrayView.html#autotoc_md245", null ]
     ] ],
     [ "色空間", "md_docs_2Types_2Color.html", [
-      [ "RGB 色空間", "md_docs_2Types_2Color.html#autotoc_md240", [
-        [ "構築", "md_docs_2Types_2Color.html#autotoc_md241", null ],
-        [ "カラーコードへの変換", "md_docs_2Types_2Color.html#autotoc_md242", null ],
-        [ "他の色空間へ変換", "md_docs_2Types_2Color.html#autotoc_md243", null ]
+      [ "RGB 色空間", "md_docs_2Types_2Color.html#autotoc_md247", [
+        [ "構築", "md_docs_2Types_2Color.html#autotoc_md248", null ],
+        [ "カラーコードへの変換", "md_docs_2Types_2Color.html#autotoc_md249", null ],
+        [ "他の色空間へ変換", "md_docs_2Types_2Color.html#autotoc_md250", null ]
       ] ],
-      [ "HSV 色空間", "md_docs_2Types_2Color.html#autotoc_md244", [
-        [ "概要", "md_docs_2Types_2Color.html#autotoc_md245", null ],
-        [ "構築", "md_docs_2Types_2Color.html#autotoc_md246", null ],
-        [ "他の色空間へ変換", "md_docs_2Types_2Color.html#autotoc_md247", null ],
-        [ "24bit 値への変換", "md_docs_2Types_2Color.html#autotoc_md248", null ]
+      [ "HSV 色空間", "md_docs_2Types_2Color.html#autotoc_md251", [
+        [ "概要", "md_docs_2Types_2Color.html#autotoc_md252", null ],
+        [ "構築", "md_docs_2Types_2Color.html#autotoc_md253", null ],
+        [ "他の色空間へ変換", "md_docs_2Types_2Color.html#autotoc_md254", null ],
+        [ "24bit 値への変換", "md_docs_2Types_2Color.html#autotoc_md255", null ]
       ] ],
-      [ "その他関数", "md_docs_2Types_2Color.html#autotoc_md249", [
-        [ "Rainbow()", "md_docs_2Types_2Color.html#autotoc_md250", null ]
+      [ "その他関数", "md_docs_2Types_2Color.html#autotoc_md256", [
+        [ "Rainbow()", "md_docs_2Types_2Color.html#autotoc_md257", null ]
       ] ]
     ] ],
     [ "オイラー角", "md_docs_2Types_2Eular.html", null ],
     [ "固定ビット長浮動小数点型", "md_docs_2Types_2Float.html", [
-      [ "概要", "md_docs_2Types_2Float.html#autotoc_md253", null ],
-      [ "構築", "md_docs_2Types_2Float.html#autotoc_md254", null ]
+      [ "概要", "md_docs_2Types_2Float.html#autotoc_md260", null ],
+      [ "構築", "md_docs_2Types_2Float.html#autotoc_md261", null ]
     ] ],
     [ "クオータニオン", "md_docs_2Types_2Quaternion.html", null ],
     [ "RingBuffer", "md_docs_2Types_2RingBuffer.html", [
-      [ "構築", "md_docs_2Types_2RingBuffer.html#autotoc_md257", null ],
-      [ "構築", "md_docs_2Types_2RingBuffer.html#autotoc_md258", null ],
-      [ "要素の追加、削除", "md_docs_2Types_2RingBuffer.html#autotoc_md259", null ],
-      [ "イテレーション", "md_docs_2Types_2RingBuffer.html#autotoc_md260", null ]
+      [ "構築", "md_docs_2Types_2RingBuffer.html#autotoc_md264", null ],
+      [ "構築", "md_docs_2Types_2RingBuffer.html#autotoc_md265", null ],
+      [ "要素の追加、削除", "md_docs_2Types_2RingBuffer.html#autotoc_md266", null ],
+      [ "イテレーション", "md_docs_2Types_2RingBuffer.html#autotoc_md267", null ]
     ] ],
     [ "StaticVector", "md_docs_2Types_2StaticVector.html", [
-      [ "構築", "md_docs_2Types_2StaticVector.html#autotoc_md262", null ],
-      [ "要素の追加、削除", "md_docs_2Types_2StaticVector.html#autotoc_md263", null ],
-      [ "イテレーション", "md_docs_2Types_2StaticVector.html#autotoc_md264", null ]
+      [ "構築", "md_docs_2Types_2StaticVector.html#autotoc_md269", null ],
+      [ "要素の追加、削除", "md_docs_2Types_2StaticVector.html#autotoc_md270", null ],
+      [ "イテレーション", "md_docs_2Types_2StaticVector.html#autotoc_md271", null ]
     ] ],
     [ "StringView", "md_docs_2Types_2StringView.html", [
-      [ "個別インクルード", "md_docs_2Types_2StringView.html#autotoc_md266", null ],
-      [ "概要", "md_docs_2Types_2StringView.html#autotoc_md267", null ]
+      [ "個別インクルード", "md_docs_2Types_2StringView.html#autotoc_md273", null ],
+      [ "概要", "md_docs_2Types_2StringView.html#autotoc_md274", null ]
     ] ],
     [ "二次元ベクトル", "md_docs_2Types_2Vector2D.html", [
-      [ "構造", "md_docs_2Types_2Vector2D.html#autotoc_md269", null ],
-      [ "構築", "md_docs_2Types_2Vector2D.html#autotoc_md270", null ],
-      [ "要素へのアクセス", "md_docs_2Types_2Vector2D.html#autotoc_md271", null ],
-      [ "ベクトル演算", "md_docs_2Types_2Vector2D.html#autotoc_md272", null ],
-      [ "シリアルモニターに送信する", "md_docs_2Types_2Vector2D.html#autotoc_md273", [
-        [ "show()", "md_docs_2Types_2Vector2D.html#autotoc_md274", null ]
+      [ "構造", "md_docs_2Types_2Vector2D.html#autotoc_md276", null ],
+      [ "構築", "md_docs_2Types_2Vector2D.html#autotoc_md277", null ],
+      [ "要素へのアクセス", "md_docs_2Types_2Vector2D.html#autotoc_md278", null ],
+      [ "ベクトル演算", "md_docs_2Types_2Vector2D.html#autotoc_md279", null ],
+      [ "シリアルモニターに送信する", "md_docs_2Types_2Vector2D.html#autotoc_md280", [
+        [ "show()", "md_docs_2Types_2Vector2D.html#autotoc_md281", null ]
       ] ],
-      [ "ベクトルの長さを求める", "md_docs_2Types_2Vector2D.html#autotoc_md275", [
-        [ "length() -> double", "md_docs_2Types_2Vector2D.html#autotoc_md276", null ],
-        [ "distanceFrom(Vec2 other) -> double", "md_docs_2Types_2Vector2D.html#autotoc_md277", null ]
+      [ "ベクトルの長さを求める", "md_docs_2Types_2Vector2D.html#autotoc_md282", [
+        [ "length() -> double", "md_docs_2Types_2Vector2D.html#autotoc_md283", null ],
+        [ "distanceFrom(Vec2 other) -> double", "md_docs_2Types_2Vector2D.html#autotoc_md284", null ]
       ] ],
-      [ "ベクトルの角度を求める", "md_docs_2Types_2Vector2D.html#autotoc_md278", [
-        [ "angleAt(Vec2 other) -> double", "md_docs_2Types_2Vector2D.html#autotoc_md279", null ],
-        [ "angle() -> double", "md_docs_2Types_2Vector2D.html#autotoc_md280", null ]
+      [ "ベクトルの角度を求める", "md_docs_2Types_2Vector2D.html#autotoc_md285", [
+        [ "angleAt(Vec2 other) -> double", "md_docs_2Types_2Vector2D.html#autotoc_md286", null ],
+        [ "angle() -> double", "md_docs_2Types_2Vector2D.html#autotoc_md287", null ]
       ] ],
-      [ "ベクトルの長さを変更する", "md_docs_2Types_2Vector2D.html#autotoc_md281", [
-        [ "scaledLength(double length) -> Vec2", "md_docs_2Types_2Vector2D.html#autotoc_md282", null ],
-        [ "scaleLength(double length) -> Vec2&", "md_docs_2Types_2Vector2D.html#autotoc_md283", null ]
+      [ "ベクトルの長さを変更する", "md_docs_2Types_2Vector2D.html#autotoc_md288", [
+        [ "scaledLength(double length) -> Vec2", "md_docs_2Types_2Vector2D.html#autotoc_md289", null ],
+        [ "scaleLength(double length) -> Vec2&", "md_docs_2Types_2Vector2D.html#autotoc_md290", null ]
       ] ],
-      [ "原点を中心にベクトルを指定角度回転させる", "md_docs_2Types_2Vector2D.html#autotoc_md284", [
-        [ "rotated(double angle) -> Vec2", "md_docs_2Types_2Vector2D.html#autotoc_md285", null ],
-        [ "rotate(double angle) -> Vec2&", "md_docs_2Types_2Vector2D.html#autotoc_md286", null ]
+      [ "原点を中心にベクトルを指定角度回転させる", "md_docs_2Types_2Vector2D.html#autotoc_md291", [
+        [ "rotated(double angle) -> Vec2", "md_docs_2Types_2Vector2D.html#autotoc_md292", null ],
+        [ "rotate(double angle) -> Vec2&", "md_docs_2Types_2Vector2D.html#autotoc_md293", null ]
       ] ],
-      [ "指定した点を中心にベクトルを指定角度回転させる", "md_docs_2Types_2Vector2D.html#autotoc_md287", [
-        [ "rotatedAt(Vec2 center, double angle) -> Vec2", "md_docs_2Types_2Vector2D.html#autotoc_md288", null ],
-        [ "rotateAt(Vec2 center, double angle) -> Vec2&", "md_docs_2Types_2Vector2D.html#autotoc_md289", null ]
+      [ "指定した点を中心にベクトルを指定角度回転させる", "md_docs_2Types_2Vector2D.html#autotoc_md294", [
+        [ "rotatedAt(Vec2 center, double angle) -> Vec2", "md_docs_2Types_2Vector2D.html#autotoc_md295", null ],
+        [ "rotateAt(Vec2 center, double angle) -> Vec2&", "md_docs_2Types_2Vector2D.html#autotoc_md296", null ]
       ] ],
-      [ "極座標系へ変換する", "md_docs_2Types_2Vector2D.html#autotoc_md290", [
-        [ "toPolar() -> Polar", "md_docs_2Types_2Vector2D.html#autotoc_md291", null ]
+      [ "極座標系へ変換する", "md_docs_2Types_2Vector2D.html#autotoc_md297", [
+        [ "toPolar() -> Polar", "md_docs_2Types_2Vector2D.html#autotoc_md298", null ]
       ] ],
-      [ "ベクトルの各要素の値を一定の範囲に収める", "md_docs_2Types_2Vector2D.html#autotoc_md292", [
-        [ "clamped(double min, double max) -> Vec2", "md_docs_2Types_2Vector2D.html#autotoc_md293", null ],
-        [ "clamp(double min, double max) -> Vec2&", "md_docs_2Types_2Vector2D.html#autotoc_md294", null ]
+      [ "ベクトルの各要素の値を一定の範囲に収める", "md_docs_2Types_2Vector2D.html#autotoc_md299", [
+        [ "clamped(double min, double max) -> Vec2", "md_docs_2Types_2Vector2D.html#autotoc_md300", null ],
+        [ "clamp(double min, double max) -> Vec2&", "md_docs_2Types_2Vector2D.html#autotoc_md301", null ]
       ] ],
-      [ "ベクトルをリマッピングする", "md_docs_2Types_2Vector2D.html#autotoc_md295", [
-        [ "mapped(double fromMin, double fromMax, double toMin, double toMax) -> Vec2", "md_docs_2Types_2Vector2D.html#autotoc_md296", null ],
-        [ "map(double fromMin, double fromMax, double toMin, double toMax) -> Vec2&", "md_docs_2Types_2Vector2D.html#autotoc_md297", null ]
+      [ "ベクトルをリマッピングする", "md_docs_2Types_2Vector2D.html#autotoc_md302", [
+        [ "mapped(double fromMin, double fromMax, double toMin, double toMax) -> Vec2", "md_docs_2Types_2Vector2D.html#autotoc_md303", null ],
+        [ "map(double fromMin, double fromMax, double toMin, double toMax) -> Vec2&", "md_docs_2Types_2Vector2D.html#autotoc_md304", null ]
       ] ],
-      [ "OpenSiv3D との連携", "md_docs_2Types_2Vector2D.html#autotoc_md298", [
-        [ "s3d::Vector2D<T> -> Udon::Vec2", "md_docs_2Types_2Vector2D.html#autotoc_md299", null ],
-        [ "Udon::Vec2 -> s3d::Vector2D<T>", "md_docs_2Types_2Vector2D.html#autotoc_md300", null ]
+      [ "OpenSiv3D との連携", "md_docs_2Types_2Vector2D.html#autotoc_md305", [
+        [ "s3d::Vector2D<T> -> Udon::Vec2", "md_docs_2Types_2Vector2D.html#autotoc_md306", null ],
+        [ "Udon::Vec2 -> s3d::Vector2D<T>", "md_docs_2Types_2Vector2D.html#autotoc_md307", null ]
       ] ],
-      [ "シリアライズ", "md_docs_2Types_2Vector2D.html#autotoc_md301", null ]
+      [ "シリアライズ", "md_docs_2Types_2Vector2D.html#autotoc_md308", null ]
     ] ],
     [ "三次元ベクトル", "md_docs_2Types_2Vector3D.html", null ],
     [ "名前空間", "namespaces.html", [
@@ -438,11 +448,11 @@ var NAVTREEINDEX =
 "classUdon_1_1PadPS5USB.html#a99d73e0d10a97d982d06fad2ad5ff92c",
 "classUdon_1_1StaticVector.html#a2159716cb02b990cf9c2ed68448ea2fd",
 "md_docs_2Communication_2I2C.html#autotoc_md51",
-"namespaceUdon.html#a061c04e1f68ae2d5d69dc6b4fba687f4",
-"structUdon_1_1EulerDirection.html#a6a6956bc5b2b53c63e79a0923fa04008",
-"structUdon_1_1PidController_1_1Parameter.html#ab86074cfd18fa98b1dc3f2c6141405b0",
-"structUdon_1_1RingBuffer_1_1const__iterator.html#a93fe9ed66f51a5f70df777945fb39ab0",
-"structUdon_1_1Vec3.html#a6f0b5081592ac3bda54820ad05ed953d"
+"md_docs_2Types_2Vector2D.html#autotoc_md304",
+"structUdon_1_1EulerDirection.html",
+"structUdon_1_1Message_1_1Yaw.html#af3d2ef761c19be07a30cdcae88d6ac29",
+"structUdon_1_1RingBuffer_1_1const__iterator.html#a82167a43ebdac19c17a336e9601de578",
+"structUdon_1_1Vec3.html#a5efc40f12783eefb84a6044a4890b67a"
 ];
 
 var SYNCONMSG = 'クリックで同期表示が無効になります';

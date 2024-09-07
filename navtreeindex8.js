@@ -1,5 +1,12 @@
 var NAVTREEINDEX8 =
 {
+"md_docs_2Types_2Vector2D.html#autotoc_md304":[50,12,1],
+"md_docs_2Types_2Vector2D.html#autotoc_md305":[50,13],
+"md_docs_2Types_2Vector2D.html#autotoc_md306":[50,13,0],
+"md_docs_2Types_2Vector2D.html#autotoc_md307":[50,13,1],
+"md_docs_2Types_2Vector2D.html#autotoc_md308":[50,14],
+"md_docs_2Types_2Vector3D.html":[51],
+"namespaceUdon.html":[52,0,1],
 "namespaceUdon.html#a061c04e1f68ae2d5d69dc6b4fba687f4":[52,0,1,91],
 "namespaceUdon.html#a0ee7cea3483a4d489e3578463788e37a":[52,0,1,77],
 "namespaceUdon.html#a163e827776b911f4d521dfe7237fca05":[52,0,1,118],
@@ -242,12 +249,5 @@ var NAVTREEINDEX8 =
 "structUdon_1_1Euler.html#af258c3a0586c29b4810b9df592625a73":[52,0,1,19,0],
 "structUdon_1_1Euler.html#af258c3a0586c29b4810b9df592625a73":[53,0,0,16,0],
 "structUdon_1_1Euler.html#af9acb4cddb9618187ae96bf16bde03d5":[52,0,1,19,30],
-"structUdon_1_1Euler.html#af9acb4cddb9618187ae96bf16bde03d5":[53,0,0,16,30],
-"structUdon_1_1EulerDirection.html":[52,0,1,20],
-"structUdon_1_1EulerDirection.html":[53,0,0,17],
-"structUdon_1_1EulerDirection.html#a27d8822b33d4aa5127f670441389c7b5":[52,0,1,20,2],
-"structUdon_1_1EulerDirection.html#a27d8822b33d4aa5127f670441389c7b5":[53,0,0,17,2],
-"structUdon_1_1EulerDirection.html#a4ddb6151509f47c97cc586274507108b":[52,0,1,20,0],
-"structUdon_1_1EulerDirection.html#a4ddb6151509f47c97cc586274507108b":[53,0,0,17,0],
-"structUdon_1_1EulerDirection.html#a6a6956bc5b2b53c63e79a0923fa04008":[52,0,1,20,1]
+"structUdon_1_1Euler.html#af9acb4cddb9618187ae96bf16bde03d5":[53,0,0,16,30]
 };

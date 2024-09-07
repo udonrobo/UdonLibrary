@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['テストを書く_0',['■ テストを書く',['../md_docs_2Developer_2CI.html#autotoc_md112',1,'']]],
-  ['テストファイルを追加する_1',['■ テストファイルを追加する',['../md_docs_2Developer_2CI.html#autotoc_md104',1,'']]],
-  ['テンプレート_2',['テンプレート',['../md_docs_2Developer_2StyleGuide.html#autotoc_md136',1,'']]]
+  ['チャンネルの設定_0',['チャンネルの設定',['../md_docs_2Communication_2LoRa.html#autotoc_md67',1,'']]]
 ];

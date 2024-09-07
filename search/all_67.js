@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['整数型シリアライズ_0',['整数型シリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md209',1,'']]]
+  ['指定した点を中心にベクトルを指定角度回転させる_0',['指定した点を中心にベクトルを指定角度回転させる',['../md_docs_2Types_2Vector2D.html#autotoc_md294',1,'']]]
 ];

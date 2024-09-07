@@ -110,8 +110,8 @@ $(function(){initNavTree('md_docs_2Algorithm_2LoopCycleController.html',''); ini
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md14"></a></p>
-<p>ループ内の処理時間によらず、周期を一定に保ちます。</p>
-<p><code>LoopCycleController</code> クラスを使用します。コンストラクタ引数にループ周期をマイクロ秒単位で指定します。<code>update()</code> を呼び出すことで周期が一定に保たれます。</p>
+<p><code>LoopCycleController</code> クラスを使用し、ループ内の処理時間によらず、ループ周期を一定に保ちます。</p>
+<p>コンストラクタ引数にループ周期をマイクロ秒単位で指定し、<code>update()</code> を呼び出すことで周期が一定に保たれます。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> Udon::LoopCycleController loopCtrl{ 10000 };</div>

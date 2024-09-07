@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['問題_0',['問題',['../md_docs_2Developer_2Troubleshooting.html#autotoc_md150',1,'']]]
+  ['周波数_0',['周波数',['../md_docs_2Communication_2LoRa.html#autotoc_md70',1,'']]]
 ];

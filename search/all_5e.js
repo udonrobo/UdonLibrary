@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['基本_0',['基本',['../md_docs_2Other_2Traits.html#autotoc_md223',1,'']]]
+  ['固定ビット長浮動小数点型_0',['固定ビット長浮動小数点型',['../md_docs_2Types_2Float.html',1,'']]]
 ];

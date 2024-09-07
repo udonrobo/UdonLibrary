@@ -110,7 +110,114 @@ $(function(){initNavTree('md_docs_2Communication_2Serial.html',''); initResizabl
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md98"></a></p>
-</div></div><!-- contents -->
+<p>主に PC,マイコン間での通信に用います。この場合は USB で接続します。</p>
+<h1><a class="anchor" id="autotoc_md99"></a>
+マイコンから PC</h1>
+<h2><a class="anchor" id="autotoc_md100"></a>
+マイコン側</h2>
+<p><code>setMessage</code> 関数が送信処理を行うため、高周期で <code>setMessage</code> を呼び出すと PC にデータが送られすぎます。適度な delay が必要です。</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1SerialWriter.html">Udon::SerialWriter&lt;uint32_t&gt;</a> writer{ Serial };</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup()</div>
+<div class="line">{</div>
+<div class="line">    Serial.begin(115200);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> loop()</div>
+<div class="line">{</div>
+<div class="line">    writer.<a class="code hl_function" href="classUdon_1_1SerialWriter.html#aceab6d7656d0816ee6bf942705e1a3e5">setMessage</a>(millis());</div>
+<div class="line">    delay(10);</div>
+<div class="line">}</div>
+<div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
+<div class="ttc" id="aclassUdon_1_1SerialWriter_html"><div class="ttname"><a href="classUdon_1_1SerialWriter.html">Udon::SerialWriter</a></div><div class="ttdoc">Serial 送信クラス</div><div class="ttdef"><b>Definition</b> SerialWriter.hpp:22</div></div>
+<div class="ttc" id="aclassUdon_1_1SerialWriter_html_aceab6d7656d0816ee6bf942705e1a3e5"><div class="ttname"><a href="classUdon_1_1SerialWriter.html#aceab6d7656d0816ee6bf942705e1a3e5">Udon::SerialWriter::setMessage</a></div><div class="ttdeci">void setMessage(const Message &amp;rhs)</div><div class="ttdoc">送信内容を更新</div><div class="ttdef"><b>Definition</b> SerialWriter.hpp:38</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md101"></a>
+PC 側 (OpenSiv3D が必要)</h2>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Siv3D.hpp&gt;</span> <span class="comment">// Siv3D v0.6.15</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> Main()</div>
+<div class="line">{</div>
+<div class="line">    Serial serial;</div>
+<div class="line">    <a class="code hl_class" href="classUdon_1_1SivSerialReader.html">Udon::SivSerialReader&lt;uint32_t&gt;</a> reader{ serial };</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">while</span> (System::Update())</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">if</span> (not serial)</div>
+<div class="line">        {</div>
+<div class="line">            serial.open(U<span class="stringliteral">&quot;COM10&quot;</span>, 115200);  <span class="comment">// マイコンが接続されているCOMポートを指定</span></div>
+<div class="line">        }</div>
+<div class="line"> </div>
+<div class="line">        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> m = reader.getMessage())</div>
+<div class="line">        {</div>
+<div class="line">            Print &lt;&lt; *m;</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">else</span></div>
+<div class="line">        {</div>
+<div class="line">            Print &lt;&lt; U<span class="stringliteral">&quot;no message&quot;</span>;</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassUdon_1_1SivSerialReader_html"><div class="ttname"><a href="classUdon_1_1SivSerialReader.html">Udon::SivSerialReader</a></div><div class="ttdoc">OpenSiv3D用 Serial 受信クラス</div><div class="ttdef"><b>Definition</b> SivSerialReader.hpp:23</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md102"></a>
+PC からマイコン</h1>
+<h2><a class="anchor" id="autotoc_md103"></a>
+PC 側 (OpenSiv3D が必要)</h2>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Siv3D.hpp&gt;</span> <span class="comment">// Siv3D v0.6.15</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> Main()</div>
+<div class="line">{</div>
+<div class="line">    Serial serial;</div>
+<div class="line">    <a class="code hl_class" href="classUdon_1_1SivSerialWriter.html">Udon::SivSerialWriter&lt;uint32_t&gt;</a> writer{ serial };</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">while</span> (System::Update())</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">if</span> (not serial)</div>
+<div class="line">        {</div>
+<div class="line">            serial.open(U<span class="stringliteral">&quot;COM10&quot;</span>, 115200);  <span class="comment">// マイコンが接続されているCOMポートを指定</span></div>
+<div class="line">        }</div>
+<div class="line">        writer.setMessage(Time::GetMicrosec());</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassUdon_1_1SivSerialWriter_html"><div class="ttname"><a href="classUdon_1_1SivSerialWriter.html">Udon::SivSerialWriter</a></div><div class="ttdoc">OpenSiv3D用 Serial 送信クラス</div><div class="ttdef"><b>Definition</b> SivSerialWriter.hpp:23</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md104"></a>
+マイコン側</h2>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_class" href="classUdon_1_1SerialReader.html">Udon::SerialReader&lt;uint32_t&gt;</a> reader{ Serial };</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup()</div>
+<div class="line">{</div>
+<div class="line">    Serial.begin(115200);</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> loop()</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> m = reader.getMessage())</div>
+<div class="line">    {</div>
+<div class="line">        uint32_t value = *m;</div>
+<div class="line">    }</div>
+<div class="line">    delay(10);</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassUdon_1_1SerialReader_html"><div class="ttname"><a href="classUdon_1_1SerialReader.html">Udon::SerialReader</a></div><div class="ttdoc">Serial 受信クラス</div><div class="ttdef"><b>Definition</b> SerialReader.hpp:22</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md105"></a>
+OpenSiv3D COMポート列挙方法</h1>
+<p><code>System::EnumerateSerialPorts</code> 関数から、接続されているシリアルポート情報 <code>SerialPortInfo</code> の配列を取得できます。例では map 関数を使って String の配列に加工しています。</p>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> Main()</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">const</span> Array&lt;String&gt; ports = System::EnumerateSerialPorts().map([](<span class="keyword">const</span> SerialPortInfo&amp; info)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">return</span> info.port;</div>
+<div class="line">    });</div>
+<div class="line"> </div>
+<div class="line">    Print &lt;&lt; ports;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">while</span> (System::Update()) {}</div>
+<div class="line">}</div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! --></div>
