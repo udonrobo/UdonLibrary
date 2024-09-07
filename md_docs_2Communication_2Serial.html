@@ -205,7 +205,7 @@ PC 側 (OpenSiv3D が必要)</h2>
 <div class="ttc" id="aclassUdon_1_1SerialReader_html"><div class="ttname"><a href="classUdon_1_1SerialReader.html">Udon::SerialReader</a></div><div class="ttdoc">Serial 受信クラス</div><div class="ttdef"><b>Definition</b> SerialReader.hpp:22</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md105"></a>
 OpenSiv3D COMポート列挙方法</h1>
-<p><code>System::EnumerateSerialPorts</code> 関数から、接続されているシリアルポート情報 <code>SerialPortInfo</code> の配列を取得できます。例では map 関数を使って String の配列に加工しています。</p>
+<p><code>System::EnumerateSerialPorts</code> 関数から、接続されているシリアルポート情報 <code>SerialPortInfo</code> の配列を取得できます。例では map 関数を使って String の配列に変換しています。</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> Main()</div>
 <div class="line">{</div>
 <div class="line">    <span class="keyword">const</span> Array&lt;String&gt; ports = System::EnumerateSerialPorts().map([](<span class="keyword">const</span> SerialPortInfo&amp; info)</div>

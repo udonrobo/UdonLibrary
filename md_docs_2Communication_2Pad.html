@@ -247,10 +247,11 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 ■ OpenSiv3D 使用時</h3>
 <p>OpenSiv3D 使用時は通信を経由させる必要はありません。 PC と USB ケーブルで接続するだけで使用できます。</p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> SivPadPS5 pad;</div>
-<div class="line"><span class="keyword">static</span> SivPadPS5 pad{ index };  <span class="comment">// 複数コントローラを使用する場合</span></div>
+<div class="line"><span class="comment">// static SivPadPS5 pad{ index };  // 複数コントローラを使用する場合</span></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md89"></a>
 更新</h2>
 <p>ループ内で <code>update</code> メンバ関数を呼ぶ必要があります。受信処理を行ったり、入力値の解析を行います。</p>
+<p>E220 等の</p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> xxxPadPS5 pad{ ... };</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup()</div>
@@ -350,8 +351,8 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <p>&zwj;<code>Vec2</code> オブジェクトは以下の様に定義されており、各スティックの X, Y 軸の傾きを取得できます。スティックの上方向が X 軸の正、右方向が Y 軸の正です。</p>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>Vec2</div>
 <div class="line">{</div>
-<div class="line">    <span class="keywordtype">double</span> x;</div>
-<div class="line">    <span class="keywordtype">double</span> y;</div>
+<div class="line">    <span class="keywordtype">double</span> x;  <span class="comment">// -255 ~ 255</span></div>
+<div class="line">    <span class="keywordtype">double</span> y;  <span class="comment">// -255 ~ 255</span></div>
 <div class="line">};</div>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// 左スティックのx軸の傾き</span></div>
 <div class="line"><span class="keyword">const</span> <span class="keywordtype">double</span> leftX = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a6b6d64c6f7998d90565b68710efb7d18">getLeftStick</a>().<a class="code hl_variable" href="structUdon_1_1Vec2.html#aa41b9596dd6fd8353630210413608eb4">x</a>;</div>
