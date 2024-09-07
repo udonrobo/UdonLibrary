@@ -35,7 +35,7 @@
 
 - [ループ周期制御](./docs/Algorithm/LoopCycleController.md)
 - [移動平均](./docs/Algorithm/MovingAverage.md)
-- [フィードバック制御(PID)](./docs/Algorithm/FeedbackController.md)
+- [PID制御](./docs/Algorithm/FeedbackController.md)
 - [独立ステア最適化](./docs/Algorithm/SteerOptimizer.md)
 - [割り込み禁止制御](./docs/Algorithm/Interrupt.md)
 

@@ -40,8 +40,9 @@ namespace Udon
         {
             if (serial.isOpen())
             {
-                const auto packed = Udon::Serialize(message);
-                serial.write(packed.data(), packed.size());
+                uint8_t buffer[Size];
+                Udon::Serialize(message, buffer);
+                serial.write(buffer, Size);
             }
         }
     };
