@@ -340,7 +340,9 @@ void loop()
 <details>
 <summary> コールバックを行う例 </summary>
 
-受信ノードには、受信時に呼び出すコールバック関数を登録できます。8 バイトより長いバイト列は複数のフレームに分割されて送信されます。この時、コールバック関数が呼び出されるのは最終フレーム受信時です。
+受信ノードには、受信時に呼び出すコールバック関数を登録できます。一つのバイト列に対して毎度コールバック関数を呼ぶため、データの取りこぼしが起きません。
+
+8 バイトより長いバイト列は複数のフレームに分割されて送信されます。この時、コールバック関数が呼び出されるのは最終フレーム受信時です。
 
 コールバック関数には `param` メンバを通じて任意の void ポインタを渡せます。以下の例では CanRxNode ポインタを渡しています。
 
@@ -404,10 +406,10 @@ public:
         rxNode->param = this;   // this ポインタを登録
     }
 
-    MyCanReader(const MyCanReader& other)
+    MyCanReader(MyCanReader&& other)
         : rxNode(other.rxNode)
     {
-        rxNode.param = this;   // コピーされた場合、インスタンスが変わるので this ポインタを登録しなおす。
+        rxNode.param = this;   // 移動した場合、コールバック時にアクセスしたいインスタンスが変わるので this ポインタを登録しなおす。
     }
 
     void update()
@@ -415,6 +417,7 @@ public:
         Serial.println(value);
     }
 
+private:
     static void onReceive(void* param)
     {
         auto self = static_cast<MyCanReader*>(param);  // this ポインタを復元

@@ -172,12 +172,14 @@ OpenSiv3D 使用時は通信を経由させる必要はありません。 PC と
 
 ```cpp
 static SivPadPS5 pad;
-static SivPadPS5 pad{ index };  // 複数コントローラを使用する場合
+// static SivPadPS5 pad{ index };  // 複数コントローラを使用する場合
 ```
 
 ### 更新
 
 ループ内で `update` メンバ関数を呼ぶ必要があります。受信処理を行ったり、入力値の解析を行います。
+
+E220 等の
 
 ```cpp
 static xxxPadPS5 pad{ ... };
@@ -275,8 +277,8 @@ void loop()
 > ```cpp
 > struct Vec2
 > {
->     double x;
->     double y;
+>     double x;  // -255 ~ 255
+>     double y;  // -255 ~ 255
 > };
 > ```
 >

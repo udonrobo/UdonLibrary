@@ -75,7 +75,7 @@ void Main()
             serial.open(U"COM10", 115200);  // マイコンが接続されているCOMポートを指定
         }
         writer.setMessage(Time::GetMicrosec());
-	}
+    }
 }
 ```
 
@@ -103,7 +103,7 @@ void loop()
 
 ## OpenSiv3D COMポート列挙方法
 
-`System::EnumerateSerialPorts` 関数から、接続されているシリアルポート情報 `SerialPortInfo` の配列を取得できます。例では map 関数を使って String の配列に加工しています。
+`System::EnumerateSerialPorts` 関数から、接続されているシリアルポート情報 `SerialPortInfo` の配列を取得できます。例では map 関数を使って String の配列に変換しています。
 
 ```cpp
 void Main()
