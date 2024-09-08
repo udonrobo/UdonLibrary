@@ -53,11 +53,11 @@ namespace Udon
 
             if (getCross().toggle)
             {
-                // 起動時は非常停止
                 return false;
             }
             else
             {
+                // 起動時は非常停止
                 return true;
             }
         }

@@ -29,7 +29,7 @@ namespace Udon
 
         std::thread thread;
 
-        bool isRunning;    // thread stop token
+        std::atomic_bool isRunning;    // thread stop token
 
     public:
         using MessageType = Message;
@@ -39,25 +39,8 @@ namespace Udon
         SivSerialReader(s3d::Serial& bus)
             : serial(bus)
             , buffer(Size)
-            , thread(
-                  [this]()
-                  {
-                      while (isRunning)
-                      {
-                          if (not serial)
-                              continue;
-                          if (serial.available() < Size)
-                              continue;
-
-                          s3d::Array<uint8> temp;
-                          if (serial.readBytes(temp) && temp.size() == Size)
-                          {
-                              buffer = std::move(temp);
-                          }
-
-                          serial.clearInput();
-                      }
-                  })
+            , thread([this]()
+                     { receive(); })
             , isRunning(true)
         {
         }
@@ -93,6 +76,27 @@ namespace Udon
         void showRaw() const
         {
             s3d::Print << buffer;
+        }
+
+    private:
+        void receive()
+        {
+            while (isRunning)
+            {
+                if (not serial)
+                    continue;
+
+                if (serial.available() < Size)
+                    continue;
+
+                s3d::Array<uint8> temp;
+                if (serial.readBytes(temp) && temp.size() == Size)
+                {
+                    buffer = std::move(temp);
+                }
+
+                serial.clearInput();
+            }
         }
     };
 }    // namespace Udon
