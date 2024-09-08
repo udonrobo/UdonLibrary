@@ -138,7 +138,7 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html',''); initResizable(t
 <div class="line">    Teensy --CAN TX/RX--&gt; CANトランシーバー</div>
 <div class="line">  end</div>
 <div class="line">  CANトランシーバー --CAN H/L--&gt; CANバス</div>
-</div><!-- fragment --><p>クラスのテンプレートパラメーターに使用するCANポートを指定します。</p>
+</div><!-- fragment --><p>クラスのテンプレートパラメーターに使用する CAN ポートを指定します。</p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1CanBusTeensy.html">Udon::CanBusTeensy&lt;CAN1&gt;</a> bus;</div>
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html">Udon::CanBusTeensy</a></div><div class="ttdoc">Teensy用 CANバスクラス</div><div class="ttdef"><b>Definition</b> CanBusTeensy.hpp:31</div></div>
 </div><!-- fragment --><details >
@@ -166,13 +166,24 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html',''); initResizable(t
 回路 </summary>
 <p></p>
 <p>Teensy4.0 + MCP2562 の例を示します。</p>
+<p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/a4ec4c96-004a-41af-bd52-19bd71f41370" alt="image" class="inline"/></p>
 <ul>
-<li>Teensy4.0 の CAN1 ポートと接続しています。</li>
+<li>Teensy4.0 の CAN1 ポートのデフォルト端子と接続しています。</li>
+<li>CAN の信号は <code>CAN-H</code> <code>CAN-L</code> 線から出力されます。</li>
 <li>同じ名前の配線は内部的に接続されています。</li>
 <li>終端抵抗の有無を切り替えられるようにする必要があります。</li>
 <li>MCP2562 の VIO 端子は、トランシーバー側 IO 端子の基準電源として機能します。マイコン側の IO 端子電圧（0〜3.3V）に一致するように、この端子は 3.3V に接続されています。</li>
 </ul>
-<p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/a4ec4c96-004a-41af-bd52-19bd71f41370" alt="image" class="inline"/></p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">部品名   </th><th class="markdownTableHeadNone">会社名   </th><th class="markdownTableHeadNone">URL    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Teensy4.0   </td><td class="markdownTableBodyNone">スイッチサイエンス   </td><td class="markdownTableBodyNone"><a href="https://www.switch-science.com/products/5877">https://www.switch-science.com/products/5877</a>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">MCP2562   </td><td class="markdownTableBodyNone">秋月電子通商   </td><td class="markdownTableBodyNone"><a href="https://akizukidenshi.com/catalog/g/g114383/">https://akizukidenshi.com/catalog/g/g114383/</a>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">終端抵抗用スイッチ   </td><td class="markdownTableBodyNone">秋月電子通商   </td><td class="markdownTableBodyNone"><a href="https://akizukidenshi.com/catalog/g/g102627/">https://akizukidenshi.com/catalog/g/g102627/</a>   </td></tr>
+</table>
 <p></p>
 </details>
 <h2><a class="anchor" id="autotoc_md24"></a>
@@ -209,6 +220,33 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html',''); initResizable(t
 <div class="line">    CAN_CLOCK mcpClock          = MCP_16MHZ;       <span class="comment">// トランシーバー動作クロック周波数 [Hz]</span></div>
 <div class="line">};</div>
 </div><!-- fragment --><p></p>
+</details>
+<details >
+<summary >
+回路 </summary>
+<p></p>
+<p>Raspberry Pi Pico + MCP25625 の例を示します。MCP25625 は CAN コントローラー、トランシーバーが統合されたチップで、外付け発振子を必要とします。</p>
+<p><img src="https://github.com/user-attachments/assets/53323f50-3222-4a11-b52e-45557fa5cff4" alt="image" class="inline"/></p>
+<ul>
+<li>Raspberry Pi Pico の spi0 のデフォルト端子と接続しています。</li>
+<li>CAN の信号は <code>CAN-H</code> <code>CAN-L</code> 線から出力されます。</li>
+<li>同じ名前の配線は内部的に接続されています。</li>
+<li>終端抵抗の有無を切り替えられるようにする必要があります。</li>
+<li>MCP25625 の VIO 端子は、トランシーバー側 IO 端子の基準電源として機能します。マイコン側の IO 端子電圧（0〜3.3V）に一致するように、この端子は 3.3V に接続されています。</li>
+</ul>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">部品名   </th><th class="markdownTableHeadNone">会社名   </th><th class="markdownTableHeadNone">URL    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Raspberry Pi Pico   </td><td class="markdownTableBodyNone">秋月電子通商   </td><td class="markdownTableBodyNone"><a href="https://akizukidenshi.com/catalog/g/g116132/">https://akizukidenshi.com/catalog/g/g116132/</a>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">MCP25625   </td><td class="markdownTableBodyNone">秋月電子通商   </td><td class="markdownTableBodyNone"><a href="https://akizukidenshi.com/catalog/g/g112663/">https://akizukidenshi.com/catalog/g/g112663/</a>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">セラミック発振子 16MHz   </td><td class="markdownTableBodyNone">秋月電子通商   </td><td class="markdownTableBodyNone"><a href="https://akizukidenshi.com/catalog/g/g109576/">https://akizukidenshi.com/catalog/g/g109576/</a>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">終端抵抗用スイッチ   </td><td class="markdownTableBodyNone">秋月電子通商   </td><td class="markdownTableBodyNone"><a href="https://akizukidenshi.com/catalog/g/g102627/">https://akizukidenshi.com/catalog/g/g102627/</a>   </td></tr>
+</table>
+<p></p>
 </details>
 <h1><a class="anchor" id="autotoc_md25"></a>
 送信ノードクラス</h1>

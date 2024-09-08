@@ -178,19 +178,19 @@ Arduino Lint</h1>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md113"></a>
 ■ 検証ボードを追加する</h2>
 <p>本テストのワークフローは <code>UdonLibrary/.github/workflows/ArduinoLint.yml</code> に定義されています。</p>
-<p>このファイルにある <code>matrix: bord:</code> に <code>fqbn</code> を調べ追加することでボードの追加ができます。</p>
+<p>このファイルにある <code>matrix: bord:</code> に <code>fqbn</code> を調べ追記することでボードを追加できます。</p>
 <div class="fragment"><div class="line">- fqbn: rp2040:rp2040:rpipico</div>
 <div class="line">  platform: rp2040:rp2040</div>
 <div class="line">  url: https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json</div>
 </div><!-- fragment --><p>arduino-cli のインストールがされている場合、以下コマンドで調べられます。</p>
 <div class="fragment"><div class="line">arduino-cli board listall</div>
-</div><!-- fragment --><p>プラットフォームを追加するには</p>
+</div><!-- fragment --><p>プラットフォームを追加するには (プラットフォームを追加するとfqbnが上記のコマンドで表示されるようになります)</p>
 <div class="fragment"><div class="line">arduino-cli core update-index</div>
-<div class="line">arduino-cli core install arduino:avr</div>
-</div><!-- fragment --><p>URL から追加するには</p>
+<div class="line">arduino-cli core install arduino:avr  # 任意のプラットフォーム</div>
+</div><!-- fragment --><p>URL プラットフォームをから追加するには</p>
 <div class="fragment"><div class="line">arduino-cli config add board_manager.additional_urls https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json</div>
 <div class="line">arduino-cli core update-index</div>
-<div class="line">arduino-cli core install rp2040:rp2040</div>
+<div class="line">arduino-cli core install rp2040:rp2040  # 任意のプラットフォーム</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md114"></a>
 ■ ローカル環境で実行</h2>
 <p><code>UdonLibrary/test/ArduinoLint/ArduinoLint.ino</code> を ArduinoIDE で開き、検証ボタンを押すことで、プッシュせずにテストを実行できます。</p>
