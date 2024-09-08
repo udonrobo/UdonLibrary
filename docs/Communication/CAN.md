@@ -39,7 +39,7 @@ flowchart LR
   CANトランシーバー --CAN H/L--> CANバス
 ```
 
-クラスのテンプレートパラメーターに使用するCANポートを指定します。
+クラスのテンプレートパラメーターに使用する CAN ポートを指定します。
 
 ```cpp
 static Udon::CanBusTeensy<CAN1> bus;
@@ -76,12 +76,19 @@ static Udon::CanBusTeensy<CAN1> bus({
 
 Teensy4.0 + MCP2562 の例を示します。
 
-- Teensy4.0 の CAN1 ポートと接続しています。
+![image](https://github.com/udonrobo/UdonLibrary/assets/91818705/a4ec4c96-004a-41af-bd52-19bd71f41370)
+
+- Teensy4.0 の CAN1 ポートのデフォルト端子と接続しています。
+- CAN の信号は `CAN-H` `CAN-L` 線から出力されます。
 - 同じ名前の配線は内部的に接続されています。
 - 終端抵抗の有無を切り替えられるようにする必要があります。
 - MCP2562 の VIO 端子は、トランシーバー側 IO 端子の基準電源として機能します。マイコン側の IO 端子電圧（0〜3.3V）に一致するように、この端子は 3.3V に接続されています。
 
-![image](https://github.com/udonrobo/UdonLibrary/assets/91818705/a4ec4c96-004a-41af-bd52-19bd71f41370)
+| 部品名             | 会社名             | URL                                            |
+| ------------------ | ------------------ | ---------------------------------------------- |
+| Teensy4.0          | スイッチサイエンス | <https://www.switch-science.com/products/5877> |
+| MCP2562            | 秋月電子通商       | <https://akizukidenshi.com/catalog/g/g114383/> |
+| 終端抵抗用スイッチ | 秋月電子通商       | <https://akizukidenshi.com/catalog/g/g102627/> |
 
 </details>
 
@@ -126,6 +133,28 @@ struct Config
     CAN_CLOCK mcpClock          = MCP_16MHZ;       // トランシーバー動作クロック周波数 [Hz]
 };
 ```
+
+</details>
+
+<details>
+<summary> 回路 </summary>
+
+Raspberry Pi Pico + MCP25625 の例を示します。MCP25625 は CAN コントローラー、トランシーバーが統合されたチップで、外付け発振子を必要とします。
+
+![image](https://github.com/user-attachments/assets/53323f50-3222-4a11-b52e-45557fa5cff4)
+
+- Raspberry Pi Pico の spi0 のデフォルト端子と接続しています。
+- CAN の信号は `CAN-H` `CAN-L` 線から出力されます。
+- 同じ名前の配線は内部的に接続されています。
+- 終端抵抗の有無を切り替えられるようにする必要があります。
+- MCP25625 の VIO 端子は、トランシーバー側 IO 端子の基準電源として機能します。マイコン側の IO 端子電圧（0〜3.3V）に一致するように、この端子は 3.3V に接続されています。
+
+| 部品名                 | 会社名       | URL                                            |
+| ---------------------- | ------------ | ---------------------------------------------- |
+| Raspberry Pi Pico      | 秋月電子通商 | <https://akizukidenshi.com/catalog/g/g116132/> |
+| MCP25625               | 秋月電子通商 | <https://akizukidenshi.com/catalog/g/g112663/> |
+| セラミック発振子 16MHz | 秋月電子通商 | <https://akizukidenshi.com/catalog/g/g109576/> |
+| 終端抵抗用スイッチ     | 秋月電子通商 | <https://akizukidenshi.com/catalog/g/g102627/> |
 
 </details>
 

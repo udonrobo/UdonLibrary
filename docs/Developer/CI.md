@@ -88,7 +88,7 @@ inline void test()
 
 本テストのワークフローは `UdonLibrary/.github/workflows/ArduinoLint.yml` に定義されています。
 
-このファイルにある `matrix: bord:` に `fqbn` を調べ追加することでボードの追加ができます。
+このファイルにある `matrix: bord:` に `fqbn` を調べ追記することでボードを追加できます。
 
 ```yml
 - fqbn: rp2040:rp2040:rpipico
@@ -102,19 +102,19 @@ arduino-cli のインストールがされている場合、以下コマンド�
 arduino-cli board listall
 ```
 
-プラットフォームを追加するには
+プラットフォームを追加するには (プラットフォームを追加するとfqbnが上記のコマンドで表示されるようになります)
 
 ```sh
 arduino-cli core update-index
-arduino-cli core install arduino:avr
+arduino-cli core install arduino:avr  # 任意のプラットフォーム
 ```
 
-URL から追加するには
+URL プラットフォームをから追加するには
 
 ```sh
 arduino-cli config add board_manager.additional_urls https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
 arduino-cli core update-index
-arduino-cli core install rp2040:rp2040
+arduino-cli core install rp2040:rp2040  # 任意のプラットフォーム
 ```
 
 ### ■ ローカル環境で実行
