@@ -77,7 +77,16 @@ namespace Udon
         {
             char* endPtr = nullptr;
 
-            const auto result = strtof(begin, &endPtr);
+#if defined(ARDUINO_AVR_NANO) || defined(ARDUINO_AVR_UNO) || defined(ARDUINO_AVR_MEGA) || defined(ARDUINO_AVR_MEGA2560)
+
+            // nano 系統にstrtofが定義されていなかった
+            const float result = static_cast<float>(strtod(begin, &endPtr));
+
+#else
+
+            const float result = strtof(begin, &endPtr);
+
+#endif
 
             if (endPtr == end)
             {
