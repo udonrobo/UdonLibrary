@@ -6,6 +6,29 @@
 
 namespace Udon
 {
+
+#if UDON_PLATFORM_ENABLE_EXCEPTION
+    struct BadExpectedAccess : public std::exception
+    {
+        const char* what() const noexcept override
+        {
+            return "Bad Expected Access";
+        }
+    };
+    inline void ThrowBadExpectedAccess(bool throwException)
+    {
+        if (throwException)
+        {
+            throw BadExpectedAccess{};
+        }
+    }
+#else
+    inline void ThrowBadExpectedAccess(bool throwException)
+    {
+    }
+#endif
+
+
     template <typename E>
     class Unexpected
     {
@@ -186,14 +209,30 @@ namespace Udon
         constexpr bool valueExists() const noexcept { return hasValue; }
 
 
-        constexpr T& value() noexcept { return storage.value; }
+        constexpr T& value()
+        {
+            ThrowBadExpectedAccess(!hasValue);
+            return storage.value;
+        }
 
-        constexpr const T& value() const noexcept { return storage.value; }
+        constexpr const T& value() const
+        {
+            ThrowBadExpectedAccess(!hasValue);
+            return storage.value;
+        }
 
 
-        constexpr E& error() noexcept { return storage.error; }
+        constexpr E& error()
+        {
+            ThrowBadExpectedAccess(hasValue);
+            return storage.error;
+        }
 
-        constexpr const E& error() const noexcept { return storage.error; }
+        constexpr const E& error() const
+        {
+            ThrowBadExpectedAccess(hasValue);
+            return storage.error;
+        }
 
 
         constexpr T value_or(T&& default_value) const noexcept(std::is_nothrow_move_constructible<T>::value)
@@ -207,23 +246,28 @@ namespace Udon
         }
 
 
-        constexpr T* operator->() noexcept
+        constexpr T* operator->()
         {
+            ThrowBadExpectedAccess(!hasValue);
             return &storage.value;
         }
-        constexpr const T* operator->() const noexcept
+
+        constexpr const T* operator->() const
         {
+            ThrowBadExpectedAccess(!hasValue);
             return &storage.value;
         }
 
 
-        constexpr T& operator*() noexcept
+        constexpr T& operator*()
         {
+            ThrowBadExpectedAccess(!hasValue);
             return storage.value;
         }
 
-        constexpr const T& operator*() const noexcept
+        constexpr const T& operator*() const
         {
+            ThrowBadExpectedAccess(!hasValue);
             return storage.value;
         }
 
