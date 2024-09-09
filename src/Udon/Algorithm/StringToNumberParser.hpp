@@ -75,7 +75,18 @@ namespace Udon
         template <>
         inline Udon::Optional<float> Parse<float>(const char* const begin, const char* const end, const int /*radix*/)
         {
-            return Parse<double>(begin, end, 10);
+            char* endPtr = nullptr;
+
+            const auto result = strtof(begin, &endPtr);
+
+            if (endPtr == end)
+            {
+                return result;
+            }
+            else
+            {
+                return Udon::nullopt;
+            }
         }
 
     }    // namespace StringToNumberParser
