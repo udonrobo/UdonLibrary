@@ -27,5 +27,5 @@ var classUdon_1_1PadPS5 =
     [ "getUp", "classUdon_1_1PadPS5.html#aaf6ca576f49989ab58e32c5d8265c74f", null ],
     [ "isEmergencyStop", "classUdon_1_1PadPS5.html#a3845e3813576f3444371501ad694e72c", null ],
     [ "operator bool", "classUdon_1_1PadPS5.html#ab2e06cbc3601790210be7734b3a800dc", null ],
-    [ "update", "classUdon_1_1PadPS5.html#a2bd58cd4e1cf75085f1a2daf3305b566", null ]
+    [ "update", "classUdon_1_1PadPS5.html#a15b3621e40e64997b11f7998169650c9", null ]
 ];
