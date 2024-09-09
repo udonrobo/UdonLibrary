@@ -130,7 +130,8 @@ namespace Udon
         Stick getMoveInfo() const noexcept { return { leftStick, rightStick.x }; }
 
         /// @brief 更新
-        void update() noexcept
+        /// @param deadZone スティックのデッドゾーンの範囲 負方向にも適用されます (0~255)
+        void update(int deadZone = 20) noexcept
         {
             Traits::MaybeInvokeUpdate<ReaderType>(*this);
 
@@ -168,12 +169,12 @@ namespace Udon
                 };
 
                 leftStick = {
-                    CutDeadZone(decodeStick(message->analogLeftX), 20),
-                    CutDeadZone(decodeStick(message->analogLeftY), 20),
+                    CutDeadZone(decodeStick(message->analogLeftX), deadZone),
+                    CutDeadZone(decodeStick(message->analogLeftY), deadZone),
                 };
                 rightStick = {
-                    CutDeadZone(decodeStick(message->analogRightX), 20),
-                    CutDeadZone(decodeStick(message->analogRightY), 20),
+                    CutDeadZone(decodeStick(message->analogRightX), deadZone),
+                    CutDeadZone(decodeStick(message->analogRightY), deadZone),
                 };
             }
             else
