@@ -551,7 +551,7 @@ namespace Udon
         template <typename U>
         void ConstructValue(U&& value) noexcept(std::is_nothrow_constructible<ValueType, U>::value)
         {
-            new (&mStorage.value) ValueType(static_cast<ValueType>(std::forward<U>(value)));
+            new (&mStorage.value) ValueType(std::forward<U>(value));
         }
 
         template <typename U>

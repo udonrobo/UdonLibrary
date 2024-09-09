@@ -10,6 +10,7 @@ project(UnitTest)
 if (MSVC)
     add_compile_options(/std:c++14)   # Enable C++14
     add_compile_options(/permissive-) # Enable conformance mode
+    add_compile_options(/wd4819)      # エンコーディングの違いによるエラーを無効化 ()
 endif()
 
 

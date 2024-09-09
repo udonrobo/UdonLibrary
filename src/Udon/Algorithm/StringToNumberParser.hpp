@@ -75,7 +75,27 @@ namespace Udon
         template <>
         inline Udon::Optional<float> Parse<float>(const char* const begin, const char* const end, const int /*radix*/)
         {
-            return Parse<double>(begin, end, 10);
+            char* endPtr = nullptr;
+
+#if defined(ARDUINO_AVR_NANO) || defined(ARDUINO_AVR_UNO) || defined(ARDUINO_AVR_MEGA) || defined(ARDUINO_AVR_MEGA2560)
+
+            // nano 系統にstrtofが定義されていなかった
+            const float result = static_cast<float>(strtod(begin, &endPtr));
+
+#else
+
+            const float result = strtof(begin, &endPtr);
+
+#endif
+
+            if (endPtr == end)
+            {
+                return result;
+            }
+            else
+            {
+                return Udon::nullopt;
+            }
         }
 
     }    // namespace StringToNumberParser
