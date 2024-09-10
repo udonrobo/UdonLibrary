@@ -443,27 +443,36 @@ namespace Udon
                 reset();
             }
         }
-
+        
 
         /**
-         * @brief 無効状態にする
+         * @brief 無効状態にする (トリビアルな型)
          * @note Tが非トリビアルな型で、値が有効な場合はデストラクタを呼ぶ
          */
+        template <typename U = ValueType, typename std::enable_if<std::is_trivially_destructible<U>::value, std::nullptr_t>::type = nullptr>
         void reset() noexcept(std::is_nothrow_destructible<ValueType>::value)
         {
             if (mHasValue)
             {
-                if (std::is_trivially_destructible<ValueType>::value)
-                {
-                    mHasValue = false;
-                }
-                else
-                {
-                    mStorage.value.~ValueType();
-                    mHasValue = false;
-                }
+                mHasValue = false;
             }
         }
+
+
+        /**
+         * @brief 無効状態にする (非トリビアルな型)
+         * @note Tが非トリビアルな型で、値が有効な場合はデストラクタを呼ぶ
+         */
+        template <typename U = ValueType, typename std::enable_if<not std::is_trivially_destructible<U>::value, std::nullptr_t>::type = nullptr>
+        void reset() noexcept(std::is_nothrow_destructible<ValueType>::value)
+        {
+            if (mHasValue)
+            {
+                mStorage.value.~ValueType();
+                mHasValue = false;
+            }
+        }
+        
 
         /**
          * @brief 値を表示
