@@ -208,9 +208,14 @@ $(function(){initNavTree('classUdon_1_1Optional.html',''); initResizable(true); 
 <tr class="memitem:a76b8be66294a8a11750da65d1a69a704" id="r_a76b8be66294a8a11750da65d1a69a704"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76b8be66294a8a11750da65d1a69a704">swap</a> (<a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;other) noexcept(/*std::is_nothrow_swappable&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a> &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a> and */std::is_nothrow_move_assignable&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a> &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
 <tr class="memdesc:a76b8be66294a8a11750da65d1a69a704"><td class="mdescLeft">&#160;</td><td class="mdescRight">他のOptionalと値を交換する  <br /></td></tr>
 <tr class="separator:a76b8be66294a8a11750da65d1a69a704"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0adcd9eb9cf98b349394a0d18e31ea1" id="r_af0adcd9eb9cf98b349394a0d18e31ea1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0adcd9eb9cf98b349394a0d18e31ea1">reset</a> () noexcept(std::is_nothrow_destructible&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a> &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
-<tr class="memdesc:af0adcd9eb9cf98b349394a0d18e31ea1"><td class="mdescLeft">&#160;</td><td class="mdescRight">無効状態にする  <br /></td></tr>
-<tr class="separator:af0adcd9eb9cf98b349394a0d18e31ea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7217ced96cb9c6a7a593f2231324ab1" id="r_ab7217ced96cb9c6a7a593f2231324ab1"><td class="memTemplParams" colspan="2">template&lt;typename U  = ValueType, typename std::enable_if&lt; std::is_trivially_destructible&lt; U &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type  = nullptr&gt; </td></tr>
+<tr class="memitem:ab7217ced96cb9c6a7a593f2231324ab1"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab7217ced96cb9c6a7a593f2231324ab1">reset</a> () noexcept(std::is_nothrow_destructible&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a> &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
+<tr class="memdesc:ab7217ced96cb9c6a7a593f2231324ab1"><td class="mdescLeft">&#160;</td><td class="mdescRight">無効状態にする (トリビアルな型)  <br /></td></tr>
+<tr class="separator:ab7217ced96cb9c6a7a593f2231324ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7217ced96cb9c6a7a593f2231324ab1" id="r_ab7217ced96cb9c6a7a593f2231324ab1"><td class="memTemplParams" colspan="2">template&lt;typename U  = ValueType, typename std::enable_if&lt; not std::is_trivially_destructible&lt; U &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type  = nullptr&gt; </td></tr>
+<tr class="memitem:ab7217ced96cb9c6a7a593f2231324ab1"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab7217ced96cb9c6a7a593f2231324ab1">reset</a> () noexcept(std::is_nothrow_destructible&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a> &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
+<tr class="memdesc:ab7217ced96cb9c6a7a593f2231324ab1"><td class="mdescLeft">&#160;</td><td class="mdescRight">無効状態にする (非トリビアルな型)  <br /></td></tr>
+<tr class="separator:ab7217ced96cb9c6a7a593f2231324ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0da144378519ca521048e90957a76d36" id="r_a0da144378519ca521048e90957a76d36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0da144378519ca521048e90957a76d36">show</a> () const noexcept</td></tr>
 <tr class="memdesc:a0da144378519ca521048e90957a76d36"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を表示  <br /></td></tr>
 <tr class="separator:a0da144378519ca521048e90957a76d36"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -859,13 +864,15 @@ template&lt;typename U , typename std::enable_if&lt; std::is_constructible&lt; <
 
 </div>
 </div>
-<a id="af0adcd9eb9cf98b349394a0d18e31ea1" name="af0adcd9eb9cf98b349394a0d18e31ea1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0adcd9eb9cf98b349394a0d18e31ea1">&#9670;&#160;</a></span>reset()</h2>
+<a id="ab7217ced96cb9c6a7a593f2231324ab1" name="ab7217ced96cb9c6a7a593f2231324ab1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7217ced96cb9c6a7a593f2231324ab1">&#9670;&#160;</a></span>reset() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename U  = ValueType, typename std::enable_if&lt; std::is_trivially_destructible&lt; U &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type  = nullptr&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -884,7 +891,39 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>無効状態にする </p>
+<p>無効状態にする (トリビアルな型) </p>
+<dl class="section note"><dt>覚え書き</dt><dd>Tが非トリビアルな型で、値が有効な場合はデストラクタを呼ぶ </dd></dl>
+
+</div>
+</div>
+<a id="ab7217ced96cb9c6a7a593f2231324ab1" name="ab7217ced96cb9c6a7a593f2231324ab1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7217ced96cb9c6a7a593f2231324ab1">&#9670;&#160;</a></span>reset() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename U  = ValueType, typename std::enable_if&lt; not std::is_trivially_destructible&lt; U &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type  = nullptr&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::reset </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>無効状態にする (非トリビアルな型) </p>
 <dl class="section note"><dt>覚え書き</dt><dd>Tが非トリビアルな型で、値が有効な場合はデストラクタを呼ぶ </dd></dl>
 
 </div>
