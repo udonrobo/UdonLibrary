@@ -67,7 +67,8 @@ namespace Udon
 
         static_assert(not std::is_array<T>::value, "T must not be an array");
 
-        template friend class Optional;
+        template <typename T>
+        friend class Optional;
 
     public:
         using ValueType = T;
