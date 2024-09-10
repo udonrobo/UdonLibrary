@@ -67,6 +67,8 @@ namespace Udon
 
         static_assert(not std::is_array<T>::value, "T must not be an array");
 
+        friend class Optional;
+
     public:
         using ValueType = T;
 
@@ -111,11 +113,11 @@ namespace Udon
         template <typename U, typename std::enable_if<std::is_constructible<ValueType, const U&>::value, std::nullptr_t>::type = nullptr>
         Optional(const Optional<U>& other) noexcept(std::is_nothrow_constructible<ValueType, U>::value)
             : mStorage()
-            , mHasValue(other.hasValue())
+            , mHasValue(other.mHasValue)
         {
             if (mHasValue)
             {
-                ConstructValue(other.value());
+                ConstructValue(other.mStorage.value);
             }
         }
 
@@ -127,11 +129,11 @@ namespace Udon
         template <typename U, typename std::enable_if<std::is_constructible<ValueType, U&&>::value, std::nullptr_t>::type = nullptr>
         Optional(Optional<U>&& other) noexcept(std::is_nothrow_constructible<ValueType, U>::value)
             : mStorage()
-            , mHasValue(other.hasValue())
+            , mHasValue(other.mHasValue)
         {
             if (mHasValue)
             {
-                ConstructValue(std::move(other.value()));
+                ConstructValue(std::move(other.mStorage.value));
             }
         }
 
@@ -472,7 +474,7 @@ namespace Udon
                 mHasValue = false;
             }
         }
-        
+
 
         /**
          * @brief 値を表示
