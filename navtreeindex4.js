@@ -121,6 +121,8 @@ var NAVTREEINDEX4 =
 "classUdon_1_1Optional.html#a5911eca57249b5c4d9763728481ecee7":[53,0,0,38,12],
 "classUdon_1_1Optional.html#a61a0dd9cd12178c524399f5eb5d1eee8":[52,0,1,41,18],
 "classUdon_1_1Optional.html#a61a0dd9cd12178c524399f5eb5d1eee8":[53,0,0,38,18],
+"classUdon_1_1Optional.html#a61e219deed54dd80c0d4561e74af5805":[52,0,1,41,36],
+"classUdon_1_1Optional.html#a61e219deed54dd80c0d4561e74af5805":[53,0,0,38,36],
 "classUdon_1_1Optional.html#a62afa79333847677ff4d364664b2658d":[52,0,1,41,28],
 "classUdon_1_1Optional.html#a62afa79333847677ff4d364664b2658d":[53,0,0,38,28],
 "classUdon_1_1Optional.html#a713a39c57a00dfc3660e320257f4489f":[52,0,1,41,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX4 =
 "classUdon_1_1PadPS5USB.html#a5787122fc897bbefaa9500c1f2149621":[53,0,0,41,3],
 "classUdon_1_1PadPS5USB.html#a6ad7186dde8c05984bc26dee2ab6694f":[52,0,1,44,1],
 "classUdon_1_1PadPS5USB.html#a6ad7186dde8c05984bc26dee2ab6694f":[53,0,0,41,1],
-"classUdon_1_1PadPS5USB.html#a88fb8fda7c42c4a19b7d1d7f12b855be":[52,0,1,44,2],
-"classUdon_1_1PadPS5USB.html#a88fb8fda7c42c4a19b7d1d7f12b855be":[53,0,0,41,2],
-"classUdon_1_1PadPS5USB.html#a90f680e27a7b9efa2cfb8fbff2b5fee6":[52,0,1,44,6]
+"classUdon_1_1PadPS5USB.html#a88fb8fda7c42c4a19b7d1d7f12b855be":[52,0,1,44,2]
 };

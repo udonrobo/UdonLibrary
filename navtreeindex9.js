@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"structUdon_1_1Euler.html#af258c3a0586c29b4810b9df592625a73":[52,0,1,19,0],
+"structUdon_1_1Euler.html#af258c3a0586c29b4810b9df592625a73":[53,0,0,16,0],
 "structUdon_1_1Euler.html#af9acb4cddb9618187ae96bf16bde03d5":[52,0,1,19,30],
 "structUdon_1_1Euler.html#af9acb4cddb9618187ae96bf16bde03d5":[53,0,0,16,30],
 "structUdon_1_1EulerDirection.html":[52,0,1,20],
@@ -247,7 +249,5 @@ var NAVTREEINDEX9 =
 "structUdon_1_1Message_1_1Switch.html#a52dd99249929245bbfb7d037471693f7":[52,0,1,2,11,0],
 "structUdon_1_1Message_1_1Switch.html#a52dd99249929245bbfb7d037471693f7":[53,0,0,1,11,0],
 "structUdon_1_1Message_1_1Switch.html#a6b9453e3f7d4950e791b1c0b9e8b072b":[52,0,1,2,11,1],
-"structUdon_1_1Message_1_1Switch.html#a6b9453e3f7d4950e791b1c0b9e8b072b":[53,0,0,1,11,1],
-"structUdon_1_1Message_1_1Yaw.html":[52,0,1,2,12],
-"structUdon_1_1Message_1_1Yaw.html":[53,0,0,1,12]
+"structUdon_1_1Message_1_1Switch.html#a6b9453e3f7d4950e791b1c0b9e8b072b":[53,0,0,1,11,1]
 };

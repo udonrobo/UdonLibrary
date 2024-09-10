@@ -35,5 +35,6 @@ var classUdon_1_1Optional =
     [ "operator<=", "classUdon_1_1Optional.html#aaf30085cf3c426d7cc2b7fbdadc2031c", null ],
     [ "operator==", "classUdon_1_1Optional.html#a1dd0104afb6a47904cf4bb4eb877c436", null ],
     [ "operator>", "classUdon_1_1Optional.html#a1bc488c790af543a62feaa9c4460e402", null ],
-    [ "operator>=", "classUdon_1_1Optional.html#abe3ba1d7150fc2f72713ed56ae80e479", null ]
+    [ "operator>=", "classUdon_1_1Optional.html#abe3ba1d7150fc2f72713ed56ae80e479", null ],
+    [ "Optional", "classUdon_1_1Optional.html#a61e219deed54dd80c0d4561e74af5805", null ]
 ];

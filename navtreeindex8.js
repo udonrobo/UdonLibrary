@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"md_docs_2Types_2Vector2D.html#autotoc_md300":[50,11,0],
+"md_docs_2Types_2Vector2D.html#autotoc_md301":[50,11,1],
 "md_docs_2Types_2Vector2D.html#autotoc_md302":[50,12],
 "md_docs_2Types_2Vector2D.html#autotoc_md303":[50,12,0],
 "md_docs_2Types_2Vector2D.html#autotoc_md304":[50,12,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX8 =
 "structUdon_1_1Euler.html#ae8e42af0f820eecbfac2c73c8b4bb445":[52,0,1,19,8],
 "structUdon_1_1Euler.html#ae8e42af0f820eecbfac2c73c8b4bb445":[53,0,0,16,8],
 "structUdon_1_1Euler.html#af05f6bf5de421157842c3c13db25b25a":[52,0,1,19,9],
-"structUdon_1_1Euler.html#af05f6bf5de421157842c3c13db25b25a":[53,0,0,16,9],
-"structUdon_1_1Euler.html#af258c3a0586c29b4810b9df592625a73":[52,0,1,19,0],
-"structUdon_1_1Euler.html#af258c3a0586c29b4810b9df592625a73":[53,0,0,16,0]
+"structUdon_1_1Euler.html#af05f6bf5de421157842c3c13db25b25a":[53,0,0,16,9]
 };

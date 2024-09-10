@@ -10,5 +10,6 @@ var searchData=
   ['operator_3c_3d_7',['operator&lt;=',['../classUdon_1_1Optional.html#aaf30085cf3c426d7cc2b7fbdadc2031c',1,'Udon::Optional']]],
   ['operator_3d_3d_8',['operator==',['../classUdon_1_1ArrayView.html#af89600313913853cdb574783daec3942',1,'Udon::ArrayView::operator=='],['../structUdon_1_1HSV.html#aefd572490957e20fb4b93c4aaf3c3620',1,'Udon::HSV::operator=='],['../structUdon_1_1Polar.html#a603b50ee91ba6e640beac92118954741',1,'Udon::Polar::operator=='],['../structUdon_1_1Vec2.html#a1896ddbdec2e3042be6c11fe4cd3f7c4',1,'Udon::Vec2::operator=='],['../structUdon_1_1Vec3.html#a88a5568dcb47cc515d38a6323ea0835f',1,'Udon::Vec3::operator=='],['../classUdon_1_1Optional.html#a1dd0104afb6a47904cf4bb4eb877c436',1,'Udon::Optional::operator=='],['../classUdon_1_1BasicStringView.html#a77d7e5ce811c82f9831630148636e8a1',1,'Udon::BasicStringView::operator==']]],
   ['operator_3e_9',['operator&gt;',['../classUdon_1_1Optional.html#a1bc488c790af543a62feaa9c4460e402',1,'Udon::Optional']]],
-  ['operator_3e_3d_10',['operator&gt;=',['../classUdon_1_1Optional.html#abe3ba1d7150fc2f72713ed56ae80e479',1,'Udon::Optional']]]
+  ['operator_3e_3d_10',['operator&gt;=',['../classUdon_1_1Optional.html#abe3ba1d7150fc2f72713ed56ae80e479',1,'Udon::Optional']]],
+  ['optional_11',['Optional',['../classUdon_1_1Optional.html#a61e219deed54dd80c0d4561e74af5805',1,'Udon::Optional']]]
 ];
