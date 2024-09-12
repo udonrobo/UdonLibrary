@@ -174,7 +174,7 @@ TEST(Optional, Construct)
 
 TEST(Optional, AssignmentOperator)
 {
-    // copy assingment
+    // copy assignment
     {
         Udon::Optional<Copyable> a{ 100 };
         Udon::Optional<Copyable> b;
@@ -200,7 +200,7 @@ TEST(Optional, AssignmentOperator)
         EXPECT_EQ(b->value, 100);
     }
 
-    // move assingment
+    // move assignment
     {
         Udon::Optional<Uncopyable> a{ 100 };
         Udon::Optional<Uncopyable> b;

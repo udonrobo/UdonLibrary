@@ -67,6 +67,8 @@ namespace Udon
 
         static_assert(not std::is_array<T>::value, "T must not be an array");
 
+        template <typename> friend class Optional;
+
     public:
         using ValueType = T;
 
@@ -112,11 +114,11 @@ namespace Udon
         template <typename U, typename std::enable_if<std::is_constructible<ValueType, const U&>::value, std::nullptr_t>::type = nullptr>
         Optional(const Optional<U>& other) noexcept(std::is_nothrow_constructible<ValueType, U>::value)
             : mStorage()
-            , mHasValue(other.hasValue())
+            , mHasValue(other.mHasValue)
         {
             if (mHasValue)
             {
-                ConstructValue(other.value());
+                ConstructValue(other.mStorage.value);
             }
         }
     
@@ -129,11 +131,11 @@ namespace Udon
         template <typename U, typename std::enable_if<std::is_constructible<ValueType, U&&>::value, std::nullptr_t>::type = nullptr>
         Optional(Optional<U>&& other) noexcept(std::is_nothrow_constructible<ValueType, U>::value)
             : mStorage()
-            , mHasValue(other.hasValue())
+            , mHasValue(other.mHasValue)
         {
             if (mHasValue)
             {
-                ConstructValue(std::move(other.value()));
+                ConstructValue(std::move(other.mStorage.value));
             }
         }
 
@@ -445,27 +447,36 @@ namespace Udon
                 reset();
             }
         }
-
+        
 
         /**
-         * @brief 無効状態にする
+         * @brief 無効状態にする (トリビアルな型)
          * @note Tが非トリビアルな型で、値が有効な場合はデストラクタを呼ぶ
          */
+        template <typename U = ValueType, typename std::enable_if<std::is_trivially_destructible<U>::value, std::nullptr_t>::type = nullptr>
         void reset() noexcept(std::is_nothrow_destructible<ValueType>::value)
         {
             if (mHasValue)
             {
-                if (std::is_trivially_destructible<ValueType>::value)
-                {
-                    mHasValue = false;
-                }
-                else
-                {
-                    mStorage.value.~ValueType();
-                    mHasValue = false;
-                }
+                mHasValue = false;
             }
         }
+
+
+        /**
+         * @brief 無効状態にする (非トリビアルな型)
+         * @note Tが非トリビアルな型で、値が有効な場合はデストラクタを呼ぶ
+         */
+        template <typename U = ValueType, typename std::enable_if<not std::is_trivially_destructible<U>::value, std::nullptr_t>::type = nullptr>
+        void reset() noexcept(std::is_nothrow_destructible<ValueType>::value)
+        {
+            if (mHasValue)
+            {
+                mStorage.value.~ValueType();
+                mHasValue = false;
+            }
+        }
+
 
         /**
          * @brief 値を表示
