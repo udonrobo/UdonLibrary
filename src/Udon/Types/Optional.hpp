@@ -106,6 +106,7 @@ namespace Udon
 
         /**
          * @brief コピーコンストラクタ
+         * @note 同じ型を持つOptionalから構築する場合、このコンストラクタは呼ばれず、暗黙定義のコピーコンストラクタが呼ばれる
          * @param other
          */
         template <typename U, typename std::enable_if<std::is_constructible<ValueType, const U&>::value, std::nullptr_t>::type = nullptr>
@@ -118,10 +119,11 @@ namespace Udon
                 ConstructValue(other.value());
             }
         }
-
+    
 
         /**
          * @brief ムーブコンストラクタ
+         * @note 同じ型を持つOptionalから構築する場合、このコンストラクタは呼ばれず、暗黙定義のムーブコンストラクタが呼ばれる
          * @param other
          */
         template <typename U, typename std::enable_if<std::is_constructible<ValueType, U&&>::value, std::nullptr_t>::type = nullptr>

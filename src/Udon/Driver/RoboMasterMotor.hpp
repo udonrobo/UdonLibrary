@@ -108,7 +108,6 @@ namespace Udon
                 current = current * directionSign();
 
                 const auto transmitCurrent = static_cast<int16_t>(current * 16384 / 20000);    // 16bit符号なし整数に変換
-                const auto motorIndex = (motorId - 1) * 2;
 
                 if (motorId > 4)
                 {
@@ -118,6 +117,7 @@ namespace Udon
                 }
                 else
                 {
+                    const auto motorIndex = (motorId - 1) * 2;
                     nodeTx->data[motorIndex + 0] = transmitCurrent >> 8 & 0xff;    // high byte
                     nodeTx->data[motorIndex + 1] = transmitCurrent >> 0 & 0xff;    // low byte
                 }
