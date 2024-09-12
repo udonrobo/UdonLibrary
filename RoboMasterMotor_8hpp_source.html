@@ -212,16 +212,16 @@ $(function(){initNavTree('RoboMasterMotor_8hpp_source.html',''); initResizable(t
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                current = current * directionSign();</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                <span class="keyword">const</span> <span class="keyword">auto</span> transmitCurrent = <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(current * 16384 / 20000);    <span class="comment">// 16bit符号なし整数に変換</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                <span class="keyword">const</span> <span class="keyword">auto</span> motorIndex = (motorId - 1) * 2;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                <span class="keywordflow">if</span> (motorId &gt; 4)</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                {</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                    <span class="keyword">const</span> <span class="keyword">auto</span> motorIndex = (motorId - 4 - 1) * 2;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                    nodeTx-&gt;<a class="code hl_variable" href="structUdon_1_1CanTxNode.html#a542aa0315bef4509a4691ac026805ed4">data</a>[motorIndex + 0] = transmitCurrent &gt;&gt; 8 &amp; 0xff;    <span class="comment">// high byte</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                    nodeTx-&gt;<a class="code hl_variable" href="structUdon_1_1CanTxNode.html#a542aa0315bef4509a4691ac026805ed4">data</a>[motorIndex + 1] = transmitCurrent &gt;&gt; 0 &amp; 0xff;    <span class="comment">// low byte</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                }</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>                {</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                <span class="keywordflow">if</span> (motorId &gt; 4)</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                {</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                    <span class="keyword">const</span> <span class="keyword">auto</span> motorIndex = (motorId - 4 - 1) * 2;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                    nodeTx-&gt;<a class="code hl_variable" href="structUdon_1_1CanTxNode.html#a542aa0315bef4509a4691ac026805ed4">data</a>[motorIndex + 0] = transmitCurrent &gt;&gt; 8 &amp; 0xff;    <span class="comment">// high byte</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                    nodeTx-&gt;<a class="code hl_variable" href="structUdon_1_1CanTxNode.html#a542aa0315bef4509a4691ac026805ed4">data</a>[motorIndex + 1] = transmitCurrent &gt;&gt; 0 &amp; 0xff;    <span class="comment">// low byte</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                }</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                {</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>                    <span class="keyword">const</span> <span class="keyword">auto</span> motorIndex = (motorId - 1) * 2;</div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>                    nodeTx-&gt;<a class="code hl_variable" href="structUdon_1_1CanTxNode.html#a542aa0315bef4509a4691ac026805ed4">data</a>[motorIndex + 0] = transmitCurrent &gt;&gt; 8 &amp; 0xff;    <span class="comment">// high byte</span></div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>                    nodeTx-&gt;<a class="code hl_variable" href="structUdon_1_1CanTxNode.html#a542aa0315bef4509a4691ac026805ed4">data</a>[motorIndex + 1] = transmitCurrent &gt;&gt; 0 &amp; 0xff;    <span class="comment">// low byte</span></div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>                }</div>
