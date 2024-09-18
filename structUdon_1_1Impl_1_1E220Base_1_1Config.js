@@ -1,5 +1,6 @@
 var structUdon_1_1Impl_1_1E220Base_1_1Config =
 [
+    [ "Config", "structUdon_1_1Impl_1_1E220Base_1_1Config.html#ae85e0429acb4ce9da8340bb6aa565e5d", null ],
     [ "address", "structUdon_1_1Impl_1_1E220Base_1_1Config.html#a31110573673b2e7e94f7c0c19edc8779", null ],
     [ "aux", "structUdon_1_1Impl_1_1E220Base_1_1Config.html#ac63a0ac4ce7893467b40832f2ad69b5d", null ],
     [ "channel", "structUdon_1_1Impl_1_1E220Base_1_1Config.html#ae8be237506946fc19503f8b995426bf3", null ],

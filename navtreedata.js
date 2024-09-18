@@ -450,9 +450,9 @@ var NAVTREEINDEX =
 "md_docs_2Communication_2I2C.html#autotoc_md47",
 "md_docs_2Types_2Vector2D.html#autotoc_md300",
 "structUdon_1_1Euler.html#af258c3a0586c29b4810b9df592625a73",
-"structUdon_1_1Message_1_1Yaw.html",
-"structUdon_1_1RingBuffer_1_1const__iterator.html#a6b18c245403a1febd31464b0fafb77f9",
-"structUdon_1_1Vec3.html#a4ded0700674e15c2300b9ab9d055955e"
+"structUdon_1_1Message_1_1Switch.html#a6b9453e3f7d4950e791b1c0b9e8b072b",
+"structUdon_1_1RingBuffer_1_1const__iterator.html#a68c4d6fcc46d69ba0216f9568f8ce06d",
+"structUdon_1_1Vec3.html#a4917c8a6aabbe8eeec326b991c42ff70"
 ];
 
 var SYNCONMSG = 'クリックで同期表示が無効になります';

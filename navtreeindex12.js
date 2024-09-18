@@ -1,5 +1,7 @@
 var NAVTREEINDEX12 =
 {
+"structUdon_1_1Vec3.html#a4917c8a6aabbe8eeec326b991c42ff70":[52,0,1,66,28],
+"structUdon_1_1Vec3.html#a4917c8a6aabbe8eeec326b991c42ff70":[53,0,0,63,28],
 "structUdon_1_1Vec3.html#a4ded0700674e15c2300b9ab9d055955e":[52,0,1,66,7],
 "structUdon_1_1Vec3.html#a4ded0700674e15c2300b9ab9d055955e":[53,0,0,63,7],
 "structUdon_1_1Vec3.html#a5339c12ff6b3fb2db4884346c17daabf":[52,0,1,66,11],
