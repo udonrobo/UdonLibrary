@@ -1,24 +1,36 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
-#if __cplusplus >= 201402L
 
-#    include <Arduino.h>
-#    include <Udon/Com/LoRa.hpp>
+#include <Arduino.h>
+#include <Udon/Com/LoRa.hpp>
 
 inline void ReaderTest()
 {
+    
+#if __cplusplus >= 201402L
     Udon::E220Reader<uint64_t> lora({
-        .serial  = Serial1,
-        .m0      = 2,
-        .m1      = 3,
-        .aux     = 4,
+        .serial = Serial1,
+        .m0 = 2,
+        .m1 = 3,
+        .aux = 4,
         .channel = 0,
         .address = 0x0000,
     });
+#else
+    Udon::E220Reader<uint64_t> lora({
+        Serial,
+        2,
+        3,
+        4,
+        0,
+        0x0000,
+    });
+#endif
+
 
     lora.begin();
     lora.begin(0x00);
@@ -32,19 +44,28 @@ inline void ReaderTest()
 
 inline void WriterTest()
 {
+#if __cplusplus >= 201402L
     Udon::E220Writer<uint64_t> lora({
-        .serial  = Serial1,
-        .m0      = 2,
-        .m1      = 3,
-        .aux     = 4,
+        .serial = Serial1,
+        .m0 = 2,
+        .m1 = 3,
+        .aux = 4,
         .channel = 0,
         .address = 0x0000,
     });
+#else
+    Udon::E220Writer<uint64_t> lora({
+        Serial,
+        2,
+        3,
+        4,
+        0,
+        0x0000,
+    });
+#endif
 
     lora.begin();
     lora.begin(0x00);
-    
+
     lora.setMessage(1234567890);
 }
-
-#endif
