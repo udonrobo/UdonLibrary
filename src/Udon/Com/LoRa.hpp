@@ -6,7 +6,9 @@
 
 #pragma once
 
-#if defined(ARDUINO) && __cplusplus >= 201402L
+#if defined(ARDUINO)
+
 #    include "LoRa/E220Reader.hpp"
 #    include "LoRa/E220Writer.hpp"
+
 #endif
