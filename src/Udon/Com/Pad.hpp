@@ -22,11 +22,7 @@ namespace Udon
     using I2cPadPS5 = PadPS5<I2cMasterReader>;
     using SerialPadPS5 = PadPS5<SerialReader>;
 
-#    if __cplusplus >= 201402L
-    // E220Reader は C++14 以上の機能を使用しているため、C++14 以上でのみ使用可能
     using E220PadPS5 = PadPS5<E220Reader>;
-#    endif
-
 }    // namespace Udon
 
 #endif
