@@ -133,27 +133,23 @@ $(function(){initNavTree('Pad_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">using </span>I2cPadPS5 = PadPS5&lt;I2cMasterReader&gt;;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">using </span>SerialPadPS5 = PadPS5&lt;SerialReader&gt;;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#    if __cplusplus &gt;= 201402L</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">// E220Reader は C++14 以上の機能を使用しているため、C++14 以上でのみ使用可能</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">using </span>E220PadPS5 = PadPS5&lt;E220Reader&gt;;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#    endif</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">using </span>E220PadPS5 = PadPS5&lt;E220Reader&gt;;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}    <span class="comment">// namespace Udon</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}    <span class="comment">// namespace Udon</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">// OpenSiv3D</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#ifdef SIV3D_INCLUDED</span></div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">// OpenSiv3D</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#ifdef SIV3D_INCLUDED</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#    include &quot;<a class="code" href="SivPadPS5_8hpp.html">Pad/SivPadPS5.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>{</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon.html#a4b5d3b294d6e954b48868d836bd9a427">SivPadPS5</a> = PadPS5&lt;Impl::SivPadPS5Reader&gt;;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}    <span class="comment">// namespace Udon</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#    include &quot;<a class="code" href="SivPadPS5_8hpp.html">Pad/SivPadPS5.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>{</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon.html#a4b5d3b294d6e954b48868d836bd9a427">SivPadPS5</a> = PadPS5&lt;Impl::SivPadPS5Reader&gt;;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}    <span class="comment">// namespace Udon</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aCan_8hpp_html"><div class="ttname"><a href="Can_8hpp.html">Can.hpp</a></div></div>
 <div class="ttc" id="aI2c_8hpp_html"><div class="ttname"><a href="I2c_8hpp.html">I2c.hpp</a></div></div>
 <div class="ttc" id="aLoRa_8hpp_html"><div class="ttname"><a href="LoRa_8hpp.html">LoRa.hpp</a></div></div>
