@@ -62,6 +62,16 @@ namespace Udon
             }
         }
 
+        /// @brief 動作可能であるか
+        /// @note 非常停止中は動作不可能 非常停止はクロスボタンで切り替え
+        /// @note コントローラーが接続されていない場合は動作不可能
+        /// @note 起動時は動作不可能
+        /// @return 動作可能であるときtrue
+        bool operable() const noexcept
+        {
+            return not isEmergencyStop();
+        }
+
         /// @brief ▵ボタン
         Input getTriangle() const noexcept { return triangle; }
 
