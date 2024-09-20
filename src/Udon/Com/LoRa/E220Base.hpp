@@ -29,6 +29,21 @@ namespace Udon
                 /// @note 0x0000-0xFFFD
                 /// @note 相手と合わせる
                 uint16_t address = 0x0102;
+
+#if __cplusplus < 201402L
+
+                /// @brief コンストラクタ
+                /// @note C++11 ではメンバ変数にデフォルト値を持たせたとき、別の値で初期化することができないため、コンストラクタを用意 (#^ω^)
+                Config(HardwareSerial& serial, uint8_t m0, uint8_t m1, uint8_t aux, uint8_t channel = 0, uint16_t address = 0x0102)
+                    : serial(serial)
+                    , m0(m0)
+                    , m1(m1)
+                    , aux(aux)
+                    , channel(channel)
+                    , address(address)
+                {
+                }
+#endif
             };
 
             /// @brief 現在の設定を取得

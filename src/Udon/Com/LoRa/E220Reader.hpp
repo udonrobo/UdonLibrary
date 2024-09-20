@@ -114,7 +114,6 @@ namespace Udon
             }
             else
             {
-                Serial.println("E220Reader: Message size mismatch");
                 while (config.serial.available())
                 {
                     (void)config.serial.read();
@@ -130,10 +129,15 @@ namespace Udon
 
         void darkAttachInterrupt(uint8_t pin)
         {
+            if (pin >= 60)
+            {
+                return;
+            }
+
             // attachInterrupt は this ポインタの情報がないためメンバ関数を呼び出すことができない
             // そこでピン番号とthisポインタを紐づけて、無理やりメンバ関数を呼び出す
 
-            InstanceList()[digitalPinToInterrupt(pin)] = this;
+            InstanceList()[pin] = this;
 
             // clang-format off
             switch (pin)
