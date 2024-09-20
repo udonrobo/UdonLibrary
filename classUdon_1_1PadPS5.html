@@ -142,6 +142,9 @@ Udon::PadPS5&lt; Reader &gt; の継承関係図</div>
 <tr class="memitem:a3845e3813576f3444371501ad694e72c" id="r_a3845e3813576f3444371501ad694e72c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3845e3813576f3444371501ad694e72c">isEmergencyStop</a> () const noexcept</td></tr>
 <tr class="memdesc:a3845e3813576f3444371501ad694e72c"><td class="mdescLeft">&#160;</td><td class="mdescRight">非常停止を行うべきかを取得  <br /></td></tr>
 <tr class="separator:a3845e3813576f3444371501ad694e72c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa09163d0428de030787055c89aa227b6" id="r_aa09163d0428de030787055c89aa227b6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa09163d0428de030787055c89aa227b6">operable</a> () const noexcept</td></tr>
+<tr class="memdesc:aa09163d0428de030787055c89aa227b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">動作可能であるか  <br /></td></tr>
+<tr class="separator:aa09163d0428de030787055c89aa227b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca3b8482aa61897f35178afe39f036e3" id="r_aca3b8482aa61897f35178afe39f036e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structUdon_1_1Input.html">Input</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca3b8482aa61897f35178afe39f036e3">getTriangle</a> () const noexcept</td></tr>
 <tr class="memdesc:aca3b8482aa61897f35178afe39f036e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">▵ボタン  <br /></td></tr>
 <tr class="separator:aca3b8482aa61897f35178afe39f036e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -960,6 +963,41 @@ template&lt;template&lt; typename &gt; class Reader&gt; </div>
 <dd>
 コントローラーが接続されていない場合は非常停止、起動時は非常停止 </dd></dl>
 <dl class="section return"><dt>戻り値</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="aa09163d0428de030787055c89aa227b6" name="aa09163d0428de030787055c89aa227b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa09163d0428de030787055c89aa227b6">&#9670;&#160;</a></span>operable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;template&lt; typename &gt; class Reader&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classUdon_1_1PadPS5.html">Udon::PadPS5</a>&lt; Reader &gt;::operable </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>動作可能であるか </p>
+<dl class="section note"><dt>覚え書き</dt><dd>非常停止中は動作不可能 非常停止はクロスボタンで切り替え </dd>
+<dd>
+コントローラーが接続されていない場合は動作不可能 </dd>
+<dd>
+起動時は動作不可能 </dd></dl>
+<dl class="section return"><dt>戻り値</dt><dd>動作可能であるときtrue </dd></dl>
 
 </div>
 </div>

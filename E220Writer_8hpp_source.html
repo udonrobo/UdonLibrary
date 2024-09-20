@@ -143,7 +143,7 @@ $(function(){initNavTree('E220Writer_8hpp_source.html',''); initResizable(true);
 <div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classUdon_1_1E220Writer.html#ae0c206d99b5c5195b5f7b3b21cfc97ca">   38</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classUdon_1_1E220Writer.html#ae0c206d99b5c5195b5f7b3b21cfc97ca">isTransmitting</a>(uint32_t timeoutMs = 200)<span class="keyword"> const</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <span class="keywordflow">return</span> millis() - lastTransmitUs / 1000. &lt; timeoutMs;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <span class="keywordflow">return</span> (micros() - lastTransmitUs) / 1000. &lt; timeoutMs;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        }</div>
 </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
