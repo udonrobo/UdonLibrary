@@ -20,9 +20,9 @@ namespace Udon
     public:
         struct Parameter
         {
-            double p;
-            double i;
-            double d;
+            double p{};
+            double i{};
+            double d{};
         };
 
     private:

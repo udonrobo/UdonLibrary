@@ -37,7 +37,7 @@ namespace Udon
         /// @return 送信中ならtrue
         bool isTransmitting(uint32_t timeoutMs = 200) const
         {
-            return millis() - lastTransmitUs / 1000. < timeoutMs;
+            return (micros() - lastTransmitUs) / 1000. < timeoutMs;
         }
 
         /// @brief 送信開始
