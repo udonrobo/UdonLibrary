@@ -19,6 +19,7 @@
 |               |                                                    C610 ドライバ                                                     |                                                    C620 ドライバ                                                     |
 | :-----------: | :------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------: |
 |   イメージ    | <img width=400px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/cec39fc0-3fc2-4ece-acfa-8b98f2782ec3"> | <img width=400px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/251f923d-58ff-4da5-897c-06d0e66ab2b1"> |
+| 対応モーター  |       <img width=400px src="https://github.com/user-attachments/assets/49981db5-3fd7-47c3-a524-add5e0d02d5d">        |       <img width=400px src="https://github.com/user-attachments/assets/f3b40e14-8541-4d72-a9d6-96c318d693ca">        |
 |    クラス     |                                                `Udon::RoboMasterC610`                                                |                                                `Udon::RoboMasterC620`                                                |
 | 電流範囲 (mA) |                                                   -10,000 ~ 10,000                                                   |                                                   -20,000 ~ 20,000                                                   |
 
