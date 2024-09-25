@@ -123,10 +123,13 @@ namespace Udon
         /// @note 内部の量をすべて0にする。
         void clearPower() noexcept
         {
-            power     = {};
+            power = {};
             lastError = 0.0;
         }
-
+        void clearIntegral() noexcept
+        {
+            power.i = 0.0;
+        }
         /// @brief 一周期のみ適用する比例係数の設定
         /// @param value 係数
         void requestParamPro(double value) noexcept
