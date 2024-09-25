@@ -16,7 +16,7 @@ namespace Udon
     {
 
         /// @brief RoboMaster 基底クラス
-        /// @note モータードライバの仕様の違いによって派生クラスを作成する
+        /// @note 多態性のための基底クラスではない。C610 ドライバと C620 ドライバの仕様が似ているため、共通化するための基底クラスである
         class RoboMasterBase
         {
         public:
@@ -31,9 +31,9 @@ namespace Udon
                 , nodeRx{ bus.createRx(static_cast<uint32_t>(0x200 + Constrain((int)motorId, 1, 8)), 8) }
             {
                 if (motorId > 4)
-                  nodeTx = bus.createTx(static_cast<uint32_t>(0x1FF), 8);
+                    nodeTx = bus.createTx(static_cast<uint32_t>(0x1FF), 8);
                 else
-                  nodeTx = bus.createTx(static_cast<uint32_t>(0x200), 8);
+                    nodeTx = bus.createTx(static_cast<uint32_t>(0x200), 8);
 
                 nodeRx->onReceive = onReceive;
                 nodeRx->param = this;
