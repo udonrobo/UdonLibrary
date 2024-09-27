@@ -17,7 +17,7 @@
 
 #pragma once
 
-#include <Udon/thirdparty/USB_Host_Shield_2.0/PS5USB.h>
+#include <Udon/Thirdparty/USB_Host_Shield_2.0/PS5USB.h>
 
 #include <Udon/Com/Message/PadPS5.hpp>
 #include <Udon/Types/Optional.hpp>
