@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['連携機能_0',['連携機能',['../md_docs_2Start_2OpenSiv3D.html#autotoc_md241',1,'']]]
+  ['速度フィードバック制御_0',['スケッチ例 (速度フィードバック制御)',['../md_docs_2Driver_2RoboMasterMotor.html#autotoc_md185',1,'']]],
+  ['速度制御クラスの作成例_1',['スケッチ例 (速度制御クラスの作成例)',['../md_docs_2Driver_2RoboMasterMotor.html#autotoc_md186',1,'']]]
 ];
