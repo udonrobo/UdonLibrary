@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['色空間_0',['色空間',['../md_docs_2Types_2Color.html',1,'色空間'],['../md_docs_2Types_2Color.html#autotoc_md256',1,'HSV 色空間'],['../md_docs_2Types_2Color.html#autotoc_md252',1,'RGB 色空間']]]
+  ['要素の追加、削除_0',['要素の追加、削除',['../md_docs_2Types_2RingBuffer.html#autotoc_md264',1,'要素の追加、削除'],['../md_docs_2Types_2StaticVector.html#autotoc_md268',1,'要素の追加、削除']]],
+  ['要素へのアクセス_1',['要素へのアクセス',['../md_docs_2Types_2Vector2D.html#autotoc_md276',1,'']]]
 ];

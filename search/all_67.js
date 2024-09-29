@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['指定した点を中心にベクトルを指定角度回転させる_0',['指定した点を中心にベクトルを指定角度回転させる',['../md_docs_2Types_2Vector2D.html#autotoc_md299',1,'']]]
+  ['推奨_0',['推奨',['../md_docs_2Communication_2PadOrganization.html#autotoc_md82',1,'■ 920MHz 経由 / 無線モジュールがメイン基板にある場合 (推奨)'],['../md_docs_2Communication_2PadOrganization.html#autotoc_md83',1,'■ 920MHz 経由 / 無線モジュールとメイン基板が別々の場合 (推奨)']]]
 ];

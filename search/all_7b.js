@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['脳筋_0',['解決策 3 (脳筋)',['../md_docs_2Developer_2Troubleshooting.html#autotoc_md152',1,'']]]
+  ['色空間_0',['色空間',['../md_docs_2Types_2Color.html',1,'色空間'],['../md_docs_2Types_2Color.html#autotoc_md249',1,'HSV 色空間'],['../md_docs_2Types_2Color.html#autotoc_md245',1,'RGB 色空間']]]
 ];

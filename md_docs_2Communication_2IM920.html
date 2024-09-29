@@ -109,7 +109,7 @@ $(function(){initNavTree('md_docs_2Communication_2IM920.html',''); initResizable
   <div class="headertitle"><div class="title">IM920 ※現在部で使用していないため動作するか不明</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md53"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md52"></a></p>
 <details >
 <summary >
 IM920について </summary>
@@ -117,12 +117,12 @@ IM920について </summary>
 <p>920MHz 帯 インタープラン社製無線モジュール</p>
 <p></p>
 </details>
-<h2><a class="anchor" id="autotoc_md54"></a>
+<h2><a class="anchor" id="autotoc_md53"></a>
 特徴</h2>
 <p>無線通信</p>
 <p>UART で IM920 モジュールとデータのやり取りを行います。</p>
 <p>免許や申請手続き不要。電波法関係はモジュール内部で自動的に制御されます。</p>
-<h2><a class="anchor" id="autotoc_md55"></a>
+<h2><a class="anchor" id="autotoc_md54"></a>
 通信イメージ</h2>
 <div class="fragment"><div class="line">flowchart LR</div>
 <div class="line"> </div>
@@ -135,24 +135,24 @@ IM920について </summary>
 <div class="line">    subgraph 受信者</div>
 <div class="line">    受信Im920[IM920] --UART--&gt; 受信マイコン[マイコン]</div>
 <div class="line">    end</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md56"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md55"></a>
 公式ページ</h2>
 <p><a href="https://www.interplan.co.jp/solution/wireless/im920/">IM920</a> <a href="https://www.interplan.co.jp/solution/wireless/im920s/">IM920s</a> <a href="https://www.interplan.co.jp/solution/wireless/im920sl/">IM920sL</a></p>
-<h1><a class="anchor" id="autotoc_md57"></a>
+<h1><a class="anchor" id="autotoc_md56"></a>
 個別インクルード</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Im920_8hpp.html">Udon/Com/Im920.hpp</a>&gt;</span></div>
 <div class="ttc" id="aIm920_8hpp_html"><div class="ttname"><a href="Im920_8hpp.html">Im920.hpp</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md58"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md57"></a>
 Usage</h1>
 <p>通信するモジュール同士はあらかじめペアリングされている必要があります。ペアリング方法はインタープラン社の公式ページを参照ください。</p>
 <p>IM920 通信クラスは、通信モジュールクラス、送受信クラスから構成されています。</p>
 <p>一対一での通信のみ対応しています。</p>
-<h1><a class="anchor" id="autotoc_md59"></a>
+<h1><a class="anchor" id="autotoc_md58"></a>
 Im920 クラス</h1>
 <p>使用するモジュールの種類によって使用するクラスを切り替えます。</p>
 <p><code><a class="el" href="classUdon_1_1Im920.html" title="IM920通信クラス">Udon::Im920</a></code> <code><a class="el" href="classUdon_1_1Im920s.html" title="IM920s送信クラス">Udon::Im920s</a></code> <code><a class="el" href="classUdon_1_1Im920sL.html" title="IM920sL通信クラス">Udon::Im920sL</a></code></p>
 <p>コンストラクタの引数に Im920 と通信するシリアルクラスのインスタンスを指定します。詳細は送受信クラスのサンプルを参照してください。</p>
-<h1><a class="anchor" id="autotoc_md60"></a>
+<h1><a class="anchor" id="autotoc_md59"></a>
 送信クラス</h1>
 <p><code><a class="el" href="classUdon_1_1Im920Writer.html" title="IM920送信クラス">Udon::Im920Writer</a>&lt;T&gt;</code></p>
 <p><code>T</code> に指定された型のオブジェクトを Im920 へ送信します。</p>
@@ -178,7 +178,7 @@ Im920 クラス</h1>
 <div class="ttc" id="aclassUdon_1_1Im920Writer_html"><div class="ttname"><a href="classUdon_1_1Im920Writer.html">Udon::Im920Writer</a></div><div class="ttdoc">IM920送信クラス</div><div class="ttdef"><b>Definition</b> Im920Writer.hpp:26</div></div>
 <div class="ttc" id="aclassUdon_1_1Im920Writer_html_afb84180be75dd0dc07854c288254fc22"><div class="ttname"><a href="classUdon_1_1Im920Writer.html#afb84180be75dd0dc07854c288254fc22">Udon::Im920Writer::setMessage</a></div><div class="ttdeci">void setMessage(const Message &amp;message)</div><div class="ttdef"><b>Definition</b> Im920Writer.hpp:55</div></div>
 <div class="ttc" id="aclassUdon_1_1Im920_html"><div class="ttname"><a href="classUdon_1_1Im920.html">Udon::Im920</a></div><div class="ttdoc">IM920通信クラス</div><div class="ttdef"><b>Definition</b> Im920Normal.hpp:27</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md61"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md60"></a>
 受信クラス</h1>
 <p><code><a class="el" href="classUdon_1_1Im920Reader.html" title="IM920受信クラス">Udon::Im920Reader</a>&lt;T&gt;</code></p>
 <p><code>T</code> に指定された型のオブジェクトを Im920 から受信します。</p>

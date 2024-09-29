@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['電流値の指定_0',['電流値の指定',['../md_docs_2Driver_2RoboMasterMotor.html#autotoc_md179',1,'']]],
-  ['電流制御_1',['スケッチ例 (電流制御)',['../md_docs_2Driver_2RoboMasterMotor.html#autotoc_md184',1,'']]]
+  ['静的メンバ変数を使おうとしたが、「未解決の外部シンボル_20が関数_20で参照されました」というリンクエラーとなった。_0',['■ 静的メンバ変数を使おうとしたが、「未解決の外部シンボル~が関数~で参照されました」というリンクエラーとなった。',['../md_docs_2Developer_2Troubleshooting.html#autotoc_md150',1,'']]]
 ];

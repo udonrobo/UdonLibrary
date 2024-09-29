@@ -109,7 +109,7 @@ $(function(){initNavTree('md_docs_2Developer_2DoxygenPage.html',''); initResizab
   <div class="headertitle"><div class="title">ドキュメント自動生成</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md133"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md128"></a></p>
 <p>Doxygen を用いてソースコード、マークダウンからドキュメントを自動生成しています。マスターブランチにプッシュがあった場合 GitHub Actions を通じてページが更新されます。ワークフローは <code>.github/workflows/DoxygenPage.yml</code> に定義されており、以下の流れで更新を行います。</p>
 <div class="fragment"><div class="line">flowchart TB</div>
 <div class="line"> </div>
@@ -125,7 +125,7 @@ $(function(){initNavTree('md_docs_2Developer_2DoxygenPage.html',''); initResizab
 <div class="line">    subgraph デプロイフロー</div>
 <div class="line">        gh_pagesブランチのHTMLページを公開</div>
 <div class="line">    end</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md134"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md129"></a>
 ローカル環境で実行</h1>
 <ol type="1">
 <li><p class="startli">Doxygen をインストール</p>
@@ -142,6 +142,15 @@ $(function(){initNavTree('md_docs_2Developer_2DoxygenPage.html',''); initResizab
 <blockquote class="doxtable">
 <p>&zwj;生成物は git に追跡されません。 </p>
 </blockquote>
+<h1><a class="anchor" id="autotoc_md130"></a>
+Doxygen のメリット</h1>
+<p>ソースコード中にドキュメントを記述するため、コードの変更に追従しやすく、最新の情報を提供できる。</p>
+<p>クラス一覧、関数一覧、ファイル一覧、変数一覧などを自動生成できる。</p>
+<p><img src="https://github.com/user-attachments/assets/5c0de23f-40f5-4eba-bf0f-81a088911515" alt="image" class="inline"/></p>
+<p>クラスの継承関係、関数の呼び出し関係などをグラフで表示できる。</p>
+<p><img src="https://github.com/user-attachments/assets/9ae676e7-256b-4583-9b93-dae7ebe64ef3" alt="image" class="inline"/></p>
+<p>マークダウンファイルもドキュメントとして生成でき、コードブロック等に記述したコードのシンボル名を自動的にソースコードとリンクしてくれる</p>
+<p><img src="https://github.com/user-attachments/assets/567a69a6-ad38-4116-be2b-e1bb66213fc8" alt="image" class="inline"/> </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

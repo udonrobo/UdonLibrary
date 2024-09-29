@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['固定ビット長浮動小数点型_0',['固定ビット長浮動小数点型',['../md_docs_2Types_2Float.html',1,'']]]
+  ['型の相互変換編_0',['■ 型の相互変換編',['../md_docs_2Developer_2Troubleshooting.html#autotoc_md152',1,'']]],
+  ['型_1',['型',['../md_docs_2Developer_2StyleGuide.html#autotoc_md138',1,'']]]
 ];

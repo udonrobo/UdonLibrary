@@ -313,6 +313,7 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html',''); initResizable(t
 <h1><a class="anchor" id="autotoc_md27"></a>
 バイト列を直接送受信</h1>
 <p>ロボマスモーター等の CAN 通信を用いる市販のモーターをドライブするには、バイト列で直接やり取りする必要があります。この場合、チェックサムを付与する <code>CanReader</code> <code>CanWriter</code> クラスは使用できません。バイト列を直接やり取りするには送受信ノードを <code>createTx</code> <code>createRx</code> 関数を用いて作成し、作成したノードに対しデータの書き込み、読み出しを行います。</p>
+<p>8バイトより長いデータは分割して送受信されます。この時、1 バイト目にインデックス番号が付与されます。8 バイト以下のデータはインデックスを付与せず送受信します。</p>
 <h2><a class="anchor" id="autotoc_md28"></a>
 ■ 送信ノード</h2>
 <details >
@@ -437,13 +438,7 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html',''); initResizable(t
 <div class="line">    bus.<a class="code hl_function" href="classUdon_1_1CanBusTeensy.html#a5e0b712fc58d18f440fd3e70b2ac0100">update</a>();</div>
 <div class="line"> </div>
 <div class="line">    Serial.print(rxNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanRxNode.html#a52fa3e5e2528ebcf65c95d0f0f1e02f9">data</a>[0]); Serial.print(<span class="charliteral">&#39;\t&#39;</span>);</div>
-<div class="line">    Serial.print(rxNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanRxNode.html#a52fa3e5e2528ebcf65c95d0f0f1e02f9">data</a>[1]); Serial.print(<span class="charliteral">&#39;\t&#39;</span>);</div>
-<div class="line">    Serial.print(rxNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanRxNode.html#a52fa3e5e2528ebcf65c95d0f0f1e02f9">data</a>[2]); Serial.print(<span class="charliteral">&#39;\t&#39;</span>);</div>
-<div class="line">    Serial.print(rxNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanRxNode.html#a52fa3e5e2528ebcf65c95d0f0f1e02f9">data</a>[3]); Serial.print(<span class="charliteral">&#39;\t&#39;</span>);</div>
-<div class="line">    Serial.print(rxNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanRxNode.html#a52fa3e5e2528ebcf65c95d0f0f1e02f9">data</a>[4]); Serial.print(<span class="charliteral">&#39;\t&#39;</span>);</div>
-<div class="line">    Serial.print(rxNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanRxNode.html#a52fa3e5e2528ebcf65c95d0f0f1e02f9">data</a>[5]); Serial.print(<span class="charliteral">&#39;\t&#39;</span>);</div>
-<div class="line">    Serial.print(rxNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanRxNode.html#a52fa3e5e2528ebcf65c95d0f0f1e02f9">data</a>[6]); Serial.print(<span class="charliteral">&#39;\t&#39;</span>);</div>
-<div class="line">    Serial.print(rxNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanRxNode.html#a52fa3e5e2528ebcf65c95d0f0f1e02f9">data</a>[7]); Serial.print(<span class="charliteral">&#39;\n&#39;</span>);</div>
+<div class="line">    Serial.print(rxNode-&gt;<a class="code hl_variable" href="structUdon_1_1CanRxNode.html#a52fa3e5e2528ebcf65c95d0f0f1e02f9">data</a>[1]); Serial.print(<span class="charliteral">&#39;\n&#39;</span>);</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_a08e2e10410241ec6ec55b119551fbf5f"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#a08e2e10410241ec6ec55b119551fbf5f">Udon::CanBusTeensy::createRx</a></div><div class="ttdeci">CanRxNode * createRx(uint32_t id, size_t length) override</div><div class="ttdoc">受信ノードをバスに参加させる</div><div class="ttdef"><b>Definition</b> CanBusTeensy.hpp:192</div></div>
 <div class="ttc" id="astructUdon_1_1CanRxNode_html"><div class="ttname"><a href="structUdon_1_1CanRxNode.html">Udon::CanRxNode</a></div><div class="ttdoc">CAN受信ノード</div><div class="ttdef"><b>Definition</b> ICanBus.hpp:28</div></div>
@@ -558,9 +553,6 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html',''); initResizable(t
 <div class="line">writer.show();  <span class="comment">// 送信データを表示</span></div>
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_a4fd72d88d214e5bca49c9be927cafa3f"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#a4fd72d88d214e5bca49c9be927cafa3f">Udon::CanBusTeensy::show</a></div><div class="ttdeci">void show() const</div><div class="ttdoc">バス情報を表示する</div><div class="ttdef"><b>Definition</b> CanBusTeensy.hpp:125</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md31"></a>
-エラー原因</h1>
-<p>通信が行われない -&gt; Udon::PioClockBegin() の呼び忘れ</p>
-<h1><a class="anchor" id="autotoc_md32"></a>
 クラスの組み合わせ色々</h1>
 <p>一つのバスへ複数送受信ノードが参加する(よくある)</p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1CanBusTeensy.html">Udon::CanBusTeensy&lt;CAN1&gt;</a> bus;</div>
