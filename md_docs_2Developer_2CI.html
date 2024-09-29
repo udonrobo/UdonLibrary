@@ -147,14 +147,14 @@ Arduino Lint</h1>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="UdonFwd_8hpp.html">UdonFwd.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;Udon/Sample/Sample.hpp&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">inline</span> <span class="keywordtype">void</span> test()</div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> test()</div>
 <div class="line">{</div>
 <div class="line">    Sample sample{ 10.0 };</div>
 <div class="line">    sample.f();</div>
 <div class="line">}</div>
 <div class="ttc" id="aUdonFwd_8hpp_html"><div class="ttname"><a href="UdonFwd_8hpp.html">UdonFwd.hpp</a></div></div>
 </div><!-- fragment --><blockquote class="doxtable">
-<p>&zwj;<code>test</code> という関数は他のテストファイルにも存在しているため、リンクエラーを起こさないようにインライン関数にしています。 </p>
+<p>&zwj;<code>test</code> という関数は他のテストファイルにも存在しているため、<code>static</code> 関数にし内部リンケージを持たせています。 </p>
 </blockquote>
 <h2><a class="anchor" id="autotoc_md106"></a>
 ■ コンパイル時に計算可能なアルゴリズムのテスト</h2>
@@ -167,7 +167,7 @@ Arduino Lint</h1>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// UdonLibrary/test/ArduinoLint/src/Algorithm/Factorial.cpp (例)</span></div>
 <div class="line"><span class="preprocessor">#include &lt;Udon/Algorithm/Factorial.hpp&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">inline</span> <span class="keywordtype">void</span> test()</div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> test()</div>
 <div class="line">{</div>
 <div class="line">    <span class="keyword">static_assert</span>(Factorial(1) ==   1, <span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line">    <span class="keyword">static_assert</span>(Factorial(2) ==   2, <span class="stringliteral">&quot;&quot;</span>);</div>
