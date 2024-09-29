@@ -7,7 +7,7 @@
 #include <Arduino.h>
 #include <Udon/Com/Serial.hpp>
 
-inline void test()
+static void test()
 {
     Udon::SerialReader<int> reader{ Serial };
     reader.getMessage();

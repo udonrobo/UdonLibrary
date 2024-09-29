@@ -9,7 +9,7 @@
 
 #ifdef ARDUINO_ARCH_RP2040
 
-inline void test()
+static void test()
 {
     Udon::Servo servo;
     servo.attach(1);

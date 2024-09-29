@@ -13,7 +13,7 @@ struct TestStructure1
 struct TestStructure2
 {
 };
-inline void test()
+static void test()
 {
     TestStructure1 a;
     Udon::Traits::MaybeInvokeBegin(a);    // call

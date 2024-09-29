@@ -9,7 +9,7 @@
 
 #include <Udon/Traits/ReaderWriterTraits.hpp>
 
-inline void testBus()
+static void testBus()
 {
     Udon::I2cBus bus{ Wire };
 
@@ -35,7 +35,7 @@ inline void testBus()
     bus.onRequest(nullptr);
 }
 
-inline void testIsReaderWriter()
+static void testIsReaderWriter()
 {
     static_assert(Udon::Traits::IsReader<Udon::I2cMasterReader>::value, "");
     static_assert(Udon::Traits::IsWriter<Udon::I2cMasterWriter>::value, "");
@@ -43,7 +43,7 @@ inline void testIsReaderWriter()
     static_assert(Udon::Traits::IsWriter<Udon::I2cSlaveWriter>::value, "");
 }
 
-inline void testMaster()
+static void testMaster()
 {
     Udon::I2cBus bus{ Wire };
 
@@ -59,7 +59,7 @@ inline void testMaster()
     writer.showRaw();
 }
 
-inline void testSlave()
+static void testSlave()
 {
     Udon::I2cBus bus{ Wire };
 

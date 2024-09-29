@@ -7,7 +7,7 @@
 #include <Arduino.h>
 #include <Udon/Driver/DipSwitch.hpp>
 
-inline void test()
+static void test()
 {
     (void)Udon::DecodeDipSwitch({ 2, 3, 4, 5 });
 }

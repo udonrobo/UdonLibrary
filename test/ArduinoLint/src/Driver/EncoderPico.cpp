@@ -9,7 +9,7 @@
 
 #ifdef ARDUINO_ARCH_RP2040
 
-inline void test()
+static void test()
 {
     Udon::EncoderPico encoder{ 0, 0 };
     encoder.begin();

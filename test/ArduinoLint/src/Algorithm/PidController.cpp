@@ -7,7 +7,7 @@
 #include <Arduino.h>
 #include <Udon/Algorithm/PidController.hpp>
 
-inline void test()
+static void test()
 {
     Udon::PidController pid{ 0.0, 0.0, 0.0, 1000 };
     

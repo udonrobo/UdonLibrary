@@ -11,7 +11,7 @@
 
 #if defined(TEENSYDUINO)
 
-inline void testBus()
+static void testBus()
 {
 
 #if defined(ARDUINO_TEENSY41) || defined(ARDUINO_TEENSY40) || defined(ARDUINO_TEENSY36)
@@ -45,7 +45,7 @@ inline void testBus()
 
 #elif defined(ARDUINO_ARCH_RP2040)
 
-inline void testBus()
+static void testBus()
 {
     Udon::CanBusSpi{
         {
@@ -80,7 +80,7 @@ inline void testBus()
 
 #endif
 
-inline void testIsReaderWriter()
+static void testIsReaderWriter()
 {
     static_assert(Udon::Traits::IsReader<Udon::CanReader>::value, "");
     static_assert(Udon::Traits::IsWriter<Udon::CanWriter>::value, "");
@@ -94,7 +94,7 @@ struct DummyBus
     Udon::CanRxNode* createRx(uint32_t, size_t) override { return nullptr; }
 };
 
-inline void testReader()
+static void testReader()
 {
     DummyBus bus;
     Udon::CanReader<int> reader{ bus, 0x00 };
@@ -103,7 +103,7 @@ inline void testReader()
     reader.showRaw();
 }
 
-inline void testWriter()
+static void testWriter()
 {
     DummyBus bus;
     Udon::CanWriter<int> writer{ bus, 0x00 };

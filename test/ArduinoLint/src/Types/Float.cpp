@@ -10,7 +10,7 @@
 #include <Udon/Types/Float.hpp>
 
 
-inline void test()
+static void test()
 {
     // シリアライズ
     {

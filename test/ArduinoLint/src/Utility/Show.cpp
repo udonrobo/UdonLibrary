@@ -14,7 +14,7 @@ struct Enumerable
     UDON_ENUMERABLE(value);
 };
 
-inline void test()
+static void test()
 {
     // 組み込み型
     {

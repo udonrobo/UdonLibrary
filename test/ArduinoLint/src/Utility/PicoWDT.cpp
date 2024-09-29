@@ -9,7 +9,7 @@
 #include <Arduino.h>
 #include <Udon/Utility/PicoWDT.hpp>
 
-inline void test()
+static void test()
 {
     Udon::PicoWDT wdt;
     wdt.update();

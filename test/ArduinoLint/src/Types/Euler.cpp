@@ -8,7 +8,7 @@
 
 #include <Udon/Types/Euler.hpp>
 
-inline void test()
+static void test()
 {
 
     // コンストラクタ

@@ -6,7 +6,7 @@
 
 #include <Udon/Algorithm/ServoSpeed.hpp>
 
-inline void test()
+static void test()
 {
     Udon::ServoSpeed servo(10000, Udon::ServoChoose::_20kg, 10);
     servo.update();

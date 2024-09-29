@@ -11,7 +11,7 @@
 #ifdef ARDUINO_ARCH_RP2040
 
 
-inline void test()
+static void test()
 {
     (void)Udon::PioClockBegin(1, 16'000'000);
 

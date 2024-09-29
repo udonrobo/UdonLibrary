@@ -6,7 +6,7 @@
 
 #include <Udon/Driver/Motor.hpp>
 
-inline void test()
+static void test()
 {
     {
         Udon::Motor2 motor{ 0, 0 };

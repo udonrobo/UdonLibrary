@@ -7,7 +7,7 @@
 #include <Arduino.h>
 #include <Udon/Driver/SegmentsLed.hpp>
 
-inline void test()
+static void test()
 {
     Udon::SegmentsLed led{
         { 2, 3, 4, 5, 6, 7, 8 },

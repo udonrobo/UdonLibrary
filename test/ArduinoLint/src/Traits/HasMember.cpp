@@ -23,7 +23,7 @@ struct B
 {
 };
 
-inline void test()
+static void test()
 {
     static_assert(Udon::Traits::HasMemberFunctionShow<A>::value, "");
     static_assert(Udon::Traits::HasMemberFunctionUpdate<A>::value, "");

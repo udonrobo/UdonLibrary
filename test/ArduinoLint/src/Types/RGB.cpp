@@ -8,7 +8,7 @@
 
 #include <Udon/Types/RGB.hpp>
 
-inline void test()
+static void test()
 {
 
     // コンストラクタ

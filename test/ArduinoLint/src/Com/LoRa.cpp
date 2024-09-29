@@ -8,7 +8,7 @@
 #include <Arduino.h>
 #include <Udon/Com/LoRa.hpp>
 
-inline void ReaderTest()
+static void ReaderTest()
 {
     
 #if __cplusplus >= 201402L
@@ -42,7 +42,7 @@ inline void ReaderTest()
     (void)lora.getRssi();
 }
 
-inline void WriterTest()
+static void WriterTest()
 {
 #if __cplusplus >= 201402L
     Udon::E220Writer<uint64_t> lora({

@@ -10,7 +10,7 @@
 
 #    include <Udon/Com/Im920.hpp>
 
-inline void testIm920()
+static void testIm920()
 {
     Udon::Im920 im920{ Serial };
     im920.operator bool();
@@ -25,7 +25,7 @@ inline void testIm920()
     im920sL.show();
 }
 
-inline void testReaderWriter()
+static void testReaderWriter()
 {
     Udon::Im920 im920{ Serial };
 

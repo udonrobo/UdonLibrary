@@ -8,7 +8,7 @@
 
 #if defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__)
 
-inline void test()
+static void test()
 {
     Udon::Parameter p(10, "hoge.csv");
 
