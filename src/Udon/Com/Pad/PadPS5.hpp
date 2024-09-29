@@ -67,7 +67,7 @@ namespace Udon
         /// @note コントローラーが接続されていない場合は動作不可能
         /// @note 起動時は動作不可能
         /// @return 動作可能であるときtrue
-        bool operable() const noexcept
+        bool isOperable() const noexcept
         {
             return not isEmergencyStop();
         }

@@ -1,14 +1,14 @@
 # 開発環境セットアップ
 
-## 開発環境
+ライブラリの開発に直接関与しませんが、スムーズに開発できる環境を整える手順を記載します。
 
-開発環境は決まっていませんが、ここでは VSCode, VisualStudio, ArduinoIDE を使用します。インストールしていない場合インストールしておいてください。また本ライブラリのクローンを事前に行っておいてください。[ライブラリのクローン](../Install/ArduinoIDE.md)
-
-> 通常の開発では VSCode で記述 -> ArduinoIDE でコンパイル, 書き込み を繰り返し行います。
->
-> マイコンを使用しないアルゴリズム系の開発の場合、デバッグのしやすい VisualStudio が便利です。最終的に ArduinoIDE でコンパイルできるか確認します。
+- [VSCode](#vscode)
+- [Visual Studio](#visual-studio)
+- [GitHub Copilot 導入](#github-copilot-導入)
 
 ## VSCode
+
+ライブラリは VSCode で記述 -> ArduinoIDE でコンパイル, 書き込み の流れで開発します。VSCode は拡張機能をインストールすることで、コードの自動整形、スペルチェック、インテリセンスの機能を強化できます。
 
 ### ライブラリを開く
 
@@ -16,13 +16,21 @@
 
 <img width="600px" src="https://github.com/udonrobo/UdonLibrary/assets/91818705/1b12fd5c-d441-49a5-a60f-40f8ec238f6e"/>
 
+> [!TIP]
+>
+> `code` コマンドで任意のディレクトリ、ファイルを開けます。以下のコマンドで本ライブラリを開くことができます。
+>
+> ```sh
+> code ~/Arduino/libraries/UdonLibrary/
+> ```
+
 開けるとこのようになります。左に表示されるエクスプローラーからファイルを開けるので、そこから編集していきます。
 
 <img width="600px" src="https://github.com/udonrobo/UdonLibrary/assets/91818705/38d7b8cb-eee8-491d-b913-037d7e07f507"/>
 
 ### clang-format 拡張機能インストール
 
-clang-format とはフォーマッタの一種で、コードを自動整形してくれるツールです。 clang-format は整形の設定を詳細に行えるので、本ライブラリで採用しています。設定ファイルは `UdonLibrary/.clang-format` にあります。コンパイラ基盤 LLVM に付属しています。
+clang-format とはフォーマッタの一種で、コードを自動整形してくれるツールです。整形の設定を詳細に行えるので本ライブラリで採用しています。設定ファイルは `UdonLibrary/.clang-format` にあります。コンパイラ基盤 LLVM に付属しています。
 
 1. 以下コマンドで LLVM をインストールします。
 
@@ -56,6 +64,8 @@ clang-format とはフォーマッタの一種で、コードを自動整形し�
        double b = 100.0;
    }
    ```
+
+
 
 ### C/C++ 拡張機能インストール
 
@@ -95,9 +105,24 @@ clang-format とはフォーマッタの一種で、コードを自動整形し�
 
 ## Visual Studio
 
+マイコンの機能に依存しないアルゴリズム系の開発の場合、デバッグのしやすい Visual Studio が便利です。最終的に完成したファイルをライブラリに追加し Arduino IDE でコンパイルできるか確認します。
+
 ### ライブラリを開く
 
-VSCode で編集、Visual Studio からインクルードし、ビルドするのが楽です。Visual Studio でライブラリ内のファイルに移動し編集をすることもできます。
+本ライブラリは Visual Studio で開くのに必要なソリューションファイル (\*.sln) を持っていません。そのためライブラリごと開くことができません。
+
+### 開発の流れ (1 から作成する場合)
+
+1. Visual Studio で新規プロジェクトを作成し、任意のアルゴリズム等を実装
+2. 実装したファイルを `UdonLibrary/src` 下にいい感じに分類して追加
+3. Arduino 等で動作確認
+
+### 開発の流れ (既存のファイルを変更する場合)
+
+1. Visual Studio で新規プロジェクトを作成し、本ライブラリをインクルード
+2. インクルード先に移動し、既存のファイルを編集
+3. デバッグする
+4. Arduino 等で動作確認
 
 ### clang-format
 

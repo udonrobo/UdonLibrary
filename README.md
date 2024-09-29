@@ -17,12 +17,11 @@
 
 ## 追加方法
 
-- [必要ソフトウェア](./docs/Install/RequiredTools.md)
 - [Arduino IDE](./docs/Install/ArduinoIDE.md)
 - [Platform IO](./docs/Install/PlatformIO.md)
 - [Visual Studio](./docs/Install/VisualStudio.md)
 - [CLion](./docs/Install/CLion.md)
-- [Vanilla C++](./docs/Install/VanillaCpp.md)
+- [バニラ C++](./docs/Install/VanillaCpp.md)
 - [Raspberry Pi Pico 使用時事前セットアップ](./docs/Install/RaspberryPiPico.md)
 
 ## 使用方法
@@ -35,7 +34,7 @@
 
 - [ループ周期制御](./docs/Algorithm/LoopCycleController.md)
 - [移動平均](./docs/Algorithm/MovingAverage.md)
-- [PID制御](./docs/Algorithm/FeedbackController.md)
+- [PID 制御](./docs/Algorithm/FeedbackController.md)
 - [独立ステア最適化](./docs/Algorithm/SteerOptimizer.md)
 - [割り込み禁止制御](./docs/Algorithm/Interrupt.md)
 
@@ -48,7 +47,18 @@
 - [IM920 (現在部で使用していないため動作するか不明)](./docs/Communication/IM920.md)
 - [USB/UART](./docs/Communication/Serial.md)
 - [コントローラ](./docs/Communication/Pad.md)
+- [コントローラを構成する](./docs/Communication/PadOrganization.md)
 - [CRC エラーチェック](./docs/Communication/CRC.md)
+
+### ドライバー
+
+- [モーター](./docs/Driver/Motor.md)
+- [ロボマスモーター](./docs/Driver/RoboMasterMotor.md)
+- [BNO055](./docs/Driver/BNO055.md)
+- [DIP スイッチ](./docs/Driver/DipSwitch.md)
+- [Raspberry Pi Pico / PIO](./docs/Driver/PIO.md)
+- [Raspberry Pi Pico / ロータリーエンコーダー](./docs/Driver/EncoderPico.md)
+- [Raspberry Pi Pico / ウォッチドックタイマー](./docs/Driver/PicoWDT.md)
 
 ### ユーザー定義型
 
@@ -61,16 +71,6 @@
 - [コンテナ / 静的可変長配列](./docs/Types/StaticVector.md)
 - [コンテナ / 静的可変長リングバッファ](./docs/Types/RingBuffer.md)
 - [コンテナ / 配列ビュー](./docs/Types/ArrayView.md)
-
-### ドライバー
-
-- [モーター](./docs/Driver/Motor.md)
-- [ロボマスモーター](./docs/Driver/RoboMasterMotor.md)
-- [BNO055](./docs/Driver/BNO055.md)
-- [DIP スイッチ](./docs/Driver/DipSwitch.md)
-- [Raspberry Pi Pico / PIO](./docs/Driver/PIO.md)
-- [Raspberry Pi Pico / ロータリーエンコーダー](./docs/Driver/EncoderPico.md)
-- [Raspberry Pi Pico / ウォッチドックタイマー](./docs/Driver/PicoWDT.md)
 
 ### その他
 

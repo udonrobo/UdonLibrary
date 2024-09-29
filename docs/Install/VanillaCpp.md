@@ -1,18 +1,16 @@
 # バニラ C++ 環境
 
-バニラ C++ の環境ではヘッダーオンリーライブラリとして振舞います。インクルードディレクトリの指定、STL の使用が可能な場合、使用可能です。
+バニラ C++ の環境ではヘッダーオンリーライブラリとして振舞います。インクルードディレクトリの指定、STL の使用が可能な場合使用できます。バニラ C++ 環境では、マイコン用の機能は使用できません。
 
 本ライブラリをクローン後、`UdonLibrary/src` ディレクトリをインクルードディレクトリとして指定してください。
 
-## 例
-
-### ディレクトリ構造
+### ディレクトリ構成例
 
 ```sh
 Udon/
-  | main.cpp
-  | lib/
-    | UdonLibrary/
+├── main.cpp
+└── lib/
+    └── UdonLibrary/  # 本ライブラリ
 ```
 
 ### main.cpp
@@ -26,20 +24,18 @@ int main()
 }
 ```
 
-### build run
+### build run (gcc)
 
-- gcc
+```sh
+# in Udon/ directory
+g++ -o main main.cpp -I ./lib/UdonLibrary/src
+./main
+```
 
-  ```sh
-  # in Udon/ directory
-  g++ -o main main.cpp -I ./lib/UdonLibrary/src
-  ./main
-  ```
+### build run (clang)
 
-- clang
-
-  ```sh
-  # in Udon/ directory
-  clang++ -o main main.cpp -I ./lib/UdonLibrary/src
-  ./main
-  ```
+```sh
+# in Udon/ directory
+clang++ -o main main.cpp -I ./lib/UdonLibrary/src
+./main
+```
