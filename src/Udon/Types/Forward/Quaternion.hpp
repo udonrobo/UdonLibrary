@@ -32,9 +32,16 @@ namespace Udon
         /// @brief 要素の型
         using ValueType = double;
 
+        /// @brief x成分
         ValueType x;
+
+        /// @brief y成分
         ValueType y;
+
+        /// @brief z成分
         ValueType z;
+
+        /// @brief w成分
         ValueType w;
 
         /// @brief デフォルトコンストラクタ
@@ -49,6 +56,8 @@ namespace Udon
         /// @brief コンストラクタ
         /// @param x x成分
         /// @param y y成分
+        /// @param z z成分
+        /// @param w w成分
         constexpr Quaternion(ValueType x, ValueType y, ValueType z, ValueType w) noexcept
             : x(x)
             , y(y)

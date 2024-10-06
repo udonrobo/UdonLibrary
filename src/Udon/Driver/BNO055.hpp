@@ -74,6 +74,13 @@ namespace Udon
             return getQuaternion().toEuler();
         }
 
+        /// @brief ヨー角(旋回角)を取得
+        /// @return ヨー角
+        double getYaw() const
+        {
+            return getQuaternion().toYaw();
+        }
+
         /// @brief オイラー角をシリアルポートに出力
         void show() const
         {

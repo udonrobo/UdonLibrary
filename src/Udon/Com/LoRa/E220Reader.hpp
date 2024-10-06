@@ -47,7 +47,7 @@ namespace Udon
         }
 
         /// @brief 受信開始
-        /// @param channel
+        /// @param channel 周波数チャンネル
         void begin(uint8_t channel) noexcept
         {
             config.channel = channel;
@@ -76,7 +76,7 @@ namespace Udon
         /// @brief メッセージを受信
         /// @return メッセージ
         /// @note 受信エラー時、受信タイムアウト時は nullopt を返す
-        /// @note メッセージは最後に受信したものを返す (受信エラー時は前回のメッセージを返す)
+        /// @note メッセージは最後に受信したものを返す
         Udon::Optional<MessageType> getMessage() noexcept
         {
             ScopedInterruptLocker locker;
