@@ -110,11 +110,11 @@ $(function(){initNavTree('md_docs_2Communication_2Common.html',''); initResizabl
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md32"></a></p>
-<p>通信クラスのAPIを大体統一おり、通信方式によらず同じようなプログラムを書くことが可能です。</p>
+<p>通信クラスの API を大体統一おり、通信方式によらず同じようなプログラムを書くことが可能です。</p>
 <h1><a class="anchor" id="autotoc_md33"></a>
 共通内容</h1>
 <ul>
-<li>構造体等のオブジェクトを用いて通信を行います。</li>
+<li>メッセージ型(単なる構造体)のオブジェクトを用いて通信を行います。<a class="el" href="md_docs_2Communication_2Message.html">メッセージ型</a>を参照してください。</li>
 <li>通信を管理するバスクラス、バスクラスとデータの受け渡しを行う送受信クラスから構成されています。</li>
 <li>送受信クラスはテンプレート引数を持っており、通信するオブジェクトの型を指定します。</li>
 <li>送信クラスの <code>setMessage(T)</code> を用いて送信し、受信クラスの <code>Optional&lt;T&gt; getMessage()</code> を用いて受信します。</li>
@@ -202,11 +202,11 @@ $(function(){initNavTree('md_docs_2Communication_2Common.html',''); initResizabl
 <div class="line">        end</div>
 <div class="line"> </div>
 <div class="line">        subgraph writer2</div>
-<div class="line">        getMessage --int--&gt; 受信オブジェクト[オブジェクト] </div>
+<div class="line">        getMessage --int--&gt; 受信オブジェクト[オブジェクト]</div>
 <div class="line">        end</div>
 <div class="line"> </div>
 <div class="line">        setMessage --byte string--&gt; bus</div>
-<div class="line">        </div>
+<div class="line"> </div>
 <div class="line">        direction RL</div>
 <div class="line">        bus --byte string--&gt; getMessage</div>
 <div class="line">    end</div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['移動平均_0',['移動平均',['../md_docs_2Algorithm_2MovingAverage.html',1,'']]]
+  ['言語_0',['言語',['../md_docs_2Developer_2StyleGuide.html#autotoc_md134',1,'']]]
 ];

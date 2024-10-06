@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['導入_0',['GitHub Copilot 導入',['../md_docs_2Developer_2DevelopSetup.html#autotoc_md126',1,'']]]
+  ['新たにメッセージ型を定義する_0',['新たにメッセージ型を定義する',['../md_docs_2Communication_2Message.html#autotoc_md71',1,'']]]
 ];

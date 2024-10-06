@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['詳細_0',['詳細',['../md_docs_2Other_2Serialization.html#autotoc_md207',1,'']]]
+  ['遠隔非常停止の実装_0',['遠隔非常停止の実装',['../md_docs_2Communication_2Pad.html#autotoc_md77',1,'']]]
 ];

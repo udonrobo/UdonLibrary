@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['列挙型シリアライズ_0',['列挙型シリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md216',1,'']]]
+  ['周波数_0',['周波数',['../md_docs_2Communication_2LoRa.html#autotoc_md68',1,'']]]
 ];

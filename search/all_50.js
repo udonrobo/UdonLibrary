@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['値への変換_0',['24bit 値への変換',['../md_docs_2Types_2Color.html#autotoc_md253',1,'']]],
-  ['値読み取り_1',['値読み取り',['../md_docs_2Driver_2DipSwitch.html#autotoc_md158',1,'']]]
+  ['列挙型シリアライズ_0',['列挙型シリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md213',1,'']]]
 ];

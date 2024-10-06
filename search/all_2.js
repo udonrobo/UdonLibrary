@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['3_20脳筋_0',['解決策 3 (脳筋)',['../md_docs_2Developer_2Troubleshooting.html#autotoc_md148',1,'']]]
+  ['7_20セグメント_20led_0',['7 セグメント LED',['../md_docs_2Driver_2SegmentsLed.html',1,'']]]
 ];

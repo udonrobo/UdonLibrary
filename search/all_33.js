@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['セットアップ_0',['Raspberry Pi Pico セットアップ',['../md_docs_2Install_2RaspberryPiPico.html',1,'']]],
-  ['センサー値取得_1',['センサー値取得',['../md_docs_2Driver_2RoboMasterMotor.html#autotoc_md176',1,'']]]
+  ['チャンネルの設定_0',['チャンネルの設定',['../md_docs_2Communication_2LoRa.html#autotoc_md65',1,'']]]
 ];

@@ -109,11 +109,11 @@ $(function(){initNavTree('md_docs_2Driver_2PIO.html',''); initResizable(true); }
   <div class="headertitle"><div class="title">PIO</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md169"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md161"></a></p>
 <p>RP2040 には 2 つの CPU コアに加えて、ステートマシンという補助的なコアが 8 つ内蔵されています。</p>
 <p>ステートマシンは CPU とは独立して動作するため、常に入力ピンを監視するようなシビアな制御に有用です。通常のコアと異なり、機械語を用いて命令を書きます。</p>
 <p>8 つのステートマシンはそれぞれ個別の命令を実行できるわけではありません。ステートマシンは 2 つの PIO ブロックに分けられており、実行命令を格納するメモリが PIO ブロック単位にのみ存在するためです。</p>
-<h1><a class="anchor" id="autotoc_md170"></a>
+<h1><a class="anchor" id="autotoc_md162"></a>
 PioClockBegin</h1>
 <p>PIO を用いて特定のピンからクロック信号を出力します。通信用コントローラーの外部クロックとしての使用を想定しています。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
@@ -126,7 +126,7 @@ PioClockBegin</h1>
 <div class="line"><span class="keywordtype">void</span> loop() {}</div>
 <div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
 </div><!-- fragment --><p>戻り値から出力開始に成功したか取得できます。ステートマシンもしくは命令メモリの空きがない場合、失敗します。</p>
-<h1><a class="anchor" id="autotoc_md171"></a>
+<h1><a class="anchor" id="autotoc_md163"></a>
 AllocateStateMachine</h1>
 <p>空きステートマシンを検索し、命令のロードを行う関数です。ライブラリ内部で使用する想定の関数です。</p>
 <p>戻り値から割り当てられたステートマシンの情報を取得できます。</p>

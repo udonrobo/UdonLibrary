@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ユーティリティ_0',['ユーティリティ',['../md_docs_2Other_2Utility.html',1,'']]]
+  ['メッセージ型_0',['メッセージ型',['../md_docs_2Communication_2Message.html',1,'']]]
 ];

@@ -111,10 +111,24 @@ $(function(){initNavTree('md_docs_2Communication_2CRC.html',''); initResizable(t
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md40"></a></p>
 <h1><a class="anchor" id="autotoc_md41"></a>
-CRCの概要</h1>
-<p>チェックサムの進化版</p>
-<p>チェックサムとは誤り検出方法のひとつで、送信バイト列から求められた値と受信バイト列から求めた値を照合し一致するか確認するアルゴリズムです。簡易的なチェックサムを求める関数の例を以下に示します。</p>
-<p>例のようなデータの各要素を足す様なアルゴリズムではエラー検出率が低くなってしまいます(全要素が 0 の場合チェックサムも 0 となる。エラー時に 0 を受信することはよくあるため誤って正常と判断してしまう。)。そこで実用上は CRC値 という値を用いて照合します。</p>
+<code>Udon::CRC8</code></h1>
+<p>1 バイトの CRC 値を求める関数です。以下の様に定義され、ArrayView を引数にとるため、通常の配列や配列を指すポインタ等、様々な種類の配列から CRC 値を求められます。</p>
+<blockquote class="doxtable">
+<p>&zwj;本ライブラリではシリアライザ内部で CRC を用いています。シリアライズされたデータには CRC 値が付与され、デシリアライズ時に CRC 値の照合が行われます。 </p>
+</blockquote>
+<div class="fragment"><div class="line">uint8_t CRC8(ArrayView&lt;const uint8_t&gt; buffer)</div>
+</div><!-- fragment --><p>通常の配列は ArrayView コンストラクタによる暗黙の型変換によって、そのまま引数に渡せます。</p>
+<div class="fragment"><div class="line">uint8_t data[100];</div>
+<div class="line">uint8_t checksum = <a class="code hl_function" href="namespaceUdon.html#a504b82d933419dccd907460936078550">Udon::CRC8</a>(data);</div>
+<div class="ttc" id="anamespaceUdon_html_a504b82d933419dccd907460936078550"><div class="ttname"><a href="namespaceUdon.html#a504b82d933419dccd907460936078550">Udon::CRC8</a></div><div class="ttdeci">uint8_t CRC8(ArrayView&lt; const uint8_t &gt; buffer)</div><div class="ttdoc">バイト列から CRC-8 値を計算する</div><div class="ttdef"><b>Definition</b> CRC.hpp:17</div></div>
+</div><!-- fragment --><p>ポインタからの場合 ArrayView コンストラクタを明示的に呼び出す必要があります。</p>
+<div class="fragment"><div class="line">uint8_t* data = <span class="keyword">new</span> uint8_t[100];</div>
+<div class="line">uint8_t checksum = <a class="code hl_function" href="namespaceUdon.html#a504b82d933419dccd907460936078550">Udon::CRC8</a>({ data, 100 });</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md42"></a>
+CRC の概要</h1>
+<p>CRC はチェックサムの強化版とも言える誤り検出符号です。</p>
+<p>チェックサムとは誤り検出方法のひとつで、送信バイト列から求められた値と受信バイト列から求めた値を照合し一致するか確認するアルゴリズムです。簡易的なチェックサムを求める関数の例を以下に示します。動作は単純で、データの各要素を足し合わせた値を返します。</p>
+<p>チェックサムは単純なアルゴリズムで実装可能ですが、エラー検出率が低くなってしまいます(全要素が 0 の場合チェックサムも 0 となる。エラー時に 0 を受信することはよくあるため誤って正常と判断してしまう)。そこで実用上は CRC 値等を用いた誤り検出符号を用いることが一般的です。</p>
 <div class="fragment"><div class="line">uint8_t Checksum(uint8_t* data, <span class="keywordtype">size_t</span> n)</div>
 <div class="line">{</div>
 <div class="line">    uint8_t checksum;</div>
@@ -161,21 +175,7 @@ CRCの概要</h1>
 <div class="line">}</div>
 </div><!-- fragment --><p></p>
 </details>
-<h1><a class="anchor" id="autotoc_md42"></a>
-<code>Udon::CRC8</code></h1>
-<p>1 バイトの CRC 値を求める関数です。以下の様に定義され、ArrayView を引数にとるため、通常の配列や配列を指すポインタ等、様々な種類の配列から CRC 値を求められます。</p>
-<blockquote class="doxtable">
-<p>&zwj;本ライブラリではシリアライザ内部で CRC を用いています。シリアライズされたデータには CRC 値が付与され、デシリアライズ時に CRC 値の照合が行われます。 </p>
-</blockquote>
-<div class="fragment"><div class="line">uint8_t CRC8(ArrayView&lt;const uint8_t&gt; buffer)</div>
-</div><!-- fragment --><p>通常の配列は ArrayView コンストラクタによる暗黙の型変換によって、そのまま引数に渡せます。</p>
-<div class="fragment"><div class="line">uint8_t data[100];</div>
-<div class="line">uint8_t checksum = <a class="code hl_function" href="namespaceUdon.html#a504b82d933419dccd907460936078550">Udon::CRC8</a>(data);</div>
-<div class="ttc" id="anamespaceUdon_html_a504b82d933419dccd907460936078550"><div class="ttname"><a href="namespaceUdon.html#a504b82d933419dccd907460936078550">Udon::CRC8</a></div><div class="ttdeci">uint8_t CRC8(ArrayView&lt; const uint8_t &gt; buffer)</div><div class="ttdoc">バイト列から CRC-8 値を計算する</div><div class="ttdef"><b>Definition</b> CRC.hpp:17</div></div>
-</div><!-- fragment --><p>ポインタからの場合 ArrayView コンストラクタを明示的に呼び出す必要があります。</p>
-<div class="fragment"><div class="line">uint8_t* data = <span class="keyword">new</span> uint8_t[100];</div>
-<div class="line">uint8_t checksum = <a class="code hl_function" href="namespaceUdon.html#a504b82d933419dccd907460936078550">Udon::CRC8</a>({ data, 100 });</div>
-</div><!-- fragment --> </div></div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! --></div>

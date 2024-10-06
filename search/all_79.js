@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['脳筋_0',['解決策 3 (脳筋)',['../md_docs_2Developer_2Troubleshooting.html#autotoc_md148',1,'']]]
+  ['謝辞_0',['謝辞',['../md_docs_2Developer_2Acknowledgments.html',1,'']]]
 ];

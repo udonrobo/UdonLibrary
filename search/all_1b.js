@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['w_0',['w',['../structUdon_1_1Quaternion.html#adeffb665edbd5eb5171f7a6093403a0e',1,'Udon::Quaternion']]],
-  ['write_1',['write',['../classUdon_1_1II2cBus.html#a843e809a7eca51fe29581017faccf937',1,'Udon::II2cBus::write(uint8_t data)=0'],['../classUdon_1_1II2cBus.html#a2070f8cbeabafff5f7fc3703e7836004',1,'Udon::II2cBus::write(const uint8_t *data, size_t quantity)=0'],['../classUdon_1_1I2cBusImpl.html#a9330f1e0efbc6fe33e160228c07e8b56',1,'Udon::I2cBusImpl::write(uint8_t data) override'],['../classUdon_1_1I2cBusImpl.html#a293eda5ce9904ca7b56fa031184c3dc1',1,'Udon::I2cBusImpl::write(const uint8_t *data, size_t quantity) override']]],
-  ['wstringview_2',['WStringView',['../namespaceUdon.html#a28efef3747777d9917d8f107caa44e17',1,'Udon']]]
+  ['x_0',['x',['../structUdon_1_1QuaternionDirection.html#a02f2cbcacfa729438ef80af741d87e73',1,'Udon::QuaternionDirection::x'],['../structUdon_1_1Quaternion.html#a222ac701ef894065424419046d2a8888',1,'Udon::Quaternion::x'],['../structUdon_1_1Vec2.html#aa41b9596dd6fd8353630210413608eb4',1,'Udon::Vec2::x'],['../structUdon_1_1Vec3.html#a0ff7bfcd42a8084175ed792bf6933908',1,'Udon::Vec3::x'],['../structUdon_1_1Polar.html#a24b1d2041c8363f93872d3844e3075d5',1,'Udon::Polar::x()']]],
+  ['xy_1',['xy',['../structUdon_1_1Vec3.html#af0a6cd34fcbfe76a40683f3436f3f1b4',1,'Udon::Vec3']]],
+  ['xy0_2',['xy0',['../structUdon_1_1Vec2.html#a34af991251622cea3dd3d8b99aefcf22',1,'Udon::Vec2']]]
 ];

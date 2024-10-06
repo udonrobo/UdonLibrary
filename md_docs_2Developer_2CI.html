@@ -109,7 +109,7 @@ $(function(){initNavTree('md_docs_2Developer_2CI.html',''); initResizable(true);
   <div class="headertitle"><div class="title">自動テスト</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md101"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md102"></a></p>
 <p>GitHub Actions を使用して、プッシュ時、プルリクエスト作成時にライブラリのコードを自動的に検証します。</p>
 <p>この検証を行うことで、ライブラリ追加時にコンパイルエラーになったり、バグが生じることを大幅に減らせます。</p>
 <blockquote class="doxtable">
@@ -119,20 +119,20 @@ $(function(){initNavTree('md_docs_2Developer_2CI.html',''); initResizable(true);
 <p><a href="https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml"><img src="https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg" alt="Arduino Lint" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml"><img src="https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg" alt="Unit Tests" style="pointer-events: none;" class="inline"/></a></p>
 <p>検証が成功している場合 <code>passing</code> と表示され、失敗していると <code>failing</code> と表示されます。 </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md102"></a>
+<h1><a class="anchor" id="autotoc_md103"></a>
 Arduino Lint</h1>
-<h2><a class="anchor" id="autotoc_md103"></a>
+<h2><a class="anchor" id="autotoc_md104"></a>
 ■ 概要</h2>
 <p><a href="https://github.com/arduino/arduino-cli">arduino cli</a> を使用してコンパイルできるか検証します。</p>
 <p>このテストでは構文のチェックを行うだけで、アルゴリズムのチェックは行いません。コンパイル時に処理可能なアルゴリズムはテストされます。</p>
 <p>検証されるボードは <code>Arduino Nano</code> <code>Uno</code> <code>UnoMini</code> <code>Raspberry Pi Pico</code> <code>PicoW</code> <code>Teensy3.5</code> <code>3.6</code> <code>4.0</code> <code>4.1</code> です。</p>
-<h2><a class="anchor" id="autotoc_md104"></a>
+<h2><a class="anchor" id="autotoc_md105"></a>
 ■ ディレクトリを追加する</h2>
 <p><code>UdonLibrary/test/ArduinoLint/src</code> 下にディレクトリを作成するだけでよいです。</p>
 <blockquote class="doxtable">
 <p>&zwj;Arduino の仕様で <code>src</code> ディレクトリ内のソースファイルは再帰的にコンパイルされるため、<code>src</code> ディレクトリ下に配置したファイルは全て検証されます。 </p>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md105"></a>
+<h2><a class="anchor" id="autotoc_md106"></a>
 ■ テストファイルを追加する</h2>
 <p><code>UdonLibrary/test/ArduinoLint/src/Sample</code> に <code>.cpp</code> ファイルを作成します。</p>
 <div class="fragment"><div class="line"><span class="comment">// UdonLibrary/src/Udon/Sample/Sample.hpp (例)</span></div>
@@ -156,7 +156,7 @@ Arduino Lint</h1>
 </div><!-- fragment --><blockquote class="doxtable">
 <p>&zwj;<code>test</code> という関数は他のテストファイルにも存在しているため、<code>static</code> 関数にし内部リンケージを持たせています。 </p>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md106"></a>
+<h2><a class="anchor" id="autotoc_md107"></a>
 ■ コンパイル時に計算可能なアルゴリズムのテスト</h2>
 <p>コンパイル時に値が決定する関数、定数は <code>static_assert(定数式, 文字列リテラル)</code> を使用してテストできます。</p>
 <blockquote class="doxtable">
@@ -175,7 +175,7 @@ Arduino Lint</h1>
 <div class="line">    <span class="keyword">static_assert</span>(Factorial(4) ==  24, <span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line">    <span class="keyword">static_assert</span>(Factorial(5) == 120, <span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md107"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md108"></a>
 ■ 検証ボードを追加する</h2>
 <p>本テストのワークフローは <code>UdonLibrary/.github/workflows/ArduinoLint.yml</code> に定義されています。</p>
 <p>このファイルにある <code>matrix: bord:</code> に <code>fqbn</code> を調べ追記することでボードを追加できます。</p>
@@ -191,15 +191,15 @@ Arduino Lint</h1>
 <div class="fragment"><div class="line">arduino-cli config add board_manager.additional_urls https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json</div>
 <div class="line">arduino-cli core update-index</div>
 <div class="line">arduino-cli core install rp2040:rp2040  # 任意のプラットフォーム</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md108"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md109"></a>
 ■ ローカル環境で実行</h2>
 <p><code>UdonLibrary/test/ArduinoLint/ArduinoLint.ino</code> を ArduinoIDE で開き、検証ボタンを押すことで、プッシュせずにテストを実行できます。</p>
-<h1><a class="anchor" id="autotoc_md109"></a>
+<h1><a class="anchor" id="autotoc_md110"></a>
 Google Unit Test</h1>
-<h2><a class="anchor" id="autotoc_md110"></a>
+<h2><a class="anchor" id="autotoc_md111"></a>
 ■ 概要</h2>
 <p><a href="https://github.com/google/googletest">GoogleTest</a> を使用してアルゴリズムの検証を行います。</p>
-<h2><a class="anchor" id="autotoc_md111"></a>
+<h2><a class="anchor" id="autotoc_md112"></a>
 ■ ディレクトリを追加する</h2>
 <p><code>UdonLibrary/test/UnitTest</code> 下にディレクトリを配置します。</p>
 <p>GoogleTest は CMake を使用してビルドを行います。そのためビルドしたいファイル、ディレクトリを CMakeLists.txt に登録する必要があります。</p>
@@ -210,7 +210,7 @@ Google Unit Test</h1>
 <div class="line"># ファイル末尾</div>
 <div class="line"># サブディレクトリ登録</div>
 <div class="line">add_subdirectory(./Sample)</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md112"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md113"></a>
 ■ ソースファイルを追加する</h2>
 <p><code>UdonLibrary/test/UnitTest</code> にディレクトリを追加し、 <code>.cpp</code> ファイルを追加します。</p>
 <p>ソースファイルを追加する場合、追加したディレクトリ内の <code>CMakeLists.txt</code> に <code>add_executable</code> を使用してソースファイルを登録します。</p>
@@ -237,7 +237,7 @@ Google Unit Test</h1>
 </div><!-- fragment --><blockquote class="doxtable">
 <p>&zwj;<code>${UDON_LIBRARY_DIR}</code> は実行マシンから見た <code>UdonLibrary/src</code> の絶対パス名で <code>UdonLibrary/test/UnitTest/CMakeLists.txt</code> 内で定義されます。 </p>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md113"></a>
+<h2><a class="anchor" id="autotoc_md114"></a>
 ■ テストを書く</h2>
 <p>追加したソースファイルにテストコードを記述します。テストコードの書き方は <a href="https://google.github.io/googletest/reference/testing.html">GoogleTest ドキュメント</a> を参照してください。</p>
 <div class="fragment"><div class="line"><span class="comment">// UdonLibrary/src/Udon/Algorithm/Factorial.hpp</span></div>
@@ -257,7 +257,7 @@ Google Unit Test</h1>
 </div><!-- fragment --><blockquote class="doxtable">
 <p>&zwj;<code>EXPECT_EQ(val1, val2)</code> は <code>val1 == val2</code> であるかを検証します。 </p>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md114"></a>
+<h2><a class="anchor" id="autotoc_md115"></a>
 ■ ローカル環境で実行</h2>
 <p><code>UdonLibrary/test/UnitTest</code> で以下のコマンドを実行することで、プッシュせずにローカルで実行できます。</p>
 <div class="fragment"><div class="line">cmake -S . -B Build</div>

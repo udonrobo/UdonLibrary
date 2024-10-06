@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['基本_0',['基本',['../md_docs_2Other_2Traits.html#autotoc_md228',1,'']]]
+  ['拡張機能インストール_0',['拡張機能インストール',['../md_docs_2Developer_2DevelopSetup.html#autotoc_md120',1,'C/C++ 拡張機能インストール'],['../md_docs_2Developer_2DevelopSetup.html#autotoc_md119',1,'clang-format 拡張機能インストール']]]
 ];

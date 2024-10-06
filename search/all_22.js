@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['、ファイル_0',['ディレクトリ(フォルダ)、ファイル',['../md_docs_2Developer_2StyleGuide.html#autotoc_md135',1,'']]]
+  ['が必要_0',['が必要',['../md_docs_2Communication_2Serial.html#autotoc_md96',1,'PC 側 (OpenSiv3D が必要)'],['../md_docs_2Communication_2Serial.html#autotoc_md98',1,'PC 側 (OpenSiv3D が必要)']]]
 ];

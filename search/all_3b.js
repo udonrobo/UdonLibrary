@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['ヒープ領域を使用しないシリアライズ_0',['ヒープ領域を使用しないシリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md215',1,'']]]
+  ['フィードバック制御_0',['フィードバック制御',['../md_docs_2Algorithm_2FeedbackController.html',1,'']]],
+  ['フォルダ_20、ファイル_1',['ディレクトリ(フォルダ)、ファイル',['../md_docs_2Developer_2StyleGuide.html#autotoc_md137',1,'']]]
 ];
