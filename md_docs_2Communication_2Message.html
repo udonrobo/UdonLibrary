@@ -186,17 +186,20 @@ $(function(){initNavTree('md_docs_2Communication_2Message.html',''); initResizab
 </div><!-- fragment --><p>ライブラリに定義を追加する場合、<code><a class="el" href="namespaceUdon_1_1Message.html">Udon::Message</a></code> 名前空間内に定義し、<code>UdonLibrary/Com/Message/</code> 下に配置します。また、<code>UdonLibrary/Com/Message/Message.hpp</code> にインクルードを追加します。</p>
 <div class="fragment"><div class="line"><span class="comment">// UdonLibrary/Com/Message/Vector2D.hpp</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon_1_1Message.html">Udon::Message</a></div>
+<div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
 <div class="line">{</div>
-<div class="line">    <span class="keyword">struct </span>Vector2D</div>
+<div class="line">    <span class="keyword">namespace </span>Message</div>
 <div class="line">    {</div>
-<div class="line">        <span class="keywordtype">double</span> x;</div>
-<div class="line">        <span class="keywordtype">double</span> y;</div>
+<div class="line">        <span class="keyword">struct </span>Vector2D</div>
+<div class="line">        {</div>
+<div class="line">            <span class="keywordtype">double</span> x;</div>
+<div class="line">            <span class="keywordtype">double</span> y;</div>
 <div class="line"> </div>
-<div class="line">        <a class="code hl_define" href="EnumerableMacro_8hpp.html#a6e99cc65e2a105775034579f13c59b8d">UDON_ENUMERABLE</a>(x, y)</div>
-<div class="line">    };</div>
+<div class="line">            <a class="code hl_define" href="EnumerableMacro_8hpp.html#a6e99cc65e2a105775034579f13c59b8d">UDON_ENUMERABLE</a>(x, y)</div>
+<div class="line">        };</div>
+<div class="line">    }</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespaceUdon_1_1Message_html"><div class="ttname"><a href="namespaceUdon_1_1Message.html">Udon::Message</a></div><div class="ttdef"><b>Definition</b> AirCylinder.hpp:16</div></div>
+<div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// UdonLibrary/Com/Message/Message.hpp</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;Udon/Com/Message/Vector2D.hpp&gt;</span></div>
