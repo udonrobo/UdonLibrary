@@ -8,7 +8,7 @@
 
 #include <Udon/Algorithm/SteerOptimizer.hpp>
 
-inline void test()
+static void test()
 {
     {
         Udon::SteerModuleOptimizer o;

@@ -16,7 +16,7 @@ struct DummyBus
     Udon::CanRxNode* createRx(uint32_t, size_t) override { return nullptr; }
 };
 
-inline void test()
+static void test()
 {
     DummyBus bus;
     {

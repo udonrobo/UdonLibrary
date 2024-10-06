@@ -7,7 +7,7 @@
 #include <Arduino.h>
 #include <Udon/Driver/BNO055.hpp>
 
-inline void test()
+static void test()
 {
     Udon::BNO055 bno{ Wire };
     bno.begin();

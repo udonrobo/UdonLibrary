@@ -50,14 +50,14 @@ struct Sample
 #include <UdonFwd.hpp>
 #include <Udon/Sample/Sample.hpp>
 
-inline void test()
+static void test()
 {
     Sample sample{ 10.0 };
     sample.f();
 }
 ```
 
-> `test` という関数は他のテストファイルにも存在しているため、リンクエラーを起こさないようにインライン関数にしています。
+> `test` という関数は他のテストファイルにも存在しているため、`static` 関数にし内部リンケージを持たせています。
 
 ### ■ コンパイル時に計算可能なアルゴリズムのテスト
 
@@ -74,7 +74,7 @@ constexpr int Factorial(int n) { ... }
 // UdonLibrary/test/ArduinoLint/src/Algorithm/Factorial.cpp (例)
 #include <Udon/Algorithm/Factorial.hpp>
 
-inline void test()
+static void test()
 {
     static_assert(Factorial(1) ==   1, "");
     static_assert(Factorial(2) ==   2, "");

@@ -66,7 +66,7 @@ struct InnerUnEnumerable
     UnEnumerable c;
 };
 
-inline void test()
+static void test()
 {
     using namespace Udon::Traits;
 

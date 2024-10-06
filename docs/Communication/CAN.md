@@ -227,6 +227,8 @@ void loop()
 
 ロボマスモーター等の CAN 通信を用いる市販のモーターをドライブするには、バイト列で直接やり取りする必要があります。この場合、チェックサムを付与する `CanReader` `CanWriter` クラスは使用できません。バイト列を直接やり取りするには送受信ノードを `createTx` `createRx` 関数を用いて作成し、作成したノードに対しデータの書き込み、読み出しを行います。
 
+8バイトより長いデータは分割して送受信されます。この時、1 バイト目にインデックス番号が付与されます。8 バイト以下のデータはインデックスを付与せず送受信します。
+
 ### ■ 送信ノード
 
 <details>
@@ -354,13 +356,7 @@ void loop()
     bus.update();
 
     Serial.print(rxNode->data[0]); Serial.print('\t');
-    Serial.print(rxNode->data[1]); Serial.print('\t');
-    Serial.print(rxNode->data[2]); Serial.print('\t');
-    Serial.print(rxNode->data[3]); Serial.print('\t');
-    Serial.print(rxNode->data[4]); Serial.print('\t');
-    Serial.print(rxNode->data[5]); Serial.print('\t');
-    Serial.print(rxNode->data[6]); Serial.print('\t');
-    Serial.print(rxNode->data[7]); Serial.print('\n');
+    Serial.print(rxNode->data[1]); Serial.print('\n');
 }
 ```
 
@@ -481,10 +477,6 @@ bus.show();     // バスに参加している送受信ノードの列挙、送�
 reader.show();  // 受信データを表示
 writer.show();  // 送信データを表示
 ```
-
-## エラー原因
-
-通信が行われない -> Udon::PioClockBegin() の呼び忘れ
 
 ## クラスの組み合わせ色々
 

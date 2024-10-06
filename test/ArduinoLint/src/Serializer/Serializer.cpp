@@ -17,7 +17,7 @@ struct Hoge
     UDON_ENUMERABLE(a, b, c);
 };
 
-inline void test()
+static void test()
 {
     Hoge hoge { 1, 2, 3 };
 

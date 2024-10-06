@@ -7,7 +7,7 @@
 #include <Arduino.h>
 #include <Udon/Utility/Assert.hpp>
 
-inline void test()
+static void test()
 {
     Udon::Assert(1 + 1 == 2);
     Udon::Assert(1 + 1 == 2, "1 + 1 is 2 (^o^)");

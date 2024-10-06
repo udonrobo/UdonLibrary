@@ -7,7 +7,7 @@
 #include <Arduino.h>
 #include <Udon/Types/ArrayView.hpp>
 
-inline void testConstructor()
+static void testConstructor()
 {
     Udon::ArrayView<int> defaultConstructor{};
 
@@ -17,7 +17,7 @@ inline void testConstructor()
     Udon::ArrayView<int> arrayPointer{ array, 10 };
 }
 
-inline void testMethod()
+static void testMethod()
 {
     Udon::ArrayView<int> arrayView{};
     arrayView.size();
@@ -39,7 +39,7 @@ inline void testMethod()
     arrayView.crend();
 }
 
-inline void testConstMethod()
+static void testConstMethod()
 {
     const Udon::ArrayView<int> arrayView{};
     arrayView.size();

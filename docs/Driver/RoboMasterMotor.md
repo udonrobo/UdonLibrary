@@ -27,12 +27,10 @@
 
 `setCurrent` で電流値を指定することで動作します。電流範囲は先ほどの表のとおりです。
 
-指定可能な電流の範囲は `CurrentMin` `CurrentMax` メンバ定数より取得できます。フィードバック制御の制御値を制限する場合などに有用です。
-
 ```cpp
 #include <Udon.hpp>
 
-static Udon::CanBusTeensy<CAN1> bus;
+static Udon::CanBusTeensy<CAN2> bus;
 
 static Udon::RoboMasterC620 motor{ bus, 1 };   // ロボマスモーター (モーターID: 1)
 
@@ -46,8 +44,20 @@ void loop()
     bus.update();
 
     // 動作電流値を設定 (mA)
-    motor.setCurrent(10000);
+    motor.setCurrent(5000);
 }
+```
+
+指定可能な電流の範囲は `CurrentMin` `CurrentMax` メンバ定数より取得できます。フィードバック制御の制御値を制限する場合などに有用です。
+
+```cpp
+// 指定できる最小電流値 [mA]
+const int16_t currentMin = motor.CurrentMin;
+const int16_t currentMin = Udon::RoboMasterC620::CurrentMin;  // static メンバなのでこちらでも可 モーターの種類が変わった時にクラス名も書き換える必要があるため注意
+
+// 指定できる最大電流値 [mA]
+const int16_t currentMax = motor.CurrentMax;
+const int16_t currentMax = Udon::RoboMasterC620::CurrentMax;
 ```
 
 ## センサー値取得
@@ -76,7 +86,7 @@ void loop()
 }
 ```
 
-## 複数モーター
+## 複数モーターの場合
 
 モーター ID ごとにオブジェクトを生成することで、1 つの CAN バスに対して最大 8 つまでモーターを接続可能です。
 
@@ -85,7 +95,7 @@ void loop()
 ```cpp
 #include <Udon.hpp>
 
-static Udon::CanBusTeensy<CAN1> bus;
+static Udon::CanBusTeensy<CAN2> bus;
 
 // C620
 static Udon::RoboMasterC620 motor1{ bus, 1 };
@@ -94,4 +104,191 @@ static Udon::RoboMasterC620 motor2{ bus, 2 };
 // C610
 static Udon::RoboMasterC610 motor3{ bus, 3 };
 static Udon::RoboMasterC610 motor4{ bus, 4 };
+```
+
+## 複数 CAN バスの場合
+
+複数の CAN バスを使用する場合、CAN バスクラスのオブジェクトを複数作成し、それぞれのモーターに対して対応する CAN バスを指定してください。
+
+例えば Teensy の場合次のようになります。[詳細](./../Communication/CAN.md#-Teensy)
+
+```cpp
+#include <Udon.hpp>
+
+static Udon::CanBusTeensy<CAN1> bus1;
+static Udon::CanBusTeensy<CAN2> bus2;
+
+static Udon::RoboMasterC620 motor1{ bus1, 1 };  // CAN1 バスに接続されたモーター (モーターID: 1)
+static Udon::RoboMasterC620 motor2{ bus2, 1 };  // CAN2 バスに接続されたモーター (モーターID: 1)
+```
+
+## Raspberry Pi Pico での使用例
+
+CAN バスクラスに `Udon::CanBusSpi` を使用してください。[詳細](./../Communication/CAN.md#-raspberry-pi-pico)
+
+```cpp
+#include <Udon.hpp>
+
+static Udon::CanBusSpi bus;
+
+static Udon::RoboMasterC620 motor{ bus, 1 };
+```
+
+## スケッチ例 (電流制御)
+
+```cpp
+//
+//    Copyright (c) 2022-2024 udonrobo
+//
+
+#include <Udon.hpp>
+
+// CAN通信バス
+static Udon::CanBusTeensy<CAN2> bus;
+
+// ロボマスモーター (C620ドライバ経由 モーターID: 2)
+static Udon::RoboMasterC620 motor{ bus, 2 };
+
+void setup()
+{
+    // CAN通信を開始
+    bus.begin();
+}
+
+void loop()
+{
+    // CAN通信を更新
+    bus.update();
+
+    // 動作電流値を設定
+    motor.setCurrent(10000);
+}
+```
+
+## スケッチ例 (速度フィードバック制御)
+
+```cpp
+//
+//    Copyright (c) 2022-2024 udonrobo
+//
+
+#include <Udon.hpp>
+
+// ループ周期制御 (PID制御器のサンプリング周期を設定するために使用)
+static Udon::LoopCycleController loopCtrl{ 1000 };
+
+// CAN通信バス
+static Udon::CanBusTeensy<CAN2> bus;
+
+// ロボマスモーター (C620ドライバ経由 モーターID: 2)
+static Udon::RoboMasterC620 motor{ bus, 2 };
+
+// 速度をフィードバック制御するPID制御器
+static Udon::PidController pid{ 2, 0, 0.03, loopCtrl.cycleUs() };
+
+
+void setup()
+{
+    bus.begin();
+}
+
+void loop()
+{
+    bus.update();
+
+    // 目標速度 (rpm)
+    const double targetSpeed = 5000;
+
+    // 速度フィードバック制御をして目標速度に制御する
+    const double sendCurrent = pid(motor.getVelocity(), targetSpeed, motor.CurrentMin, motor.CurrentMax);
+    motor.setCurrent(sendCurrent);
+
+    loopCtrl.update();
+}
+```
+
+## スケッチ例 (速度制御クラスの作成例)
+
+実用的な例として、ロボマスモーターの速度をフィードバック制御するクラスを作成します。複数のモーターを制御する場合、クラスを作成することでコードの見通しを良くすることができます。
+
+```cpp
+//
+//    Copyright (c) 2022-2024 udonrobo
+//
+//    MotorSpeedFeedback.hpp
+//
+
+#pragma once
+
+#include <Udon.hpp>
+
+class MotorSpeedFeedback
+{
+    Udon::RoboMasterC620 motor;
+    Udon::PidController  pid;
+
+public:
+    MotorSpeedFeedback(Udon::RoboMasterC620&& motor, Udon::PidController&& pid)
+        : motor{ std::move(motor) }
+        , pid{ std::move(pid) }
+    {
+    }
+
+    void move(const double rpm)
+    {
+        const auto sendCurrent = pid(motor.getVelocity(), rpm, motor.CurrentMin, motor.CurrentMax);
+        motor.setCurrent(sendCurrent);
+    }
+
+    void stop()
+    {
+        pid.clearPower();
+        motor.setCurrent(0);
+    }
+};
+```
+
+```cpp
+//
+//    Copyright (c) 2022-2024 udonrobo
+//
+//    Main.ino
+//
+
+#include "MotorSpeedFeedback.hpp"
+
+static Udon::CanBusTeensy<CAN2> bus;
+
+static Udon::LoopCycleController loopCtrl{ 1000 };
+
+static MotorSpeedFeedback motor1 {
+    Udon::RoboMasterC620{ bus, 1 },
+    Udon::PidController{ 2, 0, 0.03, loopCtrl.cycleUs() }
+};
+
+static MotorSpeedFeedback motor2 {
+    Udon::RoboMasterC620{ bus, 2 },
+    Udon::PidController{ 2, 0, 0.03, loopCtrl.cycleUs() }
+};
+
+static MotorSpeedFeedback motor3 {
+    Udon::RoboMasterC620{ bus, 3 },
+    Udon::PidController{ 2, 0, 0.03, loopCtrl.cycleUs() }
+};
+
+void setup()
+{
+    bus.begin();
+}
+
+void loop()
+{
+    bus.update();
+
+    motor1.move(5000);
+    motor2.move(5000);
+    motor3.move(5000);
+
+    loopCtrl.update();
+}
 ```

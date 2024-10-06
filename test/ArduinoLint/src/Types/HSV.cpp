@@ -8,7 +8,7 @@
 
 #include <Udon/Types/HSV.hpp>
 
-inline void test()
+static void test()
 {
 
     // コンストラクタ
