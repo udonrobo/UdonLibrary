@@ -1,5 +1,7 @@
 # ドキュメント自動生成
 
+生成されたドキュメントは <https://udonrobo.github.io/UdonLibrary/> で公開されています。
+
 Doxygen を用いてソースコード、マークダウンからドキュメントを自動生成しています。マスターブランチにプッシュがあった場合 GitHub Actions を通じてページが更新されます。ワークフローは `.github/workflows/DoxygenPage.yml` に定義されており、以下の流れで更新を行います。
 
 ```mermaid
