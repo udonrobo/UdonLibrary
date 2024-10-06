@@ -60,15 +60,18 @@ struct Vector2D
 ```cpp
 // UdonLibrary/Com/Message/Vector2D.hpp
 
-namespace Udon::Message
+namespace Udon
 {
-    struct Vector2D
+    namespace Message
     {
-        double x;
-        double y;
+        struct Vector2D
+        {
+            double x;
+            double y;
 
-        UDON_ENUMERABLE(x, y)
-    };
+            UDON_ENUMERABLE(x, y)
+        };
+    }
 }
 ```
 

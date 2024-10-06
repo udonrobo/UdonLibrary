@@ -47,8 +47,8 @@
 - [LoRa](./docs/Communication/LoRa.md)
 - [IM920 (動作不明)](./docs/Communication/IM920.md)
 - [USB/UART](./docs/Communication/Serial.md)
-- [コントローラ](./docs/Communication/Pad.md)🌟update
-- [コントローラを構成する](./docs/Communication/PadOrganization.md)🌟new
+- [コントローラー](./docs/Communication/Pad.md)🌟update
+- [コントローラーを構成する](./docs/Communication/PadOrganization.md)🌟new
 - [CRC エラーチェック](./docs/Communication/CRC.md)
 
 ### ドライバー
