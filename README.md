@@ -41,13 +41,14 @@
 ### 通信
 
 - [共通](./docs/Communication/Common.md)
+- [メッセージ型](./docs/Communication/Message.md)🌟new
 - [CAN](./docs/Communication/CAN.md)
 - [I2C](./docs/Communication/I2C.md)
 - [LoRa](./docs/Communication/LoRa.md)
-- [IM920 (現在部で使用していないため動作するか不明)](./docs/Communication/IM920.md)
+- [IM920 (動作不明)](./docs/Communication/IM920.md)
 - [USB/UART](./docs/Communication/Serial.md)
-- [コントローラ](./docs/Communication/Pad.md)
-- [コントローラを構成する](./docs/Communication/PadOrganization.md)
+- [コントローラ](./docs/Communication/Pad.md)🌟update
+- [コントローラを構成する](./docs/Communication/PadOrganization.md)🌟new
 - [CRC エラーチェック](./docs/Communication/CRC.md)
 
 ### ドライバー
@@ -56,7 +57,9 @@
 - [ロボマスモーター](./docs/Driver/RoboMasterMotor.md)
 - [BNO055](./docs/Driver/BNO055.md)
 - [DIP スイッチ](./docs/Driver/DipSwitch.md)
+- [7 セグメント LED](./docs/Driver/SegmentsLed.md)🌟new
 - [Raspberry Pi Pico / PIO](./docs/Driver/PIO.md)
+- [Raspberry Pi Pico / サーボ](./docs/Driver/PicoServo.md)🌟new
 - [Raspberry Pi Pico / ロータリーエンコーダー](./docs/Driver/EncoderPico.md)
 - [Raspberry Pi Pico / ウォッチドックタイマー](./docs/Driver/PicoWDT.md)
 
@@ -84,7 +87,7 @@
 - [スタイルガイド](./docs/Developer/StyleGuide.md)
 - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
 - [GitHub Actions / 自動テスト](./docs/Developer/CI.md)
-- [GitHub Actions / ドキュメント自動生成](./docs/Developer/DoxygenPage.md)
+- [GitHub Actions / ドキュメント自動生成](./docs/Developer/DoxygenPage.md)🌟update
 - [謝辞](./docs/Developer/Acknowledgments.md)
 
 ## ライセンス
