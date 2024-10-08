@@ -6,6 +6,6 @@ var classUdon_1_1I2cSlaveWriter =
     [ "I2cSlaveWriter", "classUdon_1_1I2cSlaveWriter.html#a4efab29e5de4f0b810f052b36af63d25", null ],
     [ "begin", "classUdon_1_1I2cSlaveWriter.html#aef09d367f078d956116658df05d30342", null ],
     [ "setMessage", "classUdon_1_1I2cSlaveWriter.html#a9fb58a73a6119683a6b0f882833b940b", null ],
-    [ "show", "classUdon_1_1I2cSlaveWriter.html#abea9c4f7534cd82c1d7d01060b7dfd29", null ],
-    [ "showRaw", "classUdon_1_1I2cSlaveWriter.html#aa2d97d2d1e4bfb6e2c91ef3e24270270", null ]
+    [ "show", "classUdon_1_1I2cSlaveWriter.html#abfd03788cc4f51905929dee6ebd595a0", null ],
+    [ "showRaw", "classUdon_1_1I2cSlaveWriter.html#a7f13d074b45d230f948202bc6285e27f", null ]
 ];

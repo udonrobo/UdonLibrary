@@ -133,12 +133,12 @@ $(function(){initNavTree('classUdon_1_1Im920Writer.html',''); initResizable(true
 <tr class="separator:a87b6f3ee5c6c6de622345d27232d4240"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb84180be75dd0dc07854c288254fc22" id="r_afb84180be75dd0dc07854c288254fc22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb84180be75dd0dc07854c288254fc22">setMessage</a> (const Message &amp;message)</td></tr>
 <tr class="separator:afb84180be75dd0dc07854c288254fc22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a986220c9f630e3592bb8e970abf70808" id="r_a986220c9f630e3592bb8e970abf70808"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a986220c9f630e3592bb8e970abf70808">show</a> (char gap='\t') const</td></tr>
-<tr class="memdesc:a986220c9f630e3592bb8e970abf70808"><td class="mdescLeft">&#160;</td><td class="mdescRight">送信内容を表示  <br /></td></tr>
-<tr class="separator:a986220c9f630e3592bb8e970abf70808"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75d2a06f4942629e8a346a46865d8d2c" id="r_a75d2a06f4942629e8a346a46865d8d2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75d2a06f4942629e8a346a46865d8d2c">showRaw</a> (char gap=' ') const</td></tr>
-<tr class="memdesc:a75d2a06f4942629e8a346a46865d8d2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">送信バッファを表示  <br /></td></tr>
-<tr class="separator:a75d2a06f4942629e8a346a46865d8d2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5762010d071cf86d13c8c0e1870c48a7" id="r_a5762010d071cf86d13c8c0e1870c48a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5762010d071cf86d13c8c0e1870c48a7">show</a> () const</td></tr>
+<tr class="memdesc:a5762010d071cf86d13c8c0e1870c48a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">送信内容を表示  <br /></td></tr>
+<tr class="separator:a5762010d071cf86d13c8c0e1870c48a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75af029752279191f272ef652a0880b6" id="r_a75af029752279191f272ef652a0880b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75af029752279191f272ef652a0880b6">showRaw</a> () const</td></tr>
+<tr class="memdesc:a75af029752279191f272ef652a0880b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">送信バッファを表示  <br /></td></tr>
+<tr class="separator:a75af029752279191f272ef652a0880b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 静的公開変数類</h2></td></tr>
@@ -254,8 +254,8 @@ template&lt;typename Message &gt; </div>
 
 </div>
 </div>
-<a id="a986220c9f630e3592bb8e970abf70808" name="a986220c9f630e3592bb8e970abf70808"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a986220c9f630e3592bb8e970abf70808">&#9670;&#160;</a></span>show()</h2>
+<a id="a5762010d071cf86d13c8c0e1870c48a7" name="a5762010d071cf86d13c8c0e1870c48a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5762010d071cf86d13c8c0e1870c48a7">&#9670;&#160;</a></span>show()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -268,7 +268,7 @@ template&lt;typename Message &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1Im920Writer.html">Udon::Im920Writer</a>&lt; Message &gt;::show </td>
           <td>(</td>
-          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>gap</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'\t'</span></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -280,17 +280,11 @@ template&lt;typename Message &gt; </div>
 </div><div class="memdoc">
 
 <p>送信内容を表示 </p>
-<dl class="params"><dt>引数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">gap</td><td>区切り文字 (default: '\t') </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
-<a id="a75d2a06f4942629e8a346a46865d8d2c" name="a75d2a06f4942629e8a346a46865d8d2c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75d2a06f4942629e8a346a46865d8d2c">&#9670;&#160;</a></span>showRaw()</h2>
+<a id="a75af029752279191f272ef652a0880b6" name="a75af029752279191f272ef652a0880b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75af029752279191f272ef652a0880b6">&#9670;&#160;</a></span>showRaw()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -303,7 +297,7 @@ template&lt;typename Message &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classUdon_1_1Im920Writer.html">Udon::Im920Writer</a>&lt; Message &gt;::showRaw </td>
           <td>(</td>
-          <td class="paramtype">char</td>          <td class="paramname"><span class="paramname"><em>gap</em></span><span class="paramdefsep"> = </span><span class="paramdefval">'&#160;'</span></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -315,12 +309,6 @@ template&lt;typename Message &gt; </div>
 </div><div class="memdoc">
 
 <p>送信バッファを表示 </p>
-<dl class="params"><dt>引数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">gap</td><td>区切り文字 (default: ' ') </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
