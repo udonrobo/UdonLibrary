@@ -211,7 +211,7 @@ $(function(){initNavTree('RoboMasterMotor_8hpp_source.html',''); initResizable(t
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            {</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                current = current * directionSign();</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                <span class="keyword">const</span> <span class="keyword">auto</span> transmitCurrent = <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(current * 16384 / 20000);    <span class="comment">// 16bit符号なし整数に変換</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                <span class="keyword">const</span> <span class="keyword">auto</span> transmitCurrent = <span class="keyword">static_cast&lt;</span>int16_t<span class="keyword">&gt;</span>(current * 16384 / 20000);</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                <span class="keywordflow">if</span> (motorId &gt; 4)</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                {</div>
