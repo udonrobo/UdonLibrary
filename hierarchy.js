@@ -83,6 +83,7 @@ var hierarchy =
     [ "Udon::Optional< T >", "classUdon_1_1Optional.html", null ],
     [ "Udon::Optional< MessageType >", "classUdon_1_1Optional.html", null ],
     [ "Udon::Optional< Udon::PidController::Parameter >", "classUdon_1_1Optional.html", null ],
+    [ "Udon::Optional< Udon::SpeedPidController::Parameter >", "classUdon_1_1Optional.html", null ],
     [ "Udon::Optional< uint16_t >", "classUdon_1_1Optional.html", null ],
     [ "Udon::Optional< uint8_t >", "classUdon_1_1Optional.html", null ],
     [ "Udon::Message::PadPS5", "structUdon_1_1Message_1_1PadPS5.html", null ],
@@ -93,6 +94,7 @@ var hierarchy =
       [ "Udon::Impl::PadPS5OnboardUSBReader< Dummy >", "classUdon_1_1Impl_1_1PadPS5OnboardUSBReader.html", null ]
     ] ],
     [ "Udon::PidController::Parameter", "structUdon_1_1PidController_1_1Parameter.html", null ],
+    [ "Udon::SpeedPidController::Parameter", "structUdon_1_1SpeedPidController_1_1Parameter.html", null ],
     [ "Udon::Message::PhotoSensor", "structUdon_1_1Message_1_1PhotoSensor.html", null ],
     [ "Udon::PidController", "classUdon_1_1PidController.html", null ],
     [ "Udon::Polar", "structUdon_1_1Polar.html", null ],
@@ -123,6 +125,7 @@ var hierarchy =
     [ "Udon::SivSerialReader< Message >", "classUdon_1_1SivSerialReader.html", null ],
     [ "Udon::SivSerialWriter< Message >", "classUdon_1_1SivSerialWriter.html", null ],
     [ "Udon::Message::Solenoid", "structUdon_1_1Message_1_1Solenoid.html", null ],
+    [ "Udon::SpeedPidController", "classUdon_1_1SpeedPidController.html", null ],
     [ "Udon::StaticVector< T, Capacity >", "classUdon_1_1StaticVector.html", null ],
     [ "Udon::StaticVector< can_frame, 1024 >", "classUdon_1_1StaticVector.html", null ],
     [ "Udon::StaticVector< CAN_message_t, 1024 >", "classUdon_1_1StaticVector.html", null ],

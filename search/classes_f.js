@@ -12,11 +12,12 @@ var searchData=
   ['sivserialreader_9',['SivSerialReader',['../classUdon_1_1SivSerialReader.html',1,'Udon']]],
   ['sivserialwriter_10',['SivSerialWriter',['../classUdon_1_1SivSerialWriter.html',1,'Udon']]],
   ['solenoid_11',['Solenoid',['../structUdon_1_1Message_1_1Solenoid.html',1,'Udon::Message']]],
-  ['staticvector_12',['StaticVector',['../classUdon_1_1StaticVector.html',1,'Udon']]],
-  ['staticvector_3c_20can_5fframe_2c_201024_20_3e_13',['StaticVector&lt; can_frame, 1024 &gt;',['../classUdon_1_1StaticVector.html',1,'Udon']]],
-  ['staticvector_3c_20can_5fmessage_5ft_2c_201024_20_3e_14',['StaticVector&lt; CAN_message_t, 1024 &gt;',['../classUdon_1_1StaticVector.html',1,'Udon']]],
-  ['steermoduleoptimizer_15',['SteerModuleOptimizer',['../classUdon_1_1SteerModuleOptimizer.html',1,'Udon']]],
-  ['steeroptimizer_16',['SteerOptimizer',['../classUdon_1_1SteerOptimizer.html',1,'Udon']]],
-  ['stepping_17',['Stepping',['../structUdon_1_1Message_1_1Stepping.html',1,'Udon::Message']]],
-  ['switch_18',['Switch',['../structUdon_1_1Message_1_1Switch.html',1,'Udon::Message']]]
+  ['speedpidcontroller_12',['SpeedPidController',['../classUdon_1_1SpeedPidController.html',1,'Udon']]],
+  ['staticvector_13',['StaticVector',['../classUdon_1_1StaticVector.html',1,'Udon']]],
+  ['staticvector_3c_20can_5fframe_2c_201024_20_3e_14',['StaticVector&lt; can_frame, 1024 &gt;',['../classUdon_1_1StaticVector.html',1,'Udon']]],
+  ['staticvector_3c_20can_5fmessage_5ft_2c_201024_20_3e_15',['StaticVector&lt; CAN_message_t, 1024 &gt;',['../classUdon_1_1StaticVector.html',1,'Udon']]],
+  ['steermoduleoptimizer_16',['SteerModuleOptimizer',['../classUdon_1_1SteerModuleOptimizer.html',1,'Udon']]],
+  ['steeroptimizer_17',['SteerOptimizer',['../classUdon_1_1SteerOptimizer.html',1,'Udon']]],
+  ['stepping_18',['Stepping',['../structUdon_1_1Message_1_1Stepping.html',1,'Udon::Message']]],
+  ['switch_19',['Switch',['../structUdon_1_1Message_1_1Switch.html',1,'Udon::Message']]]
 ];

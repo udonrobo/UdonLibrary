@@ -1,5 +1,7 @@
 var NAVTREEINDEX3 =
 {
+"classUdon_1_1I2cBusImpl.html#a75428bb509303336b67f22d9f35dfe2b":[55,0,0,20,20],
+"classUdon_1_1I2cBusImpl.html#a7745ad0f6650cb752ddd28f14a72fadd":[54,0,1,23,12],
 "classUdon_1_1I2cBusImpl.html#a7745ad0f6650cb752ddd28f14a72fadd":[55,0,0,20,12],
 "classUdon_1_1I2cBusImpl.html#a7f0233e6e3d16d9177ce565bed380c90":[54,0,1,23,2],
 "classUdon_1_1I2cBusImpl.html#a7f0233e6e3d16d9177ce565bed380c90":[55,0,0,20,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX3 =
 "classUdon_1_1Impl_1_1Deserializer.html#a94befd81b3eab2ae0f4d5988007bfd29":[55,0,0,0,0,1],
 "classUdon_1_1Impl_1_1Deserializer.html#ac6bc10bcffff7ced1cbf1ad9ac7d3d3f":[54,0,1,0,0,0],
 "classUdon_1_1Impl_1_1Deserializer.html#ac6bc10bcffff7ced1cbf1ad9ac7d3d3f":[55,0,0,0,0,0],
-"classUdon_1_1Impl_1_1Deserializer.html#accfeefa09be65ae2e72b461164cb5fa6":[54,0,1,0,0,2],
-"classUdon_1_1Impl_1_1Deserializer.html#accfeefa09be65ae2e72b461164cb5fa6":[55,0,0,0,0,2],
-"classUdon_1_1Impl_1_1E220Base.html":[54,0,1,0,1]
+"classUdon_1_1Impl_1_1Deserializer.html#accfeefa09be65ae2e72b461164cb5fa6":[54,0,1,0,0,2]
 };

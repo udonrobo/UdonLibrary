@@ -12,6 +12,7 @@ var dir_22ece226a4582674b632f5609e87d46e =
     [ "PidController.hpp", "PidController_8hpp.html", "PidController_8hpp" ],
     [ "ScopedInterruptLocker.hpp", "ScopedInterruptLocker_8hpp.html", "ScopedInterruptLocker_8hpp" ],
     [ "ServoSpeed.hpp", "ServoSpeed_8hpp.html", "ServoSpeed_8hpp" ],
+    [ "SpeedPid.hpp", "SpeedPid_8hpp.html", "SpeedPid_8hpp" ],
     [ "SteerOptimizer.hpp", "SteerOptimizer_8hpp.html", "SteerOptimizer_8hpp" ],
     [ "StringToNumberParser.hpp", "StringToNumberParser_8hpp.html", "StringToNumberParser_8hpp" ]
 ];

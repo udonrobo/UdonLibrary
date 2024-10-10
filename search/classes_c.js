@@ -5,7 +5,7 @@ var searchData=
   ['padps5onboardbtreader_2',['PadPS5OnboardBTReader',['../classUdon_1_1Impl_1_1PadPS5OnboardBTReader.html',1,'Udon::Impl']]],
   ['padps5onboardusbreader_3',['PadPS5OnboardUSBReader',['../classUdon_1_1Impl_1_1PadPS5OnboardUSBReader.html',1,'Udon::Impl']]],
   ['padps5usb_4',['PadPS5USB',['../classUdon_1_1PadPS5USB.html',1,'Udon']]],
-  ['parameter_5',['Parameter',['../structUdon_1_1PidController_1_1Parameter.html',1,'Udon::PidController']]],
+  ['parameter_5',['Parameter',['../structUdon_1_1PidController_1_1Parameter.html',1,'Udon::PidController::Parameter'],['../structUdon_1_1SpeedPidController_1_1Parameter.html',1,'Udon::SpeedPidController::Parameter']]],
   ['photosensor_6',['PhotoSensor',['../structUdon_1_1Message_1_1PhotoSensor.html',1,'Udon::Message']]],
   ['pidcontroller_7',['PidController',['../classUdon_1_1PidController.html',1,'Udon']]],
   ['polar_8',['Polar',['../structUdon_1_1Polar.html',1,'Udon']]],

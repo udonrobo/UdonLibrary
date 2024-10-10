@@ -1,0 +1,952 @@
+<!-- HTML header for doxygen 1.10.0-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="icon" href="Udon.png" type="image/x-icon" />
+<title>UdonLibrary: Udon::SpeedPidController クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <div id="toc"><!-- do not remove this div, it is closed by doxygen! -->
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectlogo">
+                <a href="https://github.com/udonrobo/UdonLibrary">
+                  <img alt="Logo" src="Udon.png"  />
+                </a>
+              </td>
+              <td id="projectalign">
+                <div id="projectname">UdonLibrary<span
+                    id="projectnumber">&#160;1.0.0</span>
+                </div>
+                <div id="projectbrief">機械システム研究部 C++ ライブラリ</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part -->
+<!-- 構築: Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classUdon_1_1SpeedPidController.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="classUdon_1_1SpeedPidController-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle"><div class="title">Udon::SpeedPidController クラス</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>速度型PID制御器  
+ <a href="#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="SpeedPid_8hpp_source.html">Udon/Algorithm/SpeedPid.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1SpeedPidController_1_1Parameter.html">Parameter</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a292d3eb66fc68f1d60f2b172e4afe94c" id="r_a292d3eb66fc68f1d60f2b172e4afe94c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a292d3eb66fc68f1d60f2b172e4afe94c">SpeedPidController</a> (double kPro, double kInt, double kDif, unsigned long callInterval_us, double maxPower=10000) noexcept</td></tr>
+<tr class="memdesc:a292d3eb66fc68f1d60f2b172e4afe94c"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <br /></td></tr>
+<tr class="separator:a292d3eb66fc68f1d60f2b172e4afe94c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7da036363f935011a6b307dffc1b2a1a" id="r_a7da036363f935011a6b307dffc1b2a1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7da036363f935011a6b307dffc1b2a1a">update</a> (double controlValue, double targetValue) noexcept</td></tr>
+<tr class="memdesc:a7da036363f935011a6b307dffc1b2a1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">データ更新  <br /></td></tr>
+<tr class="separator:a7da036363f935011a6b307dffc1b2a1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72e7afb609d2cc20b9eed4ef3b93824a" id="r_a72e7afb609d2cc20b9eed4ef3b93824a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72e7afb609d2cc20b9eed4ef3b93824a">getPower</a> () const noexcept</td></tr>
+<tr class="memdesc:a72e7afb609d2cc20b9eed4ef3b93824a"><td class="mdescLeft">&#160;</td><td class="mdescRight">操作量の取得  <br /></td></tr>
+<tr class="separator:a72e7afb609d2cc20b9eed4ef3b93824a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ef6db4f6c99489ea3d30c1406c8907d" id="r_a9ef6db4f6c99489ea3d30c1406c8907d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ef6db4f6c99489ea3d30c1406c8907d">getPower</a> (double min, double max) const noexcept</td></tr>
+<tr class="memdesc:a9ef6db4f6c99489ea3d30c1406c8907d"><td class="mdescLeft">&#160;</td><td class="mdescRight">操作量の取得  <br /></td></tr>
+<tr class="separator:a9ef6db4f6c99489ea3d30c1406c8907d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a439e06d179fdcdc50cb4fb108fb75526" id="r_a439e06d179fdcdc50cb4fb108fb75526"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a439e06d179fdcdc50cb4fb108fb75526">operator()</a> (double controlValue, double targetValue) noexcept</td></tr>
+<tr class="memdesc:a439e06d179fdcdc50cb4fb108fb75526"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新、操作量の取得  <br /></td></tr>
+<tr class="separator:a439e06d179fdcdc50cb4fb108fb75526"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a623d1c2e7668fa8fe1ea672d77c36182" id="r_a623d1c2e7668fa8fe1ea672d77c36182"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a623d1c2e7668fa8fe1ea672d77c36182">operator()</a> (double controlValue, double targetValue, double min, double max) noexcept</td></tr>
+<tr class="memdesc:a623d1c2e7668fa8fe1ea672d77c36182"><td class="mdescLeft">&#160;</td><td class="mdescRight">更新、操作量の取得  <br /></td></tr>
+<tr class="separator:a623d1c2e7668fa8fe1ea672d77c36182"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a213f878721d9f0ddd28f05da9123bf4f" id="r_a213f878721d9f0ddd28f05da9123bf4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a213f878721d9f0ddd28f05da9123bf4f">clearPower</a> () noexcept</td></tr>
+<tr class="memdesc:a213f878721d9f0ddd28f05da9123bf4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">操作量のクリア  <br /></td></tr>
+<tr class="separator:a213f878721d9f0ddd28f05da9123bf4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a991bc9380eb2047b05f93420cd1dfce5" id="r_a991bc9380eb2047b05f93420cd1dfce5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a991bc9380eb2047b05f93420cd1dfce5">requestParamPro</a> (double value) noexcept</td></tr>
+<tr class="memdesc:a991bc9380eb2047b05f93420cd1dfce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">一周期のみ適用する比例係数の設定  <br /></td></tr>
+<tr class="separator:a991bc9380eb2047b05f93420cd1dfce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a510610e81b0508e31b6a36ee76849885" id="r_a510610e81b0508e31b6a36ee76849885"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a510610e81b0508e31b6a36ee76849885">requestParamInt</a> (double value) noexcept</td></tr>
+<tr class="memdesc:a510610e81b0508e31b6a36ee76849885"><td class="mdescLeft">&#160;</td><td class="mdescRight">一周期のみ適用する積分係数の設定  <br /></td></tr>
+<tr class="separator:a510610e81b0508e31b6a36ee76849885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a188f38a658a166ea7f3477c21caaf2f3" id="r_a188f38a658a166ea7f3477c21caaf2f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a188f38a658a166ea7f3477c21caaf2f3">requestParamDif</a> (double value) noexcept</td></tr>
+<tr class="memdesc:a188f38a658a166ea7f3477c21caaf2f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">一周期のみ適用する微分係数の設定  <br /></td></tr>
+<tr class="separator:a188f38a658a166ea7f3477c21caaf2f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fda29a50fb2b40b69bb5c961e937818" id="r_a1fda29a50fb2b40b69bb5c961e937818"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fda29a50fb2b40b69bb5c961e937818">requestParam</a> (const <a class="el" href="structUdon_1_1SpeedPidController_1_1Parameter.html">Parameter</a> &amp;value) noexcept</td></tr>
+<tr class="memdesc:a1fda29a50fb2b40b69bb5c961e937818"><td class="mdescLeft">&#160;</td><td class="mdescRight">一周期のみ適用する係数の設定  <br /></td></tr>
+<tr class="separator:a1fda29a50fb2b40b69bb5c961e937818"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f7d5ccb56ba119e9c8fe4588636ae01" id="r_a4f7d5ccb56ba119e9c8fe4588636ae01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f7d5ccb56ba119e9c8fe4588636ae01">setParamPro</a> (double value) noexcept</td></tr>
+<tr class="memdesc:a4f7d5ccb56ba119e9c8fe4588636ae01"><td class="mdescLeft">&#160;</td><td class="mdescRight">比例係数の設定  <br /></td></tr>
+<tr class="separator:a4f7d5ccb56ba119e9c8fe4588636ae01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa67de451629050b6c152abe10ec31f43" id="r_aa67de451629050b6c152abe10ec31f43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa67de451629050b6c152abe10ec31f43">setParamInt</a> (double value) noexcept</td></tr>
+<tr class="memdesc:aa67de451629050b6c152abe10ec31f43"><td class="mdescLeft">&#160;</td><td class="mdescRight">積分係数の設定  <br /></td></tr>
+<tr class="separator:aa67de451629050b6c152abe10ec31f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbb3fbf0292dd6e5e5666e4053483dea" id="r_adbb3fbf0292dd6e5e5666e4053483dea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbb3fbf0292dd6e5e5666e4053483dea">setParamDif</a> (double value) noexcept</td></tr>
+<tr class="memdesc:adbb3fbf0292dd6e5e5666e4053483dea"><td class="mdescLeft">&#160;</td><td class="mdescRight">微分係数の設定  <br /></td></tr>
+<tr class="separator:adbb3fbf0292dd6e5e5666e4053483dea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a878241eca0ee5e7308ecde2ffc7af250" id="r_a878241eca0ee5e7308ecde2ffc7af250"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a878241eca0ee5e7308ecde2ffc7af250">setParam</a> (const <a class="el" href="structUdon_1_1SpeedPidController_1_1Parameter.html">Parameter</a> &amp;value) noexcept</td></tr>
+<tr class="memdesc:a878241eca0ee5e7308ecde2ffc7af250"><td class="mdescLeft">&#160;</td><td class="mdescRight">係数の設定  <br /></td></tr>
+<tr class="separator:a878241eca0ee5e7308ecde2ffc7af250"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c10bdcc951dc69b8a8b6d2e8b54bf9f" id="r_a3c10bdcc951dc69b8a8b6d2e8b54bf9f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c10bdcc951dc69b8a8b6d2e8b54bf9f">getParamPro</a> () const noexcept</td></tr>
+<tr class="memdesc:a3c10bdcc951dc69b8a8b6d2e8b54bf9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">比例係数の取得  <br /></td></tr>
+<tr class="separator:a3c10bdcc951dc69b8a8b6d2e8b54bf9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61e3dac2fefb36d5374a863d0c2a5105" id="r_a61e3dac2fefb36d5374a863d0c2a5105"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61e3dac2fefb36d5374a863d0c2a5105">getParamInt</a> () const noexcept</td></tr>
+<tr class="memdesc:a61e3dac2fefb36d5374a863d0c2a5105"><td class="mdescLeft">&#160;</td><td class="mdescRight">積分係数の取得  <br /></td></tr>
+<tr class="separator:a61e3dac2fefb36d5374a863d0c2a5105"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd30bb598c7400d1d429d3bc49fa4fa5" id="r_afd30bb598c7400d1d429d3bc49fa4fa5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd30bb598c7400d1d429d3bc49fa4fa5">getParamDif</a> () const noexcept</td></tr>
+<tr class="memdesc:afd30bb598c7400d1d429d3bc49fa4fa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">微分係数の取得  <br /></td></tr>
+<tr class="separator:afd30bb598c7400d1d429d3bc49fa4fa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34b1b81dc5fd9c4635328ff82d7e3b6f" id="r_a34b1b81dc5fd9c4635328ff82d7e3b6f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structUdon_1_1SpeedPidController_1_1Parameter.html">Parameter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34b1b81dc5fd9c4635328ff82d7e3b6f">getParam</a> () const noexcept</td></tr>
+<tr class="memdesc:a34b1b81dc5fd9c4635328ff82d7e3b6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">係数の取得  <br /></td></tr>
+<tr class="separator:a34b1b81dc5fd9c4635328ff82d7e3b6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ee1c6503b62fba95001e026bcbc6f59" id="r_a5ee1c6503b62fba95001e026bcbc6f59"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ee1c6503b62fba95001e026bcbc6f59">getPowerPro</a> () const noexcept</td></tr>
+<tr class="memdesc:a5ee1c6503b62fba95001e026bcbc6f59"><td class="mdescLeft">&#160;</td><td class="mdescRight">比例量の取得  <br /></td></tr>
+<tr class="separator:a5ee1c6503b62fba95001e026bcbc6f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a680eb380cfe2dc65c8102fc909a2c0" id="r_a0a680eb380cfe2dc65c8102fc909a2c0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a680eb380cfe2dc65c8102fc909a2c0">getPowerInt</a> () const noexcept</td></tr>
+<tr class="memdesc:a0a680eb380cfe2dc65c8102fc909a2c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">積分量の取得  <br /></td></tr>
+<tr class="separator:a0a680eb380cfe2dc65c8102fc909a2c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ca261221e0a7b796c29cf337f056cd3" id="r_a1ca261221e0a7b796c29cf337f056cd3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ca261221e0a7b796c29cf337f056cd3">getPowerDif</a> () const noexcept</td></tr>
+<tr class="memdesc:a1ca261221e0a7b796c29cf337f056cd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">微分量の取得  <br /></td></tr>
+<tr class="separator:a1ca261221e0a7b796c29cf337f056cd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>速度型PID制御器 </p>
+</div><h2 class="groupheader">構築子と解体子</h2>
+<a id="a292d3eb66fc68f1d60f2b172e4afe94c" name="a292d3eb66fc68f1d60f2b172e4afe94c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a292d3eb66fc68f1d60f2b172e4afe94c">&#9670;&#160;</a></span>SpeedPidController()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Udon::SpeedPidController::SpeedPidController </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>kPro</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>kInt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>kDif</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long</td>          <td class="paramname"><span class="paramname"><em>callInterval_us</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>maxPower</em></span><span class="paramdefsep"> = </span><span class="paramdefval">10000</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">kPro</td><td>比例係数 </td></tr>
+    <tr><td class="paramname">kInt</td><td>積分係数 </td></tr>
+    <tr><td class="paramname">kDif</td><td>微分係数 </td></tr>
+    <tr><td class="paramname">callInterval_us</td><td><a class="el" href="#a7da036363f935011a6b307dffc1b2a1a" title="データ更新">update()</a>の呼び出し周期 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a213f878721d9f0ddd28f05da9123bf4f" name="a213f878721d9f0ddd28f05da9123bf4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a213f878721d9f0ddd28f05da9123bf4f">&#9670;&#160;</a></span>clearPower()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Udon::SpeedPidController::clearPower </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>操作量のクリア </p>
+<dl class="section note"><dt>覚え書き</dt><dd>内部の量をすべて0にする。 </dd></dl>
+
+</div>
+</div>
+<a id="a34b1b81dc5fd9c4635328ff82d7e3b6f" name="a34b1b81dc5fd9c4635328ff82d7e3b6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34b1b81dc5fd9c4635328ff82d7e3b6f">&#9670;&#160;</a></span>getParam()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structUdon_1_1SpeedPidController_1_1Parameter.html">Parameter</a> &amp; Udon::SpeedPidController::getParam </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>係数の取得 </p>
+<dl class="section return"><dt>戻り値</dt><dd>係数 </dd></dl>
+
+</div>
+</div>
+<a id="afd30bb598c7400d1d429d3bc49fa4fa5" name="afd30bb598c7400d1d429d3bc49fa4fa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd30bb598c7400d1d429d3bc49fa4fa5">&#9670;&#160;</a></span>getParamDif()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Udon::SpeedPidController::getParamDif </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>微分係数の取得 </p>
+<dl class="section return"><dt>戻り値</dt><dd>微分係数 </dd></dl>
+
+</div>
+</div>
+<a id="a61e3dac2fefb36d5374a863d0c2a5105" name="a61e3dac2fefb36d5374a863d0c2a5105"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61e3dac2fefb36d5374a863d0c2a5105">&#9670;&#160;</a></span>getParamInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Udon::SpeedPidController::getParamInt </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>積分係数の取得 </p>
+<dl class="section return"><dt>戻り値</dt><dd>積分係数 </dd></dl>
+
+</div>
+</div>
+<a id="a3c10bdcc951dc69b8a8b6d2e8b54bf9f" name="a3c10bdcc951dc69b8a8b6d2e8b54bf9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c10bdcc951dc69b8a8b6d2e8b54bf9f">&#9670;&#160;</a></span>getParamPro()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Udon::SpeedPidController::getParamPro </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>比例係数の取得 </p>
+<dl class="section return"><dt>戻り値</dt><dd>比例係数 </dd></dl>
+
+</div>
+</div>
+<a id="a72e7afb609d2cc20b9eed4ef3b93824a" name="a72e7afb609d2cc20b9eed4ef3b93824a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72e7afb609d2cc20b9eed4ef3b93824a">&#9670;&#160;</a></span>getPower() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Udon::SpeedPidController::getPower </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>操作量の取得 </p>
+<dl class="section return"><dt>戻り値</dt><dd>操作量 </dd></dl>
+
+</div>
+</div>
+<a id="a9ef6db4f6c99489ea3d30c1406c8907d" name="a9ef6db4f6c99489ea3d30c1406c8907d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ef6db4f6c99489ea3d30c1406c8907d">&#9670;&#160;</a></span>getPower() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Udon::SpeedPidController::getPower </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>min</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>max</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>操作量の取得 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">min</td><td>操作量の最小値 </td></tr>
+    <tr><td class="paramname">max</td><td>操作量の最大値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>操作量 </dd></dl>
+
+</div>
+</div>
+<a id="a1ca261221e0a7b796c29cf337f056cd3" name="a1ca261221e0a7b796c29cf337f056cd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ca261221e0a7b796c29cf337f056cd3">&#9670;&#160;</a></span>getPowerDif()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Udon::SpeedPidController::getPowerDif </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>微分量の取得 </p>
+<dl class="section return"><dt>戻り値</dt><dd>微分量 </dd></dl>
+
+</div>
+</div>
+<a id="a0a680eb380cfe2dc65c8102fc909a2c0" name="a0a680eb380cfe2dc65c8102fc909a2c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a680eb380cfe2dc65c8102fc909a2c0">&#9670;&#160;</a></span>getPowerInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Udon::SpeedPidController::getPowerInt </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>積分量の取得 </p>
+<dl class="section return"><dt>戻り値</dt><dd>積分量 </dd></dl>
+
+</div>
+</div>
+<a id="a5ee1c6503b62fba95001e026bcbc6f59" name="a5ee1c6503b62fba95001e026bcbc6f59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ee1c6503b62fba95001e026bcbc6f59">&#9670;&#160;</a></span>getPowerPro()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Udon::SpeedPidController::getPowerPro </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>比例量の取得 </p>
+<dl class="section return"><dt>戻り値</dt><dd>比例量 </dd></dl>
+
+</div>
+</div>
+<a id="a439e06d179fdcdc50cb4fb108fb75526" name="a439e06d179fdcdc50cb4fb108fb75526"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a439e06d179fdcdc50cb4fb108fb75526">&#9670;&#160;</a></span>operator()() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Udon::SpeedPidController::operator() </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>controlValue</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>targetValue</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>更新、操作量の取得 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controlValue</td><td>制御量 </td></tr>
+    <tr><td class="paramname">targetValue</td><td>目標値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>操作量 </dd></dl>
+
+</div>
+</div>
+<a id="a623d1c2e7668fa8fe1ea672d77c36182" name="a623d1c2e7668fa8fe1ea672d77c36182"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a623d1c2e7668fa8fe1ea672d77c36182">&#9670;&#160;</a></span>operator()() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Udon::SpeedPidController::operator() </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>controlValue</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>targetValue</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>min</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>max</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>更新、操作量の取得 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controlValue</td><td>制御量 </td></tr>
+    <tr><td class="paramname">targetValue</td><td>目標値 </td></tr>
+    <tr><td class="paramname">min</td><td>操作量の最小値 </td></tr>
+    <tr><td class="paramname">max</td><td>操作量の最大値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>操作量 </dd></dl>
+
+</div>
+</div>
+<a id="a1fda29a50fb2b40b69bb5c961e937818" name="a1fda29a50fb2b40b69bb5c961e937818"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fda29a50fb2b40b69bb5c961e937818">&#9670;&#160;</a></span>requestParam()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Udon::SpeedPidController::requestParam </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1SpeedPidController_1_1Parameter.html">Parameter</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>一周期のみ適用する係数の設定 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>係数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a188f38a658a166ea7f3477c21caaf2f3" name="a188f38a658a166ea7f3477c21caaf2f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a188f38a658a166ea7f3477c21caaf2f3">&#9670;&#160;</a></span>requestParamDif()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Udon::SpeedPidController::requestParamDif </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>一周期のみ適用する微分係数の設定 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>係数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a510610e81b0508e31b6a36ee76849885" name="a510610e81b0508e31b6a36ee76849885"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a510610e81b0508e31b6a36ee76849885">&#9670;&#160;</a></span>requestParamInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Udon::SpeedPidController::requestParamInt </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>一周期のみ適用する積分係数の設定 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>係数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a991bc9380eb2047b05f93420cd1dfce5" name="a991bc9380eb2047b05f93420cd1dfce5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a991bc9380eb2047b05f93420cd1dfce5">&#9670;&#160;</a></span>requestParamPro()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Udon::SpeedPidController::requestParamPro </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>一周期のみ適用する比例係数の設定 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>係数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a878241eca0ee5e7308ecde2ffc7af250" name="a878241eca0ee5e7308ecde2ffc7af250"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a878241eca0ee5e7308ecde2ffc7af250">&#9670;&#160;</a></span>setParam()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Udon::SpeedPidController::setParam </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1SpeedPidController_1_1Parameter.html">Parameter</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>係数の設定 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>係数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adbb3fbf0292dd6e5e5666e4053483dea" name="adbb3fbf0292dd6e5e5666e4053483dea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbb3fbf0292dd6e5e5666e4053483dea">&#9670;&#160;</a></span>setParamDif()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Udon::SpeedPidController::setParamDif </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>微分係数の設定 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>微分係数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa67de451629050b6c152abe10ec31f43" name="aa67de451629050b6c152abe10ec31f43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa67de451629050b6c152abe10ec31f43">&#9670;&#160;</a></span>setParamInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Udon::SpeedPidController::setParamInt </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>積分係数の設定 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>積分係数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4f7d5ccb56ba119e9c8fe4588636ae01" name="a4f7d5ccb56ba119e9c8fe4588636ae01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f7d5ccb56ba119e9c8fe4588636ae01">&#9670;&#160;</a></span>setParamPro()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Udon::SpeedPidController::setParamPro </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>比例係数の設定 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>比例係数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7da036363f935011a6b307dffc1b2a1a" name="a7da036363f935011a6b307dffc1b2a1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7da036363f935011a6b307dffc1b2a1a">&#9670;&#160;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Udon::SpeedPidController::update </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>controlValue</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>targetValue</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>データ更新 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controlValue</td><td>制御量 </td></tr>
+    <tr><td class="paramname">targetValue</td><td>目標値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>操作量 </dd></dl>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>src/Udon/Algorithm/<a class="el" href="SpeedPid_8hpp_source.html">SpeedPid.hpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! --></div>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript">
+  DoxygenAwesomeDarkModeToggle.init()
+  DoxygenAwesomeFragmentCopyButton.init()
+</script>
+</body>
+</html>

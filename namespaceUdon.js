@@ -71,6 +71,7 @@ var namespaceUdon =
     [ "ServoSpeed", "classUdon_1_1ServoSpeed.html", "classUdon_1_1ServoSpeed" ],
     [ "SivSerialReader", "classUdon_1_1SivSerialReader.html", "classUdon_1_1SivSerialReader" ],
     [ "SivSerialWriter", "classUdon_1_1SivSerialWriter.html", "classUdon_1_1SivSerialWriter" ],
+    [ "SpeedPidController", "classUdon_1_1SpeedPidController.html", "classUdon_1_1SpeedPidController" ],
     [ "StaticVector", "classUdon_1_1StaticVector.html", "classUdon_1_1StaticVector" ],
     [ "SteerModuleOptimizer", "classUdon_1_1SteerModuleOptimizer.html", "classUdon_1_1SteerModuleOptimizer" ],
     [ "SteerOptimizer", "classUdon_1_1SteerOptimizer.html", "classUdon_1_1SteerOptimizer" ],
