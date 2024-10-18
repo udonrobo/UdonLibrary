@@ -2,6 +2,10 @@
 
 ## `Show 関数`
 
+```cpp
+Show(Args&&... args);
+```
+
 様々なオブジェクトを出力でき、マルチプラットフォームで動作します。PC の場合標準出力、マイコンの場合 USB シリアルへ送信します。また `Udon::Showln` 関数を用いると最後に改行を出力します。
 
 ```cpp
@@ -37,7 +41,7 @@ void setup()
 ## `Assert 関数`
 
 ```cpp
-Assert(bool expression, const char* const message = "", AssertAction action = AssertAction::Abort)
+Assert(bool expression, const char* const message = "", AssertAction action = AssertAction::Abort);
 ```
 
 `expression` が false となるとき、任意のメッセージを出力しプログラムを中断する関数です。`action` に `Udon::AssertAction::Skip` を指定することで中断しないように設定できます。
@@ -57,10 +61,10 @@ void setup()
 ## `Normalized 関数`
 
 ```cpp
-double Normalized(double value, double min, double max)
+double Normalized(double value, double min, double max);
 ```
 
--∞~+∞ の範囲を min~max の範囲に変換するします。最小値が設定できるようになった剰余算のイメージです。
+-∞~+∞ の範囲を min~max の範囲に変換します。最小値が設定できるようになった剰余算のイメージです。
 
 ```cpp
 Normalized(190, -180, 180) == 10
