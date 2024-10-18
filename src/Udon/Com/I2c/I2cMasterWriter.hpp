@@ -52,12 +52,11 @@ namespace Udon
         }
 
         /// @brief 送信内容を表示
-        /// @param gap 区切り文字 (default: '\t')
-        void show(char gap = '\t') const
+        void show() const
         {
             if (const auto message = Udon::Deserialize<MessageType>(buffer))
             {
-                Udon::Show(*message, gap);
+                Udon::Show(*message);
             }
             else
             {
@@ -66,10 +65,9 @@ namespace Udon
         }
 
         /// @brief 送信バッファを表示
-        /// @param gap 区切り文字 (default: ' ')
-        void showRaw(char gap = ' ') const
+        void showRaw() const
         {
-            Udon::Show(buffer, gap);
+            Udon::Show(buffer);
         }
 
     private:

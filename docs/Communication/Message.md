@@ -24,7 +24,7 @@
 | `Udon::Message::Encoder`         | エンコーダ       | `count: int32_t`             |
 | `Udon::Message::PhotoSensor`     | フォトセンサ     | `light: bool`                |
 | `Udon::Message::DistanceSensor`  | 距離センサ       | `distance: double`           |
-| `Udon::Message::Imu`             | IMU              | `yaw: double`                |
+| `Udon::Message::Yaw`             | IMU yaw角        | `yaw: double`                |
 | `Udon::Message::Lcd`             | LCD              | `text: char[Row][Column]`    |
 | `Udon::Message::PadPS5`          | PS5 コントローラ | 各種ボタン、スティックの情報 |
 

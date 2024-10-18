@@ -107,7 +107,7 @@ namespace Udon
             {
                 current = current * directionSign();
 
-                const auto transmitCurrent = static_cast<int16_t>(current * 16384 / 20000);    // 16bit符号なし整数に変換
+                const auto transmitCurrent = static_cast<int16_t>(current * 16384 / 20000);
 
                 if (motorId > 4)
                 {
