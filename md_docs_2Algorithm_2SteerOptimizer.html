@@ -110,32 +110,61 @@ $(function(){initNavTree('md_docs_2Algorithm_2SteerOptimizer.html',''); initResi
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md16"></a></p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="SteerOptimizer_8hpp.html">Udon/Algorithm/SteerOptimizer.hpp</a>&gt;</span></div>
-<div class="ttc" id="aSteerOptimizer_8hpp_html"><div class="ttname"><a href="SteerOptimizer_8hpp.html">SteerOptimizer.hpp</a></div></div>
-</div><!-- fragment --><p>独立ステアモジュールの旋回角度と回転方向を最適化するためのクラス。</p>
-<p>独立ステアの計算結果をそのまま使用すると、操縦性能が低下してしまう場合があります。このクラスを使用することで、操縦性向上が見込めます。</p>
-<blockquote class="doxtable">
-<p>&zwj;このクラスには以下の最適化処理が含まれています:</p>
+<p>数式から得られた独立ステアの出力値をそのまま使用すると、かなり操縦の難しい足回りとなってしまいます。<code>SteerOptimizer</code> クラスはを使用することで、操縦性向上が見込めます。以下の最適化処理が含まれています。</p>
 <ul>
-<li>車輪が動作中でない場合に旋回角度を維持する</li>
-<li>車輪の旋回範囲を無限にする</li>
+<li><p class="startli">車輪が動作中でない場合に旋回角度を維持する</p>
+<p class="startli"><img src="https://github.com/user-attachments/assets/298c4f20-9b63-423d-ba46-f87974e8de11" alt="" width="400px" class="inline"/></p>
+</li>
+<li><p class="startli">車輪の旋回範囲を無限にする</p>
+<p class="startli">式から得られた旋回角度は、±π の範囲で得られます。この範囲を無限に拡張します。</p>
+<p class="startli">ゆっくりモジュールを旋回しようとした場合、次のような挙動をします。最適化しない場合 π と -π の境界を超える時に、逆方向に旋回してしまいます。</p>
+<p class="startli"><img src="https://github.com/user-attachments/assets/d100e091-2295-4800-9e2e-7fc83b3039c8" alt="" width="400px" class="inline"/></p>
+</li>
 <li><p class="startli">車輪の回転方向の最適化</p>
-<p class="startli">90 度以上の旋回が必要な場合、目標旋回角度を 180 度回転させ、車輪の回転方向を逆転させます。これにより、旋回と逆旋回の切り替え時に、車輪を旋回させずに正確な動作が可能となります。 </p>
+<p class="startli">90 度以上の旋回が必要な場合、目標旋回角度を 180 度回転させ、車輪の回転方向を逆転させます。目標角度へ最短で到達できるようになります。</p>
+<p class="startli"><img src="https://github.com/user-attachments/assets/9570c557-7f15-4bed-a39d-6f3a844e50ba" alt="" width="400px" class="inline"/></p>
 </li>
 </ul>
-</blockquote>
 <h1><a class="anchor" id="autotoc_md17"></a>
+個別インクルード</h1>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="SteerOptimizer_8hpp.html">Udon/Algorithm/SteerOptimizer.hpp</a>&gt;</span></div>
+<div class="ttc" id="aSteerOptimizer_8hpp_html"><div class="ttname"><a href="SteerOptimizer_8hpp.html">SteerOptimizer.hpp</a></div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md18"></a>
 全車輪最適化</h1>
-<p><code>SteerOptimizer</code> クラスには車輪の個数を指定するためのテンプレート引数があります。車輪が 4 輪の場合は次のようにインスタンス化します。</p>
-<div class="fragment"><div class="line"><span class="comment">// グローバル領域内など</span></div>
-<div class="line"><a class="code hl_class" href="classUdon_1_1SteerOptimizer.html">Udon::SteerOptimizer&lt;4&gt;</a> optimizer;</div>
+<p><code>SteerOptimizer</code> クラスを用います。このクラスには車輪数を指定するためのテンプレート引数があります。下記の例では 4 つの車輪を使用しています。<code>operator()</code> を通すことで最適値を得られます。</p>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1SteerOptimizer.html">Udon::SteerOptimizer&lt;4&gt;</a> optimizer;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup()</div>
+<div class="line">{</div>
+<div class="line">    ...</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> loop()</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">// 移動量</span></div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Pos.html">Udon::Pos</a> pos = { { 0.0, 100.0 }, 0.0 };  <span class="comment">// y 軸方向に 100 進行</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// 最適化前</span></div>
+<div class="line">    std::array&lt;Udon::Polar, 4&gt; raw = pos.<a class="code hl_function" href="structUdon_1_1Pos.html#af1a9145af99bed2ee65f1a0b5a0c1bbf">toSteer</a>();</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// 最適化後</span></div>
+<div class="line">    std::array&lt;Udon::Polar, 4&gt; optimized = optimizer(raw);  <span class="comment">// optimizer.operator()</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; polar : optimized)</div>
+<div class="line">    {</div>
+<div class="line">        Serial.print(polar.r);      <span class="comment">// ホイールの出力値 [-255 ~ 255]</span></div>
+<div class="line">        Serial.print(<span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line">        Serial.print(polar.theta);  <span class="comment">// モジュールの旋回角度 [rad]</span></div>
+<div class="line">        Serial.print(<span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line">    Serial.println();</div>
+<div class="line"> </div>
+<div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1SteerOptimizer_html"><div class="ttname"><a href="classUdon_1_1SteerOptimizer.html">Udon::SteerOptimizer</a></div><div class="ttdoc">独立ステアリング機構最適化クラス</div><div class="ttdef"><b>Definition</b> SteerOptimizer.hpp:130</div></div>
-</div><!-- fragment --><p><code>operator()</code> を通すことで最適値を得られます。</p>
-<blockquote class="doxtable">
-<p>&zwj;各モジュールの値を極座標で扱います。ホイールの出力値は r、モジュールの旋回角度は theta として表現されます。そのため、引数と戻り値は極座標（Udon::Polar）の配列を使用して、全てのモジュールの値を扱います。 </p>
-</blockquote>
-<blockquote class="doxtable">
-<p>&zwj;注意点として、本クラスは最適化のみを行います。事前に最適化前の値を求めておく必要があります。</p>
+<div class="ttc" id="astructUdon_1_1Pos_html"><div class="ttname"><a href="structUdon_1_1Pos.html">Udon::Pos</a></div><div class="ttdoc">ロボットの位置</div><div class="ttdef"><b>Definition</b> Position.hpp:26</div></div>
+<div class="ttc" id="astructUdon_1_1Pos_html_af1a9145af99bed2ee65f1a0b5a0c1bbf"><div class="ttname"><a href="structUdon_1_1Pos.html#af1a9145af99bed2ee65f1a0b5a0c1bbf">Udon::Pos::toSteer</a></div><div class="ttdeci">std::array&lt; Udon::Polar, WheelCount &gt; toSteer(uint8_t powerLimit=255, uint8_t turnPowerLimit=255) const</div><div class="ttdoc">独立ステアリング機構のタイヤ出力値、旋回角を取得する</div><div class="ttdef"><b>Definition</b> Position.hpp:204</div></div>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;本クラスは最適化のみを行うため、事前に最適化前の値を求めておく必要があります。上記の例では <code><a class="el" href="structUdon_1_1Pos.html#af1a9145af99bed2ee65f1a0b5a0c1bbf" title="独立ステアリング機構のタイヤ出力値、旋回角を取得する">Udon::Pos::toSteer()</a></code> で求めています。</p>
 <p>最適化前の値要件:</p>
 <ul>
 <li><code>r</code> [ -π ~ π ] ラジアン値</li>
@@ -147,15 +176,9 @@ $(function(){initNavTree('md_docs_2Algorithm_2SteerOptimizer.html',''); initResi
 <li><code>theta</code> [ ± 最適化前 <code>theta</code> ] </li>
 </ul>
 </blockquote>
-<div class="fragment"><div class="line"><span class="comment">// ループ内</span></div>
-<div class="line"><span class="comment">// 最適化前の値を格納する配列</span></div>
-<div class="line"><span class="keyword">const</span> std::array&lt;Udon::Polar, 4&gt; raw = {...};</div>
-<div class="line"> </div>
-<div class="line"><span class="comment">// 最適化後</span></div>
-<div class="line"><span class="keyword">const</span> std::array&lt;Udon::Polar, 4&gt; optimized = optimizer(raw);  <span class="comment">// 最適化後の値を取得</span></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md18"></a>
+<h1><a class="anchor" id="autotoc_md19"></a>
 車輪ごとに最適化</h1>
-<p><code>SteerModuleOptimizer</code> クラスを使用することで、各車輪ごとに最適化を行えます。車輪ごとをクラスで管理している場合、こちらを使用すると便利です。</p>
+<p>実は、車輪の最適化は独立して計算されます(車輪間で影響し合わない)。そのため、<code>SteerModuleOptimizer</code> クラスを使用することで、各車輪ごとに最適化を行えます。車輪ごとをクラスで管理している場合、こちらを使用すると便利です。</p>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1SteerModuleOptimizer.html">Udon::SteerModuleOptimizer</a> optimizer;</div>
 <div class="line"> </div>
 <div class="line"><a class="code hl_struct" href="structUdon_1_1Polar.html">Udon::Polar</a> raw = {...};</div>
@@ -163,7 +186,7 @@ $(function(){initNavTree('md_docs_2Algorithm_2SteerOptimizer.html',''); initResi
 <div class="line"><a class="code hl_struct" href="structUdon_1_1Polar.html">Udon::Polar</a> optimized = optimizer(raw);</div>
 <div class="ttc" id="aclassUdon_1_1SteerModuleOptimizer_html"><div class="ttname"><a href="classUdon_1_1SteerModuleOptimizer.html">Udon::SteerModuleOptimizer</a></div><div class="ttdoc">独立ステアリング機構の各モジュール最適化クラス</div><div class="ttdef"><b>Definition</b> SteerOptimizer.hpp:21</div></div>
 <div class="ttc" id="astructUdon_1_1Polar_html"><div class="ttname"><a href="structUdon_1_1Polar.html">Udon::Polar</a></div><div class="ttdoc">極座標系</div><div class="ttdef"><b>Definition</b> Polar.hpp:21</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md19"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md20"></a>
 Sample</h1>
 <p>CAN 通信経由のコントローラーの値からステアモジュールの値を得る例を次の示します。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
@@ -186,15 +209,16 @@ Sample</h1>
 <div class="line">{</div>
 <div class="line">    bus.update();</div>
 <div class="line"> </div>
-<div class="line">    <span class="comment">// 1. コントローラから Udon::Pos {{x, y}, turn} を得る `getMoveInfo()`</span></div>
-<div class="line">    <span class="comment">// 2. Udon::Pos からステアの最適化前の値を得る `toSteer()`</span></div>
-<div class="line">    <span class="comment">// 3. 最適化後の値を得る optimizer()</span></div>
+<div class="line">    <span class="comment">// 1. `getMoveInfo()`: コントローラから Udon::Pos {{x, y}, turn} を得る</span></div>
+<div class="line">    <span class="comment">// 2. `toSteer()`    : Udon::Pos からステアの最適化前の値を得る</span></div>
+<div class="line">    <span class="comment">// 3. `optimizer()`  : 最適化後の値を得る</span></div>
 <div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> optimized = optimizer(pad.getMoveInfo().toSteer());</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">//... // 車輪 Node に送信するなど</span></div>
 <div class="line">}</div>
 <div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
-</div><!-- fragment --><p>OpenSiv3D でシミュレートする</p>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md21"></a>
+OpenSiv3D でシミュレートする</h1>
 <blockquote class="doxtable">
 <p>&zwj;Visual Studio への UdonLibrary の追加方法は <a class="el" href="index.html#md_README">ダウンロード: Visual Studio</a> を参照してください。 </p>
 </blockquote>
@@ -240,7 +264,6 @@ Sample</h1>
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_a2fe0419f3bc5b65f01549ea916435f95"><div class="ttname"><a href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">Udon::PadPS5::getMoveInfo</a></div><div class="ttdeci">Stick getMoveInfo() const noexcept</div><div class="ttdoc">ロボットの移動に必要なスティックの情報 Udon::Stick オブジェクト {{x,y},turn} を取得</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:140</div></div>
 <div class="ttc" id="astructUdon_1_1Polar_html_a34a7ea630fbc1c6fe81a24e4251b13ad"><div class="ttname"><a href="structUdon_1_1Polar.html#a34a7ea630fbc1c6fe81a24e4251b13ad">Udon::Polar::theta</a></div><div class="ttdeci">ValueType theta</div><div class="ttdoc">角度</div><div class="ttdef"><b>Definition</b> Polar.hpp:29</div></div>
 <div class="ttc" id="astructUdon_1_1Polar_html_a4bb3d4daa152b14e5650fae445895e01"><div class="ttname"><a href="structUdon_1_1Polar.html#a4bb3d4daa152b14e5650fae445895e01">Udon::Polar::r</a></div><div class="ttdeci">ValueType r</div><div class="ttdoc">中心からの距離</div><div class="ttdef"><b>Definition</b> Polar.hpp:26</div></div>
-<div class="ttc" id="astructUdon_1_1Pos_html_af1a9145af99bed2ee65f1a0b5a0c1bbf"><div class="ttname"><a href="structUdon_1_1Pos.html#af1a9145af99bed2ee65f1a0b5a0c1bbf">Udon::Pos::toSteer</a></div><div class="ttdeci">std::array&lt; Udon::Polar, WheelCount &gt; toSteer(uint8_t powerLimit=255, uint8_t turnPowerLimit=255) const</div><div class="ttdoc">独立ステアリング機構のタイヤ出力値、旋回角を取得する</div><div class="ttdef"><b>Definition</b> Position.hpp:204</div></div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

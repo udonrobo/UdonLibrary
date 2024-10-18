@@ -110,9 +110,10 @@ $(function(){initNavTree('md_docs_2Algorithm_2MovingAverage.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md15"></a></p>
-<p>モーターの出力値を急激に変化させると、大電流が流れ、モーターやモータードライバーに負荷がかかります。この出力値の急激な変化を抑えるのに移動平均を利用します。</p>
+<p>モーターの出力値を急激に変化させると、大電流が流れ、モーターやモータードライバーに負荷がかかります。移動平均を使うことで、出力値の急激な変化を抑えることができます。</p>
 <p>移動平均とは時系列データを平滑化する手法です。サンプル数が多いほど滑らかになりますが、応答性が悪くなります。</p>
-<p><code>MovingAverage</code> クラスは内部に過去の入力値を保持する配列を持っており、配列の平均値を出力値としています。</p>
+<dl class="section note"><dt>覚え書き</dt><dd><br  />
+ ループ毎に平均値を更新するため、ループ周期が一定でないと正しく動作しません。<code>LoopCycleController</code> を使ってループ周期を一定にすることをお勧めします。</dd></dl>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> Udon::LoopCycleController loopCtrl{ 10000 };</div>

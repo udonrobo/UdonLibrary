@@ -109,11 +109,11 @@ $(function(){initNavTree('md_docs_2Types_2Color.html',''); initResizable(true); 
   <div class="headertitle"><div class="title">色空間</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md241"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md243"></a></p>
 <p>色空間を表現するには <code><a class="el" href="structUdon_1_1RGB.html" title="RGB色空間">Udon::RGB</a></code>、<code><a class="el" href="structUdon_1_1HSV.html" title="HSV色空間">Udon::HSV</a></code> クラスを使用します。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Color_8hpp.html">Udon/Types/Color.hpp</a>&gt;</span></div>
 <div class="ttc" id="aColor_8hpp_html"><div class="ttname"><a href="Color_8hpp.html">Color.hpp</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md242"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md244"></a>
 RGB 色空間</h1>
 <p>赤緑青 の光の三原色で表現される色空間のことで、次のように定義されています。各要素には 0~255 の数値が入ります。</p>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>RGB</div>
@@ -122,26 +122,26 @@ RGB 色空間</h1>
 <div class="line">    uint8_t g;</div>
 <div class="line">    uint8_t b;</div>
 <div class="line">};</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md243"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md245"></a>
 構築</h2>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rgb;</div>
 <div class="line"><a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rgb{ 0, 100, 255 };</div>
 <div class="line"><a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rgb{ 0xff00ff };  <span class="comment">// カラーコードから</span></div>
 <div class="ttc" id="astructUdon_1_1RGB_html"><div class="ttname"><a href="structUdon_1_1RGB.html">Udon::RGB</a></div><div class="ttdoc">RGB色空間</div><div class="ttdef"><b>Definition</b> RGB.hpp:21</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md244"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md246"></a>
 カラーコードへの変換</h2>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rgb{ 0, 100, 255 };</div>
 <div class="line"><span class="keyword">const</span> uint32_t color = rgb.<a class="code hl_function" href="structUdon_1_1RGB.html#ac4fc1f627819efeb82adeec28f50a6b2">to24bit</a>();</div>
 <div class="ttc" id="astructUdon_1_1RGB_html_ac4fc1f627819efeb82adeec28f50a6b2"><div class="ttname"><a href="structUdon_1_1RGB.html#ac4fc1f627819efeb82adeec28f50a6b2">Udon::RGB::to24bit</a></div><div class="ttdeci">uint32_t to24bit() const noexcept</div><div class="ttdoc">24bit値への変換</div><div class="ttdef"><b>Definition</b> RGB.hpp:110</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md245"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md247"></a>
 他の色空間へ変換</h2>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rgb{ 0, 100, 255 };</div>
 <div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1HSV.html">Udon::HSV</a> hsv = rgb.<a class="code hl_function" href="structUdon_1_1RGB.html#a5fa355eecf463e4f5d5909ee18fc0c55">toHSV</a>();</div>
 <div class="ttc" id="astructUdon_1_1HSV_html"><div class="ttname"><a href="structUdon_1_1HSV.html">Udon::HSV</a></div><div class="ttdoc">HSV色空間</div><div class="ttdef"><b>Definition</b> HSV.hpp:20</div></div>
 <div class="ttc" id="astructUdon_1_1RGB_html_a5fa355eecf463e4f5d5909ee18fc0c55"><div class="ttname"><a href="structUdon_1_1RGB.html#a5fa355eecf463e4f5d5909ee18fc0c55">Udon::RGB::toHSV</a></div><div class="ttdeci">HSV toHSV() const noexcept</div><div class="ttdoc">HSV色空間に変換</div><div class="ttdef"><b>Definition</b> RGB.hpp:30</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md246"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md248"></a>
 HSV 色空間</h1>
-<h2><a class="anchor" id="autotoc_md247"></a>
+<h2><a class="anchor" id="autotoc_md249"></a>
 概要</h2>
 <p>色相 (Hue) 彩度(Saturation) 明度(Value) で表現される色空間のことで、次のように定義されています。各要素には 0~255 の数値が入ります。</p>
 <p>色相の値を増やすだけで色が虹色に変化するので便利です。</p>
@@ -151,24 +151,24 @@ HSV 色空間</h1>
 <div class="line">    uint8_t s;</div>
 <div class="line">    uint8_t v;</div>
 <div class="line">};</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md248"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md250"></a>
 構築</h2>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1HSV.html">Udon::HSV</a> hsv;</div>
 <div class="line"><a class="code hl_struct" href="structUdon_1_1HSV.html">Udon::HSV</a> hsv{ 0, 100, 255 };</div>
 <div class="line"><a class="code hl_struct" href="structUdon_1_1HSV.html">Udon::HSV</a> hsv{ 0xff00ff };  <span class="comment">// 24bit値から</span></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md249"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md251"></a>
 他の色空間へ変換</h2>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1HSV.html">Udon::HSV</a> hsv{ 0, 100, 255 };</div>
 <div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rgb = hsv.<a class="code hl_function" href="structUdon_1_1HSV.html#ab8b1c8e2ec06118cd3b2fda1d12d3e6e">toRGB</a>();</div>
 <div class="ttc" id="astructUdon_1_1HSV_html_ab8b1c8e2ec06118cd3b2fda1d12d3e6e"><div class="ttname"><a href="structUdon_1_1HSV.html#ab8b1c8e2ec06118cd3b2fda1d12d3e6e">Udon::HSV::toRGB</a></div><div class="ttdeci">RGB toRGB() const noexcept</div><div class="ttdoc">RGB色空間に変換</div><div class="ttdef"><b>Definition</b> HSV.hpp:30</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md250"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md252"></a>
 24bit 値への変換</h2>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1HSV.html">Udon::HSV</a> hsv{ 0, 100, 255 };</div>
 <div class="line"><span class="keyword">const</span> uint32_t bits = hsv.<a class="code hl_function" href="structUdon_1_1HSV.html#acc9673e4c99d3255042e77f9dca9caa6">to24bit</a>();</div>
 <div class="ttc" id="astructUdon_1_1HSV_html_acc9673e4c99d3255042e77f9dca9caa6"><div class="ttname"><a href="structUdon_1_1HSV.html#acc9673e4c99d3255042e77f9dca9caa6">Udon::HSV::to24bit</a></div><div class="ttdeci">uint32_t to24bit() const noexcept</div><div class="ttdoc">24bit値へ変換</div><div class="ttdef"><b>Definition</b> HSV.hpp:91</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md251"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md253"></a>
 その他関数</h1>
-<h2><a class="anchor" id="autotoc_md252"></a>
+<h2><a class="anchor" id="autotoc_md254"></a>
 <code>Rainbow()</code></h2>
 <p>時間を基に虹色に変化する RGB オブジェクトを取得できます。</p>
 <div class="fragment"><div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1RGB.html">Udon::RGB</a> rainbow = Udon::Rainbow();</div>

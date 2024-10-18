@@ -110,8 +110,8 @@ $(function(){initNavTree('md_docs_2Algorithm_2LoopCycleController.html',''); ini
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md14"></a></p>
-<p><code>LoopCycleController</code> クラスを使用し、ループ内の処理時間によらず、ループ周期を一定に保ちます。</p>
-<p>コンストラクタ引数にループ周期をマイクロ秒単位で指定し、<code>update()</code> を呼び出すことで周期が一定に保たれます。</p>
+<p>Arduino の <code>loop()</code> 関数は、処理時間によって周期が変動します。そのため、PID 制御の様な一定周期でのフィードバックが重要なアルゴリズムを使用する場合、ループ周期を一定に保つ必要があります。</p>
+<p>下記に <code>LoopCycleController</code> クラスを使用した例を示します。コンストラクタ引数にループ周期(マイクロ秒)を指定し、<code>update()</code> を呼び出すことで周期が一定に保たれます。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> Udon::LoopCycleController loopCtrl{ 10000 };</div>
