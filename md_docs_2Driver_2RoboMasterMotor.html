@@ -171,7 +171,8 @@ $(function(){initNavTree('md_docs_2Driver_2RoboMasterMotor.html',''); initResiza
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md170"></a>
 センサー値取得</h1>
 <p>回転角度、回転速度、トルク電流、モーター温度を取得可能です。位置制御や速度制御をする場合、フィードバック制御と組み合わせて使用してください。</p>
-<p>ドライバは駆動電源で動作するため、駆動電源が切れるとドライバに保存されているエンコーダー角が消去される点に注意してください。</p>
+<dl class="section note"><dt>覚え書き</dt><dd><br  />
+ ドライバは駆動電源で動作するため、駆動電源が切れるとドライバに保存されているエンコーダー角が消去される点に注意してください。</dd></dl>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    <span class="comment">// 回転角度(無限角対応) [rad]</span></div>
@@ -189,7 +190,13 @@ $(function(){initNavTree('md_docs_2Driver_2RoboMasterMotor.html',''); initResiza
 <div class="line">    <span class="comment">// モーターの温度 [℃]</span></div>
 <div class="line">    <span class="keyword">const</span> uint8_t temp = motor.getTemperature();</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md171"></a>
+</div><!-- fragment --><blockquote class="doxtable">
+<p>&zwj;ロボマスモーターから直接得られる回転角度は一周ごとに 0 になります。そこで <code>getAngle</code> 関数は過去の回転角を累積し、現在の角度を求めます。そのような理由から駆動電源が切れた場合、この関数が返す回転角は無効な値となります。 </p>
+</blockquote>
+<blockquote class="doxtable">
+<p>&zwj;<code>getRawAngle</code> 関数は、ロボマスモーターから直接得られる回転角度を取得する関数です。一周ごとに 0 に戻ります。 </p>
+</blockquote>
+<h1><a class="anchor" id="autotoc_md171"></a>
 複数モーターの場合</h1>
 <p>モーター ID ごとにオブジェクトを生成することで、1 つの CAN バスに対して最大 8 つまでモーターを接続可能です。</p>
 <p>モーター ID はドライバについている SET ボタンを押した後、加えて ID 番号回ボタンを押すことで設定できます。モーター ID は緑に点滅する LED の点滅回数で確認できます。</p>
