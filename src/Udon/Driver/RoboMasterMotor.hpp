@@ -58,7 +58,7 @@ namespace Udon
 
 
             /// @brief モーターの角度を取得
-            /// @note 無限の範囲の角度を扱える (生の角度は8192で一周)
+            /// @note 無限の範囲の角度を扱える
             /// @return 角度 [rad]
             double getAngle() const
             {
