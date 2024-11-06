@@ -195,8 +195,8 @@ $(function(){initNavTree('md_docs_2Communication_2PadOrganization.html',''); ini
 <div class="line">  end</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md91"></a>
 送信側マイコン用クラス</h1>
-<p>この場合、送信基板のマイコンは USB ホストシールドからコントローラの情報を受け取り、無線モジュールへの転送を行います。具体的には <code><a class="el" href="structUdon_1_1Message_1_1PadPS5.html" title="PS5コントローラーのボタン情報">Udon::Message::PadPS5</a></code> 型オブジェクトを転送します。</p>
-<p>USB ホストシールドから <code><a class="el" href="structUdon_1_1Message_1_1PadPS5.html" title="PS5コントローラーのボタン情報">Udon::Message::PadPS5</a></code> 型オブジェクトを取得するには、<code><a class="el" href="classUdon_1_1PadPS5USB.html" title="有線USB経由PS5コントローラークラス">Udon::PadPS5USB</a></code> クラスを使用します。<code>getMessage()</code> から <code><a class="el" href="structUdon_1_1Message_1_1PadPS5.html" title="PS5コントローラーのボタン情報">Udon::Message::PadPS5</a></code> 型オブジェクトを取得出来ます。</p>
+<p>USB ホストシールドからコントローラの情報を受け取り、無線モジュールへ <code><a class="el" href="structUdon_1_1Message_1_1PadPS5.html" title="PS5コントローラーのボタン情報">Udon::Message::PadPS5</a></code> 型オブジェクトの転送を行います。</p>
+<p><code><a class="el" href="classUdon_1_1PadPS5USB.html" title="有線USB経由PS5コントローラークラス">Udon::PadPS5USB</a></code> クラスを用いることで、USB ホストシールドから <code><a class="el" href="structUdon_1_1Message_1_1PadPS5.html" title="PS5コントローラーのボタン情報">Udon::Message::PadPS5</a></code> 型オブジェクトを取得できます。<code>getMessage()</code> で取得出来ます。</p>
 <div class="fragment"><div class="line"><span class="comment">// コントローラの情報を LoRa へ転送する例</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
@@ -247,7 +247,7 @@ $(function(){initNavTree('md_docs_2Communication_2PadOrganization.html',''); ini
 <div class="ttc" id="aclassUdon_1_1PadPS5USB_html_ae7f775174a204f6ecd4bf5667c51bb6d"><div class="ttname"><a href="classUdon_1_1PadPS5USB.html#ae7f775174a204f6ecd4bf5667c51bb6d">Udon::PadPS5USB::setMicLed</a></div><div class="ttdeci">void setMicLed(bool on=true)</div><div class="ttdoc">マイクのLEDの点灯を設定する</div><div class="ttdef"><b>Definition</b> PadPS5USB.hpp:132</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md92"></a>
 受信側マイコン用クラス</h1>
-<p>この場合、受信基板のマイコンは無線モジュールから取得した <code><a class="el" href="structUdon_1_1Message_1_1PadPS5.html" title="PS5コントローラーのボタン情報">Udon::Message::PadPS5</a></code> 型オブジェクトをメインマイコンへ転送する役を担います。</p>
+<p>無線モジュールから取得した <code><a class="el" href="structUdon_1_1Message_1_1PadPS5.html" title="PS5コントローラーのボタン情報">Udon::Message::PadPS5</a></code> 型オブジェクトをメインマイコンへ転送します。</p>
 <div class="fragment"><div class="line"><span class="comment">// LoRa で受信したデータを CAN バスへ送信する例</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
@@ -291,7 +291,7 @@ $(function(){initNavTree('md_docs_2Communication_2PadOrganization.html',''); ini
 <div class="ttc" id="aclassUdon_1_1E220Reader_html_a71f3992dff607d0f11b90fd2decdb2fe"><div class="ttname"><a href="classUdon_1_1E220Reader.html#a71f3992dff607d0f11b90fd2decdb2fe">Udon::E220Reader::begin</a></div><div class="ttdeci">void begin() noexcept</div><div class="ttdoc">受信開始</div><div class="ttdef"><b>Definition</b> E220Reader.hpp:42</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md93"></a>
 Bluetooth 使用時の受信側マイコン用クラス</h1>
-<p>この場合、受信基板のマイコンは USB ホストシールドからコントローラの情報を受け取り、メインマイコンへ転送します。具体的には <code><a class="el" href="structUdon_1_1Message_1_1PadPS5.html" title="PS5コントローラーのボタン情報">Udon::Message::PadPS5</a></code> 型オブジェクトを転送します。</p>
+<p>USB ホストシールドからコントローラの情報を受け取り、<code><a class="el" href="structUdon_1_1Message_1_1PadPS5.html" title="PS5コントローラーのボタン情報">Udon::Message::PadPS5</a></code> 型オブジェクトをメインマイコンへ転送します。</p>
 <p>あらかじめコントローラと Bluetooth ドングルがペアリングされている必要があります。ペアリング方法</p>
 <p><code><a class="el" href="PadPS5BT_8hpp.html">PadPS5BT.hpp</a></code> を個別にインクルードし、<code><a class="el" href="classUdon_1_1PadPS5BT.html" title="Bluetooth経由PS5コントローラークラス">Udon::PadPS5BT</a></code> クラスを用います。使い方は <code>PadPS5USB</code> クラスと同じです。</p>
 <div class="fragment"><div class="line"><span class="comment">// コントローラの情報を CAN バスへ転送する例</span></div>
@@ -354,7 +354,8 @@ Bluetooth ドングルとのペアリング</h1>
 <div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5BT.html#a2af753f449fc60da7922b31cab218614">update</a>();</div>
 <div class="line">}</div>
 <div class="ttc" id="aUdonFwd_8hpp_html"><div class="ttname"><a href="UdonFwd_8hpp.html">UdonFwd.hpp</a></div></div>
-</div><!-- fragment --><p>クリエイトボタン、PS ボタンをライトバーが点滅するまで長押しすることで、コントローラ側もペアリングモードになります。ペアリングは通常数秒で終わります。ペアリングが成功するとライトバーが点灯します。</p>
+</div><!-- fragment --><p>クリエイトボタン、PS ボタンを長押しすることで、コントローラ側もペアリングモードになります。ペアリングモードへ移行するとライトバーが点滅します。</p>
+<p>ペアリングは通常数秒で終わります。ペアリングが成功するとライトバーが点灯します。</p>
 <p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/1c66a52d-3255-4be2-87d4-8f1db863b142" alt="" width="300px" class="inline"/></p>
 <blockquote class="doxtable">
 <p>&zwj;ペアリングに時間がかかる場合、マイコンをリセットすることで大抵つながります。またホストシールドは電源電圧に敏感であるため、電圧値が正常か確認してください。 </p>

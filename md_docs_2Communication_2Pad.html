@@ -118,8 +118,8 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="ttc" id="aPad_8hpp_html"><div class="ttname"><a href="Pad_8hpp.html">Pad.hpp</a></div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md76"></a>
 インスタンス化</h1>
-<p><code>PadPS5</code>クラスはテンプレートクラスになっており、引数に受信クラスを指定することで通信方式を選択できます。</p>
-<p>引数に指定した受信クラスを<code>PadPS5</code>クラスが継承するため、受信クラスのメンバ関数をそのまま使用できます。同様にコンストラクタも継承されます。受信クラスのテンプレート引数には <code>Message::PadPS5</code> が指定されます。</p>
+<p><code><a class="el" href="classUdon_1_1PadPS5.html" title="通信経由PS5コントローラークラス">Udon::PadPS5</a></code> クラスはテンプレートクラスになっており、引数に受信クラスを指定することで通信方式を選択できます。</p>
+<p>引数に指定した受信クラスを<code>PadPS5</code>クラスが継承するため、受信クラスのメンバ関数をそのまま使用できます。同様にコンストラクタも継承されます。受信クラスのテンプレート引数には <code><a class="el" href="structUdon_1_1Message_1_1PadPS5.html" title="PS5コントローラーのボタン情報">Udon::Message::PadPS5</a></code> が指定されます。</p>
 <p>例えば CAN 経由でコントローラの情報を取得する場合、以下のように記述できます。</p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1CanBusTeensy.html">Udon::CanBusTeensy&lt;CAN1&gt;</a> bus;</div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1PadPS5.html">Udon::PadPS5&lt;Udon::CanReader&gt;</a> pad{ bus, <span class="keywordtype">id</span> };</div>
@@ -190,11 +190,11 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_a15b3621e40e64997b11f7998169650c9"><div class="ttname"><a href="classUdon_1_1PadPS5.html#a15b3621e40e64997b11f7998169650c9">Udon::PadPS5::update</a></div><div class="ttdeci">void update(int deadZone=20) noexcept</div><div class="ttdoc">更新</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:144</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md79"></a>
 遠隔非常停止の実装</h1>
-<p>ロボコンのルール上、遠隔非常停止を実装する必要があります。他を顧みず実装するなら以下のように記述できます。コントローラが接続されているかは <code>operator bool</code> によって取得できます。</p>
+<p>ロボコンのルール上、遠隔非常停止を実装する必要があります。✕ボタンで非常停止を掛けるとすると、以下のように記述できます。コントローラが接続されているかは <code>operator bool</code> で取得できます。</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a15b3621e40e64997b11f7998169650c9">update</a>();</div>
-<div class="line">    <span class="keywordflow">if</span> (pad and pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#adf05635646136035d9f097631f6f74ef">getCross</a>().<a class="code hl_variable" href="structUdon_1_1Input.html#a195035cae424cb435f087f5e8e3f7152">toggle</a>) <span class="comment">// 接続されている、×ボタンを押し非常停止が解除された場合</span></div>
+<div class="line">    <span class="keywordflow">if</span> (pad and pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#adf05635646136035d9f097631f6f74ef">getCross</a>().<a class="code hl_variable" href="structUdon_1_1Input.html#a195035cae424cb435f087f5e8e3f7152">toggle</a>) <span class="comment">// 接続されているかつ、×ボタンを押し非常停止が解除された場合</span></div>
 <div class="line">    {</div>
 <div class="line">        omni.move(stick);</div>
 <div class="line">    }</div>
@@ -205,16 +205,18 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_adf05635646136035d9f097631f6f74ef"><div class="ttname"><a href="classUdon_1_1PadPS5.html#adf05635646136035d9f097631f6f74ef">Udon::PadPS5::getCross</a></div><div class="ttdeci">Input getCross() const noexcept</div><div class="ttdoc">×ボタン</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:82</div></div>
 <div class="ttc" id="astructUdon_1_1Input_html_a195035cae424cb435f087f5e8e3f7152"><div class="ttname"><a href="structUdon_1_1Input.html#a195035cae424cb435f087f5e8e3f7152">Udon::Input::toggle</a></div><div class="ttdeci">bool toggle</div><div class="ttdoc">トグル値</div><div class="ttdef"><b>Definition</b> Input.hpp:58</div></div>
-</div><!-- fragment --><p>bool 値を複数扱うと頭が混乱するため、<code>PadPS5</code> クラスは非常停止を行うべきかを判断するための <code>isEmergencyStop</code>、また逆の動作可能かを判断するための <code>isOperable</code> メンバ関数を提供しています。内部的には上記の処理と同等です。</p>
+</div><!-- fragment --><p>複数の bool 値を扱うとややこしくなるため、非常停止を行うべきかを判断するための <code>isEmergencyStop</code>、また逆の動作可能かを判断するための <code>isOperable</code> メンバ関数を提供しています。内部的には上記の処理と同等です。</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a15b3621e40e64997b11f7998169650c9">update</a>();</div>
 <div class="line">    <span class="keywordflow">if</span> (pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#ace71f4cab282f91ae5b6ec8d75dda23b">isOperable</a>())</div>
 <div class="line">    {</div>
+<div class="line">        <span class="comment">// 動作可能時</span></div>
 <div class="line">        omni.move(stick);</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">else</span></div>
 <div class="line">    {</div>
+<div class="line">        <span class="comment">// 非常停止時</span></div>
 <div class="line">        omni.stop();</div>
 <div class="line">    }</div>
 <div class="line">}</div>
@@ -225,24 +227,25 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a15b3621e40e64997b11f7998169650c9">update</a>();</div>
-<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> input = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#aca3b8482aa61897f35178afe39f036e3">getTriangle</a>();</div>
-<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> input = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a40a7d612ccfa09c17dc7bbf15c2419b3">getCircle</a>();</div>
-<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> input = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#adf05635646136035d9f097631f6f74ef">getCross</a>();</div>
-<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> input = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#ac2a73ad5c2f6d65d2325cf324905af93">getSquare</a>();</div>
-<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> input = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#aaf6ca576f49989ab58e32c5d8265c74f">getUp</a>();</div>
-<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> input = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a4c8ac2035811d3fee6fbeeb38f1ba8b6">getRight</a>();</div>
-<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> input = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a08e2696e76412dca980727653e541a0c">getDown</a>();</div>
-<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> input = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a65fc85d767aed800991c7110d316d7f0">getLeft</a>();</div>
-<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> input = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#aff4c874caea6e0297a8da2f5b0594fdf">getL1</a>();</div>
-<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> input = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#af48504e2480557afff6625eef4a6508f">getR1</a>();</div>
-<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> input = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a810301cef6662eb69ce1b64d2e53e381">getL2</a>();</div>
-<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> input = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#acd372dc9123f2f2c477fa5733d3ae347">getR2</a>();</div>
-<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> input = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#aa611ae416604b887f877c9c5788eac27">getL3</a>();      <span class="comment">// 左スティック押し込み</span></div>
-<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> input = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a772bd397c8af31aecf0283f8cd9d5637">getR3</a>();      <span class="comment">// 右スティック押し込み</span></div>
-<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> input = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a85dd6864cf5362d2c16154995f854a45">getCreate</a>();  <span class="comment">// クリエイトボタン(左上ボタン)</span></div>
-<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> input = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#ad68ea9a0046bf8f5a306d9a411951a74">getOption</a>();  <span class="comment">// オプションボタン(右上ボタン)</span></div>
-<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> input = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#af9cd289638e14bdb26157e24a8bf6d92">getTouch</a>();</div>
-<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> input = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a217c540c0eb8c5aa8a306813dace17f3">getPs</a>();</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> triangle = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#aca3b8482aa61897f35178afe39f036e3">getTriangle</a>();</div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> circle   = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a40a7d612ccfa09c17dc7bbf15c2419b3">getCircle</a>();</div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> cross    = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#adf05635646136035d9f097631f6f74ef">getCross</a>();</div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> square   = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#ac2a73ad5c2f6d65d2325cf324905af93">getSquare</a>();</div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> up       = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#aaf6ca576f49989ab58e32c5d8265c74f">getUp</a>();</div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> right    = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a4c8ac2035811d3fee6fbeeb38f1ba8b6">getRight</a>();</div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> down     = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a08e2696e76412dca980727653e541a0c">getDown</a>();</div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> left     = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a65fc85d767aed800991c7110d316d7f0">getLeft</a>();</div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> l1       = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#aff4c874caea6e0297a8da2f5b0594fdf">getL1</a>();</div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> r1       = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#af48504e2480557afff6625eef4a6508f">getR1</a>();</div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> l2       = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a810301cef6662eb69ce1b64d2e53e381">getL2</a>();</div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> r2       = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#acd372dc9123f2f2c477fa5733d3ae347">getR2</a>();</div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> l3       = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#aa611ae416604b887f877c9c5788eac27">getL3</a>();      <span class="comment">// 左スティック押し込み</span></div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> r3       = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a772bd397c8af31aecf0283f8cd9d5637">getR3</a>();      <span class="comment">// 右スティック押し込み</span></div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> create   = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a85dd6864cf5362d2c16154995f854a45">getCreate</a>();  <span class="comment">// クリエイトボタン(左上ボタン)</span></div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> option   = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#ad68ea9a0046bf8f5a306d9a411951a74">getOption</a>();  <span class="comment">// オプションボタン(右上ボタン)</span></div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> touch    = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#af9cd289638e14bdb26157e24a8bf6d92">getTouch</a>();</div>
+<div class="line">    <a class="code hl_struct" href="structUdon_1_1Input.html">Udon::Input</a> ps       = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a217c540c0eb8c5aa8a306813dace17f3">getPs</a>();</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_a08e2696e76412dca980727653e541a0c"><div class="ttname"><a href="classUdon_1_1PadPS5.html#a08e2696e76412dca980727653e541a0c">Udon::PadPS5::getDown</a></div><div class="ttdeci">Input getDown() const noexcept</div><div class="ttdoc">十字キー下</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:94</div></div>
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_a217c540c0eb8c5aa8a306813dace17f3"><div class="ttname"><a href="classUdon_1_1PadPS5.html#a217c540c0eb8c5aa8a306813dace17f3">Udon::PadPS5::getPs</a></div><div class="ttdeci">Input getPs() const noexcept</div><div class="ttdoc">PSボタン</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:130</div></div>
@@ -263,7 +266,7 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_aff4c874caea6e0297a8da2f5b0594fdf"><div class="ttname"><a href="classUdon_1_1PadPS5.html#aff4c874caea6e0297a8da2f5b0594fdf">Udon::PadPS5::getL1</a></div><div class="ttdeci">Input getL1() const noexcept</div><div class="ttdoc">L1ボタン</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:100</div></div>
 <div class="ttc" id="astructUdon_1_1Input_html"><div class="ttname"><a href="structUdon_1_1Input.html">Udon::Input</a></div><div class="ttdoc">入力値</div><div class="ttdef"><b>Definition</b> Input.hpp:16</div></div>
 </div><!-- fragment --><blockquote class="doxtable">
-<p>&zwj;<code>Input</code> オブジェクトは以下の様に定義されており、各ボタンの押された瞬間、離した瞬間等を取得できます。</p>
+<p>&zwj;<code><a class="el" href="structUdon_1_1Input.html" title="入力値">Udon::Input</a></code> オブジェクトは以下の様に定義されており、各ボタンの押された瞬間、離した瞬間等を取得できます。</p>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>Input</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">bool</span> press;    <span class="comment">// 押されているか</span></div>
@@ -271,13 +274,17 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="line">    <span class="keywordtype">bool</span> release;  <span class="comment">// 離された瞬間か</span></div>
 <div class="line">    <span class="keywordtype">bool</span> toggle;   <span class="comment">// 押すごとに入れ替わる</span></div>
 <div class="line">};</div>
-</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// 三角ボタンが押されているか</span></div>
-<div class="line"><span class="keyword">const</span> <span class="keywordtype">bool</span> trianglePressed = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#aca3b8482aa61897f35178afe39f036e3">getTriangle</a>().<a class="code hl_variable" href="structUdon_1_1Input.html#a3dfb3b489c37ac7f1159978bb1957aed">press</a>;</div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keywordtype">bool</span> trianglePress   = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#aca3b8482aa61897f35178afe39f036e3">getTriangle</a>().<a class="code hl_variable" href="structUdon_1_1Input.html#a3dfb3b489c37ac7f1159978bb1957aed">press</a>;</div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">bool</span> triangleClick   = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#aca3b8482aa61897f35178afe39f036e3">getTriangle</a>().<a class="code hl_variable" href="structUdon_1_1Input.html#aa4c9c021a02823dde03ead4e3a68626e">click</a>;</div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">bool</span> triangleRelease = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#aca3b8482aa61897f35178afe39f036e3">getTriangle</a>().<a class="code hl_variable" href="structUdon_1_1Input.html#a731896a6b570510d358a46bcf4db1357">release</a>;</div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">bool</span> triangleToggle  = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#aca3b8482aa61897f35178afe39f036e3">getTriangle</a>().<a class="code hl_variable" href="structUdon_1_1Input.html#a195035cae424cb435f087f5e8e3f7152">toggle</a>;</div>
 <div class="ttc" id="astructUdon_1_1Input_html_a3dfb3b489c37ac7f1159978bb1957aed"><div class="ttname"><a href="structUdon_1_1Input.html#a3dfb3b489c37ac7f1159978bb1957aed">Udon::Input::press</a></div><div class="ttdeci">bool press</div><div class="ttdoc">押されているか</div><div class="ttdef"><b>Definition</b> Input.hpp:46</div></div>
+<div class="ttc" id="astructUdon_1_1Input_html_a731896a6b570510d358a46bcf4db1357"><div class="ttname"><a href="structUdon_1_1Input.html#a731896a6b570510d358a46bcf4db1357">Udon::Input::release</a></div><div class="ttdeci">bool release</div><div class="ttdoc">離された瞬間か</div><div class="ttdef"><b>Definition</b> Input.hpp:55</div></div>
+<div class="ttc" id="astructUdon_1_1Input_html_aa4c9c021a02823dde03ead4e3a68626e"><div class="ttname"><a href="structUdon_1_1Input.html#aa4c9c021a02823dde03ead4e3a68626e">Udon::Input::click</a></div><div class="ttdeci">bool click</div><div class="ttdoc">押された瞬間か</div><div class="ttdef"><b>Definition</b> Input.hpp:52</div></div>
 </div><!-- fragment --> </blockquote>
 <h1><a class="anchor" id="autotoc_md81"></a>
 スティック</h1>
-<p>以下の関数から左右のスティックの値を <code>Vec2</code> オブジェクトして取得可能です。Vec2 クラスの詳細は <a class="el" href="md_docs_2Types_2Vector2D.html">こちら</a></p>
+<p>以下の関数から左右のスティックの値を <code><a class="el" href="structUdon_1_1Vec2.html" title="二次元ベクトル">Udon::Vec2</a></code> オブジェクトして取得可能です。Vec2 クラスの詳細は <a class="el" href="md_docs_2Types_2Vector2D.html">こちら</a></p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a15b3621e40e64997b11f7998169650c9">update</a>();</div>
@@ -310,7 +317,7 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="line">    <span class="keywordtype">double</span> turn;  <span class="comment">// 旋回成分 (右スティックのX成分)</span></div>
 <div class="line">};</div>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// スティックからオムニの出力値を求める</span></div>
-<div class="line"><span class="keyword">const</span> std::array&lt;double, 4&gt; omni = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">getMoveInfo</a>().<a class="code hl_function" href="structUdon_1_1Pos.html#a187d13f2aa77ee29502c343e0666cc56">toOmni</a>();</div>
+<div class="line"><span class="keyword">const</span> std::array&lt;double, 4&gt; omni = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">getMoveInfo</a>().<a class="code hl_function" href="structUdon_1_1Pos.html#a187d13f2aa77ee29502c343e0666cc56">toOmni</a>&lt;4&gt;();</div>
 <div class="ttc" id="astructUdon_1_1Pos_html_a187d13f2aa77ee29502c343e0666cc56"><div class="ttname"><a href="structUdon_1_1Pos.html#a187d13f2aa77ee29502c343e0666cc56">Udon::Pos::toOmni</a></div><div class="ttdeci">std::array&lt; double, N &gt; toOmni() const</div><div class="ttdef"><b>Definition</b> Position.hpp:161</div></div>
 </div><!-- fragment --> </blockquote>
 <h1><a class="anchor" id="autotoc_md82"></a>
@@ -318,7 +325,7 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1CanBusTeensy.html">Udon::CanBusTeensy&lt;CAN1&gt;</a> bus;</div>
-<div class="line"><span class="keyword">static</span> Udon::CanPadPS5 pad{ bus, 0x006 };</div>
+<div class="line"><span class="keyword">static</span> Udon::CanPadPS5 pad{ bus, 0x006 };  <span class="comment">// ID 6 から受信</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup()</div>
 <div class="line">{</div>
@@ -336,11 +343,24 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="line">        Serial.println(<span class="stringliteral">&quot;circle clicked&quot;</span>);</div>
 <div class="line">    }</div>
 <div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#ace71f4cab282f91ae5b6ec8d75dda23b">isOperable</a>())</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">// 動作中</span></div>
+<div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> omniPowers = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">getMoveInfo</a>().<a class="code hl_function" href="structUdon_1_1Pos.html#a187d13f2aa77ee29502c343e0666cc56">toOmni</a>&lt;4&gt;();</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// omni.move(omniPowers);</span></div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">// 非常停止</span></div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// omni.stop();</span></div>
+<div class="line">    }</div>
+<div class="line"> </div>
 <div class="line">    delay(1);</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_a5e0b712fc58d18f440fd3e70b2ac0100"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#a5e0b712fc58d18f440fd3e70b2ac0100">Udon::CanBusTeensy::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">バス更新</div><div class="ttdef"><b>Definition</b> CanBusTeensy.hpp:89</div></div>
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_a634246d48d846fee09ab4c3259f18b26"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#a634246d48d846fee09ab4c3259f18b26">Udon::CanBusTeensy::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">通信開始</div><div class="ttdef"><b>Definition</b> CanBusTeensy.hpp:37</div></div>
-<div class="ttc" id="astructUdon_1_1Input_html_aa4c9c021a02823dde03ead4e3a68626e"><div class="ttname"><a href="structUdon_1_1Input.html#aa4c9c021a02823dde03ead4e3a68626e">Udon::Input::click</a></div><div class="ttdeci">bool click</div><div class="ttdoc">押された瞬間か</div><div class="ttdef"><b>Definition</b> Input.hpp:52</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md83"></a>
 メインマイコンと USB ホストシールドが直接接続されている場合</h1>
 <p>コントローラに内蔵されている LED や、バイブレーションを動作させられます。</p>
