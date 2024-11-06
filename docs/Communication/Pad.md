@@ -12,9 +12,9 @@
 
 ## インスタンス化
 
-`PadPS5`クラスはテンプレートクラスになっており、引数に受信クラスを指定することで通信方式を選択できます。
+`Udon::PadPS5` クラスはテンプレートクラスになっており、引数に受信クラスを指定することで通信方式を選択できます。
 
-引数に指定した受信クラスを`PadPS5`クラスが継承するため、受信クラスのメンバ関数をそのまま使用できます。同様にコンストラクタも継承されます。受信クラスのテンプレート引数には `Message::PadPS5` が指定されます。
+引数に指定した受信クラスを`PadPS5`クラスが継承するため、受信クラスのメンバ関数をそのまま使用できます。同様にコンストラクタも継承されます。受信クラスのテンプレート引数には `Udon::Message::PadPS5` が指定されます。
 
 例えば CAN 経由でコントローラの情報を取得する場合、以下のように記述できます。
 
@@ -108,13 +108,13 @@ void loop()
 
 ## 遠隔非常停止の実装
 
-ロボコンのルール上、遠隔非常停止を実装する必要があります。他を顧みず実装するなら以下のように記述できます。コントローラが接続されているかは `operator bool` によって取得できます。
+ロボコンのルール上、遠隔非常停止を実装する必要があります。✕ボタンで非常停止を掛けるとすると、以下のように記述できます。コントローラが接続されているかは `operator bool` で取得できます。
 
 ```cpp
 void loop()
 {
     pad.update();
-    if (pad and pad.getCross().toggle) // 接続されている、×ボタンを押し非常停止が解除された場合
+    if (pad and pad.getCross().toggle) // 接続されているかつ、×ボタンを押し非常停止が解除された場合
     {
         omni.move(stick);
     }
@@ -125,7 +125,7 @@ void loop()
 }
 ```
 
-bool 値を複数扱うと頭が混乱するため、`PadPS5` クラスは非常停止を行うべきかを判断するための `isEmergencyStop`、また逆の動作可能かを判断するための `isOperable` メンバ関数を提供しています。内部的には上記の処理と同等です。
+複数の bool 値を扱うとややこしくなるため、非常停止を行うべきかを判断するための `isEmergencyStop`、また逆の動作可能かを判断するための `isOperable` メンバ関数を提供しています。内部的には上記の処理と同等です。
 
 ```cpp
 void loop()
@@ -133,10 +133,12 @@ void loop()
     pad.update();
     if (pad.isOperable())
     {
+        // 動作可能時
         omni.move(stick);
     }
     else
     {
+        // 非常停止時
         omni.stop();
     }
 }
@@ -150,28 +152,29 @@ void loop()
 void loop()
 {
     pad.update();
-    Udon::Input input = pad.getTriangle();
-    Udon::Input input = pad.getCircle();
-    Udon::Input input = pad.getCross();
-    Udon::Input input = pad.getSquare();
-    Udon::Input input = pad.getUp();
-    Udon::Input input = pad.getRight();
-    Udon::Input input = pad.getDown();
-    Udon::Input input = pad.getLeft();
-    Udon::Input input = pad.getL1();
-    Udon::Input input = pad.getR1();
-    Udon::Input input = pad.getL2();
-    Udon::Input input = pad.getR2();
-    Udon::Input input = pad.getL3();      // 左スティック押し込み
-    Udon::Input input = pad.getR3();      // 右スティック押し込み
-    Udon::Input input = pad.getCreate();  // クリエイトボタン(左上ボタン)
-    Udon::Input input = pad.getOption();  // オプションボタン(右上ボタン)
-    Udon::Input input = pad.getTouch();
-    Udon::Input input = pad.getPs();
+
+    Udon::Input triangle = pad.getTriangle();
+    Udon::Input circle   = pad.getCircle();
+    Udon::Input cross    = pad.getCross();
+    Udon::Input square   = pad.getSquare();
+    Udon::Input up       = pad.getUp();
+    Udon::Input right    = pad.getRight();
+    Udon::Input down     = pad.getDown();
+    Udon::Input left     = pad.getLeft();
+    Udon::Input l1       = pad.getL1();
+    Udon::Input r1       = pad.getR1();
+    Udon::Input l2       = pad.getL2();
+    Udon::Input r2       = pad.getR2();
+    Udon::Input l3       = pad.getL3();      // 左スティック押し込み
+    Udon::Input r3       = pad.getR3();      // 右スティック押し込み
+    Udon::Input create   = pad.getCreate();  // クリエイトボタン(左上ボタン)
+    Udon::Input option   = pad.getOption();  // オプションボタン(右上ボタン)
+    Udon::Input touch    = pad.getTouch();
+    Udon::Input ps       = pad.getPs();
 }
 ```
 
-> `Input` オブジェクトは以下の様に定義されており、各ボタンの押された瞬間、離した瞬間等を取得できます。
+> `Udon::Input` オブジェクトは以下の様に定義されており、各ボタンの押された瞬間、離した瞬間等を取得できます。
 >
 > ```cpp
 > struct Input
@@ -184,13 +187,15 @@ void loop()
 > ```
 >
 > ```cpp
-> // 三角ボタンが押されているか
-> const bool trianglePressed = pad.getTriangle().press;
+> const bool trianglePress   = pad.getTriangle().press;
+> const bool triangleClick   = pad.getTriangle().click;
+> const bool triangleRelease = pad.getTriangle().release;
+> const bool triangleToggle  = pad.getTriangle().toggle;
 > ```
 
 ## スティック
 
-以下の関数から左右のスティックの値を `Vec2` オブジェクトして取得可能です。Vec2 クラスの詳細は [こちら](../Types/Vector2D.md)
+以下の関数から左右のスティックの値を `Udon::Vec2` オブジェクトして取得可能です。Vec2 クラスの詳細は [こちら](../Types/Vector2D.md)
 
 ```cpp
 void loop()
@@ -234,7 +239,7 @@ Udon::Stick stick = pad.getMoveInfo();
 >
 > ```cpp
 > // スティックからオムニの出力値を求める
-> const std::array<double, 4> omni = pad.getMoveInfo().toOmni();
+> const std::array<double, 4> omni = pad.getMoveInfo().toOmni<4>();
 > ```
 
 ## 最終的なスケッチ例 (CAN バス経由)
@@ -243,7 +248,7 @@ Udon::Stick stick = pad.getMoveInfo();
 #include <Udon.hpp>
 
 static Udon::CanBusTeensy<CAN1> bus;
-static Udon::CanPadPS5 pad{ bus, 0x006 };
+static Udon::CanPadPS5 pad{ bus, 0x006 };  // ID 6 から受信
 
 void setup()
 {
@@ -259,6 +264,20 @@ void loop()
     if (pad.getCircle().click)
     {
         Serial.println("circle clicked");
+    }
+
+    if (pad.isOperable())
+    {
+        // 動作中
+        const auto omniPowers = pad.getMoveInfo().toOmni<4>();
+
+        // omni.move(omniPowers);
+    }
+    else
+    {
+        // 非常停止
+
+        // omni.stop();
     }
 
     delay(1);
