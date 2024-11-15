@@ -29,7 +29,7 @@ while (System::Update())
 }
 ```
 
-また
+また USB 経由シリアル通信、USB経由コントローラーの機能を使用可能です。
 
 - シリアル通信 `Udon::SivSerialReader` `Udon::SivSerialWriter`
 - コントローラー `Udon::SivPadPS5`
