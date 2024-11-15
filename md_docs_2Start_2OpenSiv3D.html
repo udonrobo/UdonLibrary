@@ -110,11 +110,11 @@ $(function(){initNavTree('md_docs_2Start_2OpenSiv3D.html',''); initResizable(tru
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md237"></a></p>
-<p><code>Siv3D.hpp</code> をインクルードた後、<code><a class="el" href="Udon_8hpp.html">Udon.hpp</a></code> をインクルードすることで連携できます。</p>
+<p><code>Siv3D.hpp</code> をインクルードした後、<code><a class="el" href="Udon_8hpp.html">Udon.hpp</a></code> をインクルードすることで連携できます。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Siv3D.hpp&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line"><span class="keywordtype">void</span> Main()</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordflow">while</span> (System::Update())</div>
 <div class="line">    {</div>
@@ -128,15 +128,18 @@ $(function(){initNavTree('md_docs_2Start_2OpenSiv3D.html',''); initResizable(tru
 <li>二次元ベクトル</li>
 <li>三次元ベクトル</li>
 <li>クオータニオン</li>
-<li>シリアル通信</li>
-<li>コントローラー</li>
 </ul>
 <div class="fragment"><div class="line"><span class="keywordflow">while</span> (System::Update())</div>
 <div class="line">{</div>
 <div class="line">    <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> center = s3d::Vec2{ 1.0, 2.0 };</div>
 <div class="line">}</div>
 <div class="ttc" id="astructUdon_1_1Vec2_html"><div class="ttname"><a href="structUdon_1_1Vec2.html">Udon::Vec2</a></div><div class="ttdoc">二次元ベクトル</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:22</div></div>
-</div><!-- fragment --> </div></div><!-- contents -->
+</div><!-- fragment --><p>また</p>
+<ul>
+<li>シリアル通信 <code><a class="el" href="classUdon_1_1SivSerialReader.html" title="OpenSiv3D用 Serial 受信クラス">Udon::SivSerialReader</a></code> <code><a class="el" href="classUdon_1_1SivSerialWriter.html" title="OpenSiv3D用 Serial 送信クラス">Udon::SivSerialWriter</a></code></li>
+<li>コントローラー <code><a class="el" href="namespaceUdon.html#a4b5d3b294d6e954b48868d836bd9a427" title="OpenSiv3D用 PS5コントローラー">Udon::SivPadPS5</a></code> </li>
+</ul>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! --></div>
