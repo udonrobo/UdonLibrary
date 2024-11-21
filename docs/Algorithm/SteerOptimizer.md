@@ -123,7 +123,7 @@ void loop()
 
 ## OpenSiv3D でシミュレートする
 
-> Visual Studio への UdonLibrary の追加方法は [ダウンロード: Visual Studio](./../../README.md) を参照してください。
+> Visual Studio への UdonLibrary の追加方法は [追加方法: Visual Studio](./../../README.md) を参照してください。
 
 ```cpp
 #include <Siv3D.hpp>
