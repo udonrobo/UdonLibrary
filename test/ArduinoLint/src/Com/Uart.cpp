@@ -1,13 +1,13 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
 #include <Arduino.h>
 #include <Udon/Com/Serial.hpp>
 
-static void test()
+__attribute__((unused)) static void test()
 {
     Udon::SerialReader<int> reader{ Serial };
     reader.getMessage();

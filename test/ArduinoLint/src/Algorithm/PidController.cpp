@@ -1,16 +1,16 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
 #include <Arduino.h>
 #include <Udon/Algorithm/PidController.hpp>
 
-static void test()
+__attribute__((unused)) static void test()
 {
     Udon::PidController pid{ 0.0, 0.0, 0.0, 1000 };
-    
+
     pid.update(0.0, 0.0);
     pid.getPower();
     pid.getPower(-250, 250);

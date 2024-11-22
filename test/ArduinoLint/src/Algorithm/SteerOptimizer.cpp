@@ -8,6 +8,7 @@
 
 #include <Udon/Algorithm/SteerOptimizer.hpp>
 
+__attribute__((unused)) 
 static void test()
 {
     {

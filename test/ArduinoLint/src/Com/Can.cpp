@@ -1,6 +1,6 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
@@ -11,14 +11,14 @@
 
 #if defined(TEENSYDUINO)
 
-static void testBus()
+__attribute__((unused)) static void testBus()
 {
 
-#if defined(ARDUINO_TEENSY41) || defined(ARDUINO_TEENSY40) || defined(ARDUINO_TEENSY36)
+#    if defined(ARDUINO_TEENSY41) || defined(ARDUINO_TEENSY40) || defined(ARDUINO_TEENSY36)
     constexpr auto BUS = CAN1;
-#elif defined(ARDUINO_TEENSY35)
+#    elif defined(ARDUINO_TEENSY35)
     constexpr auto BUS = CAN0;
-#endif
+#    endif
 
     Udon::CanBusTeensy<BUS> a;
     Udon::CanBusTeensy<BUS> bus{
@@ -45,7 +45,7 @@ static void testBus()
 
 #elif defined(ARDUINO_ARCH_RP2040)
 
-static void testBus()
+__attribute__((unused)) static void testBus()
 {
     Udon::CanBusSpi{
         {
@@ -80,7 +80,7 @@ static void testBus()
 
 #endif
 
-static void testIsReaderWriter()
+__attribute__((unused)) static void testIsReaderWriter()
 {
     static_assert(Udon::Traits::IsReader<Udon::CanReader>::value, "");
     static_assert(Udon::Traits::IsWriter<Udon::CanWriter>::value, "");
@@ -94,7 +94,7 @@ struct DummyBus
     Udon::CanRxNode* createRx(uint32_t, size_t) override { return nullptr; }
 };
 
-static void testReader()
+__attribute__((unused)) static void testReader()
 {
     DummyBus bus;
     Udon::CanReader<int> reader{ bus, 0x00 };
@@ -103,7 +103,7 @@ static void testReader()
     reader.showRaw();
 }
 
-static void testWriter()
+__attribute__((unused)) static void testWriter()
 {
     DummyBus bus;
     Udon::CanWriter<int> writer{ bus, 0x00 };

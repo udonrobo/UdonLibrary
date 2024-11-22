@@ -1,6 +1,6 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
@@ -23,7 +23,7 @@ struct B
 {
 };
 
-static void test()
+__attribute__((unused)) static void test()
 {
     static_assert(Udon::Traits::HasMemberFunctionShow<A>::value, "");
     static_assert(Udon::Traits::HasMemberFunctionUpdate<A>::value, "");

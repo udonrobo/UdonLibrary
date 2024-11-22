@@ -14,7 +14,7 @@ struct Enumerable
     UDON_ENUMERABLE(value);
 };
 
-static void test()
+__attribute__((unused)) static void test()
 {
     // 組み込み型
     {
@@ -28,7 +28,7 @@ static void test()
         Enumerable e{ 100 };
         Udon::Show(e);
     }
-    
+
     // 配列
     {
         // int array[] = { 1, 2, 3, 4, 5 };

@@ -1,12 +1,12 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
 #include <Udon/Algorithm/ServoSpeed.hpp>
 
-static void test()
+__attribute__((unused)) static void test()
 {
     Udon::ServoSpeed servo(10000, Udon::ServoChoose::_20kg, 10);
     servo.update();
@@ -16,4 +16,3 @@ static void test()
     servo.getAngle();
     servo.speedValue();
 }
-
