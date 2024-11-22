@@ -1,6 +1,6 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
@@ -9,7 +9,7 @@
 
 #include <Udon/Traits/ReaderWriterTraits.hpp>
 
-static void testBus()
+__attribute__((unused)) static void testBus()
 {
     Udon::I2cBus bus{ Wire };
 
@@ -35,7 +35,7 @@ static void testBus()
     bus.onRequest(nullptr);
 }
 
-static void testIsReaderWriter()
+__attribute__((unused)) static void testIsReaderWriter()
 {
     static_assert(Udon::Traits::IsReader<Udon::I2cMasterReader>::value, "");
     static_assert(Udon::Traits::IsWriter<Udon::I2cMasterWriter>::value, "");
@@ -43,7 +43,7 @@ static void testIsReaderWriter()
     static_assert(Udon::Traits::IsWriter<Udon::I2cSlaveWriter>::value, "");
 }
 
-static void testMaster()
+__attribute__((unused)) static void testMaster()
 {
     Udon::I2cBus bus{ Wire };
 
@@ -59,7 +59,7 @@ static void testMaster()
     writer.showRaw();
 }
 
-static void testSlave()
+__attribute__((unused)) static void testSlave()
 {
     Udon::I2cBus bus{ Wire };
 

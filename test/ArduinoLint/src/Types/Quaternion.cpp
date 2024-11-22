@@ -1,6 +1,6 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
@@ -8,7 +8,7 @@
 
 #include <Udon/Types/Quaternion.hpp>
 
-static void test()
+__attribute__((unused)) static void test()
 {
 
     // コンストラクタ
@@ -32,7 +32,7 @@ static void test()
     // 二項演算子
     {
         constexpr Udon::Quaternion a, b = { 10, 20, 30, 40 };
-        a * b;
+        a* b;
     }
 
     // 複合代入演算子

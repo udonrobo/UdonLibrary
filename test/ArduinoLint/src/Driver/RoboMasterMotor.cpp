@@ -1,6 +1,6 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
@@ -16,7 +16,7 @@ struct DummyBus
     Udon::CanRxNode* createRx(uint32_t, size_t) override { return nullptr; }
 };
 
-static void test()
+__attribute__((unused)) static void test()
 {
     DummyBus bus;
     {

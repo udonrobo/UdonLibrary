@@ -9,7 +9,7 @@
 
 #ifdef ARDUINO_ARCH_RP2040
 
-static void test()
+__attribute__((unused)) static void test()
 {
     Udon::Servo servo;
     servo.attach(1);

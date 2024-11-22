@@ -6,10 +6,10 @@
 
 #ifdef ARDUINO_ARCH_RP2040
 
-#include <Arduino.h>
-#include <Udon/Utility/PicoWDT.hpp>
+#    include <Arduino.h>
+#    include <Udon/Utility/PicoWDT.hpp>
 
-static void test()
+__attribute__((unused)) static void test()
 {
     Udon::PicoWDT wdt;
     wdt.update();

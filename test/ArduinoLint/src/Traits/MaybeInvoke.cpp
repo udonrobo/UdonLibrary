@@ -1,6 +1,6 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
@@ -13,7 +13,8 @@ struct TestStructure1
 struct TestStructure2
 {
 };
-static void test()
+
+__attribute__((unused)) static void test()
 {
     TestStructure1 a;
     Udon::Traits::MaybeInvokeBegin(a);    // call

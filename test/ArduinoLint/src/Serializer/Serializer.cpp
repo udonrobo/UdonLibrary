@@ -1,6 +1,6 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
@@ -17,9 +17,9 @@ struct Hoge
     UDON_ENUMERABLE(a, b, c);
 };
 
-static void test()
+__attribute__((unused)) static void test()
 {
-    Hoge hoge { 1, 2, 3 };
+    Hoge hoge{ 1, 2, 3 };
 
     const auto packed = Udon::Serialize(hoge);
 
