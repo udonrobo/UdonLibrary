@@ -355,7 +355,7 @@ namespace Udon
 
         uart.readStringUntil(' ');
         uart.readStringUntil('.');    // 頭のVer.は捨てる
-        const int version = uart.readStringUntil('.').substr(0).toInt() * 100 + uart.readStringUntil('\n').substring(0).toInt();
+        const int version = uart.readStringUntil('.').substring(0).toInt() * 100 + uart.readStringUntil('\n').substring(0).toInt();
 
         int    defaultChannel, defaultPower;
         String defaultCharIOMode, defaultStatusOutputOnReceipt;
