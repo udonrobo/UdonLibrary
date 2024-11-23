@@ -1,6 +1,6 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
@@ -10,7 +10,7 @@
 
 #    include <Udon/Com/Im920.hpp>
 
-static void testIm920()
+__attribute__((unused)) static void testIm920()
 {
     Udon::Im920 im920{ Serial };
     im920.operator bool();
@@ -25,7 +25,7 @@ static void testIm920()
     im920sL.show();
 }
 
-static void testReaderWriter()
+__attribute__((unused)) static void testReaderWriter()
 {
     Udon::Im920 im920{ Serial };
 

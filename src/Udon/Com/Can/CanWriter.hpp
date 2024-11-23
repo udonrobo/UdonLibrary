@@ -35,8 +35,7 @@ namespace Udon
         /// @param bus CANバス
         /// @param id  自身のノードID
         CanWriter(ICanBus& bus, const uint32_t id)
-            : bus{ bus }
-            , node{ bus.createTx(id, Size) }
+            : node{ bus.createTx(id, Size) }
         {
         }
 
@@ -46,8 +45,7 @@ namespace Udon
 
         /// @brief ムーブコンストラクタ
         CanWriter(CanWriter&& other)
-            : bus{ other.bus }
-            , node{ other.node }
+            : node{ other.node }
         {
         }
 
@@ -83,8 +81,6 @@ namespace Udon
         }
 
     private:
-        ICanBus& bus;
-
         CanTxNode* node;
     };
 

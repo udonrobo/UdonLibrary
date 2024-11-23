@@ -1,6 +1,6 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
@@ -9,7 +9,7 @@
 #include <Udon/Types/Vector2D.hpp>
 #include <Udon/Serializer/Serializer.hpp>
 
-static void test()
+__attribute__((unused)) static void test()
 {
 
     // コンストラクタ
@@ -35,7 +35,7 @@ static void test()
         constexpr Udon::Vec2 a, b = { 10, 20 };
         a + b;
         a - b;
-        a * b;
+        a* b;
         a / b;
         a + 100;
         a - 100;

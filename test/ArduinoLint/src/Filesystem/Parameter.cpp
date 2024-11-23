@@ -1,6 +1,6 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
@@ -8,7 +8,7 @@
 
 #if defined(__MK20DX256__) || defined(__MK64FX512__) || defined(__MK66FX1M0__) || defined(__IMXRT1062__)
 
-static void test()
+__attribute__((unused)) static void test()
 {
     Udon::Parameter p(10, "hoge.csv");
 

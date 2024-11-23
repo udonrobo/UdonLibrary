@@ -8,9 +8,9 @@
 #include <Arduino.h>
 #include <Udon/Com/LoRa.hpp>
 
-static void ReaderTest()
+__attribute__((unused)) static void ReaderTest()
 {
-    
+
 #if __cplusplus >= 201402L
     Udon::E220Reader<uint64_t> lora({
         .serial = Serial1,
@@ -42,7 +42,7 @@ static void ReaderTest()
     (void)lora.getRssi();
 }
 
-static void WriterTest()
+__attribute__((unused)) static void WriterTest()
 {
 #if __cplusplus >= 201402L
     Udon::E220Writer<uint64_t> lora({

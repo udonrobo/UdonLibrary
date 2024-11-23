@@ -1,13 +1,13 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
 #include <Arduino.h>
 #include <Udon/Types/ArrayView.hpp>
 
-static void testConstructor()
+__attribute__((unused)) static void testConstructor()
 {
     Udon::ArrayView<int> defaultConstructor{};
 
@@ -17,7 +17,7 @@ static void testConstructor()
     Udon::ArrayView<int> arrayPointer{ array, 10 };
 }
 
-static void testMethod()
+__attribute__((unused)) static void testMethod()
 {
     Udon::ArrayView<int> arrayView{};
     arrayView.size();
@@ -39,7 +39,7 @@ static void testMethod()
     arrayView.crend();
 }
 
-static void testConstMethod()
+__attribute__((unused)) static void testConstMethod()
 {
     const Udon::ArrayView<int> arrayView{};
     arrayView.size();

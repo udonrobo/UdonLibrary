@@ -10,8 +10,7 @@
 
 #ifdef ARDUINO_ARCH_RP2040
 
-
-static void test()
+__attribute__((unused)) static void test()
 {
     (void)Udon::PioClockBegin(1, 16'000'000);
 

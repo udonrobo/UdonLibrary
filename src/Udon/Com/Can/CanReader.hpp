@@ -36,8 +36,7 @@ namespace Udon
         /// @param bus CANバス
         /// @param id 送信者のノードID
         CanReader(ICanBus& bus, const uint32_t id)
-            : bus{ bus }
-            , node{ bus.createRx(id, Size) }
+            : node{ bus.createRx(id, Size) }
         {
             node->onReceive = [](void* p)
             {
@@ -53,8 +52,7 @@ namespace Udon
 
         /// @brief コピーコンストラクタ
         CanReader(CanReader&& other)
-            : bus{ other.bus }
-            , node{ other.node }
+            : node{ other.node }
         {
             node->param = this;    // ここでotherに登録されていたthisポインタを上書きするため、コピーすることができない
         }
@@ -105,8 +103,6 @@ namespace Udon
         }
 
     private:
-        ICanBus& bus;
-
         CanRxNode* node;
 
         Udon::Optional<MessageType> message;

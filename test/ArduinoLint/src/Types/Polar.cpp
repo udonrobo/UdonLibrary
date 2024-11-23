@@ -1,6 +1,6 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
@@ -8,7 +8,7 @@
 
 #include <Udon/Types/Polar.hpp>
 
-static void test()
+__attribute__((unused)) static void test()
 {
 
     // コンストラクタ
@@ -34,7 +34,7 @@ static void test()
         Udon::Polar a, b = { 100, 200 };
         a + b;
         a - b;
-        a * b;
+        a* b;
         a / b;
     }
 

@@ -1,6 +1,6 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
@@ -9,7 +9,7 @@
 
 #ifdef ARDUINO_ARCH_RP2040
 
-static void test()
+__attribute__((unused)) static void test()
 {
     Udon::EncoderPico encoder{ 0, 0 };
     encoder.begin();

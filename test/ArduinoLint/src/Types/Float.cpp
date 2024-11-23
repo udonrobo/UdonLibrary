@@ -1,6 +1,6 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
@@ -9,8 +9,7 @@
 #include <Udon/Serializer/Serializer.hpp>
 #include <Udon/Types/Float.hpp>
 
-
-static void test()
+__attribute__((unused)) static void test()
 {
     // シリアライズ
     {

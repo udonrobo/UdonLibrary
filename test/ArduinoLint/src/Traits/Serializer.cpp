@@ -1,6 +1,6 @@
 //
 //    構文テスト
-// 
+//
 //    Copyright (c) 2022-2024 udonrobo
 //
 
@@ -66,7 +66,8 @@ struct InnerUnEnumerable
     UnEnumerable c;
 };
 
-static void test()
+
+__attribute__((unused)) static void test()
 {
     using namespace Udon::Traits;
 
