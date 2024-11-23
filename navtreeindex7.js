@@ -1,10 +1,10 @@
 var NAVTREEINDEX7 =
 {
-"functions_z.html":[55,3,0,24],
-"functions_~.html":[55,3,0,25],
-"globals.html":[56,1,0],
-"globals_defs.html":[56,1,1],
-"hierarchy.html":[55,2],
+"functions_z.html":[56,3,0,24],
+"functions_~.html":[56,3,0,25],
+"globals.html":[57,1,0],
+"globals_defs.html":[57,1,1],
+"hierarchy.html":[56,2],
 "index.html":[],
 "index.html#autotoc_md1":[0],
 "index.html#autotoc_md10":[2],

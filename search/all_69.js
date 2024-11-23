@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['本ライブラリについて_0',['本ライブラリについて',['../md_docs_2Start_2Include.html#autotoc_md236',1,'']]]
+  ['有効値のセット_0',['有効値のセット',['../md_docs_2Types_2Optional.html#autotoc_md261',1,'']]],
+  ['有_20無効値の判定_1',['有/無効値の判定',['../md_docs_2Types_2Optional.html#autotoc_md259',1,'']]]
 ];
