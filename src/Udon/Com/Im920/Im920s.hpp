@@ -355,7 +355,7 @@ namespace Udon
 
         uart.readStringUntil(' ');
         uart.readStringUntil('.');    // 頭のVer.は捨てる
-        const int version = uart.readStringUntil('.').substr(0).toInt() * 100 + uart.readStringUntil('\n').substr(0).toInt();
+        const int version = uart.readStringUntil('.').substr(0).toInt() * 100 + uart.readStringUntil('\n').substring(0).toInt();
 
         int    defaultChannel, defaultPower;
         String defaultCharIOMode, defaultStatusOutputOnReceipt;
@@ -368,8 +368,8 @@ namespace Udon
             (void)uart.readStringUntil('\n');                                    //  ID:
             (void)uart.readStringUntil('\n');                                    //  STNN:
             (void)uart.readStringUntil('\n');                                    //  STGN:
-            defaultChannel = uart.readStringUntil('\n').substr(5).toInt();    //  STCH:
-            defaultPower   = uart.readStringUntil('\n').substr(5).toInt();    //  STPO:
+            defaultChannel = uart.readStringUntil('\n').substring(5).toInt();    //  STCH:
+            defaultPower   = uart.readStringUntil('\n').substring(5).toInt();    //  STPO:
             (void)uart.readStringUntil('\n');                                    //  STNM:
             (void)uart.readStringUntil('\n');                                    //  STTH:
             (void)uart.readStringUntil('\n');                                    //  STTL:
@@ -394,8 +394,8 @@ namespace Udon
             (void)uart.readStringUntil('\n');                                    // ID
             (void)uart.readStringUntil('\n');                                    // STNN
             (void)uart.readStringUntil('\n');                                    // STGN
-            defaultChannel = uart.readStringUntil('\n').substr(5).toInt();    // STCH
-            defaultPower   = uart.readStringUntil('\n').substr(5).toInt();    // STPO
+            defaultChannel = uart.readStringUntil('\n').substring(5).toInt();    // STCH
+            defaultPower   = uart.readStringUntil('\n').substring(5).toInt();    // STPO
             (void)uart.readStringUntil('\n');                                    // STNM
             (void)uart.readStringUntil('\n');                                    // STTH
             (void)uart.readStringUntil('\n');                                    // STTL
