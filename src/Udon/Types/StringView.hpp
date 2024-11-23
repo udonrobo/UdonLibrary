@@ -99,7 +99,7 @@ namespace Udon
         {
         }
 
-        
+
 #ifdef ARDUINO
 
         /// @brief Arduino の String からの変換
@@ -183,29 +183,26 @@ namespace Udon
         }
 
         /// @brief 指定された範囲のビューを作成する
-        /// @param beginIndex 開始位置
-        /// @param endIndex 終端位置(ビューに含まれない)
+        /// @param pos 開始位置
+        /// @param n 取得する要素数
         /// @return 作成されたビュー
-        BasicStringView substring(const size_type beginIndex, const size_type endIndex = npos) const
+        BasicStringView substr(const size_type pos, const size_type n = npos) const
         {
-            if (beginIndex >= m_size)
+            if (pos >= m_size)
             {
                 return {};
             }
-            if (endIndex == npos)
+            if (n == npos)
             {
+                // 終端まで取得
                 return {
-                    std::next(cbegin(), beginIndex),
-                    m_size - beginIndex
+                    std::next(cbegin(), pos),
+                    m_size - pos
                 };
             }
-            if (endIndex <= beginIndex)
-            {
-                return {};
-            }
             return {
-                std::next(cbegin(), beginIndex),
-                std::next(cbegin(), std::min(endIndex, m_size)),
+                std::next(cbegin(), pos),
+                std::min(n, m_size - pos)
             };
         }
 
@@ -213,7 +210,7 @@ namespace Udon
         /// @param terminate 終端文字(ビューに含まれない)
         /// @note 開始位置は現在のビューの開始位置
         /// @return 作成されたビュー
-        BasicStringView substringUntil(const char_type terminate) const
+        BasicStringView substrUntil(const char_type terminate) const
         {
             return {
                 cbegin(),

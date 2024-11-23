@@ -355,8 +355,8 @@ namespace Udon
         (void)uart.readStringUntil('\n');                                              //  STNN:
         (void)uart.readStringUntil('\n');                                              //  STGN:
         (void)uart.readStringUntil('\n');                                              //  STRT:
-        const int defaultChannel = uart.readStringUntil('\n').substring(5).toInt();    //  STCH:
-        const int defaultPower   = uart.readStringUntil('\n').substring(5).toInt();    //  STPO:
+        const int defaultChannel = uart.readStringUntil('\n').substr(5).toInt();    //  STCH:
+        const int defaultPower   = uart.readStringUntil('\n').substr(5).toInt();    //  STPO:
         (void)uart.readStringUntil('\n');                                              //  STNM:
         (void)uart.readStringUntil('\n');                                              //  STTH:
         (void)uart.readStringUntil('\n');                                              //  SRTH:

@@ -92,30 +92,30 @@ TEST(StringView, Substring)
     Udon::StringView sv = "test string";
 
     {
-        auto sub = sv.substring(0, 4);
+        auto sub = sv.substr(0, 4);
         EXPECT_TRUE(sub == "test");
     }
 
     {
-        auto sub = sv.substring(5);
+        auto sub = sv.substr(5);
         EXPECT_TRUE(sub == "string");
     }
 
     {
-        // 範囲外指定 (開始位置が範囲外の場合、空ビューを返す)
-        auto sub = sv.substring(100);
+        // 範囲外指定 (開始位置が範囲外の場合、空ビューを返す) std::string_view は out_of_range 例外を投げる
+        auto sub = sv.substr(100);
         EXPECT_TRUE(sub == "");
     }
 
     {
-        // 範囲指定異常 (開始位置より終端位置の方が大きい場合、ビューを返す)
-        auto sub = sv.substring(5, 3);
-        EXPECT_TRUE(sub == "");
+        // 文字数指定
+        auto sub = sv.substr(5, 3);
+        EXPECT_TRUE(sub == "str");
     }
 
     {
         // 範囲外指定 (終端位置の範囲外は自動で調整)
-        auto sub = sv.substring(0, 100);
+        auto sub = sv.substr(0, 100);
         EXPECT_TRUE(sub == "test string");
     }
 }
