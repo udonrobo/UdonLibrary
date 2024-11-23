@@ -25,7 +25,7 @@ x 軸の右方向を正、y 軸の上方向を正とする直交座標系を使�
 ## 構築
 
 ```cpp
-Udon::Vec2 vector;
+Udon::Vec2 vector;  // { 0, 0 }
 Udon::Vec2 vector ( 1234.5, 6.789 );
 Udon::Vec2 vector { 1234.5, 6.789 };
 Udon::Vec2 vector = { 1234.5, 6.789 };
