@@ -41,8 +41,8 @@ var searchData=
   ['steermoduleoptimizer_38',['SteerModuleOptimizer',['../classUdon_1_1SteerModuleOptimizer.html#aa952fe44eca3e0453501b46e60e8480c',1,'Udon::SteerModuleOptimizer']]],
   ['steeroptimizer_39',['SteerOptimizer',['../classUdon_1_1SteerOptimizer.html#a171d481a921b0d7733de4e7432a8741b',1,'Udon::SteerOptimizer']]],
   ['stop_40',['stop',['../classUdon_1_1ServoSpeed.html#a651eff43f9b4c1950ac7f3b2db6bef6a',1,'Udon::ServoSpeed::stop()'],['../classUdon_1_1MotorBy.html#a8797bb9d415576c2a2529f6aa797d0b8',1,'Udon::MotorBy::stop()']]],
-  ['substring_41',['substring',['../classUdon_1_1BasicStringView.html#a258fa84dd4d9be63b773e505e3c522b8',1,'Udon::BasicStringView']]],
-  ['substringuntil_42',['substringUntil',['../classUdon_1_1BasicStringView.html#a46cda384e9cfd86ab0487bfa1590057a',1,'Udon::BasicStringView']]],
+  ['substr_41',['substr',['../classUdon_1_1BasicStringView.html#a365f96d145406fb904d30b60cc8c5042',1,'Udon::BasicStringView']]],
+  ['substruntil_42',['substrUntil',['../classUdon_1_1BasicStringView.html#a2b9420d26d4ec9d59cf7fb6349f11276',1,'Udon::BasicStringView']]],
   ['subview_43',['subView',['../classUdon_1_1ArrayView.html#a6ed8ddc2154fd369484a8247b78ea7b7',1,'Udon::ArrayView::subView(size_type beginIndex, size_type endIndex) const'],['../classUdon_1_1ArrayView.html#a74383fda4c8c2e79fdde0c6ebbeca144',1,'Udon::ArrayView::subView(size_type beginIndex) const']]],
   ['subviewuntil_44',['subViewUntil',['../classUdon_1_1ArrayView.html#afb604b80ac37fff9c74614c7714e66ab',1,'Udon::ArrayView']]],
   ['swap_45',['swap',['../classUdon_1_1Optional.html#a76b8be66294a8a11750da65d1a69a704',1,'Udon::Optional::swap()'],['../classUdon_1_1BasicStringView.html#a269dc2c9b1f50d8e749318cd014e18c2',1,'Udon::BasicStringView::swap()']]]

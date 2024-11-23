@@ -194,12 +194,12 @@ $(function(){initNavTree('classUdon_1_1BasicStringView.html',''); initResizable(
 <tr class="memitem:ab0985a818b27ddcc5220c5f2f5be82cb" id="r_ab0985a818b27ddcc5220c5f2f5be82cb"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="#aab04a3041206e44d3627bada3963205d">const_reference</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0985a818b27ddcc5220c5f2f5be82cb">back</a> () const noexcept</td></tr>
 <tr class="memdesc:ab0985a818b27ddcc5220c5f2f5be82cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">ビューの終端の文字を取得する  <br /></td></tr>
 <tr class="separator:ab0985a818b27ddcc5220c5f2f5be82cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a258fa84dd4d9be63b773e505e3c522b8" id="r_a258fa84dd4d9be63b773e505e3c522b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1BasicStringView.html">BasicStringView</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a258fa84dd4d9be63b773e505e3c522b8">substring</a> (const <a class="el" href="#a48730ef75336408d0599f4ac11be8fd9">size_type</a> beginIndex, const <a class="el" href="#a48730ef75336408d0599f4ac11be8fd9">size_type</a> endIndex=<a class="el" href="#a66957e5a59ffa28c0c2198360a3764d9">npos</a>) const</td></tr>
-<tr class="memdesc:a258fa84dd4d9be63b773e505e3c522b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定された範囲のビューを作成する  <br /></td></tr>
-<tr class="separator:a258fa84dd4d9be63b773e505e3c522b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46cda384e9cfd86ab0487bfa1590057a" id="r_a46cda384e9cfd86ab0487bfa1590057a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1BasicStringView.html">BasicStringView</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46cda384e9cfd86ab0487bfa1590057a">substringUntil</a> (const <a class="el" href="#a44b6ed44f0a829f38551a621d013fcab">char_type</a> terminate) const</td></tr>
-<tr class="memdesc:a46cda384e9cfd86ab0487bfa1590057a"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定された終端文字までのビューを作成する  <br /></td></tr>
-<tr class="separator:a46cda384e9cfd86ab0487bfa1590057a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a365f96d145406fb904d30b60cc8c5042" id="r_a365f96d145406fb904d30b60cc8c5042"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1BasicStringView.html">BasicStringView</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a365f96d145406fb904d30b60cc8c5042">substr</a> (const <a class="el" href="#a48730ef75336408d0599f4ac11be8fd9">size_type</a> pos, const <a class="el" href="#a48730ef75336408d0599f4ac11be8fd9">size_type</a> n=<a class="el" href="#a66957e5a59ffa28c0c2198360a3764d9">npos</a>) const</td></tr>
+<tr class="memdesc:a365f96d145406fb904d30b60cc8c5042"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定された範囲のビューを作成する  <br /></td></tr>
+<tr class="separator:a365f96d145406fb904d30b60cc8c5042"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b9420d26d4ec9d59cf7fb6349f11276" id="r_a2b9420d26d4ec9d59cf7fb6349f11276"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1BasicStringView.html">BasicStringView</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b9420d26d4ec9d59cf7fb6349f11276">substrUntil</a> (const <a class="el" href="#a44b6ed44f0a829f38551a621d013fcab">char_type</a> terminate) const</td></tr>
+<tr class="memdesc:a2b9420d26d4ec9d59cf7fb6349f11276"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定された終端文字までのビューを作成する  <br /></td></tr>
+<tr class="separator:a2b9420d26d4ec9d59cf7fb6349f11276"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa240a1a5f8962f3987fb608e10820caa" id="r_aa240a1a5f8962f3987fb608e10820caa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1BasicStringView.html">BasicStringView</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa240a1a5f8962f3987fb608e10820caa">removePrefix</a> (const <a class="el" href="#a48730ef75336408d0599f4ac11be8fd9">size_type</a> n) const</td></tr>
 <tr class="memdesc:aa240a1a5f8962f3987fb608e10820caa"><td class="mdescLeft">&#160;</td><td class="mdescRight">先頭のN文字を削除したビューを作成する  <br /></td></tr>
 <tr class="separator:aa240a1a5f8962f3987fb608e10820caa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1336,8 +1336,8 @@ template&lt;typename CharType , typename Traits  = std::char_traits&lt;CharType&
 
 </div>
 </div>
-<a id="a258fa84dd4d9be63b773e505e3c522b8" name="a258fa84dd4d9be63b773e505e3c522b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a258fa84dd4d9be63b773e505e3c522b8">&#9670;&#160;</a></span>substring()</h2>
+<a id="a365f96d145406fb904d30b60cc8c5042" name="a365f96d145406fb904d30b60cc8c5042"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a365f96d145406fb904d30b60cc8c5042">&#9670;&#160;</a></span>substr()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1348,14 +1348,14 @@ template&lt;typename CharType , typename Traits  = std::char_traits&lt;CharType&
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classUdon_1_1BasicStringView.html">BasicStringView</a> <a class="el" href="classUdon_1_1BasicStringView.html">Udon::BasicStringView</a>&lt; CharType, Traits &gt;::substring </td>
+          <td class="memname"><a class="el" href="classUdon_1_1BasicStringView.html">BasicStringView</a> <a class="el" href="classUdon_1_1BasicStringView.html">Udon::BasicStringView</a>&lt; CharType, Traits &gt;::substr </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="#a48730ef75336408d0599f4ac11be8fd9">size_type</a></td>          <td class="paramname"><span class="paramname"><em>beginIndex</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="#a48730ef75336408d0599f4ac11be8fd9">size_type</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="#a48730ef75336408d0599f4ac11be8fd9">size_type</a></td>          <td class="paramname"><span class="paramname"><em>endIndex</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="#a66957e5a59ffa28c0c2198360a3764d9">npos</a></span>&#160;) const</td>
+          <td class="paramtype">const <a class="el" href="#a48730ef75336408d0599f4ac11be8fd9">size_type</a></td>          <td class="paramname"><span class="paramname"><em>n</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="#a66957e5a59ffa28c0c2198360a3764d9">npos</a></span>&#160;) const</td>
         </tr>
       </table>
   </td>
@@ -1368,8 +1368,8 @@ template&lt;typename CharType , typename Traits  = std::char_traits&lt;CharType&
 <p>指定された範囲のビューを作成する </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">beginIndex</td><td>開始位置 </td></tr>
-    <tr><td class="paramname">endIndex</td><td>終端位置(ビューに含まれない) </td></tr>
+    <tr><td class="paramname">pos</td><td>開始位置 </td></tr>
+    <tr><td class="paramname">n</td><td>取得する要素数 </td></tr>
   </table>
   </dd>
 </dl>
@@ -1377,8 +1377,8 @@ template&lt;typename CharType , typename Traits  = std::char_traits&lt;CharType&
 
 </div>
 </div>
-<a id="a46cda384e9cfd86ab0487bfa1590057a" name="a46cda384e9cfd86ab0487bfa1590057a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a46cda384e9cfd86ab0487bfa1590057a">&#9670;&#160;</a></span>substringUntil()</h2>
+<a id="a2b9420d26d4ec9d59cf7fb6349f11276" name="a2b9420d26d4ec9d59cf7fb6349f11276"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b9420d26d4ec9d59cf7fb6349f11276">&#9670;&#160;</a></span>substrUntil()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1389,7 +1389,7 @@ template&lt;typename CharType , typename Traits  = std::char_traits&lt;CharType&
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classUdon_1_1BasicStringView.html">BasicStringView</a> <a class="el" href="classUdon_1_1BasicStringView.html">Udon::BasicStringView</a>&lt; CharType, Traits &gt;::substringUntil </td>
+          <td class="memname"><a class="el" href="classUdon_1_1BasicStringView.html">BasicStringView</a> <a class="el" href="classUdon_1_1BasicStringView.html">Udon::BasicStringView</a>&lt; CharType, Traits &gt;::substrUntil </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="#a44b6ed44f0a829f38551a621d013fcab">char_type</a></td>          <td class="paramname"><span class="paramname"><em>terminate</em></span></td><td>)</td>
           <td> const</td>

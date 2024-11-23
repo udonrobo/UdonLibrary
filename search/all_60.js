@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['指定した点を中心にベクトルを指定角度回転させる_0',['指定した点を中心にベクトルを指定角度回転させる',['../md_docs_2Types_2Vector2D.html#autotoc_md296',1,'']]]
+  ['実用例_0',['実用例',['../md_docs_2Other_2Traits.html#autotoc_md228',1,'']]]
 ];

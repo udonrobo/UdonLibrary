@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['有効値のセット_0',['有効値のセット',['../md_docs_2Types_2Optional.html#autotoc_md261',1,'']]],
-  ['有_20無効値の判定_1',['有/無効値の判定',['../md_docs_2Types_2Optional.html#autotoc_md259',1,'']]]
+  ['新たにメッセージ型を定義する_0',['新たにメッセージ型を定義する',['../md_docs_2Communication_2Message.html#autotoc_md73',1,'']]]
 ];

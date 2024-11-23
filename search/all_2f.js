@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['シリアライザ_0',['シリアライザ',['../md_docs_2Other_2Serialization.html',1,'']]],
-  ['シリアライズ可能な型_1',['シリアライズ可能な型',['../md_docs_2Other_2Serialization.html#autotoc_md202',1,'']]],
-  ['シリアライズ_2',['シリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md203',1,'シリアライズ'],['../md_docs_2Types_2Vector2D.html#autotoc_md310',1,'シリアライズ']]],
-  ['シリアルモニターに送信する_3',['シリアルモニターに送信する',['../md_docs_2Types_2Vector2D.html#autotoc_md282',1,'']]]
+  ['サイズ_0',['サイズ',['../md_docs_2Types_2StringView.html#autotoc_md279',1,'']]],
+  ['サンプル_1',['サンプル',['../md_docs_2Other_2Serialization.html#autotoc_md212',1,'']]],
+  ['サーボ_2',['サーボ',['../md_docs_2Driver_2PicoServo.html',1,'']]]
 ];

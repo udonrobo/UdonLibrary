@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['ホストシールドがメイン基板にある場合_0',['■ Bluetooth 経由 / USB ホストシールドがメイン基板にある場合',['../md_docs_2Communication_2PadOrganization.html#autotoc_md88',1,'']]],
-  ['ホストシールドが直接接続されている場合_1',['メインマイコンと USB ホストシールドが直接接続されている場合',['../md_docs_2Communication_2Pad.html#autotoc_md83',1,'']]],
-  ['ホストシールドとメイン基板が別々の場合_2',['■ Bluetooth 経由 / USB ホストシールドとメイン基板が別々の場合',['../md_docs_2Communication_2PadOrganization.html#autotoc_md89',1,'']]]
+  ['ベクトルの各要素の値を一定の範囲に収める_0',['ベクトルの各要素の値を一定の範囲に収める',['../md_docs_2Types_2Vector2D.html#autotoc_md319',1,'']]],
+  ['ベクトルの角度を求める_1',['ベクトルの角度を求める',['../md_docs_2Types_2Vector2D.html#autotoc_md305',1,'']]],
+  ['ベクトルの長さを変更する_2',['ベクトルの長さを変更する',['../md_docs_2Types_2Vector2D.html#autotoc_md308',1,'']]],
+  ['ベクトルの長さを求める_3',['ベクトルの長さを求める',['../md_docs_2Types_2Vector2D.html#autotoc_md302',1,'']]],
+  ['ベクトルをリマッピングする_4',['ベクトルをリマッピングする',['../md_docs_2Types_2Vector2D.html#autotoc_md322',1,'']]],
+  ['ベクトル演算_5',['ベクトル演算',['../md_docs_2Types_2Vector2D.html#autotoc_md299',1,'']]]
 ];

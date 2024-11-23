@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['基本_0',['基本',['../md_docs_2Other_2Traits.html#autotoc_md227',1,'']]]
+  ['周波数_0',['周波数',['../md_docs_2Communication_2LoRa.html#autotoc_md70',1,'']]]
 ];

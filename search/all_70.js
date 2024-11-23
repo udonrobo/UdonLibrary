@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['独立ステア最適化_0',['独立ステア最適化',['../md_docs_2Algorithm_2SteerOptimizer.html',1,'']]]
+  ['末尾の_20n_20文字を削除した部分文字列を作成する_0',['■ 末尾の N 文字を削除した部分文字列を作成する',['../md_docs_2Types_2StringView.html#autotoc_md284',1,'']]]
 ];

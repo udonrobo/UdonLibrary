@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['環境_0',['バニラ C++ 環境',['../md_docs_2Install_2VanillaCpp.html',1,'']]]
+  ['本ライブラリでの使われ方_0',['本ライブラリでの使われ方',['../md_docs_2Types_2Optional.html#autotoc_md264',1,'']]],
+  ['本ライブラリについて_1',['本ライブラリについて',['../md_docs_2Start_2Include.html#autotoc_md236',1,'']]]
 ];

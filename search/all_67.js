@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['書式_0',['書式',['../md_docs_2Developer_2StyleGuide.html#autotoc_md137',1,'']]]
+  ['整数型シリアライズ_0',['整数型シリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md213',1,'']]]
 ];
