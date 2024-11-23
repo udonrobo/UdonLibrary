@@ -66,15 +66,16 @@
 ### ユーザー定義型
 
 - [色空間](./docs/Types/Color.md)
-- [Optional 型](./docs/Types/Optional.md)
+- [Optional 型](./docs/Types/Optional.md) 🌟new
 - [二次元ベクトル型](./docs/Types/Vector2D.md)
 - [三次元ベクトル型](./docs/Types/Vector3D.md)
-- [オイラー角型](./docs/Types/Eular.md)
-- [クオータニオン型](./docs/Types/Quaternion.md)
+- [オイラー](./docs/Types/Eular.md)
+- [クオータニオン](./docs/Types/Quaternion.md)
+- [文字列ビュー](./docs/Types/StringView.md) 🌟new
+- [配列ビュー](./docs/Types/ArrayView.md)
+- [静的可変長配列](./docs/Types/StaticVector.md)
+- [静的可変長リングバッファ](./docs/Types/RingBuffer.md)
 - [固定ビット長浮動小数点型](./docs/Types/Float.md)
-- [コンテナ / 静的可変長配列](./docs/Types/StaticVector.md)
-- [コンテナ / 静的可変長リングバッファ](./docs/Types/RingBuffer.md)
-- [コンテナ / 配列ビュー](./docs/Types/ArrayView.md)
 
 ### その他
 

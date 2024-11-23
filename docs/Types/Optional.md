@@ -1,6 +1,6 @@
 # Optional 型
 
-`std::optional` 型と同義ですが、C++17 からでしか使えないため実装しています。
+`std::optional` 型と同義ですが、C++17 からでしか使えないため `Udon:Optional` 型を実装しています。
 
 Optional 型は有効な値を持つか、もしくは無効かを表す型です。メンバの実装をみると早いかもしれません。大まかに表現すると次のようになります。テンプレート引数に渡された型のオブジェクトを値として持ちます。
 
@@ -23,6 +23,12 @@ Udon::Optional<int> div(int l, int r)
     else
         return l / r;          // 有効値
 }
+```
+
+## 個別インクルード
+
+```cpp
+#include <Udon/Types/Optional.hpp>
 ```
 
 ## 有/無効値の判定
