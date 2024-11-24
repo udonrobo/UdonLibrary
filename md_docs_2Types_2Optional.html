@@ -119,7 +119,7 @@ $(function(){initNavTree('md_docs_2Types_2Optional.html',''); initResizable(true
 <div class="line">    <span class="keywordtype">bool</span> hasValue;  <span class="comment">// true: 有効値  false: 無効値</span></div>
 <div class="line">};</div>
 </div><!-- fragment --><p>次のように戻り値にエラー情報を付与したい場合に用います。</p>
-<div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;int&gt;</a> div(<span class="keywordtype">int</span> l, <span class="keywordtype">int</span> r)</div>
+<div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;int&gt;</a> division(<span class="keywordtype">int</span> l, <span class="keywordtype">int</span> r)</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordflow">if</span> (r == 0)</div>
 <div class="line">        <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceUdon.html#ae102f6540b6e88b1b484ddbed3ff972f">Udon::nullopt</a>;  <span class="comment">// 無効値</span></div>
@@ -135,13 +135,13 @@ $(function(){initNavTree('md_docs_2Types_2Optional.html',''); initResizable(true
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md261"></a>
 有/無効値の判定</h1>
 <p>有効値かどうかは <code>hasValue()</code> <code>operator bool</code> メンバ関数によって取得できます。</p>
-<div class="fragment"><div class="line"><span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;int&gt;</a> result = div(100, 0);</div>
+<div class="fragment"><div class="line"><span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;int&gt;</a> result = division(100, 0);</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">bool</span> hasValue = result.<a class="code hl_function" href="classUdon_1_1Optional.html#a56ba985a8bb1665b162f593f23f502f7">hasValue</a>();          <span class="comment">// hasValue == false</span></div>
 <div class="line"><span class="keywordtype">bool</span> hasValue = <span class="keyword">static_cast&lt;</span><span class="keywordtype">bool</span><span class="keyword">&gt;</span>(result);  <span class="comment">// hasValue == false</span></div>
 <div class="ttc" id="aclassUdon_1_1Optional_html_a56ba985a8bb1665b162f593f23f502f7"><div class="ttname"><a href="classUdon_1_1Optional.html#a56ba985a8bb1665b162f593f23f502f7">Udon::Optional::hasValue</a></div><div class="ttdeci">constexpr bool hasValue() const noexcept</div><div class="ttdoc">値が有効か</div><div class="ttdef"><b>Definition</b> Optional.hpp:307</div></div>
 </div><!-- fragment --><p>if 文の判定式にオブジェクトを渡すと、bool 型への明示的なキャストとしてコンパイルされ、<code>operator bool</code> が呼び出されます。よって次のように判定可能です。</p>
-<div class="fragment"><div class="line"><span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;int&gt;</a> result = div(100, 0);</div>
+<div class="fragment"><div class="line"><span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;int&gt;</a> result = division(100, 0);</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordflow">if</span> (result)</div>
 <div class="line">{</div>
@@ -152,7 +152,7 @@ $(function(){initNavTree('md_docs_2Types_2Optional.html',''); initResizable(true
 <div class="line">    <span class="comment">// 無効値</span></div>
 <div class="line">}</div>
 </div><!-- fragment --><p>一般的には次のように書きます。変数のスコープを if 文に閉じ込められるので、よりスマートです。</p>
-<div class="fragment"><div class="line"><span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;int&gt;</a> result = div(100, 0))</div>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;int&gt;</a> result = division(100, 0))</div>
 <div class="line">{</div>
 <div class="line">    <span class="comment">// 有効値</span></div>
 <div class="line">}</div>
@@ -164,13 +164,13 @@ $(function(){initNavTree('md_docs_2Types_2Optional.html',''); initResizable(true
 値の参照</h1>
 <p>値は <code>operator *</code> <code>value()</code> によって参照できます。</p>
 <p>無効値の場合、値の取得はしてはならず、未定義動作となります。例外の送出できる環境では、例外オブジェクト <code>Udon::BadOptionalAccess</code> がスローされます。</p>
-<div class="fragment"><div class="line"><span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;int&gt;</a> result = div(100, 10))</div>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;int&gt;</a> result = division(100, 10))</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">int</span> value = result.<a class="code hl_function" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">value</a>();  <span class="comment">// value == 10</span></div>
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1Optional_html_a902544e5d958130ac7b0368c1e140d30"><div class="ttname"><a href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">Udon::Optional::value</a></div><div class="ttdeci">ValueType &amp; value() &amp;</div><div class="ttdoc">値を取得</div><div class="ttdef"><b>Definition</b> Optional.hpp:318</div></div>
 </div><!-- fragment --><p><code>Optional::operator *</code> はポインタでの <code>*</code> を模倣して定義されています。ポインタでの <code>*</code> 演算子はポインタ先の参照を返すのに対し、<code>Optional::operator *</code> が持つ値オブジェクトへの参照を返します。</p>
-<div class="fragment"><div class="line"><span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;int&gt;</a> result = div(100, 10))</div>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;int&gt;</a> result = division(100, 10))</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">int</span> value = *result;  <span class="comment">// value == 10</span></div>
 <div class="line">}</div>
