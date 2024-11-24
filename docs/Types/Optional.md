@@ -16,7 +16,7 @@ class Optional
 次のように戻り値にエラー情報を付与したい場合に用います。
 
 ```cpp
-Udon::Optional<int> div(int l, int r)
+Udon::Optional<int> division(int l, int r)
 {
     if (r == 0)
         return Udon::nullopt;  // 無効値
@@ -36,7 +36,7 @@ Udon::Optional<int> div(int l, int r)
 有効値かどうかは `hasValue()` `operator bool` メンバ関数によって取得できます。
 
 ```cpp
-const Udon::Optional<int> result = div(100, 0);
+const Udon::Optional<int> result = division(100, 0);
 
 bool hasValue = result.hasValue();          // hasValue == false
 bool hasValue = static_cast<bool>(result);  // hasValue == false
@@ -45,7 +45,7 @@ bool hasValue = static_cast<bool>(result);  // hasValue == false
 if 文の判定式にオブジェクトを渡すと、bool 型への明示的なキャストとしてコンパイルされ、`operator bool` が呼び出されます。よって次のように判定可能です。
 
 ```cpp
-const Udon::Optional<int> result = div(100, 0);
+const Udon::Optional<int> result = division(100, 0);
 
 if (result)
 {
@@ -60,7 +60,7 @@ else
 一般的には次のように書きます。変数のスコープを if 文に閉じ込められるので、よりスマートです。
 
 ```cpp
-if (const Udon::Optional<int> result = div(100, 0))
+if (const Udon::Optional<int> result = division(100, 0))
 {
     // 有効値
 }
@@ -77,7 +77,7 @@ else
 無効値の場合、値の取得はしてはならず、未定義動作となります。例外の送出できる環境では、例外オブジェクト `Udon::BadOptionalAccess` がスローされます。
 
 ```cpp
-if (const Udon::Optional<int> result = div(100, 10))
+if (const Udon::Optional<int> result = division(100, 10))
 {
     int value = result.value();  // value == 10
 }
@@ -86,7 +86,7 @@ if (const Udon::Optional<int> result = div(100, 10))
 `Optional::operator *` はポインタでの `*` を模倣して定義されています。ポインタでの `*` 演算子はポインタ先の参照を返すのに対し、`Optional::operator *` が持つ値オブジェクトへの参照を返します。
 
 ```cpp
-if (const Udon::Optional<int> result = div(100, 10))
+if (const Udon::Optional<int> result = division(100, 10))
 {
     int value = *result;  // value == 10
 }
