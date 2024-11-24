@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['チャンネルの設定_0',['チャンネルの設定',['../md_docs_2Communication_2LoRa.html#autotoc_md67',1,'']]]
+  ['チャンネルの設定_0',['チャンネルの設定',['../md_docs_2Communication_2LoRa.html#autotoc_md68',1,'']]]
 ];

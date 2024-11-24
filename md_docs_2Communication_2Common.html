@@ -109,9 +109,9 @@ $(function(){initNavTree('md_docs_2Communication_2Common.html',''); initResizabl
   <div class="headertitle"><div class="title">通信共通部</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md34"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md35"></a></p>
 <p>通信クラスの API を大体統一おり、通信方式によらず同じようなプログラムを書くことが可能です。</p>
-<h1><a class="anchor" id="autotoc_md35"></a>
+<h1><a class="anchor" id="autotoc_md36"></a>
 共通内容</h1>
 <ul>
 <li>メッセージ型(単なる構造体)のオブジェクトを用いて通信を行います。<a class="el" href="md_docs_2Communication_2Message.html">メッセージ型</a>を参照してください。</li>
@@ -119,7 +119,7 @@ $(function(){initNavTree('md_docs_2Communication_2Common.html',''); initResizabl
 <li>送受信クラスはテンプレート引数を持っており、通信するオブジェクトの型を指定します。</li>
 <li>送信クラスの <code>setMessage(T)</code> を用いて送信し、受信クラスの <code>Optional&lt;T&gt; getMessage()</code> を用いて受信します。</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md36"></a>
+<h1><a class="anchor" id="autotoc_md37"></a>
 送信者イメージ</h1>
 <div class="fragment"><div class="line">バスクラス bus;</div>
 <div class="line">送信クラス&lt;int&gt; writer{ bus, 0x01 };  <span class="comment">// 送信先通信バスを登録</span></div>
@@ -134,7 +134,7 @@ $(function(){initNavTree('md_docs_2Communication_2Common.html',''); initResizabl
 <div class="line">    bus.update();  <span class="comment">// 更新</span></div>
 <div class="line">    writer.setMessage(1000);  <span class="comment">// バスへデータを送信</span></div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md37"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md38"></a>
 受信者イメージ</h1>
 <div class="fragment"><div class="line">バスクラス bus;</div>
 <div class="line">受信クラス&lt;int&gt; reader{ bus, 0x01 };  <span class="comment">// 受信元通信バスを登録</span></div>
@@ -157,11 +157,11 @@ $(function(){initNavTree('md_docs_2Communication_2Common.html',''); initResizabl
 <div class="line">        Serial.println(<span class="stringliteral">&quot;receive failed&quot;</span>);　<span class="comment">// 受信エラー</span></div>
 <div class="line">    }</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md38"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md39"></a>
 複数の通信バスや送受信者が存在する場合</h1>
 <p>バスクラスと送信者クラスに分けたことで、通信クラスを柔軟に組み合わせられます。</p>
 <p>通信によっては複数のバスや送受信者を立てることができない場合があります。</p>
-<h2><a class="anchor" id="autotoc_md39"></a>
+<h2><a class="anchor" id="autotoc_md40"></a>
 複数送信者</h2>
 <div class="fragment"><div class="line">flowchart LR</div>
 <div class="line">    subgraph ファームウエア</div>
@@ -193,7 +193,7 @@ $(function(){initNavTree('md_docs_2Communication_2Common.html',''); initResizabl
 <div class="line">    writer1.setMessage(1000);</div>
 <div class="line">    writer2.setMessage(2000);</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md40"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md41"></a>
 送受信者</h2>
 <div class="fragment"><div class="line">flowchart LR</div>
 <div class="line">    subgraph ファームウエア</div>
@@ -236,7 +236,7 @@ $(function(){initNavTree('md_docs_2Communication_2Common.html',''); initResizabl
 <div class="line">        Serial.println(<span class="stringliteral">&quot;receive failed&quot;</span>);</div>
 <div class="line">    }</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md41"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md42"></a>
 複数バス、複数送受信</h2>
 <div class="fragment"><div class="line">flowchart LR</div>
 <div class="line">    subgraph ファームウエア1</div>

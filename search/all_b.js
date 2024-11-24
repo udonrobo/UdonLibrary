@@ -1,7 +1,7 @@
 var searchData=
 [
   ['g_0',['g',['../structUdon_1_1RGB.html#a42089e3bb305fa9980135248e1a0536a',1,'Udon::RGB']]],
-  ['gcc_1',['build run (gcc)',['../md_docs_2Install_2VanillaCpp.html#autotoc_md194',1,'']]],
+  ['gcc_1',['build run (gcc)',['../md_docs_2Install_2VanillaCpp.html#autotoc_md195',1,'']]],
   ['getangle_2',['getAngle',['../classUdon_1_1ServoSpeed.html#afc690ee6f12ad2753b95bb92859d87d7',1,'Udon::ServoSpeed::getAngle()'],['../classUdon_1_1Impl_1_1RoboMasterBase.html#a160606f7e43c1789f2174b3b55135049',1,'Udon::Impl::RoboMasterBase::getAngle()']]],
   ['getcircle_3',['getCircle',['../classUdon_1_1PadPS5.html#a40a7d612ccfa09c17dc7bbf15c2419b3',1,'Udon::PadPS5']]],
   ['getconfigreference_4',['getConfigReference',['../classUdon_1_1Impl_1_1E220Base.html#a2690ebbd586d93f53e77e21543560334',1,'Udon::Impl::E220Base']]],
@@ -49,6 +49,6 @@ var searchData=
   ['getvalue_46',['getValue',['../classUdon_1_1MovingAverage.html#a22b06e2be0e4fb72d5346ad940433467',1,'Udon::MovingAverage']]],
   ['getvelocity_47',['getVelocity',['../classUdon_1_1Impl_1_1RoboMasterBase.html#a141335bf5ebe84fb970a51e730059d9b',1,'Udon::Impl::RoboMasterBase']]],
   ['getwriter_48',['getWriter',['../classUdon_1_1Forwarding.html#aadeb14e963c26f038e973808061e2f9b',1,'Udon::Forwarding']]],
-  ['github_20copilot_20導入_49',['GitHub Copilot 導入',['../md_docs_2Developer_2DevelopSetup.html#autotoc_md129',1,'']]],
-  ['google_20unit_20test_50',['Google Unit Test',['../md_docs_2Developer_2CI.html#autotoc_md112',1,'']]]
+  ['github_20copilot_20導入_49',['GitHub Copilot 導入',['../md_docs_2Developer_2DevelopSetup.html#autotoc_md130',1,'']]],
+  ['google_20unit_20test_50',['Google Unit Test',['../md_docs_2Developer_2CI.html#autotoc_md113',1,'']]]
 ];

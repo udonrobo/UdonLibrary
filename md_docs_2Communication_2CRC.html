@@ -109,8 +109,8 @@ $(function(){initNavTree('md_docs_2Communication_2CRC.html',''); initResizable(t
   <div class="headertitle"><div class="title">CRC エラーチェック</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md42"></a></p>
-<h1><a class="anchor" id="autotoc_md43"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md43"></a></p>
+<h1><a class="anchor" id="autotoc_md44"></a>
 <code>Udon::CRC8</code></h1>
 <p>1 バイトの CRC 値を求める関数です。以下の様に定義され、ArrayView を引数にとるため、通常の配列や配列を指すポインタ等、様々な種類の配列から CRC 値を求められます。</p>
 <blockquote class="doxtable">
@@ -124,7 +124,7 @@ $(function(){initNavTree('md_docs_2Communication_2CRC.html',''); initResizable(t
 </div><!-- fragment --><p>ポインタからの場合 ArrayView コンストラクタを明示的に呼び出す必要があります。</p>
 <div class="fragment"><div class="line">uint8_t* data = <span class="keyword">new</span> uint8_t[100];</div>
 <div class="line">uint8_t checksum = <a class="code hl_function" href="namespaceUdon.html#a504b82d933419dccd907460936078550">Udon::CRC8</a>({ data, 100 });</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md44"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md45"></a>
 CRC の概要</h1>
 <p>CRC はチェックサムの強化版とも言える誤り検出符号です。</p>
 <p>チェックサムとは誤り検出方法のひとつで、送信バイト列から求められた値と受信バイト列から求めた値を照合し一致するか確認するアルゴリズムです。簡易的なチェックサムを求める関数の例を以下に示します。動作は単純で、データの各要素を足し合わせた値を返します。</p>

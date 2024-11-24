@@ -109,25 +109,25 @@ $(function(){initNavTree('md_docs_2Communication_2I2C.html',''); initResizable(t
   <div class="headertitle"><div class="title">I2C 通信</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md45"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md46"></a></p>
 <p>I2C 通信は主に基板内で使用されるシリアル通信の一種で、一対多の通信方式です。バス型方式をとっているため容易に配線が可能です。I2C 通信用端子はマイコンに標準で搭載されている場合が多く、導入コストが低いです。</p>
 <p>通信タイミングの管理を行うマイコンはマスターと呼ばれます。マスターと通信するマイコンはスレーブと呼ばれます。I2C 通信クラスは、通信バスクラス、マスター側送受信クラス、スレーブ側送受信クラスから構成されています。</p>
 <dl class="section warning"><dt>警告</dt><dd><br  />
  配線長が長くなると通信エラーの要因となります。 <br  />
 <br  />
  I2Cは信号が HIGH のとき、オープンドレインとなり、プルアップ抵抗によって電圧が上昇します。そのため、配線長が長くなると配線自体の容量が増大し、信号の立ち上がり時間が遅くなります。</dd></dl>
-<h1><a class="anchor" id="autotoc_md46"></a>
+<h1><a class="anchor" id="autotoc_md47"></a>
 個別インクルード</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="I2c_8hpp.html">Udon/Com/I2c.hpp</a>&gt;</span></div>
 <div class="ttc" id="aI2c_8hpp_html"><div class="ttname"><a href="I2c_8hpp.html">I2c.hpp</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md47"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md48"></a>
 バスクラス</h1>
 <p><code>Udon::I2cBus</code></p>
 <p>Arduino の <code>TwoWire</code> クラスへ通信タイムアウト時にバスの再起動を行う機能を追加したバスクラスです。</p>
 <p>通信開始時、マスターモードの場合 <code>begin(void)</code>、スレーブモードの場合 <code>begin(address)</code> を呼び出す点に注意してください。</p>
-<h1><a class="anchor" id="autotoc_md48"></a>
+<h1><a class="anchor" id="autotoc_md49"></a>
 マスターからスレーブへ送信</h1>
-<h2><a class="anchor" id="autotoc_md49"></a>
+<h2><a class="anchor" id="autotoc_md50"></a>
 マスター送信クラス</h2>
 <p><code><a class="el" href="classUdon_1_1I2cMasterWriter.html" title="I2c マスター側送信クラス">Udon::I2cMasterWriter</a>&lt;T&gt;</code></p>
 <p><code>T</code> に指定された型のオブジェクトをスレーブへ送信します。スレーブの数に応じて複数インスタンス化可能です。</p>
@@ -152,7 +152,7 @@ $(function(){initNavTree('md_docs_2Communication_2I2C.html',''); initResizable(t
 <div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
 <div class="ttc" id="aclassUdon_1_1I2cMasterWriter_html"><div class="ttname"><a href="classUdon_1_1I2cMasterWriter.html">Udon::I2cMasterWriter</a></div><div class="ttdoc">I2c マスター側送信クラス</div><div class="ttdef"><b>Definition</b> I2cMasterWriter.hpp:26</div></div>
 <div class="ttc" id="aclassUdon_1_1I2cMasterWriter_html_acc4ba22420f58c11bd6e4ac2ac06887a"><div class="ttname"><a href="classUdon_1_1I2cMasterWriter.html#acc4ba22420f58c11bd6e4ac2ac06887a">Udon::I2cMasterWriter::setMessage</a></div><div class="ttdeci">void setMessage(const MessageType &amp;message)</div><div class="ttdoc">送信するメッセージを設定、送信</div><div class="ttdef"><b>Definition</b> I2cMasterWriter.hpp:46</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md50"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md51"></a>
 スレーブ受信クラス</h2>
 <p><code><a class="el" href="classUdon_1_1I2cSlaveReader.html" title="I2c スレーブ側受信クラス">Udon::I2cSlaveReader</a>&lt;T&gt;</code></p>
 <p><code>T</code> に指定された型のオブジェクトをマスターから受信します。複数インスタンス化できません。</p>
@@ -187,9 +187,9 @@ $(function(){initNavTree('md_docs_2Communication_2I2C.html',''); initResizable(t
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1I2cSlaveReader_html"><div class="ttname"><a href="classUdon_1_1I2cSlaveReader.html">Udon::I2cSlaveReader</a></div><div class="ttdoc">I2c スレーブ側受信クラス</div><div class="ttdef"><b>Definition</b> I2cSlaveReader.hpp:26</div></div>
 <div class="ttc" id="aclassUdon_1_1I2cSlaveReader_html_a98971803ac6013eda42928de0c14e539"><div class="ttname"><a href="classUdon_1_1I2cSlaveReader.html#a98971803ac6013eda42928de0c14e539">Udon::I2cSlaveReader::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">受信開始</div><div class="ttdef"><b>Definition</b> I2cSlaveReader.hpp:57</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md51"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md52"></a>
 スレーブからマスターへ送信</h1>
-<h2><a class="anchor" id="autotoc_md52"></a>
+<h2><a class="anchor" id="autotoc_md53"></a>
 スレーブ送信クラス</h2>
 <p><code><a class="el" href="classUdon_1_1I2cSlaveWriter.html" title="I2c スレーブ側送信クラス">Udon::I2cSlaveWriter</a>&lt;T&gt;</code></p>
 <p><code>T</code> に指定された型のオブジェクトをマスターへ送信します。複数インスタンス化できません。</p>
@@ -214,7 +214,7 @@ $(function(){initNavTree('md_docs_2Communication_2I2C.html',''); initResizable(t
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1I2cSlaveWriter_html"><div class="ttname"><a href="classUdon_1_1I2cSlaveWriter.html">Udon::I2cSlaveWriter</a></div><div class="ttdoc">I2c スレーブ側送信クラス</div><div class="ttdef"><b>Definition</b> I2cSlaveWriter.hpp:26</div></div>
 <div class="ttc" id="aclassUdon_1_1I2cSlaveWriter_html_aef09d367f078d956116658df05d30342"><div class="ttname"><a href="classUdon_1_1I2cSlaveWriter.html#aef09d367f078d956116658df05d30342">Udon::I2cSlaveWriter::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">送信開始</div><div class="ttdef"><b>Definition</b> I2cSlaveWriter.hpp:55</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md53"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md54"></a>
 マスター受信クラス</h2>
 <p><code><a class="el" href="classUdon_1_1I2cMasterReader.html" title="I2c マスター側受信クラス">Udon::I2cMasterReader</a>&lt;T&gt;</code></p>
 <p><code>T</code> に指定された型のオブジェクトをスレーブから受信します。スレーブの数に応じて複数インスタンス化可能です。</p>

@@ -200,7 +200,7 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html',''); initResizable(t
 <summary >
 詳細な設定 </summary>
 <p></p>
-<p>ピン設定等は設定値を格納するための構造体 <code><a class="el" href="structUdon_1_1CanBusSpi_1_1Config.html" title="設定">Udon::CanBusSpi::Config</a></code> を用いて設定します。これらの構造体は次のように定義されています。</p>
+<p>ピン設定等は設定値を格納するための構造体 <code><a class="el" href="structUdon_1_1CanBusSpi_1_1Config.html" title="設定">Udon::CanBusSpi::Config</a></code> を用いて設定します。構造体は次のように定義されています。</p>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>Config</div>
 <div class="line">{</div>
 <div class="line">    <span class="comment">// SPI 関連</span></div>
@@ -219,6 +219,20 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html',''); initResizable(t
 <div class="line">    CAN_SPEED canBaudrate       = CAN_1000KBPS;    <span class="comment">// CAN通信速度</span></div>
 <div class="line">    CAN_CLOCK mcpClock          = MCP_16MHZ;       <span class="comment">// トランシーバー動作クロック周波数 [Hz]</span></div>
 <div class="line">};</div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1CanBusSpi.html">Udon::CanBusSpi</a> bus({</div>
+<div class="line">    .channel     = spi1,</div>
+<div class="line">    .cs          = PICO_DEFAULT_SPI_CSN_PIN;</div>
+<div class="line">    .mosi        = PICO_DEFAULT_SPI_TX_PIN;</div>
+<div class="line">    .miso        = PICO_DEFAULT_SPI_RX_PIN;</div>
+<div class="line">    .sck         = PICO_DEFAULT_SPI_SCK_PIN;</div>
+<div class="line">    .interrupt   = 20;</div>
+<div class="line">    .spiClock    = 1&#39;000&#39;000;</div>
+<div class="line">    .transmitInterval  = 5;</div>
+<div class="line">    .transmitTimeout   = 100;</div>
+<div class="line">    .receiveTimeout    = 100;</div>
+<div class="line">    .canBaudrate       = CAN_1000KBPS;</div>
+<div class="line">    .mcpClock          = MCP_16MHZ;</div>
+<div class="line">});</div>
 </div><!-- fragment --><p></p>
 </details>
 <details >
@@ -248,7 +262,22 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html',''); initResizable(t
 </ul>
 <p></p>
 </details>
-<h1><a class="anchor" id="autotoc_md27"></a>
+<h2><a class="anchor" id="autotoc_md27"></a>
+バスの生存確認</h2>
+<p>各バスクラスに定義されている <code>operator bool</code> メンバ関数で受信タイムアウト、送信タイムアウトを検出できます。この関数は特定の ID のエラーを検出できるものではなく、バスと通信できているか確認する簡易的なチェックです。</p>
+<p>受信タイムアウトの際は受信クラスの <code>getMessage</code> 関数が nullopt を返すのでそちらで判定するのがいいかと思います。</p>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> loop()</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordflow">if</span> (bus)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">// 正常時</span></div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">// 異常時 (結線異常など)</span></div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md28"></a>
 送信ノードクラス</h1>
 <p><code><a class="el" href="classUdon_1_1CanWriter.html" title="CAN通信 送信クラス">Udon::CanWriter</a>&lt;T&gt;</code></p>
 <p><code>T</code> に指定された型のオブジェクトをバスへ送信します。</p>
@@ -257,23 +286,23 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html',''); initResizable(t
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup()</div>
 <div class="line">{</div>
-<div class="line">    bus.<a class="code hl_function" href="classUdon_1_1CanBusSpi.html#a1aee3bf9ee2381059bd94b1ebb1a6b48">begin</a>();</div>
+<div class="line">    bus.<a class="code hl_function" href="classUdon_1_1CanBusTeensy.html#a634246d48d846fee09ab4c3259f18b26">begin</a>();</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
-<div class="line">    bus.<a class="code hl_function" href="classUdon_1_1CanBusSpi.html#a4cf39da779fc32776e4c898af4306cb4">update</a>();</div>
+<div class="line">    bus.<a class="code hl_function" href="classUdon_1_1CanBusTeensy.html#a5e0b712fc58d18f440fd3e70b2ac0100">update</a>();</div>
 <div class="line"> </div>
 <div class="line">    <a class="code hl_struct" href="structUdon_1_1Vec2.html">Udon::Vec2</a> vector{ 100.0, 200.0 };    <span class="comment">// 送信するオブジェクトをインスタンス化</span></div>
 <div class="line">    writer.setMessage(vector);            <span class="comment">// オブジェクトを登録</span></div>
 <div class="line"> </div>
 <div class="line">    delay(10);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassUdon_1_1CanBusSpi_html_a1aee3bf9ee2381059bd94b1ebb1a6b48"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html#a1aee3bf9ee2381059bd94b1ebb1a6b48">Udon::CanBusSpi::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">通信開始</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:23</div></div>
-<div class="ttc" id="aclassUdon_1_1CanBusSpi_html_a4cf39da779fc32776e4c898af4306cb4"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html#a4cf39da779fc32776e4c898af4306cb4">Udon::CanBusSpi::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">バス更新</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:121</div></div>
+<div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_a5e0b712fc58d18f440fd3e70b2ac0100"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#a5e0b712fc58d18f440fd3e70b2ac0100">Udon::CanBusTeensy::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">バス更新</div><div class="ttdef"><b>Definition</b> CanBusTeensy.hpp:89</div></div>
+<div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_a634246d48d846fee09ab4c3259f18b26"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#a634246d48d846fee09ab4c3259f18b26">Udon::CanBusTeensy::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">通信開始</div><div class="ttdef"><b>Definition</b> CanBusTeensy.hpp:37</div></div>
 <div class="ttc" id="aclassUdon_1_1CanWriter_html"><div class="ttname"><a href="classUdon_1_1CanWriter.html">Udon::CanWriter</a></div><div class="ttdoc">CAN通信 送信クラス</div><div class="ttdef"><b>Definition</b> CanWriter.hpp:23</div></div>
 <div class="ttc" id="astructUdon_1_1Vec2_html"><div class="ttname"><a href="structUdon_1_1Vec2.html">Udon::Vec2</a></div><div class="ttdoc">二次元ベクトル</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:22</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md28"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md29"></a>
 受信ノードクラス</h1>
 <p><code><a class="el" href="classUdon_1_1CanReader.html" title="CAN通信 受信クラス">Udon::CanReader</a>&lt;T&gt;</code></p>
 <p><code>T</code> に指定された型のオブジェクトをバスから取得します。送信ノードの <code>T</code> と同じ型である必要があります。</p>
@@ -302,19 +331,17 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html',''); initResizable(t
 <div class="line"> </div>
 <div class="line">    delay(10);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_a5e0b712fc58d18f440fd3e70b2ac0100"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#a5e0b712fc58d18f440fd3e70b2ac0100">Udon::CanBusTeensy::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">バス更新</div><div class="ttdef"><b>Definition</b> CanBusTeensy.hpp:89</div></div>
-<div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_a634246d48d846fee09ab4c3259f18b26"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#a634246d48d846fee09ab4c3259f18b26">Udon::CanBusTeensy::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">通信開始</div><div class="ttdef"><b>Definition</b> CanBusTeensy.hpp:37</div></div>
 <div class="ttc" id="aclassUdon_1_1CanReader_html"><div class="ttname"><a href="classUdon_1_1CanReader.html">Udon::CanReader</a></div><div class="ttdoc">CAN通信 受信クラス</div><div class="ttdef"><b>Definition</b> CanReader.hpp:24</div></div>
 <div class="ttc" id="aclassUdon_1_1Optional_html"><div class="ttname"><a href="classUdon_1_1Optional.html">Udon::Optional</a></div><div class="ttdoc">オプショナル型</div><div class="ttdef"><b>Definition</b> Optional.hpp:62</div></div>
 </div><!-- fragment --><blockquote class="doxtable">
 <p>&zwj;<code>getMessage</code> は正常にオブジェクトが受信できたかどうか判定できるように <code><a class="el" href="classUdon_1_1Optional.html" title="オプショナル型">Udon::Optional</a>&lt;T&gt;</code> を返します。通信エラー時は <code><a class="el" href="namespaceUdon.html#ae102f6540b6e88b1b484ddbed3ff972f" title="無効値">Udon::nullopt</a></code> が返されます。 <code><a class="el" href="classUdon_1_1Optional.html" title="オプショナル型">Udon::Optional</a></code> は値と値が有効であるかを持つクラスで、 <code>operator bool</code> によって値を保持するか取得できます。if 文で正常に受信できたかどうかで分岐できます。</p>
 <p><code><a class="el" href="classUdon_1_1Optional.html" title="オプショナル型">Udon::Optional</a>&lt;T&gt;::operator-&gt;</code> で保持しているオブジェクトのメンバへアクセスでき、<code><a class="el" href="classUdon_1_1Optional.html" title="オプショナル型">Udon::Optional</a>&lt;T&gt;::operator*</code> で optional が持っているオブジェクトの参照を取得できます。 </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md29"></a>
+<h1><a class="anchor" id="autotoc_md30"></a>
 バイト列を直接送受信</h1>
-<p>ロボマスモーター等の CAN 通信を用いる市販のモーターをドライブするには、バイト列で直接やり取りする必要があります。この場合、チェックサムを付与する <code>CanReader</code> <code>CanWriter</code> クラスは使用できません。バイト列を直接やり取りするには送受信ノードを <code>createTx</code> <code>createRx</code> 関数を用いて作成し、作成したノードに対しデータの書き込み、読み出しを行います。</p>
-<p>8バイトより長いデータは分割して送受信されます。この時、1 バイト目にインデックス番号が付与されます。8 バイト以下のデータはインデックスを付与せず送受信します。</p>
-<h2><a class="anchor" id="autotoc_md30"></a>
+<p>ロボマスモーター等の CAN 通信を用いる市販のモーターをドライブするには、バイト列で直接やり取りする必要があります。この場合、CRC を付与する <code>CanReader</code> <code>CanWriter</code> クラスは使用できません。バイト列を直接やり取りするには送受信ノードを <code>createTx</code> <code>createRx</code> 関数を用いて作成し、作成したノードに対しデータの書き込み、読み出しを行います。</p>
+<p>8 バイトより長いデータは分割して送受信されます。この時、1 バイト目にインデックス番号が付与されます。8 バイト以下のデータはインデックスを付与せず送受信します。</p>
+<h2><a class="anchor" id="autotoc_md31"></a>
 ■ 送信ノード</h2>
 <details >
 <summary >
@@ -401,7 +428,7 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html',''); initResizable(t
 <div class="ttc" id="aclassUdon_1_1ICanBus_html"><div class="ttname"><a href="classUdon_1_1ICanBus.html">Udon::ICanBus</a></div><div class="ttdoc">CANバス管理クラス インターフェース</div><div class="ttdef"><b>Definition</b> ICanBus.hpp:49</div></div>
 </div><!-- fragment --><p></p>
 </details>
-<h2><a class="anchor" id="autotoc_md31"></a>
+<h2><a class="anchor" id="autotoc_md32"></a>
 ■ 受信ノード</h2>
 <details >
 <summary >
@@ -449,8 +476,8 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html',''); initResizable(t
 <summary >
 コールバックを行う例 </summary>
 <p></p>
-<p>受信ノードには、受信時に呼び出すコールバック関数を登録できます。一つのバイト列に対して毎度コールバック関数を呼ぶため、データの取りこぼしが起きません。</p>
-<p>8 バイトより長いバイト列は複数のフレームに分割されて送信されます。この時、コールバック関数が呼び出されるのは最終フレーム受信時です。</p>
+<p>受信ノードには、受信時に呼び出すコールバック関数を登録できます。一つのバイト列に対して毎度コールバック関数を呼ぶため、データの取りこぼしが起きません。コールバック関数は割り込みではなく、<code>bus.update()</code> が呼び出します。</p>
+<p>8 バイトより長いバイト列は複数のフレームに分割されて送信されます。この場合、コールバック関数が呼び出されるのは最終フレーム受信時です。</p>
 <p>コールバック関数には <code>param</code> メンバを通じて任意の void ポインタを渡せます。以下の例では CanRxNode ポインタを渡しています。</p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1CanBusTeensy.html">Udon::CanBusTeensy&lt;CAN1&gt;</a> bus;</div>
 <div class="line"> </div>
@@ -545,14 +572,14 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html',''); initResizable(t
 <div class="line">}</div>
 </div><!-- fragment --><p></p>
 </details>
-<h1><a class="anchor" id="autotoc_md32"></a>
+<h1><a class="anchor" id="autotoc_md33"></a>
 デバッグ</h1>
 <p>全 CAN 通信クラスは <code>show()</code> メンバ関数を持っており、通信の状態をシリアルモニターへ送信します。</p>
 <div class="fragment"><div class="line">bus.<a class="code hl_function" href="classUdon_1_1CanBusTeensy.html#a4fd72d88d214e5bca49c9be927cafa3f">show</a>();     <span class="comment">// バスに参加している送受信ノードの列挙、送受信データ(バイト列)を表示</span></div>
 <div class="line">reader.show();  <span class="comment">// 受信データを表示</span></div>
 <div class="line">writer.show();  <span class="comment">// 送信データを表示</span></div>
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_a4fd72d88d214e5bca49c9be927cafa3f"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#a4fd72d88d214e5bca49c9be927cafa3f">Udon::CanBusTeensy::show</a></div><div class="ttdeci">void show() const</div><div class="ttdoc">バス情報を表示する</div><div class="ttdef"><b>Definition</b> CanBusTeensy.hpp:125</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md33"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md34"></a>
 クラスの組み合わせ色々</h1>
 <p>一つのバスへ複数送受信ノードが参加する(よくある)</p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1CanBusTeensy.html">Udon::CanBusTeensy&lt;CAN1&gt;</a> bus;</div>
