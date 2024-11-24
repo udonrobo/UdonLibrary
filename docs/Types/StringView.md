@@ -22,15 +22,15 @@ data ポインタは確保済みの領域を指すのみで、メモリの所有
 
 `std::string` との違いが顕著なのは、文字列から細分化した文字列にする場合と思います。
 
+std::string は動的にメモリを確保し文字列を保持します。そのため下記の例では 3 度、ヒープへのメモリアロケーションが発生します。
+
 ```cpp
 std::string src = "hello world !!";
 std::string hello = src.substr(0, 5);  // hello
 std::string world = src.substr(6, 5);  // world
 ```
 
-std::string は動的にメモリを確保し文字列を保持します。そのため上記の例では 3 度、ヒープへのメモリアロケーションが発生します。
-
-StringView の場合はどうでしょうか。
+StringView の場合、ヒープアロケーションは発生しません。"hello world !!" という、データ領域に確保されている文字列をポインタで指しているためです。そのためアロケーションは発生しませんが `std::string` と違い文字列の書き換えはできません。
 
 ```cpp
 Udon::StringView src = "hello world !!";
@@ -38,17 +38,48 @@ Udon::StringView hello = src.substr(0, 5);  // hello
 Udon::StringView world = src.substr(6, 5);  // world
 ```
 
-なんとヒープアロケーションは 0 回です。これは "hello world !!" という、データ領域に確保されている領域をポインタで指しているためです。そのため `std::string` と違い文字列の書き換えはできません。
+## `std::ostream` オブジェクトへの出力
 
-## 標準出力への出力
-
-`std::ostream` オブジェクトへの出力に対応しています。
+標準出力へ
 
 ```cpp
+#include <iostream>
+
 int main()
 {
     Udon::StringView sv = "hello";
     std::cout << sv << std::endl;
+}
+```
+
+ファイルへ
+
+```cpp
+#include <fstream>
+
+int main()
+{
+    Udon::StringView sv = "hello";
+    std::ofstream file{ "output.txt" };
+    file << sv;
+}
+```
+
+## USB シリアルへの出力
+
+Arduino 環境では USB シリアルへ出力できます。出力値はシリアルモニターで確認できます。
+
+```cpp
+void setup()
+{
+    Serial.begin(115200);
+}
+
+void loop()
+{
+    Udon::StringView sv = "hello";
+    sv.showString();  // hello
+    sv.show();        // [ h, e, l, l, o ]
 }
 ```
 
@@ -80,6 +111,24 @@ const char* data = sv.data();  // 文字列先頭ポインタ
 
 ## 部分文字列作成
 
+### ■ 指定された位置から N 文字の部分文字列を作成
+
+```cpp
+Udon::StringView sv = "hello world";
+
+Udon::StringView result = sv.substr(6, 5);  // w から 5文字取得
+
+// result: { "world" }
+```
+
+```cpp
+Udon::StringView sv = "hello world";
+
+Udon::StringView result = sv.substr(1);  // e から末尾まで
+
+// result: { "ello world" }
+```
+
 ### ■ 指定された終端文字までの部分文字列を作成
 
 ```cpp
@@ -90,7 +139,7 @@ Udon::StringView result = sv.substrUntil('\n');
 // result: { "hello world" }
 ```
 
-### ■ 先頭の N 文字を削除した部分文字列を作成する
+### ■ 先頭の N 文字を削除した部分文字列を作成
 
 ```cpp
 Udon::StringView sv = "message: error";
@@ -100,7 +149,7 @@ Udon::StringView result = sv.removePrefix(9);
 // result: { "error" }
 ```
 
-### ■ 末尾の N 文字を削除した部分文字列を作成する
+### ■ 末尾の N 文字を削除した部分文字列を作成
 
 ```cpp
 Udon::StringView sv = "message: error";
@@ -110,7 +159,7 @@ Udon::StringView result = sv.removeSuffix(7);
 // result: { "message" }
 ```
 
-### ■ 指定された区切り文字で区切り部分文字列のリストを作成する
+### ■ 指定された区切り文字で区切り、部分文字列のリストを作成
 
 ```cpp
 Udon::StringView sv = "Hello I am Japanese";
