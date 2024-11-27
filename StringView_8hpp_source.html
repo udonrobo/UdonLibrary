@@ -429,7 +429,7 @@ $(function(){initNavTree('StringView_8hpp_source.html',''); initResizable(true);
 <div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span> </div>
 <div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span><span class="preprocessor">#ifdef ARDUINO</span></div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>        <span class="keywordtype">void</span> show()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>        <span class="keywordtype">void</span> showRaw()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>            Serial.print(<span class="stringliteral">&quot;[&quot;</span>);</div>
 <div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>            <span class="keywordflow">for</span> (<a class="code hl_typedef" href="classUdon_1_1BasicStringView.html#a48730ef75336408d0599f4ac11be8fd9">size_type</a> i = 0; i &lt; m_size; ++i)</div>
@@ -442,7 +442,7 @@ $(function(){initNavTree('StringView_8hpp_source.html',''); initResizable(true);
 <div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>            }</div>
 <div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>            Serial.print(<span class="stringliteral">&quot;]&quot;</span>);</div>
 <div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>        }</div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>        <span class="keywordtype">void</span> showString()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>        <span class="keywordtype">void</span> show()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>            Serial.write(m_data, m_size);</div>
 <div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>        }</div>
