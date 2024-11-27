@@ -345,7 +345,7 @@ namespace Udon
 #endif
 
 #ifdef ARDUINO
-        void show() const
+        void showRaw() const
         {
             Serial.print("[");
             for (size_type i = 0; i < m_size; ++i)
@@ -358,7 +358,7 @@ namespace Udon
             }
             Serial.print("]");
         }
-        void showString() const
+        void show() const
         {
             Serial.write(m_data, m_size);
         }

@@ -78,8 +78,8 @@ void setup()
 void loop()
 {
     Udon::StringView sv = "hello";
-    sv.showString();  // hello
-    sv.show();        // [ h, e, l, l, o ]
+    sv.show();      // hello
+    sv.showRaw();   // [ h, e, l, l, o ]
 }
 ```
 
