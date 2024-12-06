@@ -1,8 +1,8 @@
 # Optional 型
 
-`std::optional` 型と同義ですが、C++17 からでしか使えないため `Udon:Optional` 型を実装しています。
+Optional 型は有効な値を持つか、もしくは無効な値かを表す型です。
 
-Optional 型は有効な値を持つか、もしくは無効かを表す型です。メンバの実装をみると早いかもしれません。大まかに表現すると次のようになります。テンプレート引数に渡された型のオブジェクトを値として持ちます。
+`std::optional` 型と同義ですが、C++17 からでしか使えないため `Udon:Optional` 型を実装しています。大まか次のように実装されています。テンプレート引数に渡された型のオブジェクト(値)を持ちます。
 
 ```cpp
 template <typename T>
@@ -33,6 +33,17 @@ Udon::Optional<int> division(int l, int r)
 
 ## 有/無効値の判定
 
+```cpp
+if (const Udon::Optional<int> result = division(100, 0))
+{
+    // 有効値
+}
+else
+{
+    // 無効値
+}
+```
+
 有効値かどうかは `hasValue()` `operator bool` メンバ関数によって取得できます。
 
 ```cpp
@@ -42,7 +53,7 @@ bool hasValue = result.hasValue();          // hasValue == false
 bool hasValue = static_cast<bool>(result);  // hasValue == false
 ```
 
-if 文の判定式にオブジェクトを渡すと、bool 型への明示的なキャストとしてコンパイルされ、`operator bool` が呼び出されます。よって次のように判定可能です。
+if 文の判定式にオブジェクトを渡すと、bool 型への明示的なキャストとしてコンパイルされ、`operator bool` が呼び出されます。
 
 ```cpp
 const Udon::Optional<int> result = division(100, 0);
@@ -57,18 +68,7 @@ else
 }
 ```
 
-一般的には次のように書きます。変数のスコープを if 文に閉じ込められるので、よりスマートです。
-
-```cpp
-if (const Udon::Optional<int> result = division(100, 0))
-{
-    // 有効値
-}
-else
-{
-    // 無効値
-}
-```
+一般的には最初の例のように書きます。変数のスコープを if 文に閉じ込められるので、よりスマートです。
 
 ## 値の参照
 
@@ -103,7 +103,17 @@ struct Vec2
 ```
 
 ```cpp
-if (const Udon::Optional<Vec2> result = aaaaa())
+Udon::Optional<Vec2> divisionVector(const Vec2& l, double r)
+{
+    if (r == 0)
+        return Udon::nullopt;
+    else
+        return l / r;
+}
+
+// ... 略
+
+if (const Udon::Optional<Vec2> result = divisionVector({ 100, 200 }, 5))
 {
     double x = result->x;
 }
@@ -177,10 +187,32 @@ else
 
 ## 本ライブラリでの使われ方
 
-本ライブラリでは Optional 型を通信受信時のエラーチェックに用いています。受信用クラスには受信したオブジェクトを返す `getMessage()` メンバ関数がありますが、この関数は受信したオブジェクトを `Optional` でラップして返します。受信エラーの際は無効値を返すためエラー処理を次のように書けます。
+本ライブラリでは Optional 型を通信受信時のエラーチェックに用いています。
+
+受信用クラスには受信したオブジェクトを返す `getMessage()` メンバ関数がありますが、この関数は受信した `T` 型オブジェクトを `Optional<T>` で返します。
+
+受信エラーの際は無効値を返すため、エラー処理を次のように書けます。
 
 ```cpp
-if (const Udon::Optional<Udon::Message::Motor> message = reader.getMessage())
+ReaderClass<Udon::Message::Motor> reader;
+
+void loop()
+{
+    if (const Udon::Optional<Udon::Message::Motor> message = reader.getMessage())
+    {
+        motor.move(message->power);
+    }
+    else
+    {
+        // receive failed
+    }
+}
+```
+
+`auto` 型で受け取ると短く書けます。
+
+```cpp
+if (const auto message = reader.getMessage())
 {
     motor.move(message->power);
 }
