@@ -462,17 +462,6 @@ namespace Udon
 
 
         /**
-         * @brief 値を変換
-         */
-        template <typename Visitor>
-        constexpr auto transform(Visitor&& visitor) const&& -> Optional<Traits::RemoveCVRefT<typename std::result_of<Visitor(const ValueType)>::type>>
-        {
-            return *this ? Optional<Traits::RemoveCVRefT<typename std::result_of<Visitor(const ValueType)>::type>>{ visitor(std::move(**this)) }
-                         : nullopt;
-        }
-
-
-        /**
          * @brief 他のOptionalと値を交換する
          */
         void swap(Optional& other) noexcept(/* std::is_nothrow_swappable<ValueType>::value and*/ std::is_nothrow_move_assignable<ValueType>::value)
