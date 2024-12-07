@@ -469,6 +469,23 @@ TEST(Optional, ValueOr)
     }
 }
 
+TEST(Optional, Transform)
+{
+    {
+        Udon::Optional<int> a = 1;
+        auto b = a.transform([](int v)
+                             { return v + 1; });
+        EXPECT_EQ(*b, 2);
+    }
+
+    {
+        Udon::Optional<int> a;
+        auto b = a.transform([](int v)
+                             { return v + 1; });
+        EXPECT_FALSE(b);
+    }
+}
+
 TEST(Optional, Reset)
 {
     Udon::Optional<Copyable> a{ 100 };
