@@ -17,5 +17,6 @@ var searchData=
   ['tosteer_14',['toSteer',['../structUdon_1_1Pos.html#af1a9145af99bed2ee65f1a0b5a0c1bbf',1,'Udon::Pos']]],
   ['tostring_15',['toString',['../classUdon_1_1BasicStringView.html#aa129f04090c1035790778877251ce57e',1,'Udon::BasicStringView']]],
   ['tovector_16',['toVector',['../structUdon_1_1Polar.html#a79794689d83631b8628c3f314cc6a976',1,'Udon::Polar']]],
-  ['toyaw_17',['toYaw',['../structUdon_1_1Quaternion.html#a5cc89bf11b1c7e6c0e6dbf46ab0775ed',1,'Udon::Quaternion']]]
+  ['toyaw_17',['toYaw',['../structUdon_1_1Quaternion.html#a5cc89bf11b1c7e6c0e6dbf46ab0775ed',1,'Udon::Quaternion']]],
+  ['transform_18',['transform',['../classUdon_1_1Optional.html#a2bf52f645e0e14916f5e446d211c1943',1,'Udon::Optional::transform(Visitor &amp;&amp;visitor) &amp;-&gt; Optional&lt; Traits::RemoveCVRefT&lt; typename std::result_of&lt; Visitor(ValueType &amp;)&gt;::type &gt; &gt;'],['../classUdon_1_1Optional.html#a805cb7a5743853f59230e9e888104868',1,'Udon::Optional::transform(Visitor &amp;&amp;visitor) const &amp;-&gt; Optional&lt; Traits::RemoveCVRefT&lt; typename std::result_of&lt; Visitor(const ValueType &amp;)&gt;::type &gt; &gt;'],['../classUdon_1_1Optional.html#a2a70984be6c8f8b31e6f09d25ec0b9e9',1,'Udon::Optional::transform(Visitor &amp;&amp;visitor) &amp;&amp;-&gt; Optional&lt; Traits::RemoveCVRefT&lt; typename std::result_of&lt; Visitor(ValueType)&gt;::type &gt; &gt;']]]
 ];

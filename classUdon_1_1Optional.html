@@ -205,6 +205,18 @@ $(function(){initNavTree('classUdon_1_1Optional.html',''); initResizable(true); 
 <tr class="memitem:a244e68210665e4f8b2aba42fca055681"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a244e68210665e4f8b2aba42fca055681">valueOr</a> (U &amp;&amp;defaultValue) &amp;&amp;</td></tr>
 <tr class="memdesc:a244e68210665e4f8b2aba42fca055681"><td class="mdescLeft">&#160;</td><td class="mdescRight">有効であれば自身を、無効であればデフォルト値を取得する  <br /></td></tr>
 <tr class="separator:a244e68210665e4f8b2aba42fca055681"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bf52f645e0e14916f5e446d211c1943" id="r_a2bf52f645e0e14916f5e446d211c1943"><td class="memTemplParams" colspan="2">template&lt;typename Visitor &gt; </td></tr>
+<tr class="memitem:a2bf52f645e0e14916f5e446d211c1943"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a2bf52f645e0e14916f5e446d211c1943">transform</a> (Visitor &amp;&amp;visitor) &amp;-&gt; <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; <a class="el" href="namespaceUdon_1_1Traits.html#a52682e510859b64cc281c19ff60fcdec">Traits::RemoveCVRefT</a>&lt; typename std::result_of&lt; Visitor(<a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a> &amp;)&gt;::type &gt; &gt;</td></tr>
+<tr class="memdesc:a2bf52f645e0e14916f5e446d211c1943"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を変換  <br /></td></tr>
+<tr class="separator:a2bf52f645e0e14916f5e446d211c1943"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a805cb7a5743853f59230e9e888104868" id="r_a805cb7a5743853f59230e9e888104868"><td class="memTemplParams" colspan="2">template&lt;typename Visitor &gt; </td></tr>
+<tr class="memitem:a805cb7a5743853f59230e9e888104868"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a805cb7a5743853f59230e9e888104868">transform</a> (Visitor &amp;&amp;visitor) const &amp;-&gt; <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; <a class="el" href="namespaceUdon_1_1Traits.html#a52682e510859b64cc281c19ff60fcdec">Traits::RemoveCVRefT</a>&lt; typename std::result_of&lt; Visitor(const <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a> &amp;)&gt;::type &gt; &gt;</td></tr>
+<tr class="memdesc:a805cb7a5743853f59230e9e888104868"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を変換  <br /></td></tr>
+<tr class="separator:a805cb7a5743853f59230e9e888104868"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a70984be6c8f8b31e6f09d25ec0b9e9" id="r_a2a70984be6c8f8b31e6f09d25ec0b9e9"><td class="memTemplParams" colspan="2">template&lt;typename Visitor &gt; </td></tr>
+<tr class="memitem:a2a70984be6c8f8b31e6f09d25ec0b9e9"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a2a70984be6c8f8b31e6f09d25ec0b9e9">transform</a> (Visitor &amp;&amp;visitor) &amp;&amp;-&gt; <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt; <a class="el" href="namespaceUdon_1_1Traits.html#a52682e510859b64cc281c19ff60fcdec">Traits::RemoveCVRefT</a>&lt; typename std::result_of&lt; Visitor(<a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>)&gt;::type &gt; &gt;</td></tr>
+<tr class="memdesc:a2a70984be6c8f8b31e6f09d25ec0b9e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を変換  <br /></td></tr>
+<tr class="separator:a2a70984be6c8f8b31e6f09d25ec0b9e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76b8be66294a8a11750da65d1a69a704" id="r_a76b8be66294a8a11750da65d1a69a704"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76b8be66294a8a11750da65d1a69a704">swap</a> (<a class="el" href="classUdon_1_1Optional.html">Optional</a> &amp;other) noexcept(/*std::is_nothrow_swappable&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a> &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a> and */std::is_nothrow_move_assignable&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a> &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
 <tr class="memdesc:a76b8be66294a8a11750da65d1a69a704"><td class="mdescLeft">&#160;</td><td class="mdescRight">他のOptionalと値を交換する  <br /></td></tr>
 <tr class="separator:a76b8be66294a8a11750da65d1a69a704"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -988,6 +1000,102 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>他のOptionalと値を交換する </p>
+
+</div>
+</div>
+<a id="a2a70984be6c8f8b31e6f09d25ec0b9e9" name="a2a70984be6c8f8b31e6f09d25ec0b9e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a70984be6c8f8b31e6f09d25ec0b9e9">&#9670;&#160;</a></span>transform() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename Visitor &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::transform </td>
+          <td>(</td>
+          <td class="paramtype">Visitor &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>visitor</em></span></td><td>)</td>
+          <td> &amp;&amp; -&gt; <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt;<a class="el" href="namespaceUdon_1_1Traits.html#a52682e510859b64cc281c19ff60fcdec">Traits::RemoveCVRefT</a>&lt;typename std::result_of&lt;Visitor(<a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>)&gt;::type&gt;&gt;
+        </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>値を変換 </p>
+
+</div>
+</div>
+<a id="a2bf52f645e0e14916f5e446d211c1943" name="a2bf52f645e0e14916f5e446d211c1943"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bf52f645e0e14916f5e446d211c1943">&#9670;&#160;</a></span>transform() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename Visitor &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::transform </td>
+          <td>(</td>
+          <td class="paramtype">Visitor &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>visitor</em></span></td><td>)</td>
+          <td> &amp; -&gt; <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt;<a class="el" href="namespaceUdon_1_1Traits.html#a52682e510859b64cc281c19ff60fcdec">Traits::RemoveCVRefT</a>&lt;typename std::result_of&lt;Visitor(<a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&amp;)&gt;::type&gt;&gt;
+        </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>値を変換 </p>
+
+</div>
+</div>
+<a id="a805cb7a5743853f59230e9e888104868" name="a805cb7a5743853f59230e9e888104868"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a805cb7a5743853f59230e9e888104868">&#9670;&#160;</a></span>transform() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<div class="memtemplate">
+template&lt;typename Visitor &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto <a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;::transform </td>
+          <td>(</td>
+          <td class="paramtype">Visitor &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>visitor</em></span></td><td>)</td>
+          <td> const &amp; -&gt; <a class="el" href="classUdon_1_1Optional.html">Optional</a>&lt;<a class="el" href="namespaceUdon_1_1Traits.html#a52682e510859b64cc281c19ff60fcdec">Traits::RemoveCVRefT</a>&lt;typename std::result_of&lt;Visitor(const <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&amp;)&gt;::type&gt;&gt;
+        </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>値を変換 </p>
 
 </div>
 </div>

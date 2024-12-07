@@ -1,5 +1,11 @@
 var NAVTREEINDEX8 =
 {
+"md_docs_2Types_2Color.html#autotoc_md245":[45,0],
+"md_docs_2Types_2Color.html#autotoc_md246":[45,0,0],
+"md_docs_2Types_2Color.html#autotoc_md247":[45,0,1],
+"md_docs_2Types_2Color.html#autotoc_md248":[45,0,2],
+"md_docs_2Types_2Color.html#autotoc_md249":[45,1],
+"md_docs_2Types_2Color.html#autotoc_md250":[45,1,0],
 "md_docs_2Types_2Color.html#autotoc_md251":[45,1,1],
 "md_docs_2Types_2Color.html#autotoc_md252":[45,1,2],
 "md_docs_2Types_2Color.html#autotoc_md253":[45,2],
@@ -243,11 +249,5 @@ var NAVTREEINDEX8 =
 "structUdon_1_1CanRxNode.html#a52fa3e5e2528ebcf65c95d0f0f1e02f9":[55,0,1,12,1],
 "structUdon_1_1CanRxNode.html#a52fa3e5e2528ebcf65c95d0f0f1e02f9":[56,0,0,9,1],
 "structUdon_1_1CanRxNode.html#a7b40165d116940b1e18c8609474ab50d":[55,0,1,12,5],
-"structUdon_1_1CanRxNode.html#a7b40165d116940b1e18c8609474ab50d":[56,0,0,9,5],
-"structUdon_1_1CanRxNode.html#aa31b79595dd283ec684db5aea4158aba":[55,0,1,12,4],
-"structUdon_1_1CanRxNode.html#aa31b79595dd283ec684db5aea4158aba":[56,0,0,9,4],
-"structUdon_1_1CanRxNode.html#ad757ec7aab002688b0b8f93dce438034":[55,0,1,12,3],
-"structUdon_1_1CanRxNode.html#ad757ec7aab002688b0b8f93dce438034":[56,0,0,9,3],
-"structUdon_1_1CanRxNode.html#ad9fc254f5ffb09749a4554dba59f9f8c":[55,0,1,12,0],
-"structUdon_1_1CanRxNode.html#ad9fc254f5ffb09749a4554dba59f9f8c":[56,0,0,9,0]
+"structUdon_1_1CanRxNode.html#a7b40165d116940b1e18c8609474ab50d":[56,0,0,9,5]
 };

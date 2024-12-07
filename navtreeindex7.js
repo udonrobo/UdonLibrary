@@ -1,5 +1,11 @@
 var NAVTREEINDEX7 =
 {
+"functions_u.html":[56,3,0,19],
+"functions_v.html":[56,3,0,20],
+"functions_vars.html":[56,3,2],
+"functions_w.html":[56,3,0,21],
+"functions_x.html":[56,3,0,22],
+"functions_y.html":[56,3,0,23],
 "functions_z.html":[56,3,0,24],
 "functions_~.html":[56,3,0,25],
 "globals.html":[57,1,0],
@@ -243,11 +249,5 @@ var NAVTREEINDEX7 =
 "md_docs_2Types_2ArrayView.html#autotoc_md241":[44,0],
 "md_docs_2Types_2ArrayView.html#autotoc_md242":[44,1],
 "md_docs_2Types_2ArrayView.html#autotoc_md243":[44,2],
-"md_docs_2Types_2Color.html":[45],
-"md_docs_2Types_2Color.html#autotoc_md245":[45,0],
-"md_docs_2Types_2Color.html#autotoc_md246":[45,0,0],
-"md_docs_2Types_2Color.html#autotoc_md247":[45,0,1],
-"md_docs_2Types_2Color.html#autotoc_md248":[45,0,2],
-"md_docs_2Types_2Color.html#autotoc_md249":[45,1],
-"md_docs_2Types_2Color.html#autotoc_md250":[45,1,0]
+"md_docs_2Types_2Color.html":[45]
 };

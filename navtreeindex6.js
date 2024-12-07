@@ -1,5 +1,11 @@
 var NAVTREEINDEX6 =
 {
+"classUdon_1_1SpeedPidController.html#a1fda29a50fb2b40b69bb5c961e937818":[56,0,0,59,14],
+"classUdon_1_1SpeedPidController.html#a213f878721d9f0ddd28f05da9123bf4f":[55,0,1,62,2],
+"classUdon_1_1SpeedPidController.html#a213f878721d9f0ddd28f05da9123bf4f":[56,0,0,59,2],
+"classUdon_1_1SpeedPidController.html#a292d3eb66fc68f1d60f2b172e4afe94c":[55,0,1,62,1],
+"classUdon_1_1SpeedPidController.html#a292d3eb66fc68f1d60f2b172e4afe94c":[56,0,0,59,1],
+"classUdon_1_1SpeedPidController.html#a34b1b81dc5fd9c4635328ff82d7e3b6f":[55,0,1,62,3],
 "classUdon_1_1SpeedPidController.html#a34b1b81dc5fd9c4635328ff82d7e3b6f":[56,0,0,59,3],
 "classUdon_1_1SpeedPidController.html#a3c10bdcc951dc69b8a8b6d2e8b54bf9f":[55,0,1,62,6],
 "classUdon_1_1SpeedPidController.html#a3c10bdcc951dc69b8a8b6d2e8b54bf9f":[56,0,0,59,6],
@@ -243,11 +249,5 @@ var NAVTREEINDEX6 =
 "functions_rela.html":[56,3,4],
 "functions_s.html":[56,3,0,17],
 "functions_t.html":[56,3,0,18],
-"functions_type.html":[56,3,3],
-"functions_u.html":[56,3,0,19],
-"functions_v.html":[56,3,0,20],
-"functions_vars.html":[56,3,2],
-"functions_w.html":[56,3,0,21],
-"functions_x.html":[56,3,0,22],
-"functions_y.html":[56,3,0,23]
+"functions_type.html":[56,3,3]
 };
