@@ -109,13 +109,13 @@ $(function(){initNavTree('md_docs_2Driver_2SegmentsLed.html',''); initResizable(
   <div class="headertitle"><div class="title">7 セグメント LED</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md178"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md183"></a></p>
 <p><code>SegmentsLed</code> クラスを用いて、複数桁の 7 セグメント LED を制御する方法を説明します。本クラスはアノードコモンの 7 セグメント LED 専用です。</p>
-<h1><a class="anchor" id="autotoc_md179"></a>
+<h1><a class="anchor" id="autotoc_md184"></a>
 個別インクルード</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="SegmentsLed_8hpp.html">Udon/Driver/SegmentsLed.hpp</a>&gt;</span></div>
 <div class="ttc" id="aSegmentsLed_8hpp_html"><div class="ttname"><a href="SegmentsLed_8hpp.html">SegmentsLed.hpp</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md180"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md185"></a>
 インスタンス化</h1>
 <p>コンストラクタにピン番号を指定します。第一引数にはカソードを接続するピン番号を、第二引数にはアノードを接続するピン番号を指定します。</p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> Udon::SegmentsLed segmentsLed {</div>
@@ -130,7 +130,7 @@ $(function(){initNavTree('md_docs_2Driver_2SegmentsLed.html',''); initResizable(
 <div class="line">e     c</div>
 <div class="line">   d</div>
 </div><!-- fragment --><p>アノードピンは小さい桁から順に指定します。最初に指定したピン番号が最下位桁に対応します。桁数はここで指定するピン番号の数によって決まります。上記の例では 2 桁です。</p>
-<h1><a class="anchor" id="autotoc_md181"></a>
+<h1><a class="anchor" id="autotoc_md186"></a>
 値表示</h1>
 <p><code>begin</code> 関数を呼び出し、初期化を行った後、<code>setValue</code> 関数を用いて値を設定します。<code>show</code> 関数を呼び出すことで、設定した値が表示されます。</p>
 <p>本クラスはダイナミック制御を用いて複数桁の値を表示します。ループ毎に表示する桁を切り替えるため、ループが停止すると表示が乱れます。またループ周期が早すぎる場合、表示が薄くなることがあります。</p>
@@ -153,7 +153,7 @@ $(function(){initNavTree('md_docs_2Driver_2SegmentsLed.html',''); initResizable(
 <div class="line">    delay(1);</div>
 <div class="line">}</div>
 <div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md182"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md187"></a>
 無効値表示</h1>
 <p><code>showNan</code> 関数を用いると無効値(<code>--</code>)を表示出来ます。通信エラーやセンサーの故障など、値が取得できない場合に使用することを想定しています。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>

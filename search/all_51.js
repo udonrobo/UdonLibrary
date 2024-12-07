@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['公式ページ_0',['公式ページ',['../md_docs_2Communication_2IM920.html#autotoc_md57',1,'']]]
+  ['先頭の_20n_20文字を削除した部分文字列を作成_0',['■ 先頭の N 文字を削除した部分文字列を作成',['../md_docs_2Types_2StringView.html#autotoc_md291',1,'']]]
 ];

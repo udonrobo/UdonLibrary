@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['新たにメッセージ型を定義する_0',['新たにメッセージ型を定義する',['../md_docs_2Communication_2Message.html#autotoc_md74',1,'']]]
+  ['数値への変換_0',['数値への変換',['../md_docs_2Types_2StringView.html#autotoc_md299',1,'']]]
 ];

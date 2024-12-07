@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['単純な文字列比較_0',['■ 単純な文字列比較',['../md_docs_2Types_2StringView.html#autotoc_md290',1,'']]]
+  ['共通内容_0',['共通内容',['../md_docs_2Communication_2Common.html#autotoc_md36',1,'']]]
 ];

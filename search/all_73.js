@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['極座標系へ変換する_0',['極座標系へ変換する',['../md_docs_2Types_2Vector2D.html#autotoc_md320',1,'']]]
+  ['末尾の_20n_20文字を削除した部分文字列を作成_0',['■ 末尾の N 文字を削除した部分文字列を作成',['../md_docs_2Types_2StringView.html#autotoc_md292',1,'']]]
 ];

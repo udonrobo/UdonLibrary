@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['型_0',['型',['../md_docs_2Developer_2StyleGuide.html#autotoc_md143',1,'型'],['../md_docs_2Types_2Optional.html',1,'Optional 型']]]
+  ['周波数_0',['周波数',['../md_docs_2Communication_2LoRa.html#autotoc_md71',1,'']]]
 ];

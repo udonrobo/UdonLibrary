@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['速度フィードバック制御_0',['スケッチ例 (速度フィードバック制御)',['../md_docs_2Driver_2RoboMasterMotor.html#autotoc_md176',1,'']]],
-  ['速度制御クラスの作成例_1',['スケッチ例 (速度制御クラスの作成例)',['../md_docs_2Driver_2RoboMasterMotor.html#autotoc_md177',1,'']]]
+  ['追加方法_0',['追加方法',['../index.html#autotoc_md1',1,'']]],
+  ['追加_1',['追加',['../md_docs_2Install_2ArduinoIDE.html#autotoc_md189',1,'追加'],['../md_docs_2Install_2CLion.html#autotoc_md192',1,'追加'],['../md_docs_2Install_2VisualStudio.html#autotoc_md203',1,'追加']]]
 ];

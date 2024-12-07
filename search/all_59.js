@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['周波数_0',['周波数',['../md_docs_2Communication_2LoRa.html#autotoc_md71',1,'']]]
+  ['原点を中心にベクトルを指定角度回転させる_0',['原点を中心にベクトルを指定角度回転させる',['../md_docs_2Types_2Vector2D.html#autotoc_md319',1,'']]]
 ];

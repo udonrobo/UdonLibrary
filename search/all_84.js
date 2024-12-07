@@ -1,11 +1,4 @@
 var searchData=
 [
-  ['送信クラス要件_0',['送信クラス要件',['../md_docs_2Other_2Traits.html#autotoc_md223',1,'']]],
-  ['送信クラス_1',['送信クラス',['../md_docs_2Communication_2IM920.html#autotoc_md61',1,'']]],
-  ['送信ノードクラス_2',['送信ノードクラス',['../md_docs_2Communication_2CAN.html#autotoc_md28',1,'']]],
-  ['送信ノード_3',['■ 送信ノード',['../md_docs_2Communication_2CAN.html#autotoc_md31',1,'']]],
-  ['送信側マイコン用クラス_4',['送信側マイコン用クラス',['../md_docs_2Communication_2PadOrganization.html#autotoc_md92',1,'']]],
-  ['送信側_5',['スケッチ例 / 送信側',['../md_docs_2Communication_2LoRa.html#autotoc_md67',1,'']]],
-  ['送信者イメージ_6',['送信者イメージ',['../md_docs_2Communication_2Common.html#autotoc_md37',1,'']]],
-  ['送受信者_7',['送受信者',['../md_docs_2Communication_2Common.html#autotoc_md41',1,'']]]
+  ['謝辞_0',['謝辞',['../md_docs_2Developer_2Acknowledgments.html',1,'']]]
 ];

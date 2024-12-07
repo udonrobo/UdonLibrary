@@ -1,9 +1,5 @@
 var searchData=
 [
-  ['ベクトルの各要素の値を一定の範囲に収める_0',['ベクトルの各要素の値を一定の範囲に収める',['../md_docs_2Types_2Vector2D.html#autotoc_md322',1,'']]],
-  ['ベクトルの角度を求める_1',['ベクトルの角度を求める',['../md_docs_2Types_2Vector2D.html#autotoc_md308',1,'']]],
-  ['ベクトルの長さを変更する_2',['ベクトルの長さを変更する',['../md_docs_2Types_2Vector2D.html#autotoc_md311',1,'']]],
-  ['ベクトルの長さを求める_3',['ベクトルの長さを求める',['../md_docs_2Types_2Vector2D.html#autotoc_md305',1,'']]],
-  ['ベクトルをリマッピングする_4',['ベクトルをリマッピングする',['../md_docs_2Types_2Vector2D.html#autotoc_md325',1,'']]],
-  ['ベクトル演算_5',['ベクトル演算',['../md_docs_2Types_2Vector2D.html#autotoc_md302',1,'']]]
+  ['ブランチを切った場合_0',['Pull Request 作成 (ブランチを切った場合)',['../md_docs_2Developer_2Change.html#autotoc_md109',1,'']]],
+  ['ブランチを切る_20任意_1',['ブランチを切る (任意)',['../md_docs_2Developer_2Change.html#autotoc_md106',1,'']]]
 ];

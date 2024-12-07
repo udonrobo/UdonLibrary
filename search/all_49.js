@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['他の色空間へ変換_0',['他の色空間へ変換',['../md_docs_2Types_2Color.html#autotoc_md248',1,'他の色空間へ変換'],['../md_docs_2Types_2Color.html#autotoc_md251',1,'他の色空間へ変換']]]
+  ['二次元ベクトル_0',['二次元ベクトル',['../md_docs_2Types_2Vector2D.html',1,'']]]
 ];

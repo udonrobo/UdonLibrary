@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['名前空間_0',['名前空間',['../md_docs_2Developer_2StyleGuide.html#autotoc_md145',1,'']]]
+  ['単純な文字列比較_0',['■ 単純な文字列比較',['../md_docs_2Types_2StringView.html#autotoc_md295',1,'']]]
 ];

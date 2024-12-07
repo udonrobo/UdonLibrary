@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['実用例_0',['実用例',['../md_docs_2Other_2Traits.html#autotoc_md229',1,'']]]
+  ['基本_0',['基本',['../md_docs_2Other_2Traits.html#autotoc_md233',1,'']]]
 ];

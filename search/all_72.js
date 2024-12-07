@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['検証ボードを追加する_0',['■ 検証ボードを追加する',['../md_docs_2Developer_2CI.html#autotoc_md111',1,'']]]
+  ['有効値のセット_0',['有効値のセット',['../md_docs_2Types_2Optional.html#autotoc_md268',1,'']]],
+  ['有_20無効値の判定_1',['有/無効値の判定',['../md_docs_2Types_2Optional.html#autotoc_md266',1,'']]]
 ];
