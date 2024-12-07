@@ -12,7 +12,7 @@
 #include <new>
 
 #if __has_include(<new.h>)
-#   include <new.h>
+#    include <new.h>
 #endif
 
 namespace Udon
@@ -67,7 +67,8 @@ namespace Udon
 
         static_assert(not std::is_array<T>::value, "T must not be an array");
 
-        template <typename> friend class Optional;
+        template <typename>
+        friend class Optional;
 
     public:
         using ValueType = T;
@@ -121,7 +122,7 @@ namespace Udon
                 ConstructValue(other.mStorage.value);
             }
         }
-    
+
 
         /**
          * @brief ムーブコンストラクタ
@@ -428,6 +429,39 @@ namespace Udon
 
 
         /**
+         * @brief 値を変換
+         */
+        template <typename Visitor>
+        constexpr auto transform(Visitor&& visitor) & -> Optional<Traits::RemoveCVRefT<typename std::result_of<Visitor(ValueType&)>::type>>
+        {
+            return *this ? Optional<Traits::RemoveCVRefT<typename std::result_of<Visitor(ValueType&)>::type>>{ visitor(**this) }
+                         : nullopt;
+        }
+
+
+        /**
+         * @brief 値を変換
+         */
+        template <typename Visitor>
+        constexpr auto transform(Visitor&& visitor) const& -> Optional<Traits::RemoveCVRefT<typename std::result_of<Visitor(const ValueType&)>::type>>
+        {
+            return *this ? Optional<Traits::RemoveCVRefT<typename std::result_of<Visitor(const ValueType&)>::type>>{ visitor(**this) }
+                         : nullopt;
+        }
+
+
+        /**
+         * @brief 値を変換
+         */
+        template <typename Visitor>
+        constexpr auto transform(Visitor&& visitor) && -> Optional<Traits::RemoveCVRefT<typename std::result_of<Visitor(ValueType)>::type>>
+        {
+            return *this ? Optional<Traits::RemoveCVRefT<typename std::result_of<Visitor(ValueType)>::type>>{ visitor(std::move(**this)) }
+                         : nullopt;
+        }
+
+
+        /**
          * @brief 他のOptionalと値を交換する
          */
         void swap(Optional& other) noexcept(/* std::is_nothrow_swappable<ValueType>::value and*/ std::is_nothrow_move_assignable<ValueType>::value)
@@ -447,7 +481,7 @@ namespace Udon
                 reset();
             }
         }
-        
+
 
         /**
          * @brief 無効状態にする (トリビアルな型)
