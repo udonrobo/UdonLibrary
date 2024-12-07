@@ -86,6 +86,7 @@
 ### 開発者用
 
 - [開発環境セットアップ](./docs/Developer/DevelopSetup.md)
+- [変更方法](./docs/Developer/Change.md)
 - [スタイルガイド](./docs/Developer/StyleGuide.md)
 - [ディレクトリ構造](./docs/Developer/DirectoryStructure.md)
 - [GitHub Actions / 自動テスト](./docs/Developer/CI.md)
