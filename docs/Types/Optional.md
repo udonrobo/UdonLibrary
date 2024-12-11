@@ -108,7 +108,7 @@ Udon::Optional<Vec2> divisionVector(const Vec2& l, double r)
     if (r == 0)
         return Udon::nullopt;
     else
-        return l / r;
+        return { l.x / r, r.y / r };
 }
 
 // ... 略
