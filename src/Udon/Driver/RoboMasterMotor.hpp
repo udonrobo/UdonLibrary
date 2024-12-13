@@ -194,7 +194,7 @@ namespace Udon
         using RoboMasterBase::RoboMasterBase;
 
         /// @brief 指定可能電流範囲
-        Udon::Range<int16_t> getCurrentRange() override
+        Udon::Range<int16_t> getCurrentRange() const override
         {
             return { -10000, 10000 };
         }
@@ -203,7 +203,7 @@ namespace Udon
         /// @param current 電流値 [-10000, 10000] (単位: mA)
         void setCurrent(int16_t current)
         {
-            RoboMasterBase::setCurrent(Constrain(current, CurrentMin, CurrentMax));
+            RoboMasterBase::setCurrent(Constrain(current, getCurrentRange()));
         }
     };
 
@@ -221,7 +221,7 @@ namespace Udon
         using RoboMasterBase::RoboMasterBase;
 
         /// @brief 指定可能電流範囲
-        Udon::Range<int16_t> getCurrentRange() override
+        Udon::Range<int16_t> getCurrentRange() const override
         {
             return { -20000, 20000 };
         }
@@ -230,7 +230,7 @@ namespace Udon
         /// @param current 電流値 [-20000, 20000] (単位: mA)
         void setCurrent(int16_t current)
         {
-            RoboMasterBase::setCurrent(Constrain(current, CurrentMin, CurrentMax));
+            RoboMasterBase::setCurrent(Constrain(current, getCurrentRange()));
         }
     };
 }    // namespace Udon
