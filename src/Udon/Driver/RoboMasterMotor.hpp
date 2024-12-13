@@ -8,6 +8,7 @@
 
 #include <Udon/Com/Can.hpp>
 #include <Udon/Algorithm/Math.hpp>
+#include <Udon/Types/Range.hpp>
 
 namespace Udon
 {
@@ -100,7 +101,6 @@ namespace Udon
                 return nodeRx->data[6];
             }
 
-        protected:
             /// @brief モーターの電流を設定
             /// @param current 電流値
             void setCurrent(int16_t current)
@@ -122,6 +122,9 @@ namespace Udon
                     nodeTx->data[motorIndex + 1] = transmitCurrent >> 0 & 0xff;    // low byte
                 }
             }
+
+            /// @brief 指定可能電流範囲
+            virtual Udon::Range<int16_t> getCurrentRange() const = 0;
 
         private:
             /// @brief 通信バス
@@ -190,11 +193,11 @@ namespace Udon
         /// @param direction 回転方向
         using RoboMasterBase::RoboMasterBase;
 
-        /// @brief 指定可能電流最小値
-        static constexpr int16_t CurrentMin = -10000;
-
-        /// @brief 指定可能電流最大値
-        static constexpr int16_t CurrentMax = 10000;
+        /// @brief 指定可能電流範囲
+        Udon::Range<int16_t> getCurrentRange() override
+        {
+            return { -10000, 10000 };
+        }
 
         /// @brief モーターの電流を設定
         /// @param current 電流値 [-10000, 10000] (単位: mA)
@@ -217,11 +220,11 @@ namespace Udon
         /// @param direction 回転方向
         using RoboMasterBase::RoboMasterBase;
 
-        /// @brief 指定可能電流最小値
-        static constexpr int16_t CurrentMin = -20000;
-
-        /// @brief 指定可能電流最大値
-        static constexpr int16_t CurrentMax = 20000;
+        /// @brief 指定可能電流範囲
+        Udon::Range<int16_t> getCurrentRange() override
+        {
+            return { -20000, 20000 };
+        }
 
         /// @brief モーターの電流を設定
         /// @param current 電流値 [-20000, 20000] (単位: mA)
