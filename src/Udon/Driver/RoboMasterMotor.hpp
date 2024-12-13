@@ -103,11 +103,16 @@ namespace Udon
 
             /// @brief モーターの電流を設定
             /// @param current 電流値
-            void setCurrent(int16_t current)
-            {
-                current = current * directionSign();
+            virtual void setCurrent(int16_t current) = 0;
 
-                const auto transmitCurrent = static_cast<int16_t>(current * 16384 / 20000);
+            /// @brief 指定可能電流範囲
+            /// @return 電流範囲
+            virtual Udon::Range<int16_t> getCurrentRange() const = 0;
+
+        protected:
+            void setRawCurrent(int16_t rawCurrent)
+            {
+                const auto transmitCurrent = static_cast<int16_t>(rawCurrent * directionSign() * 16384 / 20000);
 
                 if (motorId > 4)
                 {
@@ -122,10 +127,7 @@ namespace Udon
                     nodeTx->data[motorIndex + 1] = transmitCurrent >> 0 & 0xff;    // low byte
                 }
             }
-
-            /// @brief 指定可能電流範囲
-            virtual Udon::Range<int16_t> getCurrentRange() const = 0;
-
+            
         private:
             /// @brief 通信バス
             Udon::ICanBus& bus;
@@ -201,9 +203,9 @@ namespace Udon
 
         /// @brief モーターの電流を設定
         /// @param current 電流値 [-10000, 10000] (単位: mA)
-        void setCurrent(int16_t current)
+        void setCurrent(int16_t current) override
         {
-            RoboMasterBase::setCurrent(Constrain(current, getCurrentRange()));
+            RoboMasterBase::setRawCurrent(Constrain(current, getCurrentRange()));
         }
     };
 
@@ -230,7 +232,7 @@ namespace Udon
         /// @param current 電流値 [-20000, 20000] (単位: mA)
         void setCurrent(int16_t current)
         {
-            RoboMasterBase::setCurrent(Constrain(current, getCurrentRange()));
+            RoboMasterBase::setRawCurrent(Constrain(current, getCurrentRange()));
         }
     };
 }    // namespace Udon
