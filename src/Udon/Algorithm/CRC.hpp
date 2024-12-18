@@ -7,6 +7,7 @@
 #pragma once
 
 #include <Udon/Types/ArrayView.hpp>
+#include <stdint.h>
 
 namespace Udon
 {
