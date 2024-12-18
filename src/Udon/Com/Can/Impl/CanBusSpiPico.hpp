@@ -19,7 +19,7 @@ namespace Udon
     }
 
     /// @brief 通信開始
-    /// @note SPI通信も開始します。
+    /// @remark SPI通信も開始します。
     inline void CanBusSpi::begin()
     {
         (void)spi_init(/* spi_inst_t* spi      */ config.channel,
