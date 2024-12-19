@@ -54,7 +54,7 @@ namespace Udon
         /// @brief 目標値を計算する
         /// @param target mm 目標値
         /// @param endS mm/s 巡行後の終了スピード(デフォルトで0mm/s)
-        double operator()(const double target, bool isStop, const double endS = 0.0)
+        double operator()(const double target, bool isStop = false, const double endS = 0.0)
         {
             // X=Vot+(1/2)*at^2;
             // V=a*t +Vo;
