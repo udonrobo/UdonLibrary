@@ -5,7 +5,6 @@
 #    include "Stopwatch.hpp"
 
 /*
- * 現状の課題点は次の順路に移行したときに、がたつきが見られるところ
  * 長さと旋回角の台形制御をして、ベジェ曲線の経路クラスと合わせて使用することを目的とした。
  */
 
@@ -55,7 +54,7 @@ namespace Udon
         /// @brief 目標値を計算する
         /// @param target mm 目標値
         /// @param endS mm/s 巡行後の終了スピード(デフォルトで0mm/s)
-        void update(const double target, bool isStop, const double endS = 0.0)
+        double operator()(const double target, bool isStop, const double endS = 0.0)
         {
             // X=Vot+(1/2)*at^2;
             // V=a*t +Vo;
@@ -129,6 +128,7 @@ namespace Udon
                 nextState = true;
                 oldTarget = nowPos;    // 行き過ぎた場合にもう一度計算するようにする
             }
+            return nextNowPos;
         }
 
         /// @brief 目標値計算用の時間の取得
