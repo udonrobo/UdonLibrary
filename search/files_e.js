@@ -26,9 +26,10 @@ var searchData=
   ['steeroptimizer_2ehpp_23',['SteerOptimizer.hpp',['../SteerOptimizer_8hpp.html',1,'']]],
   ['steeroptimizer_2emd_24',['SteerOptimizer.md',['../SteerOptimizer_8md.html',1,'']]],
   ['stepping_2ehpp_25',['Stepping.hpp',['../Stepping_8hpp.html',1,'']]],
-  ['stringtonumberparser_2ehpp_26',['StringToNumberParser.hpp',['../StringToNumberParser_8hpp.html',1,'']]],
-  ['stringview_2ehpp_27',['StringView.hpp',['../StringView_8hpp.html',1,'']]],
-  ['stringview_2emd_28',['StringView.md',['../StringView_8md.html',1,'']]],
-  ['styleguide_2emd_29',['StyleGuide.md',['../StyleGuide_8md.html',1,'']]],
-  ['switch_2ehpp_30',['Switch.hpp',['../Switch_8hpp.html',1,'']]]
+  ['stopwatch_2ehpp_26',['Stopwatch.hpp',['../Stopwatch_8hpp.html',1,'']]],
+  ['stringtonumberparser_2ehpp_27',['StringToNumberParser.hpp',['../StringToNumberParser_8hpp.html',1,'']]],
+  ['stringview_2ehpp_28',['StringView.hpp',['../StringView_8hpp.html',1,'']]],
+  ['stringview_2emd_29',['StringView.md',['../StringView_8md.html',1,'']]],
+  ['styleguide_2emd_30',['StyleGuide.md',['../StyleGuide_8md.html',1,'']]],
+  ['switch_2ehpp_31',['Switch.hpp',['../Switch_8hpp.html',1,'']]]
 ];

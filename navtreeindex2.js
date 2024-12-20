@@ -1,5 +1,9 @@
 var NAVTREEINDEX2 =
 {
+"classUdon_1_1BasicStringView.html#a175da3db156c58e140202a01456cdaa1":[57,0,0,5,31],
+"classUdon_1_1BasicStringView.html#a181a2b06913e918577975d09104d0462":[56,0,1,8,10],
+"classUdon_1_1BasicStringView.html#a181a2b06913e918577975d09104d0462":[57,0,0,5,10],
+"classUdon_1_1BasicStringView.html#a1bdc242a240c0e36897183c52d2b4ee4":[56,0,1,8,3],
 "classUdon_1_1BasicStringView.html#a1bdc242a240c0e36897183c52d2b4ee4":[57,0,0,5,3],
 "classUdon_1_1BasicStringView.html#a1cb7b14ecfcef43359d802a53b92f62a":[56,0,1,8,36],
 "classUdon_1_1BasicStringView.html#a1cb7b14ecfcef43359d802a53b92f62a":[57,0,0,5,36],
@@ -245,9 +249,5 @@ var NAVTREEINDEX2 =
 "classUdon_1_1I2cBusImpl.html#a58b258773f4aeedb7f461e99f8b07a77":[57,0,0,20,0],
 "classUdon_1_1I2cBusImpl.html#a590636aa2eb6c336d3c6a77d4ca1e953":[56,0,1,23,11],
 "classUdon_1_1I2cBusImpl.html#a590636aa2eb6c336d3c6a77d4ca1e953":[57,0,0,20,11],
-"classUdon_1_1I2cBusImpl.html#a61effab8092e166bd713d1cdbbe78f05":[56,0,1,23,5],
-"classUdon_1_1I2cBusImpl.html#a61effab8092e166bd713d1cdbbe78f05":[57,0,0,20,5],
-"classUdon_1_1I2cBusImpl.html#a695d5d2e2ffe0896af154ab477d3c74b":[56,0,1,23,17],
-"classUdon_1_1I2cBusImpl.html#a695d5d2e2ffe0896af154ab477d3c74b":[57,0,0,20,17],
-"classUdon_1_1I2cBusImpl.html#a75428bb509303336b67f22d9f35dfe2b":[56,0,1,23,20]
+"classUdon_1_1I2cBusImpl.html#a61effab8092e166bd713d1cdbbe78f05":[56,0,1,23,5]
 };

@@ -14,5 +14,7 @@ var dir_22ece226a4582674b632f5609e87d46e =
     [ "ServoSpeed.hpp", "ServoSpeed_8hpp.html", "ServoSpeed_8hpp" ],
     [ "SpeedPid.hpp", "SpeedPid_8hpp.html", "SpeedPid_8hpp" ],
     [ "SteerOptimizer.hpp", "SteerOptimizer_8hpp.html", "SteerOptimizer_8hpp" ],
-    [ "StringToNumberParser.hpp", "StringToNumberParser_8hpp.html", "StringToNumberParser_8hpp" ]
+    [ "Stopwatch.hpp", "Stopwatch_8hpp.html", null ],
+    [ "StringToNumberParser.hpp", "StringToNumberParser_8hpp.html", "StringToNumberParser_8hpp" ],
+    [ "Trapezoidal.hpp", "Trapezoidal_8hpp.html", null ]
 ];

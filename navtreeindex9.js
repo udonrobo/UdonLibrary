@@ -1,5 +1,9 @@
 var NAVTREEINDEX9 =
 {
+"structUdon_1_1CanBusTeensy_1_1Config.html#a64cd3d79ff8ca5bd03866a23e34582af":[57,0,0,7,0,1],
+"structUdon_1_1CanRxNode.html":[56,0,1,12],
+"structUdon_1_1CanRxNode.html":[57,0,0,9],
+"structUdon_1_1CanRxNode.html#a0a11bd2b3dff87253d7bec10bdce1f42":[56,0,1,12,2],
 "structUdon_1_1CanRxNode.html#a0a11bd2b3dff87253d7bec10bdce1f42":[57,0,0,9,2],
 "structUdon_1_1CanRxNode.html#a52fa3e5e2528ebcf65c95d0f0f1e02f9":[56,0,1,12,1],
 "structUdon_1_1CanRxNode.html#a52fa3e5e2528ebcf65c95d0f0f1e02f9":[57,0,0,9,1],
@@ -245,9 +249,5 @@ var NAVTREEINDEX9 =
 "structUdon_1_1Message_1_1Lcd.html#a3939bff99bb0553ad0f5e9fedd8a4de8":[57,0,0,1,4,0],
 "structUdon_1_1Message_1_1Lcd.html#a6206d46d5eee820e77d2ce12b0e7b64d":[56,0,1,2,4,2],
 "structUdon_1_1Message_1_1Lcd.html#a6206d46d5eee820e77d2ce12b0e7b64d":[57,0,0,1,4,2],
-"structUdon_1_1Message_1_1Motor.html":[56,0,1,2,5],
-"structUdon_1_1Message_1_1Motor.html":[57,0,0,1,5],
-"structUdon_1_1Message_1_1Motor.html#a3acb5183c14f2f3f5742430c59548d08":[56,0,1,2,5,1],
-"structUdon_1_1Message_1_1Motor.html#a3acb5183c14f2f3f5742430c59548d08":[57,0,0,1,5,1],
-"structUdon_1_1Message_1_1Motor.html#a49232b7ec9ad88af8b1f52719ee77922":[56,0,1,2,5,0]
+"structUdon_1_1Message_1_1Motor.html":[56,0,1,2,5]
 };
