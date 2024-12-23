@@ -133,7 +133,7 @@ namespace Udon
         Udon::ICanBus& bus;
 
         /// @brief モーターID
-        uint8_t motorId;
+        int motorId;
 
         /// @brief 回転方向
         bool direction;
