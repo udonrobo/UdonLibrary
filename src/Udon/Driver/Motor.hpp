@@ -10,6 +10,7 @@
 
 #    include <Arduino.h>
 #    include <Udon/Algorithm/MovingAverage.hpp>
+#    include <Udon/Types/Direction.hpp>
 
 namespace Udon
 {
@@ -22,17 +23,20 @@ namespace Udon
         const uint8_t pinA;
         const uint8_t pinP;
 
-        Udon::MovingAverage<SmoothLevel> movingAverage;
+        Udon::Direction direction;
+
+        Udon::MovingAverage<SmoothLevel> ma;
 
     public:
 
         /// @brief コンストラクタ
         /// @param pinA 方向ピン
         /// @param pinP PWM ピン
-        SmoothlyMotor2(const uint8_t pinA, const uint8_t pinP)
+        SmoothlyMotor2(const uint8_t pinA, const uint8_t pinP, Udon::Direction direction = Udon::Direction::Forward)
             : pinA(pinA)
             , pinP(pinP)
-            , movingAverage{}
+            , direction(direction)
+            , ma{}
         {
         }
 
@@ -46,7 +50,7 @@ namespace Udon
         /// @param power パワー (-250 ～ 250)
         void move(const int16_t power)
         {
-            const int16_t p = movingAverage(constrain(power, -250, 250));
+            const int16_t p = ma(constrain(power, -250, 250)) * Udon::DirectionToSign(direction);
             digitalWrite(pinA, p >= 0 ? HIGH : LOW);
             analogWrite(pinP, abs(p));
         }
@@ -60,7 +64,7 @@ namespace Udon
         /// @brief パワーをシリアル出力
         void show() const
         {
-            Serial.print(movingAverage.getValue());
+            Serial.print(ma.getValue());
             Serial.print('\t');
         }
     };
@@ -74,7 +78,9 @@ namespace Udon
         const uint8_t pinB;
         const uint8_t pinP;
 
-        Udon::MovingAverage<SmoothLevel> movingAverage;
+        Udon::Direction direction;
+
+        Udon::MovingAverage<SmoothLevel> ma;
 
     public:
 
@@ -82,11 +88,13 @@ namespace Udon
         /// @param pinA 方向ピン
         /// @param pinB 方向ピン
         /// @param pinP PWM ピン
-        SmoothlyMotor3(const uint8_t pinA, const uint8_t pinB, const uint8_t pinP)
+        /// @param direction 回転方向
+        SmoothlyMotor3(const uint8_t pinA, const uint8_t pinB, const uint8_t pinP, Udon::Direction direction = Udon::Direction::Forward)
             : pinA(pinA)
             , pinB(pinB)
             , pinP(pinP)
-            , movingAverage{}
+            , direction(direction)
+            , ma{}
         {
         }
 
@@ -101,8 +109,7 @@ namespace Udon
         /// @param power パワー (-250 ～ 250)
         void move(const int16_t power)
         {
-            movingAverage.update(constrain(power, -250, 250));
-            const int16_t p = movingAverage.getValue();
+            const int16_t p = ma(constrain(power, -250, 250)) * Udon::DirectionToSign(direction);
             digitalWrite(pinA, p >= 0 ? HIGH : LOW);
             digitalWrite(pinB, p <= 0 ? HIGH : LOW);
             analogWrite(pinP, abs(p));
@@ -117,7 +124,7 @@ namespace Udon
         /// @brief パワーをシリアル出力
         void show() const
         {
-            Serial.print(movingAverage.getValue());
+            Serial.print(ma.getValue());
             Serial.print('\t');
         }
     };

@@ -12,6 +12,7 @@
 #    include "Pio/QuadratureEncoder.pio.hpp"
 
 #    include <Udon/Algorithm/ScopedInterruptLocker.hpp>
+#    include <Udon/Types/Direction.hpp>
 
 namespace Udon
 {
@@ -22,15 +23,19 @@ namespace Udon
         uint8_t pinA;
         uint8_t pinB;
 
+        Udon::Direction direction;
+
         Pio::StateMachine stateMachine;    // PIO使用時
 
     public:
         /// @brief コンストラクタ
         /// @param pinA エンコーダーのA相ピン
         /// @param pinB エンコーダーのB相ピン
-        EncoderPico(uint8_t pinA, uint8_t pinB)
+        /// @param direction 回転方向
+        EncoderPico(uint8_t pinA, uint8_t pinB, Udon::Direction direction = Udon::Direction::Forward)
             : pinA(pinA)
             , pinB(pinB)
+            , direction(direction)
             , stateMachine()
         {
         }
@@ -68,7 +73,7 @@ namespace Udon
         /// @return エンコーダーの値
         int32_t read() const
         {
-            return Pio::Encoder::quadrature_encoder_get_count(stateMachine.pio, stateMachine.index);
+            return Pio::Encoder::quadrature_encoder_get_count(stateMachine.pio, stateMachine.index) * Udon::DirectionToSign(direction);
         }
 
         /// @brief エンコーダーの値を表示する

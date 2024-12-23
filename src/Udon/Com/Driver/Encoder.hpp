@@ -12,9 +12,9 @@
 #include <Udon/Algorithm/DeltaTime.hpp>
 #include <Udon/Com/Message/Encoder.hpp>
 #include <Udon/Traits/HasMemberFunction.hpp>
-
 #include <Udon/Traits/ReaderWriterTraits.hpp>
 #include <Udon/Utility/Printf.hpp>
+#include <Udon/Types/Direction.hpp>
 
 namespace Udon
 {
@@ -32,7 +32,7 @@ namespace Udon
 
         Udon::DeltaTime deltaTime;
 
-        bool direction;
+        Udon::Direction direction;
 
         int32_t count{};
         int32_t deltaCount{};
@@ -43,7 +43,7 @@ namespace Udon
         /// @brief コンストラクタ
         /// @param reader 受信クラスオブジェクト
         /// @param direction 回転方向
-        EncoderBy(ReaderType&& reader, bool direction)
+        EncoderBy(ReaderType&& reader, Udon::Direction direction = Udon::Direction::Forward)
             : reader(std::move(reader))
             , deltaTime()
             , direction(direction)
@@ -59,7 +59,7 @@ namespace Udon
 
             if (const auto countOpt = reader.getMessage())
             {
-                count = countOpt->count * (direction ? 1 : -1);
+                count = countOpt->count * Udon::DirectionToSign(direction);
             }
 
             const auto curr = getCount();
