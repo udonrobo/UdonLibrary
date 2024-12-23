@@ -17,7 +17,6 @@ namespace Udon
     {
 
         /// @brief RoboMaster 基底クラス
-        /// @note 多態性のための基底クラスではない。C610 ドライバと C620 ドライバの仕様が似ているため、共通化するための基底クラスである
         class RoboMasterBase
         {
         public:
