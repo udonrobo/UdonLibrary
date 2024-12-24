@@ -29,6 +29,7 @@
 ### スタート
 
 - [本ライブラリをインクルードする](./docs/Start/Include.md)
+- [OpenSiv3D との連携](./docs/Start/OpenSiv3D.md)
 
 ### アルゴリズム
 
@@ -66,12 +67,12 @@
 ### ユーザー定義型
 
 - [色空間](./docs/Types/Color.md)
-- [Optional 型](./docs/Types/Optional.md) 🌟new
+- [Optional 型](./docs/Types/Optional.md)
 - [二次元ベクトル型](./docs/Types/Vector2D.md)
 - [三次元ベクトル型](./docs/Types/Vector3D.md)
 - [オイラー](./docs/Types/Eular.md)
 - [クオータニオン](./docs/Types/Quaternion.md)
-- [文字列ビュー](./docs/Types/StringView.md) 🌟new
+- [文字列ビュー](./docs/Types/StringView.md)
 - [配列ビュー](./docs/Types/ArrayView.md)
 - [静的可変長配列](./docs/Types/StaticVector.md)
 - [静的可変長リングバッファ](./docs/Types/RingBuffer.md)
