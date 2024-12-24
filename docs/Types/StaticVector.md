@@ -10,7 +10,7 @@
 template <typename T, size_t Capacity>
 struct StaticVector
 {
-    T m_buffer[Capacity];
+    T      data[Capacity];
     size_t size;
 };
 ```
