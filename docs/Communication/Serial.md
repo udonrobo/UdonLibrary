@@ -1,6 +1,6 @@
 # UART / USB Serial
 
-主に PC,マイコン間での通信に用います。この場合は USB で接続します。
+主に PC、マイコン間での通信に用います。
 
 ## マイコンから PC
 
@@ -25,7 +25,7 @@ void loop()
 }
 ```
 
-### PC 側 (OpenSiv3D が必要)
+### PC 側 (OpenSiv3D)
 
 ```cpp
 #include <Siv3D.hpp> // Siv3D v0.6.15
@@ -57,7 +57,7 @@ void Main()
 
 ## PC からマイコン
 
-### PC 側 (OpenSiv3D が必要)
+### PC 側 (OpenSiv3D)
 
 ```cpp
 #include <Siv3D.hpp> // Siv3D v0.6.15

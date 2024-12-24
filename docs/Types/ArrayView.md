@@ -10,7 +10,7 @@ C# の `Span<T>`、C++20 の `std::span<T>` と同じ機能です。
 template <typename T>
 struct ArrayView
 {
-    T* m_begin;
+    T*     data;
     size_t size;
 };
 ```

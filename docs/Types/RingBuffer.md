@@ -6,10 +6,10 @@
 template <typename T, size_t Capacity>
 class RingBuffer
 {
-    T m_data[Capacity];
-    size_t m_head;
-    size_t m_tail;
-    size_t m_size;
+    T      data[Capacity];
+    size_t head;
+    size_t tail;
+    size_t size;
 };
 ```
 
@@ -21,10 +21,10 @@ class RingBuffer
 template <typename T, size_t Capacity>
 class RingBuffer
 {
-    T m_data[Capacity];
-    size_t m_head;
-    size_t m_tail;
-    size_t m_size;
+    T data[Capacity];
+    size_t head;
+    size_t tail;
+    size_t size;
 };
 ```
 

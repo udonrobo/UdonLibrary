@@ -7,6 +7,7 @@
 
 #include "Math.hpp"
 #include <Udon/Types/Optional.hpp>
+#include <Udon/Types/Range.hpp>
 
 namespace Udon
 {
@@ -26,14 +27,14 @@ namespace Udon
 
         Udon::Optional<Parameter> requestConstant;    ///< 一周期だけ適用する係数
 
-        Parameter power;          ///< 操作量
+        Parameter power;    ///< 操作量
 
-        double    lastPowerPro;    ///< 過去の操作量
-        double       lastError;        ///< 過去の偏差
-        double       rowPassDif;
-        double       output;           ///< 出力
-        const double MAX_POWER;         ///最大値
-        const double INTERVAL_S;       ///< updateの呼び出される周期(unit:sec)
+        double lastPowerPro;    ///< 過去の操作量
+        double lastError;       ///< 過去の偏差
+        double rowPassDif;
+        double output;              ///< 出力
+        const double MAX_POWER;     /// 最大値
+        const double INTERVAL_S;    ///< updateの呼び出される周期(unit:sec)
 
     public:
         /// @brief コンストラクタ
@@ -78,7 +79,7 @@ namespace Udon
             // 微分量の計算
             power.d = (power.p - lastPowerPro) / INTERVAL_S;
 
-            //ローパスフィルタの計算
+            // ローパスフィルタの計算
             rowPassDif += (power.d - rowPassDif) / 8 * coefficient.d;
 
             const double deltaPower = power.p + power.i + rowPassDif;
@@ -95,6 +96,15 @@ namespace Udon
         double getPower() const noexcept
         {
             return output;
+        }
+
+        /// @brief 操作量の取得
+        /// @param min 操作量の最小値
+        /// @param max 操作量の最大値
+        /// @return 操作量
+        double getPower(double min, double max) const noexcept
+        {
+            return Udon::Constrain(getPower(), min, max);
         }
 
         /// @brief 操作量の取得
@@ -129,15 +139,25 @@ namespace Udon
             return getPower(min, max);
         }
 
+        /// @brief 更新、操作量の取得
+        /// @param controlValue 制御量
+        /// @param targetValue 目標値
+        /// @param range 操作量の範囲
+        /// @return 操作量
+        double operator()(double controlValue, double targetValue, const Udon::Range<double>& range) noexcept
+        {
+            return operator()(controlValue, targetValue, range.min, range.max);
+        }
+
         /// @brief 操作量のクリア
         /// @note 内部の量をすべて0にする。
         void clearPower() noexcept
         {
-            power       = {};
-            output      = 0.0;
+            power = {};
+            output = 0.0;
             lastPowerPro = 0.0;
             rowPassDif = 0.0;
-            lastError   = 0.0;
+            lastError = 0.0;
         }
         /// @brief 一周期のみ適用する比例係数の設定
         /// @param value 係数

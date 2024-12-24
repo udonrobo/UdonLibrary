@@ -10,6 +10,7 @@
 
 #include "Math.hpp"
 #include <Udon/Types/Optional.hpp>
+#include <Udon/Types/Range.hpp>
 
 namespace Udon
 {
@@ -81,7 +82,7 @@ namespace Udon
             lastError = error;
         }
 
-        /// @brief 操作量の取得
+        /// @brief 操作量の取得 (操作量の範囲制限なし)
         /// @return 操作量
         double getPower() const noexcept
         {
@@ -97,7 +98,15 @@ namespace Udon
             return Udon::Constrain(getPower(), min, max);
         }
 
-        /// @brief 更新、操作量の取得
+        /// @brief 操作量の取得
+        /// @param range 操作量の範囲
+        /// @return 操作量
+        double getPower(const Udon::Range<double>& range) const noexcept
+        {
+            return getPower(range.min, range.max);
+        }
+
+        /// @brief 更新、操作量の取得 (操作量の範囲制限なし)
         /// @param controlValue 制御量
         /// @param targetValue 目標値
         /// @return 操作量
@@ -117,6 +126,16 @@ namespace Udon
         {
             update(controlValue, targetValue);
             return getPower(min, max);
+        }
+
+        /// @brief 更新、操作量の取得
+        /// @param controlValue 制御量
+        /// @param targetValue 目標値
+        /// @param range 操作量の範囲
+        /// @return 操作量
+        double operator()(double controlValue, double targetValue, const Udon::Range<double>& range) noexcept
+        {
+            return operator()(controlValue, targetValue, range.min, range.max);
         }
 
         /// @brief 操作量のクリア
