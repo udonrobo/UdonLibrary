@@ -123,7 +123,6 @@ $(function(){initNavTree('md_docs_2Types_2StringView.html',''); initResizable(tr
 <div class="ttc" id="aStringView_8hpp_html"><div class="ttname"><a href="StringView_8hpp.html">StringView.hpp</a></div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md283"></a>
 std::string との違い</h1>
-<p><code>std::string</code> との違いが顕著なのは、文字列から細分化した文字列にする場合と思います。</p>
 <p>std::string は動的にメモリを確保し文字列を保持します。そのため下記の例では 3 度、ヒープへのメモリアロケーションが発生します。</p>
 <div class="fragment"><div class="line">std::string src = <span class="stringliteral">&quot;hello world !!&quot;</span>;</div>
 <div class="line">std::string hello = src.substr(0, 5);  <span class="comment">// hello</span></div>

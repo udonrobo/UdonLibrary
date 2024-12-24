@@ -110,7 +110,8 @@ $(function(){initNavTree('md_docs_2Start_2OpenSiv3D.html',''); initResizable(tru
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md243"></a></p>
-<p><code>Siv3D.hpp</code> をインクルードした後、<code><a class="el" href="Udon_8hpp.html">Udon.hpp</a></code> をインクルードすることで連携できます。</p>
+<p>前提として、OpenSiv3D と本ライブラリが Visual Studio のプロジェクトで使えるようになっている必要があります。</p>
+<p><code>Siv3D.hpp</code> をインクルードした後、<code><a class="el" href="Udon_8hpp.html">Udon.hpp</a></code> をインクルードすることで連携できます。順序が逆だと連携機能が使えません。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;Siv3D.hpp&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
@@ -123,11 +124,11 @@ $(function(){initNavTree('md_docs_2Start_2OpenSiv3D.html',''); initResizable(tru
 <div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md244"></a>
 連携機能</h1>
-<p>ユーザー定義型の相互変換が可能です。これは変換コンストラクタ、キャスト演算子の実装によるものです。以下のユーザー定義型の相互変換が可能です。</p>
+<p>ユーザー定義型の相互変換が可能です。これは変換コンストラクタ、キャスト演算子の実装によるものです。以下の型の相互変換が可能です。</p>
 <ul>
-<li>二次元ベクトル</li>
-<li>三次元ベクトル</li>
-<li>クオータニオン</li>
+<li>二次元ベクトル <code><a class="el" href="structUdon_1_1Vec2.html" title="二次元ベクトル">Udon::Vec2</a></code> - <code>s3d::Vec2</code></li>
+<li>三次元ベクトル <code><a class="el" href="structUdon_1_1Vec3.html" title="三次元ベクトル">Udon::Vec3</a></code> - <code>s3d::Vec3</code></li>
+<li>クオータニオン <code>Udon::Quat</code> - <code>s3d::Quaternion</code></li>
 </ul>
 <div class="fragment"><div class="line"><span class="keywordflow">while</span> (System::Update())</div>
 <div class="line">{</div>

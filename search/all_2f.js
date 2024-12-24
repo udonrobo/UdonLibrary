@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['サイズ_0',['サイズ',['../md_docs_2Types_2StringView.html#autotoc_md286',1,'']]],
-  ['サンプル_1',['サンプル',['../md_docs_2Other_2Serialization.html#autotoc_md218',1,'']]],
-  ['サーボ_2',['サーボ',['../md_docs_2Driver_2PicoServo.html',1,'']]]
+  ['シリアライザ_0',['シリアライザ',['../md_docs_2Other_2Serialization.html',1,'']]],
+  ['シリアライズ可能な型_1',['シリアライズ可能な型',['../md_docs_2Other_2Serialization.html#autotoc_md208',1,'']]],
+  ['シリアライズ_2',['シリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md209',1,'シリアライズ'],['../md_docs_2Types_2Vector2D.html#autotoc_md336',1,'シリアライズ']]],
+  ['シリアルへの出力_3',['USB シリアルへの出力',['../md_docs_2Types_2StringView.html#autotoc_md285',1,'']]],
+  ['シリアルモニターに送信する_4',['シリアルモニターに送信する',['../md_docs_2Types_2Vector2D.html#autotoc_md308',1,'']]]
 ];

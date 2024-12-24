@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['が必要_0',['が必要',['../md_docs_2Communication_2Serial.html#autotoc_md99',1,'PC 側 (OpenSiv3D が必要)'],['../md_docs_2Communication_2Serial.html#autotoc_md101',1,'PC 側 (OpenSiv3D が必要)']]]
+  ['その他設定値の変更_0',['その他設定値の変更',['../md_docs_2Communication_2LoRa.html#autotoc_md69',1,'']]],
+  ['その他関数_1',['その他関数',['../md_docs_2Types_2Color.html#autotoc_md258',1,'']]],
+  ['その他_2',['その他',['../index.html#autotoc_md8',1,'その他'],['../md_docs_2Driver_2Motor.html#autotoc_md164',1,'その他']]]
 ];

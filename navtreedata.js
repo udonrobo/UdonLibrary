@@ -140,10 +140,10 @@ var NAVTREE =
     [ "UART / USB Serial", "md_docs_2Communication_2Serial.html", [
       [ "マイコンから PC", "md_docs_2Communication_2Serial.html#autotoc_md97", [
         [ "マイコン側", "md_docs_2Communication_2Serial.html#autotoc_md98", null ],
-        [ "PC 側 (OpenSiv3D が必要)", "md_docs_2Communication_2Serial.html#autotoc_md99", null ]
+        [ "PC 側 (OpenSiv3D)", "md_docs_2Communication_2Serial.html#autotoc_md99", null ]
       ] ],
       [ "PC からマイコン", "md_docs_2Communication_2Serial.html#autotoc_md100", [
-        [ "PC 側 (OpenSiv3D が必要)", "md_docs_2Communication_2Serial.html#autotoc_md101", null ],
+        [ "PC 側 (OpenSiv3D)", "md_docs_2Communication_2Serial.html#autotoc_md101", null ],
         [ "マイコン側", "md_docs_2Communication_2Serial.html#autotoc_md102", null ]
       ] ],
       [ "OpenSiv3D COMポート列挙方法", "md_docs_2Communication_2Serial.html#autotoc_md103", null ]

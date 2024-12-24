@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['フィードバック制御_0',['フィードバック制御',['../md_docs_2Algorithm_2FeedbackController.html',1,'']]],
-  ['フォルダ_20、ファイル_1',['ディレクトリ(フォルダ)、ファイル',['../md_docs_2Developer_2StyleGuide.html#autotoc_md145',1,'']]]
+  ['ブランチを切った場合_0',['Pull Request 作成 (ブランチを切った場合)',['../md_docs_2Developer_2Change.html#autotoc_md109',1,'']]],
+  ['ブランチを切る_20任意_1',['ブランチを切る (任意)',['../md_docs_2Developer_2Change.html#autotoc_md106',1,'']]]
 ];

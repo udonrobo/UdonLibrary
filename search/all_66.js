@@ -1,4 +1,9 @@
 var searchData=
 [
-  ['拡張機能インストール_0',['拡張機能インストール',['../md_docs_2Developer_2DevelopSetup.html#autotoc_md128',1,'C/C++ 拡張機能インストール'],['../md_docs_2Developer_2DevelopSetup.html#autotoc_md127',1,'clang-format 拡張機能インストール']]]
+  ['指定された位置から_20n_20文字の部分文字列を作成_0',['■ 指定された位置から N 文字の部分文字列を作成',['../md_docs_2Types_2StringView.html#autotoc_md289',1,'']]],
+  ['指定された区切り文字で区切り、部分文字列のリストを作成_1',['■ 指定された区切り文字で区切り、部分文字列のリストを作成',['../md_docs_2Types_2StringView.html#autotoc_md293',1,'']]],
+  ['指定された終端文字までの部分文字列を作成_2',['■ 指定された終端文字までの部分文字列を作成',['../md_docs_2Types_2StringView.html#autotoc_md290',1,'']]],
+  ['指定した点を中心にベクトルを指定角度回転させる_3',['指定した点を中心にベクトルを指定角度回転させる',['../md_docs_2Types_2Vector2D.html#autotoc_md322',1,'']]],
+  ['指定の文字列で始まっているか判定_4',['■ 指定の文字列で始まっているか判定',['../md_docs_2Types_2StringView.html#autotoc_md296',1,'']]],
+  ['指定の文字列で終わっているか判定_5',['■ 指定の文字列で終わっているか判定',['../md_docs_2Types_2StringView.html#autotoc_md297',1,'']]]
 ];

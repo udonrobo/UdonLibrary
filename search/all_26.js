@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['のメリット_0',['Doxygen のメリット',['../md_docs_2Developer_2DoxygenPage.html#autotoc_md140',1,'']]],
-  ['の概要_1',['CRC の概要',['../md_docs_2Communication_2CRC.html#autotoc_md45',1,'']]]
+  ['への変換_0',['std::string への変換',['../md_docs_2Types_2StringView.html#autotoc_md302',1,'']]]
 ];

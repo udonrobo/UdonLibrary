@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['最終的なスケッチ例_20can_20バス経由_0',['最終的なスケッチ例 (CAN バス経由)',['../md_docs_2Communication_2Pad.html#autotoc_md83',1,'']]]
+  ['有効値のセット_0',['有効値のセット',['../md_docs_2Types_2Optional.html#autotoc_md268',1,'']]],
+  ['有_20無効値の判定_1',['有/無効値の判定',['../md_docs_2Types_2Optional.html#autotoc_md266',1,'']]]
 ];

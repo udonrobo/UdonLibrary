@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['ビューから新しいビューを生成する_0',['ビューから新しいビューを生成する',['../md_docs_2Types_2ArrayView.html#autotoc_md247',1,'']]]
+  ['フィードバック制御_0',['フィードバック制御',['../md_docs_2Algorithm_2FeedbackController.html',1,'']]],
+  ['フォルダ_20、ファイル_1',['ディレクトリ(フォルダ)、ファイル',['../md_docs_2Developer_2StyleGuide.html#autotoc_md145',1,'']]]
 ];

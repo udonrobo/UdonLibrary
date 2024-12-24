@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['要素の追加、削除_0',['要素の追加、削除',['../md_docs_2Types_2RingBuffer.html#autotoc_md275',1,'要素の追加、削除'],['../md_docs_2Types_2StaticVector.html#autotoc_md279',1,'要素の追加、削除']]],
-  ['要素へのアクセス_1',['要素へのアクセス',['../md_docs_2Types_2Vector2D.html#autotoc_md306',1,'']]]
+  ['言語_0',['言語',['../md_docs_2Developer_2StyleGuide.html#autotoc_md142',1,'']]]
 ];

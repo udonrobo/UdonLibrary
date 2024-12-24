@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['数値への変換_0',['数値への変換',['../md_docs_2Types_2StringView.html#autotoc_md299',1,'']]]
+  ['整数型シリアライズ_0',['整数型シリアライズ',['../md_docs_2Other_2Serialization.html#autotoc_md219',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['側_20opensiv3d_20が必要_0',['側 OpenSiv3D が必要',['../md_docs_2Communication_2Serial.html#autotoc_md99',1,'PC 側 (OpenSiv3D が必要)'],['../md_docs_2Communication_2Serial.html#autotoc_md101',1,'PC 側 (OpenSiv3D が必要)']]]
+  ['先頭の_20n_20文字を削除した部分文字列を作成_0',['■ 先頭の N 文字を削除した部分文字列を作成',['../md_docs_2Types_2StringView.html#autotoc_md291',1,'']]]
 ];
