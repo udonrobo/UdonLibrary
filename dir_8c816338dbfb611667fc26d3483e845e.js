@@ -3,6 +3,7 @@ var dir_8c816338dbfb611667fc26d3483e845e =
     [ "Forward", "dir_4a714e85abb1d8d0a85766748e9f2153.html", "dir_4a714e85abb1d8d0a85766748e9f2153" ],
     [ "ArrayView.hpp", "ArrayView_8hpp.html", "ArrayView_8hpp" ],
     [ "Color.hpp", "Color_8hpp.html", null ],
+    [ "Direction.hpp", "Direction_8hpp.html", "Direction_8hpp" ],
     [ "Euler.hpp", "Euler_8hpp.html", null ],
     [ "Float.hpp", "Float_8hpp.html", "Float_8hpp" ],
     [ "HSV.hpp", "HSV_8hpp.html", null ],

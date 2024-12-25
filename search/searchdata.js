@@ -7,8 +7,8 @@ var indexSectionsWithContent =
   4: "abcdefghijlmnopqrstuvwxyz~",
   5: "abcdghilmnoprstuvwxyz",
   6: "cdeilmoprstvw",
-  7: "as",
-  8: "_as",
+  7: "ads",
+  8: "_abfs",
   9: "o",
   10: "bfiqsu",
   11: "7abciloprsuvとエオクコサシスセデトドバフメモユルロ三二割固型変独環移自色謝通開"

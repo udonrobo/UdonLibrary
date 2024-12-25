@@ -5,6 +5,7 @@ var searchData=
   ['deserialize_2',['Deserialize',['../namespaceUdon.html#a2867c79f449f149ce0996d14271837ef',1,'Udon']]],
   ['deserializer_3',['Deserializer',['../classUdon_1_1Impl_1_1Deserializer.html#a94befd81b3eab2ae0f4d5988007bfd29',1,'Udon::Impl::Deserializer']]],
   ['directionrevision_4',['directionRevision',['../structUdon_1_1Euler.html#a83f31b979e227730360c7cfa0fbdb1f0',1,'Udon::Euler::directionRevision()'],['../structUdon_1_1Quaternion.html#a21ed0ccb68832276b6d4516bc6660d47',1,'Udon::Quaternion::directionRevision()']]],
-  ['distancefrom_5',['distanceFrom',['../structUdon_1_1Vec2.html#ac663e69dc69695397b7ce4075e7e77e9',1,'Udon::Vec2']]],
-  ['dummy_6',['Dummy',['../structUdon_1_1Optional_1_1Storage_1_1Dummy.html#a038238a933749c2b9aea6a1922e876f7',1,'Udon::Optional::Storage::Dummy']]]
+  ['directiontosign_5',['DirectionToSign',['../namespaceUdon.html#a972d1c6c630fb2bad9754ae3aca03354',1,'Udon']]],
+  ['distancefrom_6',['distanceFrom',['../structUdon_1_1Vec2.html#ac663e69dc69695397b7ce4075e7e77e9',1,'Udon::Vec2']]],
+  ['dummy_7',['Dummy',['../structUdon_1_1Optional_1_1Storage_1_1Dummy.html#a038238a933749c2b9aea6a1922e876f7',1,'Udon::Optional::Storage::Dummy']]]
 ];

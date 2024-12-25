@@ -1,5 +1,15 @@
 var NAVTREEINDEX11 =
 {
+"structUdon_1_1Quaternion.html#a2768b000ed9c9e81b2d8979c9ed54103":[57,0,0,45,10],
+"structUdon_1_1Quaternion.html#a2906c1846eacc64d8dcd893b163c22f7":[56,0,1,48,8],
+"structUdon_1_1Quaternion.html#a2906c1846eacc64d8dcd893b163c22f7":[57,0,0,45,8],
+"structUdon_1_1Quaternion.html#a2d148db54012a1e098302e6e702c8e52":[56,0,1,48,15],
+"structUdon_1_1Quaternion.html#a2d148db54012a1e098302e6e702c8e52":[57,0,0,45,15],
+"structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151":[56,0,1,48,0],
+"structUdon_1_1Quaternion.html#a32df59db82d9c4e7e7aef2ad984cf151":[57,0,0,45,0],
+"structUdon_1_1Quaternion.html#a34cd4fc4331efbd59fd2ac8c50f5ddc0":[56,0,1,48,21],
+"structUdon_1_1Quaternion.html#a34cd4fc4331efbd59fd2ac8c50f5ddc0":[57,0,0,45,21],
+"structUdon_1_1Quaternion.html#a5cc89bf11b1c7e6c0e6dbf46ab0775ed":[56,0,1,48,17],
 "structUdon_1_1Quaternion.html#a5cc89bf11b1c7e6c0e6dbf46ab0775ed":[57,0,0,45,17],
 "structUdon_1_1Quaternion.html#a66f6ab515a96a9c1e8677c18ed424982":[56,0,1,48,11],
 "structUdon_1_1Quaternion.html#a66f6ab515a96a9c1e8677c18ed424982":[57,0,0,45,11],
@@ -239,15 +249,5 @@ var NAVTREEINDEX11 =
 "structUdon_1_1Vec2.html#a3ab5678214264a0986ebb8ae93e8422c":[57,0,0,63,30],
 "structUdon_1_1Vec2.html#a3f2bca871c66abddcc0281e69a511fe9":[56,0,1,66,12],
 "structUdon_1_1Vec2.html#a3f2bca871c66abddcc0281e69a511fe9":[57,0,0,63,12],
-"structUdon_1_1Vec2.html#a423723434981f2ddb688c0d6ad1b619d":[56,0,1,66,50],
-"structUdon_1_1Vec2.html#a423723434981f2ddb688c0d6ad1b619d":[57,0,0,63,50],
-"structUdon_1_1Vec2.html#a45886ef121bc89660f29e20cd6519149":[56,0,1,66,37],
-"structUdon_1_1Vec2.html#a45886ef121bc89660f29e20cd6519149":[57,0,0,63,37],
-"structUdon_1_1Vec2.html#a50e4426327246b5503b07584fc316f92":[56,0,1,66,48],
-"structUdon_1_1Vec2.html#a50e4426327246b5503b07584fc316f92":[57,0,0,63,48],
-"structUdon_1_1Vec2.html#a5a40aba51ac3f9a17cc1b742fa8b3474":[56,0,1,66,11],
-"structUdon_1_1Vec2.html#a5a40aba51ac3f9a17cc1b742fa8b3474":[57,0,0,63,11],
-"structUdon_1_1Vec2.html#a5c6248222369fdacf211f040a5b67f8f":[56,0,1,66,15],
-"structUdon_1_1Vec2.html#a5c6248222369fdacf211f040a5b67f8f":[57,0,0,63,15],
-"structUdon_1_1Vec2.html#a620b0ceecfe347a6de1e1c60799f8eca":[56,0,1,66,29]
+"structUdon_1_1Vec2.html#a423723434981f2ddb688c0d6ad1b619d":[56,0,1,66,50]
 };

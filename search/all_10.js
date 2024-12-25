@@ -34,7 +34,7 @@ var searchData=
   ['motor_2emd_31',['Motor.md',['../Motor_8md.html',1,'']]],
   ['motor2_20クラス_32',['Motor2 クラス',['../md_docs_2Driver_2Motor.html#autotoc_md161',1,'']]],
   ['motor3_20クラス_33',['Motor3 クラス',['../md_docs_2Driver_2Motor.html#autotoc_md162',1,'']]],
-  ['motorby_34',['MotorBy',['../classUdon_1_1MotorBy.html',1,'Udon::MotorBy&lt; Writer &gt;'],['../classUdon_1_1MotorBy.html#a619ad4f1edcd516b6d1abe332e77066d',1,'Udon::MotorBy::MotorBy(WriterType &amp;&amp;writer, bool direction)']]],
+  ['motorby_34',['MotorBy',['../classUdon_1_1MotorBy.html',1,'Udon::MotorBy&lt; Writer &gt;'],['../classUdon_1_1MotorBy.html#a908ed36fd153564b7ac08ca74520b99c',1,'Udon::MotorBy::MotorBy(WriterType &amp;&amp;writer, Udon::Direction direction=Udon::Direction::Forward)']]],
   ['move_35',['move',['../classUdon_1_1MotorBy.html#a9c0d4ee4f950ebd3a1bd55056975aae0',1,'Udon::MotorBy']]],
   ['movingaverage_36',['MovingAverage',['../classUdon_1_1MovingAverage.html',1,'Udon::MovingAverage&lt; DataSize &gt;'],['../classUdon_1_1MovingAverage.html#acca886114c511e7bc763d5f1a74c6a84',1,'Udon::MovingAverage::MovingAverage()']]],
   ['movingaverage_2ehpp_37',['MovingAverage.hpp',['../MovingAverage_8hpp.html',1,'']]],

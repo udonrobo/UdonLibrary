@@ -1,6 +1,6 @@
 var classUdon_1_1Impl_1_1RoboMasterBase =
 [
-    [ "RoboMasterBase", "classUdon_1_1Impl_1_1RoboMasterBase.html#a9011bb7fada8e91bd9992442eb09d00a", null ],
+    [ "RoboMasterBase", "classUdon_1_1Impl_1_1RoboMasterBase.html#aad051419f1f74de88fdbc882bb96768f", null ],
     [ "RoboMasterBase", "classUdon_1_1Impl_1_1RoboMasterBase.html#a263bb694d63fe793a67abe9e9553b3eb", null ],
     [ "RoboMasterBase", "classUdon_1_1Impl_1_1RoboMasterBase.html#a633671819e1008866ab6e1e5e29a7486", null ],
     [ "getAngle", "classUdon_1_1Impl_1_1RoboMasterBase.html#a160606f7e43c1789f2174b3b55135049", null ],

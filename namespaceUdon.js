@@ -88,6 +88,10 @@ var namespaceUdon =
       [ "Skip", "namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adba72ef2b9b6965d078e3c7f95487a82d1c", null ],
       [ "Abort", "namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adba727b63583e01fa2b3952dab580c84dc2", null ]
     ] ],
+    [ "Direction", "namespaceUdon.html#aae9957ca3d520d1679c6125f12f25b48", [
+      [ "Forward", "namespaceUdon.html#aae9957ca3d520d1679c6125f12f25b48a67d2f6740a8eaebf4d5c6f79be8da481", null ],
+      [ "Backward", "namespaceUdon.html#aae9957ca3d520d1679c6125f12f25b48ab3263eb38f8903efc271cc7a760da510", null ]
+    ] ],
     [ "ServoChoose", "namespaceUdon.html#ac0b885a506a78d6d59510f0ab9d401f7", [
       [ "_20kg", "namespaceUdon.html#ac0b885a506a78d6d59510f0ab9d401f7a9cd928c8f5dbc2f60894e99f5a0a67ae", null ],
       [ "_30kg", "namespaceUdon.html#ac0b885a506a78d6d59510f0ab9d401f7a37199c5c529e096d186b28304946810d", null ],
@@ -115,6 +119,7 @@ var namespaceUdon =
     [ "ConvertedHexStringSize", "namespaceUdon.html#aa72cd69f53121f5ba33a4fa6977be8ad", null ],
     [ "CRC8", "namespaceUdon.html#a504b82d933419dccd907460936078550", null ],
     [ "Deserialize", "namespaceUdon.html#a2867c79f449f149ce0996d14271837ef", null ],
+    [ "DirectionToSign", "namespaceUdon.html#a972d1c6c630fb2bad9754ae3aca03354", null ],
     [ "Floor", "namespaceUdon.html#ac5375b76adfc38ad1ca47933db9c98c5", null ],
     [ "HexCharToByteValue", "namespaceUdon.html#a22305f7db09abde0adfe00cb9a8dd0af", null ],
     [ "HexStringToByteString", "namespaceUdon.html#a3a9cc2d024ae1e7d93bf3cae8c7b70f6", null ],

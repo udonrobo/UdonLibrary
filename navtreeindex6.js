@@ -1,5 +1,11 @@
 var NAVTREEINDEX6 =
 {
+"classUdon_1_1SivSerialWriter.html#af08d99b820d1c62e84d88acb0d5e7b70":[57,0,0,58,1],
+"classUdon_1_1SpeedPidController.html":[56,0,1,62],
+"classUdon_1_1SpeedPidController.html":[57,0,0,59],
+"classUdon_1_1SpeedPidController.html#a0a680eb380cfe2dc65c8102fc909a2c0":[56,0,1,62,10],
+"classUdon_1_1SpeedPidController.html#a0a680eb380cfe2dc65c8102fc909a2c0":[57,0,0,59,10],
+"classUdon_1_1SpeedPidController.html#a188f38a658a166ea7f3477c21caaf2f3":[56,0,1,62,15],
 "classUdon_1_1SpeedPidController.html#a188f38a658a166ea7f3477c21caaf2f3":[57,0,0,59,15],
 "classUdon_1_1SpeedPidController.html#a1ca261221e0a7b796c29cf337f056cd3":[56,0,1,62,9],
 "classUdon_1_1SpeedPidController.html#a1ca261221e0a7b796c29cf337f056cd3":[57,0,0,59,9],
@@ -243,11 +249,5 @@ var NAVTREEINDEX6 =
 "functions_h.html":[57,3,0,7],
 "functions_i.html":[57,3,0,8],
 "functions_j.html":[57,3,0,9],
-"functions_l.html":[57,3,0,10],
-"functions_m.html":[57,3,0,11],
-"functions_n.html":[57,3,0,12],
-"functions_o.html":[57,3,0,13],
-"functions_p.html":[57,3,0,14],
-"functions_q.html":[57,3,0,15],
-"functions_r.html":[57,3,0,16]
+"functions_l.html":[57,3,0,10]
 };

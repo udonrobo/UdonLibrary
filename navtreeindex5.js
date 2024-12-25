@@ -1,5 +1,11 @@
 var NAVTREEINDEX5 =
 {
+"classUdon_1_1PadPS5BT.html#a1b68d42d860eb3fa3c2fbade55434e60":[57,0,0,40,7],
+"classUdon_1_1PadPS5BT.html#a2af753f449fc60da7922b31cab218614":[56,0,1,43,6],
+"classUdon_1_1PadPS5BT.html#a2af753f449fc60da7922b31cab218614":[57,0,0,40,6],
+"classUdon_1_1PadPS5BT.html#a6a51b8144b41d6269556ba7324db2784":[56,0,1,43,3],
+"classUdon_1_1PadPS5BT.html#a6a51b8144b41d6269556ba7324db2784":[57,0,0,40,3],
+"classUdon_1_1PadPS5BT.html#a72e5bbdad9c856e7c29d66c5c2cb6756":[56,0,1,43,4],
 "classUdon_1_1PadPS5BT.html#a72e5bbdad9c856e7c29d66c5c2cb6756":[57,0,0,40,4],
 "classUdon_1_1PadPS5BT.html#a93920f0595e7dac0be2bc88ae629f493":[56,0,1,43,0],
 "classUdon_1_1PadPS5BT.html#a93920f0595e7dac0be2bc88ae629f493":[57,0,0,40,0],
@@ -243,11 +249,5 @@ var NAVTREEINDEX5 =
 "classUdon_1_1SivSerialWriter.html":[57,0,0,58],
 "classUdon_1_1SivSerialWriter.html#a31d75537560dc15e8e44a273c7da78e7":[56,0,1,61,0],
 "classUdon_1_1SivSerialWriter.html#a31d75537560dc15e8e44a273c7da78e7":[57,0,0,58,0],
-"classUdon_1_1SivSerialWriter.html#af08d99b820d1c62e84d88acb0d5e7b70":[56,0,1,61,1],
-"classUdon_1_1SivSerialWriter.html#af08d99b820d1c62e84d88acb0d5e7b70":[57,0,0,58,1],
-"classUdon_1_1SpeedPidController.html":[56,0,1,62],
-"classUdon_1_1SpeedPidController.html":[57,0,0,59],
-"classUdon_1_1SpeedPidController.html#a0a680eb380cfe2dc65c8102fc909a2c0":[56,0,1,62,10],
-"classUdon_1_1SpeedPidController.html#a0a680eb380cfe2dc65c8102fc909a2c0":[57,0,0,59,10],
-"classUdon_1_1SpeedPidController.html#a188f38a658a166ea7f3477c21caaf2f3":[56,0,1,62,15]
+"classUdon_1_1SivSerialWriter.html#af08d99b820d1c62e84d88acb0d5e7b70":[56,0,1,61,1]
 };
