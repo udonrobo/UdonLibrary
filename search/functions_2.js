@@ -18,7 +18,7 @@ var searchData=
   ['clearpower_15',['clearPower',['../classUdon_1_1PidController.html#aacc707236296af30d8d2421d91ebce3a',1,'Udon::PidController::clearPower()'],['../classUdon_1_1SpeedPidController.html#a213f878721d9f0ddd28f05da9123bf4f',1,'Udon::SpeedPidController::clearPower()']]],
   ['config_16',['Config',['../structUdon_1_1Impl_1_1E220Base_1_1Config.html#ae85e0429acb4ce9da8340bb6aa565e5d',1,'Udon::Impl::E220Base::Config']]],
   ['const_5fiterator_17',['const_iterator',['../structUdon_1_1RingBuffer_1_1const__iterator.html#a5e42d25ddf64ac23ac2ec7a440be10c0',1,'Udon::RingBuffer::const_iterator']]],
-  ['constrain_18',['Constrain',['../namespaceUdon.html#ab63e723d1adcd09d8935316fd33de5d4',1,'Udon']]],
+  ['constrain_18',['Constrain',['../namespaceUdon.html#ab63e723d1adcd09d8935316fd33de5d4',1,'Udon::Constrain(const A &amp;amt, const B &amp;low, const C &amp;high)'],['../namespaceUdon.html#a0b9ac4147264eff09d0edb87f26674dd',1,'Udon::Constrain(const A &amp;amt, const Udon::Range&lt; B, C &gt; &amp;range)']]],
   ['convertedbytestringsize_19',['ConvertedByteStringSize',['../namespaceUdon.html#a92d8d18e10ae93bf20d2ceacd6858e7c',1,'Udon']]],
   ['convertedhexstringsize_20',['ConvertedHexStringSize',['../namespaceUdon.html#aa72cd69f53121f5ba33a4fa6977be8ad',1,'Udon']]],
   ['crbegin_21',['crbegin',['../classUdon_1_1ArrayView.html#a50ba31e1880f4d1f91fcc225e210dd20',1,'Udon::ArrayView::crbegin()'],['../classUdon_1_1RingBuffer.html#a84d1565c65f8e0e7f5ccb9fd2a69d304',1,'Udon::RingBuffer::crbegin()'],['../classUdon_1_1StaticVector.html#a59579e4fc4c328b2d9ce2eaf88f78707',1,'Udon::StaticVector::crbegin()'],['../classUdon_1_1BasicStringView.html#a2dbc7edd57f66296c38c859eb23f2287',1,'Udon::BasicStringView::crbegin()']]],

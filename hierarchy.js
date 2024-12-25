@@ -102,12 +102,13 @@ var hierarchy =
     [ "Udon::Impl::Printer< OutputStream >", "classUdon_1_1Impl_1_1Printer.html", null ],
     [ "Udon::Quaternion", "structUdon_1_1Quaternion.html", null ],
     [ "Udon::QuaternionDirection", "structUdon_1_1QuaternionDirection.html", null ],
+    [ "Udon::Range< MinT, MaxT >", "structUdon_1_1Range.html", null ],
     [ "Reader", null, [
       [ "Udon::PadPS5< Reader >", "classUdon_1_1PadPS5.html", null ]
     ] ],
     [ "Udon::RGB", "structUdon_1_1RGB.html", null ],
     [ "Udon::RingBuffer< T, Capacity >", "classUdon_1_1RingBuffer.html", null ],
-    [ "Udon::Impl::RoboMasterBase", "classUdon_1_1Impl_1_1RoboMasterBase.html", [
+    [ "Udon::RoboMasterBase", "classUdon_1_1RoboMasterBase.html", [
       [ "Udon::RoboMasterC610", "classUdon_1_1RoboMasterC610.html", null ],
       [ "Udon::RoboMasterC620", "classUdon_1_1RoboMasterC620.html", null ]
     ] ],

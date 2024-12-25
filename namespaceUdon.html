@@ -266,11 +266,16 @@ $(function(){initNavTree('namespaceUdon.html',''); initResizable(true); });
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1QuaternionDirection.html">QuaternionDirection</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">クオータニオンの各成分の正負を表す構造体  <a href="structUdon_1_1QuaternionDirection.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1Range.html">Range</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUdon_1_1RGB.html">RGB</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RGB色空間  <a href="structUdon_1_1RGB.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RingBuffer.html">RingBuffer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">リングバッファ  <a href="classUdon_1_1RingBuffer.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RoboMasterBase.html">RoboMasterBase</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RoboMaster 基底クラス  <a href="classUdon_1_1RoboMasterBase.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUdon_1_1RoboMasterC610.html">RoboMasterC610</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RoboMasterC610クラス  <a href="classUdon_1_1RoboMasterC610.html#details">[詳解]</a><br /></td></tr>
@@ -432,6 +437,10 @@ $(function(){initNavTree('namespaceUdon.html',''); initResizable(true); });
 <tr class="memitem:ab63e723d1adcd09d8935316fd33de5d4"><td class="memTemplItemLeft" align="right" valign="top">constexpr A&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab63e723d1adcd09d8935316fd33de5d4">Constrain</a> (const A &amp;amt, const B &amp;low, const C &amp;high)</td></tr>
 <tr class="memdesc:ab63e723d1adcd09d8935316fd33de5d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を指定された範囲内に収める (std::clamp)  <br /></td></tr>
 <tr class="separator:ab63e723d1adcd09d8935316fd33de5d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b9ac4147264eff09d0edb87f26674dd" id="r_a0b9ac4147264eff09d0edb87f26674dd"><td class="memTemplParams" colspan="2">template&lt;typename A , typename B , typename C  = B&gt; </td></tr>
+<tr class="memitem:a0b9ac4147264eff09d0edb87f26674dd"><td class="memTemplItemLeft" align="right" valign="top">constexpr A&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a0b9ac4147264eff09d0edb87f26674dd">Constrain</a> (const A &amp;amt, const <a class="el" href="structUdon_1_1Range.html">Udon::Range</a>&lt; B, C &gt; &amp;range)</td></tr>
+<tr class="memdesc:a0b9ac4147264eff09d0edb87f26674dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を指定された範囲内に収める (std::clamp)  <br /></td></tr>
+<tr class="separator:a0b9ac4147264eff09d0edb87f26674dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ddf377cfc3d54e1a9eaf445a39e19fd" id="r_a2ddf377cfc3d54e1a9eaf445a39e19fd"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a2ddf377cfc3d54e1a9eaf445a39e19fd"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a2ddf377cfc3d54e1a9eaf445a39e19fd">ToRadians</a> (const T &amp;rhs)</td></tr>
 <tr class="memdesc:a2ddf377cfc3d54e1a9eaf445a39e19fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">度数法の角度を弧度法に変換する  <br /></td></tr>
@@ -1352,7 +1361,7 @@ template&lt;typename Ty &gt; </div>
 </div>
 </div>
 <a id="ab63e723d1adcd09d8935316fd33de5d4" name="ab63e723d1adcd09d8935316fd33de5d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab63e723d1adcd09d8935316fd33de5d4">&#9670;&#160;</a></span>Constrain()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab63e723d1adcd09d8935316fd33de5d4">&#9670;&#160;</a></span>Constrain() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1391,6 +1400,47 @@ template&lt;typename A , typename B , typename C &gt; </div>
     <tr><td class="paramname">amt</td><td>範囲内に収めたい値 </td></tr>
     <tr><td class="paramname">low</td><td>最小値 </td></tr>
     <tr><td class="paramname">high</td><td>最大値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>範囲内に収めた値 </dd></dl>
+
+</div>
+</div>
+<a id="a0b9ac4147264eff09d0edb87f26674dd" name="a0b9ac4147264eff09d0edb87f26674dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b9ac4147264eff09d0edb87f26674dd">&#9670;&#160;</a></span>Constrain() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename A , typename B , typename C  = B&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">A Udon::Constrain </td>
+          <td>(</td>
+          <td class="paramtype">const A &amp;</td>          <td class="paramname"><span class="paramname"><em>amt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structUdon_1_1Range.html">Udon::Range</a>&lt; B, C &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>range</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>値を指定された範囲内に収める (std::clamp) </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">amt</td><td>範囲内に収めたい値 </td></tr>
+    <tr><td class="paramname">range</td><td>範囲 </td></tr>
   </table>
   </dd>
 </dl>

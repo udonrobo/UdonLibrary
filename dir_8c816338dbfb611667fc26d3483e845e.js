@@ -11,6 +11,7 @@ var dir_8c816338dbfb611667fc26d3483e845e =
     [ "Polar.hpp", "Polar_8hpp.html", null ],
     [ "Position.hpp", "Position_8hpp.html", "Position_8hpp" ],
     [ "Quaternion.hpp", "Quaternion_8hpp.html", null ],
+    [ "Range.hpp", "Range_8hpp.html", "Range_8hpp" ],
     [ "RGB.hpp", "RGB_8hpp.html", null ],
     [ "RingBuffer.hpp", "RingBuffer_8hpp.html", "RingBuffer_8hpp" ],
     [ "StaticVector.hpp", "StaticVector_8hpp.html", "StaticVector_8hpp" ],

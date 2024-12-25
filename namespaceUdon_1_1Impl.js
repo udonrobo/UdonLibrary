@@ -7,7 +7,6 @@ var namespaceUdon_1_1Impl =
     [ "PadPS5OnboardBTReader", "classUdon_1_1Impl_1_1PadPS5OnboardBTReader.html", "classUdon_1_1Impl_1_1PadPS5OnboardBTReader" ],
     [ "PadPS5OnboardUSBReader", "classUdon_1_1Impl_1_1PadPS5OnboardUSBReader.html", "classUdon_1_1Impl_1_1PadPS5OnboardUSBReader" ],
     [ "Printer", "classUdon_1_1Impl_1_1Printer.html", "classUdon_1_1Impl_1_1Printer" ],
-    [ "RoboMasterBase", "classUdon_1_1Impl_1_1RoboMasterBase.html", "classUdon_1_1Impl_1_1RoboMasterBase" ],
     [ "SerializedBitSizeImpl", "structUdon_1_1Impl_1_1SerializedBitSizeImpl.html", "structUdon_1_1Impl_1_1SerializedBitSizeImpl" ],
     [ "Serializer", "classUdon_1_1Impl_1_1Serializer.html", "classUdon_1_1Impl_1_1Serializer" ],
     [ "ShowConfig", "structUdon_1_1Impl_1_1ShowConfig.html", "structUdon_1_1Impl_1_1ShowConfig" ],

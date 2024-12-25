@@ -114,6 +114,7 @@ $(function(){initNavTree('Math_8hpp.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;math.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="Range_8hpp_source.html">Udon/Types/Range.hpp</a>&gt;</code><br />
 </div>
 <p><a href="Math_8hpp_source.html">[ソースコード]</a></p>
 <table class="memberdecls">
@@ -136,6 +137,10 @@ $(function(){initNavTree('Math_8hpp.html',''); initResizable(true); });
 <tr class="memitem:ab63e723d1adcd09d8935316fd33de5d4"><td class="memTemplItemLeft" align="right" valign="top">constexpr A&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#ab63e723d1adcd09d8935316fd33de5d4">Udon::Constrain</a> (const A &amp;amt, const B &amp;low, const C &amp;high)</td></tr>
 <tr class="memdesc:ab63e723d1adcd09d8935316fd33de5d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を指定された範囲内に収める (std::clamp)  <br /></td></tr>
 <tr class="separator:ab63e723d1adcd09d8935316fd33de5d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b9ac4147264eff09d0edb87f26674dd" id="r_a0b9ac4147264eff09d0edb87f26674dd"><td class="memTemplParams" colspan="2">template&lt;typename A , typename B , typename C  = B&gt; </td></tr>
+<tr class="memitem:a0b9ac4147264eff09d0edb87f26674dd"><td class="memTemplItemLeft" align="right" valign="top">constexpr A&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a0b9ac4147264eff09d0edb87f26674dd">Udon::Constrain</a> (const A &amp;amt, const <a class="el" href="structUdon_1_1Range.html">Udon::Range</a>&lt; B, C &gt; &amp;range)</td></tr>
+<tr class="memdesc:a0b9ac4147264eff09d0edb87f26674dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">値を指定された範囲内に収める (std::clamp)  <br /></td></tr>
+<tr class="separator:a0b9ac4147264eff09d0edb87f26674dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ddf377cfc3d54e1a9eaf445a39e19fd" id="r_a2ddf377cfc3d54e1a9eaf445a39e19fd"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a2ddf377cfc3d54e1a9eaf445a39e19fd"><td class="memTemplItemLeft" align="right" valign="top">constexpr T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceUdon.html#a2ddf377cfc3d54e1a9eaf445a39e19fd">Udon::ToRadians</a> (const T &amp;rhs)</td></tr>
 <tr class="memdesc:a2ddf377cfc3d54e1a9eaf445a39e19fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">度数法の角度を弧度法に変換する  <br /></td></tr>

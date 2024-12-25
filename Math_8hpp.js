@@ -3,6 +3,7 @@ var Math_8hpp =
     [ "Abs", "Math_8hpp.html#a1c0f439e2d683a3ad46cbfd7bf4bd0f1", null ],
     [ "Ceil", "Math_8hpp.html#ae223e6e504e2b3da5c62ba0220bad11a", null ],
     [ "Constrain", "Math_8hpp.html#ab63e723d1adcd09d8935316fd33de5d4", null ],
+    [ "Constrain", "Math_8hpp.html#a0b9ac4147264eff09d0edb87f26674dd", null ],
     [ "Floor", "Math_8hpp.html#ac5375b76adfc38ad1ca47933db9c98c5", null ],
     [ "Hypotenuse", "Math_8hpp.html#a440458c646b3819396f104f0dfeb1c73", null ],
     [ "Map", "Math_8hpp.html#afc68d187236ed5a309e4630f3a434661", null ],

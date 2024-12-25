@@ -9,7 +9,5 @@ var searchData=
   ['crc8_5fsize_6',['CRC8_SIZE',['../namespaceUdon.html#a163e827776b911f4d521dfe7237fca05',1,'Udon']]],
   ['create_7',['create',['../structUdon_1_1Message_1_1PadPS5.html#ace911cb4e3e8577ea31f790aabc22ed6',1,'Udon::Message::PadPS5']]],
   ['cross_8',['cross',['../structUdon_1_1Message_1_1PadPS5.html#a038e18cb2130c8ebd3115675ac5afe83',1,'Udon::Message::PadPS5']]],
-  ['cs_9',['cs',['../structUdon_1_1CanBusSpi_1_1Config.html#aef84ac07f1bfa3dba5b657c77aced261',1,'Udon::CanBusSpi::Config']]],
-  ['currentmax_10',['CurrentMax',['../classUdon_1_1RoboMasterC610.html#a80fd62436bb68f614c1eb042f0a6eab0',1,'Udon::RoboMasterC610::CurrentMax'],['../classUdon_1_1RoboMasterC620.html#ad59deca3804e56054f90cc5c11f53547',1,'Udon::RoboMasterC620::CurrentMax']]],
-  ['currentmin_11',['CurrentMin',['../classUdon_1_1RoboMasterC610.html#a65da22059e41ea1b14c6bc13b932587d',1,'Udon::RoboMasterC610::CurrentMin'],['../classUdon_1_1RoboMasterC620.html#a4fbfb3b2251826892e8f1d6ddc7af002',1,'Udon::RoboMasterC620::CurrentMin']]]
+  ['cs_9',['cs',['../structUdon_1_1CanBusSpi_1_1Config.html#aef84ac07f1bfa3dba5b657c77aced261',1,'Udon::CanBusSpi::Config']]]
 ];
