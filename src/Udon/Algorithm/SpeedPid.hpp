@@ -111,9 +111,9 @@ namespace Udon
         /// @param min 操作量の最小値
         /// @param max 操作量の最大値
         /// @return 操作量
-        double getPower(double min, double max) const noexcept
+        double getPower(const Udon::Range<double>& range) const noexcept
         {
-            return Udon::Constrain(getPower(), min, max);
+            return Udon::Constrain(getPower(), range.min, range.max);
         }
 
         /// @brief 更新、操作量の取得
