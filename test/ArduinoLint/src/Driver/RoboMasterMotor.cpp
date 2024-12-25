@@ -20,7 +20,7 @@ __attribute__((unused)) static void test()
 {
     DummyBus bus;
     {
-        Udon::RoboMasterC610 motor{ bus, 0x000, true };
+        Udon::RoboMasterC610 motor{ bus, 0x000, Udon::Direction::Forward };
         motor.setCurrent(0);
         motor.getAngle();
         motor.getVelocity();
@@ -29,7 +29,7 @@ __attribute__((unused)) static void test()
     }
 
     {
-        Udon::RoboMasterC620 motor{ bus, 0x000, true };
+        Udon::RoboMasterC620 motor{ bus, 0x000, Udon::Direction::Backward };
         motor.setCurrent(0);
         motor.getAngle();
         motor.getVelocity();

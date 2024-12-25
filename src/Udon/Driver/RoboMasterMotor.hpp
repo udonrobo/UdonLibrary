@@ -9,6 +9,7 @@
 #include <Udon/Com/Can.hpp>
 #include <Udon/Algorithm/Math.hpp>
 #include <Udon/Types/Range.hpp>
+#include <Udon/Types/Direction.hpp>
 
 namespace Udon
 {
@@ -21,7 +22,7 @@ namespace Udon
         /// @param bus CAN通信バス
         /// @param motorId モーターID (1~8)
         /// @param direction 回転方向
-        RoboMasterBase(Udon::ICanBus& bus, int motorId, bool direction = true)
+        RoboMasterBase(Udon::ICanBus& bus, int motorId, Udon::Direction direction = Udon::Direction::Forward)
             : bus{ bus }
             , motorId{ motorId }
             , direction{ direction }
@@ -63,7 +64,7 @@ namespace Udon
         /// @return 角度 [rad]
         double getAngle() const
         {
-            return (angle + offsetAngle) * 2 * Udon::Pi / ppr * directionSign();
+            return (angle + offsetAngle) * 2 * Udon::Pi / ppr * Udon::DirectionToSign(direction);
         }
 
 
@@ -72,7 +73,7 @@ namespace Udon
         /// @return 角度 [rad]
         double getRawAngle() const
         {
-            return angle * 2 * Udon::Pi / ppr * directionSign();
+            return angle * 2 * Udon::Pi / ppr * Udon::DirectionToSign(direction);
         }
 
 
@@ -80,7 +81,7 @@ namespace Udon
         /// @return 速度 [rpm]
         int16_t getVelocity() const
         {
-            const auto velocity = (nodeRx->data[2] << 8 | nodeRx->data[3]) * directionSign();
+            const auto velocity = (nodeRx->data[2] << 8 | nodeRx->data[3]) * Udon::DirectionToSign(direction);
             return static_cast<int16_t>(velocity);
         }
 
@@ -89,7 +90,7 @@ namespace Udon
         /// @return トルク電流 [mA]
         int16_t getTorqueCurrent() const
         {
-            const int current = (nodeRx->data[4] << 8 | nodeRx->data[5]) * directionSign();
+            const int current = (nodeRx->data[4] << 8 | nodeRx->data[5]) * Udon::DirectionToSign(direction);
             return static_cast<int16_t>(current);
         }
 
@@ -112,7 +113,7 @@ namespace Udon
     protected:
         void setRawCurrent(int16_t rawCurrent)
         {
-            const auto transmitCurrent = static_cast<int16_t>(rawCurrent * directionSign() * 16384 / 20000);
+            const auto transmitCurrent = static_cast<int16_t>(rawCurrent * Udon::DirectionToSign(direction) * 16384 / 20000);
 
             if (motorId > 4)
             {
@@ -136,7 +137,7 @@ namespace Udon
         int motorId;
 
         /// @brief 回転方向
-        bool direction;
+        Udon::Direction direction;
 
         /// @brief 送信バッファ
         Udon::CanTxNode* nodeTx;
@@ -153,11 +154,6 @@ namespace Udon
 
         /// @brief エンコーダー分解能
         static constexpr int32_t ppr = 8192;
-
-        int16_t directionSign() const
-        {
-            return direction ? 1 : -1;
-        }
 
         static void onReceive(void* p)
         {
