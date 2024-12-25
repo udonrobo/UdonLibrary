@@ -158,14 +158,14 @@ $(function(){initNavTree('md_docs_2Driver_2RoboMasterMotor.html',''); initResiza
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_a5e0b712fc58d18f440fd3e70b2ac0100"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#a5e0b712fc58d18f440fd3e70b2ac0100">Udon::CanBusTeensy::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">バス更新</div><div class="ttdef"><b>Definition</b> CanBusTeensy.hpp:89</div></div>
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_a634246d48d846fee09ab4c3259f18b26"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#a634246d48d846fee09ab4c3259f18b26">Udon::CanBusTeensy::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">通信開始</div><div class="ttdef"><b>Definition</b> CanBusTeensy.hpp:37</div></div>
 <div class="ttc" id="aclassUdon_1_1RoboMasterC620_html"><div class="ttname"><a href="classUdon_1_1RoboMasterC620.html">Udon::RoboMasterC620</a></div><div class="ttdoc">RoboMasterC620クラス</div><div class="ttdef"><b>Definition</b> RoboMasterMotor.hpp:210</div></div>
-</div><!-- fragment --><p>指定可能な電流の範囲は <code>CurrentMin</code> <code>CurrentMax</code> メンバ定数より取得できます。フィードバック制御の制御値を制限する場合などに有用です。</p>
-<div class="fragment"><div class="line"><span class="comment">// 指定できる最小電流値 [mA]</span></div>
-<div class="line"><span class="keyword">const</span> int16_t currentMin = motor.CurrentMin;</div>
-<div class="line"><span class="keyword">const</span> int16_t currentMin = Udon::RoboMasterC620::CurrentMin;  <span class="comment">// static メンバなのでこちらでも可 モーターの種類が変わった時にクラス名も書き換える必要があるため注意</span></div>
+</div><!-- fragment --><p>指定可能な電流の範囲は <code>getCurrentRange</code> メンバ関数より取得できます。フィードバック制御の制御値を制限する場合などに有用です。</p>
+<div class="fragment"><div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Range.html">Udon::Range&lt;int16_t&gt;</a> currentRange = motor.getCurrentRange();</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">// 指定できる最大電流値 [mA]</span></div>
-<div class="line"><span class="keyword">const</span> int16_t currentMax = motor.CurrentMax;</div>
-<div class="line"><span class="keyword">const</span> int16_t currentMax = Udon::RoboMasterC620::CurrentMax;</div>
+<div class="line">int16_t min = currentRange.<a class="code hl_variable" href="structUdon_1_1Range.html#a5f357780d35bd1e5283373d7156414de">min</a>;  <span class="comment">// 指定できる最小電流値 [mA]</span></div>
+<div class="line">int16_t max = currentRange.<a class="code hl_variable" href="structUdon_1_1Range.html#a66df49a088e211295fa93457ea09d424">max</a>;  <span class="comment">// 指定できる最大電流値 [mA]</span></div>
+<div class="ttc" id="astructUdon_1_1Range_html"><div class="ttname"><a href="structUdon_1_1Range.html">Udon::Range</a></div><div class="ttdef"><b>Definition</b> Range.hpp:7</div></div>
+<div class="ttc" id="astructUdon_1_1Range_html_a5f357780d35bd1e5283373d7156414de"><div class="ttname"><a href="structUdon_1_1Range.html#a5f357780d35bd1e5283373d7156414de">Udon::Range::min</a></div><div class="ttdeci">MinT min</div><div class="ttdef"><b>Definition</b> Range.hpp:8</div></div>
+<div class="ttc" id="astructUdon_1_1Range_html_a66df49a088e211295fa93457ea09d424"><div class="ttname"><a href="structUdon_1_1Range.html#a66df49a088e211295fa93457ea09d424">Udon::Range::max</a></div><div class="ttdeci">MaxT max</div><div class="ttdef"><b>Definition</b> Range.hpp:9</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md176"></a>
 センサー値取得</h1>
 <p>回転角度、回転速度、トルク電流、モーター温度を取得可能です。位置制御や速度制御をする場合、フィードバック制御と組み合わせて使用してください。</p>
