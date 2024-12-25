@@ -7,6 +7,7 @@
 #pragma once
 
 #include <math.h>
+#include <Udon/Types/Range.hpp>
 
 #ifdef abs
 #   undef abs
@@ -68,6 +69,17 @@ namespace Udon
     Constrain(const A& amt, const B& low, const C& high)
     {
         return Min(Max(amt, low), high);
+    }
+
+    /// @brief 値を指定された範囲内に収める (std::clamp)
+    /// @param amt  範囲内に収めたい値
+    /// @param range 範囲
+    /// @return     範囲内に収めた値
+    template <typename A, typename B, typename C = B>
+    inline constexpr A
+    Constrain(const A& amt, const Udon::Range<B, C>& range)
+    {
+        return Min(Max(amt, range.min), range.max);
     }
 
     /// @brief 度数法の角度を弧度法に変換する
