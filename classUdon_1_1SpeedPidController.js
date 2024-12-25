@@ -8,7 +8,7 @@ var classUdon_1_1SpeedPidController =
     [ "getParamInt", "classUdon_1_1SpeedPidController.html#a61e3dac2fefb36d5374a863d0c2a5105", null ],
     [ "getParamPro", "classUdon_1_1SpeedPidController.html#a3c10bdcc951dc69b8a8b6d2e8b54bf9f", null ],
     [ "getPower", "classUdon_1_1SpeedPidController.html#a72e7afb609d2cc20b9eed4ef3b93824a", null ],
-    [ "getPower", "classUdon_1_1SpeedPidController.html#a9ef6db4f6c99489ea3d30c1406c8907d", null ],
+    [ "getPower", "classUdon_1_1SpeedPidController.html#a4e6e795791c64aa1746b5c059b8756d8", null ],
     [ "getPower", "classUdon_1_1SpeedPidController.html#a9ef6db4f6c99489ea3d30c1406c8907d", null ],
     [ "getPowerDif", "classUdon_1_1SpeedPidController.html#a1ca261221e0a7b796c29cf337f056cd3", null ],
     [ "getPowerInt", "classUdon_1_1SpeedPidController.html#a0a680eb380cfe2dc65c8102fc909a2c0", null ],
