@@ -13,6 +13,7 @@
 #include <Udon/Traits/HasMemberFunction.hpp>
 #include <Udon/Utility/Show.hpp>
 #include <Udon/Traits/ReaderWriterTraits.hpp>
+#include <Udon/Types/Direction.hpp>
 
 namespace Udon
 {
@@ -28,14 +29,14 @@ namespace Udon
 
         int16_t power;    // 出力値 -255 ~ 255
 
-        bool direction;    // 回転方向 true: forward, false: backward
+        Udon::Direction direction;    // 回転方向
 
     public:
 
         /// @brief コンストラクタ
         /// @param writer 送信クラスオブジェクト
         /// @param direction 回転方向
-        MotorBy(WriterType&& writer, bool direction)
+        MotorBy(WriterType&& writer, Udon::Direction direction = Udon::Direction::Forward)
             : writer(std::move(writer))
             , power()
             , direction(direction)
@@ -47,7 +48,7 @@ namespace Udon
         void move(int16_t p)
         {
             power = Constrain(p, (int16_t)-255, (int16_t)255);
-            writer.setMessage({ static_cast<int16_t>(power * (direction ? 1 : -1)) });
+            writer.setMessage({ static_cast<int16_t>(power * Udon::DirectionToSign(direction)) });
             Udon::Traits::MaybeInvokeUpdate(writer);
         }
 
