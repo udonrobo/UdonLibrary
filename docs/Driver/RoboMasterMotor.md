@@ -48,16 +48,13 @@ void loop()
 }
 ```
 
-指定可能な電流の範囲は `CurrentMin` `CurrentMax` メンバ定数より取得できます。フィードバック制御の制御値を制限する場合などに有用です。
+指定可能な電流の範囲は `getCurrentRange` メンバ関数より取得できます。フィードバック制御の制御値を制限する場合などに有用です。
 
 ```cpp
-// 指定できる最小電流値 [mA]
-const int16_t currentMin = motor.CurrentMin;
-const int16_t currentMin = Udon::RoboMasterC620::CurrentMin;  // static メンバなのでこちらでも可 モーターの種類が変わった時にクラス名も書き換える必要があるため注意
+const Udon::Range<int16_t> currentRange = motor.getCurrentRange();
 
-// 指定できる最大電流値 [mA]
-const int16_t currentMax = motor.CurrentMax;
-const int16_t currentMax = Udon::RoboMasterC620::CurrentMax;
+int16_t min = currentRange.min;  // 指定できる最小電流値 [mA]
+int16_t max = currentRange.max;  // 指定できる最大電流値 [mA]
 ```
 
 ## センサー値取得
