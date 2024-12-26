@@ -17,6 +17,7 @@ namespace Udon
         {
         case Direction::Forward: return 1;
         case Direction::Backward: return -1;
+        default: return 0;
         }
     }
 
