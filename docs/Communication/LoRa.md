@@ -17,37 +17,15 @@
 - バイト列を直接送信できます (文字列にする必要がない)
 - 受信間隔長め (8byte で 100ms 程度)
 
-### スケッチ例 / 受信側
+## 個別インクルード
 
 ```cpp
-#include <Udon.hpp>
-
-static Udon::E220Reader<uint64_t> lora({
-    .serial = Serial1,
-    .m0 = 2,
-    .m1 = 3,
-    .aux = 4,
-    .channel = 0
-});
-
-void setup()
-{
-    lora.begin();
-}
-
-void loop()
-{
-    if (const auto message = lora.getMessage())  // message: Udon::Optional<uint64_t>
-    {
-        Serial.println(*message);
-    }
-    else
-    {
-        Serial.println("receive timeout!");
-    }
-    delay(10);
-}
+#include <Udon/Com/LoRa.hpp>
 ```
+
+## 概要
+
+LoRa 通信クラスは、通信バスクラス、送受信クラスから構成されています。送受信には対応していません。uint64_t 型のオブジェクトを送信する例です。
 
 ### スケッチ例 / 送信側
 
@@ -55,11 +33,11 @@ void loop()
 #include <Udon.hpp>
 
 static Udon::E220Writer<uint64_t> lora({
-    .serial = Serial1,
-    .m0 = 2,
-    .m1 = 3,
-    .aux = 4,
-    .channel = 0
+    .serial  = Serial1,
+    .m0      = 2,
+    .m1      = 3,
+    .aux     = 4,
+    .channel = 0,
 });
 
 void setup()
@@ -74,24 +52,56 @@ void loop()
 }
 ```
 
+### スケッチ例 / 受信側
+
+```cpp
+#include <Udon.hpp>
+
+static Udon::E220Reader<uint64_t> lora({
+    .serial  = Serial1,
+    .m0      = 2,
+    .m1      = 3,
+    .aux     = 4,
+    .channel = 0,
+});
+
+void setup()
+{
+    lora.begin();
+}
+
+void loop()
+{
+    if (const auto message = lora.getMessage())
+    {
+        Serial.println(*message);
+    }
+    else
+    {
+        Serial.println("receive timeout!");
+    }
+    delay(10);
+}
+```
+
 ### チャンネルの設定
 
-begin 関数の引数でもチェンネルを指定できます。この時コンストラクタでチャンネルを指定する必要はありません。
+`begin` 関数の引数でもチェンネルを指定できます。この時コンストラクタでチャンネルを指定する必要はありません。
 
 ```cpp
 #include <Udon.hpp>
 
 static Udon::E220Writer<uint64_t> lora({
-    .serial = Serial1,
-    .m0 = 2,
-    .m1 = 3,
-    .aux = 4,
+    .serial  = Serial1,
+    .m0      = 2,
+    .m1      = 3,
+    .aux     = 4,
     // チャンネル番号を省略
 });
 
 void setup()
 {
-    const uint8_t channel = 10;
+    const int channel = 10;
     lora.begin(channel);
 }
 ```

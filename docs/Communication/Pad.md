@@ -76,8 +76,8 @@ static Udon::CanPadPS5 pad{ bus, id };
   > PC と USB ケーブルで接続すると使用できます。
 
   ```cpp
-  static SivPadPS5 pad;
-  // static SivPadPS5 pad{ index };  // 複数コントローラを使用する場合
+  static Udon::SivPadPS5 pad;
+  // static Udon::SivPadPS5 pad{ index };  // 複数コントローラを使用する場合
   ```
 
 </details>
@@ -242,7 +242,7 @@ Udon::Stick stick = pad.getMoveInfo();
 > const std::array<double, 4> omni = pad.getMoveInfo().toOmni<4>();
 > ```
 
-## 最終的なスケッチ例 (CAN バス経由)
+## 最終的なスケッチ例 (CAN 経由)
 
 ```cpp
 #include <Udon.hpp>
@@ -269,9 +269,9 @@ void loop()
     if (pad.isOperable())
     {
         // 動作中
-        const auto omniPowers = pad.getMoveInfo().toOmni<4>();
+        const auto powers = pad.getMoveInfo().toOmni<4>();
 
-        // omni.move(omniPowers);
+        // omni.move(powers);
     }
     else
     {

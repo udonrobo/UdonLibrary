@@ -8,9 +8,9 @@
 
 ## PidController
 
-PID 制御を行うには `PidController` クラスを用います。このクラスはループ周期が一定である前提で作成されています。よって `LoopCycleController` クラスも必要です。
+PID 制御を行うには `PidController` クラスを用います。このクラスはループ周期が一定である前提で作成されているため、`LoopCycleController` クラスも必要です。
 
-PID 制御には 3 つのパラメータ (P ゲイン, I ゲイン, D ゲイン) があり、コンストラクタで設定します。このパラメータがフィードバック制御の性能を決定するため、頑張って調整する必要があります。
+PID 制御には 3 つのパラメータ (P ゲイン, I ゲイン, D ゲイン) があり、コンストラクタで設定します。このパラメータがフィードバック制御の性能を決定します。
 
 `PidController::update()` に現在の値、目標の値を渡すことで `PidController::getPower()` から制御値が得られます。この制御値用いてモータを動かすことで位置制御などが可能です。現在値にはエンコーダーなどのセンサから得られる値を設定します。
 
@@ -53,9 +53,12 @@ void loop()
 void loop()
 {
     // encoder --> PID --> motor
-    const auto count = encoder.getCount();
-    pid.update(count, 10000);
-    motor.setPower(pid.getPower());
+    const int32_t count = encoder.getCount();
+    const int32_t target = 10000;
+    
+    const auto power = pid(count, target);
+
+    motor.move(power);
 
     loopCtrl.update();
 }
@@ -64,7 +67,7 @@ void loop()
 積分定数が設定されている場合、非常停止中に誤差が積算されていき、非常停止解除時に急に動く場合があります。`clearPower()` メンバ関数で積算値の消去を行えます。
 
 ```cpp
-if (解除後)
+if (非常停止中)
 {
     pid.clearPower();
 }

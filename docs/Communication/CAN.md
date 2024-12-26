@@ -1,17 +1,17 @@
 # CAN 通信
 
-CAN 通信は自動車内部の通信等工業系で主に用いられる通信手法です。差動通信であるためノイズ耐性が高く、またバス型方式をとっているため容易に配線が可能です。
+CAN 通信は自動車や工業系で主に用いられる通信手法です。差動通信であるためノイズ耐性が高く、バス型方式をとっているため配線が容易です。
 
-送信者は送信ノードと呼ばれ、各送信ノードは自由なタイミングで送信を行えます。他の送信ノードが送信中の場合、調停を行い送信タイミングを自動的に調整します。受信者は受信ノードと呼ばれ、送信者が持つ識別子を識別し受信を行います。
+送信者は送信ノードと呼ばれ、自由なタイミングで送信を行えます。他の送信ノードが送信中の場合、調停を行い送信タイミングを自動的に調整します。受信者は受信ノードと呼ばれ、送信者が持つ識別子を識別し受信を行います。
 
-CAN 通信クラスは、通信バスクラス、送受信ノードクラスから構成され、組み合わせて使用します。
+本ライブラリの CAN 通信クラスは通信バスクラス、送受信ノードクラスから構成され、組み合わせて使用します。
 
 - [通信バスクラス](#通信バスクラス)
 - [送信ノードクラス](#送信ノードクラス)
 - [受信ノードクラス](#受信ノードクラス)
-- [バイト列を直接送受信](#バイト列を直接送受信)
 - [デバッグ](#デバッグ)
 - [クラスの組み合わせ色々](#クラスの組み合わせ色々)
+- [バイト列を直接送受信](#バイト列を直接送受信)
 
 ## 個別インクルード
 
@@ -23,7 +23,7 @@ CAN 通信クラスは、通信バスクラス、送受信ノードクラスか�
 
 送受信処理、通信が行えているかどうかのチェックを行います。使用するマイコンや CAN コントローラーによって適切なバスクラスを選択します。
 
-CAN2.0A プロトコルで通信を行います。そのため ID は 0x000~0x7FF の範囲で使用できます。
+CAN2.0A プロトコルで通信を行います。ID は 0x000~0x7FF の範囲で使用できます。
 
 CAN2.0A は 一度に 8 バイトのデータしか送信できません。8 バイトより長いデータは分割して送受信します。この時、1 バイト目にインデックス番号が付与されます。8 バイト以下のデータはインデックスを付与せず送受信するため、他の CAN デバイス (市販モーター等) との通信にも使用できます。詳しくは [バイト列を直接送受信](#バイト列を直接送受信) を参照ください。
 
@@ -199,9 +199,11 @@ void loop()
 
 `Udon::CanWriter<T>`
 
-`T` に指定された型のオブジェクトをバスへ送信します。
+`T` に指定された型のオブジェクトをバスへ送信します。一つのインスタンスが一つの送信ノードを表します。
 
 ```cpp
+#include <Udon.hpp>
+
 static Udon::CanBusTeensy<CAN1> bus;
 static Udon::CanWriter<Udon::Vec2> writer{ bus, 0x010 };  // Udon::Vec2 をノードID 0x010 として送信
 
@@ -215,7 +217,7 @@ void loop()
     bus.update();
 
     Udon::Vec2 vector{ 100.0, 200.0 };    // 送信するオブジェクトをインスタンス化
-    writer.setMessage(vector);            // オブジェクトを登録
+    writer.setMessage(vector);            // オブジェクトを送信
 
     delay(10);
 }
@@ -225,9 +227,11 @@ void loop()
 
 `Udon::CanReader<T>`
 
-`T` に指定された型のオブジェクトをバスから取得します。送信ノードの `T` と同じ型である必要があります。
+`T` に指定された型のオブジェクトをバスから取得します。送信ノードの `T` と同じ型である必要があります。一つのインスタンスが一つの受信ノードを表します。
 
 ```cpp
+#include <Udon.hpp>
+
 static Udon::CanBusTeensy<CAN1> bus;
 static Udon::CanReader<Udon::Vec2> reader{ bus, 0x010 };  // ノードID 0x010 から Udon::Vec2を受信
 
@@ -255,10 +259,69 @@ void loop()
 }
 ```
 
-> `getMessage` は正常にオブジェクトが受信できたかどうか判定できるように `Udon::Optional<T>` を返します。通信エラー時は `Udon::nullopt` が返されます。
-> `Udon::Optional` は値と値が有効であるかを持つクラスで、 `operator bool` によって値を保持するか取得できます。if 文で正常に受信できたかどうかで分岐できます。
->
-> `Udon::Optional<T>::operator->` で保持しているオブジェクトのメンバへアクセスでき、`Udon::Optional<T>::operator*` で optional が持っているオブジェクトの参照を取得できます。
+> `getMessage` は正常にオブジェクトが受信できたかどうか判定できるように `Udon::Optional<T>` を返します。通信エラー時は `Udon::nullopt` が返されます。[Udon::Optional ドキュメント](./../../docs/Types/Optional.md)
+
+## デバッグ
+
+全 CAN 通信クラスは `show()` メンバ関数を持っており、通信の状態をシリアルモニターへ出力します。
+
+通信バスクラスの `show()` はバスに参加している送受信ノードの列挙、送受信データ(バイト列)を出力します。
+
+```cpp
+bus.show();
+```
+
+```plaintext
+CanBusTeensy
+    TX  0x010 3 byte (single frame) [ 100 200 300 ]
+    TX  0x011 3 byte (single frame) [ 100 200 300 ]
+    TX  0x012 3 byte (single frame) [ 100 200 300 ]
+    RX  0x020 8 byte (single frame) [ 100 200 178 190 210 230 250 255 ]
+    RX  0x021 8 byte (single frame) [ 100 200 178 190 210 230 250 255 ]
+    RX  0x022 9 byte (multi  frame) [ 100 200 178 190 210 230 250 255 255 ]
+```
+
+```cpp
+reader.show();  // 受信データを表示
+writer.show();  // 送信データを表示
+```
+
+## クラスの組み合わせ色々
+
+一つのバスへ複数送受信ノードが参加する(よくある)
+
+```cpp
+static Udon::CanBusTeensy<CAN1> bus;
+static Udon::CanWriter<Udon::Vec2> writer1{ bus, 0x011 };
+static Udon::CanWriter<Udon::Vec2> writer2{ bus, 0x012 };
+static Udon::CanReader<Udon::Vec2> reader1{ bus, 0x013 };
+static Udon::CanReader<Udon::Vec2> reader2{ bus, 0x014 };
+```
+
+二つのバスへ受信ノードが参加する(バスの負荷分散目的)
+
+```cpp
+static Udon::CanBusTeensy<CAN1> bus1;
+static Udon::CanWriter<Udon::Vec2> writer1{ bus1, 0x011 };
+static Udon::CanReader<Udon::Vec2> reader1{ bus1, 0x012 };
+
+static Udon::CanBusTeensy<CAN2> bus2;
+static Udon::CanWriter<Udon::Vec2> writer2{ bus2, 0x011 };  // バスが異なるのでID重複してもOK
+static Udon::CanReader<Udon::Vec2> reader2{ bus2, 0x012 };
+```
+
+異なる種類のバスへ参加する(激レア)
+
+```cpp
+static Udon::CanBusTeensy<CAN1> bus1;
+static Udon::CanWriter<Udon::Vec2> writer1{ bus1, 0x011 };
+static Udon::CanReader<Udon::Vec2> reader1{ bus1, 0x013 };
+
+static Udon::CanBusSpi bus2;
+static Udon::CanWriter<Udon::Vec2> writer2{ bus2, 0x012 };
+static Udon::CanReader<Udon::Vec2> reader2{ bus2, 0x014 };
+```
+
 
 ## バイト列を直接送受信
 
@@ -504,49 +567,3 @@ void loop()
 ```
 
 </details>
-
-## デバッグ
-
-全 CAN 通信クラスは `show()` メンバ関数を持っており、通信の状態をシリアルモニターへ送信します。
-
-```cpp
-bus.show();     // バスに参加している送受信ノードの列挙、送受信データ(バイト列)を表示
-reader.show();  // 受信データを表示
-writer.show();  // 送信データを表示
-```
-
-## クラスの組み合わせ色々
-
-一つのバスへ複数送受信ノードが参加する(よくある)
-
-```cpp
-static Udon::CanBusTeensy<CAN1> bus;
-static Udon::CanWriter<Udon::Vec2> writer1{ bus, 0x011 };
-static Udon::CanWriter<Udon::Vec2> writer2{ bus, 0x012 };
-static Udon::CanReader<Udon::Vec2> reader1{ bus, 0x013 };
-static Udon::CanReader<Udon::Vec2> reader2{ bus, 0x014 };
-```
-
-二つのバスへ受信ノードが参加する(バスの負荷分散目的)
-
-```cpp
-static Udon::CanBusTeensy<CAN1> bus1;
-static Udon::CanWriter<Udon::Vec2> writer1{ bus1, 0x011 };
-static Udon::CanReader<Udon::Vec2> reader1{ bus1, 0x012 };
-
-static Udon::CanBusTeensy<CAN2> bus2;
-static Udon::CanWriter<Udon::Vec2> writer2{ bus2, 0x011 };  // バスが異なるのでID重複してもOK
-static Udon::CanReader<Udon::Vec2> reader2{ bus2, 0x012 };
-```
-
-異なる種類のバスへ参加する(激レア)
-
-```cpp
-static Udon::CanBusTeensy<CAN1> bus1;
-static Udon::CanWriter<Udon::Vec2> writer1{ bus1, 0x011 };
-static Udon::CanReader<Udon::Vec2> reader1{ bus1, 0x013 };
-
-static Udon::CanBusSpi bus2({ ... });
-static Udon::CanWriter<Udon::Vec2> writer2{ bus2, 0x012 };
-static Udon::CanReader<Udon::Vec2> reader2{ bus2, 0x014 };
-```

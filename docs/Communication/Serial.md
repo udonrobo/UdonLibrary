@@ -1,6 +1,6 @@
 # UART / USB Serial
 
-主に PC、マイコン間での通信に用います。
+主に PC とマイコン間での通信に用います。
 
 ## マイコンから PC
 
@@ -27,6 +27,8 @@ void loop()
 
 ### PC 側 (OpenSiv3D)
 
+`getMessage` は受信処理を行わないため、コストが低いです。受信処理は受信スレッドによって行われます。
+
 ```cpp
 #include <Siv3D.hpp> // Siv3D v0.6.15
 #include <Udon.hpp>
@@ -43,9 +45,9 @@ void Main()
             serial.open(U"COM10", 115200);  // マイコンが接続されているCOMポートを指定
         }
 
-        if (const auto m = reader.getMessage())
+        if (const auto message = reader.getMessage())
         {
-            Print << *m;
+            Print << *message;
         }
         else
         {
@@ -93,9 +95,9 @@ void setup()
 
 void loop()
 {
-    if (const auto m = reader.getMessage())
+    if (const auto message = reader.getMessage())
     {
-        uint32_t value = *m;
+        uint32_t value = *message;
     }
     delay(10);
 }

@@ -25,14 +25,14 @@
 
 ## 電流値の指定
 
-`setCurrent` で電流値を指定することで動作します。電流範囲は先ほどの表のとおりです。
+モーター1つに対して1つの `Udon::RoboMasterCxxx` インスタンスを作成し、`setCurrent` で電流値を指定することで動作します。電流範囲は先ほどの表のとおりです。範囲外の値を指定した場合、範囲内の値にクリッピングされます。
 
 ```cpp
 #include <Udon.hpp>
 
 static Udon::CanBusTeensy<CAN2> bus;
 
-static Udon::RoboMasterC620 motor{ bus, 1 };   // ロボマスモーター (モーターID: 1)
+static Udon::RoboMasterC620 motor{ bus, 1 };   // ロボマスモーター (ID: 1)
 
 void setup()
 {
@@ -89,11 +89,11 @@ void loop()
 
 > `getRawAngle` 関数は、ロボマスモーターから直接得られる回転角度を取得する関数です。一周ごとに 0 に戻ります。
 
-## 複数モーターの場合
+## 複数のモーターを制御
 
-モーター ID ごとにオブジェクトを生成することで、1 つの CAN バスに対して最大 8 つまでモーターを接続可能です。
+1 つの CAN バスに対して最大 8 つまでモーターを接続可能です。
 
-モーター ID はドライバについている SET ボタンを押した後、加えて ID 番号回ボタンを押すことで設定できます。モーター ID は緑に点滅する LED の点滅回数で確認できます。
+モーター ID はドライバについている SET ボタンを押した後、ID 番号回ボタンを押すことで設定できます。モーター ID は緑に点滅する LED の点滅回数で確認できます。
 
 ```cpp
 #include <Udon.hpp>
@@ -200,11 +200,11 @@ void loop()
     bus.update();
 
     // 目標速度 (rpm)
-    const double targetSpeed = 5000;
+    const double targetVelocity = 5000;
 
     // 速度フィードバック制御をして目標速度に制御する
-    const double sendCurrent = pid(motor.getVelocity(), targetSpeed, motor.CurrentMin, motor.CurrentMax);
-    motor.setCurrent(sendCurrent);
+    const double current = pid(motor.getVelocity(), targetVelocity);
+    motor.setCurrent(current);
 
     loopCtrl.update();
 }
@@ -237,10 +237,10 @@ public:
     {
     }
 
-    void move(const double rpm)
+    void move(const double targetVelocity)
     {
-        const auto sendCurrent = pid(motor.getVelocity(), rpm, motor.CurrentMin, motor.CurrentMax);
-        motor.setCurrent(sendCurrent);
+        const auto current = pid(motor.getVelocity(), targetVelocity);
+        motor.setCurrent(current);
     }
 
     void stop()

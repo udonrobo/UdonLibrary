@@ -27,6 +27,8 @@ namespace Udon
 
         s3d::Array<uint8_t> buffer;
 
+        std::mutex mutex;
+
         std::thread thread;
 
         std::atomic_bool isRunning;    // thread stop token
@@ -56,6 +58,7 @@ namespace Udon
         /// @return メッセージ(Optional)
         Udon::Optional<Message> getMessage() const
         {
+            std::lock_guard lock(mutex);
             return Udon::Deserialize<Message>(buffer);
         }
 
@@ -92,6 +95,7 @@ namespace Udon
                 s3d::Array<uint8> temp;
                 if (serial.readBytes(temp) && temp.size() == Size)
                 {
+                    std::lock_guard lock(mutex);
                     buffer = std::move(temp);
                 }
 
