@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['検証ボードを追加する_0',['■ 検証ボードを追加する',['../md_docs_2Developer_2CI.html#autotoc_md116',1,'']]]
+  ['本ライブラリでの使われ方_0',['本ライブラリでの使われ方',['../md_docs_2Types_2Optional.html#autotoc_md273',1,'']]],
+  ['本ライブラリについて_1',['本ライブラリについて',['../md_docs_2Start_2Include.html#autotoc_md245',1,'']]]
 ];

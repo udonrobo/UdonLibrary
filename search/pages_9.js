@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['serial_0',['UART / USB Serial',['../md_docs_2Communication_2Serial.html',1,'']]],
-  ['staticvector_1',['StaticVector',['../md_docs_2Types_2StaticVector.html',1,'']]],
-  ['stringview_2',['StringView',['../md_docs_2Types_2StringView.html',1,'']]],
-  ['studio_3',['Visual Studio',['../md_docs_2Install_2VisualStudio.html',1,'']]]
+  ['raspberry_20pi_20pico_20セットアップ_0',['Raspberry Pi Pico セットアップ',['../md_docs_2Install_2RaspberryPiPico.html',1,'']]],
+  ['ringbuffer_1',['RingBuffer',['../md_docs_2Types_2RingBuffer.html',1,'']]]
 ];

@@ -1,5 +1,8 @@
 var NAVTREEINDEX12 =
 {
+"structUdon_1_1Traits_1_1IsSerializable.html":[56,0,1,5,17],
+"structUdon_1_1Traits_1_1IsSerializable.html":[57,0,0,2,17],
+"structUdon_1_1Traits_1_1IsWriter.html":[56,0,1,5,18],
 "structUdon_1_1Traits_1_1IsWriter.html":[57,0,0,2,18],
 "structUdon_1_1Traits_1_1IsWriter_3_01T_00_01typename_01std_1_1enable__if_3_01std_1_1is__same_3_0e17e1ac5ec2035eb8694217d994bebd1.html":[56,0,1,5,19],
 "structUdon_1_1Traits_1_1IsWriter_3_01T_00_01typename_01std_1_1enable__if_3_01std_1_1is__same_3_0e17e1ac5ec2035eb8694217d994bebd1.html":[57,0,0,2,19],

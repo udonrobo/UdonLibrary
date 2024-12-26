@@ -110,7 +110,7 @@ $(function(){initNavTree('md_docs_2Algorithm_2Interrupt.html',''); initResizable
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md13"></a></p>
-<p><code>ScopedInterruptLocker</code> クラスを用いてインスタンスが存在する間割り込みを禁止します。主に通信クラス内で使用されます。</p>
+<p>RAII を利用してインスタンスが存在する間割り込みを禁止します。主に通信クラス内で使用されます。</p>
 <div class="fragment"><div class="line"><span class="comment">// 割り込み許可</span></div>
 <div class="line">{</div>
 <div class="line">    <a class="code hl_class" href="classUdon_1_1ScopedInterruptLocker.html">Udon::ScopedInterruptLocker</a> lock;</div>

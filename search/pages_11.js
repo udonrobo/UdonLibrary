@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['サーボ_0',['サーボ',['../md_docs_2Driver_2PicoServo.html',1,'']]]
+  ['コントローラーの構成_0',['コントローラーの構成',['../md_docs_2Communication_2PadOrganization.html',1,'']]],
+  ['コントローラー_1',['PS5 コントローラー',['../md_docs_2Communication_2Pad.html',1,'']]]
 ];

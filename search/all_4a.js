@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['任意_0',['ブランチを切る (任意)',['../md_docs_2Developer_2Change.html#autotoc_md106',1,'']]]
+  ['他の色空間へ変換_0',['他の色空間へ変換',['../md_docs_2Types_2Color.html#autotoc_md256',1,'他の色空間へ変換'],['../md_docs_2Types_2Color.html#autotoc_md259',1,'他の色空間へ変換']]]
 ];

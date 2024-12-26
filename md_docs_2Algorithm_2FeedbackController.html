@@ -115,8 +115,8 @@ $(function(){initNavTree('md_docs_2Algorithm_2FeedbackController.html',''); init
 <p>フィードバック制御にはいくつか手法がありますが、本部活では昔から使用されている調整が手軽な PID 制御を用います。</p>
 <h1><a class="anchor" id="autotoc_md12"></a>
 PidController</h1>
-<p>PID 制御を行うには <code>PidController</code> クラスを用います。このクラスはループ周期が一定である前提で作成されています。よって <code>LoopCycleController</code> クラスも必要です。</p>
-<p>PID 制御には 3 つのパラメータ (P ゲイン, I ゲイン, D ゲイン) があり、コンストラクタで設定します。このパラメータがフィードバック制御の性能を決定するため、頑張って調整する必要があります。</p>
+<p>PID 制御を行うには <code>PidController</code> クラスを用います。このクラスはループ周期が一定である前提で作成されているため、<code>LoopCycleController</code> クラスも必要です。</p>
+<p>PID 制御には 3 つのパラメータ (P ゲイン, I ゲイン, D ゲイン) があり、コンストラクタで設定します。このパラメータがフィードバック制御の性能を決定します。</p>
 <p><code>PidController::update()</code> に現在の値、目標の値を渡すことで <code>PidController::getPower()</code> から制御値が得られます。この制御値用いてモータを動かすことで位置制御などが可能です。現在値にはエンコーダーなどのセンサから得られる値を設定します。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
@@ -151,14 +151,17 @@ PidController</h1>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    <span class="comment">// encoder --&gt; PID --&gt; motor</span></div>
-<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> count = encoder.getCount();</div>
-<div class="line">    pid.update(count, 10000);</div>
-<div class="line">    motor.setPower(pid.getPower());</div>
+<div class="line">    <span class="keyword">const</span> int32_t count = encoder.getCount();</div>
+<div class="line">    <span class="keyword">const</span> int32_t target = 10000;</div>
+<div class="line">    </div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> power = pid(count, target);</div>
+<div class="line"> </div>
+<div class="line">    motor.move(power);</div>
 <div class="line"> </div>
 <div class="line">    loopCtrl.update();</div>
 <div class="line">}</div>
 </div><!-- fragment --><p>積分定数が設定されている場合、非常停止中に誤差が積算されていき、非常停止解除時に急に動く場合があります。<code>clearPower()</code> メンバ関数で積算値の消去を行えます。</p>
-<div class="fragment"><div class="line"><span class="keywordflow">if</span> (解除後)</div>
+<div class="fragment"><div class="line"><span class="keywordflow">if</span> (非常停止中)</div>
 <div class="line">{</div>
 <div class="line">    pid.clearPower();</div>
 <div class="line">}</div>

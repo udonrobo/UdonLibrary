@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['詳細_0',['詳細',['../md_docs_2Other_2Serialization.html#autotoc_md212',1,'']]]
+  ['言語_0',['言語',['../md_docs_2Developer_2StyleGuide.html#autotoc_md144',1,'']]]
 ];

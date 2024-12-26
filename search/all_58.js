@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['原点を中心にベクトルを指定角度回転させる_0',['原点を中心にベクトルを指定角度回転させる',['../md_docs_2Types_2Vector2D.html#autotoc_md319',1,'']]]
+  ['単純な文字列比較_0',['■ 単純な文字列比較',['../md_docs_2Types_2StringView.html#autotoc_md298',1,'']]]
 ];

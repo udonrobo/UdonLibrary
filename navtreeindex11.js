@@ -1,5 +1,8 @@
 var NAVTREEINDEX11 =
 {
+"structUdon_1_1Pos.html#ad42e7a68b724b433ee896f721026ff42":[56,0,1,47,10],
+"structUdon_1_1Pos.html#ad42e7a68b724b433ee896f721026ff42":[57,0,0,44,10],
+"structUdon_1_1Pos.html#ad5ddfcaa7ccf7908e076ea2420e8aef1":[56,0,1,47,11],
 "structUdon_1_1Pos.html#ad5ddfcaa7ccf7908e076ea2420e8aef1":[57,0,0,44,11],
 "structUdon_1_1Pos.html#ad69243cd5fc54cba59de058016dcaf20":[56,0,1,47,21],
 "structUdon_1_1Pos.html#ad69243cd5fc54cba59de058016dcaf20":[57,0,0,44,21],
@@ -246,8 +249,5 @@ var NAVTREEINDEX11 =
 "structUdon_1_1Traits_1_1IsReader.html":[56,0,1,5,15],
 "structUdon_1_1Traits_1_1IsReader.html":[57,0,0,2,15],
 "structUdon_1_1Traits_1_1IsReader_3_01T_00_01typename_01std_1_1enable__if_3_01std_1_1is__same_3_06e4865bf40f6370f1c61b96f7d348132.html":[56,0,1,5,16],
-"structUdon_1_1Traits_1_1IsReader_3_01T_00_01typename_01std_1_1enable__if_3_01std_1_1is__same_3_06e4865bf40f6370f1c61b96f7d348132.html":[57,0,0,2,16],
-"structUdon_1_1Traits_1_1IsSerializable.html":[56,0,1,5,17],
-"structUdon_1_1Traits_1_1IsSerializable.html":[57,0,0,2,17],
-"structUdon_1_1Traits_1_1IsWriter.html":[56,0,1,5,18]
+"structUdon_1_1Traits_1_1IsReader_3_01T_00_01typename_01std_1_1enable__if_3_01std_1_1is__same_3_06e4865bf40f6370f1c61b96f7d348132.html":[57,0,0,2,16]
 };

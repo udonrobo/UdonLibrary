@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['末尾の_20n_20文字を削除した部分文字列を作成_0',['■ 末尾の N 文字を削除した部分文字列を作成',['../md_docs_2Types_2StringView.html#autotoc_md292',1,'']]]
+  ['有効値のセット_0',['有効値のセット',['../md_docs_2Types_2Optional.html#autotoc_md271',1,'']]],
+  ['有_20無効値の判定_1',['有/無効値の判定',['../md_docs_2Types_2Optional.html#autotoc_md269',1,'']]]
 ];

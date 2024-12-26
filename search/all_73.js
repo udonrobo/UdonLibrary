@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['本ライブラリでの使われ方_0',['本ライブラリでの使われ方',['../md_docs_2Types_2Optional.html#autotoc_md270',1,'']]],
-  ['本ライブラリについて_1',['本ライブラリについて',['../md_docs_2Start_2Include.html#autotoc_md242',1,'']]]
+  ['末尾の_20n_20文字を削除した部分文字列を作成_0',['■ 末尾の N 文字を削除した部分文字列を作成',['../md_docs_2Types_2StringView.html#autotoc_md295',1,'']]]
 ];

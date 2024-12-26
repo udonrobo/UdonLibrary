@@ -109,7 +109,7 @@ $(function(){initNavTree('md_docs_2Types_2StringView.html',''); initResizable(tr
   <div class="headertitle"><div class="title">StringView</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md281"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md284"></a></p>
 <p>文字列を保持せず、参照するクラスです。<code>std::string_view</code> と同義です。<code>std::string</code> と異なり、ヒープアロケーションが発生しないため効率の良い文字列操作を行えます。次のように実装されています。</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span>StringView</div>
 <div class="line">{</div>
@@ -117,11 +117,11 @@ $(function(){initNavTree('md_docs_2Types_2StringView.html',''); initResizable(tr
 <div class="line">    <span class="keywordtype">size_t</span>      size;</div>
 <div class="line">};</div>
 </div><!-- fragment --><p>data ポインタは確保済みの領域を指すのみで、メモリの所有権 (メモリを解放する義務) を持ちません。</p>
-<h1><a class="anchor" id="autotoc_md282"></a>
+<h1><a class="anchor" id="autotoc_md285"></a>
 個別インクルード</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="StringView_8hpp.html">Udon/Types/StringView.hpp</a>&gt;</span></div>
 <div class="ttc" id="aStringView_8hpp_html"><div class="ttname"><a href="StringView_8hpp.html">StringView.hpp</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md283"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md286"></a>
 std::string との違い</h1>
 <p>std::string は動的にメモリを確保し文字列を保持します。そのため下記の例では 3 度、ヒープへのメモリアロケーションが発生します。</p>
 <div class="fragment"><div class="line">std::string src = <span class="stringliteral">&quot;hello world !!&quot;</span>;</div>
@@ -133,7 +133,7 @@ std::string との違い</h1>
 <div class="line"><a class="code hl_class" href="classUdon_1_1BasicStringView.html">Udon::StringView</a> world = src.<a class="code hl_function" href="classUdon_1_1BasicStringView.html#a365f96d145406fb904d30b60cc8c5042">substr</a>(6, 5);  <span class="comment">// world</span></div>
 <div class="ttc" id="aclassUdon_1_1BasicStringView_html"><div class="ttname"><a href="classUdon_1_1BasicStringView.html">Udon::BasicStringView</a></div><div class="ttdoc">文字列参照クラス</div><div class="ttdef"><b>Definition</b> StringView.hpp:30</div></div>
 <div class="ttc" id="aclassUdon_1_1BasicStringView_html_a365f96d145406fb904d30b60cc8c5042"><div class="ttname"><a href="classUdon_1_1BasicStringView.html#a365f96d145406fb904d30b60cc8c5042">Udon::BasicStringView::substr</a></div><div class="ttdeci">BasicStringView substr(const size_type pos, const size_type n=npos) const</div><div class="ttdoc">指定された範囲のビューを作成する</div><div class="ttdef"><b>Definition</b> StringView.hpp:189</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md284"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md287"></a>
 <code>std::ostream</code> オブジェクトへの出力</h1>
 <p>標準出力へ</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
@@ -152,7 +152,7 @@ std::string との違い</h1>
 <div class="line">    std::ofstream file{ <span class="stringliteral">&quot;output.txt&quot;</span> };</div>
 <div class="line">    file &lt;&lt; sv;</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md285"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md288"></a>
 USB シリアルへの出力</h1>
 <p>Arduino 環境では USB シリアルへ出力できます。出力値はシリアルモニターで確認できます。</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> setup()</div>
@@ -166,7 +166,7 @@ USB シリアルへの出力</h1>
 <div class="line">    sv.show();      <span class="comment">// hello</span></div>
 <div class="line">    sv.showRaw();   <span class="comment">// [ h, e, l, l, o ]</span></div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md286"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md289"></a>
 サイズ</h1>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1BasicStringView.html">Udon::StringView</a> sv = <span class="stringliteral">&quot;hello&quot;</span>;</div>
 <div class="line"> </div>
@@ -175,7 +175,7 @@ USB シリアルへの出力</h1>
 <div class="line"><span class="keywordtype">bool</span> empty = sv.<a class="code hl_function" href="classUdon_1_1BasicStringView.html#af9fc3e2f9549c7b75efba5c5a80be3ac">empty</a>();  <span class="comment">// false</span></div>
 <div class="ttc" id="aclassUdon_1_1BasicStringView_html_a1cb7b14ecfcef43359d802a53b92f62a"><div class="ttname"><a href="classUdon_1_1BasicStringView.html#a1cb7b14ecfcef43359d802a53b92f62a">Udon::BasicStringView::size</a></div><div class="ttdeci">constexpr size_type size() const noexcept</div><div class="ttdoc">ビューのサイズを取得する</div><div class="ttdef"><b>Definition</b> StringView.hpp:137</div></div>
 <div class="ttc" id="aclassUdon_1_1BasicStringView_html_af9fc3e2f9549c7b75efba5c5a80be3ac"><div class="ttname"><a href="classUdon_1_1BasicStringView.html#af9fc3e2f9549c7b75efba5c5a80be3ac">Udon::BasicStringView::empty</a></div><div class="ttdeci">constexpr bool empty() const noexcept</div><div class="ttdoc">ビュー終端にヌル終端文字を含むことは保証されないので c_str() は提供しない</div><div class="ttdef"><b>Definition</b> StringView.hpp:147</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md287"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md290"></a>
 文字アクセス</h1>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1BasicStringView.html">Udon::StringView</a> sv = <span class="stringliteral">&quot;hello&quot;</span>;</div>
 <div class="line"> </div>
@@ -192,9 +192,9 @@ USB シリアルへの出力</h1>
 <div class="ttc" id="aclassUdon_1_1BasicStringView_html_ab0985a818b27ddcc5220c5f2f5be82cb"><div class="ttname"><a href="classUdon_1_1BasicStringView.html#ab0985a818b27ddcc5220c5f2f5be82cb">Udon::BasicStringView::back</a></div><div class="ttdeci">constexpr const_reference back() const noexcept</div><div class="ttdoc">ビューの終端の文字を取得する</div><div class="ttdef"><b>Definition</b> StringView.hpp:180</div></div>
 <div class="ttc" id="aclassUdon_1_1BasicStringView_html_abc04a9748e0368b66deb65dfc5fc08af"><div class="ttname"><a href="classUdon_1_1BasicStringView.html#abc04a9748e0368b66deb65dfc5fc08af">Udon::BasicStringView::at</a></div><div class="ttdeci">const_reference at(const size_type index) const noexcept</div><div class="ttdoc">指定されたインデックスの文字を取得する</div><div class="ttdef"><b>Definition</b> StringView.hpp:161</div></div>
 <div class="ttc" id="aclassUdon_1_1BasicStringView_html_ae11f20109d391ed882139ca1652868cd"><div class="ttname"><a href="classUdon_1_1BasicStringView.html#ae11f20109d391ed882139ca1652868cd">Udon::BasicStringView::front</a></div><div class="ttdeci">constexpr const_reference front() const noexcept</div><div class="ttdoc">ビューの先頭文字を取得する</div><div class="ttdef"><b>Definition</b> StringView.hpp:173</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md288"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md291"></a>
 部分文字列作成</h1>
-<h2><a class="anchor" id="autotoc_md289"></a>
+<h2><a class="anchor" id="autotoc_md292"></a>
 ■ 指定された位置から N 文字の部分文字列を作成</h2>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1BasicStringView.html">Udon::StringView</a> sv = <span class="stringliteral">&quot;hello world&quot;</span>;</div>
 <div class="line"> </div>
@@ -206,7 +206,7 @@ USB シリアルへの出力</h1>
 <div class="line"><a class="code hl_class" href="classUdon_1_1BasicStringView.html">Udon::StringView</a> result = sv.<a class="code hl_function" href="classUdon_1_1BasicStringView.html#a365f96d145406fb904d30b60cc8c5042">substr</a>(1);  <span class="comment">// e から末尾まで</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// result: { &quot;ello world&quot; }</span></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md290"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md293"></a>
 ■ 指定された終端文字までの部分文字列を作成</h2>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1BasicStringView.html">Udon::StringView</a> sv = <span class="stringliteral">&quot;hello world\n hogehoge&quot;</span>;</div>
 <div class="line"> </div>
@@ -214,7 +214,7 @@ USB シリアルへの出力</h1>
 <div class="line"> </div>
 <div class="line"><span class="comment">// result: { &quot;hello world&quot; }</span></div>
 <div class="ttc" id="aclassUdon_1_1BasicStringView_html_a2b9420d26d4ec9d59cf7fb6349f11276"><div class="ttname"><a href="classUdon_1_1BasicStringView.html#a2b9420d26d4ec9d59cf7fb6349f11276">Udon::BasicStringView::substrUntil</a></div><div class="ttdeci">BasicStringView substrUntil(const char_type terminate) const</div><div class="ttdoc">指定された終端文字までのビューを作成する</div><div class="ttdef"><b>Definition</b> StringView.hpp:213</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md291"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md294"></a>
 ■ 先頭の N 文字を削除した部分文字列を作成</h2>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1BasicStringView.html">Udon::StringView</a> sv = <span class="stringliteral">&quot;message: error&quot;</span>;</div>
 <div class="line"> </div>
@@ -222,7 +222,7 @@ USB シリアルへの出力</h1>
 <div class="line"> </div>
 <div class="line"><span class="comment">// result: { &quot;error&quot; }</span></div>
 <div class="ttc" id="aclassUdon_1_1BasicStringView_html_aa240a1a5f8962f3987fb608e10820caa"><div class="ttname"><a href="classUdon_1_1BasicStringView.html#aa240a1a5f8962f3987fb608e10820caa">Udon::BasicStringView::removePrefix</a></div><div class="ttdeci">BasicStringView removePrefix(const size_type n) const</div><div class="ttdoc">先頭のN文字を削除したビューを作成する</div><div class="ttdef"><b>Definition</b> StringView.hpp:224</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md292"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md295"></a>
 ■ 末尾の N 文字を削除した部分文字列を作成</h2>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1BasicStringView.html">Udon::StringView</a> sv = <span class="stringliteral">&quot;message: error&quot;</span>;</div>
 <div class="line"> </div>
@@ -230,7 +230,7 @@ USB シリアルへの出力</h1>
 <div class="line"> </div>
 <div class="line"><span class="comment">// result: { &quot;message&quot; }</span></div>
 <div class="ttc" id="aclassUdon_1_1BasicStringView_html_a958a238fe98242e2296264855e6109d7"><div class="ttname"><a href="classUdon_1_1BasicStringView.html#a958a238fe98242e2296264855e6109d7">Udon::BasicStringView::removeSuffix</a></div><div class="ttdeci">BasicStringView removeSuffix(const size_type n) const</div><div class="ttdoc">末尾のN文字を削除したビューを作成する</div><div class="ttdef"><b>Definition</b> StringView.hpp:239</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md293"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md296"></a>
 ■ 指定された区切り文字で区切り、部分文字列のリストを作成</h2>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1BasicStringView.html">Udon::StringView</a> sv = <span class="stringliteral">&quot;Hello I am Japanese&quot;</span>;</div>
 <div class="line"> </div>
@@ -238,26 +238,26 @@ USB シリアルへの出力</h1>
 <div class="line"> </div>
 <div class="line"><span class="comment">// result: { &quot;Hello&quot;, &quot;I&quot;, &quot;am&quot;, &quot;Japanese&quot; }</span></div>
 <div class="ttc" id="aclassUdon_1_1BasicStringView_html_aa5071ea5e7107f835e4a3fd357a97202"><div class="ttname"><a href="classUdon_1_1BasicStringView.html#aa5071ea5e7107f835e4a3fd357a97202">Udon::BasicStringView::split</a></div><div class="ttdeci">std::vector&lt; BasicStringView &gt; split(const char_type delimiter) const</div><div class="ttdoc">指定された区切り文字で区切り、ビューのリストを作成する</div><div class="ttdef"><b>Definition</b> StringView.hpp:270</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md294"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md297"></a>
 文字列比較</h1>
-<h2><a class="anchor" id="autotoc_md295"></a>
+<h2><a class="anchor" id="autotoc_md298"></a>
 ■ 単純な文字列比較</h2>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1BasicStringView.html">Udon::StringView</a> a = <span class="stringliteral">&quot;hello&quot;</span>;</div>
 <div class="line"><a class="code hl_class" href="classUdon_1_1BasicStringView.html">Udon::StringView</a> b = <span class="stringliteral">&quot;hello&quot;</span>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">bool</span> eq = a == b;  <span class="comment">// true</span></div>
 <div class="line"><span class="keywordtype">bool</span> ne = a != b;  <span class="comment">// false</span></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md296"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md299"></a>
 ■ 指定の文字列で始まっているか判定</h2>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1BasicStringView.html">Udon::StringView</a> src = <span class="stringliteral">&quot;hello world&quot;</span>;</div>
 <div class="line"><span class="keywordtype">bool</span> result = src.<a class="code hl_function" href="classUdon_1_1BasicStringView.html#aa674abb59e9577103182aae5d5391686">startsWith</a>(<span class="stringliteral">&quot;hello&quot;</span>);   <span class="comment">// result: true</span></div>
 <div class="ttc" id="aclassUdon_1_1BasicStringView_html_aa674abb59e9577103182aae5d5391686"><div class="ttname"><a href="classUdon_1_1BasicStringView.html#aa674abb59e9577103182aae5d5391686">Udon::BasicStringView::startsWith</a></div><div class="ttdeci">bool startsWith(const BasicStringView &amp;string) const noexcept</div><div class="ttdoc">ビューが指定したビューから始まっているか判定する</div><div class="ttdef"><b>Definition</b> StringView.hpp:254</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md297"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md300"></a>
 ■ 指定の文字列で終わっているか判定</h2>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1BasicStringView.html">Udon::StringView</a> src = <span class="stringliteral">&quot;hello world&quot;</span>;</div>
 <div class="line"><span class="keywordtype">bool</span> result = src.<a class="code hl_function" href="classUdon_1_1BasicStringView.html#aa61309da53631a5e69e3eb14eb8c7950">endsWith</a>(<span class="stringliteral">&quot;world&quot;</span>);   <span class="comment">// result: true</span></div>
 <div class="ttc" id="aclassUdon_1_1BasicStringView_html_aa61309da53631a5e69e3eb14eb8c7950"><div class="ttname"><a href="classUdon_1_1BasicStringView.html#aa61309da53631a5e69e3eb14eb8c7950">Udon::BasicStringView::endsWith</a></div><div class="ttdeci">bool endsWith(const BasicStringView &amp;string) const noexcept</div><div class="ttdoc">ビューが指定したビューで終わっているか判定する</div><div class="ttdef"><b>Definition</b> StringView.hpp:262</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md298"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md301"></a>
 イテレータ</h1>
 <p>イテレータを定義しているため for 文などでイテレーションできます。</p>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1BasicStringView.html">Udon::StringView</a> sv = <span class="stringliteral">&quot;hello&quot;</span>;</div>
@@ -274,7 +274,7 @@ USB シリアルへの出力</h1>
 <div class="line">    <span class="keywordtype">int</span> index = std::distance(sv.begin(), it);</div>
 <div class="line">    <span class="comment">// index: 6</span></div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md299"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md302"></a>
 数値への変換</h1>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1BasicStringView.html">Udon::StringView</a> <span class="keywordtype">string</span> = <span class="stringliteral">&quot;1234&quot;</span>;</div>
 <div class="line"> </div>
@@ -291,7 +291,7 @@ USB シリアルへの出力</h1>
 <div class="line">    <span class="keywordtype">double</span> number = *numopt;</div>
 <div class="line">    <span class="comment">// number: 1234.12</span></div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md300"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md303"></a>
 入れ替え</h1>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1BasicStringView.html">Udon::StringView</a> sv1 = <span class="stringliteral">&quot;hello&quot;</span>;</div>
 <div class="line"><a class="code hl_class" href="classUdon_1_1BasicStringView.html">Udon::StringView</a> sv2 = <span class="stringliteral">&quot;world&quot;</span>;</div>
@@ -308,13 +308,13 @@ USB シリアルへの出力</h1>
 <div class="line"><span class="comment">// sv1: { &quot;world&quot; }</span></div>
 <div class="line"><span class="comment">// sv2: { &quot;hello&quot; }</span></div>
 <div class="ttc" id="aclassUdon_1_1BasicStringView_html_a269dc2c9b1f50d8e749318cd014e18c2"><div class="ttname"><a href="classUdon_1_1BasicStringView.html#a269dc2c9b1f50d8e749318cd014e18c2">Udon::BasicStringView::swap</a></div><div class="ttdeci">void swap(BasicStringView &amp;other) noexcept</div><div class="ttdoc">ビューを入れ替える</div><div class="ttdef"><b>Definition</b> StringView.hpp:313</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md301"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md304"></a>
 文字列リテラル</h1>
 <div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceUdon_1_1Literals.html">Udon::Literals</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">auto</span> sv = <span class="stringliteral">&quot;hello world&quot;</span>_sv;</div>
 <div class="ttc" id="anamespaceUdon_1_1Literals_html"><div class="ttname"><a href="namespaceUdon_1_1Literals.html">Udon::Literals</a></div><div class="ttdef"><b>Definition</b> StringView.hpp:393</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md302"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md305"></a>
 std::string への変換</h1>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classUdon_1_1BasicStringView.html">Udon::StringView</a> sv = <span class="stringliteral">&quot;hello&quot;</span>;</div>
 <div class="line"> </div>
