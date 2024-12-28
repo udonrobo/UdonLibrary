@@ -24,22 +24,22 @@
 | `Udon::Message::Encoder`         | エンコーダ       | `count: int32_t`             |
 | `Udon::Message::PhotoSensor`     | フォトセンサ     | `light: bool`                |
 | `Udon::Message::DistanceSensor`  | 距離センサ       | `distance: double`           |
-| `Udon::Message::Yaw`             | IMU yaw角        | `yaw: double`                |
+| `Udon::Message::Yaw`             | IMU yaw 角       | `yaw: double`                |
 | `Udon::Message::Lcd`             | LCD              | `text: char[Row][Column]`    |
 | `Udon::Message::PadPS5`          | PS5 コントローラ | 各種ボタン、スティックの情報 |
 
 ユーザー定義型
 
-| メッセージ型       | 説明           | メンバ                                       |
-| ------------------ | -------------- | -------------------------------------------- |
-| `Udon::Vec2`       | 2 次元ベクトル | `x: double` `y: double`                      |
-| `Udon::Vec3`       | 3 次元ベクトル | `x: double` `y: double` `z: double`          |
-| `Udon::Euler`      | オイラー角     | `roll: double` `pitch: double` `yaw: double` |
-| `Udon::Polar`      | 極座標         | `r: double` `theta: double`                  |
-| `Udon::Pos`        | 位置           | `x: double` `y: double` `z: double`          |
-| `Udon::Quaternion` | クォータニオン | `vector: Vec2` `turn: double`                |
-| `Udon::RGB`        | RGB 色空間     | `r: uint8_t` `g: uint8_t` `b: uint8_t`       |
-| `Udon::HSV`        | HSV 色空間     | `h: uint8_t` `s: uint8_t` `v: uint8_t`       |
+| メッセージ型       | 説明           | メンバ                                          |
+| ------------------ | -------------- | ----------------------------------------------- |
+| `Udon::Vec2`       | 2 次元ベクトル | `x: double` `y: double`                         |
+| `Udon::Vec3`       | 3 次元ベクトル | `x: double` `y: double` `z: double`             |
+| `Udon::Euler`      | オイラー角     | `roll: double` `pitch: double` `yaw: double`    |
+| `Udon::Polar`      | 極座標         | `r: double` `theta: double`                     |
+| `Udon::Pos`        | 位置           | `vector: Udon::Vec2` `turn: double`             |
+| `Udon::Quaternion` | クォータニオン | `w: double` `x: double` `y: double` `z: double` |
+| `Udon::RGB`        | RGB 色空間     | `r: uint8_t` `g: uint8_t` `b: uint8_t`          |
+| `Udon::HSV`        | HSV 色空間     | `h: uint8_t` `s: uint8_t` `v: uint8_t`          |
 
 ## 新たにメッセージ型を定義する
 
