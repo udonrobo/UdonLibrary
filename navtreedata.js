@@ -104,12 +104,12 @@ var NAVTREE =
       [ "個別インクルード", "md_docs_2Communication_2LoRa.html#autotoc_md66", null ],
       [ "概要", "md_docs_2Communication_2LoRa.html#autotoc_md67", [
         [ "スケッチ例 / 送信側", "md_docs_2Communication_2LoRa.html#autotoc_md68", null ],
-        [ "スケッチ例 / 受信側", "md_docs_2Communication_2LoRa.html#autotoc_md69", null ],
-        [ "チャンネルの設定", "md_docs_2Communication_2LoRa.html#autotoc_md70", null ],
-        [ "その他設定値の変更", "md_docs_2Communication_2LoRa.html#autotoc_md71", null ],
-        [ "受信強度", "md_docs_2Communication_2LoRa.html#autotoc_md72", null ],
-        [ "周波数", "md_docs_2Communication_2LoRa.html#autotoc_md73", null ]
-      ] ]
+        [ "スケッチ例 / 受信側", "md_docs_2Communication_2LoRa.html#autotoc_md69", null ]
+      ] ],
+      [ "チャンネルの設定", "md_docs_2Communication_2LoRa.html#autotoc_md70", null ],
+      [ "その他設定値の変更", "md_docs_2Communication_2LoRa.html#autotoc_md71", null ],
+      [ "受信強度", "md_docs_2Communication_2LoRa.html#autotoc_md72", null ],
+      [ "周波数", "md_docs_2Communication_2LoRa.html#autotoc_md73", null ]
     ] ],
     [ "メッセージ型", "md_docs_2Communication_2Message.html", [
       [ "メッセージ型一覧", "md_docs_2Communication_2Message.html#autotoc_md75", null ],
