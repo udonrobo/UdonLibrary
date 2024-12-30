@@ -171,16 +171,16 @@ uint8_t buffer[Udon::SerializedSize<Vec2>()];
 
 int main()
 {
-	const auto packed = Udon::Serialize(1000);
+    const auto packed = Udon::Serialize(1000);
 
-	if (const auto unpacked = Udon::Deserialize<int>(packed))
-	{
-		std::cout << *unpacked << std::endl;
-	}
-	else
-	{
-		std::cout << "deserialize failed" << std::endl;
-	}
+    if (const auto unpacked = Udon::Deserialize<int>(packed))
+    {
+        std::cout << *unpacked << std::endl;
+    }
+    else
+    {
+        std::cout << "deserialize failed" << std::endl;
+    }
 }
 ```
 
@@ -200,21 +200,21 @@ int main()
 
 int main()
 {
-	uint8_t buffer[Udon::SerializedSize<int>()];
+    uint8_t buffer[Udon::SerializedSize<int>()];
 
-	if (not Udon::Serialize(1000, buffer))
-	{
-		std::cout << "serialize failed" << std::endl;
-	}
+    if (not Udon::Serialize(1000, buffer))
+    {
+        std::cout << "serialize failed" << std::endl;
+    }
 
-	if (const auto unpacked = Udon::Deserialize<int>(buffer))
-	{
-		std::cout << *unpacked << std::endl;
-	}
-	else
-	{
-		std::cout << "deserialize failed" << std::endl;
-	}
+    if (const auto unpacked = Udon::Deserialize<int>(buffer))
+    {
+        std::cout << *unpacked << std::endl;
+    }
+    else
+    {
+        std::cout << "deserialize failed" << std::endl;
+    }
 }
 ```
 
@@ -230,32 +230,32 @@ int main()
 
 enum class Language : uint8_t
 {
-	C,
-	Cpp,
-	CSharp,
-	Python,
+    C,
+    Cpp,
+    CSharp,
+    Python,
 };
 
 int main()
 {
-	const Language lang = Language::Cpp;
+    const Language lang = Language::Cpp;
 
-	const auto packed = Udon::Serialize(lang);
+    const auto packed = Udon::Serialize(lang);
 
-	if (const auto unpacked = Udon::Deserialize<Language>(packed))
-	{
-		switch (*unpacked)
-		{
-		case Language::C     : std::cout << "C"      << std::endl; break;
-		case Language::Cpp   : std::cout << "C++"    << std::endl; break;
-		case Language::CSharp: std::cout << "C#"     << std::endl; break;
-		case Language::Python: std::cout << "Python" << std::endl; break;
-		}
-	}
-	else
-	{
-		std::cout << "deserialize failed" << std::endl;
-	}
+    if (const auto unpacked = Udon::Deserialize<Language>(packed))
+    {
+        switch (*unpacked)
+        {
+        case Language::C     : std::cout << "C"      << std::endl; break;
+        case Language::Cpp   : std::cout << "C++"    << std::endl; break;
+        case Language::CSharp: std::cout << "C#"     << std::endl; break;
+        case Language::Python: std::cout << "Python" << std::endl; break;
+        }
+    }
+    else
+    {
+        std::cout << "deserialize failed" << std::endl;
+    }
 }
 ```
 
@@ -271,27 +271,27 @@ C++
 
 struct Vec2
 {
-	double x;
-	double y;
-	UDON_ENUMERABLE(x, y);
+    double x;
+    double y;
+    UDON_ENUMERABLE(x, y);
 };
 
 int main()
 {
-	const Vec2 vector{ 1.0, 2.0 };
+    const Vec2 vector{ 1.0, 2.0 };
 
-	const auto packed = Udon::Serialize(vector);
+    const auto packed = Udon::Serialize(vector);
 
-	if (const auto unpacked = Udon::Deserialize<Vec2>(packed))
-	{
-		std::cout
+    if (const auto unpacked = Udon::Deserialize<Vec2>(packed))
+    {
+        std::cout
             << unpacked->x << ", "
             << unpacked->y << std::endl;
-	}
-	else
-	{
-		std::cout << "deserialize failed" << std::endl;
-	}
+    }
+    else
+    {
+        std::cout << "deserialize failed" << std::endl;
+    }
 }
 ```
 
@@ -307,27 +307,27 @@ int main()
 
 struct Array
 {
-	int array[5];
-	UDON_ENUMERABLE(array);
+    int array[5];
+    UDON_ENUMERABLE(array);
 };
 
 int main()
 {
-	Array array{ { 1, 2, 3, 4, 5 } };
+    Array array{ { 1, 2, 3, 4, 5 } };
 
-	const auto packed = Udon::Serialize(array);
+    const auto packed = Udon::Serialize(array);
 
-	if (const auto unpacked = Udon::Deserialize<Array>(packed))
-	{
-		for (const auto& e : unpacked->array)
-		{
-			std::cout << e << std::endl;
-		}
-	}
-	else
-	{
-		std::cout << "deserialize failed" << std::endl;
-	}
+    if (const auto unpacked = Udon::Deserialize<Array>(packed))
+    {
+        for (const auto& e : unpacked->array)
+        {
+            std::cout << e << std::endl;
+        }
+    }
+    else
+    {
+        std::cout << "deserialize failed" << std::endl;
+    }
 }
 ```
 
@@ -347,34 +347,34 @@ int main()
 
 struct Vec2
 {
-	struct Double
-	{
-		double value;
-		UDON_ENUMERABLE(value);
-	};
+    struct Double
+    {
+        double value;
+        UDON_ENUMERABLE(value);
+    };
 
-	Double x;
-	Double y;
+    Double x;
+    Double y;
 
-	UDON_ENUMERABLE(x, y);
+    UDON_ENUMERABLE(x, y);
 };
 
 int main()
 {
-	const Vec2 vector{ { 1.0 }, { 2.0 } };
+    const Vec2 vector{ { 1.0 }, { 2.0 } };
 
-	const auto packed = Udon::Serialize(vector);
+    const auto packed = Udon::Serialize(vector);
 
-	if (const auto unpacked = Udon::Deserialize<Vec2>(packed))
-	{
-		std::cout
-			<< unpacked->x.value << ", "
-			<< unpacked->y.value << std::endl;
-	}
-	else
-	{
-		std::cout << "deserialize failed" << std::endl;
-	}
+    if (const auto unpacked = Udon::Deserialize<Vec2>(packed))
+    {
+        std::cout
+            << unpacked->x.value << ", "
+            << unpacked->y.value << std::endl;
+    }
+    else
+    {
+        std::cout << "deserialize failed" << std::endl;
+    }
 }
 ```
 
@@ -390,18 +390,18 @@ int main()
 
 int main()
 {
-	auto packed = Udon::Serialize(1000);
+    auto packed = Udon::Serialize(1000);
 
-	packed.at(1) = 0x00;  // データ破損
+    packed.at(1) = 0x00;  // データ破損
 
-	if (const auto unpacked = Udon::Deserialize<int>(packed))
-	{
-		std::cout << *unpacked << std::endl;
-	}
-	else
-	{
-		std::cout << "deserialize failed" << std::endl;
-	}
+    if (const auto unpacked = Udon::Deserialize<int>(packed))
+    {
+        std::cout << *unpacked << std::endl;
+    }
+    else
+    {
+        std::cout << "deserialize failed" << std::endl;
+    }
 }
 ```
 

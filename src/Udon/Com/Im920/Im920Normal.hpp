@@ -1,7 +1,7 @@
 //
 //    通常 IM920
 //
-//	  Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022-2024 udonrobo
 //
 
 //

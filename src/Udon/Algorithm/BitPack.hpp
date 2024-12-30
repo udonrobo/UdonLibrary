@@ -16,8 +16,8 @@ namespace Udon
     /// @param end 入力イテレータ末尾
     /// @param callback コールバック関数
     /// @note
-    ///		コールバック関数を用いることで、新たにバッファを確保する必要がない
-    ///		イテレーターから受け取ったデータは次のように変換されコールバック関数に渡される
+    ///    コールバック関数を用いることで、新たにバッファを確保する必要がない
+    ///    イテレーターから受け取ったデータは次のように変換されコールバック関数に渡される
     /// @return
     template <typename InputIterator, typename Functor>
     void BitPack(const InputIterator begin, const InputIterator end, Functor callback)
@@ -110,7 +110,7 @@ namespace Udon
             }
         }
 
-        if (extracteCount)    // パック時	extracteMsb にデータが残っている場合、追加でデータが渡されるのでそれを処理する
+        if (extracteCount)    // パック時  extracteMsb にデータが残っている場合、追加でデータが渡されるのでそれを処理する
         {
             const uint8_t msb = callback();
 
