@@ -326,18 +326,18 @@ Raspberry Pi Pico での使用例</h1>
 <div class="line">    <span class="keywordtype">void</span> move(<span class="keyword">const</span> <span class="keywordtype">double</span> targetVelocity)</div>
 <div class="line">    {</div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> current = pid(motor.<a class="code hl_function" href="classUdon_1_1RoboMasterBase.html#aaaa80f161b920c8c31fc3d41c977ec52">getVelocity</a>(), targetVelocity);</div>
-<div class="line">        motor.<a class="code hl_function" href="classUdon_1_1RoboMasterC620.html#a041ca908cd740ffb8ff19ada9415c1dc">setCurrent</a>(current);</div>
+<div class="line">        motor.<a class="code hl_function" href="classUdon_1_1RoboMasterC620.html#a27342ba524104eb5c2158d247c6eecb8">setCurrent</a>(current);</div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordtype">void</span> stop()</div>
 <div class="line">    {</div>
 <div class="line">        pid.<a class="code hl_function" href="classUdon_1_1PidController.html#aacc707236296af30d8d2421d91ebce3a">clearPower</a>();</div>
-<div class="line">        motor.<a class="code hl_function" href="classUdon_1_1RoboMasterC620.html#a041ca908cd740ffb8ff19ada9415c1dc">setCurrent</a>(0);</div>
+<div class="line">        motor.<a class="code hl_function" href="classUdon_1_1RoboMasterC620.html#a27342ba524104eb5c2158d247c6eecb8">setCurrent</a>(0);</div>
 <div class="line">    }</div>
 <div class="line">};</div>
 <div class="ttc" id="aclassUdon_1_1PidController_html_aacc707236296af30d8d2421d91ebce3a"><div class="ttname"><a href="classUdon_1_1PidController.html#aacc707236296af30d8d2421d91ebce3a">Udon::PidController::clearPower</a></div><div class="ttdeci">void clearPower() noexcept</div><div class="ttdoc">操作量のクリア</div><div class="ttdef"><b>Definition</b> PidController.hpp:143</div></div>
 <div class="ttc" id="aclassUdon_1_1RoboMasterBase_html_aaaa80f161b920c8c31fc3d41c977ec52"><div class="ttname"><a href="classUdon_1_1RoboMasterBase.html#aaaa80f161b920c8c31fc3d41c977ec52">Udon::RoboMasterBase::getVelocity</a></div><div class="ttdeci">int16_t getVelocity() const</div><div class="ttdoc">モーターの速度を取得</div><div class="ttdef"><b>Definition</b> RoboMasterMotor.hpp:82</div></div>
-<div class="ttc" id="aclassUdon_1_1RoboMasterC620_html_a041ca908cd740ffb8ff19ada9415c1dc"><div class="ttname"><a href="classUdon_1_1RoboMasterC620.html#a041ca908cd740ffb8ff19ada9415c1dc">Udon::RoboMasterC620::setCurrent</a></div><div class="ttdeci">void setCurrent(int16_t current)</div><div class="ttdoc">モーターの電流を設定</div><div class="ttdef"><b>Definition</b> RoboMasterMotor.hpp:226</div></div>
+<div class="ttc" id="aclassUdon_1_1RoboMasterC620_html_a27342ba524104eb5c2158d247c6eecb8"><div class="ttname"><a href="classUdon_1_1RoboMasterC620.html#a27342ba524104eb5c2158d247c6eecb8">Udon::RoboMasterC620::setCurrent</a></div><div class="ttdeci">void setCurrent(int16_t current) override</div><div class="ttdoc">モーターの電流を設定</div><div class="ttdef"><b>Definition</b> RoboMasterMotor.hpp:226</div></div>
 <div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition</b> Typedef.hpp:94</div></div>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="comment">//    Copyright (c) 2022-2024 udonrobo</span></div>
