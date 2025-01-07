@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="generator" content="Doxygen 1.13.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: src/Udon/Com/Message/Lcd.hpp ソースファイル</title>
@@ -45,7 +45,7 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.12.0 -->
+<!-- 構築: Doxygen 1.13.1 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -124,15 +124,15 @@ $(function(){initNavTree('Lcd_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">namespace </span>Message</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon_1_1Message.html">Message</a></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> Column, <span class="keywordtype">size_t</span> Row&gt;</div>
 <div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structUdon_1_1Message_1_1Lcd.html">   23</a></span>        <span class="keyword">struct </span><a class="code hl_struct" href="structUdon_1_1Message_1_1Lcd.html">Lcd</a></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        {</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structUdon_1_1Message_1_1Lcd.html#a6206d46d5eee820e77d2ce12b0e7b64d">   26</a></span>            <span class="keywordtype">char</span> <a class="code hl_variable" href="structUdon_1_1Message_1_1Lcd.html#a6206d46d5eee820e77d2ce12b0e7b64d">text</a>[Row][Column];</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span></div>
 <div class="foldopen" id="foldopen00031" data-start="{" data-end="}">
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structUdon_1_1Message_1_1Lcd.html#a3939bff99bb0553ad0f5e9fedd8a4de8">   31</a></span>            <span class="keywordtype">void</span> <a class="code hl_function" href="structUdon_1_1Message_1_1Lcd.html#a3939bff99bb0553ad0f5e9fedd8a4de8">printf</a>(<span class="keywordtype">size_t</span> index, <span class="keyword">const</span> <span class="keywordtype">char</span>* format, ...)</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            {</div>
@@ -157,21 +157,24 @@ $(function(){initNavTree('Lcd_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="structUdon_1_1Message_1_1Lcd.html#a0d8c41558765df22967fd032e2234b16">   51</a></span>            <a class="code hl_function" href="structUdon_1_1Message_1_1Lcd.html#a0d8c41558765df22967fd032e2234b16">UDON_ENUMERABLE</a>(<a class="code hl_variable" href="structUdon_1_1Message_1_1Lcd.html#a6206d46d5eee820e77d2ce12b0e7b64d">text</a>);</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        };</div>
 </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Message.html#a209787977a42a67052c5ba2a1800fc30">   55</a></span>        <span class="keyword">using </span><a class="code hl_struct" href="structUdon_1_1Message_1_1Lcd.html">Lcd1602</a> = <a class="code hl_struct" href="structUdon_1_1Message_1_1Lcd.html">Lcd&lt;16, 2&gt;</a>;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Message.html#aae78d31a4c46bdab46f95e2cdfb0f813">   58</a></span>        <span class="keyword">using </span><a class="code hl_struct" href="structUdon_1_1Message_1_1Lcd.html">Lcd2004</a> = <a class="code hl_struct" href="structUdon_1_1Message_1_1Lcd.html">Lcd&lt;20, 4&gt;</a>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Message.html#a209787977a42a67052c5ba2a1800fc30">   55</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Message.html#a209787977a42a67052c5ba2a1800fc30">Lcd1602</a> = <a class="code hl_struct" href="structUdon_1_1Message_1_1Lcd.html">Lcd&lt;16, 2&gt;</a>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="namespaceUdon_1_1Message.html#aae78d31a4c46bdab46f95e2cdfb0f813">   58</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="namespaceUdon_1_1Message.html#aae78d31a4c46bdab46f95e2cdfb0f813">Lcd2004</a> = <a class="code hl_struct" href="structUdon_1_1Message_1_1Lcd.html">Lcd&lt;20, 4&gt;</a>;</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }    <span class="comment">// namespace Message</span></div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}    <span class="comment">// namespace Udon</span></div>
 <div class="ttc" id="aEnumerableMacro_8hpp_html"><div class="ttname"><a href="EnumerableMacro_8hpp.html">EnumerableMacro.hpp</a></div></div>
 <div class="ttc" id="aShow_8hpp_html_a203d5b93e4077aa273c7013964a31f9e"><div class="ttname"><a href="Show_8hpp.html#a203d5b93e4077aa273c7013964a31f9e">F</a></div><div class="ttdeci">#define F(x)</div><div class="ttdef"><b>Definition</b> Show.hpp:17</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Message_html"><div class="ttname"><a href="namespaceUdon_1_1Message.html">Udon::Message</a></div><div class="ttdef"><b>Definition</b> AirCylinder.hpp:16</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Message_html_a209787977a42a67052c5ba2a1800fc30"><div class="ttname"><a href="namespaceUdon_1_1Message.html#a209787977a42a67052c5ba2a1800fc30">Udon::Message::Lcd1602</a></div><div class="ttdeci">Lcd&lt; 16, 2 &gt; Lcd1602</div><div class="ttdoc">LCD 16x2</div><div class="ttdef"><b>Definition</b> Lcd.hpp:55</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Message_html_aae78d31a4c46bdab46f95e2cdfb0f813"><div class="ttname"><a href="namespaceUdon_1_1Message.html#aae78d31a4c46bdab46f95e2cdfb0f813">Udon::Message::Lcd2004</a></div><div class="ttdeci">Lcd&lt; 20, 4 &gt; Lcd2004</div><div class="ttdoc">LCD 20x4</div><div class="ttdef"><b>Definition</b> Lcd.hpp:58</div></div>
 <div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
 <div class="ttc" id="astructUdon_1_1Message_1_1Lcd_html"><div class="ttname"><a href="structUdon_1_1Message_1_1Lcd.html">Udon::Message::Lcd</a></div><div class="ttdoc">LCD</div><div class="ttdef"><b>Definition</b> Lcd.hpp:24</div></div>
 <div class="ttc" id="astructUdon_1_1Message_1_1Lcd_html_a0d8c41558765df22967fd032e2234b16"><div class="ttname"><a href="structUdon_1_1Message_1_1Lcd.html#a0d8c41558765df22967fd032e2234b16">Udon::Message::Lcd::UDON_ENUMERABLE</a></div><div class="ttdeci">UDON_ENUMERABLE(text)</div></div>
 <div class="ttc" id="astructUdon_1_1Message_1_1Lcd_html_a3939bff99bb0553ad0f5e9fedd8a4de8"><div class="ttname"><a href="structUdon_1_1Message_1_1Lcd.html#a3939bff99bb0553ad0f5e9fedd8a4de8">Udon::Message::Lcd::printf</a></div><div class="ttdeci">void printf(size_t index, const char *format,...)</div><div class="ttdoc">LCDに文字列を設定</div><div class="ttdef"><b>Definition</b> Lcd.hpp:31</div></div>
-<div class="ttc" id="astructUdon_1_1Message_1_1Lcd_html_a6206d46d5eee820e77d2ce12b0e7b64d"><div class="ttname"><a href="structUdon_1_1Message_1_1Lcd.html#a6206d46d5eee820e77d2ce12b0e7b64d">Udon::Message::Lcd::text</a></div><div class="ttdeci">char text[Row][Column]</div><div class="ttdoc">LCDのテキスト</div><div class="ttdef"><b>Definition</b> Lcd.hpp:26</div></div>
+<div class="ttc" id="astructUdon_1_1Message_1_1Lcd_html_a6206d46d5eee820e77d2ce12b0e7b64d"><div class="ttname"><a href="structUdon_1_1Message_1_1Lcd.html#a6206d46d5eee820e77d2ce12b0e7b64d">Udon::Message::Lcd&lt; 16, 2 &gt;::text</a></div><div class="ttdeci">char text[Row][Column]</div><div class="ttdef"><b>Definition</b> Lcd.hpp:26</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! --></div>

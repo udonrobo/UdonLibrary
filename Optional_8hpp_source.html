@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="generator" content="Doxygen 1.13.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: src/Udon/Types/Optional.hpp ソースファイル</title>
@@ -45,7 +45,7 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.12.0 -->
+<!-- 構築: Doxygen 1.13.1 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -151,19 +151,19 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
 </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span></div>
 <div class="foldopen" id="foldopen00045" data-start="{" data-end="};">
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="structUdon_1_1NulloptT.html">   45</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structUdon_1_1NulloptT.html">NulloptT</a></div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    {</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    };</div>
 </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span></div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="namespaceUdon.html#ae102f6540b6e88b1b484ddbed3ff972f">   52</a></span>    <span class="keyword">constexpr</span> <a class="code hl_struct" href="structUdon_1_1NulloptT.html">NulloptT</a> <a class="code hl_variable" href="namespaceUdon.html#ae102f6540b6e88b1b484ddbed3ff972f">nullopt</a>{};</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span></div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00061" data-start="{" data-end="};">
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html">   61</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html">   61</a></span>    <span class="keyword">class </span><a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a></div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    {</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">static_assert</span>(std::is_nothrow_destructible&lt;T&gt;::value, <span class="stringliteral">&quot;T must be nothrow destructible&quot;</span>);</div>
@@ -173,11 +173,11 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keyword">static_assert</span>(not std::is_array&lt;T&gt;::value, <span class="stringliteral">&quot;T must not be an array&quot;</span>);</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span>&gt;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">   71</a></span>        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">   71</a></span>        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>;</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">   74</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a> = T;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span></div>
 <div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#aac4bcd11a86a7bf228428b610d95cb83">   79</a></span>        <span class="keyword">constexpr</span> <a class="code hl_function" href="classUdon_1_1Optional.html#aac4bcd11a86a7bf228428b610d95cb83">Optional</a>() noexcept</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            : mStorage()</div>
@@ -186,7 +186,7 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        }</div>
 </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span></div>
 <div class="foldopen" id="foldopen00090" data-start="{" data-end="}">
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a713a39c57a00dfc3660e320257f4489f">   90</a></span>        <span class="keyword">constexpr</span> <a class="code hl_function" href="classUdon_1_1Optional.html#a713a39c57a00dfc3660e320257f4489f">Optional</a>(<a class="code hl_struct" href="structUdon_1_1NulloptT.html">NulloptT</a>)</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            : mStorage()</div>
@@ -195,7 +195,7 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        }</div>
 </div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span></div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        template &lt;typename U, typename std::enable_if&lt;std::is_constructible&lt;ValueType, U&gt;::value, std::nullptr_t&gt;::type = <span class="keyword">nullptr</span>&gt;</div>
 <div class="foldopen" id="foldopen00102" data-start="{" data-end="}">
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a23e95189c22121147fda02c6b616509e">  102</a></span>        <a class="code hl_function" href="classUdon_1_1Optional.html#a23e95189c22121147fda02c6b616509e">Optional</a>(U&amp;&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">value</a>) <span class="keyword">noexcept</span>(std::is_nothrow_constructible&lt;ValueType&gt;::value)</div>
@@ -206,10 +206,10 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        }</div>
 </div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span></div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        template &lt;typename U, typename std::enable_if&lt;std::is_constructible&lt;ValueType, const U&amp;&gt;::value, std::nullptr_t&gt;::type = <span class="keyword">nullptr</span>&gt;</div>
 <div class="foldopen" id="foldopen00116" data-start="{" data-end="}">
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#ae5cab81cf80326ceb1b1e8298c88b885">  116</a></span>        <a class="code hl_function" href="classUdon_1_1Optional.html#ae5cab81cf80326ceb1b1e8298c88b885">Optional</a>(<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Optional&lt;U&gt;</a>&amp; other) <span class="keyword">noexcept</span>(std::is_nothrow_constructible&lt;ValueType, U&gt;::value)</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#ae5cab81cf80326ceb1b1e8298c88b885">  116</a></span>        <a class="code hl_function" href="classUdon_1_1Optional.html#ae5cab81cf80326ceb1b1e8298c88b885">Optional</a>(<span class="keyword">const</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional&lt;U&gt;</a>&amp; other) <span class="keyword">noexcept</span>(std::is_nothrow_constructible&lt;ValueType, U&gt;::value)</div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>            : mStorage()</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            , mHasValue(other.mHasValue)</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        {</div>
@@ -220,10 +220,10 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        }</div>
 </div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span></div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        template &lt;typename U, typename std::enable_if&lt;std::is_constructible&lt;ValueType, U&amp;&amp;&gt;::value, std::nullptr_t&gt;::type = <span class="keyword">nullptr</span>&gt;</div>
 <div class="foldopen" id="foldopen00133" data-start="{" data-end="}">
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#aa19c82bac78fceb547d5485bf6af2b2a">  133</a></span>        <a class="code hl_function" href="classUdon_1_1Optional.html#aa19c82bac78fceb547d5485bf6af2b2a">Optional</a>(<a class="code hl_class" href="classUdon_1_1Optional.html">Optional&lt;U&gt;</a>&amp;&amp; other) <span class="keyword">noexcept</span>(std::is_nothrow_constructible&lt;ValueType, U&gt;::value)</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#aa19c82bac78fceb547d5485bf6af2b2a">  133</a></span>        <a class="code hl_function" href="classUdon_1_1Optional.html#aa19c82bac78fceb547d5485bf6af2b2a">Optional</a>(<a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional&lt;U&gt;</a>&amp;&amp; other) <span class="keyword">noexcept</span>(std::is_nothrow_constructible&lt;ValueType, U&gt;::value)</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>            : mStorage()</div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>            , mHasValue(other.mHasValue)</div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        {</div>
@@ -234,7 +234,7 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        }</div>
 </div>
 <div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span></div>
 <div class="foldopen" id="foldopen00147" data-start="{" data-end="}">
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#ac864de5bc5c6c02d1287d25906e60469">  147</a></span>        <a class="code hl_function" href="classUdon_1_1Optional.html#ac864de5bc5c6c02d1287d25906e60469">~Optional</a>() noexcept</div>
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        {</div>
@@ -242,30 +242,30 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        }</div>
 </div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span></div>
 <div class="foldopen" id="foldopen00158" data-start="{" data-end="}">
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a49dff458a4e6a993c791a69501382218">  158</a></span>        <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#a49dff458a4e6a993c791a69501382218">operator=</a>(<a class="code hl_struct" href="structUdon_1_1NulloptT.html">NulloptT</a>) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a49dff458a4e6a993c791a69501382218">  158</a></span>        <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#a49dff458a4e6a993c791a69501382218">operator=</a>(<a class="code hl_struct" href="structUdon_1_1NulloptT.html">NulloptT</a>) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        {</div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>            <a class="code hl_function" href="classUdon_1_1Optional.html#ab7217ced96cb9c6a7a593f2231324ab1">reset</a>();</div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        }</div>
 </div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span></div>
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        <span class="comment">// template &lt;typename U&gt;</span></div>
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        template &lt;typename U, typename std::enable_if&lt;std::is_constructible&lt;ValueType, U&gt;::value and std::is_assignable&lt;ValueType, U&gt;::value, std::nullptr_t&gt;::type = <span class="keyword">nullptr</span>&gt;</div>
 <div class="foldopen" id="foldopen00172" data-start="{" data-end="}">
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a61a0dd9cd12178c524399f5eb5d1eee8">  172</a></span>        <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#a61a0dd9cd12178c524399f5eb5d1eee8">operator=</a>(U&amp;&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">value</a>) <span class="keyword">noexcept</span>(std::is_nothrow_constructible&lt;ValueType, U&gt;::value and std::is_nothrow_assignable&lt;ValueType, U&gt;::value)</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a61a0dd9cd12178c524399f5eb5d1eee8">  172</a></span>        <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#a61a0dd9cd12178c524399f5eb5d1eee8">operator=</a>(U&amp;&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">value</a>) <span class="keyword">noexcept</span>(std::is_nothrow_constructible&lt;ValueType, U&gt;::value and std::is_nothrow_assignable&lt;ValueType, U&gt;::value)</div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        {</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            AssignmentValue(std::forward&lt;U&gt;(<a class="code hl_function" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">value</a>));</div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        }</div>
 </div>
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span></div>
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        template &lt;typename U, typename std::enable_if&lt;std::is_constructible&lt;ValueType, const U&amp;&gt;::value and std::is_assignable&lt;ValueType, const U&amp;&gt;::value, std::nullptr_t&gt;::type = <span class="keyword">nullptr</span>&gt;</div>
 <div class="foldopen" id="foldopen00184" data-start="{" data-end="}">
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a073122aeeb5c5892952387398d115d5c">  184</a></span>        <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#a073122aeeb5c5892952387398d115d5c">operator=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Optional&lt;U&gt;</a>&amp; other) <span class="keyword">noexcept</span>(std::is_nothrow_constructible&lt;ValueType, U&gt;::value and std::is_nothrow_assignable&lt;ValueType, U&gt;::value)</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a073122aeeb5c5892952387398d115d5c">  184</a></span>        <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#a073122aeeb5c5892952387398d115d5c">operator=</a>(<span class="keyword">const</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional&lt;U&gt;</a>&amp; other) <span class="keyword">noexcept</span>(std::is_nothrow_constructible&lt;ValueType, U&gt;::value and std::is_nothrow_assignable&lt;ValueType, U&gt;::value)</div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        {</div>
 <div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>            <span class="keywordflow">if</span> (other)</div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>            {</div>
@@ -279,10 +279,10 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        }</div>
 </div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span></div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        template &lt;typename U, typename std::enable_if&lt;std::is_constructible&lt;ValueType, U&amp;&amp;&gt;::value and std::is_assignable&lt;ValueType, U&amp;&amp;&gt;::value, std::nullptr_t&gt;::type = <span class="keyword">nullptr</span>&gt;</div>
 <div class="foldopen" id="foldopen00203" data-start="{" data-end="}">
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#af16d5b6a1583ae197a31eb8f3ed7a40a">  203</a></span>        <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#af16d5b6a1583ae197a31eb8f3ed7a40a">operator=</a>(<a class="code hl_class" href="classUdon_1_1Optional.html">Optional&lt;U&gt;</a>&amp;&amp; other) <span class="keyword">noexcept</span>(std::is_nothrow_constructible&lt;ValueType, U&gt;::value and std::is_nothrow_assignable&lt;ValueType, U&gt;::value)</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#af16d5b6a1583ae197a31eb8f3ed7a40a">  203</a></span>        <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#af16d5b6a1583ae197a31eb8f3ed7a40a">operator=</a>(<a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional&lt;U&gt;</a>&amp;&amp; other) <span class="keyword">noexcept</span>(std::is_nothrow_constructible&lt;ValueType, U&gt;::value and std::is_nothrow_assignable&lt;ValueType, U&gt;::value)</div>
 <div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        {</div>
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>            <span class="keywordflow">if</span> (other)</div>
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>            {</div>
@@ -296,9 +296,9 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        }</div>
 </div>
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span> </div>
-<div class="foldopen" id="foldopen00222" data-start="{" data-end="};">
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a1dd0104afb6a47904cf4bb4eb877c436">  222</a></span>        <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1dd0104afb6a47904cf4bb4eb877c436">operator==</a>(<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&amp; lhs, <span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&amp; rhs) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span></div>
+<div class="foldopen" id="foldopen00222" data-start="{" data-end="}">
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a1dd0104afb6a47904cf4bb4eb877c436">  222</a></span>        <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1dd0104afb6a47904cf4bb4eb877c436">operator==</a>(<span class="keyword">const</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&amp; lhs, <span class="keyword">const</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&amp; rhs) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        {</div>
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>            <span class="keywordflow">if</span> (lhs and rhs)</div>
 <div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>            {</div>
@@ -311,16 +311,16 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        }</div>
 </div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
-<div class="foldopen" id="foldopen00240" data-start="{" data-end="};">
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#aa8164a46a70587f301c5042dd4f28f5e">  240</a></span>        <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#aa8164a46a70587f301c5042dd4f28f5e">operator!=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&amp; lhs, <span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&amp; rhs) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span></div>
+<div class="foldopen" id="foldopen00240" data-start="{" data-end="}">
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#aa8164a46a70587f301c5042dd4f28f5e">  240</a></span>        <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#aa8164a46a70587f301c5042dd4f28f5e">operator!=</a>(<span class="keyword">const</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&amp; lhs, <span class="keyword">const</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&amp; rhs) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        {</div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            <span class="keywordflow">return</span> not(lhs == rhs);</div>
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        }</div>
 </div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
-<div class="foldopen" id="foldopen00250" data-start="{" data-end="};">
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a13ac19fcf5d2da0760dbc473691bab51">  250</a></span>        <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a13ac19fcf5d2da0760dbc473691bab51">operator&lt;</a>(<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&amp; lhs, <span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&amp; rhs) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span></div>
+<div class="foldopen" id="foldopen00250" data-start="{" data-end="}">
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a13ac19fcf5d2da0760dbc473691bab51">  250</a></span>        <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a13ac19fcf5d2da0760dbc473691bab51">operator&lt;</a>(<span class="keyword">const</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&amp; lhs, <span class="keyword">const</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&amp; rhs) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        {</div>
 <div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>            <span class="keywordflow">if</span> (lhs and rhs)</div>
 <div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>            {</div>
@@ -333,29 +333,29 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>            <span class="keywordflow">return</span> not lhs;</div>
 <div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        }</div>
 </div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
-<div class="foldopen" id="foldopen00268" data-start="{" data-end="};">
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a1bc488c790af543a62feaa9c4460e402">  268</a></span>        <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1bc488c790af543a62feaa9c4460e402">operator&gt;</a>(<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&amp; lhs, <span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&amp; rhs) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span></div>
+<div class="foldopen" id="foldopen00268" data-start="{" data-end="}">
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a1bc488c790af543a62feaa9c4460e402">  268</a></span>        <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1bc488c790af543a62feaa9c4460e402">operator&gt;</a>(<span class="keyword">const</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&amp; lhs, <span class="keyword">const</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&amp; rhs) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        {</div>
 <div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>            <span class="keywordflow">return</span> rhs &lt; lhs;</div>
 <div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        }</div>
 </div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span> </div>
-<div class="foldopen" id="foldopen00278" data-start="{" data-end="};">
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#abe3ba1d7150fc2f72713ed56ae80e479">  278</a></span>        <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#abe3ba1d7150fc2f72713ed56ae80e479">operator&gt;=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&amp; lhs, <span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&amp; rhs) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span></div>
+<div class="foldopen" id="foldopen00278" data-start="{" data-end="}">
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#abe3ba1d7150fc2f72713ed56ae80e479">  278</a></span>        <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#abe3ba1d7150fc2f72713ed56ae80e479">operator&gt;=</a>(<span class="keyword">const</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&amp; lhs, <span class="keyword">const</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&amp; rhs) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        {</div>
 <div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>            <span class="keywordflow">return</span> not(lhs &lt; rhs);</div>
 <div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        }</div>
 </div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span> </div>
-<div class="foldopen" id="foldopen00288" data-start="{" data-end="};">
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#aaf30085cf3c426d7cc2b7fbdadc2031c">  288</a></span>        <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#aaf30085cf3c426d7cc2b7fbdadc2031c">operator&lt;=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&amp; lhs, <span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&amp; rhs) <span class="keyword">noexcept</span></div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span></div>
+<div class="foldopen" id="foldopen00288" data-start="{" data-end="}">
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#aaf30085cf3c426d7cc2b7fbdadc2031c">  288</a></span>        <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#aaf30085cf3c426d7cc2b7fbdadc2031c">operator&lt;=</a>(<span class="keyword">const</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&amp; lhs, <span class="keyword">const</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&amp; rhs) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        {</div>
 <div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>            <span class="keywordflow">return</span> not(rhs &lt; lhs);</div>
 <div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        }</div>
 </div>
 <div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span> </div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span> </div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span></div>
 <div class="foldopen" id="foldopen00298" data-start="{" data-end="}">
 <div class="line"><a id="l00298" name="l00298"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#aea99eb0dbc861b2d45e5108d51ebf4f4">  298</a></span>        <span class="keyword">explicit</span> <span class="keyword">constexpr</span> <span class="keyword">operator</span> bool() const noexcept</div>
 <div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        {</div>
@@ -363,7 +363,7 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>        }</div>
 </div>
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span> </div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span></div>
 <div class="foldopen" id="foldopen00308" data-start="{" data-end="}">
 <div class="line"><a id="l00308" name="l00308"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a56ba985a8bb1665b162f593f23f502f7">  308</a></span>        <span class="keyword">constexpr</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="classUdon_1_1Optional.html#a56ba985a8bb1665b162f593f23f502f7">hasValue</a>() const noexcept</div>
 <div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>        {</div>
@@ -371,7 +371,7 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>        }</div>
 </div>
 <div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span> </div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span> </div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span></div>
 <div class="foldopen" id="foldopen00319" data-start="{" data-end="}">
 <div class="line"><a id="l00319" name="l00319"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">  319</a></span>        <a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">value</a>() &amp;</div>
 <div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>        {</div>
@@ -379,7 +379,7 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>            <span class="keywordflow">return</span> mStorage.value;</div>
 <div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>        }</div>
 </div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span> </div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span></div>
 <div class="foldopen" id="foldopen00330" data-start="{" data-end="}">
 <div class="line"><a id="l00330" name="l00330"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#aadeaba2d4888705b16d74b85415e6dbf">  330</a></span>        <span class="keyword">const</span> <a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#aadeaba2d4888705b16d74b85415e6dbf">value</a>() const&amp;</div>
 <div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>        {</div>
@@ -387,7 +387,7 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>            <span class="keywordflow">return</span> mStorage.value;</div>
 <div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>        }</div>
 </div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span> </div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span></div>
 <div class="foldopen" id="foldopen00341" data-start="{" data-end="}">
 <div class="line"><a id="l00341" name="l00341"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#ab95bd32a5ad2aada52a2b440eec3da59">  341</a></span>        <a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&amp;&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#ab95bd32a5ad2aada52a2b440eec3da59">value</a>() &amp;&amp;</div>
 <div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>        {</div>
@@ -395,7 +395,7 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>            <span class="keywordflow">return</span> std::move(mStorage.value);</div>
 <div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>        }</div>
 </div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span> </div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span></div>
 <div class="foldopen" id="foldopen00352" data-start="{" data-end="}">
 <div class="line"><a id="l00352" name="l00352"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#af8871f400920c070f203439682c61cbf">  352</a></span>        <span class="keyword">const</span> <a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&amp;&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#af8871f400920c070f203439682c61cbf">value</a>() const&amp;&amp;</div>
 <div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>        {</div>
@@ -403,28 +403,28 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>            <span class="keywordflow">return</span> std::move(mStorage.value);</div>
 <div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>        }</div>
 </div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span> </div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span></div>
 <div class="foldopen" id="foldopen00363" data-start="{" data-end="}">
 <div class="line"><a id="l00363" name="l00363"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a9fed576c1a3bc956b2bb856279c2d3a0">  363</a></span>        <a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#a9fed576c1a3bc956b2bb856279c2d3a0">operator*</a>() &amp;</div>
 <div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>        {</div>
 <div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">value</a>();</div>
 <div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>        }</div>
 </div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span> </div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span></div>
 <div class="foldopen" id="foldopen00373" data-start="{" data-end="}">
 <div class="line"><a id="l00373" name="l00373"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a2995dd469f5810884a3fd6b63b965fa8">  373</a></span>        <span class="keyword">const</span> <a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#a2995dd469f5810884a3fd6b63b965fa8">operator*</a>() const&amp;</div>
 <div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>        {</div>
 <div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">value</a>();</div>
 <div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>        }</div>
 </div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span> </div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span></div>
 <div class="foldopen" id="foldopen00383" data-start="{" data-end="}">
 <div class="line"><a id="l00383" name="l00383"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a260e272a43c4a8c945dc2afa4441c8e6">  383</a></span>        <a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&amp;&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#a260e272a43c4a8c945dc2afa4441c8e6">operator*</a>() &amp;&amp;</div>
 <div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>        {</div>
 <div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>            <span class="keywordflow">return</span> std::move(*this).value();</div>
 <div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>        }</div>
 </div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span> </div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span></div>
 <div class="foldopen" id="foldopen00393" data-start="{" data-end="}">
 <div class="line"><a id="l00393" name="l00393"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a5911eca57249b5c4d9763728481ecee7">  393</a></span>        <span class="keyword">const</span> <a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&amp;&amp; <a class="code hl_function" href="classUdon_1_1Optional.html#a5911eca57249b5c4d9763728481ecee7">operator*</a>() const&amp;&amp;</div>
 <div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>        {</div>
@@ -445,7 +445,7 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>            <span class="keywordflow">return</span> &amp;<a class="code hl_function" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">value</a>();</div>
 <div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>        }</div>
 </div>
-<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span> </div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span></div>
 <div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> U&gt;</div>
 <div class="foldopen" id="foldopen00414" data-start="{" data-end="}">
 <div class="line"><a id="l00414" name="l00414"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a62afa79333847677ff4d364664b2658d">  414</a></span>        <span class="keyword">constexpr</span> <a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a> <a class="code hl_function" href="classUdon_1_1Optional.html#a62afa79333847677ff4d364664b2658d">valueOr</a>(U&amp;&amp; defaultValue) <span class="keyword">const</span>&amp;</div>
@@ -453,7 +453,7 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>            <span class="keywordflow">return</span> mHasValue ? **this : <span class="keyword">static_cast&lt;</span><a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a><span class="keyword">&gt;</span>(std::forward&lt;U&gt;(defaultValue));</div>
 <div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>        }</div>
 </div>
-<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span> </div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span></div>
 <div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> U&gt;</div>
 <div class="foldopen" id="foldopen00425" data-start="{" data-end="}">
 <div class="line"><a id="l00425" name="l00425"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a244e68210665e4f8b2aba42fca055681">  425</a></span>        <span class="keyword">constexpr</span> <a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a> <a class="code hl_function" href="classUdon_1_1Optional.html#a244e68210665e4f8b2aba42fca055681">valueOr</a>(U&amp;&amp; defaultValue) &amp;&amp;</div>
@@ -462,39 +462,39 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>        }</div>
 </div>
 <div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span> </div>
-<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span> </div>
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span></div>
 <div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Visitor&gt;</div>
 <div class="foldopen" id="foldopen00435" data-start="{" data-end="}">
-<div class="line"><a id="l00435" name="l00435"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a2bf52f645e0e14916f5e446d211c1943">  435</a></span>        <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="classUdon_1_1Optional.html#a2bf52f645e0e14916f5e446d211c1943">transform</a>(Visitor&amp;&amp; visitor) &amp; -&gt; <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&lt;<a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a52682e510859b64cc281c19ff60fcdec">Traits::RemoveCVRefT</a>&lt;<span class="keyword">typename</span> std::result_of&lt;Visitor(<a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&amp;)&gt;::type&gt;&gt;</div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a2bf52f645e0e14916f5e446d211c1943">  435</a></span>        <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="classUdon_1_1Optional.html#a2bf52f645e0e14916f5e446d211c1943">transform</a>(Visitor&amp;&amp; visitor) &amp; -&gt; <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&lt;<a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a52682e510859b64cc281c19ff60fcdec">Traits::RemoveCVRefT</a>&lt;<span class="keyword">typename</span> std::result_of&lt;Visitor(<a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&amp;)&gt;::type&gt;&gt;</div>
 <div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>        {</div>
-<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span> ? <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&lt;<a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a52682e510859b64cc281c19ff60fcdec">Traits::RemoveCVRefT</a>&lt;<span class="keyword">typename</span> std::result_of&lt;Visitor(<a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&amp;)&gt;::type&gt;&gt;{ visitor(**<span class="keyword">this</span>) }</div>
+<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span> ? <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&lt;<a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a52682e510859b64cc281c19ff60fcdec">Traits::RemoveCVRefT</a>&lt;<span class="keyword">typename</span> std::result_of&lt;Visitor(<a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&amp;)&gt;::type&gt;&gt;{ visitor(**<span class="keyword">this</span>) }</div>
 <div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>                         : <a class="code hl_variable" href="namespaceUdon.html#ae102f6540b6e88b1b484ddbed3ff972f">nullopt</a>;</div>
 <div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span>        }</div>
 </div>
 <div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span> </div>
-<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span> </div>
+<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span></div>
 <div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Visitor&gt;</div>
 <div class="foldopen" id="foldopen00446" data-start="{" data-end="}">
-<div class="line"><a id="l00446" name="l00446"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a805cb7a5743853f59230e9e888104868">  446</a></span>        <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="classUdon_1_1Optional.html#a805cb7a5743853f59230e9e888104868">transform</a>(Visitor&amp;&amp; visitor) <span class="keyword">const</span>&amp; -&gt; <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&lt;<a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a52682e510859b64cc281c19ff60fcdec">Traits::RemoveCVRefT</a>&lt;<span class="keyword">typename</span> std::result_of&lt;Visitor(<span class="keyword">const</span> <a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&amp;)&gt;::type&gt;&gt;</div>
+<div class="line"><a id="l00446" name="l00446"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a805cb7a5743853f59230e9e888104868">  446</a></span>        <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="classUdon_1_1Optional.html#a805cb7a5743853f59230e9e888104868">transform</a>(Visitor&amp;&amp; visitor) <span class="keyword">const</span>&amp; -&gt; <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&lt;<a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a52682e510859b64cc281c19ff60fcdec">Traits::RemoveCVRefT</a>&lt;<span class="keyword">typename</span> std::result_of&lt;Visitor(<span class="keyword">const</span> <a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&amp;)&gt;::type&gt;&gt;</div>
 <div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span>        {</div>
-<div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span> ? <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&lt;<a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a52682e510859b64cc281c19ff60fcdec">Traits::RemoveCVRefT</a>&lt;<span class="keyword">typename</span> std::result_of&lt;Visitor(<span class="keyword">const</span> <a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&amp;)&gt;::type&gt;&gt;{ visitor(**<span class="keyword">this</span>) }</div>
+<div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span> ? <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&lt;<a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a52682e510859b64cc281c19ff60fcdec">Traits::RemoveCVRefT</a>&lt;<span class="keyword">typename</span> std::result_of&lt;Visitor(<span class="keyword">const</span> <a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&amp;)&gt;::type&gt;&gt;{ visitor(**<span class="keyword">this</span>) }</div>
 <div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span>                         : <a class="code hl_variable" href="namespaceUdon.html#ae102f6540b6e88b1b484ddbed3ff972f">nullopt</a>;</div>
 <div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span>        }</div>
 </div>
 <div class="line"><a id="l00451" name="l00451"></a><span class="lineno">  451</span> </div>
-<div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span> </div>
+<div class="line"><a id="l00452" name="l00452"></a><span class="lineno">  452</span></div>
 <div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Visitor&gt;</div>
 <div class="foldopen" id="foldopen00457" data-start="{" data-end="}">
-<div class="line"><a id="l00457" name="l00457"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a2a70984be6c8f8b31e6f09d25ec0b9e9">  457</a></span>        <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="classUdon_1_1Optional.html#a2a70984be6c8f8b31e6f09d25ec0b9e9">transform</a>(Visitor&amp;&amp; visitor) &amp;&amp; -&gt; <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&lt;<a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a52682e510859b64cc281c19ff60fcdec">Traits::RemoveCVRefT</a>&lt;<span class="keyword">typename</span> std::result_of&lt;Visitor(<a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>)&gt;::type&gt;&gt;</div>
+<div class="line"><a id="l00457" name="l00457"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a2a70984be6c8f8b31e6f09d25ec0b9e9">  457</a></span>        <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="classUdon_1_1Optional.html#a2a70984be6c8f8b31e6f09d25ec0b9e9">transform</a>(Visitor&amp;&amp; visitor) &amp;&amp; -&gt; <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&lt;<a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a52682e510859b64cc281c19ff60fcdec">Traits::RemoveCVRefT</a>&lt;<span class="keyword">typename</span> std::result_of&lt;Visitor(<a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>)&gt;::type&gt;&gt;</div>
 <div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span>        {</div>
-<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span> ? <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&lt;<a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a52682e510859b64cc281c19ff60fcdec">Traits::RemoveCVRefT</a>&lt;<span class="keyword">typename</span> std::result_of&lt;Visitor(<a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>)&gt;::type&gt;&gt;{ visitor(std::move(**<span class="keyword">this</span>)) }</div>
+<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span> ? <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&lt;<a class="code hl_typedef" href="namespaceUdon_1_1Traits.html#a52682e510859b64cc281c19ff60fcdec">Traits::RemoveCVRefT</a>&lt;<span class="keyword">typename</span> std::result_of&lt;Visitor(<a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>)&gt;::type&gt;&gt;{ visitor(std::move(**<span class="keyword">this</span>)) }</div>
 <div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span>                         : <a class="code hl_variable" href="namespaceUdon.html#ae102f6540b6e88b1b484ddbed3ff972f">nullopt</a>;</div>
 <div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span>        }</div>
 </div>
 <div class="line"><a id="l00462" name="l00462"></a><span class="lineno">  462</span> </div>
-<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span> </div>
+<div class="line"><a id="l00463" name="l00463"></a><span class="lineno">  463</span></div>
 <div class="foldopen" id="foldopen00467" data-start="{" data-end="}">
-<div class="line"><a id="l00467" name="l00467"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a76b8be66294a8a11750da65d1a69a704">  467</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1Optional.html#a76b8be66294a8a11750da65d1a69a704">swap</a>(<a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&amp; other) <span class="keyword">noexcept</span>(<span class="comment">/* std::is_nothrow_swappable&lt;ValueType&gt;::value and*/</span> std::is_nothrow_move_assignable&lt;ValueType&gt;::value)</div>
+<div class="line"><a id="l00467" name="l00467"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a76b8be66294a8a11750da65d1a69a704">  467</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1Optional.html#a76b8be66294a8a11750da65d1a69a704">swap</a>(<a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&amp; other) <span class="keyword">noexcept</span>(<span class="comment">/* std::is_nothrow_swappable&lt;ValueType&gt;::value and*/</span> std::is_nothrow_move_assignable&lt;ValueType&gt;::value)</div>
 <div class="line"><a id="l00468" name="l00468"></a><span class="lineno">  468</span>        {</div>
 <div class="line"><a id="l00469" name="l00469"></a><span class="lineno">  469</span>            <span class="keywordflow">if</span> (*<span class="keyword">this</span> and other)</div>
 <div class="line"><a id="l00470" name="l00470"></a><span class="lineno">  470</span>            {</div>
@@ -513,7 +513,7 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00483" name="l00483"></a><span class="lineno">  483</span>        }</div>
 </div>
 <div class="line"><a id="l00484" name="l00484"></a><span class="lineno">  484</span> </div>
-<div class="line"><a id="l00485" name="l00485"></a><span class="lineno">  485</span> </div>
+<div class="line"><a id="l00485" name="l00485"></a><span class="lineno">  485</span></div>
 <div class="line"><a id="l00490" name="l00490"></a><span class="lineno">  490</span>        template &lt;typename U = ValueType, typename std::enable_if&lt;std::is_trivially_destructible&lt;U&gt;::value, std::nullptr_t&gt;::type = <span class="keyword">nullptr</span>&gt;</div>
 <div class="foldopen" id="foldopen00491" data-start="{" data-end="}">
 <div class="line"><a id="l00491" name="l00491"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#ab7217ced96cb9c6a7a593f2231324ab1">  491</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1Optional.html#ab7217ced96cb9c6a7a593f2231324ab1">reset</a>() noexcept(<a class="code hl_namespace" href="namespacestd.html">std</a>::is_nothrow_destructible&lt;<a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&gt;::<a class="code hl_function" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">value</a>)</div>
@@ -525,7 +525,7 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00497" name="l00497"></a><span class="lineno">  497</span>        }</div>
 </div>
 <div class="line"><a id="l00498" name="l00498"></a><span class="lineno">  498</span> </div>
-<div class="line"><a id="l00499" name="l00499"></a><span class="lineno">  499</span> </div>
+<div class="line"><a id="l00499" name="l00499"></a><span class="lineno">  499</span></div>
 <div class="line"><a id="l00504" name="l00504"></a><span class="lineno">  504</span>        template &lt;typename U = ValueType, typename std::enable_if&lt;not std::is_trivially_destructible&lt;U&gt;::value, std::nullptr_t&gt;::type = <span class="keyword">nullptr</span>&gt;</div>
 <div class="foldopen" id="foldopen00505" data-start="{" data-end="}">
 <div class="line"><a id="l00505" name="l00505"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#ab7217ced96cb9c6a7a593f2231324ab1">  505</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1Optional.html#ab7217ced96cb9c6a7a593f2231324ab1">reset</a>() noexcept(<a class="code hl_namespace" href="namespacestd.html">std</a>::is_nothrow_destructible&lt;<a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>&gt;::<a class="code hl_function" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">value</a>)</div>
@@ -538,7 +538,7 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>        }</div>
 </div>
 <div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span> </div>
-<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span> </div>
+<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span></div>
 <div class="foldopen" id="foldopen00518" data-start="{" data-end="}">
 <div class="line"><a id="l00518" name="l00518"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#a0da144378519ca521048e90957a76d36">  518</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1Optional.html#a0da144378519ca521048e90957a76d36">show</a>() const noexcept</div>
 <div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span>        {</div>
@@ -554,10 +554,10 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 </div>
 <div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span> </div>
 <div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span><span class="preprocessor">#if UDON_PLATFORM_OUTPUT_STREAM == UDON_PLATFORM_OUTPUT_CONSOLE</span></div>
-<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span> </div>
+<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span></div>
 <div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> CharType&gt;</div>
-<div class="foldopen" id="foldopen00540" data-start="{" data-end="};">
-<div class="line"><a id="l00540" name="l00540"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#af1acb01716269aea2b7beec356f9d21e">  540</a></span>        <span class="keyword">friend</span> std::basic_ostream&lt;CharType&gt;&amp; <a class="code hl_friend" href="classUdon_1_1Optional.html#af1acb01716269aea2b7beec356f9d21e">operator&lt;&lt;</a>(std::basic_ostream&lt;CharType&gt;&amp; os, <span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Optional.html">Optional</a>&amp; opt)</div>
+<div class="foldopen" id="foldopen00540" data-start="{" data-end="}">
+<div class="line"><a id="l00540" name="l00540"></a><span class="lineno"><a class="line" href="classUdon_1_1Optional.html#af1acb01716269aea2b7beec356f9d21e">  540</a></span>        <span class="keyword">friend</span> std::basic_ostream&lt;CharType&gt;&amp; <a class="code hl_friend" href="classUdon_1_1Optional.html#af1acb01716269aea2b7beec356f9d21e">operator&lt;&lt;</a>(std::basic_ostream&lt;CharType&gt;&amp; os, <span class="keyword">const</span> <a class="code hl_friend" href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Optional</a>&amp; opt)</div>
 <div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span>        {</div>
 <div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span>            <span class="keywordflow">if</span> (opt)</div>
 <div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span>            {</div>
@@ -577,13 +577,13 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span>        <span class="keyword">union </span>Storage</div>
 <div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span>        {</div>
 <div class="foldopen" id="foldopen00558" data-start="{" data-end="};">
-<div class="line"><a id="l00558" name="l00558"></a><span class="lineno"><a class="line" href="structUdon_1_1Optional_1_1Storage_1_1Dummy.html">  558</a></span>            <span class="keyword">struct </span><a class="code hl_struct" href="structUdon_1_1Optional_1_1Storage_1_1Dummy.html">Dummy</a></div>
+<div class="line"><a id="l00558" name="l00558"></a><span class="lineno"><a class="line" href="structUdon_1_1Optional_1_1Storage_1_1Dummy.html">  558</a></span>            <span class="keyword">struct </span><a class="code hl_function" href="structUdon_1_1Optional_1_1Storage_1_1Dummy.html#a038238a933749c2b9aea6a1922e876f7">Dummy</a></div>
 <div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>            {</div>
 <div class="line"><a id="l00560" name="l00560"></a><span class="lineno"><a class="line" href="structUdon_1_1Optional_1_1Storage_1_1Dummy.html#a038238a933749c2b9aea6a1922e876f7">  560</a></span>                <span class="keyword">constexpr</span> <a class="code hl_function" href="structUdon_1_1Optional_1_1Storage_1_1Dummy.html#a038238a933749c2b9aea6a1922e876f7">Dummy</a>() noexcept {}</div>
 <div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span>            } dummy;</div>
 </div>
 <div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span> </div>
-<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span>            <a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a> value;</div>
+<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span>            <a class="code hl_typedef" href="classUdon_1_1Optional.html#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a> <a class="code hl_function" href="classUdon_1_1Optional.html#a902544e5d958130ac7b0368c1e140d30">value</a>;</div>
 <div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span> </div>
 <div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span>            <span class="keyword">constexpr</span> Storage() noexcept</div>
 <div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span>                : dummy{}</div>
@@ -643,10 +643,10 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span>}    <span class="comment">// namespace Udon</span></div>
 <div class="ttc" id="aPlatform_8hpp_html"><div class="ttname"><a href="Platform_8hpp.html">Platform.hpp</a></div></div>
 <div class="ttc" id="aShow_8hpp_html"><div class="ttname"><a href="Show_8hpp.html">Show.hpp</a></div></div>
-<div class="ttc" id="aclassUdon_1_1Optional_html"><div class="ttname"><a href="classUdon_1_1Optional.html">Udon::Optional</a></div><div class="ttdoc">オプショナル型</div><div class="ttdef"><b>Definition</b> Optional.hpp:62</div></div>
 <div class="ttc" id="aclassUdon_1_1Optional_html_a073122aeeb5c5892952387398d115d5c"><div class="ttname"><a href="classUdon_1_1Optional.html#a073122aeeb5c5892952387398d115d5c">Udon::Optional::operator=</a></div><div class="ttdeci">Optional &amp; operator=(const Optional&lt; U &gt; &amp;other) noexcept(std::is_nothrow_constructible&lt; ValueType, U &gt;::value and std::is_nothrow_assignable&lt; ValueType, U &gt;::value)</div><div class="ttdoc">コピー代入演算子</div><div class="ttdef"><b>Definition</b> Optional.hpp:184</div></div>
 <div class="ttc" id="aclassUdon_1_1Optional_html_a0da144378519ca521048e90957a76d36"><div class="ttname"><a href="classUdon_1_1Optional.html#a0da144378519ca521048e90957a76d36">Udon::Optional::show</a></div><div class="ttdeci">void show() const noexcept</div><div class="ttdoc">値を表示</div><div class="ttdef"><b>Definition</b> Optional.hpp:518</div></div>
 <div class="ttc" id="aclassUdon_1_1Optional_html_a13ac19fcf5d2da0760dbc473691bab51"><div class="ttname"><a href="classUdon_1_1Optional.html#a13ac19fcf5d2da0760dbc473691bab51">Udon::Optional::operator&lt;</a></div><div class="ttdeci">friend bool operator&lt;(const Optional &amp;lhs, const Optional &amp;rhs) noexcept</div><div class="ttdoc">比較演算子</div><div class="ttdef"><b>Definition</b> Optional.hpp:250</div></div>
+<div class="ttc" id="aclassUdon_1_1Optional_html_a1765268b663a7e1bce2246dec366ac57"><div class="ttname"><a href="classUdon_1_1Optional.html#a1765268b663a7e1bce2246dec366ac57">Udon::Optional::Optional</a></div><div class="ttdeci">friend class Optional</div><div class="ttdef"><b>Definition</b> Optional.hpp:71</div></div>
 <div class="ttc" id="aclassUdon_1_1Optional_html_a1bc488c790af543a62feaa9c4460e402"><div class="ttname"><a href="classUdon_1_1Optional.html#a1bc488c790af543a62feaa9c4460e402">Udon::Optional::operator&gt;</a></div><div class="ttdeci">friend bool operator&gt;(const Optional &amp;lhs, const Optional &amp;rhs) noexcept</div><div class="ttdoc">比較演算子</div><div class="ttdef"><b>Definition</b> Optional.hpp:268</div></div>
 <div class="ttc" id="aclassUdon_1_1Optional_html_a1dd0104afb6a47904cf4bb4eb877c436"><div class="ttname"><a href="classUdon_1_1Optional.html#a1dd0104afb6a47904cf4bb4eb877c436">Udon::Optional::operator==</a></div><div class="ttdeci">friend bool operator==(const Optional &amp;lhs, const Optional &amp;rhs) noexcept</div><div class="ttdoc">等価演算子</div><div class="ttdef"><b>Definition</b> Optional.hpp:222</div></div>
 <div class="ttc" id="aclassUdon_1_1Optional_html_a23e95189c22121147fda02c6b616509e"><div class="ttname"><a href="classUdon_1_1Optional.html#a23e95189c22121147fda02c6b616509e">Udon::Optional::Optional</a></div><div class="ttdeci">Optional(U &amp;&amp;value) noexcept(std::is_nothrow_constructible&lt; ValueType &gt;::value)</div><div class="ttdoc">値から構築</div><div class="ttdef"><b>Definition</b> Optional.hpp:102</div></div>
@@ -688,7 +688,6 @@ $(function(){initNavTree('Optional_8hpp_source.html',''); initResizable(true); }
 <div class="ttc" id="anamespaceUdon_html_ae102f6540b6e88b1b484ddbed3ff972f"><div class="ttname"><a href="namespaceUdon.html#ae102f6540b6e88b1b484ddbed3ff972f">Udon::nullopt</a></div><div class="ttdeci">constexpr NulloptT nullopt</div><div class="ttdoc">無効値</div><div class="ttdef"><b>Definition</b> Optional.hpp:52</div></div>
 <div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition</b> Typedef.hpp:94</div></div>
 <div class="ttc" id="astructUdon_1_1NulloptT_html"><div class="ttname"><a href="structUdon_1_1NulloptT.html">Udon::NulloptT</a></div><div class="ttdoc">無効値型</div><div class="ttdef"><b>Definition</b> Optional.hpp:46</div></div>
-<div class="ttc" id="astructUdon_1_1Optional_1_1Storage_1_1Dummy_html"><div class="ttname"><a href="structUdon_1_1Optional_1_1Storage_1_1Dummy.html">Udon::Optional::Storage::Dummy</a></div><div class="ttdef"><b>Definition</b> Optional.hpp:559</div></div>
 <div class="ttc" id="astructUdon_1_1Optional_1_1Storage_1_1Dummy_html_a038238a933749c2b9aea6a1922e876f7"><div class="ttname"><a href="structUdon_1_1Optional_1_1Storage_1_1Dummy.html#a038238a933749c2b9aea6a1922e876f7">Udon::Optional::Storage::Dummy::Dummy</a></div><div class="ttdeci">constexpr Dummy() noexcept</div><div class="ttdef"><b>Definition</b> Optional.hpp:560</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

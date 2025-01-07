@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="generator" content="Doxygen 1.13.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: src/Udon/Com/Im920/Im920Writer.hpp ソースファイル</title>
@@ -45,7 +45,7 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.12.0 -->
+<!-- 構築: Doxygen 1.13.1 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -129,15 +129,15 @@ $(function(){initNavTree('Im920Writer_8hpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Message&gt;</div>
 <div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classUdon_1_1Im920Writer.html">   25</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classUdon_1_1Im920Writer.html">Im920Writer</a></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classUdon_1_1Im920Writer.html">   25</a></span>    <span class="keyword">class </span><a class="code hl_function" href="classUdon_1_1Im920Writer.html#ab08b12234e65a87b0f33b90bc9faa608">Im920Writer</a></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    {</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classUdon_1_1Im920Writer.html#a500221f31181296eaa2747332f752e00">   28</a></span>        <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="classUdon_1_1Im920Writer.html#a500221f31181296eaa2747332f752e00">Size</a> = <a class="code hl_function" href="namespaceUdon.html#a92fa64e26dcad6be1aa4e0f4908fdee6">Udon::SerializedSize&lt;Message&gt;</a>();</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classUdon_1_1Im920Writer.html#a1031d4d0303902fa7310d80fdcf0ae44">   30</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="classUdon_1_1Im920Writer.html#a1031d4d0303902fa7310d80fdcf0ae44">MessageType</a> = Message;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classUdon_1_1Im920Writer.html#a1031d4d0303902fa7310d80fdcf0ae44">   30</a></span>        <span class="keyword">using </span><a class="code hl_typedef" href="classUdon_1_1Im920Writer.html#a1031d4d0303902fa7310d80fdcf0ae44">MessageType</a> = <a class="code hl_namespace" href="namespaceUdon_1_1Message.html">Message</a>;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <a class="code hl_class" href="classUdon_1_1IIm920.html">IIm920</a>&amp; im920;</div>
@@ -153,26 +153,26 @@ $(function(){initNavTree('Im920Writer_8hpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            , buffer()</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            , node{ buffer, <a class="code hl_variable" href="classUdon_1_1Im920Writer.html#a500221f31181296eaa2747332f752e00">Size</a>, 0 }</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            im920.<a class="code hl_function" href="classUdon_1_1IIm920.html#a2b5e0e2fcd12302974a3e5eaf9e8eee6">joinTx</a>(node);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            im920.joinTx(node);</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        }</div>
 </div>
 <div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classUdon_1_1Im920Writer.html#a87b6f3ee5c6c6de622345d27232d4240">   47</a></span>        <a class="code hl_function" href="classUdon_1_1Im920Writer.html#a87b6f3ee5c6c6de622345d27232d4240">Im920Writer</a>(<span class="keyword">const</span> <a class="code hl_class" href="classUdon_1_1Im920Writer.html">Im920Writer</a>&amp; other)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classUdon_1_1Im920Writer.html#a87b6f3ee5c6c6de622345d27232d4240">   47</a></span>        <a class="code hl_function" href="classUdon_1_1Im920Writer.html#a87b6f3ee5c6c6de622345d27232d4240">Im920Writer</a>(<span class="keyword">const</span> <a class="code hl_function" href="classUdon_1_1Im920Writer.html#ab08b12234e65a87b0f33b90bc9faa608">Im920Writer</a>&amp; other)</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            : im920(other.im920)</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            , buffer()</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            , node{ buffer, <a class="code hl_variable" href="classUdon_1_1Im920Writer.html#a500221f31181296eaa2747332f752e00">Size</a>, 0 }</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        {</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            im920.<a class="code hl_function" href="classUdon_1_1IIm920.html#a2b5e0e2fcd12302974a3e5eaf9e8eee6">joinTx</a>(node);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            im920.joinTx(node);</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        }</div>
 </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
 <div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classUdon_1_1Im920Writer.html#afb84180be75dd0dc07854c288254fc22">   55</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1Im920Writer.html#afb84180be75dd0dc07854c288254fc22">setMessage</a>(<span class="keyword">const</span> Message&amp; message)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classUdon_1_1Im920Writer.html#afb84180be75dd0dc07854c288254fc22">   55</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1Im920Writer.html#afb84180be75dd0dc07854c288254fc22">setMessage</a>(<span class="keyword">const</span> <a class="code hl_namespace" href="namespaceUdon_1_1Message.html">Message</a>&amp; message)</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        {</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <a class="code hl_function" href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a>(message, buffer);</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        }</div>
 </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span></div>
 <div class="foldopen" id="foldopen00061" data-start="{" data-end="}">
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classUdon_1_1Im920Writer.html#a5762010d071cf86d13c8c0e1870c48a7">   61</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1Im920Writer.html#a5762010d071cf86d13c8c0e1870c48a7">show</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keyword">        </span>{</div>
@@ -187,7 +187,7 @@ $(function(){initNavTree('Im920Writer_8hpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            }</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        }</div>
 </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span></div>
 <div class="foldopen" id="foldopen00075" data-start="{" data-end="}">
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classUdon_1_1Im920Writer.html#a75af029752279191f272ef652a0880b6">   75</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1Im920Writer.html#a75af029752279191f272ef652a0880b6">showRaw</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keyword">        </span>{</div>
@@ -206,8 +206,6 @@ $(function(){initNavTree('Im920Writer_8hpp_source.html',''); initResizable(true)
 <div class="ttc" id="aShow_8hpp_html"><div class="ttname"><a href="Show_8hpp.html">Show.hpp</a></div></div>
 <div class="ttc" id="aShow_8hpp_html_a203d5b93e4077aa273c7013964a31f9e"><div class="ttname"><a href="Show_8hpp.html#a203d5b93e4077aa273c7013964a31f9e">F</a></div><div class="ttdeci">#define F(x)</div><div class="ttdef"><b>Definition</b> Show.hpp:17</div></div>
 <div class="ttc" id="aclassUdon_1_1IIm920_html"><div class="ttname"><a href="classUdon_1_1IIm920.html">Udon::IIm920</a></div><div class="ttdoc">IM920のインターフェース</div><div class="ttdef"><b>Definition</b> IIm920.hpp:31</div></div>
-<div class="ttc" id="aclassUdon_1_1IIm920_html_a2b5e0e2fcd12302974a3e5eaf9e8eee6"><div class="ttname"><a href="classUdon_1_1IIm920.html#a2b5e0e2fcd12302974a3e5eaf9e8eee6">Udon::IIm920::joinTx</a></div><div class="ttdeci">virtual void joinTx(Im920Node &amp;node)=0</div><div class="ttdoc">送信ノードを登録</div></div>
-<div class="ttc" id="aclassUdon_1_1Im920Writer_html"><div class="ttname"><a href="classUdon_1_1Im920Writer.html">Udon::Im920Writer</a></div><div class="ttdoc">IM920送信クラス</div><div class="ttdef"><b>Definition</b> Im920Writer.hpp:26</div></div>
 <div class="ttc" id="aclassUdon_1_1Im920Writer_html_a1031d4d0303902fa7310d80fdcf0ae44"><div class="ttname"><a href="classUdon_1_1Im920Writer.html#a1031d4d0303902fa7310d80fdcf0ae44">Udon::Im920Writer::MessageType</a></div><div class="ttdeci">Message MessageType</div><div class="ttdef"><b>Definition</b> Im920Writer.hpp:30</div></div>
 <div class="ttc" id="aclassUdon_1_1Im920Writer_html_a500221f31181296eaa2747332f752e00"><div class="ttname"><a href="classUdon_1_1Im920Writer.html#a500221f31181296eaa2747332f752e00">Udon::Im920Writer::Size</a></div><div class="ttdeci">static constexpr size_t Size</div><div class="ttdef"><b>Definition</b> Im920Writer.hpp:28</div></div>
 <div class="ttc" id="aclassUdon_1_1Im920Writer_html_a5762010d071cf86d13c8c0e1870c48a7"><div class="ttname"><a href="classUdon_1_1Im920Writer.html#a5762010d071cf86d13c8c0e1870c48a7">Udon::Im920Writer::show</a></div><div class="ttdeci">void show() const</div><div class="ttdoc">送信内容を表示</div><div class="ttdef"><b>Definition</b> Im920Writer.hpp:61</div></div>
@@ -215,6 +213,7 @@ $(function(){initNavTree('Im920Writer_8hpp_source.html',''); initResizable(true)
 <div class="ttc" id="aclassUdon_1_1Im920Writer_html_a87b6f3ee5c6c6de622345d27232d4240"><div class="ttname"><a href="classUdon_1_1Im920Writer.html#a87b6f3ee5c6c6de622345d27232d4240">Udon::Im920Writer::Im920Writer</a></div><div class="ttdeci">Im920Writer(const Im920Writer &amp;other)</div><div class="ttdef"><b>Definition</b> Im920Writer.hpp:47</div></div>
 <div class="ttc" id="aclassUdon_1_1Im920Writer_html_ab08b12234e65a87b0f33b90bc9faa608"><div class="ttname"><a href="classUdon_1_1Im920Writer.html#ab08b12234e65a87b0f33b90bc9faa608">Udon::Im920Writer::Im920Writer</a></div><div class="ttdeci">Im920Writer(IIm920 &amp;im920)</div><div class="ttdef"><b>Definition</b> Im920Writer.hpp:40</div></div>
 <div class="ttc" id="aclassUdon_1_1Im920Writer_html_afb84180be75dd0dc07854c288254fc22"><div class="ttname"><a href="classUdon_1_1Im920Writer.html#afb84180be75dd0dc07854c288254fc22">Udon::Im920Writer::setMessage</a></div><div class="ttdeci">void setMessage(const Message &amp;message)</div><div class="ttdef"><b>Definition</b> Im920Writer.hpp:55</div></div>
+<div class="ttc" id="anamespaceUdon_1_1Message_html"><div class="ttname"><a href="namespaceUdon_1_1Message.html">Udon::Message</a></div><div class="ttdef"><b>Definition</b> AirCylinder.hpp:16</div></div>
 <div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
 <div class="ttc" id="anamespaceUdon_html_a20184b6461ea6113bbbede25c81a6425"><div class="ttname"><a href="namespaceUdon.html#a20184b6461ea6113bbbede25c81a6425">Udon::Serialize</a></div><div class="ttdeci">bool Serialize(const T &amp;object, ArrayView&lt; uint8_t &gt; buffer)</div><div class="ttdoc">バッファにシリアル化する</div><div class="ttdef"><b>Definition</b> Serializer.hpp:35</div></div>
 <div class="ttc" id="anamespaceUdon_html_a2867c79f449f149ce0996d14271837ef"><div class="ttname"><a href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef">Udon::Deserialize</a></div><div class="ttdeci">Udon::Optional&lt; T &gt; Deserialize(ArrayView&lt; const uint8_t &gt; buffer)</div><div class="ttdoc">バイト列からオブジェクトに逆シリアル化します</div><div class="ttdef"><b>Definition</b> Serializer.hpp:87</div></div>

@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="generator" content="Doxygen 1.13.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: src/Udon/Driver/SegmentsLed.hpp ソースファイル</title>
@@ -45,7 +45,7 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.12.0 -->
+<!-- 構築: Doxygen 1.13.1 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -126,7 +126,7 @@ $(function(){initNavTree('SegmentsLed_8hpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">class </span>SegmentsLed</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    {</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        std::array&lt;uint8_t, 7&gt;  cathode;</div>
@@ -152,11 +152,11 @@ $(function(){initNavTree('SegmentsLed_8hpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                        0b1101111     <span class="comment">// 9</span></div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                    })</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            : cathode(cathode)</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            , anode(<a class="code hl_namespace" href="namespacestd.html">std</a>::move(anode))</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            , anode(std::move(anode))</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            , format(format)</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        {</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        }</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span></div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordtype">void</span> begin()</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        {</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp;&amp; pin : cathode)</div>
@@ -168,12 +168,12 @@ $(function(){initNavTree('SegmentsLed_8hpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                pinMode(pin, OUTPUT);</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            }</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        }</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span></div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordtype">void</span> setValue(<span class="keywordtype">int</span> num)</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        {</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            value = num;</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        }</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span></div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordtype">void</span> show()</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        {</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <span class="comment">// ループ毎に1桁ずつ表示</span></div>
@@ -218,7 +218,6 @@ $(function(){initNavTree('SegmentsLed_8hpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aEnableSTL_8hpp_html"><div class="ttname"><a href="EnableSTL_8hpp.html">EnableSTL.hpp</a></div></div>
 <div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition</b> Typedef.hpp:94</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! --></div>

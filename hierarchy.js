@@ -6,6 +6,8 @@ var hierarchy =
     [ "Udon::ArrayView< uint8_t >", "classUdon_1_1ArrayView.html", null ],
     [ "Udon::AsyncStreamReader", "classUdon_1_1AsyncStreamReader.html", null ],
     [ "Udon::BasicStringView< CharType, Traits >", "classUdon_1_1BasicStringView.html", null ],
+    [ "Udon::BasicStringView< char >", "classUdon_1_1BasicStringView.html", null ],
+    [ "Udon::BasicStringView< wchar_t >", "classUdon_1_1BasicStringView.html", null ],
     [ "Udon::Message::BrushLess", "structUdon_1_1Message_1_1BrushLess.html", null ],
     [ "Udon::CanReader< Message >", "classUdon_1_1CanReader.html", null ],
     [ "Udon::CanRxNode", "structUdon_1_1CanRxNode.html", null ],
@@ -31,6 +33,14 @@ var hierarchy =
     [ "Udon::Euler", "structUdon_1_1Euler.html", null ],
     [ "Udon::EulerDirection", "structUdon_1_1EulerDirection.html", null ],
     [ "std::false_type", null, [
+      [ "Udon::Traits::HasMemberFunctionBegin< T, std::void_t< decltype(&T::begin)> >", "structUdon_1_1Traits_1_1HasMemberFunctionBegin.html", null ],
+      [ "Udon::Traits::HasMemberFunctionEnumerate< T, typename std::enable_if< std::is_same< decltype(std::declval< T >().enumerate(std::declval< DummyEnumerator & >())), typename DummyEnumerator::ResultType >::value >::type >", "structUdon_1_1Traits_1_1HasMemberFunctionEnumerate.html", null ],
+      [ "Udon::Traits::HasMemberFunctionShow< T, std::void_t< decltype(&T::show)> >", "structUdon_1_1Traits_1_1HasMemberFunctionShow.html", null ],
+      [ "Udon::Traits::HasMemberFunctionShowRaw< T, std::void_t< decltype(&T::showRaw)> >", "structUdon_1_1Traits_1_1HasMemberFunctionShowRaw.html", null ],
+      [ "Udon::Traits::HasMemberFunctionUpdate< T, std::void_t< decltype(&T::update)> >", "structUdon_1_1Traits_1_1HasMemberFunctionUpdate.html", null ],
+      [ "Udon::Traits::IsOutputStreamable< OutputStream, T, std::void_t< decltype(std::declval< OutputStream & >()<< std::declval< T >())> >", "structUdon_1_1Traits_1_1IsOutputStreamable.html", null ],
+      [ "Udon::Traits::IsReader< T, typename std::enable_if< std::is_same< decltype(std::declval< T< int > >().getMessage()), Udon::Optional< typename T< int >::MessageType > >::value >::type >", "structUdon_1_1Traits_1_1IsReader.html", null ],
+      [ "Udon::Traits::IsWriter< T, typename std::enable_if< std::is_same< decltype(std::declval< T< int > >().setMessage(std::declval< const typename T< int >::MessageType & >())), void >::value >::type >", "structUdon_1_1Traits_1_1IsWriter.html", null ],
       [ "Udon::Traits::AlwaysFalse< T >", "structUdon_1_1Traits_1_1AlwaysFalse.html", null ],
       [ "Udon::Traits::HasMemberFunctionBegin< typename, typename >", "structUdon_1_1Traits_1_1HasMemberFunctionBegin.html", null ],
       [ "Udon::Traits::HasMemberFunctionEnumerate< T, typename >", "structUdon_1_1Traits_1_1HasMemberFunctionEnumerate.html", null ],
@@ -68,14 +78,16 @@ var hierarchy =
       [ "Udon::Traits::IsSerializable< T >", "structUdon_1_1Traits_1_1IsSerializable.html", null ]
     ] ],
     [ "std::is_member_function_pointer", null, [
-      [ "Udon::Traits::HasMemberFunctionBegin< T, std::void_t< decltype(&T::begin)> >", "structUdon_1_1Traits_1_1HasMemberFunctionBegin_3_01T_00_01std_1_1void__t_3_01decltype_07_6T_1_1begin_08_4_01_4.html", null ],
-      [ "Udon::Traits::HasMemberFunctionShow< T, std::void_t< decltype(&T::show)> >", "structUdon_1_1Traits_1_1HasMemberFunctionShow_3_01T_00_01std_1_1void__t_3_01decltype_07_6T_1_1show_08_4_01_4.html", null ],
-      [ "Udon::Traits::HasMemberFunctionShowRaw< T, std::void_t< decltype(&T::showRaw)> >", "structUdon_1_1Traits_1_1HasMemberFunctionShowRaw_3_01T_00_01std_1_1void__t_3_01decltype_07_6T_1_1showRaw_08_4_01_4.html", null ],
-      [ "Udon::Traits::HasMemberFunctionUpdate< T, std::void_t< decltype(&T::update)> >", "structUdon_1_1Traits_1_1HasMemberFunctionUpdate_3_01T_00_01std_1_1void__t_3_01decltype_07_6T_1_1update_08_4_01_4.html", null ]
+      [ "Udon::Traits::HasMemberFunctionBegin< T, std::void_t< decltype(&T::begin)> >", "structUdon_1_1Traits_1_1HasMemberFunctionBegin.html", null ],
+      [ "Udon::Traits::HasMemberFunctionShow< T, std::void_t< decltype(&T::show)> >", "structUdon_1_1Traits_1_1HasMemberFunctionShow.html", null ],
+      [ "Udon::Traits::HasMemberFunctionShowRaw< T, std::void_t< decltype(&T::showRaw)> >", "structUdon_1_1Traits_1_1HasMemberFunctionShowRaw.html", null ],
+      [ "Udon::Traits::HasMemberFunctionUpdate< T, std::void_t< decltype(&T::update)> >", "structUdon_1_1Traits_1_1HasMemberFunctionUpdate.html", null ]
     ] ],
     [ "Udon::Impl::IsPrintableImpl< OutputStream >", "structUdon_1_1Impl_1_1IsPrintableImpl.html", null ],
     [ "Udon::Impl::IsSerializableImpl", "structUdon_1_1Impl_1_1IsSerializableImpl.html", null ],
     [ "Udon::Message::Lcd< Column, Row >", "structUdon_1_1Message_1_1Lcd.html", null ],
+    [ "Udon::Message::Lcd< 16, 2 >", "structUdon_1_1Message_1_1Lcd.html", null ],
+    [ "Udon::Message::Lcd< 20, 4 >", "structUdon_1_1Message_1_1Lcd.html", null ],
     [ "Udon::Message::Motor", "structUdon_1_1Message_1_1Motor.html", null ],
     [ "Udon::MotorBy< Writer >", "classUdon_1_1MotorBy.html", null ],
     [ "Udon::MovingAverage< DataSize >", "classUdon_1_1MovingAverage.html", null ],
@@ -88,10 +100,14 @@ var hierarchy =
     [ "Udon::Optional< uint8_t >", "classUdon_1_1Optional.html", null ],
     [ "Udon::Message::PadPS5", "structUdon_1_1Message_1_1PadPS5.html", null ],
     [ "Udon::PadPS5BT", "classUdon_1_1PadPS5BT.html", [
-      [ "Udon::Impl::PadPS5OnboardBTReader< Dummy >", "classUdon_1_1Impl_1_1PadPS5OnboardBTReader.html", null ]
+      [ "Udon::Impl::PadPS5OnboardBTReader< Dummy >", "classUdon_1_1Impl_1_1PadPS5OnboardBTReader.html", [
+        [ "Udon::PadPS5< Impl::PadPS5OnboardBTReader >", "classUdon_1_1PadPS5.html", null ]
+      ] ]
     ] ],
     [ "Udon::PadPS5USB", "classUdon_1_1PadPS5USB.html", [
-      [ "Udon::Impl::PadPS5OnboardUSBReader< Dummy >", "classUdon_1_1Impl_1_1PadPS5OnboardUSBReader.html", null ]
+      [ "Udon::Impl::PadPS5OnboardUSBReader< Dummy >", "classUdon_1_1Impl_1_1PadPS5OnboardUSBReader.html", [
+        [ "Udon::PadPS5< Impl::PadPS5OnboardUSBReader >", "classUdon_1_1PadPS5.html", null ]
+      ] ]
     ] ],
     [ "Udon::PidController::Parameter", "structUdon_1_1PidController_1_1Parameter.html", null ],
     [ "Udon::SpeedPidController::Parameter", "structUdon_1_1SpeedPidController_1_1Parameter.html", null ],
@@ -122,7 +138,9 @@ var hierarchy =
     [ "Udon::Message::Servo", "structUdon_1_1Message_1_1Servo.html", null ],
     [ "Udon::ServoSpeed", "classUdon_1_1ServoSpeed.html", null ],
     [ "Udon::Impl::ShowConfig", "structUdon_1_1Impl_1_1ShowConfig.html", null ],
-    [ "Udon::Impl::SivPadPS5Reader< DummyMessage >", "classUdon_1_1Impl_1_1SivPadPS5Reader.html", null ],
+    [ "Udon::Impl::SivPadPS5Reader< DummyMessage >", "classUdon_1_1Impl_1_1SivPadPS5Reader.html", [
+      [ "Udon::PadPS5< Impl::SivPadPS5Reader >", "classUdon_1_1PadPS5.html", null ]
+    ] ],
     [ "Udon::SivSerialReader< Message >", "classUdon_1_1SivSerialReader.html", null ],
     [ "Udon::SivSerialWriter< Message >", "classUdon_1_1SivSerialWriter.html", null ],
     [ "Udon::Message::Solenoid", "structUdon_1_1Message_1_1Solenoid.html", null ],
@@ -136,19 +154,19 @@ var hierarchy =
     [ "Udon::Message::Switch", "structUdon_1_1Message_1_1Switch.html", null ],
     [ "Udon::Impl::IsPrintableImpl< OutputStream >::Test< T, typename >", "structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test.html", null ],
     [ "Udon::Impl::IsSerializableImpl::Test< T, typename >", "structUdon_1_1Impl_1_1IsSerializableImpl_1_1Test.html", null ],
-    [ "Udon::Impl::IsSerializableImpl::Test< Arithmetic, EnableIfVoidT< IsArithmetic< Arithmetic >::value > >", "structUdon_1_1Impl_1_1IsSerializableImpl_1_1Test_3_01Arithmetic_00_01EnableIfVoidT_3_01IsArithme904c16bf8775bc4b88a1ad244e08c1f5.html", null ],
-    [ "Udon::Impl::IsSerializableImpl::Test< Array, EnableIfVoidT< IsArray< Array >::value > >", "structUdon_1_1Impl_1_1IsSerializableImpl_1_1Test_3_01Array_00_01EnableIfVoidT_3_01IsArray_3_01Array_01_4_1_1value_01_4_01_4.html", null ],
-    [ "Udon::Impl::IsPrintableImpl< OutputStream >::Test< Array, EnableIfVoidT< IsArray< Array >::value and not IsCString< Array >::value and not IsOutputStreamable< OutputStream, Array >::value > >", "structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Array_00_01EnableIfVoidT_3_01IsArray_3_01Array1dba93aee3b76afe860dd5ce2e8450f1.html", null ],
-    [ "Udon::Impl::IsPrintableImpl< OutputStream >::Test< Enum, EnableIfVoidT< IsEnum< Enum >::value > >", "structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Enum_00_01EnableIfVoidT_3_01IsEnum_3_01Enum_01_4_1_1value_01_4_01_4.html", null ],
-    [ "Udon::Impl::IsSerializableImpl::Test< Enum, EnableIfVoidT< IsEnum< Enum >::value > >", "structUdon_1_1Impl_1_1IsSerializableImpl_1_1Test_3_01Enum_00_01EnableIfVoidT_3_01IsEnum_3_01Enum_01_4_1_1value_01_4_01_4.html", null ],
-    [ "Udon::Impl::IsSerializableImpl::Test< Enumerable, EnableIfVoidT< HasMemberFunctionEnumerate< Enumerable >::value > >", "structUdon_1_1Impl_1_1IsSerializableImpl_1_1Test_3_01Enumerable_00_01EnableIfVoidT_3_01HasMemberd56c095e6f6bf13306ca5b8e672280d7.html", null ],
-    [ "Udon::Impl::IsPrintableImpl< OutputStream >::Test< Enumerable, EnableIfVoidT< HasMemberFunctionEnumerate< Enumerable >::value and not HasMemberFunctionShow< Enumerable >::value and not IsOutputStreamable< OutputStream, Enumerable >::value > >", "structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Enumerable_00_01EnableIfVoidT_3_01HasMemberFun70fb8a133d43634b1e5b46a9537e3104.html", null ],
-    [ "Udon::Impl::IsPrintableImpl< OutputStream >::Test< Printable, EnableIfVoidT< HasMemberFunctionShow< Printable >::value or IsOutputStreamable< OutputStream, Printable >::value > >", "structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test_3_01Printable_00_01EnableIfVoidT_3_01HasMemberFunc15b5ba4bf8715386217ee42bd1ba7f8b.html", null ],
+    [ "Udon::Impl::IsSerializableImpl::Test< Arithmetic, EnableIfVoidT< IsArithmetic< Arithmetic >::value > >", "structUdon_1_1Impl_1_1IsSerializableImpl_1_1Test.html", null ],
+    [ "Udon::Impl::IsSerializableImpl::Test< Array, EnableIfVoidT< IsArray< Array >::value > >", "structUdon_1_1Impl_1_1IsSerializableImpl_1_1Test.html", null ],
+    [ "Udon::Impl::IsPrintableImpl< OutputStream >::Test< Array, EnableIfVoidT< IsArray< Array >::value and not IsCString< Array >::value and not IsOutputStreamable< OutputStream, Array >::value > >", "structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test.html", null ],
+    [ "Udon::Impl::IsPrintableImpl< OutputStream >::Test< Enum, EnableIfVoidT< IsEnum< Enum >::value > >", "structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test.html", null ],
+    [ "Udon::Impl::IsSerializableImpl::Test< Enum, EnableIfVoidT< IsEnum< Enum >::value > >", "structUdon_1_1Impl_1_1IsSerializableImpl_1_1Test.html", null ],
+    [ "Udon::Impl::IsSerializableImpl::Test< Enumerable, EnableIfVoidT< HasMemberFunctionEnumerate< Enumerable >::value > >", "structUdon_1_1Impl_1_1IsSerializableImpl_1_1Test.html", null ],
+    [ "Udon::Impl::IsPrintableImpl< OutputStream >::Test< Enumerable, EnableIfVoidT< HasMemberFunctionEnumerate< Enumerable >::value and not HasMemberFunctionShow< Enumerable >::value and not IsOutputStreamable< OutputStream, Enumerable >::value > >", "structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test.html", null ],
+    [ "Udon::Impl::IsPrintableImpl< OutputStream >::Test< Printable, EnableIfVoidT< HasMemberFunctionShow< Printable >::value or IsOutputStreamable< OutputStream, Printable >::value > >", "structUdon_1_1Impl_1_1IsPrintableImpl_1_1Test.html", null ],
     [ "std::true_type", null, [
-      [ "Udon::Traits::HasMemberFunctionEnumerate< T, typename std::enable_if< std::is_same< decltype(std::declval< T >().enumerate(std::declval< DummyEnumerator & >())), typename DummyEnumerator::ResultType >::value >::type >", "structUdon_1_1Traits_1_1HasMemberFunctionEnumerate_3_01T_00_01typename_01std_1_1enable__if_3_01sff0f025c1d5b2a39133ed2b0fcaf15dc.html", null ],
-      [ "Udon::Traits::IsOutputStreamable< OutputStream, T, std::void_t< decltype(std::declval< OutputStream & >()<< std::declval< T >())> >", "structUdon_1_1Traits_1_1IsOutputStreamable_3_01OutputStream_00_01T_00_01std_1_1void__t_3_01decltdeef1286ebbe867a1fa837ff072fac7c.html", null ],
-      [ "Udon::Traits::IsReader< T, typename std::enable_if< std::is_same< decltype(std::declval< T< int > >().getMessage()), Udon::Optional< typename T< int >::MessageType > >::value >::type >", "structUdon_1_1Traits_1_1IsReader_3_01T_00_01typename_01std_1_1enable__if_3_01std_1_1is__same_3_06e4865bf40f6370f1c61b96f7d348132.html", null ],
-      [ "Udon::Traits::IsWriter< T, typename std::enable_if< std::is_same< decltype(std::declval< T< int > >().setMessage(std::declval< const typename T< int >::MessageType & >())), void >::value >::type >", "structUdon_1_1Traits_1_1IsWriter_3_01T_00_01typename_01std_1_1enable__if_3_01std_1_1is__same_3_0e17e1ac5ec2035eb8694217d994bebd1.html", null ]
+      [ "Udon::Traits::HasMemberFunctionEnumerate< T, typename std::enable_if< std::is_same< decltype(std::declval< T >().enumerate(std::declval< DummyEnumerator & >())), typename DummyEnumerator::ResultType >::value >::type >", "structUdon_1_1Traits_1_1HasMemberFunctionEnumerate.html", null ],
+      [ "Udon::Traits::IsOutputStreamable< OutputStream, T, std::void_t< decltype(std::declval< OutputStream & >()<< std::declval< T >())> >", "structUdon_1_1Traits_1_1IsOutputStreamable.html", null ],
+      [ "Udon::Traits::IsReader< T, typename std::enable_if< std::is_same< decltype(std::declval< T< int > >().getMessage()), Udon::Optional< typename T< int >::MessageType > >::value >::type >", "structUdon_1_1Traits_1_1IsReader.html", null ],
+      [ "Udon::Traits::IsWriter< T, typename std::enable_if< std::is_same< decltype(std::declval< T< int > >().setMessage(std::declval< const typename T< int >::MessageType & >())), void >::value >::type >", "structUdon_1_1Traits_1_1IsWriter.html", null ]
     ] ],
     [ "Udon::Vec2", "structUdon_1_1Vec2.html", null ],
     [ "Udon::Vec3", "structUdon_1_1Vec3.html", null ],

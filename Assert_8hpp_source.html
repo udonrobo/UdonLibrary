@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="generator" content="Doxygen 1.13.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: src/Udon/Utility/Assert.hpp ソースファイル</title>
@@ -45,7 +45,7 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.12.0 -->
+<!-- 構築: Doxygen 1.13.1 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -115,16 +115,16 @@ $(function(){initNavTree('Assert_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span></div>
 <div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adb">    9</a></span>    <span class="keyword">enum class</span> <a class="code hl_enumeration" href="namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adb">AssertAction</a></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <a class="code hl_enumvalue" href="namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adba72ef2b9b6965d078e3c7f95487a82d1c">Skip</a>,    <span class="comment">// プログラムを中断しない</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <a class="code hl_enumvalue" href="namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adba727b63583e01fa2b3952dab580c84dc2">Abort</a>    <span class="comment">// プログラムを中断する (無限ループに陥る)</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adba72ef2b9b6965d078e3c7f95487a82d1c">   11</a></span>        <a class="code hl_enumvalue" href="namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adba72ef2b9b6965d078e3c7f95487a82d1c">Skip</a>,    <span class="comment">// プログラムを中断しない</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adba727b63583e01fa2b3952dab580c84dc2">   12</a></span>        <a class="code hl_enumvalue" href="namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adba727b63583e01fa2b3952dab580c84dc2">Abort</a>    <span class="comment">// プログラムを中断する (無限ループに陥る)</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    };</div>
 </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span></div>
 <div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="namespaceUdon.html#a0ee7cea3483a4d489e3578463788e37a">   20</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceUdon.html#a0ee7cea3483a4d489e3578463788e37a">Assert</a>(<span class="keywordtype">bool</span> expression, <span class="keyword">const</span> <span class="keywordtype">char</span>* <span class="keyword">const</span> message = <span class="stringliteral">&quot;&quot;</span>, <a class="code hl_enumeration" href="namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adb">AssertAction</a> action = <a class="code hl_enumvalue" href="namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adba727b63583e01fa2b3952dab580c84dc2">AssertAction::Abort</a>)</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    {</div>
@@ -152,8 +152,8 @@ $(function(){initNavTree('Assert_8hpp_source.html',''); initResizable(true); });
 <div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
 <div class="ttc" id="anamespaceUdon_html_a0ee7cea3483a4d489e3578463788e37a"><div class="ttname"><a href="namespaceUdon.html#a0ee7cea3483a4d489e3578463788e37a">Udon::Assert</a></div><div class="ttdeci">void Assert(bool expression, const char *const message=&quot;&quot;, AssertAction action=AssertAction::Abort)</div><div class="ttdoc">アサート</div><div class="ttdef"><b>Definition</b> Assert.hpp:20</div></div>
 <div class="ttc" id="anamespaceUdon_html_aab18b58d62367941f2e34d1d1fde4adb"><div class="ttname"><a href="namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adb">Udon::AssertAction</a></div><div class="ttdeci">AssertAction</div><div class="ttdoc">アサートが発生した場合の挙動</div><div class="ttdef"><b>Definition</b> Assert.hpp:10</div></div>
-<div class="ttc" id="anamespaceUdon_html_aab18b58d62367941f2e34d1d1fde4adba727b63583e01fa2b3952dab580c84dc2"><div class="ttname"><a href="namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adba727b63583e01fa2b3952dab580c84dc2">Udon::AssertAction::Abort</a></div><div class="ttdeci">@ Abort</div></div>
-<div class="ttc" id="anamespaceUdon_html_aab18b58d62367941f2e34d1d1fde4adba72ef2b9b6965d078e3c7f95487a82d1c"><div class="ttname"><a href="namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adba72ef2b9b6965d078e3c7f95487a82d1c">Udon::AssertAction::Skip</a></div><div class="ttdeci">@ Skip</div></div>
+<div class="ttc" id="anamespaceUdon_html_aab18b58d62367941f2e34d1d1fde4adba727b63583e01fa2b3952dab580c84dc2"><div class="ttname"><a href="namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adba727b63583e01fa2b3952dab580c84dc2">Udon::AssertAction::Abort</a></div><div class="ttdeci">@ Abort</div><div class="ttdef"><b>Definition</b> Assert.hpp:12</div></div>
+<div class="ttc" id="anamespaceUdon_html_aab18b58d62367941f2e34d1d1fde4adba72ef2b9b6965d078e3c7f95487a82d1c"><div class="ttname"><a href="namespaceUdon.html#aab18b58d62367941f2e34d1d1fde4adba72ef2b9b6965d078e3c7f95487a82d1c">Udon::AssertAction::Skip</a></div><div class="ttdeci">@ Skip</div><div class="ttdef"><b>Definition</b> Assert.hpp:11</div></div>
 <div class="ttc" id="anamespaceUdon_html_acb81b570489214c8e93be56f616b4fb6"><div class="ttname"><a href="namespaceUdon.html#acb81b570489214c8e93be56f616b4fb6">Udon::ShowRaw</a></div><div class="ttdeci">void ShowRaw(Args &amp;&amp;... args)</div><div class="ttdoc">改行、区切り文字なしで出力する</div><div class="ttdef"><b>Definition</b> Show.hpp:362</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

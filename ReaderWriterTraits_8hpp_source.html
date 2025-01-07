@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="generator" content="Doxygen 1.13.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: src/Udon/Traits/ReaderWriterTraits.hpp ソースファイル</title>
@@ -45,7 +45,7 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.12.0 -->
+<!-- 構築: Doxygen 1.13.1 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -123,9 +123,9 @@ $(function(){initNavTree('ReaderWriterTraits_8hpp_source.html',''); initResizabl
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">namespace </span>Traits</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon_1_1Traits.html">Traits</a></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keyword">template</span> &lt;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>&gt; <span class="keyword">class</span>, <span class="keyword">typename</span> = <span class="keywordtype">void</span>&gt;</div>
 <div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structUdon_1_1Traits_1_1IsWriter.html">   23</a></span>        <span class="keyword">struct </span><a class="code hl_struct" href="structUdon_1_1Traits_1_1IsWriter.html">IsWriter</a></div>
@@ -136,13 +136,13 @@ $(function(){initNavTree('ReaderWriterTraits_8hpp_source.html',''); initResizabl
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keyword">template</span> &lt;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>&gt; <span class="keyword">class </span>T&gt;</div>
 <div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structUdon_1_1Traits_1_1IsWriter_3_01T_00_01typename_01std_1_1enable__if_3_01std_1_1is__same_3_0e17e1ac5ec2035eb8694217d994bebd1.html">   29</a></span>        <span class="keyword">struct </span><a class="code hl_struct" href="structUdon_1_1Traits_1_1IsWriter.html">IsWriter</a>&lt;T, typename <a class="code hl_namespace" href="namespacestd.html">std</a>::enable_if&lt;std::is_same&lt;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structUdon_1_1Traits_1_1IsWriter.html">   29</a></span>        <span class="keyword">struct </span><a class="code hl_struct" href="structUdon_1_1Traits_1_1IsWriter.html">IsWriter</a>&lt;T, typename <a class="code hl_namespace" href="namespacestd.html">std</a>::enable_if&lt;std::is_same&lt;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                               decltype(std::declval&lt;T&lt;int&gt;&gt;().setMessage(std::declval&lt;const typename T&lt;int&gt;::MessageType&amp;&gt;())), void&gt;::value&gt;::type&gt;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            : std::true_type</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        {</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        };</div>
 </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keyword">template</span> &lt;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>&gt; <span class="keyword">class</span>, <span class="keyword">typename</span> = <span class="keywordtype">void</span>&gt;</div>
 <div class="foldopen" id="foldopen00040" data-start="{" data-end="};">
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structUdon_1_1Traits_1_1IsReader.html">   40</a></span>        <span class="keyword">struct </span><a class="code hl_struct" href="structUdon_1_1Traits_1_1IsReader.html">IsReader</a></div>
@@ -153,7 +153,7 @@ $(function(){initNavTree('ReaderWriterTraits_8hpp_source.html',''); initResizabl
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keyword">template</span> &lt;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>&gt; <span class="keyword">class </span>T&gt;</div>
 <div class="foldopen" id="foldopen00046" data-start="{" data-end="};">
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structUdon_1_1Traits_1_1IsReader_3_01T_00_01typename_01std_1_1enable__if_3_01std_1_1is__same_3_06e4865bf40f6370f1c61b96f7d348132.html">   46</a></span>        <span class="keyword">struct </span><a class="code hl_struct" href="structUdon_1_1Traits_1_1IsReader.html">IsReader</a>&lt;T, typename <a class="code hl_namespace" href="namespacestd.html">std</a>::enable_if&lt;std::is_same&lt;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structUdon_1_1Traits_1_1IsReader.html">   46</a></span>        <span class="keyword">struct </span><a class="code hl_struct" href="structUdon_1_1Traits_1_1IsReader.html">IsReader</a>&lt;T, typename <a class="code hl_namespace" href="namespacestd.html">std</a>::enable_if&lt;std::is_same&lt;</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                               decltype(std::declval&lt;T&lt;int&gt;&gt;().getMessage()), Udon::Optional&lt;typename T&lt;int&gt;::MessageType&gt;&gt;::value&gt;::type&gt;</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            : std::true_type</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        {</div>
@@ -164,6 +164,7 @@ $(function(){initNavTree('ReaderWriterTraits_8hpp_source.html',''); initResizabl
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>}    <span class="comment">// namespace Udon</span></div>
 <div class="ttc" id="aEnableSTL_8hpp_html"><div class="ttname"><a href="EnableSTL_8hpp.html">EnableSTL.hpp</a></div></div>
+<div class="ttc" id="anamespaceUdon_1_1Traits_html"><div class="ttname"><a href="namespaceUdon_1_1Traits.html">Udon::Traits</a></div><div class="ttdef"><b>Definition</b> SerializerTraits.hpp:92</div></div>
 <div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
 <div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition</b> Typedef.hpp:94</div></div>
 <div class="ttc" id="astructUdon_1_1Traits_1_1IsReader_html"><div class="ttname"><a href="structUdon_1_1Traits_1_1IsReader.html">Udon::Traits::IsReader</a></div><div class="ttdoc">送信クラスであるか判定</div><div class="ttdef"><b>Definition</b> ReaderWriterTraits.hpp:42</div></div>

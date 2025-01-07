@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="generator" content="Doxygen 1.13.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: src/Udon/Com/Driver/Encoder.hpp ソースファイル</title>
@@ -45,7 +45,7 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.12.0 -->
+<!-- 構築: Doxygen 1.13.1 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -129,10 +129,10 @@ $(function(){initNavTree('Driver_2Encoder_8hpp_source.html',''); initResizable(t
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">template</span> &lt;<span class="keyword">template</span> &lt;<span class="keyword">typename</span>&gt; <span class="keyword">class </span>Reader&gt;</div>
 <div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classUdon_1_1EncoderBy.html">   25</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classUdon_1_1EncoderBy.html">EncoderBy</a></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classUdon_1_1EncoderBy.html">   25</a></span>    <span class="keyword">class </span><a class="code hl_function" href="classUdon_1_1EncoderBy.html#a99763033b227c62a8cf31bc2f5e25cbf">EncoderBy</a></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    {</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keyword">static_assert</span>(<a class="code hl_struct" href="structUdon_1_1Traits_1_1IsReader.html">Traits::IsReader&lt;Reader&gt;::value</a>, <span class="stringliteral">&quot;Reader is not reader&quot;</span>);</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
@@ -158,7 +158,7 @@ $(function(){initNavTree('Driver_2Encoder_8hpp_source.html',''); initResizable(t
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        {</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        }</div>
 </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span></div>
 <div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classUdon_1_1EncoderBy.html#a4c826bf3feaf0d7b483be0fda2eb425e">   54</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1EncoderBy.html#a4c826bf3feaf0d7b483be0fda2eb425e">update</a>()</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        {</div>
@@ -175,31 +175,31 @@ $(function(){initNavTree('Driver_2Encoder_8hpp_source.html',''); initResizable(t
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            deltaCount = curr - prev;</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            speed = deltaCount / deltaTime.<a class="code hl_function" href="classUdon_1_1DeltaTime.html#a4ff2b9b7a9aac6557a8d6193a9242782">update</a>().<a class="code hl_function" href="classUdon_1_1DeltaTime.html#a4d2835217dced4a2c0bc108bf3eec104">getDeltaTimeS</a>();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            speed = deltaCount / deltaTime.update().getDeltaTimeS();</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        }</div>
 </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span></div>
 <div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classUdon_1_1EncoderBy.html#ac73c215a22e4987ad00cd71f9eff429c">   74</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classUdon_1_1EncoderBy.html#ac73c215a22e4987ad00cd71f9eff429c">setOffset</a>(int32_t value = 0)</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        {</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            offsetCount = count - value;</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        }</div>
 </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span></div>
 <div class="foldopen" id="foldopen00081" data-start="{" data-end="}">
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classUdon_1_1EncoderBy.html#ab0b60eb7920d4527b4178df7cc8336a4">   81</a></span>        int32_t <a class="code hl_function" href="classUdon_1_1EncoderBy.html#ab0b60eb7920d4527b4178df7cc8336a4">getCount</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <span class="keywordflow">return</span> count - offsetCount;</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        }</div>
 </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span></div>
 <div class="foldopen" id="foldopen00088" data-start="{" data-end="}">
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classUdon_1_1EncoderBy.html#ade44c027f2ce2fa845526da01cb0edeb">   88</a></span>        int32_t <a class="code hl_function" href="classUdon_1_1EncoderBy.html#ade44c027f2ce2fa845526da01cb0edeb">getDeltaCount</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            <span class="keywordflow">return</span> deltaCount;</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        }</div>
 </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span></div>
 <div class="foldopen" id="foldopen00095" data-start="{" data-end="}">
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classUdon_1_1EncoderBy.html#ae0c12d59e84f6b66c6e20d3c7be54aa0">   95</a></span>        <span class="keywordtype">double</span> <a class="code hl_function" href="classUdon_1_1EncoderBy.html#ae0c12d59e84f6b66c6e20d3c7be54aa0">getSpeed</a>()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keyword">        </span>{</div>
@@ -226,9 +226,6 @@ $(function(){initNavTree('Driver_2Encoder_8hpp_source.html',''); initResizable(t
 <div class="ttc" id="aPrintf_8hpp_html"><div class="ttname"><a href="Printf_8hpp.html">Printf.hpp</a></div></div>
 <div class="ttc" id="aReaderWriterTraits_8hpp_html"><div class="ttname"><a href="ReaderWriterTraits_8hpp.html">ReaderWriterTraits.hpp</a></div></div>
 <div class="ttc" id="aclassUdon_1_1DeltaTime_html"><div class="ttname"><a href="classUdon_1_1DeltaTime.html">Udon::DeltaTime</a></div><div class="ttdoc">変化時間計測クラス</div><div class="ttdef"><b>Definition</b> DeltaTime.hpp:16</div></div>
-<div class="ttc" id="aclassUdon_1_1DeltaTime_html_a4d2835217dced4a2c0bc108bf3eec104"><div class="ttname"><a href="classUdon_1_1DeltaTime.html#a4d2835217dced4a2c0bc108bf3eec104">Udon::DeltaTime::getDeltaTimeS</a></div><div class="ttdeci">double getDeltaTimeS() const</div><div class="ttdoc">経過時間を取得</div><div class="ttdef"><b>Definition</b> DeltaTime.hpp:48</div></div>
-<div class="ttc" id="aclassUdon_1_1DeltaTime_html_a4ff2b9b7a9aac6557a8d6193a9242782"><div class="ttname"><a href="classUdon_1_1DeltaTime.html#a4ff2b9b7a9aac6557a8d6193a9242782">Udon::DeltaTime::update</a></div><div class="ttdeci">DeltaTime &amp; update()</div><div class="ttdoc">更新</div><div class="ttdef"><b>Definition</b> DeltaTime.hpp:32</div></div>
-<div class="ttc" id="aclassUdon_1_1EncoderBy_html"><div class="ttname"><a href="classUdon_1_1EncoderBy.html">Udon::EncoderBy</a></div><div class="ttdoc">通信経由ロータリーエンコーダー</div><div class="ttdef"><b>Definition</b> Encoder.hpp:26</div></div>
 <div class="ttc" id="aclassUdon_1_1EncoderBy_html_a4c826bf3feaf0d7b483be0fda2eb425e"><div class="ttname"><a href="classUdon_1_1EncoderBy.html#a4c826bf3feaf0d7b483be0fda2eb425e">Udon::EncoderBy::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">更新</div><div class="ttdef"><b>Definition</b> Encoder.hpp:54</div></div>
 <div class="ttc" id="aclassUdon_1_1EncoderBy_html_a99763033b227c62a8cf31bc2f5e25cbf"><div class="ttname"><a href="classUdon_1_1EncoderBy.html#a99763033b227c62a8cf31bc2f5e25cbf">Udon::EncoderBy::EncoderBy</a></div><div class="ttdeci">EncoderBy(ReaderType &amp;&amp;reader, Udon::Direction direction=Udon::Direction::Forward)</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition</b> Encoder.hpp:46</div></div>
 <div class="ttc" id="aclassUdon_1_1EncoderBy_html_ab0b60eb7920d4527b4178df7cc8336a4"><div class="ttname"><a href="classUdon_1_1EncoderBy.html#ab0b60eb7920d4527b4178df7cc8336a4">Udon::EncoderBy::getCount</a></div><div class="ttdeci">int32_t getCount() const</div><div class="ttdoc">カウント値を取得</div><div class="ttdef"><b>Definition</b> Encoder.hpp:81</div></div>
@@ -239,7 +236,7 @@ $(function(){initNavTree('Driver_2Encoder_8hpp_source.html',''); initResizable(t
 <div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
 <div class="ttc" id="anamespaceUdon_html_a972d1c6c630fb2bad9754ae3aca03354"><div class="ttname"><a href="namespaceUdon.html#a972d1c6c630fb2bad9754ae3aca03354">Udon::DirectionToSign</a></div><div class="ttdeci">int DirectionToSign(Direction direction)</div><div class="ttdef"><b>Definition</b> Direction.hpp:14</div></div>
 <div class="ttc" id="anamespaceUdon_html_aae9957ca3d520d1679c6125f12f25b48"><div class="ttname"><a href="namespaceUdon.html#aae9957ca3d520d1679c6125f12f25b48">Udon::Direction</a></div><div class="ttdeci">Direction</div><div class="ttdoc">方向</div><div class="ttdef"><b>Definition</b> Direction.hpp:9</div></div>
-<div class="ttc" id="anamespaceUdon_html_aae9957ca3d520d1679c6125f12f25b48a67d2f6740a8eaebf4d5c6f79be8da481"><div class="ttname"><a href="namespaceUdon.html#aae9957ca3d520d1679c6125f12f25b48a67d2f6740a8eaebf4d5c6f79be8da481">Udon::Direction::Forward</a></div><div class="ttdeci">@ Forward</div></div>
+<div class="ttc" id="anamespaceUdon_html_aae9957ca3d520d1679c6125f12f25b48a67d2f6740a8eaebf4d5c6f79be8da481"><div class="ttname"><a href="namespaceUdon.html#aae9957ca3d520d1679c6125f12f25b48a67d2f6740a8eaebf4d5c6f79be8da481">Udon::Direction::Forward</a></div><div class="ttdeci">@ Forward</div><div class="ttdef"><b>Definition</b> Direction.hpp:10</div></div>
 <div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition</b> Typedef.hpp:94</div></div>
 <div class="ttc" id="astructUdon_1_1Traits_1_1IsReader_html"><div class="ttname"><a href="structUdon_1_1Traits_1_1IsReader.html">Udon::Traits::IsReader</a></div><div class="ttdoc">送信クラスであるか判定</div><div class="ttdef"><b>Definition</b> ReaderWriterTraits.hpp:42</div></div>
 </div><!-- fragment --></div><!-- contents -->

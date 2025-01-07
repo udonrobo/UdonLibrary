@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="generator" content="Doxygen 1.13.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: src/Udon/Driver/EncoderPico.hpp ソースファイル</title>
@@ -45,7 +45,7 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.12.0 -->
+<!-- 構築: Doxygen 1.13.1 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -127,7 +127,7 @@ $(function(){initNavTree('EncoderPico_8hpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">class </span>EncoderPico</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    {</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        uint8_t pinA;</div>
@@ -145,7 +145,7 @@ $(function(){initNavTree('EncoderPico_8hpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            , stateMachine()</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        {</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        }</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span></div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordtype">bool</span> begin()</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        {</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <span class="keywordflow">if</span> (abs(pinA - pinB) != 1)</div>
@@ -171,12 +171,12 @@ $(function(){initNavTree('EncoderPico_8hpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        }</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span></div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        int32_t read()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <span class="keywordflow">return</span> Pio::Encoder::quadrature_encoder_get_count(stateMachine.pio, stateMachine.index) * <a class="code hl_function" href="namespaceUdon.html#a972d1c6c630fb2bad9754ae3aca03354">Udon::DirectionToSign</a>(direction);</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        }</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span></div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordtype">void</span> show()<span class="keyword"> const</span></div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keyword">        </span>{</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            Serial.print(read());</div>
@@ -192,7 +192,7 @@ $(function(){initNavTree('EncoderPico_8hpp_source.html',''); initResizable(true)
 <div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
 <div class="ttc" id="anamespaceUdon_html_a972d1c6c630fb2bad9754ae3aca03354"><div class="ttname"><a href="namespaceUdon.html#a972d1c6c630fb2bad9754ae3aca03354">Udon::DirectionToSign</a></div><div class="ttdeci">int DirectionToSign(Direction direction)</div><div class="ttdef"><b>Definition</b> Direction.hpp:14</div></div>
 <div class="ttc" id="anamespaceUdon_html_aae9957ca3d520d1679c6125f12f25b48"><div class="ttname"><a href="namespaceUdon.html#aae9957ca3d520d1679c6125f12f25b48">Udon::Direction</a></div><div class="ttdeci">Direction</div><div class="ttdoc">方向</div><div class="ttdef"><b>Definition</b> Direction.hpp:9</div></div>
-<div class="ttc" id="anamespaceUdon_html_aae9957ca3d520d1679c6125f12f25b48a67d2f6740a8eaebf4d5c6f79be8da481"><div class="ttname"><a href="namespaceUdon.html#aae9957ca3d520d1679c6125f12f25b48a67d2f6740a8eaebf4d5c6f79be8da481">Udon::Direction::Forward</a></div><div class="ttdeci">@ Forward</div></div>
+<div class="ttc" id="anamespaceUdon_html_aae9957ca3d520d1679c6125f12f25b48a67d2f6740a8eaebf4d5c6f79be8da481"><div class="ttname"><a href="namespaceUdon.html#aae9957ca3d520d1679c6125f12f25b48a67d2f6740a8eaebf4d5c6f79be8da481">Udon::Direction::Forward</a></div><div class="ttdeci">@ Forward</div><div class="ttdef"><b>Definition</b> Direction.hpp:10</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! --></div>

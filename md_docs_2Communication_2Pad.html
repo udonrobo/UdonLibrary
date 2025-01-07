@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="generator" content="Doxygen 1.13.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: PS5 コントローラー</title>
@@ -45,7 +45,7 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.12.0 -->
+<!-- 構築: Doxygen 1.13.1 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -150,24 +150,27 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="PadPS5BT_8hpp.html">Udon/Com/Pad/PadPS5BT.hpp</a>&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1PadPS5.html">Udon::PadPS5OnboardBT</a> pad;</div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_typedef" href="namespaceUdon.html#a3e56fbc7293f78c5eb50bc0cf3214710">Udon::PadPS5OnboardBT</a> pad;</div>
 <div class="ttc" id="aPadPS5BT_8hpp_html"><div class="ttname"><a href="PadPS5BT_8hpp.html">PadPS5BT.hpp</a></div></div>
 <div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
+<div class="ttc" id="anamespaceUdon_html_a3e56fbc7293f78c5eb50bc0cf3214710"><div class="ttname"><a href="namespaceUdon.html#a3e56fbc7293f78c5eb50bc0cf3214710">Udon::PadPS5OnboardBT</a></div><div class="ttdeci">PadPS5&lt; Impl::PadPS5OnboardBTReader &gt; PadPS5OnboardBT</div><div class="ttdef"><b>Definition</b> PadPS5BT.hpp:186</div></div>
 </div><!-- fragment --></li>
 <li><p class="startli">メインマイコンと USB ホストシールドが直接接続されている場合 (USB 使用時)</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="PadPS5USB_8hpp.html">Udon/Com/Pad/PadPS5USB.hpp</a>&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1PadPS5.html">Udon::PadPS5OnboardUSB</a> pad;</div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_typedef" href="namespaceUdon.html#a907d63f1f0c5d066e293cb88a7ce5737">Udon::PadPS5OnboardUSB</a> pad;</div>
 <div class="ttc" id="aPadPS5USB_8hpp_html"><div class="ttname"><a href="PadPS5USB_8hpp.html">PadPS5USB.hpp</a></div></div>
+<div class="ttc" id="anamespaceUdon_html_a907d63f1f0c5d066e293cb88a7ce5737"><div class="ttname"><a href="namespaceUdon.html#a907d63f1f0c5d066e293cb88a7ce5737">Udon::PadPS5OnboardUSB</a></div><div class="ttdeci">PadPS5&lt; Impl::PadPS5OnboardUSBReader &gt; PadPS5OnboardUSB</div><div class="ttdef"><b>Definition</b> PadPS5USB.hpp:176</div></div>
 </div><!-- fragment --></li>
 <li>OpenSiv3D を使用している場合</li>
 </ul>
 <blockquote class="doxtable">
 <p>&zwj;PC と USB ケーブルで接続すると使用できます。 </p>
 </blockquote>
-<div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1PadPS5.html">Udon::SivPadPS5</a> pad;</div>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code hl_typedef" href="namespaceUdon.html#a4b5d3b294d6e954b48868d836bd9a427">Udon::SivPadPS5</a> pad;</div>
 <div class="line"><span class="comment">// static Udon::SivPadPS5 pad{ index };  // 複数コントローラを使用する場合</span></div>
+<div class="ttc" id="anamespaceUdon_html_a4b5d3b294d6e954b48868d836bd9a427"><div class="ttname"><a href="namespaceUdon.html#a4b5d3b294d6e954b48868d836bd9a427">Udon::SivPadPS5</a></div><div class="ttdeci">PadPS5&lt; Impl::SivPadPS5Reader &gt; SivPadPS5</div><div class="ttdoc">OpenSiv3D用 PS5コントローラー</div><div class="ttdef"><b>Definition</b> SivPadPS5.hpp:81</div></div>
 </div><!-- fragment --><p></p>
 </details>
 <h1><a class="anchor" id="autotoc_md80"></a>
@@ -175,8 +178,9 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <p>本クラスは通信の管理は行わず、受信クラスから受け取ったデータの解析のみを行います。故に <code>begin</code> メンバ関数はありません。通信の開始処理が必要な受信クラスを使用している場合、通信開始処理を行う必要があります。</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> setup()</div>
 <div class="line">{</div>
-<div class="line">    pad.begin();  <span class="comment">// 受信クラスに開始処理を行うメンバ関数がある場合</span></div>
+<div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5BT.html#ad338ca40274ce971b92063d480a0e512">begin</a>();  <span class="comment">// 受信クラスに開始処理を行うメンバ関数がある場合</span></div>
 <div class="line">}</div>
+<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_ad338ca40274ce971b92063d480a0e512"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#ad338ca40274ce971b92063d480a0e512">Udon::PadPS5BT::begin</a></div><div class="ttdeci">bool begin()</div><div class="ttdoc">コントローラーと通信開始</div><div class="ttdef"><b>Definition</b> PadPS5BT.hpp:53</div></div>
 </div><!-- fragment --><blockquote class="doxtable">
 <p>&zwj;<code>PadPS5</code> クラスに <code>begin</code> メンバ関数がないのに呼び出せているのは、<code>PadPS5</code> クラスが受信クラスを継承していて、受信クラスの <code>begin</code> メンバ関数を引き継いでいるためです。 </p>
 </blockquote>
@@ -306,9 +310,9 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="ttc" id="astructUdon_1_1Vec2_html_aa41b9596dd6fd8353630210413608eb4"><div class="ttname"><a href="structUdon_1_1Vec2.html#aa41b9596dd6fd8353630210413608eb4">Udon::Vec2::x</a></div><div class="ttdeci">ValueType x</div><div class="ttdoc">X成分</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:28</div></div>
 </div><!-- fragment --> </blockquote>
 <p>また、<code>Stick</code> オブジェクトを取得できる関数もあります。<code>Stick</code> オブジェクトとはロボットの移動に必要な入力成分 (移動: 左 X,Y、旋回: 右 X) をまとめたオブジェクトで、このオブジェクトを用いてオムニホイールの出力値を求めたりすることもできます。</p>
-<div class="fragment"><div class="line"><a class="code hl_struct" href="structUdon_1_1Pos.html">Udon::Stick</a> stick = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">getMoveInfo</a>();</div>
+<div class="fragment"><div class="line"><a class="code hl_typedef" href="namespaceUdon.html#a70cd4167d3899ade2c3d2b06fde45019">Udon::Stick</a> stick = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">getMoveInfo</a>();</div>
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_a2fe0419f3bc5b65f01549ea916435f95"><div class="ttname"><a href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">Udon::PadPS5::getMoveInfo</a></div><div class="ttdeci">Stick getMoveInfo() const noexcept</div><div class="ttdoc">ロボットの移動に必要なスティックの情報 Udon::Stick オブジェクト {{x,y},turn} を取得</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:140</div></div>
-<div class="ttc" id="astructUdon_1_1Pos_html"><div class="ttname"><a href="structUdon_1_1Pos.html">Udon::Pos</a></div><div class="ttdoc">ロボットの位置</div><div class="ttdef"><b>Definition</b> Position.hpp:26</div></div>
+<div class="ttc" id="anamespaceUdon_html_a70cd4167d3899ade2c3d2b06fde45019"><div class="ttname"><a href="namespaceUdon.html#a70cd4167d3899ade2c3d2b06fde45019">Udon::Stick</a></div><div class="ttdeci">Pos Stick</div><div class="ttdef"><b>Definition</b> Position.hpp:259</div></div>
 </div><!-- fragment --><blockquote class="doxtable">
 <p>&zwj;<code>Stick</code> オブジェクトは以下の様に定義されています。</p>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>Stick</div>
@@ -329,7 +333,7 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup()</div>
 <div class="line">{</div>
-<div class="line">    Serial.begin(115200);</div>
+<div class="line">    Serial.<a class="code hl_function" href="classUdon_1_1PadPS5BT.html#ad338ca40274ce971b92063d480a0e512">begin</a>(115200);</div>
 <div class="line">    bus.<a class="code hl_function" href="classUdon_1_1CanBusTeensy.html#a634246d48d846fee09ab4c3259f18b26">begin</a>();</div>
 <div class="line">}</div>
 <div class="line"> </div>
@@ -366,21 +370,25 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <p>コントローラに内蔵されている LED や、バイブレーションを動作させられます。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1PadPS5.html">Udon::PadPS5OnboardBT</a> pad;</div>
+<div class="line"><span class="keyword">static</span> <a class="code hl_typedef" href="namespaceUdon.html#a3e56fbc7293f78c5eb50bc0cf3214710">Udon::PadPS5OnboardBT</a> pad;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup()</div>
 <div class="line">{</div>
-<div class="line">    pad.begin();</div>
+<div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5BT.html#ad338ca40274ce971b92063d480a0e512">begin</a>();</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a15b3621e40e64997b11f7998169650c9">update</a>();</div>
-<div class="line">    pad.setLightBar({ 0x38b48b });   <span class="comment">// タッチパネルサイドLED (色指定可能)</span></div>
-<div class="line">    pad.setMicLed(<span class="keyword">true</span>);             <span class="comment">// マイクLED</span></div>
-<div class="line">    pad.setPlayerLamp();             <span class="comment">// タッチパネル下部LED (5つ)</span></div>
-<div class="line">    pad.vibrate(100, 100);           <span class="comment">// 左右バイブレーションモーター</span></div>
+<div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5BT.html#a6a51b8144b41d6269556ba7324db2784">setLightBar</a>({ 0x38b48b });   <span class="comment">// タッチパネルサイドLED (色指定可能)</span></div>
+<div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5BT.html#a72e5bbdad9c856e7c29d66c5c2cb6756">setMicLed</a>(<span class="keyword">true</span>);             <span class="comment">// マイクLED</span></div>
+<div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5BT.html#a1506d58d8f2fa00ebc6b560e5420acce">setPlayerLamp</a>();             <span class="comment">// タッチパネル下部LED (5つ)</span></div>
+<div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5BT.html#a1b68d42d860eb3fa3c2fbade55434e60">vibrate</a>(100, 100);           <span class="comment">// 左右バイブレーションモーター</span></div>
 <div class="line">}</div>
+<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_a1506d58d8f2fa00ebc6b560e5420acce"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#a1506d58d8f2fa00ebc6b560e5420acce">Udon::PadPS5BT::setPlayerLamp</a></div><div class="ttdeci">void setPlayerLamp(uint8_t mask=0b011)</div><div class="ttdoc">5つのプレイヤーのランプの点灯を設定する</div><div class="ttdef"><b>Definition</b> PadPS5BT.hpp:135</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_a1b68d42d860eb3fa3c2fbade55434e60"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#a1b68d42d860eb3fa3c2fbade55434e60">Udon::PadPS5BT::vibrate</a></div><div class="ttdeci">void vibrate(uint8_t big=100, uint8_t small=100)</div><div class="ttdoc">バイブレーション</div><div class="ttdef"><b>Definition</b> PadPS5BT.hpp:150</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_a6a51b8144b41d6269556ba7324db2784"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#a6a51b8144b41d6269556ba7324db2784">Udon::PadPS5BT::setLightBar</a></div><div class="ttdeci">void setLightBar(const Udon::RGB &amp;color)</div><div class="ttdoc">ライトバーの色を設定する</div><div class="ttdef"><b>Definition</b> PadPS5BT.hpp:125</div></div>
+<div class="ttc" id="aclassUdon_1_1PadPS5BT_html_a72e5bbdad9c856e7c29d66c5c2cb6756"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#a72e5bbdad9c856e7c29d66c5c2cb6756">Udon::PadPS5BT::setMicLed</a></div><div class="ttdeci">void setMicLed(bool on=true)</div><div class="ttdoc">マイクのLEDの点灯を設定する</div><div class="ttdef"><b>Definition</b> PadPS5BT.hpp:142</div></div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
