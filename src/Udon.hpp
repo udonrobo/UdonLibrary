@@ -76,7 +76,7 @@
 //
 
 // SDカード
-#include <Udon/Filesystem/Sd/Parameter.hpp>
+// #include <Udon/Filesystem/Sd/Parameter.hpp>
 
 
 //
@@ -156,7 +156,7 @@
 #include <Udon/Types/StaticVector.hpp>
 
 // コンテナ / リングバッファ
-#include <Udon/Types/RingBuffer.hpp>
+// #include <Udon/Types/RingBuffer.hpp>
 
 
 //
