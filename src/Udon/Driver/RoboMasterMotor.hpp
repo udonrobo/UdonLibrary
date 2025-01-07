@@ -223,7 +223,7 @@ namespace Udon
 
         /// @brief モーターの電流を設定
         /// @param current 電流値 [-20000, 20000] (単位: mA)
-        void setCurrent(int16_t current)
+        void setCurrent(int16_t current) override
         {
             RoboMasterBase::setRawCurrent(Constrain(current, getCurrentRange()));
         }
