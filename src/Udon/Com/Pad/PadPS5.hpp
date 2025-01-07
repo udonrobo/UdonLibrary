@@ -1,7 +1,7 @@
 //
 //    PS5コントローラー受信クラス
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 //    Controller --> Sender --> Master
 //                              ^^^^^^

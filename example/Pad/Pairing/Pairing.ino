@@ -7,7 +7,7 @@
 //        3. コントローラーのLEDが点滅し始める
 //        4. ペアリングが完了するとLEDが点灯する
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 #include <UdonFwd.hpp>

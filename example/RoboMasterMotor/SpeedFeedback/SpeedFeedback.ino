@@ -1,7 +1,7 @@
 //
 //    ロボマスモーター速度フィードバック制御
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 #include <Udon.hpp>

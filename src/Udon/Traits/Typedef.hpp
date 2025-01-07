@@ -1,7 +1,7 @@
 //
 //    C++11 での型定義の簡略化
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 

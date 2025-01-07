@@ -2,7 +2,7 @@
 //    サーボの動く速さを調整するクラス
 //
 //    Copyright (c) 2022-2023 fujimoto ryo
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 //

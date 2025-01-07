@@ -1,7 +1,7 @@
 //
 //    メンバ変数の列挙を可能にするマクロ
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 #pragma once

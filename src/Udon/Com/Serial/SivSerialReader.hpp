@@ -1,7 +1,7 @@
 //
 //    OpenSiv3D用 Serial 受信クラス
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 //    Sender --[Serial]--> Receiver
 //                       ^^^^^^^^

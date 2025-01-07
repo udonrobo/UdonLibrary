@@ -1,7 +1,7 @@
 //
 //    I2c 通信
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 #pragma once

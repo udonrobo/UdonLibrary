@@ -1,7 +1,7 @@
 //
 //    I2c マスター側受信クラス
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 //

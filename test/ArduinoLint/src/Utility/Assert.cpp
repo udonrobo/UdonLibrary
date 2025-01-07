@@ -1,7 +1,7 @@
 //
 //    Raspberry Pi Pico 用ウォッチドックタイマー
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 #include <Arduino.h>

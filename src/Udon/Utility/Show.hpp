@@ -1,7 +1,7 @@
 //
 //    全プラットフォームで使用可能な表示関数
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 #pragma once

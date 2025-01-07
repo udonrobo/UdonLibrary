@@ -2,7 +2,7 @@
 //    SD カードパラーメーター保存 スケッチ例
 //
 //    Copyright (c) 2022-2023 Maeda Tomoki
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 //    teensy のみ対応
 //

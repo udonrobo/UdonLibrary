@@ -1,7 +1,7 @@
 //
 //    二次元ベクトル
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 #pragma once

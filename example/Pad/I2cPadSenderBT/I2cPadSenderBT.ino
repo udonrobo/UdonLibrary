@@ -1,7 +1,7 @@
 //
 //    PS5コントローラー送信クラス スケッチ例 (I2C)
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 //    Controller --[Bluetooth]--> USBHost --[SPI]--> Sender --> 
 //                                                   ^^^^^^

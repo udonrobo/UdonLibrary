@@ -1,7 +1,7 @@
 #
 #    Serialization Test
 #
-#    Copyright (c) 2022-2024 udonrobo
+#    Copyright (c) 2022 udonrobo
 #
 
 cmake_minimum_required(VERSION 3.14)

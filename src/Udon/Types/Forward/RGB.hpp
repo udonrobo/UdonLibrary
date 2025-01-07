@@ -1,7 +1,7 @@
 //
 //    RGB色空間 前方定義
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 #pragma once

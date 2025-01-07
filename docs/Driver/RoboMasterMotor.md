@@ -141,7 +141,7 @@ static Udon::RoboMasterC620 motor{ bus, 1 };
 
 ```cpp
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 #include <Udon.hpp>
@@ -172,7 +172,7 @@ void loop()
 
 ```cpp
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 #include <Udon.hpp>
@@ -216,7 +216,7 @@ void loop()
 
 ```cpp
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 //    MotorSpeedFeedback.hpp
 //
@@ -253,7 +253,7 @@ public:
 
 ```cpp
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 //    Main.ino
 //

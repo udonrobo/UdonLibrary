@@ -4,7 +4,7 @@
 //    Copyright (c) 2014 Christopher Korman
 //    Copyright (c) 2014 John Maddock
 //    Copyright (c) 2014 Paul Bristow
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 #pragma once

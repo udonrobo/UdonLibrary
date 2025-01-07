@@ -1,7 +1,7 @@
 //
 //    送受信者要件を満たすか判定する
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 #pragma once

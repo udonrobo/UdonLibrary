@@ -1,7 +1,7 @@
 //
 //    シリアライズ可能か判定するメタ関数
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 #pragma once

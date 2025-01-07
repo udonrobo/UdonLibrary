@@ -1,7 +1,7 @@
 //
 //    有線USB経由 PS5コントローラークラス
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 //    Controller --[USB]--> USBHost --[SPI]--> Sender -->
 //                                             ^^^^^^

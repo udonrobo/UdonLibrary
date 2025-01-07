@@ -1,7 +1,7 @@
 //
 //    thirdparty ライブラリとの衝突を防ぐテスト
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 // ローカル環境でテストする場合、ライブラリがインストールされている場合のみテストする

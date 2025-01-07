@@ -1,7 +1,7 @@
 //
 //    オイラー角 前方定義
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 

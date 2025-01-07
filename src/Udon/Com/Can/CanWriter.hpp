@@ -1,7 +1,7 @@
 //
 //    CAN通信 送信クラス
 //
-//    Copyright (c) 2022-2024 udonrobo
+//    Copyright (c) 2022 udonrobo
 //
 
 #pragma once
