@@ -32,7 +32,7 @@ void loop()
     const double targetSpeed = 5000;
 
     // 速度フィードバック制御をして目標速度に制御する
-    const double ctrlPower = pid(motor.getVelocity(), targetSpeed, motor.CurrentMin, motor.CurrentMax);
+    const double ctrlPower = pid(motor.getVelocity(), targetSpeed);
     motor.setCurrent(ctrlPower);
 
     loopCtrl.update();
