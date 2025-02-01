@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.13.1"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: シリアライザ</title>
@@ -45,7 +45,7 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.13.1 -->
+<!-- 構築: Doxygen 1.13.2 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -112,7 +112,7 @@ $(function(){initNavTree('md_docs_2Other_2Serialization.html',''); initResizable
 <div class="textblock"><p><a class="anchor" id="autotoc_md209"></a></p>
 <p>オブジェクトのバイト列化、バイト列からオブジェクトへの復元を行います。主に通信クラス内部で使用されています。</p>
 <blockquote class="doxtable">
-<p>&zwj;使用例</p>
+<p>使用例</p>
 <div class="fragment"><div class="line">flowchart LR</div>
 <div class="line">    subgraph マイコン</div>
 <div class="line">    まいこんおぶ[オブジェクト] --シリアライズ--&gt; a[バイト列]</div>
@@ -157,7 +157,7 @@ $(function(){initNavTree('md_docs_2Other_2Serialization.html',''); initResizable
 <p>バイト列をオブジェクトに復元するには <code><a class="el" href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef" title="バイト列からオブジェクトに逆シリアル化します">Udon::Deserialize</a>&lt;T&gt;(...)</code> を使用します。 <code><a class="el" href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef" title="バイト列からオブジェクトに逆シリアル化します">Udon::Deserialize</a></code> はデシリアライズされたオブジェクトを <code><a class="el" href="classUdon_1_1Optional.html" title="オプショナル型">Udon::Optional</a></code> でラップして返します。</p>
 <p><code>Optional</code> 型とは値とエラー値を持つ型で、<code>Optional::operator bool()</code> を呼び出すことで次のように if 文でエラー判定可能です。</p>
 <blockquote class="doxtable">
-<p>&zwj;バイト列末端バイトに挿入されているチェックサムと、バイト列から求めたチェックサムが異なる場合、デシリアライズが失敗します。 チェックサムの整合が取れない場合、データが破損しています。 </p>
+<p>バイト列末端バイトに挿入されているチェックサムと、バイト列から求めたチェックサムが異なる場合、デシリアライズが失敗します。 チェックサムの整合が取れない場合、データが破損しています。 </p>
 </blockquote>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
@@ -177,7 +177,7 @@ $(function(){initNavTree('md_docs_2Other_2Serialization.html',''); initResizable
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md214"></a>
 既に定義されている型のシリアライズ、デシリアライズ</h1>
 <blockquote class="doxtable">
-<p>&zwj;作成中 </p>
+<p>作成中 </p>
 </blockquote>
 <h1><a class="anchor" id="autotoc_md215"></a>
 詳細</h1>

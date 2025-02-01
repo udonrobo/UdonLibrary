@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.13.1"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: PS5 コントローラー</title>
@@ -45,7 +45,7 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.13.1 -->
+<!-- 構築: Doxygen 1.13.2 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -166,7 +166,7 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <li>OpenSiv3D を使用している場合</li>
 </ul>
 <blockquote class="doxtable">
-<p>&zwj;PC と USB ケーブルで接続すると使用できます。 </p>
+<p>PC と USB ケーブルで接続すると使用できます。 </p>
 </blockquote>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code hl_typedef" href="namespaceUdon.html#a4b5d3b294d6e954b48868d836bd9a427">Udon::SivPadPS5</a> pad;</div>
 <div class="line"><span class="comment">// static Udon::SivPadPS5 pad{ index };  // 複数コントローラを使用する場合</span></div>
@@ -182,7 +182,7 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1PadPS5BT_html_ad338ca40274ce971b92063d480a0e512"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#ad338ca40274ce971b92063d480a0e512">Udon::PadPS5BT::begin</a></div><div class="ttdeci">bool begin()</div><div class="ttdoc">コントローラーと通信開始</div><div class="ttdef"><b>Definition</b> PadPS5BT.hpp:53</div></div>
 </div><!-- fragment --><blockquote class="doxtable">
-<p>&zwj;<code>PadPS5</code> クラスに <code>begin</code> メンバ関数がないのに呼び出せているのは、<code>PadPS5</code> クラスが受信クラスを継承していて、受信クラスの <code>begin</code> メンバ関数を引き継いでいるためです。 </p>
+<p><code>PadPS5</code> クラスに <code>begin</code> メンバ関数がないのに呼び出せているのは、<code>PadPS5</code> クラスが受信クラスを継承していて、受信クラスの <code>begin</code> メンバ関数を引き継いでいるためです。 </p>
 </blockquote>
 <h1><a class="anchor" id="autotoc_md81"></a>
 更新 (必須)</h1>
@@ -270,7 +270,7 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_aff4c874caea6e0297a8da2f5b0594fdf"><div class="ttname"><a href="classUdon_1_1PadPS5.html#aff4c874caea6e0297a8da2f5b0594fdf">Udon::PadPS5::getL1</a></div><div class="ttdeci">Input getL1() const noexcept</div><div class="ttdoc">L1ボタン</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:100</div></div>
 <div class="ttc" id="astructUdon_1_1Input_html"><div class="ttname"><a href="structUdon_1_1Input.html">Udon::Input</a></div><div class="ttdoc">入力値</div><div class="ttdef"><b>Definition</b> Input.hpp:16</div></div>
 </div><!-- fragment --><blockquote class="doxtable">
-<p>&zwj;<code><a class="el" href="structUdon_1_1Input.html" title="入力値">Udon::Input</a></code> オブジェクトは以下の様に定義されており、各ボタンの押された瞬間、離した瞬間等を取得できます。</p>
+<p><code><a class="el" href="structUdon_1_1Input.html" title="入力値">Udon::Input</a></code> オブジェクトは以下の様に定義されており、各ボタンの押された瞬間、離した瞬間等を取得できます。</p>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>Input</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">bool</span> press;    <span class="comment">// 押されているか</span></div>
@@ -299,7 +299,7 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_a6b6d64c6f7998d90565b68710efb7d18"><div class="ttname"><a href="classUdon_1_1PadPS5.html#a6b6d64c6f7998d90565b68710efb7d18">Udon::PadPS5::getLeftStick</a></div><div class="ttdeci">Vec2 getLeftStick() const noexcept</div><div class="ttdoc">左スティック [x,y: -255~255]</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:133</div></div>
 <div class="ttc" id="astructUdon_1_1Vec2_html"><div class="ttname"><a href="structUdon_1_1Vec2.html">Udon::Vec2</a></div><div class="ttdoc">二次元ベクトル</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:22</div></div>
 </div><!-- fragment --><blockquote class="doxtable">
-<p>&zwj;<code>Vec2</code> オブジェクトは以下の様に定義されており、各スティックの X, Y 軸の傾きを取得できます。スティックの上方向が X 軸の正、右方向が Y 軸の正です。</p>
+<p><code>Vec2</code> オブジェクトは以下の様に定義されており、各スティックの X, Y 軸の傾きを取得できます。スティックの上方向が X 軸の正、右方向が Y 軸の正です。</p>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>Vec2</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">double</span> x;  <span class="comment">// -255 ~ 255</span></div>
@@ -314,7 +314,7 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_a2fe0419f3bc5b65f01549ea916435f95"><div class="ttname"><a href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">Udon::PadPS5::getMoveInfo</a></div><div class="ttdeci">Stick getMoveInfo() const noexcept</div><div class="ttdoc">ロボットの移動に必要なスティックの情報 Udon::Stick オブジェクト {{x,y},turn} を取得</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:140</div></div>
 <div class="ttc" id="anamespaceUdon_html_a70cd4167d3899ade2c3d2b06fde45019"><div class="ttname"><a href="namespaceUdon.html#a70cd4167d3899ade2c3d2b06fde45019">Udon::Stick</a></div><div class="ttdeci">Pos Stick</div><div class="ttdef"><b>Definition</b> Position.hpp:259</div></div>
 </div><!-- fragment --><blockquote class="doxtable">
-<p>&zwj;<code>Stick</code> オブジェクトは以下の様に定義されています。</p>
+<p><code>Stick</code> オブジェクトは以下の様に定義されています。</p>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>Stick</div>
 <div class="line">{</div>
 <div class="line">    Vec2 vector;  <span class="comment">// 平行移動成分 (左スティック)</span></div>

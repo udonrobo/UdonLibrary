@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.13.1"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: PicoWDT</title>
@@ -45,7 +45,7 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.13.1 -->
+<!-- 構築: Doxygen 1.13.2 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -110,7 +110,7 @@ $(function(){initNavTree('md_docs_2Driver_2PicoWDT.html',''); initResizable(true
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md171"></a></p>
-<p>マイコン(Raspberry Pi Pico) が落ちたときに、自動的に再起動させるクラスです。RP2040 チップ内にカウントダウンタイマーが内蔵されており、これがゼロになるとチップを再起動するという機能を用いて実装しています。</p>
+<p>マイコン (Raspberry Pi Pico) が落ちたときに、自動的に再起動させるクラスです。RP2040 チップ内にはオーバーフローするとマイコン自体をリセットするタイマが実装されています。</p>
 <p>コンストラクタに最終ループから何ミリ秒後に再起動するかを指定でき、デフォルトは 1000 ミリ秒です。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
@@ -120,16 +120,19 @@ $(function(){initNavTree('md_docs_2Driver_2PicoWDT.html',''); initResizable(true
 <div class="line">{</div>
 <div class="line">}</div>
 <div class="line"> </div>
+<div class="line"><span class="comment">// 起動から10秒後に無限ループに陥る関数</span></div>
+<div class="line"><span class="keywordtype">void</span> deadLater()</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordflow">if</span> (millis() &gt; 10000)</div>
+<div class="line">        <span class="keywordflow">for</span> (;;)</div>
+<div class="line">            ;</div>
+<div class="line">}</div>
+<div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    wdt.update();</div>
 <div class="line"> </div>
-<div class="line">    <span class="comment">// 起動から10秒後に無限ループに陥る -&gt; 指定秒数後 WDT によって再起動</span></div>
-<div class="line">    <span class="keywordflow">if</span> (millis() &gt; 10000)</div>
-<div class="line">    {</div>
-<div class="line">        <span class="keywordflow">for</span> (;;)</div>
-<div class="line">            ;</div>
-<div class="line">    }</div>
+<div class="line">    deadLater();</div>
 <div class="line">}</div>
 <div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
 </div><!-- fragment --> </div></div><!-- contents -->

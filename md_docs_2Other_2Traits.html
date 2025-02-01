@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.13.1"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: トレイト</title>
@@ -45,7 +45,7 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.13.1 -->
+<!-- 構築: Doxygen 1.13.2 -->
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
@@ -116,7 +116,7 @@ $(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true);
 <p><code>static_assert</code> と組み合わせることでユーザーに分かりやすいエラーを出したり、コンパイル時処理に利用できます。</p>
 <p><code>std::true_type</code>、<code>std::false_type</code> のいずれかを継承するため、<code>value</code> メンバ変数を使用して、判定結果をコンパイル時に取得できます。</p>
 <blockquote class="doxtable">
-<p>&zwj;各メタ関数は <code><a class="el" href="namespaceUdon_1_1Traits.html">Udon::Traits</a></code> 名前空間に属します。 </p>
+<p>各メタ関数は <code><a class="el" href="namespaceUdon_1_1Traits.html">Udon::Traits</a></code> 名前空間に属します。 </p>
 </blockquote>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -219,7 +219,7 @@ $(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true);
 <code>AlwaysFalse&lt;T&gt;</code></h2>
 <p><code>AlwaysFalse&lt;T&gt;</code> を使用することで、テンプレート関数、クラスが実体化されたときに限り <code>static_assert</code> を失敗させることができる。</p>
 <blockquote class="doxtable">
-<p>&zwj;static_assert(false, "") は常に失敗してしまうので、失敗を実体化まで遅延させる。 </p>
+<p>static_assert(false, "") は常に失敗してしまうので、失敗を実体化まで遅延させる。 </p>
 </blockquote>
 <div class="fragment"><div class="line">template &lt;typename T, typename std::enable_if&lt;std::is_integral&lt;T&gt;::value, std::nullptr_t&gt;::type = <span class="keyword">nullptr</span>&gt;</div>
 <div class="line"><span class="keywordtype">void</span> f(<span class="keyword">const</span> T&amp; rhs)</div>
@@ -243,7 +243,7 @@ $(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true);
 曖昧なメンバ関数呼び出し</h1>
 <p>特定のメンバ関数が存在する場合呼び出し、存在しない場合何もしない関数です。この関数を使用することで、特定のメンバ関数の有無に関係なく一様な記述が可能になります。</p>
 <blockquote class="doxtable">
-<p>&zwj;各関数は <code><a class="el" href="namespaceUdon_1_1Traits.html">Udon::Traits</a></code> 名前空間に属します。</p>
+<p>各関数は <code><a class="el" href="namespaceUdon_1_1Traits.html">Udon::Traits</a></code> 名前空間に属します。</p>
 <p>メタ関数 <code>HasMemberFunction~~</code> が定義されているヘッダーファイルに定義されています。 </p>
 </blockquote>
 <table class="markdownTable">
