@@ -488,9 +488,9 @@ $(function(){initNavTree('namespaceUdon.html',''); initResizable(true); });
 <tr class="memitem:abb4f1875edad75541f00aa0cdcb51cb1"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#abb4f1875edad75541f00aa0cdcb51cb1">Serialize</a> (const T &amp;object)</td></tr>
 <tr class="memdesc:abb4f1875edad75541f00aa0cdcb51cb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">シリアル化する  <br /></td></tr>
 <tr class="separator:abb4f1875edad75541f00aa0cdcb51cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a061c04e1f68ae2d5d69dc6b4fba687f4" id="r_a061c04e1f68ae2d5d69dc6b4fba687f4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a061c04e1f68ae2d5d69dc6b4fba687f4">CanDeserialize</a> (<a class="el" href="classUdon_1_1ArrayView.html">ArrayView</a>&lt; const uint8_t &gt; buffer)</td></tr>
-<tr class="memdesc:a061c04e1f68ae2d5d69dc6b4fba687f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">逆シリアル化可能かどうかを判定します  <br /></td></tr>
-<tr class="separator:a061c04e1f68ae2d5d69dc6b4fba687f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b1f8bfa986488b635859ee250d912b3" id="r_a9b1f8bfa986488b635859ee250d912b3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b1f8bfa986488b635859ee250d912b3">IsDeserializable</a> (<a class="el" href="classUdon_1_1ArrayView.html">ArrayView</a>&lt; const uint8_t &gt; buffer)</td></tr>
+<tr class="memdesc:a9b1f8bfa986488b635859ee250d912b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">逆シリアル化可能かどうかを判定します  <br /></td></tr>
+<tr class="separator:a9b1f8bfa986488b635859ee250d912b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2867c79f449f149ce0996d14271837ef" id="r_a2867c79f449f149ce0996d14271837ef"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a2867c79f449f149ce0996d14271837ef"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classUdon_1_1Optional.html">Udon::Optional</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a2867c79f449f149ce0996d14271837ef">Deserialize</a> (<a class="el" href="classUdon_1_1ArrayView.html">ArrayView</a>&lt; const uint8_t &gt; buffer)</td></tr>
 <tr class="memdesc:a2867c79f449f149ce0996d14271837ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">バイト列からオブジェクトに逆シリアル化します  <br /></td></tr>
@@ -1312,40 +1312,6 @@ template&lt;typename Ty&gt; </div>
 
 </div>
 </div>
-<a id="a061c04e1f68ae2d5d69dc6b4fba687f4" name="a061c04e1f68ae2d5d69dc6b4fba687f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a061c04e1f68ae2d5d69dc6b4fba687f4">&#9670;&#160;</a></span>CanDeserialize()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Udon::CanDeserialize </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classUdon_1_1ArrayView.html">ArrayView</a>&lt; const uint8_t &gt;</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>逆シリアル化可能かどうかを判定します </p>
-<dl class="params"><dt>引数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">buffer</td><td>判定するバイト列の参照 </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>戻り値</dt><dd>逆シリアル化可能かどうか </dd></dl>
-
-</div>
-</div>
 <a id="ae223e6e504e2b3da5c62ba0220bad11a" name="ae223e6e504e2b3da5c62ba0220bad11a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae223e6e504e2b3da5c62ba0220bad11a">&#9670;&#160;</a></span>Ceil()</h2>
 
@@ -1754,6 +1720,40 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>戻り値</dt><dd>斜辺の長さ </dd></dl>
+
+</div>
+</div>
+<a id="a9b1f8bfa986488b635859ee250d912b3" name="a9b1f8bfa986488b635859ee250d912b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b1f8bfa986488b635859ee250d912b3">&#9670;&#160;</a></span>IsDeserializable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Udon::IsDeserializable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classUdon_1_1ArrayView.html">ArrayView</a>&lt; const uint8_t &gt;</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>逆シリアル化可能かどうかを判定します </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>判定するバイト列の参照 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>逆シリアル化可能かどうか </dd></dl>
 
 </div>
 </div>

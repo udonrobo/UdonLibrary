@@ -202,8 +202,8 @@ API</h1>
 <div class="line"><a class="code hl_class" href="classUdon_1_1Optional.html">Udon::Optional&lt;T&gt;</a> Deserialize(ArrayView&lt;const uint8_t&gt; buffer);</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md220"></a>
 <code>Udon::IsDeserializable(...)</code></h2>
-<p>デシリアライズできるかを確認します。(チェックサム確認)</p>
-<div class="fragment"><div class="line"><span class="keywordtype">bool</span> CanDeserialize(ArrayView&lt;const uint8_t&gt; buffer);</div>
+<p>デシリアライズできるかを確認します。(CRC 値の一致を確認)</p>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> IsDeserializable(ArrayView&lt;const uint8_t&gt; buffer);</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md221"></a>
 <code>Udon::SerializedSize&lt;T&gt;()</code></h2>
 <p>T 型オブジェクトシリアライズ後のバイト列のバイトサイズを取得します。</p>
