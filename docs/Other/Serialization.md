@@ -143,7 +143,7 @@ template <typename T>
 Udon::Optional<T> Deserialize(ArrayView<const uint8_t> buffer);
 ```
 
-### `Udon::CanDeserialize(...)`
+### `Udon::IsDeserializable(...)`
 
 デシリアライズできるかを確認します。(チェックサム確認)
 
