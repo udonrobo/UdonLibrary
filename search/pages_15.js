@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['セグメント_20led_0',['7 セグメント LED',['../md_docs_2Driver_2SegmentsLed.html',1,'']]],
-  ['セットアップ_1',['Raspberry Pi Pico セットアップ',['../md_docs_2Install_2RaspberryPiPico.html',1,'']]]
+  ['スイッチ_0',['DIP スイッチ',['../md_docs_2Driver_2DipSwitch.html',1,'']]],
+  ['スタイルガイド_1',['スタイルガイド',['../md_docs_2Developer_2StyleGuide.html',1,'']]],
+  ['スタート_2',['スタート',['../md_docs_2Start_2Include.html',1,'']]]
 ];

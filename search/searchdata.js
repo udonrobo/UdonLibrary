@@ -11,7 +11,7 @@ var indexSectionsWithContent =
   8: "_abfs",
   9: "o",
   10: "bfiqsu",
-  11: "7abcdiloprsuvとエオクコサシスセデトドバフメモユルロ三二割固型変独環移自色謝通開"
+  11: "7abcdiloprstuvとエオクコサシスセデトドバフメモユルロ三二割固型変独環移自色謝通開"
 };
 
 var indexSectionNames =

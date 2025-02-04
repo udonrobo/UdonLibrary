@@ -139,6 +139,7 @@ clang-format 拡張機能インストール</h2>
 </div><!-- fragment --></li>
 <li>拡張機能をインストールします。<a href="https://marketplace.visualstudio.com/items?itemName=xaver.clang-format">Clang-Format</a></li>
 <li><p class="startli">拡張機能の設定を開き、実行ファイルのパスを指定します。<code>C:\Program Files\LLVM\bin\clang-format.exe</code></p>
+<p class="startli">※環境変数 Path に実行ファイルのパスを追加している場合は、<code>clang-format</code> と入力するだけで良いです。</p>
 <p class="startli"><img src="https://github.com/user-attachments/assets/fb53705f-ad82-4c46-a34c-e87c651b87a8" alt="" width="600px" class="inline"/></p>
 <p class="startli"><img src="https://github.com/user-attachments/assets/2d635fb4-6c03-401f-aea3-9679888e409a" alt="" width="600px" class="inline"/></p>
 </li>
@@ -165,7 +166,7 @@ C/C++ 拡張機能インストール</h2>
 </div><!-- fragment --><p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/606eefda-83c1-4c6c-bd0a-7a2c5828fed9" alt="" width="600px" class="inline"/></p>
 <p>↓ <code>f12</code> で関数、クラス定義先へ移動できます。</p>
 <p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/48435e12-0893-4680-86eb-84d041c3f110" alt="" width="400px" class="inline"/></p>
-<p>↓ 関数、クラス名をホバーすることで、doxygen コメントが表示されます。</p>
+<p>↓ 関数、クラス名をホバーすると doxygen コメントが表示されます。</p>
 <p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/cc3597a8-1716-4ffb-91ff-395eb51f8d6b" alt="" width="400px" class="inline"/></p>
 <h2><a class="anchor" id="autotoc_md131"></a>
 スペルチェッカー拡張機能インストール</h2>
@@ -180,7 +181,7 @@ Visual Studio</h1>
 <p>マイコンの機能に依存しないアルゴリズム系の開発の場合、デバッグのしやすい Visual Studio が便利です。最終的に完成したファイルをライブラリに追加し Arduino IDE でコンパイルできるか確認します。</p>
 <h2><a class="anchor" id="autotoc_md133"></a>
 ライブラリを開く</h2>
-<p>本ライブラリは Visual Studio で開くのに必要なソリューションファイル (*.sln) を持っていません。そのためライブラリごと開くことができません。</p>
+<p>本ライブラリは Visual Studio で開くのに必要なソリューションファイル (*.sln) を持っていません。そのためライブラリごと開くことはしません。</p>
 <h2><a class="anchor" id="autotoc_md134"></a>
 開発の流れ (1 から作成する場合)</h2>
 <ol type="1">
@@ -191,7 +192,8 @@ Visual Studio</h1>
 <h2><a class="anchor" id="autotoc_md135"></a>
 開発の流れ (既存のファイルを変更する場合)</h2>
 <ol type="1">
-<li>Visual Studio で新規プロジェクトを作成し、本ライブラリをインクルード</li>
+<li>Visual Studio で新規プロジェクトを作成し、本ライブラリをインクルード <br  />
+ 本ライブラリのインクルードディレクトリ(<code>UdonLibrary/src</code>) を Visual Studio のインクルードパスに登録すると、本ライブラリのヘッダファイルをインクルードできます。</li>
 <li>インクルード先に移動し、既存のファイルを編集</li>
 <li>デバッグする</li>
 <li>Arduino 等で動作確認</li>
