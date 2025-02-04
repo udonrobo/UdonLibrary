@@ -75,7 +75,7 @@ namespace Udon
     /// @brief 逆シリアル化可能かどうかを判定します
     /// @param buffer 判定するバイト列の参照
     /// @return 逆シリアル化可能かどうか
-    inline bool CanDeserialize(ArrayView<const uint8_t> buffer)
+    inline bool IsDeserializable(ArrayView<const uint8_t> buffer)
     {
         return buffer.back() == Udon::CRC8(buffer.removeBackView(Udon::CRC8_SIZE));
     }
@@ -96,7 +96,7 @@ namespace Udon
         }
 
         // チェックサムチェック
-        if (not CanDeserialize(buffer))
+        if (not IsDeserializable(buffer))
         {
             return Udon::nullopt;
         }

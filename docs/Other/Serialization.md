@@ -145,10 +145,10 @@ Udon::Optional<T> Deserialize(ArrayView<const uint8_t> buffer);
 
 ### `Udon::IsDeserializable(...)`
 
-デシリアライズできるかを確認します。(チェックサム確認)
+デシリアライズできるかを確認します。(CRC 値の一致を確認)
 
 ```cpp
-bool CanDeserialize(ArrayView<const uint8_t> buffer);
+bool IsDeserializable(ArrayView<const uint8_t> buffer);
 ```
 
 ### `Udon::SerializedSize<T>()`
