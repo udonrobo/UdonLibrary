@@ -42,6 +42,8 @@ clang-format とはフォーマッタの一種で、コードを自動整形し�
 
 3. 拡張機能の設定を開き、実行ファイルのパスを指定します。`C:\Program Files\LLVM\bin\clang-format.exe`
 
+   ※環境変数 Path に実行ファイルのパスを追加している場合は、`clang-format` と入力するだけで良いです。
+
    <img width="600px" src="https://github.com/user-attachments/assets/fb53705f-ad82-4c46-a34c-e87c651b87a8"/>
 
    <img width="600px" src="https://github.com/user-attachments/assets/2d635fb4-6c03-401f-aea3-9679888e409a"/>
@@ -65,8 +67,6 @@ clang-format とはフォーマッタの一種で、コードを自動整形し�
    }
    ```
 
-
-
 ### C/C++ 拡張機能インストール
 
 この拡張機能はインテリセンスの機能を持ちます。定義先に移動したり、関数名などをホバーすることで記載されている doxygen コメントを表示させたりできます。
@@ -85,7 +85,7 @@ clang-format とはフォーマッタの一種で、コードを自動整形し�
 
 <img width="400px" src="https://github.com/udonrobo/UdonLibrary/assets/91818705/48435e12-0893-4680-86eb-84d041c3f110"/>
 
-↓ 関数、クラス名をホバーすることで、doxygen コメントが表示されます。
+↓ 関数、クラス名をホバーすると doxygen コメントが表示されます。
 
 <img width="400px" src="https://github.com/udonrobo/UdonLibrary/assets/91818705/cc3597a8-1716-4ffb-91ff-395eb51f8d6b"/>
 
@@ -109,7 +109,7 @@ clang-format とはフォーマッタの一種で、コードを自動整形し�
 
 ### ライブラリを開く
 
-本ライブラリは Visual Studio で開くのに必要なソリューションファイル (\*.sln) を持っていません。そのためライブラリごと開くことができません。
+本ライブラリは Visual Studio で開くのに必要なソリューションファイル (\*.sln) を持っていません。そのためライブラリごと開くことはしません。
 
 ### 開発の流れ (1 から作成する場合)
 
@@ -119,7 +119,8 @@ clang-format とはフォーマッタの一種で、コードを自動整形し�
 
 ### 開発の流れ (既存のファイルを変更する場合)
 
-1. Visual Studio で新規プロジェクトを作成し、本ライブラリをインクルード
+1. Visual Studio で新規プロジェクトを作成し、本ライブラリをインクルード  
+   本ライブラリのインクルードディレクトリ(`UdonLibrary/src`) を Visual Studio のインクルードパスに登録すると、本ライブラリのヘッダファイルをインクルードできます。
 2. インクルード先に移動し、既存のファイルを編集
 3. デバッグする
 4. Arduino 等で動作確認

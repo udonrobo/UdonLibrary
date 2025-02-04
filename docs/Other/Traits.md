@@ -105,7 +105,7 @@ int main()
 
 `AlwaysFalse<T>` を使用することで、テンプレート関数、クラスが実体化されたときに限り `static_assert` を失敗させることができる。
 
-> static_assert(false, "") は常に失敗してしまうので、失敗を実体化まで遅延させる。
+> static_assert(false, "") は常に失敗してしまうので、失敗を実体化のタイミングまで遅延させる。
 
 ```cpp
 template <typename T, typename std::enable_if<std::is_integral<T>::value, std::nullptr_t>::type = nullptr>

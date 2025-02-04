@@ -24,7 +24,7 @@ code ~/Documents/Arduino/libraries/UdonLibrary/
 
 ## 変更のアップロード
 
-変更し、コミットします。きりが付いたら GitHub へアップロード
+変更しコミットします。きりが付いたら GitHub へアップロード
 
 ![image](https://github.com/user-attachments/assets/1ca69ffd-8b58-4d55-aade-60c2f97afea3)
 
@@ -34,7 +34,7 @@ GitHub Actions によってテストが動くので、エラーになってい�
 
 ![image](https://github.com/user-attachments/assets/49e26eb2-c847-4000-8906-93e4212701ab)
 
-エラーになっている場合、そのテストを選択すると、エラーメッセージを見れます。修正して再度 GitHub へアップロードします。
+エラーになっている場合、そのテストを選択するとエラーメッセージを見ることができます。修正して再度 GitHub へアップロードします。
 
 ![image](https://github.com/user-attachments/assets/c1862822-43b5-44b2-be73-3092f1afd36a)
 

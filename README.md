@@ -22,6 +22,7 @@
 - [Visual Studio](./docs/Install/VisualStudio.md)
 - [CLion](./docs/Install/CLion.md)
 - [バニラ C++](./docs/Install/VanillaCpp.md)
+- [Teensy 使用時事前セットアップ](./docs/Install/Teensy.md)
 - [Raspberry Pi Pico 使用時事前セットアップ](./docs/Install/RaspberryPiPico.md)
 
 ## 使用方法

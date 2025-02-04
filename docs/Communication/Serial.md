@@ -27,7 +27,7 @@ void loop()
 
 ### PC 側 (OpenSiv3D)
 
-`getMessage` は受信処理を行わないため、コストが低いです。受信処理は受信スレッドによって行われます。
+`getMessage` は受信処理を行わないため、呼び出しコストは低いです。受信処理は受信スレッドによって行われます。
 
 ```cpp
 #include <Siv3D.hpp> // Siv3D v0.6.15
