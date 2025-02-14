@@ -138,7 +138,7 @@ $(function(){initNavTree('md_docs_2Driver_2BNO055.html',''); initResizable(true)
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md155"></a>
 ヨー角以外の角度を取得する</h1>
 <p>ヨー角以外の角度を取得する場合は、クオータニオンを取得後、各角度へ変換します。</p>
-<p>Unity などに姿勢を送る際は、クオータニオンを送信します。(オイラー角はシンバルロックが起きる可能性があります)</p>
+<p>Unity などに姿勢を送る際は、クオータニオンを送信します。(一般的な3Dゲームエンジンは計算量などの観点からクオータニオンを用いて姿勢を管理しています)</p>
 <div class="fragment"><div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Quaternion.html">Udon::Quaternion</a> quaternion = gyro.getQuaternion();</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">const</span> <span class="keywordtype">double</span> yaw   = quaternion.<a class="code hl_function" href="structUdon_1_1Quaternion.html#a5cc89bf11b1c7e6c0e6dbf46ab0775ed">toYaw</a>();</div>
@@ -148,8 +148,9 @@ $(function(){initNavTree('md_docs_2Driver_2BNO055.html',''); initResizable(true)
 <div class="ttc" id="astructUdon_1_1Quaternion_html_a2d148db54012a1e098302e6e702c8e52"><div class="ttname"><a href="structUdon_1_1Quaternion.html#a2d148db54012a1e098302e6e702c8e52">Udon::Quaternion::toPitch</a></div><div class="ttdeci">double toPitch() const noexcept</div><div class="ttdoc">ピッチ角を取得</div><div class="ttdef"><b>Definition</b> Quaternion.hpp:189</div></div>
 <div class="ttc" id="astructUdon_1_1Quaternion_html_a5cc89bf11b1c7e6c0e6dbf46ab0775ed"><div class="ttname"><a href="structUdon_1_1Quaternion.html#a5cc89bf11b1c7e6c0e6dbf46ab0775ed">Udon::Quaternion::toYaw</a></div><div class="ttdeci">double toYaw() const noexcept</div><div class="ttdoc">ヨー角を取得</div><div class="ttdef"><b>Definition</b> Quaternion.hpp:183</div></div>
 <div class="ttc" id="astructUdon_1_1Quaternion_html_afb1e0c055850d920a9735ec907be785c"><div class="ttname"><a href="structUdon_1_1Quaternion.html#afb1e0c055850d920a9735ec907be785c">Udon::Quaternion::toRoll</a></div><div class="ttdeci">double toRoll() const noexcept</div><div class="ttdoc">ロール角を取得</div><div class="ttdef"><b>Definition</b> Quaternion.hpp:195</div></div>
-</div><!-- fragment --><p>オイラー角から取得することもできますが、ヨー角のみを取得する場合、クオータニオンからヨー角を求める方がパフォーマンス的に良いです。(内部的にクオータニオンを用いており、オイラー角に変換する段階で不要なピッチ、ロール角まで求めてしまうため)</p>
-<div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keywordtype">double</span> yaw = gyro.getEuler().yaw;</div>
+</div><!-- fragment --><p>オイラー角から取得することもできますが、単一の角 (ピッチ角など) のみを使用する場合、クオータニオンから求める方がパフォーマンス的に良いです。(内部的にクオータニオンを用いており、オイラー角に変換する段階で不要な他の角を求めてしまうため)</p>
+<div class="fragment"><div class="line"><span class="comment">// 非推奨</span></div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">double</span> pitch = gyro.getEuler().pitch;</div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
