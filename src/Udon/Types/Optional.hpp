@@ -428,6 +428,43 @@ namespace Udon
         }
 
 
+// C++17以降 result_of -> invoke_result
+#if __cplusplus >= 201703L
+
+        /**
+         * @brief 値を変換
+         */
+        template <typename Visitor>
+        constexpr auto transform(Visitor&& visitor) & -> Optional<Traits::RemoveCVRefT<std::invoke_result_t<Visitor, ValueType&>>>
+        {
+            return *this ? Optional<Traits::RemoveCVRefT<std::invoke_result_t<Visitor, ValueType&>>>{ visitor(**this) }
+                         : nullopt;
+        }
+
+
+        /**
+         * @brief 値を変換
+         */
+        template <typename Visitor>
+        constexpr auto transform(Visitor&& visitor) const& -> Optional<Traits::RemoveCVRefT<std::invoke_result_t<Visitor, const ValueType&>>>
+        {
+            return *this ? Optional<Traits::RemoveCVRefT<std::invoke_result_t<Visitor, const ValueType&>>>{ visitor(**this) }
+                         : nullopt;
+        }
+
+
+        /**
+         * @brief 値を変換
+         */
+        template <typename Visitor>
+        constexpr auto transform(Visitor&& visitor) && -> Optional<Traits::RemoveCVRefT<std::invoke_result_t<Visitor, ValueType>>>
+        {
+            return *this ? Optional<Traits::RemoveCVRefT<std::invoke_result_t<Visitor, ValueType>>>{ visitor(std::move(**this)) }
+                         : nullopt;
+        }
+
+#else
+
         /**
          * @brief 値を変換
          */
@@ -459,6 +496,9 @@ namespace Udon
             return *this ? Optional<Traits::RemoveCVRefT<typename std::result_of<Visitor(ValueType)>::type>>{ visitor(std::move(**this)) }
                          : nullopt;
         }
+
+
+#endif
 
 
         /**
