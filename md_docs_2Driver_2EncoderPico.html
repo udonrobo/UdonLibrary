@@ -110,16 +110,16 @@ $(function(){initNavTree('md_docs_2Driver_2EncoderPico.html',''); initResizable(
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md159"></a></p>
-<p><code>Udon::EncoderPico</code> クラス (Raspberry Pi Pico 用) を用いてエンコーダーのカウント値を取得する方法を説明します。</p>
-<p>個別に動作するステートマシンを用いて高速ポーリングを行うため、カウント値の取りこぼしがほとんどありません。</p>
+<p><code>Udon::EncoderPico</code> クラス (Raspberry Pi Pico 用) を用いてエンコーダーのカウント値を取得できます。</p>
+<p>個別に動作するステートマシンを用いて高速ポーリングを行うため、カウント値の取りこぼしがほぼありません。</p>
 <p>Raspberry Pi Pico にはステートマシンが 8 個内蔵されているので、最大 8 個まで計測ができます。計測するには以下の条件を満たす必要があります。</p>
 <ul>
-<li>A, B ピンを接続する端子が隣り合っている</li>
+<li>A, B ピンを接続するマイコンの端子が隣り合っている</li>
 <li>各 PIO 内のステートマシンに空きがある</li>
 <li>各 PIO の命令メモリに空きがある(別のプログラムがロードされていない)</li>
 </ul>
 <blockquote class="doxtable">
-<p>計測開始できたかは begin 関数の戻り値から取得できます。 </p>
+<p>計測開始できたかは begin 関数の戻り値から取得できます。(true であれば成功) </p>
 </blockquote>
 <h1><a class="anchor" id="autotoc_md160"></a>
 個別インクルード</h1>

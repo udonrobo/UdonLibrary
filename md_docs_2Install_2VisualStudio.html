@@ -109,29 +109,29 @@ $(function(){initNavTree('md_docs_2Install_2VisualStudio.html',''); initResizabl
   <div class="headertitle"><div class="title">Visual Studio</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md206"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md205"></a></p>
 <p><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/e7fa4cda-bdec-4d2f-b520-6cedb13b3f20" alt="" height="100px" align="right" class="inline"/></p>
 <p>以下の手順の追加を行います</p>
 <ol type="1">
 <li>ライブラリのクローン</li>
 <li>インクルードパスの設定</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md207"></a>
-追加</h1>
+<h1><a class="anchor" id="autotoc_md206"></a>
+追加手順</h1>
 <ol type="1">
 <li><p class="startli">ターミナルをソリューションディレクトリ下で起動</p>
 <p class="startli">ソリューションエクスプローラ &gt; ソリューションを右クリック &gt; ターミナルを開く</p>
 <p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/2c7f4cd2-797d-4ea7-89a8-c898e07fd7b5" alt="" width="700px" class="inline"/></p>
 </li>
 <li>ライブラリをクローン<ul>
-<li><p class="startli">プロジェクトを git で管理していない場合</p>
+<li><p class="startli">プロジェクト自体を git で管理していない場合</p>
 <div class="fragment"><div class="line">git clone --recursive https://github.com/udonrobo/UdonLibrary.git</div>
 </div><!-- fragment --><p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/a23bb96c-0ce2-4b64-af96-2a96abe1dd0f" alt="" width="700px" class="inline"/></p>
 </li>
-<li><p class="startli">プロジェクトを git で管理している場合</p>
+<li><p class="startli">プロジェクト自体を git で管理している場合</p>
 <p class="startli">リポジトリ内にリポジトリを置くことになります。この場合、submodule として追加することが推奨されています。</p>
-<p class="startli">submodule add 後、追加先のレポジトリに対して、「ライブラリを追加した」という変更が自動的にステージングされるので、コミットを作成しています。</p>
-<p class="startli"><code> git submodule add <a href="https://github.com/udonrobo/UdonLibrary.git">https://github.com/udonrobo/UdonLibrary.git</a> git commit -m "add UdonLibrary" </code></p>
+<p class="startli">submodule add 後、追加先のレポジトリに対して、「ライブラリを追加した」という変更が自動的にステージングされるので、コミットを作成します。</p>
+<p class="startli"><code>sh git submodule add <a href="https://github.com/udonrobo/UdonLibrary.git">https://github.com/udonrobo/UdonLibrary.git</a> git commit -m "add UdonLibrary" </code></p>
 <p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/813b64e0-e78c-434e-bfe2-f07a6c77ec30" alt="" width="700px" class="inline"/></p>
 <p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/e82f717d-b56e-4e7d-8eac-a2ff4eafd7af" alt="" width="700px" class="inline"/></p>
 </li>
@@ -154,26 +154,26 @@ $(function(){initNavTree('md_docs_2Install_2VisualStudio.html',''); initResizabl
 <p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/bf559aad-c13f-4a28-a360-e886483e3dbd" alt="" width="400px" class="inline"/></p>
 </li>
 </ol>
-<h1><a class="anchor" id="autotoc_md208"></a>
-更新</h1>
+<h1><a class="anchor" id="autotoc_md207"></a>
+更新手順</h1>
 <ol type="1">
 <li><code>追加 1.</code> と同じくターミナルを起動します。</li>
 <li>更新<ul>
-<li><p class="startli">プロジェクトを git で管理していない場合</p>
+<li><p class="startli">プロジェクト自体を git で管理していない場合</p>
 <p class="startli">ライブラリディレクトリに移動しプルします。</p>
 <div class="fragment"><div class="line">cd UdonLibrary</div>
 <div class="line">git pull</div>
 </div><!-- fragment --><p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/6524fd64-c87e-4763-8281-a643feab1aa1" alt="" width="500px" class="inline"/></p>
 </li>
-<li><p class="startli">プロジェクトを git で管理している場合</p>
+<li><p class="startli">プロジェクト自体を git で管理している場合</p>
 <p class="startli">追加先のプロジェクトでサブモジュールを更新します。</p>
-<p class="startli"><code> git submodule update --remote </code></p>
+<p class="startli"><code>sh git submodule update --remote </code></p>
 <p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/b9e90af3-2ee5-4181-b618-de5e21a7f6c2" alt="" width="500px" class="inline"/></p>
 </li>
 </ul>
 </li>
 </ol>
-<h1><a class="anchor" id="autotoc_md209"></a>
+<h1><a class="anchor" id="autotoc_md208"></a>
 submodule 使用時の注意点</h1>
 <p>追加先のプロジェクト自体のクローンを行うとき <code>--recursive</code> オプションを与えなければ、ライブラリがクローンされません。</p>
 <div class="fragment"><div class="line">git clone --recursive &lt;プロジェクトURL&gt;</div>

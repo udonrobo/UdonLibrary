@@ -117,20 +117,20 @@ $(function(){initNavTree('md_docs_2Install_2CLion.html',''); initResizable(true)
 <li>インクルードパスの設定</li>
 </ol>
 <h1><a class="anchor" id="autotoc_md195"></a>
-追加</h1>
+追加手順</h1>
 <ol type="1">
 <li><p class="startli">ターミナルをプロジェクトディレクトリ下で起動</p>
 <p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/2dfb4e37-23cc-42dc-a0ff-4e6fc3743a3e" alt="" width="700px" class="inline"/></p>
 </li>
 <li>ライブラリをクローン<ul>
-<li><p class="startli">プロジェクトを git で管理していない場合</p>
+<li><p class="startli">プロジェクト自体を git で管理していない場合</p>
 <div class="fragment"><div class="line">git clone --recursive https://github.com/udonrobo/UdonLibrary.git</div>
 </div><!-- fragment --><p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/6c9fbe6b-3368-4a20-a1f9-97905f9e54ce" alt="" width="700px" class="inline"/></p>
 </li>
-<li><p class="startli">プロジェクトを git で管理している場合</p>
+<li><p class="startli">プロジェクト自体を git で管理している場合</p>
 <p class="startli">リポジトリ内にリポジトリを置くことになります。この場合、submodule として追加することが推奨されています。</p>
 <p class="startli">submodule add 後、追加先のレポジトリに対して、「ライブラリを追加した」という変更が自動的にステージングされるので、コミットを作成しています。</p>
-<p class="startli"><code> git submodule add <a href="https://github.com/udonrobo/UdonLibrary.git">https://github.com/udonrobo/UdonLibrary.git</a> git commit -m "add UdonLibrary" </code></p>
+<p class="startli"><code>sh git submodule add <a href="https://github.com/udonrobo/UdonLibrary.git">https://github.com/udonrobo/UdonLibrary.git</a> git commit -m "add UdonLibrary" </code></p>
 <p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/f87a5658-d291-48c3-80d5-e9ff739d6690" alt="" width="700px" class="inline"/></p>
 </li>
 </ul>
@@ -146,19 +146,19 @@ $(function(){initNavTree('md_docs_2Install_2CLion.html',''); initResizable(true)
 </li>
 </ol>
 <h1><a class="anchor" id="autotoc_md196"></a>
-更新</h1>
+更新手順</h1>
 <ol type="1">
 <li><code>追加 1.</code> と同じくターミナルを起動</li>
 <li>更新<ul>
-<li><p class="startli">プロジェクトを git で管理していない場合</p>
+<li><p class="startli">プロジェクト自体を git で管理していない場合</p>
 <p class="startli">ライブラリディレクトリに移動しプルします。</p>
 <div class="fragment"><div class="line">cd UdonLibrary</div>
 <div class="line">git pull</div>
 </div><!-- fragment --><p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/eeec6cb9-9d31-412a-a8ad-98bc085e70ce" alt="" width="600px" class="inline"/></p>
 </li>
-<li><p class="startli">プロジェクトを git で管理している場合</p>
+<li><p class="startli">プロジェクト自体を git で管理している場合</p>
 <p class="startli">追加先のプロジェクトでサブモジュールを更新します。</p>
-<p class="startli"><code> git submodule update --remote </code></p>
+<p class="startli"><code>sh git submodule update --remote </code></p>
 <p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/dc1fecbb-2a66-402b-a3dc-5994663920e5" alt="" width="600px" class="inline"/></p>
 </li>
 </ul>

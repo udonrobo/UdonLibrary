@@ -110,7 +110,7 @@ $(function(){initNavTree('md_docs_2Driver_2Motor.html',''); initResizable(true);
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md162"></a></p>
-<p>モータードライバ制御クラス。 <code>Motor2</code> <code>Motor3</code> クラスが含まれます。</p>
+<p>モータードライバを介してモーターを制御します。 <code>Motor2</code> <code>Motor3</code> クラスが含まれます。</p>
 <h1><a class="anchor" id="autotoc_md163"></a>
 個別インクルード</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Driver_2Motor_8hpp.html">Udon/Driver/Motor.hpp</a>&gt;</span></div>
@@ -118,8 +118,7 @@ $(function(){initNavTree('md_docs_2Driver_2Motor.html',''); initResizable(true);
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md164"></a>
 Motor2 クラス</h1>
 <p>信号線が 2 線 (dir + pwm) タイプのモータードライバの制御に使用します。</p>
-<p>コンストラクタにモータードライバと接続しているピン番号を指定します。</p>
-<p><code>move</code> 関数の引数に出力値を与えることでモーターを駆動できます。 <code>-255 ~ 255</code> の範囲である必要があり、範囲外の値はクランプされます。</p>
+<p>コンストラクタにモータードライバと接続しているピン番号を指定します。<code>move</code> 関数の引数に出力値を与えることでモーターを駆動できます。<code>-255 ~ 255</code> の範囲である必要があり、範囲外の値はクランプされます。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> Udon::Motor2 motor(dirPin, pwmPin);</div>
@@ -141,7 +140,7 @@ Motor2 クラス</h1>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md165"></a>
 Motor3 クラス</h1>
 <p>信号線が 3 線 (dirA + dirB + pwm) タイプのモータードライバの制御に使用します。</p>
-<p>コンストラクタにモータードライバと接続しているピン番号を指定します。コンストラクタ以外の仕様 <code>Motor2</code> クラスと同じです。</p>
+<p>コンストラクタにモータードライバと接続しているピン番号を指定します。コンストラクタ以外の仕様は <code>Motor2</code> クラスと同じです。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> Udon::Motor3 motor(dirPinA, dirPinB, pwmPin);</div>
@@ -168,7 +167,7 @@ Motor3 クラス</h1>
 <div class="line"><span class="comment">// Udon::Showln(motor);</span></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md167"></a>
 その他</h1>
-<p><code>Motorx</code> クラスは、出力値の急激な変化によるモーター、モータードライバへの負荷を防止するために、移動平均クラスを使用しています。デフォルトのサンプリング回数は 50 です。これは目標となる出力値に 50 ループ目で到達することを意味します。</p>
+<p><code>Motorx</code> クラスは、出力値の急激な変化によるモーター、モータードライバへの負荷を防止するために、内部で移動平均クラスを使用しています。デフォルトのサンプリング回数は 50 です。これは目標となる出力値に 50 ループ目で到達することを意味します。</p>
 <p><code>Motorx</code> クラスは以下の様に <code>SmoothlyMotorx</code> のエイリアスとなっています。そのため <code>SmoothlyMotorx</code> を直接使用することで移動平均のサンプリング回数の調整ができます。</p>
 <div class="fragment"><div class="line"><span class="keyword">using </span>Motor2 = SmoothlyMotor2&lt;50&gt;;</div>
 </div><!-- fragment --><div class="fragment"><div class="line">SmoothlyMotor2&lt;100&gt; motor{ 2, 3 };</div>

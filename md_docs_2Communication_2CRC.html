@@ -149,7 +149,9 @@ CRC の概要</h1>
 <div class="line">    write(e);       <span class="comment">// データを送信</span></div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line">write(Checksum(data, <span class="keyword">sizeof</span> data));    <span class="comment">// チェックサム値を送信</span></div>
+<div class="line">uint8_t checksum = Checksum(data, <span class="keyword">sizeof</span> data);</div>
+<div class="line"> </div>
+<div class="line">write(checksum);    <span class="comment">// チェックサム値を送信</span></div>
 </div><!-- fragment --><p></p>
 </details>
 <details >
@@ -163,9 +165,9 @@ CRC の概要</h1>
 <div class="line">    e = read();  <span class="comment">// データを受信</span></div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line">uint8_t receivedChecksum = read();   <span class="comment">// チェックサム値を受信</span></div>
+<div class="line">uint8_t checksum = read();   <span class="comment">// チェックサム値を受信</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keywordflow">if</span> (receivedChecksum == Checksum(data, <span class="keyword">sizeof</span> data))   <span class="comment">// 受信したチェックサムと求めたチェックサムを比較</span></div>
+<div class="line"><span class="keywordflow">if</span> (checksum == Checksum(data, <span class="keyword">sizeof</span> data))   <span class="comment">// 受信したチェックサムと求めたチェックサムを比較</span></div>
 <div class="line">{</div>
 <div class="line">    <span class="comment">// 正常</span></div>
 <div class="line">}</div>
