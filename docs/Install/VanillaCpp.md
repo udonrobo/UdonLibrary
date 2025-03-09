@@ -4,7 +4,9 @@
 
 本ライブラリをクローン後、`UdonLibrary/src` ディレクトリをインクルードディレクトリとして指定してください。
 
-### ディレクトリ構成例
+## 構成例
+
+ディレクトリ構成
 
 ```sh
 Udon/
@@ -13,7 +15,7 @@ Udon/
     └── UdonLibrary/  # 本ライブラリ
 ```
 
-### main.cpp
+main.cpp
 
 ```cpp
 #include <Udon.hpp>
@@ -24,7 +26,7 @@ int main()
 }
 ```
 
-### build run (gcc)
+build run (gcc)
 
 ```sh
 # in Udon/ directory
@@ -32,7 +34,7 @@ g++ -o main main.cpp -I ./lib/UdonLibrary/src
 ./main
 ```
 
-### build run (clang)
+build run (clang)
 
 ```sh
 # in Udon/ directory

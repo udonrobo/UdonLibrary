@@ -14,7 +14,7 @@ PC 内に本ライブラリ複数を置きたくない場合、Arduino のライ
 1. ライブラリのクローン
 2. インクルードパスの設定
 
-## 追加
+## 追加手順
 
 1. ターミナルをソリューションディレクトリ下で起動
 
@@ -24,21 +24,21 @@ PC 内に本ライブラリ複数を置きたくない場合、Arduino のライ
 
 2. ライブラリをクローン
 
-   - プロジェクトを git で管理していない場合
+   - プロジェクト自体を git で管理していない場合
 
-     ```
+     ```sh
      git clone --recursive https://github.com/udonrobo/UdonLibrary.git
      ```
 
      <img width=700px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/a23bb96c-0ce2-4b64-af96-2a96abe1dd0f">
 
-   - プロジェクトを git で管理している場合
+   - プロジェクト自体を git で管理している場合
 
      リポジトリ内にリポジトリを置くことになります。この場合、submodule として追加することが推奨されています。
 
-     submodule add 後、追加先のレポジトリに対して、「ライブラリを追加した」という変更が自動的にステージングされるので、コミットを作成しています。
+     submodule add 後、追加先のレポジトリに対して、「ライブラリを追加した」という変更が自動的にステージングされるので、コミットを作成します。
 
-     ```
+     ```sh
      git submodule add https://github.com/udonrobo/UdonLibrary.git
      git commit -m "add UdonLibrary"
      ```
@@ -71,28 +71,28 @@ PC 内に本ライブラリ複数を置きたくない場合、Arduino のライ
 
    <img width=400px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/bf559aad-c13f-4a28-a360-e886483e3dbd">
 
-## 更新
+## 更新手順
 
 1. `追加 1.` と同じくターミナルを起動します。
 
 2. 更新
 
-   - プロジェクトを git で管理していない場合
+   - プロジェクト自体を git で管理していない場合
 
      ライブラリディレクトリに移動しプルします。
 
-     ```
+     ```sh
      cd UdonLibrary
      git pull
      ```
 
      <img width=500px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/6524fd64-c87e-4763-8281-a643feab1aa1">
 
-   - プロジェクトを git で管理している場合
+   - プロジェクト自体を git で管理している場合
 
      追加先のプロジェクトでサブモジュールを更新します。
 
-     ```
+     ```sh
      git submodule update --remote
      ```
 
@@ -102,12 +102,12 @@ PC 内に本ライブラリ複数を置きたくない場合、Arduino のライ
 
 追加先のプロジェクト自体のクローンを行うとき `--recursive` オプションを与えなければ、ライブラリがクローンされません。
 
-```
+```sh
 git clone --recursive <プロジェクトURL>
 ```
 
 また submodule は追加時のコミットを参照するため、追加先のプロジェクトをクローンしても、ライブラリは submodule 追加時のコミットの内容になります。最新のライブラリを使用する場合は submodule を更新する必要があります。
 
-```
+```sh
 git submodule update --remote
 ```

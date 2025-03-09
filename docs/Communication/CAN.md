@@ -39,7 +39,7 @@ flowchart LR
   CANトランシーバー --CAN H/L--> CANバス
 ```
 
-クラスのテンプレートパラメーターに使用する CAN ポートを指定します。
+クラスのテンプレートパラメーターに使用する CAN ポートを指定します。各ボードの Pinout を調べ参照してください。Teesy4.0 では CAN1~CAN3 が使用できます。
 
 ```cpp
 static Udon::CanBusTeensy<CAN1> bus;
@@ -136,13 +136,13 @@ struct Config
 
 ```cpp
 static Udon::CanBusSpi bus({
-    .channel     = spi1,
-    .cs          = PICO_DEFAULT_SPI_CSN_PIN;
-    .mosi        = PICO_DEFAULT_SPI_TX_PIN;
-    .miso        = PICO_DEFAULT_SPI_RX_PIN;
-    .sck         = PICO_DEFAULT_SPI_SCK_PIN;
-    .interrupt   = 20;
-    .spiClock    = 1'000'000;
+    .channel           = spi1,
+    .cs                = PICO_DEFAULT_SPI_CSN_PIN;
+    .mosi              = PICO_DEFAULT_SPI_TX_PIN;
+    .miso              = PICO_DEFAULT_SPI_RX_PIN;
+    .sck               = PICO_DEFAULT_SPI_SCK_PIN;
+    .interrupt         = 20;
+    .spiClock          = 1'000'000;
     .transmitInterval  = 5;
     .transmitTimeout   = 100;
     .receiveTimeout    = 100;
@@ -321,7 +321,6 @@ static Udon::CanBusSpi bus2;
 static Udon::CanWriter<Udon::Vec2> writer2{ bus2, 0x012 };
 static Udon::CanReader<Udon::Vec2> reader2{ bus2, 0x014 };
 ```
-
 
 ## バイト列を直接送受信
 

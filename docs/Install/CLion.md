@@ -7,7 +7,7 @@
 1. ライブラリのクローン
 2. インクルードパスの設定
 
-## 追加
+## 追加手順
 
 1. ターミナルをプロジェクトディレクトリ下で起動
 
@@ -15,21 +15,21 @@
 
 2. ライブラリをクローン
 
-   - プロジェクトを git で管理していない場合
+   - プロジェクト自体を git で管理していない場合
 
-     ```
+     ```sh
      git clone --recursive https://github.com/udonrobo/UdonLibrary.git
      ```
 
       <img width=700px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/6c9fbe6b-3368-4a20-a1f9-97905f9e54ce" >
 
-   - プロジェクトを git で管理している場合
+   - プロジェクト自体を git で管理している場合
 
      リポジトリ内にリポジトリを置くことになります。この場合、submodule として追加することが推奨されています。
 
      submodule add 後、追加先のレポジトリに対して、「ライブラリを追加した」という変更が自動的にステージングされるので、コミットを作成しています。
 
-     ```
+     ```sh
      git submodule add https://github.com/udonrobo/UdonLibrary.git
      git commit -m "add UdonLibrary"
      ```
@@ -52,28 +52,28 @@
 
    <img width=400px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/253323fd-9d80-49e0-99ed-17e0de1d3e09">
 
-## 更新
+## 更新手順
 
 1. `追加 1.` と同じくターミナルを起動
 
 2. 更新
 
-   - プロジェクトを git で管理していない場合
+   - プロジェクト自体を git で管理していない場合
 
      ライブラリディレクトリに移動しプルします。
 
-     ```
+     ```sh
      cd UdonLibrary
      git pull
      ```
 
      <img width=600px src="https://github.com/udonrobo/UdonLibrary/assets/91818705/eeec6cb9-9d31-412a-a8ad-98bc085e70ce" >
 
-   - プロジェクトを git で管理している場合
+   - プロジェクト自体を git で管理している場合
 
      追加先のプロジェクトでサブモジュールを更新します。
 
-     ```
+     ```sh
      git submodule update --remote
      ```
 
@@ -83,12 +83,12 @@
 
 追加先のプロジェクト自体のクローンを行うとき `--recursive` オプションを与えなければ、ライブラリがクローンされません。
 
-```
+```sh
 git clone --recursive <プロジェクトURL>
 ```
 
 また submodule は追加時のコミットを参照するため、追加先のプロジェクトをクローンしても、ライブラリは submodule 追加時のコミットの内容になります。最新のライブラリを使用する場合は submodule を更新する必要があります。
 
-```
+```sh
 git submodule update --remote
 ```

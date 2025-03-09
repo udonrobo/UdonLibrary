@@ -55,7 +55,9 @@ for (auto&& e : data)
     write(e);       // データを送信
 }
 
-write(Checksum(data, sizeof data));    // チェックサム値を送信
+uint8_t checksum = Checksum(data, sizeof data);
+
+write(checksum);    // チェックサム値を送信
 ```
 
 </details>
@@ -71,9 +73,9 @@ for (auto& e : data)
     e = read();  // データを受信
 }
 
-uint8_t receivedChecksum = read();   // チェックサム値を受信
+uint8_t checksum = read();   // チェックサム値を受信
 
-if (receivedChecksum == Checksum(data, sizeof data))   // 受信したチェックサムと求めたチェックサムを比較
+if (checksum == Checksum(data, sizeof data))   // 受信したチェックサムと求めたチェックサムを比較
 {
     // 正常
 }

@@ -6,7 +6,7 @@
 
 #include <Udon.hpp>
 
-// ループ周期制御 (PID制御器のサンプリング周期を設定するために使用)
+// ループ周期制御 (PID制御器のサンプリング周期を一定にするために使用)
 static Udon::LoopCycleController loopCtrl{ 1000 };
 
 // CAN通信バス
