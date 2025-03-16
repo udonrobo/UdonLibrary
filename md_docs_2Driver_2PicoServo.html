@@ -113,9 +113,9 @@ $(function(){initNavTree('md_docs_2Driver_2PicoServo.html',''); initResizable(tr
 <p><code>Udon::Servo</code> クラスを用いて、サーボモータを制御できます。メンバ関数は Arduino の <code>Servo</code> クラスと同じです。</p>
 <dl class="section note"><dt>覚え書き</dt><dd>Arduino の Servo ライブラリとの違い <br  />
 <br  />
- Raspberry Pi Pico (RP2040) 用 Servo ライブラリは PIO を使って PWM を出力します。RP2040 にはステートマシンが 8 つ搭載されているため、9 つ以上のサーボを制御することが出来ません。 <br  />
+ Raspberry Pi Pico (RP2040) 用 Servo ライブラリは PIO を使って PWM を出力します。RP2040 に搭載されているステートマシンの数は 8 つなので、9 つ以上のサーボを制御することはできません。 <br  />
 <br  />
- Udon::Servo クラスは PIO を使わずに PWM を出力するため、ステートマシン数の制限を受けません。</dd></dl>
+ <code>Udon::Servo</code> クラスは PIO を使わずに PWM を出力するため、ステートマシン数の制限を受けません。</dd></dl>
 <h1><a class="anchor" id="autotoc_md169"></a>
 個別インクルード</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Driver_2Servo_8hpp.html">Udon/Driver/Servo.hpp</a>&gt;</span></div>
