@@ -14,7 +14,7 @@
 //    アルゴリズム / algorithm
 //
 
-// CRC チェックサム / 誤り検出
+// CRC / 誤り検出
 #include <Udon/Algorithm/CRC.hpp>
 
 // PIDフィードバック制御器

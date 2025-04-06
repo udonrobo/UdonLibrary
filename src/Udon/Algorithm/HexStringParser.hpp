@@ -84,21 +84,21 @@ namespace Udon
 
     /// @brief  バイト列を16進数文字列に変換する
     /// @param  byteString 変換元のバイト列
-    /// @param  distHexString 変換した16進数文字列の格納先
-    /// @note   byteStringのサイズを基に16進数文字列を構築する (distHexStringのサイズはbyteStringのサイズの2倍以上である必要がある)
-    /// @note   変換に失敗した場合はdistHexStringには何も書き込まれない
+    /// @param  destHexString 変換した16進数文字列の格納先
+    /// @note   byteStringのサイズを基に16進数文字列を構築する (destHexStringのサイズはbyteStringのサイズの2倍以上である必要がある)
+    /// @note   変換に失敗した場合はdestHexStringには何も書き込まれない
     /// @return 変換に成功した場合はtrue, 失敗した場合はfalse
     inline bool ByteStringToHexString(
         Udon::ArrayView<const uint8_t> byteString,
-        Udon::ArrayView<char>          distHexString) noexcept
+        Udon::ArrayView<char>          destHexString) noexcept
     {
 
-        if (distHexString.size() < ConvertedByteStringSize(byteString.size()))
+        if (destHexString.size() < ConvertedByteStringSize(byteString.size()))
         {
             return false;
         }
 
-        auto it = distHexString.begin();
+        auto it = destHexString.begin();
         for (const auto& byte : byteString)
         {
             *it++ = ByteValueToHexChar(byte >> 4 & 0xf);
@@ -110,20 +110,20 @@ namespace Udon
 
     /// @brief  16進数文字列をバイト列に変換する
     /// @param  hexString 変換元の16進数文字列
-    /// @param  distByteString 変換したバイト列の格納先
-    /// @note   hexStringのサイズを基にバイト列を構築する (distByteStringのサイズはhexStringのサイズの1/2以上である必要がある)
-    /// @note   変換に失敗した場合はdistByteStringには何も書き込まれない
+    /// @param  destByteString 変換したバイト列の格納先
+    /// @note   hexStringのサイズを基にバイト列を構築する (destByteStringのサイズはhexStringのサイズの1/2以上である必要がある)
+    /// @note   変換に失敗した場合はdestByteStringには何も書き込まれない
     /// @return 変換に成功した場合はtrue, 失敗した場合はfalse
     inline bool HexStringToByteString(
         Udon::ArrayView<const char> hexString,
-        Udon::ArrayView<uint8_t>    distByteString) noexcept
+        Udon::ArrayView<uint8_t>    destByteString) noexcept
     {
         if (hexString.size() % 2)
         {
             return false;
         }
 
-        if (distByteString.size() < ConvertedHexStringSize(hexString.size()))
+        if (destByteString.size() < ConvertedHexStringSize(hexString.size()))
         {
             return false;
         }
@@ -140,7 +140,7 @@ namespace Udon
         {
             const uint8_t high    = HexCharToByteValue(hexString[i + 0]);
             const uint8_t low     = HexCharToByteValue(hexString[i + 1]);
-            distByteString[i / 2] = high << 4 | low;
+            destByteString[i / 2] = high << 4 | low;
         }
 
         return true;

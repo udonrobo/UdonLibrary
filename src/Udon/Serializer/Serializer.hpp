@@ -17,7 +17,7 @@ namespace Udon
 
     /// @brief Tをシリアライズした際のバイト列の要素数を取得する
     /// @tparam T シリアライズ対象の型
-    /// @note シリアライズ後のサイズは、チェックサムのサイズを含む
+    /// @note シリアライズ後のサイズは、CRC8 のサイズを含む
     template <typename T>
     constexpr size_t SerializedSize() noexcept
     {
@@ -43,14 +43,14 @@ namespace Udon
             return false;
         }
 
-        // チェックサムを除いた領域を取得
+        // CRC8 を除いた領域を取得
         const auto dataView = buffer.removeBackView(Udon::CRC8_SIZE);
 
         // シリアライズ
         Impl::Serializer serializer{ dataView };
         serializer(object);
 
-        // チェックサム挿入
+        // CRC8 挿入
         buffer.back() = Udon::CRC8(dataView);
         return true;
     }
@@ -95,7 +95,7 @@ namespace Udon
             return Udon::nullopt;
         }
 
-        // チェックサムチェック
+        // CRC8 チェック
         if (not IsDeserializable(buffer))
         {
             return Udon::nullopt;
