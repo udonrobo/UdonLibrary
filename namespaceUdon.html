@@ -420,12 +420,12 @@ $(function(){initNavTree('namespaceUdon.html',''); initResizable(true); });
 <tr class="memitem:aa72cd69f53121f5ba33a4fa6977be8ad" id="r_aa72cd69f53121f5ba33a4fa6977be8ad"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa72cd69f53121f5ba33a4fa6977be8ad">ConvertedHexStringSize</a> (size_t hexStringSize) noexcept</td></tr>
 <tr class="memdesc:aa72cd69f53121f5ba33a4fa6977be8ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">16進数文字列をバイト列に変換した際の、バイト列のサイズを取得する  <br /></td></tr>
 <tr class="separator:aa72cd69f53121f5ba33a4fa6977be8ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43ffd2bce185ed7bf64dedd8824d5e96" id="r_a43ffd2bce185ed7bf64dedd8824d5e96"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43ffd2bce185ed7bf64dedd8824d5e96">ByteStringToHexString</a> (<a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt; const uint8_t &gt; byteString, <a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt; char &gt; distHexString) noexcept</td></tr>
-<tr class="memdesc:a43ffd2bce185ed7bf64dedd8824d5e96"><td class="mdescLeft">&#160;</td><td class="mdescRight">バイト列を16進数文字列に変換する  <br /></td></tr>
-<tr class="separator:a43ffd2bce185ed7bf64dedd8824d5e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a9cc2d024ae1e7d93bf3cae8c7b70f6" id="r_a3a9cc2d024ae1e7d93bf3cae8c7b70f6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a9cc2d024ae1e7d93bf3cae8c7b70f6">HexStringToByteString</a> (<a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt; const char &gt; hexString, <a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt; uint8_t &gt; distByteString) noexcept</td></tr>
-<tr class="memdesc:a3a9cc2d024ae1e7d93bf3cae8c7b70f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">16進数文字列をバイト列に変換する  <br /></td></tr>
-<tr class="separator:a3a9cc2d024ae1e7d93bf3cae8c7b70f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a07b6adcf573a8e2e13eaa647a6a7b9" id="r_a6a07b6adcf573a8e2e13eaa647a6a7b9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a07b6adcf573a8e2e13eaa647a6a7b9">ByteStringToHexString</a> (<a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt; const uint8_t &gt; byteString, <a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt; char &gt; destHexString) noexcept</td></tr>
+<tr class="memdesc:a6a07b6adcf573a8e2e13eaa647a6a7b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">バイト列を16進数文字列に変換する  <br /></td></tr>
+<tr class="separator:a6a07b6adcf573a8e2e13eaa647a6a7b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6eec9220028de40895083480abc274cd" id="r_a6eec9220028de40895083480abc274cd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6eec9220028de40895083480abc274cd">HexStringToByteString</a> (<a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt; const char &gt; hexString, <a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt; uint8_t &gt; destByteString) noexcept</td></tr>
+<tr class="memdesc:a6eec9220028de40895083480abc274cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">16進数文字列をバイト列に変換する  <br /></td></tr>
+<tr class="separator:a6eec9220028de40895083480abc274cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc77eaff05f9776d09e4b756bfb8434a" id="r_acc77eaff05f9776d09e4b756bfb8434a"><td class="memTemplParams" colspan="2">template&lt;typename A, typename B&gt; </td></tr>
 <tr class="memitem:acc77eaff05f9776d09e4b756bfb8434a"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#acc77eaff05f9776d09e4b756bfb8434a">Min</a> (const A &amp;lhs, const B &amp;rhs) -&gt; decltype(lhs, rhs)</td></tr>
 <tr class="memdesc:acc77eaff05f9776d09e4b756bfb8434a"><td class="mdescLeft">&#160;</td><td class="mdescRight">2つの値のうち小さい方を返す (std::min)  <br /></td></tr>
@@ -1236,8 +1236,8 @@ template&lt;typename Ty&gt; </div>
 
 </div>
 </div>
-<a id="a43ffd2bce185ed7bf64dedd8824d5e96" name="a43ffd2bce185ed7bf64dedd8824d5e96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43ffd2bce185ed7bf64dedd8824d5e96">&#9670;&#160;</a></span>ByteStringToHexString()</h2>
+<a id="a6a07b6adcf573a8e2e13eaa647a6a7b9" name="a6a07b6adcf573a8e2e13eaa647a6a7b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a07b6adcf573a8e2e13eaa647a6a7b9">&#9670;&#160;</a></span>ByteStringToHexString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1253,7 +1253,7 @@ template&lt;typename Ty&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt; char &gt;</td>          <td class="paramname"><span class="paramname"><em>distHexString</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt; char &gt;</td>          <td class="paramname"><span class="paramname"><em>destHexString</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1267,13 +1267,13 @@ template&lt;typename Ty&gt; </div>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramname">byteString</td><td>変換元のバイト列 </td></tr>
-    <tr><td class="paramname">distHexString</td><td>変換した16進数文字列の格納先 </td></tr>
+    <tr><td class="paramname">destHexString</td><td>変換した16進数文字列の格納先 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>覚え書き</dt><dd>byteStringのサイズを基に16進数文字列を構築する (distHexStringのサイズはbyteStringのサイズの2倍以上である必要がある) </dd>
+<dl class="section note"><dt>覚え書き</dt><dd>byteStringのサイズを基に16進数文字列を構築する (destHexStringのサイズはbyteStringのサイズの2倍以上である必要がある) </dd>
 <dd>
-変換に失敗した場合はdistHexStringには何も書き込まれない </dd></dl>
+変換に失敗した場合はdestHexStringには何も書き込まれない </dd></dl>
 <dl class="section return"><dt>戻り値</dt><dd>変換に成功した場合はtrue, 失敗した場合はfalse </dd></dl>
 
 </div>
@@ -1642,8 +1642,8 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
-<a id="a3a9cc2d024ae1e7d93bf3cae8c7b70f6" name="a3a9cc2d024ae1e7d93bf3cae8c7b70f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a9cc2d024ae1e7d93bf3cae8c7b70f6">&#9670;&#160;</a></span>HexStringToByteString()</h2>
+<a id="a6eec9220028de40895083480abc274cd" name="a6eec9220028de40895083480abc274cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6eec9220028de40895083480abc274cd">&#9670;&#160;</a></span>HexStringToByteString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1659,7 +1659,7 @@ template&lt;typename T&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt; uint8_t &gt;</td>          <td class="paramname"><span class="paramname"><em>distByteString</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="classUdon_1_1ArrayView.html">Udon::ArrayView</a>&lt; uint8_t &gt;</td>          <td class="paramname"><span class="paramname"><em>destByteString</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1673,13 +1673,13 @@ template&lt;typename T&gt; </div>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramname">hexString</td><td>変換元の16進数文字列 </td></tr>
-    <tr><td class="paramname">distByteString</td><td>変換したバイト列の格納先 </td></tr>
+    <tr><td class="paramname">destByteString</td><td>変換したバイト列の格納先 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>覚え書き</dt><dd>hexStringのサイズを基にバイト列を構築する (distByteStringのサイズはhexStringのサイズの1/2以上である必要がある) </dd>
+<dl class="section note"><dt>覚え書き</dt><dd>hexStringのサイズを基にバイト列を構築する (destByteStringのサイズはhexStringのサイズの1/2以上である必要がある) </dd>
 <dd>
-変換に失敗した場合はdistByteStringには何も書き込まれない </dd></dl>
+変換に失敗した場合はdestByteStringには何も書き込まれない </dd></dl>
 <dl class="section return"><dt>戻り値</dt><dd>変換に成功した場合はtrue, 失敗した場合はfalse </dd></dl>
 
 </div>
@@ -2080,7 +2080,7 @@ template&lt;typename T&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>覚え書き</dt><dd>シリアライズ後のサイズは、チェックサムのサイズを含む </dd></dl>
+<dl class="section note"><dt>覚え書き</dt><dd>シリアライズ後のサイズは、CRC8 のサイズを含む </dd></dl>
 
 </div>
 </div>

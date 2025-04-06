@@ -157,7 +157,7 @@ $(function(){initNavTree('md_docs_2Other_2Serialization.html',''); initResizable
 <p>バイト列をオブジェクトに復元するには <code><a class="el" href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef" title="バイト列からオブジェクトに逆シリアル化します">Udon::Deserialize</a>&lt;T&gt;(...)</code> を使用します。 <code><a class="el" href="namespaceUdon.html#a2867c79f449f149ce0996d14271837ef" title="バイト列からオブジェクトに逆シリアル化します">Udon::Deserialize</a></code> はデシリアライズされたオブジェクトを <code><a class="el" href="classUdon_1_1Optional.html" title="オプショナル型">Udon::Optional</a></code> でラップして返します。</p>
 <p><code>Optional</code> 型とは値とエラー値を持つ型で、<code>Optional::operator bool()</code> を呼び出すことで次のように if 文でエラー判定可能です。</p>
 <blockquote class="doxtable">
-<p>バイト列末端バイトに挿入されているチェックサムと、バイト列から求めたチェックサムが異なる場合、デシリアライズが失敗します。 チェックサムの整合が取れない場合、データが破損しています。 </p>
+<p>バイト列末端バイトに挿入されている CRC8 値と、バイト列から求めた CRC8 値が異なる場合、デシリアライズが失敗します。 CRC8 値の整合が取れない場合、データが破損しています。 </p>
 </blockquote>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
