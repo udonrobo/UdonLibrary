@@ -43,7 +43,7 @@ namespace Udon
             return false;
         }
 
-        // CRC8 を除いた領域を取得
+        // CRC8 の挿入位置を除いた領域を取得
         const auto dataView = buffer.removeBackView(Udon::CRC8_SIZE);
 
         // シリアライズ

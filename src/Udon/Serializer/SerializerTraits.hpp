@@ -32,7 +32,8 @@ namespace Udon
             template <typename Head, typename... Tail>
             constexpr ResultType argsUnpack(Head&& head, Tail&&... tail) const noexcept
             {
-                // 全メンバが出力可能か判定し、論理積を得る
+                // 全メンバが出力可能か判定する
+                // 1つでも出力できないものがあれば false を返す
                 return Test<RemoveReferenceT<Head>>::test(*this, std::forward<Head>(head)) and
                        argsUnpack(std::forward<Tail>(tail)...);
             }

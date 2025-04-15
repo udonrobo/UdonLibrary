@@ -12,6 +12,7 @@ namespace Udon
 {
 
     /// @brief 入力値
+    /// @note ボタンの押下状態を管理する用途を想定しています
     struct Input
     {
         //                     │
@@ -64,7 +65,6 @@ namespace Udon
         }
 
         /// @brief 更新
-        /// @note Input オブジェクト取得後は更新しないこと
         /// @param input 新規入力値 (true:押されている, false:押されていない)
         void update(bool input) noexcept
         {
