@@ -36,7 +36,7 @@ namespace Udon
             using ResultType = bool;
 
             template <typename... Args>
-            constexpr ResultType operator()(Args&&... args) const noexcept
+            constexpr ResultType enumeration(Args&&... args) const noexcept
             {
                 return argsUnpack(std::forward<Args>(args)...);
             }
@@ -109,7 +109,7 @@ namespace Udon
             // enumerate が存在すれば出力可能
             template <typename Enumerable>
             struct Test<Enumerable, EnableIfVoidT<
-                                        HasMemberFunctionEnumerate<Enumerable>::value                  // enumerate 関数が存在する
+                                        IsEnumerable<Enumerable>::value                  // enumerate 関数が存在する
                                         and not HasMemberFunctionShow<Enumerable>::value               // show 関数が存在しない
                                         and not IsOutputStreamable<OutputStream, Enumerable>::value    // ストリームへの出力が不可能
                                         >>
@@ -117,7 +117,7 @@ namespace Udon
                 template <typename T>
                 static constexpr bool test(const IsPrintableImpl& tester, T&& e)
                 {
-                    return e.enumerate(tester);    // enumerate 関数が true を返した場合
+                    return e.enumerateConstexpr(tester);    // enumerate 関数が true を返した場合
                 }
             };
         };
@@ -139,7 +139,7 @@ namespace Udon
             using ResultType = void;
 
             template <typename... Args>
-            constexpr ResultType operator()(Args&&... args) const
+            constexpr ResultType enumeration(Args&&... args) const
             {
                 const_cast<Printer&>(*this).argsUnpack(std::forward<Args>(args)...);
             }
@@ -224,14 +224,14 @@ namespace Udon
 
             /// @brief enumerate が存在する型
             template <typename Enumerable, EnableIfNullptrT<
-                                               HasMemberFunctionEnumerate<RemoveCVRefT<Enumerable>>::value                  // enumerate が存在
+                                               IsEnumerable<RemoveCVRefT<Enumerable>>::value                  // enumerate が存在
                                                and not HasMemberFunctionShow<RemoveCVRefT<Enumerable>>::value               // show が存在しない
                                                and not IsOutputStreamable<OutputStream, RemoveCVRefT<Enumerable>>::value    // ストリームへ出力可能でない
                                                > = nullptr>
             ResultType print(Enumerable&& enumerable)
             {
                 stream << "{ ";
-                enumerable.enumerate(*this);
+                enumerable.enumerateMutable(*this);
                 stream << " }";
             }
         };
@@ -248,11 +248,11 @@ namespace Udon
         /// - T が配列である
         /// - T に show() が定義されている
         /// - T が Stream に出力可能である
-        /// - T に UDON_ENUMERABLE を用いて enumerate() が定義されている
+        /// - T が UDON_ENUMERABLE を用いて列挙可能な型になっている
         /// 全て出力可能なら std::ture_type を継承, そうでなければ std::false_type を継承する
         template <typename OutputStream, typename... Args>
         struct IsPrintable
-            : std::integral_constant<bool, Impl::IsPrintableImpl<OutputStream>{}(RemoveReferenceT<Args>{}...)>
+            : std::integral_constant<bool, Impl::IsPrintableImpl<OutputStream>{}.enumeration(RemoveModifierT<Args>{}...)>
         {
         };
     }    // namespace Traits
@@ -325,11 +325,11 @@ namespace Udon
 
 #endif
 
-            printer(std::forward<Args>(args)...);
+            printer.enumeration(std::forward<Args>(args)...);
 
             if (config.newline)
             {
-                printer('\n');
+                printer.enumeration('\n');
             }
         }
     }    // namespace Impl

@@ -123,26 +123,6 @@ namespace Udon
 
     namespace Traits
     {
-
-        struct DummyEnumerator
-        {
-            using ResultType = void;
-        };
-
-        /// @brief T に enumerate(f) が存在するかどうかを判定する
-        template <typename T, typename = void>
-        struct HasMemberFunctionEnumerate : std::false_type
-        {
-        };
-
-        template <typename T>
-        struct HasMemberFunctionEnumerate<T, typename std::enable_if<
-                                                 std::is_same<decltype(std::declval<T>().enumerate(std::declval<DummyEnumerator&>())), typename DummyEnumerator::ResultType>::value    // enumerate(f) が存在するか, かつ戻り値が ResultType かどうか
-                                                 >::type>
-            : std::true_type
-        {
-        };
-
         template <typename OutputStream, typename T, typename = void>
         struct IsOutputStreamable : std::false_type
         {
@@ -150,6 +130,29 @@ namespace Udon
 
         template <typename OutputStream, typename T>
         struct IsOutputStreamable<OutputStream, T, std::void_t<decltype(std::declval<OutputStream&>() << std::declval<T>())>>    // operator<<(Stream&, T) が存在するか, かつ戻り値が Stream& かどうか
+            : std::true_type
+        {
+        };
+    }    // namespace Traits
+
+    namespace Traits
+    {
+
+        struct DummyEnumerator
+        {
+            using ResultType = void;
+        };
+
+        /// @brief T が UDON_ENUMERABLE マクロによって列挙可能な型になっているかどうかを判定する
+        template <typename T, typename = void>
+        struct IsEnumerable : std::false_type
+        {
+        };
+
+        template <typename T>
+        struct IsEnumerable<T, typename std::enable_if<
+                                   std::is_same<decltype(std::declval<T>().enumerateMutable(std::declval<DummyEnumerator&>())), typename DummyEnumerator::ResultType>::value    // enumerate(f) が存在するか, かつ戻り値が ResultType かどうか
+                                   >::type>
             : std::true_type
         {
         };

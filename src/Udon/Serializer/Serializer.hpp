@@ -23,7 +23,7 @@ namespace Udon
     {
         static_assert(Traits::IsSerializable<T>::value, "T is not packed sizable");    // T は "シリアライズ後のサイズを取得可能な型" である必要がある
 
-        return Udon::Ceil(Impl::SerializedBitSizeImpl{}(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
+        return Udon::Ceil(Impl::SerializedBitSizeImpl{}.enumeration(T{}) / static_cast<double>(CHAR_BIT)) + Udon::CRC8_SIZE;
     }
 
     /// @brief バッファにシリアル化する
@@ -48,7 +48,7 @@ namespace Udon
 
         // シリアライズ
         Impl::Serializer serializer{ dataView };
-        serializer(object);
+        serializer.enumeration(object);
 
         // CRC8 挿入
         buffer.back() = Udon::CRC8(dataView);
@@ -104,7 +104,7 @@ namespace Udon
         T retval{};
 
         Impl::Deserializer deserializer(buffer.removeBackView(Udon::CRC8_SIZE));
-        deserializer(retval);
+        deserializer.enumeration(retval);
 
         return retval;
     }

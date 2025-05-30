@@ -28,6 +28,9 @@ namespace Udon
         using RemoveCVRefT = RemoveConstT<RemoveVolatileT<RemoveReferenceT<T>>>;
 
         template <typename T>
+        using RemoveModifierT = RemoveCVRefT<T>;
+
+        template <typename T>
         using IsBool = std::is_same<T, bool>;
 
         template <typename T>

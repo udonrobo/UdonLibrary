@@ -47,7 +47,7 @@ namespace Udon
             /// @param args デシリアライズ後のオブジェクトの代入先(一時オブジェクト不可)
             /// @note const は外されます
             template <typename... Args>
-            void operator()(const Args&... args) const
+            void enumeration(const Args&... args)
             {
                 argsUnpack(args...);
             }
@@ -55,17 +55,14 @@ namespace Udon
         private:
             /// @brief 可変長テンプレート引数
             template <typename Head, typename... Tails>
-            void argsUnpack(const Head& head, const Tails&... tails) const
+            void argsUnpack(const Head& head, const Tails&... tails)
             {
-                const_cast<Deserializer&>(*this).deserialize(const_cast<Head&>(head));
-                // enumerate 関数は引数に一時オブジェクトを受けられる、かつconstexprである必要があるため "const Serializer& enumerator" になっている
-                // その関係で、operator()、本関数はconstな関数となり、thisポインタはconstなポインタになる。そのため const を外す。
-
+                deserialize(const_cast<Head&>(head));
                 argsUnpack(tails...);
             }
 
             /// @brief 可変長引数展開の終端
-            void argsUnpack() const {}
+            void argsUnpack() {}
 
             /// @brief bool型
             template <typename Bool, EnableIfNullptrT<IsBool<RemoveCVRefT<Bool>>::value> = nullptr>
@@ -106,10 +103,10 @@ namespace Udon
             }
 
             /// @brief メンバ変数列挙用の関数が定義されている型
-            template <typename Enumerable, EnableIfNullptrT<HasMemberFunctionEnumerate<RemoveCVRefT<Enumerable>>::value> = nullptr>
+            template <typename Enumerable, EnableIfNullptrT<IsEnumerable<RemoveCVRefT<Enumerable>>::value> = nullptr>
             void deserialize(Enumerable& rhs)
             {
-                rhs.enumerate(*this);
+                rhs.enumerateImmutable(*this);
             }
 
             /// @brief 算術型 (整数, 浮動小数点) として逆シリアル化

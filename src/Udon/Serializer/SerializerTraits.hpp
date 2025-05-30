@@ -22,7 +22,7 @@ namespace Udon
             using ResultType = bool;
 
             template <typename... Args>
-            constexpr ResultType operator()(Args&&... args) const noexcept
+            constexpr ResultType enumeration(Args&&... args) const noexcept
             {
                 return argsUnpack(std::forward<Args>(args)...);
             }
@@ -77,12 +77,12 @@ namespace Udon
 
             // enumerate 関数を持つ型は enumerate 関数が true を返した場合可能
             template <typename Enumerable>
-            struct Test<Enumerable, EnableIfVoidT<HasMemberFunctionEnumerate<Enumerable>::value>>
+            struct Test<Enumerable, EnableIfVoidT<IsEnumerable<Enumerable>::value>>
             {
                 template <typename T>
                 static constexpr bool test(const IsSerializableImpl& tester, T&& e)
                 {
-                    return e.enumerate(tester);
+                    return e.enumerateConstexpr(tester);
                 }
             };
         };
@@ -94,7 +94,7 @@ namespace Udon
         /// @brief T が シリアライズ可能か判定する
         template <typename T>
         struct IsSerializable
-            : std::integral_constant<bool, Impl::IsSerializableImpl{}(RemoveReferenceT<T>{})>
+            : std::integral_constant<bool, Impl::IsSerializableImpl{}.enumeration(RemoveReferenceT<T>{})>
         {
         };
 

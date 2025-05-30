@@ -33,7 +33,7 @@ namespace Udon
             using ResultType = size_t;
 
             template <typename... Args>
-            constexpr ResultType operator()(Args&&... args) const noexcept
+            constexpr ResultType enumeration(Args&&... args) const noexcept
             {
                 return argsUnpack(std::forward<Args>(args)...);
             }
@@ -108,11 +108,11 @@ namespace Udon
 
             /// @brief T が enumerate 関数を持つ場合の特殊化
             template <typename Enumerable>
-            struct Sizeof<Enumerable, EnableIfVoidT<HasMemberFunctionEnumerate<RemoveReferenceT<Enumerable>>::value>>
+            struct Sizeof<Enumerable, EnableIfVoidT<IsEnumerable<RemoveReferenceT<Enumerable>>::value>>
             {
                 static constexpr ResultType value(const SerializedBitSizeImpl& self, Enumerable&& e) noexcept
                 {
-                    return e.enumerate(self);
+                    return e.enumerateConstexpr(self);
                 }
             };
         };
