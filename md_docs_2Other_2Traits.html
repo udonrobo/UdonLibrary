@@ -109,8 +109,8 @@ $(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true);
   <div class="headertitle"><div class="title">トレイト</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md229"></a></p>
-<h1><a class="anchor" id="autotoc_md230"></a>
+<div class="textblock"><p><a class="anchor" id="autotoc_md230"></a></p>
+<h1><a class="anchor" id="autotoc_md231"></a>
 メタ関数</h1>
 <p>コンパイル時に型情報を取得する関数(クラス)。</p>
 <p><code>static_assert</code> と組み合わせることでユーザーに分かりやすいエラーを出したり、コンパイル時処理に利用できます。</p>
@@ -138,7 +138,7 @@ $(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true);
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>HasMemberFunctionShowRaw&lt;T&gt;</code>   </td><td class="markdownTableBodyNone">T に <code>showRaw</code> メンバ関数が存在する場合 <code>std::true_type</code> 、それ以外は <code>std::false_type</code> を継承。   </td><td class="markdownTableBodyNone"><a href="./../../src/Udon/Traits/HasMemberFunction.hpp">Udon/Traits/HasMemberFunction.hpp</a>   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md231"></a>
+<h2><a class="anchor" id="autotoc_md232"></a>
 送信クラス要件</h2>
 <ul>
 <li><code>MessageType</code> というメンバ型名を持つ</li>
@@ -165,7 +165,7 @@ $(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true);
 <div class="line">    <span class="comment">// static_assert(Udon::Traits::IsWriter&lt;NotWriter&gt;::value, &quot;&quot;);  // static_assert failed</span></div>
 <div class="line">}</div>
 <div class="ttc" id="astructUdon_1_1Traits_1_1IsWriter_html"><div class="ttname"><a href="structUdon_1_1Traits_1_1IsWriter.html">Udon::Traits::IsWriter</a></div><div class="ttdoc">送信クラスであるか判定</div><div class="ttdef"><b>Definition</b> ReaderWriterTraits.hpp:25</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md232"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md233"></a>
 受信クラス要件</h2>
 <ul>
 <li><code>MessageType</code> というメンバ型名を持つ</li>
@@ -193,7 +193,7 @@ $(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true);
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1Optional_html"><div class="ttname"><a href="classUdon_1_1Optional.html">Udon::Optional</a></div><div class="ttdoc">オプショナル型</div><div class="ttdef"><b>Definition</b> Optional.hpp:62</div></div>
 <div class="ttc" id="astructUdon_1_1Traits_1_1IsReader_html"><div class="ttname"><a href="structUdon_1_1Traits_1_1IsReader.html">Udon::Traits::IsReader</a></div><div class="ttdoc">送信クラスであるか判定</div><div class="ttdef"><b>Definition</b> ReaderWriterTraits.hpp:42</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md233"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md234"></a>
 オーバーロード解決の優先順位制御</h2>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>Serializable</div>
 <div class="line">{</div>
@@ -215,7 +215,7 @@ $(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true);
 <div class="line">    f(serializable);</div>
 <div class="line">}</div>
 <div class="ttc" id="aEnumerableMacro_8hpp_html_a6e99cc65e2a105775034579f13c59b8d"><div class="ttname"><a href="EnumerableMacro_8hpp.html#a6e99cc65e2a105775034579f13c59b8d">UDON_ENUMERABLE</a></div><div class="ttdeci">#define UDON_ENUMERABLE(...)</div><div class="ttdoc">メンバ変数の列挙を可能にする</div><div class="ttdef"><b>Definition</b> EnumerableMacro.hpp:11</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md234"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md235"></a>
 <code>AlwaysFalse&lt;T&gt;</code></h2>
 <p><code>AlwaysFalse&lt;T&gt;</code> を使用することで、テンプレート関数、クラスが実体化されたときに限り <code>static_assert</code> を失敗させることができる。</p>
 <blockquote class="doxtable">
@@ -239,7 +239,7 @@ $(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true);
 <div class="line">    <span class="comment">// f(1.0);  // static_assert failed</span></div>
 <div class="line">}</div>
 <div class="ttc" id="astructUdon_1_1Traits_1_1AlwaysFalse_html"><div class="ttname"><a href="structUdon_1_1Traits_1_1AlwaysFalse.html">Udon::Traits::AlwaysFalse</a></div><div class="ttdoc">static_assert 失敗遅延用の型</div><div class="ttdef"><b>Definition</b> AlwaysFalse.hpp:39</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md235"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md236"></a>
 曖昧なメンバ関数呼び出し</h1>
 <p>特定のメンバ関数が存在する場合呼び出し、存在しない場合何もしない関数です。この関数を使用することで、特定のメンバ関数の有無に関係なく一様な記述が可能になります。</p>
 <blockquote class="doxtable">
@@ -258,7 +258,7 @@ $(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true);
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>MaybeInvokeShowRaw(rhs)</code>   </td><td class="markdownTableBodyNone"><code>rhs.showRaw() const</code> を呼び出せる場合呼び出す   </td><td class="markdownTableBodyNone">不定   </td><td class="markdownTableBodyNone">void   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md236"></a>
+<h2><a class="anchor" id="autotoc_md237"></a>
 基本</h2>
 <div class="fragment"><div class="line"><span class="keyword">class </span>Updatable</div>
 <div class="line">{</div>
@@ -280,7 +280,7 @@ $(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true);
 <div class="line">    <a class="code hl_function" href="namespaceUdon_1_1Traits.html#ad2f56402d66969c0fb3735b2d7c3eaa4">Udon::Traits::MaybeInvokeUpdate</a>(unupdatable);  <span class="comment">//&gt;</span></div>
 <div class="line">}</div>
 <div class="ttc" id="anamespaceUdon_1_1Traits_html_ad2f56402d66969c0fb3735b2d7c3eaa4"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#ad2f56402d66969c0fb3735b2d7c3eaa4">Udon::Traits::MaybeInvokeUpdate</a></div><div class="ttdeci">void MaybeInvokeUpdate(HasMemberFunctionUpdate &amp;rhs)</div><div class="ttdoc">T に T::update 関数が存在する場合呼び出す。それ以外の場合何もしない。</div><div class="ttdef"><b>Definition</b> HasMemberFunction.hpp:111</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md237"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md238"></a>
 実用例</h2>
 <div class="fragment"><div class="line"><span class="comment">// updateを持つ受信クラス</span></div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Message&gt;</div>
