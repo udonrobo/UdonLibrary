@@ -98,7 +98,7 @@ Udon::StringView sv = "hello";
 
 char front = sv.front();  // h
 
-char back = sv.back();  // 0
+char back = sv.back();  // o
 
 char l = sv.at(2);  // l
 
