@@ -174,7 +174,7 @@ $(function(){initNavTree('md_docs_2Communication_2Message.html',''); initResizab
 </table>
 <h1><a class="anchor" id="autotoc_md76"></a>
 新たにメッセージ型を定義する</h1>
-<p>メッセージ型は構造体として定義されています。例えば 2 次元ベクトルは次のように定義されています。<code>UDON_PARSABLE</code> マクロを使用してメンバ変数を列挙できるようにする必要があります。(シリアライザ等が使用します)</p>
+<p>メッセージ型は構造体として定義されています。例えば 2 次元ベクトルは次のように定義されています。<code>UDON_ENUMERABLE</code> マクロを使用してメンバ変数を列挙できるようにする必要があります。(シリアライザ等が使用します)</p>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>Vector2D</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">double</span> x;</div>
@@ -183,7 +183,7 @@ $(function(){initNavTree('md_docs_2Communication_2Message.html',''); initResizab
 <div class="line">    <a class="code hl_define" href="EnumerableMacro_8hpp.html#a6e99cc65e2a105775034579f13c59b8d">UDON_ENUMERABLE</a>(x, y)</div>
 <div class="line">};</div>
 <div class="ttc" id="aEnumerableMacro_8hpp_html_a6e99cc65e2a105775034579f13c59b8d"><div class="ttname"><a href="EnumerableMacro_8hpp.html#a6e99cc65e2a105775034579f13c59b8d">UDON_ENUMERABLE</a></div><div class="ttdeci">#define UDON_ENUMERABLE(...)</div><div class="ttdoc">メンバ変数の列挙を可能にする</div><div class="ttdef"><b>Definition</b> EnumerableMacro.hpp:11</div></div>
-</div><!-- fragment --><p>ライブラリに定義を追加する場合、<code><a class="el" href="namespaceUdon_1_1Message.html">Udon::Message</a></code> 名前空間内に定義し、<code>UdonLibrary/Com/Message/</code> 下に配置します。また、<code>UdonLibrary/Com/Message/Message.hpp</code> にインクルードを追加します。</p>
+</div><!-- fragment --><p>ライブラリに定義を追加する場合、<code><a class="el" href="namespaceUdon_1_1Message.html">Udon::Message</a></code> 名前空間内に定義し、<code>UdonLibrary/Com/Message/</code> 下に配置します。また、<code>UdonLibrary/Com/Message.hpp</code> にインクルードを追加します。</p>
 <div class="fragment"><div class="line"><span class="comment">// UdonLibrary/Com/Message/Vector2D.hpp</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceUdon.html">Udon</a></div>
@@ -200,7 +200,7 @@ $(function(){initNavTree('md_docs_2Communication_2Message.html',''); initResizab
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespaceUdon_html"><div class="ttname"><a href="namespaceUdon.html">Udon</a></div><div class="ttdef"><b>Definition</b> Bit.hpp:12</div></div>
-</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// UdonLibrary/Com/Message/Message.hpp</span></div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// UdonLibrary/Com/Message.hpp</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;Udon/Com/Message/Vector2D.hpp&gt;</span></div>
 </div><!-- fragment --> </div></div><!-- contents -->
