@@ -43,7 +43,7 @@
 
 ## 新たにメッセージ型を定義する
 
-メッセージ型は構造体として定義されています。例えば 2 次元ベクトルは次のように定義されています。`UDON_PARSABLE` マクロを使用してメンバ変数を列挙できるようにする必要があります。(シリアライザ等が使用します)
+メッセージ型は構造体として定義されています。例えば 2 次元ベクトルは次のように定義されています。`UDON_ENUMERABLE` マクロを使用してメンバ変数を列挙できるようにする必要があります。(シリアライザ等が使用します)
 
 ```cpp
 struct Vector2D
@@ -55,7 +55,7 @@ struct Vector2D
 };
 ```
 
-ライブラリに定義を追加する場合、`Udon::Message` 名前空間内に定義し、`UdonLibrary/Com/Message/` 下に配置します。また、`UdonLibrary/Com/Message/Message.hpp` にインクルードを追加します。
+ライブラリに定義を追加する場合、`Udon::Message` 名前空間内に定義し、`UdonLibrary/Com/Message/` 下に配置します。また、`UdonLibrary/Com/Message.hpp` にインクルードを追加します。
 
 ```cpp
 // UdonLibrary/Com/Message/Vector2D.hpp
@@ -76,7 +76,7 @@ namespace Udon
 ```
 
 ```cpp
-// UdonLibrary/Com/Message/Message.hpp
+// UdonLibrary/Com/Message.hpp
 
 #include <Udon/Com/Message/Vector2D.hpp>
 ```
