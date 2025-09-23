@@ -29,8 +29,8 @@ namespace Udon
 
         Parameter power;    ///< 操作量
 
-        double lastPowerPro;    ///< 過去の操作量
-        double lastError;       ///< 過去の偏差
+        double prevError;       ///< 前回の偏差
+        double twoPrevError;    ///< 二回前の偏差
         double rowPassDif;
         double output;              ///< 出力
         const double MAX_POWER;     /// 最大値
@@ -48,9 +48,9 @@ namespace Udon
             : constant{ kPro, kInt, kDif }
             , requestConstant{}
             , power{}
-            , lastPowerPro(0.0)
-            , lastError()
-            , rowPassDif()
+            , prevError(0.0)
+            , twoPrevError(0.0)
+            , rowPassDif(0.0)
             , output()
             , MAX_POWER(maxPower)
             , INTERVAL_S(callInterval_us / 1000000.0)
@@ -71,24 +71,27 @@ namespace Udon
             const double error = targetValue - controlValue;
 
             // 比例量の計算
-            power.p = (error - lastError) / INTERVAL_S * coefficient.p;
+            power.p = (error - prevError) * coefficient.p;
 
             // 積分量の計算
-            power.i = error * coefficient.i;
+            power.i = error * coefficient.i * INTERVAL_S;
 
             // 微分量の計算
-            power.d = (power.p - lastPowerPro) / INTERVAL_S;
+            power.d = (error - 2 * prevError + twoPrevError) / INTERVAL_S;
 
             // ローパスフィルタの計算
             rowPassDif += (power.d - rowPassDif) / 8 * coefficient.d;
 
-            const double deltaPower = power.p + power.i + rowPassDif;
+            const double deltaPower =Udon::Constrain( power.p + power.i + rowPassDif,-MAX_POWER/2.0, MAX_POWER/2.0);
 
             output = Udon::Constrain(output + deltaPower, -MAX_POWER, MAX_POWER);
 
             // 偏差の保存
-            lastPowerPro = power.p;
-            lastError = error;
+            twoPrevError = prevError;
+            prevError = error;
+            // Serial.println(power.p);
+            // Serial.println(power.i);           
+            // Serial.println(rowPassDif);
         }
 
         /// @brief 操作量の取得
@@ -155,9 +158,9 @@ namespace Udon
         {
             power = {};
             output = 0.0;
-            lastPowerPro = 0.0;
+            prevError = 0.0;
+            twoPrevError = 0.0;
             rowPassDif = 0.0;
-            lastError = 0.0;
         }
         /// @brief 一周期のみ適用する比例係数の設定
         /// @param value 係数
