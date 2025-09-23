@@ -89,9 +89,6 @@ namespace Udon
             // 偏差の保存
             twoPrevError = prevError;
             prevError = error;
-            // Serial.println(power.p);
-            // Serial.println(power.i);           
-            // Serial.println(rowPassDif);
         }
 
         /// @brief 操作量の取得
