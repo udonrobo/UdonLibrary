@@ -1,3 +1,9 @@
+#
+#    GitHub Actions の依存関係の自動更新設定
+#
+#    Copyright (c) 2025 udonrobo
+#
+
 version: 2
 updates:
   - package-ecosystem: "github-actions"
