@@ -1,0 +1,19 @@
+#
+#    actionlint
+#
+#    Copyright (c) 2025 udonrobo
+#
+
+name: actionlint
+
+on:
+  pull_request:
+    paths:
+      - '.github/**'
+
+jobs:
+  actionlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: reviewdog/action-actionlint@v1
