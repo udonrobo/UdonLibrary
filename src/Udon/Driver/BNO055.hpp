@@ -40,11 +40,12 @@ namespace Udon
         }
 
         /// @brief 通信開始
-        /// @note Wire.begin() が Adafruit_BNO055ライブラリから呼び出されます
+        /// @note Wire.begin()がAdafruit_BNO055ライブラリから呼び出されます
+        /// @param mode 動作モード(デフォルト: OPERATION_MODE_NDOF)
         /// @return 正常に開始できたかどうか
-        bool begin()
+        bool begin(adafruit_bno055_opmode_t mode = OPERATION_MODE_NDOF)
         {
-            return Adafruit_BNO055::begin();
+            return Adafruit_BNO055::begin(mode);
         }
 
         /// @brief 値を消去する
