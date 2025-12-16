@@ -39,13 +39,44 @@ namespace Udon
         {
         }
 
-        /// @brief 通信開始
-        /// @note Wire.begin()がAdafruit_BNO055ライブラリから呼び出されます
-        /// @param mode 動作モード(デフォルト: OPERATION_MODE_NDOF)
-        /// @return 正常に開始できたかどうか
-        bool begin(adafruit_bno055_opmode_t mode = OPERATION_MODE_NDOF)
+        /// @brief 初期化パラメータ
+        struct Parameter
         {
-            return Adafruit_BNO055::begin(mode);
+            /// @brief 動作モード(デフォルト: NDOF)
+            adafruit_bno055_opmode_t mode = OPERATION_MODE_NDOF;
+
+            /// @brief 軸の割り当て設定(デフォルト: P1 = 標準)
+            adafruit_bno055_axis_remap_config_t remapConfig = REMAP_CONFIG_P1;
+
+            /// @brief 軸の符号設定(デフォルト: P1 = 標準)
+            adafruit_bno055_axis_remap_sign_t remapSign = REMAP_SIGN_P1;
+
+            /// @brief 外部クリスタルを使用するか(デフォルト: false)
+            bool useExternalCrystal = false;
+        };
+
+        /// @brief 通信開始 (デフォルト設定)
+        /// @return 正常に開始できたかどうか
+        bool begin()
+        {
+            return begin(Parameter());
+        }
+
+        /// @brief 通信開始 (設定指定)
+        /// @param parameter 初期化パラメータ
+        /// @return 正常に開始できたかどうか
+        bool begin(const Parameter& parameter)
+        {
+            if (!Adafruit_BNO055::begin(parameter.mode))
+            {
+                return false;
+            }
+
+            setAxisRemap(parameter.remapConfig);
+            setAxisSign(parameter.remapSign);
+            setExtCrystalUse(parameter.useExternalCrystal);
+
+            return true;
         }
 
         /// @brief 値を消去する
