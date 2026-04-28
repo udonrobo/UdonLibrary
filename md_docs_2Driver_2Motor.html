@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: モーター</title>
@@ -14,7 +14,6 @@
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -45,26 +44,20 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.13.2 -->
+<!-- 構築: Doxygen 1.16.1 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-/* @license-end */
 </script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() { codefold.init(0); });
-/* @license-end */
+$(function() { codefold.init(); });
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索',true);
   $(function() { init_search(); });
 });
-/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -79,10 +72,9 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('md_docs_2Driver_2Motor.html',''); initResizable(true); });
-/* @license-end */
+$(function(){initNavTree('md_docs_2Driver_2Motor.html','',''); });
 </script>
+<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -106,18 +98,18 @@ $(function(){initNavTree('md_docs_2Driver_2Motor.html',''); initResizable(true);
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">モーター</div></div>
+  <div class="headertitle"><div class="title">モーター </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md162"></a></p>
-<p>モータードライバを介してモーターを制御します。 <code>Motor2</code> <code>Motor3</code> クラスが含まれます。</p>
-<h1><a class="anchor" id="autotoc_md163"></a>
+<p>モータードライバを介してモーターを制御します。 <span class="tt">Motor2</span> <span class="tt">Motor3</span> クラスが含まれます。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md163"></a>
 個別インクルード</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Driver_2Motor_8hpp.html">Udon/Driver/Motor.hpp</a>&gt;</span></div>
 <div class="ttc" id="aDriver_2Motor_8hpp_html"><div class="ttname"><a href="Driver_2Motor_8hpp.html">Motor.hpp</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md164"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md164"></a>
 Motor2 クラス</h1>
-<p>信号線が 2 線 (dir + pwm) タイプのモータードライバの制御に使用します。コンストラクタにモータードライバと接続しているピン番号を指定します。<code>move</code> 関数の引数に出力値を与えることでモーターを駆動できます。<code>-255 ~ 255</code> の範囲である必要があり、範囲外の値を指定した場合、範囲内の値にクリッピングされます。</p>
+<p>信号線が 2 線 (dir + pwm) タイプのモータードライバの制御に使用します。コンストラクタにモータードライバと接続しているピン番号を指定します。<span class="tt">move</span> 関数の引数に出力値を与えることでモーターを駆動できます。<span class="tt">-255 ~ 255</span> の範囲である必要があり、範囲外の値を指定した場合、範囲内の値にクリッピングされます。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> Udon::Motor2 motor{ dirPin, pwmPin };</div>
@@ -134,9 +126,9 @@ Motor2 クラス</h1>
 <div class="line">    <span class="comment">// motor.stop();  // motor.move(0) と同じ意味</span></div>
 <div class="line">}</div>
 <div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md165"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md165"></a>
 Motor3 クラス</h1>
-<p>信号線が 3 線 (dirA + dirB + pwm) タイプのモータードライバの制御に使用します。コンストラクタにモータードライバと接続しているピン番号を指定します。コンストラクタ以外の仕様は <code>Motor2</code> クラスと同じです。</p>
+<p>信号線が 3 線 (dirA + dirB + pwm) タイプのモータードライバの制御に使用します。コンストラクタにモータードライバと接続しているピン番号を指定します。コンストラクタ以外の仕様は <span class="tt">Motor2</span> クラスと同じです。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> Udon::Motor3 motor{ dirPinA, dirPinB, pwmPin };</div>
@@ -152,22 +144,30 @@ Motor3 クラス</h1>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// motor.stop();  // motor.move(0) と同じ意味</span></div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md166"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md166"></a>
 デバッグ</h1>
-<p><code>show</code> メンバ関数を使用することで、現在の出力値をシリアルモニターで確認できます。</p>
+<p><span class="tt">show</span> メンバ関数を使用することで、現在の出力値をシリアルモニターで確認できます。</p>
 <div class="fragment"><div class="line">motor.show();</div>
 <div class="line">Serial.println();</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Udon::Showln(motor);</span></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md167"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md167"></a>
 その他</h1>
-<p><code>Motorx</code> クラスは、出力値の急激な変化によるモーター、モータードライバへの負荷を防止するために、内部で移動平均クラスを使用しています。デフォルトのサンプリング回数は 50 です。これは目標となる出力値に 50 ループ目で到達することを意味します。</p>
-<p><code>Motorx</code> クラスは次のように <code>SmoothlyMotorx</code> のエイリアスとなっています。そのため <code>SmoothlyMotorx</code> を直接使用することで移動平均のサンプリング回数の調整ができます。</p>
+<p><span class="tt">Motorx</span> クラスは、出力値の急激な変化によるモーター、モータードライバへの負荷を防止するために、内部で移動平均クラスを使用しています。デフォルトのサンプリング回数は 50 です。これは目標となる出力値に 50 ループ目で到達することを意味します。</p>
+<p><span class="tt">Motorx</span> クラスは次のように <span class="tt">SmoothlyMotorx</span> のエイリアスとなっています。そのため <span class="tt">SmoothlyMotorx</span> を直接使用することで移動平均のサンプリング回数の調整ができます。</p>
 <div class="fragment"><div class="line"><span class="keyword">using </span>Motor2 = SmoothlyMotor2&lt;50&gt;;</div>
 </div><!-- fragment --><div class="fragment"><div class="line">SmoothlyMotor2&lt;100&gt; motor{ 2, 3 };</div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! --></div>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>

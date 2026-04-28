@@ -41,5 +41,5 @@ var searchData=
   ['optional_3c_20udon_3a_3aspeedpidcontroller_3a_3aparameter_20_3e_38',['Optional&lt; Udon::SpeedPidController::Parameter &gt;',['../classUdon_1_1Optional.html',1,'Udon']]],
   ['optional_3c_20uint16_5ft_20_3e_39',['Optional&lt; uint16_t &gt;',['../classUdon_1_1Optional.html',1,'Udon']]],
   ['optional_3c_20uint8_5ft_20_3e_40',['Optional&lt; uint8_t &gt;',['../classUdon_1_1Optional.html',1,'Udon']]],
-  ['other_20double_20tt_41',['other double tt',['../md_docs_2Types_2Vector2D.html#autotoc_md318',1,'&lt;tt&gt;angleAt(Vec2 other) -\&gt; double&lt;/tt&gt;'],['../md_docs_2Types_2Vector2D.html#autotoc_md316',1,'&lt;tt&gt;distanceFrom(Vec2 other) -\&gt; double&lt;/tt&gt;']]]
+  ['other_20double_41',['other double',['../md_docs_2Types_2Vector2D.html#autotoc_md318',1,'&lt;span class=&quot;tt&quot;&gt;angleAt(Vec2 other) -&amp;gt; double&lt;/span&gt;'],['../md_docs_2Types_2Vector2D.html#autotoc_md316',1,'&lt;span class=&quot;tt&quot;&gt;distanceFrom(Vec2 other) -&amp;gt; double&lt;/span&gt;']]]
 ];

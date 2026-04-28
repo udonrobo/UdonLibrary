@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: PS5 コントローラー</title>
@@ -14,7 +14,6 @@
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -45,26 +44,20 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.13.2 -->
+<!-- 構築: Doxygen 1.16.1 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-/* @license-end */
 </script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() { codefold.init(0); });
-/* @license-end */
+$(function() { codefold.init(); });
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索',true);
   $(function() { init_search(); });
 });
-/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -79,10 +72,9 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(true); });
-/* @license-end */
+$(function(){initNavTree('md_docs_2Communication_2Pad.html','',''); });
 </script>
+<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -106,20 +98,20 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">PS5 コントローラー</div></div>
+  <div class="headertitle"><div class="title">PS5 コントローラー </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md77"></a></p>
-<p><code>PadPS5</code>クラスを用いることでメインマイコンで PS5 コントローラの情報を取得出来ます。</p>
+<p><span class="tt">PadPS5</span>クラスを用いることでメインマイコンで PS5 コントローラの情報を取得出来ます。</p>
 <p>このクラスはテンプレートクラスになっており、受信クラスを指定します。CAN、I2C、E220、USB、Bluetooth などの通信方式に対応しています。</p>
-<h1><a class="anchor" id="autotoc_md78"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md78"></a>
 個別インクルード</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Pad_8hpp.html">Udon/Com/Pad.hpp</a>&gt;</span></div>
 <div class="ttc" id="aPad_8hpp_html"><div class="ttname"><a href="Pad_8hpp.html">Pad.hpp</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md79"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md79"></a>
 インスタンス化</h1>
-<p><code><a class="el" href="classUdon_1_1PadPS5.html" title="通信経由PS5コントローラークラス">Udon::PadPS5</a></code> クラスはテンプレートクラスになっており、引数に受信クラスを指定することで通信方式を選択できます。</p>
-<p>引数に指定した受信クラスを<code>PadPS5</code>クラスが継承するため、受信クラスのメンバ関数をそのまま使用できます。同様にコンストラクタも継承されます。受信クラスのテンプレート引数には <code><a class="el" href="structUdon_1_1Message_1_1PadPS5.html" title="PS5コントローラーのボタン情報">Udon::Message::PadPS5</a></code> が指定されます。</p>
+<p><span class="tt"><a class="el" href="classUdon_1_1PadPS5.html" title="通信経由PS5コントローラークラス">Udon::PadPS5</a></span> クラスはテンプレートクラスになっており、引数に受信クラスを指定することで通信方式を選択できます。</p>
+<p>引数に指定した受信クラスを<span class="tt">PadPS5</span>クラスが継承するため、受信クラスのメンバ関数をそのまま使用できます。同様にコンストラクタも継承されます。受信クラスのテンプレート引数には <span class="tt"><a class="el" href="structUdon_1_1Message_1_1PadPS5.html" title="PS5コントローラーのボタン情報">Udon::Message::PadPS5</a></span> が指定されます。</p>
 <p>例えば CAN 経由でコントローラの情報を取得する場合、以下のように記述できます。</p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1CanBusTeensy.html">Udon::CanBusTeensy&lt;CAN1&gt;</a> bus;</div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1PadPS5.html">Udon::PadPS5&lt;Udon::CanReader&gt;</a> pad{ bus, <span class="keywordtype">id</span> };</div>
@@ -173,28 +165,28 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="ttc" id="anamespaceUdon_html_a4b5d3b294d6e954b48868d836bd9a427"><div class="ttname"><a href="namespaceUdon.html#a4b5d3b294d6e954b48868d836bd9a427">Udon::SivPadPS5</a></div><div class="ttdeci">PadPS5&lt; Impl::SivPadPS5Reader &gt; SivPadPS5</div><div class="ttdoc">OpenSiv3D用 PS5コントローラー</div><div class="ttdef"><b>Definition</b> SivPadPS5.hpp:81</div></div>
 </div><!-- fragment --><p></p>
 </details>
-<h1><a class="anchor" id="autotoc_md80"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md80"></a>
 通信開始 (Optional)</h1>
-<p>本クラスは通信の管理は行わず、受信クラスから受け取ったデータの解析のみを行います。故に <code>begin</code> メンバ関数はありません。通信の開始処理が必要な受信クラスを使用している場合、通信開始処理を行う必要があります。</p>
+<p>本クラスは通信の管理は行わず、受信クラスから受け取ったデータの解析のみを行います。故に <span class="tt">begin</span> メンバ関数はありません。通信の開始処理が必要な受信クラスを使用している場合、通信開始処理を行う必要があります。</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> setup()</div>
 <div class="line">{</div>
 <div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5BT.html#ad338ca40274ce971b92063d480a0e512">begin</a>();  <span class="comment">// 受信クラスに開始処理を行うメンバ関数がある場合</span></div>
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1PadPS5BT_html_ad338ca40274ce971b92063d480a0e512"><div class="ttname"><a href="classUdon_1_1PadPS5BT.html#ad338ca40274ce971b92063d480a0e512">Udon::PadPS5BT::begin</a></div><div class="ttdeci">bool begin()</div><div class="ttdoc">コントローラーと通信開始</div><div class="ttdef"><b>Definition</b> PadPS5BT.hpp:53</div></div>
 </div><!-- fragment --><blockquote class="doxtable">
-<p><code>PadPS5</code> クラスに <code>begin</code> メンバ関数がないのに呼び出せているのは、<code>PadPS5</code> クラスが受信クラスを継承していて、受信クラスの <code>begin</code> メンバ関数を引き継いでいるためです。 </p>
+<p><span class="tt">PadPS5</span> クラスに <span class="tt">begin</span> メンバ関数がないのに呼び出せているのは、<span class="tt">PadPS5</span> クラスが受信クラスを継承していて、受信クラスの <span class="tt">begin</span> メンバ関数を引き継いでいるためです。 </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md81"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md81"></a>
 更新 (必須)</h1>
-<p>ループ内で <code>update</code> メンバ関数を呼ぶ必要があります。受信クラスに <code>update</code> メンバ関数が実装されている場合、自動的に呼び出されます。</p>
+<p>ループ内で <span class="tt">update</span> メンバ関数を呼ぶ必要があります。受信クラスに <span class="tt">update</span> メンバ関数が実装されている場合、自動的に呼び出されます。</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a15b3621e40e64997b11f7998169650c9">update</a>();</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_a15b3621e40e64997b11f7998169650c9"><div class="ttname"><a href="classUdon_1_1PadPS5.html#a15b3621e40e64997b11f7998169650c9">Udon::PadPS5::update</a></div><div class="ttdeci">void update(int deadZone=20) noexcept</div><div class="ttdoc">更新</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:144</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md82"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md82"></a>
 遠隔非常停止の実装</h1>
-<p>ロボコンのルール上、遠隔非常停止を実装する必要があります。✕ボタンで非常停止を掛けるとすると、以下のように記述できます。コントローラが接続されているかは <code>operator bool</code> で取得できます。</p>
+<p>ロボコンのルール上、遠隔非常停止を実装する必要があります。✕ボタンで非常停止を掛けるとすると、以下のように記述できます。コントローラが接続されているかは <span class="tt">operator bool</span> で取得できます。</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a15b3621e40e64997b11f7998169650c9">update</a>();</div>
@@ -209,7 +201,7 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_adf05635646136035d9f097631f6f74ef"><div class="ttname"><a href="classUdon_1_1PadPS5.html#adf05635646136035d9f097631f6f74ef">Udon::PadPS5::getCross</a></div><div class="ttdeci">Input getCross() const noexcept</div><div class="ttdoc">×ボタン</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:82</div></div>
 <div class="ttc" id="astructUdon_1_1Input_html_a195035cae424cb435f087f5e8e3f7152"><div class="ttname"><a href="structUdon_1_1Input.html#a195035cae424cb435f087f5e8e3f7152">Udon::Input::toggle</a></div><div class="ttdeci">bool toggle</div><div class="ttdoc">トグル値</div><div class="ttdef"><b>Definition</b> Input.hpp:59</div></div>
-</div><!-- fragment --><p>複数の bool 値を扱うとややこしくなるため、非常停止を行うべきかを判断するための <code>isEmergencyStop</code>、また逆の動作可能かを判断するための <code>isOperable</code> メンバ関数を提供しています。内部的には上記の処理と同等です。</p>
+</div><!-- fragment --><p>複数の bool 値を扱うとややこしくなるため、非常停止を行うべきかを判断するための <span class="tt">isEmergencyStop</span>、また逆の動作可能かを判断するための <span class="tt">isOperable</span> メンバ関数を提供しています。内部的には上記の処理と同等です。</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a15b3621e40e64997b11f7998169650c9">update</a>();</div>
@@ -225,9 +217,9 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_ace71f4cab282f91ae5b6ec8d75dda23b"><div class="ttname"><a href="classUdon_1_1PadPS5.html#ace71f4cab282f91ae5b6ec8d75dda23b">Udon::PadPS5::isOperable</a></div><div class="ttdeci">bool isOperable() const noexcept</div><div class="ttdoc">動作可能であるか</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:70</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md83"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md83"></a>
 ボタン</h1>
-<p>次のようにボタンの状態を <code>Input</code> オブジェクトとして取得できます。</p>
+<p>次のようにボタンの状態を <span class="tt">Input</span> オブジェクトとして取得できます。</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a15b3621e40e64997b11f7998169650c9">update</a>();</div>
@@ -270,7 +262,7 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_aff4c874caea6e0297a8da2f5b0594fdf"><div class="ttname"><a href="classUdon_1_1PadPS5.html#aff4c874caea6e0297a8da2f5b0594fdf">Udon::PadPS5::getL1</a></div><div class="ttdeci">Input getL1() const noexcept</div><div class="ttdoc">L1ボタン</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:100</div></div>
 <div class="ttc" id="astructUdon_1_1Input_html"><div class="ttname"><a href="structUdon_1_1Input.html">Udon::Input</a></div><div class="ttdoc">入力値</div><div class="ttdef"><b>Definition</b> Input.hpp:17</div></div>
 </div><!-- fragment --><blockquote class="doxtable">
-<p><code><a class="el" href="structUdon_1_1Input.html" title="入力値">Udon::Input</a></code> オブジェクトは以下の様に定義されており、各ボタンの押された瞬間、離した瞬間等を取得できます。</p>
+<p><span class="tt"><a class="el" href="structUdon_1_1Input.html" title="入力値">Udon::Input</a></span> オブジェクトは以下の様に定義されており、各ボタンの押された瞬間、離した瞬間等を取得できます。</p>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>Input</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">bool</span> press;    <span class="comment">// 押されているか</span></div>
@@ -286,9 +278,9 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="ttc" id="astructUdon_1_1Input_html_a731896a6b570510d358a46bcf4db1357"><div class="ttname"><a href="structUdon_1_1Input.html#a731896a6b570510d358a46bcf4db1357">Udon::Input::release</a></div><div class="ttdeci">bool release</div><div class="ttdoc">離された瞬間か</div><div class="ttdef"><b>Definition</b> Input.hpp:56</div></div>
 <div class="ttc" id="astructUdon_1_1Input_html_aa4c9c021a02823dde03ead4e3a68626e"><div class="ttname"><a href="structUdon_1_1Input.html#aa4c9c021a02823dde03ead4e3a68626e">Udon::Input::click</a></div><div class="ttdeci">bool click</div><div class="ttdoc">押された瞬間か</div><div class="ttdef"><b>Definition</b> Input.hpp:53</div></div>
 </div><!-- fragment --> </blockquote>
-<h1><a class="anchor" id="autotoc_md84"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md84"></a>
 スティック</h1>
-<p>以下の関数から左右のスティックの値を <code><a class="el" href="structUdon_1_1Vec2.html" title="二次元ベクトル">Udon::Vec2</a></code> オブジェクトして取得可能です。Vec2 クラスの詳細は <a class="el" href="md_docs_2Types_2Vector2D.html">こちら</a></p>
+<p>以下の関数から左右のスティックの値を <span class="tt"><a class="el" href="structUdon_1_1Vec2.html" title="二次元ベクトル">Udon::Vec2</a></span> オブジェクトして取得可能です。Vec2 クラスの詳細は <a class="el" href="md_docs_2Types_2Vector2D.html" title="二次元ベクトル">こちら</a></p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a15b3621e40e64997b11f7998169650c9">update</a>();</div>
@@ -299,7 +291,7 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_a6b6d64c6f7998d90565b68710efb7d18"><div class="ttname"><a href="classUdon_1_1PadPS5.html#a6b6d64c6f7998d90565b68710efb7d18">Udon::PadPS5::getLeftStick</a></div><div class="ttdeci">Vec2 getLeftStick() const noexcept</div><div class="ttdoc">左スティック [x,y: -255~255]</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:133</div></div>
 <div class="ttc" id="astructUdon_1_1Vec2_html"><div class="ttname"><a href="structUdon_1_1Vec2.html">Udon::Vec2</a></div><div class="ttdoc">二次元ベクトル</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:22</div></div>
 </div><!-- fragment --><blockquote class="doxtable">
-<p><code>Vec2</code> オブジェクトは以下の様に定義されており、各スティックの X, Y 軸の傾きを取得できます。スティックの上方向が X 軸の正、右方向が Y 軸の正です。</p>
+<p><span class="tt">Vec2</span> オブジェクトは以下の様に定義されており、各スティックの X, Y 軸の傾きを取得できます。スティックの上方向が X 軸の正、右方向が Y 軸の正です。</p>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>Vec2</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">double</span> x;  <span class="comment">// -255 ~ 255</span></div>
@@ -309,12 +301,12 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="line"><span class="keyword">const</span> <span class="keywordtype">double</span> leftX = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a6b6d64c6f7998d90565b68710efb7d18">getLeftStick</a>().<a class="code hl_variable" href="structUdon_1_1Vec2.html#aa41b9596dd6fd8353630210413608eb4">x</a>;</div>
 <div class="ttc" id="astructUdon_1_1Vec2_html_aa41b9596dd6fd8353630210413608eb4"><div class="ttname"><a href="structUdon_1_1Vec2.html#aa41b9596dd6fd8353630210413608eb4">Udon::Vec2::x</a></div><div class="ttdeci">ValueType x</div><div class="ttdoc">X成分</div><div class="ttdef"><b>Definition</b> Vector2D.hpp:28</div></div>
 </div><!-- fragment --> </blockquote>
-<p>また、<code>Stick</code> オブジェクトを取得できる関数もあります。<code>Stick</code> オブジェクトとはロボットの移動に必要な入力成分 (移動: 左 X,Y、旋回: 右 X) をまとめたオブジェクトで、このオブジェクトを用いてオムニホイールの出力値を求めたりすることもできます。</p>
+<p>また、<span class="tt">Stick</span> オブジェクトを取得できる関数もあります。<span class="tt">Stick</span> オブジェクトとはロボットの移動に必要な入力成分 (移動: 左 X,Y、旋回: 右 X) をまとめたオブジェクトで、このオブジェクトを用いてオムニホイールの出力値を求めたりすることもできます。</p>
 <div class="fragment"><div class="line"><a class="code hl_typedef" href="namespaceUdon.html#a70cd4167d3899ade2c3d2b06fde45019">Udon::Stick</a> stick = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">getMoveInfo</a>();</div>
 <div class="ttc" id="aclassUdon_1_1PadPS5_html_a2fe0419f3bc5b65f01549ea916435f95"><div class="ttname"><a href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">Udon::PadPS5::getMoveInfo</a></div><div class="ttdeci">Stick getMoveInfo() const noexcept</div><div class="ttdoc">ロボットの移動に必要なスティックの情報 Udon::Stick オブジェクト {{x,y},turn} を取得</div><div class="ttdef"><b>Definition</b> PadPS5.hpp:140</div></div>
 <div class="ttc" id="anamespaceUdon_html_a70cd4167d3899ade2c3d2b06fde45019"><div class="ttname"><a href="namespaceUdon.html#a70cd4167d3899ade2c3d2b06fde45019">Udon::Stick</a></div><div class="ttdeci">Pos Stick</div><div class="ttdef"><b>Definition</b> Position.hpp:259</div></div>
 </div><!-- fragment --><blockquote class="doxtable">
-<p><code>Stick</code> オブジェクトは以下の様に定義されています。</p>
+<p><span class="tt">Stick</span> オブジェクトは以下の様に定義されています。</p>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>Stick</div>
 <div class="line">{</div>
 <div class="line">    Vec2 vector;  <span class="comment">// 平行移動成分 (左スティック)</span></div>
@@ -324,7 +316,7 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="line"><span class="keyword">const</span> std::array&lt;double, 4&gt; omni = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">getMoveInfo</a>().<a class="code hl_function" href="structUdon_1_1Pos.html#a187d13f2aa77ee29502c343e0666cc56">toOmni</a>&lt;4&gt;();</div>
 <div class="ttc" id="astructUdon_1_1Pos_html_a187d13f2aa77ee29502c343e0666cc56"><div class="ttname"><a href="structUdon_1_1Pos.html#a187d13f2aa77ee29502c343e0666cc56">Udon::Pos::toOmni</a></div><div class="ttdeci">std::array&lt; double, N &gt; toOmni() const</div><div class="ttdef"><b>Definition</b> Position.hpp:161</div></div>
 </div><!-- fragment --> </blockquote>
-<h1><a class="anchor" id="autotoc_md85"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md85"></a>
 最終的なスケッチ例 (CAN 経由)</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
@@ -340,17 +332,17 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    bus.<a class="code hl_function" href="classUdon_1_1CanBusTeensy.html#a5e0b712fc58d18f440fd3e70b2ac0100">update</a>();</div>
-<div class="line">    pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a15b3621e40e64997b11f7998169650c9">update</a>();</div>
+<div class="line">    pad.update();</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span> (pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a40a7d612ccfa09c17dc7bbf15c2419b3">getCircle</a>().<a class="code hl_variable" href="structUdon_1_1Input.html#aa4c9c021a02823dde03ead4e3a68626e">click</a>)</div>
+<div class="line">    <span class="keywordflow">if</span> (pad.getCircle().click)</div>
 <div class="line">    {</div>
 <div class="line">        Serial.println(<span class="stringliteral">&quot;circle clicked&quot;</span>);</div>
 <div class="line">    }</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span> (pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#ace71f4cab282f91ae5b6ec8d75dda23b">isOperable</a>())</div>
+<div class="line">    <span class="keywordflow">if</span> (pad.isOperable())</div>
 <div class="line">    {</div>
 <div class="line">        <span class="comment">// 動作中</span></div>
-<div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> powers = pad.<a class="code hl_function" href="classUdon_1_1PadPS5.html#a2fe0419f3bc5b65f01549ea916435f95">getMoveInfo</a>().<a class="code hl_function" href="structUdon_1_1Pos.html#a187d13f2aa77ee29502c343e0666cc56">toOmni</a>&lt;4&gt;();</div>
+<div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> powers = pad.getMoveInfo().toOmni&lt;4&gt;();</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// omni.move(powers);</span></div>
 <div class="line">    }</div>
@@ -365,7 +357,7 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_a5e0b712fc58d18f440fd3e70b2ac0100"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#a5e0b712fc58d18f440fd3e70b2ac0100">Udon::CanBusTeensy::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">バス更新</div><div class="ttdef"><b>Definition</b> CanBusTeensy.hpp:89</div></div>
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_a634246d48d846fee09ab4c3259f18b26"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#a634246d48d846fee09ab4c3259f18b26">Udon::CanBusTeensy::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">通信開始</div><div class="ttdef"><b>Definition</b> CanBusTeensy.hpp:37</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md86"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md86"></a>
 メインマイコンと USB ホストシールドが直接接続されている場合</h1>
 <p>コントローラに内蔵されている LED や、バイブレーションを動作させられます。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
@@ -392,6 +384,14 @@ $(function(){initNavTree('md_docs_2Communication_2Pad.html',''); initResizable(t
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! --></div>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>

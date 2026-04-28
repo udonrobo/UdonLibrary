@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: 自動テスト</title>
@@ -14,7 +14,6 @@
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -45,26 +44,20 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.13.2 -->
+<!-- 構築: Doxygen 1.16.1 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-/* @license-end */
 </script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() { codefold.init(0); });
-/* @license-end */
+$(function() { codefold.init(); });
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索',true);
   $(function() { init_search(); });
 });
-/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -79,10 +72,9 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('md_docs_2Developer_2CI.html',''); initResizable(true); });
-/* @license-end */
+$(function(){initNavTree('md_docs_2Developer_2CI.html','',''); });
 </script>
+<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -106,7 +98,7 @@ $(function(){initNavTree('md_docs_2Developer_2CI.html',''); initResizable(true);
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">自動テスト</div></div>
+  <div class="headertitle"><div class="title">自動テスト </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md112"></a></p>
@@ -114,27 +106,27 @@ $(function(){initNavTree('md_docs_2Developer_2CI.html',''); initResizable(true);
 <p>この検証を行うことで、ライブラリ追加時にコンパイルエラーになったり、バグが生じることを大幅に減らせます。</p>
 <blockquote class="doxtable">
 <p>テストコードのビルドに失敗、もしくは終了コードが 0 以外の場合、検証が失敗します。</p>
-<p>検証の状態は <a href="https://github.com/udonrobo/UdonLibrary/actions">Action タブ</a> から確認できます。ワークフローは <code>UdonLibrary/.github/workflows/</code> に定義されています。</p>
+<p>検証の状態は <a href="https://github.com/udonrobo/UdonLibrary/actions">Action タブ</a> から確認できます。ワークフローは <span class="tt">UdonLibrary/.github/workflows/</span> に定義されています。</p>
 <p>またのメインページの README に貼られているバッジから見ることもできます(反映に少し時間がかかります)。</p>
 <p><a href="https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml"><img src="https://github.com/udonrobo/UdonLibrary/actions/workflows/ArduinoLint.yml/badge.svg" alt="Arduino Lint" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml"><img src="https://github.com/udonrobo/UdonLibrary/actions/workflows/UnitTest.yml/badge.svg" alt="Unit Tests" style="pointer-events: none;" class="inline"/></a></p>
-<p>検証が成功している場合 <code>passing</code> と表示され、失敗していると <code>failing</code> と表示されます。 </p>
+<p>検証が成功している場合 <span class="tt">passing</span> と表示され、失敗していると <span class="tt">failing</span> と表示されます。 </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md113"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md113"></a>
 Arduino Lint</h1>
-<h2><a class="anchor" id="autotoc_md114"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md114"></a>
 ■ 概要</h2>
 <p><a href="https://github.com/arduino/arduino-cli">arduino cli</a> を使用してコンパイルできるか検証します。</p>
 <p>このテストでは構文のチェックを行うだけで、アルゴリズムのチェックは行いません。コンパイル時に処理可能なアルゴリズムはテストされます。</p>
-<p>検証されるボードは <code>Arduino Nano</code> <code>Uno</code> <code>UnoMini</code> <code>Raspberry Pi Pico</code> <code>PicoW</code> <code>Teensy3.5</code> <code>3.6</code> <code>4.0</code> <code>4.1</code> です。</p>
-<h2><a class="anchor" id="autotoc_md115"></a>
+<p>検証されるボードは <span class="tt">Arduino Nano</span> <span class="tt">Uno</span> <span class="tt">UnoMini</span> <span class="tt">Raspberry Pi Pico</span> <span class="tt">PicoW</span> <span class="tt">Teensy3.5</span> <span class="tt">3.6</span> <span class="tt">4.0</span> <span class="tt">4.1</span> です。</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md115"></a>
 ■ ディレクトリを追加する</h2>
-<p><code>UdonLibrary/test/ArduinoLint/src</code> 下にディレクトリを作成するだけでよいです。</p>
+<p><span class="tt">UdonLibrary/test/ArduinoLint/src</span> 下にディレクトリを作成するだけでよいです。</p>
 <blockquote class="doxtable">
-<p>Arduino の仕様で <code>src</code> ディレクトリ内のソースファイルは再帰的にコンパイルされるため、<code>src</code> ディレクトリ下に配置したファイルは全て検証されます。 </p>
+<p>Arduino の仕様で <span class="tt">src</span> ディレクトリ内のソースファイルは再帰的にコンパイルされるため、<span class="tt">src</span> ディレクトリ下に配置したファイルは全て検証されます。 </p>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md116"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md116"></a>
 ■ テストファイルを追加する</h2>
-<p><code>UdonLibrary/test/ArduinoLint/src/Sample</code> に <code>.cpp</code> ファイルを作成します。</p>
+<p><span class="tt">UdonLibrary/test/ArduinoLint/src/Sample</span> に <span class="tt">.cpp</span> ファイルを作成します。</p>
 <div class="fragment"><div class="line"><span class="comment">// UdonLibrary/src/Udon/Sample/Sample.hpp (例)</span></div>
 <div class="line"><span class="keyword">struct </span>Sample</div>
 <div class="line">{</div>
@@ -154,13 +146,13 @@ Arduino Lint</h1>
 <div class="line">}</div>
 <div class="ttc" id="aUdonFwd_8hpp_html"><div class="ttname"><a href="UdonFwd_8hpp.html">UdonFwd.hpp</a></div></div>
 </div><!-- fragment --><blockquote class="doxtable">
-<p><code>test</code> という関数は他のテストファイルにも存在しているため、<code>static</code> 関数にし内部リンケージを持たせています。 </p>
+<p><span class="tt">test</span> という関数は他のテストファイルにも存在しているため、<span class="tt">static</span> 関数にし内部リンケージを持たせています。 </p>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md117"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md117"></a>
 ■ コンパイル時に計算可能なアルゴリズムのテスト</h2>
-<p>コンパイル時に値が決定する関数、定数は <code>static_assert(定数式, 文字列リテラル)</code> を使用してテストできます。</p>
+<p>コンパイル時に値が決定する関数、定数は <span class="tt">static_assert(定数式, 文字列リテラル)</span> を使用してテストできます。</p>
 <blockquote class="doxtable">
-<p><code>static_assert</code> は定数式が <code>false</code> であるときにコンパイルエラーになります。 </p>
+<p><span class="tt">static_assert</span> は定数式が <span class="tt">false</span> であるときにコンパイルエラーになります。 </p>
 </blockquote>
 <div class="fragment"><div class="line"><span class="comment">// UdonLibrary/src/Udon/Algorithm/Factorial.hpp (例)</span></div>
 <div class="line"><span class="keyword">constexpr</span> <span class="keywordtype">int</span> Factorial(<span class="keywordtype">int</span> n) { ... }</div>
@@ -175,10 +167,10 @@ Arduino Lint</h1>
 <div class="line">    <span class="keyword">static_assert</span>(Factorial(4) ==  24, <span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line">    <span class="keyword">static_assert</span>(Factorial(5) == 120, <span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md118"></a>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md118"></a>
 ■ 検証ボードを追加する</h2>
-<p>本テストのワークフローは <code>UdonLibrary/.github/workflows/ArduinoLint.yml</code> に定義されています。</p>
-<p>このファイルにある <code>matrix: bord:</code> に <code>fqbn</code> を調べ追記することでボードを追加できます。</p>
+<p>本テストのワークフローは <span class="tt">UdonLibrary/.github/workflows/ArduinoLint.yml</span> に定義されています。</p>
+<p>このファイルにある <span class="tt">matrix: bord:</span> に <span class="tt">fqbn</span> を調べ追記することでボードを追加できます。</p>
 <div class="fragment"><div class="line">- fqbn: rp2040:rp2040:rpipico</div>
 <div class="line">  platform: rp2040:rp2040</div>
 <div class="line">  url: https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json</div>
@@ -191,29 +183,29 @@ Arduino Lint</h1>
 <div class="fragment"><div class="line">arduino-cli config add board_manager.additional_urls https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json</div>
 <div class="line">arduino-cli core update-index</div>
 <div class="line">arduino-cli core install rp2040:rp2040  # 任意のプラットフォーム</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md119"></a>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md119"></a>
 ■ ローカル環境で実行</h2>
-<p><code>UdonLibrary/test/ArduinoLint/ArduinoLint.ino</code> を ArduinoIDE で開き、検証ボタンを押すことで、プッシュせずにテストを実行できます。</p>
-<h1><a class="anchor" id="autotoc_md120"></a>
+<p><span class="tt">UdonLibrary/test/ArduinoLint/ArduinoLint.ino</span> を ArduinoIDE で開き、検証ボタンを押すことで、プッシュせずにテストを実行できます。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md120"></a>
 Google Unit Test</h1>
-<h2><a class="anchor" id="autotoc_md121"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md121"></a>
 ■ 概要</h2>
 <p><a href="https://github.com/google/googletest">GoogleTest</a> を使用してアルゴリズムの検証を行います。</p>
-<h2><a class="anchor" id="autotoc_md122"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md122"></a>
 ■ ディレクトリを追加する</h2>
-<p><code>UdonLibrary/test/UnitTest</code> 下にディレクトリを配置します。</p>
+<p><span class="tt">UdonLibrary/test/UnitTest</span> 下にディレクトリを配置します。</p>
 <p>GoogleTest は CMake を使用してビルドを行います。そのためビルドしたいファイル、ディレクトリを CMakeLists.txt に登録する必要があります。</p>
-<p>ディレクトリを追加する場合、追加した親ディレクトリ内の <code>CMakeLists.txt</code> に <code>add_subdirectory</code> を使用してディレクトリを登録します。</p>
+<p>ディレクトリを追加する場合、追加した親ディレクトリ内の <span class="tt">CMakeLists.txt</span> に <span class="tt">add_subdirectory</span> を使用してディレクトリを登録します。</p>
 <div class="fragment"><div class="line"># UdonLibrary/test/UnitTest/CMakeLists.txt (親ディレクトリのCMakeLists.txt)</div>
 <div class="line"># ...</div>
 <div class="line"># ...</div>
 <div class="line"># ファイル末尾</div>
 <div class="line"># サブディレクトリ登録</div>
 <div class="line">add_subdirectory(./Sample)</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md123"></a>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md123"></a>
 ■ ソースファイルを追加する</h2>
-<p><code>UdonLibrary/test/UnitTest</code> にディレクトリを追加し、 <code>.cpp</code> ファイルを追加します。</p>
-<p>ソースファイルを追加する場合、追加したディレクトリ内の <code>CMakeLists.txt</code> に <code>add_executable</code> を使用してソースファイルを登録します。</p>
+<p><span class="tt">UdonLibrary/test/UnitTest</span> にディレクトリを追加し、 <span class="tt">.cpp</span> ファイルを追加します。</p>
+<p>ソースファイルを追加する場合、追加したディレクトリ内の <span class="tt">CMakeLists.txt</span> に <span class="tt">add_executable</span> を使用してソースファイルを登録します。</p>
 <p>加えて GoogleTest とのリンク設定、本ライブラリのインクルードパス設定を行います。</p>
 <div class="fragment"><div class="line"># UdonLibrary/test/UnitTest/Sample/CMakeLists.txt (子ディレクトリのCMakeLists.txt)</div>
 <div class="line">cmake_minimum_required(VERSION 3.14)</div>
@@ -235,9 +227,9 @@ Google Unit Test</h1>
 <div class="line"># discover tests</div>
 <div class="line">gtest_discover_tests(SampleTest)</div>
 </div><!-- fragment --><blockquote class="doxtable">
-<p><code>${UDON_LIBRARY_DIR}</code> は実行マシンから見た <code>UdonLibrary/src</code> の絶対パス名で <code>UdonLibrary/test/UnitTest/CMakeLists.txt</code> 内で定義されます。 </p>
+<p><span class="tt">${UDON_LIBRARY_DIR}</span> は実行マシンから見た <span class="tt">UdonLibrary/src</span> の絶対パス名で <span class="tt">UdonLibrary/test/UnitTest/CMakeLists.txt</span> 内で定義されます。 </p>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md124"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md124"></a>
 ■ テストを書く</h2>
 <p>追加したソースファイルにテストコードを記述します。テストコードの書き方は <a href="https://google.github.io/googletest/reference/testing.html">GoogleTest ドキュメント</a> を参照してください。</p>
 <div class="fragment"><div class="line"><span class="comment">// UdonLibrary/src/Udon/Algorithm/Factorial.hpp</span></div>
@@ -255,11 +247,11 @@ Google Unit Test</h1>
 <div class="line">    EXPECT_EQ(Factorial(5), 120);</div>
 <div class="line">}</div>
 </div><!-- fragment --><blockquote class="doxtable">
-<p><code>EXPECT_EQ(val1, val2)</code> は <code>val1 == val2</code> であるかを検証します。 </p>
+<p><span class="tt">EXPECT_EQ(val1, val2)</span> は <span class="tt">val1 == val2</span> であるかを検証します。 </p>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md125"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md125"></a>
 ■ ローカル環境で実行</h2>
-<p><code>UdonLibrary/test/UnitTest</code> で以下のコマンドを実行することで、プッシュせずにローカルで実行できます。</p>
+<p><span class="tt">UdonLibrary/test/UnitTest</span> で以下のコマンドを実行することで、プッシュせずにローカルで実行できます。</p>
 <div class="fragment"><div class="line">cmake -S . -B Build</div>
 <div class="line">cmake --build Build</div>
 <div class="line">cd Build</div>
@@ -275,12 +267,20 @@ Google Unit Test</h1>
 <div class="line">sudo apt update &amp;&amp; sudo apt install cmake</div>
 </div><!-- fragment --> </blockquote>
 <blockquote class="doxtable">
-<p>GoogleTest はサブモジュールとして追加されているため、本ライブラリを <code>--recursive</code> オプションを付けずクローンした場合追加されません。サブモジュールをクローンするには次のコマンドを実行します。</p>
+<p>GoogleTest はサブモジュールとして追加されているため、本ライブラリを <span class="tt">--recursive</span> オプションを付けずクローンした場合追加されません。サブモジュールをクローンするには次のコマンドを実行します。</p>
 <div class="fragment"><div class="line">git submodule update --init --recursive</div>
 </div><!-- fragment --> </blockquote>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! --></div>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>

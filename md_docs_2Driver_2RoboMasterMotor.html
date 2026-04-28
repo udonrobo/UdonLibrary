@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: ロボマスモーター</title>
@@ -14,7 +14,6 @@
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -45,26 +44,20 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.13.2 -->
+<!-- 構築: Doxygen 1.16.1 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-/* @license-end */
 </script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() { codefold.init(0); });
-/* @license-end */
+$(function() { codefold.init(); });
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索',true);
   $(function() { init_search(); });
 });
-/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -79,10 +72,9 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('md_docs_2Driver_2RoboMasterMotor.html',''); initResizable(true); });
-/* @license-end */
+$(function(){initNavTree('md_docs_2Driver_2RoboMasterMotor.html','',''); });
 </script>
+<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -106,34 +98,34 @@ $(function(){initNavTree('md_docs_2Driver_2RoboMasterMotor.html',''); initResiza
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">ロボマスモーター</div></div>
+  <div class="headertitle"><div class="title">ロボマスモーター </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md175"></a></p>
 <p>ロボマスモーターは CAN 通信経由で制御できるモーターです。電流値を指定することで動作し、エンコーダーを搭載しているため回転数や回転角を取得できます。</p>
-<h1><a class="anchor" id="autotoc_md176"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md176"></a>
 個別インクルード</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="RoboMasterMotor_8hpp.html">Udon/Driver/RoboMasterMotor.hpp</a>&gt;</span></div>
 <div class="ttc" id="aRoboMasterMotor_8hpp_html"><div class="ttname"><a href="RoboMasterMotor_8hpp.html">RoboMasterMotor.hpp</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md177"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md177"></a>
 概要</h1>
 <p>以下の表に示すように、使用するドライバによってクラスが異なります。また指定できる電流範囲も異なります。</p>
-<p>使用される CAN ID は <code>0x200</code>, <code>0x1FF</code>, <code>0x200+モーターID</code> です。ドライバは 1ms 間隔で CAN フレームを送信するため、ドライバが接続されている CAN バスには、他の CAN デバイスを接続しないことをお勧めします。</p>
+<p>使用される CAN ID は <span class="tt">0x200</span>, <span class="tt">0x1FF</span>, <span class="tt">0x200+モーターID</span> です。ドライバは 1ms 間隔で CAN フレームを送信するため、ドライバが接続されている CAN バスには、他の CAN デバイスを接続しないことをお勧めします。</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadCenter"></th><th class="markdownTableHeadCenter">C610 ドライバ   </th><th class="markdownTableHeadCenter">C620 ドライバ    </th></tr>
+<th class="markdownTableHeadCenter"></th><th class="markdownTableHeadCenter">C610 ドライバ  </th><th class="markdownTableHeadCenter">C620 ドライバ  </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyCenter">イメージ   </td><td class="markdownTableBodyCenter"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/cec39fc0-3fc2-4ece-acfa-8b98f2782ec3" alt="" width="400px" class="inline"/>   </td><td class="markdownTableBodyCenter"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/251f923d-58ff-4da5-897c-06d0e66ab2b1" alt="" width="400px" class="inline"/>    </td></tr>
+<td class="markdownTableBodyCenter">イメージ  </td><td class="markdownTableBodyCenter"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/cec39fc0-3fc2-4ece-acfa-8b98f2782ec3" alt="" width="400px" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/251f923d-58ff-4da5-897c-06d0e66ab2b1" alt="" width="400px" class="inline"/>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyCenter">対応モーター   </td><td class="markdownTableBodyCenter"><img src="https://github.com/user-attachments/assets/49981db5-3fd7-47c3-a524-add5e0d02d5d" alt="" width="400px" class="inline"/>   </td><td class="markdownTableBodyCenter"><img src="https://github.com/user-attachments/assets/f3b40e14-8541-4d72-a9d6-96c318d693ca" alt="" width="400px" class="inline"/>    </td></tr>
+<td class="markdownTableBodyCenter">対応モーター  </td><td class="markdownTableBodyCenter"><img src="https://github.com/user-attachments/assets/49981db5-3fd7-47c3-a524-add5e0d02d5d" alt="" width="400px" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://github.com/user-attachments/assets/f3b40e14-8541-4d72-a9d6-96c318d693ca" alt="" width="400px" class="inline"/>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyCenter">クラス   </td><td class="markdownTableBodyCenter"><code><a class="el" href="classUdon_1_1RoboMasterC610.html" title="RoboMasterC610クラス">Udon::RoboMasterC610</a></code>   </td><td class="markdownTableBodyCenter"><code><a class="el" href="classUdon_1_1RoboMasterC620.html" title="RoboMasterC620クラス">Udon::RoboMasterC620</a></code>    </td></tr>
+<td class="markdownTableBodyCenter">クラス  </td><td class="markdownTableBodyCenter"><span class="tt"><a class="el" href="classUdon_1_1RoboMasterC610.html" title="RoboMasterC610クラス">Udon::RoboMasterC610</a></span>  </td><td class="markdownTableBodyCenter"><span class="tt"><a class="el" href="classUdon_1_1RoboMasterC620.html" title="RoboMasterC620クラス">Udon::RoboMasterC620</a></span>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyCenter">電流範囲 (mA)   </td><td class="markdownTableBodyCenter">-10,000 ~ 10,000   </td><td class="markdownTableBodyCenter">-20,000 ~ 20,000   </td></tr>
+<td class="markdownTableBodyCenter">電流範囲 (mA)  </td><td class="markdownTableBodyCenter">-10,000 ~ 10,000  </td><td class="markdownTableBodyCenter">-20,000 ~ 20,000  </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md178"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md178"></a>
 電流値の指定</h1>
-<p>モーター1つに対して1つの <code>Udon::RoboMasterCxxx</code> インスタンスを作成し、<code>setCurrent</code> で電流値を指定することで動作します。電流範囲は先ほどの表のとおりです。範囲外の値を指定した場合、範囲内の値にクリッピングされます。</p>
+<p>モーター1つに対して1つの <span class="tt">Udon::RoboMasterCxxx</span> インスタンスを作成し、<span class="tt">setCurrent</span> で電流値を指定することで動作します。電流範囲は先ほどの表のとおりです。範囲外の値を指定した場合、範囲内の値にクリッピングされます。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1CanBusTeensy.html">Udon::CanBusTeensy&lt;CAN2&gt;</a> bus;</div>
@@ -150,48 +142,55 @@ $(function(){initNavTree('md_docs_2Driver_2RoboMasterMotor.html',''); initResiza
 <div class="line">    bus.<a class="code hl_function" href="classUdon_1_1CanBusTeensy.html#a5e0b712fc58d18f440fd3e70b2ac0100">update</a>();</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// 動作電流値を設定 (mA)</span></div>
-<div class="line">    motor.setCurrent(5000);</div>
+<div class="line">    motor.<a class="code hl_function" href="classUdon_1_1RoboMasterC620.html#a27342ba524104eb5c2158d247c6eecb8">setCurrent</a>(5000);</div>
 <div class="line">}</div>
 <div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html">Udon::CanBusTeensy</a></div><div class="ttdoc">Teensy用 CANバスクラス</div><div class="ttdef"><b>Definition</b> CanBusTeensy.hpp:31</div></div>
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_a5e0b712fc58d18f440fd3e70b2ac0100"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#a5e0b712fc58d18f440fd3e70b2ac0100">Udon::CanBusTeensy::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">バス更新</div><div class="ttdef"><b>Definition</b> CanBusTeensy.hpp:89</div></div>
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html_a634246d48d846fee09ab4c3259f18b26"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html#a634246d48d846fee09ab4c3259f18b26">Udon::CanBusTeensy::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">通信開始</div><div class="ttdef"><b>Definition</b> CanBusTeensy.hpp:37</div></div>
 <div class="ttc" id="aclassUdon_1_1RoboMasterC620_html"><div class="ttname"><a href="classUdon_1_1RoboMasterC620.html">Udon::RoboMasterC620</a></div><div class="ttdoc">RoboMasterC620クラス</div><div class="ttdef"><b>Definition</b> RoboMasterMotor.hpp:210</div></div>
-</div><!-- fragment --><p>指定可能な電流の範囲は <code>getCurrentRange</code> メンバ関数より取得できます。フィードバック制御の制御値を制限する際に有用です。</p>
-<div class="fragment"><div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Range.html">Udon::Range&lt;int16_t&gt;</a> currentRange = motor.getCurrentRange();</div>
+<div class="ttc" id="aclassUdon_1_1RoboMasterC620_html_a27342ba524104eb5c2158d247c6eecb8"><div class="ttname"><a href="classUdon_1_1RoboMasterC620.html#a27342ba524104eb5c2158d247c6eecb8">Udon::RoboMasterC620::setCurrent</a></div><div class="ttdeci">void setCurrent(int16_t current) override</div><div class="ttdoc">モーターの電流を設定</div><div class="ttdef"><b>Definition</b> RoboMasterMotor.hpp:226</div></div>
+</div><!-- fragment --><p>指定可能な電流の範囲は <span class="tt">getCurrentRange</span> メンバ関数より取得できます。フィードバック制御の制御値を制限する際に有用です。</p>
+<div class="fragment"><div class="line"><span class="keyword">const</span> <a class="code hl_struct" href="structUdon_1_1Range.html">Udon::Range&lt;int16_t&gt;</a> currentRange = motor.<a class="code hl_function" href="classUdon_1_1RoboMasterC620.html#a40e01b70d87678b45199910810a91ac1">getCurrentRange</a>();</div>
 <div class="line"> </div>
 <div class="line">int16_t min = currentRange.<a class="code hl_variable" href="structUdon_1_1Range.html#a5f357780d35bd1e5283373d7156414de">min</a>;  <span class="comment">// 指定できる最小電流値 [mA]</span></div>
 <div class="line">int16_t max = currentRange.<a class="code hl_variable" href="structUdon_1_1Range.html#a66df49a088e211295fa93457ea09d424">max</a>;  <span class="comment">// 指定できる最大電流値 [mA]</span></div>
+<div class="ttc" id="aclassUdon_1_1RoboMasterC620_html_a40e01b70d87678b45199910810a91ac1"><div class="ttname"><a href="classUdon_1_1RoboMasterC620.html#a40e01b70d87678b45199910810a91ac1">Udon::RoboMasterC620::getCurrentRange</a></div><div class="ttdeci">Udon::Range&lt; int16_t &gt; getCurrentRange() const override</div><div class="ttdoc">指定可能電流範囲</div><div class="ttdef"><b>Definition</b> RoboMasterMotor.hpp:219</div></div>
 <div class="ttc" id="astructUdon_1_1Range_html"><div class="ttname"><a href="structUdon_1_1Range.html">Udon::Range</a></div><div class="ttdoc">範囲を表す型</div><div class="ttdef"><b>Definition</b> Range.hpp:8</div></div>
 <div class="ttc" id="astructUdon_1_1Range_html_a5f357780d35bd1e5283373d7156414de"><div class="ttname"><a href="structUdon_1_1Range.html#a5f357780d35bd1e5283373d7156414de">Udon::Range::min</a></div><div class="ttdeci">MinT min</div><div class="ttdoc">最小値</div><div class="ttdef"><b>Definition</b> Range.hpp:9</div></div>
 <div class="ttc" id="astructUdon_1_1Range_html_a66df49a088e211295fa93457ea09d424"><div class="ttname"><a href="structUdon_1_1Range.html#a66df49a088e211295fa93457ea09d424">Udon::Range::max</a></div><div class="ttdeci">MaxT max</div><div class="ttdoc">最大値</div><div class="ttdef"><b>Definition</b> Range.hpp:10</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md179"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md179"></a>
 センサー値取得</h1>
-<p>回転角度、回転速度、トルク電流、モーター温度を取得できます。位置制御や速度制御をする場合、フィードバック制御器 (<code><a class="el" href="classUdon_1_1PidController.html" title="PID制御器">Udon::PidController</a></code>) と組み合わせて使用してください。</p>
+<p>回転角度、回転速度、トルク電流、モーター温度を取得できます。位置制御や速度制御をする場合、フィードバック制御器 (<span class="tt"><a class="el" href="classUdon_1_1PidController.html" title="PID制御器">Udon::PidController</a></span>) と組み合わせて使用してください。</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    <span class="comment">// 回転角度(無限角対応) [rad]</span></div>
-<div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> angle = motor.getAngle();</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> angle = motor.<a class="code hl_function" href="classUdon_1_1RoboMasterBase.html#a6bd98f32c7c184c58b68f66875a9d855">getAngle</a>();</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// 回転角度(無限角非対応) [rad]</span></div>
-<div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> rawAngle = motor.getRawAngle();</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> rawAngle = motor.<a class="code hl_function" href="classUdon_1_1RoboMasterBase.html#a1c70e487bd45847c0a9042385200dc71">getRawAngle</a>();</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// 回転速度 [rpm]</span></div>
-<div class="line">    <span class="keyword">const</span> int16_t rpm = motor.getVelocity();</div>
+<div class="line">    <span class="keyword">const</span> int16_t rpm = motor.<a class="code hl_function" href="classUdon_1_1RoboMasterBase.html#aaaa80f161b920c8c31fc3d41c977ec52">getVelocity</a>();</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// トルク電流 [mA]</span></div>
-<div class="line">    <span class="keyword">const</span> int16_t torqueCurrent = motor.getTorqueCurrent();</div>
+<div class="line">    <span class="keyword">const</span> int16_t torqueCurrent = motor.<a class="code hl_function" href="classUdon_1_1RoboMasterBase.html#a9435988a7ac5ed25e247f803fb71a295">getTorqueCurrent</a>();</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// モーターの温度 [℃]</span></div>
-<div class="line">    <span class="keyword">const</span> uint8_t temp = motor.getTemperature();</div>
+<div class="line">    <span class="keyword">const</span> uint8_t temp = motor.<a class="code hl_function" href="classUdon_1_1RoboMasterBase.html#ad294af2093405439cbf9f5f006990c9d">getTemperature</a>();</div>
 <div class="line">}</div>
+<div class="ttc" id="aclassUdon_1_1RoboMasterBase_html_a1c70e487bd45847c0a9042385200dc71"><div class="ttname"><a href="classUdon_1_1RoboMasterBase.html#a1c70e487bd45847c0a9042385200dc71">Udon::RoboMasterBase::getRawAngle</a></div><div class="ttdeci">double getRawAngle() const</div><div class="ttdoc">モーターの角度を取得</div><div class="ttdef"><b>Definition</b> RoboMasterMotor.hpp:74</div></div>
+<div class="ttc" id="aclassUdon_1_1RoboMasterBase_html_a6bd98f32c7c184c58b68f66875a9d855"><div class="ttname"><a href="classUdon_1_1RoboMasterBase.html#a6bd98f32c7c184c58b68f66875a9d855">Udon::RoboMasterBase::getAngle</a></div><div class="ttdeci">double getAngle() const</div><div class="ttdoc">モーターの角度を取得</div><div class="ttdef"><b>Definition</b> RoboMasterMotor.hpp:65</div></div>
+<div class="ttc" id="aclassUdon_1_1RoboMasterBase_html_a9435988a7ac5ed25e247f803fb71a295"><div class="ttname"><a href="classUdon_1_1RoboMasterBase.html#a9435988a7ac5ed25e247f803fb71a295">Udon::RoboMasterBase::getTorqueCurrent</a></div><div class="ttdeci">int16_t getTorqueCurrent() const</div><div class="ttdoc">モーターのトルク電流を取得</div><div class="ttdef"><b>Definition</b> RoboMasterMotor.hpp:91</div></div>
+<div class="ttc" id="aclassUdon_1_1RoboMasterBase_html_aaaa80f161b920c8c31fc3d41c977ec52"><div class="ttname"><a href="classUdon_1_1RoboMasterBase.html#aaaa80f161b920c8c31fc3d41c977ec52">Udon::RoboMasterBase::getVelocity</a></div><div class="ttdeci">int16_t getVelocity() const</div><div class="ttdoc">モーターの速度を取得</div><div class="ttdef"><b>Definition</b> RoboMasterMotor.hpp:82</div></div>
+<div class="ttc" id="aclassUdon_1_1RoboMasterBase_html_ad294af2093405439cbf9f5f006990c9d"><div class="ttname"><a href="classUdon_1_1RoboMasterBase.html#ad294af2093405439cbf9f5f006990c9d">Udon::RoboMasterBase::getTemperature</a></div><div class="ttdeci">uint8_t getTemperature() const</div><div class="ttdoc">モーターの温度を取得</div><div class="ttdef"><b>Definition</b> RoboMasterMotor.hpp:100</div></div>
 </div><!-- fragment --><dl class="section note"><dt>覚え書き</dt><dd><br  />
  ドライバは駆動電源で動作するため、駆動電源が切れるとドライバに保存されているエンコーダー角が消去される点に注意してください。</dd></dl>
-<h2><a class="anchor" id="autotoc_md180"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md180"></a>
 getAngle と getRawAngle の違い</h2>
-<p>ロボマスモーターから直接得られる回転角度は一周ごとに 0 になります。そこで <code>getAngle</code> 関数は過去の回転角を累積し、現在の角度を求めます。駆動電源が切れた場合、切れたことをマイコンが判定できず、累積値を消去できないため、この関数が返す回転角は無効な値となります。</p>
-<p><code>getRawAngle</code> 関数は、ロボマスモーターから直接得た回転角度を取得する関数です。一周ごとに 0 に戻ります。</p>
-<h1><a class="anchor" id="autotoc_md181"></a>
+<p>ロボマスモーターから直接得られる回転角度は一周ごとに 0 になります。そこで <span class="tt">getAngle</span> 関数は過去の回転角を累積し、現在の角度を求めます。駆動電源が切れた場合、切れたことをマイコンが判定できず、累積値を消去できないため、この関数が返す回転角は無効な値となります。</p>
+<p><span class="tt">getRawAngle</span> 関数は、ロボマスモーターから直接得た回転角度を取得する関数です。一周ごとに 0 に戻ります。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md181"></a>
 複数のモーターを制御</h1>
 <p>1 つの CAN バスに対して最大 8 つまでモーターを接続可能です。</p>
 <p>モーター ID はドライバについている SET ボタンを押した後、ID 番号回ボタンを押すことで設定できます。モーター ID は緑に点滅する LED の点滅回数で確認できます。</p>
@@ -207,7 +206,7 @@ getAngle と getRawAngle の違い</h2>
 <div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1RoboMasterC610.html">Udon::RoboMasterC610</a> motor3{ bus, 3 };</div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1RoboMasterC610.html">Udon::RoboMasterC610</a> motor4{ bus, 4 };</div>
 <div class="ttc" id="aclassUdon_1_1RoboMasterC610_html"><div class="ttname"><a href="classUdon_1_1RoboMasterC610.html">Udon::RoboMasterC610</a></div><div class="ttdoc">RoboMasterC610クラス</div><div class="ttdef"><b>Definition</b> RoboMasterMotor.hpp:183</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md182"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md182"></a>
 複数 CAN バスの場合</h1>
 <p>複数の CAN バスを使用する場合、CAN バスクラスのオブジェクトを複数作成し、それぞれのモーターに対して対応する CAN バスを指定してください。</p>
 <p>例えば Teensy の場合次のようになります。<a href="./../Communication/CAN.md#-Teensy">詳細</a></p>
@@ -218,16 +217,16 @@ getAngle と getRawAngle の違い</h2>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1RoboMasterC620.html">Udon::RoboMasterC620</a> motor1{ bus1, 1 };  <span class="comment">// CAN1 バスに接続されたモーター (モーターID: 1)</span></div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1RoboMasterC620.html">Udon::RoboMasterC620</a> motor2{ bus2, 1 };  <span class="comment">// CAN2 バスに接続されたモーター (モーターID: 1)</span></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md183"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md183"></a>
 Raspberry Pi Pico での使用例</h1>
-<p>CAN バスクラスに <code><a class="el" href="classUdon_1_1CanBusSpi.html" title="Raspberry Pi Pico用バスクラス">Udon::CanBusSpi</a></code> を使用してください。<a href="./../Communication/CAN.md#-raspberry-pi-pico">詳細</a></p>
+<p>CAN バスクラスに <span class="tt"><a class="el" href="classUdon_1_1CanBusSpi.html" title="Raspberry Pi Pico用バスクラス">Udon::CanBusSpi</a></span> を使用してください。<a href="./../Communication/CAN.md#-raspberry-pi-pico">詳細</a></p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1CanBusSpi.html">Udon::CanBusSpi</a> bus;</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1RoboMasterC620.html">Udon::RoboMasterC620</a> motor{ bus, 1 };</div>
 <div class="ttc" id="aclassUdon_1_1CanBusSpi_html"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html">Udon::CanBusSpi</a></div><div class="ttdoc">Raspberry Pi Pico用バスクラス</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:24</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md184"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md184"></a>
 スケッチ例 (電流制御)</h1>
 <div class="fragment"><div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="comment">//    Copyright (c) 2022 udonrobo</span></div>
@@ -253,9 +252,9 @@ Raspberry Pi Pico での使用例</h1>
 <div class="line">    bus.<a class="code hl_function" href="classUdon_1_1CanBusTeensy.html#a5e0b712fc58d18f440fd3e70b2ac0100">update</a>();</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// 動作電流値を設定</span></div>
-<div class="line">    motor.setCurrent(10000);</div>
+<div class="line">    motor.<a class="code hl_function" href="classUdon_1_1RoboMasterC620.html#a27342ba524104eb5c2158d247c6eecb8">setCurrent</a>(10000);</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md185"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md185"></a>
 スケッチ例 (速度フィードバック制御)</h1>
 <div class="fragment"><div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="comment">//    Copyright (c) 2022 udonrobo</span></div>
@@ -289,13 +288,13 @@ Raspberry Pi Pico での使用例</h1>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> targetVelocity = 5000;</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// 速度フィードバック制御をして目標速度に制御する</span></div>
-<div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> current = pid(motor.getVelocity(), targetVelocity);</div>
-<div class="line">    motor.setCurrent(current);</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">double</span> current = pid(motor.<a class="code hl_function" href="classUdon_1_1RoboMasterBase.html#aaaa80f161b920c8c31fc3d41c977ec52">getVelocity</a>(), targetVelocity);</div>
+<div class="line">    motor.<a class="code hl_function" href="classUdon_1_1RoboMasterC620.html#a27342ba524104eb5c2158d247c6eecb8">setCurrent</a>(current);</div>
 <div class="line"> </div>
 <div class="line">    loopCtrl.update();</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1PidController_html"><div class="ttname"><a href="classUdon_1_1PidController.html">Udon::PidController</a></div><div class="ttdoc">PID制御器</div><div class="ttdef"><b>Definition</b> PidController.hpp:20</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md186"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md186"></a>
 スケッチ例 (速度制御クラスの作成例)</h1>
 <p>実用的な例として、ロボマスモーターの速度をフィードバック制御するクラスを作成する例を示します。</p>
 <div class="fragment"><div class="line"><span class="comment">//</span></div>
@@ -333,8 +332,6 @@ Raspberry Pi Pico での使用例</h1>
 <div class="line">    }</div>
 <div class="line">};</div>
 <div class="ttc" id="aclassUdon_1_1PidController_html_aacc707236296af30d8d2421d91ebce3a"><div class="ttname"><a href="classUdon_1_1PidController.html#aacc707236296af30d8d2421d91ebce3a">Udon::PidController::clearPower</a></div><div class="ttdeci">void clearPower() noexcept</div><div class="ttdoc">操作量のクリア</div><div class="ttdef"><b>Definition</b> PidController.hpp:143</div></div>
-<div class="ttc" id="aclassUdon_1_1RoboMasterBase_html_aaaa80f161b920c8c31fc3d41c977ec52"><div class="ttname"><a href="classUdon_1_1RoboMasterBase.html#aaaa80f161b920c8c31fc3d41c977ec52">Udon::RoboMasterBase::getVelocity</a></div><div class="ttdeci">int16_t getVelocity() const</div><div class="ttdoc">モーターの速度を取得</div><div class="ttdef"><b>Definition</b> RoboMasterMotor.hpp:82</div></div>
-<div class="ttc" id="aclassUdon_1_1RoboMasterC620_html_a27342ba524104eb5c2158d247c6eecb8"><div class="ttname"><a href="classUdon_1_1RoboMasterC620.html#a27342ba524104eb5c2158d247c6eecb8">Udon::RoboMasterC620::setCurrent</a></div><div class="ttdeci">void setCurrent(int16_t current) override</div><div class="ttdoc">モーターの電流を設定</div><div class="ttdef"><b>Definition</b> RoboMasterMotor.hpp:226</div></div>
 <div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition</b> Typedef.hpp:94</div></div>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="comment">//    Copyright (c) 2022 udonrobo</span></div>
@@ -381,6 +378,14 @@ Raspberry Pi Pico での使用例</h1>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! --></div>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>

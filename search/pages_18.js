@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['トレイト_0',['トレイト',['../md_docs_2Other_2Traits.html',1,'']]]
+  ['、ファイル_0',['ディレクトリ(フォルダ)、ファイル',['../md_docs_2Developer_2StyleGuide.html#autotoc_md147',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['色空間_0',['色空間',['../md_docs_2Types_2Color.html',1,'']]]
+  ['チャンネルの設定_0',['チャンネルの設定',['../md_docs_2Communication_2LoRa.html#autotoc_md70',1,'']]]
 ];

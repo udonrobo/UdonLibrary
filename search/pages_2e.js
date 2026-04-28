@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['開発環境セットアップ_0',['開発環境セットアップ',['../md_docs_2Developer_2DevelopSetup.html',1,'']]]
+  ['トレイト_0',['トレイト',['../md_docs_2Other_2Traits.html',1,'']]]
 ];

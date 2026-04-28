@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: トレイト</title>
@@ -14,7 +14,6 @@
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -45,26 +44,20 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.13.2 -->
+<!-- 構築: Doxygen 1.16.1 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-/* @license-end */
 </script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() { codefold.init(0); });
-/* @license-end */
+$(function() { codefold.init(); });
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索',true);
   $(function() { init_search(); });
 });
-/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -79,10 +72,9 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true); });
-/* @license-end */
+$(function(){initNavTree('md_docs_2Other_2Traits.html','',''); });
 </script>
+<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -106,43 +98,43 @@ $(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true);
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">トレイト</div></div>
+  <div class="headertitle"><div class="title">トレイト </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md230"></a></p>
-<h1><a class="anchor" id="autotoc_md231"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md231"></a>
 メタ関数</h1>
 <p>コンパイル時に型情報を取得する関数(クラス)。</p>
-<p><code>static_assert</code> と組み合わせることでユーザーに分かりやすいエラーを出したり、コンパイル時処理に利用できます。</p>
-<p><code>std::true_type</code>、<code>std::false_type</code> のいずれかを継承するため、<code>value</code> メンバ変数を使用して、判定結果をコンパイル時に取得できます。</p>
+<p><span class="tt">static_assert</span> と組み合わせることでユーザーに分かりやすいエラーを出したり、コンパイル時処理に利用できます。</p>
+<p><span class="tt">std::true_type</span>、<span class="tt">std::false_type</span> のいずれかを継承するため、<span class="tt">value</span> メンバ変数を使用して、判定結果をコンパイル時に取得できます。</p>
 <blockquote class="doxtable">
-<p>各メタ関数は <code><a class="el" href="namespaceUdon_1_1Traits.html">Udon::Traits</a></code> 名前空間に属します。 </p>
+<p>各メタ関数は <span class="tt"><a class="el" href="namespaceUdon_1_1Traits.html">Udon::Traits</a></span> 名前空間に属します。 </p>
 </blockquote>
 <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadNone">名前   </th><th class="markdownTableHeadNone">説明   </th><th class="markdownTableHeadNone">ヘッダーファイル    </th></tr>
+<th class="markdownTableHeadNone">名前  </th><th class="markdownTableHeadNone">説明  </th><th class="markdownTableHeadNone">ヘッダーファイル  </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>IsWriter&lt;T&gt;</code>   </td><td class="markdownTableBodyNone">T が送信クラス要件を満たす場合 <code>std::true_type</code> 、それ以外は <code>std::false_type</code> を継承。   </td><td class="markdownTableBodyNone"><a href="./../../src/Udon/Traits/ReaderWriterTraits.hpp">Udon/Traits/ReaderWriterTraits.hpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">IsWriter&lt;T&gt;</span>  </td><td class="markdownTableBodyNone">T が送信クラス要件を満たす場合 <span class="tt">std::true_type</span> 、それ以外は <span class="tt">std::false_type</span> を継承。  </td><td class="markdownTableBodyNone"><a href="./../../src/Udon/Traits/ReaderWriterTraits.hpp">Udon/Traits/ReaderWriterTraits.hpp</a>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>IsReader&lt;T&gt;</code>   </td><td class="markdownTableBodyNone">T が受信クラス要件を満たす場合 <code>std::true_type</code> 、それ以外は <code>std::false_type</code> を継承。   </td><td class="markdownTableBodyNone"><a href="./../../src/Udon/Traits/ReaderWriterTraits.hpp">Udon/Traits/ReaderWriterTraits.hpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">IsReader&lt;T&gt;</span>  </td><td class="markdownTableBodyNone">T が受信クラス要件を満たす場合 <span class="tt">std::true_type</span> 、それ以外は <span class="tt">std::false_type</span> を継承。  </td><td class="markdownTableBodyNone"><a href="./../../src/Udon/Traits/ReaderWriterTraits.hpp">Udon/Traits/ReaderWriterTraits.hpp</a>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>IsSerializable&lt;T&gt;</code>   </td><td class="markdownTableBodyNone">T がシリアライズ可能な場合 <code>std::true_type</code> 、それ以外は <code>std::false_type</code> を継承。   </td><td class="markdownTableBodyNone"><a href="./../../src/Udon/Serializer/SerializerTraits.hpp">Udon/Serializer/SerializerTraits.hpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">IsSerializable&lt;T&gt;</span>  </td><td class="markdownTableBodyNone">T がシリアライズ可能な場合 <span class="tt">std::true_type</span> 、それ以外は <span class="tt">std::false_type</span> を継承。  </td><td class="markdownTableBodyNone"><a href="./../../src/Udon/Serializer/SerializerTraits.hpp">Udon/Serializer/SerializerTraits.hpp</a>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>AlwaysFalse&lt;T&gt;</code>   </td><td class="markdownTableBodyNone">常に <code>std::false_type</code> を継承。(遅延 static_assert)   </td><td class="markdownTableBodyNone"><a href="./../../src/Udon/Traits/AlwaysFalse.hpp">Udon/Traits/AlwaysFalse.hpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">AlwaysFalse&lt;T&gt;</span>  </td><td class="markdownTableBodyNone">常に <span class="tt">std::false_type</span> を継承。(遅延 static_assert)  </td><td class="markdownTableBodyNone"><a href="./../../src/Udon/Traits/AlwaysFalse.hpp">Udon/Traits/AlwaysFalse.hpp</a>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>HasMemberFunctionBegin&lt;T&gt;</code>   </td><td class="markdownTableBodyNone">T に <code>begin</code> メンバ関数が存在する場合 <code>std::true_type</code> 、それ以外は <code>std::false_type</code> を継承。   </td><td class="markdownTableBodyNone"><a href="./../../src/Udon/Traits/HasMemberFunction.hpp">Udon/Traits/HasMemberFunction.hpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">HasMemberFunctionBegin&lt;T&gt;</span>  </td><td class="markdownTableBodyNone">T に <span class="tt">begin</span> メンバ関数が存在する場合 <span class="tt">std::true_type</span> 、それ以外は <span class="tt">std::false_type</span> を継承。  </td><td class="markdownTableBodyNone"><a href="./../../src/Udon/Traits/HasMemberFunction.hpp">Udon/Traits/HasMemberFunction.hpp</a>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>HasMemberFunctionUpdate&lt;T&gt;</code>   </td><td class="markdownTableBodyNone">T に <code>update</code> メンバ関数が存在する場合 <code>std::true_type</code> 、それ以外は <code>std::false_type</code> を継承。   </td><td class="markdownTableBodyNone"><a href="./../../src/Udon/Traits/HasMemberFunction.hpp">Udon/Traits/HasMemberFunction.hpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">HasMemberFunctionUpdate&lt;T&gt;</span>  </td><td class="markdownTableBodyNone">T に <span class="tt">update</span> メンバ関数が存在する場合 <span class="tt">std::true_type</span> 、それ以外は <span class="tt">std::false_type</span> を継承。  </td><td class="markdownTableBodyNone"><a href="./../../src/Udon/Traits/HasMemberFunction.hpp">Udon/Traits/HasMemberFunction.hpp</a>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>HasMemberFunctionShow&lt;T&gt;</code>   </td><td class="markdownTableBodyNone">T に <code>show</code> メンバ関数が存在する場合 <code>std::true_type</code> 、それ以外は <code>std::false_type</code> を継承。   </td><td class="markdownTableBodyNone"><a href="./../../src/Udon/Traits/HasMemberFunction.hpp">Udon/Traits/HasMemberFunction.hpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">HasMemberFunctionShow&lt;T&gt;</span>  </td><td class="markdownTableBodyNone">T に <span class="tt">show</span> メンバ関数が存在する場合 <span class="tt">std::true_type</span> 、それ以外は <span class="tt">std::false_type</span> を継承。  </td><td class="markdownTableBodyNone"><a href="./../../src/Udon/Traits/HasMemberFunction.hpp">Udon/Traits/HasMemberFunction.hpp</a>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>HasMemberFunctionShowRaw&lt;T&gt;</code>   </td><td class="markdownTableBodyNone">T に <code>showRaw</code> メンバ関数が存在する場合 <code>std::true_type</code> 、それ以外は <code>std::false_type</code> を継承。   </td><td class="markdownTableBodyNone"><a href="./../../src/Udon/Traits/HasMemberFunction.hpp">Udon/Traits/HasMemberFunction.hpp</a>   </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">HasMemberFunctionShowRaw&lt;T&gt;</span>  </td><td class="markdownTableBodyNone">T に <span class="tt">showRaw</span> メンバ関数が存在する場合 <span class="tt">std::true_type</span> 、それ以外は <span class="tt">std::false_type</span> を継承。  </td><td class="markdownTableBodyNone"><a href="./../../src/Udon/Traits/HasMemberFunction.hpp">Udon/Traits/HasMemberFunction.hpp</a>  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md232"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md232"></a>
 送信クラス要件</h2>
 <ul>
-<li><code>MessageType</code> というメンバ型名を持つ</li>
-<li><code>setMessage()</code> メンバ関数を持ち、戻り値が <code>void</code>、引数型が <code>const MessageType&amp;</code> である</li>
+<li><span class="tt">MessageType</span> というメンバ型名を持つ</li>
+<li><span class="tt">setMessage()</span> メンバ関数を持ち、戻り値が <span class="tt">void</span>、引数型が <span class="tt">const MessageType&amp;</span> である</li>
 </ul>
 <div class="fragment"><div class="line"><span class="comment">// 送信クラス要件を満たすクラス</span></div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Message&gt;</div>
@@ -165,11 +157,11 @@ $(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true);
 <div class="line">    <span class="comment">// static_assert(Udon::Traits::IsWriter&lt;NotWriter&gt;::value, &quot;&quot;);  // static_assert failed</span></div>
 <div class="line">}</div>
 <div class="ttc" id="astructUdon_1_1Traits_1_1IsWriter_html"><div class="ttname"><a href="structUdon_1_1Traits_1_1IsWriter.html">Udon::Traits::IsWriter</a></div><div class="ttdoc">送信クラスであるか判定</div><div class="ttdef"><b>Definition</b> ReaderWriterTraits.hpp:25</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md233"></a>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md233"></a>
 受信クラス要件</h2>
 <ul>
-<li><code>MessageType</code> というメンバ型名を持つ</li>
-<li><code>getMessage() const</code> メンバ関数を持ち、戻り値が <code><a class="el" href="classUdon_1_1Optional.html" title="オプショナル型">Udon::Optional</a>&lt;MessageType&gt;</code>、引数が存在しない</li>
+<li><span class="tt">MessageType</span> というメンバ型名を持つ</li>
+<li><span class="tt">getMessage() const</span> メンバ関数を持ち、戻り値が <span class="tt"><a class="el" href="classUdon_1_1Optional.html" title="オプショナル型">Udon::Optional</a>&lt;MessageType&gt;</span>、引数が存在しない</li>
 </ul>
 <div class="fragment"><div class="line"><span class="comment">// 受信クラス要件を満たすクラス</span></div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Message&gt;</div>
@@ -193,7 +185,7 @@ $(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true);
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1Optional_html"><div class="ttname"><a href="classUdon_1_1Optional.html">Udon::Optional</a></div><div class="ttdoc">オプショナル型</div><div class="ttdef"><b>Definition</b> Optional.hpp:62</div></div>
 <div class="ttc" id="astructUdon_1_1Traits_1_1IsReader_html"><div class="ttname"><a href="structUdon_1_1Traits_1_1IsReader.html">Udon::Traits::IsReader</a></div><div class="ttdoc">送信クラスであるか判定</div><div class="ttdef"><b>Definition</b> ReaderWriterTraits.hpp:42</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md234"></a>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md234"></a>
 オーバーロード解決の優先順位制御</h2>
 <div class="fragment"><div class="line"><span class="keyword">struct </span>Serializable</div>
 <div class="line">{</div>
@@ -215,9 +207,9 @@ $(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true);
 <div class="line">    f(serializable);</div>
 <div class="line">}</div>
 <div class="ttc" id="aEnumerableMacro_8hpp_html_a6e99cc65e2a105775034579f13c59b8d"><div class="ttname"><a href="EnumerableMacro_8hpp.html#a6e99cc65e2a105775034579f13c59b8d">UDON_ENUMERABLE</a></div><div class="ttdeci">#define UDON_ENUMERABLE(...)</div><div class="ttdoc">メンバ変数の列挙を可能にする</div><div class="ttdef"><b>Definition</b> EnumerableMacro.hpp:11</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md235"></a>
-<code>AlwaysFalse&lt;T&gt;</code></h2>
-<p><code>AlwaysFalse&lt;T&gt;</code> を使用することで、テンプレート関数、クラスが実体化されたときに限り <code>static_assert</code> を失敗させることができる。</p>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md235"></a>
+<span class="tt">AlwaysFalse&lt;T&gt;</span></h2>
+<p><span class="tt">AlwaysFalse&lt;T&gt;</span> を使用することで、テンプレート関数、クラスが実体化されたときに限り <span class="tt">static_assert</span> を失敗させることができる。</p>
 <blockquote class="doxtable">
 <p>static_assert(false, "") は常に失敗してしまうので、失敗を実体化のタイミングまで遅延させる。 </p>
 </blockquote>
@@ -239,26 +231,26 @@ $(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true);
 <div class="line">    <span class="comment">// f(1.0);  // static_assert failed</span></div>
 <div class="line">}</div>
 <div class="ttc" id="astructUdon_1_1Traits_1_1AlwaysFalse_html"><div class="ttname"><a href="structUdon_1_1Traits_1_1AlwaysFalse.html">Udon::Traits::AlwaysFalse</a></div><div class="ttdoc">static_assert 失敗遅延用の型</div><div class="ttdef"><b>Definition</b> AlwaysFalse.hpp:39</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md236"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md236"></a>
 曖昧なメンバ関数呼び出し</h1>
 <p>特定のメンバ関数が存在する場合呼び出し、存在しない場合何もしない関数です。この関数を使用することで、特定のメンバ関数の有無に関係なく一様な記述が可能になります。</p>
 <blockquote class="doxtable">
-<p>各関数は <code><a class="el" href="namespaceUdon_1_1Traits.html">Udon::Traits</a></code> 名前空間に属します。</p>
-<p>メタ関数 <code>HasMemberFunction~~</code> が定義されているヘッダーファイルに定義されています。 </p>
+<p>各関数は <span class="tt"><a class="el" href="namespaceUdon_1_1Traits.html">Udon::Traits</a></span> 名前空間に属します。</p>
+<p>メタ関数 <span class="tt">HasMemberFunction~~</span> が定義されているヘッダーファイルに定義されています。 </p>
 </blockquote>
 <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadNone">名前   </th><th class="markdownTableHeadNone">説明   </th><th class="markdownTableHeadNone">戻り値型   </th><th class="markdownTableHeadNone">引数型    </th></tr>
+<th class="markdownTableHeadNone">名前  </th><th class="markdownTableHeadNone">説明  </th><th class="markdownTableHeadNone">戻り値型  </th><th class="markdownTableHeadNone">引数型  </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>MaybeInvokeBegin(rhs)</code>   </td><td class="markdownTableBodyNone"><code>rhs.begin()</code> を呼び出せる場合呼び出す   </td><td class="markdownTableBodyNone">不定   </td><td class="markdownTableBodyNone">void    </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">MaybeInvokeBegin(rhs)</span>  </td><td class="markdownTableBodyNone"><span class="tt">rhs.begin()</span> を呼び出せる場合呼び出す  </td><td class="markdownTableBodyNone">不定  </td><td class="markdownTableBodyNone">void  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>MaybeInvokeUpdate(rhs)</code>   </td><td class="markdownTableBodyNone"><code>rhs.update()</code> を呼び出せる場合呼び出す   </td><td class="markdownTableBodyNone">不定   </td><td class="markdownTableBodyNone">void    </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">MaybeInvokeUpdate(rhs)</span>  </td><td class="markdownTableBodyNone"><span class="tt">rhs.update()</span> を呼び出せる場合呼び出す  </td><td class="markdownTableBodyNone">不定  </td><td class="markdownTableBodyNone">void  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>MaybeInvokeShow(rhs)</code>   </td><td class="markdownTableBodyNone"><code>rhs.show() const</code> を呼び出せる場合呼び出す   </td><td class="markdownTableBodyNone">不定   </td><td class="markdownTableBodyNone">void    </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">MaybeInvokeShow(rhs)</span>  </td><td class="markdownTableBodyNone"><span class="tt">rhs.show() const</span> を呼び出せる場合呼び出す  </td><td class="markdownTableBodyNone">不定  </td><td class="markdownTableBodyNone">void  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>MaybeInvokeShowRaw(rhs)</code>   </td><td class="markdownTableBodyNone"><code>rhs.showRaw() const</code> を呼び出せる場合呼び出す   </td><td class="markdownTableBodyNone">不定   </td><td class="markdownTableBodyNone">void   </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">MaybeInvokeShowRaw(rhs)</span>  </td><td class="markdownTableBodyNone"><span class="tt">rhs.showRaw() const</span> を呼び出せる場合呼び出す  </td><td class="markdownTableBodyNone">不定  </td><td class="markdownTableBodyNone">void  </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md237"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md237"></a>
 基本</h2>
 <div class="fragment"><div class="line"><span class="keyword">class </span>Updatable</div>
 <div class="line">{</div>
@@ -280,7 +272,7 @@ $(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true);
 <div class="line">    <a class="code hl_function" href="namespaceUdon_1_1Traits.html#ad2f56402d66969c0fb3735b2d7c3eaa4">Udon::Traits::MaybeInvokeUpdate</a>(unupdatable);  <span class="comment">//&gt;</span></div>
 <div class="line">}</div>
 <div class="ttc" id="anamespaceUdon_1_1Traits_html_ad2f56402d66969c0fb3735b2d7c3eaa4"><div class="ttname"><a href="namespaceUdon_1_1Traits.html#ad2f56402d66969c0fb3735b2d7c3eaa4">Udon::Traits::MaybeInvokeUpdate</a></div><div class="ttdeci">void MaybeInvokeUpdate(HasMemberFunctionUpdate &amp;rhs)</div><div class="ttdoc">T に T::update 関数が存在する場合呼び出す。それ以外の場合何もしない。</div><div class="ttdef"><b>Definition</b> HasMemberFunction.hpp:111</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md238"></a>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md238"></a>
 実用例</h2>
 <div class="fragment"><div class="line"><span class="comment">// updateを持つ受信クラス</span></div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Message&gt;</div>
@@ -325,6 +317,14 @@ $(function(){initNavTree('md_docs_2Other_2Traits.html',''); initResizable(true);
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! --></div>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>

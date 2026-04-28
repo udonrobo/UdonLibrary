@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: フィードバック制御</title>
@@ -14,7 +14,6 @@
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -45,26 +44,20 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.13.2 -->
+<!-- 構築: Doxygen 1.16.1 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-/* @license-end */
 </script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() { codefold.init(0); });
-/* @license-end */
+$(function() { codefold.init(); });
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索',true);
   $(function() { init_search(); });
 });
-/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -79,10 +72,9 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('md_docs_2Algorithm_2FeedbackController.html',''); initResizable(true); });
-/* @license-end */
+$(function(){initNavTree('md_docs_2Algorithm_2FeedbackController.html','',''); });
 </script>
+<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -106,18 +98,18 @@ $(function(){initNavTree('md_docs_2Algorithm_2FeedbackController.html',''); init
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">フィードバック制御</div></div>
+  <div class="headertitle"><div class="title">フィードバック制御 </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md11"></a></p>
 <p>フィードバック制御は、機構の位置制御、速度制御等に用いられる制御方法です。</p>
 <p>例えば昇降機構をある高さに移動させる場合を考えます。モーター単体では、機構が現在どの位置にいるか把握することができないため、目標となる高さに移動できません。そこでロータリーエンコーダーなどの現在位置を取得するセンサを用い、目標となる高さと現在位置を比較し、モータのパワーを調整することで目標の高さへ到達させます。これがフィードバック制御です。</p>
 <p>フィードバック制御にはいくつか手法がありますが、本部活では昔から使用されている調整が手軽な PID 制御を用います。</p>
-<h1><a class="anchor" id="autotoc_md12"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
 PidController</h1>
-<p>PID 制御を行うには <code>PidController</code> クラスを用います。このクラスはループ周期が一定である前提で作成されているため、<code>LoopCycleController</code> クラスも必要です。</p>
+<p>PID 制御を行うには <span class="tt">PidController</span> クラスを用います。このクラスはループ周期が一定である前提で作成されているため、<span class="tt">LoopCycleController</span> クラスも必要です。</p>
 <p>PID 制御には 3 つのパラメータ (P ゲイン, I ゲイン, D ゲイン) があり、コンストラクタで設定します。このパラメータがフィードバック制御の性能を決定します。</p>
-<p><code>PidController::update()</code> に現在の値、目標の値を渡すことで <code>PidController::getPower()</code> から制御値が得られます。この制御値用いてモータを動かすことで位置制御などが可能です。現在値にはエンコーダーなどのセンサから得られる値を設定します。</p>
+<p><span class="tt">PidController::update()</span> に現在の値、目標の値を渡すことで <span class="tt">PidController::getPower()</span> から制御値が得られます。この制御値用いてモータを動かすことで位置制御などが可能です。現在値にはエンコーダーなどのセンサから得られる値を設定します。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> Udon::LoopCycleController loopCtrl{ 10000 };  <span class="comment">// ループ周期 10000マイクロ秒</span></div>
@@ -133,14 +125,15 @@ PidController</h1>
 <div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    pid.<a class="code hl_function" href="classUdon_1_1PidController.html#a64f66fda55e64b4cba8645095b6622b8">update</a>(現在値, 目標値);</div>
-<div class="line">    <span class="keywordtype">double</span> 制御値 = pid.getPower();</div>
+<div class="line">    <span class="keywordtype">double</span> 制御値 = pid.<a class="code hl_function" href="classUdon_1_1PidController.html#a19755615e61b88b80d78d1b5148e224e">getPower</a>();</div>
 <div class="line"> </div>
 <div class="line">    loopCtrl.update();</div>
 <div class="line">}</div>
 <div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
 <div class="ttc" id="aclassUdon_1_1PidController_html"><div class="ttname"><a href="classUdon_1_1PidController.html">Udon::PidController</a></div><div class="ttdoc">PID制御器</div><div class="ttdef"><b>Definition</b> PidController.hpp:20</div></div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_a19755615e61b88b80d78d1b5148e224e"><div class="ttname"><a href="classUdon_1_1PidController.html#a19755615e61b88b80d78d1b5148e224e">Udon::PidController::getPower</a></div><div class="ttdeci">double getPower() const noexcept</div><div class="ttdoc">操作量の取得 (操作量の範囲制限なし)</div><div class="ttdef"><b>Definition</b> PidController.hpp:87</div></div>
 <div class="ttc" id="aclassUdon_1_1PidController_html_a64f66fda55e64b4cba8645095b6622b8"><div class="ttname"><a href="classUdon_1_1PidController.html#a64f66fda55e64b4cba8645095b6622b8">Udon::PidController::update</a></div><div class="ttdeci">void update(double controlValue, double targetValue) noexcept</div><div class="ttdoc">データ更新</div><div class="ttdef"><b>Definition</b> PidController.hpp:62</div></div>
-</div><!-- fragment --><p><code>operator()()</code> によって以下のようにも書けます。</p>
+</div><!-- fragment --><p><span class="tt">operator()()</span> によって以下のようにも書けます。</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">double</span> 制御値 = pid(現在値, 目標値);</div>
@@ -160,14 +153,23 @@ PidController</h1>
 <div class="line"> </div>
 <div class="line">    loopCtrl.update();</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>積分定数が設定されている場合、非常停止中に誤差が積算されていき、非常停止解除時に急に動く場合があります。<code>clearPower()</code> メンバ関数で積算値の消去を行えます。</p>
+</div><!-- fragment --><p>積分定数が設定されている場合、非常停止中に誤差が積算されていき、非常停止解除時に急に動く場合があります。<span class="tt">clearPower()</span> メンバ関数で積算値の消去を行えます。</p>
 <div class="fragment"><div class="line"><span class="keywordflow">if</span> (非常停止中)</div>
 <div class="line">{</div>
-<div class="line">    pid.clearPower();</div>
+<div class="line">    pid.<a class="code hl_function" href="classUdon_1_1PidController.html#aacc707236296af30d8d2421d91ebce3a">clearPower</a>();</div>
 <div class="line">}</div>
+<div class="ttc" id="aclassUdon_1_1PidController_html_aacc707236296af30d8d2421d91ebce3a"><div class="ttname"><a href="classUdon_1_1PidController.html#aacc707236296af30d8d2421d91ebce3a">Udon::PidController::clearPower</a></div><div class="ttdeci">void clearPower() noexcept</div><div class="ttdoc">操作量のクリア</div><div class="ttdef"><b>Definition</b> PidController.hpp:143</div></div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! --></div>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>

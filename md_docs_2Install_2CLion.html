@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: CLion</title>
@@ -14,7 +14,6 @@
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -45,26 +44,20 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.13.2 -->
+<!-- 構築: Doxygen 1.16.1 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-/* @license-end */
 </script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() { codefold.init(0); });
-/* @license-end */
+$(function() { codefold.init(); });
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索',true);
   $(function() { init_search(); });
 });
-/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -79,10 +72,9 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('md_docs_2Install_2CLion.html',''); initResizable(true); });
-/* @license-end */
+$(function(){initNavTree('md_docs_2Install_2CLion.html','',''); });
 </script>
+<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -106,7 +98,7 @@ $(function(){initNavTree('md_docs_2Install_2CLion.html',''); initResizable(true)
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">CLion</div></div>
+  <div class="headertitle"><div class="title">CLion </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md195"></a></p>
@@ -116,7 +108,7 @@ $(function(){initNavTree('md_docs_2Install_2CLion.html',''); initResizable(true)
 <li>ライブラリのクローン</li>
 <li>インクルードパスの設定</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md196"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md196"></a>
 追加手順</h1>
 <ol type="1">
 <li><p class="startli">ターミナルをプロジェクトディレクトリ下で起動</p>
@@ -130,13 +122,16 @@ $(function(){initNavTree('md_docs_2Install_2CLion.html',''); initResizable(true)
 <li><p class="startli">プロジェクト自体を git で管理している場合</p>
 <p class="startli">リポジトリ内にリポジトリを置くことになります。この場合、submodule として追加することが推奨されています。</p>
 <p class="startli">submodule add 後、追加先のレポジトリに対して、「ライブラリを追加した」という変更が自動的にステージングされるので、コミットを作成しています。</p>
-<p class="startli"><code>sh git submodule add <a href="https://github.com/udonrobo/UdonLibrary.git">https://github.com/udonrobo/UdonLibrary.git</a> git commit -m "add UdonLibrary" </code></p>
+<p class="startli"><span class="tt">sh
+     git submodule add <a href="https://github.com/udonrobo/UdonLibrary.git">https://github.com/udonrobo/UdonLibrary.git</a>
+     git commit -m "add UdonLibrary"
+     </span></p>
 <p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/f87a5658-d291-48c3-80d5-e9ff739d6690" alt="" width="700px" class="inline"/></p>
 </li>
 </ul>
 </li>
 <li><p class="startli">CMakeLists.txt にインクルードパスを設定</p>
-<p class="startli">&lt;target&gt; には <code>add_executable(...)</code> によって作成されるターゲット名を指定します。</p>
+<p class="startli">&lt;target&gt; には <span class="tt">add_executable(...)</span> によって作成されるターゲット名を指定します。</p>
 <div class="fragment"><div class="line">target_include_directories( &lt;target&gt; PUBLIC ./UdonLibrary/src)</div>
 </div><!-- fragment --><p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/6fbdd219-12b9-425e-b7ed-6bbcf02ba42b" alt="" width="700px" class="inline"/></p>
 </li>
@@ -145,10 +140,10 @@ $(function(){initNavTree('md_docs_2Install_2CLion.html',''); initResizable(true)
 <p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/253323fd-9d80-49e0-99ed-17e0de1d3e09" alt="" width="400px" class="inline"/></p>
 </li>
 </ol>
-<h1><a class="anchor" id="autotoc_md197"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md197"></a>
 更新手順</h1>
 <ol type="1">
-<li><code>追加 1.</code> と同じくターミナルを起動</li>
+<li><span class="tt">追加 1.</span> と同じくターミナルを起動</li>
 <li>更新<ul>
 <li><p class="startli">プロジェクト自体を git で管理していない場合</p>
 <p class="startli">ライブラリディレクトリに移動しプルします。</p>
@@ -158,21 +153,31 @@ $(function(){initNavTree('md_docs_2Install_2CLion.html',''); initResizable(true)
 </li>
 <li><p class="startli">プロジェクト自体を git で管理している場合</p>
 <p class="startli">追加先のプロジェクトでサブモジュールを更新します。</p>
-<p class="startli"><code>sh git submodule update --remote </code></p>
+<p class="startli"><span class="tt">sh
+     git submodule update --remote
+     </span></p>
 <p class="startli"><img src="https://github.com/udonrobo/UdonLibrary/assets/91818705/dc1fecbb-2a66-402b-a3dc-5994663920e5" alt="" width="600px" class="inline"/></p>
 </li>
 </ul>
 </li>
 </ol>
-<h1><a class="anchor" id="autotoc_md198"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md198"></a>
 submodule 使用時の注意点</h1>
-<p>追加先のプロジェクト自体のクローンを行うとき <code>--recursive</code> オプションを与えなければ、ライブラリがクローンされません。</p>
+<p>追加先のプロジェクト自体のクローンを行うとき <span class="tt">--recursive</span> オプションを与えなければ、ライブラリがクローンされません。</p>
 <div class="fragment"><div class="line">git clone --recursive &lt;プロジェクトURL&gt;</div>
 </div><!-- fragment --><p>また submodule は追加時のコミットを参照するため、追加先のプロジェクトをクローンしても、ライブラリは submodule 追加時のコミットの内容になります。最新のライブラリを使用する場合は submodule を更新する必要があります。</p>
 <div class="fragment"><div class="line">git submodule update --remote</div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! --></div>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>

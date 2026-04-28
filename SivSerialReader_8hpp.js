@@ -1,4 +1,4 @@
 var SivSerialReader_8hpp =
 [
-    [ "Udon::SivSerialReader< Message >", "classUdon_1_1SivSerialReader.html", "classUdon_1_1SivSerialReader" ]
+    [ "Udon::SivSerialReader&lt; Message &gt;", "classUdon_1_1SivSerialReader.html", "classUdon_1_1SivSerialReader" ]
 ];

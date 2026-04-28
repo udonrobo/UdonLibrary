@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: I2C 通信</title>
@@ -14,7 +14,6 @@
 <link href="navtree.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="navtreedata.js"></script>
 <script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript" src="resize.js"></script>
 <script type="text/javascript" src="cookie.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
@@ -45,26 +44,20 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.13.2 -->
+<!-- 構築: Doxygen 1.16.1 -->
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 var searchBox = new SearchBox("searchBox", "search/",'.html');
-/* @license-end */
 </script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() { codefold.init(0); });
-/* @license-end */
+$(function() { codefold.init(); });
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
   initMenu('',true,false,'search.php','検索',true);
   $(function() { init_search(); });
 });
-/* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
@@ -79,10 +72,9 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('md_docs_2Communication_2I2C.html',''); initResizable(true); });
-/* @license-end */
+$(function(){initNavTree('md_docs_2Communication_2I2C.html','',''); });
 </script>
+<div id="container">
 <div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -106,7 +98,7 @@ $(function(){initNavTree('md_docs_2Communication_2I2C.html',''); initResizable(t
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">I2C 通信</div></div>
+  <div class="headertitle"><div class="title">I2C 通信 </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md46"></a></p>
@@ -117,21 +109,21 @@ $(function(){initNavTree('md_docs_2Communication_2I2C.html',''); initResizable(t
  配線長が長くなると通信エラーの要因となります。 <br  />
 <br  />
  I2C の SDA や SCL はオープンドレイン構成であり、信号が HIGH のときはトランジスタがオフになり、プルアップ抵抗によって電圧が Vcc に引き上げられます。そのため、配線長が長くなると配線自体の静電容量が増大し、信号の立ち上がり時間が遅くなります。(配線がコンデンサのように振る舞い、プルアップ抵抗を介して流入する電荷量では充電に時間がかかるため)</dd></dl>
-<h1><a class="anchor" id="autotoc_md47"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md47"></a>
 個別インクルード</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="I2c_8hpp.html">Udon/Com/I2c.hpp</a>&gt;</span></div>
 <div class="ttc" id="aI2c_8hpp_html"><div class="ttname"><a href="I2c_8hpp.html">I2c.hpp</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md48"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md48"></a>
 バスクラス</h1>
-<p><code>Udon::I2cBus</code></p>
-<p>Arduino の <code>TwoWire</code> クラスへ通信タイムアウト時にバスの再起動を行う機能を追加したバスクラスです。</p>
-<p>通信開始時、マスターモードの場合 <code>begin(void)</code>、スレーブモードの場合 <code>begin(address)</code> を呼び出す点に注意してください。</p>
-<h1><a class="anchor" id="autotoc_md49"></a>
+<p><span class="tt">Udon::I2cBus</span></p>
+<p>Arduino の <span class="tt">TwoWire</span> クラスへ通信タイムアウト時にバスの再起動を行う機能を追加したバスクラスです。</p>
+<p>通信開始時、マスターモードの場合 <span class="tt">begin(void)</span>、スレーブモードの場合 <span class="tt">begin(address)</span> を呼び出す点に注意してください。</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md49"></a>
 マスターからスレーブへ送信</h1>
-<h2><a class="anchor" id="autotoc_md50"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md50"></a>
 マスター送信クラス</h2>
-<p><code><a class="el" href="classUdon_1_1I2cMasterWriter.html" title="I2c マスター側送信クラス">Udon::I2cMasterWriter</a>&lt;T&gt;</code></p>
-<p><code>T</code> に指定された型のオブジェクトをスレーブへ送信します。スレーブの数に応じて複数インスタンス化可能です。</p>
+<p><span class="tt"><a class="el" href="classUdon_1_1I2cMasterWriter.html" title="I2c マスター側送信クラス">Udon::I2cMasterWriter</a>&lt;T&gt;</span></p>
+<p><span class="tt">T</span> に指定された型のオブジェクトをスレーブへ送信します。スレーブの数に応じて複数インスタンス化可能です。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> Udon::I2cBus bus{ Wire };</div>
@@ -153,10 +145,10 @@ $(function(){initNavTree('md_docs_2Communication_2I2C.html',''); initResizable(t
 <div class="ttc" id="aUdon_8hpp_html"><div class="ttname"><a href="Udon_8hpp.html">Udon.hpp</a></div></div>
 <div class="ttc" id="aclassUdon_1_1I2cMasterWriter_html"><div class="ttname"><a href="classUdon_1_1I2cMasterWriter.html">Udon::I2cMasterWriter</a></div><div class="ttdoc">I2c マスター側送信クラス</div><div class="ttdef"><b>Definition</b> I2cMasterWriter.hpp:26</div></div>
 <div class="ttc" id="aclassUdon_1_1I2cMasterWriter_html_acc4ba22420f58c11bd6e4ac2ac06887a"><div class="ttname"><a href="classUdon_1_1I2cMasterWriter.html#acc4ba22420f58c11bd6e4ac2ac06887a">Udon::I2cMasterWriter::setMessage</a></div><div class="ttdeci">void setMessage(const MessageType &amp;message)</div><div class="ttdoc">送信するメッセージを設定、送信</div><div class="ttdef"><b>Definition</b> I2cMasterWriter.hpp:46</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md51"></a>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md51"></a>
 スレーブ受信クラス</h2>
-<p><code><a class="el" href="classUdon_1_1I2cSlaveReader.html" title="I2c スレーブ側受信クラス">Udon::I2cSlaveReader</a>&lt;T&gt;</code></p>
-<p><code>T</code> に指定された型のオブジェクトをマスターから受信します。複数インスタンス化できません。</p>
+<p><span class="tt"><a class="el" href="classUdon_1_1I2cSlaveReader.html" title="I2c スレーブ側受信クラス">Udon::I2cSlaveReader</a>&lt;T&gt;</span></p>
+<p><span class="tt">T</span> に指定された型のオブジェクトをマスターから受信します。複数インスタンス化できません。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> Udon::I2cBus bus{ Wire };</div>
@@ -167,14 +159,14 @@ $(function(){initNavTree('md_docs_2Communication_2I2C.html',''); initResizable(t
 <div class="line">    Serial.<a class="code hl_function" href="classUdon_1_1I2cSlaveReader.html#a98971803ac6013eda42928de0c14e539">begin</a>(115200);</div>
 <div class="line"> </div>
 <div class="line">    bus.begin(6);  <span class="comment">// 自身のアドレス</span></div>
-<div class="line">    reader.begin();</div>
+<div class="line">    reader.<a class="code hl_function" href="classUdon_1_1I2cSlaveReader.html#a98971803ac6013eda42928de0c14e539">begin</a>();</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    bus.update();</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> message = reader.getMessage())</div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> message = reader.<a class="code hl_function" href="classUdon_1_1I2cSlaveReader.html#afa5470601c5ffff95ca2e3eef65de324">getMessage</a>())</div>
 <div class="line">    {</div>
 <div class="line">        message-&gt;show();</div>
 <div class="line">    }</div>
@@ -188,12 +180,13 @@ $(function(){initNavTree('md_docs_2Communication_2I2C.html',''); initResizable(t
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1I2cSlaveReader_html"><div class="ttname"><a href="classUdon_1_1I2cSlaveReader.html">Udon::I2cSlaveReader</a></div><div class="ttdoc">I2c スレーブ側受信クラス</div><div class="ttdef"><b>Definition</b> I2cSlaveReader.hpp:26</div></div>
 <div class="ttc" id="aclassUdon_1_1I2cSlaveReader_html_a98971803ac6013eda42928de0c14e539"><div class="ttname"><a href="classUdon_1_1I2cSlaveReader.html#a98971803ac6013eda42928de0c14e539">Udon::I2cSlaveReader::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">受信開始</div><div class="ttdef"><b>Definition</b> I2cSlaveReader.hpp:57</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md52"></a>
+<div class="ttc" id="aclassUdon_1_1I2cSlaveReader_html_afa5470601c5ffff95ca2e3eef65de324"><div class="ttname"><a href="classUdon_1_1I2cSlaveReader.html#afa5470601c5ffff95ca2e3eef65de324">Udon::I2cSlaveReader::getMessage</a></div><div class="ttdeci">Udon::Optional&lt; MessageType &gt; getMessage() const</div><div class="ttdoc">受信したメッセージを取得</div><div class="ttdef"><b>Definition</b> I2cSlaveReader.hpp:71</div></div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md52"></a>
 スレーブからマスターへ送信</h1>
-<h2><a class="anchor" id="autotoc_md53"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md53"></a>
 スレーブ送信クラス</h2>
-<p><code><a class="el" href="classUdon_1_1I2cSlaveWriter.html" title="I2c スレーブ側送信クラス">Udon::I2cSlaveWriter</a>&lt;T&gt;</code></p>
-<p><code>T</code> に指定された型のオブジェクトをマスターへ送信します。複数インスタンス化できません。</p>
+<p><span class="tt"><a class="el" href="classUdon_1_1I2cSlaveWriter.html" title="I2c スレーブ側送信クラス">Udon::I2cSlaveWriter</a>&lt;T&gt;</span></p>
+<p><span class="tt">T</span> に指定された型のオブジェクトをマスターへ送信します。複数インスタンス化できません。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> Udon::I2cBus bus{ Wire };</div>
@@ -201,24 +194,25 @@ $(function(){initNavTree('md_docs_2Communication_2I2C.html',''); initResizable(t
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup()</div>
 <div class="line">{</div>
-<div class="line">    bus.<a class="code hl_function" href="classUdon_1_1I2cSlaveWriter.html#aef09d367f078d956116658df05d30342">begin</a>(6);  <span class="comment">// 自身のアドレス</span></div>
-<div class="line">    writer.begin();</div>
+<div class="line">    bus.begin(6);  <span class="comment">// 自身のアドレス</span></div>
+<div class="line">    writer.<a class="code hl_function" href="classUdon_1_1I2cSlaveWriter.html#aef09d367f078d956116658df05d30342">begin</a>();</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
 <div class="line">    bus.update();</div>
 <div class="line"> </div>
-<div class="line">    writer.setMessage({ millis(), micros() });</div>
+<div class="line">    writer.<a class="code hl_function" href="classUdon_1_1I2cSlaveWriter.html#a9fb58a73a6119683a6b0f882833b940b">setMessage</a>({ millis(), micros() });</div>
 <div class="line"> </div>
 <div class="line">    delay(10);</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1I2cSlaveWriter_html"><div class="ttname"><a href="classUdon_1_1I2cSlaveWriter.html">Udon::I2cSlaveWriter</a></div><div class="ttdoc">I2c スレーブ側送信クラス</div><div class="ttdef"><b>Definition</b> I2cSlaveWriter.hpp:26</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cSlaveWriter_html_a9fb58a73a6119683a6b0f882833b940b"><div class="ttname"><a href="classUdon_1_1I2cSlaveWriter.html#a9fb58a73a6119683a6b0f882833b940b">Udon::I2cSlaveWriter::setMessage</a></div><div class="ttdeci">void setMessage(const MessageType &amp;message)</div><div class="ttdoc">送信するメッセージを設定</div><div class="ttdef"><b>Definition</b> I2cSlaveWriter.hpp:66</div></div>
 <div class="ttc" id="aclassUdon_1_1I2cSlaveWriter_html_aef09d367f078d956116658df05d30342"><div class="ttname"><a href="classUdon_1_1I2cSlaveWriter.html#aef09d367f078d956116658df05d30342">Udon::I2cSlaveWriter::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">送信開始</div><div class="ttdef"><b>Definition</b> I2cSlaveWriter.hpp:55</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md54"></a>
+</div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md54"></a>
 マスター受信クラス</h2>
-<p><code><a class="el" href="classUdon_1_1I2cMasterReader.html" title="I2c マスター側受信クラス">Udon::I2cMasterReader</a>&lt;T&gt;</code></p>
-<p><code>T</code> に指定された型のオブジェクトをスレーブから受信します。スレーブの数に応じて複数インスタンス化可能です。</p>
+<p><span class="tt"><a class="el" href="classUdon_1_1I2cMasterReader.html" title="I2c マスター側受信クラス">Udon::I2cMasterReader</a>&lt;T&gt;</span></p>
+<p><span class="tt">T</span> に指定された型のオブジェクトをスレーブから受信します。スレーブの数に応じて複数インスタンス化可能です。</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Udon_8hpp.html">Udon.hpp</a>&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> Udon::I2cBus bus{ Wire };</div>
@@ -226,16 +220,16 @@ $(function(){initNavTree('md_docs_2Communication_2I2C.html',''); initResizable(t
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup()</div>
 <div class="line">{</div>
-<div class="line">    Serial.begin(115200);</div>
+<div class="line">    Serial.<a class="code hl_function" href="classUdon_1_1I2cSlaveReader.html#a98971803ac6013eda42928de0c14e539">begin</a>(115200);</div>
 <div class="line">    bus.begin();</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> loop()</div>
 <div class="line">{</div>
-<div class="line">    bus.<a class="code hl_function" href="classUdon_1_1I2cMasterReader.html#a2d394f9559aaa4865edde2d54a852a33">update</a>();</div>
+<div class="line">    bus.update();</div>
 <div class="line"> </div>
-<div class="line">    reader.update();</div>
-<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> message = reader.getMessage())</div>
+<div class="line">    reader.<a class="code hl_function" href="classUdon_1_1I2cMasterReader.html#a2d394f9559aaa4865edde2d54a852a33">update</a>();</div>
+<div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> message = reader.<a class="code hl_function" href="classUdon_1_1I2cMasterReader.html#a546adf84d6aff0cad1e557874359c43a">getMessage</a>())</div>
 <div class="line">    {</div>
 <div class="line">        message-&gt;show();</div>
 <div class="line">    }</div>
@@ -249,9 +243,18 @@ $(function(){initNavTree('md_docs_2Communication_2I2C.html',''); initResizable(t
 <div class="line">}</div>
 <div class="ttc" id="aclassUdon_1_1I2cMasterReader_html"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html">Udon::I2cMasterReader</a></div><div class="ttdoc">I2c マスター側受信クラス</div><div class="ttdef"><b>Definition</b> I2cMasterReader.hpp:26</div></div>
 <div class="ttc" id="aclassUdon_1_1I2cMasterReader_html_a2d394f9559aaa4865edde2d54a852a33"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html#a2d394f9559aaa4865edde2d54a852a33">Udon::I2cMasterReader::update</a></div><div class="ttdeci">void update()</div><div class="ttdoc">更新</div><div class="ttdef"><b>Definition</b> I2cMasterReader.hpp:45</div></div>
+<div class="ttc" id="aclassUdon_1_1I2cMasterReader_html_a546adf84d6aff0cad1e557874359c43a"><div class="ttname"><a href="classUdon_1_1I2cMasterReader.html#a546adf84d6aff0cad1e557874359c43a">Udon::I2cMasterReader::getMessage</a></div><div class="ttdeci">Udon::Optional&lt; Message &gt; getMessage() const</div><div class="ttdoc">受信したメッセージを取得</div><div class="ttdef"><b>Definition</b> I2cMasterReader.hpp:59</div></div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! --></div>
 <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
 <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
