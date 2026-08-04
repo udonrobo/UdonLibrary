@@ -144,8 +144,9 @@ namespace Udon
         void update(int deadZone = 20) noexcept
         {
             Traits::MaybeInvokeUpdate<ReaderType>(*this);
+            const auto message = ReaderType::getMessage();
 
-            if (const auto message = ReaderType::getMessage())
+            if (message && message->isConnected)
             {
                 isConnected = true;
 
