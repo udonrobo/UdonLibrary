@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: Udon::Vec2 構造体</title>
@@ -44,22 +44,45 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.16.1 -->
+<!-- 構築: Doxygen 1.17.0 -->
 <script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search/",'.html');
+let searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
 <script type="text/javascript">
-$(function() { codefold.init(); });
+document.addEventListener('DOMContentLoaded', codefold.init);
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','検索',true);
-  $(function() { init_search(); });
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
 });
 </script>
-<div id="main-nav"></div>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -72,7 +95,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('structUdon_1_1Vec2.html','','structUdon_1_1Vec2-members'); });
+document.addEventListener('DOMContentLoaded',() => { initNavTree('structUdon_1_1Vec2.html','','structUdon_1_1Vec2-members'); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -116,7 +139,7 @@ $(function(){initNavTree('structUdon_1_1Vec2.html','','structUdon_1_1Vec2-member
 公開メンバ関数</h2></td></tr>
 <tr class="memitem:a2f54877269048fbacb33e02d2f7b1d54" id="r_a2f54877269048fbacb33e02d2f7b1d54"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a> () noexcept</td></tr>
 <tr class="memdesc:a2f54877269048fbacb33e02d2f7b1d54"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコンストラクタ  <br /></td></tr>
-<tr class="memitem:a8789b2696614eaad575515363741edff" id="r_a8789b2696614eaad575515363741edff"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a8789b2696614eaad575515363741edff">Vec2</a> (<a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> <a class="el" href="#aa41b9596dd6fd8353630210413608eb4">x</a>, <a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> <a class="el" href="#a286f89924b06a62878f3fe1af341031d">y</a>) noexcept</td></tr>
+<tr class="memitem:a8789b2696614eaad575515363741edff" id="r_a8789b2696614eaad575515363741edff"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a8789b2696614eaad575515363741edff">Vec2</a> (<a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> x, <a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> y) noexcept</td></tr>
 <tr class="memdesc:a8789b2696614eaad575515363741edff"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <br /></td></tr>
 <tr class="memitem:a24ffad6c4572a0586c9c3e97633ad812" id="r_a24ffad6c4572a0586c9c3e97633ad812"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a24ffad6c4572a0586c9c3e97633ad812">Vec2</a> (const Vec2 &amp;)=default</td></tr>
 <tr class="memdesc:a24ffad6c4572a0586c9c3e97633ad812"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコピーコンストラクタ  <br /></td></tr>
@@ -144,13 +167,13 @@ $(function(){initNavTree('structUdon_1_1Vec2.html','','structUdon_1_1Vec2-member
 <tr class="memitem:ac57b172a6bb4d034594a9e00918815d6 template"><td class="memItemLeft"><a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#ac57b172a6bb4d034594a9e00918815d6">replaceY</a> (Visitor &amp;&amp;visitor) noexcept</td></tr>
 <tr class="memitem:aeba02a3786484171d9832660f332a0a5" id="r_aeba02a3786484171d9832660f332a0a5"><td class="memItemLeft"><a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a>&#160;</td><td class="memItemRight"><a class="el" href="#aeba02a3786484171d9832660f332a0a5">abs</a> () const noexcept</td></tr>
 <tr class="memdesc:aeba02a3786484171d9832660f332a0a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">絶対値を取る  <br /></td></tr>
-<tr class="memitem:ae5d9791bbe15c6063a1c567a7d78741f" id="r_ae5d9791bbe15c6063a1c567a7d78741f"><td class="memItemLeft"><a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a>&#160;</td><td class="memItemRight"><a class="el" href="#ae5d9791bbe15c6063a1c567a7d78741f">rotatedAt</a> (const <a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a> &amp;center, <a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> <a class="el" href="#a6f91343bf4606f50dac05e5d46cdcc99">angle</a>) const noexcept</td></tr>
+<tr class="memitem:ae5d9791bbe15c6063a1c567a7d78741f" id="r_ae5d9791bbe15c6063a1c567a7d78741f"><td class="memItemLeft"><a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a>&#160;</td><td class="memItemRight"><a class="el" href="#ae5d9791bbe15c6063a1c567a7d78741f">rotatedAt</a> (const <a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a> &amp;center, <a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> angle) const noexcept</td></tr>
 <tr class="memdesc:ae5d9791bbe15c6063a1c567a7d78741f"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定された点を中心に時計回りに回転したベクトルを返す  <br /></td></tr>
-<tr class="memitem:a0f3de087890fec3c32c6870b9aa2f7fd" id="r_a0f3de087890fec3c32c6870b9aa2f7fd"><td class="memItemLeft"><a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a0f3de087890fec3c32c6870b9aa2f7fd">rotateAt</a> (const <a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a> &amp;center, <a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> <a class="el" href="#a6f91343bf4606f50dac05e5d46cdcc99">angle</a>) noexcept</td></tr>
+<tr class="memitem:a0f3de087890fec3c32c6870b9aa2f7fd" id="r_a0f3de087890fec3c32c6870b9aa2f7fd"><td class="memItemLeft"><a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a0f3de087890fec3c32c6870b9aa2f7fd">rotateAt</a> (const <a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a> &amp;center, <a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> angle) noexcept</td></tr>
 <tr class="memdesc:a0f3de087890fec3c32c6870b9aa2f7fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定された点を中心に時計回りに回転させる  <br /></td></tr>
-<tr class="memitem:a651345a85870ef89338fe6db324aabbb" id="r_a651345a85870ef89338fe6db324aabbb"><td class="memItemLeft"><a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a>&#160;</td><td class="memItemRight"><a class="el" href="#a651345a85870ef89338fe6db324aabbb">rotated</a> (<a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> <a class="el" href="#a6f91343bf4606f50dac05e5d46cdcc99">angle</a>) const noexcept</td></tr>
+<tr class="memitem:a651345a85870ef89338fe6db324aabbb" id="r_a651345a85870ef89338fe6db324aabbb"><td class="memItemLeft"><a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a>&#160;</td><td class="memItemRight"><a class="el" href="#a651345a85870ef89338fe6db324aabbb">rotated</a> (<a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> angle) const noexcept</td></tr>
 <tr class="memdesc:a651345a85870ef89338fe6db324aabbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">原点を中心に回転したベクトルを返す  <br /></td></tr>
-<tr class="memitem:ad8244490c21c996801239aa89dc1f580" id="r_ad8244490c21c996801239aa89dc1f580"><td class="memItemLeft"><a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#ad8244490c21c996801239aa89dc1f580">rotate</a> (<a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> <a class="el" href="#a6f91343bf4606f50dac05e5d46cdcc99">angle</a>) noexcept</td></tr>
+<tr class="memitem:ad8244490c21c996801239aa89dc1f580" id="r_ad8244490c21c996801239aa89dc1f580"><td class="memItemLeft"><a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#ad8244490c21c996801239aa89dc1f580">rotate</a> (<a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> angle) noexcept</td></tr>
 <tr class="memdesc:ad8244490c21c996801239aa89dc1f580"><td class="mdescLeft">&#160;</td><td class="mdescRight">原点を中心に回転させる  <br /></td></tr>
 <tr class="memitem:a27d0aaa30865d251f094aced56783e89" id="r_a27d0aaa30865d251f094aced56783e89"><td class="memItemLeft"><a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td><td class="memItemRight"><a class="el" href="#a27d0aaa30865d251f094aced56783e89">angleAt</a> (const <a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a> &amp;rhs) const noexcept</td></tr>
 <tr class="memdesc:a27d0aaa30865d251f094aced56783e89"><td class="mdescLeft">&#160;</td><td class="mdescRight">指定された点からの角度を求める  <br /></td></tr>
@@ -162,9 +185,9 @@ $(function(){initNavTree('structUdon_1_1Vec2.html','','structUdon_1_1Vec2-member
 <tr class="memdesc:a3f2bca871c66abddcc0281e69a511fe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">原点からの距離を求める  <br /></td></tr>
 <tr class="memitem:a79800b213ce8afc954dda9de9d72ddf4" id="r_a79800b213ce8afc954dda9de9d72ddf4"><td class="memItemLeft">constexpr <a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a>&#160;</td><td class="memItemRight"><a class="el" href="#a79800b213ce8afc954dda9de9d72ddf4">lengthSq</a> () const noexcept</td></tr>
 <tr class="memdesc:a79800b213ce8afc954dda9de9d72ddf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">原点からの距離の二乗を求める  <br /></td></tr>
-<tr class="memitem:a2391386d50fa2bfc20b1b5c125e387fc" id="r_a2391386d50fa2bfc20b1b5c125e387fc"><td class="memItemLeft"><a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a>&#160;</td><td class="memItemRight"><a class="el" href="#a2391386d50fa2bfc20b1b5c125e387fc">scaledLength</a> (<a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> <a class="el" href="#a3f2bca871c66abddcc0281e69a511fe9">length</a>) const noexcept</td></tr>
+<tr class="memitem:a2391386d50fa2bfc20b1b5c125e387fc" id="r_a2391386d50fa2bfc20b1b5c125e387fc"><td class="memItemLeft"><a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a>&#160;</td><td class="memItemRight"><a class="el" href="#a2391386d50fa2bfc20b1b5c125e387fc">scaledLength</a> (<a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> length) const noexcept</td></tr>
 <tr class="memdesc:a2391386d50fa2bfc20b1b5c125e387fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">長さを変更したベクトルを返す  <br /></td></tr>
-<tr class="memitem:a45886ef121bc89660f29e20cd6519149" id="r_a45886ef121bc89660f29e20cd6519149"><td class="memItemLeft"><a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a45886ef121bc89660f29e20cd6519149">scaleLength</a> (<a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> <a class="el" href="#a3f2bca871c66abddcc0281e69a511fe9">length</a>) noexcept</td></tr>
+<tr class="memitem:a45886ef121bc89660f29e20cd6519149" id="r_a45886ef121bc89660f29e20cd6519149"><td class="memItemLeft"><a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a45886ef121bc89660f29e20cd6519149">scaleLength</a> (<a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> length) noexcept</td></tr>
 <tr class="memdesc:a45886ef121bc89660f29e20cd6519149"><td class="mdescLeft">&#160;</td><td class="mdescRight">ベクトルの長さを指定された値にする  <br /></td></tr>
 <tr class="memitem:a5c6248222369fdacf211f040a5b67f8f" id="r_a5c6248222369fdacf211f040a5b67f8f"><td class="memItemLeft">constexpr <a class="el" href="#a2f54877269048fbacb33e02d2f7b1d54">Vec2</a>&#160;</td><td class="memItemRight"><a class="el" href="#a5c6248222369fdacf211f040a5b67f8f">mapped</a> (<a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> fromMin, <a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> fromMax, <a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> toMin, <a class="el" href="#ab00e88ac2fc86620cecb2f516a74adc7">ValueType</a> toMax) const noexcept</td></tr>
 <tr class="memdesc:a5c6248222369fdacf211f040a5b67f8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">各要素をある範囲から別の範囲に再マップしたベクトルを返す  <br /></td></tr>
@@ -294,8 +317,8 @@ $(function(){initNavTree('structUdon_1_1Vec2.html','','structUdon_1_1Vec2-member
 <p>コンストラクタ </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#aa41b9596dd6fd8353630210413608eb4" title="X成分">x</a></td><td>x成分 </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a286f89924b06a62878f3fe1af341031d" title="Y成分">y</a></td><td>y成分 </td></tr>
+    <tr><td class="paramname">x</td><td>x成分 </td></tr>
+    <tr><td class="paramname">y</td><td>y成分 </td></tr>
   </table>
   </dd>
 </dl>
@@ -1187,7 +1210,7 @@ template&lt;typename Visitor&gt; </div>
 <p>原点を中心に回転させる </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#a6f91343bf4606f50dac05e5d46cdcc99" title="原点からの時計回りの角度を求める">angle</a></td><td>回転する角度 [rad] </td></tr>
+    <tr><td class="paramname">angle</td><td>回転する角度 [rad] </td></tr>
   </table>
   </dd>
 </dl>
@@ -1226,7 +1249,7 @@ template&lt;typename Visitor&gt; </div>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramname">center</td><td>回転の中心 </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a6f91343bf4606f50dac05e5d46cdcc99" title="原点からの時計回りの角度を求める">angle</a></td><td>回転する角度 [rad] </td></tr>
+    <tr><td class="paramname">angle</td><td>回転する角度 [rad] </td></tr>
   </table>
   </dd>
 </dl>
@@ -1260,7 +1283,7 @@ template&lt;typename Visitor&gt; </div>
 <p>原点を中心に回転したベクトルを返す </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#a6f91343bf4606f50dac05e5d46cdcc99" title="原点からの時計回りの角度を求める">angle</a></td><td>回転する角度 [rad] </td></tr>
+    <tr><td class="paramname">angle</td><td>回転する角度 [rad] </td></tr>
   </table>
   </dd>
 </dl>
@@ -1299,7 +1322,7 @@ template&lt;typename Visitor&gt; </div>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramname">center</td><td>回転の中心 </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a6f91343bf4606f50dac05e5d46cdcc99" title="原点からの時計回りの角度を求める">angle</a></td><td>回転する角度 [rad] </td></tr>
+    <tr><td class="paramname">angle</td><td>回転する角度 [rad] </td></tr>
   </table>
   </dd>
 </dl>
@@ -1333,7 +1356,7 @@ template&lt;typename Visitor&gt; </div>
 <p>長さを変更したベクトルを返す </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#a3f2bca871c66abddcc0281e69a511fe9" title="原点からの距離を求める">length</a></td><td>指定された長さ </td></tr>
+    <tr><td class="paramname">length</td><td>指定された長さ </td></tr>
   </table>
   </dd>
 </dl>
@@ -1367,7 +1390,7 @@ template&lt;typename Visitor&gt; </div>
 <dl class="section note"><dt>覚え書き</dt><dd>長さを0にするとゼロベクトルになるので、長さの変更ができなくなる </dd></dl>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#a3f2bca871c66abddcc0281e69a511fe9" title="原点からの距離を求める">length</a></td><td>指定された長さ </td></tr>
+    <tr><td class="paramname">length</td><td>指定された長さ </td></tr>
   </table>
   </dd>
 </dl>

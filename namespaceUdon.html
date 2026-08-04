@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: Udon 名前空間</title>
@@ -44,22 +44,45 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.16.1 -->
+<!-- 構築: Doxygen 1.17.0 -->
 <script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search/",'.html');
+let searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
 <script type="text/javascript">
-$(function() { codefold.init(); });
+document.addEventListener('DOMContentLoaded', codefold.init);
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','検索',true);
-  $(function() { init_search(); });
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
 });
 </script>
-<div id="main-nav"></div>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -72,7 +95,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('namespaceUdon.html','',''); });
+document.addEventListener('DOMContentLoaded',() => { initNavTree('namespaceUdon.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -104,57 +127,49 @@ $(function(){initNavTree('namespaceUdon.html','',''); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 名前空間</h2></td></tr>
-<tr class="memitem:StringToNumberParser" id="r_StringToNumberParser"><td class="memItemLeft">namespace &#160;</td><td class="memItemRight"><a class="el" href="namespaceUdon_1_1StringToNumberParser.html">StringToNumberParser</a></td></tr>
 <tr class="memitem:Impl" id="r_Impl"><td class="memItemLeft">namespace &#160;</td><td class="memItemRight"><a class="el" href="namespaceUdon_1_1Impl.html">Impl</a></td></tr>
+<tr class="memitem:Literals" id="r_Literals"><td class="memItemLeft">namespace &#160;</td><td class="memItemRight"><a class="el" href="namespaceUdon_1_1Literals.html">Literals</a></td></tr>
 <tr class="memitem:Message" id="r_Message"><td class="memItemLeft">namespace &#160;</td><td class="memItemRight"><a class="el" href="namespaceUdon_1_1Message.html">Message</a></td></tr>
 <tr class="memitem:Pio" id="r_Pio"><td class="memItemLeft">namespace &#160;</td><td class="memItemRight"><a class="el" href="namespaceUdon_1_1Pio.html">Pio</a></td></tr>
+<tr class="memitem:StringToNumberParser" id="r_StringToNumberParser"><td class="memItemLeft">namespace &#160;</td><td class="memItemRight"><a class="el" href="namespaceUdon_1_1StringToNumberParser.html">StringToNumberParser</a></td></tr>
 <tr class="memitem:Traits" id="r_Traits"><td class="memItemLeft">namespace &#160;</td><td class="memItemRight"><a class="el" href="namespaceUdon_1_1Traits.html">Traits</a></td></tr>
-<tr class="memitem:Literals" id="r_Literals"><td class="memItemLeft">namespace &#160;</td><td class="memItemRight"><a class="el" href="namespaceUdon_1_1Literals.html">Literals</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 クラス</h2></td></tr>
-<tr class="memitem:DeltaTime" id="r_DeltaTime"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1DeltaTime.html">DeltaTime</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">変化時間計測クラス  <a href="classUdon_1_1DeltaTime.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:Input" id="r_Input"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Input.html">Input</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">入力値  <a href="structUdon_1_1Input.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:MovingAverage" id="r_MovingAverage"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1MovingAverage.html">MovingAverage</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">移動平均クラス  <a href="classUdon_1_1MovingAverage.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:PidController" id="r_PidController"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1PidController.html">PidController</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">PID制御器  <a href="classUdon_1_1PidController.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:ScopedInterruptLocker" id="r_ScopedInterruptLocker"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1ScopedInterruptLocker.html">ScopedInterruptLocker</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">割り込みロック、アンロックをスコープの範囲で制御するクラス  <a href="classUdon_1_1ScopedInterruptLocker.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:ServoSpeed" id="r_ServoSpeed"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1ServoSpeed.html">ServoSpeed</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">サーボ角度制御クラス  <a href="classUdon_1_1ServoSpeed.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:SpeedPidController" id="r_SpeedPidController"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1SpeedPidController.html">SpeedPidController</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">速度型PID制御器  <a href="classUdon_1_1SpeedPidController.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:SteerModuleOptimizer" id="r_SteerModuleOptimizer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1SteerModuleOptimizer.html">SteerModuleOptimizer</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">独立ステアリング機構の各モジュール最適化クラス  <a href="classUdon_1_1SteerModuleOptimizer.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:SteerOptimizer" id="r_SteerOptimizer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1SteerOptimizer.html">SteerOptimizer</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">独立ステアリング機構最適化クラス  <a href="classUdon_1_1SteerOptimizer.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:ArrayView" id="r_ArrayView"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1ArrayView.html">ArrayView</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">配列参照クラス  <a href="classUdon_1_1ArrayView.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:AsyncStreamReader" id="r_AsyncStreamReader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1AsyncStreamReader.html">AsyncStreamReader</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">非同期ストリーム読み取り  <a href="classUdon_1_1AsyncStreamReader.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:BasicStringView" id="r_BasicStringView"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1BasicStringView.html">BasicStringView</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">文字列参照クラス  <a href="classUdon_1_1BasicStringView.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:CanBusSpi" id="r_CanBusSpi"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1CanBusSpi.html">CanBusSpi</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raspberry Pi Pico用バスクラス  <a href="classUdon_1_1CanBusSpi.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:CanBusTeensy" id="r_CanBusTeensy"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1CanBusTeensy.html">CanBusTeensy</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teensy用 CANバスクラス  <a href="classUdon_1_1CanBusTeensy.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:CanReader" id="r_CanReader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1CanReader.html">CanReader</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN通信 受信クラス  <a href="classUdon_1_1CanReader.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:CanWriter" id="r_CanWriter"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1CanWriter.html">CanWriter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN通信 送信クラス  <a href="classUdon_1_1CanWriter.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:CanTxNode" id="r_CanTxNode"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1CanTxNode.html">CanTxNode</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN送信ノード  <a href="structUdon_1_1CanTxNode.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:CanRxNode" id="r_CanRxNode"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1CanRxNode.html">CanRxNode</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN受信ノード  <a href="structUdon_1_1CanRxNode.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:ICanBus" id="r_ICanBus"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1ICanBus.html">ICanBus</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">CANバス管理クラス インターフェース  <a href="classUdon_1_1ICanBus.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:AsyncStreamReader" id="r_AsyncStreamReader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1AsyncStreamReader.html">AsyncStreamReader</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">非同期ストリーム読み取り  <a href="classUdon_1_1AsyncStreamReader.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:Forwarding" id="r_Forwarding"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Forwarding.html">Forwarding</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">異なる通信間にメッセージを転送するクラス  <a href="classUdon_1_1Forwarding.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:CanTxNode" id="r_CanTxNode"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1CanTxNode.html">CanTxNode</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN送信ノード  <a href="structUdon_1_1CanTxNode.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:CanWriter" id="r_CanWriter"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1CanWriter.html">CanWriter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN通信 送信クラス  <a href="classUdon_1_1CanWriter.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:DeltaTime" id="r_DeltaTime"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1DeltaTime.html">DeltaTime</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">変化時間計測クラス  <a href="classUdon_1_1DeltaTime.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:E220Reader" id="r_E220Reader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1E220Reader.html">E220Reader</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">E220 受信クラス  <a href="classUdon_1_1E220Reader.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:E220Writer" id="r_E220Writer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1E220Writer.html">E220Writer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">E220 送信クラス  <a href="classUdon_1_1E220Writer.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:EncoderBy" id="r_EncoderBy"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1EncoderBy.html">EncoderBy</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">通信経由ロータリーエンコーダー  <a href="classUdon_1_1EncoderBy.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:MotorBy" id="r_MotorBy"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1MotorBy.html">MotorBy</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">通信経由モーター制御クラス  <a href="classUdon_1_1MotorBy.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:II2cBus" id="r_II2cBus"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1II2cBus.html">II2cBus</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2cBus クラスのインターフェース  <a href="classUdon_1_1II2cBus.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:Euler" id="r_Euler"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Euler.html">Euler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">オイラー角  <a href="structUdon_1_1Euler.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:EulerDirection" id="r_EulerDirection"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1EulerDirection.html">EulerDirection</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">オイラー角の回転方向  <a href="structUdon_1_1EulerDirection.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:Forwarding" id="r_Forwarding"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Forwarding.html">Forwarding</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">異なる通信間にメッセージを転送するクラス  <a href="classUdon_1_1Forwarding.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:HSV" id="r_HSV"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1HSV.html">HSV</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">HSV色空間  <a href="structUdon_1_1HSV.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:I2cBusImpl" id="r_I2cBusImpl"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1I2cBusImpl.html">I2cBusImpl</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2cBus クラス実装部  <a href="classUdon_1_1I2cBusImpl.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:I2cMasterReader" id="r_I2cMasterReader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1I2cMasterReader.html">I2cMasterReader</a></td></tr>
@@ -165,12 +180,16 @@ $(function(){initNavTree('namespaceUdon.html','',''); });
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2c スレーブ側受信クラス  <a href="classUdon_1_1I2cSlaveReader.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:I2cSlaveWriter" id="r_I2cSlaveWriter"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1I2cSlaveWriter.html">I2cSlaveWriter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2c スレーブ側送信クラス  <a href="classUdon_1_1I2cSlaveWriter.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:Im920Node" id="r_Im920Node"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Im920Node.html">Im920Node</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">IM920ノード  <a href="structUdon_1_1Im920Node.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:ICanBus" id="r_ICanBus"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1ICanBus.html">ICanBus</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">CANバス管理クラス インターフェース  <a href="classUdon_1_1ICanBus.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:II2cBus" id="r_II2cBus"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1II2cBus.html">II2cBus</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2cBus クラスのインターフェース  <a href="classUdon_1_1II2cBus.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:IIm920" id="r_IIm920"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1IIm920.html">IIm920</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">IM920のインターフェース  <a href="classUdon_1_1IIm920.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Im920" id="r_Im920"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Im920.html">Im920</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">IM920通信クラス  <a href="classUdon_1_1Im920.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:Im920Node" id="r_Im920Node"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Im920Node.html">Im920Node</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">IM920ノード  <a href="structUdon_1_1Im920Node.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Im920Reader" id="r_Im920Reader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Im920Reader.html">Im920Reader</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">IM920受信クラス  <a href="classUdon_1_1Im920Reader.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Im920s" id="r_Im920s"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Im920s.html">Im920s</a></td></tr>
@@ -179,68 +198,72 @@ $(function(){initNavTree('namespaceUdon.html','',''); });
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">IM920sL通信クラス  <a href="classUdon_1_1Im920sL.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Im920Writer" id="r_Im920Writer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Im920Writer.html">Im920Writer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">IM920送信クラス  <a href="classUdon_1_1Im920Writer.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:E220Reader" id="r_E220Reader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1E220Reader.html">E220Reader</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">E220 受信クラス  <a href="classUdon_1_1E220Reader.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:E220Writer" id="r_E220Writer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1E220Writer.html">E220Writer</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">E220 送信クラス  <a href="classUdon_1_1E220Writer.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:Input" id="r_Input"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Input.html">Input</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">入力値  <a href="structUdon_1_1Input.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:MotorBy" id="r_MotorBy"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1MotorBy.html">MotorBy</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">通信経由モーター制御クラス  <a href="classUdon_1_1MotorBy.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:MovingAverage" id="r_MovingAverage"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1MovingAverage.html">MovingAverage</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">移動平均クラス  <a href="classUdon_1_1MovingAverage.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:NulloptT" id="r_NulloptT"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1NulloptT.html">NulloptT</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">無効値型  <a href="structUdon_1_1NulloptT.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:Optional" id="r_Optional"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Optional.html">Optional</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">オプショナル型  <a href="classUdon_1_1Optional.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:PadPS5" id="r_PadPS5"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1PadPS5.html">PadPS5</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">通信経由PS5コントローラークラス  <a href="classUdon_1_1PadPS5.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:PadPS5BT" id="r_PadPS5BT"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1PadPS5BT.html">PadPS5BT</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bluetooth経由PS5コントローラークラス  <a href="classUdon_1_1PadPS5BT.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:PadPS5USB" id="r_PadPS5USB"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1PadPS5USB.html">PadPS5USB</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">有線USB経由PS5コントローラークラス  <a href="classUdon_1_1PadPS5USB.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:Ros2SerialReader" id="r_Ros2SerialReader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Ros2SerialReader.html">Ros2SerialReader</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ROS2からSerial通信を受信するクラス  <a href="classUdon_1_1Ros2SerialReader.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:Ros2SerialWriter" id="r_Ros2SerialWriter"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Ros2SerialWriter.html">Ros2SerialWriter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ROS2からSerial通信を送信するクラス  <a href="classUdon_1_1Ros2SerialWriter.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:SerialReader" id="r_SerialReader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1SerialReader.html">SerialReader</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serial 受信クラス  <a href="classUdon_1_1SerialReader.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:SerialWriter" id="r_SerialWriter"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1SerialWriter.html">SerialWriter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serial 送信クラス  <a href="classUdon_1_1SerialWriter.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:SivSerialReader" id="r_SivSerialReader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1SivSerialReader.html">SivSerialReader</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">OpenSiv3D用 Serial 受信クラス  <a href="classUdon_1_1SivSerialReader.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:SivSerialWriter" id="r_SivSerialWriter"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1SivSerialWriter.html">SivSerialWriter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">OpenSiv3D用 Serial 送信クラス  <a href="classUdon_1_1SivSerialWriter.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:PidController" id="r_PidController"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1PidController.html">PidController</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">PID制御器  <a href="classUdon_1_1PidController.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:Polar" id="r_Polar"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Polar.html">Polar</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">極座標系  <a href="structUdon_1_1Polar.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:Pos" id="r_Pos"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Pos.html">Pos</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ロボットの位置  <a href="structUdon_1_1Pos.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:Quaternion" id="r_Quaternion"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">クオータニオン  <a href="structUdon_1_1Quaternion.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:QuaternionDirection" id="r_QuaternionDirection"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1QuaternionDirection.html">QuaternionDirection</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">クオータニオンの各成分の正負を表す構造体  <a href="structUdon_1_1QuaternionDirection.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:Range" id="r_Range"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Range.html">Range</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">範囲を表す型  <a href="structUdon_1_1Range.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:RGB" id="r_RGB"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1RGB.html">RGB</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RGB色空間  <a href="structUdon_1_1RGB.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:RingBuffer" id="r_RingBuffer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1RingBuffer.html">RingBuffer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">リングバッファ  <a href="classUdon_1_1RingBuffer.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:RoboMasterBase" id="r_RoboMasterBase"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1RoboMasterBase.html">RoboMasterBase</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RoboMaster 基底クラス  <a href="classUdon_1_1RoboMasterBase.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:RoboMasterC610" id="r_RoboMasterC610"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1RoboMasterC610.html">RoboMasterC610</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RoboMasterC610クラス  <a href="classUdon_1_1RoboMasterC610.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:RoboMasterC620" id="r_RoboMasterC620"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1RoboMasterC620.html">RoboMasterC620</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RoboMasterC620クラス  <a href="classUdon_1_1RoboMasterC620.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:ArrayView" id="r_ArrayView"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1ArrayView.html">ArrayView</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">配列参照クラス  <a href="classUdon_1_1ArrayView.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:EulerDirection" id="r_EulerDirection"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1EulerDirection.html">EulerDirection</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">オイラー角の回転方向  <a href="structUdon_1_1EulerDirection.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:Euler" id="r_Euler"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Euler.html">Euler</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">オイラー角  <a href="structUdon_1_1Euler.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:HSV" id="r_HSV"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1HSV.html">HSV</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">HSV色空間  <a href="structUdon_1_1HSV.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:Polar" id="r_Polar"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Polar.html">Polar</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">極座標系  <a href="structUdon_1_1Polar.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:QuaternionDirection" id="r_QuaternionDirection"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1QuaternionDirection.html">QuaternionDirection</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">クオータニオンの各成分の正負を表す構造体  <a href="structUdon_1_1QuaternionDirection.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:Quaternion" id="r_Quaternion"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Quaternion.html">Quaternion</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">クオータニオン  <a href="structUdon_1_1Quaternion.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:RGB" id="r_RGB"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1RGB.html">RGB</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RGB色空間  <a href="structUdon_1_1RGB.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:Ros2SerialReader" id="r_Ros2SerialReader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Ros2SerialReader.html">Ros2SerialReader</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ROS2からSerial通信を受信するクラス  <a href="classUdon_1_1Ros2SerialReader.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:Ros2SerialWriter" id="r_Ros2SerialWriter"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Ros2SerialWriter.html">Ros2SerialWriter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ROS2からSerial通信を送信するクラス  <a href="classUdon_1_1Ros2SerialWriter.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:ScopedInterruptLocker" id="r_ScopedInterruptLocker"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1ScopedInterruptLocker.html">ScopedInterruptLocker</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">割り込みロック、アンロックをスコープの範囲で制御するクラス  <a href="classUdon_1_1ScopedInterruptLocker.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:SerialReader" id="r_SerialReader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1SerialReader.html">SerialReader</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serial 受信クラス  <a href="classUdon_1_1SerialReader.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:SerialWriter" id="r_SerialWriter"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1SerialWriter.html">SerialWriter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serial 送信クラス  <a href="classUdon_1_1SerialWriter.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:ServoSpeed" id="r_ServoSpeed"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1ServoSpeed.html">ServoSpeed</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">サーボ角度制御クラス  <a href="classUdon_1_1ServoSpeed.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:SivSerialReader" id="r_SivSerialReader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1SivSerialReader.html">SivSerialReader</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">OpenSiv3D用 Serial 受信クラス  <a href="classUdon_1_1SivSerialReader.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:SivSerialWriter" id="r_SivSerialWriter"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1SivSerialWriter.html">SivSerialWriter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">OpenSiv3D用 Serial 送信クラス  <a href="classUdon_1_1SivSerialWriter.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:SpeedPidController" id="r_SpeedPidController"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1SpeedPidController.html">SpeedPidController</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">速度型PID制御器  <a href="classUdon_1_1SpeedPidController.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:StaticVector" id="r_StaticVector"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1StaticVector.html">StaticVector</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">疑似可変長配列コンテナ  <a href="classUdon_1_1StaticVector.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:SteerModuleOptimizer" id="r_SteerModuleOptimizer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1SteerModuleOptimizer.html">SteerModuleOptimizer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">独立ステアリング機構の各モジュール最適化クラス  <a href="classUdon_1_1SteerModuleOptimizer.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:SteerOptimizer" id="r_SteerOptimizer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1SteerOptimizer.html">SteerOptimizer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">独立ステアリング機構最適化クラス  <a href="classUdon_1_1SteerOptimizer.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Vec2" id="r_Vec2"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Vec2.html">Vec2</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">二次元ベクトル  <a href="structUdon_1_1Vec2.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Vec3" id="r_Vec3"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Vec3.html">Vec3</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">三次元ベクトル  <a href="structUdon_1_1Vec3.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:NulloptT" id="r_NulloptT"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1NulloptT.html">NulloptT</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">無効値型  <a href="structUdon_1_1NulloptT.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:Optional" id="r_Optional"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Optional.html">Optional</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">オプショナル型  <a href="classUdon_1_1Optional.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:Pos" id="r_Pos"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Pos.html">Pos</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ロボットの位置  <a href="structUdon_1_1Pos.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:Range" id="r_Range"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Range.html">Range</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">範囲を表す型  <a href="structUdon_1_1Range.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:RingBuffer" id="r_RingBuffer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1RingBuffer.html">RingBuffer</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">リングバッファ  <a href="classUdon_1_1RingBuffer.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:StaticVector" id="r_StaticVector"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1StaticVector.html">StaticVector</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">疑似可変長配列コンテナ  <a href="classUdon_1_1StaticVector.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:BasicStringView" id="r_BasicStringView"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1BasicStringView.html">BasicStringView</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">文字列参照クラス  <a href="classUdon_1_1BasicStringView.html#details">[詳解]</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 型定義</h2></td></tr>

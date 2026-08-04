@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: 通信共通部</title>
@@ -44,22 +44,45 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.16.1 -->
+<!-- 構築: Doxygen 1.17.0 -->
 <script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search/",'.html');
+let searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
 <script type="text/javascript">
-$(function() { codefold.init(); });
+document.addEventListener('DOMContentLoaded', codefold.init);
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','検索',true);
-  $(function() { init_search(); });
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
 });
 </script>
-<div id="main-nav"></div>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -72,7 +95,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('md_docs_2Communication_2Common.html','',''); });
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_docs_2Communication_2Common.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -155,22 +178,25 @@ $(function(){initNavTree('md_docs_2Communication_2Common.html','',''); });
 <p>通信によっては複数のバスや送受信者を立てることができない場合があります。</p>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md40"></a>
 複数送信者</h2>
-<div class="fragment"><div class="line">flowchart LR</div>
-<div class="line">    subgraph ファームウエア</div>
-<div class="line">        subgraph writer1</div>
-<div class="line">        送信オブジェクト1[オブジェクト] --int--&gt; setMessage1[setMessage]</div>
-<div class="line">        end</div>
-<div class="line"> </div>
-<div class="line">        subgraph writer2</div>
-<div class="line">        送信オブジェクト2[オブジェクト] --int--&gt; setMessage2[setMessage]</div>
-<div class="line">        end</div>
-<div class="line"> </div>
-<div class="line">        setMessage1[setMessage] --byte string--&gt; bus</div>
-<div class="line">        setMessage2[setMessage] --byte string--&gt; bus</div>
-<div class="line">    end</div>
-<div class="line"> </div>
-<div class="line">    bus -.byte string.-&gt; 通信バス</div>
-</div><!-- fragment --><div class="fragment"><div class="line">バスクラス bus;</div>
+<div class="mermaidgraph">
+<pre class="mermaid">
+flowchart LR
+    subgraph ファームウエア
+        subgraph writer1
+        送信オブジェクト1[オブジェクト] --int--&gt; setMessage1[setMessage]
+        end
+
+        subgraph writer2
+        送信オブジェクト2[オブジェクト] --int--&gt; setMessage2[setMessage]
+        end
+
+        setMessage1[setMessage] --byte string--&gt; bus
+        setMessage2[setMessage] --byte string--&gt; bus
+    end
+
+    bus -.byte string.-&gt; 通信バス</pre>
+</div>
+<div class="fragment"><div class="line">バスクラス bus;</div>
 <div class="line">送信クラス&lt;int&gt; writer1{ bus, 0x01 };</div>
 <div class="line">送信クラス&lt;int&gt; writer2{ bus, 0x02 };</div>
 <div class="line"> </div>
@@ -187,24 +213,27 @@ $(function(){initNavTree('md_docs_2Communication_2Common.html','',''); });
 <div class="line">}</div>
 </div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md41"></a>
 送受信者</h2>
-<div class="fragment"><div class="line">flowchart LR</div>
-<div class="line">    subgraph ファームウエア</div>
-<div class="line">        subgraph writer1</div>
-<div class="line">        送信オブジェクト[オブジェクト] --int--&gt; setMessage</div>
-<div class="line">        end</div>
-<div class="line"> </div>
-<div class="line">        subgraph writer2</div>
-<div class="line">        getMessage --int--&gt; 受信オブジェクト[オブジェクト]</div>
-<div class="line">        end</div>
-<div class="line"> </div>
-<div class="line">        setMessage --byte string--&gt; bus</div>
-<div class="line"> </div>
-<div class="line">        direction RL</div>
-<div class="line">        bus --byte string--&gt; getMessage</div>
-<div class="line">    end</div>
-<div class="line"> </div>
-<div class="line">    bus &lt;-.byte string.-&gt; 通信バス</div>
-</div><!-- fragment --><div class="fragment"><div class="line">バスクラス bus;</div>
+<div class="mermaidgraph">
+<pre class="mermaid">
+flowchart LR
+    subgraph ファームウエア
+        subgraph writer1
+        送信オブジェクト[オブジェクト] --int--&gt; setMessage
+        end
+
+        subgraph writer2
+        getMessage --int--&gt; 受信オブジェクト[オブジェクト]
+        end
+
+        setMessage --byte string--&gt; bus
+
+        direction RL
+        bus --byte string--&gt; getMessage
+    end
+
+    bus &lt;-.byte string.-&gt; 通信バス</pre>
+</div>
+<div class="fragment"><div class="line">バスクラス bus;</div>
 <div class="line">送信クラス&lt;int&gt; writer{ bus, 0x01 };</div>
 <div class="line">受信クラス&lt;int&gt; reader{ bus, 0x02 };</div>
 <div class="line"> </div>
@@ -230,50 +259,53 @@ $(function(){initNavTree('md_docs_2Communication_2Common.html','',''); });
 <div class="line">}</div>
 </div><!-- fragment --><h2 class="doxsection"><a class="anchor" id="autotoc_md42"></a>
 複数バス、複数送受信</h2>
-<div class="fragment"><div class="line">flowchart LR</div>
-<div class="line">    subgraph ファームウエア1</div>
-<div class="line">        subgraph writer2</div>
-<div class="line">        送信オブジェクト1[オブジェクト] --int--&gt; setMessage1[setMessage]</div>
-<div class="line">        end</div>
-<div class="line"> </div>
-<div class="line">        subgraph writer3</div>
-<div class="line">        送信オブジェクト2[オブジェクト] --int--&gt; setMessage2[setMessage]</div>
-<div class="line">        end</div>
-<div class="line"> </div>
-<div class="line">        subgraph writer1</div>
-<div class="line">        送信オブジェクト3[オブジェクト] --int--&gt; setMessage3[setMessage]</div>
-<div class="line">        end</div>
-<div class="line"> </div>
-<div class="line">        setMessage3 --byte string--&gt; ファームウエア1bus1</div>
-<div class="line">        setMessage1 --byte string--&gt; ファームウエア1bus2</div>
-<div class="line">        setMessage2 --byte string--&gt; ファームウエア1bus2</div>
-<div class="line">    end</div>
-<div class="line"> </div>
-<div class="line">    ファームウエア1bus1[bus1] -.byte string.-&gt; 通信バス1[通信バス]</div>
-<div class="line">    ファームウエア1bus2[bus2] -.byte string.-&gt; 通信バス2[通信バス]</div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line">    通信バス1[通信バス] -.byte string.-&gt; ファームウエア2bus1[bus1]</div>
-<div class="line">    通信バス2[通信バス] -.byte string.-&gt; ファームウエア2bus2[bus2]</div>
-<div class="line"> </div>
-<div class="line">    subgraph ファームウエア2</div>
-<div class="line">        subgraph reader1</div>
-<div class="line">        getMessage1 --int--&gt; 受信オブジェクト1[オブジェクト]</div>
-<div class="line">        end</div>
-<div class="line"> </div>
-<div class="line">        subgraph reader2</div>
-<div class="line">        getMessage2 --int--&gt; 受信オブジェクト2[オブジェクト]</div>
-<div class="line">        end</div>
-<div class="line"> </div>
-<div class="line">        subgraph reader3</div>
-<div class="line">        getMessage3 --int--&gt; 受信オブジェクト3[オブジェクト]</div>
-<div class="line">        end</div>
-<div class="line"> </div>
-<div class="line">        ファームウエア2bus1 --byte string--&gt; getMessage1</div>
-<div class="line">        ファームウエア2bus2 --byte string--&gt; getMessage2</div>
-<div class="line">        ファームウエア2bus2 --byte string--&gt; getMessage3</div>
-<div class="line">    end</div>
-</div><!-- fragment --><div class="fragment"><div class="line">バスクラス bus1;</div>
+<div class="mermaidgraph">
+<pre class="mermaid">
+flowchart LR
+    subgraph ファームウエア1
+        subgraph writer2
+        送信オブジェクト1[オブジェクト] --int--&gt; setMessage1[setMessage]
+        end
+
+        subgraph writer3
+        送信オブジェクト2[オブジェクト] --int--&gt; setMessage2[setMessage]
+        end
+
+        subgraph writer1
+        送信オブジェクト3[オブジェクト] --int--&gt; setMessage3[setMessage]
+        end
+
+        setMessage3 --byte string--&gt; ファームウエア1bus1
+        setMessage1 --byte string--&gt; ファームウエア1bus2
+        setMessage2 --byte string--&gt; ファームウエア1bus2
+    end
+
+    ファームウエア1bus1[bus1] -.byte string.-&gt; 通信バス1[通信バス]
+    ファームウエア1bus2[bus2] -.byte string.-&gt; 通信バス2[通信バス]
+
+
+    通信バス1[通信バス] -.byte string.-&gt; ファームウエア2bus1[bus1]
+    通信バス2[通信バス] -.byte string.-&gt; ファームウエア2bus2[bus2]
+
+    subgraph ファームウエア2
+        subgraph reader1
+        getMessage1 --int--&gt; 受信オブジェクト1[オブジェクト]
+        end
+
+        subgraph reader2
+        getMessage2 --int--&gt; 受信オブジェクト2[オブジェクト]
+        end
+
+        subgraph reader3
+        getMessage3 --int--&gt; 受信オブジェクト3[オブジェクト]
+        end
+
+        ファームウエア2bus1 --byte string--&gt; getMessage1
+        ファームウエア2bus2 --byte string--&gt; getMessage2
+        ファームウエア2bus2 --byte string--&gt; getMessage3
+    end</pre>
+</div>
+<div class="fragment"><div class="line">バスクラス bus1;</div>
 <div class="line">バスクラス bus2;</div>
 <div class="line"> </div>
 <div class="line">送信クラス&lt;int&gt; writer1{ bus1, 0x01 };</div>

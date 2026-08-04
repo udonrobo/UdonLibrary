@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: Udon::Impl 名前空間</title>
@@ -44,22 +44,45 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.16.1 -->
+<!-- 構築: Doxygen 1.17.0 -->
 <script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search/",'.html');
+let searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
 <script type="text/javascript">
-$(function() { codefold.init(); });
+document.addEventListener('DOMContentLoaded', codefold.init);
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','検索',true);
-  $(function() { init_search(); });
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
 });
 </script>
-<div id="main-nav"></div>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -72,7 +95,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('namespaceUdon_1_1Impl.html','',''); });
+document.addEventListener('DOMContentLoaded',() => { initNavTree('namespaceUdon_1_1Impl.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -104,23 +127,23 @@ $(function(){initNavTree('namespaceUdon_1_1Impl.html','',''); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 クラス</h2></td></tr>
+<tr class="memitem:Deserializer" id="r_Deserializer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Impl_1_1Deserializer.html">Deserializer</a></td></tr>
 <tr class="memitem:E220Base" id="r_E220Base"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Impl_1_1E220Base.html">E220Base</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">E220 ベースクラス  <a href="classUdon_1_1Impl_1_1E220Base.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:IsPrintableImpl" id="r_IsPrintableImpl"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Impl_1_1IsPrintableImpl.html">IsPrintableImpl</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトが全て出力可能か判定する  <a href="structUdon_1_1Impl_1_1IsPrintableImpl.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:IsSerializableImpl" id="r_IsSerializableImpl"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Impl_1_1IsSerializableImpl.html">IsSerializableImpl</a></td></tr>
 <tr class="memitem:PadPS5OnboardBTReader" id="r_PadPS5OnboardBTReader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Impl_1_1PadPS5OnboardBTReader.html">PadPS5OnboardBTReader</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ホストシールドがメイン基板に搭載されてる場合のPS5コントローラークラス  <a href="classUdon_1_1Impl_1_1PadPS5OnboardBTReader.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:PadPS5OnboardUSBReader" id="r_PadPS5OnboardUSBReader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Impl_1_1PadPS5OnboardUSBReader.html">PadPS5OnboardUSBReader</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ホストシールドがメイン基板に搭載されてる場合のPS5コントローラークラス  <a href="classUdon_1_1Impl_1_1PadPS5OnboardUSBReader.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:SivPadPS5Reader" id="r_SivPadPS5Reader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Impl_1_1SivPadPS5Reader.html">SivPadPS5Reader</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">OpenSiv3D用 PS5コントローラー 受信クラス  <a href="classUdon_1_1Impl_1_1SivPadPS5Reader.html#details">[詳解]</a><br /></td></tr>
-<tr class="memitem:Deserializer" id="r_Deserializer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Impl_1_1Deserializer.html">Deserializer</a></td></tr>
-<tr class="memitem:SerializedBitSizeImpl" id="r_SerializedBitSizeImpl"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Impl_1_1SerializedBitSizeImpl.html">SerializedBitSizeImpl</a></td></tr>
-<tr class="memitem:Serializer" id="r_Serializer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Impl_1_1Serializer.html">Serializer</a></td></tr>
-<tr class="memitem:IsSerializableImpl" id="r_IsSerializableImpl"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Impl_1_1IsSerializableImpl.html">IsSerializableImpl</a></td></tr>
-<tr class="memitem:IsPrintableImpl" id="r_IsPrintableImpl"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Impl_1_1IsPrintableImpl.html">IsPrintableImpl</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">オブジェクトが全て出力可能か判定する  <a href="structUdon_1_1Impl_1_1IsPrintableImpl.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Printer" id="r_Printer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Impl_1_1Printer.html">Printer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">メンバ変数を列挙しストリームへ出力する  <a href="classUdon_1_1Impl_1_1Printer.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:SerializedBitSizeImpl" id="r_SerializedBitSizeImpl"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Impl_1_1SerializedBitSizeImpl.html">SerializedBitSizeImpl</a></td></tr>
+<tr class="memitem:Serializer" id="r_Serializer"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Impl_1_1Serializer.html">Serializer</a></td></tr>
 <tr class="memitem:ShowConfig" id="r_ShowConfig"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Impl_1_1ShowConfig.html">ShowConfig</a></td></tr>
+<tr class="memitem:SivPadPS5Reader" id="r_SivPadPS5Reader"><td class="memItemLeft">class &#160;</td><td class="memItemRight"><a class="el" href="classUdon_1_1Impl_1_1SivPadPS5Reader.html">SivPadPS5Reader</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">OpenSiv3D用 PS5コントローラー 受信クラス  <a href="classUdon_1_1Impl_1_1SivPadPS5Reader.html#details">[詳解]</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 関数</h2></td></tr>

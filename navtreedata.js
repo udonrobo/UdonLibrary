@@ -495,6 +495,6 @@ var NAVTREEINDEX =
 "structUdon_1_1Vec2.html#ac663e69dc69695397b7ce4075e7e77e9"
 ];
 
-var SYNCONMSG = 'クリックで同期表示が無効になります';
-var SYNCOFFMSG = 'クリックで同期表示が有効になります';
-var LISTOFALLMEMBERS = '全メンバ一覧';
+const SYNCONMSG = 'クリックで同期表示が無効になります';
+const SYNCOFFMSG = 'クリックで同期表示が有効になります';
+const LISTOFALLMEMBERS = '全メンバ一覧';

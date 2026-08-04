@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: Udon::Optional&lt; T &gt; クラステンプレート</title>
@@ -44,22 +44,45 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.16.1 -->
+<!-- 構築: Doxygen 1.17.0 -->
 <script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search/",'.html');
+let searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
 <script type="text/javascript">
-$(function() { codefold.init(); });
+document.addEventListener('DOMContentLoaded', codefold.init);
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','検索',true);
-  $(function() { init_search(); });
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
 });
 </script>
-<div id="main-nav"></div>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -72,7 +95,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('classUdon_1_1Optional.html','','classUdon_1_1Optional-members'); });
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classUdon_1_1Optional.html','','classUdon_1_1Optional-members'); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -118,7 +141,7 @@ $(function(){initNavTree('classUdon_1_1Optional.html','','classUdon_1_1Optional-
 <tr class="memitem:a713a39c57a00dfc3660e320257f4489f" id="r_a713a39c57a00dfc3660e320257f4489f"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a713a39c57a00dfc3660e320257f4489f">Optional</a> (<a class="el" href="structUdon_1_1NulloptT.html">NulloptT</a>)</td></tr>
 <tr class="memdesc:a713a39c57a00dfc3660e320257f4489f"><td class="mdescLeft">&#160;</td><td class="mdescRight">無効値として構築  <br /></td></tr>
 <tr class="memitem:a23e95189c22121147fda02c6b616509e" id="r_a23e95189c22121147fda02c6b616509e"><td class="memTemplParams" colspan="2">template&lt;typename U, typename std::enable_if&lt; std::is_constructible&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>, U &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type = nullptr&gt; </td></tr>
-<tr class="memitem:a23e95189c22121147fda02c6b616509e template"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a23e95189c22121147fda02c6b616509e">Optional</a> (U &amp;&amp;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">value</a>) noexcept(std::is_nothrow_constructible&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a> &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
+<tr class="memitem:a23e95189c22121147fda02c6b616509e template"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a23e95189c22121147fda02c6b616509e">Optional</a> (U &amp;&amp;value) noexcept(std::is_nothrow_constructible&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a> &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
 <tr class="memdesc:a23e95189c22121147fda02c6b616509e"><td class="mdescLeft">&#160;</td><td class="mdescRight">値から構築  <br /></td></tr>
 <tr class="memitem:ae5cab81cf80326ceb1b1e8298c88b885" id="r_ae5cab81cf80326ceb1b1e8298c88b885"><td class="memTemplParams" colspan="2">template&lt;typename U, typename std::enable_if&lt; std::is_constructible&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>, const U &amp; &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type = nullptr&gt; </td></tr>
 <tr class="memitem:ae5cab81cf80326ceb1b1e8298c88b885 template"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ae5cab81cf80326ceb1b1e8298c88b885">Optional</a> (const Optional&lt; U &gt; &amp;other) noexcept(std::is_nothrow_constructible&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>, U &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
@@ -131,7 +154,7 @@ $(function(){initNavTree('classUdon_1_1Optional.html','','classUdon_1_1Optional-
 <tr class="memitem:a49dff458a4e6a993c791a69501382218" id="r_a49dff458a4e6a993c791a69501382218"><td class="memItemLeft"><a class="el" href="#a1765268b663a7e1bce2246dec366ac57">Optional</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a49dff458a4e6a993c791a69501382218">operator=</a> (<a class="el" href="structUdon_1_1NulloptT.html">NulloptT</a>) noexcept</td></tr>
 <tr class="memdesc:a49dff458a4e6a993c791a69501382218"><td class="mdescLeft">&#160;</td><td class="mdescRight">無効値代入演算子  <br /></td></tr>
 <tr class="memitem:a61a0dd9cd12178c524399f5eb5d1eee8" id="r_a61a0dd9cd12178c524399f5eb5d1eee8"><td class="memTemplParams" colspan="2">template&lt;typename U, typename std::enable_if&lt; std::is_constructible&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>, U &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a> and std::is_assignable&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>, U &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type = nullptr&gt; </td></tr>
-<tr class="memitem:a61a0dd9cd12178c524399f5eb5d1eee8 template"><td class="memItemLeft"><a class="el" href="#a1765268b663a7e1bce2246dec366ac57">Optional</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a61a0dd9cd12178c524399f5eb5d1eee8">operator=</a> (U &amp;&amp;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">value</a>) noexcept(std::is_nothrow_constructible&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>, U &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a> and std::is_nothrow_assignable&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>, U &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
+<tr class="memitem:a61a0dd9cd12178c524399f5eb5d1eee8 template"><td class="memItemLeft"><a class="el" href="#a1765268b663a7e1bce2246dec366ac57">Optional</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a61a0dd9cd12178c524399f5eb5d1eee8">operator=</a> (U &amp;&amp;value) noexcept(std::is_nothrow_constructible&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>, U &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a> and std::is_nothrow_assignable&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>, U &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
 <tr class="memdesc:a61a0dd9cd12178c524399f5eb5d1eee8"><td class="mdescLeft">&#160;</td><td class="mdescRight">値代入演算子  <br /></td></tr>
 <tr class="memitem:a073122aeeb5c5892952387398d115d5c" id="r_a073122aeeb5c5892952387398d115d5c"><td class="memTemplParams" colspan="2">template&lt;typename U, typename std::enable_if&lt; std::is_constructible&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>, const U &amp; &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a> and std::is_assignable&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>, const U &amp; &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>, std::nullptr_t &gt;::type = nullptr&gt; </td></tr>
 <tr class="memitem:a073122aeeb5c5892952387398d115d5c template"><td class="memItemLeft"><a class="el" href="#a1765268b663a7e1bce2246dec366ac57">Optional</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a073122aeeb5c5892952387398d115d5c">operator=</a> (const <a class="el" href="#a1765268b663a7e1bce2246dec366ac57">Optional</a>&lt; U &gt; &amp;other) noexcept(std::is_nothrow_constructible&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>, U &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a> and std::is_nothrow_assignable&lt; <a class="el" href="#a391fd72d8fee0ae6b91c81c335ed2c63">ValueType</a>, U &gt;<a class="el" href="#a902544e5d958130ac7b0368c1e140d30">::value</a>)</td></tr>
@@ -329,7 +352,7 @@ template&lt;typename U, typename std::enable_if&lt; std::is_constructible&lt; <a
 <p>値から構築 </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#a902544e5d958130ac7b0368c1e140d30" title="値を取得">value</a></td><td></td></tr>
+    <tr><td class="paramname">value</td><td></td></tr>
   </table>
   </dd>
 </dl>

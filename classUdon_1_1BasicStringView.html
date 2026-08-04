@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: Udon::BasicStringView&lt; CharType, Traits &gt; クラステンプレート</title>
@@ -44,22 +44,45 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.16.1 -->
+<!-- 構築: Doxygen 1.17.0 -->
 <script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search/",'.html');
+let searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
 <script type="text/javascript">
-$(function() { codefold.init(); });
+document.addEventListener('DOMContentLoaded', codefold.init);
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','検索',true);
-  $(function() { init_search(); });
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
 });
 </script>
-<div id="main-nav"></div>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -72,7 +95,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('classUdon_1_1BasicStringView.html','','classUdon_1_1BasicStringView-members'); });
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classUdon_1_1BasicStringView.html','','classUdon_1_1BasicStringView-members'); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -130,7 +153,7 @@ $(function(){initNavTree('classUdon_1_1BasicStringView.html','','classUdon_1_1Ba
 <tr class="memitem:af39c9da216fa1cc1080891a76cbdd7db" id="r_af39c9da216fa1cc1080891a76cbdd7db"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#af39c9da216fa1cc1080891a76cbdd7db">BasicStringView</a> (<a class="el" href="#a21929ea460cf8f9fb59e156781b67670">const_pointer</a> string, const <a class="el" href="#a48730ef75336408d0599f4ac11be8fd9">size_type</a> length)</td></tr>
 <tr class="memdesc:af39c9da216fa1cc1080891a76cbdd7db"><td class="mdescLeft">&#160;</td><td class="mdescRight">文字列の先頭を指すポインタ、サイズをもとにビューを構築  <br /></td></tr>
 <tr class="memitem:a3d4f593e2006369813d5ca377b759b41" id="r_a3d4f593e2006369813d5ca377b759b41"><td class="memTemplParams" colspan="2">template&lt;typename InputIterator, typename = typename std::enable_if&lt;std::is_convertible&lt;typename std::iterator_traits&lt;InputIterator&gt;::iterator_category, std::input_iterator_tag&gt;::value&gt;::type&gt; </td></tr>
-<tr class="memitem:a3d4f593e2006369813d5ca377b759b41 template"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a3d4f593e2006369813d5ca377b759b41">BasicStringView</a> (InputIterator <a class="el" href="#ac5bd246f2adcf9235ad47be6dccf0e05">begin</a>, InputIterator <a class="el" href="#aa90b418d35708edb339ce5557266a79e">end</a>)</td></tr>
+<tr class="memitem:a3d4f593e2006369813d5ca377b759b41 template"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a3d4f593e2006369813d5ca377b759b41">BasicStringView</a> (InputIterator begin, InputIterator end)</td></tr>
 <tr class="memdesc:a3d4f593e2006369813d5ca377b759b41"><td class="mdescLeft">&#160;</td><td class="mdescRight">要素を指すイテレータをもとにビューを構築  <br /></td></tr>
 <tr class="memitem:acd3b07d5852f9c8324421ca2abb25c0c" id="r_acd3b07d5852f9c8324421ca2abb25c0c"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#acd3b07d5852f9c8324421ca2abb25c0c">BasicStringView</a> (const std::basic_string&lt; CharType &gt; &amp;string)</td></tr>
 <tr class="memdesc:acd3b07d5852f9c8324421ca2abb25c0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">std::string からの変換  <br /></td></tr>
@@ -204,7 +227,7 @@ class Udon::BasicStringView&lt; CharType, Traits &gt;</div><p>文字列参照ク
 <dl class="tparams"><dt>テンプレート引数</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">CharType</td><td>文字列の各要素の型 </td></tr>
-    <tr><td class="paramname"><a class="el" href="namespaceUdon_1_1Traits.html">Traits</a></td><td></td></tr>
+    <tr><td class="paramname">Traits</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -484,7 +507,7 @@ template&lt;typename CharType, typename <a class="el" href="namespaceUdon_1_1Tra
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramname">string</td><td>先頭を指すポインタ </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a1cb7b14ecfcef43359d802a53b92f62a" title="ビューのサイズを取得する">size</a></td><td>要素数 </td></tr>
+    <tr><td class="paramname">size</td><td>要素数 </td></tr>
   </table>
   </dd>
 </dl>
@@ -531,8 +554,8 @@ template&lt;typename InputIterator, typename = typename std::enable_if&lt;std::i
 </dl>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#ac5bd246f2adcf9235ad47be6dccf0e05">begin</a></td><td></td></tr>
-    <tr><td class="paramname"><a class="el" href="#aa90b418d35708edb339ce5557266a79e">end</a></td><td></td></tr>
+    <tr><td class="paramname">begin</td><td></td></tr>
+    <tr><td class="paramname">end</td><td></td></tr>
   </table>
   </dd>
 </dl>

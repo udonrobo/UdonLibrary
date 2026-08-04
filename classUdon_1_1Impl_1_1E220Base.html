@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: Udon::Impl::E220Base クラス</title>
@@ -44,22 +44,45 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.16.1 -->
+<!-- 構築: Doxygen 1.17.0 -->
 <script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search/",'.html');
+let searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
 <script type="text/javascript">
-$(function() { codefold.init(); });
+document.addEventListener('DOMContentLoaded', codefold.init);
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','検索',true);
-  $(function() { init_search(); });
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
 });
 </script>
-<div id="main-nav"></div>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -72,7 +95,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('classUdon_1_1Impl_1_1E220Base.html','','classUdon_1_1Impl_1_1E220Base-members'); });
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classUdon_1_1Impl_1_1E220Base.html','','classUdon_1_1Impl_1_1E220Base-members'); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -129,7 +152,7 @@ Udon::Impl::E220Base の継承関係図</div>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 限定公開メンバ関数</h2></td></tr>
-<tr class="memitem:ad319b189d0c2aa3f3ece1522595b9a38" id="r_ad319b189d0c2aa3f3ece1522595b9a38"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ad319b189d0c2aa3f3ece1522595b9a38">E220Base</a> (const <a class="el" href="structUdon_1_1Impl_1_1E220Base_1_1Config.html">Config</a> &amp;<a class="el" href="#ac0fc956ec044a8a3202ff0b3aa51da23">config</a>)</td></tr>
+<tr class="memitem:ad319b189d0c2aa3f3ece1522595b9a38" id="r_ad319b189d0c2aa3f3ece1522595b9a38"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ad319b189d0c2aa3f3ece1522595b9a38">E220Base</a> (const <a class="el" href="structUdon_1_1Impl_1_1E220Base_1_1Config.html">Config</a> &amp;config)</td></tr>
 <tr class="memdesc:ad319b189d0c2aa3f3ece1522595b9a38"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <br /></td></tr>
 <tr class="memitem:aecad88fa0c9282f15a872f51ea7d0bd3" id="r_aecad88fa0c9282f15a872f51ea7d0bd3"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aecad88fa0c9282f15a872f51ea7d0bd3">begin</a> ()</td></tr>
 <tr class="memdesc:aecad88fa0c9282f15a872f51ea7d0bd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">通信開始  <br /></td></tr>
@@ -168,7 +191,7 @@ Udon::Impl::E220Base の継承関係図</div>
 <p>コンストラクタ </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#ac0fc956ec044a8a3202ff0b3aa51da23">config</a></td><td>設定 </td></tr>
+    <tr><td class="paramname">config</td><td>設定 </td></tr>
   </table>
   </dd>
 </dl>

@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: Udon::Euler 構造体</title>
@@ -44,22 +44,45 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.16.1 -->
+<!-- 構築: Doxygen 1.17.0 -->
 <script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search/",'.html');
+let searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
 <script type="text/javascript">
-$(function() { codefold.init(); });
+document.addEventListener('DOMContentLoaded', codefold.init);
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','検索',true);
-  $(function() { init_search(); });
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
 });
 </script>
-<div id="main-nav"></div>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -72,7 +95,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('structUdon_1_1Euler.html','','structUdon_1_1Euler-members'); });
+document.addEventListener('DOMContentLoaded',() => { initNavTree('structUdon_1_1Euler.html','','structUdon_1_1Euler-members'); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -116,7 +139,7 @@ $(function(){initNavTree('structUdon_1_1Euler.html','','structUdon_1_1Euler-memb
 公開メンバ関数</h2></td></tr>
 <tr class="memitem:abb4d8c082296cea5945b5768cadb6e3b" id="r_abb4d8c082296cea5945b5768cadb6e3b"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#abb4d8c082296cea5945b5768cadb6e3b">Euler</a> () noexcept</td></tr>
 <tr class="memdesc:abb4d8c082296cea5945b5768cadb6e3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコンストラクタ  <br /></td></tr>
-<tr class="memitem:ad716df394e4378f7ae90e24b06439739" id="r_ad716df394e4378f7ae90e24b06439739"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#ad716df394e4378f7ae90e24b06439739">Euler</a> (<a class="el" href="#af258c3a0586c29b4810b9df592625a73">ValueType</a> <a class="el" href="#a24aca9acfc245a3a2ef9ea8950901bd5">roll</a>, <a class="el" href="#af258c3a0586c29b4810b9df592625a73">ValueType</a> <a class="el" href="#af9acb4cddb9618187ae96bf16bde03d5">pitch</a>, <a class="el" href="#af258c3a0586c29b4810b9df592625a73">ValueType</a> <a class="el" href="#a040d4bc4fbfd84eb30d20e50f6fed78f">yaw</a>) noexcept</td></tr>
+<tr class="memitem:ad716df394e4378f7ae90e24b06439739" id="r_ad716df394e4378f7ae90e24b06439739"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#ad716df394e4378f7ae90e24b06439739">Euler</a> (<a class="el" href="#af258c3a0586c29b4810b9df592625a73">ValueType</a> roll, <a class="el" href="#af258c3a0586c29b4810b9df592625a73">ValueType</a> pitch, <a class="el" href="#af258c3a0586c29b4810b9df592625a73">ValueType</a> yaw) noexcept</td></tr>
 <tr class="memdesc:ad716df394e4378f7ae90e24b06439739"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <br /></td></tr>
 <tr class="memitem:a2c75cec4e42e4a193320c62279abf46b" id="r_a2c75cec4e42e4a193320c62279abf46b"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a2c75cec4e42e4a193320c62279abf46b">Euler</a> (const Euler &amp;)=default</td></tr>
 <tr class="memdesc:a2c75cec4e42e4a193320c62279abf46b"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコピーコンストラクタ  <br /></td></tr>
@@ -245,9 +268,9 @@ $(function(){initNavTree('structUdon_1_1Euler.html','','structUdon_1_1Euler-memb
 <p>コンストラクタ </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#a24aca9acfc245a3a2ef9ea8950901bd5" title="ロール角">roll</a></td><td>ロール角 </td></tr>
-    <tr><td class="paramname"><a class="el" href="#af9acb4cddb9618187ae96bf16bde03d5" title="ピッチ角">pitch</a></td><td>ピッチ角 </td></tr>
-    <tr><td class="paramname"><a class="el" href="#a040d4bc4fbfd84eb30d20e50f6fed78f" title="ヨー角">yaw</a></td><td>ヨー角 </td></tr>
+    <tr><td class="paramname">roll</td><td>ロール角 </td></tr>
+    <tr><td class="paramname">pitch</td><td>ピッチ角 </td></tr>
+    <tr><td class="paramname">yaw</td><td>ヨー角 </td></tr>
   </table>
   </dd>
 </dl>

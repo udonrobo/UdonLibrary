@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: コントローラーの構成</title>
@@ -44,22 +44,45 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.16.1 -->
+<!-- 構築: Doxygen 1.17.0 -->
 <script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search/",'.html');
+let searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
 <script type="text/javascript">
-$(function() { codefold.init(); });
+document.addEventListener('DOMContentLoaded', codefold.init);
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','検索',true);
-  $(function() { init_search(); });
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
 });
 </script>
-<div id="main-nav"></div>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -72,7 +95,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('md_docs_2Communication_2PadOrganization.html','',''); });
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_docs_2Communication_2PadOrganization.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -108,84 +131,103 @@ $(function(){initNavTree('md_docs_2Communication_2PadOrganization.html','',''); 
 <p>メインマイコン側のドキュメントは <a class="el" href="md_docs_2Communication_2Pad.html" title="PS5 コントローラー">こちら</a> にあります。</p>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md89"></a>
 ■ 920MHz 経由 / 無線モジュールがメイン基板にある場合 (推奨)</h2>
-<div class="fragment"><div class="line">flowchart LR</div>
-<div class="line">  subgraph 操縦者側</div>
-<div class="line">    subgraph 送信基板</div>
-<div class="line">      コントローラ --USB--&gt; USBホストシールド --SPI--&gt; 送信側マイコン[マイコン] --UART等--&gt; 送信側モジュール[無線モジュール]</div>
-<div class="line">    end</div>
-<div class="line">  end</div>
-<div class="line">  subgraph ロボット側</div>
-<div class="line">    subgraph メイン基板</div>
-<div class="line">      送信側モジュール[無線モジュール] -.920MHz.-&gt; 受信側モジュール[無線モジュール] --UART等--&gt; メイン側マイコン[マイコン]</div>
-<div class="line">    end</div>
-<div class="line">  end</div>
-</div><!-- fragment --><ul>
-<li>送信基板マイコン</li>
+<div class="mermaidgraph">
+<pre class="mermaid">
+flowchart LR
+  subgraph 操縦者側
+    subgraph 送信基板
+      コントローラ --USB--&gt; USBホストシールド --SPI--&gt; 送信側マイコン[マイコン] --UART等--&gt; 送信側モジュール[無線モジュール]
+    end
+  end
+  subgraph ロボット側
+    subgraph メイン基板
+      送信側モジュール[無線モジュール] -.920MHz.-&gt; 受信側モジュール[無線モジュール] --UART等--&gt; メイン側マイコン[マイコン]
+    end
+  end</pre>
+</div>
+<ul>
+<li>送信基板マイコン送信基板マイコン</li>
 </ul>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md90"></a>
 ■ 920MHz 経由 / 無線モジュールとメイン基板が別々の場合 (推奨)</h2>
-<div class="fragment"><div class="line">flowchart LR</div>
-<div class="line">  subgraph 操縦者側</div>
-<div class="line">    subgraph 送信基板</div>
-<div class="line">      コントローラ --USB--&gt; USBホストシールド --SPI--&gt; 送信側マイコン[マイコン] --UART等--&gt; 送信側モジュール[無線モジュール]</div>
-<div class="line">    end</div>
-<div class="line">  end</div>
-<div class="line">  subgraph ロボット側</div>
-<div class="line">    subgraph 受信基板</div>
-<div class="line">      送信側モジュール[無線モジュール] -.920MHz.-&gt; 受信側モジュール[無線モジュール] --UART等--&gt; 受信側マイコン[マイコン]</div>
-<div class="line">    end</div>
-<div class="line">    subgraph メイン基板</div>
-<div class="line">      受信側マイコン[マイコン] --CAN等--&gt; メイン側マイコン[マイコン]</div>
-<div class="line">    end</div>
-<div class="line">  end</div>
-</div><!-- fragment --><ul>
-<li>送信基板マイコン</li>
-<li>受信基板マイコン</li>
+<div class="mermaidgraph">
+<pre class="mermaid">
+flowchart LR
+  subgraph 操縦者側
+    subgraph 送信基板
+      コントローラ --USB--&gt; USBホストシールド --SPI--&gt; 送信側マイコン[マイコン] --UART等--&gt; 送信側モジュール[無線モジュール]
+    end
+  end
+  subgraph ロボット側
+    subgraph 受信基板
+      送信側モジュール[無線モジュール] -.920MHz.-&gt; 受信側モジュール[無線モジュール] --UART等--&gt; 受信側マイコン[マイコン]
+    end
+    subgraph メイン基板
+      受信側マイコン[マイコン] --CAN等--&gt; メイン側マイコン[マイコン]
+    end
+  end</pre>
+</div>
+<ul>
+<li>送信基板マイコン送信基板マイコン</li>
+</ul>
+<ul>
+<li>受信基板マイコン受信基板マイコン</li>
 </ul>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md91"></a>
 ■ Bluetooth 経由 / USB ホストシールドがメイン基板にある場合</h2>
-<div class="fragment"><div class="line">flowchart LR</div>
-<div class="line">  subgraph 操縦者側</div>
-<div class="line">  コントローラ</div>
-<div class="line">  end</div>
-<div class="line">  subgraph ロボット側</div>
-<div class="line">    subgraph メイン基板</div>
-<div class="line">      コントローラ -.Bluetooth.-&gt; Bluetoothドングル --USB--&gt; USBホストシールド--SPI--&gt; メイン側マイコン[マイコン]</div>
-<div class="line">    end</div>
-<div class="line">  end</div>
-</div><!-- fragment --><ul>
-<li>USB ドングルとのペアリング</li>
+<div class="mermaidgraph">
+<pre class="mermaid">
+flowchart LR
+  subgraph 操縦者側
+  コントローラ
+  end
+  subgraph ロボット側
+    subgraph メイン基板
+      コントローラ -.Bluetooth.-&gt; Bluetoothドングル --USB--&gt; USBホストシールド--SPI--&gt; メイン側マイコン[マイコン]
+    end
+  end</pre>
+</div>
+<ul>
+<li>USB ドングルとのペアリングUSB ドングルとのペアリング</li>
 </ul>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md92"></a>
 ■ Bluetooth 経由 / USB ホストシールドとメイン基板が別々の場合</h2>
-<div class="fragment"><div class="line">flowchart LR</div>
-<div class="line">  subgraph 操縦者側</div>
-<div class="line">  コントローラ</div>
-<div class="line">  end</div>
-<div class="line">  subgraph ロボット側</div>
-<div class="line">    subgraph 受信基板</div>
-<div class="line">      コントローラ -.Bluetooth.-&gt; Bluetoothドングル --USB--&gt; USBホストシールド--SPI--&gt; 受信側マイコン[マイコン]</div>
-<div class="line">    end</div>
-<div class="line">    subgraph メイン基板</div>
-<div class="line">      受信側マイコン[マイコン] --CAN等--&gt; メイン側マイコン[マイコン]</div>
-<div class="line">    end</div>
-<div class="line">  end</div>
-</div><!-- fragment --><ul>
-<li>受信基板マイコン</li>
-<li>USB ドングルとのペアリング</li>
+<div class="mermaidgraph">
+<pre class="mermaid">
+flowchart LR
+  subgraph 操縦者側
+  コントローラ
+  end
+  subgraph ロボット側
+    subgraph 受信基板
+      コントローラ -.Bluetooth.-&gt; Bluetoothドングル --USB--&gt; USBホストシールド--SPI--&gt; 受信側マイコン[マイコン]
+    end
+    subgraph メイン基板
+      受信側マイコン[マイコン] --CAN等--&gt; メイン側マイコン[マイコン]
+    end
+  end</pre>
+</div>
+<ul>
+<li>受信基板マイコン受信基板マイコン</li>
+</ul>
+<ul>
+<li>USB ドングルとのペアリングUSB ドングルとのペアリング</li>
 </ul>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md93"></a>
 ■ USB 経由</h2>
-<div class="fragment"><div class="line">flowchart LR</div>
-<div class="line">  subgraph 操縦者側</div>
-<div class="line">  コントローラ</div>
-<div class="line">  end</div>
-<div class="line">  subgraph ロボット側</div>
-<div class="line">    subgraph メイン基板</div>
-<div class="line">      コントローラ --USB--&gt; USBホストシールド--SPI--&gt; メイン側マイコン[マイコン]</div>
-<div class="line">    end</div>
-<div class="line">  end</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md94"></a>
+<div class="mermaidgraph">
+<pre class="mermaid">
+flowchart LR
+  subgraph 操縦者側
+  コントローラ
+  end
+  subgraph ロボット側
+    subgraph メイン基板
+      コントローラ --USB--&gt; USBホストシールド--SPI--&gt; メイン側マイコン[マイコン]
+    end
+  end</pre>
+</div>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md94"></a>
 送信側マイコン用クラス</h1>
 <p>USB ホストシールドからコントローラの情報を受け取り、無線モジュールへ <span class="tt"><a class="el" href="structUdon_1_1Message_1_1PadPS5.html" title="PS5コントローラーのボタン情報">Udon::Message::PadPS5</a></span> 型オブジェクトの転送を行います。</p>
 <p><span class="tt"><a class="el" href="classUdon_1_1PadPS5USB.html" title="有線USB経由PS5コントローラークラス">Udon::PadPS5USB</a></span> クラスを用いることで、USB ホストシールドから <span class="tt"><a class="el" href="structUdon_1_1Message_1_1PadPS5.html" title="PS5コントローラーのボタン情報">Udon::Message::PadPS5</a></span> 型オブジェクトを取得できます。<span class="tt">getMessage()</span> で取得出来ます。</p>
@@ -285,7 +327,7 @@ $(function(){initNavTree('md_docs_2Communication_2PadOrganization.html','',''); 
 </div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md96"></a>
 Bluetooth 使用時の受信側マイコン用クラス</h1>
 <p>USB ホストシールドからコントローラの情報を受け取り、<span class="tt"><a class="el" href="structUdon_1_1Message_1_1PadPS5.html" title="PS5コントローラーのボタン情報">Udon::Message::PadPS5</a></span> 型オブジェクトをメインマイコンへ転送します。</p>
-<p>あらかじめコントローラと Bluetooth ドングルがペアリングされている必要があります。ペアリング方法</p>
+<p>あらかじめコントローラと Bluetooth ドングルがペアリングされている必要があります。ペアリング方法ペアリング方法</p>
 <p><span class="tt"><a class="el" href="PadPS5BT_8hpp.html">PadPS5BT.hpp</a></span> を個別にインクルードし、<span class="tt"><a class="el" href="classUdon_1_1PadPS5BT.html" title="Bluetooth経由PS5コントローラークラス">Udon::PadPS5BT</a></span> クラスを用います。使い方は <span class="tt">PadPS5USB</span> クラスと同じです。</p>
 <div class="fragment"><div class="line"><span class="comment">// コントローラの情報を CAN バスへ転送する例</span></div>
 <div class="line"> </div>

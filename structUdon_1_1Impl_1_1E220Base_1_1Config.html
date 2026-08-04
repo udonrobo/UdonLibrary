@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: Udon::Impl::E220Base::Config 構造体</title>
@@ -44,22 +44,45 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.16.1 -->
+<!-- 構築: Doxygen 1.17.0 -->
 <script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search/",'.html');
+let searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
 <script type="text/javascript">
-$(function() { codefold.init(); });
+document.addEventListener('DOMContentLoaded', codefold.init);
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','検索',true);
-  $(function() { init_search(); });
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
 });
 </script>
-<div id="main-nav"></div>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -72,7 +95,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('structUdon_1_1Impl_1_1E220Base_1_1Config.html','','structUdon_1_1Impl_1_1E220Base_1_1Config-members'); });
+document.addEventListener('DOMContentLoaded',() => { initNavTree('structUdon_1_1Impl_1_1E220Base_1_1Config.html','','structUdon_1_1Impl_1_1E220Base_1_1Config-members'); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -109,7 +132,7 @@ $(function(){initNavTree('structUdon_1_1Impl_1_1E220Base_1_1Config.html','','str
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
-<tr class="memitem:ae85e0429acb4ce9da8340bb6aa565e5d" id="r_ae85e0429acb4ce9da8340bb6aa565e5d"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ae85e0429acb4ce9da8340bb6aa565e5d">Config</a> (HardwareSerial &amp;<a class="el" href="#a2d8878d9b628b6af5955c3135353ea56">serial</a>, uint8_t <a class="el" href="#a21abbdadc31022b59d9004303e36b928">m0</a>, uint8_t <a class="el" href="#a6f9980bf854527f6f5954bc2b32e9930">m1</a>, uint8_t <a class="el" href="#ac63a0ac4ce7893467b40832f2ad69b5d">aux</a>, uint8_t <a class="el" href="#ae8be237506946fc19503f8b995426bf3">channel</a>=0, uint16_t <a class="el" href="#a31110573673b2e7e94f7c0c19edc8779">address</a>=0x0102)</td></tr>
+<tr class="memitem:ae85e0429acb4ce9da8340bb6aa565e5d" id="r_ae85e0429acb4ce9da8340bb6aa565e5d"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ae85e0429acb4ce9da8340bb6aa565e5d">Config</a> (HardwareSerial &amp;serial, uint8_t m0, uint8_t m1, uint8_t aux, uint8_t channel=0, uint16_t address=0x0102)</td></tr>
 <tr class="memdesc:ae85e0429acb4ce9da8340bb6aa565e5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>

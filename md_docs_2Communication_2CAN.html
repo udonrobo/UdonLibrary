@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: CAN 通信</title>
@@ -44,22 +44,45 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.16.1 -->
+<!-- 構築: Doxygen 1.17.0 -->
 <script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search/",'.html');
+let searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
 <script type="text/javascript">
-$(function() { codefold.init(); });
+document.addEventListener('DOMContentLoaded', codefold.init);
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','検索',true);
-  $(function() { init_search(); });
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
 });
 </script>
-<div id="main-nav"></div>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -72,7 +95,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('md_docs_2Communication_2CAN.html','',''); });
+document.addEventListener('DOMContentLoaded',() => { initNavTree('md_docs_2Communication_2CAN.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -106,12 +129,22 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html','',''); });
 <p>送信者は送信ノードと呼ばれ、自由なタイミングで送信を行えます。他の送信ノードが送信中の場合、調停を行い送信タイミングを自動的に調整します。受信者は受信ノードと呼ばれ、送信者が持つ識別子を識別し受信を行います。</p>
 <p>本ライブラリは通信バスクラス、送受信ノードクラスを提供し、組み合わせて通信します。</p>
 <ul>
-<li>通信バスクラス</li>
-<li>送信ノードクラス</li>
-<li>受信ノードクラス</li>
-<li>デバッグ</li>
-<li>クラスの組み合わせ色々</li>
-<li>バイト列を直接送受信</li>
+<li>通信バスクラス通信バスクラス</li>
+</ul>
+<ul>
+<li>送信ノードクラス送信ノードクラス</li>
+</ul>
+<ul>
+<li>受信ノードクラス受信ノードクラス</li>
+</ul>
+<ul>
+<li>デバッグデバッグ</li>
+</ul>
+<ul>
+<li>クラスの組み合わせ色々クラスの組み合わせ色々</li>
+</ul>
+<ul>
+<li>バイト列を直接送受信バイト列を直接送受信</li>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
 個別インクルード</h1>
@@ -121,16 +154,19 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html','',''); });
 通信バスクラス</h1>
 <p>送受信処理、通信が行えているかどうかのチェックを行います。使用するマイコンや CAN コントローラーによって適切なバスクラスを選択します。</p>
 <p>CAN2.0A プロトコルで通信を行います。ID は 0x000~0x7FF の範囲で使用できます。</p>
-<p>CAN2.0A は 一度に 8 バイトのデータしか送信できません。8 バイトより長いデータは分割して送受信します。この時、1 バイト目にインデックス番号が付与されます。8 バイト以下のデータはインデックスを付与せず送受信するため、他の CAN デバイス (市販モーター等) との通信にも使用できます。詳しくは バイト列を直接送受信 を参照ください。</p>
+<p>CAN2.0A は 一度に 8 バイトのデータしか送信できません。8 バイトより長いデータは分割して送受信します。この時、1 バイト目にインデックス番号が付与されます。8 バイト以下のデータはインデックスを付与せず送受信するため、他の CAN デバイス (市販モーター等) との通信にも使用できます。詳しくは バイト列を直接送受信バイト列を直接送受信 を参照ください。</p>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
 ■ Teensy</h2>
 <p>内臓 CAN コントローラーを使用し CAN 通信を行います。受信ノードが 8 個以内の場合、受信フィルタの設定を行います。</p>
-<div class="fragment"><div class="line">flowchart LR</div>
-<div class="line">  subgraph 基板</div>
-<div class="line">    Teensy --CAN TX/RX--&gt; CANトランシーバー</div>
-<div class="line">  end</div>
-<div class="line">  CANトランシーバー --CAN H/L--&gt; CANバス</div>
-</div><!-- fragment --><p>クラスのテンプレートパラメーターに使用する CAN ポートを指定します。各ボードの Pinout を調べ参照してください。Teesy4.0 では CAN1~CAN3 が使用できます。</p>
+<div class="mermaidgraph">
+<pre class="mermaid">
+flowchart LR
+  subgraph 基板
+    Teensy --CAN TX/RX--&gt; CANトランシーバー
+  end
+  CANトランシーバー --CAN H/L--&gt; CANバス</pre>
+</div>
+<p>クラスのテンプレートパラメーターに使用する CAN ポートを指定します。各ボードの Pinout を調べ参照してください。Teesy4.0 では CAN1~CAN3 が使用できます。</p>
 <div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1CanBusTeensy.html">Udon::CanBusTeensy&lt;CAN1&gt;</a> bus;</div>
 <div class="ttc" id="aclassUdon_1_1CanBusTeensy_html"><div class="ttname"><a href="classUdon_1_1CanBusTeensy.html">Udon::CanBusTeensy</a></div><div class="ttdoc">Teensy用 CANバスクラス</div><div class="ttdef"><b>Definition</b> CanBusTeensy.hpp:31</div></div>
 </div><!-- fragment --><details >
@@ -181,12 +217,15 @@ $(function(){initNavTree('md_docs_2Communication_2CAN.html','',''); });
 <h2 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
 ■ Raspberry Pi Pico</h2>
 <p>外部 CAN コントローラー (MCP2515 or MCP25625) を使用し CAN 通信を行います。受信ノードが 6 個以内の場合、受信フィルタの設定を行います。受信フィルタが有効の場合、登録していない ID の受信を関知しないため、不要な処理の削減につながります。</p>
-<div class="fragment"><div class="line">flowchart LR</div>
-<div class="line">  subgraph 基板</div>
-<div class="line">    RaspberryPiPico --SPI--&gt; CANコントローラー --CAN TX/RX--&gt; CANトランシーバー</div>
-<div class="line">  end</div>
-<div class="line">  CANトランシーバー --CAN H/L--&gt; CANバス</div>
-</div><!-- fragment --><div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1CanBusSpi.html">Udon::CanBusSpi</a> bus;</div>
+<div class="mermaidgraph">
+<pre class="mermaid">
+flowchart LR
+  subgraph 基板
+    RaspberryPiPico --SPI--&gt; CANコントローラー --CAN TX/RX--&gt; CANトランシーバー
+  end
+  CANトランシーバー --CAN H/L--&gt; CANバス</pre>
+</div>
+<div class="fragment"><div class="line"><span class="keyword">static</span> <a class="code hl_class" href="classUdon_1_1CanBusSpi.html">Udon::CanBusSpi</a> bus;</div>
 <div class="ttc" id="aclassUdon_1_1CanBusSpi_html"><div class="ttname"><a href="classUdon_1_1CanBusSpi.html">Udon::CanBusSpi</a></div><div class="ttdoc">Raspberry Pi Pico用バスクラス</div><div class="ttdef"><b>Definition</b> CanBusSpiPico.hpp:24</div></div>
 </div><!-- fragment --><details >
 <summary >

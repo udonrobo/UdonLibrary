@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: Udon::RingBuffer&lt; T, Capacity &gt; クラステンプレート</title>
@@ -44,22 +44,45 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.16.1 -->
+<!-- 構築: Doxygen 1.17.0 -->
 <script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search/",'.html');
+let searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
 <script type="text/javascript">
-$(function() { codefold.init(); });
+document.addEventListener('DOMContentLoaded', codefold.init);
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','検索',true);
-  $(function() { init_search(); });
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
 });
 </script>
-<div id="main-nav"></div>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -72,7 +95,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('classUdon_1_1RingBuffer.html','','classUdon_1_1RingBuffer-members'); });
+document.addEventListener('DOMContentLoaded',() => { initNavTree('classUdon_1_1RingBuffer.html','','classUdon_1_1RingBuffer-members'); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -128,16 +151,16 @@ $(function(){initNavTree('classUdon_1_1RingBuffer.html','','classUdon_1_1RingBuf
 <tr class="memdesc:ad886c6367ec3e3d7bc69e97b70df046f"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <br /></td></tr>
 <tr class="memitem:a9f68333d70f06d49259ee3f20151a06a" id="r_a9f68333d70f06d49259ee3f20151a06a"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a9f68333d70f06d49259ee3f20151a06a">RingBuffer</a> (const RingBuffer &amp;other)</td></tr>
 <tr class="memdesc:a9f68333d70f06d49259ee3f20151a06a"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <br /></td></tr>
-<tr class="memitem:af9adb2b4868b881ea9b1f8f4e854c074" id="r_af9adb2b4868b881ea9b1f8f4e854c074"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#af9adb2b4868b881ea9b1f8f4e854c074">RingBuffer</a> (size_t <a class="el" href="#ac4d4d828436470e0a2164072bfc31cfb">size</a>, <a class="el" href="#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a> value)</td></tr>
+<tr class="memitem:af9adb2b4868b881ea9b1f8f4e854c074" id="r_af9adb2b4868b881ea9b1f8f4e854c074"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#af9adb2b4868b881ea9b1f8f4e854c074">RingBuffer</a> (size_t size, <a class="el" href="#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a> value)</td></tr>
 <tr class="memdesc:af9adb2b4868b881ea9b1f8f4e854c074"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトで初期化するコンストラクタ  <br /></td></tr>
-<tr class="memitem:ae840e43f141e64c8580449dd0f799802" id="r_ae840e43f141e64c8580449dd0f799802"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#ae840e43f141e64c8580449dd0f799802">RingBuffer</a> (size_t <a class="el" href="#ac4d4d828436470e0a2164072bfc31cfb">size</a>)</td></tr>
+<tr class="memitem:ae840e43f141e64c8580449dd0f799802" id="r_ae840e43f141e64c8580449dd0f799802"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#ae840e43f141e64c8580449dd0f799802">RingBuffer</a> (size_t size)</td></tr>
 <tr class="memdesc:ae840e43f141e64c8580449dd0f799802"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトで初期化しないコンストラクタ  <br /></td></tr>
 <tr class="memitem:a5572ed992f5f2d47d3bdce2c562adf30" id="r_a5572ed992f5f2d47d3bdce2c562adf30"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a5572ed992f5f2d47d3bdce2c562adf30">RingBuffer</a> (std::initializer_list&lt; <a class="el" href="#a9bda4e477eecf44c3385f8d14d1391ba">value_type</a> &gt; init)</td></tr>
 <tr class="memitem:a2cf20f5001f06e920058a1e2dbeeb3c1" id="r_a2cf20f5001f06e920058a1e2dbeeb3c1"><td class="memItemLeft">constexpr size_t&#160;</td><td class="memItemRight"><a class="el" href="#a2cf20f5001f06e920058a1e2dbeeb3c1">capacity</a> () const</td></tr>
 <tr class="memdesc:a2cf20f5001f06e920058a1e2dbeeb3c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">capacityを取得  <br /></td></tr>
 <tr class="memitem:ac4d4d828436470e0a2164072bfc31cfb" id="r_ac4d4d828436470e0a2164072bfc31cfb"><td class="memItemLeft">constexpr size_t&#160;</td><td class="memItemRight"><a class="el" href="#ac4d4d828436470e0a2164072bfc31cfb">size</a> () const</td></tr>
 <tr class="memdesc:ac4d4d828436470e0a2164072bfc31cfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファサイズを取得  <br /></td></tr>
-<tr class="memitem:a77dca2ed7893650d087c661596363a06" id="r_a77dca2ed7893650d087c661596363a06"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a77dca2ed7893650d087c661596363a06">resize</a> (size_t <a class="el" href="#ac4d4d828436470e0a2164072bfc31cfb">size</a>)</td></tr>
+<tr class="memitem:a77dca2ed7893650d087c661596363a06" id="r_a77dca2ed7893650d087c661596363a06"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a77dca2ed7893650d087c661596363a06">resize</a> (size_t size)</td></tr>
 <tr class="memdesc:a77dca2ed7893650d087c661596363a06"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファサイズを変更  <br /></td></tr>
 <tr class="memitem:a428e6c8725d567b09748fa0f7c2c699e" id="r_a428e6c8725d567b09748fa0f7c2c699e"><td class="memItemLeft">constexpr bool&#160;</td><td class="memItemRight"><a class="el" href="#a428e6c8725d567b09748fa0f7c2c699e">empty</a> () const</td></tr>
 <tr class="memitem:adc51434643196e9544f030465dbc55fd" id="r_adc51434643196e9544f030465dbc55fd"><td class="memItemLeft">constexpr bool&#160;</td><td class="memItemRight"><a class="el" href="#adc51434643196e9544f030465dbc55fd">full</a> () const</td></tr>
@@ -392,7 +415,7 @@ template&lt;typename T, size_t Capacity&gt; </div>
 <p>デフォルトで初期化するコンストラクタ </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#ac4d4d828436470e0a2164072bfc31cfb" title="バッファサイズを取得">size</a></td><td>使用するサイズ </td></tr>
+    <tr><td class="paramname">size</td><td>使用するサイズ </td></tr>
     <tr><td class="paramname">value</td><td>初期値 </td></tr>
   </table>
   </dd>
@@ -428,7 +451,7 @@ template&lt;typename T, size_t Capacity&gt; </div>
 <p>デフォルトで初期化しないコンストラクタ </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#ac4d4d828436470e0a2164072bfc31cfb" title="バッファサイズを取得">size</a></td><td>使用するサイズ </td></tr>
+    <tr><td class="paramname">size</td><td>使用するサイズ </td></tr>
   </table>
   </dd>
 </dl>
@@ -1179,7 +1202,7 @@ template&lt;typename T, size_t Capacity&gt; </div>
 <p>バッファサイズを変更 </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#ac4d4d828436470e0a2164072bfc31cfb" title="バッファサイズを取得">size</a></td><td></td></tr>
+    <tr><td class="paramname">size</td><td></td></tr>
   </table>
   </dd>
 </dl>

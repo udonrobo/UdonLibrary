@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: Udon::HSV 構造体</title>
@@ -44,22 +44,45 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.16.1 -->
+<!-- 構築: Doxygen 1.17.0 -->
 <script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search/",'.html');
+let searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
 <script type="text/javascript">
-$(function() { codefold.init(); });
+document.addEventListener('DOMContentLoaded', codefold.init);
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','検索',true);
-  $(function() { init_search(); });
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
 });
 </script>
-<div id="main-nav"></div>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -72,7 +95,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('structUdon_1_1HSV.html','','structUdon_1_1HSV-members'); });
+document.addEventListener('DOMContentLoaded',() => { initNavTree('structUdon_1_1HSV.html','','structUdon_1_1HSV-members'); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -116,7 +139,7 @@ $(function(){initNavTree('structUdon_1_1HSV.html','','structUdon_1_1HSV-members'
 公開メンバ関数</h2></td></tr>
 <tr class="memitem:adebbb5f39dd484c72ce252b3dcb2d76e" id="r_adebbb5f39dd484c72ce252b3dcb2d76e"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#adebbb5f39dd484c72ce252b3dcb2d76e">HSV</a> () noexcept</td></tr>
 <tr class="memdesc:adebbb5f39dd484c72ce252b3dcb2d76e"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコンストラクタ  <br /></td></tr>
-<tr class="memitem:a3e9f836ccc2272d6ebf53f2132a21256" id="r_a3e9f836ccc2272d6ebf53f2132a21256"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a3e9f836ccc2272d6ebf53f2132a21256">HSV</a> (<a class="el" href="#ad16b9609a85d2faced09d32a4aa64f7a">ValueType</a> <a class="el" href="#a58d24125d8fdbadcb5897b4885cfa2bd">h</a>, <a class="el" href="#ad16b9609a85d2faced09d32a4aa64f7a">ValueType</a> <a class="el" href="#aaf06fb45c5865d125c3f48d97e75ffe1">s</a>, <a class="el" href="#ad16b9609a85d2faced09d32a4aa64f7a">ValueType</a> <a class="el" href="#ab2ca747970122ea26a0cba5035c54bb0">v</a>) noexcept</td></tr>
+<tr class="memitem:a3e9f836ccc2272d6ebf53f2132a21256" id="r_a3e9f836ccc2272d6ebf53f2132a21256"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a3e9f836ccc2272d6ebf53f2132a21256">HSV</a> (<a class="el" href="#ad16b9609a85d2faced09d32a4aa64f7a">ValueType</a> h, <a class="el" href="#ad16b9609a85d2faced09d32a4aa64f7a">ValueType</a> s, <a class="el" href="#ad16b9609a85d2faced09d32a4aa64f7a">ValueType</a> v) noexcept</td></tr>
 <tr class="memdesc:a3e9f836ccc2272d6ebf53f2132a21256"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <br /></td></tr>
 <tr class="memitem:a181d97be507eae67e92d208517d64a2d" id="r_a181d97be507eae67e92d208517d64a2d"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a181d97be507eae67e92d208517d64a2d">HSV</a> (uint32_t hsv) noexcept</td></tr>
 <tr class="memdesc:a181d97be507eae67e92d208517d64a2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <br /></td></tr>
@@ -231,9 +254,9 @@ $(function(){initNavTree('structUdon_1_1HSV.html','','structUdon_1_1HSV-members'
 <p>コンストラクタ </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="#a58d24125d8fdbadcb5897b4885cfa2bd" title="色相">h</a></td><td>色相 </td></tr>
-    <tr><td class="paramname"><a class="el" href="#aaf06fb45c5865d125c3f48d97e75ffe1" title="彩度">s</a></td><td>彩度 </td></tr>
-    <tr><td class="paramname"><a class="el" href="#ab2ca747970122ea26a0cba5035c54bb0" title="明度">v</a></td><td>明度 </td></tr>
+    <tr><td class="paramname">h</td><td>色相 </td></tr>
+    <tr><td class="paramname">s</td><td>彩度 </td></tr>
+    <tr><td class="paramname">v</td><td>明度 </td></tr>
   </table>
   </dd>
 </dl>

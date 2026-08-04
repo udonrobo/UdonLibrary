@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="icon" href="Udon.png" type="image/x-icon" />
 <title>UdonLibrary: クラスメンバ - 関連関数</title>
@@ -44,22 +44,45 @@
         </table>
       </div>
       <!-- end header part -->
-<!-- 構築: Doxygen 1.16.1 -->
+<!-- 構築: Doxygen 1.17.0 -->
 <script type="text/javascript">
-var searchBox = new SearchBox("searchBox", "search/",'.html');
+let searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
 <script type="text/javascript">
-$(function() { codefold.init(); });
+document.addEventListener('DOMContentLoaded', codefold.init);
 </script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','検索',true);
-  $(function() { init_search(); });
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
 });
 </script>
-<div id="main-nav"></div>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -72,7 +95,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('functions_rela.html','',''); });
+document.addEventListener('DOMContentLoaded',() => { initNavTree('functions_rela.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -98,7 +121,9 @@ $(function(){initNavTree('functions_rela.html','',''); });
 </div>
 
 <div class="contents">
-<div class="textblock">&#160;</div>
+<div class="textblock">&#160;</div><br/>
+<div class="qindex"><a class="qindex" href="#index_o">O</a></div>
+
 
 <h3 class="doxsection"><a id="index_o" name="index_o"></a>- o -</h3><ul>
 <li>operator!=&#160;:&#160;<a class="el" href="classUdon_1_1ArrayView.html#a52227b2d2829120eed730927d79e1219">Udon::ArrayView&lt; T &gt;</a>, <a class="el" href="classUdon_1_1BasicStringView.html#a22f7a306fc667df2978400103d37f790">Udon::BasicStringView&lt; CharType, Traits &gt;</a>, <a class="el" href="structUdon_1_1HSV.html#a32df323b8c84bab5843145e6f37f79a1">Udon::HSV</a>, <a class="el" href="classUdon_1_1Optional.html#aa8164a46a70587f301c5042dd4f28f5e">Udon::Optional&lt; T &gt;</a>, <a class="el" href="structUdon_1_1Polar.html#a7fc1e62301584587e761132cc8d33e28">Udon::Polar</a>, <a class="el" href="structUdon_1_1Vec2.html#ac57ac10d7f1d364e2f82368043075c5a">Udon::Vec2</a>, <a class="el" href="structUdon_1_1Vec3.html#a3056382ce848e4ae06a40c6458689a04">Udon::Vec3</a></li>
