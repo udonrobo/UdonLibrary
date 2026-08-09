@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"classUdon_1_1CanBusSpi.html#a4cf39da779fc32776e4c898af4306cb4":[57,0,1,9,8],
+"classUdon_1_1CanBusSpi.html#a4cf39da779fc32776e4c898af4306cb4":[58,0,0,6,8],
 "classUdon_1_1CanBusSpi.html#aafe94579bb9f1bbfa86eba653092d341":[57,0,1,9,1],
 "classUdon_1_1CanBusSpi.html#aafe94579bb9f1bbfa86eba653092d341":[58,0,0,6,1],
 "classUdon_1_1CanBusSpi.html#ab3fa486716bfd79ab475a9b91417f104":[57,0,1,9,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "classUdon_1_1I2cSlaveWriter.html#abfd03788cc4f51905929dee6ebd595a0":[57,0,1,27,6],
 "classUdon_1_1I2cSlaveWriter.html#abfd03788cc4f51905929dee6ebd595a0":[58,0,0,24,6],
 "classUdon_1_1I2cSlaveWriter.html#aef09d367f078d956116658df05d30342":[57,0,1,27,4],
-"classUdon_1_1I2cSlaveWriter.html#aef09d367f078d956116658df05d30342":[58,0,0,24,4],
-"classUdon_1_1ICanBus.html":[57,0,1,28],
-"classUdon_1_1ICanBus.html":[58,0,0,25]
+"classUdon_1_1I2cSlaveWriter.html#aef09d367f078d956116658df05d30342":[58,0,0,24,4]
 };

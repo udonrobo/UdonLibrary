@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['direction_0',['Direction',['../namespaceUdon.html#aae9957ca3d520d1679c6125f12f25b48',1,'Udon']]]
+  ['controlmode_0',['ControlMode',['../namespaceUdon_1_1Message.html#a603fc02e2a7c4eef9cea1114bb439b1a',1,'Udon::Message']]]
 ];

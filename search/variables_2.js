@@ -10,5 +10,7 @@ var searchData=
   ['crc8_5fsize_7',['CRC8_SIZE',['../namespaceUdon.html#a163e827776b911f4d521dfe7237fca05',1,'Udon']]],
   ['create_8',['create',['../structUdon_1_1Message_1_1PadPS5.html#ace911cb4e3e8577ea31f790aabc22ed6',1,'Udon::Message::PadPS5']]],
   ['cross_9',['cross',['../structUdon_1_1Message_1_1PadPS5.html#a038e18cb2130c8ebd3115675ac5afe83',1,'Udon::Message::PadPS5']]],
-  ['cs_10',['cs',['../structUdon_1_1CanBusSpi_1_1Config.html#aef84ac07f1bfa3dba5b657c77aced261',1,'Udon::CanBusSpi::Config']]]
+  ['cs_10',['cs',['../structUdon_1_1CanBusSpi_1_1Config.html#aef84ac07f1bfa3dba5b657c77aced261',1,'Udon::CanBusSpi::Config']]],
+  ['currentposition_11',['currentPosition',['../structUdon_1_1Message_1_1MotorFeedback.html#af181e5336bc8fb8bddbc561de11666e3',1,'Udon::Message::MotorFeedback']]],
+  ['currentvelocity_12',['currentVelocity',['../structUdon_1_1Message_1_1MotorFeedback.html#a6b283528dcbc28c30d47eca56a0fe3e3',1,'Udon::Message::MotorFeedback']]]
 ];

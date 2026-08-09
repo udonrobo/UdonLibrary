@@ -8,6 +8,7 @@ var dir_cf406aedae3e0dc1eda43380c5cf5cd0 =
     [ "Imu.hpp", "Imu_8hpp.html", "Imu_8hpp" ],
     [ "Lcd.hpp", "Lcd_8hpp.html", "Lcd_8hpp" ],
     [ "Motor.hpp", "Com_2Message_2Motor_8hpp.html", "Com_2Message_2Motor_8hpp" ],
+    [ "MotorCommand.hpp", "MotorCommand_8hpp.html", "MotorCommand_8hpp" ],
     [ "PadPS5.hpp", "Message_2PadPS5_8hpp.html", "Message_2PadPS5_8hpp" ],
     [ "PhotoSensor.hpp", "PhotoSensor_8hpp.html", "PhotoSensor_8hpp" ],
     [ "Servo.hpp", "Com_2Message_2Servo_8hpp.html", "Com_2Message_2Servo_8hpp" ],

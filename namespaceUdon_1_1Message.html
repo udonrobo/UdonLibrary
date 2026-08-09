@@ -139,6 +139,12 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('namespaceUdon_
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">LCD  <a href="structUdon_1_1Message_1_1Lcd.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:Motor" id="r_Motor"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Message_1_1Motor.html">Motor</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">モーター  <a href="structUdon_1_1Message_1_1Motor.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:MotorCommand" id="r_MotorCommand"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Message_1_1MotorCommand.html">MotorCommand</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">モータに送信するコマンド  <a href="structUdon_1_1Message_1_1MotorCommand.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:MotorFeedback" id="r_MotorFeedback"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Message_1_1MotorFeedback.html">MotorFeedback</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">モータからのフィードバック情報  <a href="structUdon_1_1Message_1_1MotorFeedback.html#details">[詳解]</a><br /></td></tr>
+<tr class="memitem:MotorSetting" id="r_MotorSetting"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Message_1_1MotorSetting.html">MotorSetting</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">モータの制限値やパラメータ  <a href="structUdon_1_1Message_1_1MotorSetting.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:PadPS5" id="r_PadPS5"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Message_1_1PadPS5.html">PadPS5</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">PS5コントローラーのボタン情報  <a href="structUdon_1_1Message_1_1PadPS5.html#details">[詳解]</a><br /></td></tr>
 <tr class="memitem:PhotoSensor" id="r_PhotoSensor"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structUdon_1_1Message_1_1PhotoSensor.html">PhotoSensor</a></td></tr>
@@ -162,6 +168,20 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('namespaceUdon_
 <tr class="memdesc:a209787977a42a67052c5ba2a1800fc30"><td class="mdescLeft">&#160;</td><td class="mdescRight">LCD 16x2  <br /></td></tr>
 <tr class="memitem:aae78d31a4c46bdab46f95e2cdfb0f813" id="r_aae78d31a4c46bdab46f95e2cdfb0f813"><td class="memItemLeft">using&#160;</td><td class="memItemRight"><a class="el" href="#aae78d31a4c46bdab46f95e2cdfb0f813">Lcd2004</a> = <a class="el" href="structUdon_1_1Message_1_1Lcd.html">Lcd</a>&lt;20, 4&gt;</td></tr>
 <tr class="memdesc:aae78d31a4c46bdab46f95e2cdfb0f813"><td class="mdescLeft">&#160;</td><td class="mdescRight">LCD 20x4  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+列挙型</h2></td></tr>
+<tr class="memitem:a603fc02e2a7c4eef9cea1114bb439b1a" id="r_a603fc02e2a7c4eef9cea1114bb439b1a"><td class="memItemLeft">enum class &#160;</td><td class="memItemRight"><a class="el" href="#a603fc02e2a7c4eef9cea1114bb439b1a">ControlMode</a> : uint8_t { <br />
+&#160;&#160;<a class="el" href="#a603fc02e2a7c4eef9cea1114bb439b1aac2e719ff1493c7c49d2e5a780450b501">EmergencyStop</a> = 0
+, <a class="el" href="#a603fc02e2a7c4eef9cea1114bb439b1aa526d688f37a86d3c3f27d0c5016eb71d">Reset</a> = 1
+, <a class="el" href="#a603fc02e2a7c4eef9cea1114bb439b1aa2a7ecc75944da3985961c6796d4c85bf">HoldPosition</a> = 2
+, <a class="el" href="#a603fc02e2a7c4eef9cea1114bb439b1aa52f5e0bc3859bc5f5e25130b6c7e8881">Position</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="#a603fc02e2a7c4eef9cea1114bb439b1aa88156d46910a2d733443c339a9231d12">Velocity</a> = 4
+, <a class="el" href="#a603fc02e2a7c4eef9cea1114bb439b1aa8449bc264b69c3a0fe8b60361eaf7aeb">PWM</a> = 5
+<br />
+ }</td></tr>
+<tr class="memdesc:a603fc02e2a7c4eef9cea1114bb439b1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">モータの動作モード  <a href="#a603fc02e2a7c4eef9cea1114bb439b1a">[詳解]</a><br /></td></tr>
 </table>
 <a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">型定義詳解</h2>
 <a id="a1e18f0c5ec4444c4fda80baa0265b20a" name="a1e18f0c5ec4444c4fda80baa0265b20a"></a>
@@ -209,6 +229,39 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('namespaceUdon_
 </div><div class="memdoc">
 
 <p>LCD 20x4 </p>
+
+</div>
+</div>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">列挙型詳解</h2>
+<a id="a603fc02e2a7c4eef9cea1114bb439b1a" name="a603fc02e2a7c4eef9cea1114bb439b1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a603fc02e2a7c4eef9cea1114bb439b1a">&#9670;&#160;</a></span>ControlMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#a603fc02e2a7c4eef9cea1114bb439b1a">Udon::Message::ControlMode</a> : uint8_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>モータの動作モード </p>
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="a603fc02e2a7c4eef9cea1114bb439b1aac2e719ff1493c7c49d2e5a780450b501" name="a603fc02e2a7c4eef9cea1114bb439b1aac2e719ff1493c7c49d2e5a780450b501"></a>EmergencyStop&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a603fc02e2a7c4eef9cea1114bb439b1aa526d688f37a86d3c3f27d0c5016eb71d" name="a603fc02e2a7c4eef9cea1114bb439b1aa526d688f37a86d3c3f27d0c5016eb71d"></a>Reset&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a603fc02e2a7c4eef9cea1114bb439b1aa2a7ecc75944da3985961c6796d4c85bf" name="a603fc02e2a7c4eef9cea1114bb439b1aa2a7ecc75944da3985961c6796d4c85bf"></a>HoldPosition&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a603fc02e2a7c4eef9cea1114bb439b1aa52f5e0bc3859bc5f5e25130b6c7e8881" name="a603fc02e2a7c4eef9cea1114bb439b1aa52f5e0bc3859bc5f5e25130b6c7e8881"></a>Position&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a603fc02e2a7c4eef9cea1114bb439b1aa88156d46910a2d733443c339a9231d12" name="a603fc02e2a7c4eef9cea1114bb439b1aa88156d46910a2d733443c339a9231d12"></a>Velocity&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a603fc02e2a7c4eef9cea1114bb439b1aa8449bc264b69c3a0fe8b60361eaf7aeb" name="a603fc02e2a7c4eef9cea1114bb439b1aa8449bc264b69c3a0fe8b60361eaf7aeb"></a>PWM&#160;</td><td class="fielddoc"></td></tr>
+</table>
 
 </div>
 </div>

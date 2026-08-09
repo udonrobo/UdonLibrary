@@ -1,5 +1,7 @@
 var NAVTREEINDEX7 =
 {
+"md_docs_2Communication_2I2C.html#autotoc_md52":[11,3],
+"md_docs_2Communication_2I2C.html#autotoc_md53":[11,3,0],
 "md_docs_2Communication_2I2C.html#autotoc_md54":[11,3,1],
 "md_docs_2Communication_2IM920.html":[12],
 "md_docs_2Communication_2IM920.html#autotoc_md56":[12,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX7 =
 "md_docs_2Types_2StringView.html#autotoc_md298":[54,7],
 "md_docs_2Types_2StringView.html#autotoc_md299":[54,7,0],
 "md_docs_2Types_2StringView.html#autotoc_md300":[54,7,1],
-"md_docs_2Types_2StringView.html#autotoc_md301":[54,7,2],
-"md_docs_2Types_2StringView.html#autotoc_md302":[54,8],
-"md_docs_2Types_2StringView.html#autotoc_md303":[54,9]
+"md_docs_2Types_2StringView.html#autotoc_md301":[54,7,2]
 };

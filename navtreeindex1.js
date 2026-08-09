@@ -1,18 +1,20 @@
 var NAVTREEINDEX1 =
 {
+"StateMachineAllocator_8hpp_source.html":[59,0,1,0,2,0,3],
+"StaticVector_8hpp.html":[59,0,1,0,7,14],
 "StaticVector_8hpp_source.html":[59,0,1,0,7,14],
 "SteerOptimizer_8hpp.html":[59,0,1,0,0,13],
 "SteerOptimizer_8hpp_source.html":[59,0,1,0,0,13],
-"Stepping_8hpp.html":[59,0,1,0,1,6,12],
-"Stepping_8hpp_source.html":[59,0,1,0,1,6,12],
+"Stepping_8hpp.html":[59,0,1,0,1,6,13],
+"Stepping_8hpp_source.html":[59,0,1,0,1,6,13],
 "Stopwatch_8hpp.html":[59,0,1,0,0,14],
 "Stopwatch_8hpp_source.html":[59,0,1,0,0,14],
 "StringToNumberParser_8hpp.html":[59,0,1,0,0,15],
 "StringToNumberParser_8hpp_source.html":[59,0,1,0,0,15],
 "StringView_8hpp.html":[59,0,1,0,7,15],
 "StringView_8hpp_source.html":[59,0,1,0,7,15],
-"Switch_8hpp.html":[59,0,1,0,1,6,13],
-"Switch_8hpp_source.html":[59,0,1,0,1,6,13],
+"Switch_8hpp.html":[59,0,1,0,1,6,14],
+"Switch_8hpp_source.html":[59,0,1,0,1,6,14],
 "Time_8hpp.html":[59,0,1,0,8,5],
 "Time_8hpp_source.html":[59,0,1,0,8,5],
 "Trapezoidal_8hpp.html":[59,0,1,0,0,16],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "classUdon_1_1CanBusSpi.html#a1aee3bf9ee2381059bd94b1ebb1a6b48":[57,0,1,9,2],
 "classUdon_1_1CanBusSpi.html#a1aee3bf9ee2381059bd94b1ebb1a6b48":[58,0,0,6,2],
 "classUdon_1_1CanBusSpi.html#a44d5704d51ecb315b59dd41518c7be10":[57,0,1,9,7],
-"classUdon_1_1CanBusSpi.html#a44d5704d51ecb315b59dd41518c7be10":[58,0,0,6,7],
-"classUdon_1_1CanBusSpi.html#a4cf39da779fc32776e4c898af4306cb4":[57,0,1,9,8],
-"classUdon_1_1CanBusSpi.html#a4cf39da779fc32776e4c898af4306cb4":[58,0,0,6,8]
+"classUdon_1_1CanBusSpi.html#a44d5704d51ecb315b59dd41518c7be10":[58,0,0,6,7]
 };
