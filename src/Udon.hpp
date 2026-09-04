@@ -1,4 +1,4 @@
-﻿//
+//
 //    UdonLibrary
 //
 //    Copyright (c) 2022 udonrobo
@@ -156,7 +156,7 @@
 #include <Udon/Types/StaticVector.hpp>
 
 // コンテナ / リングバッファ
-// #include <Udon/Types/RingBuffer.hpp>
+#include <Udon/Types/RingBuffer.hpp>
 
 
 //
