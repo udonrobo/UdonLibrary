@@ -149,8 +149,14 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('classUdon_1_1R
 公開メンバ関数</h2></td></tr>
 <tr class="memitem:ad886c6367ec3e3d7bc69e97b70df046f" id="r_ad886c6367ec3e3d7bc69e97b70df046f"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#ad886c6367ec3e3d7bc69e97b70df046f">RingBuffer</a> ()</td></tr>
 <tr class="memdesc:ad886c6367ec3e3d7bc69e97b70df046f"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <br /></td></tr>
-<tr class="memitem:a9f68333d70f06d49259ee3f20151a06a" id="r_a9f68333d70f06d49259ee3f20151a06a"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a9f68333d70f06d49259ee3f20151a06a">RingBuffer</a> (const RingBuffer &amp;other)</td></tr>
-<tr class="memdesc:a9f68333d70f06d49259ee3f20151a06a"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <br /></td></tr>
+<tr class="memitem:a5b690e060b705b92a4356dee7c31b973" id="r_a5b690e060b705b92a4356dee7c31b973"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a5b690e060b705b92a4356dee7c31b973">RingBuffer</a> (const RingBuffer &amp;)=default</td></tr>
+<tr class="memdesc:a5b690e060b705b92a4356dee7c31b973"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <br /></td></tr>
+<tr class="memitem:a2ffd7ec2f07539ae114d63a833cfbbdb" id="r_a2ffd7ec2f07539ae114d63a833cfbbdb"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a2ffd7ec2f07539ae114d63a833cfbbdb">RingBuffer</a> (RingBuffer &amp;&amp;) noexcept=default</td></tr>
+<tr class="memdesc:a2ffd7ec2f07539ae114d63a833cfbbdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">ムーブコンストラクタ  <br /></td></tr>
+<tr class="memitem:adb3bc12ae8f09b4ab052b24b400994e5" id="r_adb3bc12ae8f09b4ab052b24b400994e5"><td class="memItemLeft"><a class="el" href="#ad886c6367ec3e3d7bc69e97b70df046f">RingBuffer</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#adb3bc12ae8f09b4ab052b24b400994e5">operator=</a> (const <a class="el" href="#ad886c6367ec3e3d7bc69e97b70df046f">RingBuffer</a> &amp;)=default</td></tr>
+<tr class="memdesc:adb3bc12ae8f09b4ab052b24b400994e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピー代入演算子  <br /></td></tr>
+<tr class="memitem:a82770236bdf952ce8858b1c7e7852f6c" id="r_a82770236bdf952ce8858b1c7e7852f6c"><td class="memItemLeft"><a class="el" href="#ad886c6367ec3e3d7bc69e97b70df046f">RingBuffer</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a82770236bdf952ce8858b1c7e7852f6c">operator=</a> (<a class="el" href="#ad886c6367ec3e3d7bc69e97b70df046f">RingBuffer</a> &amp;&amp;) noexcept=default</td></tr>
+<tr class="memdesc:a82770236bdf952ce8858b1c7e7852f6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ムーブ代入演算子  <br /></td></tr>
 <tr class="memitem:af9adb2b4868b881ea9b1f8f4e854c074" id="r_af9adb2b4868b881ea9b1f8f4e854c074"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#af9adb2b4868b881ea9b1f8f4e854c074">RingBuffer</a> (size_t size, <a class="el" href="#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a> value)</td></tr>
 <tr class="memdesc:af9adb2b4868b881ea9b1f8f4e854c074"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトで初期化するコンストラクタ  <br /></td></tr>
 <tr class="memitem:ae840e43f141e64c8580449dd0f799802" id="r_ae840e43f141e64c8580449dd0f799802"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#ae840e43f141e64c8580449dd0f799802">RingBuffer</a> (size_t size)</td></tr>
@@ -162,6 +168,10 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('classUdon_1_1R
 <tr class="memdesc:ac4d4d828436470e0a2164072bfc31cfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファサイズを取得  <br /></td></tr>
 <tr class="memitem:a77dca2ed7893650d087c661596363a06" id="r_a77dca2ed7893650d087c661596363a06"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a77dca2ed7893650d087c661596363a06">resize</a> (size_t size)</td></tr>
 <tr class="memdesc:a77dca2ed7893650d087c661596363a06"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファサイズを変更  <br /></td></tr>
+<tr class="memitem:a69dc6a86ba5d1ce5af5f0aff5e2d9884" id="r_a69dc6a86ba5d1ce5af5f0aff5e2d9884"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a69dc6a86ba5d1ce5af5f0aff5e2d9884">fill</a> (<a class="el" href="#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a> value)</td></tr>
+<tr class="memdesc:a69dc6a86ba5d1ce5af5f0aff5e2d9884"><td class="mdescLeft">&#160;</td><td class="mdescRight">全要素を指定した値で埋める (サイズを Capacity に設定)  <br /></td></tr>
+<tr class="memitem:ae78eed8407c6442c99b99021eed3e19d" id="r_ae78eed8407c6442c99b99021eed3e19d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ae78eed8407c6442c99b99021eed3e19d">clear</a> ()</td></tr>
+<tr class="memdesc:ae78eed8407c6442c99b99021eed3e19d"><td class="mdescLeft">&#160;</td><td class="mdescRight">バッファをクリアする  <br /></td></tr>
 <tr class="memitem:a428e6c8725d567b09748fa0f7c2c699e" id="r_a428e6c8725d567b09748fa0f7c2c699e"><td class="memItemLeft">constexpr bool&#160;</td><td class="memItemRight"><a class="el" href="#a428e6c8725d567b09748fa0f7c2c699e">empty</a> () const</td></tr>
 <tr class="memitem:adc51434643196e9544f030465dbc55fd" id="r_adc51434643196e9544f030465dbc55fd"><td class="memItemLeft">constexpr bool&#160;</td><td class="memItemRight"><a class="el" href="#adc51434643196e9544f030465dbc55fd">full</a> () const</td></tr>
 <tr class="memitem:a353f9fbc6faf53475f12114f542f6d42" id="r_a353f9fbc6faf53475f12114f542f6d42"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a353f9fbc6faf53475f12114f542f6d42">push</a> (<a class="el" href="#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a> value)</td></tr>
@@ -320,7 +330,7 @@ template&lt;typename T, size_t Capacity&gt; </div>
 </div>
 <a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">構築子と解体子</h2>
 <a id="ad886c6367ec3e3d7bc69e97b70df046f" name="ad886c6367ec3e3d7bc69e97b70df046f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad886c6367ec3e3d7bc69e97b70df046f">&#9670;&#160;</a></span>RingBuffer() <span class="overload">[1/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad886c6367ec3e3d7bc69e97b70df046f">&#9670;&#160;</a></span>RingBuffer() <span class="overload">[1/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -348,8 +358,8 @@ template&lt;typename T, size_t Capacity&gt; </div>
 
 </div>
 </div>
-<a id="a9f68333d70f06d49259ee3f20151a06a" name="a9f68333d70f06d49259ee3f20151a06a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f68333d70f06d49259ee3f20151a06a">&#9670;&#160;</a></span>RingBuffer() <span class="overload">[2/5]</span></h2>
+<a id="a5b690e060b705b92a4356dee7c31b973" name="a5b690e060b705b92a4356dee7c31b973"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b690e060b705b92a4356dee7c31b973">&#9670;&#160;</a></span>RingBuffer() <span class="overload">[2/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -362,29 +372,52 @@ template&lt;typename T, size_t Capacity&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::RingBuffer </td>
           <td>(</td>
-          <td class="paramtype">const RingBuffer&lt; T, Capacity &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td class="paramtype">const RingBuffer&lt; T, Capacity &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel constexpr">constexpr</span><span class="mlabel default">default</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>コピーコンストラクタ </p>
-<dl class="params"><dt>引数</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">other</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
+
+</div>
+</div>
+<a id="a2ffd7ec2f07539ae114d63a833cfbbdb" name="a2ffd7ec2f07539ae114d63a833cfbbdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ffd7ec2f07539ae114d63a833cfbbdb">&#9670;&#160;</a></span>RingBuffer() <span class="overload">[3/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, size_t Capacity&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::RingBuffer </td>
+          <td>(</td>
+          <td class="paramtype">RingBuffer&lt; T, Capacity &gt; &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel constexpr">constexpr</span><span class="mlabel default">default</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ムーブコンストラクタ </p>
 
 </div>
 </div>
 <a id="af9adb2b4868b881ea9b1f8f4e854c074" name="af9adb2b4868b881ea9b1f8f4e854c074"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af9adb2b4868b881ea9b1f8f4e854c074">&#9670;&#160;</a></span>RingBuffer() <span class="overload">[3/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af9adb2b4868b881ea9b1f8f4e854c074">&#9670;&#160;</a></span>RingBuffer() <span class="overload">[4/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -424,7 +457,7 @@ template&lt;typename T, size_t Capacity&gt; </div>
 </div>
 </div>
 <a id="ae840e43f141e64c8580449dd0f799802" name="ae840e43f141e64c8580449dd0f799802"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae840e43f141e64c8580449dd0f799802">&#9670;&#160;</a></span>RingBuffer() <span class="overload">[4/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae840e43f141e64c8580449dd0f799802">&#9670;&#160;</a></span>RingBuffer() <span class="overload">[5/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -459,7 +492,7 @@ template&lt;typename T, size_t Capacity&gt; </div>
 </div>
 </div>
 <a id="a5572ed992f5f2d47d3bdce2c562adf30" name="a5572ed992f5f2d47d3bdce2c562adf30"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5572ed992f5f2d47d3bdce2c562adf30">&#9670;&#160;</a></span>RingBuffer() <span class="overload">[5/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5572ed992f5f2d47d3bdce2c562adf30">&#9670;&#160;</a></span>RingBuffer() <span class="overload">[6/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -690,6 +723,35 @@ template&lt;typename T, size_t Capacity&gt; </div>
 
 </div>
 </div>
+<a id="ae78eed8407c6442c99b99021eed3e19d" name="ae78eed8407c6442c99b99021eed3e19d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae78eed8407c6442c99b99021eed3e19d">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, size_t Capacity&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::clear </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>バッファをクリアする </p>
+
+</div>
+</div>
 <a id="a84d1565c65f8e0e7f5ccb9fd2a69d304" name="a84d1565c65f8e0e7f5ccb9fd2a69d304"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a84d1565c65f8e0e7f5ccb9fd2a69d304">&#9670;&#160;</a></span>crbegin()</h2>
 
@@ -831,6 +893,41 @@ template&lt;typename T, size_t Capacity&gt; </div>
 
 </div>
 </div>
+<a id="a69dc6a86ba5d1ce5af5f0aff5e2d9884" name="a69dc6a86ba5d1ce5af5f0aff5e2d9884"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69dc6a86ba5d1ce5af5f0aff5e2d9884">&#9670;&#160;</a></span>fill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, size_t Capacity&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::fill </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#aef539889feedb3f63aa4ff6b0c2438c2">const_reference</a></td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>全要素を指定した値で埋める (サイズを Capacity に設定) </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>埋める値 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ac43be0e5db5d493a00973a167b36f781" name="ac43be0e5db5d493a00973a167b36f781"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac43be0e5db5d493a00973a167b36f781">&#9670;&#160;</a></span>front() <span class="overload">[1/2]</span></h2>
 
@@ -909,6 +1006,64 @@ template&lt;typename T, size_t Capacity&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="adb3bc12ae8f09b4ab052b24b400994e5" name="adb3bc12ae8f09b4ab052b24b400994e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb3bc12ae8f09b4ab052b24b400994e5">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, size_t Capacity&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ad886c6367ec3e3d7bc69e97b70df046f">RingBuffer</a> &amp; <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#ad886c6367ec3e3d7bc69e97b70df046f">RingBuffer</a>&lt; T, Capacity &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel default">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>コピー代入演算子 </p>
+
+</div>
+</div>
+<a id="a82770236bdf952ce8858b1c7e7852f6c" name="a82770236bdf952ce8858b1c7e7852f6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82770236bdf952ce8858b1c7e7852f6c">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, size_t Capacity&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ad886c6367ec3e3d7bc69e97b70df046f">RingBuffer</a> &amp; <a class="el" href="classUdon_1_1RingBuffer.html">Udon::RingBuffer</a>&lt; T, Capacity &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#ad886c6367ec3e3d7bc69e97b70df046f">RingBuffer</a>&lt; T, Capacity &gt; &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel default">default</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ムーブ代入演算子 </p>
 
 </div>
 </div>

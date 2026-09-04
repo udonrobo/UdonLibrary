@@ -1,5 +1,15 @@
 var NAVTREEINDEX12 =
 {
+"structUdon_1_1Vec2.html#a632064a50b10968d6a6160b7cf95f4e5":[57,0,1,68,49],
+"structUdon_1_1Vec2.html#a632064a50b10968d6a6160b7cf95f4e5":[58,0,0,65,49],
+"structUdon_1_1Vec2.html#a651345a85870ef89338fe6db324aabbb":[57,0,1,68,34],
+"structUdon_1_1Vec2.html#a651345a85870ef89338fe6db324aabbb":[58,0,0,65,34],
+"structUdon_1_1Vec2.html#a688f1e2761ce5aeaa30590060aa62e32":[57,0,1,68,14],
+"structUdon_1_1Vec2.html#a688f1e2761ce5aeaa30590060aa62e32":[58,0,0,65,14],
+"structUdon_1_1Vec2.html#a68f9d011d204394cb6e57f610c56419b":[57,0,1,68,20],
+"structUdon_1_1Vec2.html#a68f9d011d204394cb6e57f610c56419b":[58,0,0,65,20],
+"structUdon_1_1Vec2.html#a695bb57e4dce8218a4dbf8ea3c3da98a":[57,0,1,68,22],
+"structUdon_1_1Vec2.html#a695bb57e4dce8218a4dbf8ea3c3da98a":[58,0,0,65,22],
 "structUdon_1_1Vec2.html#a6d1a204109393b6644b15dd35228c6a9":[57,0,1,68,51],
 "structUdon_1_1Vec2.html#a6d1a204109393b6644b15dd35228c6a9":[58,0,0,65,51],
 "structUdon_1_1Vec2.html#a6f91343bf4606f50dac05e5d46cdcc99":[57,0,1,68,5],

@@ -1,5 +1,15 @@
 var NAVTREEINDEX7 =
 {
+"md_docs_2Communication_2Common.html#autotoc_md39":[9,3],
+"md_docs_2Communication_2Common.html#autotoc_md40":[9,3,0],
+"md_docs_2Communication_2Common.html#autotoc_md41":[9,3,1],
+"md_docs_2Communication_2Common.html#autotoc_md42":[9,3,2],
+"md_docs_2Communication_2I2C.html":[11],
+"md_docs_2Communication_2I2C.html#autotoc_md47":[11,0],
+"md_docs_2Communication_2I2C.html#autotoc_md48":[11,1],
+"md_docs_2Communication_2I2C.html#autotoc_md49":[11,2],
+"md_docs_2Communication_2I2C.html#autotoc_md50":[11,2,0],
+"md_docs_2Communication_2I2C.html#autotoc_md51":[11,2,1],
 "md_docs_2Communication_2I2C.html#autotoc_md52":[11,3],
 "md_docs_2Communication_2I2C.html#autotoc_md53":[11,3,0],
 "md_docs_2Communication_2I2C.html#autotoc_md54":[11,3,1],
@@ -239,15 +249,5 @@ var NAVTREEINDEX7 =
 "md_docs_2Types_2StringView.html#autotoc_md288":[54,2],
 "md_docs_2Types_2StringView.html#autotoc_md289":[54,3],
 "md_docs_2Types_2StringView.html#autotoc_md290":[54,4],
-"md_docs_2Types_2StringView.html#autotoc_md291":[54,5],
-"md_docs_2Types_2StringView.html#autotoc_md292":[54,6],
-"md_docs_2Types_2StringView.html#autotoc_md293":[54,6,0],
-"md_docs_2Types_2StringView.html#autotoc_md294":[54,6,1],
-"md_docs_2Types_2StringView.html#autotoc_md295":[54,6,2],
-"md_docs_2Types_2StringView.html#autotoc_md296":[54,6,3],
-"md_docs_2Types_2StringView.html#autotoc_md297":[54,6,4],
-"md_docs_2Types_2StringView.html#autotoc_md298":[54,7],
-"md_docs_2Types_2StringView.html#autotoc_md299":[54,7,0],
-"md_docs_2Types_2StringView.html#autotoc_md300":[54,7,1],
-"md_docs_2Types_2StringView.html#autotoc_md301":[54,7,2]
+"md_docs_2Types_2StringView.html#autotoc_md291":[54,5]
 };
