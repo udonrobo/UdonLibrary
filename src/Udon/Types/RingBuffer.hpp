@@ -8,6 +8,7 @@
 
 #include <Udon/Stl/EnableSTL.hpp>
 #include <algorithm>
+#include <array>
 #include <cstddef>
 #include <iterator>
 
@@ -33,10 +34,10 @@ namespace Udon
         using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
     private:
-        value_type m_data[Capacity];
-        size_t     m_head;
-        size_t     m_tail;
-        size_t     m_size;
+        std::array<value_type, Capacity> m_data;
+        size_t                           m_head;
+        size_t                           m_tail;
+        size_t                           m_size;
 
     public:
         /// @brief コンストラクタ
@@ -49,14 +50,16 @@ namespace Udon
         }
 
         /// @brief コピーコンストラクタ
-        /// @param other
-        constexpr RingBuffer(const RingBuffer& other)
-            : m_data{ other.m_data }
-            , m_head{ other.m_head }
-            , m_tail{ other.m_tail }
-            , m_size{ other.m_size }
-        {
-        }
+        constexpr RingBuffer(const RingBuffer&) = default;
+
+        /// @brief ムーブコンストラクタ
+        constexpr RingBuffer(RingBuffer&&) noexcept = default;
+
+        /// @brief コピー代入演算子
+        RingBuffer& operator=(const RingBuffer&) = default;
+
+        /// @brief ムーブ代入演算子
+        RingBuffer& operator=(RingBuffer&&) noexcept = default;
 
         /// @brief デフォルトで初期化するコンストラクタ
         /// @param size 使用するサイズ
@@ -64,7 +67,7 @@ namespace Udon
         RingBuffer(size_t size, const_reference value)
             : m_data{}
             , m_head{}
-            , m_tail{}
+            , m_tail{ (Capacity > 0) ? (std::min(size, capacity()) % capacity()) : 0 }
             , m_size{ std::min(size, capacity()) }
         {
             std::fill(begin(), end(), value);
@@ -75,7 +78,7 @@ namespace Udon
         constexpr explicit RingBuffer(size_t size)
             : m_data{}
             , m_head{}
-            , m_tail{}
+            , m_tail{ (Capacity > 0) ? (std::min(size, capacity()) % capacity()) : 0 }
             , m_size{ std::min(size, capacity()) }
         {
         }
@@ -83,8 +86,8 @@ namespace Udon
         RingBuffer(std::initializer_list<value_type> init)
             : m_data{}
             , m_head{}
-            , m_tail{}
-            , m_size{ std::min(init.size, capacity()) }
+            , m_tail{ (Capacity > 0) ? (std::min(init.size(), capacity()) % capacity()) : 0 }
+            , m_size{ std::min(init.size(), capacity()) }
         {
             std::copy(init.begin(), init.end(), begin());
         }
@@ -108,6 +111,24 @@ namespace Udon
         void resize(size_t size)
         {
             m_size = std::min(size, capacity());
+        }
+
+        /// @brief 全要素を指定した値で埋める (サイズを Capacity に設定)
+        /// @param value 埋める値
+        void fill(const_reference value)
+        {
+            m_head = 0;
+            m_tail = 0;
+            m_size = Capacity;
+            m_data.fill(value);
+        }
+
+        /// @brief バッファをクリアする
+        void clear()
+        {
+            m_head = 0;
+            m_tail = 0;
+            m_size = 0;
         }
 
         constexpr bool empty() const
@@ -320,11 +341,11 @@ namespace Udon
             }
             iterator operator+(size_t offset) const
             {
-                return const_iterator::operator+();
+                return { this->m_data, this->m_index + offset, this->m_size };
             }
             iterator operator-(size_t offset) const
             {
-                return const_iterator::operator-();
+                return { this->m_data, this->m_index - offset, this->m_size };
             }
             difference_type operator-(const iterator& other) const
             {
@@ -350,41 +371,41 @@ namespace Udon
         /// @return
         iterator begin()
         {
-            return { m_data, m_head, Capacity };
+            return { m_data.data(), m_head, Capacity };
         }
 
         /// @brief バッファの末尾イテレーターを取得
         /// @return
         iterator end()
         {
-            return { m_data, m_head + m_size, Capacity };
+            return { m_data.data(), m_head + m_size, Capacity };
         }
 
         /// @brief バッファの先頭イテレーターを取得
         /// @return
         const_iterator begin() const
         {
-            return { m_data, m_head, Capacity };
+            return { m_data.data(), m_head, Capacity };
         }
         /// @brief バッファの末尾イテレーターを取得
         /// @return
         const_iterator end() const
         {
-            return { m_data, m_head + m_size, Capacity };
+            return { m_data.data(), m_head + m_size, Capacity };
         }
 
         /// @brief バッファの先頭イテレーターを取得
         /// @return
         const_iterator cbegin() const
         {
-            return { m_data, m_head, Capacity };
+            return { m_data.data(), m_head, Capacity };
         }
 
         /// @brief バッファの末尾イテレーターを取得
         /// @return
         const_iterator cend() const
         {
-            return { m_data, m_head + m_size, Capacity };
+            return { m_data.data(), m_head + m_size, Capacity };
         }
 
         const_reverse_iterator rbegin() const
