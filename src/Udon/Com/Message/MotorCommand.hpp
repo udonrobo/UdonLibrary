@@ -22,8 +22,6 @@ namespace Udon
             PWM           = 4,    // PWM駆動モード
         };
 
-#pragma pack(push, 1)
-
         /// @brief モータに送信するコマンド
         struct MotorCommand
         {
@@ -92,8 +90,6 @@ namespace Udon
 
             UDON_ENUMERABLE(maxVelocity, maxAcceleration, reset);
         };
-
-#pragma pack(pop) 
 
     }    // namespace Message
 
