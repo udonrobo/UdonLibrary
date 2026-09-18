@@ -20,6 +20,9 @@
 // PIDフィードバック制御器
 #include <Udon/Algorithm/PidController.hpp>
 
+// 速度型PIDフィードバック制御器
+#include <Udon/Algorithm/SpeedPid.hpp>
+
 // 移動平均
 #include <Udon/Algorithm/MovingAverage.hpp>
 
