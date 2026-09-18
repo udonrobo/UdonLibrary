@@ -22,7 +22,7 @@ namespace Udon
             PWM           = 4,    // PWM駆動モード
         };
 
-#pragma pack(pop)
+#pragma pack(push, 1)
 
         /// @brief モータに送信するコマンド
         struct MotorCommand
