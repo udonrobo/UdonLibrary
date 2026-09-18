@@ -13,6 +13,7 @@
 #include "Message/Imu.hpp"
 #include "Message/Lcd.hpp"
 #include "Message/Motor.hpp"
+#include "Message/MotorCommand.hpp"
 #include "Message/PadPS5.hpp"
 #include "Message/PhotoSensor.hpp"
 #include "Message/Servo.hpp"
