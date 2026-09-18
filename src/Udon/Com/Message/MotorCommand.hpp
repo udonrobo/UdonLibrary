@@ -16,12 +16,13 @@ namespace Udon
         enum class ControlMode : uint8_t
         {
             EmergencyStop = 0,    // 非常停止
-            Reset         = 1,    // エンコーダリセット
-            HoldPosition  = 2,    // 現在位置保持
-            Position      = 3,    // 位置制御モード
-            Velocity      = 4,    // 速度制御モード
-            PWM           = 5,    // PWM駆動モード
+            HoldPosition  = 1,    // 現在位置保持
+            Position      = 2,    // 位置制御モード
+            Velocity      = 3,    // 速度制御モード
+            PWM           = 4,    // PWM駆動モード
         };
+
+#pragma pack(pop)
 
         /// @brief モータに送信するコマンド
         struct MotorCommand
@@ -76,17 +77,23 @@ namespace Udon
             /// @brief 最大加速度制限
             float maxAcceleration;
 
+            /// @brief モータのリセットフラグ
+            bool reset;
+
 #ifdef ARDUINO
             /// @brief デバッグ出力
             void show() const
             {
                 Serial.print(F("maxVelocity: ")), Serial.print(maxVelocity), Serial.print('\t');
                 Serial.print(F("maxAcceleration: ")), Serial.print(maxAcceleration), Serial.print('\t');
+                Serial.print(F("reset: ")), Serial.print(reset), Serial.print('\t');
             }
 #endif
 
-            UDON_ENUMERABLE(maxVelocity, maxAcceleration);
+            UDON_ENUMERABLE(maxVelocity, maxAcceleration, reset);
         };
+
+#pragma pack(pop) 
 
     }    // namespace Message
 
