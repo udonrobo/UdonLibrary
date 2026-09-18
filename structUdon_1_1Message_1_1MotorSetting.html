@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('structUdon_1_1
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
-<tr class="memitem:a381d02c5542a9019799c78a3a27db09a" id="r_a381d02c5542a9019799c78a3a27db09a"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a381d02c5542a9019799c78a3a27db09a">UDON_ENUMERABLE</a> (<a class="el" href="#af52057c547291eb577fcce2da297bb3a">maxVelocity</a>, <a class="el" href="#a8085d30d63b0dac3846665caa8ffe989">maxAcceleration</a>)</td></tr>
+<tr class="memitem:afa8e660bf180ec4878ffd975bc7f5c69" id="r_afa8e660bf180ec4878ffd975bc7f5c69"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#afa8e660bf180ec4878ffd975bc7f5c69">UDON_ENUMERABLE</a> (<a class="el" href="#af52057c547291eb577fcce2da297bb3a">maxVelocity</a>, <a class="el" href="#a8085d30d63b0dac3846665caa8ffe989">maxAcceleration</a>, <a class="el" href="#a1df1affa2cbe0421a3017bef7d404a7a">reset</a>)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 公開変数類</h2></td></tr>
@@ -140,12 +140,14 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('structUdon_1_1
 <tr class="memdesc:af52057c547291eb577fcce2da297bb3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">最大速度制限  <br /></td></tr>
 <tr class="memitem:a8085d30d63b0dac3846665caa8ffe989" id="r_a8085d30d63b0dac3846665caa8ffe989"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a8085d30d63b0dac3846665caa8ffe989">maxAcceleration</a></td></tr>
 <tr class="memdesc:a8085d30d63b0dac3846665caa8ffe989"><td class="mdescLeft">&#160;</td><td class="mdescRight">最大加速度制限  <br /></td></tr>
+<tr class="memitem:a1df1affa2cbe0421a3017bef7d404a7a" id="r_a1df1affa2cbe0421a3017bef7d404a7a"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a1df1affa2cbe0421a3017bef7d404a7a">reset</a></td></tr>
+<tr class="memdesc:a1df1affa2cbe0421a3017bef7d404a7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">モータのリセットフラグ  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">詳解</h2>
 <div class="textblock"><p>モータの制限値やパラメータ </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">関数詳解</h2>
-<a id="a381d02c5542a9019799c78a3a27db09a" name="a381d02c5542a9019799c78a3a27db09a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a381d02c5542a9019799c78a3a27db09a">&#9670;&#160;</a></span>UDON_ENUMERABLE()</h2>
+<a id="afa8e660bf180ec4878ffd975bc7f5c69" name="afa8e660bf180ec4878ffd975bc7f5c69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa8e660bf180ec4878ffd975bc7f5c69">&#9670;&#160;</a></span>UDON_ENUMERABLE()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -158,7 +160,12 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('structUdon_1_1
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="#a8085d30d63b0dac3846665caa8ffe989">maxAcceleration</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="#a8085d30d63b0dac3846665caa8ffe989">maxAcceleration</a></td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a1df1affa2cbe0421a3017bef7d404a7a">reset</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -195,6 +202,22 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('structUdon_1_1
 </div><div class="memdoc">
 
 <p>最大速度制限 </p>
+
+</div>
+</div>
+<a id="a1df1affa2cbe0421a3017bef7d404a7a" name="a1df1affa2cbe0421a3017bef7d404a7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1df1affa2cbe0421a3017bef7d404a7a">&#9670;&#160;</a></span>reset</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Udon::Message::MotorSetting::reset</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>モータのリセットフラグ </p>
 
 </div>
 </div>
